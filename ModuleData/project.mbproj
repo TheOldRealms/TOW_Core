@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="solution">
+	<outputDirectory>..\MBModule\MBModule\</outputDirectory>
+	<XMLDirectory>..\WOTS\Modules\TOW_Core\</XMLDirectory>
+	<ModuleAssemblyDirectory>..\WOTS\bin\</ModuleAssemblyDirectory>
+	<file id="soln_item_usage_sets" name="ModuleData/tow_item_usages.xml" type="item_usage_set" />
+	<file id="soln_module_sound" name="ModuleData/tow_sounds.xml" type="module_sound" />
+</base>

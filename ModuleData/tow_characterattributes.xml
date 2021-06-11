@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Characters>
+  <Character name="tow_skeleton_recruit">
+		<Attribute id="Undead"/>
+		<Attribute id="Expendable"/>
+  </Character>
+  <Character name="tow_skeleton_warrior">
+		<Attribute id="Undead"/>
+  </Character>
+  <Character name="tow_skeleton_spearman">
+		<Attribute id="Undead"/>
+  </Character>
+	<Character name="tow_grave_guard">
+		<Attribute id="Undead"/>
+	</Character>
+	<Character name="tow_grave_guard_greatsword">
+		<Attribute id="Undead"/>
+	</Character>
+	<Character name="tow_cairn_wraith">
+		<Attribute id="Undead"/>
+	</Character>
+	<Character name="emp_lord">
+		<Attribute id="AbilityUser"/>
+	</Character>
+	<Character name="vc_lord">
+		<Attribute id="AbilityUser"/>
+		<Attribute id="Undead"/>
+	</Character>
+	<Character name="mannfred">
+		<Attribute id="AbilityUser"/>
+		<Attribute id="Undead"/>
+	</Character>
+</Characters>

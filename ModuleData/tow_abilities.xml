@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<ArrayOfCharacterAbilityTuple xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CharacterAbilityTuple CharacterID="emp_lord">
+		<Abilities>TOW_Core.Abilities.FireBallAbility</Abilities>
+		<Abilities>TOW_Core.Abilities.WindOfDeathAbility</Abilities>
+	</CharacterAbilityTuple>
+	<CharacterAbilityTuple CharacterID="vc_lord">
+		<Abilities>TOW_Core.Abilities.FireBallAbility</Abilities>
+		<Abilities>TOW_Core.Abilities.WindOfDeathAbility</Abilities>
+	</CharacterAbilityTuple>
+	<CharacterAbilityTuple CharacterID="mannfred">
+		<Abilities>TOW_Core.Abilities.FireBallAbility</Abilities>
+		<Abilities>TOW_Core.Abilities.WindOfDeathAbility</Abilities>
+	</CharacterAbilityTuple>
+</ArrayOfCharacterAbilityTuple>

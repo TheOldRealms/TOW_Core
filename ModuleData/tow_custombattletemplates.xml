@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfCustomBattleFormationTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<CustomBattleFormationTemplate cultureId="empire" formation="Infantry" troopId="tow_empire_recruit" />
+	<CustomBattleFormationTemplate cultureId="empire" formation="Ranged" troopId="tow_empire_recruit" />
+	<CustomBattleFormationTemplate cultureId="empire" formation="Cavalry" troopId="tow_empire_recruit" />
+	<CustomBattleFormationTemplate cultureId="empire" formation="HorseArcher" troopId="tow_empire_recruit" />
+
+	<CustomBattleFormationTemplate cultureId="khuzait" formation="Infantry" troopId="tow_skeleton_recruit" />
+	<CustomBattleFormationTemplate cultureId="khuzait" formation="Ranged" troopId="tow_skeleton_recruit" />
+	<CustomBattleFormationTemplate cultureId="khuzait" formation="Cavalry" troopId="tow_skeleton_recruit" />
+	<CustomBattleFormationTemplate cultureId="khuzait" formation="HorseArcher" troopId="tow_skeleton_recruit" />
+
+</ArrayOfCustomBattleFormationTemplate>

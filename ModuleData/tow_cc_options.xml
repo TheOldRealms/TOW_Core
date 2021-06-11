@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<ArrayOfCharacterCreationOption xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--This is a single character creation option. ID has no naming convention, but has to be unique. 
+	SkillsToIncrease possible values:
+			OneHanded
+			TwoHanded
+			Polearm
+			Bow
+			Crossbow
+			Throwing
+			Riding
+			Athletics
+			Scouting
+			Tactics
+			Crafting
+			Roguery
+			Charm
+			Leadership
+			Trade
+			Steward
+			Medicine
+			Engineering
+	AttributeToIncrease possible values:
+			Vigor
+			Control
+			Endurance
+			Cunning
+			Social
+			Intelligence
+	-->
+  <CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+    <SkillsToIncrease>
+      <string>OneHanded</string>
+      <string>TwoHanded</string>
+    </SkillsToIncrease>
+    <AttributeToIncrease>Vigor</AttributeToIncrease>
+    <OptionText>Military background</OptionText>
+    <OptionFlavourText>Your family has a military background and have schooled you in the ways of war ever since you were old enough to hold a weapon.</OptionFlavourText>
+  </CharacterCreationOption>
+	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Trade</string>
+			<string>Steward</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
+		<OptionText>Merchant background</OptionText>
+		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Athletics</string>
+			<string>Polearm</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Control</AttributeToIncrease>
+		<OptionText>Town/Village militia</OptionText>
+		<OptionFlavourText>As a teenager you joined as a member of the Militia to help defend your town from threats.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>TwoHanded</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Endurance</AttributeToIncrease>
+		<OptionText>Blacksmith</OptionText>
+		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Polearm</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
+		<OptionText>Enlisted</OptionText>
+		<OptionFlavourText>You enlisted as a State Troop when you became an adult, fighting to defend the Empire against all threats.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Riding</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Bright Wizard pupil</OptionText>
+		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option7" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Leadership</string>
+			<string>Charm</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
+		<OptionText>Aristocratic</OptionText>
+		<OptionFlavourText>You were a member of a small aristocratic family near to the Sylvanian border.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option8" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Steward</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Sigmarite disciple</OptionText>
+		<OptionFlavourText>You were a disciple at a Sigmarite church, learning the ways of the holy men and reading religious texts.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option9" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Scouting</string>
+			<string>Charm</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Informant</OptionText>
+		<OptionFlavourText>You agreed to be an informant on the actions of the Vampire Counts in Sylvania, integrating yourself inside their society.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option10" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>Riding</string>
+			<string>Scouting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Scholar</OptionText>
+		<OptionFlavourText>Your drive for rare or forbidden knowledge has led you into Sylvania, and you believe you may have found it after searching far and wide.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option11" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Leadership</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
+		<OptionText>Fresh Blood Vampire</OptionText>
+		<OptionFlavourText>Freshly turned with the blood kiss, you are now a vampire. Immortality awaits.</OptionFlavourText>
+	</CharacterCreationOption>
+	<CharacterCreationOption Id="option12" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Leadership</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Necromancer</OptionText>
+		<OptionFlavourText>You have now unlocked the secrets of Dhar, and successfully raised your first undead.</OptionFlavourText>
+	</CharacterCreationOption>
+</ArrayOfCharacterCreationOption>

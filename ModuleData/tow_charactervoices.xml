@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Characters>
+    <!--
+    Character name maps to an NPCCharacter id. For example, in tow_troopdefinitions_vc.xml, Animated Skeleton
+    has the id "tow_skeleton_recruit". To assign it a voice, find the appropriate voice_definition (or create one).
+    Once you have a desired voice_definition, set the voice attribute equal to the desired voice_definition's 
+    sound_and_collision_info_class. For example, if you want Animated Skeleton's to be assigned a voice from the
+    "skeleton" class of voice definitions, you should create the following entry:
+    
+    <Character name="tow_skeleton_recruit" voice="skeleton" />
+    
+    Once this is done, Animated Skeleton agents will be randomly given a voice_definition from the set of all
+    voice_definitions with the sound_and_collision_info_class="skeleton".
+    -->
+	<Character name="vc_lord" voice="generic_vampire" />
+	<!--<Character name="mannfred" voice="generic_vampire"/>-->
+	<Character name="tow_skeleton_recruit" voice="skeleton" />
+	<Character name="tow_skeleton_warrior" voice="skeleton" />
+	<Character name="tow_skeleton_spearman" voice="skeleton" />
+	<Character name="tow_grave_guard" voice="skeleton" />
+	<Character name="tow_grave_guard_greatsword" voice="skeleton" />
+</Characters>

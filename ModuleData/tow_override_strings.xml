@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<ArrayOfTOWTextOverride xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TOWTextOverride StringID="str_culture_rich_name.khuzait" TextOverride="Vampire Counts" />
+	<TOWTextOverride StringID="str_culture_rich_name.empire" TextOverride="Empire of Men" />
+	<TOWTextOverride StringID="str_culture_rich_name.vlandia" TextOverride="Bretonnia" />
+	<TOWTextOverride StringID="str_culture_rich_name.battania" TextOverride="Wood Elves" />
+	<TOWTextOverride StringID="str_culture_rich_name.aserai" TextOverride="Greenskins" />
+	<TOWTextOverride StringID="str_culture_rich_name.sturgia" TextOverride="Dwarves" />
+	<TOWTextOverride StringID="str_culture_description.khuzait" TextOverride="The Vampire Counts are fiends without equal. They seek to topple the civilisations of the living and supplant them with an Undead empire. Each Vampire is a unique and majestic figure with his own personality, drive and ambition. In contrast, their minions are mindlessly obedient - rank after rank of ragged and dirt-encrusted cadavers forced back to life by their masters' necromantic power." />
+	<TOWTextOverride StringID="str_culture_description.empire" TextOverride="The empire is a vast nation of Men that fights for its survival with each passing day. Ruled over by the Emperor, Karl Franz, the discipline and martial skill of its armies is renowned throughout the Old World. The backbone of the Empire’s military might, and the reason it has endured in a world filled with both brutal savages and bloodthirsty monsters, is its armies of professional soldiers." />
+	<TOWTextOverride StringID="str_culture_description.vlandia" TextOverride="overridden with nothing, pls add text in tow_override_strings" />
+	<TOWTextOverride StringID="str_culture_description.battania" TextOverride="overridden with nothing, pls add text in tow_override_strings" />
+	<TOWTextOverride StringID="str_culture_description.aserai" TextOverride="overridden with nothing, pls add text in tow_override_strings" />
+	<TOWTextOverride StringID="str_culture_description.sturgia" TextOverride="overridden with nothing, pls add text in tow_override_strings" />
+</ArrayOfTOWTextOverride>

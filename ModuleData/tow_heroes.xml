@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Heroes>
+	<Hero id="main_hero" is_noble="true" father="Hero.main_hero_father" mother="Hero.main_hero_mother" faction="Faction.player_faction" />
+	<Hero id="main_hero_father" alive="false" is_noble="true" faction="Faction.player_faction" spouse="Hero.main_hero_mother" />
+	<Hero id="main_hero_mother" alive="false" is_noble="true" faction="Faction.player_faction" spouse="Hero.main_hero_father" />
+
+	<Hero id="sylvania_clan_1_1" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" />
+	<Hero id="stirland_clan_1_1" is_noble="true" faction="Faction.stirland_clan_1" />
+	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
+</Heroes>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NPCCharacters>
+	<!-- Averland Faction Leader-->
+	<NPCCharacter id="averland_clan_1_1" name="{=!}Averland Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Gloves" id="Item.louen_hands" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg_018_stirland_01" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Stirland Faction Leader-->
+	<NPCCharacter id="stirland_clan_1_1" name="{=!}Stirland Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Gloves" id="Item.louen_hands" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg_018_stirland_01" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Moot Faction Leader-->
+	<NPCCharacter id="moot_clan_1_1" name="{=!}The Moot Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Gloves" id="Item.louen_hands" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg_018_stirland_01" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Sylvania Faction Leader-->
+	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Sylvania Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+</NPCCharacters>

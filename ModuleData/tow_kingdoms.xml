@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Kingdoms>
+	<Kingdom id="averland" 
+			 owner="Hero.averland_clan_1_1" 
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" 
+			 primary_banner_color="0xff211F1F" 
+			 secondary_banner_color="0xffF4CA14" 
+			 label_color="FFF4CA14" 
+			 color="FF211F1F" 
+			 color2="FFF4CA14" 
+			 alternative_color="FFffffff" 
+			 alternative_color2="FF660653" 
+			 culture="Culture.empire" 
+			 settlement_banner_mesh="encounter_flag_a" 
+			 flag_mesh="info_screen_flags_b" 
+			 name="{=!}Averland" 
+			 short_name="{=!}Averland" 
+			 title="{=!}Averland" 
+			 ruler_title="{=!}Elector Count" 
+			 text="{=!}Replace me.">
+		<relationships>
+		</relationships>
+		<policies>
+			<policy id="policy_senate" />
+			<policy id="policy_feudal_inheritance" />
+		</policies>
+	</Kingdom>
+	<Kingdom id="stirland"
+			 owner="Hero.stirland_clan_1_1"
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.336.5.5.512.512.769.764.1.0.0"
+			 primary_banner_color="0xff3A3321"
+			 secondary_banner_color="0xffe7d3ba"
+			 label_color="FF850C6D"
+			 color="FF3A3321"
+			 color2="FFe7d3ba"
+			 alternative_color="FFffffff"
+			 alternative_color2="FF660653"
+			 culture="Culture.empire"
+			 settlement_banner_mesh="encounter_flag_a"
+			 flag_mesh="info_screen_flags_b"
+			 name="{=!}Stirland"
+			 short_name="{=!}Stirland"
+			 title="{=!}Stirland"
+			 ruler_title="{=!}Elector Count"
+			text="{=!}Replace me.">
+		<relationships>
+			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
+		</relationships>
+		<policies>
+			<policy id="policy_senate" />
+			<policy id="policy_feudal_inheritance" />
+		</policies>
+	</Kingdom>
+	<Kingdom id="moot"
+			 owner="Hero.moot_clan_1_1"
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.118.5.5.512.512.769.764.1.0.0"
+			 primary_banner_color="0xff34671e"
+			 secondary_banner_color="0xfff3f3f3"
+			 label_color="FF34671e"
+			 color="FF34671e"
+			 color2="FFf3f3f3"
+			 alternative_color="FFffffff"
+			 alternative_color2="FF660653"
+			 culture="Culture.empire"
+			 settlement_banner_mesh="encounter_flag_a"
+			 flag_mesh="info_screen_flags_b"
+			 name="{=!}The Moot"
+			 short_name="{=!}Moot"
+			 title="{=!}The Moot"
+			 ruler_title="{=!}Lord"
+			text="{=!}Replace me.">
+		<relationships>
+			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
+		</relationships>
+		<policies>
+			<policy id="policy_senate" />
+			<policy id="policy_feudal_inheritance" />
+		</policies>
+	</Kingdom>
+	<Kingdom id="sylvania"
+			 owner="Hero.sylvania_clan_1_1"
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.154.5.5.512.512.769.764.1.0.0"
+			 primary_banner_color="0xff211F1F"
+			 secondary_banner_color="0xffC94B4E"
+			 label_color="FF211F1F"
+			 color="FF211F1F"
+			 color2="FFC94B4E"
+			 alternative_color="FFffffff"
+			 alternative_color2="FF660653"
+			 culture="Culture.empire"
+			 settlement_banner_mesh="encounter_flag_a"
+			 flag_mesh="info_screen_flags_b"
+			 name="{=!}Sylvania"
+			 short_name="{=!}Sylvania"
+			 title="{=!}Sylvania"
+			 ruler_title="{=!}Vampire Count"
+			text="{=!}Replace me.">
+		<relationships>
+			<relationship kingdom="Kingdom.stirland" value="-1" isAtWar="true" />
+			<relationship kingdom="Kingdom.moot" value="-1" isAtWar="true" />
+		</relationships>
+		<policies>
+			<policy id="policy_grazing_rights" />
+			<policy id="policy_sacred_majesty" />
+		</policies>
+	</Kingdom>
+</Kingdoms>
