@@ -41,7 +41,7 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(GameDir)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*Bannerlord.GeneralModdingPatches*TOW_Armory*TOW_Environment*TOW_Core*_MODULES_</StartArguments>
+    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOW_ArmoryAssets*TOW_EnvironmentAssets*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
     <StartWorkingDirectory>$(GameDir)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
