@@ -3688,7 +3688,7 @@
 		</female_names>
 	</Culture>
 	<Culture id="looters"
-			 name="{=1sbJQR4H}Looters"
+			 name="{=!}Outlaws"
 			 elite_basic_troop="NPCCharacter.looter"
 			 basic_troop="NPCCharacter.looter"
 			 is_bandit="true"
