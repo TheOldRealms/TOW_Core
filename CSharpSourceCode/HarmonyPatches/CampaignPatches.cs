@@ -1,22 +1,20 @@
-﻿using System;
+﻿using HarmonyLib;
+using SandBox;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TaleWorlds.CampaignSystem.ViewModelCollection;
+using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities;
-using TaleWorlds.Localization;
-using SandBox;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
-using System.Reflection.Emit;
-using TaleWorlds.Engine;
 
 //Need a way to somehow skip loading of vanilla xmls in the following categories:
 //Settlements, Clans, Kingdoms, Heroes
@@ -26,7 +24,7 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class CampaignPatches
     {
-        private static readonly Dictionary<string, string> _typesToForce = new Dictionary<string, string>() 
+        private static readonly Dictionary<string, string> _typesToForce = new Dictionary<string, string>()
         {
             {"Settlements", "tow_settlements.xml"},
             {"Heroes", "tow_heroes.xml"},
@@ -73,7 +71,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(Kingdom), "InitialHomeLand", MethodType.Getter)]
         public static void Postfix(ref Settlement __result, Kingdom __instance)
         {
-            if(__result == null)
+            if (__result == null)
             {
                 __result = Settlement.All.FirstOrDefault((Settlement x) => x.IsTown && x.MapFaction == __instance.MapFaction);
                 if (__result == null)
@@ -98,7 +96,7 @@ namespace TOW_Core.HarmonyPatches
         {
             List<InitialStateOption> newlist = new List<InitialStateOption>();
             newlist = __result.Where(x => x.Id != "StoryModeNewGame" && x.Id != "SandBoxNewGame").ToList();
-            var towOption = new InitialStateOption("TOWNewgame", new TextObject("Enter the Old World"),3,OnCLick,IsDisabledAndReason);
+            var towOption = new InitialStateOption("TOWNewgame", new TextObject("Enter the Old World"), 3, OnCLick, IsDisabledAndReason);
             newlist.Add(towOption);
             newlist.Sort((x, y) => x.OrderIndex.CompareTo(y.OrderIndex));
             __result = newlist;
@@ -110,6 +108,33 @@ namespace TOW_Core.HarmonyPatches
         {
             reader = null;
             return true;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(CampaignOptions), MethodType.Constructor)]
+        public static void DisableLifeDeathCycleByDefault()
+        {
+            CampaignOptions.IsLifeDeathCycleDisabled = true;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
+            typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
+            typeof(Action), typeof(TextObject), typeof(int), typeof(int), typeof(int), typeof(Action<int>))]
+        public static void RemoveLifeDeathCycleOptionFromCharacterCreation(CharacterCreationOptionsStageVM __instance)
+        {
+            var option = __instance.OptionsController.Options.First(o => o.Identifier == "IsLifeDeathCycleEnabled");
+            __instance.OptionsController.Options.Remove(option);
+            __instance.RefreshValues();
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(CampaignOptionsVM), MethodType.Constructor, typeof(Action))]
+        public static void RemoveLifeDeathCycleFromCampaignMenu(CampaignOptionsVM __instance)
+        {
+            var option = __instance.OptionsController.Options.First(o => o.Identifier == "IsLifeDeathCycleEnabled");
+            __instance.OptionsController.Options.Remove(option);
+            __instance.RefreshValues();
         }
 
         private static void OnCLick()
