@@ -22,14 +22,14 @@ namespace TOW_Core.CampaignMode
     {
 
         
-    
+        private bool playerIsInBattle;
         private bool isFilling;
         private Dictionary<string, int> _cultureCounts = new Dictionary<string, int>();
         private Dictionary<string, WorldMapAttribute> _partyAttributes = new Dictionary<string, WorldMapAttribute>();
 
         private Action<float> deltaTime;
 
-
+        
        
         public override void  RegisterEvents()
         {
@@ -46,8 +46,36 @@ namespace TOW_Core.CampaignMode
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this,OnDailyTick());
             
             CampaignEvents.BattleStarted.AddNonSerializedListener(this,OnBattleStarted);
+            //CampaignEvents.OnMissionStartedEvent.AddNonSerializedListener(this,OnMissionStarted());
+            CampaignEvents.MapEventStarted.AddNonSerializedListener(this,OnMissionStarted);
+            CampaignEvents.OnPartyJoinedArmyEvent.AddNonSerializedListener(this,OnArmyJoinedEvent);
+            CampaignEvents.MapEventEnded.AddNonSerializedListener(this,OnMissionEnded);
         }
-        
+
+        private void OnMissionEnded(MapEvent mapEvent)
+        {
+            if (playerIsInBattle)
+            {
+                playerIsInBattle = false;
+            }
+        }
+        private void OnArmyJoinedEvent(MobileParty mobileParty)
+        {
+            WorldMapAttribute addedAttribute = GetAttribute(mobileParty.Party.Id);
+            TOWCommon.Say(addedAttribute.id + "joined the battle");
+
+        }
+
+        private void OnMissionStarted(MapEvent mapEvent, PartyBase partyBase, PartyBase partyBase2)
+        {
+            if (mapEvent.IsPlayerMapEvent)
+            {
+                WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(partyBase.Id.ToString());
+                WorldMapAttribute defenderPartyWorldMapAttribute= GetAttribute(partyBase2.Id.ToString());
+                if(attackPartyWorldMapAttribute!=null||defenderPartyWorldMapAttribute!=null)
+                    TOWCommon.Say("PLAYERFIGHT: "+ attackPartyWorldMapAttribute.id+ "("+attackPartyWorldMapAttribute.culture+")"+ " is fighting now " + defenderPartyWorldMapAttribute.id+ "("+defenderPartyWorldMapAttribute.culture+")");
+            }
+        }
         
         private void OnBattleStarted(
             PartyBase attackerParty,
@@ -57,8 +85,11 @@ namespace TOW_Core.CampaignMode
         {
             WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(attackerParty.Id.ToString());
             WorldMapAttribute defenderPartyWorldMapAttribute= GetAttribute(defenderParty.Id.ToString());
-            if(attackPartyWorldMapAttribute!=null||defenderPartyWorldMapAttribute!=null)
-                TOWCommon.Say(attackPartyWorldMapAttribute.id+ "("+attackPartyWorldMapAttribute.culture+")"+ " is fighting now " + defenderPartyWorldMapAttribute.id+ "("+defenderPartyWorldMapAttribute.culture+")");
+            if (attackPartyWorldMapAttribute != null || defenderPartyWorldMapAttribute != null)
+            {
+             //   TOWCommon.Say(attackPartyWorldMapAttribute.id+ "("+attackPartyWorldMapAttribute.culture+")"+ " is fighting now " + defenderPartyWorldMapAttribute.id+ "("+defenderPartyWorldMapAttribute.culture+")");
+            }
+                
         }
 
 
@@ -202,7 +233,7 @@ namespace TOW_Core.CampaignMode
                 text+=(culture.Key + " " + _cultureCounts[culture.Key]+ ", ");
             }
 
-            text +=" Main player has WOM: "+  _partyAttributes[Campaign.Current.MainParty.Party.Id.ToString()].WindsOfMagic;
+            text +=" Main player has WOM: "+ GetAttribute(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
             TOWCommon.Say(text);
         }
         
