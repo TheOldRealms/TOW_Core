@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <NPCCharacters>
-	<NPCCharacter id="tow_wanderer_empire_0" name="{=!}{HERO.FIRSTNAME} the Bright Wizard" voice="curt" age="29" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
+	<NPCCharacter id="tow_wanderer_empire_0" name="{=!}{HERO.FIRSTNAME}, Bright Wizard" voice="curt" age="29" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
         </face>
@@ -11,28 +11,38 @@
 			<Trait id="Calculating" value="1" />
         </Traits>
         <Equipments>
-			<EquipmentSet id="npc_companion_equipment_template_empire" civilian="true" />
-      		<EquipmentSet id="npc_companion_equipment_template_empire" />
-			<!--
-			<EquipmentRoster>
-				<EquipmentSet>
-					<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-					<equipment slot="Item1" id="Item.bw_staff_001" />
-					<equipment slot="Head" id="Item.bright_wizard_helmet" />
-					<equipment slot="Body" id="Item.bright_wizard_armor" />
-					<equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-					<equipment slot="Gloves" id="Item.bright_wizard_braces" />
-					<equipment slot="Leg" id="Item.bright_wizard_boots" />
-				</EquipmentSet>
-				<EquipmentSet civilian="true">
-					<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-					<equipment slot="Body" id="Item.bright_wizard_armor" />
-					<equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-					<equipment slot="Gloves" id="Item.bright_wizard_braces" />
-					<equipment slot="Leg" id="Item.bright_wizard_boots" />
-				</EquipmentSet>
-			</EquipmentRoster>
-			-->
+			<EquipmentSet id="bright_wizard_template" civilian="true" />
+      		<EquipmentSet id="bright_wizard_template" />
+		</Equipments>
+    </NPCCharacter>
+	<NPCCharacter id="tow_wanderer_empire_1" name="{=!}{HERO.FIRSTNAME}, Warrior Priest" voice="curt" age="29" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Traits>
+			<Trait id="RomanHair" value="1" />
+			<Trait id="HopliteFightingSkills" value="3" />
+			<Trait id="Valor" value="1" />
+			<Trait id="Calculating" value="1" />
+        </Traits>
+        <Equipments>
+			<EquipmentSet id="warrior_priest_template" civilian="true" />
+      		<EquipmentSet id="warrior_priest_template" />
+		</Equipments>
+    </NPCCharacter>
+	<NPCCharacter id="tow_wanderer_empire_2" name="{=!}{HERO.FIRSTNAME}, Witch Hunter" voice="curt" age="29" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Traits>
+			<Trait id="RomanHair" value="1" />
+			<Trait id="HopliteFightingSkills" value="3" />
+			<Trait id="Valor" value="1" />
+			<Trait id="Calculating" value="1" />
+        </Traits>
+        <Equipments>
+			<EquipmentSet id="witch_hunter_template" civilian="true" />
+      		<EquipmentSet id="witch_hunter_template" />
 		</Equipments>
     </NPCCharacter>
 </NPCCharacters>

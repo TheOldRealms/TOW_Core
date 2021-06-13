@@ -32,6 +32,8 @@ namespace TOW_Core.HarmonyPatches
             {"Factions", "tow_clans.xml"},
         };
 
+        private static MBReadOnlyList<CharacterObject> _characterObjects;
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(MBObjectManager), "LoadXML")]
         public static bool Prefix(string id, MBObjectManager __instance)
@@ -180,9 +182,15 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(Campaign), "TemplateCharacters", MethodType.Getter)]
         public static void PostFix3(ref MBReadOnlyList<CharacterObject> __result)
         {
-            __result = new MBReadOnlyList<CharacterObject>(__result.Where(
-                x=>x.Occupation != Occupation.Wanderer || (x.Occupation == Occupation.Wanderer && x.StringId.Contains("tow_"))
+            if (_characterObjects != null) __result = _characterObjects;
+            else
+            {
+                _characterObjects = new MBReadOnlyList<CharacterObject>(__result.Where(
+                x => x.Occupation != Occupation.Wanderer || (x.Occupation == Occupation.Wanderer && x.StringId.Contains("tow_"))
                 ).ToList());
+                __result = _characterObjects;
+            }
+            
         }
     }
 }
