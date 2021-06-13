@@ -175,5 +175,14 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(Campaign), "TemplateCharacters", MethodType.Getter)]
+        public static void PostFix3(ref MBReadOnlyList<CharacterObject> __result)
+        {
+            __result = new MBReadOnlyList<CharacterObject>(__result.Where(
+                x=>x.Occupation != Occupation.Wanderer || (x.Occupation == Occupation.Wanderer && x.StringId.Contains("tow_"))
+                ).ToList());
+        }
     }
 }
