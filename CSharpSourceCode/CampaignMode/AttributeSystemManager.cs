@@ -25,7 +25,7 @@ namespace TOW_Core.CampaignMode
         private bool playerIsInBattle;
         private bool isFilling;
         private Dictionary<string, int> _cultureCounts = new Dictionary<string, int>();
-        private Dictionary<string, WorldMapAttribute> _partyAttributes = new Dictionary<string, WorldMapAttribute>();
+        private Dictionary<string, PartyAttribute> _partyAttributes = new Dictionary<string, PartyAttribute>();
 
         private Action<float> deltaTime;
 
@@ -62,7 +62,7 @@ namespace TOW_Core.CampaignMode
         }
         private void OnArmyJoinedEvent(MobileParty mobileParty)
         {
-            WorldMapAttribute addedAttribute = GetAttribute(mobileParty.Party.Id);
+            PartyAttribute addedAttribute = GetAttribute(mobileParty.Party.Id);
             TOWCommon.Say(addedAttribute.id + "joined the battle");
 
         }
@@ -75,8 +75,8 @@ namespace TOW_Core.CampaignMode
                 foreach (var party in currentPlayerEvent.AttackerSide.Parties)
                 {
                     
-                    WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
-                    text += attackPartyWorldMapAttribute.id;
+                    PartyAttribute attackPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += attackPartyPartyAttribute.id;
                 }
 
                 text += " are supporting the attackers (" + currentPlayerEvent.AttackerSide.Parties.Count+")";
@@ -85,8 +85,8 @@ namespace TOW_Core.CampaignMode
                 {
                     
                    
-                    WorldMapAttribute  defenderPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
-                    text += defenderPartyWorldMapAttribute.id;
+                    PartyAttribute  defenderPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += defenderPartyPartyAttribute.id;
                 
                 }
             
@@ -100,7 +100,7 @@ namespace TOW_Core.CampaignMode
 
         private void FillAttributesInParty(PartyBase party)
         {
-            WorldMapAttribute worldMapAttribute = GetAttribute(party.Id);
+            PartyAttribute partyAttribute = GetAttribute(party.Id);
             
             //Army attributes
             foreach (var troop in party.MobileParty.MemberRoster.GetTroopRoster())
@@ -127,8 +127,8 @@ namespace TOW_Core.CampaignMode
                 foreach (var party in mapEvent.AttackerSide.Parties)
                 {
                 
-                    WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
-                    text += attackPartyWorldMapAttribute.id;
+                    PartyAttribute attackPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += attackPartyPartyAttribute.id;
                 }
 
                 text += " are supporting the attackers (" + mapEvent.AttackerSide.Parties.Count+")";
@@ -136,8 +136,8 @@ namespace TOW_Core.CampaignMode
                 foreach (var party in mapEvent.DefenderSide.Parties)
                 {
                 
-                    WorldMapAttribute  defenderPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
-                    text += defenderPartyWorldMapAttribute.id;
+                    PartyAttribute  defenderPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += defenderPartyPartyAttribute.id;
                 
                 }
             
@@ -155,9 +155,9 @@ namespace TOW_Core.CampaignMode
             object subject,
             bool showNotification)
         {
-            WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(attackerParty.Id.ToString());
-            WorldMapAttribute defenderPartyWorldMapAttribute= GetAttribute(defenderParty.Id.ToString());
-            if (attackPartyWorldMapAttribute != null || defenderPartyWorldMapAttribute != null)
+            PartyAttribute attackPartyPartyAttribute= GetAttribute(attackerParty.Id.ToString());
+            PartyAttribute defenderPartyPartyAttribute= GetAttribute(defenderParty.Id.ToString());
+            if (attackPartyPartyAttribute != null || defenderPartyPartyAttribute != null)
             {
              //   TOWCommon.Say(attackPartyWorldMapAttribute.id+ "("+attackPartyWorldMapAttribute.culture+")"+ " is fighting now " + defenderPartyWorldMapAttribute.id+ "("+defenderPartyWorldMapAttribute.culture+")");
             }
@@ -166,7 +166,7 @@ namespace TOW_Core.CampaignMode
 
 
 
-        public  WorldMapAttribute GetAttribute(string id)
+        public  PartyAttribute GetAttribute(string id)
         {
             if (_partyAttributes.ContainsKey(id))
             {
@@ -189,57 +189,37 @@ namespace TOW_Core.CampaignMode
             }
 
             
-            WorldMapAttribute attribute = new WorldMapAttribute();
+            PartyAttribute attribute = new PartyAttribute();
             attribute.id = party.Party.Id.ToString();
-            
-            
+
+
+            foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
+            {
+                StaticAttribute staticAttribute = new StaticAttribute();
+                staticAttribute.race = troop.Character.Culture.StringId;
+                staticAttribute.status = "battle ready";
+                staticAttribute.MagicEffects = new List<string>();
+                attribute.RegularTroopAttributes.Add(staticAttribute);
+            }
             
             if (party.LeaderHero != null)
             {
-                /*attribute.MagicUsers = true;
-                attribute.WindsOfMagic = 10f;
-                attribute.Leader = party.LeaderHero;
-                attribute.culture = party.Leader.Culture.Name.ToString();*/
-            }
-            
-            if (party.IsMainParty)
-            {
-                /*attribute.MagicUsers = true;*/
-            }
-            
-            //party.MemberRoster and Troop roster next step, looking for the roster inside party and define culture of this
+                Hero Leader = party.LeaderHero;
+                StaticAttribute leaderAttribute = new StaticAttribute();
+                leaderAttribute.race = Leader.Culture.ToString();
+                leaderAttribute.MagicUser = true;
+                leaderAttribute.faith = 10;
+                attribute.LeaderAttribute = leaderAttribute;
 
-            if (party.IsLeaderless)
-            {
-                /*attribute.culture = "Barbarians";*/
+                foreach (var companion in Leader.CompanionsInParty)
+                {
+                    StaticAttribute companionAttribute = new StaticAttribute();
+                    companionAttribute.race = companion.Culture.ToString();
+                    companionAttribute.MagicUser = true;
+                    attribute.CompanionAttributes.Add(companionAttribute);
+                }
             }
-            
-
-            if (party.IsBandit)
-            {
-                /*attribute.culture = "Bandit";*/
-            }
-
-            if (party.IsVillager)
-            {
-                /*attribute.culture = "Villager";*/
-            }
-            
-
-            /*if (attribute.culture == null)
-            {
-                attribute.culture = "-";
-            }
-
-            if (_cultureCounts.ContainsKey(attribute.culture))
-            {
-                _cultureCounts[attribute.culture] += 1;
-            }
-            else
-            {
-                _cultureCounts.Add(attribute.culture, 1);
-            }*/
-            
+        
 
             _partyAttributes.Add(attribute.id, attribute);
         }
@@ -270,6 +250,8 @@ namespace TOW_Core.CampaignMode
         private void OnGameLoaded()
         {
             TOWCommon.Say("save game restored with "+ _partyAttributes.Count + "parties in the dictionary");
+            
+            TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
         }
         
         private Action OnGameSaving()
@@ -325,11 +307,11 @@ namespace TOW_Core.CampaignMode
         private void InitalizeAttributes()
         {
             var parties = Campaign.Current.MobileParties;
-            TOWCommon.Say("Initialize attributes" + Campaign.Current.MobileParties.Count);
+           // TOWCommon.Say("Initialize attributes" + Campaign.Current.MobileParties.Count);
             
             foreach (MobileParty party in parties)
             {
-                TOWCommon.Say(party.Party.Id);
+                //TOWCommon.Say(party.Party.Id);
                 if (_partyAttributes.ContainsKey(party.Id.ToString()))
                 {
                     TOWCommon.Say(party.Id.ToString()+  " was already there");

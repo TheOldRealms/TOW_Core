@@ -11,25 +11,27 @@ using TaleWorlds.SaveSystem;
 
 namespace TOW_Core.CampaignMode
 {
-    public class WorldMapAttribute
+    public class PartyAttribute
     {
         [SaveableField(1)]
         public Hero Leader;
         [SaveableField(2)]
         public string id;
-        
+        [SaveableField(3)]
         public float WindsOfMagic;
-        public staticAttribute LeaderAttribute;
-        public staticAttribute RegularTroopAttribute;
-        public staticAttribute CompanionAttribute;
-        
+        [SaveableField(4)]
+        public StaticAttribute LeaderAttribute;
+        [SaveableField(5)]
+        public List<StaticAttribute> CompanionAttributes = new List<StaticAttribute>();
+        [SaveableField(6)]
+        public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
 
-        public WorldMapAttribute(string id)
+        public PartyAttribute(string id)
         {
             this.id = id;
         }
 
-        public WorldMapAttribute()
+        public PartyAttribute()
         {
 
         }
