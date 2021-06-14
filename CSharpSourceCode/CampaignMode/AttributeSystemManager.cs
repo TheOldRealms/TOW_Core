@@ -21,7 +21,7 @@ namespace TOW_Core.CampaignMode
     public class AttributeSystemManager: CampaignBehaviorBase
     {
 
-        
+        private MapEvent currentPlayerEvent;
         private bool playerIsInBattle;
         private bool isFilling;
         private Dictionary<string, int> _cultureCounts = new Dictionary<string, int>();
@@ -44,12 +44,13 @@ namespace TOW_Core.CampaignMode
             CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
             
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this,OnDailyTick());
-            
             CampaignEvents.BattleStarted.AddNonSerializedListener(this,OnBattleStarted);
             //CampaignEvents.OnMissionStartedEvent.AddNonSerializedListener(this,OnMissionStarted());
-            CampaignEvents.MapEventStarted.AddNonSerializedListener(this,OnMissionStarted);
-            CampaignEvents.OnPartyJoinedArmyEvent.AddNonSerializedListener(this,OnArmyJoinedEvent);
-            CampaignEvents.MapEventEnded.AddNonSerializedListener(this,OnMissionEnded);
+            CampaignEvents.MapEventStarted.AddNonSerializedListener(this,EventCreated);
+            //CampaignEvents.OnPartyJoinedArmyEvent.AddNonSerializedListener(this,OnArmyJoinedEvent);
+           // CampaignEvents.MapEventEnded.AddNonSerializedListener(this, OnMissionStarted);
+            CampaignEvents.PartyAttachedAnotherParty.AddNonSerializedListener(this, OnArmyJoinedEvent);
+            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
         }
 
         private void OnMissionEnded(MapEvent mapEvent)
@@ -66,15 +67,86 @@ namespace TOW_Core.CampaignMode
 
         }
 
-        private void OnMissionStarted(MapEvent mapEvent, PartyBase partyBase, PartyBase partyBase2)
+        private void OnMissionStarted()
         {
+            if (currentPlayerEvent != null)
+            {
+                string text = "PLAYERFIGHT";
+                foreach (var party in currentPlayerEvent.AttackerSide.Parties)
+                {
+                    
+                    WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += attackPartyWorldMapAttribute.id;
+                }
+
+                text += " are supporting the attackers (" + currentPlayerEvent.AttackerSide.Parties.Count+")";
+            
+                foreach (var party in currentPlayerEvent.DefenderSide.Parties)
+                {
+                    
+                   
+                    WorldMapAttribute  defenderPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += defenderPartyWorldMapAttribute.id;
+                
+                }
+            
+                text += " are supporting the defenders(" + currentPlayerEvent.DefenderSide.Parties.Count+")";;
+
+
+                TOWCommon.Say(text);
+            }
+        }
+
+
+        private void FillAttributesInParty(PartyBase party)
+        {
+            WorldMapAttribute worldMapAttribute = GetAttribute(party.Id);
+            
+            //Army attributes
+            foreach (var troop in party.MobileParty.MemberRoster.GetTroopRoster())
+            {
+              // troop.Character.
+            }
+            //Hero attributes 
+            var Hero = party.LeaderHero;
+            //Hero.
+            foreach (var companions  in Hero.CompanionsInParty)
+            {
+                
+            }
+        }
+
+        private void EventCreated(MapEvent mapEvent, PartyBase partyBase, PartyBase arg3)
+        {
+            
             if (mapEvent.IsPlayerMapEvent)
             {
-                WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(partyBase.Id.ToString());
-                WorldMapAttribute defenderPartyWorldMapAttribute= GetAttribute(partyBase2.Id.ToString());
-                if(attackPartyWorldMapAttribute!=null||defenderPartyWorldMapAttribute!=null)
-                    TOWCommon.Say("PLAYERFIGHT: "+ attackPartyWorldMapAttribute.id+ "("+attackPartyWorldMapAttribute.culture+")"+ " is fighting now " + defenderPartyWorldMapAttribute.id+ "("+defenderPartyWorldMapAttribute.culture+")");
+                currentPlayerEvent = mapEvent;
+
+                string text = "PLAYERFIGHT";
+                foreach (var party in mapEvent.AttackerSide.Parties)
+                {
+                
+                    WorldMapAttribute attackPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += attackPartyWorldMapAttribute.id;
+                }
+
+                text += " are supporting the attackers (" + mapEvent.AttackerSide.Parties.Count+")";
+            
+                foreach (var party in mapEvent.DefenderSide.Parties)
+                {
+                
+                    WorldMapAttribute  defenderPartyWorldMapAttribute= GetAttribute(party.Party.Id.ToString());
+                    text += defenderPartyWorldMapAttribute.id;
+                
+                }
+            
+                text += " are supporting the defenders(" + mapEvent.DefenderSide.Parties.Count+")";;
+
+
+               // TOWCommon.Say(text);
             }
+            
         }
         
         private void OnBattleStarted(
@@ -115,38 +187,46 @@ namespace TOW_Core.CampaignMode
                 TOWCommon.Say(party.Id.ToString()+  " was already there");
                 return;
             }
+
             
             WorldMapAttribute attribute = new WorldMapAttribute();
             attribute.id = party.Party.Id.ToString();
             
+            
+            
             if (party.LeaderHero != null)
             {
-                attribute.MagicUsers = true;
+                /*attribute.MagicUsers = true;
                 attribute.WindsOfMagic = 10f;
                 attribute.Leader = party.LeaderHero;
-                attribute.culture = party.Leader.Culture.Name.ToString();
+                attribute.culture = party.Leader.Culture.Name.ToString();*/
+            }
+            
+            if (party.IsMainParty)
+            {
+                /*attribute.MagicUsers = true;*/
             }
             
             //party.MemberRoster and Troop roster next step, looking for the roster inside party and define culture of this
 
             if (party.IsLeaderless)
             {
-                attribute.culture = "Barbarians";
+                /*attribute.culture = "Barbarians";*/
             }
             
 
             if (party.IsBandit)
             {
-                attribute.culture = "Bandit";
+                /*attribute.culture = "Bandit";*/
             }
 
             if (party.IsVillager)
             {
-                attribute.culture = "Villager";
+                /*attribute.culture = "Villager";*/
             }
             
 
-            if (attribute.culture == null)
+            /*if (attribute.culture == null)
             {
                 attribute.culture = "-";
             }
@@ -158,7 +238,7 @@ namespace TOW_Core.CampaignMode
             else
             {
                 _cultureCounts.Add(attribute.culture, 1);
-            }
+            }*/
             
 
             _partyAttributes.Add(attribute.id, attribute);
@@ -209,14 +289,19 @@ namespace TOW_Core.CampaignMode
         }
 
 
+        private void FillTimer(float TickValue)
+        {
+            
+        }
+        
         private void FillWindsOfMagic(float TickValue)
         {
             foreach (var party in _partyAttributes)
             {
-                if (party.Value.MagicUsers)
+                /*if (party.Value.MagicUsers)
                 {
                     party.Value.WindsOfMagic += TickValue * 1f;
-                }
+                }*/
             }
         }
 

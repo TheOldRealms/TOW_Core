@@ -17,12 +17,11 @@ namespace TOW_Core.CampaignMode
         public Hero Leader;
         [SaveableField(2)]
         public string id;
-
-        public string culture;
-
-        public bool MagicUsers;
-        public float WindsOfMagic;
         
+        public float WindsOfMagic;
+        public staticAttribute LeaderAttribute;
+        public staticAttribute RegularTroopAttribute;
+        public staticAttribute CompanionAttribute;
         
 
         public WorldMapAttribute(string id)
