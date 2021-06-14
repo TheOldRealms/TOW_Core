@@ -305,6 +305,7 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
     <Compile Include="CustomBattles\CustomBattleFormationTemplate.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="GameTexts\TOWTextOverride.cs" />
     <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="HarmonyPatches\CharacterCreationPatches.cs" />
+    <Compile Include="HarmonyPatches\ConversationPatches.cs" />
     <Compile Include="HarmonyPatches\CrossHairPatch.cs" />
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />
     <Compile Include="HarmonyPatches\CampaignPatches.cs" />
