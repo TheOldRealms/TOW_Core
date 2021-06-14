@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using MountAndBlade.CampaignBehaviors;
 using SandBox;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,14 @@ using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
+using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 //Need a way to somehow skip loading of vanilla xmls in the following categories:
 //Settlements, Clans, Kingdoms, Heroes
@@ -57,16 +60,50 @@ namespace TOW_Core.HarmonyPatches
             else return true;
         }
 
-        //Only spawn wanderers for empire and khuzait, the rest crashes because there are no settlements for the other cultures.
+        //Change vanilla behaviour. Spawn every type of companion/wanderer at every culture matching town.
         [HarmonyPrefix]
         [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "CreateCompanion")]
-        public static bool Prefix2(CharacterObject companionTemplate)
+        public static bool Prefix2(CharacterObject companionTemplate, UrbanCharactersCampaignBehavior __instance, ref List<Hero> ____companions)
         {
-            if (companionTemplate == null || !companionTemplate.Culture.IsMainCulture)
+            if (companionTemplate != null && companionTemplate.IsTOWTemplate())
             {
-                return false;
+                List<Settlement> settlements = Settlement.All.Where(x => x.Culture == companionTemplate.Culture && x.IsTown).Split(3).First().ToList();
+                foreach (var settlement in settlements)
+                {
+                    Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                    Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, companionTemplate);
+                    List<Equipment> equipments = new List<Equipment>(); 
+                    equipments.Add(hero.BattleEquipment);
+                    equipments.Add(hero.CivilianEquipment);
+                    ItemModifier @object = MBObjectManager.Instance.GetObject<ItemModifier>("companion_armor");
+                    ItemModifier object2 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_weapon");
+                    ItemModifier object3 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_horse");
+                    foreach(var equipment in equipments)
+                    {
+                        for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumEquipmentSetSlots; equipmentIndex++)
+                        {
+                            EquipmentElement equipmentElement = equipment[equipmentIndex];
+                            if (equipmentElement.Item != null)
+                            {
+                                if (equipmentElement.Item.ArmorComponent != null)
+                                {
+                                    equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, @object);
+                                }
+                                else if (equipmentElement.Item.HorseComponent != null)
+                                {
+                                    equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object3);
+                                }
+                                else if (equipmentElement.Item.WeaponComponent != null)
+                                {
+                                    equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object2);
+                                }
+                            }
+                        }
+                    }
+                    ____companions.Add(hero);
+                }
             }
-            else return true;
+            return false;
         }
 
         [HarmonyPostfix]
@@ -104,6 +141,7 @@ namespace TOW_Core.HarmonyPatches
             __result = newlist;
         }
 
+        //TODO!!! this is partially responsible for poor campaign performance. When Rob is ready with the map, the distance cache has to be generated with a script from within the scene editor.
         [HarmonyPrefix]
         [HarmonyPatch(typeof(DefaultMapDistanceModel), "LoadCacheFromFile")]
         public static bool Prefix4(ref System.IO.BinaryReader reader)
@@ -176,21 +214,6 @@ namespace TOW_Core.HarmonyPatches
             Debug.Print("Ticking map scene for first initialization", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene.Tick(0.1f);
             return false;
-        }
-
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(Campaign), "TemplateCharacters", MethodType.Getter)]
-        public static void PostFix3(ref MBReadOnlyList<CharacterObject> __result)
-        {
-            if (_characterObjects != null) __result = _characterObjects;
-            else
-            {
-                _characterObjects = new MBReadOnlyList<CharacterObject>(__result.Where(
-                x => x.Occupation != Occupation.Wanderer || (x.Occupation == Occupation.Wanderer && x.StringId.Contains("tow_"))
-                ).ToList());
-                __result = _characterObjects;
-            }
-            
         }
     }
 }

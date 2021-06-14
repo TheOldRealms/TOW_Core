@@ -3,56 +3,58 @@
   <EquipmentRoster id="bright_wizard_template"
                    culture="Culture.empire">
 				<EquipmentSet>
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Item1" id="Item.bw_staff_001" />
-            <Equipment slot="Head" id="Item.bright_wizard_helmet" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+               <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
+               <Equipment slot="Item1" id="Item.bw_staff_001" />
+               <Equipment slot="Head" id="Item.bright_wizard_helmet" />
+               <Equipment slot="Body" id="Item.bright_wizard_armor" />
+               <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
+               <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
+               <Equipment slot="Leg" id="Item.bright_wizard_boots" />
 				</EquipmentSet>
-        <EquipmentSet civilian="true">
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+            <EquipmentSet civilian="true">
+               <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
+               <Equipment slot="Body" id="Item.bright_wizard_armor" />
+               <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
+               <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
+               <Equipment slot="Leg" id="Item.bright_wizard_boots" />
 				</EquipmentSet>
   </EquipmentRoster>
   <EquipmentRoster id="witch_hunter_template"
                    culture="Culture.empire">
 				<EquipmentSet>
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Head" id="Item.bright_wizard_helmet" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+               <Equipment slot="Item0" id="Item.rapier_001" />
+               <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
+               <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
+               <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
+               <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
+               <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
 				</EquipmentSet>
-        <EquipmentSet civilian="true">
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+            <EquipmentSet civilian="true">
+               <Equipment slot="Item0" id="Item.rapier_001" />
+               <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
+               <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
+               <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
+               <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
+               <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
 				</EquipmentSet>
   </EquipmentRoster>
   <EquipmentRoster id="warrior_priest_template"
                    culture="Culture.empire">
 				<EquipmentSet>
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Head" id="Item.bright_wizard_helmet" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+               <Equipment slot="Item0" id="Item.wp_hammer_001" />
+               <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+               <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
+               <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
+               <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+               <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
 				</EquipmentSet>
-        <EquipmentSet civilian="true">
-            <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-            <Equipment slot="Body" id="Item.bright_wizard_armor" />
-            <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-            <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-            <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+            <EquipmentSet civilian="true">
+               <Equipment slot="Item0" id="Item.wp_hammer_001" />
+               <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+               <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
+               <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
+               <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+               <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
 				</EquipmentSet>
   </EquipmentRoster>
 
