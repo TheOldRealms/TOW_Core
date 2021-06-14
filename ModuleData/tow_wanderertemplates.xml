@@ -2,6 +2,8 @@
 <NPCCharacters>
 	<NPCCharacter id="tow_wanderer_empire_0" name="{=!}{HERO.FIRSTNAME}, Bright Wizard" voice="curt" age="55" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
         <face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+			<!--
 			<face_key_template value="BodyProperty.brightwizard" />
 			<hair_tags>
 				<hair_tag name="Bandit Hair 3" />
@@ -9,8 +11,10 @@
 			<beard_tags>
 				<beard_tag name="LongScragglyBeard" />
 			</beard_tags>
+			-->
         </face>
         <Traits>
+			<Trait id="RomanHair" value="1" />
 			<Trait id="HopliteFightingSkills" value="3" />
 			<Trait id="Valor" value="1" />
 			<Trait id="Calculating" value="1" />
@@ -23,15 +27,18 @@
 	<NPCCharacter id="tow_wanderer_empire_1" name="{=!}{HERO.FIRSTNAME}, Warrior Priest" voice="curt" age="45" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
+			<!--
 			<hair_tags>
 				<hair_tag name="Bald" />
 			</hair_tags>
 			<beard_tags>
 				<beard_tag name="Cleanshaven" />
 			</beard_tags>
+			-->
         </face>
         </face>
         <Traits>
+			<Trait id="RomanHair" value="1" />
 			<Trait id="HopliteFightingSkills" value="3" />
 			<Trait id="Valor" value="1" />
 			<Trait id="Calculating" value="1" />
@@ -44,6 +51,7 @@
 	<NPCCharacter id="tow_wanderer_empire_2" name="{=!}{HERO.FIRSTNAME}, Witch Hunter" voice="curt" age="29" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.empire" occupation="Wanderer">
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
+			<!--
 			<hair_tags>
 				<hair_tag name="ShortAndThin" />
 				<hair_tag name="Tousled" />
@@ -52,9 +60,11 @@
 			<beard_tags>
 				<beard_tag name="Cleanshaven" />
 			</beard_tags>
+			-->
         </face>
         </face>
         <Traits>
+			<Trait id="RomanHair" value="1" />
 			<Trait id="HopliteFightingSkills" value="3" />
 			<Trait id="Valor" value="1" />
 			<Trait id="Calculating" value="1" />
