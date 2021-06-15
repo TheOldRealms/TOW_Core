@@ -13,4 +13,21 @@ namespace TOW_Core.CampaignMode
         [SaveableField(4)]public List<string> SkillBuffs =new List<string>();
         [SaveableField(5)] public List<string> MagicEffects = new List<string>();
     }
+    
+    
+    public class StaticAttributeDefiner : SaveableTypeDefiner
+    {
+        public StaticAttributeDefiner() : base(1_543_133) { }
+        protected override void DefineClassTypes()
+        {
+            base.DefineClassTypes();
+            AddClassDefinition(typeof(StaticAttribute), 1);
+        }
+
+        protected override void DefineContainerDefinitions()
+        {
+            base.DefineContainerDefinitions();
+            ConstructContainerDefinition(typeof(List<StaticAttribute>));
+        }
+    }
 }

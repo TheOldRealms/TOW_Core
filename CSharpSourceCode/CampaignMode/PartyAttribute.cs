@@ -36,4 +36,21 @@ namespace TOW_Core.CampaignMode
 
         }
     }
+    
+    
+    public class PartyAttributeDefiner : SaveableTypeDefiner
+    {
+        public PartyAttributeDefiner() : base(1_543_132) { }
+        protected override void DefineClassTypes()
+        {
+            base.DefineClassTypes();
+            AddClassDefinition(typeof(PartyAttribute), 1);
+        }
+
+        protected override void DefineContainerDefinitions()
+        {
+            base.DefineContainerDefinitions();
+            ConstructContainerDefinition(typeof(Dictionary<string, PartyAttribute>));
+        }
+    }
 }
