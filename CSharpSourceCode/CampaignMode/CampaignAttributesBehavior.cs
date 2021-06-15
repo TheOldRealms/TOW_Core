@@ -8,6 +8,7 @@ using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 using TOW_Core.Utilities;
 
+/*
 namespace TOW_Core.CampaignMode
 {
     public class CampaignAttributesBehavior : CampaignBehaviorBase
@@ -57,7 +58,7 @@ namespace TOW_Core.CampaignMode
         }
     }
 
-    /*public class CampaignAttributeDefiner : SaveableTypeDefiner
+    public class CampaignAttributeDefiner : SaveableTypeDefiner
     {
         public CampaignAttributeDefiner() : base(1_543_132) { }
         protected override void DefineClassTypes()
@@ -71,5 +72,6 @@ namespace TOW_Core.CampaignMode
             base.DefineContainerDefinitions();
             ConstructContainerDefinition(typeof(Dictionary<string, PartyAttribute>));
         }
-    }*/
+    }
 }
+*/

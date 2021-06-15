@@ -20,10 +20,12 @@ namespace TOW_Core.CampaignMode
         [SaveableField(3)]
         public float WindsOfMagic;
         [SaveableField(4)]
-        public StaticAttribute LeaderAttribute;
+        public bool MagicUserParty;
         [SaveableField(5)]
-        public List<StaticAttribute> CompanionAttributes = new List<StaticAttribute>();
+        public StaticAttribute LeaderAttribute;
         [SaveableField(6)]
+        public List<StaticAttribute> CompanionAttributes = new List<StaticAttribute>();
+        [SaveableField(7)]
         public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
 
         public PartyAttribute(string id)
