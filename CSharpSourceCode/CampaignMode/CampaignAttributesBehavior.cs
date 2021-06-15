@@ -12,7 +12,7 @@ namespace TOW_Core.CampaignMode
 {
     public class CampaignAttributesBehavior : CampaignBehaviorBase
     {
-        private Dictionary<string, WorldMapAttribute> _partyAttributes = new Dictionary<string, WorldMapAttribute>();
+        private Dictionary<string, PartyAttribute> _partyAttributes = new Dictionary<string, PartyAttribute>();
 
         public override void RegisterEvents()
         {
@@ -32,7 +32,7 @@ namespace TOW_Core.CampaignMode
 
         private void OnGameLoaded(CampaignGameStarter campaignGameStarter)
         {
-            foreach(WorldMapAttribute attribute in _partyAttributes.Values)
+            foreach(PartyAttribute attribute in _partyAttributes.Values)
             {
                 TOWCommon.Say("Loaded attribute for party with leader " + attribute.Leader.Name.ToString());
             }
@@ -47,7 +47,7 @@ namespace TOW_Core.CampaignMode
             {
                 if (party.IsLordParty)
                 {
-                    WorldMapAttribute attribute = new WorldMapAttribute(id++.ToString());
+                    PartyAttribute attribute = new PartyAttribute(id++.ToString());
                     attribute.Leader = party.LeaderHero;
                     attribute.id = party.Id.ToString();
                     _partyAttributes.Add(party.Id.ToString(), attribute);
@@ -57,19 +57,19 @@ namespace TOW_Core.CampaignMode
         }
     }
 
-    public class CampaignAttributeDefiner : SaveableTypeDefiner
+    /*public class CampaignAttributeDefiner : SaveableTypeDefiner
     {
         public CampaignAttributeDefiner() : base(1_543_132) { }
         protected override void DefineClassTypes()
         {
             base.DefineClassTypes();
-            AddClassDefinition(typeof(WorldMapAttribute), 1);
+            AddClassDefinition(typeof(PartyAttribute), 1);
         }
 
         protected override void DefineContainerDefinitions()
         {
             base.DefineContainerDefinitions();
-            ConstructContainerDefinition(typeof(Dictionary<string, WorldMapAttribute>));
+            ConstructContainerDefinition(typeof(Dictionary<string, PartyAttribute>));
         }
-    }
+    }*/
 }
