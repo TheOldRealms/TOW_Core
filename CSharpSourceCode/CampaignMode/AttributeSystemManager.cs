@@ -189,8 +189,8 @@ namespace TOW_Core.CampaignMode
             }
 
             
-            PartyAttribute attribute = new PartyAttribute();
-            attribute.id = party.Party.Id.ToString();
+            PartyAttribute partyAttribute = new PartyAttribute();
+            partyAttribute.id = party.Party.Id.ToString();
 
 
             foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
@@ -199,7 +199,7 @@ namespace TOW_Core.CampaignMode
                 staticAttribute.race = troop.Character.Culture.StringId;
                 staticAttribute.status = "battle ready";
                 staticAttribute.MagicEffects = new List<string>();
-                attribute.RegularTroopAttributes.Add(staticAttribute);
+                partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
             
             if (party.LeaderHero != null)
@@ -207,21 +207,27 @@ namespace TOW_Core.CampaignMode
                 Hero Leader = party.LeaderHero;
                 StaticAttribute leaderAttribute = new StaticAttribute();
                 leaderAttribute.race = Leader.Culture.ToString();
-                leaderAttribute.MagicUser = true;
+                leaderAttribute.MagicUser = true;   //neeeds a proper check
                 leaderAttribute.faith = 10;
-                attribute.LeaderAttribute = leaderAttribute;
+                partyAttribute.LeaderAttribute = leaderAttribute;
+
+                if (leaderAttribute.MagicUser)
+                    partyAttribute.MagicUserParty = true;
 
                 foreach (var companion in Leader.CompanionsInParty)
                 {
                     StaticAttribute companionAttribute = new StaticAttribute();
                     companionAttribute.race = companion.Culture.ToString();
-                    companionAttribute.MagicUser = true;
-                    attribute.CompanionAttributes.Add(companionAttribute);
+                    companionAttribute.MagicUser = true;    //here aswell proper check of magic abilities
+                    partyAttribute.CompanionAttributes.Add(companionAttribute);
+                    
+                    if (companionAttribute.MagicUser)
+                        partyAttribute.MagicUserParty = true;
                 }
             }
         
 
-            _partyAttributes.Add(attribute.id, attribute);
+            _partyAttributes.Add(partyAttribute.id, partyAttribute);
         }
         
         
@@ -278,12 +284,10 @@ namespace TOW_Core.CampaignMode
         
         private void FillWindsOfMagic(float TickValue)
         {
-            foreach (var party in _partyAttributes)
+            foreach (var entry in _partyAttributes)
             {
-                /*if (party.Value.MagicUsers)
-                {
-                    party.Value.WindsOfMagic += TickValue * 1f;
-                }*/
+                if (entry.Value.MagicUserParty)
+                    entry.Value.WindsOfMagic += TickValue;
             }
         }
 
