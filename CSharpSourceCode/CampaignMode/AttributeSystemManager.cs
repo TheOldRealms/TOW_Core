@@ -26,10 +26,23 @@ namespace TOW_Core.CampaignMode
         private bool isFilling;
         private Dictionary<string, int> _cultureCounts = new Dictionary<string, int>();
         private Dictionary<string, PartyAttribute> _partyAttributes = new Dictionary<string, PartyAttribute>();
+        
+        public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
+
+        private List<PartyAttribute> _activeAttackerAttributes;
+        private List<PartyAttribute> _activeDefenderAttributes;
 
         private Action<float> deltaTime;
 
+        public List<PartyAttribute> GetActiveAttackerAttributes()
+        {
+            return _activeAttackerAttributes;
+        }
         
+        public List<PartyAttribute> GetActiveDefenderAttributes()
+        {
+            return _activeDefenderAttributes;
+        }
        
         public override void  RegisterEvents()
         {
@@ -71,11 +84,14 @@ namespace TOW_Core.CampaignMode
         {
             if (currentPlayerEvent != null)
             {
+                var ActiveAttackerAttributeList = new List<PartyAttribute>();
+                var ActiveDefenderAttributeList = new List<PartyAttribute>();
                 string text = "PLAYERFIGHT";
                 foreach (var party in currentPlayerEvent.AttackerSide.Parties)
                 {
                     
                     PartyAttribute attackPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    ActiveAttackerAttributeList.Add(attackPartyPartyAttribute);
                     text += attackPartyPartyAttribute.id;
                 }
 
@@ -84,16 +100,27 @@ namespace TOW_Core.CampaignMode
                 foreach (var party in currentPlayerEvent.DefenderSide.Parties)
                 {
                     
-                   
                     PartyAttribute  defenderPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
+                    ActiveDefenderAttributeList.Add(defenderPartyPartyAttribute);
                     text += defenderPartyPartyAttribute.id;
                 
                 }
             
                 text += " are supporting the defenders(" + currentPlayerEvent.DefenderSide.Parties.Count+")";;
 
+                _activeAttackerAttributes = ActiveAttackerAttributeList;
+                _activeDefenderAttributes = ActiveDefenderAttributeList;
+               // TOWCommon.Say(text);
+                BattleAttributesArgs e = new BattleAttributesArgs()
+                {
+                    attackers = ActiveAttackerAttributeList,
+                    defenders = ActiveDefenderAttributeList
+                };
+                
+                NotifyBattlePartyObservers?.Invoke(this,e);
 
-                TOWCommon.Say(text);
+
+                
             }
         }
 
@@ -118,8 +145,8 @@ namespace TOW_Core.CampaignMode
 
         private void EventCreated(MapEvent mapEvent, PartyBase partyBase, PartyBase arg3)
         {
-            
-            if (mapEvent.IsPlayerMapEvent)
+            currentPlayerEvent = mapEvent;
+            /*if (mapEvent.IsPlayerMapEvent)
             {
                 currentPlayerEvent = mapEvent;
 
@@ -144,9 +171,9 @@ namespace TOW_Core.CampaignMode
                 text += " are supporting the defenders(" + mapEvent.DefenderSide.Parties.Count+")";;
 
 
-               // TOWCommon.Say(text);
-            }
-            
+               
+            }*/
+
         }
         
         private void OnBattleStarted(
@@ -225,8 +252,7 @@ namespace TOW_Core.CampaignMode
                         partyAttribute.MagicUserParty = true;
                 }
             }
-        
-
+            
             _partyAttributes.Add(partyAttribute.id, partyAttribute);
         }
         
@@ -304,7 +330,7 @@ namespace TOW_Core.CampaignMode
                 text+=(culture.Key + " " + _cultureCounts[culture.Key]+ ", ");
             }
 
-            text +=" Main player has WOM: "+ GetAttribute(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
+          //  text +=" Main player has WOM: "+ GetAttribute(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
             TOWCommon.Say(text);
         }
         
@@ -330,5 +356,13 @@ namespace TOW_Core.CampaignMode
         {
             dataStore.SyncData("_partyAttributes", ref _partyAttributes);
         }
+        
+        
+        }
+    
+        public class BattleAttributesArgs : EventArgs
+        {
+            public List<PartyAttribute> attackers;
+            public List<PartyAttribute> defenders;
         }
 }
