@@ -229,9 +229,11 @@ namespace TOW_Core.CampaignMode
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
             
-            if (party.LeaderHero != null)
+            
+            if (party.LeaderHero != null|| party.IsMainParty)
             {
                 Hero Leader = party.LeaderHero;
+                partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute();
                 leaderAttribute.race = Leader.Culture.ToString();
                 leaderAttribute.MagicUser = true;   //neeeds a proper check
