@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
@@ -31,11 +32,22 @@ namespace TOW_Core.Battle.StatusEffects
             base.AfterStart();
             attackerAttributes = new List<PartyAttribute>();
             defenderAttributes = new List<PartyAttribute>();
-            _attributeSystemManager = Campaign.Current.CampaignBehaviorManager
-                .GetBehavior<AttributeSystemManager>();
-            attackerAttributes = _attributeSystemManager.GetActiveAttackerAttributes();
-            defenderAttributes = _attributeSystemManager.GetActiveDefenderAttributes();
+            
+            if (Campaign.Current != null)
+            {
+                _attributeSystemManager = Campaign.Current.CampaignBehaviorManager
+                    .GetBehavior<AttributeSystemManager>();
+                attackerAttributes = _attributeSystemManager.GetActiveAttackerAttributes();
+                defenderAttributes = _attributeSystemManager.GetActiveDefenderAttributes();
+                
+               
+            }
+
+            
+                
         }
+        
+        
 
         
         public override void OnAgentCreated(Agent agent)
@@ -55,30 +67,85 @@ namespace TOW_Core.Battle.StatusEffects
             }*/
         }
 
+
+        public override void OnAfterMissionCreated()
+        {
+            base.OnAfterMissionCreated();
+
+            //var attacker = Mission.Current.Teams.Attacker;
+            
+            var attacker = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Attacker, true);
+            var defender = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Defender, true);
+            
+            var agents =Mission.Current.Agents;
+            
+            
+            //assign Team allies to Parties
+
+            foreach (var team in attacker)
+            {
+                foreach (Agent agent in team.TeamAgents)
+                {
+                    if(agent.Character.IsPlayerCharacter||agent.Character.IsHero)
+                        TOWCommon.Say(agent.Name);
+                    
+                    if (agent.IsHero|| agent.IsMainAgent)
+                    {
+                        TOWCommon.Say(agent.Name);
+                    }
+                    else
+                    {
+                        TOWCommon.Say("agent: common enemy " );
+                    }
+                }
+
+                foreach (var attribute in attackerAttributes)
+                {
+                    if(attribute.Leader!=null)
+                        TOWCommon.Say(attribute.Leader.Name.ToString());
+                    else
+                    {
+                        TOWCommon.Say("part of gang: " + attribute.id+  " ("+attackerAttributes.Count+")");
+                    }
+                }
+
+                
+            }
+            foreach (var team in defender)
+            {
+                foreach (Agent agent in team.TeamAgents)
+                {
+                    if(agent.Character.IsPlayerCharacter||agent.Character.IsHero)
+                        TOWCommon.Say(agent.Name);
+                    
+                    if (agent.IsHero||agent.IsMainAgent)
+                    {
+                        TOWCommon.Say("agent "+agent.Name);
+                    }
+                    else
+                    {
+                        TOWCommon.Say("agent: common enemy " );
+                    }
+                }
+
+                foreach (var attribute in defenderAttributes)
+                {
+                    if(attribute.Leader!=null)
+                        TOWCommon.Say("attribute "+ attribute.Leader.Name.ToString());
+                    else
+                    {
+                        TOWCommon.Say("part of gang: " + attribute.id+  " ("+defenderAttributes.Count+")");
+                    }
+                }
+
+                
+            }
+        }
+
         public override void AfterAddTeam(Team team)
         {
             base.AfterAddTeam(team);
-            if (team.IsAttacker)
-            {
-                foreach (var party in attackerAttributes)
-                {
-                    if (party.MagicUserParty)
-                    {
-                        TOWCommon.Say(party.id +" are magic users and have "+ party.WindsOfMagic+" Winds of magic available");
-                    }
-                }
-            }
-
-            if (team.IsDefender)
-            {
-                foreach (var party in defenderAttributes)
-                {
-                    if (party.MagicUserParty)
-                    {
-                        TOWCommon.Say(party.id +" are magic users and have "+ party.WindsOfMagic+" Winds of magic available");
-                    }
-                }
-            }
+            
         }
 
         /*public override void OnAgentBuild(Agent agent, Banner banner)
@@ -90,6 +157,18 @@ namespace TOW_Core.Battle.StatusEffects
                 TOWCommon.Say(defenderAttributes[0].WindsOfMagic.ToString());
             }#1#
         }*/
+
+        public override void OnRenderingStarted()
+        {
+            
+        }
+
+        public override void OnCreated()
+        {
+            
+            
+            
+        }
 
         public override void OnMissionTick(float dt)
         {
