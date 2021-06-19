@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
@@ -37,34 +38,41 @@ namespace TOW_Core.CampaignMode
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
+            
+            
 
             foreach (var partyAttribute in activeAttributes)
             {
-                if ((agent.IsMainAgent|| agent.IsPlayerControlled) && partyAttribute.LeaderAttribute!=null)
+                if (agent.Character != null)
                 {
-                    AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute);
-                    break;
-                }
-                else 
-                if (agent.IsHero)
-                {
-                    foreach (var companionAttribute in partyAttribute.CompanionAttributes)
+                    if ((agent.IsHero|| agent.IsPlayerControlled) 
+                        && partyAttribute.LeaderAttribute!=null)
                     {
-                        if (agent.Character.Name.ToString() == companionAttribute.id)
+                        AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute);
+                        break;
+                    }
+                    else
+                    if (!partyAttribute.CompanionAttributes.IsEmpty()&& agent.IsHero)
+                    {
+                        foreach (var companionAttribute in partyAttribute.CompanionAttributes)
                         {
-                            AddStaticAttributeComponent(agent, companionAttribute);
-                            break;
-                        }
+                            if (agent.Character.Name.ToString() == companionAttribute.id)
+                            {
+                                AddStaticAttributeComponent(agent, companionAttribute);
+                                break;
+                            }
 
                         
+                        }
+                        break;
                     }
-                    break;
                 }
-                else
+                
+                if(agent.Character==null|| agent.Name ==null)
                 {
                     foreach (var attribute in partyAttribute.RegularTroopAttributes)
                     { 
-                        if(agent.Character.Name.ToString() == attribute.id)
+                        if(agent.Origin.Troop.ToString() == attribute.id)
                             AddStaticAttributeComponent(agent,attribute);
                         break;
                     }
