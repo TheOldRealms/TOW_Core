@@ -193,13 +193,13 @@ namespace TOW_Core.HarmonyPatches
         }
 
         //TODO!!! this is partially responsible for poor campaign performance. When Rob is ready with the map, the distance cache has to be generated with a script from within the scene editor.
-        [HarmonyPrefix]
+        /*[HarmonyPrefix]
         [HarmonyPatch(typeof(DefaultMapDistanceModel), "LoadCacheFromFile")]
         public static bool DisableSettlementCache(ref System.IO.BinaryReader reader)
         {
             reader = null;
             return true;
-        }
+        }*/
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CampaignOptions), MethodType.Constructor)]

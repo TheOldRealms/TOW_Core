@@ -112,7 +112,7 @@
 			 tier="1" />
 	<!--main factions-->
 	<Faction id="averland_clan_1"
-			 name="{=!}Test Clan Averland"
+			 name="{=!}Averland's first clan"
 			 tier="6"
 			 owner="Hero.averland_clan_1_1"
 			 culture="Culture.empire"
