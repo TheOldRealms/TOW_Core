@@ -19,36 +19,7 @@ namespace TOW_Core.Battle.StatusEffects
         private Dictionary<string, StatusEffect> _presentEffects = new Dictionary<string, StatusEffect>();
 
         public EventHandler<OnTickArgs> NotifyStatusEffectTickObservers;
-
-        private AttributeSystemManager _attributeSystemManager;
-
-        private List<PartyAttribute> attackerAttributes;
         
-        private List<PartyAttribute> defenderAttributes;
-
-
-        public override void AfterStart()
-        {
-            base.AfterStart();
-            attackerAttributes = new List<PartyAttribute>();
-            defenderAttributes = new List<PartyAttribute>();
-            
-            if (Campaign.Current != null)
-            {
-                _attributeSystemManager = Campaign.Current.CampaignBehaviorManager
-                    .GetBehavior<AttributeSystemManager>();
-                attackerAttributes = _attributeSystemManager.GetActiveAttackerAttributes();
-                defenderAttributes = _attributeSystemManager.GetActiveDefenderAttributes();
-                
-               
-            }
-
-            
-                
-        }
-        
-        
-
         
         public override void OnAgentCreated(Agent agent)
         {
@@ -60,11 +31,6 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 _presentEffects.Add("crumble", StatusEffectManager.GetStatusEffect("crumble"));
             }
-
-            /*if (agent.Character.IsHero)
-            {
-                TOWCommon.Say(defenderAttributes[0].WindsOfMagic.ToString());
-            }*/
         }
 
 
@@ -99,15 +65,7 @@ namespace TOW_Core.Battle.StatusEffects
                     }
                 }
 
-                foreach (var attribute in attackerAttributes)
-                {
-                    if(attribute.Leader!=null)
-                        TOWCommon.Say(attribute.Leader.Name.ToString());
-                    else
-                    {
-                        TOWCommon.Say("part of gang: " + attribute.id+  " ("+attackerAttributes.Count+")");
-                    }
-                }
+               
 
                 
             }
@@ -128,15 +86,7 @@ namespace TOW_Core.Battle.StatusEffects
                     }
                 }
 
-                foreach (var attribute in defenderAttributes)
-                {
-                    if(attribute.Leader!=null)
-                        TOWCommon.Say("attribute "+ attribute.Leader.Name.ToString());
-                    else
-                    {
-                        TOWCommon.Say("part of gang: " + attribute.id+  " ("+defenderAttributes.Count+")");
-                    }
-                }
+               
 
                 
             }
