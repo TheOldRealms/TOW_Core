@@ -29,6 +29,7 @@ using SandBox;
 using SandBox.View;
 using TaleWorlds.Engine.Screens;
 using TOW_Core.Battle.Voices;
+using TOW_Core.CampaignMode;
 using TOW_Core.CampaignSupport;
 
 namespace TOW_Core
@@ -106,6 +107,8 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
+                AttributeSystemManager attributeSystemManager = new AttributeSystemManager();
+                starter.CampaignBehaviors.Add(attributeSystemManager);
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
@@ -117,6 +120,7 @@ namespace TOW_Core
             base.OnMissionBehaviourInitialize(mission);
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
+            mission.AddMissionBehaviour(new StaticAttributeMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
