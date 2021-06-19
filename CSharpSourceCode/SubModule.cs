@@ -29,6 +29,7 @@ using SandBox;
 using SandBox.View;
 using TaleWorlds.Engine.Screens;
 using TOW_Core.Battle.Voices;
+using TOW_Core.CampaignSupport;
 
 namespace TOW_Core
 {
@@ -106,6 +107,8 @@ namespace TOW_Core
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+                starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
+                starter.AddModel(new TowCompanionHiringPriceCalculationModel());
             }
         }
 
