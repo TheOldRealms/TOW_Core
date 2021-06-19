@@ -39,8 +39,6 @@ namespace TOW_Core.CampaignMode
         {
             base.OnAgentCreated(agent);
             
-            
-
             foreach (var partyAttribute in activeAttributes)
             {
                 if (agent.Character != null)
@@ -51,7 +49,7 @@ namespace TOW_Core.CampaignMode
                         AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute);
                         break;
                     }
-                    else
+                    
                     if (!partyAttribute.CompanionAttributes.IsEmpty()&& agent.IsHero)
                     {
                         foreach (var companionAttribute in partyAttribute.CompanionAttributes)
@@ -66,12 +64,26 @@ namespace TOW_Core.CampaignMode
                         }
                         break;
                     }
+
                 }
-                
-                if(agent.Character==null|| agent.Name ==null)
+
+                if (partyAttribute.RogueParty)
                 {
                     foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                    { 
+                    {
+                        if (agent.Origin.Troop.ToString() == attribute.id)
+                        {
+                            AddStaticAttributeComponent(agent,attribute);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                
+                if(agent.Character.IsSoldier)
+                {
+                    foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                    {
                         if(agent.Origin.Troop.ToString() == attribute.id)
                             AddStaticAttributeComponent(agent,attribute);
                         break;

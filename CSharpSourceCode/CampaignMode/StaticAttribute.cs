@@ -13,6 +13,7 @@ namespace TOW_Core.CampaignMode
         [SaveableField(4)]public List<string> SkillBuffs =new List<string>();
         [SaveableField(5)] public List<string> MagicEffects = new List<string>();
         [SaveableField(6)]public string id;
+        [SaveableField(7)]public int number;
     }
     
     
