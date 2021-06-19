@@ -29,14 +29,14 @@ namespace TOW_Core.CampaignMode
         
         public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
 
-        private List<PartyAttribute> _activeAttackerAttributes;
+        private List<PartyAttribute> _activePartyAttributes;
         private List<PartyAttribute> _activeDefenderAttributes;
 
         private Action<float> deltaTime;
 
-        public List<PartyAttribute> GetActiveAttackerAttributes()
+        public List<PartyAttribute> GetActiveInvolvedParties()
         {
-            return _activeAttackerAttributes;
+            return _activePartyAttributes;
         }
         
         public List<PartyAttribute> GetActiveDefenderAttributes()
@@ -84,14 +84,14 @@ namespace TOW_Core.CampaignMode
         {
             if (currentPlayerEvent != null)
             {
-                var ActiveAttackerAttributeList = new List<PartyAttribute>();
+                var ActivePartyAttributes = new List<PartyAttribute>();
                 var ActiveDefenderAttributeList = new List<PartyAttribute>();
                 string text = "PLAYERFIGHT";
                 foreach (var party in currentPlayerEvent.AttackerSide.Parties)
                 {
                     
                     PartyAttribute attackPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
-                    ActiveAttackerAttributeList.Add(attackPartyPartyAttribute);
+                    ActivePartyAttributes.Add(attackPartyPartyAttribute);
                     text += attackPartyPartyAttribute.id;
                 }
 
@@ -101,20 +101,18 @@ namespace TOW_Core.CampaignMode
                 {
                     
                     PartyAttribute  defenderPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
-                    ActiveDefenderAttributeList.Add(defenderPartyPartyAttribute);
+                    ActivePartyAttributes.Add(defenderPartyPartyAttribute);
                     text += defenderPartyPartyAttribute.id;
                 
                 }
             
                 text += " are supporting the defenders(" + currentPlayerEvent.DefenderSide.Parties.Count+")";;
 
-                _activeAttackerAttributes = ActiveAttackerAttributeList;
-                _activeDefenderAttributes = ActiveDefenderAttributeList;
-               // TOWCommon.Say(text);
+                _activePartyAttributes = ActivePartyAttributes;
+                // TOWCommon.Say(text);
                 BattleAttributesArgs e = new BattleAttributesArgs()
                 {
-                    attackers = ActiveAttackerAttributeList,
-                    defenders = ActiveDefenderAttributeList
+                    activeParties = ActivePartyAttributes,
                 };
                 
                 NotifyBattlePartyObservers?.Invoke(this,e);
@@ -226,6 +224,7 @@ namespace TOW_Core.CampaignMode
                 staticAttribute.race = troop.Character.Culture.StringId;
                 staticAttribute.status = "battle ready";
                 staticAttribute.MagicEffects = new List<string>();
+                staticAttribute.id = troop.ToString();
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
             
@@ -364,7 +363,6 @@ namespace TOW_Core.CampaignMode
     
         public class BattleAttributesArgs : EventArgs
         {
-            public List<PartyAttribute> attackers;
-            public List<PartyAttribute> defenders;
+            public List<PartyAttribute> activeParties;
         }
 }
