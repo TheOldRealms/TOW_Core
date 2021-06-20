@@ -16,5 +16,10 @@ namespace TOW_Core.CampaignMode
         {
             _attribute = attribute; 
         }
+        
+        public void SetParty(PartyAttribute attribute)
+        {
+            _linkedPartyAttribute = attribute; 
+        }
     }
 }

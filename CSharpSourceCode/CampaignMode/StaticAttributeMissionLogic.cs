@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignMode
@@ -17,6 +19,8 @@ namespace TOW_Core.CampaignMode
         private List<PartyAttribute> activeAttributes;
         
         private List<PartyAttribute> defenderAttributes;
+
+        private List<Agent> _agents;
         
         public override void AfterStart()
         {
@@ -25,6 +29,7 @@ namespace TOW_Core.CampaignMode
             teams= Mission.Current.Teams;
             activeAttributes = new List<PartyAttribute>();
             defenderAttributes = new List<PartyAttribute>();
+            _agents = new List<Agent>();
             
             if (Campaign.Current != null)
             {
@@ -39,11 +44,23 @@ namespace TOW_Core.CampaignMode
         {
             base.OnAgentCreated(agent);
             
-            foreach (var partyAttribute in activeAttributes)
+            base.OnAfterMissionCreated();
+            
+            //var party = agent.GetComponent<CampaignAgentComponent>().OwnerParty; // this would save a lot of trouble but dont work
+            //PartyAttribute PartyAttribute = _attributeSystemManager.GetAttribute(party.Id);
+            
+
+            if (agent.IsMount)
+                return;
+            
+            List<PartyAttribute> partyAttributes = activeAttributes;
+            
+            foreach (var partyAttribute in partyAttributes)
             {
+
                 if (agent.Character != null)
                 {
-                    if ((agent.IsHero|| agent.IsPlayerControlled) 
+                    if ((agent.IsHero|| agent.Character.IsPlayerCharacter) 
                         && partyAttribute.LeaderAttribute!=null)
                     {
                         AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute);
@@ -59,40 +76,43 @@ namespace TOW_Core.CampaignMode
                                 AddStaticAttributeComponent(agent, companionAttribute);
                                 break;
                             }
-
-                        
                         }
                         break;
                     }
-
-                }
-
-                if (partyAttribute.RogueParty)
-                {
-                    foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                    
+                    if (partyAttribute.RogueParty && !agent.Character.IsSoldier && !agent.Character.IsHero)
                     {
-                        if (agent.Origin.Troop.ToString() == attribute.id)
+                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
                         {
                             AddStaticAttributeComponent(agent,attribute);
                             break;
                         }
-                    }
-                    break;
-                }
-                
-                if(agent.Character.IsSoldier)
-                {
-                    foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                    {
-                        if(agent.Origin.Troop.ToString() == attribute.id)
-                            AddStaticAttributeComponent(agent,attribute);
+
                         break;
                     }
-                    break;
+                    
+                    
+                    if(agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
+                    {
+                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                        {
+                            if (agent.Origin.Troop.ToString() == attribute.id)
+                            {
+                                AddStaticAttributeComponent(agent,attribute);
+                                break;
+                            }
+                            
+                        }
+                        break;
+                    }
+
+                    
                 }
-               
+                
+                
             }
-            
+            _agents.Add(agent);
+            TOWCommon.Say("added agent" + agent.Name +"to dictionary");
         }
         
         private async void waitForTeamsAvaible()
@@ -108,7 +128,7 @@ namespace TOW_Core.CampaignMode
         }
         
 
-        private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute)
+        private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
         {
             StaticAttributeAgentComponent agentComponent = new StaticAttributeAgentComponent(agent);
             agentComponent.SetAttribute(attribute);
