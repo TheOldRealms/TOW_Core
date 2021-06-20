@@ -42,6 +42,11 @@ namespace TOW_Core.CampaignMode
         
         public override void OnAgentCreated(Agent agent)
         {
+            if (Mission.Current.IsFriendlyMission)
+            {
+                return;
+            }
+            
             base.OnAgentCreated(agent);
             
             base.OnAfterMissionCreated();
@@ -63,7 +68,7 @@ namespace TOW_Core.CampaignMode
                     if ((agent.IsHero|| agent.Character.IsPlayerCharacter) 
                         && partyAttribute.LeaderAttribute!=null)
                     {
-                        AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute);
+                        AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute, partyAttribute);
                         break;
                     }
                     
@@ -73,7 +78,7 @@ namespace TOW_Core.CampaignMode
                         {
                             if (agent.Character.Name.ToString() == companionAttribute.id)
                             {
-                                AddStaticAttributeComponent(agent, companionAttribute);
+                                AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
                                 break;
                             }
                         }
@@ -84,21 +89,20 @@ namespace TOW_Core.CampaignMode
                     {
                         foreach (var attribute in partyAttribute.RegularTroopAttributes)
                         {
-                            AddStaticAttributeComponent(agent,attribute);
+                            AddStaticAttributeComponent(agent,attribute, partyAttribute);
                             break;
                         }
 
                         break;
                     }
-                    
-                    
-                    if(agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
+                    else
+                    if(agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty() && !partyAttribute.RogueParty)
                     {
                         foreach (var attribute in partyAttribute.RegularTroopAttributes)
                         {
-                            if (agent.Origin.Troop.ToString() == attribute.id)
+                            if (agent.Character.ToString() == attribute.id)
                             {
-                                AddStaticAttributeComponent(agent,attribute);
+                                AddStaticAttributeComponent(agent,attribute, partyAttribute);
                                 break;
                             }
                             
@@ -112,7 +116,7 @@ namespace TOW_Core.CampaignMode
                 
             }
             _agents.Add(agent);
-            TOWCommon.Say("added agent" + agent.Name +"to dictionary");
+            //TOWCommon.Say("added agent" + agent.Name +"to dictionary");
         }
         
         private async void waitForTeamsAvaible()

@@ -24,6 +24,7 @@ namespace TOW_Core.CampaignMode
         private MapEvent currentPlayerEvent;
         private bool playerIsInBattle;
         private bool isFilling;
+        private bool _isloaded;
         private Dictionary<string, int> _cultureCounts = new Dictionary<string, int>();
         private Dictionary<string, PartyAttribute> _partyAttributes = new Dictionary<string, PartyAttribute>();
         
@@ -46,7 +47,6 @@ namespace TOW_Core.CampaignMode
        
         public override void  RegisterEvents()
         {
-            
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoaded);
             //CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
             CampaignEvents.MobilePartyCreated.AddNonSerializedListener(this,RegisterParty);
@@ -65,6 +65,8 @@ namespace TOW_Core.CampaignMode
             CampaignEvents.PartyAttachedAnotherParty.AddNonSerializedListener(this, OnArmyJoinedEvent);
             CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
             CampaignEvents.OnPartySizeChangedEvent.AddNonSerializedListener(this,OnPartySizeChanged);
+            
+            
         }
 
         private void OnMissionEnded(MapEvent mapEvent)
@@ -74,52 +76,74 @@ namespace TOW_Core.CampaignMode
                 playerIsInBattle = false;
             }
         }
+
+        
         private void OnArmyJoinedEvent(MobileParty mobileParty)
         {
             PartyAttribute addedAttribute = GetAttribute(mobileParty.Party.Id);
             TOWCommon.Say(addedAttribute.id + "joined the battle");
 
         }
+        
 
         private void OnPartySizeChanged(PartyBase partyBase)
         {
-            //currently too overkill
+            if (!_isloaded)
+                return;
             
-            /*if (!_partyAttributes.ContainsKey(partyBase.Id)) return;
+            if (!_partyAttributes.ContainsKey(partyBase.Id)) return;
             
             var attribute = GetAttribute(partyBase.Id);
 
-            if (attribute.RegularTroopAttributes.Count != partyBase.NumberOfRegularMembers)
+
+            if (attribute.RogueParty)           //kind of dirty, but they are not counted as regular troops
+                return;
+            
+
+            if (partyBase.MobileParty.Leader!=null && !attribute.Regular)
+            {
+                if (partyBase.MobileParty.Leader.IsPlayerCharacter)
+                {
+                    TOWCommon.Say("player party change");
+                }
+                
+                if(partyBase.LeaderHero.CompanionsInParty!=null)
+                    if (attribute.CompanionAttributes.Count != partyBase.LeaderHero.CompanionsInParty.Count())
+                    {
+                        attribute.CompanionAttributes.Clear();
+
+                        foreach (var hero in partyBase.LeaderHero.CompanionsInParty)
+                        {
+                            StaticAttribute staticAttribute = new StaticAttribute();
+                            staticAttribute.race = hero.Culture.StringId;
+                            staticAttribute.status = "battle ready";
+                            staticAttribute.MagicEffects = new List<string>();
+                            staticAttribute.id = hero.ToString();
+                            staticAttribute.number = partyBase.MemberRoster.Count;
+                            attribute.CompanionAttributes.Add(staticAttribute);
+                        }
+                    }
+            }
+
+            if (attribute.RegularTroopAttributes.Count != partyBase.MemberRoster.TotalRegulars)
             {
                 attribute.RegularTroopAttributes.Clear();
 
                 foreach (var troop in partyBase.MemberRoster.GetTroopRoster())
                 {
+                    if (troop.Character.IsHero)
+                        continue;
+                    
                     StaticAttribute staticAttribute = new StaticAttribute();
                     staticAttribute.race = troop.Character.Culture.StringId;
                     staticAttribute.status = "battle ready";
                     staticAttribute.MagicEffects = new List<string>();
-                    staticAttribute.id = troop.ToString();
+                    staticAttribute.id = troop.Character.ToString();
                     staticAttribute.number = partyBase.MemberRoster.Count;
                     attribute.RegularTroopAttributes.Add(staticAttribute);
                 }
             }
             
-            if (attribute.CompanionAttributes.Count != partyBase.LeaderHero.CompanionsInParty.Count())
-            {
-                attribute.CompanionAttributes.Clear();
-
-                foreach (var hero in partyBase.LeaderHero.CompanionsInParty)
-                {
-                    StaticAttribute staticAttribute = new StaticAttribute();
-                    staticAttribute.race = hero.Culture.StringId;
-                    staticAttribute.status = "battle ready";
-                    staticAttribute.MagicEffects = new List<string>();
-                    staticAttribute.id = hero.ToString();
-                    staticAttribute.number = partyBase.MemberRoster.Count;
-                    attribute.RegularTroopAttributes.Add(staticAttribute);
-                }
-            }*/
 
         }
 
@@ -217,8 +241,13 @@ namespace TOW_Core.CampaignMode
             PartyAttribute partyAttribute = new PartyAttribute();
             partyAttribute.id = party.Party.Id.ToString();
             
+            
+            
             foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
             {
+                if(troop.Character.IsHero)
+                    continue;
+                
                 StaticAttribute staticAttribute = new StaticAttribute();
                 staticAttribute.race = troop.Character.Culture.StringId;
                 staticAttribute.status = "battle ready";
@@ -239,12 +268,19 @@ namespace TOW_Core.CampaignMode
                 partyAttribute.RogueParty = true;
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
+
+            if (party.IsMainParty)
+            {
+                TOWCommon.Say("hey");       //Dirty, Somehow the Heroes are 
+                partyAttribute.RegularTroopAttributes.Clear();
+            }
             
             if (party.LeaderHero != null|| party.IsMainParty)
             {
                 Hero Leader = party.LeaderHero;
                 partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute();
+                StaticAttribute companionAttribute = new StaticAttribute();
                 leaderAttribute.race = Leader.Culture.ToString();
                 leaderAttribute.MagicUser = true;   //neeeds a proper check
                 leaderAttribute.faith = 10;
@@ -255,7 +291,7 @@ namespace TOW_Core.CampaignMode
 
                 foreach (var companion in Leader.CompanionsInParty)
                 {
-                    StaticAttribute companionAttribute = new StaticAttribute();
+                    
                     companionAttribute.race = companion.Culture.ToString();
                     companionAttribute.MagicUser = true;    //here aswell proper check of magic abilities
                     partyAttribute.CompanionAttributes.Add(companionAttribute);
@@ -264,6 +300,16 @@ namespace TOW_Core.CampaignMode
                         partyAttribute.MagicUserParty = true;
                 }
             }
+            
+            
+            if (party.IsCaravan || party.IsVillager || party.IsMilitia)         //regular parties
+            {
+                partyAttribute.Regular = true;
+                partyAttribute.RogueParty = false;
+            }
+
+            partyAttribute.numberOfRegularTroops = party.Party.NumberOfRegularMembers;
+            
             
             _partyAttributes.Add(partyAttribute.id, partyAttribute);
         }
@@ -294,6 +340,7 @@ namespace TOW_Core.CampaignMode
         private void OnGameLoaded()
         {
             TOWCommon.Say("save game restored with "+ _partyAttributes.Count + "parties in the dictionary");
+            _isloaded = true;
             
             TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
         }
@@ -312,6 +359,7 @@ namespace TOW_Core.CampaignMode
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
             InitalizeAttributes();
+            _isloaded = true;
         }
 
 

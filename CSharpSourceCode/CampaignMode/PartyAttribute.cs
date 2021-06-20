@@ -29,6 +29,8 @@ namespace TOW_Core.CampaignMode
         public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
 
         [SaveableField(8)] public bool RogueParty;
+        [SaveableField(9)] public bool Regular;
+        [SaveableField(9)] public int numberOfRegularTroops;
         
         public PartyAttribute(string id)
         {
