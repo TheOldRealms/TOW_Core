@@ -20,7 +20,7 @@ namespace TOW_Core.CampaignMode
 {
     public class AttributeSystemManager: CampaignBehaviorBase
     {
-
+        private Hero _currentAddedHero;
         private MapEvent currentPlayerEvent;
         private bool playerIsInBattle;
         private bool isFilling;
@@ -66,7 +66,8 @@ namespace TOW_Core.CampaignMode
             CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
             CampaignEvents.OnPartySizeChangedEvent.AddNonSerializedListener(this,OnPartySizeChanged);
             
-            
+            CampaignEvents.NewCompanionAdded.AddNonSerializedListener(this,OnCompanionAdded);
+            CampaignEvents.OnTroopRecruitedEvent.AddNonSerializedListener(this,OnTroopRecruited);
         }
 
         private void OnMissionEnded(MapEvent mapEvent)
@@ -85,7 +86,22 @@ namespace TOW_Core.CampaignMode
 
         }
         
+        private void OnTroopRecruited(Hero hero, Settlement settlement, Hero arg3, CharacterObject arg4, int arg5)
+        {
+            TOWCommon.Say("Troop Recruited");
+        }
 
+        private void OnCompanionAdded(Hero hero)
+        { TOWCommon.Say("Hero created");
+            _currentAddedHero = hero;
+            if (hero.PartyBelongedTo != null)
+            {
+                TOWCommon.Say("..." + hero.PartyBelongedTo.ToString());
+            }
+                
+           
+            
+        }
         private void OnPartySizeChanged(PartyBase partyBase)
         {
             if (!_isloaded)
@@ -95,34 +111,25 @@ namespace TOW_Core.CampaignMode
             
             var attribute = GetAttribute(partyBase.Id);
 
+            if (_currentAddedHero != null&& partyBase.MobileParty.IsMainParty)      //If Taleworlds change their event order, that can be in issue for an race condition
+            {
+                AddHeroToParty(_currentAddedHero, partyBase);
+                _currentAddedHero = null;
+                return;
+            }
 
-            if (attribute.RogueParty)           //kind of dirty, but they are not counted as regular troops
+
+            if (attribute.PartyType==PartyType.RogueParty)           //kind of dirty, but they are not counted as regular troops
                 return;
             
 
-            if (partyBase.MobileParty.Leader!=null && !attribute.Regular)
+            if (partyBase.MobileParty.Leader!=null && attribute.PartyType == PartyType.LordParty)
             {
                 if (partyBase.MobileParty.Leader.IsPlayerCharacter)
                 {
                     TOWCommon.Say("player party change");
                 }
                 
-                if(partyBase.LeaderHero.CompanionsInParty!=null)
-                    if (attribute.CompanionAttributes.Count != partyBase.LeaderHero.CompanionsInParty.Count())
-                    {
-                        attribute.CompanionAttributes.Clear();
-
-                        foreach (var hero in partyBase.LeaderHero.CompanionsInParty)
-                        {
-                            StaticAttribute staticAttribute = new StaticAttribute();
-                            staticAttribute.race = hero.Culture.StringId;
-                            staticAttribute.status = "battle ready";
-                            staticAttribute.MagicEffects = new List<string>();
-                            staticAttribute.id = hero.ToString();
-                            staticAttribute.number = partyBase.MemberRoster.Count;
-                            attribute.CompanionAttributes.Add(staticAttribute);
-                        }
-                    }
             }
 
             if (attribute.RegularTroopAttributes.Count != partyBase.MemberRoster.TotalRegulars)
@@ -265,7 +272,7 @@ namespace TOW_Core.CampaignMode
                 staticAttribute.status = "battle ready";
                 staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = party.Name.ToString();
-                partyAttribute.RogueParty = true;
+                partyAttribute.PartyType = PartyType.RogueParty;
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
 
@@ -285,6 +292,7 @@ namespace TOW_Core.CampaignMode
                 leaderAttribute.MagicUser = true;   //neeeds a proper check
                 leaderAttribute.faith = 10;
                 partyAttribute.LeaderAttribute = leaderAttribute;
+                partyAttribute.PartyType = PartyType.LordParty;
 
                 if (leaderAttribute.MagicUser)
                     partyAttribute.MagicUserParty = true;
@@ -304,8 +312,7 @@ namespace TOW_Core.CampaignMode
             
             if (party.IsCaravan || party.IsVillager || party.IsMilitia)         //regular parties
             {
-                partyAttribute.Regular = true;
-                partyAttribute.RogueParty = false;
+                partyAttribute.PartyType= PartyType.Regular;
             }
 
             partyAttribute.numberOfRegularTroops = party.Party.NumberOfRegularMembers;
@@ -313,8 +320,41 @@ namespace TOW_Core.CampaignMode
             
             _partyAttributes.Add(partyAttribute.id, partyAttribute);
         }
+
+        private void AddHeroToParty(Hero hero, PartyBase party)
+        {
+            //reading out from an external file, just dummy code for now
+            PartyAttribute PartyAttribute = GetAttribute(party.Id);
+            StaticAttribute attribute = new StaticAttribute();
+            attribute.id = hero.Name.ToString();
+            attribute.faith = 5;
+            attribute.MagicUser = true; //hero.IsMagicUser
+            attribute.MagicEffects = new List<string>();
+            
+            attribute.MagicEffects.Add("Fireball");
+            attribute.MagicEffects.Add("BurningSkull");
+            attribute.SkillBuffs.Add("EternalFire");
+
+            attribute.race = hero.Culture.ToString();
+
+            attribute.status = "blessed";
+            
+            PartyAttribute.CompanionAttributes.Add(attribute);
+        }
         
-        
+        private void RemoveHeroFromParty(Hero hero, PartyBase party)
+        {
+            PartyAttribute partyAttribute = GetAttribute(party.Id);
+
+            foreach (var companionAttribute in partyAttribute.CompanionAttributes)
+            {
+                if (companionAttribute.id == hero.Name.ToString())
+                {
+                    partyAttribute.CompanionAttributes.Remove(companionAttribute);
+                    break;
+                }
+            }
+        }
         
         public void RegisterParty(MobileParty party)
         {

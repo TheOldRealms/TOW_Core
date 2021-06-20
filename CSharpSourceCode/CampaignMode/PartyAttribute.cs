@@ -28,8 +28,7 @@ namespace TOW_Core.CampaignMode
         [SaveableField(7)]
         public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
 
-        [SaveableField(8)] public bool RogueParty;
-        [SaveableField(9)] public bool Regular;
+        [SaveableField(8)] public PartyType PartyType;
         [SaveableField(9)] public int numberOfRegularTroops;
         
         public PartyAttribute(string id)
@@ -58,5 +57,26 @@ namespace TOW_Core.CampaignMode
             base.DefineContainerDefinitions();
             ConstructContainerDefinition(typeof(Dictionary<string, PartyAttribute>));
         }
+    }
+    
+    
+    public enum PartyType{
+        [SaveableField(1)]RogueParty,
+        [SaveableField(2)]LordParty,
+        [SaveableField(3)]Regular,
+    }
+
+    public class PartyTypeDefiner : SaveableTypeDefiner
+    {
+        public PartyTypeDefiner() : base(1_543_134)
+        {
+            
+        }
+        protected override void DefineEnumTypes()
+        {
+            base.DefineEnumTypes();
+            AddEnumDefinition(typeof(PartyType), 1);
+        }
+        
     }
 }

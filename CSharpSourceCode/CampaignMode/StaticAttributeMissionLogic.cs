@@ -62,17 +62,67 @@ namespace TOW_Core.CampaignMode
             
             foreach (var partyAttribute in partyAttributes)
             {
-
-                if (agent.Character != null)
+                if (agent.Character == null) continue;
+                
+                if (partyAttribute.PartyType == PartyType.RogueParty && !partyAttribute.RegularTroopAttributes.IsEmpty())
                 {
-                    if ((agent.IsHero|| agent.Character.IsPlayerCharacter) 
-                        && partyAttribute.LeaderAttribute!=null)
+                    if (!agent.Character.IsSoldier && !agent.Character.IsHero)      //find a better way to determine if agent is a rogue 
                     {
-                        AddStaticAttributeComponent(agent, partyAttribute.LeaderAttribute, partyAttribute);
+                        foreach (var attribute in partyAttribute.RegularTroopAttributes)        
+                        {
+                            AddStaticAttributeComponent(agent,attribute, partyAttribute);
+                            break;
+                        }
+                            
+                    }
+                    break;
+                }
+                
+                if (partyAttribute.PartyType == PartyType.Regular &&
+                    partyAttribute.RegularTroopAttributes.IsEmpty())
+                {
+                    if (agent.Character.IsSoldier && !agent.Character.IsHero)
+                    {
+                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                        {
+                            if (agent.Character.ToString() == attribute.id)
+                            {
+                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                break;
+                            }
+
+                        }
                         break;
                     }
-                    
-                    if (!partyAttribute.CompanionAttributes.IsEmpty()&& agent.IsHero)
+                }
+
+                if (partyAttribute.PartyType != PartyType.LordParty || partyAttribute.Leader == null) continue;
+
+                if (!agent.IsHero)
+                {
+                    if (agent.Character.IsSoldier && partyAttribute.RegularTroopAttributes.IsEmpty())
+                    {
+                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                        {
+                            if (agent.Character.ToString() == attribute.id)
+                            {
+                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                break;
+                            }
+
+                        }
+                        break;
+                    }
+                }
+                else 
+                {
+                    if (agent.Character.Name == partyAttribute.Leader.Name)
+                    {
+                        var leaderAttribute = partyAttribute.LeaderAttribute;
+                        AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
+                        break;
+                    }
+                    if (!partyAttribute.CompanionAttributes.IsEmpty())
                     {
                         foreach (var companionAttribute in partyAttribute.CompanionAttributes)
                         {
@@ -84,39 +134,10 @@ namespace TOW_Core.CampaignMode
                         }
                         break;
                     }
-                    
-                    if (partyAttribute.RogueParty && !agent.Character.IsSoldier && !agent.Character.IsHero)
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                        {
-                            AddStaticAttributeComponent(agent,attribute, partyAttribute);
-                            break;
-                        }
-
-                        break;
-                    }
-                    else
-                    if(agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty() && !partyAttribute.RogueParty)
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                        {
-                            if (agent.Character.ToString() == attribute.id)
-                            {
-                                AddStaticAttributeComponent(agent,attribute, partyAttribute);
-                                break;
-                            }
-                            
-                        }
-                        break;
-                    }
-
-                    
                 }
-                
-                
             }
             _agents.Add(agent);
-            //TOWCommon.Say("added agent" + agent.Name +"to dictionary");
+            TOWCommon.Say("added agent" + agent.Name +"to dictionary");
         }
         
         private async void waitForTeamsAvaible()
