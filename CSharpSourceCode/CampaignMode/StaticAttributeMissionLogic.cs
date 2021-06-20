@@ -48,6 +48,7 @@ namespace TOW_Core.CampaignMode
             }
             
             base.OnAgentCreated(agent);
+            base.
             
             base.OnAfterMissionCreated();
             
@@ -75,7 +76,7 @@ namespace TOW_Core.CampaignMode
                         }
                             
                     }
-                    break;
+                    continue;
                 }
                 
                 if (partyAttribute.PartyType == PartyType.Regular &&
@@ -92,7 +93,7 @@ namespace TOW_Core.CampaignMode
                             }
 
                         }
-                        break;
+                        continue;
                     }
                 }
 
@@ -111,7 +112,7 @@ namespace TOW_Core.CampaignMode
                             }
 
                         }
-                        break;
+                        continue;
                     }
                 }
                 else 
@@ -132,7 +133,6 @@ namespace TOW_Core.CampaignMode
                                 break;
                             }
                         }
-                        break;
                     }
                 }
             }
