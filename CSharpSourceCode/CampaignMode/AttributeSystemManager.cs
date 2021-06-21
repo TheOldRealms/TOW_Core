@@ -33,8 +33,8 @@ namespace TOW_Core.CampaignMode
                 return _instance;
             }
         }
-        
-        
+
+        private CharacterObject _currentTroop;
         private Hero _currentAddedHero;
         private MapEvent currentPlayerEvent;
         private bool playerIsInBattle;
@@ -78,11 +78,13 @@ namespace TOW_Core.CampaignMode
             //CampaignEvents.OnPartyJoinedArmyEvent.AddNonSerializedListener(this,OnArmyJoinedEvent);
            // CampaignEvents.MapEventEnded.AddNonSerializedListener(this, OnMissionStarted);
             CampaignEvents.PartyAttachedAnotherParty.AddNonSerializedListener(this, OnArmyJoinedEvent);
+            
             CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
             CampaignEvents.OnPartySizeChangedEvent.AddNonSerializedListener(this,OnPartySizeChanged);
-            
             CampaignEvents.NewCompanionAdded.AddNonSerializedListener(this,OnCompanionAdded);
             CampaignEvents.OnTroopRecruitedEvent.AddNonSerializedListener(this,OnTroopRecruited);
+            CampaignEvents.OnUnitRecruitedEvent.AddNonSerializedListener(this, OnPlayerRecruitedTroop);
+            //missing : OnTroopRemoved
         }
 
         private void OnMissionEnded(MapEvent mapEvent)
@@ -98,75 +100,81 @@ namespace TOW_Core.CampaignMode
         {
             PartyAttribute addedAttribute = GetAttribute(mobileParty.Party.Id);
             TOWCommon.Say(addedAttribute.id + "joined the battle");
+            
 
         }
-        
-        private void OnTroopRecruited(Hero hero, Settlement settlement, Hero arg3, CharacterObject arg4, int arg5)
+
+        private void OnPlayerRecruitedTroop(CharacterObject troop, int amount)
         {
+            TOWCommon.Say("Player Troop Recruited");
+            _currentTroop = troop;
+            _currentTroop.Occupation.Ba
+            PartyAttribute PlayerParty = GetAttribute(Campaign.Current.MainParty.Party.Id); 
+            AddRegularTroopToPartyAttributes(PlayerParty,troop);
+        }
+        private void OnTroopRecruited(Hero hero, Settlement settlement, Hero RecruitmentSource, CharacterObject Troop, int amount)
+        {
+            _currentTroop = Troop;
             TOWCommon.Say("Troop Recruited");
+            if(hero==null) return;
+            PartyAttribute partyAttribute = GetAttribute(hero.PartyBelongedTo.Party.Id);
+            
+            AddRegularTroopToPartyAttributes(partyAttribute, Troop);
+            
         }
 
         private void OnCompanionAdded(Hero hero)
         { TOWCommon.Say("Hero created");
             _currentAddedHero = hero;
-            if (hero.PartyBelongedTo != null)
+            
+        }
+
+
+        private void AddRegularTroopToPartyAttributes(PartyAttribute party, CharacterObject troop)
+        {
+            foreach (var attribute in party.RegularTroopAttributes)
             {
-                TOWCommon.Say("..." + hero.PartyBelongedTo.ToString());
+                if (attribute.id == troop.ToString());
+                return;
             }
                 
-           
+            StaticAttribute staticAttribute = new StaticAttribute();
+            if (troop.Occupation == Occupation.Bandit)
+            {
+                
+                //random data   work around for rogue members
+                staticAttribute.race = troop.Culture.StringId;
+                staticAttribute.status = "not so ready";
+                staticAttribute.MagicEffects = new List<string>();
+                staticAttribute.id = troop.ToString();
+                staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
+                party.RegularTroopAttributes.Add(staticAttribute);
+            }
+            
+            //random data
+            staticAttribute.race = troop.Culture.StringId;
+            staticAttribute.status = "battle ready";
+            staticAttribute.MagicEffects = new List<string>();
+            staticAttribute.id = troop.ToString();
+            staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
+            party.RegularTroopAttributes.Add(staticAttribute);
             
         }
         private void OnPartySizeChanged(PartyBase partyBase)
         {
             if (!_isloaded)
                 return;
-            
-            if (!_partyAttributes.ContainsKey(partyBase.Id)) return;
-            
-            var attribute = GetAttribute(partyBase.Id);
 
-            if (_currentAddedHero != null&& partyBase.MobileParty.IsMainParty)      //If Taleworlds change their event order, that can be in issue for an race condition
+
+
+            if (_currentAddedHero != null && partyBase.MobileParty.IsMainParty)
             {
+                //workaround since we are not in knowledge which party is receiving the hero.
                 AddHeroToParty(_currentAddedHero, partyBase);
                 _currentAddedHero = null;
-                return;
-            }
-
-
-            if (attribute.PartyType==PartyType.RogueParty)           //kind of dirty, but they are not counted as regular troops
-                return;
-            
-
-            if (partyBase.MobileParty.Leader!=null && attribute.PartyType == PartyType.LordParty)
-            {
-                if (partyBase.MobileParty.Leader.IsPlayerCharacter)
-                {
-                    TOWCommon.Say("player party change");
-                }
-                
-            }
-
-            if (attribute.RegularTroopAttributes.Count != partyBase.MemberRoster.TotalRegulars)
-            {
-                attribute.RegularTroopAttributes.Clear();
-
-                foreach (var troop in partyBase.MemberRoster.GetTroopRoster())
-                {
-                    if (troop.Character.IsHero)
-                        continue;
-                    
-                    StaticAttribute staticAttribute = new StaticAttribute();
-                    staticAttribute.race = troop.Character.Culture.StringId;
-                    staticAttribute.status = "battle ready";
-                    staticAttribute.MagicEffects = new List<string>();
-                    staticAttribute.id = troop.Character.ToString();
-                    staticAttribute.number = partyBase.MemberRoster.Count;
-                    attribute.RegularTroopAttributes.Add(staticAttribute);
-                }
             }
             
-
+            
         }
 
         private void OnMissionStarted()
@@ -294,12 +302,14 @@ namespace TOW_Core.CampaignMode
 
             if (party.IsMainParty)
             {
-                TOWCommon.Say("hey");       //Dirty, Somehow the Heroes are 
-                partyAttribute.RegularTroopAttributes.Clear();
+               // TOWCommon.Say("hey");       //Dirty, Somehow the Heroes are 
+               // partyAttribute.RegularTroopAttributes.Clear();
             }
+
+           
             
-            if (party.LeaderHero != null|| party.IsMainParty)
-            {
+            if (party.LeaderHero != null|| party.IsMainParty)       //initialize LordParties
+            {   
                 Hero Leader = party.LeaderHero;
                 partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute();
@@ -453,11 +463,9 @@ namespace TOW_Core.CampaignMode
         private void InitalizeAttributes()
         {
             var parties = Campaign.Current.MobileParties;
-           // TOWCommon.Say("Initialize attributes" + Campaign.Current.MobileParties.Count);
-            
+
             foreach (MobileParty party in parties)
             {
-                //TOWCommon.Say(party.Party.Id);
                 if (_partyAttributes.ContainsKey(party.Id.ToString()))
                 {
                     TOWCommon.Say(party.Id.ToString()+  " was already there");
@@ -474,7 +482,7 @@ namespace TOW_Core.CampaignMode
         }
         
         
-        }
+    }
     
         public class BattleAttributesArgs : EventArgs
         {

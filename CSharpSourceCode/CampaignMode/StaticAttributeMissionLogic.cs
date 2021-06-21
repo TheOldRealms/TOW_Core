@@ -85,7 +85,7 @@ namespace TOW_Core.CampaignMode
                     {
                         if (!agent.IsHero)
                         {
-                            if (agent.Character.IsSoldier && partyAttribute.RegularTroopAttributes.IsEmpty())
+                            if (agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
                             {
                                 foreach (var attribute in partyAttribute.RegularTroopAttributes)
                                 {
@@ -124,7 +124,7 @@ namespace TOW_Core.CampaignMode
                 
             }
             
-            
+            _agents.Add(agent);
             TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
         }
 
@@ -249,6 +249,7 @@ namespace TOW_Core.CampaignMode
         {
             StaticAttributeAgentComponent agentComponent = new StaticAttributeAgentComponent(agent);
             agentComponent.SetAttribute(attribute);
+            agentComponent.SetParty(partyAttribute);
             agent.AddComponent(agentComponent);
         }
     }
