@@ -30,6 +30,7 @@ namespace TOW_Core.CampaignMode
 
         [SaveableField(8)] public PartyType PartyType;
         [SaveableField(9)] public int numberOfRegularTroops;
+        [SaveableField(10)] public PartyBase PartyBase;
         
         public PartyAttribute(string id)
         {
