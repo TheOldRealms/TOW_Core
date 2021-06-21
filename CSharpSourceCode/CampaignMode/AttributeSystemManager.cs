@@ -20,6 +20,21 @@ namespace TOW_Core.CampaignMode
 {
     public class AttributeSystemManager: CampaignBehaviorBase
     {
+        private static  AttributeSystemManager  _instance = new AttributeSystemManager();
+
+        private AttributeSystemManager()
+        {
+            
+        }
+        public static AttributeSystemManager Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+        
+        
         private Hero _currentAddedHero;
         private MapEvent currentPlayerEvent;
         private bool playerIsInBattle;
@@ -247,8 +262,8 @@ namespace TOW_Core.CampaignMode
             
             PartyAttribute partyAttribute = new PartyAttribute();
             partyAttribute.id = party.Party.Id.ToString();
-            
-            
+
+            partyAttribute.PartyBase = party.Party;
             
             foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
             {
@@ -271,7 +286,8 @@ namespace TOW_Core.CampaignMode
                 staticAttribute.race = "bandit";
                 staticAttribute.status = "battle ready";
                 staticAttribute.MagicEffects = new List<string>();
-                staticAttribute.id = party.Name.ToString();
+
+                staticAttribute.id = party.Party.ToString();
                 partyAttribute.PartyType = PartyType.RogueParty;
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
