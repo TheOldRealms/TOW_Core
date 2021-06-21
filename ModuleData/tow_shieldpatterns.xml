@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ArrayOfShieldPattern xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ShieldPattern>
+    <CultureId>empire</CultureId>
+      <BannerCode>3.127.145.1480.2012.754.759.1.0.180.102.121.1.800.800.760.787.1.0.0.340.121.1.247.247.756.358.1.0.0</BannerCode>
+      <BannerCode>5.127.145.1480.2012.754.759.1.0.180.341.143.1.328.328.764.939.1.0.44.307.146.116.723.723.805.785.1.0.-25</BannerCode>
+      <BannerCode>17.127.145.1480.2012.754.759.1.0.180.213.143.1.236.606.754.680.1.0.-39.213.143.1.216.556.859.841.1.0.-89.503.143.142.244.242.648.839.0.0.-1.503.82.142.173.172.648.839.1.0.-1</BannerCode>
+  </ShieldPattern>
+</ArrayOfShieldPattern>

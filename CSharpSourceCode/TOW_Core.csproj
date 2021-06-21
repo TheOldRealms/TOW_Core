@@ -298,6 +298,8 @@
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
+    <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffect.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectComponent.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />

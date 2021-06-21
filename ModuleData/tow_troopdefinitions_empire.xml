@@ -80,7 +80,7 @@
 				<equipment slot="Item0"
 						   id="Item.vlandia_sword_3_t4" />
 				<equipment slot="Item1"
-						   id="Item.emp_shield_stirland_006" />
+						   id="Item.empire_shield_001" />
 				<equipment slot="Head"
 						   id="Item.militia_helmet_feather" />
 				<equipment slot="Body"
@@ -92,7 +92,7 @@
 				<equipment slot="Item0"
 						   id="Item.vlandia_sword_3_t4" />
 				<equipment slot="Item1"
-						   id="Item.emp_shield_stirland_002" />
+						   id="Item.empire_shield_001" />
 				<equipment slot="Head"
 						   id="Item.militia_helmet" />
 				<equipment slot="Body"
@@ -104,7 +104,7 @@
 				<equipment slot="Item0"
 						   id="Item.vlandia_sword_3_t4" />
 				<equipment slot="Item1"
-						   id="Item.emp_shield_stirland_003" />
+						   id="Item.empire_shield_001" />
 				<equipment slot="Head"
 						   id="Item.worn_militia_helmet_feather" />
 				<equipment slot="Body"
@@ -116,7 +116,7 @@
 				<equipment slot="Item0"
 						   id="Item.vlandia_sword_3_t4" />
 				<equipment slot="Item1"
-						   id="Item.emp_shield_stirland_001" />
+						   id="Item.empire_shield_001" />
 				<equipment slot="Head"
 						   id="Item.worn_militia_helmet" />
 				<equipment slot="Body"
