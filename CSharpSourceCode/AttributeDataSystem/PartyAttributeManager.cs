@@ -18,6 +18,11 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignMode
 {
+    /// <summary>
+    /// Manages with PartyAttributes and StaticAttributes all relevant TOW Information  for Parties and Characters in game during Campaign gameplay.
+    ///
+    /// Makes use of TaleWorlds methods in order to Save and load data.
+    /// </summary>
     public class PartyAttributeManager: CampaignBehaviorBase
     {
         private static  PartyAttributeManager  _instance = new PartyAttributeManager();

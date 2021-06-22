@@ -2,12 +2,13 @@
 
 namespace TOW_Core.CampaignMode
 {
+    /// <summary>
+    /// Static Attribute attached to an agent on Battlefield
+    /// </summary>
     public class StaticAttributeAgentComponent: AgentComponent
     {
         
-        /// <summary>
-        /// Static Attribute attached to an agent on Battlefield
-        /// </summary>
+        
         public StaticAttributeAgentComponent(Agent agent) : base(agent)
         {
             
@@ -15,9 +16,7 @@ namespace TOW_Core.CampaignMode
         
         private PartyAttribute _linkedPartyAttribute;
         private StaticAttribute _attribute;
-       
-
-
+        
         public void SetAttribute(StaticAttribute attribute)
         {
             _attribute = attribute; 

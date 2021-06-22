@@ -10,7 +10,7 @@ namespace TOW_Core.CampaignMode
     /// </summary>
     public class StaticAttribute
     {
-        //dummy data
+        //dummy data types
         [SaveableField(0)] public string race; // eg. undead, Vampire, Human
         [SaveableField(1)]public bool MagicUser;
         [SaveableField(2)] public int faith;

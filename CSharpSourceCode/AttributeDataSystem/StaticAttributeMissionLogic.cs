@@ -11,6 +11,9 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignMode
 {
+    /// <summary>
+    /// Reads out PartyAttributeManager during Combat
+    /// </summary>
     public class StaticAttributeMissionLogic : MissionLogic
     {
         private Mission.TeamCollection teams;
@@ -33,7 +36,6 @@ namespace TOW_Core.CampaignMode
             if (Campaign.Current != null)
             {
                 _partyAttributeManager= PartyAttributeManager.Instance;
-                  //  _attributeSystemManager = Campaign.Current.CampaignBehaviorManager.GetBehavior<AttributeSystemManager>();
                 activeAttributes = _partyAttributeManager.GetActiveInvolvedParties();
             }
             
@@ -45,7 +47,6 @@ namespace TOW_Core.CampaignMode
 
             if (agent.IsMount)
                 return;
-            
             
             foreach (var partyAttribute in activeAttributes)
             {
@@ -121,8 +122,6 @@ namespace TOW_Core.CampaignMode
            // TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
         }
          
-        
-
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
         {
             StaticAttributeAgentComponent agentComponent = new StaticAttributeAgentComponent(agent);
