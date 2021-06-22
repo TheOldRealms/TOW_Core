@@ -14,7 +14,7 @@ namespace TOW_Core.CampaignMode
     public class StaticAttributeMissionLogic : MissionLogic
     {
         private Mission.TeamCollection teams;
-        private AttributeSystemManager _attributeSystemManager;
+        private PartyAttributeManager _partyAttributeManager;
 
         private List<PartyAttribute> activeAttributes;
         
@@ -32,9 +32,9 @@ namespace TOW_Core.CampaignMode
             
             if (Campaign.Current != null)
             {
-                _attributeSystemManager= AttributeSystemManager.Instance;
+                _partyAttributeManager= PartyAttributeManager.Instance;
                   //  _attributeSystemManager = Campaign.Current.CampaignBehaviorManager.GetBehavior<AttributeSystemManager>();
-                activeAttributes = _attributeSystemManager.GetActiveInvolvedParties();
+                activeAttributes = _partyAttributeManager.GetActiveInvolvedParties();
             }
             
         }

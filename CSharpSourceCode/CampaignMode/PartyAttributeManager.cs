@@ -18,15 +18,15 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignMode
 {
-    public class AttributeSystemManager: CampaignBehaviorBase
+    public class PartyAttributeManager: CampaignBehaviorBase
     {
-        private static  AttributeSystemManager  _instance = new AttributeSystemManager();
+        private static  PartyAttributeManager  _instance = new PartyAttributeManager();
 
-        private AttributeSystemManager()
+        private PartyAttributeManager()
         {
             
         }
-        public static AttributeSystemManager Instance
+        public static PartyAttributeManager Instance
         {
             get
             {

@@ -11,6 +11,9 @@ using TaleWorlds.SaveSystem;
 
 namespace TOW_Core.CampaignMode
 {
+    /// <summary>
+    /// Contains TOW troop data of a complete mobile Party. For single entity data use a StaticAttribute
+    /// </summary>
     public class PartyAttribute
     {
         [SaveableField(1)]
