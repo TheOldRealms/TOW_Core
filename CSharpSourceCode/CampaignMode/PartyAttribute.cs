@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignMode
         [SaveableField(1)]
         public Hero Leader;
         [SaveableField(2)]
-        public string id;
+        public string id;           //partybase.
         [SaveableField(3)]
         public float WindsOfMagic;
         [SaveableField(4)]

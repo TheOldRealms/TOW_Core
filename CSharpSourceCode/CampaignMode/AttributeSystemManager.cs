@@ -63,6 +63,8 @@ namespace TOW_Core.CampaignMode
             CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this,OnDailyTick());
             
+            //Events and Battles
+            CampaignEvents.MapEventStarted.AddNonSerializedListener(this,EventCreated);
             CampaignEvents.BattleStarted.AddNonSerializedListener(this,OnBattleStarted);
             CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
             
@@ -156,6 +158,15 @@ namespace TOW_Core.CampaignMode
    
         }
 
+
+        private void EventCreated(MapEvent mapEvent, PartyBase partyBase, PartyBase arg3)
+        {
+            if (mapEvent.IsPlayerMapEvent)
+            {
+                _currentPlayerEvent = mapEvent;
+            }
+        }
+
         private void OnMissionStarted()
         {
             // tries to add active parties for the next battlefield for a better overview text output optional 
@@ -184,7 +195,7 @@ namespace TOW_Core.CampaignMode
                 _activePartyAttributes = ActivePartyAttributes;
                 BattleAttributesArgs e = new BattleAttributesArgs()
                 {
-                    activeParties = ActivePartyAttributes,
+                    activeParties = ActivePartyAttributes
                 };
                 
                 NotifyBattlePartyObservers?.Invoke(this,e);
@@ -224,14 +235,14 @@ namespace TOW_Core.CampaignMode
         {
             //filling fresh created parties with data
             
-            if (_partyAttributes.ContainsKey(party.Party.Id.ToString()))
+            if (_partyAttributes.ContainsKey(party.Party.Id))
             {
-                TOWCommon.Say(party.Id.ToString()+  " was already there");
+                TOWCommon.Say(party.Id+  " was already there");
                 return;
             }
             
             PartyAttribute partyAttribute = new PartyAttribute();
-            partyAttribute.id = party.Party.Id.ToString();
+            partyAttribute.id = party.Party.Id;
             partyAttribute.PartyBase = party.Party;
             
             foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
@@ -291,20 +302,17 @@ namespace TOW_Core.CampaignMode
 
         private void AddHeroToParty(Hero hero, PartyBase party)
         {
-            //reading out from an external file, just dummy code for now
+            //reading out from an external file, just dummy data for now
             PartyAttribute PartyAttribute = GetAttribute(party.Id);
             StaticAttribute attribute = new StaticAttribute();
             attribute.id = hero.Name.ToString();
             attribute.faith = 5;
             attribute.MagicUser = true; //hero.IsMagicUser
             attribute.MagicEffects = new List<string>();
-            
             attribute.MagicEffects.Add("Fireball");
             attribute.MagicEffects.Add("BurningSkull");
             attribute.SkillBuffs.Add("EternalFire");
-
             attribute.race = hero.Culture.ToString();
-
             attribute.status = "blessed";
             
             PartyAttribute.CompanionAttributes.Add(attribute);
@@ -339,10 +347,10 @@ namespace TOW_Core.CampaignMode
 
         public void DeregisterParty(MobileParty party, PartyBase partyBase)
         {
-            if(_partyAttributes.ContainsKey(party.Id.ToString()))
+            if(_partyAttributes.ContainsKey(party.Party.Id))
             {
-                _partyAttributes.Remove(party.ToString());
-                TOWCommon.Say("Removed + " + party.Id.ToString()); 
+                _partyAttributes.Remove(party.Party.ToString());
+                TOWCommon.Say("Removed + " + party.Party.Id); 
             }
         }
         private void OnGameLoaded()
@@ -408,7 +416,7 @@ namespace TOW_Core.CampaignMode
 
             foreach (MobileParty party in parties)
             {
-                if (_partyAttributes.ContainsKey(party.Id.ToString()))
+                if (_partyAttributes.ContainsKey(party.Party.Id))
                 {
                     TOWCommon.Say(party.Id.ToString()+  " was already there");
                     continue;

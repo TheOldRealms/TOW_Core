@@ -125,7 +125,7 @@ namespace TOW_Core.CampaignMode
             }
             
             _agents.Add(agent);
-            TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
+           // TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
         }
 
         public override void OnCreated()
