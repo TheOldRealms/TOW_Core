@@ -25,7 +25,6 @@ namespace TOW_Core.CampaignMode
         public override void AfterStart()
         {
             base.AfterStart();
-            waitForTeamsAvaible();
             teams= Mission.Current.Teams;
             activeAttributes = new List<PartyAttribute>();
             defenderAttributes = new List<PartyAttribute>();
@@ -133,110 +132,8 @@ namespace TOW_Core.CampaignMode
             base.OnCreated();
             TOWCommon.Say("created  ");
         }
-
-        public override void OnAgentCreated(Agent agent)
-        {
-            /*if (Mission.Current.IsFriendlyMission)
-            {
-                return;
-            }
-            
-            base.OnAgentCreated(agent);
-            
-            
-            //var party = agent.GetComponent<CampaignAgentComponent>().OwnerParty; // this would save a lot of trouble but dont work
-            //PartyAttribute PartyAttribute = _attributeSystemManager.GetAttribute(party.Id);
-            
-
-            if (agent.IsMount)
-                return;
-            
-            List<PartyAttribute> partyAttributes = activeAttributes;
-            
-            foreach (var partyAttribute in partyAttributes)
-            {
-                if (agent.Character == null) continue;
-                
-                if (partyAttribute.PartyType == PartyType.RogueParty && !partyAttribute.RegularTroopAttributes.IsEmpty())
-                {
-                    if (!agent.Character.IsSoldier && !agent.Character.IsHero)      //find a better way to determine if agent is a rogue 
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)        
-                        {
-                            AddStaticAttributeComponent(agent,attribute, partyAttribute);
-                            break;
-                        }
-                            
-                    }
-                    continue;
-                }
-                
-                if (partyAttribute.PartyType == PartyType.Regular &&
-                    partyAttribute.RegularTroopAttributes.IsEmpty())
-                {
-                    if (agent.Character.IsSoldier && !agent.Character.IsHero)
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                        {
-                            if (agent.Character.ToString() == attribute.id)
-                            {
-                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                                break;
-                            }
-
-                        }
-                        continue;
-                    }
-                }
-
-                if (partyAttribute.PartyType != PartyType.LordParty || partyAttribute.Leader == null) continue;
-
-                if (!agent.IsHero)
-                {
-                    if (agent.Character.IsSoldier && partyAttribute.RegularTroopAttributes.IsEmpty())
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                        {
-                            if (agent.Character.ToString() == attribute.id)
-                            {
-                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                                break;
-                            }
-
-                        }
-                        continue;
-                    }
-                }
-                else 
-                {
-                    if (agent.Character.Name == partyAttribute.Leader.Name)
-                    {
-                        var leaderAttribute = partyAttribute.LeaderAttribute;
-                        AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
-                        break;
-                    }
-                    if (!partyAttribute.CompanionAttributes.IsEmpty())
-                    {
-                        foreach (var companionAttribute in partyAttribute.CompanionAttributes)
-                        {
-                            if (agent.Character.Name.ToString() == companionAttribute.id)
-                            {
-                                AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            _agents.Add(agent);
-            TOWCommon.Say("added agent" + agent.Name +"to dictionary");*/
-        }
         
-        private async void waitForTeamsAvaible()
-        {
-            Task waitingForTeamsAvailable=   Task.Run(() => Mission.Current.Teams!=null);
-            await waitingForTeamsAvailable.ConfigureAwait(false);
-        }
+        
 
         private async void waitForAssignedToTeam(Agent agent)
         {
