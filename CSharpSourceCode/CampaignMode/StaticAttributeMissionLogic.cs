@@ -38,13 +38,7 @@ namespace TOW_Core.CampaignMode
             }
             
         }
-
-        public override void AfterAddTeam(Team team)
-        {
-            base.AfterAddTeam(team);
-            TOWCommon.Say("added Team to dictionary ");
-        }
-
+        
          public override void OnAgentBuild(Agent agent, Banner banner)
         {
             base.OnAgentBuild(agent, banner);
@@ -126,20 +120,7 @@ namespace TOW_Core.CampaignMode
             _agents.Add(agent);
            // TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
         }
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            TOWCommon.Say("created  ");
-        }
-        
-        
-
-        private async void waitForAssignedToTeam(Agent agent)
-        {
-            Task waitForAssignedToTeam = Task.Run(()=> agent.Team!=null);
-            await waitForAssignedToTeam.ConfigureAwait(false);
-        }
+         
         
 
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)

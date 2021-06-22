@@ -350,7 +350,11 @@ namespace TOW_Core.CampaignMode
             if(_partyAttributes.ContainsKey(party.Party.Id))
             {
                 _partyAttributes.Remove(party.Party.ToString());
-                TOWCommon.Say("Removed + " + party.Party.Id); 
+                //TOWCommon.Say("Removed " + party.Party.Id); 
+            }
+            else
+            {
+               // TOWCommon.Say("Couldn't remove " + party.Party.Id); 
             }
         }
         private void OnGameLoaded()
@@ -358,7 +362,9 @@ namespace TOW_Core.CampaignMode
             TOWCommon.Say("save game restored with "+ _partyAttributes.Count + "parties in the dictionary");
             _isloaded = true;
             
-            TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
+            
+            //for later: Check if Attributes are valid, reinitalize for parties if not
+            //TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
         }
         
         private Action OnGameSaving()

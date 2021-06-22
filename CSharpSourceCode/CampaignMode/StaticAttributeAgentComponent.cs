@@ -4,12 +4,14 @@ namespace TOW_Core.CampaignMode
 {
     public class StaticAttributeAgentComponent: AgentComponent
     {
-        private PartyAttribute _linkedPartyAttribute;
-        private StaticAttribute _attribute;
         public StaticAttributeAgentComponent(Agent agent) : base(agent)
         {
             
         }
+        
+        private PartyAttribute _linkedPartyAttribute;
+        private StaticAttribute _attribute;
+       
 
 
         public void SetAttribute(StaticAttribute attribute)
