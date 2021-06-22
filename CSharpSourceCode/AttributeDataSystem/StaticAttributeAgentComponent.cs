@@ -1,6 +1,6 @@
 ﻿using TaleWorlds.MountAndBlade;
 
-namespace TOW_Core.CampaignMode
+namespace TOW_Core.AttributeDataSystem
 {
     /// <summary>
     /// Static Attribute attached to an agent on Battlefield

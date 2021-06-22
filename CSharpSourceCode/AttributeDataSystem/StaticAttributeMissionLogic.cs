@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SandBox;
+﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle;
-using TOW_Core.Utilities;
 
-namespace TOW_Core.CampaignMode
+namespace TOW_Core.AttributeDataSystem
 {
     /// <summary>
     /// Reads out PartyAttributeManager during Combat

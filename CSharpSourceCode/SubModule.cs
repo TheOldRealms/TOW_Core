@@ -28,8 +28,8 @@ using System;
 using SandBox;
 using SandBox.View;
 using TaleWorlds.Engine.Screens;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Voices;
-using TOW_Core.CampaignMode;
 using TOW_Core.CampaignSupport;
 
 namespace TOW_Core

@@ -1,15 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using SandBox;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
-using TaleWorlds.Localization;
-using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 
-namespace TOW_Core.CampaignMode
+namespace TOW_Core.AttributeDataSystem
 {
     /// <summary>
     /// Contains TOW troop data of a complete mobile Party. For single entity data use a StaticAttribute

@@ -1,22 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using SandBox;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-using TaleWorlds.Core;
-using TaleWorlds.InputSystem;
-using TaleWorlds.LinQuick;
-using TaleWorlds.MountAndBlade;
-using TaleWorlds.SaveSystem;
-using TaleWorlds.SaveSystem.Definition;
-using TaleWorlds.SaveSystem.Load;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.CampaignMode
+namespace TOW_Core.AttributeDataSystem
 {
     /// <summary>
     /// Manages with PartyAttributes and StaticAttributes all relevant TOW Information  for Parties and Characters in game during Campaign gameplay.

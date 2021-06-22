@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.SaveSystem;
 
-namespace TOW_Core.CampaignMode
+namespace TOW_Core.AttributeDataSystem
 {
     /// <summary>
     /// Contains Tow data of single unit or character. For attributes affecting whole Party use a PartyAttribute
