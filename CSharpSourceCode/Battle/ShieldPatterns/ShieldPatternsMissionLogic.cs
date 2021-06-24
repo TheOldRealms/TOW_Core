@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Battle.Extensions;
 
@@ -41,7 +43,21 @@ namespace TOW_Core.Battle.ShieldPatterns
 
         private void SwitchShieldPattern(Agent agent)
         {
-            var banner = ShieldPatternsManager.GetRandomBannerFor(agent.Character.Culture.StringId);
+            string factionId = "";
+            if(Game.Current.GameType is Campaign)
+            {
+                var general = agent.Team.GeneralAgent;
+                if (general != null && general.Character != null)
+                {
+                    var hero = Hero.FindFirst(x => x.StringId == general.Character.StringId);
+                    if (hero != null)
+                    {
+                        factionId = hero.MapFaction.StringId;
+                    }
+                }
+            }
+
+            var banner = ShieldPatternsManager.GetRandomBannerFor(agent.Character.Culture.StringId, factionId);
             if(banner != null)
             {
                 for (int i = 0; i < 5; i++)

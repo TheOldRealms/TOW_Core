@@ -33,9 +33,7 @@ namespace TOW_Core.Battle.FireArms
             
             if(shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgun" ||shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgunMatchlock")
             {
-                
-                var direction = shooterAgent.LookDirection;
-                var frame = new MatrixFrame(Mat3.CreateMat3WithForward(in direction), position);
+                var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);
                 frame.Rotate(TOWMath.GetDegreeInRadians(90f), Vec3.Up);
                 Mission.AddParticleSystemBurstByName("handgun_shoot", frame, false);
