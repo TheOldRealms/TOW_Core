@@ -27,7 +27,7 @@
 			 tier="1" />
 	<!--bandit factions-->
 	<Faction id="looters"
-			 banner_key="24.116.95.1536.1536.768.768.1.0.0"
+			 banner_key="33.101.28.2146.1536.771.768.0.0.0.300.155.142.197.197.796.1060.1.0.127.300.155.142.197.197.734.1059.1.0.232.315.116.142.462.462.779.769.1.0.0"
 			 label_color="FF8B7C73"
 			 color="FF8B7C73"
 			 color2="FF8B7C73"
@@ -38,7 +38,7 @@
 			 settlement_banner_mesh="none"
 			 is_bandit="true"
 			 is_outlaw="true"
-			 name="{=1sbJQR4H}Looters"
+			 name="{=!}Empire Outlaws"
 			 tier="1" />
 	<Faction id="sea_raiders"
 			 banner_key="20.12.116.1536.1536.768.768.1.0.0"
@@ -112,12 +112,13 @@
 			 tier="1" />
 	<!--main factions-->
 	<Faction id="averland_clan_1"
-			 name="{=!}Test Clan Averland"
+			 name="{=!}Averland's first clan"
 			 tier="6"
 			 owner="Hero.averland_clan_1_1"
 			 culture="Culture.empire"
 			 super_faction="Kingdom.averland"
-			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" />
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" 
+			 text="House Leitdorf has given several heroes to the Empire."/>
 	<Faction id="sylvania_clan_1"
 			 name="{=!}Test Clan Sylvania"
 			 tier="6"

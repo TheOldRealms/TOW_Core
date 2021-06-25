@@ -74,6 +74,13 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_wanderertemplates"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
 			<XmlName id="SkillSets" path="tow_skillsets"/>
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
@@ -97,5 +104,14 @@
 				<GameType value = "EditorGame"/>
 			</IncludedGameTypes>
 		</XmlNode> 
+		<XmlNode>                
+			<XmlName id="EquipmentRosters" path="tow_equipment_sets"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
+				<GameType value = "EditorGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
 	</Xmls>
 </Module>

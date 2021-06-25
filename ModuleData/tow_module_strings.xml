@@ -2,5 +2,33 @@
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
 	<strings>
 		<string id="tow_placeholder_1" text="{=!}This is how you add more strings." />
+
+		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_c.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="response_1.tow_wanderer_empire_0" text="{=!}Most noble of you." />
+		<string id="response_2.tow_wanderer_empire_0" text="{=!}I would rather not." />
+		<string id="backstory_d.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="generic_backstory.tow_wanderer_empire_0" text="{=!}I'm a bright wizard, with imperial college training. I'm sure by now you've met a few of us around, and know a bit about what we can do." />
+
+		<string id="prebackstory.tow_wanderer_empire_1" text="{=!}I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_b.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_c.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="response_1.tow_wanderer_empire_1" text="{=!}Most noble of you." />
+		<string id="response_2.tow_wanderer_empire_1" text="{=!}I would rather not." />
+		<string id="backstory_d.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="generic_backstory.tow_wanderer_empire_1" text="{=!}I'm a warrior priest from the cult of Sigmar. I'm sure by now you've met a few of us around, and know a bit about what we can do." />
+
+		<string id="prebackstory.tow_wanderer_empire_2" text="{=!}I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_b.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_c.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="response_1.tow_wanderer_empire_2" text="{=!}Most noble of you." />
+		<string id="response_2.tow_wanderer_empire_2" text="{=!}I would rather not." />
+		<string id="backstory_d.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="generic_backstory.tow_wanderer_empire_2" text="{=!}I'm a witch hunter. Do you really need me to tell you what we do? " />
+
 	</strings>
 </base>
