@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settlements>
   <!--Quest Battle Site "Settlements"-->
+  <!--
   <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" posX="1429.551" posY="895.204" culture="Culture.neutral_culture" prosperity="500" text="{=!}Chaos Portal" owner="Faction.neutral">
     <Components>
       <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="gui_bg_village_empire" wait_mesh="wait_empire_village" gate_rotation="0.0" />
@@ -9,6 +10,7 @@
       <Location id="questbattle_location" scene_name="training_field_2" max_prosperity="70" />
     </Locations>
   </Settlement>
+  -->
   <!-- Averland 2 Towns 11 villages 2 castles -->
   <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1436.813" posY="925.675" culture="Culture.empire" prosperity="3400" gate_posX="1433.058" gate_posY="923.334" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
     <Components>
