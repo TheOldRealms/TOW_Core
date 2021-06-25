@@ -212,7 +212,7 @@
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
-	<!-- Empire Handgunner TODO: implement guns-->
+	<!-- Empire Handgunner -->
 	<NPCCharacter id="tow_empire_handgunner"
 				  default_group="Ranged"
 				  level="16"
@@ -224,6 +224,7 @@
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
 		<upgrade_targets>
+			<upgrade_target id="NPCCharacter.tow_empire_outrider" />
 		</upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
@@ -268,6 +269,35 @@
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
 				<equipment slot="Leg" id="Item.rough_tied_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+	<!-- Empire Outrider -->
+	<NPCCharacter id="tow_empire_outrider"
+				  default_group="HorseArcher"
+				  level="21"
+				  name="{=!}Empire Outrider"
+				  occupation="Soldier"
+				  culture="Culture.empire"
+				  upgrade_requires="ItemCategory.horse"
+				  skill_template="SkillSet.tow_skills_level21">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.tow_handgun_002" />
+				<equipment slot="Item2" id="Item.musket_ball" />
+				<equipment slot="Item3" id="Item.musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Cape" id="Item.a_battania_cloak_a" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.northern_light_harness" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -422,6 +452,34 @@
 						   id="Item.empire_halberdier_body_001" />
 				<equipment slot="Leg"
 						   id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+	<!-- Empire Knight -->
+	<NPCCharacter id="tow_empire_knight"
+				  default_group="Cavalry"
+				  level="21"
+				  name="{=!}Empire Knight"
+				  occupation="Soldier"
+				  is_basic_troop="true"
+				  culture="Culture.empire"
+				  skill_template="SkillSet.tow_skills_level21">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.empire_shield_004" />
+				<equipment slot="Head" id="Item.tilean_knight_helmet_open_001" />
+				<equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.tilean_knight_body_001" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>

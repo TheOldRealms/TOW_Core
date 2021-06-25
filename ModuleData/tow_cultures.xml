@@ -5,7 +5,7 @@
 			 is_main_culture="true"
 			 color="FF4E3A55"
 			 color2="FFDE9953"
-			 elite_basic_troop="NPCCharacter.imperial_vigla_recruit"
+			 elite_basic_troop="NPCCharacter.tow_empire_knight"
 			 basic_troop="NPCCharacter.tow_empire_recruit"
 			 melee_militia_troop="NPCCharacter.tow_empire_state_troop"
 			 ranged_militia_troop="NPCCharacter.tow_empire_archer"
