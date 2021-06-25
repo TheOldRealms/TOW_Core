@@ -16,6 +16,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.QuestBattleLocation;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -56,6 +57,13 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
             else return true;
+        }
+
+        [HarmonyPatch("BeforeRegisterTypes")]
+        [HarmonyPostfix]
+        public static void Postfix(MBObjectManager objectManager)
+        {
+            objectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
         }
 
         [HarmonyPostfix]

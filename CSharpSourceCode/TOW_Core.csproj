@@ -307,6 +307,7 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
