@@ -59,13 +59,6 @@ namespace TOW_Core.HarmonyPatches
             else return true;
         }
 
-        [HarmonyPatch("BeforeRegisterTypes")]
-        [HarmonyPostfix]
-        public static void Postfix(MBObjectManager objectManager)
-        {
-            objectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
-        }
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "OnNewGameCreated")]
         public static void AfterWandererTemplatesBuilt(ref List<CharacterObject> ____companionTemplates)

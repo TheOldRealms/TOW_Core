@@ -31,6 +31,8 @@ using TaleWorlds.Engine.Screens;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.ShieldPatterns;
+using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core
 {
@@ -91,6 +93,13 @@ namespace TOW_Core
             if (game.GameType.GetType() == typeof(CustomGame))
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
+            }
+            else if(game.GameType.GetType() == typeof(Campaign))
+            {
+                if(game.ObjectManager != null)
+                {
+                    game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
+                }
             }
         }
 
