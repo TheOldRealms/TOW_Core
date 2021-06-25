@@ -117,7 +117,8 @@
 			 owner="Hero.averland_clan_1_1"
 			 culture="Culture.empire"
 			 super_faction="Kingdom.averland"
-			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" />
+			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" 
+			 text="House Leitdorf has given several heroes to the Empire."/>
 	<Faction id="sylvania_clan_1"
 			 name="{=!}Test Clan Sylvania"
 			 tier="6"

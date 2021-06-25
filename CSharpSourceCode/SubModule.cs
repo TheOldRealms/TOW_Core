@@ -30,6 +30,7 @@ using SandBox.View;
 using TaleWorlds.Engine.Screens;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
+using TOW_Core.Battle.ShieldPatterns;
 
 namespace TOW_Core
 {
@@ -62,11 +63,16 @@ namespace TOW_Core
             LoadStatusEffects();
             LoadSprites();
             LoadVoices();
-
+            LoadShieldPatterns();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
             LoadFontAssets();
+        }
+
+        private void LoadShieldPatterns()
+        {
+            ShieldPatternsManager.LoadShieldPatterns();
         }
 
         public void LoadFontAssets()
@@ -82,7 +88,6 @@ namespace TOW_Core
         {
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
-            LoadSprites();
             if (game.GameType.GetType() == typeof(CustomGame))
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
@@ -121,6 +126,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
+            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadAttributes()

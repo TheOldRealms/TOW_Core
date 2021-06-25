@@ -5,7 +5,7 @@
 	<Hero id="main_hero_mother" alive="false" is_noble="true" faction="Faction.player_faction" spouse="Hero.main_hero_father" />
 
 	<Hero id="sylvania_clan_1_1" is_noble="true" faction="Faction.sylvania_clan_1" />
-	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" />
+	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" text="{=!}Marius Leitdorf, known most infamously as the Mad Count, is the Elector Count of Averland, counted as one of the bravest, albeit most insane Generals within the Empire's armed forces. Not many men can be said to have waged wars against forests, swarms of bees and half-imagined fishmen, so it is not without good reason that Marius Leitdorf is known as the Mad Count. Most knew Marius for his eccentric and flamboyant nature; his bouts of screaming rage, his periods of melancholy and his mercurial conduct at court."/>
 	<Hero id="stirland_clan_1_1" is_noble="true" faction="Faction.stirland_clan_1" />
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
 </Heroes>
