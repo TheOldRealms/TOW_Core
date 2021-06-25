@@ -214,7 +214,7 @@
     </CommonAreas>
   </Settlement>
   <!--Stirland-->
-  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1443.906" posY="1014.65" culture="Culture.empire" prosperity="2000" gate_posX="1444.594" gate_posY="1010.477" text="{=4ENGzVaC}Capital of Stirland, Wurtbad rests at the terminus of the Old Dwarf Road, surrounded by the Great Forest.">
+  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1443.906" posY="1014.65" culture="Culture.empire" prosperity="2000" gate_posX="1444.594" gate_posY="1010.477" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
     <Components>
       <Town id="town_comp_ST1" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -234,7 +234,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_1" name="{=Settlements.Settlement.name.village_ST1_1}biberhof" posX="1434.083" posY="1014.401" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_1}">
+  <Settlement id="village_ST1_1" name="{=Settlements.Settlement.name.village_ST1_1}Biberhof" posX="1434.083" posY="1014.401" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_1}Biberhof lies surrounded by thick forest just a few kilometers south of Wurtbad. Its inhabitants have become quite skilled in the use of the axe, both to harvest high quality wood from the old trees around it and defending their camps from vermin and the occasional highwayman. The timber from Biderhof is sought after by the nobility of Wurtbad, as it is said its dark hues is anathema to any vampire unlucky enough to be skewed by a stake made from this wood.">
     <Components>
       <Village id="village_comp_ST1_1" village_type="VillageType.lumberjack" hearth="85" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -247,7 +247,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_2" name="{=Settlements.Settlement.name.village_ST1_2}Julbach" posX="1461.924" posY="1011.175" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_2}">
+  <Settlement id="village_ST1_2" name="{=Settlements.Settlement.name.village_ST1_2}Julbach" posX="1461.924" posY="1011.175" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_2}Julbach is located halfway between River Stir and River Aver. It sits in a valley shadowed by the Zaya hills where sheep roam freely along Nuln road. The Nattern Forest, a few miles to the West, serves as both a source of wealth and superstition, as even in the coldest nights of winter, when both insect and beast sleep, a rumble of hooves can be heard in the distance.">
     <Components>
       <Village id="village_comp_ST1_2" village_type="VillageType.silver_mine" hearth="43" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -260,7 +260,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}oberwil" posX="1415.369" posY="1012.854" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}">
+  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" posX="1415.369" posY="1012.854" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
     <Components>
       <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -273,7 +273,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_4" name="{=Settlements.Settlement.name.village_ST1_4}tarshof" posX="1447.646" posY="993.234" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_4}">
+  <Settlement id="village_ST1_4" name="{=Settlements.Settlement.name.village_ST1_4}Tarshof" posX="1447.646" posY="993.234" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_4}Tarshof is situated on the Northern edge of the Stirhügel hills. The village enjoys plenty of traffic from traders travelling between Wurtbad and Wörden along the Old Dwarf Road. As a result almost every house in the village professes to be an Inn, although the hospitality varies wildly and travellers are as likely to find themselves sleeping on a pile of hay as a proper pallet bed.">
     <Components>
       <Village id="village_comp_ST1_4" village_type="VillageType.sheep_farm" hearth="72" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -286,7 +286,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_1" posX="1382.927" posY="986.824" prosperity="420" culture="Culture.empire" gate_posX="1383.047" gate_posY="985.6456">
+  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_1" posX="1382.927" posY="986.824" prosperity="420" culture="Culture.empire" gate_posX="1383.047" gate_posY="985.6456" text="{=Settlements.Settlement.text.castle_ST1}Flensburg is a small market town nestled in the Zaya Hills to the West of the Stirhügel. The hills are perfect for sheep grazing, and the town’s economy is based on fleece, lamb and mutton trade. The town is also noted in the region for having a major temple of Shallya.">
     <Components>
       <Town id="castle_comp_ST1" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -296,7 +296,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_ST1_1" name="{=Settlements.Settlement.name.castle_village_ST1_1}Lochen" posX="1399.979" posY="990.774" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_1}">
+  <Settlement id="castle_village_ST1_1" name="{=Settlements.Settlement.name.castle_village_ST1_1}Lochen" posX="1399.979" posY="990.774" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_1}Lochen is a subsidiary settlement of the nearby town Flensburg. The village mostly consists of farmers who supply the market town with grain. Lochen falls under the protection of Countess Petra Harden and her troops.">
     <Components>
       <Village id="castle_village_comp_ST1_1" village_type="VillageType.wheat_farm" hearth="80" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -322,7 +322,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_1" posX="1428.838" posY="942.029" prosperity="420" culture="Culture.empire" gate_posX="1430" gate_posY="942.2568">
+  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_1" posX="1428.838" posY="942.029" prosperity="420" culture="Culture.empire" gate_posX="1430" gate_posY="942.2568" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
     <Components>
       <Town id="castle_comp_ST2" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -332,7 +332,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_ST2_1" name="{=Settlements.Settlement.name.castle_village_ST2_1}Chrobok" posX="1400.573" posY="953.471" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_1}">
+  <Settlement id="castle_village_ST2_1" name="{=Settlements.Settlement.name.castle_village_ST2_1}Chrobok" posX="1400.573" posY="953.471" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_1}Chrobok is a small farming community situated in the low wetlands between the rivers Mattid, Lammer and Aver. The natural irrigation provided by the rivers has made the region perfect arable land, and the nearby Franzen and Averheim enjoy a bountiful supply of grain from the village.">
     <Components>
       <Village id="castle_village_comp_ST2_1" village_type="VillageType.wheat_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -345,7 +345,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_ST2_2" name="{=Settlements.Settlement.name.castle_village_ST2_2}Russbach" posX="1416.681" posY="947.055" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_2}">
+  <Settlement id="castle_village_ST2_2" name="{=Settlements.Settlement.name.castle_village_ST2_2}Russbach" posX="1416.681" posY="947.055" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_2}Russbach is a hamlet situated in the sodden fens to the South of the Stirhügel hills. Just beneath the surface of the earth are deep clay pits, and the people of Russbach make a living by mining the building material. Travellers know they’re near the village when they can smell the acrid smoke of the brickmakers’ kilns.">
     <Components>
       <Village id="castle_village_comp_ST2_2" village_type="VillageType.swine_farm" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -571,7 +571,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1451.011" posY="972.307" prosperity="420" culture="Culture.empire" gate_posX="1451.798" gate_posY="972.2277">
+  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1451.011" posY="972.307" prosperity="420" culture="Culture.empire" gate_posX="1451.798" gate_posY="972.2277" text="{=Settlements.Settlement.text.castle_village_ST4_1}Wördern is a small town hidden between mountains and valleys. The rough terrain makes expansion near impossible, but the intersection of the Old Dwarf Road and the Prager strasse makes passing along viable; not that it matters, as no outsider finds kindness in Wörden. The odd mootlander can occasionally be seen purchasing supplies for the road, but its main attraction is the Wörden Meat and Cattle auction house. It’s the only town in Stirland that can be smelled before it is seen.">
     <Components>
       <Town id="castle_comp_ST4" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -581,7 +581,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_ST4_1" name="{=Settlements.Settlement.name.castle_village_ST4_1}Nussbach" posX="1434.039" posY="959.064" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_1}">
+  <Settlement id="castle_village_ST4_1" name="{=Settlements.Settlement.name.castle_village_ST4_1}Nussbach" posX="1434.039" posY="959.064" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_1}Nussbach is a small hamlet at the fork of River Lammer, where its two sources meet. The fertile flats at its south are the perfect spot to raise cattle, which Nussbachers have been doing for generations. The peaceful village is only bothered from time to time with land disputes from upstart Averland nobles.">
     <Components>
       <Village id="castle_village_comp_ST4_1" village_type="VillageType.vineyard" hearth="74" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -594,7 +594,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_ST4_2" name="{=Settlements.Settlement.name.castle_village_ST4_2}Kelham" posX="1454.614" posY="955.087" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_2}">
+  <Settlement id="castle_village_ST4_2" name="{=Settlements.Settlement.name.castle_village_ST4_2}Kelham" posX="1454.614" posY="955.087" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_2}Kelham is isolated among the hills of the Old Dwarf Road. Its secluded location allows the inhabitants to peacefully farm wheat and other cereals. Its golden fields go just about the start of Altern Forest, where the fertility of the land drops inexplicably. Whatever is not used for local consumption is sent out along the Moot Road to the rest of eastern Stirland and, ultimately, the Mootlands.">
     <Components>
       <Village id="castle_village_comp_ST4_2" village_type="VillageType.sheep_farm" hearth="52" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -737,7 +737,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_SY1_1" name="{=Settlements.Settlement.name.village_SY1_1}drakenhof" posX="1627.818" posY="962.103" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_1}">
+  <Settlement id="village_SY1_1" name="{=Settlements.Settlement.name.village_SY1_1}Drakenhof" posX="1627.818" posY="962.103" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_1}">
     <Components>
       <Village id="village_comp_SY1_1" village_type="VillageType.sheep_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -956,7 +956,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}nachtschlosse castle" owner="Faction.sylvania_clan_1" posX="1651.078" posY="927.899" prosperity="420" culture="Culture.khuzait" gate_posX="1650.724" gate_posY="928.8286">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1651.078" posY="927.899" prosperity="420" culture="Culture.khuzait" gate_posX="1650.724" gate_posY="928.8286">
     <Components>
       <Town id="castle_comp_SY4" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
