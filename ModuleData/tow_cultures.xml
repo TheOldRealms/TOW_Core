@@ -35,7 +35,7 @@
 			 steward="NPCCharacter.steward_empire"
 			 blacksmith="NPCCharacter.blacksmith_empire"
 			 weaponsmith="NPCCharacter.weaponsmith_empire"
-			 townswoman="NPCCharacter.townswoman_empire"
+			 townswoman="NPCCharacter.tow_townsman_villager"
 			 townswoman_infant="NPCCharacter.townswoman_infant_empire"
 			 townswoman_child="NPCCharacter.townswoman_child_empire"
 			 townswoman_teenager="NPCCharacter.townswoman_teenager_empire"
