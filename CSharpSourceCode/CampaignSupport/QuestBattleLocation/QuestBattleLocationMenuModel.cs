@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace TOW_Core.CampaignSupport.QuestBattleLocation
 {
-    public class QuestBattleLocationMenuModel : StoryModeEncounterGameMenuModel
+    public class QuestBattleLocationMenuModel : DefaultEncounterGameMenuModel
     {
         public override string GetEncounterMenu(PartyBase attackerParty, PartyBase defenderParty, out bool startBattle, out bool joinBattle)
         {
