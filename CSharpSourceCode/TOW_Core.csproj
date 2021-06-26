@@ -308,6 +308,9 @@
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleEncounter.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationBehaviour.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />

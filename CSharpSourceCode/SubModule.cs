@@ -33,6 +33,8 @@ using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.ShieldPatterns;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
+using StoryMode.GameModels;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace TOW_Core
 {
@@ -123,6 +125,12 @@ namespace TOW_Core
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
+
+                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
+                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
+                starter.AddModel(new QuestBattleLocationMenuModel());
+
+                starter.AddBehavior(new QuestBattleLocationBehaviour());
             }
         }
 
