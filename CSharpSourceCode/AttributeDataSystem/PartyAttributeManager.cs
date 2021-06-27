@@ -118,7 +118,7 @@ namespace TOW_Core.AttributeDataSystem
             {
                 
                 //random data   work around for rogue members
-                staticAttribute.race = troop.Culture.StringId;
+                staticAttribute.race = "Human";
                 staticAttribute.status = "not so ready";
                 staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = troop.ToString();
@@ -127,7 +127,7 @@ namespace TOW_Core.AttributeDataSystem
             }
             
             //random data
-            staticAttribute.race = troop.Culture.StringId;
+            staticAttribute.race = "Human";
             staticAttribute.status = "battle ready";
             staticAttribute.MagicEffects = new List<string>();
             staticAttribute.id = troop.ToString();
@@ -243,8 +243,9 @@ namespace TOW_Core.AttributeDataSystem
                     continue;
                 
                 StaticAttribute staticAttribute = new StaticAttribute();
-                staticAttribute.race = troop.Character.Culture.StringId;
+                staticAttribute.race = "Human";
                 staticAttribute.status = "battle ready";
+                staticAttribute.culture = troop.Character.Culture.ToString();
                 staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = troop.ToString();
                 staticAttribute.number = party.Party.MemberRoster.Count;
@@ -254,8 +255,9 @@ namespace TOW_Core.AttributeDataSystem
             if (party.IsBandit)
             {
                 StaticAttribute staticAttribute = new StaticAttribute();
-                staticAttribute.race = "bandit";
+                staticAttribute.race = "Human";
                 staticAttribute.status = "battle ready";
+                staticAttribute.culture = "Norsca"; //dummy value just for testing
                 staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = party.Party.ToString();
                 partyAttribute.PartyType = PartyType.RogueParty;
@@ -268,7 +270,8 @@ namespace TOW_Core.AttributeDataSystem
                 partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute();
                 StaticAttribute companionAttribute = new StaticAttribute();
-                leaderAttribute.race = Leader.Culture.ToString();
+                leaderAttribute.race = "Human";     //hard coded needs some sort of XML assignment here
+                leaderAttribute.culture = Leader.Culture.ToString();
                 leaderAttribute.MagicUser = true;   //neeeds a proper check
                 leaderAttribute.faith = 10;
                 partyAttribute.LeaderAttribute = leaderAttribute;
@@ -277,7 +280,7 @@ namespace TOW_Core.AttributeDataSystem
                 foreach (var companion in Leader.CompanionsInParty)
                 {
                     
-                    companionAttribute.race = companion.Culture.ToString();
+                    companionAttribute.race = "Human";
                     companionAttribute.MagicUser = true;    //here aswell proper check of magic abilities
                     partyAttribute.CompanionAttributes.Add(companionAttribute);
                 }
@@ -304,7 +307,8 @@ namespace TOW_Core.AttributeDataSystem
             attribute.MagicEffects.Add("Fireball");
             attribute.MagicEffects.Add("BurningSkull");
             attribute.SkillBuffs.Add("EternalFire");
-            attribute.race = hero.Culture.ToString();
+            attribute.race = "Human";
+            attribute.culture = hero.Culture.ToString();
             attribute.status = "blessed";
             
             PartyAttribute.CompanionAttributes.Add(attribute);
@@ -376,12 +380,6 @@ namespace TOW_Core.AttributeDataSystem
             _isloaded = true;
         }
 
-
-        private void FillTimer(float TickValue)
-        {
-            
-        }
-        
         private void FillWindsOfMagic(float TickValue)
         {
             foreach (var entry in _partyAttributes)
