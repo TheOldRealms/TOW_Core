@@ -111,9 +111,7 @@ namespace TOW_Core.AttributeDataSystem
                 }
                 
             }
-            
             _agents.Add(agent);
-           // TOWCommon.Say("agent of " +  agent.Origin.BattleCombatant.Name.ToString()+  "added to Banner to dictionary ");
         }
          
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
