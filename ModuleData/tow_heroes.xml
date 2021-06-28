@@ -4,8 +4,22 @@
 	<Hero id="main_hero_father" alive="false" is_noble="true" faction="Faction.player_faction" spouse="Hero.main_hero_mother" />
 	<Hero id="main_hero_mother" alive="false" is_noble="true" faction="Faction.player_faction" spouse="Hero.main_hero_father" />
 	
-	<!-- Sylvania Clans -->
+	<!-- Sylvania Clan 1 -->
 	<Hero id="sylvania_clan_1_1" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="vc_lord_sylvania_first_2" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="vc_lord_sylvania_first_3" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="vc_lord_sylvania_first_4" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="vc_lord_sylvania_first_5" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<!-- Sylvania Clan 2 -->
+	<Hero id="vc_lord_sylvania_second_1" is_noble="true" faction="Faction.sylvania_clan_2" />
+	<Hero id="vc_lord_sylvania_second_2" is_noble="true" faction="Faction.sylvania_clan_2" />
+	<Hero id="vc_lord_sylvania_second_3" is_noble="true" faction="Faction.sylvania_clan_2" />
+	<Hero id="vc_lord_sylvania_second_4" is_noble="true" faction="Faction.sylvania_clan_2" />
+	<Hero id="vc_lord_sylvania_second_5" is_noble="true" faction="Faction.sylvania_clan_2" />
+	<!-- Sylvania Clan 3 -->
+	<Hero id="vc_lord_sylvania_third_1" is_noble="true" faction="Faction.sylvania_clan_3" />
+	<Hero id="vc_lord_sylvania_third_2" is_noble="true" faction="Faction.sylvania_clan_3" />
+	<Hero id="vc_lord_sylvania_third_3" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<!-- Averland Clan 1 -->
 	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" text="{=!}Marius Leitdorf, known most infamously as the Mad Count, is the Elector Count of Averland, counted as one of the bravest, albeit most insane Generals within the Empire's armed forces. Not many men can be said to have waged wars against forests, swarms of bees and half-imagined fishmen, so it is not without good reason that Marius Leitdorf is known as the Mad Count. Most knew Marius for his eccentric and flamboyant nature; his bouts of screaming rage, his periods of melancholy and his mercurial conduct at court."/>
 	<Hero id="emp_lord_averland_oberaverlander_2" is_noble="true" faction="Faction.averland_clan_1" />
@@ -19,6 +33,7 @@
 	<Hero id="emp_lord_averland_westaverlander_1" is_noble="true" faction="Faction.averland_clan_3" />
 	<Hero id="emp_lord_averland_westaverlander_2" is_noble="true" faction="Faction.averland_clan_3" />
 	<Hero id="emp_lord_averland_westaverlander_3" is_noble="true" faction="Faction.averland_clan_3" />
+	<Hero id="emp_lord_averland_westaverlander_4" is_noble="true" faction="Faction.averland_clan_3" />
 	<!-- Stirland Clan 1 -->
 	<Hero id="stirland_clan_1_1" is_noble="true" faction="Faction.stirland_clan_1" />
 	<Hero id="emp_lord_stirland_mittelstirlander_2" is_noble="true" faction="Faction.stirland_clan_1" />

@@ -194,7 +194,7 @@
 				<equipment slot="Item1" id="Item.crossbow_a" />
 				<equipment slot="Item2" id="Item.bolt_a" />
 				<equipment slot="Item3" id="Item.bolt_a" />
-				<equipment slot="Head" id="Item.cervelliere_over_arming_coif" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
 				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
@@ -232,7 +232,7 @@
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
-				<equipment slot="Head" id="Item.cervelliere_over_arming_coif" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
 				<equipment slot="Cape" id="Item.a_battania_cloak_a" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
 				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
