@@ -16,7 +16,7 @@ namespace TOW_Core.AttributeDataSystem
         [SaveableField(3)]
         public float WindsOfMagic;
         [SaveableField(4)]
-        public bool MagicUserParty;
+        public bool IsMagicUserParty;
         [SaveableField(5)]
         public StaticAttribute LeaderAttribute;
         [SaveableField(6)]

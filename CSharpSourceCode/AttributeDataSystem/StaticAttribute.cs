@@ -12,7 +12,7 @@ namespace TOW_Core.AttributeDataSystem
         //dummy data types
         [SaveableField(0)] public string race;  //mostly hardcoded currently needs to be assigned via xml or similar also counts for many other values in this class
         [SaveableField(1)] public string culture; // eg. undead, Vampire, Human
-        [SaveableField(2)]public bool MagicUser;   
+        [SaveableField(2)]public bool IsMagicUser;   
         [SaveableField(3)] public int faith;    
         [SaveableField(4)]public string status;
         [SaveableField(5)]public List<string> SkillBuffs =new List<string>();
