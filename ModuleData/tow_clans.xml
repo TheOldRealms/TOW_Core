@@ -135,12 +135,26 @@
 			 banner_key="11.96.96.4345.4345.768.768.1.0.0.521.5.5.512.512.769.764.1.0.0" />
 	<!--Sylvania faction-->
 	<Faction id="sylvania_clan_1"
-			 name="{=!}Test Clan Sylvania"
+			 name="{=!}Von Carstein"
 			 tier="6"
 			 owner="Hero.sylvania_clan_1_1"
 			 culture="Culture.khuzait"
 			 super_faction="Kingdom.sylvania"
 			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />
+	<Faction id="sylvania_clan_2"
+			 name="{=!}Lahmian"
+			 tier="6"
+			 owner="Hero.sylvania_clan_1_1"
+			 culture="Culture.khuzait"
+			 super_faction="Kingdom.sylvania"
+			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />
+	<Faction id="sylvania_clan_3"
+			 name="{=!}Blood Knights"
+			 tier="6"
+			 owner="Hero.sylvania_clan_1_1"
+			 culture="Culture.khuzait"
+			 super_faction="Kingdom.sylvania"
+			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />			
 	<!--Stirland faction-->
 	<Faction id="stirland_clan_1"
 			 name="{=!}Mittelstirlander"
