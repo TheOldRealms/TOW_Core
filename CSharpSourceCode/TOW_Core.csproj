@@ -311,6 +311,8 @@
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleEncounter.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationBehaviour.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplate.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplateManager.cs" />
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
@@ -325,6 +327,7 @@
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />
     <Compile Include="HarmonyPatches\CampaignPatches.cs" />
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
+    <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />

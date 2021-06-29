@@ -3,7 +3,7 @@
   <!--Quest Battle Site "Settlements"-->
   <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" posX="1429.551" posY="895.204" culture="Culture.neutral_culture" prosperity="500" text="{=!}Chaos Portal" owner="Faction.neutral">
     <Components>
-      <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="gui_bg_village_empire" wait_mesh="wait_empire_village" gate_rotation="0.0" />
+      <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="vampire_city_background" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.questbattle_template">
       <Location id="questbattle_location" scene_name="training_field_2" max_prosperity="70" />
@@ -35,7 +35,7 @@
       <Village id="village_comp_AV1_1" village_type="VillageType.vineyard" hearth="600" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="TOW_Profy_Empire_Village_a" />
+      <Location id="village_center" scene_name="vlandia_village_i" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />

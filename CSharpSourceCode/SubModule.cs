@@ -68,10 +68,16 @@ namespace TOW_Core
             LoadSprites();
             LoadVoices();
             LoadShieldPatterns();
+            LoadQuestBattleTemplates();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
             LoadFontAssets();
+        }
+
+        private void LoadQuestBattleTemplates()
+        {
+            QuestBattleTemplateManager.LoadQuestBattleTemplates();
         }
 
         private void LoadShieldPatterns()
