@@ -33,8 +33,8 @@ namespace TOW_Core.Abilities
         {
             base.OnRemoved(removeReason);
             //clean up
-            _movingSound.Release();
-            _explosionSound.Release();
+            if(_movingSound != null) _movingSound.Release();
+            if(_explosionSound != null) _explosionSound.Release();
             _casterAgent = null;
             _ability = null;
             _movingSound = null;

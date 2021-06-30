@@ -17,7 +17,7 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Item2" id="tow_handgun_002" />
 				<equipment slot="Item3" id="musket_ball" />
 				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />

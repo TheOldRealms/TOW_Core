@@ -299,6 +299,8 @@
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
+    <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffect.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectComponent.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />
@@ -306,6 +308,12 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleEncounter.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationBehaviour.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplate.cs" />
+    <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplateManager.cs" />
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
@@ -320,6 +328,7 @@
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />
     <Compile Include="HarmonyPatches\CampaignPatches.cs" />
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
+    <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />

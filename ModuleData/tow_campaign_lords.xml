@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <NPCCharacters>
 	<!-- Averland Faction Leader-->
 	<NPCCharacter id="averland_clan_1_1" name="{=!}Marius Leitdorf" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
@@ -17,7 +17,7 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.runefang_001" />
-				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Item2" id="tow_handgun_002" />
 				<equipment slot="Item3" id="musket_ball" />
 				<equipment slot="Head" id="Item.empire_general_helmet_001" />
@@ -34,7 +34,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Stirland Faction Leader-->
-	<NPCCharacter id="stirland_clan_1_1" name="{=!}Stirland Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="stirland_clan_1_1" name="{=!}Alberich Haupt-Anderssen" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
 		</face>
@@ -100,7 +100,953 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Sylvania Faction Leader-->
-	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Sylvania Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Mannfred von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- AVERLAND LORDS -->
+	<!-- Filibert Leitdorf -->
+	<NPCCharacter id="emp_lord_averland_oberaverlander_2" name="{=!}Filibert Leitdorf" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="21.33" weight="0.3441" build="0.4213"  key="0008140C4044200F84A66FE0C5160011796A2A6860940F01C4687846453C868E0006560200BC899B00000000000000000000000000000000000000004A044042"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Hans Leitdorf -->
+	<NPCCharacter id="emp_lord_averland_oberaverlander_3" name="{=!}Hans Leitdorf" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="66.66" weight="0.3719" build="1"  key="00082C0D0E440204E3D3AC37B8B52B677BB88F4155230509583D6ABC3D49568806AF66680A7A595C0000000000000000000000000000000000000000015C1105"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Mathias Alptruam -->
+	<NPCCharacter id="emp_lord_averland_unteraverlander_1" name="{=!}Mathias Alptruam" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.21" weight="0.946" build="0.4345"  key="0008000FCE001144E7F66F8A7758D0F5A35E8F6201D0060401FF00FD8C8336860497E645096DFAB800000000000000000000000000000000000000003D2C9102"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Count Dieter von Heine -->
+	<NPCCharacter id="emp_lord_averland_unteraverlander_2" name="{=!}Count Dieter von Heine" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="87.68" weight="0.946" build="0.0108"  key="0002440996A010C173E67DA0524700EA2C8CE765ADE87323A44675FF753A8A880990E69A0985C6D300000000000000000000000000000000000000007B2C5046"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Count Matthias von Grünwald -->
+	<NPCCharacter id="emp_lord_averland_unteraverlander_3" name="{=!}Count Matthias von Grünwald" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="55.28" weight="0.909" build="0.9799"  key="000A380FCFB412CE46846E755B76248930F078CCB5A30979AF980867876A256905DFE6560D6E5CA900000000000000000000000000000000000000003DAC4106"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Baron Boris Ulbricht -->
+	<NPCCharacter id="emp_lord_averland_unteraverlander_4" name="{=!}Baron Boris Ulbricht" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="60.45" weight="0.5295" build="0.4367"  key="0008EC0795B437C4D974478A5AF37286E207A7340792480075776A6F803769D40687866708D9F099000000000000000000000000000000000000000059146006"  />
+
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Countess Selena von Kusch -->
+	<NPCCharacter id="emp_lord_averland_westaverlander_1" name="{=!}Countess Selena von Kusch" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+		<face>
+			<BodyProperties version="4" age="42.54" weight="0.4354" build="0.4758"  key="0002780612000015B76A72D8C767EB7596BEB8765B4A03B5AA3897E433BC837803877635083B7767000000000000000000000000000000000000000063144083"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Baron Sigmund Hindenberg -->
+	<NPCCharacter id="emp_lord_averland_westaverlander_2" name="{=!}Baron Sigmund Hindenberg" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="38.69" weight="0.0124" build="0.9429"  key="0005F40FD2881100AB5007CF5885F0E8499BF04055711F4ABB7AB48967A258C6027E0625075E8C7500000000000000000000000000000000000000003EF49042"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Baroness Elise Alder -->
+	<NPCCharacter id="emp_lord_averland_westaverlander_3" name="{=!}Baroness Elise Alder" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Countess Camilla von Sachs -->
+	<NPCCharacter id="emp_lord_averland_westaverlander_4" name="{=!}Countess Camilla von Sachs" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- STIRLAND LORDS -->
+	<!-- Henry van Hankinhof -->
+	<NPCCharacter id="emp_lord_stirland_mittelstirlander_2" name="{=!}Henry van Hankinhof" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Count Erich von Halstedt -->
+	<NPCCharacter id="emp_lord_stirland_mittelstirlander_3" name="{=!}Count Erich von Halstedt" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Count Petr von Stolpe -->
+	<NPCCharacter id="emp_lord_stirland_oststirlander_1" name="{=!}Count Petr von Stolpe" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Baron Immanuel Krebs -->
+	<NPCCharacter id="emp_lord_stirland_oststirlander_2" name="{=!}Baron Immanuel Krebs" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Lord Voss -->
+	<NPCCharacter id="emp_lord_stirland_oststirlander_3" name="{=!}Lord Voss" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Countess Petra Harden -->
+	<NPCCharacter id="emp_lord_stirland_weststirlander_1" name="{=!}Countess Petra Harden" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Count Artur von Treitschke -->
+	<NPCCharacter id="emp_lord_stirland_weststirlander_2" name="{=!}Count Artur von Treitschke" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Countess Alexandra von Münsterberg -->
+	<NPCCharacter id="emp_lord_stirland_weststirlander_3" name="{=!}Countess Alexandra von Münsterberg" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+		<face>
+			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- SYLVANIA LORDS -->
+	<!-- Anark von Carstein -->
+	<NPCCharacter id="vc_lord_sylvania_first_2" name="{=!}Anark von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Helman Ghorst -->
+	<NPCCharacter id="vc_lord_sylvania_first_3" name="{=!}Helman Ghorst" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Hermann Schtillmann -->
+	<NPCCharacter id="vc_lord_sylvania_first_4" name="{=!}Hermann Schtillmann" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Gothard -->
+	<NPCCharacter id="vc_lord_sylvania_first_5" name="{=!}Gothard" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Khemalla -->
+	<NPCCharacter id="vc_lord_sylvania_second_1" name="{=!}Khemalla" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Elize von Carstein -->
+	<NPCCharacter id="vc_lord_sylvania_second_2" name="{=!}Elize von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Ariette von Carstein -->
+	<NPCCharacter id="vc_lord_sylvania_second_3" name="{=!}Ariette von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Katherina von Dernsbach -->
+	<NPCCharacter id="vc_lord_sylvania_second_4" name="{=!}Katherina von Dernsbach" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Countess Gabriella von Bundebad -->
+	<NPCCharacter id="vc_lord_sylvania_second_5" name="{=!}Countess Gabriella von Bundebad" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Walach Harkon -->
+	<NPCCharacter id="vc_lord_sylvania_third_1" name="{=!}Walach Harkon" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Gorgivich Krakvald -->
+	<NPCCharacter id="vc_lord_sylvania_third_2" name="{=!}Gorgivich Krakvald" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
+				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
+				<equipment slot="Body" id="Item.mannfred_body" />
+				<equipment slot="Cape" id="Item.mannfred_shoulders" />
+				<equipment slot="Gloves" id="Item.mannfred_hands" />
+				<equipment slot="Leg" id="Item.mannfred_legs" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Frich Von Haas -->
+	<NPCCharacter id="vc_lord_sylvania_third_3" name="{=!}Frich Von Haas" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
 		</face>
