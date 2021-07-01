@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Utilities;
 
@@ -121,7 +122,7 @@ namespace TOW_Core.AttributeDataSystem
                 return;
             }
                 
-            StaticAttribute staticAttribute = new StaticAttribute();
+            StaticAttribute staticAttribute = new StaticAttribute(party);
             if (troop.Occupation == Occupation.Bandit)
             {
                 
@@ -216,6 +217,8 @@ namespace TOW_Core.AttributeDataSystem
                 
         }
 
+        
+
         public  PartyAttribute GetAttribute(string id)
         {
             if (_partyAttributes.ContainsKey(id))
@@ -254,7 +257,7 @@ namespace TOW_Core.AttributeDataSystem
                 if(troop.Character.IsHero)
                     continue;
                 
-                StaticAttribute staticAttribute = new StaticAttribute();
+                StaticAttribute staticAttribute = new StaticAttribute(partyAttribute);
                 staticAttribute.status = "battle ready";
                 staticAttribute.id = troop.ToString();
                 staticAttribute.number = party.Party.MemberRoster.Count;
@@ -264,7 +267,7 @@ namespace TOW_Core.AttributeDataSystem
             if (party.IsBandit)
             {
                
-                StaticAttribute staticAttribute = new StaticAttribute();
+                StaticAttribute staticAttribute = new StaticAttribute(partyAttribute);
                 //random data   work around for rogue members
                 staticAttribute.status = "not so ready";
                 string undeadMoral = "Undead";
@@ -276,8 +279,8 @@ namespace TOW_Core.AttributeDataSystem
             {   
                 Hero Leader = party.LeaderHero;
                 partyAttribute.Leader = Leader;
-                StaticAttribute leaderAttribute = new StaticAttribute();
-                StaticAttribute companionAttribute = new StaticAttribute();
+                StaticAttribute leaderAttribute = new StaticAttribute(partyAttribute);
+                StaticAttribute companionAttribute = new StaticAttribute(partyAttribute);
                 leaderAttribute.faith = 10;
                 partyAttribute.LeaderAttribute = leaderAttribute;
                 partyAttribute.PartyType = PartyType.LordParty;
@@ -303,7 +306,7 @@ namespace TOW_Core.AttributeDataSystem
         {
             //reading out from an external file, just dummy data for now
             PartyAttribute PartyAttribute = GetAttribute(party.Id);
-            StaticAttribute attribute = new StaticAttribute();
+            StaticAttribute attribute = new StaticAttribute(PartyAttribute);
 
             attribute.id = hero.CharacterObject.StringId;
             
