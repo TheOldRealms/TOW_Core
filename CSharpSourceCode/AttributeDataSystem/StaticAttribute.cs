@@ -21,6 +21,12 @@ namespace TOW_Core.AttributeDataSystem
         [SaveableField(7)]public PartyBase AssignedParty;
         [SaveableField(8)]public PartyAttribute AssignedPartyAttribute;
 
+
+        public StaticAttribute (PartyAttribute partyAttribute)
+        {
+            AssignedPartyAttribute = partyAttribute;
+        }
+
         public bool IsMagicUser
         {
             get
@@ -30,15 +36,12 @@ namespace TOW_Core.AttributeDataSystem
             set
             {
                 _isMagicUser = value;
-                
+                AssignedPartyAttribute.MagicUserStateChanged();
             }
         }
 
         
-        private void MagicUserStateChanged()
-        {
-            AssignedPartyAttribute.IsMagicUserParty = _isMagicUser;
-        }
+        
     }
     public class StaticAttributeDefiner : SaveableTypeDefiner
     {
