@@ -37,6 +37,28 @@ namespace TOW_Core.AttributeDataSystem
         {
 
         }
+        
+        
+        public void MagicUserStateChanged()
+        {
+            if (LeaderAttribute.IsMagicUser)
+            {
+                IsMagicUserParty = true;
+                return;
+            }
+            
+            foreach (var attribute in CompanionAttributes)
+            {
+                if (attribute.IsMagicUser)
+                {
+                    IsMagicUserParty = true;
+                    return;
+                }
+            }
+
+            IsMagicUserParty = false;
+        }
+        
     }
     
     
