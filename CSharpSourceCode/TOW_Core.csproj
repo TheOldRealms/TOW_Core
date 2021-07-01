@@ -296,6 +296,8 @@
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
+    <Compile Include="Battle\Dismemberment\Dismemberment.cs" />
+    <Compile Include="Battle\Dismemberment\PotentialVictim.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
@@ -322,6 +324,7 @@
     <Compile Include="HarmonyPatches\CampaignPatches.cs" />
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
+    <Compile Include="HarmonyPatches\MeleeHitCallbackPatch.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
