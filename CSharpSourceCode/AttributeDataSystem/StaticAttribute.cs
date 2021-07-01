@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.SaveSystem;
 
@@ -10,19 +11,35 @@ namespace TOW_Core.AttributeDataSystem
     public class StaticAttribute
     {
         //dummy data types
-        [SaveableField(0)] public string race;  //mostly hardcoded currently needs to be assigned via xml or similar also counts for many other values in this class
-        [SaveableField(1)] public string culture; // eg. undead, Vampire, Human
-        [SaveableField(2)]public bool IsMagicUser;   
-        [SaveableField(3)] public int faith;    
-        [SaveableField(4)]public string status;
-        [SaveableField(5)]public List<string> SkillBuffs =new List<string>();
-        [SaveableField(6)]public List<string> MagicEffects = new List<string>();
-        [SaveableField(7)]public string id;
-        [SaveableField(8)]public int number;
-        [SaveableField(9)]public PartyBase AssignedParty;
+        [SaveableField(0)] private  bool _isMagicUser;   
+        [SaveableField(1)] public int faith;    
+        [SaveableField(2)]public string status;
+        [SaveableField(3)]public List<string> Abilities =new List<string>();
+        [SaveableField(4)]public List<string> CharacterAttributes = new List<string>();
+        [SaveableField(5)]public string id;
+        [SaveableField(6)]public int number;
+        [SaveableField(7)]public PartyBase AssignedParty;
+        [SaveableField(8)]public PartyAttribute AssignedPartyAttribute;
+
+        public bool IsMagicUser
+        {
+            get
+            { 
+               return  _isMagicUser;
+            }
+            set
+            {
+                _isMagicUser = value;
+                
+            }
+        }
+
+        
+        private void MagicUserStateChanged()
+        {
+            AssignedPartyAttribute.IsMagicUserParty = _isMagicUser;
+        }
     }
-    
-    
     public class StaticAttributeDefiner : SaveableTypeDefiner
     {
         public StaticAttributeDefiner() : base(1_543_133) { }

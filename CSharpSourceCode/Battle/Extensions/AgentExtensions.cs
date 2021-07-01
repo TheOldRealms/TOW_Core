@@ -71,6 +71,15 @@ namespace TOW_Core.Battle.Extensions
             }
         }
 
+        public static void AddAbility(this Agent agent, string ability)
+        {
+            AbilityManager.AddAbility(agent,ability);
+
+            AbilityComponent abilityComponent = new AbilityComponent(agent);
+
+            agent.AddComponent(abilityComponent);
+        }
+
         public static void SelectAbility(this Agent agent, int abilityindex)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
@@ -98,6 +107,28 @@ namespace TOW_Core.Battle.Extensions
                 }
             }
             return new List<string>();
+        }
+
+        public static void AddAttribute(this Agent agent, string attribute)
+        {
+            var characterName = agent.Character.StringId;
+
+            if (!CharacterIDToAttributeMap.ContainsKey(characterName))
+            {
+                List<string> attributeList= new List<string>();
+                attributeList.Add(attribute);
+                CharacterIDToAttributeMap.Add(characterName, attributeList);
+                return;
+            }
+
+            if (CharacterIDToAttributeMap[characterName].Contains(attribute))
+            {
+                return;
+            }
+            
+            CharacterIDToAttributeMap[characterName].Add(attribute);
+            
+            
         }
 
         public static void SetAttributesDictionary(Dictionary<string, List<string>> dict)

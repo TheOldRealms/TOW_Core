@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SandBox;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.ComponentInterfaces;
 using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
@@ -16,4 +18,7 @@ namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
             else return base.CanPanicDueToMorale(agent);
         }
     }
+    
+    
+    
 }

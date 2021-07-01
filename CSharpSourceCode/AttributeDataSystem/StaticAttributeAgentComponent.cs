@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.AttributeDataSystem
 {
@@ -19,7 +20,24 @@ namespace TOW_Core.AttributeDataSystem
         
         public void SetAttribute(StaticAttribute attribute)
         {
-            _attribute = attribute; 
+            _attribute = attribute;
+            
+            foreach (var characterAttribute  in _attribute.CharacterAttributes)
+            {
+                this.Agent.AddAttribute(characterAttribute);
+            }
+
+
+            if (attribute.IsMagicUser)
+            {
+                foreach (var ability in _attribute.Abilities)
+                {
+                    this.Agent.AddAbility(ability);
+                }
+            }
+           
+
+
         }
         
         public void SetParty(PartyAttribute attribute)

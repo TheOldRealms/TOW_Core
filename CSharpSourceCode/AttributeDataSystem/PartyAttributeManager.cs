@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.AttributeDataSystem
@@ -26,6 +27,8 @@ namespace TOW_Core.AttributeDataSystem
             }
         }
 
+        private PartyAttribute _playerPartyAttribute;
+
         private CharacterObject _currentTroop;
         private Hero _currentAddedHero;
         private MapEvent _currentPlayerEvent;
@@ -41,6 +44,11 @@ namespace TOW_Core.AttributeDataSystem
         public List<PartyAttribute> GetActiveInvolvedParties()
         {
             return _activePartyAttributes;
+        }
+
+        public PartyAttribute GetPlayerPartyAttribute()
+        {
+            return _playerPartyAttribute;
         }
         
         public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
@@ -118,18 +126,17 @@ namespace TOW_Core.AttributeDataSystem
             {
                 
                 //random data   work around for rogue members
-                staticAttribute.race = "Human";
                 staticAttribute.status = "not so ready";
-                staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = troop.ToString();
+
+                string undeadMoral = "Undead";
+                staticAttribute.CharacterAttributes.Add(undeadMoral);
                 staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
                 party.RegularTroopAttributes.Add(staticAttribute);
             }
             
             //random data
-            staticAttribute.race = "Human";
             staticAttribute.status = "battle ready";
-            staticAttribute.MagicEffects = new List<string>();
             staticAttribute.id = troop.ToString();
             staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
             party.RegularTroopAttributes.Add(staticAttribute);
@@ -236,6 +243,11 @@ namespace TOW_Core.AttributeDataSystem
             PartyAttribute partyAttribute = new PartyAttribute();
             partyAttribute.id = party.Party.Id;
             partyAttribute.PartyBase = party.Party;
+
+            if (party.IsMainParty)
+            {
+                _playerPartyAttribute = partyAttribute;
+            }
             
             foreach (var troop in party.Party.MemberRoster.GetTroopRoster())
             {
@@ -243,10 +255,7 @@ namespace TOW_Core.AttributeDataSystem
                     continue;
                 
                 StaticAttribute staticAttribute = new StaticAttribute();
-                staticAttribute.race = "Human";
                 staticAttribute.status = "battle ready";
-                staticAttribute.culture = troop.Character.Culture.ToString();
-                staticAttribute.MagicEffects = new List<string>();
                 staticAttribute.id = troop.ToString();
                 staticAttribute.number = party.Party.MemberRoster.Count;
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
@@ -254,14 +263,13 @@ namespace TOW_Core.AttributeDataSystem
 
             if (party.IsBandit)
             {
+               
                 StaticAttribute staticAttribute = new StaticAttribute();
-                staticAttribute.race = "Human";
-                staticAttribute.status = "battle ready";
-                staticAttribute.culture = "Norsca"; //dummy value just for testing
-                staticAttribute.MagicEffects = new List<string>();
-                staticAttribute.id = party.Party.ToString();
-                partyAttribute.PartyType = PartyType.RogueParty;
-                partyAttribute.RegularTroopAttributes.Add(staticAttribute); //note, bandits only have this, and only one. You cant figure out rosters from bandits
+                //random data   work around for rogue members
+                staticAttribute.status = "not so ready";
+                string undeadMoral = "Undead";
+                staticAttribute.CharacterAttributes.Add(undeadMoral);
+                partyAttribute.RegularTroopAttributes.Add(staticAttribute);//note, bandits only have this, and only one. You cant figure out rosters from bandits
             }
             
             if (party.LeaderHero != null|| party.IsMainParty)       //initialize LordParties
@@ -270,9 +278,6 @@ namespace TOW_Core.AttributeDataSystem
                 partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute();
                 StaticAttribute companionAttribute = new StaticAttribute();
-                leaderAttribute.race = "Human";     //hard coded needs some sort of XML assignment here
-                leaderAttribute.culture = Leader.Culture.ToString();
-                leaderAttribute.MagicUser = true;   //neeeds a proper check
                 leaderAttribute.faith = 10;
                 partyAttribute.LeaderAttribute = leaderAttribute;
                 partyAttribute.PartyType = PartyType.LordParty;
@@ -280,8 +285,7 @@ namespace TOW_Core.AttributeDataSystem
                 foreach (var companion in Leader.CompanionsInParty)
                 {
                     
-                    companionAttribute.race = "Human";
-                    companionAttribute.MagicUser = true;    //here aswell proper check of magic abilities
+                    companionAttribute.IsMagicUser = true;    //here aswell proper check of magic abilities
                     partyAttribute.CompanionAttributes.Add(companionAttribute);
                 }
             }
@@ -300,17 +304,15 @@ namespace TOW_Core.AttributeDataSystem
             //reading out from an external file, just dummy data for now
             PartyAttribute PartyAttribute = GetAttribute(party.Id);
             StaticAttribute attribute = new StaticAttribute();
-            attribute.id = hero.Name.ToString();
-            attribute.faith = 5;
-            attribute.MagicUser = true; //hero.IsMagicUser
-            attribute.MagicEffects = new List<string>();
-            attribute.MagicEffects.Add("Fireball");
-            attribute.MagicEffects.Add("BurningSkull");
-            attribute.SkillBuffs.Add("EternalFire");
-            attribute.race = "Human";
-            attribute.culture = hero.Culture.ToString();
-            attribute.status = "blessed";
+
+            attribute.id = hero.CharacterObject.StringId;
             
+            AbilityManager.LoadAbilities();
+
+            attribute.Abilities = AbilityManager.GetAbilitesForCharacter(hero.CharacterObject.StringId);
+            
+            
+
             PartyAttribute.CompanionAttributes.Add(attribute);
         }
         
@@ -384,7 +386,7 @@ namespace TOW_Core.AttributeDataSystem
         {
             foreach (var entry in _partyAttributes)
             {
-                if (entry.Value.MagicUserParty)
+                if (entry.Value.IsMagicUserParty)
                     entry.Value.WindsOfMagic += TickValue;
             }
         }
