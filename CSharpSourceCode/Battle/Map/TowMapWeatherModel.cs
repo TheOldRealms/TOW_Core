@@ -36,20 +36,19 @@ namespace TOW_Core.Battle.Map
            
             if (MainPartyIsNearSettlement())
             {
-                //If the player is near (or entering) a settlement, we'll want to use that settlement's atmosphere data.
+                // If the player is entering a settlement, we'll want to use that settlement's atmosphere data.
                 Settlement nearestSettlement = Helpers.SettlementHelper.FindNearestSettlementToPoint(MobileParty.MainParty.Position2D);
                 sceneName = GetSceneNameFromSettlement(nearestSettlement);
             }
 
             if(sceneName == "")
             {
+                // If we didn't get a scene name from a settlement (for any reason) use a battle scene.
                 sceneName = PlayerEncounter.GetBattleSceneForMapPosition(MobileParty.MainParty.Position2D);
             }
 
             if (sceneName.Contains(ForceAtmosphereKey))
             {
-                //Read atmosphere data from xml
-                //Update info object with values from xml
                 string sceneDirectoryName = Path.Combine(ModuleHelper.GetModuleFullPath(ModuleName), "SceneObj", sceneName);
                 string atmosphereFileName = "atmosphere.xml";
                 string[] files = Directory.GetFiles(sceneDirectoryName, atmosphereFileName, SearchOption.TopDirectoryOnly);
