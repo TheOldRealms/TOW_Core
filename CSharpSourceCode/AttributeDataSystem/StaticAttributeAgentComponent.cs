@@ -21,7 +21,6 @@ namespace TOW_Core.AttributeDataSystem
         public void SetAttribute(StaticAttribute attribute)
         {
             _attribute = attribute;
-            
             foreach (var characterAttribute  in _attribute.CharacterAttributes)
             {
                 this.Agent.AddAttribute(characterAttribute);
@@ -42,7 +41,15 @@ namespace TOW_Core.AttributeDataSystem
         
         public void SetParty(PartyAttribute attribute)
         {
+            //this.Agent.InitializePartyAttribute(attribute);
             _linkedPartyAttribute = attribute; 
+        }
+
+
+
+        public PartyAttribute GetParty()
+        {
+            return _linkedPartyAttribute;
         }
         
     }

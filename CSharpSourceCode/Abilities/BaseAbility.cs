@@ -17,6 +17,7 @@ namespace TOW_Core.Abilities
         public string Name { get; protected set; } = "";
         public string SpriteName { get; protected set; } = "";
         public int CoolDown { get; protected set; } = 10;
+        public int WindsOfMagicCost = 3;
         public float MaxDuration { get; protected set; } = 3f;
         private int _coolDownLeft = 0;
         private Timer _timer = null;

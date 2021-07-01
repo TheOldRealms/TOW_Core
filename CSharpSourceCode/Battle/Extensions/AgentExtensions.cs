@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -22,6 +23,20 @@ namespace TOW_Core.Battle.Extensions
         private static Dictionary<string, string> CharacterIDToVoiceClassNameMap = new Dictionary<string, string>();
         private static bool _attributesAreInitialized = false;
         private static bool _voicesAreInitialized = false;
+
+        //private static PartyAttribute _assignedPartyAttribute;
+
+        /*
+        public static void InitializePartyAttribute(this Agent agent, PartyAttribute partyAttribute)
+        {
+            _assignedPartyAttribute = partyAttribute;
+        }
+        */
+        
+        /*public static PartyAttribute GetPartyAttribute(this Agent agent)
+        {
+            return _assignedPartyAttribute;
+        }*/
 
         public static bool IsExpendable(this Agent agent)
         {
@@ -46,8 +61,17 @@ namespace TOW_Core.Battle.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
-            if(abilitycomponent != null)
+            var attributeComponent = agent.GetComponent<StaticAttributeAgentComponent>();
+            if(abilitycomponent != null&& attributeComponent!=null)
             {
+                
+                if (attributeComponent.GetParty().WindsOfMagic - abilitycomponent.CurrentAbility.WindsOfMagicCost < 0)
+                    return;
+
+                attributeComponent.GetParty().WindsOfMagic = attributeComponent.GetParty().WindsOfMagic - abilitycomponent.CurrentAbility.WindsOfMagicCost;
+                
+                TOWCommon.Say("now we have" + attributeComponent.GetParty().WindsOfMagic + "Winds of Magic");
+                
                 if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
             }
         }

@@ -2,6 +2,7 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.AttributeDataSystem
 {
@@ -117,9 +118,14 @@ namespace TOW_Core.AttributeDataSystem
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
         {
             StaticAttributeAgentComponent agentComponent = new StaticAttributeAgentComponent(agent);
-            agentComponent.SetAttribute(attribute);
             agentComponent.SetParty(partyAttribute);
+            agentComponent.SetAttribute(attribute);
+            
+            
+           //agent.InitializePartyAttribute(partyAttribute);
+            
             agent.AddComponent(agentComponent);
+            
         }
     }
 }
