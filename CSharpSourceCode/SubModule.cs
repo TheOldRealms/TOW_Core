@@ -16,6 +16,7 @@ using TOW_Core.Utilities;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.GauntletUI;
+using TaleWorlds.Engine;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.TwoDimension;
 using TOW_Core.Abilities;
@@ -29,6 +30,7 @@ using TOW_Core.Battle.ShieldPatterns;
 using TOW_Core.Battle.Dismemberment;
 using TaleWorlds.InputSystem;
 using System.Reflection;
+using Path = System.IO.Path;
 
 namespace TOW_Core
 {
@@ -122,6 +124,8 @@ namespace TOW_Core
                                 }
                             if (Dismemberment.IsDebugModeOn && Input.IsKeyPressed(InputKey.O))
                                 Dismemberment.SpawnAgent(mainAgent);
+                            if (Dismemberment.IsDebugModeOn && Input.IsKeyPressed(InputKey.P))
+                                Dismemberment.SpawnAgent(Mission.Current.Teams.PlayerEnemy.ActiveAgents[0]);
                         }
                     }
                 }

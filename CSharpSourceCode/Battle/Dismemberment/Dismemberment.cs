@@ -46,7 +46,7 @@ namespace TOW_Core.Battle.Dismemberment
         {
             get => ignoredAgents;
             set => ignoredAgents = value;
-        } 
+        }
         public static List<PotentialVictim> PotentialVictims
         {
             get => potentialVictims;
@@ -76,35 +76,20 @@ namespace TOW_Core.Battle.Dismemberment
             Dismemberment.ignoredAgents.Add(victim);
             victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
 
+            MakeHeadInvisible(victim);
+            SpawnHead(victim);
+            CreateBloodBurst(victim);
+        }
+
+        private static void MakeHeadInvisible(Agent victim)
+        {
             foreach (Mesh mesh in victim.AgentVisuals.GetEntity().Skeleton.GetAllMeshes())
             {
-                bool isHeadMesh = mesh.Name.ToLower().Contains("head") || mesh.Name.ToLower().Contains("hair") || mesh.Name.ToLower().Contains("beard") || mesh.Name.ToLower().Contains("eyebrow") || mesh.Name.ToLower().Contains("helmet") || mesh.Name.ToLower().Contains("_cap_");
+                bool isHeadMesh = mesh.Name.ToLower().Contains("head") || mesh.Name.ToLower().Contains("hair") || mesh.Name.ToLower().Contains("beard") || mesh.Name.ToLower().Contains("eyebrow") || mesh.Name.ToLower().Contains("helmet") || mesh.Name.ToLower().Contains("_cap_") || mesh.Name.ToLower().Contains("_hat_");
                 if (isHeadMesh)
                     mesh.SetVisibilityMask((VisibilityMaskFlags)4293918720U);
             }
-            SpawnHead(victim);
-
-            MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
-            Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
-            victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
         }
-        public static Agent SpawnAgent(Agent parentAgent)
-        {
-            AgentBuildData agentBuildData = new AgentBuildData(parentAgent.Character);
-            agentBuildData.NoHorses(true);
-            agentBuildData.NoWeapons(true);
-            agentBuildData.NoArmor(false);
-            agentBuildData.Team(Mission.Current.PlayerEnemyTeam);
-            agentBuildData.TroopOrigin(parentAgent.Origin);
-
-            MatrixFrame frame = default(MatrixFrame);
-            frame.origin = parentAgent.Position;
-            frame.rotation = parentAgent.Frame.rotation;
-            agentBuildData.InitialFrame(frame);
-
-            return Mission.Current.SpawnAgent(agentBuildData, false, 0);
-        }
-
         private static void SpawnHead(Agent victim)
         {
             GameEntity head = GetHeadCopy(victim);
@@ -126,9 +111,9 @@ namespace TOW_Core.Battle.Dismemberment
 
             foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
-                if (mesh.Name.Contains("head") && !mesh.Name.Contains("lod"))
+                if ((mesh.Name.Contains("head") || mesh.Name.Contains("_hat_")) && !mesh.Name.Contains("lod"))
                 {
-                    Mesh childMesh = mesh.GetBaseMesh();
+                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
                     var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
                     childMesh.SetLocalFrame(headLocalFrame);
                     child.AddMesh(childMesh);
@@ -136,13 +121,13 @@ namespace TOW_Core.Battle.Dismemberment
                 }
             }
 
-            String[] meshNames = { "hair", "beard", "eyebrow", "_cap_" };
+            String[] meshNames = { "hair", "beard", "eyebrow", "_cap_", "helmet" };
             foreach (String name in meshNames)
             {
                 Mesh mesh = victim.AgentVisuals.GetSkeleton().GetAllMeshes().FirstOrDefault(m => m.Name.Contains(name));
                 if (mesh != default(Mesh))
                 {
-                    Mesh childMesh = mesh.GetBaseMesh();
+                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
                     var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
                     childMesh.SetLocalFrame(headLocalFrame);
                     child.AddMesh(childMesh);
@@ -157,6 +142,29 @@ namespace TOW_Core.Battle.Dismemberment
             Vec3 velocityVec = new Vec3(blowDir.X * 3, blowDir.Y * 3);
             Vec3 angularVec = new Vec3(velocityVec.X * 3, velocityVec.Y * 3);
             head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
+        }
+        private static void CreateBloodBurst(Agent victim)
+        {
+            MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
+            Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
+            victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
+        }
+
+        public static Agent SpawnAgent(Agent parentAgent)
+        {
+            AgentBuildData agentBuildData = new AgentBuildData(parentAgent.Character);
+            agentBuildData.NoHorses(true);
+            agentBuildData.NoWeapons(true);
+            agentBuildData.NoArmor(false);
+            agentBuildData.Team(Mission.Current.PlayerEnemyTeam);
+            agentBuildData.TroopOrigin(parentAgent.Origin);
+
+            MatrixFrame frame = default(MatrixFrame);
+            frame.origin = parentAgent.Position;
+            frame.rotation = parentAgent.Frame.rotation;
+            agentBuildData.InitialFrame(frame);
+
+            return Mission.Current.SpawnAgent(agentBuildData, false, 0);
         }
         private static void KillAgent(Agent agent)
         {
