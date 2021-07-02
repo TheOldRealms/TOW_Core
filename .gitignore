@@ -337,6 +337,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+Logs/
 
 #Bannerlord related
 EmAssetPackages/

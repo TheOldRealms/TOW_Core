@@ -31,6 +31,11 @@ using TaleWorlds.Engine.Screens;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
+using TOW_Core.Battle.ShieldPatterns;
+using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.QuestBattleLocation;
+using StoryMode.GameModels;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace TOW_Core
 {
@@ -63,11 +68,22 @@ namespace TOW_Core
             LoadStatusEffects();
             LoadSprites();
             LoadVoices();
-
+            LoadShieldPatterns();
+            LoadQuestBattleTemplates();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
             LoadFontAssets();
+        }
+
+        private void LoadQuestBattleTemplates()
+        {
+            QuestBattleTemplateManager.LoadQuestBattleTemplates();
+        }
+
+        private void LoadShieldPatterns()
+        {
+            ShieldPatternsManager.LoadShieldPatterns();
         }
 
         public void LoadFontAssets()
@@ -83,10 +99,16 @@ namespace TOW_Core
         {
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
-            LoadSprites();
             if (game.GameType.GetType() == typeof(CustomGame))
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
+            }
+            else if(game.GameType.GetType() == typeof(Campaign))
+            {
+                if(game.ObjectManager != null)
+                {
+                    game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
+                }
             }
         }
 
@@ -112,6 +134,12 @@ namespace TOW_Core
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
                 gameStarterObject.AddModel(new TowMapWeatherModel());
+
+                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
+                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
+                starter.AddModel(new QuestBattleLocationMenuModel());
+
+                starter.AddBehavior(new QuestBattleLocationBehaviour());
             }
         }
 
@@ -124,6 +152,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
+            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadAttributes()

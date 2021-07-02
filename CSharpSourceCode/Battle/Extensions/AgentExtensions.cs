@@ -38,6 +38,11 @@ namespace TOW_Core.Battle.Extensions
             return agent.GetAttributes().Contains("AbilityUser");
         }
 
+        public static bool HasAttribute(this Agent agent, string attributeName)
+        {
+            return agent.GetAttributes().Contains(attributeName);
+        }
+
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
