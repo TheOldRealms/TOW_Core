@@ -11,6 +11,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Map
 {
@@ -38,7 +39,10 @@ namespace TOW_Core.Battle.Map
             {
                 // If the player is entering a settlement, we'll want to use that settlement's atmosphere data.
                 Settlement nearestSettlement = Helpers.SettlementHelper.FindNearestSettlementToPoint(MobileParty.MainParty.Position2D);
-                sceneName = GetSceneNameFromSettlement(nearestSettlement);
+                List<string> sceneNames = nearestSettlement.GetSceneNames();
+
+                //If a settlement has multiple scene names, we'll just grab the first one for now.
+                sceneName = sceneNames.Count > 0 ? sceneNames[0] : "";
             }
 
             if(sceneName == "")
@@ -189,20 +193,6 @@ namespace TOW_Core.Battle.Map
             }
 
             return false;
-        }
-
-        private string GetSceneNameFromSettlement(Settlement settlement)
-        {
-            List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
-            if (settlementLocations.Count > 0)
-            {
-                Location settlementLocation = settlementLocations.First();
-                if (settlementLocation.GetSceneCount() > 0)
-                {
-                    return settlementLocation.GetSceneName(0);
-                }
-            }
-            return "";
         }
 
         private Dictionary<string, string> GetPairsForFirstNodeWithTagName(XmlDocument document, string tagName)
