@@ -19,7 +19,6 @@ namespace TOW_Core.Battle.Map
     {
         private readonly string ModuleName = "TOW_EnvironmentAssets";
         private readonly string ForceAtmosphereKey = "forceatmo";
-        private readonly float NearSettlementThreshold = 1.5f;
 
         //Season codes from TW code: https://imgur.com/p5CtVt0
         private readonly Dictionary<string, int> SeasonCodes = new Dictionary<string, int>()
@@ -34,11 +33,12 @@ namespace TOW_Core.Battle.Map
         {
             AtmosphereInfo info = base.GetAtmosphereModel(timeOfYear, pos);
             string sceneName = "";
+            MobileParty playerParty = MobileParty.MainParty;
            
-            if (MainPartyIsNearSettlement())
+            if (playerParty.IsNearASettlement())
             {
                 // If the player is entering a settlement, we'll want to use that settlement's atmosphere data.
-                Settlement nearestSettlement = Helpers.SettlementHelper.FindNearestSettlementToPoint(MobileParty.MainParty.Position2D);
+                Settlement nearestSettlement = Helpers.SettlementHelper.FindNearestSettlementToPoint(playerParty.Position2D);
                 List<string> sceneNames = nearestSettlement.GetSceneNames();
 
                 //If a settlement has multiple scene names, we'll just grab the first one for now.
@@ -48,7 +48,7 @@ namespace TOW_Core.Battle.Map
             if(sceneName == "")
             {
                 // If we didn't get a scene name from a settlement (for any reason) use a battle scene.
-                sceneName = PlayerEncounter.GetBattleSceneForMapPosition(MobileParty.MainParty.Position2D);
+                sceneName = PlayerEncounter.GetBattleSceneForMapPosition(playerParty.Position2D);
             }
 
             if (sceneName.Contains(ForceAtmosphereKey))
@@ -178,21 +178,6 @@ namespace TOW_Core.Battle.Map
                     .Select(color => float.Parse(color.Trim()))
                     .ToArray();
             return new Vec3(colors[0], colors[1], colors[2]);
-        }
-
-        private bool MainPartyIsNearSettlement()
-        {
-            foreach (Settlement settlement in Settlement.All)
-            {
-                float distance;
-                Campaign.Current.Models.MapDistanceModel.GetDistance(settlement, MobileParty.MainParty, Campaign.MapDiagonal, out distance);
-                if (distance < NearSettlementThreshold)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         private Dictionary<string, string> GetPairsForFirstNodeWithTagName(XmlDocument document, string tagName)
