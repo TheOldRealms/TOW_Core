@@ -77,63 +77,6 @@ namespace TOW_Core.Battle.Map
             return info;
         }
 
-        /// <summary>
-        /// Converts an rgb string to a Vec3 of its respective floats.
-        /// </summary>
-        /// <param name="colorString">A string of color values in the format found in the atmosphere xml, "[r], [g], [b]"</param>
-        /// <returns></returns>
-        private Vec3 GetVec3FromColorString(string colorString)
-        {
-            float[] colors = colorString.Split(',')
-                    .ToList()
-                    .Select(color => float.Parse(color.Trim()))
-                    .ToArray();
-            return new Vec3(colors[0], colors[1], colors[2]);
-        }
-
-        private bool MainPartyIsNearSettlement()
-        {
-            foreach (Settlement settlement in Settlement.All)
-            {
-                float distance;
-                Campaign.Current.Models.MapDistanceModel.GetDistance(settlement, MobileParty.MainParty, Campaign.MapDiagonal, out distance);
-                if (distance < NearSettlementThreshold)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private string GetSceneNameFromSettlement(Settlement settlement)
-        {
-            List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
-            if (settlementLocations.Count > 0)
-            {
-                Location settlementLocation = settlementLocations.First();
-                if (settlementLocation.GetSceneCount() > 0)
-                {
-                    return settlementLocation.GetSceneName(0);
-                }
-            }
-            return "";
-        }
-
-        private Dictionary<string, string> GetPairsForFirstNodeWithTagName(XmlDocument document, string tagName)
-        {
-            XmlNode node = document.GetElementsByTagName(tagName).Item(0);
-            Dictionary<string, string> pairs = new Dictionary<string, string>();
-
-            for (int i = 0; i < node.ChildNodes.Count; i++)
-            {
-                XmlNode currentNode = node.ChildNodes.Item(i);
-                pairs.Add(currentNode.Attributes["name"].Value, currentNode.Attributes["value"].Value);
-            }
-
-            return pairs;
-        }
-
         private AtmosphereInfo GetUpdatedAtmosphereInfoFromXml(XmlDocument atmosphereXml, AtmosphereInfo originalInfo)
         {
             AtmosphereInfo info = originalInfo;
@@ -217,6 +160,63 @@ namespace TOW_Core.Battle.Map
             info.PostProInfo = postProInfo;
 
             return info;
+        }
+
+        /// <summary>
+        /// Converts an rgb string to a Vec3 of its respective floats.
+        /// </summary>
+        /// <param name="colorString">A string of color values in the format found in the atmosphere xml, "[r], [g], [b]"</param>
+        /// <returns></returns>
+        private Vec3 GetVec3FromColorString(string colorString)
+        {
+            float[] colors = colorString.Split(',')
+                    .ToList()
+                    .Select(color => float.Parse(color.Trim()))
+                    .ToArray();
+            return new Vec3(colors[0], colors[1], colors[2]);
+        }
+
+        private bool MainPartyIsNearSettlement()
+        {
+            foreach (Settlement settlement in Settlement.All)
+            {
+                float distance;
+                Campaign.Current.Models.MapDistanceModel.GetDistance(settlement, MobileParty.MainParty, Campaign.MapDiagonal, out distance);
+                if (distance < NearSettlementThreshold)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private string GetSceneNameFromSettlement(Settlement settlement)
+        {
+            List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
+            if (settlementLocations.Count > 0)
+            {
+                Location settlementLocation = settlementLocations.First();
+                if (settlementLocation.GetSceneCount() > 0)
+                {
+                    return settlementLocation.GetSceneName(0);
+                }
+            }
+            return "";
+        }
+
+        private Dictionary<string, string> GetPairsForFirstNodeWithTagName(XmlDocument document, string tagName)
+        {
+            XmlNode node = document.GetElementsByTagName(tagName).Item(0);
+            Dictionary<string, string> pairs = new Dictionary<string, string>();
+
+            for (int i = 0; i < node.ChildNodes.Count; i++)
+            {
+                XmlNode currentNode = node.ChildNodes.Item(i);
+                pairs.Add(currentNode.Attributes["name"].Value, currentNode.Attributes["value"].Value);
+            }
+
+            return pairs;
         }
     }
 }
