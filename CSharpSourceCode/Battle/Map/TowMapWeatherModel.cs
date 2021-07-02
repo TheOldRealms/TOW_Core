@@ -41,8 +41,8 @@ namespace TOW_Core.Battle.Map
                 Settlement nearestSettlement = Helpers.SettlementHelper.FindNearestSettlementToPoint(playerParty.Position2D);
                 List<string> sceneNames = nearestSettlement.GetSceneNames();
 
-                //If a settlement has multiple scene names, we'll just grab the first one for now.
-                sceneName = sceneNames.Count > 0 ? sceneNames[0] : "";
+                //If a settlement has multiple scene names, grab a random one.
+                sceneName = sceneNames.Count > 0 ? sceneNames[TOWMath.GetRandomInt(0, sceneNames.Count)] : "";
             }
 
             if(sceneName == "")
