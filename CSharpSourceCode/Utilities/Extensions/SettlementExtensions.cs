@@ -9,6 +9,13 @@ namespace TOW_Core.Utilities.Extensions
 {
     public static class SettlementExtensions
     {
+        /// <summary>
+        /// Returns a list of all scene names, as defined in tow_settlements.xml (or other settlements files).
+        /// As seen in this image, locations have scene names, e.g. scene_name="empire_siege_001" - these 
+        /// are the names returned by this method: https://imgur.com/Wh4LsxW
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <returns></returns>
         public static List<string> GetSceneNames(this Settlement settlement)
         {
             List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
