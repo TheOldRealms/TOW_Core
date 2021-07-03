@@ -61,16 +61,10 @@ namespace TOW_Core.Battle.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
-            var attributeComponent = agent.GetComponent<StaticAttributeAgentComponent>();
-            if(abilitycomponent != null&& attributeComponent!=null)
+           
+            if(abilitycomponent != null)
             {
                 
-                if (attributeComponent.GetParty().WindsOfMagic - abilitycomponent.CurrentAbility.WindsOfMagicCost < 0)
-                    return;
-
-                attributeComponent.GetParty().WindsOfMagic = attributeComponent.GetParty().WindsOfMagic - abilitycomponent.CurrentAbility.WindsOfMagicCost;
-                
-                TOWCommon.Say("now we have" + attributeComponent.GetParty().WindsOfMagic + "Winds of Magic");
                 
                 if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
             }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.Abilities
@@ -16,6 +17,7 @@ namespace TOW_Core.Abilities
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
+        private string _WindsOfMagicLeft = "100";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
 
@@ -23,12 +25,24 @@ namespace TOW_Core.Abilities
 
         public void UpdateProperties()
         {
+
             if (Agent.Main == null) 
             {
                 HasAnyAbility = false;
                 return;
             }
             _ability = Agent.Main.GetCurrentAbility();
+
+            if (PartyAttributeManager.Instance.GetPlayerPartyAttribute() != null)
+            {
+                var windsofMagicValue = PartyAttributeManager.Instance.GetPlayerPartyAttribute().WindsOfMagic;
+                windsofMagicValue = windsofMagicValue - (windsofMagicValue%0.1f);
+                _WindsOfMagicLeft = windsofMagicValue.ToString();
+                WindsOfMagicLeft = _WindsOfMagicLeft;
+
+            }
+
+
             HasAnyAbility = _ability != null;
             if (HasAnyAbility)
             {
@@ -53,6 +67,20 @@ namespace TOW_Core.Abilities
                     _hasAnyAbility = value;
                     base.OnPropertyChangedWithValue(value, "HasAnyAbility");
                 }
+            }
+        }
+        
+        [DataSourceProperty]
+        public string WindsOfMagicLeft
+        {
+            get
+            {
+                return _WindsOfMagicLeft;
+            }
+            set
+            {
+                _WindsOfMagicLeft = value;
+                base.OnPropertyChangedWithValue(value, "WindsOfMagicLeft");
             }
         }
 

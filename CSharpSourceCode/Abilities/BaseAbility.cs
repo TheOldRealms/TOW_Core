@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.Timers;
 using System.Xml.Schema;
 using System.Xml;
+using TOW_Core.AttributeDataSystem;
 
 namespace TOW_Core.Abilities
 {
@@ -53,6 +54,18 @@ namespace TOW_Core.Abilities
         {
             if (!this.IsOnCooldown())
             {
+                var attributeComponent = casterAgent.GetComponent<StaticAttributeAgentComponent>();
+
+
+                if (attributeComponent != null)
+                {
+                    if (attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost < 0)
+                        return;
+
+                    attributeComponent.GetParty().WindsOfMagic = attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost;
+                }
+                
+                
                 this._coolDownLeft = this.CoolDown;
                 this._timer.Start();
                 OnUse(casterAgent);

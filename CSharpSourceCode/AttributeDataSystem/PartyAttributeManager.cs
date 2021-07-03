@@ -362,8 +362,8 @@ namespace TOW_Core.AttributeDataSystem
         {
             TOWCommon.Say("save game restored with "+ _partyAttributes.Count + "parties in the dictionary");
             _isloaded = true;
-            
-            
+
+            _playerPartyAttribute = GetAttribute(Campaign.Current.MainParty.Party.Id);
             //for later: Check if Attributes are valid, reinitalize for parties if not
             //TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
         }
@@ -391,6 +391,10 @@ namespace TOW_Core.AttributeDataSystem
             {
                 if (entry.Value.IsMagicUserParty)
                     entry.Value.WindsOfMagic += TickValue;
+                if (entry.Value.WindsOfMagic > 30)
+                {
+                    entry.Value.WindsOfMagic = 30;
+                }
             }
         }
 
