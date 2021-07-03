@@ -60,6 +60,7 @@ namespace TOW_Core.Battle.Map
                 if (files.Length == 0)
                 {
                     TOWCommon.Log("Failed to find " + atmosphereFileName + " for atmosphere information.", LogLevel.Warn);
+                    return info;
                 }
 
                 XmlDocument atmosphereXml = new XmlDocument();
