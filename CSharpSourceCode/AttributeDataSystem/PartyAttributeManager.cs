@@ -88,9 +88,7 @@ namespace TOW_Core.AttributeDataSystem
                 playerIsInBattle = false;
             }
         }
-
         
-
         private void OnPlayerRecruitedTroop(CharacterObject troop, int amount)
         {
        //     TOWCommon.Say("Player Troop Recruited");
@@ -127,19 +125,15 @@ namespace TOW_Core.AttributeDataSystem
             {
                 
                 //random data   work around for rogue members
-                staticAttribute.status = "not so ready";
                 staticAttribute.id = troop.ToString();
 
                 string undeadMoral = "Undead";
                 staticAttribute.CharacterAttributes.Add(undeadMoral);
-                staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
                 party.RegularTroopAttributes.Add(staticAttribute);
             }
             
             //random data
-            staticAttribute.status = "battle ready";
             staticAttribute.id = troop.ToString();
-            staticAttribute.number = party.PartyBase.MemberRoster.GetTroopCount(troop);
             party.RegularTroopAttributes.Add(staticAttribute);
 
             _currentTroop = null;
@@ -258,9 +252,7 @@ namespace TOW_Core.AttributeDataSystem
                     continue;
                 
                 StaticAttribute staticAttribute = new StaticAttribute(partyAttribute);
-                staticAttribute.status = "battle ready";
                 staticAttribute.id = troop.ToString();
-                staticAttribute.number = party.Party.MemberRoster.Count;
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);
             }
 
@@ -268,10 +260,10 @@ namespace TOW_Core.AttributeDataSystem
             {
                
                 StaticAttribute staticAttribute = new StaticAttribute(partyAttribute);
-                //random data   work around for rogue members
-                staticAttribute.status = "not so ready";
-                string undeadMoral = "Undead";
-                staticAttribute.CharacterAttributes.Add(undeadMoral);
+                string attribute = "";
+                //attribute = "Undead";
+                attribute = "Human";
+                staticAttribute.CharacterAttributes.Add(attribute);
                 partyAttribute.RegularTroopAttributes.Add(staticAttribute);//note, bandits only have this, and only one. You cant figure out rosters from bandits
             }
             
@@ -281,7 +273,6 @@ namespace TOW_Core.AttributeDataSystem
                 partyAttribute.Leader = Leader;
                 StaticAttribute leaderAttribute = new StaticAttribute(partyAttribute);
                 StaticAttribute companionAttribute = new StaticAttribute(partyAttribute);
-                leaderAttribute.faith = 10;
                 partyAttribute.LeaderAttribute = leaderAttribute;
                 partyAttribute.PartyType = PartyType.LordParty;
                 
@@ -297,8 +288,7 @@ namespace TOW_Core.AttributeDataSystem
             {
                 partyAttribute.PartyType= PartyType.Regular;
             }
-
-            partyAttribute.numberOfRegularTroops = party.Party.NumberOfRegularMembers;
+            
             _partyAttributes.Add(partyAttribute.id, partyAttribute);
         }
 
@@ -406,11 +396,6 @@ namespace TOW_Core.AttributeDataSystem
         private void DailyMessage()
         {
             string text = "";
-            foreach (var culture in _cultureCounts)
-            {
-                text+=(culture.Key + " " + _cultureCounts[culture.Key]+ ", ");
-            }
-
             text +=" Main player has WOM: "+ GetAttribute(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
             TOWCommon.Say(text);
         }
@@ -435,7 +420,6 @@ namespace TOW_Core.AttributeDataSystem
         {
             dataStore.SyncData("_partyAttributes", ref _partyAttributes);
         }
-        
         
     }
     

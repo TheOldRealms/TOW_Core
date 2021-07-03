@@ -9,24 +9,23 @@ namespace TOW_Core.AttributeDataSystem
     /// </summary>
     public class PartyAttribute
     {
+        [SaveableField(0)]
+        public string id;          
         [SaveableField(1)]
         public Hero Leader;
         [SaveableField(2)]
-        public string id;           //partybase.
-        [SaveableField(3)]
         public float WindsOfMagic;
-        [SaveableField(4)]
+        [SaveableField(3)]
         public bool IsMagicUserParty;
-        [SaveableField(5)]
+        [SaveableField(4)]
         public StaticAttribute LeaderAttribute;
-        [SaveableField(6)]
+        [SaveableField(5)]
         public List<StaticAttribute> CompanionAttributes = new List<StaticAttribute>();
-        [SaveableField(7)]
+        [SaveableField(6)]
         public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
 
-        [SaveableField(8)] public PartyType PartyType;
-        [SaveableField(9)] public int numberOfRegularTroops;
-        [SaveableField(10)] public PartyBase PartyBase;
+        [SaveableField(7)] public PartyType PartyType;
+        [SaveableField(8)] public PartyBase PartyBase;
         
         public PartyAttribute(string id)
         {

@@ -8,8 +8,6 @@ namespace TOW_Core.AttributeDataSystem
     /// </summary>
     public class StaticAttributeAgentComponent: AgentComponent
     {
-        
-        
         public StaticAttributeAgentComponent(Agent agent) : base(agent)
         {
             

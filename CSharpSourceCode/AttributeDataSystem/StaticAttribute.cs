@@ -11,15 +11,11 @@ namespace TOW_Core.AttributeDataSystem
     public class StaticAttribute
     {
         //dummy data types
-        [SaveableField(0)] private  bool _isMagicUser;   
-        [SaveableField(1)] public int faith;    
-        [SaveableField(2)]public string status;
-        [SaveableField(3)]public List<string> Abilities =new List<string>();
-        [SaveableField(4)]public List<string> CharacterAttributes = new List<string>();
-        [SaveableField(5)]public string id;
-        [SaveableField(6)]public int number;
-        [SaveableField(7)]public PartyBase AssignedParty;
-        [SaveableField(8)]public PartyAttribute AssignedPartyAttribute;
+        [SaveableField(0)]public string id;
+        [SaveableField(1)] private  bool _isMagicUser;
+        [SaveableField(2)]public List<string> Abilities =new List<string>();
+        [SaveableField(3)]public List<string> CharacterAttributes = new List<string>();
+        [SaveableField(4)]public PartyAttribute AssignedPartyAttribute;
 
 
         public StaticAttribute (PartyAttribute partyAttribute)

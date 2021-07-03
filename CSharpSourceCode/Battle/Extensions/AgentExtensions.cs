@@ -23,26 +23,17 @@ namespace TOW_Core.Battle.Extensions
         private static Dictionary<string, string> CharacterIDToVoiceClassNameMap = new Dictionary<string, string>();
         private static bool _attributesAreInitialized = false;
         private static bool _voicesAreInitialized = false;
-
-        //private static PartyAttribute _assignedPartyAttribute;
-
-        /*
-        public static void InitializePartyAttribute(this Agent agent, PartyAttribute partyAttribute)
-        {
-            _assignedPartyAttribute = partyAttribute;
-        }
-        */
         
-        /*public static PartyAttribute GetPartyAttribute(this Agent agent)
-        {
-            return _assignedPartyAttribute;
-        }*/
-
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-
+        
+        public static bool IsHuman(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("Human");
+        }
+        
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
