@@ -68,84 +68,8 @@ namespace TOW_Core
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
             LoadFontAssets();
-            LoadDismembermentSettings();
         }
-        protected override void OnApplicationTick(float dt)
-        {
-            if (Game.Current != null)
-                if (Game.Current.CurrentState <= 0)
-                {
-                    if (Mission.Current == null || Mission.Current.Scene == null)
-                    {
-                        if (Dismemberment.IgnoredAgents.Count > 0)
-                            Dismemberment.IgnoredAgents.Clear();
-                    }
-                    else
-                    {
-                        Agent mainAgent = Agent.Main;
-                        if (mainAgent != null)
-                        {
-                            foreach (PotentialVictim potentialDismembermentVictim in Dismemberment.PotentialVictims.ToArray())
-                            {
-                                bool isInactiveAndKilled = !potentialDismembermentVictim.agent.IsActive() && potentialDismembermentVictim.agent.State == AgentState.Killed;
-                                if (isInactiveAndKilled)
-                                {
-                                    if (potentialDismembermentVictim.attacker == mainAgent)
-                                    {
-                                        if (Dismemberment.IsSlowMotionOn)
-                                        {
-                                            Dismemberment.SlowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
-                                            Mission.Current.Scene.SlowMotionMode = true;
-                                        }
-                                    }
-                                    potentialDismembermentVictim.attacker.SetWantsToYell();
-                                    Dismemberment.DismemberHead(potentialDismembermentVictim.agent);
-                                    Dismemberment.PotentialVictims.Remove(potentialDismembermentVictim);
-                                }
-                                if (MBCommon.TimeType.Mission.GetTime() >= potentialDismembermentVictim.timer)
-                                {
-                                    if (potentialDismembermentVictim.agent.State != AgentState.Killed)
-                                    {
-                                        Dismemberment.PotentialVictims.Remove(potentialDismembermentVictim);
-                                        return;
-                                    }
-                                    if (potentialDismembermentVictim.agent.State == AgentState.Unconscious)
-                                    {
-                                        Dismemberment.PotentialVictims.Remove(potentialDismembermentVictim);
-                                        return;
-                                    }
-                                }
-                            }
-                            if (Dismemberment.IsSlowMotionOn && Dismemberment.SlowMotionTimer > 0f)
-                                if (MBCommon.TimeType.Mission.GetTime() >= Dismemberment.SlowMotionTimer)
-                                {
-                                    Dismemberment.SlowMotionTimer = 0f;
-                                    Mission.Current.Scene.SlowMotionMode = false;
-                                }
-                            if (Dismemberment.IsDebugModeOn && Input.IsKeyPressed(InputKey.O))
-                                Dismemberment.SpawnAgent(mainAgent);
-                            if (Dismemberment.IsDebugModeOn && Input.IsKeyPressed(InputKey.P))
-                                Dismemberment.SpawnAgent(Mission.Current.Teams.PlayerEnemy.ActiveAgents[0]);
-                        }
-                    }
-                }
-        }
-        private void LoadDismembermentSettings()
-        {
-            string fullPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\"));
-            string[] settingsStrings = File.ReadAllText(fullPath + "/Settings.cfg").Split('\n');
-
-            foreach (String setting in settingsStrings)
-            {
-                if (setting.Contains("Chance"))
-                    Dismemberment.RandChance = int.Parse(setting.Split('=')[1]);
-                else if (setting.Contains("SlowMotion"))
-                    Dismemberment.IsSlowMotionOn = bool.Parse(setting.Split('=')[1]);
-                else if (setting.Contains("Debug"))
-                    Dismemberment.IsDebugModeOn = bool.Parse(setting.Split('=')[1]);
-            }
-        }
-
+        
         private void LoadShieldPatterns()
         {
             ShieldPatternsManager.LoadShieldPatterns();
@@ -203,6 +127,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            mission.AddMissionBehaviour(new DismembermentMissionLogic());
         }
 
         private void LoadAttributes()

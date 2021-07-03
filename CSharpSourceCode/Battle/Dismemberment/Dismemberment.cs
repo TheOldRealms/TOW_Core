@@ -13,71 +13,14 @@ namespace TOW_Core.Battle.Dismemberment
 {
     public class Dismemberment
     {
-        private static float slowMotionTimer;
-        private static Int32 randChance = 2;
-        private static bool isSlowMotionOn = false;
-        private static bool isDebugModeOn = false;
-        private static Random rand = new Random();
-        private static List<Agent> ignoredAgents = new List<Agent>();
-        private static List<PotentialVictim> potentialVictims = new List<PotentialVictim>();
-        private static AttackCollisionData attackCollision = new AttackCollisionData();
-
-        public static float SlowMotionTimer
+        public static void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
-            get => slowMotionTimer;
-            set => slowMotionTimer = value;
-        }
-        public static Int32 RandChance
-        {
-            get => randChance;
-            set => randChance = value;
-        }
-        public static bool IsSlowMotionOn
-        {
-            get => isSlowMotionOn;
-            set => isSlowMotionOn = value;
-        }
-        public static bool IsDebugModeOn
-        {
-            get => isDebugModeOn;
-            set => isDebugModeOn = value;
-        }
-        public static List<Agent> IgnoredAgents
-        {
-            get => ignoredAgents;
-            set => ignoredAgents = value;
-        }
-        public static List<PotentialVictim> PotentialVictims
-        {
-            get => potentialVictims;
-            set => potentialVictims = value;
-        }
-        public static AttackCollisionData AttackCollision
-        {
-            get => attackCollision;
-            set => attackCollision = value;
-        }
-
-        public static void AddPDV(Agent agent, Agent attacker)
-        {
-            if (agent.IsHuman && agent != Agent.Main)
-                if (Dismemberment.rand.Next(1, Dismemberment.randChance + 1) == 1)
-                    Dismemberment.potentialVictims.Add(new PotentialVictim
-                    {
-                        agent = agent,
-                        attacker = attacker,
-                        timer = MBCommon.TimeType.Mission.GetTime() + 0.0001f
-                    });
-        }
-        public static void DismemberHead(Agent victim)
-        {
-            if (victim.IsActive())
-                KillAgent(victim);
-            Dismemberment.ignoredAgents.Add(victim);
+            //if (victim.IsActive())
+            //    KillAgent(victim);
             victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
-
             MakeHeadInvisible(victim);
-            SpawnHead(victim);
+            GameEntity head = SpawnHead(victim);
+            AddPhysicsFromCollision(head, attackCollision);
             CreateBloodBurst(victim);
         }
 
@@ -90,19 +33,17 @@ namespace TOW_Core.Battle.Dismemberment
                     mesh.SetVisibilityMask((VisibilityMaskFlags)4293918720U);
             }
         }
-        private static void SpawnHead(Agent victim)
+        private static GameEntity SpawnHead(Agent victim)
         {
             GameEntity head = GetHeadCopy(victim);
-
             head.AddSphereAsBody(Vec3.Zero, 0.1f, BodyFlags.Moveable);
-            AddPhysicsFromCollision(head);
-
             MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
             victimFrame.Advance(-0.2f);
             victimFrame.Elevate(0.02f);
             head.SetGlobalFrame(victimFrame);
             head.SetPhysicsState(true, false);
             head.EnableDynamicBody();
+            return head;
         }
         private static GameEntity GetHeadCopy(Agent victim)
         {
@@ -136,9 +77,9 @@ namespace TOW_Core.Battle.Dismemberment
             }
             return head;
         }
-        private static void AddPhysicsFromCollision(GameEntity head)
+        private static void AddPhysicsFromCollision(GameEntity head, AttackCollisionData attackCollision)
         {
-            Vec3 blowDir = AttackCollision.WeaponBlowDir;
+            Vec3 blowDir = attackCollision.WeaponBlowDir;
             Vec3 velocityVec = new Vec3(blowDir.X * 3, blowDir.Y * 3);
             Vec3 angularVec = new Vec3(velocityVec.X * 3, velocityVec.Y * 3);
             head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
@@ -150,18 +91,18 @@ namespace TOW_Core.Battle.Dismemberment
             victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
         }
 
-        public static Agent SpawnAgent(Agent parentAgent)
+        public static Agent SpawnAgent(Agent agent)
         {
-            AgentBuildData agentBuildData = new AgentBuildData(parentAgent.Character);
+            AgentBuildData agentBuildData = new AgentBuildData(agent.Character);
             agentBuildData.NoHorses(true);
             agentBuildData.NoWeapons(true);
             agentBuildData.NoArmor(false);
             agentBuildData.Team(Mission.Current.PlayerEnemyTeam);
-            agentBuildData.TroopOrigin(parentAgent.Origin);
+            agentBuildData.TroopOrigin(agent.Origin);
 
             MatrixFrame frame = default(MatrixFrame);
-            frame.origin = parentAgent.Position;
-            frame.rotation = parentAgent.Frame.rotation;
+            frame.origin = agent.Position;
+            frame.rotation = agent.Frame.rotation;
             agentBuildData.InitialFrame(frame);
 
             return Mission.Current.SpawnAgent(agentBuildData, false, 0);
@@ -207,8 +148,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         public static void DisplayDebugMessage(string msg)
         {
-            if (Dismemberment.isDebugModeOn)
-                Dismemberment.DisplayMessage("[DEBUG] " + msg, 16711680U);
+            Dismemberment.DisplayMessage("[DEBUG] " + msg, 16711680U);
         }
         private static void DisplayMessage(string msg, uint color)
         {
