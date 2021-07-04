@@ -13,13 +13,11 @@ namespace TOW_Core.AttributeDataSystem
     /// Makes use of TaleWorlds methods in order to Save and load data.
     /// </summary>
     public class PartyAttributeManager: CampaignBehaviorBase
-    {
-        private static  PartyAttributeManager  _instance = new PartyAttributeManager();
+    { 
+        private static PartyAttributeManager _instance = new PartyAttributeManager();
 
-        private PartyAttributeManager()
-        {
-            
-        }
+        private PartyAttributeManager() {}
+        
         public static PartyAttributeManager Instance
         {
             get
@@ -91,7 +89,6 @@ namespace TOW_Core.AttributeDataSystem
         
         private void OnPlayerRecruitedTroop(CharacterObject troop, int amount)
         {
-       //     TOWCommon.Say("Player Troop Recruited");
             _currentTroop = troop;
             
             PartyAttribute PlayerParty = GetAttribute(Campaign.Current.MainParty.Party.Id); 
@@ -100,15 +97,13 @@ namespace TOW_Core.AttributeDataSystem
         private void OnTroopRecruited(Hero hero, Settlement settlement, Hero RecruitmentSource, CharacterObject Troop, int amount)
         {
             _currentTroop = Troop;
-          //  TOWCommon.Say("Troop Recruited");
             if(hero==null) return;
             PartyAttribute partyAttribute = GetAttribute(hero.PartyBelongedTo.Party.Id);
             AddRegularTroopToPartyAttributes(partyAttribute, Troop);
         }
 
         private void OnCompanionAdded(Hero hero)
-        { 
-         //   TOWCommon.Say("Hero created");
+        {
             _currentAddedHero = hero;
         }
         
@@ -123,8 +118,6 @@ namespace TOW_Core.AttributeDataSystem
             StaticAttribute staticAttribute = new StaticAttribute(party);
             if (troop.Occupation == Occupation.Bandit)
             {
-                
-                //random data   work around for rogue members
                 staticAttribute.id = troop.ToString();
 
                 string undeadMoral = "Undead";
@@ -132,7 +125,6 @@ namespace TOW_Core.AttributeDataSystem
                 party.RegularTroopAttributes.Add(staticAttribute);
             }
             
-            //random data
             staticAttribute.id = troop.ToString();
             party.RegularTroopAttributes.Add(staticAttribute);
 
@@ -341,11 +333,6 @@ namespace TOW_Core.AttributeDataSystem
             if(_partyAttributes.ContainsKey(party.Party.Id))
             {
                 _partyAttributes.Remove(party.Party.ToString());
-                //TOWCommon.Say("Removed " + party.Party.Id); 
-            }
-            else
-            {
-               // TOWCommon.Say("Couldn't remove " + party.Party.Id); 
             }
         }
         private void OnGameLoaded()
@@ -355,7 +342,6 @@ namespace TOW_Core.AttributeDataSystem
 
             _playerPartyAttribute = GetAttribute(Campaign.Current.MainParty.Party.Id);
             //for later: Check if Attributes are valid, reinitalize for parties if not
-            //TOWCommon.Say(GetAttribute(Campaign.Current.MainParty.Party.Id).LeaderAttribute.race);
         }
         
         private Action OnGameSaving()
