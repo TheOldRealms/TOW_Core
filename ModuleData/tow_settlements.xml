@@ -301,7 +301,7 @@
       <Village id="castle_village_comp_ST1_1" village_type="VillageType.wheat_farm" hearth="80" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
