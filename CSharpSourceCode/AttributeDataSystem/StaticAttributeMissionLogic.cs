@@ -30,7 +30,7 @@ namespace TOW_Core.AttributeDataSystem
             
             if (Campaign.Current != null)
             {
-                _partyAttributeManager= PartyAttributeManager.Instance;
+                _partyAttributeManager = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>();
                 activeAttributes = _partyAttributeManager.GetActiveInvolvedParties();
             }
             

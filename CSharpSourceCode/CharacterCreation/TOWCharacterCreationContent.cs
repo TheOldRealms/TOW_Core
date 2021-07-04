@@ -171,9 +171,9 @@ namespace TOW_Core.CharacterCreation
             {
                 if (option.OptionText == "Bright Wizard pupil")
                 {
-                    PartyAttributeManager.Instance.GetPlayerPartyAttribute().LeaderAttribute.Abilities.Add("TOW_Core.Abilities.FireBallAbility");
-                    PartyAttributeManager.Instance.GetPlayerPartyAttribute().LeaderAttribute.CharacterAttributes.Add("AbilityUser");
-                    PartyAttributeManager.Instance.GetPlayerPartyAttribute().LeaderAttribute.IsMagicUser = true;
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.Abilities.Add("TOW_Core.Abilities.FireBallAbility");
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.CharacterAttributes.Add("AbilityUser");
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.IsMagicUser = true;
                 }
             }
             

@@ -13,18 +13,10 @@ namespace TOW_Core.AttributeDataSystem
     /// Makes use of TaleWorlds methods in order to Save and load data.
     /// </summary>
     public class PartyAttributeManager: CampaignBehaviorBase
-    { 
-        private static PartyAttributeManager _instance = new PartyAttributeManager();
+    {
 
-        private PartyAttributeManager() {}
+        public PartyAttributeManager() {}
         
-        public static PartyAttributeManager Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
 
         private PartyAttribute _playerPartyAttribute;
 

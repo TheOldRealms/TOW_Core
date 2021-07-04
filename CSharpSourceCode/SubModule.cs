@@ -129,7 +129,7 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
-                PartyAttributeManager partyAttributeManager = PartyAttributeManager.Instance;
+                PartyAttributeManager partyAttributeManager = new PartyAttributeManager();
                 starter.CampaignBehaviors.Add(partyAttributeManager);
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
@@ -33,9 +34,9 @@ namespace TOW_Core.Abilities
             }
             _ability = Agent.Main.GetCurrentAbility();
 
-            if (PartyAttributeManager.Instance.GetPlayerPartyAttribute() != null)
+            if (Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute() != null)
             {
-                var windsofMagicValue = PartyAttributeManager.Instance.GetPlayerPartyAttribute().WindsOfMagic;
+                var windsofMagicValue = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().WindsOfMagic;
                 windsofMagicValue = windsofMagicValue - (windsofMagicValue%0.1f);
                 _WindsOfMagicLeft = windsofMagicValue.ToString();
                 WindsOfMagicLeft = _WindsOfMagicLeft;
