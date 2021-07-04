@@ -25,6 +25,7 @@ namespace TOW_Core.Abilities
 
         public bool IsOnCooldown()
         {
+            
             return this._timer.Enabled;
         }
 

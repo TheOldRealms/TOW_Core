@@ -34,24 +34,33 @@ namespace TOW_Core.Abilities
             }
             _ability = Agent.Main.GetCurrentAbility();
 
+            float windsofMagicValue=0f;
             if (Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute() != null)
             {
-                var windsofMagicValue = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().WindsOfMagic;
+                windsofMagicValue = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().WindsOfMagic;
                 windsofMagicValue = windsofMagicValue - (windsofMagicValue%0.1f);
                 _WindsOfMagicLeft = windsofMagicValue.ToString();
                 WindsOfMagicLeft = _WindsOfMagicLeft;
-
+                
             }
-
-
+            
             HasAnyAbility = _ability != null;
+            
             if (HasAnyAbility)
             {
                 SpriteName = _ability.SpriteName;
                 Name = _ability.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
+                
+                if (windsofMagicValue < _ability.WindsOfMagicCost)
+                {
+                    IsOnCoolDown = true;
+                    CoolDownLeft = "";
+                }
             }
+            
+            
         }
 
         [DataSourceProperty]
