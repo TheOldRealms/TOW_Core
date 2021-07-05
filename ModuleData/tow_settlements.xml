@@ -427,7 +427,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST2_2" name="{=Settlements.Settlement.name.village_ST2_2}Naubonum" owner="Faction.stirland_clan_2" posX="1591.995" posY="981.7758" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_2}Naubonum is a small village right on the border of Sylvania. The people here get by mostly by raising crops to feed themselves, with any other goods purchased through the sale of excess crops or labour. Situated near the Haunted Hills, the inhabitants are often worried about outsiders from the east, Spectres and foul creatures. The Halfling Fieldwardens are known to stop in the settlement from time to time while patrolling the eastern reaches of the Moot.">
+  <Settlement id="village_ST2_2" name="{=Settlements.Settlement.name.village_ST2_2}Naubonum" owner="Faction.stirland_clan_2" posX="1591.995" posY="981.776" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_2}Naubonum is a small village right on the border of Sylvania. The people here get by mostly by raising crops to feed themselves, with any other goods purchased through the sale of excess crops or labour. Situated near the Haunted Hills, the inhabitants are often worried about outsiders from the east, Spectres and foul creatures. The Halfling Fieldwardens are known to stop in the settlement from time to time while patrolling the eastern reaches of the Moot.">
     <Components>
       <Village id="village_comp_ST2_2" village_type="VillageType.cattle_farm" hearth="94" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -737,7 +737,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_SY1_1" name="{=Settlements.Settlement.name.village_SY1_1}Drakenhof" posX="1627.898" posY="961.8643" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_1}The town of Drakenhof was once considered a beacon of culture within the Empire. But after the sinister takeover of Sylvania by the Vampire Counts, the formerly tall and inspiring spires of Castle Drakenhof now loom menacingly over the townspeople of Drakenhof. The people of Drakenhof are oppressed under the thumb of the Von Carstein lineage. They use the town of Drakenhof to hide their dangerous and other worldly possessions. The people exist as snacks for passing vampires. And every dark corner is the lair for myraid and unspeakable evils. Praying on the townsfolk from dusk till dawn.">
+  <Settlement id="village_SY1_1" name="{=Settlements.Settlement.name.village_SY1_1}Drakenhof" posX="1627.898" posY="961.864" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_1}The town of Drakenhof was once considered a beacon of culture within the Empire. But after the sinister takeover of Sylvania by the Vampire Counts, the formerly tall and inspiring spires of Castle Drakenhof now loom menacingly over the townspeople of Drakenhof. The people of Drakenhof are oppressed under the thumb of the Von Carstein lineage. They use the town of Drakenhof to hide their dangerous and other worldly possessions. The people exist as snacks for passing vampires. And every dark corner is the lair for myraid and unspeakable evils. Praying on the townsfolk from dusk till dawn.">
     <Components>
       <Village id="village_comp_SY1_1" village_type="VillageType.sheep_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -776,7 +776,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_SY1_4" name="{=Settlements.Settlement.name.village_SY1_4}Gerhof" posX="1623.46" posY="979.8812" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Gerhof does not sleep. It’s paranoid vampire Count Johan von Goal has forbidden it. A trickster Crone allegedly put a curse on the count. But none other than the Count himself can verify this. It has been said that a sleeping mortal would slay von Goal in a brutal fashion. So von Goal banned sleep. The mortal citizens are skittish. Sneaking an hour or two’s nap in the dark corners of the city. Ordered to be ever watchful for the one who would slay their fearful ruler.">
+  <Settlement id="village_SY1_4" name="{=Settlements.Settlement.name.village_SY1_4}Gerhof" posX="1623.46" posY="979.881" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Gerhof does not sleep. It’s paranoid vampire Count Johan von Goal has forbidden it. A trickster Crone allegedly put a curse on the count. But none other than the Count himself can verify this. It has been said that a sleeping mortal would slay von Goal in a brutal fashion. So von Goal banned sleep. The mortal citizens are skittish. Sneaking an hour or two’s nap in the dark corners of the city. Ordered to be ever watchful for the one who would slay their fearful ruler.">
     <Components>
       <Village id="village_comp_SY1_4" village_type="VillageType.wheat_farm" hearth="36" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -799,7 +799,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY1_1" name="{=Settlements.Settlement.name.castle_village_SY1_1}Templehof" posX="1609.581" posY="989.5716" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY1_1}The town of Templehof has seen many nightmarish things. Formerly under the auspices of the Vampire Countess Emanuelle von Templehof the village has recently become the home to a group of Light Mages. Whilst the townsfolk cling to these people as saviours they still whisper of a phantom. The tale of Whispering Nell is well known amongst the townsfolk. A foul spectre who haunts the town and surrounding area. Stealing children and killing Men. Almost as if she owns the place.">
+  <Settlement id="castle_village_SY1_1" name="{=Settlements.Settlement.name.castle_village_SY1_1}Templehof" posX="1609.581" posY="989.572" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY1_1}The town of Templehof has seen many nightmarish things. Formerly under the auspices of the Vampire Countess Emanuelle von Templehof the village has recently become the home to a group of Light Mages. Whilst the townsfolk cling to these people as saviours they still whisper of a phantom. The tale of Whispering Nell is well known amongst the townsfolk. A foul spectre who haunts the town and surrounding area. Stealing children and killing Men. Almost as if she owns the place.">
     <Components>
       <Village id="castle_village_comp_SY1_1" village_type="VillageType.sheep_farm" hearth="120" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -943,7 +943,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Vanhaldenhof" posX="1588.407" posY="880.8688" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
+  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Vanhaldenhof" posX="1588.407" posY="880.869" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
     <Components>
       <Village id="castle_village_comp_SY3_2" village_type="VillageType.europe_horse_ranch" hearth="46" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1111,7 +1111,7 @@
       <Hideout id="hideout_forest_7" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_8" name="{=Settlements.Settlement.name.hideout_forest_8}Hideout" type="Hideout" posX="1593.862" posY="901.6185" culture="Culture.forest_bandits">
+  <Settlement id="hideout_forest_8" name="{=Settlements.Settlement.name.hideout_forest_8}Hideout" type="Hideout" posX="1593.862" posY="901.618" culture="Culture.forest_bandits">
     <Components>
       <Hideout id="hideout_forest_8" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
@@ -1183,12 +1183,12 @@
       <Hideout id="hideout_mountain_2" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1597.708" posY="876.582" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1598.234" posY="876.2542" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_3" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_4" name="{=Settlements.Settlement.name.hideout_mountain_4}Hideout" type="Hideout" posX="1605.308" posY="890.197" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_4" name="{=Settlements.Settlement.name.hideout_mountain_4}Hideout" type="Hideout" posX="1603.819" posY="889.6776" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_4" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
@@ -1203,7 +1203,7 @@
       <Hideout id="hideout_mountain_6" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_7" name="{=Settlements.Settlement.name.hideout_mountain_7}Hideout" type="Hideout" posX="1701.825" posY="950.5703" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_7" name="{=Settlements.Settlement.name.hideout_mountain_7}Hideout" type="Hideout" posX="1701.825" posY="950.57" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_7" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
