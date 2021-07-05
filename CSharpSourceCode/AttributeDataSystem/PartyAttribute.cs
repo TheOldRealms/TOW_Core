@@ -10,7 +10,7 @@ namespace TOW_Core.AttributeDataSystem
     public class PartyAttribute
     {
         [SaveableField(0)]
-        public string id;          
+        public string PartyBaseId;          
         [SaveableField(1)]
         public Hero Leader;
         [SaveableField(2)]
@@ -27,9 +27,9 @@ namespace TOW_Core.AttributeDataSystem
         [SaveableField(7)] public PartyType PartyType;
         [SaveableField(8)] public PartyBase PartyBase;
         
-        public PartyAttribute(string id)
+        public PartyAttribute(string partyBaseId)
         {
-            this.id = id;
+            this.PartyBaseId = partyBaseId;
         }
 
         public PartyAttribute()

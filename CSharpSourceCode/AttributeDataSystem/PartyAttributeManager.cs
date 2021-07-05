@@ -104,7 +104,7 @@ namespace TOW_Core.AttributeDataSystem
             foreach (var attribute in party.RegularTroopAttributes)
             {
                 if (attribute.id == troop.ToString());
-                return;
+                    return;
             }
                 
             StaticAttribute staticAttribute = new StaticAttribute(party);
@@ -156,7 +156,7 @@ namespace TOW_Core.AttributeDataSystem
                 {
                     PartyAttribute attackPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
                     ActivePartyAttributes.Add(attackPartyPartyAttribute);
-                    text += attackPartyPartyAttribute.id;
+                    text += attackPartyPartyAttribute.PartyBaseId;
                 }
 
                 text += " are supporting the attackers (" + _currentPlayerEvent.AttackerSide.Parties.Count+")";
@@ -165,7 +165,7 @@ namespace TOW_Core.AttributeDataSystem
                 {
                     PartyAttribute  defenderPartyPartyAttribute= GetAttribute(party.Party.Id.ToString());
                     ActivePartyAttributes.Add(defenderPartyPartyAttribute);
-                    text += defenderPartyPartyAttribute.id;
+                    text += defenderPartyPartyAttribute.PartyBaseId;
                 }
             
                 text += " are supporting the defenders(" + _currentPlayerEvent.DefenderSide.Parties.Count+")";
@@ -205,7 +205,6 @@ namespace TOW_Core.AttributeDataSystem
             }
             else
             {
-                TOWCommon.Say("couldnt find party");
                 return null;
             }
             
@@ -213,16 +212,14 @@ namespace TOW_Core.AttributeDataSystem
         
         private void EnterPartyIntoDictionary(MobileParty party)
         {
-            //filling fresh created parties with data
-            
+
             if (_partyAttributes.ContainsKey(party.Party.Id))
             {
-                TOWCommon.Say(party.Id+  " was already there");
                 return;
             }
             
             PartyAttribute partyAttribute = new PartyAttribute();
-            partyAttribute.id = party.Party.Id;
+            partyAttribute.PartyBaseId = party.Party.Id;
             partyAttribute.PartyBase = party.Party;
 
             if (party.IsMainParty)
@@ -262,8 +259,6 @@ namespace TOW_Core.AttributeDataSystem
                 
                 foreach (var companion in Leader.CompanionsInParty)
                 {
-                    
-                    companionAttribute.IsMagicUser = true;    //here aswell proper check of magic abilities
                     partyAttribute.CompanionAttributes.Add(companionAttribute);
                 }
             }
@@ -273,7 +268,7 @@ namespace TOW_Core.AttributeDataSystem
                 partyAttribute.PartyType= PartyType.Regular;
             }
             
-            _partyAttributes.Add(partyAttribute.id, partyAttribute);
+            _partyAttributes.Add(partyAttribute.PartyBaseId, partyAttribute);
         }
 
         private void AddHeroToParty(Hero hero, PartyBase party)
@@ -386,12 +381,10 @@ namespace TOW_Core.AttributeDataSystem
             {
                 if (_partyAttributes.ContainsKey(party.Party.Id))
                 {
-                    TOWCommon.Say(party.Id.ToString()+  " was already there");
                     continue;
                 }
                 EnterPartyIntoDictionary(party);
             }
-            TOWCommon.Say(_partyAttributes.Count + "of "+  parties.Count+ " were initalized");
         }
 
         public override void SyncData(IDataStore dataStore)
