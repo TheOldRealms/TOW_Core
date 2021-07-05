@@ -19,7 +19,6 @@ namespace TOW_Core.Battle.StatusEffects
 
         public EventHandler<OnTickArgs> NotifyStatusEffectTickObservers;
         
-        
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
@@ -31,20 +30,13 @@ namespace TOW_Core.Battle.StatusEffects
                 _presentEffects.Add("crumble", StatusEffectManager.GetStatusEffect("crumble"));
             }
         }
-
-
+        
         public override void OnAfterMissionCreated()
         {
             base.OnAfterMissionCreated();
-
-            //var attacker = Mission.Current.Teams.Attacker;
-            
             var attacker = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Attacker, true);
             var defender = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Defender, true);
-            
-            var agents =Mission.Current.Agents;
-            
-            
+            var agents = Mission.Current.Agents;
             //assign Team allies to Parties
 
             foreach (var team in attacker)
@@ -63,11 +55,8 @@ namespace TOW_Core.Battle.StatusEffects
                         TOWCommon.Say("agent: common enemy " );
                     }
                 }
-
-               
-
-                
             }
+            
             foreach (var team in defender)
             {
                 foreach (Agent agent in team.TeamAgents)
@@ -84,41 +73,10 @@ namespace TOW_Core.Battle.StatusEffects
                         TOWCommon.Say("agent: common enemy " );
                     }
                 }
-
-               
-
                 
             }
         }
-
-        public override void AfterAddTeam(Team team)
-        {
-            base.AfterAddTeam(team);
-            
-        }
-
-        /*public override void OnAgentBuild(Agent agent, Banner banner)
-        {
-            base.OnAgentBuild(agent, banner);
-            
-            /*if (agent.IsHero)
-            {
-                TOWCommon.Say(defenderAttributes[0].WindsOfMagic.ToString());
-            }#1#
-        }*/
-
-        public override void OnRenderingStarted()
-        {
-            
-        }
-
-        public override void OnCreated()
-        {
-            
-            
-            
-        }
-
+        
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
@@ -128,9 +86,7 @@ namespace TOW_Core.Battle.StatusEffects
 
         public override MissionBehaviourType BehaviourType { get; }
     }
-
-
-
+    
     public class OnTickArgs : EventArgs
     {
         public float deltatime;
