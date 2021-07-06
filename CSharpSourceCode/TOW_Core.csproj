@@ -16,7 +16,7 @@
   </PropertyGroup>
   <!-- Bannerlord path Property-->
   <PropertyGroup>
-    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameDir>
+    <GameDir>G:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</GameDir>
   </PropertyGroup>
   <!-- Debug Configuration Properties -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -292,6 +292,8 @@
     <Compile Include="Abilities\WindOfDeathAbility.cs" />
     <Compile Include="Abilities\WindOfDeathAbilityScript.cs" />
     <Compile Include="Abilities\AbilityManager.cs" />
+    <Compile Include="Battle\AI\Components\WizardAiComponent.cs" />
+    <Compile Include="Battle\AI\CustomAIMissionLogic.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWBattleMoraleModel.cs" />
@@ -350,7 +352,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <!-- Post-Build -->
   <PropertyGroup>
     <PostBuildEvent>
