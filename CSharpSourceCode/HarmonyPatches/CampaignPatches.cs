@@ -16,6 +16,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -231,7 +232,7 @@ namespace TOW_Core.HarmonyPatches
 
         private static void OnCLick()
         {
-            MBGameManager.StartNewGame(new SandBoxGameManager());
+            MBGameManager.StartNewGame(new TowCampaignGameManager());
         }
 
         private static (bool, TextObject) IsDisabledAndReason()
