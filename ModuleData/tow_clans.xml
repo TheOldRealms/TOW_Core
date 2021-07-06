@@ -144,14 +144,14 @@
 	<Faction id="sylvania_clan_2"
 			 name="{=!}Lahmian"
 			 tier="6"
-			 owner="Hero.sylvania_clan_1_1"
+			 owner="Hero.vc_lord_sylvania_second_1"
 			 culture="Culture.khuzait"
 			 super_faction="Kingdom.sylvania"
 			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />
 	<Faction id="sylvania_clan_3"
 			 name="{=!}Blood Knights"
 			 tier="6"
-			 owner="Hero.sylvania_clan_1_1"
+			 owner="Hero.vc_lord_sylvania_third_1"
 			 culture="Culture.khuzait"
 			 super_faction="Kingdom.sylvania"
 			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />			
@@ -166,14 +166,14 @@
 	<Faction id="stirland_clan_2"
 			 name="{=!}Oststirlander"
 			 tier="6"
-			 owner="Hero.stirland_clan_1_1"
+			 owner="Hero.emp_lord_stirland_oststirlander_1"
 			 culture="Culture.empire"
 			 super_faction="Kingdom.stirland"
 			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />
 	<Faction id="stirland_clan_3"
 			 name="{=!}Weststirlander"
 			 tier="6"
-			 owner="Hero.stirland_clan_1_1"
+			 owner="Hero.emp_lord_stirland_weststirlander_1"
 			 culture="Culture.empire"
 			 super_faction="Kingdom.stirland"
 			 banner_key="11.71.4.4922.4922.776.777.1.0.0.142.5.0.502.502.754.693.0.0.1.142.5.0.502.502.772.869.0.0.179" />
