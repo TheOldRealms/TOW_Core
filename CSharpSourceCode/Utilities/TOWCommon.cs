@@ -31,7 +31,7 @@ namespace TOW_Core.Utilities
         {
             var filterednames = new List<string>();
             string pickedname = "towmm_menuscene_01";
-            var path = BasePath.Name + "Modules/TOW_Environment/SceneObj/";
+            var path = BasePath.Name + "Modules/TOW_EnvironmentAssets/SceneObj/";
             if (Directory.Exists(path))
             {
                 var dirnames = Directory.GetDirectories(path);
