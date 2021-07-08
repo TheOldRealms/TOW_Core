@@ -33,7 +33,7 @@ namespace TOW_Core.Abilities
                 var lightradius = 10f;
 
                 var frame = casterAgent.LookFrame.Elevate(casterAgent.GetEyeGlobalHeight());
-                frame = TargetForAI(casterAgent, frame);
+                frame = UpdateFrameRotationForAI(casterAgent, frame);
 
                 frame = frame.Advance(offset);
                 var entity = GameEntity.Instantiate(scene, "fireball_prefab", true);

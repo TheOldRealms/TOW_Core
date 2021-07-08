@@ -43,7 +43,7 @@ namespace TOW_Core.Abilities
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             this._coolDownLeft -= 1;
-            if(this._coolDownLeft <= 0)
+            if (this._coolDownLeft <= 0)
             {
                 this._coolDownLeft = 0;
                 this._timer.Stop();
@@ -59,8 +59,8 @@ namespace TOW_Core.Abilities
                 OnUse(casterAgent);
             }
         }
-        
-        protected static MatrixFrame TargetForAI(Agent casterAgent, MatrixFrame frame)
+
+        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
         {
             var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
             if (wizardAiComponent != null)
@@ -71,6 +71,8 @@ namespace TOW_Core.Abilities
             return frame;
         }
 
-        protected virtual void OnUse(Agent casterAgent) { }
+        protected virtual void OnUse(Agent casterAgent)
+        {
+        }
     }
 }
