@@ -25,8 +25,7 @@ namespace TOW_Core.Abilities
 
         protected override void OnUse(Agent casterAgent)
         {
-            if (casterAgent.IsActive() && casterAgent.Health > 0 &&
-                (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser())
+            if (casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser())
             {
                 var scene = Mission.Current.Scene;
                 var offset = 1f;
@@ -51,8 +50,7 @@ namespace TOW_Core.Abilities
 
 
                 entity.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
-                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero,
-                    PhysicsMaterial.GetFromName("missile"), false, -1);
+                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
                 entity.SetPhysicsState(true, false);
                 entity.CreateAndAddScriptComponent("FireBallAbilityScript");
 
@@ -62,17 +60,6 @@ namespace TOW_Core.Abilities
 
                 entity.CallScriptCallbacks();
             }
-        }
-
-        private static MatrixFrame TargetForAI(Agent casterAgent, MatrixFrame frame)
-        {
-            var wizardAiComponent = casterAgent.GetComponent<WizardAiComponent>();
-            if (wizardAiComponent != null)
-            {
-                frame.rotation = wizardAiComponent.SpellTargetRotation;
-            }
-
-            return frame;
         }
     }
 }

@@ -6,7 +6,7 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI
 {
-    public class CustomAiMissionLogic : MissionLogic
+    public class CustomAIMissionLogic : MissionLogic
     {
         public override void OnAgentCreated(Agent agent)
         {
@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.AI
                 var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
                 foreach (var item in toRemove)
                     agent.RemoveComponent(item);
-                agent.AddComponent(new WizardAiComponent(agent));
+                agent.AddComponent(new WizardAIComponent(agent));
             }
         }
     }

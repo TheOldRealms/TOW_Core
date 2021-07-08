@@ -33,17 +33,22 @@ namespace TOW_Core.Abilities
         {
             base.OnRemoved(removeReason);
             //clean up
-            if(_movingSound != null) _movingSound.Release();
-            if(_explosionSound != null) _explosionSound.Release();
+            if (_movingSound != null) _movingSound.Release();
+            if (_explosionSound != null) _explosionSound.Release();
             _casterAgent = null;
             _ability = null;
             _movingSound = null;
+
+            GameEntity.GetLight().SetVisibility(false);
+            GameEntity.GetLight().Dispose();
+            GameEntity.GetLight().Intensity = 0;
         }
 
         protected override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }
+
         protected override bool MovesEntity() => true;
         public void SetAgent(Agent agent) => _casterAgent = agent;
         public void SetAbility(FireBallAbility fireBallAbility) => _ability = fireBallAbility;
@@ -54,7 +59,6 @@ namespace TOW_Core.Abilities
             SetScriptComponentToTick(GetTickRequirement());
             _movingSoundindex = SoundEvent.GetEventIdFromString("fireball");
             _explosionSoundindex = SoundEvent.GetEventIdFromString("fireball_explosion");
-
         }
 
         protected override void OnTick(float dt)
@@ -67,7 +71,7 @@ namespace TOW_Core.Abilities
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
 
-            
+
             var newframe = frame.Advance(_speed * dt);
             base.GameEntity.SetGlobalFrame(newframe);
             base.GameEntity.GetBodyShape().ManualInvalidate();
@@ -79,6 +83,7 @@ namespace TOW_Core.Abilities
             {
                 _abilitylife += dt;
             }
+
             if (_ability != null)
             {
                 if (_abilitylife > _ability.MaxDuration && !_isFading)
@@ -87,12 +92,14 @@ namespace TOW_Core.Abilities
                     _isFading = true;
                 }
             }
-            if(_movingSound == null)
+
+            if (_movingSound == null)
             {
                 _movingSound = SoundEvent.CreateEvent(_movingSoundindex, Scene);
                 _movingSound.SetPosition(newframe.origin);
                 _movingSound.Play();
             }
+
             _movingSound.SetPosition(newframe.origin);
         }
 
@@ -107,7 +114,7 @@ namespace TOW_Core.Abilities
             if (!_hasCollided)
             {
                 //start fading out for the projectile
-                base.GameEntity.FadeOut(2.9f, true);
+                base.GameEntity.FadeOut(0.05f, true);
                 _isFading = true;
                 //apply AOE damage
                 TOWBattleUtilities.DamageAgentsInArea(collisionPoint.AsVec2, _radius, _minDamage, _maxDamage, _casterAgent, true);
@@ -120,7 +127,7 @@ namespace TOW_Core.Abilities
                 explosion.SetGlobalFrame(globalFrame);
                 explosion.FadeOut(3, true);
                 //play explosion sound
-                if(_explosionSound == null) _explosionSound = SoundEvent.CreateEvent(_explosionSoundindex, Scene);
+                if (_explosionSound == null) _explosionSound = SoundEvent.CreateEvent(_explosionSoundindex, Scene);
                 _explosionSound.SetPosition(globalFrame.origin);
                 _explosionSound.Play();
                 //Mission.Current.MakeSound(_explosionSoundindex, globalFrame.origin, false, true, -1, -1);

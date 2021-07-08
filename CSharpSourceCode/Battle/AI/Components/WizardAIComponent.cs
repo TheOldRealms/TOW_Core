@@ -6,11 +6,11 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
 {
-    public class WizardAiComponent : HumanAIComponent
+    public class WizardAIComponent : HumanAIComponent
     {
         public Mat3 SpellTargetRotation = Mat3.Identity;
 
-        public WizardAiComponent(Agent agent) : base(agent)
+        public WizardAIComponent(Agent agent) : base(agent)
         {
             Agent.SelectAbility(0);
         }
@@ -49,8 +49,12 @@ namespace TOW_Core.Battle.AI.Components
 
             if (targetFormation != null)
             {
-                var medianAgent =
-                    targetFormation.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
+                var medianAgent = targetFormation.GetMedianAgent(
+                    true,
+                    false,
+                    targetFormation.GetAveragePositionOfUnits(true, false)
+                );
+
                 if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < 60)
                 {
                     var targetPosition = medianAgent.Position;

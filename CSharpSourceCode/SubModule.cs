@@ -147,7 +147,7 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new CustomAiMissionLogic());
+            mission.AddMissionBehaviour(new CustomAIMissionLogic());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
