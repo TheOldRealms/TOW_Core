@@ -45,7 +45,7 @@ namespace TOW_Core.Battle.AI.Components
                 var allyPower = querySystem?.LocalAllyPower;
                 if (allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2)
                 {
-                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 6f);
+                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace TOW_Core.Battle.AI.Components
                     targetFormation.GetAveragePositionOfUnits(true, false)
                 );
 
-                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 60 : 25;
+                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 60 : 27;
 
                 if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
                 {
