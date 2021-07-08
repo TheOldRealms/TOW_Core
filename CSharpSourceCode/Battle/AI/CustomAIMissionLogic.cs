@@ -13,12 +13,9 @@ namespace TOW_Core.Battle.AI
             base.OnAgentCreated(agent);
             if (agent != Agent.Main && agent.IsAbilityUser())
             {
-                var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
-                foreach (var item in toRemove)
-                    agent.RemoveComponent(item);
+                Utilities.Extensions.ListExtensions.RemoveAllOfType(agent.Components, typeof(HumanAIComponent));
                 agent.AddComponent(new WizardAIComponent(agent));
             }
         }
     }
 }
-

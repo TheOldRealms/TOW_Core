@@ -22,21 +22,15 @@ namespace TOW_Core.Battle.AI.Components
             SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
             CastFireball();
-
-            var aiActiveBehavior = Agent?.Formation?.AI?.ActiveBehavior;
+            
             var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
             var currentOrderType = moveOrder?.OrderType;
 
             if (currentOrderType == null || currentOrderType == OrderType.None) return;
 
-            //    TOWCommon.Say(currentOrderType.Description());
-            //    if (aiActiveBehavior != null) TOWCommon.Say(aiActiveBehavior.ToString());
-
-
             if (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget)
             {
                 SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 10f, 10f, 10f, 20f, 10f);
-                // SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
             }
 
 
