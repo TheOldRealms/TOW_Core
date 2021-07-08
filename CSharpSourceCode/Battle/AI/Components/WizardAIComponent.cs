@@ -39,7 +39,18 @@ namespace TOW_Core.Battle.AI.Components
 
             if (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget)
             {
-                SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 10f, 10f, 10f, 20f, 10f);
+                SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 10f, 30f, 10f, 30f, 0f);
+
+                var querySystem = Agent?.Formation?.QuerySystem;
+                var allyPower = querySystem?.LocalAllyPower;
+                if (allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2)
+                {
+                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 9f, 20f, 9f, 30f, 15f);
+                }
+                else
+                {
+                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 0, 20f, 0, 30f, 0);
+                }
             }
         }
 
