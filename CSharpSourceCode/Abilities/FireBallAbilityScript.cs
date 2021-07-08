@@ -33,15 +33,10 @@ namespace TOW_Core.Abilities
         {
             base.OnRemoved(removeReason);
             //clean up
-            if (_movingSound != null) _movingSound.Release();
             if (_explosionSound != null) _explosionSound.Release();
             _casterAgent = null;
             _ability = null;
             _movingSound = null;
-
-            GameEntity.GetLight().SetVisibility(false);
-            GameEntity.GetLight().Dispose();
-            GameEntity.GetLight().Intensity = 0;
         }
 
         protected override TickRequirement GetTickRequirement()
@@ -114,11 +109,12 @@ namespace TOW_Core.Abilities
             if (!_hasCollided)
             {
                 //start fading out for the projectile
-                base.GameEntity.FadeOut(0.05f, true);
-                _isFading = true;
+                GameEntity.FadeOut(0.05f, false);
+
                 //apply AOE damage
                 TOWBattleUtilities.DamageAgentsInArea(collisionPoint.AsVec2, _radius, _minDamage, _maxDamage, _casterAgent, true);
                 TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(collisionPoint.AsVec2, _radius, "fireball_dot", _casterAgent, true);
+
                 //create visual explosion
                 var explosion = GameEntity.CreateEmpty(Scene);
                 MatrixFrame frame = MatrixFrame.Identity;
@@ -126,13 +122,16 @@ namespace TOW_Core.Abilities
                 var globalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in collisionNormal), collisionPoint);
                 explosion.SetGlobalFrame(globalFrame);
                 explosion.FadeOut(3, true);
+
                 //play explosion sound
                 if (_explosionSound == null) _explosionSound = SoundEvent.CreateEvent(_explosionSoundindex, Scene);
                 _explosionSound.SetPosition(globalFrame.origin);
                 _explosionSound.Play();
+
                 //Mission.Current.MakeSound(_explosionSoundindex, globalFrame.origin, false, true, -1, -1);
                 //set flag so we dont run this again (there can be multiple collisions, because fadeout is not instant)
                 _hasCollided = true;
+                if (_movingSound != null) _movingSound.Release();
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities;
 using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
 
@@ -12,12 +13,14 @@ namespace TOW_Core.Battle.AI.Components
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
-            Agent.SelectAbility(0);
         }
 
         public override void OnTickAsAI(float dt)
         {
             UpdateBehavior();
+            Agent.SelectAbility(0);
+            CastSpell();
+            Agent.SelectAbility(1);
             CastSpell();
 
             base.OnTickAsAI(dt);
@@ -52,7 +55,9 @@ namespace TOW_Core.Battle.AI.Components
                     targetFormation.GetAveragePositionOfUnits(true, false)
                 );
 
-                if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < 60)
+                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 60 : 25;
+
+                if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
                 {
                     var targetPosition = medianAgent.Position;
                     targetPosition.z += -2;
