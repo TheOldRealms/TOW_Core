@@ -17,12 +17,18 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
+            UpdateBehavior();
+            CastSpell();
+
+            base.OnTickAsAI(dt);
+        }
+
+        private void UpdateBehavior()
+        {
             SetBehaviorParams(AISimpleBehaviorKind.Melee, 0, 5, 0, 20, 0);
             SetBehaviorParams(AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
             SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
-            CastFireball();
-            
             var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
             var currentOrderType = moveOrder?.OrderType;
 
@@ -32,12 +38,9 @@ namespace TOW_Core.Battle.AI.Components
             {
                 SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 10f, 10f, 10f, 20f, 10f);
             }
-
-
-            base.OnTickAsAI(dt);
         }
 
-        private void CastFireball()
+        private void CastSpell()
         {
             var targetFormation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
 
@@ -54,13 +57,13 @@ namespace TOW_Core.Battle.AI.Components
                     var targetPosition = medianAgent.Position;
                     targetPosition.z += -2;
 
-                    TargetSpell(targetPosition);
+                    CalculateSpellRotation(targetPosition);
                     Agent.CastCurrentAbility();
                 }
             }
         }
 
-        private void TargetSpell(Vec3 targetPosition)
+        private void CalculateSpellRotation(Vec3 targetPosition)
         {
             SpellTargetRotation = Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
