@@ -42,7 +42,7 @@
 			 short_name="{=!}Stirland"
 			 title="{=!}Stirland"
 			 ruler_title="{=!}Elector Count"
-			text="{=!}Replace me.">
+			text="{=!}The Grand County of Stirland is a major and founding Imperial Province that lies within the eastern territories of the Empire. Stirland is a rugged highland province famous for its rural backwater society and the province's close affiliation with death. Such attitude stems from the province close association with the province of Sylvania, a land perpetrated with misty forests and ancient castles resting on the craggy peaks like circling vultures. Ever since the end of the Vampire Wars, the province of Stirland has been given the rights to all the lands of eastern Sylvania. This essentially doubled the size of the province, but did little to improve the province's fortunes. Indeed, the province of Stirland is a relatively poor country in comparison to its surrounding southern neighbours such as Averland or Wissenland. The citizenry of Stirland are a conservative and superstitious lot, known for their backwards outlook and religious intolerance. The Banner of Stirland shows a skeleton sounding a hunting horn, signifying a call to battle. The skeleton itself is a common symbol of the lands, an expression of both the Stirlander battle cry -Victory or Death- and a grim reminder of the lands of Sylvania that they share borders with.">
 		<relationships>
 			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
 		</relationships>
@@ -68,7 +68,7 @@
 			 short_name="{=!}Moot"
 			 title="{=!}The Moot"
 			 ruler_title="{=!}Lord"
-			text="{=!}Replace me.">
+			text="{=!}The Grand County of the Mootland, commonly referred to as The Moot, is a province of The Empire and homeland of the Halflings. Its capital is the town of Eicheschatten. Its symbol is a Fighting Cockerel and its colours are red and green.">
 		<relationships>
 			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
 		</relationships>
@@ -94,7 +94,7 @@
 			 short_name="{=!}Sylvania"
 			 title="{=!}Sylvania"
 			 ruler_title="{=!}Vampire Count"
-			text="{=!}Replace me.">
+			text="{=!}Sylvania is a dark and haunted region of the Old World. Though technically a part of the Imperial province of Stirland, it is in fact the independent domain of the Vampire Counts. Under the shadow of the Vampires, its populace has become a terrified, superstitious people. Close to uninhabitable, Sylvania's forests are dingy copses of twisted, half-rotted trees that claw what nourishment they can from the bone-strewn soil. Desolate moorlands and sluggish rivers of clotted blood punctuate the yellow-leafed woods, wind-swept and storm­ shrouded by dark clouds that seep down from the Worlds Edge Mountains on an almost daily basis.">
 		<relationships>
 			<relationship kingdom="Kingdom.stirland" value="-1" isAtWar="true" />
 			<relationship kingdom="Kingdom.moot" value="-1" isAtWar="true" />
