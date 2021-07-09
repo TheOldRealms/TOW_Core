@@ -18,7 +18,6 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class FactionBannerPatches
     {
-		private static Dictionary<string, string> _dict = new Dictionary<string, string>();
 		private static Dictionary<string, Banner> _cache = new Dictionary<string, Banner>();
 
         [HarmonyPrefix]
@@ -36,7 +35,6 @@ namespace TOW_Core.HarmonyPatches
 			string code = node?.Attributes?.GetNamedItem("banner_key").Value;
 			if (code != null)
 			{
-				_dict.Add(__instance.StringId, code);
 				_cache.Add(__instance.StringId, new Banner(code));
 			}
 		}
@@ -48,7 +46,6 @@ namespace TOW_Core.HarmonyPatches
 			string code = node?.Attributes?.GetNamedItem("banner_key").Value;
 			if (code != null)
 			{
-				_dict.Add(__instance.StringId, code);
 				_cache.Add(__instance.StringId, new Banner(code));
 			}
 		}
@@ -57,15 +54,11 @@ namespace TOW_Core.HarmonyPatches
 		[HarmonyPatch(typeof(Clan),"Banner", MethodType.Getter)]
 		public static void Postfix3(ref Banner __result, Clan __instance)
         {
-			string code = "";
-			_dict.TryGetValue(__instance.StringId, out code);
-			if (code != "")
+			Banner banner = null;
+			_cache.TryGetValue(__instance.StringId, out banner);
+			if (banner != null)
 			{
-				var bannerCode = BannerCode.CreateFrom(code);
-				if (bannerCode != null && bannerCode.Code != null)
-				{
-					__result = _cache.FirstOrDefault(x => x.Key == __instance.StringId).Value;
-				}
+				__result = banner;
 			}
 		}
 
@@ -73,15 +66,11 @@ namespace TOW_Core.HarmonyPatches
 		[HarmonyPatch(typeof(Kingdom), "Banner", MethodType.Getter)]
 		public static void Postfix5(ref Banner __result, Kingdom __instance)
 		{
-			string code = "";
-			_dict.TryGetValue(__instance.StringId, out code);
-			if (code != "")
+			Banner banner = null;
+			_cache.TryGetValue(__instance.StringId, out banner);
+			if (banner != null)
 			{
-				var bannerCode = BannerCode.CreateFrom(code);
-				if (bannerCode != null && bannerCode.Code != null)
-				{
-					__result = new Banner(code);
-				}
+				__result = banner;
 			}
 		}
 
