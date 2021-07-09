@@ -28,11 +28,13 @@ namespace TOW_Core.Abilities
         private int _explosionSoundindex;
         private SoundEvent _movingSound;
         private SoundEvent _explosionSound;
+        private float _elevationSpeed = 5f;
 
         protected override void OnRemoved(int removeReason)
         {
             base.OnRemoved(removeReason);
             //clean up
+            if (_movingSound != null) _movingSound.Release();
             if (_explosionSound != null) _explosionSound.Release();
             _casterAgent = null;
             _ability = null;
@@ -66,9 +68,19 @@ namespace TOW_Core.Abilities
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
 
-
+            if (_elevationSpeed > 0)
+            {
+                _speed = _speed - 10 * dt;
+            }
+            else
+            {
+                _speed = _speed + 5 * dt;
+            }
+             
             var newframe = frame.Advance(_speed * dt);
-            base.GameEntity.SetGlobalFrame(newframe);
+            _elevationSpeed = _elevationSpeed - 9.8f * dt;
+            base.GameEntity.SetGlobalFrame(newframe.Elevate(_elevationSpeed * dt));
+
             base.GameEntity.GetBodyShape().ManualInvalidate();
             if (_abilitylife < 0)
             {
