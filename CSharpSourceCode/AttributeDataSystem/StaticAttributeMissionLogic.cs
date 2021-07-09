@@ -119,73 +119,68 @@ namespace TOW_Core.AttributeDataSystem
             {
                 foreach (var partyAttribute in activeAttributes)
                 {
+                   
                     if (agent.Origin.BattleCombatant== partyAttribute.PartyBase)
                     {
-                        if (partyAttribute.PartyType == PartyType.RogueParty)
+                        
+                        var partyType = partyAttribute.PartyType;
+                        switch (partyType)
                         {
-                            foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                            {
-                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                                break;
-                            }
-                            break;
-                        }
-
-                        if (partyAttribute.PartyType == PartyType.Regular)
-                        {
-                            foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                            {
-                                if (agent.Origin.Troop.ToString() == attribute.id)
+                            case PartyType.RogueParty:
+                                foreach (var attribute in partyAttribute.RegularTroopAttributes)
                                 {
                                     AddStaticAttributeComponent(agent, attribute, partyAttribute);
                                     break;
                                 }
-                            }
-                            break;
-                        }
-
-                        if (partyAttribute.PartyType == PartyType.LordParty)
-                        {
-                            if (!agent.IsHero)
-                            {
-                                if (agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
+                                break;
+                            case PartyType.Regular:
+                                foreach (var attribute in partyAttribute.RegularTroopAttributes)
                                 {
-                                    foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                                    if (agent.Origin.Troop.ToString() == attribute.id)
                                     {
-                                        if (agent.Character.ToString() == attribute.id)
-                                        {
-                                            AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                                            break;
-                                        }
-
+                                        AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                        break;
                                     }
-                                    break;
                                 }
-                            }
-                            else
-                            {
-                                if (agent.Character.Name == partyAttribute.Leader.Name)
+                                break;
+                            case PartyType.LordParty:
+                                if (!agent.IsHero)
                                 {
-                                    var leaderAttribute = partyAttribute.LeaderAttribute;
-                                    AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
-                                    break;
-                                }
-                                if (!partyAttribute.CompanionAttributes.IsEmpty())
-                                {
-                                    foreach (var companionAttribute in partyAttribute.CompanionAttributes)
+                                    if (agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
                                     {
-                                        if (agent.Character.Name.ToString() == companionAttribute.id)
+                                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
                                         {
-                                            AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
-                                            break;
+                                            if (agent.Character.ToString() == attribute.id)
+                                            {
+                                                AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                                break;
+                                            }
                                         }
                                     }
                                 }
-
-
-                           
-                            }
+                                else
+                                {
+                                    if (agent.Character.Name == partyAttribute.Leader.Name)
+                                    {
+                                        var leaderAttribute = partyAttribute.LeaderAttribute;
+                                        AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
+                                        break;
+                                    }
+                                    if (!partyAttribute.CompanionAttributes.IsEmpty())
+                                    {
+                                        foreach (var companionAttribute in partyAttribute.CompanionAttributes)
+                                        {
+                                            if (agent.Character.Name.ToString() == companionAttribute.id)
+                                            {
+                                                AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
                         }
+                        
                     }
                 }
             
