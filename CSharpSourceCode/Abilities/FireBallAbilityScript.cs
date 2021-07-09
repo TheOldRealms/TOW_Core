@@ -67,16 +67,7 @@ namespace TOW_Core.Abilities
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
-
-            if (_elevationSpeed > 0)
-            {
-                _speed = _speed - 10 * dt;
-            }
-            else
-            {
-                _speed = _speed + 5 * dt;
-            }
-             
+            
             var newframe = frame.Advance(_speed * dt);
             _elevationSpeed = _elevationSpeed - 8f * dt;
             base.GameEntity.SetGlobalFrame(newframe.Elevate(_elevationSpeed * dt));
