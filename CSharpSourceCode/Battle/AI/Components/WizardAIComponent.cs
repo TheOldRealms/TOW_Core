@@ -1,4 +1,6 @@
-﻿using TaleWorlds.Core;
+﻿using System;
+using HarmonyLib;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
@@ -17,7 +19,12 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
-            UpdateBehavior();
+            var behaviorUpdated = Traverse.Create(this).Field("_hasNewBehaviorValues").GetValue<Boolean>();
+            if (behaviorUpdated)
+            {
+                UpdateBehavior();
+            }
+
             Agent.SelectAbility(0);
             CastSpell();
             Agent.SelectAbility(1);
