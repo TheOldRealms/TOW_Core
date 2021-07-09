@@ -65,9 +65,6 @@ namespace TOW_Core.AttributeDataSystem
             }
             else
             {
-                
-                
-                
                 activeAttributes = new List<PartyAttribute>();
                 PartyAttribute attackerAttribute = new PartyAttribute();
                 attackerAttribute.PartyBaseId = "attacker";
@@ -75,11 +72,8 @@ namespace TOW_Core.AttributeDataSystem
                 PartyAttribute defenderAttribute = new PartyAttribute();
                 defenderAttribute.PartyBaseId = "defender";
                 defenderAttriubtes.Add(defenderAttribute);
-                
                 activeAttributes.Add(attackerAttribute);
                 activeAttributes.Add(defenderAttribute);
-
-
                 foreach (var partyAttribute in activeAttributes)
                 {
                     StaticAttribute standardAttribute = new StaticAttribute(partyAttribute);
@@ -87,8 +81,6 @@ namespace TOW_Core.AttributeDataSystem
                     partyAttribute.WindsOfMagic = 30f;
                     partyAttribute.IsMagicUserParty = true;
                 }
-                
-              
             }
             
         }
@@ -123,85 +115,86 @@ namespace TOW_Core.AttributeDataSystem
                 }
                 
             }
-            
-            foreach (var partyAttribute in activeAttributes)
+            else
             {
-                if (agent.Origin.BattleCombatant== partyAttribute.PartyBase)
+                foreach (var partyAttribute in activeAttributes)
                 {
-                    if (partyAttribute.PartyType == PartyType.RogueParty)
+                    if (agent.Origin.BattleCombatant== partyAttribute.PartyBase)
                     {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                        if (partyAttribute.PartyType == PartyType.RogueParty)
                         {
-                            AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                            break;
-                        }
-                        break;
-                    }
-
-                    if (partyAttribute.PartyType == PartyType.Regular)
-                    {
-                        foreach (var attribute in partyAttribute.RegularTroopAttributes)
-                        {
-                            if (agent.Origin.Troop.ToString() == attribute.id)
+                            foreach (var attribute in partyAttribute.RegularTroopAttributes)
                             {
                                 AddStaticAttributeComponent(agent, attribute, partyAttribute);
                                 break;
                             }
+                            break;
                         }
-                        break;
-                    }
 
-                    if (partyAttribute.PartyType == PartyType.LordParty)
-                    {
-                        if (!agent.IsHero)
+                        if (partyAttribute.PartyType == PartyType.Regular)
                         {
-                            if (agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
+                            foreach (var attribute in partyAttribute.RegularTroopAttributes)
                             {
-                                foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                                if (agent.Origin.Troop.ToString() == attribute.id)
                                 {
-                                    if (agent.Character.ToString() == attribute.id)
-                                    {
-                                        AddStaticAttributeComponent(agent, attribute, partyAttribute);
-                                        break;
-                                    }
-
-                                }
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (agent.Character.Name == partyAttribute.Leader.Name)
-                            {
-                                var leaderAttribute = partyAttribute.LeaderAttribute;
-                                AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
-                                break;
-                            }
-                            if (!partyAttribute.CompanionAttributes.IsEmpty())
-                            {
-                                foreach (var companionAttribute in partyAttribute.CompanionAttributes)
-                                {
-                                    if (agent.Character.Name.ToString() == companionAttribute.id)
-                                    {
-                                        AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
-                                        break;
-                                    }
+                                    AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                    break;
                                 }
                             }
+                            break;
+                        }
+
+                        if (partyAttribute.PartyType == PartyType.LordParty)
+                        {
+                            if (!agent.IsHero)
+                            {
+                                if (agent.Character.IsSoldier && !partyAttribute.RegularTroopAttributes.IsEmpty())
+                                {
+                                    foreach (var attribute in partyAttribute.RegularTroopAttributes)
+                                    {
+                                        if (agent.Character.ToString() == attribute.id)
+                                        {
+                                            AddStaticAttributeComponent(agent, attribute, partyAttribute);
+                                            break;
+                                        }
+
+                                    }
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                if (agent.Character.Name == partyAttribute.Leader.Name)
+                                {
+                                    var leaderAttribute = partyAttribute.LeaderAttribute;
+                                    AddStaticAttributeComponent(agent, leaderAttribute, partyAttribute);
+                                    break;
+                                }
+                                if (!partyAttribute.CompanionAttributes.IsEmpty())
+                                {
+                                    foreach (var companionAttribute in partyAttribute.CompanionAttributes)
+                                    {
+                                        if (agent.Character.Name.ToString() == companionAttribute.id)
+                                        {
+                                            AddStaticAttributeComponent(agent, companionAttribute, partyAttribute);
+                                            break;
+                                        }
+                                    }
+                                }
 
 
                            
+                            }
                         }
                     }
                 }
+            
+            
                 
             }
             _agents.Add(agent);
 
-            if (agent == Mission.Current.MainAgent)
-            {
-                NotifyPlayerPartyAttributeAssignedObservers?.Invoke(); 
-            }
+            
         }
          
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
@@ -214,6 +207,12 @@ namespace TOW_Core.AttributeDataSystem
            //agent.InitializePartyAttribute(partyAttribute);
             
             agent.AddComponent(agentComponent);
+            
+            if (agent == Mission.Current.MainAgent)
+            {
+                playerPartyAttribute = partyAttribute;
+                NotifyPlayerPartyAttributeAssignedObservers?.Invoke(); 
+            }
             
         }
         
