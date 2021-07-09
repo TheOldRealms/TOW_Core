@@ -20,14 +20,6 @@ namespace TOW_Core.HarmonyPatches
     {
 		private static Dictionary<string, Banner> _cache = new Dictionary<string, Banner>();
 
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(Banner),"Serialize")]
-        public static bool Prefix(ref string __result, Banner __instance)
-        {
-			__result = SerializeBanner(__instance);
-			return false;
-        }
-
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(Clan),"Deserialize")]
 		public static void Postfix(MBObjectManager objectManager, XmlNode node, Clan __instance)
@@ -52,19 +44,27 @@ namespace TOW_Core.HarmonyPatches
 
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(Clan),"Banner", MethodType.Getter)]
-		public static void Postfix3(ref Banner __result, Clan __instance)
+		public static void Postfix3(ref Banner __result, Clan __instance, ref Banner ____banner)
         {
 			Banner banner = null;
 			_cache.TryGetValue(__instance.StringId, out banner);
 			if (banner != null)
 			{
 				__result = banner;
+				____banner = banner;
 			}
 		}
 
+		[HarmonyPrefix]
+		[HarmonyPatch(typeof(Clan), "UpdateBannerColorsAccordingToKingdom")]
+		public static bool Prefix(Clan __instance)
+        {
+			return false;
+        }
+
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(Kingdom), "Banner", MethodType.Getter)]
-		public static void Postfix5(ref Banner __result, Kingdom __instance)
+		public static void Postfix4(ref Banner __result, Kingdom __instance)
 		{
 			Banner banner = null;
 			_cache.TryGetValue(__instance.StringId, out banner);
@@ -72,50 +72,6 @@ namespace TOW_Core.HarmonyPatches
 			{
 				__result = banner;
 			}
-		}
-
-		private static string SerializeBanner(Banner banner)
-        {
-			StringBuilder stringBuilder = new StringBuilder();
-			bool flag = true;
-			foreach (BannerData bannerData in banner.BannerDataList)
-			{
-				try
-				{
-					bool flag2 = !flag;
-					if (flag2)
-					{
-						stringBuilder.Append(".");
-					}
-					flag = false;
-					stringBuilder.Append(bannerData.MeshId);
-					stringBuilder.Append('.');
-					stringBuilder.Append(bannerData.ColorId);
-					stringBuilder.Append('.');
-					stringBuilder.Append(bannerData.ColorId2);
-					stringBuilder.Append('.');
-					stringBuilder.Append((int)bannerData.Size.x);
-					stringBuilder.Append('.');
-					stringBuilder.Append((int)bannerData.Size.y);
-					stringBuilder.Append('.');
-					stringBuilder.Append((int)bannerData.Position.x);
-					stringBuilder.Append('.');
-					stringBuilder.Append((int)bannerData.Position.y);
-					stringBuilder.Append('.');
-					stringBuilder.Append(bannerData.DrawStroke ? 1 : 0);
-					stringBuilder.Append('.');
-					stringBuilder.Append(bannerData.Mirror ? 1 : 0);
-					stringBuilder.Append('.');
-					float num = bannerData.RotationValue / 0.00278f;
-					int value = (int)short.Parse(Math.Round((double)num, MidpointRounding.AwayFromZero).ToString());
-					stringBuilder.Append(value);
-				}
-				catch (Exception ex)
-				{
-					TOW_Core.Utilities.TOWCommon.Log(ex.Message, NLog.LogLevel.Error);
-				}
-			}
-			return stringBuilder.ToString();
 		}
     }
 }
