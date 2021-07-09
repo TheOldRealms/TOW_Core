@@ -21,6 +21,7 @@ namespace TOW_Core.Abilities
         private string _WindsOfMagicLeft = "100";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
+        private float _windsOfMagicValue;
 
         public AbilityHUD_VM() : base() { }
 
@@ -33,15 +34,10 @@ namespace TOW_Core.Abilities
                 return;
             }
             _ability = Agent.Main.GetCurrentAbility();
-
-            float windsofMagicValue=0f;
-            if (Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute() != null)
+            
+            if (Campaign.Current != null)
             {
-                windsofMagicValue = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().WindsOfMagic;
-                windsofMagicValue = windsofMagicValue - (windsofMagicValue%0.1f);
-                _WindsOfMagicLeft = windsofMagicValue.ToString();
-                WindsOfMagicLeft = _WindsOfMagicLeft;
-                
+               
             }
             
             HasAnyAbility = _ability != null;
@@ -53,7 +49,7 @@ namespace TOW_Core.Abilities
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
                 
-                if (windsofMagicValue < _ability.WindsOfMagicCost)
+                if (_windsOfMagicValue < _ability.WindsOfMagicCost)
                 {
                     IsOnCoolDown = true;
                     CoolDownLeft = "";
@@ -62,6 +58,15 @@ namespace TOW_Core.Abilities
             
             
         }
+
+        public void SetWindsOfMagicValue(float value)
+        {
+            _windsOfMagicValue = value;
+            _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();
+            WindsOfMagicLeft = _WindsOfMagicLeft;
+        }
+        
+        
 
         [DataSourceProperty]
         public bool HasAnyAbility

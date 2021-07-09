@@ -2,6 +2,7 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.AttributeDataSystem
@@ -16,22 +17,78 @@ namespace TOW_Core.AttributeDataSystem
 
         private List<PartyAttribute> activeAttributes;
         
-        private List<PartyAttribute> defenderAttributes;
 
         private List<Agent> _agents;
+
+
+        private List<PartyAttribute> attackerAttributes;
+        private List<PartyAttribute> defenderAttriubtes;
+
+        private PartyAttribute playerPartyAttribute;
+
+        public event OnPlayerPartyAttributeAssigned NotifyPlayerPartyAttributeAssignedObservers;
+
+        public List<PartyAttribute> GetAttackerAttributes()
+        {
+            return attackerAttributes;
+        }
         
+        public List<PartyAttribute> GetDefenderAttributes()
+        {
+            return defenderAttriubtes;
+        }
+
+        public PartyAttribute GetPlayerAttribute()
+        {
+            return playerPartyAttribute;
+        }
+
+        public override void AfterAddTeam(Team team)
+        {
+            base.AfterAddTeam(team);
+            
+           
+        }
+
         public override void AfterStart()
         {
             base.AfterStart();
             teams= Mission.Current.Teams;
             activeAttributes = new List<PartyAttribute>();
-            defenderAttributes = new List<PartyAttribute>();
             _agents = new List<Agent>();
-            
+            attackerAttributes = new List<PartyAttribute>();
+            defenderAttriubtes = new List<PartyAttribute>();
             if (Campaign.Current != null)
             {
                 _partyAttributeManager = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>();
                 activeAttributes = _partyAttributeManager.GetActiveInvolvedParties();
+            }
+            else
+            {
+                
+                
+                
+                activeAttributes = new List<PartyAttribute>();
+                PartyAttribute attackerAttribute = new PartyAttribute();
+                attackerAttribute.PartyBaseId = "attacker";
+                attackerAttributes.Add(attackerAttribute);
+                PartyAttribute defenderAttribute = new PartyAttribute();
+                defenderAttribute.PartyBaseId = "defender";
+                defenderAttriubtes.Add(defenderAttribute);
+                
+                activeAttributes.Add(attackerAttribute);
+                activeAttributes.Add(defenderAttribute);
+
+
+                foreach (var partyAttribute in activeAttributes)
+                {
+                    StaticAttribute standardAttribute = new StaticAttribute(partyAttribute);
+                    partyAttribute.RegularTroopAttributes.Add(standardAttribute);
+                    partyAttribute.WindsOfMagic = 30f;
+                    partyAttribute.IsMagicUserParty = true;
+                }
+                
+              
             }
             
         }
@@ -42,6 +99,30 @@ namespace TOW_Core.AttributeDataSystem
 
             if (agent.IsMount)
                 return;
+
+            if (Campaign.Current == null)
+            {
+                
+                if (agent.Team.IsAttacker)
+                {
+                    
+                    if (agent== Mission.Current.MainAgent)
+                    {
+                        playerPartyAttribute = attackerAttributes[0];
+                        AddStaticAttributeComponent(agent, attackerAttributes[0].RegularTroopAttributes[0], attackerAttributes[0]);
+                    }
+                    
+                }
+                else
+                {
+                    if (agent== Mission.Current.MainAgent)
+                    {
+                        playerPartyAttribute = defenderAttriubtes[0];
+                        AddStaticAttributeComponent(agent, defenderAttriubtes[0].RegularTroopAttributes[0], defenderAttriubtes[0]);
+                    }
+                }
+                
+            }
             
             foreach (var partyAttribute in activeAttributes)
             {
@@ -107,12 +188,20 @@ namespace TOW_Core.AttributeDataSystem
                                     }
                                 }
                             }
+
+
+                           
                         }
                     }
                 }
                 
             }
             _agents.Add(agent);
+
+            if (agent == Mission.Current.MainAgent)
+            {
+                NotifyPlayerPartyAttributeAssignedObservers?.Invoke(); 
+            }
         }
          
         private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
@@ -127,5 +216,8 @@ namespace TOW_Core.AttributeDataSystem
             agent.AddComponent(agentComponent);
             
         }
+        
+        
+        public delegate void OnPlayerPartyAttributeAssigned();
     }
 }
