@@ -19,12 +19,8 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
-            var behaviorUpdated = Traverse.Create(this).Field("_hasNewBehaviorValues").GetValue<Boolean>();
-            if (behaviorUpdated)
-            {
+           
                 UpdateBehavior();
-            }
-
             Agent.SelectAbility(0);
             CastSpell();
             Agent.SelectAbility(1);
