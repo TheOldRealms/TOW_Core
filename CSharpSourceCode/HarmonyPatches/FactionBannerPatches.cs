@@ -19,6 +19,7 @@ namespace TOW_Core.HarmonyPatches
     public static class FactionBannerPatches
     {
 		private static Dictionary<string, string> _dict = new Dictionary<string, string>();
+		private static Dictionary<string, Banner> _cache = new Dictionary<string, Banner>();
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Banner),"Serialize")]
@@ -36,6 +37,7 @@ namespace TOW_Core.HarmonyPatches
 			if (code != null)
 			{
 				_dict.Add(__instance.StringId, code);
+				_cache.Add(__instance.StringId, new Banner(code));
 			}
 		}
 
@@ -47,149 +49,40 @@ namespace TOW_Core.HarmonyPatches
 			if (code != null)
 			{
 				_dict.Add(__instance.StringId, code);
+				_cache.Add(__instance.StringId, new Banner(code));
 			}
 		}
 
-
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(PartyNameplateVM), "PartyBanner", MethodType.Setter)]
-		public static bool Prefix2(ref PartyNameplateVM __instance, ref ImageIdentifierVM value)
-		{
-			if (__instance.Party.MapFaction != null) 
-			{
-				string code = "";
-				_dict.TryGetValue(__instance.Party.MapFaction.StringId, out code);
-				if(code != "")
-                {
-					var bannerCode = BannerCode.CreateFrom(code);
-                    if (bannerCode != null && bannerCode.Code != null)
-                    {
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
-				}
-			}
-			return true;
-		}
-
-		
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(SettlementNameplateVM), "Banner", MethodType.Setter)]
-		public static bool Prefix3(SettlementNameplateVM __instance, ref ImageIdentifierVM value)
+		[HarmonyPostfix]
+		[HarmonyPatch(typeof(Clan),"Banner", MethodType.Getter)]
+		public static void Postfix3(ref Banner __result, Clan __instance)
         {
-			if (__instance?.Settlement?.OwnerClan != null)
+			string code = "";
+			_dict.TryGetValue(__instance.StringId, out code);
+			if (code != "")
 			{
-				string code = "";
-				_dict.TryGetValue(__instance.Settlement.OwnerClan.StringId, out code);
-				if (code != "")
+				var bannerCode = BannerCode.CreateFrom(code);
+				if (bannerCode != null && bannerCode.Code != null)
 				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
+					__result = _cache.FirstOrDefault(x => x.Key == __instance.StringId).Value;
 				}
 			}
-			return true;
 		}
 
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(EncyclopediaClanPageVM), "Banner", MethodType.Setter)]
-		public static bool Prefix4(EncyclopediaClanPageVM __instance, ref ImageIdentifierVM value, Clan ____clan)
+		[HarmonyPostfix]
+		[HarmonyPatch(typeof(Kingdom), "Banner", MethodType.Getter)]
+		public static void Postfix5(ref Banner __result, Kingdom __instance)
 		{
-			if (____clan != null)
+			string code = "";
+			_dict.TryGetValue(__instance.StringId, out code);
+			if (code != "")
 			{
-				string code = "";
-				_dict.TryGetValue(____clan.StringId, out code);
-				if (code != "")
+				var bannerCode = BannerCode.CreateFrom(code);
+				if (bannerCode != null && bannerCode.Code != null)
 				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
+					__result = new Banner(code);
 				}
 			}
-			return true;
-		}
-
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(EncyclopediaFactionPageVM), "Banner", MethodType.Setter)]
-		public static bool Prefix4(EncyclopediaFactionPageVM __instance, ref ImageIdentifierVM value, Kingdom ____faction)
-		{
-			if (____faction != null)
-			{
-				string code = "";
-				_dict.TryGetValue(____faction.StringId, out code);
-				if (code != "")
-				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
-				}
-			}
-			return true;
-		}
-
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(EncyclopediaFactionVM), "ImageIdentifier", MethodType.Setter)]
-		public static bool Prefix5(EncyclopediaFactionVM __instance, ref ImageIdentifierVM value, IFaction ____faction)
-		{
-			if (____faction != null)
-			{
-				string code = "";
-				_dict.TryGetValue(____faction.StringId, out code);
-				if (code != "")
-				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
-				}
-			}
-			return true;
-		}
-
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(SettlementNameplatePartyMarkerItemVM), "Visual", MethodType.Setter)]
-		public static bool Prefix6(SettlementNameplatePartyMarkerItemVM __instance, ref ImageIdentifierVM value)
-		{
-			if (__instance.Party?.MapFaction != null)
-			{
-				string code = "";
-				_dict.TryGetValue(__instance.Party.MapFaction.StringId, out code);
-				if (code != "")
-				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
-				}
-			}
-			return true;
-		}
-
-		[HarmonyPrefix]
-		[HarmonyPatch(typeof(SettlementMenuOverlayVM), "SettlementOwnerBanner", MethodType.Setter)]
-		public static bool Prefix7(SettlementMenuOverlayVM __instance, ref ImageIdentifierVM value, SettlementComponent ____settlementComponent)
-		{
-			if (____settlementComponent?.Settlement?.MapFaction != null)
-			{
-				string code = "";
-				_dict.TryGetValue(____settlementComponent.Settlement.MapFaction.StringId, out code);
-				if (code != "")
-				{
-					var bannerCode = BannerCode.CreateFrom(code);
-					if (bannerCode != null && bannerCode.Code != null)
-					{
-						value = new ImageIdentifierVM(bannerCode, true);
-					}
-				}
-			}
-			return true;
 		}
 
 		private static string SerializeBanner(Banner banner)
