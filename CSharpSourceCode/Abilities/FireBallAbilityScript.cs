@@ -19,7 +19,7 @@ namespace TOW_Core.Abilities
         private int _minDamage = 20;
         private int _maxDamage = 30;
         private bool _hasCollided;
-        private float _speed = 40f;
+        private float _speed = 35f;
         private FireBallAbility _ability;
         private float _abilitylife = -1f;
         private float _collisionRadius = 2f;
@@ -78,7 +78,7 @@ namespace TOW_Core.Abilities
             }
              
             var newframe = frame.Advance(_speed * dt);
-            _elevationSpeed = _elevationSpeed - 9.8f * dt;
+            _elevationSpeed = _elevationSpeed - 8f * dt;
             base.GameEntity.SetGlobalFrame(newframe.Elevate(_elevationSpeed * dt));
 
             base.GameEntity.GetBodyShape().ManualInvalidate();
