@@ -76,6 +76,7 @@ namespace TOW_Core.AttributeDataSystem
 
             if (_isCustomBattle)
             {
+                if (agent.Character.IsSoldier) return;
                 
                 if (agent.Team.IsAttacker)
                 {
@@ -89,10 +90,9 @@ namespace TOW_Core.AttributeDataSystem
                 {
                     if (agent== Mission.Current.MainAgent)
                     {
-                        playerPartyAttribute = attackerAttributes[0];
+                        playerPartyAttribute = defenderAttriubtes[0];
                         
                     }
-                    
                     AddStaticAttributeComponent(agent, defenderAttriubtes[0].RegularTroopAttributes[0], defenderAttriubtes[0]);
                 }
                 
@@ -143,12 +143,9 @@ namespace TOW_Core.AttributeDataSystem
                                 }
                                 break;
                         }
-                        
                     }
                 }
-            
-            
-                
+
             }
             _agents.Add(agent);
 
