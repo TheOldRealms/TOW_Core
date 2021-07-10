@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
-using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -13,17 +9,26 @@ namespace TOW_Core.Battle.Dismemberment
 {
     public class Dismemberment
     {
+        #region debug fields
+        public static float velocityX = 1;
+        public static float velocityY = 1;
+        public static float velocityZ = 1;
+        public static float angularX = 1;
+        public static float angularY = 1;
+        public static float angularZ = 1;
+        public static float angle = 0;
+        #endregion
+
         public static void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
-            //if (victim.IsActive())
-            //    KillAgent(victim);
             victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
             MakeHeadInvisible(victim);
             GameEntity head = SpawnHead(victim);
-            AddPhysicsFromCollision(head, attackCollision);
+            GameEntity hat = SpawnHat(victim);
+            AddHeadPhysics(head, attackCollision);
+            AddHatPhysics(hat, attackCollision);
             CreateBloodBurst(victim);
         }
-
         private static void MakeHeadInvisible(Agent victim)
         {
             foreach (Mesh mesh in victim.AgentVisuals.GetEntity().Skeleton.GetAllMeshes())
@@ -42,17 +47,28 @@ namespace TOW_Core.Battle.Dismemberment
             victimFrame.Elevate(0.02f);
             head.SetGlobalFrame(victimFrame);
             head.SetPhysicsState(true, false);
+            head.AddBodyFlags(BodyFlags.AgentOnly);
             head.EnableDynamicBody();
             return head;
+        }
+        private static GameEntity SpawnHat(Agent victim)
+        {
+            GameEntity hat = GetHatCopy(victim);
+            hat.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
+            MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
+            victimFrame.Advance(-0.2f);
+            hat.SetGlobalFrame(victimFrame);
+            hat.SetPhysicsState(true, false);
+            hat.EnableDynamicBody();
+            return hat;
         }
         private static GameEntity GetHeadCopy(Agent victim)
         {
             var head = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
-
             foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
-                if ((mesh.Name.Contains("head") || mesh.Name.Contains("_hat_")) && !mesh.Name.Contains("lod"))
+                if (mesh.Name.Contains("head") && !mesh.Name.Contains("lod"))
                 {
                     Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
                     var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
@@ -61,7 +77,6 @@ namespace TOW_Core.Battle.Dismemberment
                     head.AddChild(child);
                 }
             }
-
             String[] meshNames = { "hair", "beard", "eyebrow", "_cap_", "helmet" };
             foreach (String name in meshNames)
             {
@@ -75,84 +90,67 @@ namespace TOW_Core.Battle.Dismemberment
                     head.AddChild(child);
                 }
             }
+            CoverWithFlesh(victim, head);
             return head;
         }
-        private static void AddPhysicsFromCollision(GameEntity head, AttackCollisionData attackCollision)
+        private static GameEntity GetHatCopy(Agent victim)
         {
-            Vec3 blowDir = attackCollision.WeaponBlowDir;
-            Vec3 velocityVec = new Vec3(blowDir.X * 3, blowDir.Y * 3);
-            Vec3 angularVec = new Vec3(velocityVec.X * 3, velocityVec.Y * 3);
-            head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            var hat = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
+            MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
+
+            foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
+            {
+                if (mesh.Name.Contains("_hat_") && !mesh.Name.Contains("lod"))
+                {
+                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                    var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                    childMesh.SetLocalFrame(headLocalFrame);
+                    child.AddMesh(childMesh);
+                    hat.AddChild(child);
+                }
+            }
+
+            return hat;
+        }
+        private static void AddHeadPhysics(GameEntity head, AttackCollisionData collisionData)
+        {
+            Vec3 blowDir = collisionData.WeaponBlowDir;
+            Vec3 velocityVec = new Vec3(blowDir.X, blowDir.Y, blowDir.Z);
+            head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 3, blowDir.Y * 3, blowDir.Z));
+        }
+        private static void AddHatPhysics(GameEntity hat, AttackCollisionData collisionData)
+        {
+            Vec3 blowDir = collisionData.WeaponBlowDir;
+            Vec3 velocityVec = new Vec3(blowDir.X * 6, blowDir.Y * 6, blowDir.Z);
+            Vec3 angularVec = new Vec3(-6, -6, angularZ);
+            hat.AddPhysics(0.1f, hat.CenterOfMass, PhysicsShape.GetFromResource("bo_hatbody"), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            hat.ApplyImpulseToDynamicBody(new Vec3(hat.GlobalPosition.X, hat.GlobalPosition.Y, hat.GlobalPosition.Z + 1f), new Vec3(blowDir.X * 0.2f, blowDir.Y * 0.2f, blowDir.Z * 0));
+        }
+        private static void CoverWithFlesh(Agent victim, GameEntity head)
+        {
+            Mesh throatMesh = Mesh.GetFromResource("dismemberment_head_throat");
+            MatrixFrame throatFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
+            throatMesh.SetLocalFrame(throatFrame);
+            var throatEntity = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+            throatEntity.AddMesh(throatMesh);
+            head.AddChild(throatEntity);
+
+            Mesh neckMesh = Mesh.GetFromResource("dismemberment_head_neck").CreateCopy();
+            victim.AgentVisuals.GetSkeleton().AddMesh(neckMesh);
         }
         private static void CreateBloodBurst(Agent victim)
         {
             MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
-            Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
+            //Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
+            Vec3 vec = victim.Position;
+            vec.z = 1;
             victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
         }
 
-        public static Agent SpawnAgent(Agent agent)
+        private static void MakeHeadBloodyTest(Mesh head)
         {
-            AgentBuildData agentBuildData = new AgentBuildData(agent.Character);
-            agentBuildData.NoHorses(true);
-            agentBuildData.NoWeapons(true);
-            agentBuildData.NoArmor(false);
-            agentBuildData.Team(Mission.Current.PlayerEnemyTeam);
-            agentBuildData.TroopOrigin(agent.Origin);
-
-            MatrixFrame frame = default(MatrixFrame);
-            frame.origin = agent.Position;
-            frame.rotation = agent.Frame.rotation;
-            agentBuildData.InitialFrame(frame);
-
-            return Mission.Current.SpawnAgent(agentBuildData, false, 0);
-        }
-        private static void KillAgent(Agent agent)
-        {
-            if (!GameNetwork.IsClientOrReplay)
-            {
-                Blow blow = new Blow(agent.Index);
-                blow.DamageType = 0;
-                blow.StrikeType = 0;
-                blow.BoneIndex = agent.Monster.HeadLookDirectionBoneIndex;
-                blow.Position = agent.Position;
-                blow.Position.z = blow.Position.z + agent.GetEyeGlobalHeight();
-                blow.BaseMagnitude = 2000f;
-                blow.InflictedDamage = 2000;
-                Vec3 vec = new Vec3(1f, 0f, 0f, -1f);
-
-                if (Mission.Current.InputManager.IsGameKeyDown(2))
-                    vec = new Vec3(-1f, 0f, 0f, -1f);
-                else
-                {
-                    if (Mission.Current.InputManager.IsGameKeyDown(3))
-                        vec = new Vec3(1f, 0f, 0f, -1f);
-                    else
-                    {
-                        if (Mission.Current.InputManager.IsGameKeyDown(1))
-                            vec = new Vec3(0f, -1f, 0f, -1f);
-                        else
-                        {
-                            if (Mission.Current.InputManager.IsGameKeyDown(0))
-                                vec = new Vec3(0f, 1f, 0f, -1f);
-                        }
-                    }
-                }
-                blow.SwingDirection = agent.Frame.rotation.TransformToParent(vec);
-                blow.SwingDirection.Normalize();
-                blow.Direction = blow.SwingDirection;
-                blow.DamageCalculated = true;
-                agent.RegisterBlow(blow);
-            }
-        }
-
-        public static void DisplayDebugMessage(string msg)
-        {
-            Dismemberment.DisplayMessage("[DEBUG] " + msg, 16711680U);
-        }
-        private static void DisplayMessage(string msg, uint color)
-        {
-            InformationManager.DisplayMessage(new InformationMessage(msg, Color.FromUint(color)));
+            head.SetMaterial(Material.GetFromResource("prt_blood_5"));
         }
     }
 }
