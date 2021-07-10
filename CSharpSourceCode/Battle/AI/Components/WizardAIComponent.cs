@@ -14,6 +14,7 @@ namespace TOW_Core.Battle.AI.Components
     public class WizardAIComponent : HumanAIComponent
     {
         public Mat3 SpellTargetRotation = Mat3.Identity;
+        private Formation _targetFormation;
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
@@ -60,14 +61,14 @@ namespace TOW_Core.Battle.AI.Components
 
         private void CastSpell()
         {
-            var targetFormation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
+            ChooseTargetFormation();
 
-            if (targetFormation != null)
+            if (_targetFormation != null)
             {
-                var medianAgent = targetFormation.GetMedianAgent(
+                var medianAgent = _targetFormation.GetMedianAgent(
                     true,
                     false,
-                    targetFormation.GetAveragePositionOfUnits(true, false)
+                    _targetFormation.GetAveragePositionOfUnits(true, false)
                 );
 
 
@@ -85,6 +86,15 @@ namespace TOW_Core.Battle.AI.Components
                         Agent.CastCurrentAbility();
                     }
                 }
+            }
+        }
+
+        private void ChooseTargetFormation()
+        {
+            var formation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
+            if (formation != null && (_targetFormation == null || !formation.HasPlayer || formation.Distance < _targetFormation.Distance && formation.Distance < 10 || _targetFormation.GetFormationPower() < 15))
+            {
+                _targetFormation = formation;
             }
         }
 
