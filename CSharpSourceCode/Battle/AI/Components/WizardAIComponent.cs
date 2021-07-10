@@ -72,15 +72,18 @@ namespace TOW_Core.Battle.AI.Components
                 );
 
 
-                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 70 : 27;
+                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
 
                 if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
                 {
-                    var targetPosition = medianAgent.GetChestGlobalPosition();
+                    var targetPosition = medianAgent == Agent.Main ? medianAgent.Position : medianAgent.GetChestGlobalPosition();
                     targetPosition.z += -2;
 
                     Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
-                    if (collidedAgent == null || collidedAgent == medianAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(medianAgent.GetChestGlobalPosition()) < 3)
+                    Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
+                
+                    if ((collidedAgent == null || collidedAgent == medianAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(medianAgent.GetChestGlobalPosition()) < 3) &&
+                        (float.IsNaN(distance) || Math.Abs(distance - targetPosition.Distance(Agent.Position)) < 0.3))
                     {
                         CalculateSpellRotation(targetPosition);
                         Agent.CastCurrentAbility();

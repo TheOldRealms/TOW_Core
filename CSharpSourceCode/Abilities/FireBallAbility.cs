@@ -49,7 +49,7 @@ namespace TOW_Core.Abilities
                 entity.AddLight(light);
 
 
-                entity.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
+                entity.AddSphereAsBody(Vec3.Zero, 0.35f, BodyFlags.Moveable);
                 entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
                 entity.SetPhysicsState(true, false);
                 entity.CreateAndAddScriptComponent("FireBallAbilityScript");
