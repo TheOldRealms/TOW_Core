@@ -28,7 +28,7 @@ namespace TOW_Core.Abilities
         private int _explosionSoundindex;
         private SoundEvent _movingSound;
         private SoundEvent _explosionSound;
-        private float _elevationSpeed = 5f;
+        private float _elevationSpeed = 2f;
 
         protected override void OnRemoved(int removeReason)
         {
