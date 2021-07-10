@@ -28,7 +28,6 @@ namespace TOW_Core.Abilities
         private int _explosionSoundindex;
         private SoundEvent _movingSound;
         private SoundEvent _explosionSound;
-        private float _elevationSpeed = 2f;
 
         protected override void OnRemoved(int removeReason)
         {
@@ -69,8 +68,7 @@ namespace TOW_Core.Abilities
             }
             
             var newframe = frame.Advance(_speed * dt);
-            _elevationSpeed = _elevationSpeed - 8f * dt;
-            base.GameEntity.SetGlobalFrame(newframe.Elevate(_elevationSpeed * dt));
+            base.GameEntity.SetGlobalFrame(newframe);
 
             base.GameEntity.GetBodyShape().ManualInvalidate();
             if (_abilitylife < 0)
