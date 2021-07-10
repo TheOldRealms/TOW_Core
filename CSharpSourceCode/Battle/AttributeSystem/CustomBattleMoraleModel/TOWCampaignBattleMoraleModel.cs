@@ -6,7 +6,7 @@ namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
 {
     public class CustomBattleMoralModel
     {
-        public class TOWCampaignBattleMoralModel : DefaultBattleMoraleModel
+        public class TOWCampaignBattleMoraleModel : DefaultBattleMoraleModel
         {
             public override bool CanPanicDueToMorale(Agent agent)
             {

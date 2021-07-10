@@ -295,8 +295,8 @@
     <Compile Include="Abilities\AbilityManager.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWCampaignBattleMoralModel.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />

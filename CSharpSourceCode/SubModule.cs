@@ -13,7 +13,6 @@ using TOW_Core.Battle.AttributeSystem.CustomMissionLogic;
 using TaleWorlds.MountAndBlade.Source.Missions.Handlers.Logic;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
-using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.GauntletUI;
 using TaleWorlds.Engine.GauntletUI;
@@ -36,6 +35,7 @@ using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using StoryMode.GameModels;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 
 namespace TOW_Core
 {
@@ -134,7 +134,7 @@ namespace TOW_Core
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
-                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoralModel());
+                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
 
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
