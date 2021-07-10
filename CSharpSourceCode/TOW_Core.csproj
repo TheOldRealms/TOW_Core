@@ -310,6 +310,8 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
+    <Compile Include="CampaignSupport\GameMenuBackgroundSwitcher.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleEncounter.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationBehaviour.cs" />

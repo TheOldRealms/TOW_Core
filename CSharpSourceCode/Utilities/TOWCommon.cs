@@ -12,6 +12,7 @@ namespace TOW_Core.Utilities
 {
     public static class TOWCommon
     {
+        private static Random _random = new Random();
         /// <summary>
         /// Print a message to the MB2 message window.
         /// </summary>
@@ -31,7 +32,7 @@ namespace TOW_Core.Utilities
         {
             var filterednames = new List<string>();
             string pickedname = "towmm_menuscene_01";
-            var path = BasePath.Name + "Modules/TOW_Environment/SceneObj/";
+            var path = BasePath.Name + "Modules/TOW_EnvironmentAssets/SceneObj/";
             if (Directory.Exists(path))
             {
                 var dirnames = Directory.GetDirectories(path);
@@ -39,8 +40,7 @@ namespace TOW_Core.Utilities
             }
             if (filterednames.Count > 0)
             {
-                var rng = new Random();
-                var index = rng.Next(0, filterednames.Count);
+                var index = _random.Next(0, filterednames.Count);
                 pickedname = filterednames[index];
                 string[] s = pickedname.Split('/');
                 pickedname = s[s.Length - 1];
