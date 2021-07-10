@@ -92,7 +92,7 @@ namespace TOW_Core.Battle.AI.Components
         private void ChooseTargetFormation()
         {
             var formation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
-            if (formation != null && (_targetFormation == null || !formation.HasPlayer || formation.Distance < _targetFormation.Distance && formation.Distance < 10 || _targetFormation.GetFormationPower() < 15))
+            if (formation != null && (_targetFormation == null || !formation.HasPlayer || formation.Distance < _targetFormation.Distance && formation.Distance < 15 || _targetFormation.GetFormationPower() < 15))
             {
                 _targetFormation = formation;
             }
