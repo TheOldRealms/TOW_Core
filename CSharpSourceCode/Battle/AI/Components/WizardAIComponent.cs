@@ -46,10 +46,8 @@ namespace TOW_Core.Battle.AI.Components
             if (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget)
             {
                 SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
-
-                var querySystem = Agent?.Formation?.QuerySystem;
-                var allyPower = querySystem?.LocalAllyPower;
-                if (allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2)
+                
+                if (ShouldAgentSkirmish())
                 {
                     SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
                 }
@@ -58,6 +56,13 @@ namespace TOW_Core.Battle.AI.Components
                     SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 0.0f, 15f, 0.0f, 30f, 0.0f);
                 }
             }
+        }
+
+        private bool ShouldAgentSkirmish()
+        {
+            var querySystem = Agent?.Formation?.QuerySystem;
+            var allyPower = querySystem?.LocalAllyPower;
+            return allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2;
         }
 
         private void CastSpell()
