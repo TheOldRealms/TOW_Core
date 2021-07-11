@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 using TOW_Core.Texts;
 using TOW_Core.Utilities;
 
@@ -35,6 +36,36 @@ namespace TOW_Core.Abilities
             }
             return list;
         }
+
+        internal static void AddAbility(Agent agent, string ability)
+        {
+            string id = agent.Character.StringId;
+            AddAbility(id,ability);
+        }
+        
+        internal static void AddAbility(string id, string ability)
+        {
+            
+            if (_abilities.ContainsKey(id))
+            {
+                foreach (var abilityItem in _abilities[id])
+                {
+                    if (abilityItem == ability)
+                    {
+                        return;
+                    }
+                }
+                _abilities[id].Add(ability);
+            }
+            else
+            {
+                List<string> abilityList = new List<string>();
+                abilityList.Add(ability);
+                _abilities.Add(id, abilityList);
+            }
+        }
+        
+        
 
         internal static void LoadAbilities()
         {

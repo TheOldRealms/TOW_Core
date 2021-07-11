@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -22,12 +23,17 @@ namespace TOW_Core.Battle.Extensions
         private static Dictionary<string, string> CharacterIDToVoiceClassNameMap = new Dictionary<string, string>();
         private static bool _attributesAreInitialized = false;
         private static bool _voicesAreInitialized = false;
-
+        
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-
+        
+        public static bool IsHuman(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("Human");
+        }
+        
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
@@ -46,8 +52,11 @@ namespace TOW_Core.Battle.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
+           
             if(abilitycomponent != null)
             {
+                
+                
                 if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
             }
         }
@@ -69,6 +78,15 @@ namespace TOW_Core.Battle.Extensions
             {
                 abilitycomponent.SelectNextAbility();
             }
+        }
+
+        public static void AddAbility(this Agent agent, string ability)
+        {
+            AbilityManager.AddAbility(agent,ability);
+
+            AbilityComponent abilityComponent = new AbilityComponent(agent);
+
+            agent.AddComponent(abilityComponent);
         }
 
         public static void SelectAbility(this Agent agent, int abilityindex)
@@ -98,6 +116,28 @@ namespace TOW_Core.Battle.Extensions
                 }
             }
             return new List<string>();
+        }
+
+        public static void AddAttribute(this Agent agent, string attribute)
+        {
+            var characterName = agent.Character.StringId;
+
+            if (!CharacterIDToAttributeMap.ContainsKey(characterName))
+            {
+                List<string> attributeList= new List<string>();
+                attributeList.Add(attribute);
+                CharacterIDToAttributeMap.Add(characterName, attributeList);
+                return;
+            }
+
+            if (CharacterIDToAttributeMap[characterName].Contains(attribute))
+            {
+                return;
+            }
+            
+            CharacterIDToAttributeMap[characterName].Add(attribute);
+            
+            
         }
 
         public static void SetAttributesDictionary(Dictionary<string, List<string>> dict)

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.Abilities
@@ -16,28 +18,55 @@ namespace TOW_Core.Abilities
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
+        private string _WindsOfMagicLeft = "100";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
+        private float _windsOfMagicValue;
 
         public AbilityHUD_VM() : base() { }
 
         public void UpdateProperties()
         {
+
             if (Agent.Main == null) 
             {
                 HasAnyAbility = false;
                 return;
             }
             _ability = Agent.Main.GetCurrentAbility();
+            
+            if (Campaign.Current != null)
+            {
+               
+            }
+            
             HasAnyAbility = _ability != null;
+            
             if (HasAnyAbility)
             {
                 SpriteName = _ability.SpriteName;
                 Name = _ability.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
+                
+                if (_windsOfMagicValue < _ability.WindsOfMagicCost)
+                {
+                    IsOnCoolDown = true;
+                    CoolDownLeft = "";
+                }
             }
+            
+            
         }
+
+        public void SetWindsOfMagicValue(float value)
+        {
+            _windsOfMagicValue = value;
+            _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();
+            WindsOfMagicLeft = _WindsOfMagicLeft;
+        }
+        
+        
 
         [DataSourceProperty]
         public bool HasAnyAbility
@@ -53,6 +82,20 @@ namespace TOW_Core.Abilities
                     _hasAnyAbility = value;
                     base.OnPropertyChangedWithValue(value, "HasAnyAbility");
                 }
+            }
+        }
+        
+        [DataSourceProperty]
+        public string WindsOfMagicLeft
+        {
+            get
+            {
+                return _WindsOfMagicLeft;
+            }
+            set
+            {
+                _WindsOfMagicLeft = value;
+                base.OnPropertyChangedWithValue(value, "WindsOfMagicLeft");
             }
         }
 

@@ -13,7 +13,6 @@ using TOW_Core.Battle.AttributeSystem.CustomMissionLogic;
 using TaleWorlds.MountAndBlade.Source.Missions.Handlers.Logic;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
-using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.GauntletUI;
 using TaleWorlds.Engine.GauntletUI;
@@ -28,6 +27,7 @@ using System;
 using SandBox;
 using SandBox.View;
 using TaleWorlds.Engine.Screens;
+using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
@@ -37,6 +37,7 @@ using TOW_Core.CampaignSupport.QuestBattleLocation;
 using StoryMode.GameModels;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TOW_Core.Battle.AI;
+using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 
 namespace TOW_Core
 {
@@ -130,9 +131,12 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
+                PartyAttributeManager partyAttributeManager = new PartyAttributeManager();
+                starter.CampaignBehaviors.Add(partyAttributeManager);
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
+                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
                 gameStarterObject.AddModel(new TowMapWeatherModel());
 
@@ -150,6 +154,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new CustomAIMissionLogic());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
+            mission.AddMissionBehaviour(new StaticAttributeMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());

@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 using TaleWorlds.Library;
 using System.IO;
 using TaleWorlds.CampaignSystem.GameState;
+using TOW_Core.AttributeDataSystem;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -165,6 +166,17 @@ namespace TOW_Core.CharacterCreation
         public override void OnCharacterCreationFinalized()
         {
             CultureObject culture = CharacterObject.PlayerCharacter.Culture;
+
+            foreach (var option in _options)
+            {
+                if (option.OptionText == "Bright Wizard pupil")
+                {
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.Abilities.Add("TOW_Core.Abilities.FireBallAbility");
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.CharacterAttributes.Add("AbilityUser");
+                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.IsMagicUser = true;
+                }
+            }
+            
             Vec2 position2D = default(Vec2);
 
             switch (culture.StringId)

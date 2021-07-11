@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.Timers;
 using System.Xml.Schema;
 using System.Xml;
+using TOW_Core.AttributeDataSystem;
 using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Components;
 
@@ -19,12 +20,14 @@ namespace TOW_Core.Abilities
         public string Name { get; protected set; } = "";
         public string SpriteName { get; protected set; } = "";
         public int CoolDown { get; protected set; } = 10;
+        public int WindsOfMagicCost = 3;
         public float MaxDuration { get; protected set; } = 3f;
         private int _coolDownLeft = 0;
         private Timer _timer = null;
 
         public bool IsOnCooldown()
         {
+            
             return this._timer.Enabled;
         }
 
@@ -54,6 +57,18 @@ namespace TOW_Core.Abilities
         {
             if (!this.IsOnCooldown())
             {
+                var attributeComponent = casterAgent.GetComponent<StaticAttributeAgentComponent>();
+
+
+                if (attributeComponent != null)
+                {
+                    if (attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost < 0)
+                        return;
+
+                    attributeComponent.GetParty().WindsOfMagic = attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost;
+                }
+                
+                
                 this._coolDownLeft = this.CoolDown;
                 this._timer.Start();
                 OnUse(casterAgent);
