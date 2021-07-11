@@ -23,12 +23,12 @@ namespace TOW_Core.Battle.AI.Components
         public override void OnTickAsAI(float dt)
         {
             UpdateBehavior();
-            
+
             Agent.SelectAbility(0);
             CastSpell();
             Agent.SelectAbility(1);
             CastSpell();
-            
+
             base.OnTickAsAI(dt);
         }
 
@@ -66,31 +66,31 @@ namespace TOW_Core.Battle.AI.Components
 
             if (_targetFormation != null)
             {
-                var medianAgent = _targetFormation.GetMedianAgent(
-                    true,
-                    false,
-                    _targetFormation.GetAveragePositionOfUnits(true, false)
-                );
-
+                var medianAgent = _targetFormation.GetMedianAgent(true, false, _targetFormation.GetAveragePositionOfUnits(true, false));
 
                 var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
 
                 if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
                 {
-                    var targetPosition = medianAgent == Agent.Main ? medianAgent.Position : medianAgent.GetChestGlobalPosition();
-                    targetPosition.z += -2;
-
-                    Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
-                    Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
-                
-                    if ((collidedAgent == null || collidedAgent == medianAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(medianAgent.GetChestGlobalPosition()) < 3) &&
-                        (float.IsNaN(distance) || Math.Abs(distance - targetPosition.Distance(Agent.Position)) < 0.3))
+                    if (HaveLineOfSightToAgent(medianAgent))
                     {
+                        var targetPosition = medianAgent == Agent.Main ? medianAgent.Position : medianAgent.GetChestGlobalPosition();
+                        targetPosition.z += -2.5f;
+
                         CalculateSpellRotation(targetPosition);
                         Agent.CastCurrentAbility();
                     }
                 }
             }
+        }
+
+        private bool HaveLineOfSightToAgent(Agent targetAgent)
+        {
+            Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
+            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
+
+            return (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 3) &&
+                   (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
         }
 
         private void ChooseTargetFormation()
