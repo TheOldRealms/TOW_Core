@@ -75,7 +75,7 @@ namespace TOW_Core.Battle.AI.Components
                     if (HaveLineOfSightToAgent(medianAgent))
                     {
                         var targetPosition = medianAgent == Agent.Main ? medianAgent.Position : medianAgent.GetChestGlobalPosition();
-                        targetPosition.z += -2.5f;
+                        targetPosition.z += -2f;
 
                         CalculateSpellRotation(targetPosition);
                         Agent.CastCurrentAbility();
