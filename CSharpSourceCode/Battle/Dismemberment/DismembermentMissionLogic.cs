@@ -6,31 +6,17 @@ using TaleWorlds.Engine;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Dismemberment
 {
     public class DismembermentMissionLogic : MissionLogic
     {
-        #region debug fields
-        private float velocityX = 1;
-        private float velocityY = 1;
-        private float velocityZ = 1;
-        private float angularX = 1;
-        private float angularY = 1;
-        private float angularZ = 1;
-        private float angle = 0;
-        private float velocityOfs = 0.1f;
-        private float angularOfs = 0.1f;
-        private Int32 paramNumber = 1;
-        #endregion
-
         private float slowMotionTimer;
-        private bool isDebugModeOn = false;
+        private bool isDebugModeOn = true;
         private float maxChance = 100;
         private float maxTroopChance = 10;
-
-        public DismembermentMissionLogic() { }
 
         public override void OnMissionTick(float dt)
         {
@@ -38,8 +24,10 @@ namespace TOW_Core.Battle.Dismemberment
 
             if (MBCommon.TimeType.Mission.GetTime() >= slowMotionTimer)
                 Mission.Current.Scene.SlowMotionMode = false;
-            Debug();
+            if (isDebugModeOn && Input.IsKeyPressed(InputKey.O))
+                TOWDebug.SpawnAgent(Mission.Current.MainAgent);
         }
+
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
             base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
@@ -85,6 +73,8 @@ namespace TOW_Core.Battle.Dismemberment
             AddHatPhysics(hat, attackCollision);
             CreateBloodBurst(victim);
         }
+
+        //This method was copied from the jedijosh920 dismemberment mod
         private void MakeHeadInvisible(Agent victim)
         {
             foreach (Mesh mesh in victim.AgentVisuals.GetEntity().Skeleton.GetAllMeshes())
@@ -97,13 +87,10 @@ namespace TOW_Core.Battle.Dismemberment
         private GameEntity SpawnHead(Agent victim)
         {
             GameEntity head = GetHeadCopy(victim);
-            head.AddSphereAsBody(Vec3.Zero, 0.1f, BodyFlags.Moveable);
+            head.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.Moveable);
             MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
-            victimFrame.Advance(-0.2f);
-            victimFrame.Elevate(0.02f);
             head.SetGlobalFrame(victimFrame);
             head.SetPhysicsState(true, false);
-            head.AddBodyFlags(BodyFlags.AgentOnly);
             head.EnableDynamicBody();
             return head;
         }
@@ -153,7 +140,6 @@ namespace TOW_Core.Battle.Dismemberment
         {
             var hat = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
-
             foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
                 if (mesh.Name.Contains("_hat_") && !mesh.Name.Contains("lod"))
@@ -165,21 +151,20 @@ namespace TOW_Core.Battle.Dismemberment
                     hat.AddChild(child);
                 }
             }
-
             return hat;
         }
         private void AddHeadPhysics(GameEntity head, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
             Vec3 velocityVec = new Vec3(blowDir.X, blowDir.Y, blowDir.Z);
-            head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
-            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 3, blowDir.Y * 3, blowDir.Z));
+            head.AddPhysics(1f, head.CenterOfMass + new Vec3(0, 0, 0.05f), head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 3, blowDir.Y * 3, blowDir.Z * 1.1f));
         }
         private void AddHatPhysics(GameEntity hat, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
             Vec3 velocityVec = new Vec3(blowDir.X * 6, blowDir.Y * 6, blowDir.Z);
-            Vec3 angularVec = new Vec3(-6, -6, angularZ);
+            Vec3 angularVec = new Vec3(-6, -6, 1);
             hat.AddPhysics(0.1f, hat.CenterOfMass, PhysicsShape.GetFromResource("bo_hatbody"), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
             hat.ApplyImpulseToDynamicBody(new Vec3(hat.GlobalPosition.X, hat.GlobalPosition.Y, hat.GlobalPosition.Z + 1f), new Vec3(blowDir.X * 0.2f, blowDir.Y * 0.2f, blowDir.Z * 0));
         }
@@ -198,127 +183,8 @@ namespace TOW_Core.Battle.Dismemberment
         private void CreateBloodBurst(Agent victim)
         {
             MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
-            //Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
-            Vec3 vec = victim.Position;
-            vec.z = 1;
+            Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
             victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
-        }
-
-        private void Debug()
-        {
-            if (Input.IsKeyPressed(InputKey.O))
-                TOWDebug.SpawnAgent(Mission.Current.MainAgent, new MatrixFrame(Mission.Current.MainAgent.LookRotation, Mission.Current.MainAgent.Position));
-            else if (Input.IsKeyPressed(InputKey.Numpad0))
-            {
-                Blow blow = new Blow();
-                Mission.Current.Teams.PlayerEnemy.ActiveAgents[0].Die(blow);
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad1))
-            {
-                paramNumber = 1;
-                TOWCommon.Say("Change VelocityVec.X");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad2))
-            {
-                paramNumber = 2;
-                TOWCommon.Say("Change VelocityVec.Y");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad3))
-            {
-                paramNumber = 3;
-                TOWCommon.Say("Change VelocityVec.Z");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad4))
-            {
-                paramNumber = 4;
-                TOWCommon.Say("Change AngularVec.X");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad5))
-            {
-                paramNumber = 5;
-                TOWCommon.Say("Change AngularVec.Y");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad6))
-            {
-                paramNumber = 6;
-                TOWCommon.Say("Change AngularVec.Z");
-            }
-            else if (Input.IsKeyPressed(InputKey.NumpadPlus))
-            {
-                if (paramNumber == 1)
-                {
-                    velocityX += velocityOfs;
-                    TOWCommon.Say($"{velocityX}");
-                }
-                else if (paramNumber == 2)
-                {
-                    velocityY += velocityOfs;
-                    TOWCommon.Say($"{velocityY}");
-                }
-                else if (paramNumber == 3)
-                {
-                    velocityZ += velocityOfs;
-                    TOWCommon.Say($"{velocityZ}");
-                }
-                else if (paramNumber == 4)
-                {
-                    angularX += angularOfs;
-                    TOWCommon.Say($"{angularX}");
-                }
-                else if (paramNumber == 5)
-                {
-                    angularY += angularOfs;
-                    TOWCommon.Say($"{angularY}");
-                }
-                else if (paramNumber == 6)
-                {
-                    angularZ += angularOfs;
-                    TOWCommon.Say($"{angularZ}");
-                }
-            }
-            else if (Input.IsKeyPressed(InputKey.NumpadMinus))
-            {
-                if (paramNumber == 1)
-                {
-                    velocityX -= velocityOfs;
-                    TOWCommon.Say($"{velocityX}");
-                }
-                else if (paramNumber == 2)
-                {
-                    velocityY -= velocityOfs;
-                    TOWCommon.Say($"{velocityY}");
-                }
-                else if (paramNumber == 3)
-                {
-                    velocityZ -= velocityOfs;
-                    TOWCommon.Say($"{velocityZ}");
-                }
-                else if (paramNumber == 4)
-                {
-                    angularX -= angularOfs;
-                    TOWCommon.Say($"{angularX}");
-                }
-                else if (paramNumber == 5)
-                {
-                    angularY -= angularOfs;
-                    TOWCommon.Say($"{angularY}");
-                }
-                else if (paramNumber == 6)
-                {
-                    angularZ -= angularOfs;
-                    TOWCommon.Say($"{angularZ}");
-                }
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad7))
-            {
-                angle -= 5;
-                TOWCommon.Say($"{angle}");
-            }
-            else if (Input.IsKeyPressed(InputKey.Numpad8))
-            {
-                angle += 5;
-                TOWCommon.Say($"{angle}");
-            }
         }
     }
 }
