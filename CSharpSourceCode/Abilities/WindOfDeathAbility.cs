@@ -29,6 +29,8 @@ namespace TOW_Core.Abilities
                 var lightradius = 10f;
 
                 var frame = casterAgent.LookFrame;
+                frame = UpdateFrameRotationForAI(casterAgent, frame);
+
                 frame = frame.Advance(offset);
                 var height = scene.GetTerrainHeight(frame.origin.AsVec2);
                 frame.origin.z = height;

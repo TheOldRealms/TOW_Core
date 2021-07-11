@@ -292,6 +292,8 @@
     <Compile Include="Abilities\WindOfDeathAbility.cs" />
     <Compile Include="Abilities\WindOfDeathAbilityScript.cs" />
     <Compile Include="Abilities\AbilityManager.cs" />
+    <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
+    <Compile Include="Battle\AI\CustomAIMissionLogic.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWBattleMoraleModel.cs" />
