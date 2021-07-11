@@ -38,15 +38,12 @@ namespace TOW_Core.Battle.AI.Components
             SetBehaviorParams(AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
             SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
-            var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
-            var currentOrderType = moveOrder?.OrderType;
+            var currentOrderType = GetMovementOrderType();
 
-            if (currentOrderType == null || currentOrderType == OrderType.None) return;
-
-            if (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget)
+            if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
                 SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
-                
+
                 if (ShouldAgentSkirmish())
                 {
                     SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
@@ -56,13 +53,6 @@ namespace TOW_Core.Battle.AI.Components
                     SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 0.0f, 15f, 0.0f, 30f, 0.0f);
                 }
             }
-        }
-
-        private bool ShouldAgentSkirmish()
-        {
-            var querySystem = Agent?.Formation?.QuerySystem;
-            var allyPower = querySystem?.LocalAllyPower;
-            return allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2;
         }
 
         private void CastSpell()
@@ -117,6 +107,21 @@ namespace TOW_Core.Battle.AI.Components
         private void CalculateSpellRotation(Vec3 targetPosition)
         {
             SpellTargetRotation = Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
+        }
+
+
+        private OrderType? GetMovementOrderType()
+        {
+            var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
+            var currentOrderType = moveOrder?.OrderType;
+            return currentOrderType;
+        }
+
+        private bool ShouldAgentSkirmish()
+        {
+            var querySystem = Agent?.Formation?.QuerySystem;
+            var allyPower = querySystem?.LocalAllyPower;
+            return allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2;
         }
     }
 }
