@@ -296,7 +296,6 @@
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoralModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
-    <Compile Include="Battle\Dismemberment\Dismemberment.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
@@ -336,6 +335,7 @@
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
     <Compile Include="Utilities\Extensions\MissionExtensions.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
+    <Compile Include="Utilities\TOWDebug.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
     <Compile Include="Utilities\TOWParticleSystem.cs" />
   </ItemGroup>
