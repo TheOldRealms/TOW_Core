@@ -30,11 +30,13 @@ using TaleWorlds.Engine.Screens;
 using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
+using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using StoryMode.GameModels;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TOW_Core.Battle.AI;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 
 namespace TOW_Core
@@ -135,6 +137,8 @@ namespace TOW_Core
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
+                gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
+                gameStarterObject.AddModel(new TowMapWeatherModel());
 
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
@@ -147,6 +151,7 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
+            mission.AddMissionBehaviour(new CustomAIMissionLogic());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new StaticAttributeMissionLogic());
@@ -154,7 +159,8 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
+            if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadAttributes()

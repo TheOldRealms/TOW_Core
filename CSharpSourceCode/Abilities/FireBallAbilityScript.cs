@@ -19,7 +19,7 @@ namespace TOW_Core.Abilities
         private int _minDamage = 20;
         private int _maxDamage = 30;
         private bool _hasCollided;
-        private float _speed = 40f;
+        private float _speed = 35f;
         private FireBallAbility _ability;
         private float _abilitylife = -1f;
         private float _collisionRadius = 2f;
@@ -33,8 +33,8 @@ namespace TOW_Core.Abilities
         {
             base.OnRemoved(removeReason);
             //clean up
-            if(_movingSound != null) _movingSound.Release();
-            if(_explosionSound != null) _explosionSound.Release();
+            if (_movingSound != null) _movingSound.Release();
+            if (_explosionSound != null) _explosionSound.Release();
             _casterAgent = null;
             _ability = null;
             _movingSound = null;
@@ -44,6 +44,7 @@ namespace TOW_Core.Abilities
         {
             return TickRequirement.Tick;
         }
+
         protected override bool MovesEntity() => true;
         public void SetAgent(Agent agent) => _casterAgent = agent;
         public void SetAbility(FireBallAbility fireBallAbility) => _ability = fireBallAbility;
@@ -54,7 +55,6 @@ namespace TOW_Core.Abilities
             SetScriptComponentToTick(GetTickRequirement());
             _movingSoundindex = SoundEvent.GetEventIdFromString("fireball");
             _explosionSoundindex = SoundEvent.GetEventIdFromString("fireball_explosion");
-
         }
 
         protected override void OnTick(float dt)
@@ -66,10 +66,10 @@ namespace TOW_Core.Abilities
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
-
             
             var newframe = frame.Advance(_speed * dt);
             base.GameEntity.SetGlobalFrame(newframe);
+
             base.GameEntity.GetBodyShape().ManualInvalidate();
             if (_abilitylife < 0)
             {
@@ -79,6 +79,7 @@ namespace TOW_Core.Abilities
             {
                 _abilitylife += dt;
             }
+
             if (_ability != null)
             {
                 if (_abilitylife > _ability.MaxDuration && !_isFading)
@@ -87,12 +88,14 @@ namespace TOW_Core.Abilities
                     _isFading = true;
                 }
             }
-            if(_movingSound == null)
+
+            if (_movingSound == null)
             {
                 _movingSound = SoundEvent.CreateEvent(_movingSoundindex, Scene);
                 _movingSound.SetPosition(newframe.origin);
                 _movingSound.Play();
             }
+
             _movingSound.SetPosition(newframe.origin);
         }
 
@@ -107,11 +110,12 @@ namespace TOW_Core.Abilities
             if (!_hasCollided)
             {
                 //start fading out for the projectile
-                base.GameEntity.FadeOut(2.9f, true);
-                _isFading = true;
+                GameEntity.FadeOut(0.05f, false);
+
                 //apply AOE damage
                 TOWBattleUtilities.DamageAgentsInArea(collisionPoint.AsVec2, _radius, _minDamage, _maxDamage, _casterAgent, true);
                 TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(collisionPoint.AsVec2, _radius, "fireball_dot", _casterAgent, true);
+
                 //create visual explosion
                 var explosion = GameEntity.CreateEmpty(Scene);
                 MatrixFrame frame = MatrixFrame.Identity;
@@ -119,20 +123,23 @@ namespace TOW_Core.Abilities
                 var globalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in collisionNormal), collisionPoint);
                 explosion.SetGlobalFrame(globalFrame);
                 explosion.FadeOut(3, true);
+
                 //play explosion sound
-                if(_explosionSound == null) _explosionSound = SoundEvent.CreateEvent(_explosionSoundindex, Scene);
+                if (_explosionSound == null) _explosionSound = SoundEvent.CreateEvent(_explosionSoundindex, Scene);
                 _explosionSound.SetPosition(globalFrame.origin);
                 _explosionSound.Play();
+
                 //Mission.Current.MakeSound(_explosionSoundindex, globalFrame.origin, false, true, -1, -1);
                 //set flag so we dont run this again (there can be multiple collisions, because fadeout is not instant)
                 _hasCollided = true;
+                if (_movingSound != null) _movingSound.Release();
             }
         }
 
         private bool CollidedWithAgent()
         {
             return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, _collisionRadius)
-                .Where(agent => agent != Agent.Main && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < _collisionRadius)
+                .Where(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < _collisionRadius)
                 .Any();
         }
     }

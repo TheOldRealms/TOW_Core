@@ -293,6 +293,8 @@
     <Compile Include="Abilities\WindOfDeathAbility.cs" />
     <Compile Include="Abilities\WindOfDeathAbilityScript.cs" />
     <Compile Include="Abilities\AbilityManager.cs" />
+    <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
+    <Compile Include="Battle\AI\CustomAIMissionLogic.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
@@ -300,6 +302,7 @@
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffect.cs" />
@@ -309,6 +312,8 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
+    <Compile Include="CampaignSupport\GameMenuBackgroundSwitcher.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleEncounter.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationBehaviour.cs" />
@@ -342,6 +347,8 @@
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
     <Compile Include="Utilities\Extensions\MissionExtensions.cs" />
+    <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
+    <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
     <Compile Include="Utilities\TOWParticleSystem.cs" />

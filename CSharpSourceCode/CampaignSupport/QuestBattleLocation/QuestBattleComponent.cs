@@ -38,6 +38,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             if(withVictory) IsActive = false;
             if(_enemyLeader != null)
             {
+                //TODO/FIX -> make the enemy hero "stay" so that we dont unnecessarily kill an enemy hero if the player gets defeated.
                 KillCharacterAction.ApplyByBattle(_enemyLeader, Hero.MainHero);
                 _enemyLeader = null;
             }

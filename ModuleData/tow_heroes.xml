@@ -34,6 +34,8 @@
 	<Hero id="emp_lord_averland_westaverlander_2" is_noble="true" faction="Faction.averland_clan_3" />
 	<Hero id="emp_lord_averland_westaverlander_3" is_noble="true" faction="Faction.averland_clan_3" />
 	<Hero id="emp_lord_averland_westaverlander_4" is_noble="true" faction="Faction.averland_clan_3" />
+	<!-- Averland Clan 4 Knights of the Blazing Sun -->
+	<Hero id="emp_lord_averland_kobs_1" is_noble="true" faction="Faction.averland_clan_4" />
 	<!-- Stirland Clan 1 -->
 	<Hero id="stirland_clan_1_1" is_noble="true" faction="Faction.stirland_clan_1" />
 	<Hero id="emp_lord_stirland_mittelstirlander_2" is_noble="true" faction="Faction.stirland_clan_1" />

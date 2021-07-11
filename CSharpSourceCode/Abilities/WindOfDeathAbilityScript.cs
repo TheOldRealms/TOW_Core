@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle;
 using TOW_Core.Battle.Extensions;
@@ -28,6 +29,7 @@ namespace TOW_Core.Abilities
         {
             return TickRequirement.Tick;
         }
+
         protected override bool MovesEntity() => true;
         public void SetAgent(Agent agent) => _casterAgent = agent;
         public void SetAbility(WindOfDeathAbility ability) => _ability = ability;
@@ -46,7 +48,13 @@ namespace TOW_Core.Abilities
             var frame = base.GameEntity.GetGlobalFrame();
             var newframe = frame.Advance(_speed * dt);
             var height = Mission.Current.Scene.GetTerrainHeight(frame.origin.AsVec2);
-            newframe.origin.z = height;
+            var heightAtPosition = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+
+            if (heightAtPosition > height && Math.Abs(heightAtPosition - frame.origin.z) < 0.5f)
+            {
+                newframe.origin.z = heightAtPosition;
+            }
+
             base.GameEntity.SetGlobalFrame(newframe);
 
             if (_abilitylife < 0)
@@ -57,6 +65,7 @@ namespace TOW_Core.Abilities
             {
                 _abilitylife += dt;
             }
+
             if (_ability != null)
             {
                 if (_abilitylife > _ability.MaxDuration && !_isFading)
@@ -70,7 +79,7 @@ namespace TOW_Core.Abilities
         private void DamageAgents()
         {
             _timeSinceLastDamage = 0f;
-            TOWBattleUtilities.DamageAgentsInArea(base.GameEntity.GetGlobalFrame().origin.AsVec2, _range, _damageMin, _damageMax,  _casterAgent);
+            TOWBattleUtilities.DamageAgentsInArea(base.GameEntity.GetGlobalFrame().origin.AsVec2, _range, _damageMin, _damageMax, _casterAgent);
         }
     }
 }
