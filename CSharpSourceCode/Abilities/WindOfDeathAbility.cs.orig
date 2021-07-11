@@ -30,9 +30,13 @@ namespace TOW_Core.Abilities
                 var lightradius = 10f;
 
                 var frame = casterAgent.LookFrame;
-                frame = UpdateFrameRotationForAI(casterAgent, frame);
-                frame = frame.Advance(offset);
+<<<<<<< HEAD
                 
+=======
+                frame = UpdateFrameRotationForAI(casterAgent, frame);
+
+>>>>>>> development
+                frame = frame.Advance(offset);
                 var height = casterAgent.Position.z;
                 frame.origin.z = height;
                 

@@ -36,6 +36,7 @@ using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using StoryMode.GameModels;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TOW_Core.Battle.AI;
 
 namespace TOW_Core
 {
@@ -146,6 +147,7 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
+            mission.AddMissionBehaviour(new CustomAIMissionLogic());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());

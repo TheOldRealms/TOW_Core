@@ -8,6 +8,8 @@ using System.Xml.Serialization;
 using System.Timers;
 using System.Xml.Schema;
 using System.Xml;
+using TaleWorlds.Library;
+using TOW_Core.Battle.AI.Components;
 
 namespace TOW_Core.Abilities
 {
@@ -41,7 +43,7 @@ namespace TOW_Core.Abilities
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             this._coolDownLeft -= 1;
-            if(this._coolDownLeft <= 0)
+            if (this._coolDownLeft <= 0)
             {
                 this._coolDownLeft = 0;
                 this._timer.Stop();
@@ -58,6 +60,19 @@ namespace TOW_Core.Abilities
             }
         }
 
-        protected virtual void OnUse(Agent casterAgent) { }
+        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        {
+            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
+            if (wizardAiComponent != null)
+            {
+                frame.rotation = wizardAiComponent.SpellTargetRotation;
+            }
+
+            return frame;
+        }
+
+        protected virtual void OnUse(Agent casterAgent)
+        {
+        }
     }
 }
