@@ -74,14 +74,19 @@ namespace TOW_Core.Battle.AI.Components
                 {
                     if (HaveLineOfSightToAgent(medianAgent))
                     {
-                        var targetPosition = medianAgent == Agent.Main ? medianAgent.Position : medianAgent.GetChestGlobalPosition();
-                        targetPosition.z += -2f;
-
-                        CalculateSpellRotation(targetPosition);
-                        Agent.CastCurrentAbility();
+                        CastSpellAtAgent(medianAgent);
                     }
                 }
             }
+        }
+
+        private void CastSpellAtAgent(Agent targetAgent)
+        {
+            var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
+            targetPosition.z += -2f;
+
+            CalculateSpellRotation(targetPosition);
+            Agent.CastCurrentAbility();
         }
 
         private bool HaveLineOfSightToAgent(Agent targetAgent)
