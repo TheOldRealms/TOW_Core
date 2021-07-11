@@ -64,11 +64,11 @@ namespace TOW_Core.Battle.AI.Components
         {
             if (Agent.GetCurrentAbility().IsOnCooldown()) return;
 
-            ChooseTargetFormation();
+            var formation = ChooseTargetFormation();
 
-            if (_targetFormation == null) return;
+            if (formation == null) return;
 
-            var medianAgent = _targetFormation.GetMedianAgent(true, false, _targetFormation.GetAveragePositionOfUnits(true, false));
+            var medianAgent = formation.GetMedianAgent(true, false, formation.GetAveragePositionOfUnits(true, false));
             var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
 
             if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
@@ -98,13 +98,15 @@ namespace TOW_Core.Battle.AI.Components
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
         }
 
-        private void ChooseTargetFormation()
+        private Formation ChooseTargetFormation()
         {
             var formation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
             if (formation != null && (_targetFormation == null || !formation.HasPlayer || formation.Distance < _targetFormation.Distance && formation.Distance < 15 || _targetFormation.GetFormationPower() < 15))
             {
                 _targetFormation = formation;
             }
+
+            return _targetFormation;
         }
 
         private void CalculateSpellRotation(Vec3 targetPosition)
