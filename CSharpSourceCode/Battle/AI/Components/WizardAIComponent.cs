@@ -62,20 +62,20 @@ namespace TOW_Core.Battle.AI.Components
 
         private void CastSpell()
         {
+            if (Agent.GetCurrentAbility().IsOnCooldown()) return;
+
             ChooseTargetFormation();
 
-            if (_targetFormation != null)
+            if (_targetFormation == null) return;
+
+            var medianAgent = _targetFormation.GetMedianAgent(true, false, _targetFormation.GetAveragePositionOfUnits(true, false));
+            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
+
+            if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
             {
-                var medianAgent = _targetFormation.GetMedianAgent(true, false, _targetFormation.GetAveragePositionOfUnits(true, false));
-
-                var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
-
-                if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
+                if (HaveLineOfSightToAgent(medianAgent))
                 {
-                    if (HaveLineOfSightToAgent(medianAgent))
-                    {
-                        CastSpellAtAgent(medianAgent);
-                    }
+                    CastSpellAtAgent(medianAgent);
                 }
             }
         }
