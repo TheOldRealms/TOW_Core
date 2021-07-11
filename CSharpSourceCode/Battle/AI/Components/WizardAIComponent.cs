@@ -1,13 +1,9 @@
 ﻿using System;
-using HarmonyLib;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.Extensions;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
 {
@@ -81,7 +77,7 @@ namespace TOW_Core.Battle.AI.Components
 
                     Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
                     Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), medianAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
-                
+
                     if ((collidedAgent == null || collidedAgent == medianAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(medianAgent.GetChestGlobalPosition()) < 3) &&
                         (float.IsNaN(distance) || Math.Abs(distance - targetPosition.Distance(Agent.Position)) < 0.3))
                     {

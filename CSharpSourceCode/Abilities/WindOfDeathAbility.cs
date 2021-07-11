@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -32,8 +33,10 @@ namespace TOW_Core.Abilities
                 frame = UpdateFrameRotationForAI(casterAgent, frame);
 
                 frame = frame.Advance(offset);
-                var height = scene.GetTerrainHeight(frame.origin.AsVec2);
+                
+                var height = casterAgent.Position.z;
                 frame.origin.z = height;
+                
                 var entity = GameEntity.Instantiate(scene, "wind_of_death_vfx", true);
                 entity.SetGlobalFrame(frame);
 
