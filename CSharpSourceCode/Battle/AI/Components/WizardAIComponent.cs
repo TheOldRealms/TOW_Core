@@ -27,7 +27,7 @@ namespace TOW_Core.Battle.AI.Components
             CastSpell();
             Agent.SelectAbility(1);
             CastSpell();
-
+            
             base.OnTickAsAI(dt);
         }
 

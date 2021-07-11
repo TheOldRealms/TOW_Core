@@ -3,6 +3,7 @@ using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI
 {
@@ -13,7 +14,9 @@ namespace TOW_Core.Battle.AI
             base.OnAgentCreated(agent);
             if (agent != Agent.Main && agent.IsAbilityUser())
             {
-                Utilities.Extensions.ListExtensions.RemoveAllOfType(agent.Components, typeof(HumanAIComponent));
+                var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
+                foreach (var item in toRemove)
+                    agent.RemoveComponent(item);
                 agent.AddComponent(new WizardAIComponent(agent));
             }
         }
