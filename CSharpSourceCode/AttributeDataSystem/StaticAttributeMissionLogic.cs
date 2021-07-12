@@ -69,6 +69,11 @@ namespace TOW_Core.AttributeDataSystem
         
          public override void OnAgentBuild(Agent agent, Banner banner)
         {
+            if (Mission.Current.IsFriendlyMission)
+            {
+                return;
+            }
+            
             base.OnAgentBuild(agent, banner);
 
             if (agent.IsMount)
