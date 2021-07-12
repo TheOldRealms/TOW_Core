@@ -323,6 +323,8 @@
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\Grenades\GrenadeScript.cs" />
+    <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
