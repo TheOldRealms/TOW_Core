@@ -7,7 +7,7 @@ namespace TOW_Core.AttributeDataSystem
     /// <summary>
     /// Contains TOW troop data of a complete mobile Party. For single entity data use a StaticAttribute
     /// </summary>
-    public class PartyAttribute
+    public class MobilePartyExtendedInfo
     {
         [SaveableField(0)]
         public string PartyBaseId;          
@@ -18,46 +18,20 @@ namespace TOW_Core.AttributeDataSystem
         [SaveableField(3)]
         public bool IsMagicUserParty;
         [SaveableField(4)]
-        public StaticAttribute LeaderAttribute;
-        [SaveableField(5)]
-        public List<StaticAttribute> CompanionAttributes = new List<StaticAttribute>();
-        [SaveableField(6)]
-        public List<StaticAttribute> RegularTroopAttributes = new List<StaticAttribute>();
+        public CharacterExtendedInfo LeaderAttribute;
 
         [SaveableField(7)] public PartyType PartyType;
         [SaveableField(8)] public PartyBase PartyBase;
         
-        public PartyAttribute(string partyBaseId)
+        public MobilePartyExtendedInfo(string partyBaseId)
         {
             this.PartyBaseId = partyBaseId;
         }
 
-        public PartyAttribute()
+        public MobilePartyExtendedInfo()
         {
 
-        }
-        
-        
-        public void MagicUserStateChanged()
-        {
-            if (LeaderAttribute.IsMagicUser)
-            {
-                IsMagicUserParty = true;
-                return;
-            }
-            
-            foreach (var attribute in CompanionAttributes)
-            {
-                if (attribute.IsMagicUser)
-                {
-                    IsMagicUserParty = true;
-                    return;
-                }
-            }
-
-            IsMagicUserParty = false;
-        }
-        
+        }        
     }
     
     
@@ -67,19 +41,19 @@ namespace TOW_Core.AttributeDataSystem
         protected override void DefineClassTypes()
         {
             base.DefineClassTypes();
-            AddClassDefinition(typeof(PartyAttribute), 1);
+            AddClassDefinition(typeof(MobilePartyExtendedInfo), 1);
         }
 
         protected override void DefineContainerDefinitions()
         {
             base.DefineContainerDefinitions();
-            ConstructContainerDefinition(typeof(Dictionary<string, PartyAttribute>));
+            ConstructContainerDefinition(typeof(Dictionary<string, MobilePartyExtendedInfo>));
         }
     }
     
     
     public enum PartyType{
-        [SaveableField(1)]RogueParty,
+        [SaveableField(1)]BanditParty,
         [SaveableField(2)]LordParty,
         [SaveableField(3)]Regular,
     }

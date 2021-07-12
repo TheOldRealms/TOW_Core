@@ -14,50 +14,50 @@ namespace TOW_Core.AttributeDataSystem
     public class StaticAttributeMissionLogic : MissionLogic
     {
         private Mission.TeamCollection teams;
-        private PartyAttributeManager _partyAttributeManager;
+        private ExtendedInfoManager _infoManager;
 
-        private List<PartyAttribute> activeAttributes;
+        private List<MobilePartyExtendedInfo> _missionPartyInfos;
         
 
         private List<Agent> _agents;
 
 
-        private List<PartyAttribute> attackerAttributes;
-        private List<PartyAttribute> defenderAttriubtes;
+        private List<MobilePartyExtendedInfo> _attackerInfos;
+        private List<MobilePartyExtendedInfo> _defenderInfos;
 
-        private PartyAttribute playerPartyAttribute;
+        private MobilePartyExtendedInfo _playerPartyInfo;
 
         private bool _isCustomBattle;
 
         public event OnPlayerPartyAttributeAssigned NotifyPlayerPartyAttributeAssignedObservers;
 
-        public List<PartyAttribute> GetAttackerAttributes()
+        public List<MobilePartyExtendedInfo> GetAttackerAttributes()
         {
-            return attackerAttributes;
+            return _attackerInfos;
         }
         
-        public List<PartyAttribute> GetDefenderAttributes()
+        public List<MobilePartyExtendedInfo> GetDefenderAttributes()
         {
-            return defenderAttriubtes;
+            return _defenderInfos;
         }
 
-        public PartyAttribute GetPlayerAttribute()
+        public MobilePartyExtendedInfo GetPlayerAttribute()
         {
-            return playerPartyAttribute;
+            return _playerPartyInfo;
         }
         
         public override void AfterStart()
         {
             base.AfterStart();
             teams= Mission.Current.Teams;
-            activeAttributes = new List<PartyAttribute>();
+            _missionPartyInfos = new List<MobilePartyExtendedInfo>();
             _agents = new List<Agent>();
-            attackerAttributes = new List<PartyAttribute>();
-            defenderAttriubtes = new List<PartyAttribute>();
+            _attackerInfos = new List<MobilePartyExtendedInfo>();
+            _defenderInfos = new List<MobilePartyExtendedInfo>();
             if (Campaign.Current != null)
             {
-                _partyAttributeManager = Campaign.Current.GetCampaignBehavior<PartyAttributeManager>();
-                activeAttributes = _partyAttributeManager.GetActiveInvolvedParties();
+                _infoManager = Campaign.Current.GetCampaignBehavior<ExtendedInfoManager>();
+                _missionPartyInfos = _infoManager.GetInfoForActiveInvolvedParties();
             }
             else
             {
@@ -87,31 +87,31 @@ namespace TOW_Core.AttributeDataSystem
                 {
                     if (agent== Mission.Current.MainAgent)
                     {
-                        playerPartyAttribute = attackerAttributes[0];
+                        _playerPartyInfo = _attackerInfos[0];
                     }
-                    AddStaticAttributeComponent(agent, attackerAttributes[0].RegularTroopAttributes[0], attackerAttributes[0]);
+                    AddStaticAttributeComponent(agent, _attackerInfos[0].RegularTroopAttributes[0], _attackerInfos[0]);
                 }
                 else
                 {
                     if (agent== Mission.Current.MainAgent)
                     {
-                        playerPartyAttribute = defenderAttriubtes[0];
+                        _playerPartyInfo = _defenderInfos[0];
                         
                     }
-                    AddStaticAttributeComponent(agent, defenderAttriubtes[0].RegularTroopAttributes[0], defenderAttriubtes[0]);
+                    AddStaticAttributeComponent(agent, _defenderInfos[0].RegularTroopAttributes[0], _defenderInfos[0]);
                 }
                 
             }
             else
             {
-                foreach (var partyAttribute in activeAttributes)
+                foreach (var partyAttribute in _missionPartyInfos)
                 {
                     if (agent.Origin.BattleCombatant== partyAttribute.PartyBase)
                     {
                         var partyType = partyAttribute.PartyType;
                         switch (partyType)
                         {
-                            case PartyType.RogueParty:
+                            case PartyType.BanditParty:
                                 AddStaticAttributeComponent(agent,partyAttribute.RegularTroopAttributes[0],partyAttribute);
                                 break;
                             
@@ -160,25 +160,25 @@ namespace TOW_Core.AttributeDataSystem
 
          private void SetForCustomBattle()
          {
-             activeAttributes = new List<PartyAttribute>();
-             PartyAttribute attackerAttribute = new PartyAttribute();
+             _missionPartyInfos = new List<MobilePartyExtendedInfo>();
+             MobilePartyExtendedInfo attackerAttribute = new MobilePartyExtendedInfo();
              attackerAttribute.PartyBaseId = "attacker";
-             attackerAttributes.Add(attackerAttribute);
-             PartyAttribute defenderAttribute = new PartyAttribute();
+             _attackerInfos.Add(attackerAttribute);
+             MobilePartyExtendedInfo defenderAttribute = new MobilePartyExtendedInfo();
              defenderAttribute.PartyBaseId = "defender";
-             defenderAttriubtes.Add(defenderAttribute);
-             activeAttributes.Add(attackerAttribute);
-             activeAttributes.Add(defenderAttribute);
-             foreach (var partyAttribute in activeAttributes)
+             _defenderInfos.Add(defenderAttribute);
+             _missionPartyInfos.Add(attackerAttribute);
+             _missionPartyInfos.Add(defenderAttribute);
+             foreach (var partyAttribute in _missionPartyInfos)
              {
-                 StaticAttribute standardAttribute = new StaticAttribute(partyAttribute);
+                 CharacterExtendedInfo standardAttribute = new CharacterExtendedInfo(partyAttribute);
                  partyAttribute.RegularTroopAttributes.Add(standardAttribute);
                  partyAttribute.WindsOfMagic = 30f;
                  partyAttribute.IsMagicUserParty = true;
              }
          }
 
-         private StaticAttribute FindAttribute(string id, List<StaticAttribute> attributes)
+         private CharacterExtendedInfo FindAttribute(string id, List<CharacterExtendedInfo> attributes)
          {
              foreach (var attribute in attributes)
              {
@@ -192,9 +192,9 @@ namespace TOW_Core.AttributeDataSystem
          }
         
          
-        private void AddStaticAttributeComponent(Agent agent, StaticAttribute attribute, PartyAttribute partyAttribute)
+        private void AddStaticAttributeComponent(Agent agent, CharacterExtendedInfo attribute, MobilePartyExtendedInfo partyAttribute)
         {
-            StaticAttributeAgentComponent agentComponent = new StaticAttributeAgentComponent(agent);
+            AgentExtendedInfoComponent agentComponent = new AgentExtendedInfoComponent(agent);
             agentComponent.SetParty(partyAttribute);
             agentComponent.SetAttribute(attribute);
             
@@ -205,7 +205,7 @@ namespace TOW_Core.AttributeDataSystem
             
             if (agent == Mission.Current.MainAgent)
             {
-                playerPartyAttribute = partyAttribute;
+                _playerPartyInfo = partyAttribute;
                 NotifyPlayerPartyAttributeAssignedObservers?.Invoke(); 
             }
             

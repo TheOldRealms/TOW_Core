@@ -57,15 +57,15 @@ namespace TOW_Core.Abilities
         {
             if (!this.IsOnCooldown())
             {
-                var attributeComponent = casterAgent.GetComponent<StaticAttributeAgentComponent>();
+                var attributeComponent = casterAgent.GetComponent<AgentExtendedInfoComponent>();
 
 
                 if (attributeComponent != null)
                 {
-                    if (attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost < 0)
+                    if (attributeComponent.GetPartyInfo().WindsOfMagic - WindsOfMagicCost < 0)
                         return;
 
-                    attributeComponent.GetParty().WindsOfMagic = attributeComponent.GetParty().WindsOfMagic - WindsOfMagicCost;
+                    attributeComponent.GetPartyInfo().WindsOfMagic = attributeComponent.GetPartyInfo().WindsOfMagic - WindsOfMagicCost;
                 }
                 
                 

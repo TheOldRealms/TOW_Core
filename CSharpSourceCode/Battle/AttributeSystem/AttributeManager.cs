@@ -14,18 +14,20 @@ namespace TOW_Core.Battle.AttributeSystem
 {
     public class AttributeManager
     {
-        private readonly string ModuleName = "TOW_Core";
-        private readonly string AttributeFileName = "tow_characterattributes.xml";
-        
-        public AttributeManager()
-        {
+        private static string ModuleName = "TOW_Core";
+        private static string AttributeFileName = "tow_characterattributes.xml";
+        private static Dictionary<string, List<string>> _attributesDictionary = new Dictionary<string, List<string>>();
 
+        internal static List<string> GetAttributesFor(string id)
+        {
+            var list = new List<string>();
+            _attributesDictionary.TryGetValue(id, out list);
+            return list;
         }
 
-        public void LoadAttributes()
+        public static void LoadAttributes()
         {
             var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath(ModuleName), AttributeFileName, SearchOption.AllDirectories);
-            Dictionary<string, List<string>> attributesDictionary = new Dictionary<string, List<string>>();
             foreach (var file in files)
             {
                 XmlDocument attributeXml = new XmlDocument();
@@ -43,11 +45,11 @@ namespace TOW_Core.Battle.AttributeSystem
                         }
                         attributes.Add(attributeNode.Attributes["id"].Value);
                     }
-                    attributesDictionary.Add(character.Attributes["name"].Value, attributes);
+                    _attributesDictionary.Add(character.Attributes["name"].Value, attributes);
                 }
             }
-
-            AgentExtensions.SetAttributesDictionary(attributesDictionary);
         }
+
+
     }
 }

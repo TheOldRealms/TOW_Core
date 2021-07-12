@@ -19,10 +19,6 @@ namespace TOW_Core.Battle.Extensions
         /// <summary>
         /// Maps all character IDs to a list of attributes for that character. For example, <"skeleton_warrior" <=> {"Expendable", "Undead"}>
         /// </summary>
-        private static Dictionary<string, List<string>> CharacterIDToAttributeMap = new Dictionary<string, List<string>>();
-        private static Dictionary<string, string> CharacterIDToVoiceClassNameMap = new Dictionary<string, string>();
-        private static bool _attributesAreInitialized = false;
-        private static bool _voicesAreInitialized = false;
         
         public static bool IsExpendable(this Agent agent)
         {
@@ -138,30 +134,6 @@ namespace TOW_Core.Battle.Extensions
             CharacterIDToAttributeMap[characterName].Add(attribute);
             
             
-        }
-
-        public static void SetAttributesDictionary(Dictionary<string, List<string>> dict)
-        {
-            if(_attributesAreInitialized)
-            {
-                TOWCommon.Log("Attempted to set agent attributes dictionary, but it was already initialized.", LogLevel.Warn);
-                return;
-            }
-
-            CharacterIDToAttributeMap = dict;
-            _attributesAreInitialized = true;
-        }
-
-        public static void SetVoicesDictionary(Dictionary<string, string> dict)
-        {
-            if (_voicesAreInitialized)
-            {
-                TOWCommon.Log("Attempted to set agent attributes dictionary, but it was already initialized.", LogLevel.Warn);
-                return;
-            }
-
-            CharacterIDToVoiceClassNameMap = dict;
-            _voicesAreInitialized = true;
         }
 
         public static void RemoveComponentIfNotNull(this Agent agent, AgentComponent component)

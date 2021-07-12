@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -282,7 +282,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
-    <Compile Include="AttributeDataSystem\*.cs" />
+    <Compile Include="ObjectDataExtensions\*.cs" />
     <Compile Include="Abilities\AbilityComponent.cs" />
     <Compile Include="Abilities\AbilityHUDMissionView.cs" />
     <Compile Include="Abilities\AbilityHUD_VM.cs" />

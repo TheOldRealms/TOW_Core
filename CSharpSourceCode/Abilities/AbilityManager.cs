@@ -48,14 +48,7 @@ namespace TOW_Core.Abilities
             
             if (_abilities.ContainsKey(id))
             {
-                foreach (var abilityItem in _abilities[id])
-                {
-                    if (abilityItem == ability)
-                    {
-                        return;
-                    }
-                }
-                _abilities[id].Add(ability);
+                if(!_abilities[id].Contains(ability)) _abilities[id].Add(ability);
             }
             else
             {

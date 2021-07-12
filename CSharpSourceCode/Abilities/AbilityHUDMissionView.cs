@@ -18,7 +18,7 @@ namespace TOW_Core.Abilities
         private AbilityHUD_VM _dataSource;
         private GauntletLayer _layer;
         private bool _isInitialized;
-        private PartyAttribute playerPartyAttribute;
+        private MobilePartyExtendedInfo playerPartyAttribute;
         private StaticAttributeMissionLogic staticAttributemanager;
 
         public override void EarlyStart()
