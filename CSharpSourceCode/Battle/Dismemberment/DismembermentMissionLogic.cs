@@ -13,8 +13,10 @@ namespace TOW_Core.Battle.Dismemberment
 {
     public class DismembermentMissionLogic : MissionLogic
     {
+        private bool isDebugModeOn = false;
+        private bool isExecutionerModeOn = false;
+        private bool canTroopDismember = false;
         private float slowMotionTimer;
-        private bool isDebugModeOn = true;
         private float maxChance = 100;
         private float maxTroopChance = 10;
 
@@ -33,8 +35,10 @@ namespace TOW_Core.Battle.Dismemberment
             base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
 
             bool canBeDismembered = victim.IsHuman &&
-                                    attacker == Mission.Current.MainAgent &&
+                                    victim != Agent.Main &&
                                     victim.Health <= 0 &&
+                                    ((attacker != Agent.Main && canTroopDismember) ||
+                                    attacker == Agent.Main) &&
                                     (collisionData.VictimHitBodyPart == BoneBodyPartType.Neck ||
                                     collisionData.VictimHitBodyPart == BoneBodyPartType.Head) &&
                                     collisionData.StrikeType == 0 &&
@@ -53,15 +57,19 @@ namespace TOW_Core.Battle.Dismemberment
 
         private bool ShouldBeDismembered(Agent attacker, Agent victim, Blow blow)
         {
-            float damageModifier = blow.InflictedDamage / victim.HealthLimit;
-            if (damageModifier > 1) damageModifier = 1;
+            if (!isExecutionerModeOn)
+            {
+                float damageModifier = blow.InflictedDamage / victim.HealthLimit;
+                if (damageModifier > 1) damageModifier = 1;
 
-            if (attacker.IsMainAgent)
-                damageModifier = damageModifier * maxChance / 100;
-            else
-                damageModifier = damageModifier * maxTroopChance / 100;
+                if (attacker.IsMainAgent)
+                    damageModifier = damageModifier * maxChance / 100;
+                else
+                    damageModifier = damageModifier * maxTroopChance / 100;
 
-            return damageModifier > MBRandom.RandomFloatRanged(0, 1);
+                return damageModifier > MBRandom.RandomFloatRanged(0, 1);
+            }
+            else return true;
         }
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
