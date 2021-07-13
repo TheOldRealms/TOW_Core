@@ -12,12 +12,15 @@ namespace TOW_Core.Battle.AI
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
-            if (agent != Agent.Main && agent.IsAbilityUser())
+            if (agent.IsAIControlled && agent.IsAbilityUser())
             {
                 var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
                 foreach (var item in toRemove)
                     agent.RemoveComponent(item);
-                agent.AddComponent(new WizardAIComponent(agent));
+                if (toRemove.Count > 0)
+                {
+                    agent.AddComponent(new WizardAIComponent(agent));
+                }
             }
         }
     }
