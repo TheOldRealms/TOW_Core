@@ -8,7 +8,7 @@ using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
-using TOW_Core.AttributeDataSystem;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Abilities
 {
@@ -19,11 +19,11 @@ namespace TOW_Core.Abilities
         private GauntletLayer _layer;
         private bool _isInitialized;
         private MobilePartyExtendedInfo playerPartyAttribute;
-        private StaticAttributeMissionLogic staticAttributemanager;
+        private ExtendedInfoMissionLogic staticAttributemanager;
 
         public override void EarlyStart()
         {
-            staticAttributemanager = Mission.Current.GetMissionBehaviour<StaticAttributeMissionLogic>();
+            staticAttributemanager = Mission.Current.GetMissionBehaviour<ExtendedInfoMissionLogic>();
             staticAttributemanager.NotifyPlayerPartyAttributeAssignedObservers += InializeMissionView;
         }
 

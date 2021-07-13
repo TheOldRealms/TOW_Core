@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.AttributeDataSystem;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.Extensions
+namespace TOW_Core.Utilities.Extensions
 {
     public static class AgentExtensions
     {
@@ -216,21 +216,6 @@ namespace TOW_Core.Battle.Extensions
                 float voicePitch = (float)pitchModifier * 4.656613E-10f;
                 mbagentVisuals.SetVoiceDefinitionIndex(array[index], voicePitch);
             }
-        }
-
-        public static string GetAgentVoiceClassName(this Agent agent)
-        {
-            if (agent != null && agent.Character != null)
-            {
-                string characterName = agent.Character.StringId;
-
-                string voiceClass;
-                if (CharacterIDToVoiceClassNameMap.TryGetValue(characterName, out voiceClass))
-                {
-                    return voiceClass;
-                }
-            }
-            return null;
         }
         #endregion
     }

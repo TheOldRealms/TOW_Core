@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Voices
 {
@@ -30,7 +30,7 @@ namespace TOW_Core.Battle.Voices
             {
                 foreach (Agent agent in allAgents)
                 {
-                    string voiceName = agent.GetAgentVoiceClassName();
+                    string voiceName = agent.Character.GetCustomVoiceClassName();
                     if (voiceName != null)
                     {
                         agent.SetAgentVoiceByClassName(voiceName);

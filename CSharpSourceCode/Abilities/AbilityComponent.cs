@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities
@@ -10,7 +9,7 @@ namespace TOW_Core.Abilities
     public class AbilityComponent : AgentComponent
     {
         private BaseAbility _currentAbility = null;
-        private List<BaseAbility> _knownAbilities = new List<BaseAbility>();
+        private readonly List<BaseAbility> _knownAbilities = new List<BaseAbility>();
         private int _currentAbilityIndex;
 
         public BaseAbility CurrentAbility { get => _currentAbility; set => _currentAbility = value; }

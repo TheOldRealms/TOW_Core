@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.Abilities
 {

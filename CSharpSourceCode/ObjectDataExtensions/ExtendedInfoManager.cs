@@ -4,11 +4,11 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AttributeSystem;
+using TOW_Core.Battle.ObjectDataExtensions;
 using TOW_Core.Battle.Voices;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.AttributeDataSystem
+namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
     /// Manages with PartyAttributes and StaticAttributes all relevant TOW Information  for Parties and Characters in game during Campaign gameplay.
@@ -26,6 +26,7 @@ namespace TOW_Core.AttributeDataSystem
         private bool _isloaded;
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
         private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
+        private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
 
         private List<MobilePartyExtendedInfo> _eventPartyInfos;
 
@@ -34,11 +35,16 @@ namespace TOW_Core.AttributeDataSystem
             return _eventPartyInfos;
         }
 
-        public MobilePartyExtendedInfo GetPlayerPartyAttribute()
+        public MobilePartyExtendedInfo GetPlayerPartyInfo()
         {
             return _mainPartyInfo;
         }
         
+        internal CharacterExtendedInfo GetCharacterInfoFor(string id)
+        {
+            return _characterInfos.ContainsKey(id) ? _characterInfos[id] : null;
+        }
+
         public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
         public override void  RegisterEvents()
         {
@@ -111,7 +117,7 @@ namespace TOW_Core.AttributeDataSystem
                 string text = "PLAYERFIGHT";
                 foreach (var party in _currentPlayerEvent.AttackerSide.Parties)
                 {
-                    MobilePartyExtendedInfo attackerInfo= GetInfoFor(party.Party.Id.ToString());
+                    MobilePartyExtendedInfo attackerInfo= GetPartyInfoFor(party.Party.Id.ToString());
                     eventPartyInfos.Add(attackerInfo);
                     text += attackerInfo.PartyBaseId;
                 }
@@ -120,7 +126,7 @@ namespace TOW_Core.AttributeDataSystem
             
                 foreach (var party in _currentPlayerEvent.DefenderSide.Parties)
                 {
-                    MobilePartyExtendedInfo  defenderInfo= GetInfoFor(party.Party.Id.ToString());
+                    MobilePartyExtendedInfo  defenderInfo= GetPartyInfoFor(party.Party.Id.ToString());
                     eventPartyInfos.Add(defenderInfo);
                     text += defenderInfo.PartyBaseId;
                 }
@@ -137,19 +143,16 @@ namespace TOW_Core.AttributeDataSystem
             }
         }        
 
-        public  MobilePartyExtendedInfo GetInfoFor(string id)
+        public  MobilePartyExtendedInfo GetPartyInfoFor(string id)
         {
-            if (_partyInfos.ContainsKey(id))
-            {
-                return _partyInfos[id];
-            }
-            else
-            {
-                return null;
-            }
-            
+            return _partyInfos.ContainsKey(id) ? _partyInfos[id] : null;
         }
-        
+
+        public HeroExtendedInfo GetHeroInfoFor(string id)
+        {
+            return _heroInfos.ContainsKey(id) ? _heroInfos[id] : null;
+        }
+
         private void EnterPartyIntoDictionary(MobileParty party)
         {
 
@@ -176,7 +179,7 @@ namespace TOW_Core.AttributeDataSystem
             {   
                 Hero Leader = party.LeaderHero;
                 partyInfo.Leader = Leader;
-                partyInfo.LeaderAttribute = leaderAttribute;
+                partyInfo.LeaderInfo = leaderAttribute;
                 partyInfo.PartyType = PartyType.LordParty;
             }
             
@@ -213,7 +216,7 @@ namespace TOW_Core.AttributeDataSystem
             TOWCommon.Say("save game restored with "+ _partyInfos.Count + "parties in the dictionary");
             _isloaded = true;
 
-            _mainPartyInfo = GetInfoFor(Campaign.Current.MainParty.Party.Id);
+            _mainPartyInfo = GetPartyInfoFor(Campaign.Current.MainParty.Party.Id);
             //for later: Check if Attributes are valid, reinitalize for parties if not
         }
         
@@ -229,7 +232,7 @@ namespace TOW_Core.AttributeDataSystem
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
-            InitalizeAttributes();
+            InitializeParties();
             _isloaded = true;
         }
 
@@ -254,11 +257,11 @@ namespace TOW_Core.AttributeDataSystem
         private void DailyMessage()
         {
             string text = "";
-            text +=" Main player has WOM: "+ GetInfoFor(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
+            text +=" Main player has WOM: "+ GetPartyInfoFor(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
             TOWCommon.Say(text);
         }
         
-        private void InitalizeAttributes()
+        private void InitializeParties()
         {
             var parties = Campaign.Current.MobileParties;
 
@@ -274,7 +277,8 @@ namespace TOW_Core.AttributeDataSystem
 
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncData("_partyAttributes", ref _partyInfos);
+            dataStore.SyncData("_partyInfos", ref _partyInfos);
+            dataStore.SyncData("_partyInfos", ref _partyInfos);
         }
         
     }

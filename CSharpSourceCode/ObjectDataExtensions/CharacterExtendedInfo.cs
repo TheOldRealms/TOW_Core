@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.SaveSystem;
 
-namespace TOW_Core.AttributeDataSystem
+namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
     /// Contains Tow data of single unit or character template. 

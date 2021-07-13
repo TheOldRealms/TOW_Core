@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.AttributeSystem.CustomAgentComponents;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents;
+using TaleWorlds.CampaignSystem;
+using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AttributeSystem.CustomMissionLogic
+namespace TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic
 {
     class AttributeSystemMissionLogic : MissionLogic
     {
@@ -19,7 +20,10 @@ namespace TOW_Core.Battle.AttributeSystem.CustomMissionLogic
         {
             base.OnAgentCreated(agent);
 
-            List<string> attributeList = agent.GetAttributes();
+
+            List<string> attributeList = new List<string>();
+            if(agent.IsHero) attributeList = Hero.FindFirst(x=>x.StringId == agent.Character.StringId)
+            agent.GetAttributes();
             attributeList.ForEach(attribute => ApplyAgentComponentsForAttribute(attribute, agent));
         }
 

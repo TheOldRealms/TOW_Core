@@ -7,7 +7,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
-using TOW_Core.AttributeDataSystem;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.Extensions;
 
 namespace TOW_Core.Abilities

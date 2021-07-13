@@ -10,7 +10,7 @@ using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
 using System.Timers;
 
-namespace TOW_Core.Battle.AttributeSystem.CustomAgentComponents
+namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
 {
     public class UndeadMoraleAgentComponent : AgentComponent
     {

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using System.Timers;
 using System.Xml.Schema;
 using System.Xml;
-using TOW_Core.AttributeDataSystem;
+using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Components;
 

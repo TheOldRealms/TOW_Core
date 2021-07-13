@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AttributeSystem
+namespace TOW_Core.Battle.ObjectDataExtensions
 {
     public class AttributeManager
     {

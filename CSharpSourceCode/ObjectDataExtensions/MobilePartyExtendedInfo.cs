@@ -2,26 +2,18 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.SaveSystem;
 
-namespace TOW_Core.AttributeDataSystem
+namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
     /// Contains TOW troop data of a complete mobile Party. For single entity data use a StaticAttribute
     /// </summary>
     public class MobilePartyExtendedInfo
     {
-        [SaveableField(0)]
-        public string PartyBaseId;          
-        [SaveableField(1)]
-        public Hero Leader;
-        [SaveableField(2)]
-        public float WindsOfMagic;
-        [SaveableField(3)]
-        public bool IsMagicUserParty;
-        [SaveableField(4)]
-        public CharacterExtendedInfo LeaderAttribute;
-
-        [SaveableField(7)] public PartyType PartyType;
-        [SaveableField(8)] public PartyBase PartyBase;
+        [SaveableField(0)] public string PartyBaseId;
+        [SaveableField(1)] public Hero Leader;
+        [SaveableField(3)] public HeroExtendedInfo LeaderInfo;
+        [SaveableField(4)] public PartyType PartyType;
+        [SaveableField(5)] public PartyBase PartyBase;
         
         public MobilePartyExtendedInfo(string partyBaseId)
         {

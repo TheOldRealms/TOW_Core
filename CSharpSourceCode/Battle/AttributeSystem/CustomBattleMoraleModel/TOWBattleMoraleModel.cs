@@ -8,7 +8,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.ComponentInterfaces;
 using TOW_Core.Battle.Extensions;
 
-namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
+namespace TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel
 {
     public class TOWBattleMoraleModel : CustomBattleMoraleModel
     {

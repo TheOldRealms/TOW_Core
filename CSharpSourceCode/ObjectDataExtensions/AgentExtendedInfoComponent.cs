@@ -1,53 +1,19 @@
 ﻿using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 
-namespace TOW_Core.AttributeDataSystem
+namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
-    /// Static Attribute attached to an agent on Battlefield
+    /// Extended information about an agent on Battlefield/Mission
     /// </summary>
     public class AgentExtendedInfoComponent: AgentComponent
     {
-        public AgentExtendedInfoComponent(Agent agent) : base(agent)
-        {
-            
-        }
-        
         private MobilePartyExtendedInfo _linkedPartyInfo;
-        private CharacterExtendedInfo _characterInfo;
+        private HeroExtendedInfo _heroInfo;
+        public AgentExtendedInfoComponent(Agent agent) : base(agent) { }
         
-        public void SetAttribute(CharacterExtendedInfo info)
-        {
-            _characterInfo = info;
-            foreach (var characterAttribute  in _characterInfo.CharacterAttributes)
-            {
-                this.Agent.AddAttribute(characterAttribute);
-            }
-
-
-            if (info.CharacterAttributes.Contains("AbilityUser"))
-            {
-                foreach (var ability in _characterInfo.Abilities)
-                {
-                    this.Agent.AddAbility(ability);
-                }
-            }
-           
-
-
-        }
-        
-        public void SetParty(MobilePartyExtendedInfo info)
-        {
-            _linkedPartyInfo = info; 
-        }
-
-
-
-        public MobilePartyExtendedInfo GetPartyInfo()
-        {
-            return _linkedPartyInfo;
-        }
-        
+        public void SetParty(MobilePartyExtendedInfo info) => _linkedPartyInfo = info; 
+        public void SetHeroInfo(HeroExtendedInfo info) => _heroInfo = info;
+        public MobilePartyExtendedInfo GetPartyInfo() => _linkedPartyInfo;
+        public HeroExtendedInfo GetHeroInfo() => _heroInfo;        
     }
 }
