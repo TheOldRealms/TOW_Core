@@ -13,6 +13,8 @@ using TaleWorlds.Engine;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.PartyComponent;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport.QuestBattleLocation
 {
@@ -24,6 +26,24 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, onGameStart);
             CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, onMissionEnded);
+            CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, DailyTickSettlement);
+        }
+
+        private void DailyTickSettlement(Settlement settlement)
+        {
+            if (settlement.Name.ToString() != "Chaos Portal") return; //TODO: Is there a better way to do this?
+            var questBattleComponent = settlement.GetComponent<QuestBattleComponent>();
+            if (questBattleComponent != null)
+            {
+                if (questBattleComponent.RaidingParties.Count < 5)
+                {
+                    var find = Campaign.Current.Settlements.ToList().Find(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("test123", settlement, questBattleComponent, 30);
+                    chaosRaidingParty.Aggressiveness = 5;
+                    chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
+                    chaosRaidingParty.SetMoveRaidSettlement(find);
+                }
+            }
         }
 
         private void onMissionEnded(IMission obj)
@@ -31,7 +51,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             if (_component != null && _component.IsQuestBattleUnderway)
             {
                 var mission = obj as Mission;
-                if(mission.MissionResult != null && mission.MissionResult.BattleResolved && mission.MissionResult.PlayerVictory)
+                if (mission.MissionResult != null && mission.MissionResult.BattleResolved && mission.MissionResult.PlayerVictory)
                 {
                     _component.OnQuestBattleComplete(true);
                     var list = new List<InquiryElement>();
@@ -45,7 +65,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     _component.OnQuestBattleComplete(false);
                     var inq = new InquiryData("Defeated!", "The enemy proved more than a match for you. Better luck next time!", true, false, "OK", null, null, null);
                     InformationManager.ShowInquiry(inq);
-                }                
+                }
             }
         }
 
@@ -59,7 +79,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         {
             obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.none, null);
             obj.AddGameMenuOption("questlocation_menu", "doquestbattle", "{QUEST_TEXT} (battle)", this.doquestbattle_condition, this.doquestbattle_consequence);
-            obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate (MenuCallbackArgs args)
+            obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate(MenuCallbackArgs args)
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Leave;
                 return true;
@@ -68,12 +88,13 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private bool doquestbattle_condition(MenuCallbackArgs args)
         {
-            if(_component != null && _component.QuestBattleTemplate != null && _component.IsActive)
+            if (_component != null && _component.QuestBattleTemplate != null && _component.IsActive)
             {
                 MBTextManager.SetTextVariable("QUEST_TEXT", _component.QuestBattleTemplate.QuestBattleSolveText);
                 args.optionLeaveType = GameMenuOption.LeaveType.HostileAction;
                 return true;
             }
+
             return false;
         }
 
@@ -85,6 +106,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 PlayerEncounter.StartBattle();
                 PlayerEncounter.Update();
             }
+
             _component.StartBattle();
             CampaignMission.OpenBattleMission(_component.QuestBattleTemplate.SceneName);
         }
