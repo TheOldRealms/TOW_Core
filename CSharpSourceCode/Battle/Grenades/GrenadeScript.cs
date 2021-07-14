@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -9,10 +8,9 @@ namespace TOW_Core.Battle.Grenades
     public class GrenadeScript : ScriptComponentBehaviour
     {
         private bool hasExploded = false;
-        private Int32 minDamage = 50;
-        private Int32 maxDamage = 150;
         private Int32 explosionTimer = 0;
-        private float radius = 5f;
+        private const Int32 maxDamage = 110;
+        private const float radius = 5f;
         private SoundEvent _explosionSound;
         private Agent shooterAgent;
 
@@ -44,7 +42,7 @@ namespace TOW_Core.Battle.Grenades
         {
             entity.FadeOut(2.9f, true);
             Vec3 position = entity.GlobalPosition;
-            TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, radius, minDamage, maxDamage, shooterAgent, true);
+            TOWBattleUtilities.DamageAgentsWithGrenade(position.AsVec2, radius, maxDamage, shooterAgent, false);
             Int32 _explosionSoundindex = SoundEvent.GetEventIdFromString("fireball_explosion");
             var explosion = GameEntity.CreateEmpty(Mission.Current.Scene);
             MatrixFrame frame = MatrixFrame.Identity;
