@@ -11,9 +11,9 @@
 	<CharacterAbilityTuple CharacterID="mannfred">
 		<Abilities>TOW_Core.Abilities.FireBallAbility</Abilities>
 		<Abilities>TOW_Core.Abilities.WindOfDeathAbility</Abilities>
+	</CharacterAbilityTuple>
     <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
      <Abilities>TOW_Core.Abilities.FireBallAbility</Abilities>
     </CharacterAbilityTuple>
-    
-  </CharacterAbilityTuple>
+
 </ArrayOfCharacterAbilityTuple>

@@ -11,6 +11,7 @@ using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
+using TaleWorlds.CampaignSystem;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -40,6 +41,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("AbilityUser");
         }
 
+        public static bool IsSpellCaster(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("SpellCaster");
+        }
+
         public static bool HasAttribute(this Agent agent, string attributeName)
         {
             return agent.GetAttributes().Contains(attributeName);
@@ -51,8 +57,6 @@ namespace TOW_Core.Utilities.Extensions
            
             if(abilitycomponent != null)
             {
-                
-                
                 if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
             }
         }
@@ -76,15 +80,6 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
-        public static void AddAbility(this Agent agent, string ability)
-        {
-            AbilityManager.AddAbility(agent,ability);
-
-            AbilityComponent abilityComponent = new AbilityComponent(agent);
-
-            agent.AddComponent(abilityComponent);
-        }
-
         public static void SelectAbility(this Agent agent, int abilityindex)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
@@ -94,54 +89,49 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
+        public static Hero GetHero(this Agent agent)
+        {
+            if (agent.Character == null) return null;
+            Hero hero = null;
+            if(Game.Current.GameType is Campaign)
+            {
+                var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
+                if (list != null && list.Count() > 0)
+                {
+                    hero = list.First();
+                }
+            }
+            return hero;
+        }
+
         public static List<string> GetAbilities(this Agent agent)
         {
-            return AbilityManager.GetAbilitesForCharacter(agent.Character.StringId);
+            var hero = agent.GetHero();
+            var character = agent.Character;
+            if (hero != null)
+            {
+                return hero.GetExtendedInfo().AllAbilities;
+            }
+            else if (character != null)
+            {
+                return agent.Character.GetAbilities();
+            }
+            else return new List<string>();
         }
 
         public static List<string> GetAttributes(this Agent agent)
         {
-            if (agent != null && agent.Character != null)
+            var hero = agent.GetHero();
+            var character = agent.Character;
+            if (hero != null)
             {
-                string characterName = agent.Character.StringId;
-
-                List<string> attributeList;
-                if (CharacterIDToAttributeMap.TryGetValue(characterName, out attributeList))
-                {
-                    return attributeList;
-                }
+                return hero.GetExtendedInfo().AllAttributes;
             }
-            return new List<string>();
-        }
-
-        public static void AddAttribute(this Agent agent, string attribute)
-        {
-            var characterName = agent.Character.StringId;
-
-            if (!CharacterIDToAttributeMap.ContainsKey(characterName))
+            else if (character != null)
             {
-                List<string> attributeList= new List<string>();
-                attributeList.Add(attribute);
-                CharacterIDToAttributeMap.Add(characterName, attributeList);
-                return;
+                return agent.Character.GetAttributes();
             }
-
-            if (CharacterIDToAttributeMap[characterName].Contains(attribute))
-            {
-                return;
-            }
-            
-            CharacterIDToAttributeMap[characterName].Add(attribute);
-            
-            
-        }
-
-        public static void RemoveComponentIfNotNull(this Agent agent, AgentComponent component)
-        {
-            if (component != null)
-            {
-                agent.RemoveComponent(component);
-            }
+            else return new List<string>();
         }
 
         /// <summary>

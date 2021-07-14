@@ -6,7 +6,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
@@ -18,6 +18,7 @@ namespace TOW_Core.Battle.AI.Components
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
+            agent.Components.RemoveAllOfType(typeof(HumanAIComponent));
         }
 
         public override void OnTickAsAI(float dt)

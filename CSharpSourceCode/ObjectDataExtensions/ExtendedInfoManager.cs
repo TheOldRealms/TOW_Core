@@ -1,34 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.ObjectDataExtensions;
 using TOW_Core.Battle.Voices;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
-    /// Manages with PartyAttributes and StaticAttributes all relevant TOW Information  for Parties and Characters in game during Campaign gameplay.
+    /// Manages the information we extend the TW classes with  (i.e. Hero, MobileParty, (Base)CharacterObject) 
+    /// with all relevant TOW Information  for Parties and Characters in game during Campaign gameplay.
     ///
     /// Makes use of TaleWorlds methods in order to Save and load data.
     /// </summary>
     public class ExtendedInfoManager: CampaignBehaviorBase
     {
-
-        public ExtendedInfoManager() {}
-        
         private MobilePartyExtendedInfo _mainPartyInfo;
         private MapEvent _currentPlayerEvent;
-        private bool playerIsInBattle;
-        private bool _isloaded;
+        private bool _isInitialized;
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
         private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
-
         private List<MobilePartyExtendedInfo> _eventPartyInfos;
+        public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
+        private static Dictionary<string, CharacterExtendedInfo> _customBattleInfos = new Dictionary<string, CharacterExtendedInfo>();
+
+        public ExtendedInfoManager() {}
+        
+        public override void RegisterEvents()
+        {
+            //Game Saving Events
+            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoaded);
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
+            CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
+
+            //Tick events
+            CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
+            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTick);
+
+            //Events and Battles
+            CampaignEvents.MapEventStarted.AddNonSerializedListener(this, EventCreated);
+            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
+
+            //Parties created and destroyed
+            CampaignEvents.MobilePartyCreated.AddNonSerializedListener(this, RegisterParty);
+            CampaignEvents.MobilePartyDestroyed.AddNonSerializedListener(this, DeregisterParty);
+
+            //heroes
+            CampaignEvents.HeroCreated.AddNonSerializedListener(this, OnHeroCreated);
+            CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, OnHeroKilled);
+        }
+
+        private void HourlyTick()
+        {
+            var text = "";
+        }
+
+        private void OnHeroCreated(Hero arg1, bool arg2)
+        {
+            if (!_heroInfos.ContainsKey(arg1.StringId))
+            {
+                var info = new HeroExtendedInfo(arg1.CharacterObject);
+                _heroInfos.Add(arg1.StringId, info);
+            }
+        }
+
+        private void OnHeroKilled(Hero arg1, Hero arg2, KillCharacterAction.KillCharacterActionDetail arg3, bool arg4)
+        {
+            if (_heroInfos.ContainsKey(arg1.StringId))
+            {
+                _heroInfos.Remove(arg1.StringId);
+            }
+        }
 
         public List<MobilePartyExtendedInfo> GetInfoForActiveInvolvedParties()
         {
@@ -42,62 +90,74 @@ namespace TOW_Core.ObjectDataExtensions
         
         internal CharacterExtendedInfo GetCharacterInfoFor(string id)
         {
+            if(_characterInfos.Count < 1)
+            {
+                TryLoadCharacters();
+            }
             return _characterInfos.ContainsKey(id) ? _characterInfos[id] : null;
         }
 
-        public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
-        public override void  RegisterEvents()
+        private void OnSessionStart(CampaignGameStarter obj)
         {
-            //Game Saving Events
-            CampaignEvents.OnBeforeSaveEvent.AddNonSerializedListener(this, OnGameSaving());
-            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoaded);
-            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
-            CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this,OnNewGameCreatedPartialFollowUpEnd);
-            
-            //Tick events
-            CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this,OnDailyTick());
-            
-            //Events and Battles
-            CampaignEvents.MapEventStarted.AddNonSerializedListener(this,EventCreated);
-            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
-            
-            //Parties created and destroyed
-            CampaignEvents.MobilePartyCreated.AddNonSerializedListener(this,RegisterParty);
-            CampaignEvents.MobilePartyDestroyed.AddNonSerializedListener(this,DeregisterParty);
-            
-            //Units added
-            CampaignEvents.NewCompanionAdded.AddNonSerializedListener(this,OnCompanionAdded);
+            TryLoadCharacters();
+            _mainPartyInfo = MobileParty.MainParty.GetInfo();
         }
 
-        private void OnSessionStart(CampaignGameStarter obj)
+        internal static CharacterExtendedInfo GetCharacterInfoForStatic(string id)
+        {
+            if(ExtendedInfoManager._customBattleInfos.Count < 1)
+            {
+                ExtendedInfoManager.TryLoadCharactersStatic();
+            }
+            CharacterExtendedInfo info = null;
+            ExtendedInfoManager._customBattleInfos.TryGetValue(id, out info);
+            return info;
+        }
+
+        private static void TryLoadCharactersStatic()
+        {
+            var characters = new List<string>();
+            characters.AddRange(AttributeManager.GetAllCharacterIds());
+            foreach(var character in AbilityManager.GetAllCharacterIds())
+            {
+                if (!characters.Contains(character)) characters.Add(character);
+            }
+            foreach (var character in characters)
+            {
+                if (!_customBattleInfos.ContainsKey(character))
+                {
+                    var info = new CharacterExtendedInfo();
+                    info.CharacterStringId = character;
+                    var attributes = AttributeManager.GetAttributesFor(character);
+                    if (attributes != null) info.CharacterAttributes = attributes;
+                    var abilities = AbilityManager.GetAbilitesForCharacter(character);
+                    if (abilities != null) info.Abilities = abilities;
+                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character);
+                    _customBattleInfos.Add(character, info);
+                }
+            }
+        }
+
+        private void TryLoadCharacters()
         {
             //construct character info for all CharacterObject templates loaded by the game.
             //this can be safely reconstructed at each session start without the need to save/load.
             var characters = new List<CharacterObject>();
             MBObjectManager.Instance.GetAllInstancesOfObjectType<CharacterObject>(ref characters);
-            foreach(var character in characters)
+            foreach (var character in characters)
             {
-                var info = new CharacterExtendedInfo();
-                info.CharacterStringId = character.StringId;
-                info.CharacterAttributes = AttributeManager.GetAttributesFor(character.StringId);
-                info.Abilities = AbilityManager.GetAbilitesForCharacter(character.StringId);
-                info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character.StringId);
-                _characterInfos.Add(character.StringId, info);
+                if (!_characterInfos.ContainsKey(character.StringId))
+                {
+                    var info = new CharacterExtendedInfo();
+                    info.CharacterStringId = character.StringId;
+                    var attributes = AttributeManager.GetAttributesFor(character.StringId);
+                    if (attributes != null) info.CharacterAttributes = attributes;
+                    var abilities = AbilityManager.GetAbilitesForCharacter(character.StringId);
+                    if (abilities != null) info.Abilities = abilities;
+                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character.StringId);
+                    _characterInfos.Add(character.StringId, info);
+                }
             }
-        }
-
-        private void OnMissionEnded(MapEvent mapEvent)
-        {
-            if (playerIsInBattle)
-            {
-                playerIsInBattle = false;
-            }
-        }
-
-        private void OnCompanionAdded(Hero hero)
-        {
-            _currentAddedHero = hero;
         }
 
         private void EventCreated(MapEvent mapEvent, PartyBase partyBase, PartyBase arg3)
@@ -165,11 +225,6 @@ namespace TOW_Core.ObjectDataExtensions
             partyInfo.PartyBaseId = party.Party.Id;
             partyInfo.PartyBase = party.Party;
 
-            if (party.IsMainParty)
-            {
-                _mainPartyInfo = partyInfo;
-            }
-
             if (party.IsBandit)
             {
                 partyInfo.PartyType = PartyType.BanditParty;
@@ -179,7 +234,7 @@ namespace TOW_Core.ObjectDataExtensions
             {   
                 Hero Leader = party.LeaderHero;
                 partyInfo.Leader = Leader;
-                partyInfo.LeaderInfo = leaderAttribute;
+                partyInfo.LeaderInfo = party.LeaderHero.GetExtendedInfo();
                 partyInfo.PartyType = PartyType.LordParty;
             }
             
@@ -213,52 +268,46 @@ namespace TOW_Core.ObjectDataExtensions
         }
         private void OnGameLoaded()
         {
+            /*
             TOWCommon.Say("save game restored with "+ _partyInfos.Count + "parties in the dictionary");
             _isloaded = true;
 
             _mainPartyInfo = GetPartyInfoFor(Campaign.Current.MainParty.Party.Id);
             //for later: Check if Attributes are valid, reinitalize for parties if not
-        }
-        
-        private Action OnGameSaving()
-        {
-            return new Action(OnGameSaveAction);
-        }
-        
-        private void OnGameSaveAction()
-        {
-            TOWCommon.Say("save game stored with "+ _partyInfos.Count + "parties in the dictionary");
+            */
         }
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
+            TryLoadCharacters();
+            InitializeHeroes();
             InitializeParties();
-            _isloaded = true;
+            _isInitialized = true;
         }
 
-        private void FillWindsOfMagic(float TickValue)
+        private void InitializeHeroes()
         {
-            foreach (var entry in _partyInfos)
+            foreach(var hero in Hero.AllAliveHeroes)
             {
-                if (entry.Value.IsMagicUserParty)
-                    entry.Value.WindsOfMagic += TickValue;
-                if (entry.Value.WindsOfMagic > 30)
+                if (!_heroInfos.ContainsKey(hero.StringId))
                 {
-                    entry.Value.WindsOfMagic = 30;
+                    var info = new HeroExtendedInfo(hero.CharacterObject);
+                    _heroInfos.Add(hero.StringId, info);
                 }
             }
         }
 
-        private Action OnDailyTick()
+        private void FillWindsOfMagic(float TickValue)
         {
-            return new Action(DailyMessage);
-        }
-
-        private void DailyMessage()
-        {
-            string text = "";
-            text +=" Main player has WOM: "+ GetPartyInfoFor(Campaign.Current.MainParty.Party.Id).WindsOfMagic;
-            TOWCommon.Say(text);
+            foreach (var entry in _heroInfos)
+            {
+                if (entry.Value.AllAttributes.Contains("SpellCaster"))
+                {
+                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
+                    entry.Value.CurrentWindsOfMagic += TickValue;
+                    entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
+                }
+            }
         }
         
         private void InitializeParties()
@@ -278,7 +327,7 @@ namespace TOW_Core.ObjectDataExtensions
         public override void SyncData(IDataStore dataStore)
         {
             dataStore.SyncData("_partyInfos", ref _partyInfos);
-            dataStore.SyncData("_partyInfos", ref _partyInfos);
+            dataStore.SyncData("_heroInfos", ref _heroInfos);
         }
         
     }

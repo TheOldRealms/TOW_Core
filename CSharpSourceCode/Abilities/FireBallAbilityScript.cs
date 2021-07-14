@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Battle;
 using TOW_Core.Utilities;
 
@@ -22,7 +22,7 @@ namespace TOW_Core.Abilities
         private float _speed = 35f;
         private FireBallAbility _ability;
         private float _abilitylife = -1f;
-        private float _collisionRadius = 2f;
+        private float _collisionRadius = 0.5f;
         private bool _isFading;
         private int _movingSoundindex;
         private int _explosionSoundindex;

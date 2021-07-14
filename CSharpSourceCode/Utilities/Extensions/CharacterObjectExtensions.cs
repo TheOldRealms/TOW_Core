@@ -23,9 +23,17 @@ namespace TOW_Core.Utilities.Extensions
             if(infoManager != null)
             {
                 var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
-                foreach(var item in info.Abilities)
+                if(info != null && info.Abilities != null)
                 {
-                    list.Add(item);
+                    list.AddRange(info.Abilities);
+                }
+            }
+            else
+            {
+                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
+                if (info != null && info.Abilities != null)
+                {
+                    list.AddRange(info.Abilities);
                 }
             }
             return list;
@@ -34,13 +42,22 @@ namespace TOW_Core.Utilities.Extensions
         public static List<string> GetAttributes(this BasicCharacterObject characterObject)
         {
             var list = new List<string>();
+            if (characterObject == null) return list;
             var infoManager = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
             if (infoManager != null)
             {
                 var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
-                foreach (var item in info.CharacterAttributes)
+                if(info != null && info.CharacterAttributes != null)
                 {
-                    list.Add(item);
+                    list.AddRange(info.CharacterAttributes);
+                }
+            }
+            else
+            {
+                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
+                if (info != null && info.CharacterAttributes != null)
+                {
+                    list.AddRange(info.CharacterAttributes);
                 }
             }
             return list;

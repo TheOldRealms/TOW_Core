@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
@@ -26,15 +27,6 @@ namespace TOW_Core.Abilities
                     Agent.Main.SelectNextAbility();
                 }
             }
-        }
-
-        public override void OnAgentCreated(Agent agent)
-        {
-            base.OnAgentCreated(agent);
-            //always add it for the main agent
-            if(agent == Agent.Main) agent.AddComponent(new AbilityComponent(agent));
-            //add it to all other units (like heroes, lords) that we can define in the attributes xml
-            else if (agent.IsAbilityUser()) agent.AddComponent(new AbilityComponent(agent));
         }
     }
 }

@@ -13,6 +13,7 @@ using TaleWorlds.Library;
 using System.IO;
 using TaleWorlds.CampaignSystem.GameState;
 using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -171,9 +172,9 @@ namespace TOW_Core.CharacterCreation
             {
                 if (option.OptionText == "Bright Wizard pupil")
                 {
-                    Campaign.Current.GetCampaignBehavior<ExtendedInfoManager>().GetPlayerPartyInfo().LeaderInfo.Abilities.Add("TOW_Core.Abilities.FireBallAbility");
-                    Campaign.Current.GetCampaignBehavior<ExtendedInfoManager>().GetPlayerPartyInfo().LeaderInfo.CharacterAttributes.Add("AbilityUser");
-                    Campaign.Current.GetCampaignBehavior<ExtendedInfoManager>().GetPlayerPartyInfo().LeaderInfo.IsMagicUser = true;
+                    Hero.MainHero.AddAttribute("AbilityUser");
+                    Hero.MainHero.AddAttribute("SpellCaster");
+                    Hero.MainHero.AddAbility("TOW_Core.Abilities.FireBallAbility");
                 }
             }
             

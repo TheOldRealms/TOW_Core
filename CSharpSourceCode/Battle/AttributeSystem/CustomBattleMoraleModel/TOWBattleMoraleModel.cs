@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SandBox;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.ComponentInterfaces;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel
 {

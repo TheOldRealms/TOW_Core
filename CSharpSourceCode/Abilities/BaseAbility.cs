@@ -11,6 +11,7 @@ using System.Xml;
 using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
@@ -57,18 +58,16 @@ namespace TOW_Core.Abilities
         {
             if (!this.IsOnCooldown())
             {
-                var attributeComponent = casterAgent.GetComponent<AgentExtendedInfoComponent>();
-
-
-                if (attributeComponent != null)
+                var hero = casterAgent.GetHero();
+                if(hero != null)
                 {
-                    if (attributeComponent.GetPartyInfo().WindsOfMagic - WindsOfMagicCost < 0)
-                        return;
-
-                    attributeComponent.GetPartyInfo().WindsOfMagic = attributeComponent.GetPartyInfo().WindsOfMagic - WindsOfMagicCost;
+                    var info = hero.GetExtendedInfo();
+                    if (info != null && info.CurrentWindsOfMagic > WindsOfMagicCost)
+                    {
+                        info.CurrentWindsOfMagic -= WindsOfMagicCost;
+                    }
+                    else return;
                 }
-                
-                
                 this._coolDownLeft = this.CoolDown;
                 this._timer.Start();
                 OnUse(casterAgent);

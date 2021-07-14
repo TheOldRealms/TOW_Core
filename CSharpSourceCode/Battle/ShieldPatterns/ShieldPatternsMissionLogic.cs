@@ -8,7 +8,7 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.ShieldPatterns
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle
 {

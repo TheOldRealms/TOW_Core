@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.ModuleManager;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Voices
 {

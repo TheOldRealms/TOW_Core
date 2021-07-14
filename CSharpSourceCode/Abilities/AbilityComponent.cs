@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {

@@ -17,39 +17,26 @@ namespace TOW_Core.Abilities
     {
         private AbilityHUD_VM _dataSource;
         private GauntletLayer _layer;
+        private ExtendedInfoMissionLogic _infoManager;
         private bool _isInitialized;
-        private MobilePartyExtendedInfo playerPartyAttribute;
-        private ExtendedInfoMissionLogic staticAttributemanager;
 
         public override void EarlyStart()
         {
-            staticAttributemanager = Mission.Current.GetMissionBehaviour<ExtendedInfoMissionLogic>();
-            staticAttributemanager.NotifyPlayerPartyAttributeAssignedObservers += InializeMissionView;
+            _infoManager = Mission.Current.GetMissionBehaviour<ExtendedInfoMissionLogic>();
         }
-
-
-        private void InializeMissionView()
-        {
-            playerPartyAttribute = staticAttributemanager.GetPlayerAttribute();
-            _isInitialized = true;
-        }
-        
+       
         
         public override void OnMissionScreenTick(float dt)
         {
             base.OnMissionScreenTick(dt);
-           
-            if (!this._isInitialized)
+            if (!_isInitialized)
             {
-                
-                //this._isInitialized = true;
                 this._dataSource = new AbilityHUD_VM();
                 this._layer = new GauntletLayer(100);
                 this._layer.LoadMovie("AbilityHUD", this._dataSource);
                 base.MissionScreen.AddLayer(this._layer);
+                _isInitialized = true;
             }
-            
-            
         }
 
         public override void OnMissionTick(float dt)
@@ -58,7 +45,6 @@ namespace TOW_Core.Abilities
 
             if (this._isInitialized)
             {
-                _dataSource.SetWindsOfMagicValue(playerPartyAttribute.WindsOfMagic);
                 this._dataSource.UpdateProperties();
             }
         }

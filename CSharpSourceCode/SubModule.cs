@@ -58,10 +58,10 @@ namespace TOW_Core
 
             //This has to be here.
             AbilityManager.LoadAbilities();
-            LoadAttributes();
+            CustomVoiceManager.LoadVoices();
+            AttributeManager.LoadAttributes();
             LoadStatusEffects();
             LoadSprites();
-            LoadVoices();
             LoadShieldPatterns();
             LoadQuestBattleTemplates();
 
@@ -123,8 +123,7 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
-                ExtendedInfoManager partyAttributeManager = new ExtendedInfoManager();
-                starter.CampaignBehaviors.Add(partyAttributeManager);
+                starter.CampaignBehaviors.Add(new ExtendedInfoManager());
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
@@ -143,7 +142,6 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new CustomAIMissionLogic());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
@@ -155,18 +153,6 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
-        }
-
-        private void LoadAttributes()
-        {
-            AttributeManager attributeManager = new AttributeManager();
-            attributeManager.LoadAttributes();
-        }
-
-        private void LoadVoices()
-        {
-            CustomVoiceManager voiceManager = new CustomVoiceManager();
-            voiceManager.LoadVoices();
         }
 
         private void LoadStatusEffects()

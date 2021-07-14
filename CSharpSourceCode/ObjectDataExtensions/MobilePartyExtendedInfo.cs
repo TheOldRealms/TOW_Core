@@ -5,7 +5,7 @@ using TaleWorlds.SaveSystem;
 namespace TOW_Core.ObjectDataExtensions
 {
     /// <summary>
-    /// Contains TOW troop data of a complete mobile Party. For single entity data use a StaticAttribute
+    /// Contains TOW specific data of a complete mobile Party. For single entity data use a HeroExtendedInfo or CharacterExtendedInfo
     /// </summary>
     public class MobilePartyExtendedInfo
     {
@@ -20,16 +20,13 @@ namespace TOW_Core.ObjectDataExtensions
             this.PartyBaseId = partyBaseId;
         }
 
-        public MobilePartyExtendedInfo()
-        {
-
-        }        
+        public MobilePartyExtendedInfo() { }      
     }
     
     
-    public class PartyAttributeDefiner : SaveableTypeDefiner
+    public class MobilePartyExtendedInfoDefiner : SaveableTypeDefiner
     {
-        public PartyAttributeDefiner() : base(1_543_132) { }
+        public MobilePartyExtendedInfoDefiner() : base(1_543_133) { }
         protected override void DefineClassTypes()
         {
             base.DefineClassTypes();

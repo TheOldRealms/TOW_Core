@@ -7,7 +7,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities

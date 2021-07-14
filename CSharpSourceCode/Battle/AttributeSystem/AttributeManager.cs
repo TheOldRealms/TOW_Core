@@ -24,6 +24,11 @@ namespace TOW_Core.Battle.ObjectDataExtensions
             return list;
         }
 
+        internal static List<string> GetAllCharacterIds()
+        {
+            return _attributesDictionary.Keys.ToList();
+        }
+
         public static void LoadAttributes()
         {
             var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath(ModuleName), AttributeFileName, SearchOption.AllDirectories);

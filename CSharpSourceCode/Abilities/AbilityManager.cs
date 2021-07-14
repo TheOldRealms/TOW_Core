@@ -24,41 +24,10 @@ namespace TOW_Core.Abilities
             return list;
         }
 
-        internal static List<string> GetAllAbilities()
+        internal static List<string> GetAllCharacterIds()
         {
-            var list = new List<string>();
-            foreach(var item in _abilities)
-            {
-                foreach(var ability in item.Value)
-                {
-                    if (!list.Contains(ability)) list.Add(ability);
-                }
-            }
-            return list;
+            return _abilities.Keys.ToList();
         }
-
-        internal static void AddAbility(Agent agent, string ability)
-        {
-            string id = agent.Character.StringId;
-            AddAbility(id,ability);
-        }
-        
-        internal static void AddAbility(string id, string ability)
-        {
-            
-            if (_abilities.ContainsKey(id))
-            {
-                if(!_abilities[id].Contains(ability)) _abilities[id].Add(ability);
-            }
-            else
-            {
-                List<string> abilityList = new List<string>();
-                abilityList.Add(ability);
-                _abilities.Add(id, abilityList);
-            }
-        }
-        
-        
 
         internal static void LoadAbilities()
         {

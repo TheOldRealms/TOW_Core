@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
 using TOW_Core.ObjectDataExtensions;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
@@ -18,7 +19,7 @@ namespace TOW_Core.Abilities
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
-        private string _WindsOfMagicLeft = "100";
+        private string _WindsOfMagicLeft = "No WoM in CustomBattle.";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
         private float _windsOfMagicValue;
@@ -35,11 +36,6 @@ namespace TOW_Core.Abilities
             }
             _ability = Agent.Main.GetCurrentAbility();
             
-            if (Campaign.Current != null)
-            {
-               
-            }
-            
             HasAnyAbility = _ability != null;
             
             if (HasAnyAbility)
@@ -48,18 +44,22 @@ namespace TOW_Core.Abilities
                 Name = _ability.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
-                
-                if (_windsOfMagicValue < _ability.WindsOfMagicCost)
+                if(Game.Current.GameType is Campaign)
                 {
-                    IsOnCoolDown = true;
-                    CoolDownLeft = "";
+                    SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
+
+                    if (_windsOfMagicValue < _ability.WindsOfMagicCost)
+                    {
+                        IsOnCoolDown = true;
+                        CoolDownLeft = "";
+                    }
                 }
             }
             
             
         }
 
-        public void SetWindsOfMagicValue(float value)
+        private void SetWindsOfMagicValue(float value)
         {
             _windsOfMagicValue = value;
             _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();

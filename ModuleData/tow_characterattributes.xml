@@ -30,4 +30,8 @@
 		<Attribute id="AbilityUser"/>
 		<Attribute id="Undead"/>
 	</Character>
+	<Character name="tow_wanderer_empire_0">
+		<Attribute id="AbilityUser"/>
+		<Attribute id="SpellCaster"/>
+	</Character>
 </Characters>
