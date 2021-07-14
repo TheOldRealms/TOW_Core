@@ -77,10 +77,24 @@ namespace TOW_Core.Battle.AI.Components
         private void CastSpellAtAgent(Agent targetAgent)
         {
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
+
+            var velocity = targetAgent.Velocity;
+            if (Agent.GetCurrentAbility() is FireBallAbility)
+            {
+                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
+            }
+
+            targetPosition += velocity;
             targetPosition.z += -2f;
 
             CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
+        }
+
+        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent, float spellSpeed)
+        {
+            var time = targetAgent.Position.Distance(Agent.Position) / spellSpeed;
+            return targetAgent.Velocity * time;
         }
 
         private bool HaveLineOfSightToAgent(Agent targetAgent)
