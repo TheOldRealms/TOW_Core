@@ -34,6 +34,9 @@ namespace TOW_Core.Battle.Dismemberment
         {
             base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
 
+            if (victim == null)
+                return;
+
             bool canBeDismembered = victim.IsHuman &&
                                     victim != Agent.Main &&
                                     victim.Health <= 0 &&
