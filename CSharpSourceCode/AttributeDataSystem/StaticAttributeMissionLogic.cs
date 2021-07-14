@@ -64,7 +64,6 @@ namespace TOW_Core.AttributeDataSystem
                 SetForCustomBattle();
                 _isCustomBattle = true;
             }
-            
         }
         
          public override void OnAgentBuild(Agent agent, Banner banner)

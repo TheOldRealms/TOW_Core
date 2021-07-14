@@ -30,6 +30,7 @@ using TOW_Core.Battle.AI;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
+using TOW_Core.CampaignSupport.RaiseDead;
 
 namespace TOW_Core
 {
@@ -93,17 +94,28 @@ namespace TOW_Core
         {
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
+
             if (game.GameType.GetType() == typeof(CustomGame))
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
             }
-            else if(game.GameType.GetType() == typeof(Campaign))
+            else if (game.GameType.GetType() == typeof(Campaign))
             {
-                if(game.ObjectManager != null)
+                if (game.ObjectManager != null)
                 {
                     game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
                 }
             }
+        }
+
+        public override void OnCampaignStart(Game game, object starterObject)
+        {
+            Game.Current.GameStateManager.GameStateManagerListener = new TowGameStateScreenManager();
+        }
+
+        public override void OnGameLoaded(Game game, object initializerObject)
+        {
+            Game.Current.GameStateManager.GameStateManagerListener = new TowGameStateScreenManager();
         }
 
         private void LoadSprites()

@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -313,6 +313,9 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="CampaignSupport\RaiseDead\TowGameStateScreenManager.cs" />
+    <Compile Include="CampaignSupport\RaiseDead\TowGauntletPartyScreen.cs" />
+    <Compile Include="CampaignSupport\RaiseDead\TowPartyVm.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
     <Compile Include="CampaignSupport\GameMenuBackgroundSwitcher.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />

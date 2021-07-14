@@ -14,7 +14,7 @@ namespace TOW_Core.Battle.Dismemberment
     public class DismembermentMissionLogic : MissionLogic
     {
         private bool isDebugModeOn = false;
-        private bool isExecutionerModeOn = false;
+        private bool isExecutionerModeOn = true;
         private bool canTroopDismember = false;
         private float slowMotionTimer;
         private float maxChance = 100;
