@@ -50,4 +50,6 @@
 	<Hero id="emp_lord_stirland_weststirlander_3" is_noble="true" faction="Faction.stirland_clan_3" />
 	<!-- Mootland Clan 1 -->
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
+	
+	<Hero id="chaos_clan_1_1" is_noble="true" faction="Faction.chaos_clan_1" />
 </Heroes>

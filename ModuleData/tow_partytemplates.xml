@@ -46,4 +46,11 @@
 			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_empire_archer_vc" />
 		</stacks>
 	</MBPartyTemplate>
+
+	<MBPartyTemplate id="chaos_raiders_template" >
+		<stacks>
+			<PartyTemplateStack min_value="12" max_value="20" troop="NPCCharacter.tow_grave_guard" />
+			<PartyTemplateStack min_value="5" max_value="10" troop="NPCCharacter.tow_grave_guard_greatsword" />
+		</stacks>
+	</MBPartyTemplate>
 </partyTemplates>

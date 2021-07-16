@@ -39,9 +39,9 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 {
                     var find = Campaign.Current.Settlements.ToList().Find(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
                     var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("test123", settlement, questBattleComponent, 30);
-                    chaosRaidingParty.Aggressiveness = 5;
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
+                    TOWCommon.Say("Raiding " + settlement.Name.ToString());
                 }
             }
         }
