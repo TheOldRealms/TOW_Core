@@ -300,6 +300,7 @@
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
+    <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Battle\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
     <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
@@ -351,6 +352,7 @@
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
+    <Compile Include="Utilities\TOWDebug.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
     <Compile Include="Utilities\TOWParticleSystem.cs" />
   </ItemGroup>

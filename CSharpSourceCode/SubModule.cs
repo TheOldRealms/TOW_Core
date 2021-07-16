@@ -10,34 +10,26 @@ using NLog.Targets;
 using NLog.Config;
 using TOW_Core.Battle.AttributeSystem;
 using TOW_Core.Battle.AttributeSystem.CustomMissionLogic;
-using TaleWorlds.MountAndBlade.Source.Missions.Handlers.Logic;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 using TaleWorlds.MountAndBlade.CustomBattle;
-using TaleWorlds.GauntletUI;
 using TaleWorlds.Engine.GauntletUI;
-using TaleWorlds.TwoDimension;
 using TOW_Core.Abilities;
-using TOW_Core.CharacterCreation;
 using TOW_Core.Battle.StatusEffects;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-using TaleWorlds.Localization;
-using System;
-using SandBox;
-using SandBox.View;
-using TaleWorlds.Engine.Screens;
 using TOW_Core.AttributeDataSystem;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
-using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using StoryMode.GameModels;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TOW_Core.Battle.AI;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
+using TOW_Core.Battle.Dismemberment;
+using Path = System.IO.Path;
 
 namespace TOW_Core
 {
@@ -159,6 +151,8 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
+            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            mission.AddMissionBehaviour(new DismembermentMissionLogic());
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
