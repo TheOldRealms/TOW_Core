@@ -27,7 +27,7 @@ namespace TOW_Core.HarmonyPatches
 			string code = node?.Attributes?.GetNamedItem("banner_key").Value;
 			if (code != null)
 			{
-				_cache.Add(__instance.StringId, new Banner(code));
+				_cache[__instance.StringId] = new Banner(code);
 			}
 		}
 
@@ -38,7 +38,7 @@ namespace TOW_Core.HarmonyPatches
 			string code = node?.Attributes?.GetNamedItem("banner_key").Value;
 			if (code != null)
 			{
-				_cache.Add(__instance.StringId, new Banner(code));
+				_cache[__instance.StringId] = new Banner(code);
 			}
 		}
 
