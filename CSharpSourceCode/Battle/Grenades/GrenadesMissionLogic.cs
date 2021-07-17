@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -14,6 +13,10 @@ namespace TOW_Core.Battle.Grenades
 {
     public class GrenadesMissionLogic : MissionLogic
     {
+        public GrenadesMissionLogic()
+        {
+        }
+
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
