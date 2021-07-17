@@ -7,6 +7,7 @@ using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.AiBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
@@ -87,17 +88,20 @@ namespace TOW_Core.HarmonyPatches
                     {
                         HeroCreator.CreateHeroAtOccupation(Occupation.Artisan, settlement);
                     }
+
                     int targetNotableCountForSettlement2 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.Merchant);
                     for (int j = 0; j < targetNotableCountForSettlement2; j++)
                     {
                         HeroCreator.CreateHeroAtOccupation(Occupation.Merchant, settlement);
                     }
+
                     int targetNotableCountForSettlement3 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.GangLeader);
                     for (int k = 0; k < targetNotableCountForSettlement3; k++)
                     {
                         HeroCreator.CreateHeroAtOccupation(Occupation.GangLeader, settlement);
                     }
-                    for(int n = 0; n < list.Count; n++)
+
+                    for (int n = 0; n < list.Count; n++)
                     {
                         ____companions.Add(CreateTowWanderer(settlement, list[n]));
                     }
@@ -109,6 +113,7 @@ namespace TOW_Core.HarmonyPatches
                     {
                         HeroCreator.CreateHeroAtOccupation(Occupation.RuralNotable, settlement);
                     }
+
                     int targetNotableCountForSettlement5 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.Headman);
                     for (int m = 0; m < targetNotableCountForSettlement5; m++)
                     {
@@ -116,6 +121,7 @@ namespace TOW_Core.HarmonyPatches
                     }
                 }
             }
+
             return false;
         }
 
@@ -155,6 +161,7 @@ namespace TOW_Core.HarmonyPatches
                     }
                 }
             }
+
             return hero;
         }
 
@@ -266,6 +273,18 @@ namespace TOW_Core.HarmonyPatches
             Debug.Print("Ticking map scene for first initialization", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene.Tick(0.1f);
             return false;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(AiPatrollingBehavior), "AiHourlyTick")]
+        public static bool FixMobilePartyPatrolOverride(MobileParty mobileParty, PartyThinkParams p)
+        {
+            if (mobileParty.ActualClan != null && mobileParty.ActualClan.Name.ToString() == "Chaos Warriors")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -37,11 +37,23 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             {
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
-                    var find = Campaign.Current.Settlements.ToList().Find(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
+                    var find = Campaign.Current.Settlements.ToList().FindAll(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
                     var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("test123", settlement, questBattleComponent, 30);
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
-                    chaosRaidingParty.SetMoveRaidSettlement(find);
-                    TOWCommon.Say("Raiding " + settlement.Name.ToString());
+                    var randomSettlement = find.GetRandomElement();
+                    chaosRaidingParty.SetMoveRaidSettlement(randomSettlement);
+                    chaosRaidingParty.Ai.SetDoNotMakeNewDecisions(true);
+                    FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
+                    TOWCommon.Say("Raiding " + randomSettlement.Name);
+                }
+                
+                if (questBattleComponent.PatrolParties.Count < 2)
+                {
+                    var find = Campaign.Current.Settlements.ToList().Find(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("test123", settlement, questBattleComponent, 120);
+                    chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
+                    chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
+                    TOWCommon.Say("Patrolling around " + settlement.Name);
                 }
             }
         }

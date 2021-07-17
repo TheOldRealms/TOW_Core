@@ -1,39 +1,46 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System.Collections.Generic;
+using System.Linq;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.CampaignSupport.PartyComponent
 {
-    public class ChaosRaidingPartyComponent : TaleWorlds.CampaignSystem.PartyComponent
+    public class ChaosRaidingPartyComponent : WarPartyComponent
     {
         private readonly Settlement _portal;
         private readonly QuestBattleComponent settlementComponent;
         private TextObject _cachedName;
+        private readonly bool patrol;
 
 
-        private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent)
+        private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent, bool patrol)
         {
             _portal = portal;
             settlementComponent = questBattleSettlementComponent;
+            this.patrol = patrol;
+
         }
 
         private void InitializeChaosRaidingParty(int partySize)
         {
-            //   PartyTemplateObject villagerPartyTemplate = _portal.Culture.VillagerPartyTemplate;
             PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_raiders_template");
+            Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
+            Party.Owner = Party.MobileParty.ActualClan.Leader;
             Party.MobileParty.HomeSettlement = _portal;
-            Party.MobileParty.ActualClan = _portal.OwnerClan;
-            Party.Owner = _portal.OwnerClan.Leader;
-            Party.MobileParty.Aggressiveness = 4.0f;
+            Party.MobileParty.Aggressiveness = 1.0f;
+
             //      if (this.Village.Bound?.Town?.Governor != null && this.Village.Bound.Town.Governor.GetPerkValue(DefaultPerks.Scouting.VillageNetwork))
             ///           villagerPartySize = MathF.Round((float) villagerPartySize * (float) (1.0 + (double) DefaultPerks.Scouting.VillageNetwork.SecondaryBonus * 0.00999999977648258));
             //      if ((double) villagerPartySize > (double) this.Village.Hearth)
             //          villagerPartySize = (int) this.Village.Hearth;
             //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
-            Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, _portal.Position2D, 1f, troopNumberLimit: partySize);
+            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, _portal.Position2D, 1f, troopNumberLimit: partySize); 
             Party.Visuals.SetMapIconAsDirty();
             Party.MobileParty.InitializePartyTrade(0);
+
             //   float num = 10000f;
             //    ItemObject itemObject1 = (ItemObject) null;
             //      foreach (ItemObject itemObject2 in Items.All)
@@ -57,7 +64,18 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             int partySize)
         {
             return MobileParty.CreateParty(stringId,
-                new ChaosRaidingPartyComponent(portal, component),
+                new ChaosRaidingPartyComponent(portal, component, false),
+                mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(partySize));
+        }
+        
+        public static MobileParty CreateChaosPatrolParty(
+            string stringId,
+            Settlement portal,
+            QuestBattleComponent component,
+            int partySize)
+        {
+            return MobileParty.CreateParty(stringId,
+                new ChaosRaidingPartyComponent(portal, component, true),
                 mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(partySize));
         }
 
@@ -65,12 +83,14 @@ namespace TOW_Core.CampaignSupport.PartyComponent
         {
             get
             {
-                if (_cachedName == null)
+                if (_cachedName == null && !this.patrol)
                 {
-                    _cachedName = GameTexts.FindText("str_villagers_of_VILLAGE_NAME");
-                    _cachedName.SetTextVariable("VILLAGE_NAME", _portal.Name);
+                    _cachedName = new TextObject("Chaos Raiders");
                 }
-
+                if (_cachedName == null && this.patrol)
+                {
+                    _cachedName = new TextObject("Chaos Warrior Patrol");
+                }
                 return _cachedName;
             }
         }

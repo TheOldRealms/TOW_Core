@@ -18,6 +18,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         private Hero _enemyLeader = null;
         public MobileParty QuestOpponentParty { get; private set; } = null;
         public List<ChaosRaidingPartyComponent> RaidingParties { get; private set; } = new List<ChaosRaidingPartyComponent>();
+        public List<ChaosRaidingPartyComponent> PatrolParties { get; private set; } = new List<ChaosRaidingPartyComponent>();
 
         public bool IsActive { get; private set; } = true;
         public QuestBattleTemplate QuestBattleTemplate => _template;
