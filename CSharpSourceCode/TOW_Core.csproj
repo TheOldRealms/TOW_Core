@@ -282,6 +282,17 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\AbilityTemplate.cs" />
+    <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
+    <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
+    <Compile Include="Abilities\AbilityFactory.cs" />
+    <Compile Include="Abilities\AbilityType.cs" />
+    <Compile Include="Battle\Damage\DamageType.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoMissionLogic.cs" />
@@ -291,11 +302,7 @@
     <Compile Include="Abilities\AbilityHUDMissionView.cs" />
     <Compile Include="Abilities\AbilityHUD_VM.cs" />
     <Compile Include="Abilities\AbilityManagerMissionLogic.cs" />
-    <Compile Include="Abilities\BaseAbility.cs" />
-    <Compile Include="Abilities\FireBallAbilityScript.cs" />
-    <Compile Include="Abilities\FireBallAbility.cs" />
-    <Compile Include="Abilities\WindOfDeathAbility.cs" />
-    <Compile Include="Abilities\WindOfDeathAbilityScript.cs" />
+    <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\AbilityManager.cs" />
     <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />

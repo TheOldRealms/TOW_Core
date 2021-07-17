@@ -22,7 +22,6 @@ namespace TOW_Core.ObjectDataExtensions
     {
         private MobilePartyExtendedInfo _mainPartyInfo;
         private MapEvent _currentPlayerEvent;
-        private bool _isInitialized;
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
         private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
@@ -41,7 +40,6 @@ namespace TOW_Core.ObjectDataExtensions
 
             //Tick events
             CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
-            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTick);
 
             //Events and Battles
             CampaignEvents.MapEventStarted.AddNonSerializedListener(this, EventCreated);
@@ -54,11 +52,6 @@ namespace TOW_Core.ObjectDataExtensions
             //heroes
             CampaignEvents.HeroCreated.AddNonSerializedListener(this, OnHeroCreated);
             CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, OnHeroKilled);
-        }
-
-        private void HourlyTick()
-        {
-            var text = "";
         }
 
         private void OnHeroCreated(Hero arg1, bool arg2)
@@ -105,12 +98,12 @@ namespace TOW_Core.ObjectDataExtensions
 
         internal static CharacterExtendedInfo GetCharacterInfoForStatic(string id)
         {
-            if(ExtendedInfoManager._customBattleInfos.Count < 1)
+            if(_customBattleInfos.Count < 1)
             {
-                ExtendedInfoManager.TryLoadCharactersStatic();
+                TryLoadCharactersStatic();
             }
             CharacterExtendedInfo info = null;
-            ExtendedInfoManager._customBattleInfos.TryGetValue(id, out info);
+            _customBattleInfos.TryGetValue(id, out info);
             return info;
         }
 
@@ -282,7 +275,6 @@ namespace TOW_Core.ObjectDataExtensions
             TryLoadCharacters();
             InitializeHeroes();
             InitializeParties();
-            _isInitialized = true;
         }
 
         private void InitializeHeroes()

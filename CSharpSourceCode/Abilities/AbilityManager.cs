@@ -50,19 +50,6 @@ namespace TOW_Core.Abilities
                 throw e; //TODO handle this more gracefully.
             }
         }
-
-        internal static void WriteSampleXML()
-        {
-            var list = new List<CharacterAbilityTuple>();
-            var tuple = new CharacterAbilityTuple();
-            tuple.CharacterID = "karlfranz";
-            tuple.Abilities.Add(typeof(FireBallAbility).FullName);
-            tuple.Abilities.Add("FireBallAbility");
-            list.Add(tuple);
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_abilities.xml");
-            var ser = new XmlSerializer(typeof(List<CharacterAbilityTuple>));
-            ser.Serialize(File.OpenWrite(path), list);
-        }
     }
 
     [Serializable]

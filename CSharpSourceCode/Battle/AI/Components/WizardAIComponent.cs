@@ -64,7 +64,7 @@ namespace TOW_Core.Battle.AI.Components
             if (formation == null) return;
 
             var medianAgent = formation.GetMedianAgent(true, false, formation.GetAveragePositionOfUnits(true, false));
-            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
+            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility.Template.Name == "Fireball" ? 80 : 27;
 
             if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
             {
@@ -80,7 +80,7 @@ namespace TOW_Core.Battle.AI.Components
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
 
             var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility() is FireBallAbility)
+            if (Agent.GetCurrentAbility().Template.Name == "Fireball")
             {
                 velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
             }

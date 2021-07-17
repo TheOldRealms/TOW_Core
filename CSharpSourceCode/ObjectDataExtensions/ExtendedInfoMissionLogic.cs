@@ -14,23 +14,6 @@ namespace TOW_Core.ObjectDataExtensions
     public class ExtendedInfoMissionLogic : MissionLogic
     {
 
-        private ExtendedInfoManager _infoManager;
-        private bool _isCustomBattle;
-
-        public override void AfterStart()
-        {
-            base.AfterStart();
-            if (Campaign.Current != null)
-            {
-                _infoManager = Campaign.Current.GetCampaignBehavior<ExtendedInfoManager>();
-            }
-            else
-            {
-                _isCustomBattle = true;
-            }
-
-        }
-
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);

@@ -30,6 +30,7 @@ using TOW_Core.Battle.AI;
 using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
+using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core
 {
@@ -56,6 +57,8 @@ namespace TOW_Core
             harmony.PatchAll();
             ConfigureLogging();
 
+            
+
             //This has to be here.
             AbilityManager.LoadAbilities();
             CustomVoiceManager.LoadVoices();
@@ -64,6 +67,8 @@ namespace TOW_Core
             LoadSprites();
             LoadShieldPatterns();
             LoadQuestBattleTemplates();
+            TriggeredEffectManager.LoadTemplates();
+            AbilityFactory.LoadTemplates();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;

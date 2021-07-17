@@ -17,14 +17,7 @@ namespace TOW_Core.Abilities
     {
         private AbilityHUD_VM _dataSource;
         private GauntletLayer _layer;
-        private ExtendedInfoMissionLogic _infoManager;
         private bool _isInitialized;
-
-        public override void EarlyStart()
-        {
-            _infoManager = Mission.Current.GetMissionBehaviour<ExtendedInfoMissionLogic>();
-        }
-       
         
         public override void OnMissionScreenTick(float dt)
         {

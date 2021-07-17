@@ -15,7 +15,7 @@ namespace TOW_Core.Abilities
 {
     public class AbilityHUD_VM : ViewModel
     {
-        private BaseAbility _ability = null;
+        private Ability _ability = null;
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
@@ -40,15 +40,15 @@ namespace TOW_Core.Abilities
             
             if (HasAnyAbility)
             {
-                SpriteName = _ability.SpriteName;
-                Name = _ability.Name;
+                SpriteName = _ability.Template.SpriteName;
+                Name = _ability.Template.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
-                if(Game.Current.GameType is Campaign)
+                if(Game.Current.GameType is Campaign && _ability is Spell)
                 {
                     SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
 
-                    if (_windsOfMagicValue < _ability.WindsOfMagicCost)
+                    if (_windsOfMagicValue < _ability.Template.WindsOfMagicCost)
                     {
                         IsOnCoolDown = true;
                         CoolDownLeft = "";

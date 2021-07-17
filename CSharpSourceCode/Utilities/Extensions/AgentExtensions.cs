@@ -57,11 +57,11 @@ namespace TOW_Core.Utilities.Extensions
            
             if(abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
+                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Cast(agent);
             }
         }
 
-        public static BaseAbility GetCurrentAbility(this Agent agent)
+        public static Ability GetCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
             if (abilitycomponent != null)
