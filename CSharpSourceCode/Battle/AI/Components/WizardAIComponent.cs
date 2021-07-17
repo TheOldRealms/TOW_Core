@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -18,7 +19,9 @@ namespace TOW_Core.Battle.AI.Components
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
-            agent.Components.RemoveAllOfType(typeof(HumanAIComponent));
+            var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
+            foreach (var item in toRemove) // This is intentinal. Components is read-only
+                agent.RemoveComponent(item);
         }
 
         public override void OnTickAsAI(float dt)
