@@ -14,14 +14,12 @@ namespace TOW_Core.Abilities.Scripts
         protected override MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
         {
             var frame = base.GetNextFrame(oldFrame, dt);
-            float height = 0.2f;
-            var terrainHeight = Mission.Current.Scene.GetTerrainHeight(frame.origin.AsVec2);
-            Mission.Current.Scene.GetHeightAtPoint(frame.origin.AsVec2, BodyFlags.CommonCollisionExcludeFlagsForCombat, ref height);
-            if (height - terrainHeight > 0.5f)
+            var heightAtPosition = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+            if (Math.Abs(heightAtPosition - frame.origin.z) < 0.5f)
             {
-                frame.origin.z = height;
+                frame.origin.z = heightAtPosition;
             }
-            else frame.origin.z = terrainHeight;
+            
             return frame;
         }
     }

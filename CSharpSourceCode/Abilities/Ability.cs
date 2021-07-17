@@ -114,7 +114,7 @@ namespace TOW_Core.Abilities
             var offset = 1f;
             var frame = casterAgent.LookFrame.Elevate(casterAgent.GetEyeGlobalHeight());
             frame = UpdateFrameRotationForAI(casterAgent, frame);
-            frame = frame.Advance(offset);
+          
             GameEntity entity = null;
             if(Template.ParticleEffectPrefab != "none")
             {
@@ -124,7 +124,7 @@ namespace TOW_Core.Abilities
             {
                 entity = GameEntity.CreateEmpty(scene);
             }
-            entity.SetGlobalFrame(frame);
+       
 
             //add light - optional
             if (Template.HasLight)
@@ -157,12 +157,15 @@ namespace TOW_Core.Abilities
             }
             if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
             {
+                frame.origin.z = casterAgent.Position.z;
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
                 DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
                 script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
+            frame = frame.Advance(offset);
+            entity.SetGlobalFrame(frame);
             //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
         }
 
