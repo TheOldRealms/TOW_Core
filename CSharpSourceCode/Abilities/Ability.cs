@@ -84,7 +84,7 @@ namespace TOW_Core.Abilities
                 SetAnimationAction(casterAgent);
                 if (_template.CastType == CastType.Instant)
                 {
-                    FireAbility(casterAgent);
+                    ActivateAbility(casterAgent);
                 }
                 else if(_template.CastType == CastType.WindUp)
                 {
@@ -95,7 +95,7 @@ namespace TOW_Core.Abilities
                     {
                         lock(_sync)
                         {
-                            FireAbility(casterAgent);
+                            ActivateAbility(casterAgent);
                         }
                     };
                     timer.Start();
@@ -103,7 +103,7 @@ namespace TOW_Core.Abilities
             }
         }
 
-        public virtual void FireAbility(Agent casterAgent)
+        public virtual void ActivateAbility(Agent casterAgent)
         {
             _isCasting = false;
             _coolDownLeft = Template.CoolDown;
@@ -157,6 +157,7 @@ namespace TOW_Core.Abilities
             }
             if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
             {
+                offset = 10;
                 frame.origin.z = casterAgent.Position.z;
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
                 DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
@@ -164,9 +165,10 @@ namespace TOW_Core.Abilities
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
+            //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
+            
             frame = frame.Advance(offset);
             entity.SetGlobalFrame(frame);
-            //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
         }
 
         public void Dispose()

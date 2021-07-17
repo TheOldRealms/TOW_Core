@@ -46,7 +46,7 @@
       Radius="0.8" 
       AbilityType="Spell" 
       AbilityEffectType="DirectionalMovingAOE" 
-      BaseMovementSpeed="8" 
+      BaseMovementSpeed="9" 
       TickInterval="0.5" 
       TriggerType="EveryTick" 
       HasLight="false" 
