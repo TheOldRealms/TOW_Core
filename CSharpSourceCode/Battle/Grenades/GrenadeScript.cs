@@ -1,4 +1,5 @@
 ﻿using System;
+using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -57,6 +58,6 @@ namespace TOW_Core.Battle.Grenades
         public void SetShooterAgent(Agent shooter)
         {
             shooterAgent = shooter;
-        } 
+        }
     }
 }
