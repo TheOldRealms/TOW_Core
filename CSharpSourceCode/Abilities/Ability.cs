@@ -19,15 +19,18 @@ using TOW_Core.Abilities.Scripts;
 
 namespace TOW_Core.Abilities
 {
-    public abstract class Ability
+    public abstract class Ability : IDisposable
     {
         private string _stringId;
         private AbilityTemplate _template;
         private int _coolDownLeft = 0;
         private Timer _timer = null;
+        private bool _isCasting;
+        private object _sync = new object();
 
         public string StringID { get => _stringId; }
         public AbilityTemplate Template { get => _template; }
+
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
 
@@ -52,7 +55,7 @@ namespace TOW_Core.Abilities
 
         protected virtual bool CanCast(Agent casterAgent)
         {
-            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown();
+            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
         }
 
         protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
@@ -85,11 +88,15 @@ namespace TOW_Core.Abilities
                 }
                 else if(_template.CastType == CastType.WindUp)
                 {
-                    Timer timer = new Timer(_template.CastTime);
+                    _isCasting = true;
+                    var timer = new Timer(_template.CastTime * 1000);
                     timer.AutoReset = false;
                     timer.Elapsed += (s, e) =>
                     {
-                        FireAbility(casterAgent);
+                        lock(_sync)
+                        {
+                            FireAbility(casterAgent);
+                        }
                     };
                     timer.Start();
                 }
@@ -98,6 +105,7 @@ namespace TOW_Core.Abilities
 
         public virtual void FireAbility(Agent casterAgent)
         {
+            _isCasting = false;
             _coolDownLeft = Template.CoolDown;
             _timer.Start();
 
@@ -143,7 +151,7 @@ namespace TOW_Core.Abilities
             {
                 entity.CreateAndAddScriptComponent("MovingProjectileScript");
                 MovingProjectileScript script = entity.GetFirstScriptOfType<MovingProjectileScript>();
-                script.Initialize(this, TriggeredEffectManager.CreateNew(_template.TriggeredEffectID));
+                script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
@@ -151,11 +159,18 @@ namespace TOW_Core.Abilities
             {
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
                 DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
-                script.Initialize(this, TriggeredEffectManager.CreateNew(_template.TriggeredEffectID));
+                script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
             //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
+        }
+
+        public void Dispose()
+        {
+            _timer.Dispose();
+            _timer = null;
+            _template = null;
         }
     }
 }

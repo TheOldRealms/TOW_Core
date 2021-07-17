@@ -3,10 +3,11 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
 using System.Timers;
+using System;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
-    public class TriggeredEffect
+    public class TriggeredEffect : IDisposable
     {
         private TriggeredEffectTemplate _template;
         private int _soundIndex;
@@ -17,13 +18,22 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
+        public void Dispose()
+        {
+            CleanUp();
+        }
+
         public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent)
         {
-            Timer timer = new Timer(_template.SoundEffectLength * 1000);
+            Timer timer = new Timer(2000);
+            if (_template.SoundEffectLength > 0)
+            {
+                timer.Interval = _template.SoundEffectLength * 1000;
+            }
             timer.AutoReset = false;
             timer.Elapsed += (s, e) =>
             {
-                CleanUp();
+                Dispose();
             };
             timer.Start();
             //Cause Damage

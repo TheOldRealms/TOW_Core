@@ -27,5 +27,16 @@ namespace TOW_Core.Abilities
             }
             return base.CanCast(casterAgent);
         }
+
+        public override void Cast(Agent casterAgent)
+        {
+            base.Cast(casterAgent);
+            var hero = casterAgent.GetHero();
+            if (hero != null && hero.GetExtendedInfo() != null)
+            {
+                var info = hero.GetExtendedInfo();
+                info.CurrentWindsOfMagic -= Template.WindsOfMagicCost;
+            }
+        }
     }
 }

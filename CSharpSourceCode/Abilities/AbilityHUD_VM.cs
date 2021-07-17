@@ -19,7 +19,7 @@ namespace TOW_Core.Abilities
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
-        private string _WindsOfMagicLeft = "No WoM in CustomBattle.";
+        private string _WindsOfMagicLeft = "-";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
         private float _windsOfMagicValue;

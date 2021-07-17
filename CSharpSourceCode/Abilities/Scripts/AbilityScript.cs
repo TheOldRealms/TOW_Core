@@ -20,7 +20,6 @@ namespace TOW_Core.Abilities.Scripts
         private bool _isFading;
         private float _timeSinceLastTick = 0;
         private bool _hasCollided;
-        private TriggeredEffect _triggeredEffect;
 
         internal void SetAgent(Agent agent)
         {
@@ -50,13 +49,11 @@ namespace TOW_Core.Abilities.Scripts
             _sound = null;
             _ability = null;
             _casterAgent = null;
-            _triggeredEffect = null;
         }
 
-        public virtual void Initialize(Ability ability, TriggeredEffect effect)
+        public virtual void Initialize(Ability ability)
         {
             _ability = ability;
-            _triggeredEffect = effect;
             if (_ability.Template.SoundEffectToPlay != "none")
             {
                 _soundIndex = SoundEvent.GetEventIdFromString(_ability.Template.SoundEffectToPlay);
@@ -79,10 +76,16 @@ namespace TOW_Core.Abilities.Scripts
             {
                 GameEntity.FadeOut(0.05f, true);
                 _isFading = true;
-                if (_triggeredEffect != null) _triggeredEffect.Trigger(position, normal, _casterAgent);
+                TriggerEffect(position, normal);
                 _hasCollided = true;
             }
         }
+
+        protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
+        {
+            return oldFrame.Advance(_ability.Template.BaseMovementSpeed * dt);
+        }
+
 
         protected override void OnTick(float dt)
         {
@@ -97,7 +100,7 @@ namespace TOW_Core.Abilities.Scripts
             //move if needed
             if (ShouldMove())
             {
-                var newframe = frame.Advance(_ability.Template.BaseMovementSpeed * dt);
+                var newframe = GetNextFrame(frame, dt);
                 GameEntity.SetGlobalFrame(newframe);
                 GameEntity.GetBodyShape().ManualInvalidate();
             }
@@ -131,17 +134,11 @@ namespace TOW_Core.Abilities.Scripts
             if (_ability.Template.TriggerType == TriggerType.EveryTick &&_timeSinceLastTick > _ability.Template.TickInterval)
             {
                 _timeSinceLastTick = 0;
-                if(_triggeredEffect != null)
-                {
-                    _triggeredEffect.Trigger(frame.origin, frame.origin.NormalizedCopy(), _casterAgent);
-                }
+                TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
             }
             else if(_ability.Template.TriggerType == TriggerType.Delayed && _abilityLife > _ability.Template.TickInterval)
             {
-                if (_triggeredEffect != null)
-                {
-                    _triggeredEffect.Trigger(frame.origin, frame.origin.NormalizedCopy(), _casterAgent);
-                }
+                TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
             }
         }
 
@@ -151,6 +148,15 @@ namespace TOW_Core.Abilities.Scripts
             return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius)
                 .Where(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < collisionRadius)
                 .Any();
+        }
+
+        private void TriggerEffect(Vec3 position, Vec3 normal)
+        {
+            var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
+            if(effect != null)
+            {
+                effect.Trigger(position, normal, _casterAgent);
+            }
         }
     }
 }

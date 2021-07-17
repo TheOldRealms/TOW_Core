@@ -174,7 +174,7 @@ namespace TOW_Core.CharacterCreation
                 {
                     Hero.MainHero.AddAttribute("AbilityUser");
                     Hero.MainHero.AddAttribute("SpellCaster");
-                    Hero.MainHero.AddAbility("TOW_Core.Abilities.FireBallAbility");
+                    Hero.MainHero.AddAbility("Fireball");
                 }
             }
             
