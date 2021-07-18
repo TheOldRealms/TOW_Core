@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia;
-using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
+using TaleWorlds.SaveSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.CampaignSupport.PartyComponent
 {
     public class ChaosRaidingPartyComponent : WarPartyComponent
     {
-        private readonly Settlement _portal;
-        private readonly QuestBattleComponent settlementComponent;
+        [SaveableProperty(1)]
+        public Settlement portal{ get; private set; }
+        
+        [SaveableProperty(2)]
+        public bool patrol { get; private set; }
+        
+        [CachedData]
         private TextObject _cachedName;
-        private readonly bool patrol;
-
 
         private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent, bool patrol)
         {
-            _portal = portal;
-            settlementComponent = questBattleSettlementComponent;
+            this.portal = portal;
             this.patrol = patrol;
 
         }
@@ -29,7 +30,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_raiders_template");
             Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
             Party.Owner = Party.MobileParty.ActualClan.Leader;
-            Party.MobileParty.HomeSettlement = _portal;
+            Party.MobileParty.HomeSettlement = portal;
             Party.MobileParty.Aggressiveness = 1.0f;
 
             //      if (this.Village.Bound?.Town?.Governor != null && this.Village.Bound.Town.Governor.GetPerkValue(DefaultPerks.Scouting.VillageNetwork))
@@ -37,7 +38,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             //      if ((double) villagerPartySize > (double) this.Village.Hearth)
             //          villagerPartySize = (int) this.Village.Hearth;
             //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
-            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, _portal.Position2D, 1f, troopNumberLimit: partySize); 
+            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, portal.Position2D, 1f, troopNumberLimit: partySize); 
             Party.Visuals.SetMapIconAsDirty();
             Party.MobileParty.InitializePartyTrade(0);
 
@@ -83,11 +84,11 @@ namespace TOW_Core.CampaignSupport.PartyComponent
         {
             get
             {
-                if (_cachedName == null && !this.patrol)
+                if (_cachedName == null && !patrol)
                 {
                     _cachedName = new TextObject("Chaos Raiders");
                 }
-                if (_cachedName == null && this.patrol)
+                if (_cachedName == null && patrol)
                 {
                     _cachedName = new TextObject("Chaos Warrior Patrol");
                 }
@@ -96,8 +97,8 @@ namespace TOW_Core.CampaignSupport.PartyComponent
         }
 
 
-        protected override void OnInitialize() => settlementComponent.RaidingParties.Add(this);
+        protected override void OnInitialize() => ((QuestBattleComponent)portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
 
-        protected override void OnFinalize() => settlementComponent.RaidingParties.Remove(this);
+        protected override void OnFinalize() => ((QuestBattleComponent)portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
     }
 }

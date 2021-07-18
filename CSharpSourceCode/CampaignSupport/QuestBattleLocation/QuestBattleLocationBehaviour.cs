@@ -46,10 +46,9 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
                     TOWCommon.Say("Raiding " + randomSettlement.Name);
                 }
-                
+
                 if (questBattleComponent.PatrolParties.Count < 2)
                 {
-                    var find = Campaign.Current.Settlements.ToList().Find(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
                     var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("test123", settlement, questBattleComponent, 120);
                     chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
                     chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
