@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
@@ -99,5 +100,21 @@ namespace TOW_Core.CampaignSupport.PartyComponent
         protected override void OnInitialize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
 
         protected override void OnFinalize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
+    }
+    
+    public class ChaosRaidingPartySaveDefiner : SaveableTypeDefiner
+    {
+        public ChaosRaidingPartySaveDefiner() : base(2_543_135) { }
+        protected override void DefineClassTypes()
+        {
+            base.DefineClassTypes();
+            AddClassDefinition(typeof(ChaosRaidingPartyComponent), 1);
+        }
+
+        protected override void DefineContainerDefinitions()
+        {
+            base.DefineContainerDefinitions();
+            ConstructContainerDefinition(typeof(List<ChaosRaidingPartyComponent>));
+        }
     }
 }
