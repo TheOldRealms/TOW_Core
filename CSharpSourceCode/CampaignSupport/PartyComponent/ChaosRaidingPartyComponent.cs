@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -9,20 +10,16 @@ namespace TOW_Core.CampaignSupport.PartyComponent
 {
     public class ChaosRaidingPartyComponent : WarPartyComponent
     {
-        [SaveableProperty(1)]
-        public Settlement portal{ get; private set; }
-        
-        [SaveableProperty(2)]
-        public bool patrol { get; private set; }
-        
-        [CachedData]
-        private TextObject _cachedName;
+        [SaveableProperty(1)] public Settlement Portal { get; private set; }
+
+        [SaveableProperty(2)] public bool Patrol { get; private set; }
+
+        [CachedData] private TextObject _cachedName;
 
         private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent, bool patrol)
         {
-            this.portal = portal;
-            this.patrol = patrol;
-
+            this.Portal = portal;
+            this.Patrol = patrol;
         }
 
         private void InitializeChaosRaidingParty(int partySize)
@@ -30,7 +27,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_raiders_template");
             Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
             Party.Owner = Party.MobileParty.ActualClan.Leader;
-            Party.MobileParty.HomeSettlement = portal;
+            Party.MobileParty.HomeSettlement = Portal;
             Party.MobileParty.Aggressiveness = 1.0f;
 
             //      if (this.Village.Bound?.Town?.Governor != null && this.Village.Bound.Town.Governor.GetPerkValue(DefaultPerks.Scouting.VillageNetwork))
@@ -38,7 +35,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             //      if ((double) villagerPartySize > (double) this.Village.Hearth)
             //          villagerPartySize = (int) this.Village.Hearth;
             //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
-            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, portal.Position2D, 1f, troopNumberLimit: partySize); 
+            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
             Party.Visuals.SetMapIconAsDirty();
             Party.MobileParty.InitializePartyTrade(0);
 
@@ -68,7 +65,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
                 new ChaosRaidingPartyComponent(portal, component, false),
                 mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(partySize));
         }
-        
+
         public static MobileParty CreateChaosPatrolParty(
             string stringId,
             Settlement portal,
@@ -84,21 +81,23 @@ namespace TOW_Core.CampaignSupport.PartyComponent
         {
             get
             {
-                if (_cachedName == null && !patrol)
+                if (_cachedName == null && !Patrol)
                 {
                     _cachedName = new TextObject("Chaos Raiders");
                 }
-                if (_cachedName == null && patrol)
+
+                if (_cachedName == null && Patrol)
                 {
                     _cachedName = new TextObject("Chaos Warrior Patrol");
                 }
+
                 return _cachedName;
             }
         }
 
 
-        protected override void OnInitialize() => ((QuestBattleComponent)portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
+        protected override void OnInitialize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
 
-        protected override void OnFinalize() => ((QuestBattleComponent)portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
+        protected override void OnFinalize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
     }
 }
