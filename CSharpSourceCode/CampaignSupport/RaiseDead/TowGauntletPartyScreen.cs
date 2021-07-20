@@ -90,6 +90,29 @@ namespace TOW_Core.CampaignSupport.RaiseDead
             ScreenManager.TrySetFocus(_gauntletLayer);
         }
 
+        void IGameStateListener.OnDeactivate()
+        {
+            base.OnDeactivate();
+            PartyBase.MainParty.Visuals.SetMapIconAsDirty();
+            this._gauntletLayer.IsFocusLayer = false;
+            this._gauntletLayer.InputRestrictions.ResetInputRestrictions();
+            base.RemoveLayer(this._gauntletLayer);
+            ScreenManager.TryLoseFocus(this._gauntletLayer);
+            Game.Current.EventManager.TriggerEvent<TutorialContextChangedEvent>(new TutorialContextChangedEvent(TutorialContexts.None));
+            if (Campaign.Current.ConversationManager.IsConversationInProgress && !Campaign.Current.ConversationManager.IsConversationFlowActive)
+            {
+                Campaign.Current.ConversationManager.OnConversationActivate();
+            }
+        }
+
+        void IGameStateListener.OnFinalize()
+        {
+            this._dataSource.OnFinalize();
+            this._partyscreenCategory.Unload();
+            this._dataSource = null;
+            this._gauntletLayer = null;
+        }
+
         private void SetUpDataSource()
         {
             _dataSource = new TowPartyVm(Game.Current, _partyState.PartyScreenLogic, GetFiveStackShortcutkeyText(), GetEntireStackShortcutkeyText());

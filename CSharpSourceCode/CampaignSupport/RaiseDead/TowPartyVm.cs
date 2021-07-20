@@ -15,7 +15,9 @@ using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.ModuleManager;
+using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.RaiseDead
 {
@@ -27,6 +29,8 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 		private string _entireStackShortcutkeyText;
 		private List<string> _lockedCharacterIDs;
 		private bool _mainHeroIsUndead;
+		private BasicTooltipViewModel _transferAllRaiseDeadHint;
+		private string _raiseDeadAmountLabel;
         public TowPartyVm(Game game, PartyScreenLogic partyScreenLogic, string fiveStackShortcutkeyText, string entireStackShortcutkeyText) : base(game, partyScreenLogic, fiveStackShortcutkeyText, entireStackShortcutkeyText)
         {
 			RaiseDeadTroops = new MBBindingList<PartyCharacterVM>();
@@ -34,10 +38,15 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			_entireStackShortcutkeyText = entireStackShortcutkeyText;
 			if(PartyScreenLogic != null)
             {
-				InitializeRaiseDeadList(RaiseDeadTroops, PartyScreenLogic.MemberRosters[0], PartyScreenLogic.TroopType.Prisoner, 0);
-				PopulatePartyListLabel(this.RaiseDeadTroops, this.RaiseDeadTroops.Count);
+				InitializeRaiseDeadList(RaiseDeadTroops, PartyScreenLogic.MemberRosters[0], PartyScreenLogic.TroopType.Member, 0);
 			}
 			RefreshValues();
+			PartyScreenLogic.UpdateDelegate += new PartyScreenLogic.PresentationUpdate(this.Update);
+        }
+
+		public void Update(PartyScreenLogic.PartyCommand command)
+        {
+			RaiseDeadAmountLabel = RaiseDeadAmount;
         }
 
 		[DataSourceProperty]
@@ -74,14 +83,30 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			}
 		}
 
-		[DataSourceProperty]
 		public string RaiseDeadAmount
 		{
 			get
 			{
-				return _raiseDeadTroops.Count.ToString();
+				return _raiseDeadTroops.Select(troop => troop.Number).ToList().Sum().ToString();
 			}
 		}
+
+		[DataSourceProperty]
+		public string RaiseDeadAmountLabel
+        {
+			get
+            {
+				return _raiseDeadAmountLabel;
+            }
+			set
+            {
+				if (value != _raiseDeadAmountLabel)
+                {
+					_raiseDeadAmountLabel = value;
+					base.OnPropertyChangedWithValue(value, "RaiseDeadAmountLabel");
+                }
+            }
+        }
 
 		[DataSourceProperty]
 		public bool IsRaiseDeadRelevantOnCurrentMode
@@ -100,10 +125,27 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			}
 		}
 
+		[DataSourceProperty]
+		public BasicTooltipViewModel TransferAllRaiseDeadHint
+        {
+            get
+            {
+				return _transferAllRaiseDeadHint;
+            }
+			set
+            {
+				if (value != this._transferAllRaiseDeadHint)
+                {
+					_transferAllRaiseDeadHint = value;
+					base.OnPropertyChangedWithValue(value, "TransferAllRaiseDeadHint");
+                }
+            }
+        }
+
 		public void SetTakeAllRaiseDeadInputKey(HotKey hotKey)
 		{
 			this.TakeAllRaiseDeadInputKey = InputKeyItemVM.CreateFromHotKey(hotKey, true);
-			this.TransferAllOtherPrisonersHint = new BasicTooltipViewModel(delegate ()
+			this.TransferAllRaiseDeadHint = new BasicTooltipViewModel(delegate ()
 			{
 				GameTexts.SetVariable("TEXT", new TextObject("{=Srr4rOSq}Transfer All Raised Dead", null));
 				GameTexts.SetVariable("HOTKEY", this.GetTransferAllOtherRaiseDeadKey());
@@ -111,7 +153,19 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			});
 		}
 
-		private string GetTransferAllOtherRaiseDeadKey()
+        public override void RefreshValues()
+        {
+            base.RefreshValues();
+			if(RaiseDeadTroops != null)
+            {
+				RaiseDeadTroops.ApplyActionOnAllItems(delegate (PartyCharacterVM troopVM)
+				{
+					troopVM.RefreshValues();
+				});
+            }
+        }
+
+        private string GetTransferAllOtherRaiseDeadKey()
 		{
 			if (this.TakeAllRaiseDeadInputKey == null)
 			{
@@ -120,41 +174,14 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			return this.TakeAllRaiseDeadInputKey.KeyID;
 		}
 
-		private List<CharacterObject> GetVampireCharacters()
-        {
-			List<CharacterObject> output = new List<CharacterObject>();
-
-			var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath("TOW_Core"), "tow_troopdefinitions_vc.xml", SearchOption.AllDirectories);
-			foreach (var file in files)
-			{
-				XmlDocument characterXml = new XmlDocument();
-				characterXml.Load(file);
-				XmlNodeList characters = characterXml.GetElementsByTagName("NPCCharacter");
-
-				foreach (XmlNode character in characters)
-				{
-					CharacterObject charObj = new CharacterObject();
-					charObj.Deserialize(Game.Current.ObjectManager, character);
-					output.Add(charObj);
-				}
-			}
-			return output;
-		}
-
 		private void InitializeRaiseDeadList(MBBindingList<PartyCharacterVM> partyList, TroopRoster currentTroopRoster, PartyScreenLogic.TroopType type, int side)
         {
-			this.IsRaiseDeadRelevantOnCurrentMode = Hero.MainHero != null && Hero.MainHero.Culture.ToString().Equals("Vampire Counts");
-			List<FlattenedTroopRosterElement> elements = new List<FlattenedTroopRosterElement>();
-			//for each enemy that died, 90% chance to continue, 10% chance to create an undead unit of the same level or lower
-			List<CharacterObject> vampireCharacters = GetVampireCharacters();
-			for(int i=0; i<10; i++)
-            {
-				List<CharacterObject> filteredVamps = vampireCharacters.Where(character => character.Level < 12).ToList();
-				if(TOWMath.GetRandomInt(0, 10) > 0)
-                {
-					elements.Add(new FlattenedTroopRosterElement(filteredVamps.GetRandomElement()));
-                }
-            }
+			//TODO: Raise dead shouldn't be determined only by culture. In the future, depending on design decisions, change this condition
+			//to whatever is decided as the key to whether a hero can raise dead
+			IsRaiseDeadRelevantOnCurrentMode = Hero.MainHero != null && Hero.MainHero.CanRaiseDead();
+
+			List<FlattenedTroopRosterElement> elements = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>().TroopsForVM;
+
 			IPartyTroopLockTracker campaignBehavior = Campaign.Current.GetCampaignBehavior<IPartyTroopLockTracker>();
 			_lockedCharacterIDs = campaignBehavior.GetLocks().ToList<string>();
 			partyList.Clear();
@@ -168,7 +195,6 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 				partyCharacterVM.ThrowOnPropertyChanged();
 				partyCharacterVM.IsLocked = (partyCharacterVM.Side == PartyScreenLogic.PartyRosterSide.Right && this.IsTroopLocked(partyCharacterVM.Troop));
 			}
-			partyList.Add(OtherPartyPrisoners[0]);
 		}
 
 		private void ProcessCharacterLock(PartyCharacterVM troop, bool isLocked)
@@ -198,6 +224,33 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 		private bool IsTroopLocked(TroopRosterElement troop)
 		{
 			return this._lockedCharacterIDs.Contains(troop.Character.StringId);
+		}
+
+		public new void ExecuteTransferWithParameters(PartyCharacterVM party, int index, string targetTag)
+		{
+   //         try
+   //         {
+			//	base.ExecuteTransferWithParameters(party, index, targetTag);
+			//}
+			//catch(InvalidOperationException e)
+   //         {
+				PartyScreenLogic.PartyRosterSide side = party.Side;
+				PartyScreenLogic.PartyRosterSide partyRosterSide = targetTag.StartsWith("MainParty") ? PartyScreenLogic.PartyRosterSide.Right : PartyScreenLogic.PartyRosterSide.Left;
+				if (targetTag == "MainParty")
+				{
+					index = -1;
+				}
+				else if (targetTag.EndsWith("Prisoners") != party.IsPrisoner)
+				{
+					index = -1;
+				}
+				if (side != partyRosterSide && party.IsTroopTransferrable)
+				{
+					OnTransferTroop(party, index, party.Number, party.Side);
+					ExecuteRemoveZeroCounts();
+					return;
+				}
+			//}
 		}
 
 		private void OnTransferTroop(PartyCharacterVM troop, int newIndex, int transferAmount, PartyScreenLogic.PartyRosterSide fromSide)
@@ -241,19 +294,34 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 		private PartyCharacterVM FindCharacterVM(CharacterObject character, PartyScreenLogic.PartyRosterSide side, bool isPrisoner)
 		{
 			MBBindingList<PartyCharacterVM> mbbindingList = null;
-			if (side == PartyScreenLogic.PartyRosterSide.Left)
-			{
-				mbbindingList = (isPrisoner ? this.OtherPartyPrisoners : this.OtherPartyTroops);
-			}
-			else if (side == PartyScreenLogic.PartyRosterSide.Right)
-			{
-				mbbindingList = (isPrisoner ? this.MainPartyPrisoners : this.MainPartyTroops);
-			}
+			PartyCharacterVM characterVM = null;
+			mbbindingList = this.RaiseDeadTroops;
 			if (mbbindingList == null)
 			{
 				return null;
 			}
-			return mbbindingList.First((PartyCharacterVM x) => x.Troop.Character == character);
+			else
+            {
+				characterVM = mbbindingList.FirstOrDefault((PartyCharacterVM x) => x.Troop.Character == character);
+            }
+
+			if(characterVM == null)
+            {
+				if (side == PartyScreenLogic.PartyRosterSide.Left)
+				{
+					mbbindingList = (isPrisoner ? this.OtherPartyPrisoners : this.OtherPartyTroops);
+				}
+				else if (side == PartyScreenLogic.PartyRosterSide.Right)
+				{
+					mbbindingList = (isPrisoner ? this.MainPartyPrisoners : this.MainPartyTroops);
+				}
+				if(mbbindingList == null)
+				{
+					return null;
+				}
+			}
+
+			return mbbindingList.FirstOrDefault((PartyCharacterVM x) => x.Troop.Character == character);
 		}
 
 		private static string PopulatePartyListLabel(MBBindingList<PartyCharacterVM> partyList, int limit = 0)
@@ -276,8 +344,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 				{
 					MBTextManager.SetTextVariable("PARTY_LIST_TAG", "", false);
 					MBTextManager.SetTextVariable("WEAK_COUNT", num);
-					string blah = GameTexts.FindText("str_party_list_label_with_weak", null).ToString();
-					return blah;
+					return GameTexts.FindText("str_party_list_label_with_weak", null).ToString(); ;
 				}
 				MBTextManager.SetTextVariable("PARTY_LIST_TAG", "", false);
 				return GameTexts.FindText("str_party_list_label", null).ToString();
@@ -286,8 +353,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			{
 				if (num > 0)
 				{
-					string blah = GameTexts.FindText("str_party_list_label_with_weak_without_max", null).ToString();
-					return blah;
+					return GameTexts.FindText("str_party_list_label_with_weak_without_max", null).ToString(); ;
 				}
 				return content.ToString();
 			}

@@ -31,6 +31,7 @@ using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
 using TOW_Core.CampaignSupport.RaiseDead;
+using TOW_Core.CampaignSupport.BattleHistory;
 
 namespace TOW_Core
 {
@@ -138,6 +139,8 @@ namespace TOW_Core
                 PartyAttributeManager partyAttributeManager = new PartyAttributeManager();
                 starter.CampaignBehaviors.Add(partyAttributeManager);
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+                starter.CampaignBehaviors.Add(new BattleInfoCampaignBehavior());
+                starter.CampaignBehaviors.Add(new RaiseDeadCampaignBehavior());
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
@@ -165,6 +168,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
+            mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }

@@ -273,6 +273,29 @@
 
                           </Children>
                         </Widget>
+						
+						<!-- Raise Dead Header -->
+						<ScrollablePanelFixedHeaderWidget FixedHeader="..\..\RaiseDeadToggleWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PartyToggle.Width" HeaderHeight="!PartyToggle.Height" AdditionalBottomOffset="72" IsRelevant="@IsRaiseDeadRelevantOnCurrentMode"/>
+
+                        <Widget Id="RaiseDeadList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+                          <Children>
+
+                            <!--_____Other Party Prisoners_______-->
+                            <ListPanel Id="List" DataSource="{RaiseDeadTroops}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" AcceptDrop="true" StackLayout.LayoutMethod="VerticalBottomToTop">
+                              <ItemTemplate>
+                                <PartyTroopTupleLeft ButtonType="Radio">
+                                </PartyTroopTupleLeft>
+                              </ItemTemplate>
+                            </ListPanel>
+
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="0" VerticalAlignment="Top" IsDisabled="true">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!PartyToggle.Shadow.Height" VerticalAlignment="Top" Sprite="PartyScreen\button_collapser_shadow" IsDisabled="true" />
+                              </Children>
+                            </Widget>
+
+                          </Children>
+                        </Widget>
 
                         <!--Other Party Prisoners Header-->
                         <ScrollablePanelFixedHeaderWidget FixedHeader="..\..\OtherPartyPrisonersToggleWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PartyToggle.Width" HeaderHeight="!PartyToggle.Height" AdditionalBottomOffset="72" IsRelevant="@ArePrisonersRelevantOnCurrentMode"/>
@@ -297,28 +320,7 @@
                           </Children>
                         </Widget>
 						
-						<!-- Raise Dead Header -->
-						<ScrollablePanelFixedHeaderWidget FixedHeader="..\..\RaiseDeadToggleWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PartyToggle.Width" HeaderHeight="!PartyToggle.Height" AdditionalBottomOffset="72" IsRelevant="@IsRaiseDeadRelevantOnCurrentMode"/>
-
-                        <Widget Id="RaiseDeadList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginBottom="20">
-                          <Children>
-
-                            <!--_____Other Party Prisoners_______-->
-                            <ListPanel Id="List" DataSource="{RaiseDeadTroops}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" AcceptDrop="true" StackLayout.LayoutMethod="VerticalBottomToTop">
-                              <ItemTemplate>
-                                <PartyTroopTupleLeft ButtonType="Radio">
-                                </PartyTroopTupleLeft>
-                              </ItemTemplate>
-                            </ListPanel>
-
-                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="0" VerticalAlignment="Top" IsDisabled="true">
-                              <Children>
-                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!PartyToggle.Shadow.Height" VerticalAlignment="Top" Sprite="PartyScreen\button_collapser_shadow" IsDisabled="true" />
-                              </Children>
-                            </Widget>
-
-                          </Children>
-                        </Widget>
+						
 
                       </Children>
                     </ListPanel>
@@ -377,17 +379,17 @@
                           <Children>
                             <BrushWidget Id="CollapseIndicator" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Party.Toggle.ExpandIndicator.Width" SuggestedHeight="!Party.Toggle.ExpandIndicator.Height" VerticalAlignment="Center" PositionYOffset="5" MarginRight="5" Brush="Party.Toggle.ExpandIndicator" />
                             <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" MarginRight="5" Brush="Party.Text.Toggle" Text="Raise Dead" />
-                            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="5" Brush="Party.Text.Toggle" Text="@RaiseDeadAmount" />
+                            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="5" Brush="Party.Text.Toggle" Text="@RaiseDeadAmountLabel" />
 
                           </Children>
                         </ListPanel>
 
                         <HintWidget DataSource="{OtherPartyPrisonerSizeLimitHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true"/>
 
-                        <ButtonWidget Id="OtherPartyPrisonersTransferButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!TransferAllButton.Width" SuggestedHeight="!TransferAllButton.Height" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="!TransferAllButton.Margin" Brush="ButtonLeftDoubleArrowBrush1" Command.Click="ExecuteTransferAllOtherPrisoners">
+                        <ButtonWidget Id="RaiseDeadTransferButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!TransferAllButton.Width" SuggestedHeight="!TransferAllButton.Height" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="!TransferAllButton.Margin" Brush="ButtonLeftDoubleArrowBrush1" Command.Click="ExecuteTransferAllOtherPrisoners">
                           <Children>
-                            <InputKeyVisualWidget DataSource="{TakeAllPrisonersInputKey}" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="60" SuggestedHeight="60" HorizontalAlignment="Left" VerticalAlignment="Center" PositionXOffset="-55" KeyID="@KeyID" IsVisible="@IsVisible"/>
-                            <HintWidget DataSource="{TransferAllOtherPrisonersHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true">-
+                            <InputKeyVisualWidget DataSource="{TakeAllRaiseDeadInputKey}" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="60" SuggestedHeight="60" HorizontalAlignment="Left" VerticalAlignment="Center" PositionXOffset="-55" KeyID="@KeyID" IsVisible="@IsVisible"/>
+                            <HintWidget DataSource="{TransferAllRaiseDeadHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true">-
                             </HintWidget>
                           </Children>
                         </ButtonWidget>
