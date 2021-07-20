@@ -34,7 +34,7 @@ namespace TOW_Core.Battle.AI.Components
 
         private void UpdateBehavior()
         {
-            SetBehaviorParams(AISimpleBehaviorKind.Melee, 0, 5, 0, 20, 0);
+            SetBehaviorParams(AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
             SetBehaviorParams(AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
             SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
@@ -43,7 +43,6 @@ namespace TOW_Core.Battle.AI.Components
             if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
                 SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
-
                 if (ShouldAgentSkirmish())
                 {
                     SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
@@ -78,10 +77,24 @@ namespace TOW_Core.Battle.AI.Components
         private void CastSpellAtAgent(Agent targetAgent)
         {
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
+
+            var velocity = targetAgent.Velocity;
+            if (Agent.GetCurrentAbility() is FireBallAbility)
+            {
+                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
+            }
+
+            targetPosition += velocity;
             targetPosition.z += -2f;
 
             CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
+        }
+
+        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent, float spellSpeed)
+        {
+            var time = targetAgent.Position.Distance(Agent.Position) / spellSpeed;
+            return targetAgent.Velocity * time;
         }
 
         private bool HaveLineOfSightToAgent(Agent targetAgent)
@@ -89,7 +102,7 @@ namespace TOW_Core.Battle.AI.Components
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
 
-            return (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 3) &&
+            return (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
         }
 
