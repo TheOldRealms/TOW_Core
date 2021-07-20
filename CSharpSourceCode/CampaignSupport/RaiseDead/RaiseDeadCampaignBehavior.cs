@@ -20,7 +20,6 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 
         public override void RegisterEvents()
         {
-			CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, new Action(InitializeRaiseableCharacters));
         }
 
         public override void SyncData(IDataStore dataStore)
@@ -33,6 +32,12 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 
 		public List<FlattenedTroopRosterElement> GenerateRaisedTroopsForVM()
         {
+			if (!Hero.MainHero.CanRaiseDead())
+				return new List<FlattenedTroopRosterElement>();
+
+			if (_raiseableCharacters.Count == 0)
+				InitializeRaiseableCharacters();
+
 			List<FlattenedTroopRosterElement> elements = new List<FlattenedTroopRosterElement>();
 
 			List<CharacterInfo> killedEnemies = Campaign.Current
