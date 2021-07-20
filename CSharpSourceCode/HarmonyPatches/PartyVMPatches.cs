@@ -21,6 +21,7 @@ namespace TOW_Core.HarmonyPatches
             {
                 RaiseDeadCampaignBehavior raiseDeadBehavior = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>();
                 currentTroopRoster.Add(raiseDeadBehavior.TroopsForVM);
+                raiseDeadBehavior.TroopsForVM.Clear();
             }
         }
     }
