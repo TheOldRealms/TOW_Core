@@ -18,6 +18,7 @@ namespace TOW_Core.HarmonyPatches
         {
             RaiseDeadCampaignBehavior raiseDeadBehavior = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>();
             __result += raiseDeadBehavior.LastNumberOfTroopsRaised;
+            raiseDeadBehavior.LastNumberOfTroopsRaised = 0;
         }
     }
 }
