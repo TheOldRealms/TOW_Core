@@ -77,14 +77,8 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 				{
 					CharacterObject charObj = new CharacterObject();
 					charObj.Deserialize(Game.Current.ObjectManager, character);
-					List<string> attributes;
-					if(AgentExtensions.CharacterIDToAttributeMap.TryGetValue(charObj.StringId, out attributes))
-                    {
-						if(attributes.Contains("Undead"))
-                        {
-							output.Add(charObj);
-						}
-					}
+					//TODO: Only add if the unit is Undead. Can do once the ExtensionContainers are added for (Basic)CharacterObjects. i.e. if(charObj.IsUndead())
+					output.Add(charObj);
 				}
 			}
 			return output;
