@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
-using TOW_Core.Battle.Extensions;
 using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
