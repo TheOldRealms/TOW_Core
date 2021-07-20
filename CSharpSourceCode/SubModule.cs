@@ -109,16 +109,6 @@ namespace TOW_Core
             }
         }
 
-        public override void OnCampaignStart(Game game, object starterObject)
-        {
-            Game.Current.GameStateManager.GameStateManagerListener = new TowGameStateScreenManager();
-        }
-
-        public override void OnGameLoaded(Game game, object initializerObject)
-        {
-            Game.Current.GameStateManager.GameStateManagerListener = new TowGameStateScreenManager();
-        }
-
         private void LoadSprites()
         {
             UIResourceManager.SpriteData.SpriteCategories["tow_spritesheet"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);

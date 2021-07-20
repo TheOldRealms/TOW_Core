@@ -318,9 +318,6 @@
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
     <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\RaiseDead\TowGameStateScreenManager.cs" />
-    <Compile Include="CampaignSupport\RaiseDead\TowGauntletPartyScreen.cs" />
-    <Compile Include="CampaignSupport\RaiseDead\TowPartyVm.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
     <Compile Include="CampaignSupport\GameMenuBackgroundSwitcher.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
@@ -345,6 +342,8 @@
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
+    <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
+    <Compile Include="HarmonyPatches\PartyVMPatches.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
