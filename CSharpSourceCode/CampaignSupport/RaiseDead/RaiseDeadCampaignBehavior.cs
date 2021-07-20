@@ -16,6 +16,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
     {
 		private List<CharacterObject> _raiseableCharacters = new List<CharacterObject>();
 		public List<FlattenedTroopRosterElement> TroopsForVM = new List<FlattenedTroopRosterElement>();
+		public int LastNumberOfTroopsRaised = 0;
 
         public override void RegisterEvents()
         {
@@ -56,6 +57,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			}
 
 			TOWCommon.Say("Raised " + counter + " troops from the dead.");
+			LastNumberOfTroopsRaised = counter;
 			return elements;
 		}
 

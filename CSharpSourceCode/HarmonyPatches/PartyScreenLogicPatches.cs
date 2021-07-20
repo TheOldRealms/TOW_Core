@@ -17,7 +17,7 @@ namespace TOW_Core.HarmonyPatches
         public static void AddRaiseDeadCountToTroopLimit(ref int __result)
         {
             RaiseDeadCampaignBehavior raiseDeadBehavior = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>();
-            __result += raiseDeadBehavior.TroopsForVM.Count;
+            __result += raiseDeadBehavior.LastNumberOfTroopsRaised;
         }
     }
 }
