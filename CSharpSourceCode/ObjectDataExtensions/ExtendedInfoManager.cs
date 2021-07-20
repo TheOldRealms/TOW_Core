@@ -39,7 +39,7 @@ namespace TOW_Core.ObjectDataExtensions
             CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
 
             //Tick events
-            CampaignEvents.TickEvent.AddNonSerializedListener(this, deltaTime => FillWindsOfMagic(deltaTime));
+            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, FillWindsOfMagic);
 
             //Events and Battles
             CampaignEvents.MapEventStarted.AddNonSerializedListener(this, EventCreated);
@@ -52,6 +52,19 @@ namespace TOW_Core.ObjectDataExtensions
             //heroes
             CampaignEvents.HeroCreated.AddNonSerializedListener(this, OnHeroCreated);
             CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, OnHeroKilled);
+        }
+
+        private void FillWindsOfMagic()
+        {
+            foreach (var entry in _heroInfos)
+            {
+                if (entry.Value.AllAttributes.Contains("SpellCaster"))
+                {
+                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
+                    entry.Value.CurrentWindsOfMagic += entry.Value.WindsOfMagicRechargeRate;
+                    entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
+                }
+            }
         }
 
         private void OnHeroCreated(Hero arg1, bool arg2)
@@ -285,19 +298,6 @@ namespace TOW_Core.ObjectDataExtensions
                 {
                     var info = new HeroExtendedInfo(hero.CharacterObject);
                     _heroInfos.Add(hero.StringId, info);
-                }
-            }
-        }
-
-        private void FillWindsOfMagic(float TickValue)
-        {
-            foreach (var entry in _heroInfos)
-            {
-                if (entry.Value.AllAttributes.Contains("SpellCaster"))
-                {
-                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
-                    entry.Value.CurrentWindsOfMagic += TickValue;
-                    entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
                 }
             }
         }

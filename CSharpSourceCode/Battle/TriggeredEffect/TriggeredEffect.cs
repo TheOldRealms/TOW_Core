@@ -18,11 +18,6 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
-        public void Dispose()
-        {
-            CleanUp();
-        }
-
         public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent)
         {
             Timer timer = new Timer(2000);
@@ -39,15 +34,22 @@ namespace TOW_Core.Battle.TriggeredEffect
             //Cause Damage
             if (_template.DamageAmount > 0)
             {
-                TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)),triggererAgent, !_template.FriendlyFire);
+                TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)),triggererAgent, _template.TargetType);
             }
             //Apply status effects
             if(_template.ImbuedStatusEffectID != "none")
             {
-                TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(position.AsVec2, _template.Radius, _template.ImbuedStatusEffectID, triggererAgent, !_template.FriendlyFire);
+                TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(position.AsVec2, _template.Radius, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
             }
+            SpawnVisuals(position, normal);
+            PlaySound(position);
+            //trigger script
+        }
+
+        private void SpawnVisuals(Vec3 position, Vec3 normal)
+        {
             //play visuals
-            if(_template.BurstParticleEffectPrefab != "none")
+            if (_template.BurstParticleEffectPrefab != "none")
             {
                 var effect = GameEntity.CreateEmpty(Mission.Current.Scene);
                 MatrixFrame frame = MatrixFrame.Identity;
@@ -56,17 +58,25 @@ namespace TOW_Core.Battle.TriggeredEffect
                 effect.SetGlobalFrame(globalFrame);
                 effect.FadeOut(_template.SoundEffectLength, true);
             }
+        }
+
+        private void PlaySound(Vec3 position)
+        {
             //play sound
-            if(_template.SoundEffectId != "none")
+            if (_template.SoundEffectId != "none")
             {
                 _soundIndex = SoundEvent.GetEventIdFromString(_template.SoundEffectId);
                 _sound = SoundEvent.CreateEvent(_soundIndex, Mission.Current.Scene);
-                if(_sound != null)
+                if (_sound != null)
                 {
                     _sound.PlayInPosition(position);
                 }
             }
-            //trigger script
+        }
+
+        public void Dispose()
+        {
+            CleanUp();
         }
 
         private void CleanUp()

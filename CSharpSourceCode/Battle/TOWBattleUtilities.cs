@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle
 {
     public static class TOWBattleUtilities
     {
-        public static void DamageAgentsInArea(Vec2 center, float radius, int minDamage, int maxDamage = -1, Agent damager = null, bool enemyOnly = false)
+        public static void DamageAgentsInArea(Vec2 center, float radius, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All)
         {
             var list = new List<Agent>();
-            if (enemyOnly && damager != null)
+            if (targetType == TargetType.Enemy && damager != null)
             {
                 list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
             }
-            else
+            else if(targetType == TargetType.All)
             {
                 list = Mission.Current.GetNearbyAgents(center, radius).ToList();
             }
@@ -35,14 +36,14 @@ namespace TOW_Core.Battle
             }
         }
 
-        public static void ApplyStatusEffectToAgentsInArea(Vec2 center, float radius, string effectId, Agent damager = null, bool enemyOnly = false)
+        public static void ApplyStatusEffectToAgentsInArea(Vec2 center, float radius, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
         {
             var list = new List<Agent>();
-            if (enemyOnly && damager != null)
+            if (targetType == TargetType.Enemy && damager != null)
             {
                 list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
             }
-            else
+            else if(targetType == TargetType.All)
             {
                 list = Mission.Current.GetNearbyAgents(center, radius).ToList();
             }

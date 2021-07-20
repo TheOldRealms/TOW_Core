@@ -8,6 +8,7 @@ using TOW_Core.Battle.Damage;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
+using TOW_Core.Abilities;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
@@ -29,7 +30,7 @@ namespace TOW_Core.Battle.TriggeredEffect
         [XmlAttribute]
         public float Radius = 5;
         [XmlAttribute]
-        public bool FriendlyFire = true;
+        public TargetType TargetType = TargetType.Enemy;
         [XmlAttribute]
         public string ImbuedStatusEffectID = "";
         [XmlAttribute]

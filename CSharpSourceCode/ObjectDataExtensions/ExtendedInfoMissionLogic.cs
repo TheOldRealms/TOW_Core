@@ -13,22 +13,35 @@ namespace TOW_Core.ObjectDataExtensions
     /// </summary>
     public class ExtendedInfoMissionLogic : MissionLogic
     {
+        private float _timeSinceLastTick = 0;
+        private bool _tickWindsOfMagic;
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
-            foreach(var agent in Mission.Agents)
+            _timeSinceLastTick += dt;
+            if (_timeSinceLastTick > 1)
             {
-                var hero = agent.GetHero();
-                if (hero != null && hero.IsSpellCaster())
+                _timeSinceLastTick = 0;
+                _tickWindsOfMagic = true;
+
+            }
+            base.OnMissionTick(dt);
+            if (_tickWindsOfMagic)
+            {
+                foreach (var agent in Mission.Agents)
                 {
-                    var info = hero.GetExtendedInfo();
-                    if(info != null)
+                    var hero = agent.GetHero();
+                    if (hero != null && hero.IsSpellCaster())
                     {
-                        info.CurrentWindsOfMagic += dt;
-                        info.CurrentWindsOfMagic = Math.Min(info.MaxWindsOfMagic, info.CurrentWindsOfMagic);
+                        var info = hero.GetExtendedInfo();
+                        if (info != null)
+                        {
+                            info.CurrentWindsOfMagic += info.WindsOfMagicRechargeRate;
+                            info.CurrentWindsOfMagic = Math.Min(info.MaxWindsOfMagic, info.CurrentWindsOfMagic);
+                        }
                     }
                 }
+                _tickWindsOfMagic = false;
             }
         }
     }

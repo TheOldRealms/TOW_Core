@@ -57,7 +57,7 @@ namespace TOW_Core.Utilities.Extensions
            
             if(abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Cast(agent);
+                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
         }
 

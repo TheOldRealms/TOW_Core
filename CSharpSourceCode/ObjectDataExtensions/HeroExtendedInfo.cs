@@ -16,8 +16,9 @@ namespace TOW_Core.ObjectDataExtensions
         [SaveableField(1)] public List<string> AcquiredAttributes = new List<string>();
         [SaveableField(2)] public float CurrentWindsOfMagic = 0;
         [SaveableField(3)] public float MaxWindsOfMagic = 0;
-        [SaveableField(4)] private CharacterObject _baseCharacter;
-        [SaveableField(5)] private CharacterObject _templateCharacterOrigin;
+        [SaveableField(4)] public float WindsOfMagicRechargeRate = 1;
+        [SaveableField(5)] private CharacterObject _baseCharacter;
+        [SaveableField(6)] private CharacterObject _templateCharacterOrigin;
         //maybe not yet
         //public List<string> KnownLores;
 

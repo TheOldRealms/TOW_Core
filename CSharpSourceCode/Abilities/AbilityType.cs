@@ -37,4 +37,13 @@ namespace TOW_Core.Abilities
         OnCollision,
         Delayed
     }
+
+    public enum TargetType
+    {
+        Friendly,
+        Enemy,
+        All,
+        FriendlyHero,
+        EnemyHero
+    }
 }

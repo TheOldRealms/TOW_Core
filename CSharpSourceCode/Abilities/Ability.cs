@@ -53,53 +53,39 @@ namespace TOW_Core.Abilities
             }
         }
 
+        public virtual void TryCast(Agent casterAgent)
+        {
+            if (CanCast(casterAgent))
+            {
+                DoCast(casterAgent);
+            }
+        }
+
         protected virtual bool CanCast(Agent casterAgent)
         {
             return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
         }
 
-        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        protected virtual void DoCast(Agent casterAgent)
         {
-            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
-            if (wizardAiComponent != null)
+            SetAnimationAction(casterAgent);
+            if (_template.CastType == CastType.Instant)
             {
-                frame.rotation = wizardAiComponent.SpellTargetRotation;
+                ActivateAbility(casterAgent);
             }
-
-            return frame;
-        }
-
-        private void SetAnimationAction(Agent casterAgent)
-        {
-            if (_template.AnimationActionName != "none")
+            else if (_template.CastType == CastType.WindUp)
             {
-                casterAgent.SetActionChannel(1, ActionIndexCache.Create(_template.AnimationActionName));
-            }
-        }
-
-        public virtual void Cast(Agent casterAgent)
-        {
-            if (CanCast(casterAgent))
-            {
-                SetAnimationAction(casterAgent);
-                if (_template.CastType == CastType.Instant)
+                _isCasting = true;
+                var timer = new Timer(_template.CastTime * 1000);
+                timer.AutoReset = false;
+                timer.Elapsed += (s, e) =>
                 {
-                    ActivateAbility(casterAgent);
-                }
-                else if(_template.CastType == CastType.WindUp)
-                {
-                    _isCasting = true;
-                    var timer = new Timer(_template.CastTime * 1000);
-                    timer.AutoReset = false;
-                    timer.Elapsed += (s, e) =>
+                    lock (_sync)
                     {
-                        lock(_sync)
-                        {
-                            ActivateAbility(casterAgent);
-                        }
-                    };
-                    timer.Start();
-                }
+                        ActivateAbility(casterAgent);
+                    }
+                };
+                timer.Start();
             }
         }
 
@@ -169,6 +155,25 @@ namespace TOW_Core.Abilities
             
             frame = frame.Advance(offset);
             entity.SetGlobalFrame(frame);
+        }
+
+        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        {
+            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
+            if (wizardAiComponent != null)
+            {
+                frame.rotation = wizardAiComponent.SpellTargetRotation;
+            }
+
+            return frame;
+        }
+
+        private void SetAnimationAction(Agent casterAgent)
+        {
+            if (_template.AnimationActionName != "none")
+            {
+                casterAgent.SetActionChannel(1, ActionIndexCache.Create(_template.AnimationActionName));
+            }
         }
 
         public void Dispose()

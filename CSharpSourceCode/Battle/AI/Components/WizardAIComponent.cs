@@ -20,7 +20,7 @@ namespace TOW_Core.Battle.AI.Components
         public WizardAIComponent(Agent agent) : base(agent)
         {
             var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
-            foreach (var item in toRemove) // This is intentinal. Components is read-only
+            foreach (var item in toRemove) // This is intentional. Components is read-only
                 agent.RemoveComponent(item);
         }
 
