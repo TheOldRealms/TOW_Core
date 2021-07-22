@@ -35,10 +35,11 @@ namespace TOW_Core.Battle.Dismemberment
             base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
 
             bool canBeDismembered = victim != null &&
-                                    attacker != null &&
                                     victim.IsHuman &&
-                                    victim != Agent.Main &&
                                     victim.Health <= 0 &&
+                                    victim != Agent.Main &&
+                                    victim.State == AgentState.Killed &&
+                                    attacker != null &&
                                     ((attacker != Agent.Main && canTroopDismember) ||
                                     attacker == Agent.Main) &&
                                     (collisionData.VictimHitBodyPart == BoneBodyPartType.Neck ||
