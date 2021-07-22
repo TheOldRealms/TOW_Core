@@ -95,24 +95,61 @@ namespace TOW_Core.Abilities
             _coolDownLeft = Template.CoolDown;
             _timer.Start();
 
-            //position and spawn
-            var scene = Mission.Current.Scene;
-            var offset = 1f;
+            var frame = GetSpawnFrame(casterAgent);
+
+            var entity = SpawnEntity(frame);
+
+            AddLight(ref entity);
+
+            AddPhysics(ref entity);
+
+            AddBehaviour(ref entity, casterAgent);
+
+            var offset = 1;
+            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
+            {
+                offset = 10;
+                frame.origin.z = casterAgent.Position.z;
+            }
+
+            frame = frame.Advance(offset);
+            entity.SetGlobalFrame(frame);
+        }
+
+        private MatrixFrame GetSpawnFrame(Agent casterAgent)
+        {
             var frame = casterAgent.LookFrame.Elevate(casterAgent.GetEyeGlobalHeight());
             frame = UpdateFrameRotationForAI(casterAgent, frame);
-          
-            GameEntity entity = null;
-            if(Template.ParticleEffectPrefab != "none")
-            {
-                entity = GameEntity.Instantiate(scene, Template.ParticleEffectPrefab, true);
-            }
-            if(entity == null)
-            {
-                entity = GameEntity.CreateEmpty(scene);
-            }
-       
+            return frame;
+        }
 
-            //add light - optional
+        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        {
+            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
+            if (wizardAiComponent != null && casterAgent.IsAIControlled)
+            {
+                frame.rotation = wizardAiComponent.SpellTargetRotation;
+            }
+
+            return frame;
+        }
+
+        private GameEntity SpawnEntity(MatrixFrame frame)
+        {
+            GameEntity entity = null;
+            if (Template.ParticleEffectPrefab != "none")
+            {
+                entity = GameEntity.Instantiate(Mission.Current.Scene, Template.ParticleEffectPrefab, true);
+            }
+            if (entity == null)
+            {
+                entity = GameEntity.CreateEmpty(Mission.Current.Scene);
+            }
+            return entity;
+        }
+
+        private void AddLight(ref GameEntity entity)
+        {
             if (Template.HasLight)
             {
                 var light = Light.CreatePointLight(Template.LightRadius);
@@ -125,14 +162,18 @@ namespace TOW_Core.Abilities
                 light.SetVisibility(true);
                 entity.AddLight(light);
             }
+        }
 
-            //Physics
+        private void AddPhysics(ref GameEntity entity)
+        {
             var mass = 1;
             entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
             entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
             entity.SetPhysicsState(true, false);
+        }
 
-            //behaviour
+        private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
+        {
             if (Template.AbilityEffectType == AbilityEffectType.MovingProjectile)
             {
                 entity.CreateAndAddScriptComponent("MovingProjectileScript");
@@ -143,8 +184,6 @@ namespace TOW_Core.Abilities
             }
             if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
             {
-                offset = 10;
-                frame.origin.z = casterAgent.Position.z;
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
                 DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
                 script.Initialize(this);
@@ -152,20 +191,6 @@ namespace TOW_Core.Abilities
                 entity.CallScriptCallbacks();
             }
             //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
-            
-            frame = frame.Advance(offset);
-            entity.SetGlobalFrame(frame);
-        }
-
-        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
-        {
-            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
-            if (wizardAiComponent != null)
-            {
-                frame.rotation = wizardAiComponent.SpellTargetRotation;
-            }
-
-            return frame;
         }
 
         private void SetAnimationAction(Agent casterAgent)
