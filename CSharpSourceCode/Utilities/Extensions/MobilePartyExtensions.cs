@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -22,6 +23,16 @@ namespace TOW_Core.Utilities.Extensions
             }
 
             return false;
+        }
+
+        public static MobilePartyExtendedInfo GetInfo(this MobileParty party)
+        {
+            var manager = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
+            if (manager != null)
+            {
+                return manager.GetPartyInfoFor(party.StringId);
+            }
+            else return null;
         }
     }
 }

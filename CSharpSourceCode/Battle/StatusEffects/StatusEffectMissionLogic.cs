@@ -8,7 +8,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Library.EventSystem;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.StatusEffects

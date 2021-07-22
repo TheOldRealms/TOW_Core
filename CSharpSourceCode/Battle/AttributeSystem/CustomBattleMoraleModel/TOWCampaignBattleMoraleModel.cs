@@ -1,8 +1,8 @@
 ﻿using SandBox;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
+namespace TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel
 {
     public class CustomBattleMoralModel
     {

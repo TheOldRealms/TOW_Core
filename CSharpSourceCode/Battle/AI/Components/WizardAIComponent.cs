@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -6,7 +7,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
@@ -18,6 +19,9 @@ namespace TOW_Core.Battle.AI.Components
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
+            var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
+            foreach (var item in toRemove) // This is intentional. Components is read-only
+                agent.RemoveComponent(item);
         }
 
         public override void OnTickAsAI(float dt)
@@ -63,7 +67,7 @@ namespace TOW_Core.Battle.AI.Components
             if (formation == null) return;
 
             var medianAgent = formation.GetMedianAgent(true, false, formation.GetAveragePositionOfUnits(true, false));
-            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 80 : 27;
+            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility.Template.Name == "Fireball" ? 80 : 27;
 
             if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
             {
@@ -79,7 +83,7 @@ namespace TOW_Core.Battle.AI.Components
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
 
             var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility() is FireBallAbility)
+            if (Agent.GetCurrentAbility().Template.Name == "Fireball")
             {
                 velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
             }
