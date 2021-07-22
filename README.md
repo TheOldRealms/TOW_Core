@@ -1,5 +1,5 @@
 # TOW_Core
-This is the offical repository of the Old World mod for Mount and blade 2. Feel free to explore the repository, it is publically available. Note that you can't run the Mod without having the needed Assets.
+This is the offical repository of the Old World mod for Mount and blade 2. Feel free to explore the repository, it is publicly available. Note that you can't run the Mod without having the needed Assets.
 
 # Acknowledgement:
 
