@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
-using TOW_Core.AttributeDataSystem;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
     public class AbilityHUD_VM : ViewModel
     {
-        private BaseAbility _ability = null;
+        private Ability _ability = null;
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
-        private string _WindsOfMagicLeft = "100";
+        private string _WindsOfMagicLeft = "-";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
         private float _windsOfMagicValue;
@@ -35,31 +36,30 @@ namespace TOW_Core.Abilities
             }
             _ability = Agent.Main.GetCurrentAbility();
             
-            if (Campaign.Current != null)
-            {
-               
-            }
-            
             HasAnyAbility = _ability != null;
             
             if (HasAnyAbility)
             {
-                SpriteName = _ability.SpriteName;
-                Name = _ability.Name;
+                SpriteName = _ability.Template.SpriteName;
+                Name = _ability.Template.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
-                
-                if (_windsOfMagicValue < _ability.WindsOfMagicCost)
+                if(Game.Current.GameType is Campaign && _ability is Spell)
                 {
-                    IsOnCoolDown = true;
-                    CoolDownLeft = "";
+                    SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
+
+                    if (_windsOfMagicValue < _ability.Template.WindsOfMagicCost)
+                    {
+                        IsOnCoolDown = true;
+                        CoolDownLeft = "";
+                    }
                 }
             }
             
             
         }
 
-        public void SetWindsOfMagicValue(float value)
+        private void SetWindsOfMagicValue(float value)
         {
             _windsOfMagicValue = value;
             _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();

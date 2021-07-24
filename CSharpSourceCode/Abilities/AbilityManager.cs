@@ -24,48 +24,10 @@ namespace TOW_Core.Abilities
             return list;
         }
 
-        internal static List<string> GetAllAbilities()
+        internal static List<string> GetAllCharacterIds()
         {
-            var list = new List<string>();
-            foreach(var item in _abilities)
-            {
-                foreach(var ability in item.Value)
-                {
-                    if (!list.Contains(ability)) list.Add(ability);
-                }
-            }
-            return list;
+            return _abilities.Keys.ToList();
         }
-
-        internal static void AddAbility(Agent agent, string ability)
-        {
-            string id = agent.Character.StringId;
-            AddAbility(id,ability);
-        }
-        
-        internal static void AddAbility(string id, string ability)
-        {
-            
-            if (_abilities.ContainsKey(id))
-            {
-                foreach (var abilityItem in _abilities[id])
-                {
-                    if (abilityItem == ability)
-                    {
-                        return;
-                    }
-                }
-                _abilities[id].Add(ability);
-            }
-            else
-            {
-                List<string> abilityList = new List<string>();
-                abilityList.Add(ability);
-                _abilities.Add(id, abilityList);
-            }
-        }
-        
-        
 
         internal static void LoadAbilities()
         {
@@ -87,19 +49,6 @@ namespace TOW_Core.Abilities
                 TOWCommon.Log(e.ToString(), LogLevel.Error);
                 throw e; //TODO handle this more gracefully.
             }
-        }
-
-        internal static void WriteSampleXML()
-        {
-            var list = new List<CharacterAbilityTuple>();
-            var tuple = new CharacterAbilityTuple();
-            tuple.CharacterID = "karlfranz";
-            tuple.Abilities.Add(typeof(FireBallAbility).FullName);
-            tuple.Abilities.Add("FireBallAbility");
-            list.Add(tuple);
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_abilities.xml");
-            var ser = new XmlSerializer(typeof(List<CharacterAbilityTuple>));
-            ser.Serialize(File.OpenWrite(path), list);
         }
     }
 

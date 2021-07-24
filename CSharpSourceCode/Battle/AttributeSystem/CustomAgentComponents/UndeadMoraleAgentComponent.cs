@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 using System.Timers;
 
-namespace TOW_Core.Battle.AttributeSystem.CustomAgentComponents
+namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
 {
     public class UndeadMoraleAgentComponent : AgentComponent
     {

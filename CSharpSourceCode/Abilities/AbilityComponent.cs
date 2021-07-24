@@ -2,32 +2,32 @@
 using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Extensions;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
     public class AbilityComponent : AgentComponent
     {
-        private BaseAbility _currentAbility = null;
-        private List<BaseAbility> _knownAbilities = new List<BaseAbility>();
+        private Ability _currentAbility = null;
+        private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
 
-        public BaseAbility CurrentAbility { get => _currentAbility; set => _currentAbility = value; }
+        public Ability CurrentAbility { get => _currentAbility; set => _currentAbility = value; }
 
         public AbilityComponent(Agent agent) : base(agent)
         {
             var abilities = agent.GetAbilities();
             if(abilities.Count > 0)
             {
-                foreach (var ability in abilities)
+                foreach (var item in abilities)
                 {
                     try
                     {
-                        object instance = Activator.CreateInstance(Type.GetType(ability));
-                        if (instance is BaseAbility)
+                        var ability = AbilityFactory.CreateNew(item);
+                        if (ability != null)
                         {
-                            _knownAbilities.Add(instance as BaseAbility);
+                            _knownAbilities.Add(ability);
                         }
                         else
                         {
@@ -36,7 +36,7 @@ namespace TOW_Core.Abilities
                     }
                     catch (Exception)
                     {
-                        TOWCommon.Log("Failed instantiating ability class: " + ability, LogLevel.Error);
+                        TOWCommon.Log("Failed instantiating ability class: " + item, LogLevel.Error);
                     }
                 }
                 if (_knownAbilities.Count > 0)
