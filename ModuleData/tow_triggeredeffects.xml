@@ -28,4 +28,18 @@
         DamageVariance="0.1" 
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate 
+        StringID="summon_skeleton_tick" 
+        BurstParticleEffectPrefab="none" 
+        SoundEffectId="none" 
+        SoundEffectLength="0" 
+        DamageType="Magical" 
+        DamageAmount="0" 
+        Radius="5" 
+        TargetType="All" 
+        ImbuedStatusEffectID="none" 
+        ImbuedStatusEffectDuration="0" 
+        DamageVariance="0" 
+        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonSkeleton">
+  </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

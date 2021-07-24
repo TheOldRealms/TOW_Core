@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ArrayOfMagicWeaponEffect xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <MagicWeaponEffect 
+        WeaponItemId="runefang_001" 
+        ParticlePrefab="magic_sparks" 
+        ParticlesStartOffset="0.5" 
+        ParticlesEndOffset="1.2" 
+        NumberOfParticleSystems="1" 
+        OnHitScriptName="TOW_Core.Items.Scripts.LifeLeechHitScript" 
+        ImbuedStatusEffectId="none" >
+  </MagicWeaponEffect>
+</ArrayOfMagicWeaponEffect>

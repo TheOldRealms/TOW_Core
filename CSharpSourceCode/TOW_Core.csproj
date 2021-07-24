@@ -284,15 +284,24 @@
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
     <Compile Include="Abilities\AbilityFactory.cs" />
     <Compile Include="Abilities\AbilityType.cs" />
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
+    <Compile Include="Items\IMagicWeaponHitEffect.cs" />
+    <Compile Include="Items\MagicWeaponAgentComponent.cs" />
+    <Compile Include="Items\MagicWeaponEffect.cs" />
+    <Compile Include="Items\MagicWeaponEffectManager.cs" />
+    <Compile Include="Items\MagicWeaponEffectMissionLogic.cs" />
+    <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoMissionLogic.cs" />
@@ -357,6 +366,7 @@
     <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
+    <Compile Include="Utilities\Extensions\ItemObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
     <Compile Include="Utilities\Extensions\MissionExtensions.cs" />
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />

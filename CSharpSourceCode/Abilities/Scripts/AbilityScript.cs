@@ -20,6 +20,7 @@ namespace TOW_Core.Abilities.Scripts
         private bool _isFading;
         private float _timeSinceLastTick = 0;
         private bool _hasCollided;
+        private bool _hasTickedOnce;
 
         internal void SetAgent(Agent agent)
         {
@@ -28,7 +29,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override bool MovesEntity() => true;
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != (AbilityEffectType.TargetedStaticAOE | AbilityEffectType.CenteredStaticAOE);
+            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE;
         }
 
         protected override void OnInit()
@@ -70,10 +71,12 @@ namespace TOW_Core.Abilities.Scripts
             {
                 _timeSinceLastTick = 0;
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
+                _hasTickedOnce = true;
             }
-            else if(_ability.Template.TriggerType == TriggerType.Delayed && _abilityLife > _ability.Template.TickInterval)
+            else if(_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
             {
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
+                _hasTickedOnce = true;
             }
         }
 
@@ -120,8 +123,8 @@ namespace TOW_Core.Abilities.Scripts
 
         private bool CollidedWithAgent()
         {
-            var collisionRadius = _ability.Template.Radius + 0.5f;
-            return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius)
+            var collisionRadius = _ability.Template.Radius;
+            return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius, true)
                 .Where(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < collisionRadius)
                 .Any();
         }
