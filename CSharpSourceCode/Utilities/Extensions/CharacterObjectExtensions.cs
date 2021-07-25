@@ -72,6 +72,14 @@ namespace TOW_Core.Utilities.Extensions
                 var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
                 if(info != null) s = info.VoiceClassName;
             }
+            else
+            {
+                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
+                if (info != null && info.VoiceClassName != null)
+                {
+                    s = info.VoiceClassName;
+                }
+            }
             return s;
         }
     }
