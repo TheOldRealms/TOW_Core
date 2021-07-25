@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
@@ -19,22 +20,19 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         private void SpawnAgent(Agent caster, Vec3 position)
         {
-            IAgentOriginBase troopOrigin = caster.Origin;
             BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
-            Team casterTeam = Mission.GetAgentTeam(troopOrigin, true);
+            CustomBattleTroopSupplier supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
+            CustomBattleAgentOrigin troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             MatrixFrame frame = new MatrixFrame(Mat3.Identity, position);
             AgentBuildData buildData = new AgentBuildData(troopCharacter).
-                Team(casterTeam).
-                Banner(troopOrigin.Banner).
-                ClothingColor1(casterTeam.Color).
-                ClothingColor2(casterTeam.Color2).
+                Team(caster.Team).
+                ClothingColor1(caster.Team.Color).
+                ClothingColor2(caster.Team.Color2).
                 TroopOrigin(troopOrigin).
-                CivilianEquipment(Mission.Current.DoesMissionRequireCivilianEquipment);
-
-            if (!troopCharacter.IsPlayerCharacter)
-                buildData.IsReinforcement(true).SpawnOnInitialPoint(true);
-
-            buildData.InitialFrame(frame);
+                CivilianEquipment(Mission.Current.DoesMissionRequireCivilianEquipment).
+                IsReinforcement(true).
+                SpawnOnInitialPoint(true).
+                InitialFrame(frame);
             Agent troop = Mission.Current.SpawnAgent(buildData, false, 1);
             troop.SetWatchState(Agent.WatchState.Alarmed);
         }
