@@ -32,6 +32,8 @@ using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
 using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
+using TaleWorlds.MountAndBlade.GauntletUI;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 
 namespace TOW_Core
 {
@@ -149,6 +151,8 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
+            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
+            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
