@@ -123,7 +123,7 @@ namespace TOW_Core.Abilities.Scripts
 
         private bool CollidedWithAgent()
         {
-            var collisionRadius = _ability.Template.Radius;
+            var collisionRadius = _ability.Template.Radius + 1;
             return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius, true)
                 .Where(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < collisionRadius)
                 .Any();

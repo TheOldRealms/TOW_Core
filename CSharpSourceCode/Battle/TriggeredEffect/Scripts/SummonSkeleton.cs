@@ -24,8 +24,14 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             CustomBattleTroopSupplier supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             CustomBattleAgentOrigin troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             MatrixFrame frame = new MatrixFrame(Mat3.Identity, position);
+            Formation formation = null;
+            if (caster.Team.Formations.Count() > 0)
+            {
+                formation = caster.Team.Formations.Where(x => x.FormationIndex.GetName() == troopCharacter.DefaultFormationClass.GetName()).FirstOrDefault();
+            }
             AgentBuildData buildData = new AgentBuildData(troopCharacter).
                 Team(caster.Team).
+                Formation(formation).
                 ClothingColor1(caster.Team.Color).
                 ClothingColor2(caster.Team.Color2).
                 TroopOrigin(troopOrigin).
