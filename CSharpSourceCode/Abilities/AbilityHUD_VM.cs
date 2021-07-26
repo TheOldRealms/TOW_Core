@@ -3,41 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
     public class AbilityHUD_VM : ViewModel
     {
-        private BaseAbility _ability = null;
+        private Ability _ability = null;
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
+        private string _WindsOfMagicLeft = "-";
         private bool _hasAnyAbility;
         private bool _onCoolDown;
+        private float _windsOfMagicValue;
 
         public AbilityHUD_VM() : base() { }
 
         public void UpdateProperties()
         {
+
             if (Agent.Main == null) 
             {
                 HasAnyAbility = false;
                 return;
             }
             _ability = Agent.Main.GetCurrentAbility();
+            
             HasAnyAbility = _ability != null;
+            
             if (HasAnyAbility)
             {
-                SpriteName = _ability.SpriteName;
-                Name = _ability.Name;
+                SpriteName = _ability.Template.SpriteName;
+                Name = _ability.Template.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
+                if(Game.Current.GameType is Campaign && _ability is Spell)
+                {
+                    SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
+
+                    if (_windsOfMagicValue < _ability.Template.WindsOfMagicCost)
+                    {
+                        IsOnCoolDown = true;
+                        CoolDownLeft = "";
+                    }
+                }
             }
+            
+            
         }
+
+        private void SetWindsOfMagicValue(float value)
+        {
+            _windsOfMagicValue = value;
+            _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();
+            WindsOfMagicLeft = _WindsOfMagicLeft;
+        }
+        
+        
 
         [DataSourceProperty]
         public bool HasAnyAbility
@@ -53,6 +82,20 @@ namespace TOW_Core.Abilities
                     _hasAnyAbility = value;
                     base.OnPropertyChangedWithValue(value, "HasAnyAbility");
                 }
+            }
+        }
+        
+        [DataSourceProperty]
+        public string WindsOfMagicLeft
+        {
+            get
+            {
+                return _WindsOfMagicLeft;
+            }
+            set
+            {
+                _WindsOfMagicLeft = value;
+                base.OnPropertyChangedWithValue(value, "WindsOfMagicLeft");
             }
         }
 

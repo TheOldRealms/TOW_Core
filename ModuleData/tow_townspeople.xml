@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+  <NPCCharacter id="tow_townsman_villager" default_group="Infantry" name="{=muu5cofb}Townsman" occupation="Townsfolk" culture="Culture.empire" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face>
+      <face_key_template value="BodyProperty.villager_empire" />
+      <hair_tags>
+        <hair_tag name="Bald" />
+        <hair_tag name="ShortAndThin" />
+        <hair_tag name="Tousled" />
+        <hair_tag name="Short" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+        <beard_tag name="LightShortBeard" />
+        <beard_tag name="HeavyShortBeard" />
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <skills></skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+        <equipment slot="Cape" id="Item.scarf" />
+      </EquipmentRoster>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.leather_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.thinhide_coif" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <!--Merchant-->
+  <NPCCharacter id="tow_merchant_empire" default_group="Infantry" is_hero="true" occupation="GoodsTrader" culture="Culture.empire" name="{=thbcgVVO}Trader" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face>
+      <face_key_template value="BodyProperty.villager_empire" />
+    </face>
+    <skills></skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.short_sword_t3" />
+        <equipment slot="Body" id="Item.cloth_apron" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Cape" id="Item.rough_bearskin" />
+        <equipment slot="Head" id="Item.empire_hat_002" />
+      </EquipmentRoster>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.short_sword_t3" />
+        <equipment slot="Body" id="Item.merchants_fur_coat" />
+        <equipment slot="Head" id="Item.empire_hat_002" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.short_sword_t3" />
+        <equipment slot="Body" id="Item.merchants_fur_coat" />
+        <equipment slot="Head" id="Item.empire_hat_002" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+      </EquipmentRoster>
+      <EquipmentSet id="npc_wanderer_equipment_template_empire" />
+    </Equipments>
+  </NPCCharacter>
+  <!--- Looter -->
+  <NPCCharacter id="looter" default_group="Infantry" name="{=urUwa4bf}Empire Looter" level="6" occupation="Bandit" culture="Culture.looters">
+    <face>
+      <BodyProperties version="4" age="30.33" weight="0.1349" build="0.2423" key="00050004402C0312367324453354621232316505203133023641312273143224018426140896594500000000000000000000000000000000000000001D043002" />
+      <BodyPropertiesMax version="4" age="50.09" weight="0.5818" build="0.6065" key="001CFC0CC02C3959AD8AA89C9A86CDEC9FCA8BBC8AA4CD775DACED6B7E2F8D4804E996460ECADBC9000000000000000000000000000000000000000067D48105" />
+      <!--hair_tags>
+        <hair_tag name="Native Braids" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags-->
+
+    </face>
+    <skills>
+      <skill id="Athletics" value="30" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="30" />
+      <skill id="Riding" value="0" />
+      <skill id="Throwing" value="40" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.imperial_infantryman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.bearded_axe_t3" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+        <equipment slot="Head" id="Item.pilgrim_hood" />
+        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <!--- Dogs of War -->
+  <NPCCharacter id="mountain_bandits_bandit" default_group="Infantry" name="{=9laVlEH9}Paymaster Bodyguard" level="11" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.villager_battania" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_002" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_002" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="mountain_bandits_chief" default_group="Infantry" name="{=9laVlEH9}Paymaster Bodyguard" level="11" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.villager_battania" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="mountain_bandits_raider" default_group="Infantry" name="{=9laVlEH9}Paymaster Bodyguard" level="11" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.villager_battania" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="mountain_bandits_bandit" default_group="Infantry" name="{=9laVlEH9}Paymaster Bodyguard" level="11" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.villager_battania" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="mountain_bandits_boss" default_group="Infantry" name="{=9laVlEH9}Paymaster Bodyguard" level="11" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.villager_battania" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Item1" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Body" id="Item.tilean_knight_body_001" />
+        <equipment slot="Head" id="Item.tilean_knight_helmet_001" />
+        <equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+        <equipment slot="Cape" id="Item.tilean_knight_shoulders_001" />
+        <equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+</NPCCharacters>

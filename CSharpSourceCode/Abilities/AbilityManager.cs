@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 using TOW_Core.Texts;
 using TOW_Core.Utilities;
 
@@ -23,17 +24,9 @@ namespace TOW_Core.Abilities
             return list;
         }
 
-        internal static List<string> GetAllAbilities()
+        internal static List<string> GetAllCharacterIds()
         {
-            var list = new List<string>();
-            foreach(var item in _abilities)
-            {
-                foreach(var ability in item.Value)
-                {
-                    if (!list.Contains(ability)) list.Add(ability);
-                }
-            }
-            return list;
+            return _abilities.Keys.ToList();
         }
 
         internal static void LoadAbilities()
@@ -56,19 +49,6 @@ namespace TOW_Core.Abilities
                 TOWCommon.Log(e.ToString(), LogLevel.Error);
                 throw e; //TODO handle this more gracefully.
             }
-        }
-
-        internal static void WriteSampleXML()
-        {
-            var list = new List<CharacterAbilityTuple>();
-            var tuple = new CharacterAbilityTuple();
-            tuple.CharacterID = "karlfranz";
-            tuple.Abilities.Add(typeof(FireBallAbility).FullName);
-            tuple.Abilities.Add("FireBallAbility");
-            list.Add(tuple);
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_abilities.xml");
-            var ser = new XmlSerializer(typeof(List<CharacterAbilityTuple>));
-            ser.Serialize(File.OpenWrite(path), list);
         }
     }
 

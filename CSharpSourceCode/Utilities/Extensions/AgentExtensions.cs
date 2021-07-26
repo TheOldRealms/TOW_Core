@@ -7,27 +7,30 @@ using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
+using TaleWorlds.CampaignSystem;
 
-namespace TOW_Core.Battle.Extensions
+namespace TOW_Core.Utilities.Extensions
 {
     public static class AgentExtensions
     {
         /// <summary>
         /// Maps all character IDs to a list of attributes for that character. For example, <"skeleton_warrior" <=> {"Expendable", "Undead"}>
         /// </summary>
-        private static Dictionary<string, List<string>> CharacterIDToAttributeMap = new Dictionary<string, List<string>>();
-        private static Dictionary<string, string> CharacterIDToVoiceClassNameMap = new Dictionary<string, string>();
-        private static bool _attributesAreInitialized = false;
-        private static bool _voicesAreInitialized = false;
-
+        
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-
+        
+        public static bool IsHuman(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("Human");
+        }
+        
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
@@ -38,6 +41,11 @@ namespace TOW_Core.Battle.Extensions
             return agent.GetAttributes().Contains("AbilityUser");
         }
 
+        public static bool IsSpellCaster(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("SpellCaster");
+        }
+
         public static bool HasAttribute(this Agent agent, string attributeName)
         {
             return agent.GetAttributes().Contains(attributeName);
@@ -46,13 +54,14 @@ namespace TOW_Core.Battle.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
+           
             if(abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.Use(agent);
+                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
         }
 
-        public static BaseAbility GetCurrentAbility(this Agent agent)
+        public static Ability GetCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
             if (abilitycomponent != null)
@@ -80,56 +89,49 @@ namespace TOW_Core.Battle.Extensions
             }
         }
 
+        public static Hero GetHero(this Agent agent)
+        {
+            if (agent.Character == null) return null;
+            Hero hero = null;
+            if(Game.Current.GameType is Campaign)
+            {
+                var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
+                if (list != null && list.Count() > 0)
+                {
+                    hero = list.First();
+                }
+            }
+            return hero;
+        }
+
         public static List<string> GetAbilities(this Agent agent)
         {
-            return AbilityManager.GetAbilitesForCharacter(agent.Character.StringId);
+            var hero = agent.GetHero();
+            var character = agent.Character;
+            if (hero != null)
+            {
+                return hero.GetExtendedInfo().AllAbilities;
+            }
+            else if (character != null)
+            {
+                return agent.Character.GetAbilities();
+            }
+            else return new List<string>();
         }
 
         public static List<string> GetAttributes(this Agent agent)
         {
-            if (agent != null && agent.Character != null)
+            var hero = agent.GetHero();
+            var character = agent.Character;
+            if (hero != null)
             {
-                string characterName = agent.Character.StringId;
-
-                List<string> attributeList;
-                if (CharacterIDToAttributeMap.TryGetValue(characterName, out attributeList))
-                {
-                    return attributeList;
-                }
+                return hero.GetExtendedInfo().AllAttributes;
             }
-            return new List<string>();
-        }
-
-        public static void SetAttributesDictionary(Dictionary<string, List<string>> dict)
-        {
-            if(_attributesAreInitialized)
+            else if (character != null)
             {
-                TOWCommon.Log("Attempted to set agent attributes dictionary, but it was already initialized.", LogLevel.Warn);
-                return;
+                return agent.Character.GetAttributes();
             }
-
-            CharacterIDToAttributeMap = dict;
-            _attributesAreInitialized = true;
-        }
-
-        public static void SetVoicesDictionary(Dictionary<string, string> dict)
-        {
-            if (_voicesAreInitialized)
-            {
-                TOWCommon.Log("Attempted to set agent attributes dictionary, but it was already initialized.", LogLevel.Warn);
-                return;
-            }
-
-            CharacterIDToVoiceClassNameMap = dict;
-            _voicesAreInitialized = true;
-        }
-
-        public static void RemoveComponentIfNotNull(this Agent agent, AgentComponent component)
-        {
-            if (component != null)
-            {
-                agent.RemoveComponent(component);
-            }
+            else return new List<string>();
         }
 
         /// <summary>
@@ -204,21 +206,6 @@ namespace TOW_Core.Battle.Extensions
                 float voicePitch = (float)pitchModifier * 4.656613E-10f;
                 mbagentVisuals.SetVoiceDefinitionIndex(array[index], voicePitch);
             }
-        }
-
-        public static string GetAgentVoiceClassName(this Agent agent)
-        {
-            if (agent != null && agent.Character != null)
-            {
-                string characterName = agent.Character.StringId;
-
-                string voiceClass;
-                if (CharacterIDToVoiceClassNameMap.TryGetValue(characterName, out voiceClass))
-                {
-                    return voiceClass;
-                }
-            }
-            return null;
         }
         #endregion
     }

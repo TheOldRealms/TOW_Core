@@ -8,29 +8,32 @@ using TOW_Core.CustomBattles;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
-using TOW_Core.Battle.AttributeSystem;
-using TOW_Core.Battle.AttributeSystem.CustomMissionLogic;
-using TaleWorlds.MountAndBlade.Source.Missions.Handlers.Logic;
+using TOW_Core.Battle.ObjectDataExtensions;
+using TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
-using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TaleWorlds.MountAndBlade.CustomBattle;
-using TaleWorlds.GauntletUI;
 using TaleWorlds.Engine.GauntletUI;
-using TaleWorlds.TwoDimension;
 using TOW_Core.Abilities;
-using TOW_Core.CharacterCreation;
 using TOW_Core.Battle.StatusEffects;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-using TaleWorlds.Localization;
-using System;
-using SandBox;
-using SandBox.View;
-using TaleWorlds.Engine.Screens;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.Voices;
 using TOW_Core.CampaignSupport;
+using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
+using TOW_Core.CampaignSupport.QuestBattleLocation;
+using StoryMode.GameModels;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TOW_Core.Battle.AI;
+using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
+using TOW_Core.Battle.Dismemberment;
+using Path = System.IO.Path;
+using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Items;
+using TaleWorlds.MountAndBlade.GauntletUI;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 
 namespace TOW_Core
 {
@@ -57,17 +60,28 @@ namespace TOW_Core
             harmony.PatchAll();
             ConfigureLogging();
 
+            
+
             //This has to be here.
             AbilityManager.LoadAbilities();
-            LoadAttributes();
+            CustomVoiceManager.LoadVoices();
+            AttributeManager.LoadAttributes();
             LoadStatusEffects();
             LoadSprites();
-            LoadVoices();
             LoadShieldPatterns();
+            LoadQuestBattleTemplates();
+            TriggeredEffectManager.LoadTemplates();
+            AbilityFactory.LoadTemplates();
+            MagicWeaponEffectManager.LoadXML();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
             LoadFontAssets();
+        }
+
+        private void LoadQuestBattleTemplates()
+        {
+            QuestBattleTemplateManager.LoadQuestBattleTemplates();
         }
 
         private void LoadShieldPatterns()
@@ -92,6 +106,13 @@ namespace TOW_Core
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
             }
+            else if(game.GameType.GetType() == typeof(Campaign))
+            {
+                if(game.ObjectManager != null)
+                {
+                    game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
+                }
+            }
         }
 
         private void LoadSprites()
@@ -111,34 +132,38 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
+                starter.CampaignBehaviors.Add(new ExtendedInfoManager());
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
+                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
+                gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
+                gameStarterObject.AddModel(new TowMapWeatherModel());
+
+                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
+                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
+                starter.AddModel(new QuestBattleLocationMenuModel());
+
+                starter.AddBehavior(new QuestBattleLocationBehaviour());
             }
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
+            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
+            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
+            mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
-        }
-
-        private void LoadAttributes()
-        {
-            AttributeManager attributeManager = new AttributeManager();
-            attributeManager.LoadAttributes();
-        }
-
-        private void LoadVoices()
-        {
-            CustomVoiceManager voiceManager = new CustomVoiceManager();
-            voiceManager.LoadVoices();
+            mission.AddMissionBehaviour(new DismembermentMissionLogic());
+            mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
+            //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
+            if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadStatusEffects()

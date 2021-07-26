@@ -8,6 +8,7 @@ using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Abilities
 {
@@ -17,24 +18,28 @@ namespace TOW_Core.Abilities
         private AbilityHUD_VM _dataSource;
         private GauntletLayer _layer;
         private bool _isInitialized;
-
+        
         public override void OnMissionScreenTick(float dt)
         {
             base.OnMissionScreenTick(dt);
-            if (!this._isInitialized)
+            if (!_isInitialized)
             {
-                this._isInitialized = true;
                 this._dataSource = new AbilityHUD_VM();
                 this._layer = new GauntletLayer(100);
                 this._layer.LoadMovie("AbilityHUD", this._dataSource);
                 base.MissionScreen.AddLayer(this._layer);
+                _isInitialized = true;
             }
         }
 
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            if(this._isInitialized) this._dataSource.UpdateProperties();
+
+            if (this._isInitialized)
+            {
+                this._dataSource.UpdateProperties();
+            }
         }
     }
 }

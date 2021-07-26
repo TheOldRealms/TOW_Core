@@ -7,7 +7,7 @@ using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
 using Messages.FromClient.ToLobbyServer;
 using TOW_Core.Utilities;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using System.Linq;
 
