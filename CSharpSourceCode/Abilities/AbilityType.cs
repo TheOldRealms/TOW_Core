@@ -35,7 +35,7 @@ namespace TOW_Core.Abilities
     {
         EveryTick,
         OnCollision,
-        Delayed
+        TickOnce
     }
 
     public enum TargetType

@@ -106,10 +106,10 @@ namespace TOW_Core.Abilities
             AddBehaviour(ref entity, casterAgent);
 
             var offset = 1;
-            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
+            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 offset = 10;
-                frame.origin.z = casterAgent.Position.z;
+                frame.origin.z = (float)(casterAgent.Position.z + 0.4);
             }
 
             frame = frame.Advance(offset);
@@ -186,6 +186,14 @@ namespace TOW_Core.Abilities
             {
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
                 DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
+                script.Initialize(this);
+                script.SetAgent(casterAgent);
+                entity.CallScriptCallbacks();
+            }
+            if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+            {
+                entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
+                CenteredStaticAOEScript script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
                 script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
