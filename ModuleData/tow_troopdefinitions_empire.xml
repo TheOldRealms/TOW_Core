@@ -577,6 +577,7 @@ SHIELDS
 		<upgrade_targets>
 			<upgrade_target id="NPCCharacter.tow_empire_greatsword" />
 		</upgrade_targets>
+		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_2_t3" />
 				<equipment slot="Item1" id="Item.empire_shield_002" />
@@ -590,7 +591,7 @@ SHIELDS
 				<equipment slot="Item0" id="Item.vlandia_sword_2_t3" />
 				<equipment slot="Item1" id="Item.empire_shield_003" />
 				<equipment slot="Head" id="Item.Pothelm" />
-				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001">
+				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001"/>
 				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
 				<equipment slot="Gloves" id="Item.reinforced_leather_vambraces" />
 				<equipment slot="Leg" id="Item.empire_knight_boots_002" />
@@ -771,7 +772,7 @@ SHIELDS
 				<equipment slot="Item0" id="Item.northern_spear_4_t5" />
 				<equipment slot="Item1" id="Item.empire_shield_003" />
 				<equipment slot="Head" id="Item.Pothelm" />
-				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001">
+				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001"/>
 				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
 				<equipment slot="Gloves" id="Item.reinforced_leather_vambraces" />
 				<equipment slot="Leg" id="Item.empire_knight_boots_002" />
