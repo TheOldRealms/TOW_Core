@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -21,8 +22,16 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private void SpawnAgent(Agent caster, Vec3 position)
         {
             BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
-            CustomBattleTroopSupplier supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
-            CustomBattleAgentOrigin troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
+            IAgentOriginBase troopOrigin = null;
+            if (Game.Current.GameType is Campaign)
+            {
+                troopOrigin = new PartyAgentOrigin(MobileParty.MainParty.Party, CharacterObject.FindFirst(x => x.StringId == troopCharacter.StringId));
+            }
+            else
+            {
+                var supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
+                troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier as CustomBattleTroopSupplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
+            }
             MatrixFrame frame = new MatrixFrame(Mat3.Identity, position);
             Formation formation = null;
             if (caster.Team.Formations.Count() > 0)
