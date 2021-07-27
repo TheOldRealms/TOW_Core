@@ -135,27 +135,6 @@
 			<upgrade_target id="NPCCharacter.tow_empire_spearman" />
 			<upgrade_target id="NPCCharacter.tow_empire_swordsman" />
 		</upgrade_targets>
-<!--Used Parts for later reference
-Helmets
-  <equipment slot="Head" id="Item.empire_hat_001" />
-  <equipment slot="Head" id="Item.cervelliere_over_arming_coif" />
-  <equipment slot="Head" id="Item.empire_hat_002" />
-  <equipment slot="Head" id="Item.worn_militia_helmet" />
-  <equipment slot="Head" id="Item.worn_militia_helmet_feather" />
-Shoes
-  <equipment slot="Leg" id="Item.battania_leather_boots" />
-  <equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
-BODY 2&3
-Cape/Breastplates
-  <equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-  <equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-WEAPONS
-  <equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
-  <equipment slot="Item1" id="Item.western_spear_1_t2" />
-  <equipment slot="Item2" id="Item.imperial_spear_t2" />
-SHIELDS
-  <equipment slot="Item2" id="Item.empire_shield_006" />
-  <equipment slot="Item2" id="Item.empire_shield_007" /> -->
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
@@ -215,35 +194,42 @@ SHIELDS
 			<upgrade_target id="NPCCharacter.tow_empire_handgunner" />
 			<upgrade_target id="NPCCharacter.tow_empire_archer" />
 		</upgrade_targets>
-
-
-<!-- capes
-  <equipment slot="Cape" id="Item.hood" />
-  <equipment slot="Item1" id="Item.default_arrows" /> -->
-
-
-
-
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.hunting_bow" />
 				<equipment slot="Item2" id="Item.barbed_arrows" />
-				<equipment slot="Head" id="Item.open_padded_coif" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.hunting_bow" />
 				<equipment slot="Item2" id="Item.barbed_arrows" />
-				<equipment slot="Head" id="Item.empire_hat_004" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.steppe_leather_boots" />
+				<equipment slot="Head" id="Item.open_padded_coif" />
+				<equipment slot="Cape" id="Item.a_battania_cloak_a" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.hunting_bow" />
+				<equipment slot="Item2" id="Item.barbed_arrows" />
+				<equipment slot="Head" id="Item.leather_cap" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.hunting_bow" />
+				<equipment slot="Item2" id="Item.barbed_arrows" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -266,23 +252,43 @@ SHIELDS
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.hunting_bow" />
-				<equipment slot="Item2" id="Item.barbed_arrows" />
-				<equipment slot="Head" id="Item.open_padded_coif" />
+				<equipment slot="Item1" id="Item.highland_ranger_bow" />
+				<equipment slot="Item2" id="Item.vlandic_arrows" />
+				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.hunting_bow" />
-				<equipment slot="Item2" id="Item.barbed_arrows" />
+				<equipment slot="Item1" id="Item.highland_ranger_bow" />
+				<equipment slot="Item2" id="Item.vlandic_arrows" />
 				<equipment slot="Head" id="Item.empire_hat_004" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
 				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.steppe_leather_boots" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.highland_ranger_bow" />
+				<equipment slot="Item2" id="Item.vlandic_arrows" />
+				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.highland_ranger_bow" />
+				<equipment slot="Item2" id="Item.vlandic_arrows" />
+				<equipment slot="Head" id="Item.leather_cap" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -303,23 +309,43 @@ SHIELDS
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.hunting_bow" />
-				<equipment slot="Item2" id="Item.barbed_arrows" />
-				<equipment slot="Head" id="Item.open_padded_coif" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.rough_bearskin" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.hunting_bow" />
-				<equipment slot="Item2" id="Item.barbed_arrows" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
 				<equipment slot="Head" id="Item.empire_hat_004" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-				<!-- <equipment slot="Gloves" id="Item.steppe_leather_vambraces" /> -->
-				<equipment slot="Leg" id="Item.steppe_leather_boots" />
+				<equipment slot="Cape" id="Item.battania_civil_cape" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.battania_shoulder_strap_cloak" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.leopard_pelt" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -339,46 +365,47 @@ SHIELDS
 		</upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.crossbow_a" />
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
 				<equipment slot="Item2" id="Item.bolt_a" />
-				<equipment slot="Item3" id="Item.bolt_a" />
-				<equipment slot="Head" id="Item.laced_coif" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.empire_free_company_armor" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
-			</EquipmentRoster>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.crossbow_a" />
-				<equipment slot="Item2" id="Item.bolt_a" />
-				<equipment slot="Item3" id="Item.bolt_a" />
-				<equipment slot="Head" id="Item.empire_hat_004" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<equipment slot="Body" id="Item.empire_free_company_armor" />
-				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
-			</EquipmentRoster>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.crossbow_a" />
-				<equipment slot="Item2" id="Item.bolt_a" />
-				<equipment slot="Item3" id="Item.bolt_a" />
-				<equipment slot="Head" id="Item.empire_hat_004" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.empire_free_company_armor" />
-				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
-			</EquipmentRoster>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.crossbow_a" />
-				<equipment slot="Item2" id="Item.bolt_a" />
-				<equipment slot="Item3" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
 				<equipment slot="Head" id="Item.militia_helmet_feather" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
-				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_arming_coif" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_padded_cloth" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
 				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 			</EquipmentRoster>
 		</Equipments>
@@ -400,47 +427,44 @@ SHIELDS
 		</upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
-				<equipment slot="Item3" id="Item.musket_ball" />
-				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
-				<equipment slot="Item3" id="Item.musket_ball" />
-				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
 				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
-				<equipment slot="Item3" id="Item.musket_ball" />
 				<equipment slot="Head" id="Item.militia_helmet_feather" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
-				<equipment slot="Item3" id="Item.musket_ball" />
 				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
-				<equipment slot="Leg" id="Item.rough_tied_boots" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -460,47 +484,48 @@ SHIELDS
 		</upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
 				<equipment slot="Head" id="Item.empire_hat_003" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+				<equipment slot="Cape" id="Item.southern_shawl" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
 				<equipment slot="Head" id="Item.empire_hat_003" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
+				<equipment slot="Cape" id="Item.southern_shawl" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
 				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
-				<equipment slot="Head" id="Item.militia_helmet_feather" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
-				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Cape" id="Item.southern_shawl" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
 				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 			</EquipmentRoster>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.tow_handgun_001" />
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
-				<equipment slot="Head" id="Item.empire_hat_001" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Gloves" id="Item.leather_gloves" />
-				<equipment slot="Leg" id="Item.rough_tied_boots" />
+				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Cape" id="Item.southern_shawl" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -522,7 +547,7 @@ SHIELDS
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_007" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Head" id="Item.militia_helmet_feather" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
@@ -530,7 +555,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_006" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
 				<equipment slot="Head" id="Item.worn_militia_helmet" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.padded_vambrace" />
@@ -546,7 +571,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_007" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
 				<equipment slot="Head" id="Item.peaked_helmet_over_mail" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
@@ -554,7 +579,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_006" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.padded_vambrace" />
@@ -704,7 +729,7 @@ SHIELDS
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.western_spear_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_007" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
 				<equipment slot="Head" id="Item.militia_helmet_feather" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
@@ -712,7 +737,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.western_spear_3_t3" />
-				<equipment slot="Item1" id="Item.empire_shield_006" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Head" id="Item.worn_militia_helmet" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.padded_vambrace" />
@@ -720,7 +745,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.western_spear_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_001" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
 				<equipment slot="Head" id="Item.sallet_no_visor" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
@@ -728,7 +753,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.western_spear_3_t3" />
-				<equipment slot="Item1" id="Item.empire_shield_007" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
 				<equipment slot="Head" id="Item.peaked_helmet_over_mail" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.leather_gloves" />
@@ -736,7 +761,7 @@ SHIELDS
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.western_spear_1_t2" />
-				<equipment slot="Item1" id="Item.empire_shield_006" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
 				<equipment slot="Head" id="Item.empire_hat_001" />
 				<equipment slot="Body" id="Item.empire_free_company_armor" />
 				<equipment slot="Gloves" id="Item.padded_vambrace" />
@@ -1117,13 +1142,32 @@ SHIELDS
 				<equipment slot="Item2" id="Item.musket_ball" />
 				<equipment slot="Item3" id="Item.musket_ball" />
 				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<!-- <equipment slot="Cape" id="Item.a_battania_cloak_a" /> -->
+				<equipment slot="Cape" id="Item.southern_shawl" />
 				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.fortunas_choice" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.tow_handgun_002" />
+				<equipment slot="Item2" id="Item.musket_ball" />
+				<equipment slot="Item3" id="Item.musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Cape" id="Item.a_battania_cloak_a" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
 				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.fortunas_choice" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
+
+<!-- <EquipmentRoster>
+  <equipment slot="Item1" id="Item.empire_shield_001" />
+</EquipmentRoster> -->
+
 
 </NPCCharacters>
