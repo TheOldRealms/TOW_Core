@@ -63,6 +63,55 @@
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>
+  <!-- Genereic Bright Wizard Lord -->
+  <NPCCharacter id="wizard_lord" name="{=!}Generic Bright Wizard Lord" voice="curt" age="55" default_group="Infantry" is_hero="true" culture="Culture.empire" occupation="Lord">
+    <face>
+      <face_key_template value="BodyProperty.brightwizard" />
+      <hair_tags>
+        <hair_tag name="Bandit Hair 3" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="LongScragglyBeard" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="Commander" value="7" />
+      <Trait id="Politician" value="5" />
+      <Trait id="Manager" value="6" />
+      <Trait id="Honor" value="+1" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Generosity" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="bright_wizard_template" civilian="true" />
+      <EquipmentSet id="bright_wizard_template" />
+    </Equipments>
+  </NPCCharacter>
+  <!-- Genereic Necromancer Lord -->
+   <NPCCharacter id="necromancer_lord" name="{=!}Generic Necromancer Lord" voice="curt" age="80" default_group="Infantry" is_hero="true" culture="Culture.khuzait" occupation="Lord">
+    <face>
+      <face_key_template value="BodyProperty.warriorpriest" />
+      <beard_tags>
+        <beard_tag name="LongScragglyBeard" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="Commander" value="7" />
+      <Trait id="Politician" value="5" />
+      <Trait id="Manager" value="6" />
+      <Trait id="Honor" value="+1" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Generosity" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="necromancer_template" civilian="true" />
+      <EquipmentSet id="necromancer_template" />
+    </Equipments>
+  </NPCCharacter>
+  
+  
 	<!-- 
 	<NPCCharacter id="krell" name="{=!}Krell" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>

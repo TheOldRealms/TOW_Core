@@ -61,6 +61,11 @@ namespace TOW_Core.Abilities
             }
         }
 
+        public virtual AbilityEffectType GetAbilityEffectType()
+        {
+            return this.Template.AbilityEffectType;
+        }
+
         protected virtual bool CanCast(Agent casterAgent)
         {
             return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;

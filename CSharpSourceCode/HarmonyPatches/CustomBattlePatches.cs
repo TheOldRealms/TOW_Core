@@ -38,6 +38,8 @@ namespace TOW_Core.HarmonyPatches
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("emp_lord"));
                 //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("mannfred"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("vc_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("wizard_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("necromancer_lord"));
                 //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("krell")); 
             }
             catch (Exception e)
