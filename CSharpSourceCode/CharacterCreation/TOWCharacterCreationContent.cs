@@ -143,6 +143,11 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("SummonSkeleton");
             }
+            else if (selectedOption.OptionText == "Fresh Blood Vampire")
+            {
+                Hero.MainHero.AddAttribute("Undead");
+                Hero.MainHero.AddAttribute("VampireBodyOverride");
+            }
         }
 
         //It is important that such a method exists, because if its null, CharacterCreationMenu.ApplyFinalEffect does not apply SkillAndAttributeEffects.

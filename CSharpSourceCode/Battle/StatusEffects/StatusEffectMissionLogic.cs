@@ -23,7 +23,6 @@ namespace TOW_Core.Battle.StatusEffects
         {
             base.OnAgentCreated(agent);
             StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
-            NotifyStatusEffectTickObservers += effectComponent.OnTick;
             agent.AddComponent(effectComponent);
             if(!_presentEffects.ContainsKey("crumble") && agent.IsUndead())
             {
@@ -80,8 +79,17 @@ namespace TOW_Core.Battle.StatusEffects
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            OnTickArgs arguments = new OnTickArgs() { deltatime = dt };
-            NotifyStatusEffectTickObservers?.Invoke(this, arguments);
+            foreach(var agent in Mission.Current.AllAgents)
+            {
+                if (agent.GetComponent<StatusEffectComponent>() != null)
+                {
+                    if (agent.IsActive() && agent.Health > 0.1f)
+                    {
+                        var comp = agent.GetComponent<StatusEffectComponent>();
+                        comp.OnTick(dt);
+                    }
+                }
+            }
         }
 
         public override MissionBehaviourType BehaviourType { get; }

@@ -40,17 +40,30 @@ namespace TOW_Core.Utilities.Extensions
 
         public static bool HasAttribute(this Hero hero, string attribute)
         {
-            return hero.GetExtendedInfo().AllAttributes.Contains(attribute);
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().AllAttributes.Contains(attribute);
+            }
+            else return false;
         }
 
         public static bool HasAbility(this Hero hero, string ability)
         {
-            return hero.GetExtendedInfo().AllAbilities.Contains(ability);
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().AllAbilities.Contains(ability);
+            }
+            else return false;
         }
 
         public static bool IsSpellCaster(this Hero hero)
         {
             return hero.HasAttribute("SpellCaster");
+        }
+
+        public static bool IsUndead(this Hero hero)
+        {
+            return hero.HasAttribute("Undead");
         }
     }
 }

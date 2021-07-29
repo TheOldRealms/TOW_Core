@@ -12,6 +12,7 @@ using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.CampaignSystem;
+using System.Runtime.ExceptionServices;
 
 namespace TOW_Core.Utilities.Extensions
 {
