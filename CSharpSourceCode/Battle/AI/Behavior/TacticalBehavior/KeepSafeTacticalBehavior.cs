@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
 {
@@ -10,14 +11,19 @@ namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
 
         public override void ApplyBehavior()
         {
-            AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
+            AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 0f, 3f, 0f, 20f, 0f);
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
             var currentOrderType = GetMovementOrderType();
-
+            TOWCommon.Say(currentOrderType.ToString());
             if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
+                if (Agent.HasMount)
+                {
+                    AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
+                }
+
                 AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
                 if (ShouldAgentSkirmish())
                 {
