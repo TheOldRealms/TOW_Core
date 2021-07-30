@@ -52,7 +52,7 @@ namespace TOW_Core.Battle.Grenades
             grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
             GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
             grenadeScript.SetShooterAgent(grenade.ShooterAgent);
-            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("explosion_01"));
+            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("explosion_02"));
             grenadeEntity.CallScriptCallbacks();
         }
         private bool IsNearbyAgent(Mission.Missile missile, Agent agent)

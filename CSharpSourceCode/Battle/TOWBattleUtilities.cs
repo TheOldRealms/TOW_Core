@@ -12,7 +12,7 @@ namespace TOW_Core.Battle
 {
     public static class TOWBattleUtilities
     {
-        public static void DamageAgentsInArea(Vec2 center, float radius, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All)
+        public static void DamageAgentsInArea(Vec2 center, float radius, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
         {
             var list = new List<Agent>();
             if (targetType == TargetType.Enemy && damager != null)
@@ -27,11 +27,11 @@ namespace TOW_Core.Battle
             {
                 if(maxDamage < minDamage)
                 {
-                    agent.ApplyDamage(minDamage, damager);
+                    agent.ApplyDamage(minDamage, damager, hasShockWave: hasShockWave);
                 }
                 else
                 {
-                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager);
+                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, hasShockWave: hasShockWave);
                 }
             }
         }
