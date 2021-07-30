@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.Timers;
 using System.Xml.Schema;
 using System.Xml;
+using TaleWorlds.Core;
 using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Components;
@@ -15,7 +16,9 @@ using TOW_Core.Utilities.Extensions;
 using TOW_Core.Battle.Damage;
 using TOW_Core.Battle.TriggeredEffect;
 using TaleWorlds.Engine;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities.Scripts;
+using Timer = System.Timers.Timer;
 
 namespace TOW_Core.Abilities
 {
@@ -110,7 +113,7 @@ namespace TOW_Core.Abilities
             var frame = GetSpawnFrame(casterAgent);
 
             var entity = SpawnEntity(frame);
-
+            
             AddLight(ref entity);
 
             AddPhysics(ref entity);
@@ -119,7 +122,7 @@ namespace TOW_Core.Abilities
 
             var largeOffsetNeeded = Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
             //Honestly, we should just add the offset into the XML.
-            
+
             frame = frame.Advance(largeOffsetNeeded ? 10 : 1);
             if (largeOffsetNeeded)
             {
