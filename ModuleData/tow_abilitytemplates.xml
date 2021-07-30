@@ -8,7 +8,7 @@
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
-      Radius="1" 
+      Radius="0.4" 
       AbilityType="Spell" 
       AbilityEffectType="MovingProjectile" 
       BaseMovementSpeed="35" 
