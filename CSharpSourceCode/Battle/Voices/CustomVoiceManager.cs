@@ -6,24 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.ModuleManager;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Voices
 {
     public class CustomVoiceManager
     {
-        private readonly string ModuleName = "TOW_Core";
-        private readonly string VoicesFileName = "tow_charactervoices.xml";
+        private static string ModuleName = "TOW_Core";
+        private static string VoicesFileName = "tow_charactervoices.xml";
+        private static Dictionary<string, string> _voicesDictionary = new Dictionary<string, string>();
 
-        public CustomVoiceManager()
+        internal static string GetVoiceClassNameFor(string id)
         {
-
+            string s = null;
+            _voicesDictionary.TryGetValue(id, out s);
+            return s;
         }
 
-        public void LoadVoices()
+        public static void LoadVoices()
         {
             var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath(ModuleName), VoicesFileName, SearchOption.AllDirectories);
-            Dictionary<string, string> voicesDictionary = new Dictionary<string, string>();
             foreach (var file in files)
             {
                 XmlDocument voicesXml = new XmlDocument();
@@ -32,11 +34,9 @@ namespace TOW_Core.Battle.Voices
 
                 foreach (XmlNode character in characters)
                 {
-                    voicesDictionary.Add(character.Attributes["name"].Value, character.Attributes["voice"].Value);
+                    _voicesDictionary.Add(character.Attributes["name"].Value, character.Attributes["voice"].Value);
                 }
             }
-
-            AgentExtensions.SetVoicesDictionary(voicesDictionary);
         }
     }
 }

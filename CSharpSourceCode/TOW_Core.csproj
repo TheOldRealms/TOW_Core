@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -282,27 +282,50 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
-    <Compile Include="AttributeDataSystem\*.cs" />
+    <Compile Include="Abilities\AbilityTemplate.cs" />
+    <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
+    <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
+    <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
+    <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
+    <Compile Include="Abilities\AbilityFactory.cs" />
+    <Compile Include="Abilities\AbilityType.cs" />
+    <Compile Include="Battle\Damage\DamageType.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
+    <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
+    <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="Items\IMagicWeaponHitEffect.cs" />
+    <Compile Include="Items\MagicWeaponAgentComponent.cs" />
+    <Compile Include="Items\MagicWeaponEffect.cs" />
+    <Compile Include="Items\MagicWeaponEffectManager.cs" />
+    <Compile Include="Items\MagicWeaponEffectMissionLogic.cs" />
+    <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
+    <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
+    <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
+    <Compile Include="ObjectDataExtensions\ExtendedInfoMissionLogic.cs" />
+    <Compile Include="ObjectDataExtensions\HeroExtendedInfo.cs" />
+    <Compile Include="ObjectDataExtensions\MobilePartyExtendedInfo.cs" />
     <Compile Include="Abilities\AbilityComponent.cs" />
     <Compile Include="Abilities\AbilityHUDMissionView.cs" />
     <Compile Include="Abilities\AbilityHUD_VM.cs" />
     <Compile Include="Abilities\AbilityManagerMissionLogic.cs" />
-    <Compile Include="Abilities\BaseAbility.cs" />
-    <Compile Include="Abilities\FireBallAbilityScript.cs" />
-    <Compile Include="Abilities\FireBallAbility.cs" />
-    <Compile Include="Abilities\WindOfDeathAbility.cs" />
-    <Compile Include="Abilities\WindOfDeathAbilityScript.cs" />
+    <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\AbilityManager.cs" />
     <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
-    <Compile Include="Battle\AI\CustomAIMissionLogic.cs" />
     <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
-    <Compile Include="Battle\Extensions\AgentExtensions.cs" />
+    <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
+    <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
@@ -332,7 +355,6 @@
     <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="HarmonyPatches\CharacterCreationPatches.cs" />
     <Compile Include="HarmonyPatches\ConversationPatches.cs" />
-    <Compile Include="HarmonyPatches\CrossHairPatch.cs" />
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />
     <Compile Include="HarmonyPatches\CampaignPatches.cs" />
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
@@ -347,6 +369,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
+    <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
+    <Compile Include="Utilities\Extensions\ItemObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
     <Compile Include="Utilities\Extensions\MissionExtensions.cs" />
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />

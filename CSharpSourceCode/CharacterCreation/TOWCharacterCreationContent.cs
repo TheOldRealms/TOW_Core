@@ -12,7 +12,8 @@ using System.Xml.Serialization;
 using TaleWorlds.Library;
 using System.IO;
 using TaleWorlds.CampaignSystem.GameState;
-using TOW_Core.AttributeDataSystem;
+using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -112,8 +113,12 @@ namespace TOW_Core.CharacterCreation
                         category.AddCategoryOption(new TextObject("{=!}"+ option.OptionText), effectedSkills, attribute, FocusToAdd, SkillLevelToAdd, AttributeLevelToAdd, null, delegate(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation charInfo) 
                         {
                             OnOptionSelected(charInfo, option.Id);
+                        },
+                        delegate (TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation charInfo)
+                        {
+                            OnOptionFinalize(option.Id);
                         }, 
-                        OnFinalize, new TextObject("{=!}" + option.OptionFlavourText));
+                        new TextObject("{=!}" + option.OptionFlavourText));
                     }
                 }
             }
@@ -121,6 +126,28 @@ namespace TOW_Core.CharacterCreation
             characterCreation.AddNewMenu(stage1Menu);
             characterCreation.AddNewMenu(stage2Menu);
             characterCreation.AddNewMenu(stage3Menu);
+        }
+
+        private void OnOptionFinalize(string id)
+        {
+            var selectedOption = _options.Find(x => x.Id == id);
+            if(selectedOption.OptionText == "Bright Wizard pupil")
+            {
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAttribute("SpellCaster");
+                Hero.MainHero.AddAbility("Fireball");
+            }
+            else if (selectedOption.OptionText == "Necromancer")
+            {
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAttribute("SpellCaster");
+                Hero.MainHero.AddAbility("SummonSkeleton");
+            }
+            else if (selectedOption.OptionText == "Fresh Blood Vampire")
+            {
+                Hero.MainHero.AddAttribute("Undead");
+                Hero.MainHero.AddAttribute("VampireBodyOverride");
+            }
         }
 
         //It is important that such a method exists, because if its null, CharacterCreationMenu.ApplyFinalEffect does not apply SkillAndAttributeEffects.
@@ -167,16 +194,6 @@ namespace TOW_Core.CharacterCreation
         {
             CultureObject culture = CharacterObject.PlayerCharacter.Culture;
 
-            foreach (var option in _options)
-            {
-                if (option.OptionText == "Bright Wizard pupil")
-                {
-                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.Abilities.Add("TOW_Core.Abilities.FireBallAbility");
-                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.CharacterAttributes.Add("AbilityUser");
-                    Campaign.Current.GetCampaignBehavior<PartyAttributeManager>().GetPlayerPartyAttribute().LeaderAttribute.IsMagicUser = true;
-                }
-            }
-            
             Vec2 position2D = default(Vec2);
 
             switch (culture.StringId)

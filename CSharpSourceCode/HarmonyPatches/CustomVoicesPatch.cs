@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.ViewModelCollection;
-using TOW_Core.Battle.Extensions;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.HarmonyPatches
 {
@@ -20,7 +20,7 @@ namespace TOW_Core.HarmonyPatches
             //When the player gives an order, if they have custom voice lines, assign a new random voice definition
             //to prevent the same line being repeated over and over.
             Agent agent = Agent.Main;
-            string agentVoiceClassName = agent.GetAgentVoiceClassName();
+            string agentVoiceClassName = agent.Character.GetCustomVoiceClassName();
             if (agentVoiceClassName != null)
             {
                 agent.SetAgentVoiceByClassName(agentVoiceClassName);

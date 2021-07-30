@@ -46,7 +46,8 @@
 		<module_sound name="musket_fire_sound_5" sound_category="mission_combat" path="musket_fire5.wav" />
 		<module_sound name="fireball" sound_category="mission_ambient_3d_big" path="fireball.wav" />
 		<module_sound name="fireball_explosion" sound_category="mission_ambient_3d_big" path="fireball_explosion.wav" />
-		
+    <module_sound name="dwarf_hand_grenade_tick" sound_category="mission_combat" path="dwarf_hand_grenade_tick.wav" />
+    
 		<!-- The Old World -->
 	
     <!-- Commented out module_sounds are missing .wav files. Once a .wav is provided, make sure to also update tow_voice_definitions to point at the update module_sound's name. -->
