@@ -152,12 +152,18 @@ namespace TOW_Core.Utilities.Extensions
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (!causeStagger && agent.Health > damageAmount)
+                if (agent.Health > damageAmount)
                 {
                     agent.Health -= damageAmount;
                 }
                 else
                 {
+                    var blow = new Blow();
+                    blow.InflictedDamage = damageAmount;
+                    blow.DefenderStunPeriod = 0;
+                    //if (damager != null) blow.OwnerId = damager.Index;
+                    agent.Die(blow);
+                    /*
                     bool agentIsActive = agent.State == AgentState.Active;
                     bool agentIsRouted = agent.State == AgentState.Routed;
                     if (agentIsActive || agentIsRouted)
@@ -167,7 +173,7 @@ namespace TOW_Core.Utilities.Extensions
                         blow.DefenderStunPeriod = 0;
                         if (damager != null) blow.OwnerId = damager.Index;
                         agent.RegisterBlow(blow);
-                    }
+                    }*/
                 }
             }
             catch(Exception e)
