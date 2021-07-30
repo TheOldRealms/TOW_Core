@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
 
             var currentOrderType = GetMovementOrderType();
-            TOWCommon.Say(currentOrderType.ToString());
+            
             if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
                 AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 1f, 3f, 1f, 20f, 1f);
