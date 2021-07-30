@@ -28,8 +28,15 @@ namespace TOW_Core.Abilities
         private bool _isCasting;
         private object _sync = new object();
 
-        public string StringID { get => _stringId; }
-        public AbilityTemplate Template { get => _template; }
+        public string StringID
+        {
+            get => _stringId;
+        }
+
+        public AbilityTemplate Template
+        {
+            get => _template;
+        }
 
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
@@ -110,14 +117,15 @@ namespace TOW_Core.Abilities
 
             AddBehaviour(ref entity, casterAgent);
 
-            var offset = 1;
-            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+            var largeOffsetNeeded = Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+            //Honestly, we should just add the offset into the XML.
+            
+            frame = frame.Advance(largeOffsetNeeded ? 10 : 1);
+            if (largeOffsetNeeded)
             {
-                offset = 10;
-                frame.origin.z = (float)(casterAgent.Position.z + 0.4);
+                frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
             }
 
-            frame = frame.Advance(offset);
             entity.SetGlobalFrame(frame);
         }
 
@@ -146,10 +154,12 @@ namespace TOW_Core.Abilities
             {
                 entity = GameEntity.Instantiate(Mission.Current.Scene, Template.ParticleEffectPrefab, true);
             }
+
             if (entity == null)
             {
                 entity = GameEntity.CreateEmpty(Mission.Current.Scene);
             }
+
             return entity;
         }
 
@@ -187,6 +197,7 @@ namespace TOW_Core.Abilities
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
+
             if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
             {
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
@@ -195,6 +206,7 @@ namespace TOW_Core.Abilities
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
+
             if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
