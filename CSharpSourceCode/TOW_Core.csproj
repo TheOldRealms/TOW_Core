@@ -289,7 +289,7 @@
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\AbstractCastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\AoECastingBehavior.cs" />
+    <Compile Include="Battle\AI\Behavior\CastingBehavior\CenteredAoECastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\MissileSpellCastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\WindSpellCastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\AgentCombatBehavior.cs" />
@@ -397,6 +397,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Battle\AI\MissionLogic" />
   </ItemGroup>
   <!-- Post-Build -->
   <PropertyGroup>

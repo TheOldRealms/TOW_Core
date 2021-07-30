@@ -1,7 +1,25 @@
-﻿namespace TOW_Core.Battle.AI.Behavior
+﻿using TaleWorlds.MountAndBlade;
+
+namespace TOW_Core.Battle.AI.Behavior
 {
-    public abstract class CombatBehavior
+    public abstract class AgentCombatBehavior
     {
-        
+        protected readonly HumanAIComponent AIComponent;
+        protected readonly Agent Agent;
+
+        protected AgentCombatBehavior(Agent agent, HumanAIComponent aiComponent)
+        {
+            Agent = agent;
+            AIComponent = aiComponent;
+        }
+
+        public abstract void ApplyBehavior();
+
+        protected OrderType? GetMovementOrderType()
+        {
+            var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
+            var currentOrderType = moveOrder?.OrderType;
+            return currentOrderType;
+        }
     }
 }

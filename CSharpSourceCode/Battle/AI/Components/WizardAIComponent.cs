@@ -7,6 +7,8 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Behavior;
+using TOW_Core.Battle.AI.Behavior.TacticalBehavior;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
@@ -17,12 +19,15 @@ namespace TOW_Core.Battle.AI.Components
         public Mat3 SpellTargetRotation = Mat3.Identity;
         private Formation _targetFormation;
         private float _dtSinceLastOccasional;
+        private AgentCombatBehavior _tacticalBehavior;
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
             var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
             foreach (var item in toRemove) // This is intentional. Components is read-only
                 agent.RemoveComponent(item);
+
+            _tacticalBehavior = new KeepSafeTacticalBehavior(agent, this);
         }
 
         public override void OnTickAsAI(float dt)
@@ -30,7 +35,7 @@ namespace TOW_Core.Battle.AI.Components
             _dtSinceLastOccasional += dt;
             if (_dtSinceLastOccasional >= 1) TickOccasionally();
 
-            UpdateBehavior();
+            _tacticalBehavior.ApplyBehavior();
 
             Agent.SelectAbility(0);
             CastSpell();
@@ -43,29 +48,6 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-            TOWCommon.Say("Occasional tick");
-        }
-
-        private void UpdateBehavior()
-        {
-            SetBehaviorParams(AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
-            SetBehaviorParams(AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
-            SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 2.5f, 3f, 10f, 0.0f);
-
-            var currentOrderType = GetMovementOrderType();
-
-            if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
-            {
-                SetBehaviorParams(AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
-                if (ShouldAgentSkirmish())
-                {
-                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
-                }
-                else
-                {
-                    SetBehaviorParams(AISimpleBehaviorKind.RangedHorseback, 0.0f, 15f, 0.0f, 30f, 0.0f);
-                }
-            }
         }
 
         private void CastSpell()
@@ -136,20 +118,6 @@ namespace TOW_Core.Battle.AI.Components
             SpellTargetRotation = Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
 
-
-        private OrderType? GetMovementOrderType()
-        {
-            var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
-            var currentOrderType = moveOrder?.OrderType;
-            return currentOrderType;
-        }
-
-        private bool ShouldAgentSkirmish()
-        {
-            var querySystem = Agent?.Formation?.QuerySystem;
-            var allyPower = querySystem?.LocalAllyPower;
-            return allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2;
-        }
 
         private void CastSpellFromPosition()
         {
