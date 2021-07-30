@@ -100,17 +100,20 @@ namespace TOW_Core.Abilities
             AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
-
-            var largeOffsetNeeded = Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
-            //Honestly, we should just add the offset into the XML.
-
-            frame = frame.Advance(largeOffsetNeeded ? 10 : 1);
-            if (largeOffsetNeeded)
+            
+            frame = frame.Advance(Template.Offset);
+            
+            if (IsGroundAbility())
             {
                 frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
             }
 
             entity.SetGlobalFrame(frame);
+        }
+
+        private bool IsGroundAbility()
+        {
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
         }
 
         private MatrixFrame GetSpawnFrame(Agent casterAgent)
