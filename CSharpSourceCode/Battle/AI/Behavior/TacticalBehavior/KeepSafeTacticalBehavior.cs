@@ -9,7 +9,7 @@ namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
         {
         }
 
-        public override void ApplyBehavior()
+        public override void ApplyBehaviorParams()
         {
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 0f, 3f, 0f, 20f, 0f);
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.ChargeHorseback, 0, 7, 0, 30, 0);
@@ -19,11 +19,7 @@ namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
             TOWCommon.Say(currentOrderType.ToString());
             if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
-                if (Agent.HasMount)
-                {
-                    AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
-                }
-
+                AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 1f, 3f, 1f, 20f, 1f);
                 AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
                 if (ShouldAgentSkirmish())
                 {

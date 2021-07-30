@@ -35,7 +35,7 @@ namespace TOW_Core.Battle.AI.Components
             _dtSinceLastOccasional += dt;
             if (_dtSinceLastOccasional >= 1) TickOccasionally();
 
-            _tacticalBehavior.ApplyBehavior();
+            _tacticalBehavior.ApplyBehaviorParams();
 
             Agent.SelectAbility(0);
             CastSpell();
@@ -98,7 +98,8 @@ namespace TOW_Core.Battle.AI.Components
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
 
-            return (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
+            return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 5.2 && distance > 5.2 &&
+                   (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
         }
 

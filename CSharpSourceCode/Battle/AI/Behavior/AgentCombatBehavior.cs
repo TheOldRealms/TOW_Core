@@ -13,7 +13,7 @@ namespace TOW_Core.Battle.AI.Behavior
             AIComponent = aiComponent;
         }
 
-        public abstract void ApplyBehavior();
+        public abstract void ApplyBehaviorParams();
 
         protected OrderType? GetMovementOrderType()
         {
