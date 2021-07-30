@@ -16,6 +16,7 @@ namespace TOW_Core.Battle.AI.Components
     {
         public Mat3 SpellTargetRotation = Mat3.Identity;
         private Formation _targetFormation;
+        private float _dtSinceLastOccasional;
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
@@ -26,6 +27,9 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
+            _dtSinceLastOccasional += dt;
+            if (_dtSinceLastOccasional >= 1) TickOccasionally();
+
             UpdateBehavior();
 
             Agent.SelectAbility(0);
@@ -34,6 +38,12 @@ namespace TOW_Core.Battle.AI.Components
             CastSpell();
 
             base.OnTickAsAI(dt);
+        }
+
+        private void TickOccasionally()
+        {
+            _dtSinceLastOccasional = 0;
+            TOWCommon.Say("Occasional tick");
         }
 
         private void UpdateBehavior()
@@ -139,6 +149,40 @@ namespace TOW_Core.Battle.AI.Components
             var querySystem = Agent?.Formation?.QuerySystem;
             var allyPower = querySystem?.LocalAllyPower;
             return allyPower < 20 || allyPower < querySystem?.LocalEnemyPower / 2;
+        }
+
+        private void CastSpellFromPosition()
+        {
+            var targetFormation = Agent?.Formation?.QuerySystem.ClosestSignificantlyLargeEnemyFormation?.Formation;
+
+            var targetFormationDirection = new Vec2(targetFormation.Direction.x, targetFormation.Direction.y);
+            targetFormationDirection.RotateCCW(1.57f);
+            targetFormationDirection = targetFormationDirection * (targetFormation.Width / 1.45f);
+            targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
+
+            var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
+            var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
+            Agent.SetScriptedPosition(ref worldPosition, false);
+
+            if (targetFormation != null)
+            {
+                var medianAgent = targetFormation.GetMedianAgent(
+                    true,
+                    true,
+                    targetFormation.GetAveragePositionOfUnits(true, true)
+                );
+
+                //   var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 60 : 25;
+
+                if (medianAgent != null && Agent.Position.AsVec2.Distance(castingPosition.AsVec2) < 3)
+                {
+                    var targetPosition = medianAgent.Position;
+                    targetPosition.z += -2;
+
+                    CalculateSpellRotation(targetPosition);
+                    Agent.CastCurrentAbility();
+                }
+            }
         }
     }
 }
