@@ -67,6 +67,10 @@ namespace TOW_Core.Abilities
         public float CastTime = 0;
         [XmlAttribute]
         public string AnimationActionName = "";
+        [XmlAttribute]
+        public AbilityTargetType AbilityTargetType = AbilityTargetType.Enemies;
+        [XmlAttribute]
+        public float Offset = 1.0f;
 
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;

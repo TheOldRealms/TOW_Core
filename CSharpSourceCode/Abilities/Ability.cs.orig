@@ -1,10 +1,18 @@
 ﻿using System;
 using TaleWorlds.MountAndBlade;
 using System.Timers;
+<<<<<<< HEAD
+using System.Xml.Schema;
+using System.Xml;
+using TaleWorlds.Core;
+using TOW_Core.ObjectDataExtensions;
+=======
+>>>>>>> development
 using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
 
@@ -19,8 +27,15 @@ namespace TOW_Core.Abilities
         private bool _isCasting;
         private object _sync = new object();
 
-        public string StringID { get => _stringId; }
-        public AbilityTemplate Template { get => _template; }
+        public string StringID
+        {
+            get => _stringId;
+        }
+
+        public AbilityTemplate Template
+        {
+            get => _template;
+        }
 
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
@@ -94,16 +109,25 @@ namespace TOW_Core.Abilities
             var frame = GetSpawnFrame(casterAgent);
 
             var entity = SpawnEntity(frame);
-
+            
             AddLight(ref entity);
 
             AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
+<<<<<<< HEAD
+
+            var largeOffsetNeeded = Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+            //Honestly, we should just add the offset into the XML.
+
+            frame = frame.Advance(largeOffsetNeeded ? 10 : 1);
+            if (largeOffsetNeeded)
+=======
             
             frame = frame.Advance(Template.Offset);
             
             if (IsGroundAbility())
+>>>>>>> development
             {
                 frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
             }
