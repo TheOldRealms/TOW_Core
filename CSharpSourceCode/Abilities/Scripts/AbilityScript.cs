@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -12,15 +9,16 @@ namespace TOW_Core.Abilities.Scripts
 {
     public abstract class AbilityScript : ScriptComponentBehaviour
     {
-        private Ability _ability;
+        protected Ability _ability;
         private int _soundIndex;
         private SoundEvent _sound;
-        private Agent _casterAgent;
+        protected Agent _casterAgent;
         private float _abilityLife = -1;
         private bool _isFading;
         private float _timeSinceLastTick = 0;
         private bool _hasCollided;
         private bool _hasTickedOnce;
+        protected Vec3 _previousFrameOrigin;
 
         internal void SetAgent(Agent agent)
         {
@@ -95,6 +93,7 @@ namespace TOW_Core.Abilities.Scripts
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
         {
+            _previousFrameOrigin = oldFrame.origin;
             return oldFrame.Advance(_ability.Template.BaseMovementSpeed * dt);
         }
 
@@ -121,7 +120,7 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        private bool CollidedWithAgent()
+        protected virtual bool CollidedWithAgent()
         {
             var collisionRadius = _ability.Template.Radius + 1;
             return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius, true)
