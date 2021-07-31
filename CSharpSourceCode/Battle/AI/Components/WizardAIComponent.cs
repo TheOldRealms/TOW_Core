@@ -58,9 +58,6 @@ namespace TOW_Core.Battle.AI.Components
             if (newBehavior != CurrentCastingBehavior) CurrentCastingBehavior?.Terminate();
             CurrentCastingBehavior = newBehavior;
             Agent.SelectAbility(CurrentCastingBehavior.AbilityIndex);
-            
-            TOWCommon.Say(CurrentCastingBehavior.GetType().Name);
-            TOWCommon.Say(Agent.GetCurrentAbility().StringID);
         }
 
 

@@ -25,7 +25,9 @@ namespace TOW_Core.Abilities.Scripts
         {
             _casterAgent = agent;
         }
+
         protected override bool MovesEntity() => true;
+
         protected virtual bool ShouldMove()
         {
             return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE;
@@ -63,16 +65,17 @@ namespace TOW_Core.Abilities.Scripts
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
+
             UpdateLifeTime(dt);
             UpdateSound(frame.origin);
 
-            if (_ability.Template.TriggerType == TriggerType.EveryTick &&_timeSinceLastTick > _ability.Template.TickInterval)
+            if (_ability.Template.TriggerType == TriggerType.EveryTick && _timeSinceLastTick > _ability.Template.TickInterval)
             {
                 _timeSinceLastTick = 0;
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
                 _hasTickedOnce = true;
             }
-            else if(_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
+            else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
             {
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
                 _hasTickedOnce = true;
@@ -88,6 +91,7 @@ namespace TOW_Core.Abilities.Scripts
                 GameEntity.SetGlobalFrame(newframe);
                 GameEntity.GetBodyShape().ManualInvalidate();
             }
+
             frame = GameEntity.GetGlobalFrame();
             return frame;
         }
@@ -142,7 +146,6 @@ namespace TOW_Core.Abilities.Scripts
         {
             if (!_hasCollided)
             {
-                TOWCommon.Say("Collided");
                 GameEntity.FadeOut(0.05f, true);
                 _isFading = true;
                 TriggerEffect(position, normal);
@@ -153,7 +156,7 @@ namespace TOW_Core.Abilities.Scripts
         private void TriggerEffect(Vec3 position, Vec3 normal)
         {
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
-            if(effect != null)
+            if (effect != null)
             {
                 effect.Trigger(position, normal, _casterAgent);
             }
