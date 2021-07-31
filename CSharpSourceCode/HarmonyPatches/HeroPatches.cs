@@ -22,7 +22,7 @@ namespace TOW_Core.HarmonyPatches
                 try
                 {
                     StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
-                    __result = new BodyProperties(new DynamicBodyProperties(19, __instance.Weight, __instance.Build), staticBodyProperties);
+                    __result = new BodyProperties(new DynamicBodyProperties(13, __instance.Weight, __instance.Build), staticBodyProperties);
                 }
                 catch(Exception e)
                 {
