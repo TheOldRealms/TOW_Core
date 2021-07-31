@@ -2,17 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.StatusEffects;
-using TOW_Core.Utilities;
-using TOW_Core.Utilities.Extensions;
 using TaleWorlds.CampaignSystem;
-using System.Runtime.ExceptionServices;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -90,6 +84,17 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
+        public static Ability GetAbility(this Agent agent, int abilityindex)
+        {
+            var abilitycomponent = agent.GetComponent<AbilityComponent>();
+            if (abilitycomponent != null)
+            {
+                return abilitycomponent.GetAbility(abilityindex);
+            }
+            return null;
+        }
+
+        
         public static Hero GetHero(this Agent agent)
         {
             if (agent.Character == null) return null;

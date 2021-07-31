@@ -14,12 +14,16 @@ namespace TOW_Core.Abilities
         private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
 
-        public Ability CurrentAbility { get => _currentAbility; set => _currentAbility = value; }
+        public Ability CurrentAbility
+        {
+            get => _currentAbility;
+            set => _currentAbility = value;
+        }
 
         public AbilityComponent(Agent agent) : base(agent)
         {
             var abilities = agent.GetAbilities();
-            if(abilities.Count > 0)
+            if (abilities.Count > 0)
             {
                 foreach (var item in abilities)
                 {
@@ -40,6 +44,7 @@ namespace TOW_Core.Abilities
                         TOWCommon.Log("Failed instantiating ability class: " + item, LogLevel.Error);
                     }
                 }
+
                 if (_knownAbilities.Count > 0)
                 {
                     SelectAbility(0);
@@ -64,6 +69,16 @@ namespace TOW_Core.Abilities
         public List<AbilityTemplate> GetKnownAbilityTemplates()
         {
             return _knownAbilities.ConvertAll(ability => ability.Template);
+        }
+
+        public Ability GetAbility(int index)
+        {
+            if (_knownAbilities.Count > 0 && index >= 0)
+            {
+                return _knownAbilities[index % _knownAbilities.Count];
+            }
+
+            return null;
         }
     }
 }

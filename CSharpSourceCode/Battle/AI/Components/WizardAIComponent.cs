@@ -53,8 +53,14 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-            CurrentCastingBehavior = CastingDecisionManager.ChooseCastingBehavior(Agent, this);
+            
+            var newBehavior = CastingDecisionManager.ChooseCastingBehavior(Agent, this);
+            if (newBehavior != CurrentCastingBehavior) CurrentCastingBehavior?.Terminate();
+            CurrentCastingBehavior = newBehavior;
             Agent.SelectAbility(CurrentCastingBehavior.AbilityIndex);
+            
+            TOWCommon.Say(CurrentCastingBehavior.GetType().Name);
+            TOWCommon.Say(Agent.GetCurrentAbility().StringID);
         }
 
 

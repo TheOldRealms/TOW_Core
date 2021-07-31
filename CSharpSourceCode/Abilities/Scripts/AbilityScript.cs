@@ -4,6 +4,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Scripts
 {
@@ -141,6 +142,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             if (!_hasCollided)
             {
+                TOWCommon.Say("Collided");
                 GameEntity.FadeOut(0.05f, true);
                 _isFading = true;
                 TriggerEffect(position, normal);

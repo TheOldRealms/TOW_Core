@@ -4,6 +4,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
@@ -62,8 +63,9 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
             targetPosition += velocity;
             targetPosition.z += -2f;
-
-            CalculateSpellRotation(targetPosition);
+            
+            var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
+            wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
         }
 
@@ -87,6 +89,10 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         protected Mat3 CalculateSpellRotation(Vec3 targetPosition)
         {
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
+        }
+
+        public virtual void Terminate()
+        {
         }
     }
 }

@@ -17,9 +17,14 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 
-            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 3) return;
+            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 4) return;
 
             base.Execute();
+        }
+
+        public override void Terminate()
+        {
+            Agent.DisableScriptedMovement();
         }
 
         protected override bool HaveLineOfSightToAgent(Agent targetAgent)
@@ -30,7 +35,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         private static Vec3 CalculateCastingPosition(Formation targetFormation)
         {
             var targetFormationDirection = new Vec2(targetFormation.Direction.x, targetFormation.Direction.y);
-            targetFormationDirection.RotateCCW(1.57f);
+            targetFormationDirection.RotateCCW(1.63f);
             targetFormationDirection = targetFormationDirection * (targetFormation.Width / 1.45f);
             targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
 
