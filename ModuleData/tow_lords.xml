@@ -51,7 +51,7 @@
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
 				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+				<!--<equipment slot="Head" id="Item.vampire_lord_helmet_001" />-->
 				<equipment slot="Body" id="Item.vampire_lord_body_001" />
 				<equipment slot="Cape" id="Item.vampire_lord_cape" />
 				<equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />

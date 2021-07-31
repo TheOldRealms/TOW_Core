@@ -64,14 +64,14 @@
     <!-- <module_sound name="/voice/combat/malevampire/01/climb" is_2d="true" sound_category="mission_foley" path= /> -->
     <!-- <module_sound name="/voice/combat/malevampire/01/focus" is_2d="true" sound_category="mission_foley" path= /> -->
     <!-- <module_sound name="/voice/combat/malevampire/01/debacle" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/01/victory" is_2d="true" sound_category="mission_foley" path= /> -->
+    <module_sound name="/voice/combat/malevampire/01/victory" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_advance_04.wav" />
     <!-- <module_sound name="/voice/combat/malevampire/01/horse_rally" is_2d="true" sound_category="mission_foley" path= /> -->
     <!-- <module_sound name="/voice/combat/malevampire/01/horse_stop" is_2d="true" sound_category="mission_foley" path= /> -->
 
     <module_sound name="/voice/combat/malevampire/01/commands/infantry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_infantry_01.wav" />
     <module_sound name="/voice/combat/malevampire/01/commands/cavalry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_cavalry_01.wav" />
     <module_sound name="/voice/combat/malevampire/01/commands/archers" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_archers_01.wav" />
-    <!--<module_sound name="/voice/combat/malevampire/01/commands/everyone" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_everyone_01.wav" />-->
+    <module_sound name="/voice/combat/malevampire/01/commands/everyone" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_charge_06.wav" />
     <module_sound name="/voice/combat/malevampire/01/commands/horse_archers" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_horse_archers_01.wav" />
 
     <module_sound name="event:/voice/combat/malevampire/01/commands/charge" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_charge_01.wav" />
@@ -95,29 +95,15 @@
     <module_sound name="/voice/combat/malevampire/01/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_01.wav" />
     <module_sound name="/voice/combat/malevampire/01/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_01.wav" />
 	
-	<module_sound name="/module_sound/combat/male/01/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_01.wav" />
-    <module_sound name="/module_sound/combat/male/01/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_01.wav" />
-	
-	
-	<!-- <module_sound name="/voice/combat/malevampire/02/grunt" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_grunt_02.wav" /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/jump" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/yell" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/pain" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/death" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/stun" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/fear" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/climb" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/focus" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/debacle" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/victory" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/horse_rally" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/02/horse_stop" is_2d="true" sound_category="mission_foley" path= /> -->
+	<module_sound name="/module_sound/combat/malevampire/01/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_01.wav" />
+    <module_sound name="/module_sound/combat/malevampire/01/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_01.wav" />
+
 
 	<module_sound name="/voice/combat/malevampire/02/commands/infantry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_infantry_02.wav" />
     <module_sound name="/voice/combat/malevampire/02/commands/cavalry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_cavalry_02.wav" />
@@ -146,28 +132,15 @@
     <module_sound name="/voice/combat/malevampire/02/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_02.wav" />
     <module_sound name="/voice/combat/malevampire/02/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_02.wav" />
 	
-	<module_sound name="/module_sound/combat/male/02/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_02.wav" />
-    <module_sound name="/module_sound/combat/male/02/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_02.wav" />
+	<module_sound name="/module_sound/combat/malevampire/02/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_02.wav" />
+    <module_sound name="/module_sound/combat/malevampire/02/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_02.wav" />
 	
-	<!-- <module_sound name="/voice/combat/malevampire/03/grunt" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_grunt_03.wav" /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/jump" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/yell" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/pain" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/death" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/stun" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/fear" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/climb" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/focus" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/debacle" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/victory" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/horse_rally" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/03/horse_stop" is_2d="true" sound_category="mission_foley" path= /> -->
 
 	<module_sound name="/voice/combat/malevampire/03/commands/infantry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_infantry_03.wav" />
     <module_sound name="/voice/combat/malevampire/03/commands/cavalry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_cavalry_03.wav" />
@@ -196,14 +169,14 @@
     <module_sound name="/voice/combat/malevampire/03/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_03.wav" />
     <module_sound name="/voice/combat/malevampire/03/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_03.wav" />
 	
-	<module_sound name="/module_sound/combat/male/03/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_03.wav" />
-    <module_sound name="/module_sound/combat/male/03/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_03.wav" />
+	<module_sound name="/module_sound/combat/malevampire/03/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_03.wav" />
+    <module_sound name="/module_sound/combat/malevampire/03/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_03.wav" />
 	
 	<!-- <module_sound name="/voice/combat/malevampire/04/grunt" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_grunt_04.wav" /> -->
     <!-- <module_sound name="/voice/combat/malevampire/04/jump" is_2d="true" sound_category="mission_foley" path= /> -->
@@ -246,28 +219,15 @@
     <module_sound name="/voice/combat/malevampire/04/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_01.wav" />
     <module_sound name="/voice/combat/malevampire/04/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_04.wav" />
 	
-	<module_sound name="/module_sound/combat/male/04/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_04.wav" />
-    <module_sound name="/module_sound/combat/male/04/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_04.wav" />
+	<module_sound name="/module_sound/combat/malevampire/04/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_04.wav" />
+    <module_sound name="/module_sound/combat/malevampire/04/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_04.wav" />
 	
-	<!-- <module_sound name="/voice/combat/malevampire/05/grunt" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_grunt_05.wav" /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/jump" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/yell" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/pain" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/death" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/stun" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/fear" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/climb" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/focus" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/debacle" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/victory" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/horse_rally" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/05/horse_stop" is_2d="true" sound_category="mission_foley" path= /> -->
 
 	<module_sound name="/voice/combat/malevampire/05/commands/infantry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_infantry_05.wav" />
     <module_sound name="/voice/combat/malevampire/05/commands/cavalry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_cavalry_05.wav" />
@@ -296,28 +256,15 @@
     <module_sound name="/voice/combat/malevampire/05/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_02.wav" />
     <module_sound name="/voice/combat/malevampire/05/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_05.wav" />
 	
-	<module_sound name="/module_sound/combat/male/05/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_05.wav" />
-    <module_sound name="/module_sound/combat/male/05/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_05.wav" />
+	<module_sound name="/module_sound/combat/malevampire/05/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_05.wav" />
+    <module_sound name="/module_sound/combat/malevampire/05/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_05.wav" />
 	
-	<!-- <module_sound name="/voice/combat/malevampire/06/grunt" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_grunt_06.wav" /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/jump" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/yell" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/pain" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/death" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/stun" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/fear" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/climb" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/focus" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/debacle" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/victory" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/horse_rally" is_2d="true" sound_category="mission_foley" path= /> -->
-    <!-- <module_sound name="/voice/combat/malevampire/06/horse_stop" is_2d="true" sound_category="mission_foley" path= /> -->
 
 	<module_sound name="/voice/combat/malevampire/06/commands/infantry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_infantry_06.wav" />
     <module_sound name="/voice/combat/malevampire/06/commands/cavalry" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_cavalry_06.wav" />
@@ -346,14 +293,14 @@
     <module_sound name="/voice/combat/malevampire/06/commands/delegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_on_03.wav" />
     <module_sound name="/voice/combat/malevampire/06/commands/undelegate" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_delegate_off_06.wav" />
 	
-	<module_sound name="/module_sound/combat/male/06/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_06.wav" />
-    <module_sound name="/module_sound/combat/male/06/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_06.wav" />
+	<module_sound name="/module_sound/combat/malevampire/06/commands/formations/circle" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_circle_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/column" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_column_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/line" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_line_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/loose" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_loose_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/scatter" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_scatter_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/shield_wall" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_shield_wall_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/skein" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_skein_06.wav" />
+    <module_sound name="/module_sound/combat/malevampire/06/commands/formations/square" is_2d="true" sound_category="mission_foley" path="../../TOW_Core/ModuleSounds/VampireCounts/delvamp_sqaure_06.wav" />
 	
 	
 	<!--******** SKELETON ********-->

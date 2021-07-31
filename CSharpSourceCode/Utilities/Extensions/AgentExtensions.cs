@@ -161,19 +161,7 @@ namespace TOW_Core.Utilities.Extensions
                     var blow = new Blow();
                     blow.InflictedDamage = damageAmount;
                     blow.DefenderStunPeriod = 0;
-                    //if (damager != null) blow.OwnerId = damager.Index;
                     agent.Die(blow);
-                    /*
-                    bool agentIsActive = agent.State == AgentState.Active;
-                    bool agentIsRouted = agent.State == AgentState.Routed;
-                    if (agentIsActive || agentIsRouted)
-                    {
-                        var blow = new Blow();
-                        blow.InflictedDamage = damageAmount;
-                        blow.DefenderStunPeriod = 0;
-                        if (damager != null) blow.OwnerId = damager.Index;
-                        agent.RegisterBlow(blow);
-                    }*/
                 }
             }
             catch(Exception e)
