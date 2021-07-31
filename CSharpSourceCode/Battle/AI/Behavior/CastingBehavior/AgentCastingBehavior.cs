@@ -33,7 +33,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             AbilityTemplate = abilityTemplate;
         }
 
-        public void Execute()
+        public virtual void Execute()
         {
             if (Agent.GetCurrentAbility().IsOnCooldown()) return;
 
@@ -50,14 +50,14 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             }
         }
 
-        private void CastSpellAtAgent(Agent targetAgent)
+        protected void CastSpellAtAgent(Agent targetAgent)
         {
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
 
             var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().Template.Name == "Fireball")
+            if (Agent.GetCurrentAbility().GetAbilityEffectType() == AbilityEffectType.MovingProjectile)
             {
-                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
+                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent);
             }
 
             targetPosition += velocity;
@@ -67,13 +67,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             Agent.CastCurrentAbility();
         }
 
-        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent, float spellSpeed)
-        {
-            var time = targetAgent.Position.Distance(Agent.Position) / spellSpeed;
-            return targetAgent.Velocity * time;
-        }
-
-        private bool HaveLineOfSightToAgent(Agent targetAgent)
+        protected virtual bool HaveLineOfSightToAgent(Agent targetAgent)
         {
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
@@ -81,6 +75,12 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 1 && (distance is Single.NaN || distance > 1) &&
                    (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
+        }
+
+        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent)
+        {
+            var time = targetAgent.Position.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
+            return targetAgent.Velocity * time;
         }
 
 
