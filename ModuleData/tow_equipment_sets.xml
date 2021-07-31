@@ -58,6 +58,8 @@
 				</EquipmentSet>
   </EquipmentRoster>
 
+<<<<<<< Updated upstream
+=======
   <EquipmentRoster id="necromancer_template"
                  culture="Culture.khuzait">
     <EquipmentSet>
@@ -77,6 +79,27 @@
       <Equipment slot="Leg" id="vc_necromancer_boots" />
     </EquipmentSet>
   </EquipmentRoster>
+  
+  <EquipmentRoster id="vampire_template"
+                 culture="Culture.khuzait">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="vampire_sword_001" />
+      <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+      <Equipment slot="Body" id="Item.vampire_lord_body_001" />
+      <Equipment slot="Cape" id="Item.vampire_lord_cape" />
+      <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+      <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="vampire_sword_001" />
+      <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+      <Equipment slot="Body" id="Item.vampire_lord_body_001" />
+      <Equipment slot="Cape" id="Item.vampire_lord_cape" />
+      <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+      <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
 
 
+>>>>>>> Stashed changes
 </EquipmentRosters>
