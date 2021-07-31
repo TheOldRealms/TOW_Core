@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -8,7 +10,9 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Behavior;
+using TOW_Core.Battle.AI.Behavior.CastingBehavior;
 using TOW_Core.Battle.AI.Behavior.TacticalBehavior;
+using TOW_Core.Battle.AI.Decision.CastingDecision;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
@@ -16,10 +20,13 @@ namespace TOW_Core.Battle.AI.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
-        public Mat3 SpellTargetRotation = Mat3.Identity;
-        private Formation _targetFormation;
-        private float _dtSinceLastOccasional;
+        private const float EvalInterval = 1;
+        private float _dtSinceLastOccasional = EvalInterval;
         private AgentCombatBehavior _tacticalBehavior;
+
+        public Mat3 SpellTargetRotation = Mat3.Identity;
+        public AgentCastingBehavior CurrentCastingBehavior;
+        public List<AgentCastingBehavior> AvailableCastingBehaviors { get; }
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
@@ -28,19 +35,17 @@ namespace TOW_Core.Battle.AI.Components
                 agent.RemoveComponent(item);
 
             _tacticalBehavior = new KeepSafeTacticalBehavior(agent, this);
+            AvailableCastingBehaviors = PrepareCastingBehaviors(agent, this);
         }
+
 
         public override void OnTickAsAI(float dt)
         {
             _dtSinceLastOccasional += dt;
-            if (_dtSinceLastOccasional >= 1) TickOccasionally();
+            if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
             _tacticalBehavior.ApplyBehaviorParams();
-
-            Agent.SelectAbility(0);
-            CastSpell();
-            Agent.SelectAbility(1);
-            CastSpell();
+            CurrentCastingBehavior?.Execute();
 
             base.OnTickAsAI(dt);
         }
@@ -48,110 +53,22 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
+            CurrentCastingBehavior = CastingDecisionManager.ChooseCastingBehavior(Agent, this);
+            Agent.SelectAbility(CurrentCastingBehavior.AbilityIndex);
         }
 
-        private void CastSpell()
+
+        private static List<AgentCastingBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
         {
-            if (Agent.GetCurrentAbility().IsOnCooldown()) return;
-
-            var formation = ChooseTargetFormation();
-
-            if (formation == null) return;
-
-            var medianAgent = formation.GetMedianAgent(true, false, formation.GetAveragePositionOfUnits(true, false));
-            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility.Template.Name == "Fireball" ? 80 : 27;
-
-            if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
+            var castingBehaviors = new List<AgentCastingBehavior>();
+            var index = 0;
+            foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
             {
-                if (HaveLineOfSightToAgent(medianAgent))
-                {
-                    CastSpellAtAgent(medianAgent);
-                }
-            }
-        }
-
-        private void CastSpellAtAgent(Agent targetAgent)
-        {
-            var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
-
-            var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().Template.Name == "Fireball")
-            {
-                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent, 35);
+                castingBehaviors.Add(AgentCastingBehavior.CastingBehaviorsByAbilityEffect[knownAbilityTemplate.AbilityEffectType].Invoke(agent, index, knownAbilityTemplate));
+                index++;
             }
 
-            targetPosition += velocity;
-            targetPosition.z += -2f;
-
-            CalculateSpellRotation(targetPosition);
-            Agent.CastCurrentAbility();
-        }
-
-        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent, float spellSpeed)
-        {
-            var time = targetAgent.Position.Distance(Agent.Position) / spellSpeed;
-            return targetAgent.Velocity * time;
-        }
-
-        private bool HaveLineOfSightToAgent(Agent targetAgent)
-        {
-            Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
-            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
-            TOWCommon.Say(distance.ToString());
-            return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 1 && (distance is Single.NaN || distance > 1) &&
-                   (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
-                   (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
-        }
-
-        private Formation ChooseTargetFormation()
-        {
-            var formation = Agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
-            if (formation != null && (_targetFormation == null || !formation.HasPlayer || formation.Distance < _targetFormation.Distance && formation.Distance < 15 || _targetFormation.GetFormationPower() < 15))
-            {
-                _targetFormation = formation;
-            }
-
-            return _targetFormation;
-        }
-
-        private void CalculateSpellRotation(Vec3 targetPosition)
-        {
-            SpellTargetRotation = Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
-        }
-
-
-        private void CastSpellFromPosition()
-        {
-            var targetFormation = Agent?.Formation?.QuerySystem.ClosestSignificantlyLargeEnemyFormation?.Formation;
-
-            var targetFormationDirection = new Vec2(targetFormation.Direction.x, targetFormation.Direction.y);
-            targetFormationDirection.RotateCCW(1.57f);
-            targetFormationDirection = targetFormationDirection * (targetFormation.Width / 1.45f);
-            targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
-
-            var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
-            var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
-            Agent.SetScriptedPosition(ref worldPosition, false);
-
-            if (targetFormation != null)
-            {
-                var medianAgent = targetFormation.GetMedianAgent(
-                    true,
-                    true,
-                    targetFormation.GetAveragePositionOfUnits(true, true)
-                );
-
-                //   var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility is FireBallAbility ? 60 : 25;
-
-                if (medianAgent != null && Agent.Position.AsVec2.Distance(castingPosition.AsVec2) < 3)
-                {
-                    var targetPosition = medianAgent.Position;
-                    targetPosition.z += -2;
-
-                    CalculateSpellRotation(targetPosition);
-                    Agent.CastCurrentAbility();
-                }
-            }
+            return castingBehaviors;
         }
     }
 }

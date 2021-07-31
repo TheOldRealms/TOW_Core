@@ -1,6 +1,7 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -58,6 +59,11 @@ namespace TOW_Core.Abilities
         public void SelectNextAbility()
         {
             SelectAbility(_currentAbilityIndex + 1);
+        }
+
+        public List<AbilityTemplate> GetKnownAbilityTemplates()
+        {
+            return _knownAbilities.ConvertAll(ability => ability.Template);
         }
     }
 }

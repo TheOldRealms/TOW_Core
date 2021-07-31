@@ -1,6 +1,6 @@
 ﻿using TaleWorlds.MountAndBlade;
 
-namespace TOW_Core.Battle.AI.Behavior
+namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
 {
     public abstract class AgentCombatBehavior
     {
