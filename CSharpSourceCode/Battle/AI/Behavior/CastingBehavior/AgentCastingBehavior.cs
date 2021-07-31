@@ -18,15 +18,19 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
                 {AbilityEffectType.DirectionalMovingAOE, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoECastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
 
-
+        public int Range;
+        public readonly AbilityTemplate AbilityTemplate;
         protected readonly Agent Agent;
         public readonly int AbilityIndex;
         public Formation TargetFormation;
+
 
         protected AgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
             Agent = agent;
             AbilityIndex = abilityIndex;
+            Range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
+            AbilityTemplate = abilityTemplate;
         }
 
         public void Execute()
@@ -36,9 +40,8 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             if (TargetFormation == null) return;
 
             var medianAgent = TargetFormation.GetMedianAgent(true, false, TargetFormation.GetAveragePositionOfUnits(true, false));
-            var requiredDistance = Agent.GetComponent<AbilityComponent>().CurrentAbility.Template.Name == "Fireball" ? 80 : 27;
 
-            if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < requiredDistance)
+            if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < Range)
             {
                 if (HaveLineOfSightToAgent(medianAgent))
                 {
@@ -74,7 +77,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         {
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
-            
+
             return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 1 && (distance is Single.NaN || distance > 1) &&
                    (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);

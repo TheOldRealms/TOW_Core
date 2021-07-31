@@ -8,8 +8,8 @@ namespace TOW_Core.Battle.AI.Decision.CastingDecision
     {
         public static AgentCastingBehavior ChooseCastingBehavior(Agent agent, WizardAIComponent component)
         {
-            var chosenCastingBehavior = component.CurrentCastingBehavior;
-            chosenCastingBehavior.TargetFormation = ChooseTargetFormation(agent, component.CurrentCastingBehavior.TargetFormation);
+            var chosenCastingBehavior = component.AvailableCastingBehaviors[0];
+            chosenCastingBehavior.TargetFormation = ChooseTargetFormation(agent, component.CurrentCastingBehavior?.TargetFormation);
             return chosenCastingBehavior;
         }
 
