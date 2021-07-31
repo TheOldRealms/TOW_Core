@@ -21,17 +21,17 @@ namespace TOW_Core.Utilities.Extensions
         /// <summary>
         /// Maps all character IDs to a list of attributes for that character. For example, <"skeleton_warrior" <=> {"Expendable", "Undead"}>
         /// </summary>
-        
+
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-        
+
         public static bool IsHuman(this Agent agent)
         {
             return agent.GetAttributes().Contains("Human");
         }
-        
+
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
@@ -55,10 +55,10 @@ namespace TOW_Core.Utilities.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
-           
-            if(abilitycomponent != null)
+
+            if (abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
+                if (abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
         }
 
@@ -94,7 +94,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             if (agent.Character == null) return null;
             Hero hero = null;
-            if(Game.Current.GameType is Campaign)
+            if (Game.Current.GameType is Campaign)
             {
                 var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
                 if (list != null && list.Count() > 0)
@@ -142,7 +142,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="causeStagger">A flag that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool causeStagger = true)
+        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool causeStagger = true, bool hasShockWave = false)
         {
             if (agent == null)
             {
@@ -152,31 +152,30 @@ namespace TOW_Core.Utilities.Extensions
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (agent.Health > damageAmount)
-                {
-                    agent.Health -= damageAmount;
-                }
-                else
+                if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
                     var blow = new Blow();
                     blow.InflictedDamage = damageAmount;
                     blow.DefenderStunPeriod = 0;
-                    //if (damager != null) blow.OwnerId = damager.Index;
-                    agent.Die(blow);
-                    /*
-                    bool agentIsActive = agent.State == AgentState.Active;
-                    bool agentIsRouted = agent.State == AgentState.Routed;
-                    if (agentIsActive || agentIsRouted)
+                    if (hasShockWave)
                     {
-                        var blow = new Blow();
-                        blow.InflictedDamage = damageAmount;
-                        blow.DefenderStunPeriod = 0;
-                        if (damager != null) blow.OwnerId = damager.Index;
+                        if (agent.HasMount)
+                            blow.BlowFlag = BlowFlags.CanDismount;
+                        else
+                            blow.BlowFlag = BlowFlags.KnockDown;
+                    }
+                    if (damager != null) blow.OwnerId = damager.Index;
+                    if (agent.Health > damageAmount)
+                    {
                         agent.RegisterBlow(blow);
-                    }*/
+                    }
+                    else
+                    {
+                        agent.Die(blow);
+                    }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
