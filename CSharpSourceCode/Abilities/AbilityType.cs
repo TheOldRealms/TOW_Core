@@ -28,7 +28,8 @@ namespace TOW_Core.Abilities
     {
         Self,
         Enemies,
-        Allies
+        Allies,
+        All
     }
 
     public enum CastType

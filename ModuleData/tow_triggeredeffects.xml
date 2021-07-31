@@ -15,6 +15,20 @@
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
+      StringID="dart_explosion" 
+      BurstParticleEffectPrefab="dart_explosion" 
+      SoundEffectId="dart_explosion" 
+      SoundEffectLength="2.5" 
+      DamageType="Magical" 
+      DamageAmount="50" 
+      Radius="5" 
+      TargetType="All" 
+      ImbuedStatusEffectID="none" 
+      ImbuedStatusEffectDuration="5" 
+      DamageVariance="0.2" 
+      ScriptNameToTrigger="none">
+      </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate 
         StringID="wind_of_death_tick" 
         BurstParticleEffectPrefab="none" 
         SoundEffectId="none" 

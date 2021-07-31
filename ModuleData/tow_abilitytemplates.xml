@@ -108,4 +108,39 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="Dart" 
+      Name="Dart" 
+      SpriteName="fireball_icon" 
+      CoolDown="2" 
+      WindsOfMagicCost="3" 
+      BaseMisCastChance="0.05" 
+      Duration="3" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="MovingProjectile" 
+      BaseMovementSpeed="35" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="3" 
+      LightFlickeringInterval="0.7" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="dart_particle" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dart" 
+      ShouldSoundLoopOverDuration="true" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="dart_explosion">
+      <LightColorRGB x="0" y="204" z="255" w="-1">
+        <AsVec2>
+          <y>204</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
 </ArrayOfAbilityTemplate>

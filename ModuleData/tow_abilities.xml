@@ -5,6 +5,7 @@
 		<Abilities>Fireball</Abilities>
 		<Abilities>WindOfDeath</Abilities>
 		<Abilities>SummonSkeleton</Abilities>
+    <Abilities>Dart</Abilities>
 	</CharacterAbilityTuple>
 	<CharacterAbilityTuple CharacterID="vc_lord">
 		<Abilities>Fireball</Abilities>
