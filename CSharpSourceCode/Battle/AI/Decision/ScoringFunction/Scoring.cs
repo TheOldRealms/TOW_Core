@@ -24,17 +24,4 @@ namespace TOW_Core.Battle.AI.Decision.ScoringFunction
             return aggregate / axes.Count;
         }
     }
-
-    public static class ScoringBehavior
-    {
-        public static AgentCastingBehavior Highest(List<AgentCastingBehavior> behaviors)
-        {
-            return behaviors.MaxBy(behavior => behavior.LatestScore);
-        }
-
-        public static double WeightedRandom(List<AgentCastingBehavior> behaviors)
-        {
-            throw new NotImplementedException("Weighted random not implemented!");
-        }
-    }
 }

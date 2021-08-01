@@ -297,9 +297,10 @@
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\AgentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\KeepSafeTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\NormalFormationTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\Decision\CastingDecision\CastingDecisionManager.cs" />
+    <Compile Include="Battle\AI\Decision\Axis.cs" />
+    <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
+    <Compile Include="Battle\AI\Decision\IUtilityObject.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\AbstractFunction.cs" />
-    <Compile Include="Battle\AI\Decision\ScoringFunction\Axis.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Linear.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Logistic.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Logit.cs" />
@@ -401,6 +402,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Battle\AI\Decision\CommonAxis" />
   </ItemGroup>
   <!-- Post-Build -->
   <PropertyGroup>

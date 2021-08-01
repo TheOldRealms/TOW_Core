@@ -3,6 +3,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.AI.Decision.ScoringFunction;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior

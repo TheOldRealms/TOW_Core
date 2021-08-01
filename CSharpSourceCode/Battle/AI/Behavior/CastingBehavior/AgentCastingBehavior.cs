@@ -5,11 +5,13 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
-    public abstract class AgentCastingBehavior
+    public abstract class AgentCastingBehavior : IUtilityObject
     {
         protected readonly Agent Agent;
         protected bool Positional = false;
@@ -94,6 +96,11 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         {
         }
 
+        public float GetLatestScore()
+        {
+            return LatestScore;
+        }
+
         public float CalculateUtility()
         {
             LatestScore = UtilityFunction();
@@ -106,7 +113,19 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             {
                 return 0.0f;
             }
+
             return 0.5f;
+        }
+
+        private static Formation ChooseTargetFormation(Agent agent, Formation targetFormation)
+        {
+            var formation = agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
+            if (!(formation != null && (targetFormation == null || !formation.HasPlayer || formation.Distance < targetFormation.Distance && formation.Distance < 15 || targetFormation.GetFormationPower() < 15)))
+            {
+                formation = targetFormation;
+            }
+
+            return formation;
         }
     }
 }

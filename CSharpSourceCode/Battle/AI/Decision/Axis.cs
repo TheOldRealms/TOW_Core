@@ -1,6 +1,6 @@
-﻿using System;
+﻿using TOW_Core.Battle.AI.Decision.ScoringFunction;
 
-namespace TOW_Core.Battle.AI.Decision.ScoringFunction
+namespace TOW_Core.Battle.AI.Decision
 {
     public class Axis
     {

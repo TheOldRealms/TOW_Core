@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using HarmonyLib;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.View.Missions;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AI.Behavior;
 using TOW_Core.Battle.AI.Behavior.CastingBehavior;
 using TOW_Core.Battle.AI.Behavior.TacticalBehavior;
-using TOW_Core.Battle.AI.Decision.CastingDecision;
+using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
         private const float EvalInterval = 1;
+        private readonly List<IUtilityObject> _utilityObjects;
+
         private float _dtSinceLastOccasional = EvalInterval;
         private AgentCombatBehavior _tacticalBehavior;
+        private AgentCastingBehavior _currentCastingBehavior;
 
         public Mat3 SpellTargetRotation = Mat3.Identity;
-        public AgentCastingBehavior CurrentCastingBehavior;
         public List<AgentCastingBehavior> AvailableCastingBehaviors { get; }
 
         public WizardAIComponent(Agent agent) : base(agent)
@@ -37,6 +31,7 @@ namespace TOW_Core.Battle.AI.Components
 
             _tacticalBehavior = new KeepSafeTacticalBehavior(agent, this);
             AvailableCastingBehaviors = PrepareCastingBehaviors(agent, this);
+            _utilityObjects = new List<IUtilityObject>(AvailableCastingBehaviors);
         }
 
 
@@ -46,7 +41,7 @@ namespace TOW_Core.Battle.AI.Components
             if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
             _tacticalBehavior.ApplyBehaviorParams();
-            CurrentCastingBehavior?.Execute();
+            _currentCastingBehavior?.Execute();
 
             base.OnTickAsAI(dt);
         }
@@ -55,10 +50,10 @@ namespace TOW_Core.Battle.AI.Components
         {
             _dtSinceLastOccasional = 0;
 
-            var newBehavior = CastingDecisionManager.ChooseCastingBehavior(Agent, this);
-            if (newBehavior != CurrentCastingBehavior) CurrentCastingBehavior?.Terminate();
-            
-            CurrentCastingBehavior = newBehavior;
+            var newBehavior = DecisionManager.DecideCastingBehavior(_utilityObjects);
+            if (newBehavior != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
+
+            _currentCastingBehavior = newBehavior as AgentCastingBehavior;
         }
 
 
