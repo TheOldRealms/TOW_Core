@@ -8,6 +8,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Missions;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Behavior;
 using TOW_Core.Battle.AI.Behavior.CastingBehavior;
@@ -53,11 +54,11 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-            
+
             var newBehavior = CastingDecisionManager.ChooseCastingBehavior(Agent, this);
             if (newBehavior != CurrentCastingBehavior) CurrentCastingBehavior?.Terminate();
+            
             CurrentCastingBehavior = newBehavior;
-            Agent.SelectAbility(CurrentCastingBehavior.AbilityIndex);
         }
 
 
@@ -67,11 +68,19 @@ namespace TOW_Core.Battle.AI.Components
             var index = 0;
             foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
             {
-                castingBehaviors.Add(AgentCastingBehavior.CastingBehaviorsByAbilityEffect[knownAbilityTemplate.AbilityEffectType].Invoke(agent, index, knownAbilityTemplate));
+                castingBehaviors.Add(CastingBehaviorUtils.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingBehaviorUtils.BehaviorByType[AbilityEffectType.MovingProjectile])
+                    .Invoke(agent, index, knownAbilityTemplate));
                 index++;
             }
 
+            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsCastingBehavior(agent, null, index));
+
             return castingBehaviors;
+        }
+
+        private static bool IsCustomBattle()
+        {
+            return false; //TODO: Not sure how to check this. Dont need magic conservation if not in campaign.
         }
     }
 }

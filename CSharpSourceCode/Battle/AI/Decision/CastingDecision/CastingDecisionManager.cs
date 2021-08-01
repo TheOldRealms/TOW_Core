@@ -9,20 +9,22 @@ namespace TOW_Core.Battle.AI.Decision.CastingDecision
     {
         public static AgentCastingBehavior ChooseCastingBehavior(Agent agent, WizardAIComponent component)
         {
-            var chosenCastingBehavior = component.AvailableCastingBehaviors[0];
-            chosenCastingBehavior.TargetFormation = ChooseTargetFormation(agent, component.CurrentCastingBehavior?.TargetFormation);
-
-            if (agent.Position.AsVec2.Distance(chosenCastingBehavior.TargetFormation.CurrentPosition) < 40)
-            {
-                var agentCastingBehavior = component.AvailableCastingBehaviors.Find(behavior => behavior.GetType() == typeof(DirectionalMovingAoECastingBehavior) && !agent.GetAbility(behavior.AbilityIndex).IsOnCooldown());
-                if (agentCastingBehavior != null)
-                {
-                    agentCastingBehavior.TargetFormation = chosenCastingBehavior.TargetFormation;
-                    chosenCastingBehavior = agentCastingBehavior;
-                }
-            }
+            var targetFormation = ChooseTargetFormation(agent, component.CurrentCastingBehavior?.TargetFormation);
+            var chosenCastingBehavior = DecideCastingBehavior(agent, component, targetFormation);
+            chosenCastingBehavior.TargetFormation = targetFormation;
 
             return chosenCastingBehavior;
+        }
+
+        private static AgentCastingBehavior DecideCastingBehavior(Agent agent, WizardAIComponent component, Formation targetFormation)
+        {
+            if (agent.Position.AsVec2.Distance(targetFormation.CurrentPosition) < 40)
+            {
+                var agentCastingBehavior = component.AvailableCastingBehaviors.Find(behavior => behavior.GetType() == typeof(DirectionalMovingAoECastingBehavior) && !agent.GetAbility(behavior.AbilityIndex).IsOnCooldown());
+                if (agentCastingBehavior != null) return agentCastingBehavior;
+            }
+
+            return component.AvailableCastingBehaviors[0];
         }
 
         private static Formation ChooseTargetFormation(Agent agent, Formation targetFormation)

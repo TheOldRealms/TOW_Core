@@ -15,17 +15,16 @@ namespace TOW_Core.Utilities.Extensions
         /// <summary>
         /// Maps all character IDs to a list of attributes for that character. For example, <"skeleton_warrior" <=> {"Expendable", "Undead"}>
         /// </summary>
-        
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-        
+
         public static bool IsHuman(this Agent agent)
         {
             return agent.GetAttributes().Contains("Human");
         }
-        
+
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
@@ -49,10 +48,10 @@ namespace TOW_Core.Utilities.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
-           
-            if(abilitycomponent != null)
+
+            if (abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
+                if (abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
         }
 
@@ -91,15 +90,16 @@ namespace TOW_Core.Utilities.Extensions
             {
                 return abilitycomponent.GetAbility(abilityindex);
             }
+
             return null;
         }
 
-        
+
         public static Hero GetHero(this Agent agent)
         {
             if (agent.Character == null) return null;
             Hero hero = null;
-            if(Game.Current.GameType is Campaign)
+            if (Game.Current.GameType is Campaign)
             {
                 var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
                 if (list != null && list.Count() > 0)
@@ -107,6 +107,7 @@ namespace TOW_Core.Utilities.Extensions
                     hero = list.First();
                 }
             }
+
             return hero;
         }
 
@@ -154,34 +155,41 @@ namespace TOW_Core.Utilities.Extensions
                 TOWCommon.Log("ApplyDamage: attempted to apply damage to a null agent.", LogLevel.Warn);
                 return;
             }
+
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.Health > damageAmount)
                 {
                     agent.Health -= damageAmount;
+                    return;
                 }
-                else
+            }
+            catch (Exception e)
+            {
+                TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
+            }
+
+            try
+            {
+                var blow = new Blow();
+                blow.InflictedDamage = damageAmount;
+                blow.DefenderStunPeriod = 0;
+                //if (damager != null) blow.OwnerId = damager.Index;
+                agent.Die(blow);
+                /*
+                bool agentIsActive = agent.State == AgentState.Active;
+                bool agentIsRouted = agent.State == AgentState.Routed;
+                if (agentIsActive || agentIsRouted)
                 {
                     var blow = new Blow();
                     blow.InflictedDamage = damageAmount;
                     blow.DefenderStunPeriod = 0;
-                    //if (damager != null) blow.OwnerId = damager.Index;
-                    agent.Die(blow);
-                    /*
-                    bool agentIsActive = agent.State == AgentState.Active;
-                    bool agentIsRouted = agent.State == AgentState.Routed;
-                    if (agentIsActive || agentIsRouted)
-                    {
-                        var blow = new Blow();
-                        blow.InflictedDamage = damageAmount;
-                        blow.DefenderStunPeriod = 0;
-                        if (damager != null) blow.OwnerId = damager.Index;
-                        agent.RegisterBlow(blow);
-                    }*/
-                }
+                    if (damager != null) blow.OwnerId = damager.Index;
+                    agent.RegisterBlow(blow);
+                }*/
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
@@ -204,6 +212,7 @@ namespace TOW_Core.Utilities.Extensions
         }
 
         #region voice
+
         public static void SetAgentVoiceByClassName(this Agent agent, string className)
         {
             int num = SkinVoiceManager.GetVoiceDefinitionCountWithMonsterSoundAndCollisionInfoClassName(className);
@@ -215,10 +224,11 @@ namespace TOW_Core.Utilities.Extensions
                 int index = TOWMath.GetRandomInt(0, array.Length);
                 int seed = MBRandom.RandomInt();
                 int pitchModifier = Math.Abs(seed);
-                float voicePitch = (float)pitchModifier * 4.656613E-10f;
+                float voicePitch = (float) pitchModifier * 4.656613E-10f;
                 mbagentVisuals.SetVoiceDefinitionIndex(array[index], voicePitch);
             }
         }
+
         #endregion
     }
 }

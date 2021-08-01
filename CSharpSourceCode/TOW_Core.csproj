@@ -289,7 +289,9 @@
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\AgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\Behavior\CastingBehavior\CastingBehaviorUtils.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\CenteredStaticAOECastingBehavior.cs" />
+    <Compile Include="Battle\AI\Behavior\CastingBehavior\ConserveWindsCastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\MovingProjectileCastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\DirectionalMovingAoECastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\AgentTacticalBehavior.cs" />
@@ -383,6 +385,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
+    <Compile Include="Utilities\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
     <Compile Include="Utilities\Extensions\ItemObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />

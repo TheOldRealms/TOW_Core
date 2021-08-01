@@ -11,14 +11,6 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
     public abstract class AgentCastingBehavior
     {
-        public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingBehavior>> CastingBehaviorsByAbilityEffect =
-            new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingBehavior>>
-            {
-                {AbilityEffectType.MovingProjectile, (agent, abilityTemplate, abilityIndex) => new MovingProjectileCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.CenteredStaticAOE, (agent, abilityTemplate, abilityIndex) => new CenteredStaticAoECastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.DirectionalMovingAOE, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoECastingBehavior(agent, abilityIndex, abilityTemplate)},
-            };
-
         public int Range;
         public readonly AbilityTemplate AbilityTemplate;
         protected readonly Agent Agent;
@@ -30,7 +22,11 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         {
             Agent = agent;
             AbilityIndex = abilityIndex;
-            Range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
+            if (abilityTemplate != null)
+            {
+                Range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
+            }
+
             AbilityTemplate = abilityTemplate;
         }
 
@@ -46,6 +42,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             {
                 if (HaveLineOfSightToAgent(medianAgent))
                 {
+                    Agent.SelectAbility(AbilityIndex);
                     CastSpellAtAgent(medianAgent);
                 }
             }
@@ -63,7 +60,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
             targetPosition += velocity;
             targetPosition.z += -2f;
-            
+
             var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
             wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
