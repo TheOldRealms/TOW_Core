@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
     public class RaiseDeadCampaignBehavior : CampaignBehaviorBase
     {
 		private List<CharacterObject> _raiseableCharacters = new List<CharacterObject>();
-		public List<FlattenedTroopRosterElement> TroopsForVM = new List<FlattenedTroopRosterElement>();
+		public List<TroopRosterElement> TroopsForVM = new List<TroopRosterElement>();
 		public int LastNumberOfTroopsRaised = 0;
 
         public override void RegisterEvents()
