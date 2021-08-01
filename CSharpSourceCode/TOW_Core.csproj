@@ -327,9 +327,6 @@
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
-    <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
-    <Compile Include="CampaignSupport\BattleHistory\BattleInfoCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\BattleHistory\BattleInfoMissionLogic.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsManager.cs" />
     <Compile Include="Battle\ShieldPatterns\ShieldPatternsMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffect.cs" />
@@ -339,8 +336,6 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
-    <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
-    <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
     <Compile Include="CampaignSupport\GameMenuBackgroundSwitcher.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleComponent.cs" />
@@ -364,8 +359,6 @@
     <Compile Include="HarmonyPatches\CustomVoicesPatch.cs" />
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
-    <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
-    <Compile Include="HarmonyPatches\PartyVMPatches.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
