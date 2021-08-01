@@ -52,6 +52,7 @@ namespace TOW_Core.Battle.StatusEffects
                 if (_currentEffects[effect].Duration <= 0)
                 {
                     RemoveEffect(effect);
+                    return;
                 }
             }
 

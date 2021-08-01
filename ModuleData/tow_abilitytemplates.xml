@@ -108,4 +108,75 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="Dart" 
+      Name="Dart" 
+      SpriteName="fireball_icon" 
+      CoolDown="2" 
+      WindsOfMagicCost="3" 
+      BaseMisCastChance="0.05" 
+      Duration="3" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="MovingProjectile" 
+      BaseMovementSpeed="35" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="3" 
+      LightFlickeringInterval="0.7" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="dart_particle" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dart" 
+      ShouldSoundLoopOverDuration="true" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="dart_explosion">
+      <LightColorRGB x="0" y="204" z="255" w="-1">
+        <AsVec2>
+          <y>204</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="BurningHead" 
+      Name="The Burning Head" 
+      SpriteName="windofdeath_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="10" 
+      BaseMisCastChance="0.3" 
+      Duration="5" 
+      Radius="2" 
+      AbilityType="Spell" 
+      AbilityEffectType="DirectionalMovingAOE" 
+      BaseMovementSpeed="12" 
+      TickInterval="0.5" 
+      TriggerType="EveryTick" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="burning_skull" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="true"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="none" 
+      TriggeredEffectID="burning_head_tick"
+      Offset="10">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
 </ArrayOfAbilityTemplate>
