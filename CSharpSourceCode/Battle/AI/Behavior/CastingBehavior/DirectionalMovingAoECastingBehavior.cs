@@ -1,14 +1,21 @@
-﻿using TaleWorlds.Engine;
+﻿using System.Collections.Generic;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Decision.ScoringFunction;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
     public class DirectionalMovingAoECastingBehavior : AgentCastingBehavior
     {
+        private List<Axis> axes;
+
         public DirectionalMovingAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
+            Positional = true;
+            axes = new List<Axis>();
+            axes.Add(new Axis());
         }
 
         public override void Execute()
@@ -41,6 +48,11 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
             var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
             return castingPosition;
+        }
+
+        protected override float UtilityFunction()
+        {
+            return ScoringAxis.CalculateGeometricMean(axes);
         }
     }
 }

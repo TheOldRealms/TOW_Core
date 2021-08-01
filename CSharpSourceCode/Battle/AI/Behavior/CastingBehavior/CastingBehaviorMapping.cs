@@ -5,7 +5,7 @@ using TOW_Core.Abilities;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
-    public static class CastingBehaviorUtils
+    public static class CastingBehaviorMapping
     {
         public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingBehavior>> BehaviorByType =
             new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingBehavior>>

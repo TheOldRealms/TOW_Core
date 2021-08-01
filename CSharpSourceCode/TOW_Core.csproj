@@ -289,7 +289,7 @@
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\AgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\CastingBehaviorUtils.cs" />
+    <Compile Include="Battle\AI\Behavior\CastingBehavior\CastingBehaviorMapping.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\CenteredStaticAOECastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\ConserveWindsCastingBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\CastingBehavior\MovingProjectileCastingBehavior.cs" />
@@ -306,7 +306,7 @@
     <Compile Include="Battle\AI\Decision\ScoringFunction\PiecewiseLinearCurve.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Polynomial.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Quadratic.cs" />
-    <Compile Include="Battle\AI\Decision\ScoringFunction\ScoreCalculator.cs" />
+    <Compile Include="Battle\AI\Decision\ScoringFunction\Scoring.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />

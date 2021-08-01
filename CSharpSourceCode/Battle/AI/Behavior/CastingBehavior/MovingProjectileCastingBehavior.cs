@@ -4,10 +4,15 @@ using TOW_Core.Battle.AI.Components;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
-    public class MovingProjectileCastingBehavior:AgentCastingBehavior
+    public class MovingProjectileCastingBehavior : AgentCastingBehavior
     {
         public MovingProjectileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
+        }
+
+        protected override float UtilityFunction()
+        {
+            return 0.5f;
         }
     }
 }

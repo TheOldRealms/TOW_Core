@@ -68,7 +68,7 @@ namespace TOW_Core.Battle.AI.Components
             var index = 0;
             foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
             {
-                castingBehaviors.Add(CastingBehaviorUtils.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingBehaviorUtils.BehaviorByType[AbilityEffectType.MovingProjectile])
+                castingBehaviors.Add(CastingBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingBehaviorMapping.BehaviorByType[AbilityEffectType.MovingProjectile])
                     .Invoke(agent, index, knownAbilityTemplate));
                 index++;
             }

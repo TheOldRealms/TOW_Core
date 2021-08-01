@@ -11,12 +11,14 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
     public abstract class AgentCastingBehavior
     {
+        protected readonly Agent Agent;
+        protected bool Positional = false;
         public int Range;
         public readonly AbilityTemplate AbilityTemplate;
-        protected readonly Agent Agent;
         public readonly int AbilityIndex;
         public Formation TargetFormation;
 
+        public float LatestScore;
 
         protected AgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -91,5 +93,13 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         public virtual void Terminate()
         {
         }
+
+        public float CalculateUtility()
+        {
+            LatestScore = UtilityFunction();
+            return LatestScore;
+        }
+
+        protected abstract float UtilityFunction();
     }
 }
