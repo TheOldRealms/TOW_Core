@@ -12,7 +12,7 @@ namespace TOW_Core.Utilities.Extensions
     {
         public static bool CanRaiseDead(this Hero hero)
         {
-            return hero.IsHumanPlayerCharacter && hero.Culture.ToString().Equals("Vampire Counts");
+            return hero.IsHumanPlayerCharacter && hero.IsNecromancer();
         }
 
         /// <summary>
@@ -66,6 +66,11 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsSpellCaster(this Hero hero)
         {
             return hero.HasAttribute("SpellCaster");
+        }
+
+        public static bool IsNecromancer(this Hero hero)
+        {
+            return hero.HasAttribute("Necromancer");
         }
     }
 }

@@ -176,6 +176,10 @@ namespace TOW_Core.CharacterCreation
                     Hero.MainHero.AddAttribute("SpellCaster");
                     Hero.MainHero.AddAbility("Fireball");
                 }
+                if(option.OptionText == "Necromancer")
+                {
+                    Hero.MainHero.AddAttribute("Necromancer");
+                }
             }
             
             Vec2 position2D = default(Vec2);

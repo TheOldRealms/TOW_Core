@@ -20,7 +20,10 @@ namespace TOW_Core.HarmonyPatches
             if (type.Equals(PartyScreenLogic.TroopType.Member) && side == 0)
             {
                 RaiseDeadCampaignBehavior raiseDeadBehavior = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>();
-                currentTroopRoster.Add(raiseDeadBehavior.TroopsForVM);
+                foreach(TroopRosterElement element in raiseDeadBehavior.TroopsForVM)
+                {
+                    currentTroopRoster.AddToCounts(element.Character, 1);
+                }
                 raiseDeadBehavior.TroopsForVM.Clear();
             }
         }

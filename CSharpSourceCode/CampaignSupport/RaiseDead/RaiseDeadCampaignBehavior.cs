@@ -6,6 +6,7 @@ using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -30,15 +31,15 @@ namespace TOW_Core.CampaignSupport.RaiseDead
         {
         }
 
-		public List<FlattenedTroopRosterElement> GenerateRaisedTroopsForVM()
+		public List<TroopRosterElement> GenerateRaisedTroopsForVM()
         {
 			if (!Hero.MainHero.CanRaiseDead())
-				return new List<FlattenedTroopRosterElement>();
+				return new List<TroopRosterElement>();
 
 			if (_raiseableCharacters.Count == 0)
 				InitializeRaiseableCharacters();
 
-			List<FlattenedTroopRosterElement> elements = new List<FlattenedTroopRosterElement>();
+			List<TroopRosterElement> elements = new List<TroopRosterElement>();
 
 			List<CharacterInfo> killedEnemies = Campaign.Current
 				.GetCampaignBehavior<BattleInfoCampaignBehavior>()?
@@ -56,7 +57,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 				List<CharacterObject> filteredVamps = _raiseableCharacters.Where(character => character.Level <= enemy.Level).ToList();
 				if (TOWMath.GetRandomDouble(0, 1) <= raiseDeadChance)
 				{
-					elements.Add(new FlattenedTroopRosterElement(filteredVamps.GetRandomElement()));
+					elements.Add(new TroopRosterElement(filteredVamps.GetRandomElement()));
 					counter++;
 				}
 			}
@@ -68,24 +69,10 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 
 		private List<CharacterObject> GetRaiseableCharacters()
 		{
-			List<CharacterObject> output = new List<CharacterObject>();
-
-			var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath("TOW_Core"), "tow_troopdefinitions_vc.xml", SearchOption.AllDirectories);
-			foreach (var file in files)
-			{
-				XmlDocument characterXml = new XmlDocument();
-				characterXml.Load(file);
-				XmlNodeList characters = characterXml.GetElementsByTagName("NPCCharacter");
-
-				foreach (XmlNode character in characters)
-				{
-					CharacterObject charObj = new CharacterObject();
-					charObj.Deserialize(Game.Current.ObjectManager, character);
-					//TODO: Only add if the unit is Undead. Can do once the ExtensionContainers are added for (Basic)CharacterObjects. i.e. if(charObj.IsUndead())
-					output.Add(charObj);
-				}
-			}
-			return output;
+			var characters = new List<CharacterObject>();
+			MBObjectManager.Instance.GetAllInstancesOfObjectType<CharacterObject>(ref characters);
+			characters = characters.Where(character => character.IsUndead() && character.IsBasicTroop && character.Culture.ToString().Equals(Hero.MainHero.Culture.ToString())).ToList();
+			return characters;
 		}
 
 		private void InitializeRaiseableCharacters()
