@@ -4,6 +4,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
 using System.Timers;
 using System;
+using TOW_Core.Battle.TriggeredEffect.Scripts;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
@@ -43,7 +44,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             }
             SpawnVisuals(position, normal);
             PlaySound(position);
-            //trigger script
+            TriggerScript(position, triggererAgent);
         }
 
         private void SpawnVisuals(Vec3 position, Vec3 normal)
@@ -70,6 +71,26 @@ namespace TOW_Core.Battle.TriggeredEffect
                 if (_sound != null)
                 {
                     _sound.PlayInPosition(position);
+                }
+            }
+        }
+
+        private void TriggerScript(Vec3 position, Agent agent)
+        {
+            if(_template.ScriptNameToTrigger != "none")
+            {
+                try
+                {
+                    var obj = Activator.CreateInstance(Type.GetType(_template.ScriptNameToTrigger));
+                    if (obj is ITriggeredScript)
+                    {
+                        var script = obj as ITriggeredScript;
+                        script.OnTrigger(position, agent);
+                    }
+                }
+                catch (Exception e)
+                {
+                    TOW_Core.Utilities.TOWCommon.Log("Tried to spawn TriggeredScript: " + _template.ScriptNameToTrigger + ", but failed.", NLog.LogLevel.Error);
                 }
             }
         }

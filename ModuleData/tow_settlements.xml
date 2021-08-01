@@ -221,7 +221,7 @@
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
       <Location id="arena" scene_name="arena_vlandia_a" />
-      <Location id="tavern" scene_name="vlandia_city_house_a_interior_tavern" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
       <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />

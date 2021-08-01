@@ -8,7 +8,9 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -186,9 +188,23 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             if (BannerlordConfig.DisplayTargetingReticule && base.Mission.Mode != MissionMode.Conversation && base.Mission.Mode != MissionMode.CutScene && !ScreenManager.GetMouseVisibility())
             {
                 Agent mainAgent = base.Mission.MainAgent;
-                if (mainAgent != null && !mainAgent.WieldedWeapon.IsEmpty && base.Mission.MainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-                    if (!base.MissionScreen.IsViewingChar() && !this.IsMissionScreenUsingCustomCamera())
-                        return true;
+
+                if (mainAgent != null)
+                {
+                    if (!mainAgent.WieldedWeapon.IsEmpty && base.Mission.MainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
+                        if (!base.MissionScreen.IsViewingChar() && !this.IsMissionScreenUsingCustomCamera())
+                            return true;
+                    if(mainAgent.GetCurrentAbility() != null)
+                    {
+                        if (mainAgent.GetCurrentAbility().GetCoolDownLeft() <= 0 &&
+                        mainAgent.GetCurrentAbility().GetAbilityEffectType() == AbilityEffectType.MovingProjectile)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                
+               
             }
             return false;
         }

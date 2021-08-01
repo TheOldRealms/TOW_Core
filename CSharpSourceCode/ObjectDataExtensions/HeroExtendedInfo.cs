@@ -17,8 +17,9 @@ namespace TOW_Core.ObjectDataExtensions
         [SaveableField(2)] public float CurrentWindsOfMagic = 0;
         [SaveableField(3)] public float MaxWindsOfMagic = 0;
         [SaveableField(4)] public float WindsOfMagicRechargeRate = 1;
-        [SaveableField(5)] private CharacterObject _baseCharacter;
-        [SaveableField(6)] private CharacterObject _templateCharacterOrigin;
+        [SaveableField(5)] public int Corruption = 0; //between 0 and 100, 0 = pure af, 100 = fallen to chaos
+        [SaveableField(6)] private CharacterObject _baseCharacter;
+        [SaveableField(7)] private CharacterObject _templateCharacterOrigin;
         //maybe not yet
         //public List<string> KnownLores;
 
@@ -33,7 +34,8 @@ namespace TOW_Core.ObjectDataExtensions
         { 
             get
             {
-                var list = _baseCharacter.GetAbilities();
+                var list = new List<string>();
+                if (_baseCharacter != null) list.AddRange(_baseCharacter.GetAbilities());
                 if(list.Count == 0)
                 {
                     var templateList = _templateCharacterOrigin?.GetAbilities();
@@ -48,7 +50,8 @@ namespace TOW_Core.ObjectDataExtensions
         {
             get
             {
-                var list = _baseCharacter.GetAttributes();
+                var list = new List<string>();
+                if (_baseCharacter != null) list.AddRange(_baseCharacter.GetAttributes());
                 if (list.Count == 0)
                 {
                     var templateList = _templateCharacterOrigin?.GetAttributes();

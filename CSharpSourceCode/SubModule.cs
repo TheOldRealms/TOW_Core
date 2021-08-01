@@ -33,8 +33,10 @@ using Path = System.IO.Path;
 using TOW_Core.CampaignSupport.RaiseDead;
 using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Battle.Grenades;
 
 namespace TOW_Core
 {
@@ -73,6 +75,7 @@ namespace TOW_Core
             LoadQuestBattleTemplates();
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
+            MagicWeaponEffectManager.LoadXML();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
@@ -118,6 +121,8 @@ namespace TOW_Core
 
         private void LoadSprites()
         {
+            UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+            UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_spritesheet"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
 		}
@@ -163,9 +168,10 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+            mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
+            mission.AddMissionBehaviour(new GrenadesMissionLogic());
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }

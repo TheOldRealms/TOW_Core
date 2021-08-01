@@ -46,8 +46,8 @@
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.0.4\lib\net472\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>packages\NLog.4.7.9\lib\net45\NLog.dll</HintPath>
@@ -284,9 +284,12 @@
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
     <Compile Include="Abilities\AbilityFactory.cs" />
@@ -294,6 +297,13 @@
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
+    <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="Items\IMagicWeaponHitEffect.cs" />
+    <Compile Include="Items\MagicWeaponAgentComponent.cs" />
+    <Compile Include="Items\MagicWeaponEffect.cs" />
+    <Compile Include="Items\MagicWeaponEffectManager.cs" />
+    <Compile Include="Items\MagicWeaponEffectMissionLogic.cs" />
+    <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoMissionLogic.cs" />
@@ -314,6 +324,8 @@
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
+    <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="Battle\Map\TowMapWeatherModel.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoCampaignBehavior.cs" />
@@ -364,6 +376,7 @@
     <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
+    <Compile Include="Utilities\Extensions\ItemObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
     <Compile Include="Utilities\Extensions\MissionExtensions.cs" />
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />

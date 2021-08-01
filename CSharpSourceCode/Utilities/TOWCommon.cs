@@ -36,7 +36,13 @@ namespace TOW_Core.Utilities
             if (Directory.Exists(path))
             {
                 var dirnames = Directory.GetDirectories(path);
-                filterednames = dirnames.Where(x => x.Contains("towmm_")).ToList();
+                filterednames = dirnames.Where(x =>
+                {
+                    string[] s = x.Split('/');
+                    var name = s[s.Length - 1];
+                    if (name.StartsWith("towmm_")) return true;
+                    else return false;
+                }).ToList();
             }
             if (filterednames.Count > 0)
             {

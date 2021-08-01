@@ -4,6 +4,9 @@
 	<CharacterAbilityTuple CharacterID="emp_lord">
 		<Abilities>Fireball</Abilities>
 		<Abilities>WindOfDeath</Abilities>
+		<Abilities>SummonSkeleton</Abilities>
+    <Abilities>Dart</Abilities>
+    <Abilities>BurningHead</Abilities>
 	</CharacterAbilityTuple>
 	<CharacterAbilityTuple CharacterID="vc_lord">
 		<Abilities>Fireball</Abilities>
@@ -11,6 +14,14 @@
 	</CharacterAbilityTuple>
     <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
 		<Abilities>Fireball</Abilities>
-    </CharacterAbilityTuple>
+  </CharacterAbilityTuple>
+    <CharacterAbilityTuple CharacterID="wizard_lord">
+    <Abilities>Fireball</Abilities>
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="necromancer_lord">
+    <Abilities>SummonSkeleton</Abilities>
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
 
 </ArrayOfCharacterAbilityTuple>

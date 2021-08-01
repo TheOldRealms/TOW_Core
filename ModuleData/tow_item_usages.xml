@@ -227,4 +227,112 @@
 				strike_type="thrust" />
 		</usages>
 	</item_usage_set>
+  
+  <item_usage_set id="dwarf_hand_grenade"
+                  has_single_stance="true"
+                  last_arrow_sound="event:/mission/combat/last_arrow"
+                  equip_sound="event:/mission/combat/equip/small_equip"
+                  unequip_sound="event:/mission/combat/equip/small_unequip">
+    <idles>
+      <idle action="act_idle_unarmed_1"
+            is_left_stance="False"
+            require_free_left_hand="False" />
+    </idles>
+    <movement_sets>
+      <movement_set id="stone_with_shield"
+                    require_left_hand_usage_root_set="shield" />
+      <movement_set id="1h_with_hand_shield"
+                    require_left_hand_usage_root_set="hand_shield" />
+      <movement_set id="stone" />
+    </movement_sets>
+    <usages>
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_shield"
+             release_action="act_release_stone_with_shield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_shield"
+             is_mounted="False"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="shield"
+             strike_type="thrust" />
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_shield"
+             release_action="act_release_stone_with_shield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_shield"
+             is_mounted="True"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="shield"
+             strike_type="thrust" />
+
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_handshield"
+             release_action="act_release_stone_with_handshield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_handshield"
+             is_mounted="False"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="hand_shield"
+             strike_type="thrust" />
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_handshield"
+             release_action="act_release_stone_with_handshield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_handshield"
+             is_mounted="True"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="hand_shield"
+             strike_type="thrust" />
+
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_shield"
+             release_action="act_release_stone_with_shield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_shield"
+             is_mounted="False"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="banner"
+             strike_type="thrust" />
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone_with_shield"
+             release_action="act_release_stone_with_shield"
+             ready_continue_ranged_action="act_ready_continue_stone_with_shield"
+             is_mounted="True"
+             require_free_left_hand="False"
+             require_left_hand_usage_root_set="banner"
+             strike_type="thrust" />
+
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone"
+             release_action="act_release_stone"
+             ready_continue_ranged_action="act_ready_continue_stone"
+             is_mounted="False"
+             require_free_left_hand="False"
+             strike_type="thrust" />
+      <usage style="attack_any"
+             reload_action="act_reload_stone"
+             ready_action="act_ready_stone"
+             release_action="act_release_stone"
+             ready_continue_ranged_action="act_ready_continue_stone"
+             is_mounted="True"
+             require_free_left_hand="False"
+             strike_type="thrust" />
+    </usages>
+    <rider_idles>
+      <!--    <rider_idle mount_id="horse" pace="0" action="act_rider_stand_throw_pace_0" require_free_left_hand="False" />
+        <rider_idle mount_id="horse" pace="1" action="act_rider_stand_throw_pace_1" require_free_left_hand="False" />
+        <rider_idle mount_id="horse" pace="2" action="act_rider_stand_throw_pace_2" require_free_left_hand="False" />
+        <rider_idle mount_id="horse" pace="3" action="act_rider_stand_throw_pace_3" require_free_left_hand="False" />
+        <rider_idle mount_id="horse" pace="4" action="act_rider_stand_throw_pace_4" require_free_left_hand="False" />
+        <rider_idle mount_id="horse" pace="5" action="act_rider_stand_throw_pace_5" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="0" action="act_camel_rider_stand_throw_pace_0" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="1" action="act_camel_rider_stand_throw_pace_1" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="2" action="act_camel_rider_stand_throw_pace_2" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="3" action="act_camel_rider_stand_throw_pace_3" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="4" action="act_camel_rider_stand_throw_pace_4" require_free_left_hand="False" />
+        <rider_idle mount_id="camel" pace="5" action="act_camel_rider_stand_throw_pace_5" require_free_left_hand="False" />-->
+    </rider_idles>
+  </item_usage_set>
 </item_usage_sets>
