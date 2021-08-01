@@ -169,9 +169,12 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
-            mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            if(Game.Current.GameType is Campaign)
+            {
+                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+            }
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }

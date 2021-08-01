@@ -119,7 +119,7 @@ namespace TOW_Core.Abilities
         private MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame.Elevate(casterAgent.GetEyeGlobalHeight());
-            frame = UpdateFrameRotationForAI(casterAgent, frame);
+            if(casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
             return frame;
         }
 

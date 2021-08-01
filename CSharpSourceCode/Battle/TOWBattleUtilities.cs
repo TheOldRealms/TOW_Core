@@ -31,7 +31,7 @@ namespace TOW_Core.Battle
                 }
                 else
                 {
-                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, hasShockWave: hasShockWave);
+                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave) ;
                 }
             }
         }
