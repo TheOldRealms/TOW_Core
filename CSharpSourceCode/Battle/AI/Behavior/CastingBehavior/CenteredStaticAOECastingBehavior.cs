@@ -9,10 +9,6 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         public CenteredStaticAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
         }
-
-        protected override float UtilityFunction()
-        {
-            return 0.5f;
-        }
+        
     }
 }

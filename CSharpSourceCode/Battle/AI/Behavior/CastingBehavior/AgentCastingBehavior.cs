@@ -100,6 +100,13 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             return LatestScore;
         }
 
-        protected abstract float UtilityFunction();
+        protected virtual float UtilityFunction()
+        {
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
+            {
+                return 0.0f;
+            }
+            return 0.5f;
+        }
     }
 }
