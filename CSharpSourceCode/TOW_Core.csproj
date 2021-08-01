@@ -298,13 +298,15 @@
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\KeepSafeTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Behavior\TacticalBehavior\NormalFormationTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Decision\CastingDecision\CastingDecisionManager.cs" />
+    <Compile Include="Battle\AI\Decision\ScoringFunction\AbstractFunction.cs" />
+    <Compile Include="Battle\AI\Decision\ScoringFunction\Axis.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Linear.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Logistic.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Logit.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\PiecewiseLinearCurve.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Polynomial.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Quadratic.cs" />
-    <Compile Include="Battle\AI\Decision\ScoringFunction\ScoringUtils.cs" />
+    <Compile Include="Battle\AI\Decision\ScoringFunction\ScoreCalculator.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
