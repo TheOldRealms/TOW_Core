@@ -8,26 +8,10 @@
         DamageType="Fire" 
         DamageAmount="50" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="fireball_dot" 
         ImbuedStatusEffectDuration="5" 
         DamageVariance="0.2" 
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate
-        StringID="grenade_explosion"
-        BurstParticleEffectPrefab="psys_burning_projectile_default_coll"
-        SoundEffectId="fireball_explosion"
-        SoundEffectLength="2.5"
-        DamageType="Fire"
-        DamageAmount="50"
-        Radius="5"
-        HasShockWave="true"
-        TargetType="All"
-        ImbuedStatusEffectID="fireball_dot"
-        ImbuedStatusEffectDuration="5"
-        DamageVariance="0.2"
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
@@ -38,7 +22,6 @@
       DamageType="Magical" 
       DamageAmount="50" 
       Radius="5" 
-      HasShockWave="false"
       TargetType="All" 
       ImbuedStatusEffectID="none" 
       ImbuedStatusEffectDuration="5" 
@@ -53,7 +36,6 @@
         DamageType="Magical" 
         DamageAmount="40" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="5" 
@@ -82,7 +64,6 @@
         DamageType="Magical" 
         DamageAmount="0" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="0" 
