@@ -82,5 +82,10 @@ namespace TOW_Core.Utilities.Extensions
             }
             return s;
         }
+
+        public static bool IsUndead(this BasicCharacterObject characterObject)
+        {
+            return characterObject.GetAttributes().Contains("Undead");
+        }
     }
 }
