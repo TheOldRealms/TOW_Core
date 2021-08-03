@@ -118,7 +118,15 @@ namespace TOW_Core.Abilities
 
         private MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
-            var frame = casterAgent.LookFrame.Elevate(casterAgent.GetEyeGlobalHeight());
+            var frame = casterAgent.LookFrame;
+            if(_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+            {
+                frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
+            }
+            else
+            {
+                frame = frame.Elevate(_template.Radius / 2);
+            }
             if(casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
             return frame;
         }

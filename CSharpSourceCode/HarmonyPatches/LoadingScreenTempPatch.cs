@@ -11,15 +11,16 @@ namespace TOW_Core.HarmonyPatches
     public static class LoadingScreenTempPatch
     {
         private static int nextnum = 1;
+        private static int totalnum = 4;
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LoadingWindowViewModel), "SetNextGenericImage")]
         public static void PostFix(ref LoadingWindowViewModel __instance, int ____currentImage)
         {
-            if(____currentImage > 2)
+            if(____currentImage > totalnum)
             {
                 __instance.LoadingImageName = "loading_" + nextnum.ToString("00");
-                nextnum = nextnum == 1 ? 2 : 1;
+                nextnum = 1;
             }
         }
     }

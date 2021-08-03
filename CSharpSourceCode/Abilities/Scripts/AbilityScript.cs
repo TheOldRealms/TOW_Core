@@ -18,6 +18,7 @@ namespace TOW_Core.Abilities.Scripts
         private float _timeSinceLastTick = 0;
         private bool _hasCollided;
         private bool _hasTickedOnce;
+        private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
 
         internal void SetAgent(Agent agent)
@@ -116,7 +117,18 @@ namespace TOW_Core.Abilities.Scripts
             if (_sound != null)
             {
                 _sound.SetPosition(position);
-                if (!_sound.IsPlaying() && _ability.Template.ShouldSoundLoopOverDuration) _sound.Play();
+                if (!_sound.IsPlaying())
+                {
+                    if (!_soundStarted)
+                    {
+                        _sound.Play();
+                        _soundStarted = true;
+                    }
+                    else if (_ability.Template.ShouldSoundLoopOverDuration)
+                    {
+                        _sound.Play();
+                    }
+                }
             }
         }
 

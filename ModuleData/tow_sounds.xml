@@ -48,6 +48,9 @@
         <module_sound name="dart" sound_category="mission_ambient_3d_big" path="dart_sound.ogg" />
 		<module_sound name="fireball_explosion" sound_category="mission_ambient_3d_big" path="fireball_explosion.wav" />
         <module_sound name="dart_explosion" sound_category="mission_ambient_3d_big" path="dart_explosion.ogg" />
+        <module_sound name="windofdeath_whispers" sound_category="mission_ambient_3d_big" path="windsofdeath_whispers.ogg" />
+        <module_sound name="passing_fire" sound_category="mission_ambient_3d_big" path="passing_fire.ogg" />
+        <module_sound name="scream" sound_category="mission_ambient_3d_big" path="scream.ogg" />
         <module_sound name="dwarf_hand_grenade_tick" sound_category="mission_combat" path="dwarf_hand_grenade_tick.wav" />
     
 		<!-- The Old World -->
