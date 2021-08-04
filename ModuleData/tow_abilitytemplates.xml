@@ -26,7 +26,7 @@
       ShouldSoundLoopOverDuration="true" 
       CastType="WindUp" 
       CastTime="0.5" 
-      AnimationActionName="act_release_stone" 
+      AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="explosion_01">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
@@ -57,11 +57,11 @@
       ShadowCastEnabled="false" 
       ParticleEffectPrefab="wind_of_death_vfx" 
       ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
-      ShouldSoundLoopOverDuration="true"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="none" 
+      SoundEffectToPlay="windofdeath_whispers" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="wind_of_death_tick"
       Offset="10">
       <LightColorRGB x="255" y="170" z="0" w="-1">
@@ -97,7 +97,7 @@
       ShouldSoundLoopOverDuration="true"
       CastType="Instant" 
       CastTime="0" 
-      AnimationActionName="none" 
+      AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="summon_skeleton_tick"
       Offset="10"
       AbilityTargetType="Self">
@@ -147,11 +147,11 @@
       StringID="BurningHead" 
       Name="The Burning Head" 
       SpriteName="windofdeath_icon" 
-      CoolDown="20" 
+      CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
-      Duration="5" 
-      Radius="2" 
+      Duration="3" 
+      Radius="3" 
       AbilityType="Spell" 
       AbilityEffectType="DirectionalMovingAOE" 
       BaseMovementSpeed="12" 
@@ -165,17 +165,54 @@
       ShadowCastEnabled="false" 
       ParticleEffectPrefab="burning_skull" 
       ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
+      SoundEffectToPlay="passing_fire" 
       ShouldSoundLoopOverDuration="true"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="none" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
       TriggeredEffectID="burning_head_tick"
       Offset="10">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
           <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="ScreamingSkull" 
+      Name="Screaming Skull" 
+      SpriteName="windofdeath_icon" 
+      CoolDown="3" 
+      WindsOfMagicCost="10" 
+      BaseMisCastChance="0.3" 
+      Duration="3" 
+      Radius="3" 
+      AbilityType="Spell" 
+      AbilityEffectType="DirectionalMovingAOE" 
+      BaseMovementSpeed="12" 
+      TickInterval="0.5" 
+      TriggerType="EveryTick" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="screaming_skull_vfx" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="scream" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="wind_of_death_tick"
+      Offset="10">
+      <LightColorRGB x="52" y="235" z="88" w="-1">
+        <AsVec2>
+          <x>52</x>
+          <y>235</y>
+          <z>88</z>
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>

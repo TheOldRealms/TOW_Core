@@ -30,6 +30,8 @@ using TOW_Core.Battle.AI;
 using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
+using TOW_Core.CampaignSupport.RaiseDead;
+using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
@@ -103,13 +105,14 @@ namespace TOW_Core
         {
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
+
             if (game.GameType.GetType() == typeof(CustomGame))
             {
                 CustomBattleTroopManager.LoadCustomBattleTroops();
             }
-            else if(game.GameType.GetType() == typeof(Campaign))
+            else if (game.GameType.GetType() == typeof(Campaign))
             {
-                if(game.ObjectManager != null)
+                if (game.ObjectManager != null)
                 {
                     game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
                 }
@@ -137,6 +140,8 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
                 starter.CampaignBehaviors.Add(new ExtendedInfoManager());
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+                starter.CampaignBehaviors.Add(new BattleInfoCampaignBehavior());
+                starter.CampaignBehaviors.Add(new RaiseDeadCampaignBehavior());
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
@@ -166,6 +171,10 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            if(Game.Current.GameType is Campaign)
+            {
+                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+            }
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }

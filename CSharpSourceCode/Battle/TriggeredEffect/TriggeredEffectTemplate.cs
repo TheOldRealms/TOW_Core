@@ -30,6 +30,8 @@ namespace TOW_Core.Battle.TriggeredEffect
         [XmlAttribute]
         public float Radius = 5;
         [XmlAttribute]
+        public bool HasShockWave = false;
+        [XmlAttribute]
         public TargetType TargetType = TargetType.Enemy;
         [XmlAttribute]
         public string ImbuedStatusEffectID = "";
