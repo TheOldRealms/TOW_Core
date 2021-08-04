@@ -2,12 +2,9 @@
 using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
-using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities.Extensions;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Dismemberment
 {
@@ -34,9 +31,7 @@ namespace TOW_Core.Battle.Dismemberment
             bool canBeDismembered = victim != null &&
                                     victim.IsHuman &&
                                     victim != Agent.Main &&
-                                    victim.State == AgentState.Killed &&
                                     victim.Health <= 0 &&
-                                    victim != Agent.Main &&
                                     victim.State == AgentState.Killed &&
                                     attacker != null &&
                                     ((attacker != Agent.Main && canTroopDismember) ||
@@ -87,7 +82,7 @@ namespace TOW_Core.Battle.Dismemberment
             }
             GameEntity hat = SpawnHat(victim);
             AddHeadPhysics(head, attackCollision);
-            AddHatPhysics(hat, attackCollision);
+            AddHeaddressPhysics(hat, attackCollision);
         }
 
         //This method was copied from the jedijosh920 dismemberment mod
@@ -100,9 +95,12 @@ namespace TOW_Core.Battle.Dismemberment
                                   mesh.Name.ToLower().Contains("beard") ||
                                   mesh.Name.ToLower().Contains("eyebrow") ||
                                   mesh.Name.ToLower().Contains("helmet") ||
-                                  mesh.Name.ToLower().Contains("_cap_") ||
-                                  mesh.Name.ToLower().Contains("_hat_") ||
-                                  mesh.Name.ToLower().Contains("skeleton_body_full.1");
+                                  mesh.Name.ToLower().Contains("_helm_") ||
+                                  mesh.Name.ToLower().Contains("_bascinet") ||
+                                  mesh.Name.ToLower().Contains("Pothelm") ||
+                                  mesh.Name.ToLower().Contains("sallet") ||
+                                  mesh.Name.ToLower().Contains("_hood") ||
+                                  mesh.Name.ToLower().Contains("_hat_");
                 if (isHeadMesh)
                     mesh.SetVisibilityMask((VisibilityMaskFlags)4293918720U);
             }
@@ -119,7 +117,7 @@ namespace TOW_Core.Battle.Dismemberment
         }
         private GameEntity SpawnHat(Agent victim)
         {
-            GameEntity hat = GetHatCopy(victim);
+            GameEntity hat = GetHeaddressCopy(victim);
             hat.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
             MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
             victimFrame.Advance(-0.2f);
@@ -143,7 +141,7 @@ namespace TOW_Core.Battle.Dismemberment
                     head.AddChild(child);
                 }
             }
-            String[] meshNames = { "hair", "beard", "eyebrow", "_cap_", "helmet", "skeleton_body_full.1" };
+            String[] meshNames = { "hair", "beard", "eyebrow", "helmet", "_helm_", "Pothelm", "sallet", "_bascinet", "_hood" };
             foreach (String name in meshNames)
             {
                 Mesh mesh = victim.AgentVisuals.GetSkeleton().GetAllMeshes().FirstOrDefault(m => m.Name.Contains(name));
@@ -158,7 +156,7 @@ namespace TOW_Core.Battle.Dismemberment
             }
             return head;
         }
-        private GameEntity GetHatCopy(Agent victim)
+        private GameEntity GetHeaddressCopy(Agent victim)
         {
             var hat = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
@@ -180,14 +178,14 @@ namespace TOW_Core.Battle.Dismemberment
             Vec3 blowDir = collisionData.WeaponBlowDir;
             Vec3 velocityVec = new Vec3(blowDir.X, blowDir.Y, blowDir.Z);
             head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
-            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 3, blowDir.Y * 3, blowDir.Z * 1.1f));
+            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 5, blowDir.Y * 5, blowDir.Z * 1.1f));
         }
-        private void AddHatPhysics(GameEntity hat, AttackCollisionData collisionData)
+        private void AddHeaddressPhysics(GameEntity hat, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
             Vec3 velocityVec = new Vec3(blowDir.X * 6, blowDir.Y * 6, blowDir.Z);
             Vec3 angularVec = new Vec3(-6, -6, 1);
-            hat.AddPhysics(0.1f, hat.CenterOfMass, PhysicsShape.GetFromResource("bo_hatbody"), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            hat.AddPhysics(0.1f, hat.CenterOfMass, hat.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
             hat.ApplyImpulseToDynamicBody(new Vec3(hat.GlobalPosition.X, hat.GlobalPosition.Y, hat.GlobalPosition.Z + 1f), new Vec3(blowDir.X * 0.2f, blowDir.Y * 0.2f, blowDir.Z * 0));
         }
         private void CoverCutWithFlesh(Agent victim, GameEntity head)

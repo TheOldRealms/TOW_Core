@@ -141,6 +141,7 @@ namespace TOW_Core.CharacterCreation
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
+                Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
             }
             else if (selectedOption.OptionText == "Fresh Blood Vampire")
@@ -193,7 +194,6 @@ namespace TOW_Core.CharacterCreation
         public override void OnCharacterCreationFinalized()
         {
             CultureObject culture = CharacterObject.PlayerCharacter.Culture;
-
             Vec2 position2D = default(Vec2);
 
             switch (culture.StringId)

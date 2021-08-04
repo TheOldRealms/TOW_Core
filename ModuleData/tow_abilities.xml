@@ -2,9 +2,10 @@
 <ArrayOfCharacterAbilityTuple xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	
 	<CharacterAbilityTuple CharacterID="emp_lord">
-		<Abilities>Fireball</Abilities>
-		<Abilities>WindOfDeath</Abilities>
-		<Abilities>SummonSkeleton</Abilities>
+    <Abilities>WindOfDeath</Abilities>
+    <Abilities>Dart</Abilities>
+    <Abilities>BurningHead</Abilities>
+    <Abilities>ScreamingSkull</Abilities>
 	</CharacterAbilityTuple>
 	<CharacterAbilityTuple CharacterID="vc_lord">
 		<Abilities>Fireball</Abilities>

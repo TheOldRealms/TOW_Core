@@ -24,6 +24,14 @@ namespace TOW_Core.Abilities
         TargetedStaticAOE
     }
 
+    public enum AbilityTargetType
+    {
+        Self,
+        Enemies,
+        Allies,
+        All
+    }
+
     public enum CastType
     {
         Instant,
