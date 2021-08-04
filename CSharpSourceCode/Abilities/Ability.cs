@@ -113,10 +113,15 @@ namespace TOW_Core.Abilities
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
 
-        private MatrixFrame GetSpawnFrame(Agent casterAgent)
+        private bool IsStaticAbility()
+        {
+            return Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+        }
+
+        protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
             if(_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
@@ -128,6 +133,10 @@ namespace TOW_Core.Abilities
                 frame = frame.Elevate(_template.Radius / 2);
             }
             if(casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
+            if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+            {
+                frame = casterAgent.AgentVisuals.GetGlobalFrame();
+            }
             return frame;
         }
 
@@ -176,10 +185,13 @@ namespace TOW_Core.Abilities
 
         private void AddPhysics(ref GameEntity entity)
         {
-            var mass = 1;
-            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
-            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
-            entity.SetPhysicsState(true, false);
+            if (!IsStaticAbility()) 
+            {
+                var mass = 1;
+                entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
+                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
+                entity.SetPhysicsState(true, false);
+            }
         }
 
         private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
@@ -206,6 +218,15 @@ namespace TOW_Core.Abilities
             {
                 entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
                 CenteredStaticAOEScript script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
+                script.Initialize(this);
+                script.SetAgent(casterAgent);
+                entity.CallScriptCallbacks();
+            }
+
+            if (Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
+            {
+                entity.CreateAndAddScriptComponent("TargetedStaticAOEScript");
+                TargetedStaticAOEScript script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
                 script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();

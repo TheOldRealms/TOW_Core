@@ -27,11 +27,35 @@ namespace TOW_Core.Battle
             {
                 if(maxDamage < minDamage)
                 {
-                    agent.ApplyDamage(minDamage, damager, hasShockWave:hasShockWave);
+                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave:hasShockWave);
                 }
                 else
                 {
                     agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave) ;
+                }
+            }
+        }
+
+        public static void HealAgentsInArea(Vec2 center, float radius, int minHeal, int maxHeal = -1, Agent healer = null, TargetType targetType = TargetType.Friendly)
+        {
+            var list = new List<Agent>();
+            if (targetType == TargetType.Friendly && healer != null)
+            {
+                list = Mission.Current.GetNearbyAllyAgents(center, radius, healer.Team).ToList();
+            }
+            else if (targetType == TargetType.All)
+            {
+                list = Mission.Current.GetNearbyAgents(center, radius).ToList();
+            }
+            foreach (var agent in list)
+            {
+                if (maxHeal < minHeal)
+                {
+                    agent.Heal(minHeal);
+                }
+                else
+                {
+                    agent.Heal(TOW_Core.Utilities.TOWMath.GetRandomInt(minHeal, maxHeal));
                 }
             }
         }
