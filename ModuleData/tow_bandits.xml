@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+  
+  <NPCCharacter id="tow_chaos_cult_acolyte" default_group="Infantry" name="{=9laVlEH9}Acolyte" level="11" occupation="Bandit" culture="Culture.mountain_bandits" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="40" />
+      <skill id="Bow" value="20" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="40" />
+      <skill id="Riding" value="15" />
+      <skill id="Throwing" value="15" />
+      <skill id="TwoHanded" value="20" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tow_chaos_cult_darksoul" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.wrapped_shoes" />
+      </EquipmentRoster>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.falchion_sword_t2" />
+        <equipment slot="Body" id="Item.baggy_trunks" />
+        <equipment slot="Leg" id="Item.wrapped_shoes" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tow_chaos_cult_darksoul" default_group="Infantry" name="{=ZKdiaaFo}Possessed Darksoul" level="16" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="60" />
+      <skill id="Bow" value="40" />
+      <skill id="OneHanded" value="40" />
+      <skill id="Polearm" value="70" />
+      <skill id="Riding" value="20" />
+      <skill id="Throwing" value="70" />
+      <skill id="TwoHanded" value="60" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tow_chaos_cult_magister" />
+    </upgrade_targets>
+    <Equipments>
+        <EquipmentRoster>
+            <equipment slot="Item0" id="Item.falchion_sword_t2" />
+            <equipment slot="Body" id="Item.baggy_trunks" />
+            <equipment slot="Leg" id="Item.wrapped_shoes" />
+          </EquipmentRoster>
+          <EquipmentRoster civilian="true">
+            <equipment slot="Item0" id="Item.falchion_sword_t2" />
+            <equipment slot="Body" id="Item.baggy_trunks" />
+            <equipment slot="Leg" id="Item.wrapped_shoes" />
+          </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tow_chaos_cult_magister" default_group="Cavalry" name="{=P6Md9DpR}Possessed Magister" level="21" upgrade_requires="ItemCategory.horse" occupation="Bandit" culture="Culture.mountain_bandits">
+    <face>
+   <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills>
+      <skill id="Athletics" value="100" />
+      <skill id="Bow" value="80" />
+      <skill id="OneHanded" value="100" />
+      <skill id="Polearm" value="110" />
+      <skill id="Riding" value="120" />
+      <skill id="Throwing" value="120" />
+      <skill id="TwoHanded" value="100" />
+    </skills>
+    <upgrade_targets>
+    </upgrade_targets>
+    <Equipments>
+        <EquipmentRoster>
+            <equipment slot="Item0" id="Item.falchion_sword_t2" />
+            <equipment slot="Body" id="Item.baggy_trunks" />
+            <equipment slot="Leg" id="Item.wrapped_shoes" />
+          </EquipmentRoster>
+          <EquipmentRoster civilian="true">
+            <equipment slot="Item0" id="Item.falchion_sword_t2" />
+            <equipment slot="Body" id="Item.baggy_trunks" />
+            <equipment slot="Leg" id="Item.wrapped_shoes" />
+          </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  
+  <!--Boss character end-->
+</NPCCharacters>

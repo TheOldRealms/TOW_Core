@@ -84,7 +84,7 @@
       		<EquipmentSet id="necromancer_template" />
 		</Equipments>
     </NPCCharacter>
-	<NPCCharacter id="tow_wanderer_vampire_1" name="{=!}{HERO.FIRSTNAME}, Vampire" voice="curt" age="55" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.khuzait" occupation="Wanderer">
+	<NPCCharacter id="tow_wanderer_vampire_1" name="{=!}{HERO.FIRSTNAME}, Vampire" voice="curt" age="50" default_group="Infantry" is_template="true" is_hero="false" culture="Culture.khuzait" occupation="Wanderer">
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
 			<hair_tags>

@@ -28,52 +28,112 @@
 			Social
 			Intelligence
 	-->
-  <CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
-    <SkillsToIncrease>
-      <string>OneHanded</string>
-      <string>TwoHanded</string>
-    </SkillsToIncrease>
-    <AttributeToIncrease>Vigor</AttributeToIncrease>
-    <OptionText>Military background</OptionText>
-    <OptionFlavourText>Your family has a military background and have schooled you in the ways of war ever since you were old enough to hold a weapon.</OptionFlavourText>
-  </CharacterCreationOption>
-	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<!-- Empire stage 1 -->
+	<CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_greatsword">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Leadership</string>
+			<string>Polearm</string>
+			<string>Riding</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Noble retinue family background</OptionText>
+		<OptionFlavourText>Your family has a military background and have schooled you in the ways of war ever since you were old enough to hold a weapon.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>TwoHanded</string>
+			<string>Athletics</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
+		<OptionText>Militia background</OptionText>
+		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_duelist">
+		<SkillsToIncrease>
+			<string>Throwing</string>
+			<string>OneHanded</string>
+			<string>Roguery</string>
+			<string>Athletics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Mercenary background</OptionText>
+		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
 		<SkillsToIncrease>
 			<string>Trade</string>
+			<string>Charm</string>
 			<string>Steward</string>
+			<string>Crafting</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Merchant background</OptionText>
 		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<!-- Empire stage 2 -->
+	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
 		<SkillsToIncrease>
 			<string>Athletics</string>
-			<string>Polearm</string>
-		</SkillsToIncrease>
-		<AttributeToIncrease>Control</AttributeToIncrease>
-		<OptionText>Town/Village militia</OptionText>
-		<OptionFlavourText>As a teenager you joined as a member of the Militia to help defend your town from threats.</OptionFlavourText>
-	</CharacterCreationOption>
-	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
-		<SkillsToIncrease>
 			<string>TwoHanded</string>
-			<string>Crafting</string>
+			<string>Polearm</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Endurance</AttributeToIncrease>
-		<OptionText>Blacksmith</OptionText>
+		<OptionText>Enlisted in the Militia</OptionText>
+		<OptionFlavourText>As a teenager you joined as a member of the Militia to help defend your town from threats.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_0">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Polearm</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Apprentice at the Colleges of Magic</OptionText>
 		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Throwing</string>
+			<string>Roguery</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Lived on the streets</OptionText>
+		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord_stirland_sigmarcult_4">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Charm</string>
+			<string>Steward</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
+		<OptionText>Faithful of Sigmar's Cult</OptionText>
+		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<!-- Empire stage 3 -->
+	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
-			<string>Polearm</string>
+			<string>Crossbow</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Vigor</AttributeToIncrease>
-		<OptionText>Enlisted</OptionText>
+		<OptionText>Captain of the Empire</OptionText>
 		<OptionFlavourText>You enlisted as a State Troop when you became an adult, fighting to defend the Empire against all threats.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_0">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Riding</string>
@@ -83,7 +143,28 @@
 		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option7" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_1">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Riding</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Warrior Priest</OptionText>
+		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_2">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Riding</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Witch Hunter</OptionText>
+		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<!-- VC stage 1 -->
+	<CharacterCreationOption Id="option13" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>Leadership</string>
 			<string>Charm</string>
@@ -92,7 +173,7 @@
 		<OptionText>Aristocratic</OptionText>
 		<OptionFlavourText>You were a member of a small aristocratic family near to the Sylvanian border.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option8" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option14" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>Steward</string>
 			<string>Tactics</string>
@@ -101,7 +182,9 @@
 		<OptionText>Sigmarite disciple</OptionText>
 		<OptionFlavourText>You were a disciple at a Sigmarite church, learning the ways of the holy men and reading religious texts.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option9" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<!-- VC stage 2 -->
+	<CharacterCreationOption Id="option15" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>Scouting</string>
 			<string>Charm</string>
@@ -110,7 +193,7 @@
 		<OptionText>Informant</OptionText>
 		<OptionFlavourText>You agreed to be an informant on the actions of the Vampire Counts in Sylvania, integrating yourself inside their society.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option10" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>Riding</string>
 			<string>Scouting</string>
@@ -119,7 +202,9 @@
 		<OptionText>Scholar</OptionText>
 		<OptionFlavourText>Your drive for rare or forbidden knowledge has led you into Sylvania, and you believe you may have found it after searching far and wide.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option11" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<!-- VC stage 3 -->
+	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Leadership</string>
@@ -128,7 +213,7 @@
 		<OptionText>Fresh Blood Vampire</OptionText>
 		<OptionFlavourText>Freshly turned with the blood kiss, you are now a vampire. Immortality awaits.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option12" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Leadership</string>
