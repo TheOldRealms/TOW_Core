@@ -53,7 +53,8 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
         protected override float UtilityFunction()
         {
-            return ScoringAxis.CalculateGeometricMean(axes);
+            return 0.5f;
+          //  return ScoringAxis.CalculateGeometricMean(axes);
         }
     }
 }
