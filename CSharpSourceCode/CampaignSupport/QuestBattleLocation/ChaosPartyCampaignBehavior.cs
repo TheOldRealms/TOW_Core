@@ -43,7 +43,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     else
                     {
                         chaosRaidingParty.Ai.SetAIState(AIState.VisitingVillage);
-                        chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
+                        chaosRaidingParty.SetMoveGoToSettlement(settlement);
                     }
                 }
             }
