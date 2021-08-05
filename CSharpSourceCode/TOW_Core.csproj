@@ -298,7 +298,8 @@
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
-    <Compile Include="CampaignSupport\QuestBattleLocation\ChaosPartyCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosPartyCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
     <Compile Include="Items\MagicWeaponAgentComponent.cs" />
@@ -341,7 +342,6 @@
     <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
-    <Compile Include="CampaignSupport\PartyComponent\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
     <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
