@@ -74,7 +74,7 @@
   <AbilityTemplate 
       StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="summonskeleton_icon" 
       CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -111,7 +111,7 @@
   <AbilityTemplate 
       StringID="Dart" 
       Name="Dart" 
-      SpriteName="fireball_icon" 
+      SpriteName="dart_icon" 
       CoolDown="2" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
@@ -146,7 +146,7 @@
   <AbilityTemplate 
       StringID="BurningHead" 
       Name="The Burning Head" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="burninghead_icon" 
       CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -182,7 +182,7 @@
   <AbilityTemplate 
       StringID="ScreamingSkull" 
       Name="Screaming Skull" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="screamingskull_icon" 
       CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -219,7 +219,7 @@
   <AbilityTemplate 
       StringID="HealingAOE" 
       Name="Healing AOE" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="healingprayer_icon" 
       CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
