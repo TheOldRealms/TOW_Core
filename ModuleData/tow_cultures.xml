@@ -3600,97 +3600,10 @@
 			<template name="NPCCharacter.tournament_template_khuzait_four_participant_set_v3" />
 		</tournament_team_templates_four_participant>
 	</Culture>
-	<Culture id="nord"
-			 name="{=sYFaoW7G}Nord"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.sturgian_warrior_son"
-			 basic_troop="NPCCharacter.sturgian_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_sturgia_template"
-			 encounter_background_mesh="encounter_sturgia"
-			 caravan_party_template="PartyTemplate.caravan_template_sturgia"
-			 militia_party_template="PartyTemplate.militia_sturgia_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=ig8zAo8f}Ori" />
-		</male_names>
-		<female_names>
-			<name name="{=L0fuYckc}Friga" />
-		</female_names>
-	</Culture>
-	<Culture id="vakken"
-			 name="{=bHh03ob0}Vakken"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.sturgian_warrior_son"
-			 basic_troop="NPCCharacter.sturgian_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_sturgia_template"
-			 encounter_background_mesh="encounter_sturgia"
-			 caravan_party_template="PartyTemplate.caravan_template_sturgia"
-			 militia_party_template="PartyTemplate.militia_sturgia_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=jhT7CfhM}Aivar" />
-			<name name="{=GaMUU2Pf}Kaupi" />
-			<name name="{=3ipKaDWU}Natti" />
-			<name name="{=kL0ldFLG}Pekko" />
-			<name name="{=W1ZpjgQO}Rauko" />
-			<name name="{=WpTXwQw1}Vuoni" />
-		</male_names>
-		<female_names>
-			<name name="{=FlexUfSP}Alivar" />
-			<name name="{=4bQbv3oN}Arha" />
-			<name name="{=rDPExYMQ}Eitar" />
-			<name name="{=jFdZ7mlB}Ilikki" />
-			<name name="{=ELpRLYQt}Jalin" />
-			<name name="{=hBuBpxjb}Kaidi" />
-			<name name="{=j8IOY5Cy}Luona" />
-			<name name="{=iiGXfCWd}Menar" />
-			<name name="{=gG1O5V1n}Olianar" />
-			<name name="{=XAF12HV0}Vikka" />
-		</female_names>
-	</Culture>
-	<Culture id="darshi"
-			 name="{=IHhWB1aa}Darshi"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.aserai_youth"
-			 basic_troop="NPCCharacter.aserai_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_aserai_template"
-			 encounter_background_mesh="encounter_aserai"
-			 caravan_party_template="PartyTemplate.caravan_template_aserai"
-			 militia_party_template="PartyTemplate.militia_aserai_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=JJtww9pt}Aryush" />
-			<name name="{=Zm0Ee6sp}Azadun" />
-			<name name="{=nisA6W98}Baheshtur" />
-			<name name="{=pEvpjIa9}Bunduk" />
-			<name name="{=Z261F0mj}Hamezan" />
-			<name name="{=KmzQabkH}Hivan" />
-			<name name="{=QR3aNalC}Imirza" />
-			<name name="{=mDZqpa9Z}Sanjar" />
-		</male_names>
-		<female_names>
-			<name name="{=lGRde77R}Anahita" />
-			<name name="{=sa0YrXiv}Azareh" />
-			<name name="{=epxmhQav}Daria" />
-			<name name="{=zSL3MgNQ}Ilzar" />
-			<name name="{=R7avnODK}Nasmeen" />
-			<name name="{=ZPHdPglH}Raksana" />
-			<name name="{=SHXt3kC5}Roshaneh" />
-			<name name="{=wERVdmjj}Sulnaz" />
-			<name name="{=Btb7NzFM}Shima" />
-			<name name="{=GqEEIYay}Tilzad" />
-		</female_names>
-	</Culture>
 	<Culture id="looters"
 			 name="{=!}Outlaws"
-			 elite_basic_troop="NPCCharacter.looter"
-			 basic_troop="NPCCharacter.looter"
+			 elite_basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
+			 basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
 			 is_bandit="true"
 			 can_have_settlement="false"
 			 encounter_background_mesh="bandit_encounter_background" />

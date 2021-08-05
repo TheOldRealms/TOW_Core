@@ -46,11 +46,33 @@
 			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_empire_archer_vc" />
 		</stacks>
 	</MBPartyTemplate>
+<<<<<<< HEAD
 
 	<MBPartyTemplate id="chaos_raiders_template" >
 		<stacks>
 			<PartyTemplateStack min_value="12" max_value="20" troop="NPCCharacter.tow_grave_guard" />
 			<PartyTemplateStack min_value="5" max_value="10" troop="NPCCharacter.tow_grave_guard_greatsword" />
+=======
+	<MBPartyTemplate id="empire_outlaws" >
+		<stacks>
+		  <PartyTemplateStack min_value="6" max_value="36" troop="NPCCharacter.tow_chaos_cult_acolyte" />
+		  <PartyTemplateStack min_value="2" max_value="6" troop="NPCCharacter.tow_chaos_cult_darksoul" />
+		  <PartyTemplateStack min_value="1" max_value="3" troop="NPCCharacter.tow_chaos_cult_magister" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="empire_secessionists" >
+		<stacks>
+		  <PartyTemplateStack min_value="6" max_value="36" troop="NPCCharacter.tow_chaos_cult_acolyte" />
+		  <PartyTemplateStack min_value="2" max_value="6" troop="NPCCharacter.tow_chaos_cult_darksoul" />
+		  <PartyTemplateStack min_value="1" max_value="3" troop="NPCCharacter.tow_chaos_cult_magister" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="chaos_cultists" >
+		<stacks>
+		  <PartyTemplateStack min_value="6" max_value="36" troop="NPCCharacter.tow_chaos_cult_acolyte" />
+		  <PartyTemplateStack min_value="2" max_value="6" troop="NPCCharacter.tow_chaos_cult_darksoul" />
+		  <PartyTemplateStack min_value="1" max_value="3" troop="NPCCharacter.tow_chaos_cult_magister" />
+>>>>>>> development
 		</stacks>
 	</MBPartyTemplate>
 </partyTemplates>
