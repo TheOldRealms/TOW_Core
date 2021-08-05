@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
@@ -7,7 +6,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.SaveSystem;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 
-namespace TOW_Core.CampaignSupport.PartyComponent
+namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 {
     public class ChaosRaidingPartyComponent : WarPartyComponent
     {

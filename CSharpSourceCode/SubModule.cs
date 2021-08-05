@@ -37,6 +37,7 @@ using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
+using TOW_Core.CampaignSupport.ChaosRaidingParty;
 
 namespace TOW_Core
 {
@@ -152,7 +153,7 @@ namespace TOW_Core
                 starter.AddModel(new QuestBattleLocationMenuModel());
 
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
-                starter.AddBehavior(new ChaosPartyCampaignBehavior());
+                starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
             }
         }
 

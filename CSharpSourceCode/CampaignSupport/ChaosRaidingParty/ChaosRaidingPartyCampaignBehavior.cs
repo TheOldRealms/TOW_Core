@@ -2,12 +2,12 @@
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TOW_Core.CampaignSupport.PartyComponent;
+using TOW_Core.CampaignSupport.QuestBattleLocation;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.CampaignSupport.QuestBattleLocation
+namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 {
-    public class ChaosPartyCampaignBehavior : CampaignBehaviorBase
+    public class ChaosRaidingPartyCampaignBehavior : CampaignBehaviorBase
     {
         public override void SyncData(IDataStore dataStore)
         {

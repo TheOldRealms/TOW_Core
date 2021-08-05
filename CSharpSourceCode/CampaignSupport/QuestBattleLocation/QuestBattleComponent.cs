@@ -8,7 +8,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport.PartyComponent;
+using TOW_Core.CampaignSupport.ChaosRaidingParty;
 
 namespace TOW_Core.CampaignSupport.QuestBattleLocation
 {
