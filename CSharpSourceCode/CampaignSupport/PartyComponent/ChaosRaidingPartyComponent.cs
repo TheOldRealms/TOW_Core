@@ -25,7 +25,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
 
         private void InitializeChaosRaidingParty(int partySize)
         {
-            PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_raiders_template");
+            PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_cultists");
             Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
             Party.Owner = Party.MobileParty.ActualClan.Leader;
             Party.MobileParty.HomeSettlement = Portal;
@@ -36,6 +36,7 @@ namespace TOW_Core.CampaignSupport.PartyComponent
             //      if ((double) villagerPartySize > (double) this.Village.Hearth)
             //          villagerPartySize = (int) this.Village.Hearth;
             //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
+            
             Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
             Party.Visuals.SetMapIconAsDirty();
             Party.MobileParty.InitializePartyTrade(0);

@@ -63,7 +63,6 @@ namespace TOW_Core
             harmony.PatchAll();
             ConfigureLogging();
 
-            
 
             //This has to be here.
             AbilityManager.LoadAbilities();
@@ -93,7 +92,7 @@ namespace TOW_Core
         }
 
         public void LoadFontAssets()
-		{
+        {
             UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
@@ -125,17 +124,17 @@ namespace TOW_Core
             UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_spritesheet"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-		}
+        }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
-            if(game.GameType is CustomGame)
+            if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
                 gameStarterObject.AddModel(new TOWBattleMoraleModel());
             }
-            else if(game.GameType is Campaign)
+            else if (game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
                 starter.CampaignBehaviors.Add(new ExtendedInfoManager());
@@ -153,6 +152,7 @@ namespace TOW_Core
                 starter.AddModel(new QuestBattleLocationMenuModel());
 
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
+                starter.AddBehavior(new ChaosPartyCampaignBehavior());
             }
         }
 
@@ -171,12 +171,13 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
-            if(Game.Current.GameType is Campaign)
+            if (Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             }
+
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
-            if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadStatusEffects()
@@ -191,7 +192,7 @@ namespace TOW_Core
             var config = new LoggingConfiguration();
 
             // Log debug/exception info to the log file
-            var logfile = new FileTarget("logfile") { FileName = path };
+            var logfile = new FileTarget("logfile") {FileName = path};
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
 
             // Log info and higher to the VS debugger

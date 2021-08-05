@@ -1,20 +1,11 @@
-﻿using SandBox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport.PartyComponent;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport.QuestBattleLocation
 {
@@ -26,37 +17,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, onGameStart);
             CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, onMissionEnded);
-            CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, DailyTickSettlement);
         }
-
-        private void DailyTickSettlement(Settlement settlement)
-        {
-            if (settlement.Name.ToString() != "Chaos Portal") return; //TODO: Is there a better way to do this?
-            var questBattleComponent = settlement.GetComponent<QuestBattleComponent>();
-            if (questBattleComponent != null)
-            {
-                if (questBattleComponent.RaidingParties.Count < 5)
-                {
-                    var find = Campaign.Current.Settlements.ToList().FindAll(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == "Averheim");
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_"+questBattleComponent.RaidingParties.Count+1, settlement, questBattleComponent, 30);
-                    chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
-                    var randomSettlement = find.GetRandomElement();
-                    chaosRaidingParty.SetMoveRaidSettlement(randomSettlement);
-                    chaosRaidingParty.Ai.SetDoNotMakeNewDecisions(true);
-                    FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
-                    TOWCommon.Say("Raiding " + randomSettlement.Name);
-                }
-
-                if (questBattleComponent.PatrolParties.Count < 2)
-                {
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_"+questBattleComponent.PatrolParties.Count+1, settlement, questBattleComponent, 120);
-                    chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
-                    chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
-                    TOWCommon.Say("Patrolling around " + settlement.Name);
-                }
-            }
-        }
-
         private void onMissionEnded(IMission obj)
         {
             if (_component != null && _component.IsQuestBattleUnderway)
