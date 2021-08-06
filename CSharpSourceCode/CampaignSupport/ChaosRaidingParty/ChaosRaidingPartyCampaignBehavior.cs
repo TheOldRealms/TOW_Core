@@ -24,7 +24,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             if (party.PartyComponent is ChaosRaidingPartyComponent)
             {
                 var component = (ChaosRaidingPartyComponent) party.PartyComponent;
-                
+
                 if (component.Patrol)
                 {
                     PatrolBehavior(partyThinkParams, component);
@@ -41,27 +41,35 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         private static void RaiderBehavior(MobileParty party, PartyThinkParams partyThinkParams, ChaosRaidingPartyComponent component)
         {
-            if (party.TargetSettlement.IsRaided)
+            var scores = partyThinkParams.AIBehaviorScores.ToList().FindAll(pair => pair.Value >= 9.9f);
+            if (party.TargetSettlement != null && party.TargetSettlement.IsRaided)
             {
-                AIBehaviorTuple key = new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement);
-                partyThinkParams.AIBehaviorScores[key] = 0f;
+                scores.ForEach(pair => partyThinkParams.AIBehaviorScores[pair.Key] = 0.0f);
                 var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
-                if (find.Count > 0)
+                if (find.Count == 0)
                 {
-                    key = new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement);
-                    partyThinkParams.AIBehaviorScores[key] = 0f;
+                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement)] = 10f;
                 }
                 else
                 {
-                    key = new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement);
-                    partyThinkParams.AIBehaviorScores[key] = 10f;
+                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 10f;
                 }
             }
-
-            if (party.TargetSettlement != component.Portal)
+            else if (party.TargetSettlement != null)
             {
-                AIBehaviorTuple key = new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement);
-                partyThinkParams.AIBehaviorScores[key] = 10f;
+                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement)] = 10f;
+            }
+
+            if (party.TargetSettlement == null)
+            {
+                if (scores.Count == 0)
+                {
+                    var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
+                    if (find.Count != 0)
+                    {
+                        partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement)] = 10f;
+                    }
+                }
             }
         }
 
