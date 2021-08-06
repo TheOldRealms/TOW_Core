@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.SaveSystem;
@@ -8,7 +9,7 @@ using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 {
-    public class ChaosRaidingPartyComponent : PartyComponent 
+    public class ChaosRaidingPartyComponent : WarPartyComponent
     {
         [SaveableProperty(1)] public Settlement Portal { get; private set; }
 
@@ -22,23 +23,16 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             this.Patrol = patrol;
         }
 
-        private void InitializeChaosRaidingParty(int partySize)
+        private void InitializeChaosRaidingParty(MobileParty mobileParty, int partySize)
         {
             PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_cultists");
-            Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
-            //      Party.Owner = Party.MobileParty.ActualClan.Leader;
-            Party.MobileParty.HomeSettlement = Portal;
-            Party.MobileParty.Aggressiveness = 2.0f;
-
-            //      if (this.Village.Bound?.Town?.Governor != null && this.Village.Bound.Town.Governor.GetPerkValue(DefaultPerks.Scouting.VillageNetwork))
-            ///           villagerPartySize = MathF.Round((float) villagerPartySize * (float) (1.0 + (double) DefaultPerks.Scouting.VillageNetwork.SecondaryBonus * 0.00999999977648258));
-            //      if ((double) villagerPartySize > (double) this.Village.Hearth)
-            //          villagerPartySize = (int) this.Village.Hearth;
-            //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
-
-            Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
-            Party.Visuals.SetMapIconAsDirty();
-            Party.MobileParty.InitializePartyTrade(0);
+            mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
+            mobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
+            mobileParty.Party.Owner = mobileParty.ActualClan.Leader;
+            mobileParty.HomeSettlement = Portal;
+            mobileParty.Aggressiveness = 2.0f;
+            mobileParty.Party.Visuals.SetMapIconAsDirty();
+            mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
         }
 
         public static MobileParty CreateChaosRaidingParty(
@@ -49,7 +43,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             return MobileParty.CreateParty(stringId,
                 new ChaosRaidingPartyComponent(portal, component, false),
-                mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(partySize));
+                mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(mobileParty, partySize));
         }
 
         public static MobileParty CreateChaosPatrolParty(
@@ -60,7 +54,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             return MobileParty.CreateParty(stringId,
                 new ChaosRaidingPartyComponent(portal, component, true),
-                mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(partySize));
+                mobileParty => ((ChaosRaidingPartyComponent) mobileParty.PartyComponent).InitializeChaosRaidingParty(mobileParty, partySize));
         }
 
         public override TextObject Name

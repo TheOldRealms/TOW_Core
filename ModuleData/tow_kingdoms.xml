@@ -126,6 +126,7 @@
 		<relationships>
 			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
 			<relationship kingdom="Kingdom.averland" value="-1" isAtWar="true" />
+			<relationship kingdom="Kingdom.stirland" value="-1" isAtWar="true" />
 		</relationships>
 		<policies>
 			<policy id="policy_senate" />

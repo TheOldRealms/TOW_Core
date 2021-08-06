@@ -93,7 +93,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
                     var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(350, 700));
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
                     FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
@@ -102,7 +102,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
                 if (questBattleComponent.PatrolParties.Count < 2)
                 {
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(105, 145));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(1050, 1450));
                     chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
                     chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
                     TOWCommon.Say("Patrolling around " + settlement.Name);
