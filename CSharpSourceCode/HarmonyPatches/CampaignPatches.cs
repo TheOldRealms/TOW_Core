@@ -274,17 +274,6 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(AiPatrollingBehavior), "AiHourlyTick")]
-        public static bool FixMobilePartyPatrolOverride(MobileParty mobileParty, PartyThinkParams p)
-        {
-            if (mobileParty.ActualClan != null && mobileParty.ActualClan.Name.ToString() == "Chaos Warriors")
-            {
-                return false;
-            }
-
-            return true;
-        }
+        
     }
 }

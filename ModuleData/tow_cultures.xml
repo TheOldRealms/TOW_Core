@@ -3671,10 +3671,10 @@
 			 name="{=jKviMpbP}Neutral"
 			 elite_basic_troop="NPCCharacter.guard"
 			 basic_troop="NPCCharacter.guard" />
-	<!--Culture id="chaos_culture"
-			 can_have_settlement="true"
+	<Culture id="chaos_culture"
+			 can_have_settlement="false"
 			 name="{=!}Chaos Warriors"
 			 default_party_template="PartyTemplate.empire_lordparty_template"
 			 elite_basic_troop="NPCCharacter.guard"
-			 basic_troop="NPCCharacter.guard" /-->
+			 basic_troop="NPCCharacter.guard"/>
 </SPCultures>

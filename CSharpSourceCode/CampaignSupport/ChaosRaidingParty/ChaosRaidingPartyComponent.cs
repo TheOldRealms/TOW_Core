@@ -8,7 +8,7 @@ using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 {
-    public class ChaosRaidingPartyComponent : WarPartyComponent
+    public class ChaosRaidingPartyComponent : PartyComponent 
     {
         [SaveableProperty(1)] public Settlement Portal { get; private set; }
 
@@ -26,34 +26,19 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_cultists");
             Party.MobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
-            Party.Owner = Party.MobileParty.ActualClan.Leader;
+            //      Party.Owner = Party.MobileParty.ActualClan.Leader;
             Party.MobileParty.HomeSettlement = Portal;
-            Party.MobileParty.Aggressiveness = 1.0f;
+            Party.MobileParty.Aggressiveness = 2.0f;
 
             //      if (this.Village.Bound?.Town?.Governor != null && this.Village.Bound.Town.Governor.GetPerkValue(DefaultPerks.Scouting.VillageNetwork))
             ///           villagerPartySize = MathF.Round((float) villagerPartySize * (float) (1.0 + (double) DefaultPerks.Scouting.VillageNetwork.SecondaryBonus * 0.00999999977648258));
             //      if ((double) villagerPartySize > (double) this.Village.Hearth)
             //          villagerPartySize = (int) this.Village.Hearth;
             //       this.Village.Hearth -= (float) ((villagerPartySize + 1) / 2);
-            
+
             Party.MobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
             Party.Visuals.SetMapIconAsDirty();
             Party.MobileParty.InitializePartyTrade(0);
-
-            //   float num = 10000f;
-            //    ItemObject itemObject1 = (ItemObject) null;
-            //      foreach (ItemObject itemObject2 in Items.All)
-            //      {
-            //         if (itemObject2.ItemCategory == DefaultItemCategories.PackAnimal && (double) itemObject2.Value < (double) num && itemObject2.Value > 40)
-            //  {
-            //             itemObject1 = itemObject2;
-            //           num = (float) itemObject2.Value;
-            //          }
-            //   }
-
-            ////      if (itemObject1 == null)
-            //       int amount = (int) (0.5 * (double) villagerPartySize);
-            //     this.MobileParty.ItemRoster.Add(new ItemRosterElement(itemObject1, amount));
         }
 
         public static MobileParty CreateChaosRaidingParty(
@@ -97,14 +82,37 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         }
 
 
-        protected override void OnInitialize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
+        protected override void OnInitialize()
+        {
+            if (Patrol)
+            {
+                ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).PatrolParties.Add(this);
+            }
+            else
+            {
+                ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Add(this);
+            }
+        }
 
-        protected override void OnFinalize() => ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
+        protected override void OnFinalize()
+        {
+            if (Patrol)
+            {
+                ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).PatrolParties.Remove(this);
+            }
+            else
+            {
+                ((QuestBattleComponent) Portal.GetComponent(typeof(QuestBattleComponent))).RaidingParties.Remove(this);
+            }
+        }
     }
-    
+
     public class ChaosRaidingPartySaveDefiner : SaveableTypeDefiner
     {
-        public ChaosRaidingPartySaveDefiner() : base(2_543_135) { }
+        public ChaosRaidingPartySaveDefiner() : base(2_543_135)
+        {
+        }
+
         protected override void DefineClassTypes()
         {
             base.DefineClassTypes();
