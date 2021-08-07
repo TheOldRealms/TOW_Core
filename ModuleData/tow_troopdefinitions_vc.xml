@@ -406,7 +406,7 @@
 	<NPCCharacter id="tow_grave_guard_greatsword"
 			default_group="Infantry"
 			level="21"
-			name="{=!}Grave Guard w/ Great Weapons"
+			name="{=!}Grave Guard with Great Weapons"
 			occupation="Soldier"
 			culture="Culture.khuzait"
 			skill_template="SkillSet.tow_skills_level21">
