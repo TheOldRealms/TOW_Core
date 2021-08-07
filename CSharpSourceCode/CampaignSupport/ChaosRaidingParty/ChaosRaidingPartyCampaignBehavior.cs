@@ -41,10 +41,10 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         private static void RaiderBehavior(MobileParty party, PartyThinkParams partyThinkParams, ChaosRaidingPartyComponent component)
         {
-            if (component.Target == null || component.Target.IsRaided)
+            if (component.Target == null || component.Target.IsRaided || component.Target == component.Portal)
             {
                 var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
-                if (find.Count == 0)
+                if (find.Count != 0)
                 {
                     component.Target = find.GetRandomElement();
                 }
@@ -54,9 +54,8 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 }
             }
 
-            if (component.Target.IsVillage && !component.Target.IsRaided)
+            if (component.Target.IsVillage && !component.Target.IsRaided && component.Target != component.Portal)
             {
-                
                 partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Target, AiBehavior.RaidSettlement)] = 10f;
             }
 
@@ -86,7 +85,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
                     var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(350, 700));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
                     ((ChaosRaidingPartyComponent) chaosRaidingParty.PartyComponent).Target = find;
