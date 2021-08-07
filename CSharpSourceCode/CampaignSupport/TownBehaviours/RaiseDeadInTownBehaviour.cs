@@ -8,12 +8,18 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Localization;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
 {
     public class RaiseDeadInTownBehaviour : CampaignBehaviorBase
     {
+        private CharacterObject _skeleton;
+        private float _tickFrequency = 2f;
+        private double _elapsedTime = 0;
+        private int _progress = 1;
+
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Initialize);
@@ -23,13 +29,38 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             obj.AddGameMenuOption("town", "graveyard", "Go to the graveyard.", new GameMenuOption.OnConditionDelegate(raisedeadcondition), new GameMenuOption.OnConsequenceDelegate(raisedeadconsequence), false, 4, false);
             obj.AddGameMenu("graveyard", "{GRAVEYARD_INTRODUCTION}", new OnInitDelegate(graveyardmenuinit), GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.none, null);
-            obj.AddGameMenuOption("graveyard", "attempt", "Attempt to raise dead from the corpses in the ground. Be aware that the generic population might not be tolerant to this activity.", new GameMenuOption.OnConditionDelegate(attemptcondition), new GameMenuOption.OnConsequenceDelegate(attemptconsequence), false, -1, false);
+            obj.AddGameMenuOption("graveyard", "attempt", "Attempt to raise dead from the corpses in the ground.", new GameMenuOption.OnConditionDelegate(attemptcondition), new GameMenuOption.OnConsequenceDelegate(attemptconsequence), false, -1, false);
             obj.AddGameMenuOption("graveyard", "leaveoption", "Leave", new GameMenuOption.OnConditionDelegate(leavecondition), delegate (MenuCallbackArgs x)
             {
                 GameMenu.SwitchToMenu("town");
             }, true, -1, false);
+
+            obj.AddWaitGameMenu("raising_dead", "Raising Dead.", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None);
+            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_warrior");
         }
 
+        private void raisingdeadtick(MenuCallbackArgs args, CampaignTime dt)
+        {
+            _elapsedTime += dt.ToHours;
+            //1 every 2 hours for now. Later we want to tie this into the intelligence skill or something.
+            if(_skeleton != null && MobileParty.MainParty.MemberRoster.TotalManCount <= MobileParty.MainParty.Party.PartySizeLimit && _elapsedTime / _progress > _tickFrequency)
+            {
+                MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 1);
+                _progress += 1;
+            }
+            args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(_progress/9);
+        }
+
+        private void raisingdeadconsequence(MenuCallbackArgs args)
+        {
+            _progress = 1;
+            _elapsedTime = 0;
+            GameMenu.SwitchToMenu("graveyard");
+        }
+
+        private bool raisingdeadcondition(MenuCallbackArgs args) => true;
+
+        private void raisingdeadinit(MenuCallbackArgs args) { }
 
         private bool raisedeadcondition(MenuCallbackArgs args)
         {
@@ -53,19 +84,19 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void graveyardmenuinit(MenuCallbackArgs args)
         {
             args.MenuTitle = new TextObject("Graveyard");
-            var intro = new TextObject("You have arrived at {SETTLEMENT_NAME}'s Graveyard. The commonfolk's tombs are ripe for the taking. Morr is going to be furious tonight!");
+            var intro = new TextObject("You have arrived at {SETTLEMENT_NAME}'s Graveyard. The commonfolk's graves are ripe for the taking. Morr is going to be furious tonight!");
             MBTextManager.SetTextVariable("SETTLEMENT_NAME", Settlement.CurrentSettlement.Name);
             MBTextManager.SetTextVariable("GRAVEYARD_INTRODUCTION", intro);
         }
 
         private bool attemptcondition(MenuCallbackArgs args)
         {
-            throw new NotImplementedException();
+            return Hero.MainHero.CanRaiseDead();
         }
 
         private void attemptconsequence(MenuCallbackArgs args)
         {
-            throw new NotImplementedException();
+            GameMenu.SwitchToMenu("raising_dead");
         }
 
         private bool leavecondition(MenuCallbackArgs args)
