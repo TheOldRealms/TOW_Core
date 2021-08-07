@@ -74,7 +74,7 @@
   <AbilityTemplate 
       StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="summonskeleton_icon" 
       CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -111,7 +111,7 @@
   <AbilityTemplate 
       StringID="Dart" 
       Name="Dart" 
-      SpriteName="fireball_icon" 
+      SpriteName="dart_icon" 
       CoolDown="2" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
@@ -146,7 +146,7 @@
   <AbilityTemplate 
       StringID="BurningHead" 
       Name="The Burning Head" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="burninghead_icon" 
       CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -182,7 +182,7 @@
   <AbilityTemplate 
       StringID="ScreamingSkull" 
       Name="Screaming Skull" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="screamingskull_icon" 
       CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
@@ -219,37 +219,38 @@
   <AbilityTemplate 
       StringID="HealingAOE" 
       Name="Healing AOE" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="healingprayer_icon" 
       CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
-      Duration="5" 
+      Duration="9" 
       Radius="0.1" 
       AbilityType="Spell" 
       AbilityEffectType="CenteredStaticAOE" 
       BaseMovementSpeed="0" 
       TickInterval="1" 
       TriggerType="EveryTick" 
-      HasLight="false" 
-      LightIntensity="0" 
-      LightRadius="0" 
+      HasLight="true" 
+      LightIntensity="100" 
+      LightRadius="10" 
       LightFlickeringMagnitude="0" 
       LightFlickeringInterval="0" 
       ShadowCastEnabled="false" 
       ParticleEffectPrefab="healing_circle" 
       ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
-      ShouldSoundLoopOverDuration="true"
+      SoundEffectToPlay="empire_heal" 
+      ShouldSoundLoopOverDuration="false"
       CastType="Instant" 
       CastTime="0" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="healing_tick"
       Offset="0"
       AbilityTargetType="Self">
-      <LightColorRGB x="255" y="170" z="0" w="-1">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
         <AsVec2>
           <x>255</x>
-          <y>170</y>
+          <y>255</y>
+          <z>255</z>
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
