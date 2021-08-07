@@ -94,49 +94,67 @@ namespace TOW_Core.Abilities
             var frame = GetSpawnFrame(casterAgent);
 
             var entity = SpawnEntity(frame);
+            entity.SetGlobalFrame(frame);
 
             AddLight(ref entity);
 
-            AddPhysics(ref entity);
+            if (IsDynamicAbility())
+                AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
-            
-            frame = frame.Advance(Template.Offset);
-            
-            if (IsGroundAbility())
-            {
-                frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-            }
-
-            entity.SetGlobalFrame(frame);
         }
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE;
         }
 
-        private bool IsStaticAbility()
+        public bool IsDynamicAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DynamicProjectile ||
+                   Template.AbilityEffectType == AbilityEffectType.MovingProjectile ||
+                   Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
-            if(_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+            if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
             {
                 frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
             }
-            else
-            {
-                frame = frame.Elevate(_template.Radius / 2);
-            }
-            if(casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
-            if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+            //else
+            //{
+            //    frame = frame.Elevate(_template.Radius / 2);
+            //}
+            else if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 frame = casterAgent.AgentVisuals.GetGlobalFrame();
             }
+            else if (_template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
+            {
+                //frame = crosshair.AimsCenterFrame;
+                //frame.Elevate(_template.Height);
+            }
+            else if (_template.AbilityEffectType == AbilityEffectType.TargetedStatic)
+            {
+                //frame = crosshair.victim.GlobalFrame;
+                //frame.Elevate(_template.Height);
+            }
+            else if (_template.AbilityEffectType == AbilityEffectType.Summoning)
+            {
+                //frame = crosshair.Frame;
+            }
+
+            if (casterAgent.IsAIControlled)
+                frame = UpdateFrameRotationForAI(casterAgent, frame);
+            if (IsGroundAbility())
+                frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+            frame = frame.Advance(Template.Offset);
             return frame;
         }
 
@@ -185,48 +203,42 @@ namespace TOW_Core.Abilities
 
         private void AddPhysics(ref GameEntity entity)
         {
-            if (!IsStaticAbility()) 
-            {
-                var mass = 1;
-                entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
-                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
-                entity.SetPhysicsState(true, false);
-            }
+            var mass = 1;
+            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
+            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
+            entity.SetPhysicsState(true, false);
         }
 
         private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
         {
+            AbilityScript script = null;
             if (Template.AbilityEffectType == AbilityEffectType.MovingProjectile)
             {
                 entity.CreateAndAddScriptComponent("MovingProjectileScript");
-                MovingProjectileScript script = entity.GetFirstScriptOfType<MovingProjectileScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
+                script = entity.GetFirstScriptOfType<MovingProjectileScript>();
             }
-
-            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
+            else if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
             {
                 entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
-                DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
+                script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
             }
-
-            if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+            else if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
-                CenteredStaticAOEScript script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
+                script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
             }
-
-            if (Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
+            else if (Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
             {
                 entity.CreateAndAddScriptComponent("TargetedStaticAOEScript");
-                TargetedStaticAOEScript script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
+                script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
+            }
+            else if (Template.AbilityEffectType == AbilityEffectType.Summoning)
+            {
+                entity.CreateAndAddScriptComponent("SummoningScript");
+                script = entity.GetFirstScriptOfType<SummoningScript>();
+            }
+            if (script != null)
+            {
                 script.Initialize(this);
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();

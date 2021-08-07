@@ -287,6 +287,7 @@
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />

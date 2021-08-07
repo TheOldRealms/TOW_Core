@@ -20,16 +20,13 @@ namespace TOW_Core.Abilities.Scripts
         private bool _hasTickedOnce;
         private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
+        private MatrixFrame frame;
 
         internal void SetAgent(Agent agent)
         {
             _casterAgent = agent;
         }
         protected override bool MovesEntity() => true;
-        protected virtual bool ShouldMove()
-        {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE;
-        }
 
         protected override void OnInit()
         {
@@ -45,6 +42,7 @@ namespace TOW_Core.Abilities.Scripts
         public virtual void Initialize(Ability ability)
         {
             _ability = ability;
+            frame = GameEntity.GetGlobalFrame();
             if (_ability.Template.SoundEffectToPlay != "none")
             {
                 _soundIndex = SoundEvent.GetEventIdFromString(_ability.Template.SoundEffectToPlay);
@@ -58,7 +56,10 @@ namespace TOW_Core.Abilities.Scripts
             if (_isFading) return;
             _timeSinceLastTick += dt;
 
-            var frame = UpdatePosition(dt);
+            if (_ability.IsDynamicAbility())
+            {
+                frame = UpdatePosition(dt);
+            }
             if (_ability.Template.TriggerType == TriggerType.OnCollision && CollidedWithAgent())
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
@@ -66,13 +67,13 @@ namespace TOW_Core.Abilities.Scripts
             UpdateLifeTime(dt);
             UpdateSound(frame.origin);
 
-            if (_ability.Template.TriggerType == TriggerType.EveryTick &&_timeSinceLastTick > _ability.Template.TickInterval)
+            if (_ability.Template.TriggerType == TriggerType.EveryTick && _timeSinceLastTick > _ability.Template.TickInterval)
             {
                 _timeSinceLastTick = 0;
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
                 _hasTickedOnce = true;
             }
-            else if(_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
+            else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
             {
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
                 _hasTickedOnce = true;
@@ -81,15 +82,10 @@ namespace TOW_Core.Abilities.Scripts
 
         private MatrixFrame UpdatePosition(float dt)
         {
-            var frame = GameEntity.GetGlobalFrame();
-            if (ShouldMove())
-            {
-                var newframe = GetNextFrame(frame, dt);
-                GameEntity.SetGlobalFrame(newframe);
-                GameEntity.GetBodyShape().ManualInvalidate();
-            }
-            frame = GameEntity.GetGlobalFrame();
-            return frame;
+            var newframe = GetNextFrame(GameEntity.GetGlobalFrame(), dt);
+            GameEntity.SetGlobalFrame(newframe);
+            GameEntity.GetBodyShape().ManualInvalidate();
+            return newframe;
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
@@ -163,7 +159,7 @@ namespace TOW_Core.Abilities.Scripts
         private void TriggerEffect(Vec3 position, Vec3 normal)
         {
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
-            if(effect != null)
+            if (effect != null)
             {
                 effect.Trigger(position, normal, _casterAgent);
             }
