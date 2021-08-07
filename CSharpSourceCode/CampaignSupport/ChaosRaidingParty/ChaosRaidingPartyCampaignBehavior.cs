@@ -46,18 +46,27 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             {
                 scores.ForEach(pair => partyThinkParams.AIBehaviorScores[pair.Key] = 0.0f);
                 var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
-                if (find.Count == 0)
+                if (find.Count != 0)
                 {
                     partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement)] = 10f;
                 }
                 else
                 {
-                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 10f;
+                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 8f;
+            //        party.Ai.SetAIState(AIState.VisitingVillage);
+           //         party.SetMoveGoToSettlement(component.Portal);
                 }
             }
-            else if (party.TargetSettlement != null)
+            else if (party.TargetSettlement != null && party.TargetSettlement != component.Portal)
             {
                 partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement)] = 10f;
+            }
+            
+            if (party.TargetSettlement == null && party.TargetSettlement != component.Portal)
+            {
+                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.GoToSettlement)] = 8f;
+          //      party.Ai.SetAIState(AIState.VisitingVillage);
+           //     party.SetMoveGoToSettlement(component.Portal);
             }
 
             if (party.TargetSettlement == null)
@@ -77,6 +86,8 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             AIBehaviorTuple key = new AIBehaviorTuple(component.Portal, AiBehavior.PatrolAroundPoint);
             partyThinkParams.AIBehaviorScores[key] = 10f;
+          //  component.Party.MobileParty.Ai.SetAIState(AIState.Raiding);
+          //  component.Party.MobileParty.SetMoveRaidSettlement(find);
         }
 
         private void DailyTickSettlement(Settlement settlement)
@@ -92,20 +103,13 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             {
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
-                    var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(350, 700));
-                    chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
-                    chaosRaidingParty.SetMoveRaidSettlement(find);
-                    FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
-                    TOWCommon.Say("Raiding " + find.Name);
+                    FindAllBelongingToSettlement("Averheim").GetRandomElement();
+                    ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
                 }
 
                 if (questBattleComponent.PatrolParties.Count < 2)
                 {
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(1050, 1450));
-                    chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
-                    chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
-                    TOWCommon.Say("Patrolling around " + settlement.Name);
+                    ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(105, 135));
                 }
             }
         }

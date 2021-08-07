@@ -59,7 +59,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             }
 
             party.InitializeMobileParty(roster, TroopRoster.CreateDummyTroopRoster(), base.Settlement.Position2D, 2);
-            party.ActualClan = Clan.All.Where(x => x.StringId == "neutral").FirstOrDefault();
+            party.ActualClan = Settlement.OwnerClan;
             CharacterObject character = MBObjectManager.Instance.GetObject<CharacterObject>(_template.LeaderHeroCharacterId);
             if (character != null && character.Culture != null)
             {
