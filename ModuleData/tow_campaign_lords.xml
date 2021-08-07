@@ -523,9 +523,9 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Volkmar the Grim -->
-	<NPCCharacter id="emp_lord_stirland_sigmarcult_2" name="{=!}Volkmar the Grim" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_sigmarcult_2" name="{=!}Volkmar the Grim" default_group="cavalry" age="68" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="60.39" weight="0.0006" build="0.708"  key="001E4806D5CC1000A143754FB69091014005239051098A00903800886A89F932067B066707288A0200000000000000000000000000000000000000003AE45142"  />
+			<BodyProperties version="4" age="22.44" weight="0.5" build="0.5"  key="0002D80A50003140FB1D3398D010703F963B079168E3120454BB48208BECA93500A776030AC78738000000000000000000000000000000000000000019543102"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -538,13 +538,11 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
-				<equipment slot="Body" id="Item.mail_shirt" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.volkmar_staff" />
+				<equipment slot="Body" id="Item.empire_volkmar_body" />
+				<equipment slot="Cape" id="Item.empire_volkmar_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_volkmar_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_volkmar_boots" />
 
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
