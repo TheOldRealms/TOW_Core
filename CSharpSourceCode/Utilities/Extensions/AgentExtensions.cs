@@ -169,7 +169,11 @@ namespace TOW_Core.Utilities.Extensions
                         else
                             blow.BlowFlag = BlowFlags.KnockDown;
                     }
-                    //if (damager != null) blow.OwnerId = damager.Index;
+                    if (damager != null)
+                    {
+                        blow.OwnerId = damager.Index;
+                        blow.BlowFlag = BlowFlags.NoSound;
+                    }
                     if (agent.Health > damageAmount)
                     {
                         agent.RegisterBlow(blow);
