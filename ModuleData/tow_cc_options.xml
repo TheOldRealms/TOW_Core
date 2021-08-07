@@ -36,7 +36,7 @@
 			<string>Polearm</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
 		<OptionText>Noble retinue family background</OptionText>
 		<OptionFlavourText>Your family has a military background and have schooled you in the ways of war ever since you were old enough to hold a weapon.</OptionFlavourText>
 	</CharacterCreationOption>
@@ -48,7 +48,7 @@
 			<string>Athletics</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Vigor</AttributeToIncrease>
+		<AttributeToIncrease>Control</AttributeToIncrease>
 		<OptionText>Militia background</OptionText>
 		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
 	</CharacterCreationOption>
@@ -123,59 +123,65 @@
 	</CharacterCreationOption>
 
 	<!-- Empire stage 3 -->
-	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_5">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Polearm</string>
+			<string>TwoHanded</string>
 			<string>Crossbow</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Vigor</AttributeToIncrease>
-		<OptionText>Captain of the Empire</OptionText>
+		<OptionText>Empire Enlisted</OptionText>
 		<OptionFlavourText>You enlisted as a State Troop when you became an adult, fighting to defend the Empire against all threats.</OptionFlavourText>
 	</CharacterCreationOption>
-
-	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_0">
+	
+	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
-			<string>Riding</string>
+			<string>Athletics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Bright Wizard pupil</OptionText>
 		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_1">
+	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_4">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Medicine</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Warrior Priest</OptionText>
-		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
-	</CharacterCreationOption>
+		<OptionText>Novitiate from Sigmar</OptionText>
+		<OptionFlavourText>Faith is your shield.</OptionFlavourText>
+	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_2">
+	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_6">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Roguery</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Witch Hunter</OptionText>
-		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
-	</CharacterCreationOption>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Novice Witch Hunter</OptionText>
+		<OptionFlavourText>Kill the mutant, the heretic, the unclean.</OptionFlavourText>
+	</CharacterCreationOption> 
 
 	<!-- VC stage 1 -->
-	<CharacterCreationOption Id="option13" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option13" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
 		<SkillsToIncrease>
 			<string>Leadership</string>
+			<string>Steward</string>
 			<string>Charm</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Aristocratic</OptionText>
 		<OptionFlavourText>You were a member of a small aristocratic family near to the Sylvanian border.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option14" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option14" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_4">
 		<SkillsToIncrease>
 			<string>Steward</string>
+			<string>Medicine</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
@@ -184,38 +190,53 @@
 	</CharacterCreationOption>
 
 	<!-- VC stage 2 -->
-	<CharacterCreationOption Id="option15" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option15" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_4">
 		<SkillsToIncrease>
 			<string>Scouting</string>
-			<string>Charm</string>
+			<string>Trade</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
 		<OptionText>Informant</OptionText>
 		<OptionFlavourText>You agreed to be an informant on the actions of the Vampire Counts in Sylvania, integrating yourself inside their society.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+	
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_5">
 		<SkillsToIncrease>
-			<string>Riding</string>
-			<string>Scouting</string>
+			<string>Medicine</string>
+			<string>Crafting</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Scholar</OptionText>
 		<OptionFlavourText>Your drive for rare or forbidden knowledge has led you into Sylvania, and you believe you may have found it after searching far and wide.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- VC stage 3 -->
-	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_2">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>OneHanded</string>
+			<string>TwoHanded</string>
+			<string>Athletics</string>
+			<string>Athletics</string>
+			<string>Athletics</string>
+			<string>Athletics</string>
+			<string>Roguery</string>
+			<string>Roguery</string>
 			<string>Leadership</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Vigor</AttributeToIncrease>
 		<OptionText>Fresh Blood Vampire</OptionText>
 		<OptionFlavourText>Freshly turned with the blood kiss, you are now a vampire. Immortality awaits.</OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	
+	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Polearm</string>
+			<string>Polearm</string>
+			<string>Medicine</string>
+			<string>Medicine</string>
+			<string>Scouting</string>
 			<string>Leadership</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
