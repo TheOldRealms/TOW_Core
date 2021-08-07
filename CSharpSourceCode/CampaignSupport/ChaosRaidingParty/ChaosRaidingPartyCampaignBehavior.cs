@@ -53,20 +53,16 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 else
                 {
                     partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 8f;
-            //        party.Ai.SetAIState(AIState.VisitingVillage);
-           //         party.SetMoveGoToSettlement(component.Portal);
                 }
             }
             else if (party.TargetSettlement != null && party.TargetSettlement != component.Portal)
             {
                 partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement)] = 10f;
             }
-            
+
             if (party.TargetSettlement == null && party.TargetSettlement != component.Portal)
             {
                 partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.GoToSettlement)] = 8f;
-          //      party.Ai.SetAIState(AIState.VisitingVillage);
-           //     party.SetMoveGoToSettlement(component.Portal);
             }
 
             if (party.TargetSettlement == null)
@@ -86,13 +82,11 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             AIBehaviorTuple key = new AIBehaviorTuple(component.Portal, AiBehavior.PatrolAroundPoint);
             partyThinkParams.AIBehaviorScores[key] = 10f;
-          //  component.Party.MobileParty.Ai.SetAIState(AIState.Raiding);
-          //  component.Party.MobileParty.SetMoveRaidSettlement(find);
         }
 
         private void DailyTickSettlement(Settlement settlement)
         {
-            if (settlement.Name.ToString() != "Chaos Portal") return; //TODO: Is there a better way to do this?
+            if (settlement.Name.ToString() != "Chaos Portal") return;
             var questBattleComponent = settlement.GetComponent<QuestBattleComponent>();
             SpawnNewParties(settlement, questBattleComponent);
         }
@@ -103,13 +97,21 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             {
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
-                    FindAllBelongingToSettlement("Averheim").GetRandomElement();
-                    ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
+                    var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
+                    chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
+                    chaosRaidingParty.SetMoveRaidSettlement(find);
+                    if (!chaosRaidingParty.Party.MapFaction.IsAtWarWith(Clan.PlayerClan))
+                    {
+                        FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
+                    }
                 }
 
                 if (questBattleComponent.PatrolParties.Count < 2)
                 {
-                    ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(105, 135));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosPatrolParty("chaos_clan_1_patrol_" + questBattleComponent.PatrolParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(105, 135));
+                    chaosRaidingParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
+                    chaosRaidingParty.SetMovePatrolAroundSettlement(settlement);
                 }
             }
         }
