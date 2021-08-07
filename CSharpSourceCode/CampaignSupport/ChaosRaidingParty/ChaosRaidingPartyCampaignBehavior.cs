@@ -41,40 +41,28 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         private static void RaiderBehavior(MobileParty party, PartyThinkParams partyThinkParams, ChaosRaidingPartyComponent component)
         {
-            var scores = partyThinkParams.AIBehaviorScores.ToList().FindAll(pair => pair.Value >= 9.9f);
-            if (party.TargetSettlement != null && party.TargetSettlement.IsRaided)
+            if (component.Target == null || component.Target.IsRaided)
             {
-                scores.ForEach(pair => partyThinkParams.AIBehaviorScores[pair.Key] = 0.0f);
                 var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
-                if (find.Count != 0)
+                if (find.Count == 0)
                 {
-                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement)] = 10f;
+                    component.Target = find.GetRandomElement();
                 }
                 else
                 {
-                    partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 8f;
+                    component.Target = component.Portal;
                 }
             }
-            else if (party.TargetSettlement != null && party.TargetSettlement != component.Portal)
+
+            if (component.Target.IsVillage && !component.Target.IsRaided)
             {
-                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.RaidSettlement)] = 10f;
+                
+                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Target, AiBehavior.RaidSettlement)] = 10f;
             }
 
-            if (party.TargetSettlement == null && party.TargetSettlement != component.Portal)
+            if (component.Target == component.Portal)
             {
-                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(party.TargetSettlement, AiBehavior.GoToSettlement)] = 8f;
-            }
-
-            if (party.TargetSettlement == null)
-            {
-                if (scores.Count == 0)
-                {
-                    var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
-                    if (find.Count != 0)
-                    {
-                        partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(find.GetRandomElement(), AiBehavior.RaidSettlement)] = 10f;
-                    }
-                }
+                partyThinkParams.AIBehaviorScores[new AIBehaviorTuple(component.Portal, AiBehavior.GoToSettlement)] = 8f;
             }
         }
 
@@ -98,9 +86,10 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
                     var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(350, 700));
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
+                    ((ChaosRaidingPartyComponent) chaosRaidingParty.PartyComponent).Target = find;
                     if (!chaosRaidingParty.Party.MapFaction.IsAtWarWith(Clan.PlayerClan))
                     {
                         FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);

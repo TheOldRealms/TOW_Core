@@ -15,6 +15,8 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         [SaveableProperty(2)] public bool Patrol { get; private set; }
 
+        [SaveableProperty(3)] public Settlement Target { get; set; }
+
         [CachedData] private TextObject _cachedName;
 
         private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent, bool patrol)
