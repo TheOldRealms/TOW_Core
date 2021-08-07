@@ -3620,7 +3620,7 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.sea_raiders_boss_party_template" />
 	<Culture id="mountain_bandits"
-			 name="{=mOa9CX13}Mountain Bandits"
+			 name="{=!}Empire Secessionists"
 			 bandit_chief="NPCCharacter.mountain_bandits_chief"
 			 bandit_raider="NPCCharacter.mountain_bandits_raider"
 			 bandit_bandit="NPCCharacter.mountain_bandits_bandit"
@@ -3632,7 +3632,7 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.mountain_bandits_boss_party_template" />
 	<Culture id="forest_bandits"
-			 name="{=sAbjtZbB}Forest Bandits"
+			 name="{=!}Chaos Cultists"
 			 bandit_chief="NPCCharacter.forest_bandits_chief"
 			 bandit_raider="NPCCharacter.forest_bandits_raider"
 			 bandit_bandit="NPCCharacter.forest_bandits_bandit"
