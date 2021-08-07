@@ -21,7 +21,9 @@ namespace TOW_Core.Abilities
         DirectionalMovingAOE, //i.e. wind
         RandomMovingAOE, //i.e. vortex
         CenteredStaticAOE,
-        TargetedStaticAOE
+        TargetedStaticAOE,
+        TargetedStatic,
+        Summoning
     }
 
     public enum AbilityTargetType

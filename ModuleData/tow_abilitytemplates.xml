@@ -82,7 +82,7 @@
       Duration="5" 
       Radius="2" 
       AbilityType="Spell" 
-      AbilityEffectType="TargetedStaticAOE" 
+      AbilityEffectType="Summoning" 
       BaseMovementSpeed="0" 
       TickInterval="1" 
       TriggerType="EveryTick" 

@@ -22,7 +22,7 @@ namespace TOW_Core.Abilities
                 {
                     Agent.Main.CastCurrentAbility();
                 }
-                if (Input.IsKeyPressed(InputKey.E))
+                if (Input.IsKeyPressed(InputKey.T))
                 {
                     Agent.Main.SelectNextAbility();
                 }
