@@ -9,7 +9,7 @@ using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 {
-    public class ChaosRaidingPartyComponent : PartyComponent
+    public class ChaosRaidingPartyComponent : WarPartyComponent
     {
         [SaveableProperty(1)] public Settlement Portal { get; private set; }
 

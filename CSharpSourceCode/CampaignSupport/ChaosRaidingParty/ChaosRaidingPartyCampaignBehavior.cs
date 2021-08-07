@@ -43,7 +43,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             if (component.Target == null || component.Target.IsRaided || component.Target == component.Portal)
             {
-                var find = FindAllBelongingToSettlement("Averheim").FindAll(settlementF => !settlementF.IsRaided);
+                var find = FindAllBelongingToSettlement("Averheim", "Wuppertal", "Grenzstadt").FindAll(settlementF => !settlementF.IsRaided);
                 if (find.Count != 0)
                 {
                     component.Target = find.GetRandomElement();
@@ -84,7 +84,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             {
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
-                    var find = FindAllBelongingToSettlement("Averheim").GetRandomElement();
+                    var find = FindAllBelongingToSettlement("Averheim", "Wuppertal", "Grenzstadt").GetRandomElement();
                     var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
@@ -104,9 +104,9 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             }
         }
 
-        private static List<Settlement> FindAllBelongingToSettlement(string settlementName)
+        private static List<Settlement> FindAllBelongingToSettlement(params string[] names)
         {
-            return Campaign.Current.Settlements.ToList().FindAll(settlementF => settlementF.IsVillage && settlementF.Village.Bound.Name.ToString() == settlementName);
+            return Campaign.Current.Settlements.ToList().FindAll(settlementF => settlementF.IsVillage && names.Contains(settlementF.Village.Bound.Name.ToString()));
         }
     }
 }
