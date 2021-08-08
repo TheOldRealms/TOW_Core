@@ -131,23 +131,29 @@ namespace TOW_Core.CharacterCreation
         private void OnOptionFinalize(string id)
         {
             var selectedOption = _options.Find(x => x.Id == id);
-            if(selectedOption.OptionText == "Bright Wizard pupil")
+            if(selectedOption.OptionText == "Bright Order Initiate")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
-                Hero.MainHero.AddAbility("Fireball");
+                Hero.MainHero.AddAbility("Dart");
             }
-            else if (selectedOption.OptionText == "Necromancer")
+            if (selectedOption.OptionText == "Warrior Priest Acolyte")
+            {
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAbility("HealingAOE");
+            }
+            else if (selectedOption.OptionText == "Novice Necromancer")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
             }
-            else if (selectedOption.OptionText == "Fresh Blood Vampire")
+            else if (selectedOption.OptionText == "Vampiric Nobility")
             {
                 Hero.MainHero.AddAttribute("Undead");
                 Hero.MainHero.AddAttribute("VampireBodyOverride");
+                Hero.MainHero.AddAttribute("Necromancer");
             }
         }
 

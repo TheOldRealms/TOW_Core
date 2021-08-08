@@ -300,6 +300,7 @@
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
+    <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
     <Compile Include="Items\MagicWeaponAgentComponent.cs" />
@@ -392,6 +393,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <!-- Post-Build -->
   <PropertyGroup>
     <PostBuildEvent>

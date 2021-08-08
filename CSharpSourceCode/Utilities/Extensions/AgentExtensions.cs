@@ -162,6 +162,7 @@ namespace TOW_Core.Utilities.Extensions
                     var blow = new Blow();
                     blow.InflictedDamage = damageAmount;
                     blow.DefenderStunPeriod = 0;
+                    blow.BlowFlag = BlowFlags.NoSound;
                     if (hasShockWave)
                     {
                         if (agent.HasMount)
@@ -169,7 +170,11 @@ namespace TOW_Core.Utilities.Extensions
                         else
                             blow.BlowFlag = BlowFlags.KnockDown;
                     }
-                    //if (damager != null) blow.OwnerId = damager.Index;
+                    if (damager != null)
+                    {
+                        var agentAlive = Mission.Current.FindAgentWithIndex(damager.Index);
+                        if(agentAlive != null && agentAlive.State == AgentState.Active) blow.OwnerId = damager.Index;
+                    }
                     if (agent.Health > damageAmount)
                     {
                         agent.RegisterBlow(blow);

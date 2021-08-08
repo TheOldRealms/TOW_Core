@@ -36,9 +36,9 @@
 			<string>Polearm</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Noble retinue family background</OptionText>
-		<OptionFlavourText>Your family has a military background and have schooled you in the ways of war ever since you were old enough to hold a weapon.</OptionFlavourText>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
+		<OptionText>Imperial Nobility</OptionText>
+		<OptionFlavourText>Your parents loyally served Graf Haupt-Anderrson, while not major nobility they nonetheless held sway within the courts of the Elector Count and thus ensured your childhood was one of comfort. </OptionFlavourText>
 	</CharacterCreationOption>
 
 	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop">
@@ -48,12 +48,12 @@
 			<string>Athletics</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Vigor</AttributeToIncrease>
-		<OptionText>Militia background</OptionText>
-		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+		<AttributeToIncrease>Control</AttributeToIncrease>
+		<OptionText>Imperial Sergeant</OptionText>
+		<OptionFlavourText>Your father had not only served with distinction but survived long enough to receive the title of Sergeant, a veteran that has spilled the blood of beastmen and bandits alike.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_duelist">
+	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_enlisted">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>OneHanded</string>
@@ -61,11 +61,23 @@
 			<string>Athletics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
-		<OptionText>Mercenary background</OptionText>
-		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+		<OptionText>Thieves</OptionText>
+		<OptionFlavourText>Not all within the Empire are blessed by Ranald, your family was poor and scratched a living with quick wit and quicker hands. Stealing coins from loose pockets and stuffing them in their own. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
+	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_duelist">
+		<SkillsToIncrease>
+			<string>Charm</string>
+			<string>OneHanded</string>
+			<string>Scouting</string>
+			<string>Athletics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Cultists</OptionText>
+		<OptionFlavourText>Strange rituals and a life on the run. You never truly understood what your parents were, all you can remember is having to flee your home to the chants of heretic and a burning pyre.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Charm</string>
@@ -73,12 +85,12 @@
 			<string>Crafting</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Social</AttributeToIncrease>
-		<OptionText>Merchant background</OptionText>
-		<OptionFlavourText>Brave are those who travel the roads even in the safest portions of the Empire, but large profits are to be had for the successful ones.</OptionFlavourText>
+		<OptionText>Wine Merchants</OptionText>
+		<OptionFlavourText>Wine is the blood of Wurtbad and your family made its profits driving this trade up the River Stir and across the Empire. Your early life was one of constant travel. </OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- Empire stage 2 -->
-	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
+	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
 		<SkillsToIncrease>
 			<string>Athletics</string>
 			<string>TwoHanded</string>
@@ -86,140 +98,265 @@
 		</SkillsToIncrease>
 		<AttributeToIncrease>Endurance</AttributeToIncrease>
 		<OptionText>Enlisted in the Militia</OptionText>
-		<OptionFlavourText>As a teenager you joined as a member of the Militia to help defend your town from threats.</OptionFlavourText>
+		<OptionFlavourText>Beastmen and bandits are rife within the Empire and your home was in need of strong men, training alongside the militia you soon gained a strong arm and a taste for combat.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_0">
+	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Polearm</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Apprentice at the Colleges of Magic</OptionText>
-		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+		<OptionText>Merchants assistant</OptionText>
+		<OptionFlavourText>Noticing your aptitude for numbers, a merchant passing through your home took you under his wing, offering to teach you his trade in return for daily assistance in his tasks.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>Roguery</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
-		<OptionText>Lived on the streets</OptionText>
-		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+		<OptionText>Blacksmith Apprentice</OptionText>
+		<OptionFlavourText>Conflict was never ending for the Empire and neither was the work of its Blacksmiths, you chose to turn your strength into a trade as you bent metals to your will under the tutelage of the local smith. Your first sword may have been wonky but it was still sharp!</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord_stirland_sigmarcult_4">
+	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_sigmar_novitiate">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Charm</string>
 			<string>Steward</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Social</AttributeToIncrease>
-		<OptionText>Faithful of Sigmar's Cult</OptionText>
-		<OptionFlavourText>Blacksmithing is a respectable trade and is important to a village’s survival, you spent your early years assisting in the smithy.</OptionFlavourText>
+		<OptionText>Acolyte of Sigmar</OptionText>
+		<OptionFlavourText>You felt a calling deep within yourself, a need to serve something greater. Donning the cloth of an acolyte, your life became one of constant prayer and learning so that you could better serve Sigmar. </OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_marksman_handgunner">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Charm</string>
+			<string>Steward</string>
+			<string>Engineering</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Control</AttributeToIncrease>
+		<OptionText>Engineering Student</OptionText>
+		<OptionFlavourText>Stories of the Colleges of Nuln had always been your favourite, it seemed Ranald blessed you when a Master Engineer looking for an apprentice decided you would be the perfect candidate. </OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- Empire stage 3 -->
-	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Polearm</string>
+			<string>TwoHanded</string>
 			<string>Crossbow</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Vigor</AttributeToIncrease>
-		<OptionText>Captain of the Empire</OptionText>
-		<OptionFlavourText>You enlisted as a State Troop when you became an adult, fighting to defend the Empire against all threats.</OptionFlavourText>
+		<OptionText>Free Company Militiaman</OptionText>
+		<OptionFlavourText>Fighting and drinking, what more could one need in life? With sword in hand you marched with your rag-tag Free Company from battle to battle, earning your fair share of scars. You would serve any lord, for the right price.</OptionFlavourText>
 	</CharacterCreationOption>
-
-	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_0">
+	
+	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_bright_wizard_pupil">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Athletics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Bright Order Initiate</OptionText>
+		<OptionFlavourText>Your aptitude for the Winds of Magic earned you a place within the Colleges of Altdorf, with time you learned to harness the basics of your power and flames would dance at your fingertips. \nStarts with the basic spell [Dart]</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_sigmar_novitiate">
+		<SkillsToIncrease>
+			<string>OneHanded</string>
+			<string>Medicine</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Bright Wizard pupil</OptionText>
-		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
-	</CharacterCreationOption>
+		<OptionText>Warrior Priest Acolyte</OptionText>
+		<OptionFlavourText>Dedicating your life to the destruction of evil in Sigmars righteous name, you trained until you were entrusted with the robes and hammer of a Warrior Priest acolyte. Soon you would set out to rid the world of corruption. \nGains access to prayers in later levels.</OptionFlavourText>
+	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_1">
+	<CharacterCreationOption Id="option14" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_hunter">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Roguery</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Warrior Priest</OptionText>
-		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
-	</CharacterCreationOption>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Trainee Templar</OptionText>
+		<OptionFlavourText>Heresy was the bane of the good people of the Empire, a rot that needed to be removed. Learning the arts of the Witch Hunters you readied yourself to face all manner of unholy beasts and magicians, with gunpowder and faith. </OptionFlavourText>
+	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_empire_2">
+	<CharacterCreationOption Id="option15" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_scholar">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
+			<string>Roguery</string>
 			<string>Riding</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Witch Hunter</OptionText>
-		<OptionFlavourText>You were found to have the power to channel the winds and thus became an apprentice at the Bright College.</OptionFlavourText>
-	</CharacterCreationOption>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Merchant</OptionText>
+		<OptionFlavourText>There are many trade goods within the Empire and you saw fit to take your place amongst its many Merchants, with the money you saved you set out to form your own caravan and make a name for yourself. </OptionFlavourText>
+	</CharacterCreationOption> 
 
 	<!-- VC stage 1 -->
-	<CharacterCreationOption Id="option13" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
 		<SkillsToIncrease>
 			<string>Leadership</string>
+			<string>Steward</string>
 			<string>Charm</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Social</AttributeToIncrease>
-		<OptionText>Aristocratic</OptionText>
-		<OptionFlavourText>You were a member of a small aristocratic family near to the Sylvanian border.</OptionFlavourText>
+		<OptionText>Exiled Nobility</OptionText>
+		<OptionFlavourText>Ambition is the downfall of many and your family fell out of grace with their Elector, banished to Sylvania with a meagre fortune your family was forced to live amongst the peasant folk. </OptionFlavourText>
 	</CharacterCreationOption>
-	<CharacterCreationOption Id="option14" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="emp_lord">
+
+	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
 		<SkillsToIncrease>
 			<string>Steward</string>
+			<string>Medicine</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
-		<OptionText>Sigmarite disciple</OptionText>
-		<OptionFlavourText>You were a disciple at a Sigmarite church, learning the ways of the holy men and reading religious texts.</OptionFlavourText>
+		<OptionText>Priests of Morr</OptionText>
+		<OptionFlavourText>The dead do not rest easy in Sylvania and the work of Morr is never done. Your father was a quiet man whose life was a dedication to death. Maintaining a garden of Morr and performing the necessary rights to ensure the dead would rest, normally with a blade of silver by his side.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Steward</string>
+			<string>Medicine</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Graverobbers</OptionText>
+		<OptionFlavourText>There are those within Sylvania who pay well for bodies, this was the trade your family chose. Stealing loved ones in the dead of night and taking them to the castles or keeps of nobility, never questioning why.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option19" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Steward</string>
+			<string>Medicine</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Fisherman and his Frog Wife</OptionText>
+		<OptionFlavourText>For generations your family have fished along the River Stir to keep themselves fed, it was far from a spectacular life but it was honest work and your family was content. Even after the disappearance of your brother...</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option20" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Steward</string>
+			<string>Medicine</string>
+			<string>Tactics</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<OptionText>Orphan</OptionText>
+		<OptionFlavourText>You never knew of your family though many looked at you with fear and whispered in hushed tones, you could do little else but struggle to survive through scrounging and from scraps of others. Often having to hide from the creatures that lurk in the night.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- VC stage 2 -->
-	<CharacterCreationOption Id="option15" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option21" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_informant">
 		<SkillsToIncrease>
 			<string>Scouting</string>
-			<string>Charm</string>
-		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Informant</OptionText>
-		<OptionFlavourText>You agreed to be an informant on the actions of the Vampire Counts in Sylvania, integrating yourself inside their society.</OptionFlavourText>
-	</CharacterCreationOption>
-	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="emp_lord">
-		<SkillsToIncrease>
-			<string>Riding</string>
-			<string>Scouting</string>
+			<string>Trade</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
-		<OptionText>Scholar</OptionText>
-		<OptionFlavourText>Your drive for rare or forbidden knowledge has led you into Sylvania, and you believe you may have found it after searching far and wide.</OptionFlavourText>
+		<OptionText>Noble Attendant </OptionText>
+		<OptionFlavourText>Serving in the courts of a Von Carstein gave you insight into the lives of the everliving, the intricacies and politics of the nobility taught you many things. Your diligence kept you alive and comfortable. </OptionFlavourText>
+	</CharacterCreationOption>
+	
+	<CharacterCreationOption Id="option22" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_apprentice_necromancer">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Necromancer's apprentice </OptionText>
+		<OptionFlavourText>Little could be said for your master's sanity, his days were dedicated to dissecting scrolls and performing dark rituals. Obsessed with becoming powerful yet unable to, he sought to use your abilities to bolster his own.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option23" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Blood Slave</OptionText>
+		<OptionFlavourText>There were perks to this chosen life, you had shelter, food and protection. While your life was not your own, you could wander freely in the halls of your master and go unnoticed. </OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option24" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Stableboy </OptionText>
+		<OptionFlavourText>After the strange disappearance of the previous stableboy the local lord took you in his stead, you tended to the mighty steeds but it always felt like they were eyeing you out of hunger...</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option25" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Warpstone Miner</OptionText>
+		<OptionFlavourText>This strange glowing rock was highly desired by many, yet you never knew why. Your life was filled with the clinking of pickaxes and the shouts of your overseer, a strange fellow in a large coat who finished every sentence with ‘’yes-yes’’</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- VC stage 3 -->
-	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
+	<CharacterCreationOption Id="option26" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_1">
 		<SkillsToIncrease>
-			<string>OneHanded</string>
-			<string>Leadership</string>
-		</SkillsToIncrease>
-		<AttributeToIncrease>Vigor</AttributeToIncrease>
-		<OptionText>Fresh Blood Vampire</OptionText>
-		<OptionFlavourText>Freshly turned with the blood kiss, you are now a vampire. Immortality awaits.</OptionFlavourText>
-	</CharacterCreationOption>
-	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="emp_lord">
-		<SkillsToIncrease>
-			<string>OneHanded</string>
-			<string>Leadership</string>
+			<string>Medicine</string>
+			<string>Crafting</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
-		<OptionText>Necromancer</OptionText>
-		<OptionFlavourText>You have now unlocked the secrets of Dhar, and successfully raised your first undead.</OptionFlavourText>
+		<OptionText>Vampiric Nobility</OptionText>
+		<OptionFlavourText>At some point your lord recognized your qualities, lifting you out of poverty and revealing his true nature. After receiving the blood kiss you have been reborn, immortal and more powerful. \nGains the the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_0">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Novice Necromancer</OptionText>
+		<OptionFlavourText>You broke away from the role of a communion slave to a much older necromancer, stealing one of his tomes on your way out. You are now free to delve into dark lores and determine your own fate. \n\nGains access to summon skeleton spell and the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop_vc">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Sylvanian state trooper </OptionText>
+		<OptionFlavourText>The mortals of Sylvania are known to march into battle alongside the undead hordes of their masters. A more dour and superstitious folk you will never meet but they rarely break in the heat of battle. </OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_informant">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Travelling Merchant</OptionText>
+		<OptionFlavourText>Few are brave or foolish enough to peddle goods into Sylvania, as all manner of beasts may come for you. You however saw a fortune to be made in bringing luxuries from Wurtbad to the Von Carstein Nobility, the luck during your travels had always seemed unnatural. </OptionFlavourText>
+	</CharacterCreationOption>
+
+	<CharacterCreationOption Id="option30" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_hunter">
+		<SkillsToIncrease>
+			<string>Medicine</string>
+			<string>Crafting</string>
+		</SkillsToIncrease>
+		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<OptionText>Vagabond</OptionText>
+		<OptionFlavourText>The roads of Sylvania are dark and dangerous, you prey on its few travellers and hoard what little riches you can take with your blade. Yet you are not the only monster lurking within the dark swamps and forests, at times there is nothing left of the travellers to thieve from.</OptionFlavourText>
 	</CharacterCreationOption>
 </ArrayOfCharacterCreationOption>

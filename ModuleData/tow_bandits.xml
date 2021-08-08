@@ -1,92 +1,420 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <NPCCharacters>
   
-  <NPCCharacter id="tow_chaos_cult_acolyte" default_group="Infantry" name="{=9laVlEH9}Acolyte" level="11" occupation="Bandit" culture="Culture.mountain_bandits" is_basic_troop="true">
+  <NPCCharacter id="tow_chaos_cult_acolyte" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Acolyte" 
+				level="11" 
+				occupation="Bandit" 
+				culture="Culture.forest_bandits" 
+				is_basic_troop="true" 
+				skill_template="SkillSet.tow_skills_level11">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
-    <skills>
-      <skill id="Athletics" value="40" />
-      <skill id="Bow" value="20" />
-      <skill id="OneHanded" value="40" />
-      <skill id="Polearm" value="40" />
-      <skill id="Riding" value="15" />
-      <skill id="Throwing" value="15" />
-      <skill id="TwoHanded" value="20" />
-    </skills>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tow_chaos_cult_darksoul" />
     </upgrade_targets>
     <Equipments>
       <EquipmentRoster>
-        <equipment slot="Item0" id="Item.falchion_sword_t2" />
-        <equipment slot="Body" id="Item.baggy_trunks" />
-        <equipment slot="Leg" id="Item.wrapped_shoes" />
+        <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+		<equipment slot="Head" id="Item.vc_necromancer_hood" />
+        <equipment slot="Body" id="Item.monk_robe" />
+		<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+		<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+        <equipment slot="Leg" id="Item.strapped_shoes" />
       </EquipmentRoster>
+		<EquipmentRoster>
+			<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
+			<equipment slot="Head" id="Item.pilgrim.hood" />
+			<equipment slot="Body" id="Item.thick_sleeved_robe" />
+			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
+		</EquipmentRoster>
       <EquipmentRoster civilian="true">
-        <equipment slot="Item0" id="Item.falchion_sword_t2" />
-        <equipment slot="Body" id="Item.baggy_trunks" />
-        <equipment slot="Leg" id="Item.wrapped_shoes" />
+        <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+		<equipment slot="Head" id="Item.vc_necromancer_hood" />
+        <equipment slot="Body" id="Item.monk_robe" />
+		<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+		<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+        <equipment slot="Leg" id="Item.strapped_shoes" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tow_chaos_cult_darksoul" default_group="Infantry" name="{=ZKdiaaFo}Possessed Darksoul" level="16" occupation="Bandit" culture="Culture.mountain_bandits">
+  <NPCCharacter id="tow_chaos_cult_darksoul" 
+  				default_group="Infantry" 
+				name="{=ZKdiaaFo}Possessed Darksoul" 
+				level="16" 
+				occupation="Bandit" 
+				culture="Culture.forest_bandits"
+				skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
-    <skills>
-      <skill id="Athletics" value="60" />
-      <skill id="Bow" value="40" />
-      <skill id="OneHanded" value="40" />
-      <skill id="Polearm" value="70" />
-      <skill id="Riding" value="20" />
-      <skill id="Throwing" value="70" />
-      <skill id="TwoHanded" value="60" />
-    </skills>
     <upgrade_targets>
-      <upgrade_target id="NPCCharacter.tow_chaos_cult_magister" />
+		<upgrade_target id="NPCCharacter.tow_chaos_cult_magister" />
     </upgrade_targets>
     <Equipments>
         <EquipmentRoster>
-            <equipment slot="Item0" id="Item.falchion_sword_t2" />
-            <equipment slot="Body" id="Item.baggy_trunks" />
-            <equipment slot="Leg" id="Item.wrapped_shoes" />
+			<equipment slot="Item0" id="Item.battania_2haxe_1_t2" />
+			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Body" id="Item.long_hemp_tunic" />
+			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
           </EquipmentRoster>
+		<EquipmentRoster>
+			<equipment slot="Item0" id="Item.peasant_hatchet_1_t1" />
+			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Body" id="Item.rough_fur_armor" />
+			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
+		</EquipmentRoster>
           <EquipmentRoster civilian="true">
-            <equipment slot="Item0" id="Item.falchion_sword_t2" />
-            <equipment slot="Body" id="Item.baggy_trunks" />
-            <equipment slot="Leg" id="Item.wrapped_shoes" />
+			<equipment slot="Item0" id="Item.battania_2haxe_1_t2" />
+			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Body" id="Item.long_hemp_tunic" />
+			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
           </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tow_chaos_cult_magister" default_group="Cavalry" name="{=P6Md9DpR}Possessed Magister" level="21" upgrade_requires="ItemCategory.horse" occupation="Bandit" culture="Culture.mountain_bandits">
+  <NPCCharacter id="tow_chaos_cult_magister" 
+  				default_group="Infantry" 
+				name="{=P6Md9DpR}Possessed Magister" 
+				level="21" 
+				occupation="Bandit" 
+				culture="Culture.forest_bandits"
+				skill_template="SkillSet.tow_skills_level21">
     <face>
-   <face_key_template value="BodyProperty.fighter_empire" />
+   		<face_key_template value="BodyProperty.brute" />
     </face>
-    <skills>
-      <skill id="Athletics" value="100" />
-      <skill id="Bow" value="80" />
-      <skill id="OneHanded" value="100" />
-      <skill id="Polearm" value="110" />
-      <skill id="Riding" value="120" />
-      <skill id="Throwing" value="120" />
-      <skill id="TwoHanded" value="100" />
-    </skills>
     <upgrade_targets>
     </upgrade_targets>
     <Equipments>
         <EquipmentRoster>
-            <equipment slot="Item0" id="Item.falchion_sword_t2" />
-            <equipment slot="Body" id="Item.baggy_trunks" />
-            <equipment slot="Leg" id="Item.wrapped_shoes" />
+            <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Body" id="Item.rough_fur_over_chain" />
+			<equipment slot="Cape" id="Item.grave_guard_upperbody_002" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
           </EquipmentRoster>
           <EquipmentRoster civilian="true">
-            <equipment slot="Item0" id="Item.falchion_sword_t2" />
-            <equipment slot="Body" id="Item.baggy_trunks" />
-            <equipment slot="Leg" id="Item.wrapped_shoes" />
+            <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Body" id="Item.rough_fur_over_chain" />
+			<equipment slot="Cape" id="Item.grave_guard_upperbody_002" />
+			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+			<equipment slot="Leg" id="Item.strapped_shoes" />
           </EquipmentRoster>
     </Equipments>
   </NPCCharacter>
-  
+  <NPCCharacter id="tow_empire_outlaw" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Empire Outlaw" 
+				level="06" 
+				occupation="Bandit" 
+				culture="Culture.looters" 
+				is_basic_troop="true"
+				skill_template="SkillSet.tow_skills_level6">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+	  <upgrade_targets>
+		<upgrade_target id="NPCCharacter.tow_empire_outlaw_leader" />
+	  </upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+				<equipment slot="Head" id="Item.spangenhelm_with_leather" />
+				<equipment slot="Body" id="Item.battania_civil_b" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
+				<equipment slot="Head" id="Item.battania_fur_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.rough_tied_bracers" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
+				<equipment slot="Head" id="Item.leather_studdedhelm_over_thinhide" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_2haxe_1_t1" />
+				<equipment slot="Head" id="Item.laced_coif" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Cape" id="Item.battania_civil_cape" />
+				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+				<equipment slot="Head" id="Item.spangenhelm_with_leather" />
+				<equipment slot="Body" id="Item.battania_civil_b" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+  <NPCCharacter id="tow_empire_outlaw_leader" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Empire Outlaw Captain" 
+				level="16" 
+				occupation="Bandit" 
+				culture="Culture.looters" 
+				skill_template="SkillSet.tow_skills_level16">
+		<face>
+			<face_key_template value="BodyProperty.brute" />
+		</face>
+		<upgrade_targets>
+
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.grave_guard_greatsword_001" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
+				<equipment slot="Body" id="Item.rough_fur_armor" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.grave_guard_greatsword_001" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
+				<equipment slot="Body" id="Item.rough_fur_armor" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+  <NPCCharacter id="tow_empire_secessionist_spearman" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Secessionist Spearman" 
+				level="11" 
+				occupation="Bandit" 
+				culture="Culture.mountain_bandits" 
+				skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+	  <upgrade_targets>
+		  <upgrade_target id="NPCCharacter.tow_empire_secessionist_sergeant" />
+	  </upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_polearm_1_t5" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
+				<equipment slot="Head" id="Item.worn_militia_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.rough_tied_bracers" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_padded_cloth" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="sturgia_polearm_1_t5" />
+				<equipment slot="Head" id="Item.worn_militia_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.sturgia_polearm_1_t5" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+  <NPCCharacter id="tow_empire_secessionist_swordsman" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Secessionist Swordman" 
+				level="11" 
+				occupation="Bandit" 
+				culture="Culture.mountain_bandits" 
+				skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+	  <upgrade_targets>
+		<upgrade_target id="NPCCharacter.tow_empire_secessionist_sergeant" />
+	  </upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.worn_militia_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.rough_tied_bracers" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_padded_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_padded_cloth" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_padded_coif" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.falchion_sword_t2" />
+				<equipment slot="Head" id="Item.worn_militia_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.falchion_sword_t2" />
+				<equipment slot="Head" id="Item.worn_militia_helmet" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+  <NPCCharacter id="tow_empire_secessionist_sergeant" 
+  				default_group="Infantry" 
+				name="{=9laVlEH9}Traitor Sergeant" 
+				level="16" 
+				occupation="Bandit" 
+				culture="Culture.mountain_bandits" 
+				skill_template="SkillSet.tow_skills_level16">
+		<face>
+			<face_key_template value="BodyProperty.brute" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.khuzait_sword_2_t3" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.khuzait_sword_2_t3" />
+				<equipment slot="Item1" id="Item.small_heater_shield" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+  <NPCCharacter id="tow_empire_secessionist_hunter" 
+  				default_group="Ranged" 
+				name="{=9laVlEH9}Secessionist Hunter" 
+				level="11" 
+				occupation="Bandit" 
+				culture="Culture.mountain_bandits" 
+				skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+	  <upgrade_targets>
+	  </upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.falchion_sword_t2" />
+				<equipment slot="Item1" id="Item.hunting_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_a" />
+				<equipment slot="Head" id="Item.pilgrim_hood" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Cape" id="Item.battania_civil_cape" />
+				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
+				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.hunting_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_a" />
+				<equipment slot="Head" id="Item.laced_coif" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.rough_tied_bracers" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.hunting_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_a" />
+				<equipment slot="Head" id="Item.laced_coif" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.rough_tied_bracers" />
+				<equipment slot="Leg" id="Item.battania_woodland_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
   <!--Boss character end-->
 </NPCCharacters>

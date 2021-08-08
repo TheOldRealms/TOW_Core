@@ -24,4 +24,17 @@
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
 
+  <CharacterAbilityTuple CharacterID="sylvania_clan_1_1">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_2">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_6">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_third_1">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+
 </ArrayOfCharacterAbilityTuple>
