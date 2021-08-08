@@ -135,7 +135,7 @@ namespace TOW_Core.CharacterCreation
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
-                Hero.MainHero.AddAbility("Dart");
+                Hero.MainHero.AddAbility("Fireball");
             }
             if (selectedOption.OptionText == "Warrior Priest Acolyte")
             {

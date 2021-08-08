@@ -3,7 +3,7 @@
 	<!-- Averland Faction Leader-->
 	<NPCCharacter id="averland_clan_1_1" name="{=!}Marius Leitdorf" default_group="cavalry" age="54" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
+			<BodyProperties version="4" age="50.4" weight="0.1047" build="0.5127"  key="00137C0014143002B01B941F0471383019361685D341B6194C1F2F2F67A9944300A826030AA1011A00000000000000000000000000000000000000003B541042"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -17,14 +17,12 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.runefang_001" />
-				<equipment slot="Item1" id="Item.empire_shield_001" />
-				<equipment slot="Item2" id="tow_handgun_002" />
-				<equipment slot="Item3" id="musket_ball" />
-				<equipment slot="Head" id="Item.empire_general_helmet_001" />
-				<equipment slot="Body" id="Item.empire_general_body_001" />
-				<equipment slot="Cape" id="Item.empire_general_cape_001" />
-				<equipment slot="Gloves" id="Item.empire_general_gauntlets_001" />
-				<equipment slot="Leg" id="Item.empire_general_boots_001" />
+				<equipment slot="Item1" id="Item.empire_banner_002" />
+				<equipment slot="Head" id="Item.empire_marius_leitdorf_hat" />
+				<equipment slot="Body" id="Item.empire_marius_leitdorf_body" />
+				<equipment slot="Cape" id="Item.empire_marius_leitdorf_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_marius_leitdorf_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_marius_leitdorf_boots" />
 
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
@@ -874,19 +872,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Helman Ghorst -->
@@ -903,19 +891,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="necromancer_template" civilian="true" />
+      		<EquipmentSet id="necromancer_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Hermann Schtillmann -->
@@ -932,19 +910,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Gothard -->
@@ -961,19 +929,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Vlad von Carstein -->
@@ -1018,19 +976,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Elize von Carstein -->
@@ -1047,19 +995,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Ariette von Carstein -->
@@ -1076,19 +1014,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Katherina von Dernsbach -->
@@ -1105,19 +1033,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Gabriella von Bundebad -->
@@ -1134,19 +1052,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Walach Harkon -->
@@ -1163,19 +1071,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Gorgivich Krakvald -->
@@ -1192,19 +1090,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Frich Von Haas -->
@@ -1221,19 +1109,9 @@
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
-		<Equipments>
-			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
-                    civilian="true" />
+        <Equipments>
+			<EquipmentSet id="vampire_template" civilian="true" />
+      		<EquipmentSet id="vampire_template" />
 		</Equipments>
 	</NPCCharacter>
 </NPCCharacters>

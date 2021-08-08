@@ -166,7 +166,7 @@
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Bright Order Initiate</OptionText>
-		<OptionFlavourText>Your aptitude for the Winds of Magic earned you a place within the Colleges of Altdorf, with time you learned to harness the basics of your power and flames would dance at your fingertips. \nStarts with the basic spell [Dart]</OptionFlavourText>
+		<OptionFlavourText>Your aptitude for the Winds of Magic earned you a place within the Colleges of Altdorf, with time you learned to harness the basics of your power and flames would dance at your fingertips.  -  Starts with the fireball spell.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_sigmar_novitiate">
@@ -177,7 +177,7 @@
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Warrior Priest Acolyte</OptionText>
-		<OptionFlavourText>Dedicating your life to the destruction of evil in Sigmars righteous name, you trained until you were entrusted with the robes and hammer of a Warrior Priest acolyte. Soon you would set out to rid the world of corruption. \nGains access to prayers in later levels.</OptionFlavourText>
+		<OptionFlavourText>Dedicating your life to the destruction of evil in Sigmars righteous name, you trained until you were entrusted with the robes and hammer of a Warrior Priest acolyte. Soon you would set out to rid the world of corruption.  -  Gains access to prayers in later levels (Enabled at level 1 for testing).</OptionFlavourText>
 	</CharacterCreationOption> 
 
 	<CharacterCreationOption Id="option14" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_hunter">
@@ -317,7 +317,7 @@
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Vampiric Nobility</OptionText>
-		<OptionFlavourText>At some point your lord recognized your qualities, lifting you out of poverty and revealing his true nature. After receiving the blood kiss you have been reborn, immortal and more powerful. \nGains the the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
+		<OptionFlavourText>At some point your lord recognized your qualities, lifting you out of poverty and revealing his true nature. After receiving the blood kiss you have been reborn, immortal and more powerful.  -   Gains the the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_0">
@@ -327,7 +327,7 @@
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Novice Necromancer</OptionText>
-		<OptionFlavourText>You broke away from the role of a communion slave to a much older necromancer, stealing one of his tomes on your way out. You are now free to delve into dark lores and determine your own fate. \n\nGains access to summon skeleton spell and the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
+		<OptionFlavourText>You broke away from the role of a communion slave to a much older necromancer, stealing one of his tomes on your way out. You are now free to delve into dark lores and determine your own fate.  -   Gains access to summon skeleton spell and the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop_vc">

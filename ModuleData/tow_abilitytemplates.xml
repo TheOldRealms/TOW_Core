@@ -225,7 +225,7 @@
       BaseMisCastChance="0.3" 
       Duration="9" 
       Radius="0.1" 
-      AbilityType="Spell" 
+      AbilityType="Prayer" 
       AbilityEffectType="CenteredStaticAOE" 
       BaseMovementSpeed="0" 
       TickInterval="1" 

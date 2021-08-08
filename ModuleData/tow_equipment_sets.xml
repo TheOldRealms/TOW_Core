@@ -83,6 +83,8 @@
       <Equipment slot="Cape" id="Item.vampire_lord_cape" />
       <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
       <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+      <equipment slot="Horse" id="Item.vc_skeleton_horse" />
+      <equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.vampire_sword_001" />

@@ -204,6 +204,63 @@
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
+	<!-- Empire Huntsman - basic elite troop, no upgrade -->
+	<NPCCharacter id="tow_empire_huntsman_vc"
+				  default_group="Ranged"
+				  level="16"
+				  name="{=!}Sylvanian Huntsman"
+				  occupation="Soldier"
+				  is_basic_troop="true"
+				  culture="Culture.khuzait"
+				  skill_template="SkillSet.tow_skills_level16">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.rough_bearskin" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.battania_civil_cape" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.battania_shoulder_strap_cloak" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.leopard_pelt" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
 	
 	
 	<!-- Vampire Counts animated skeleton-->

@@ -154,6 +154,7 @@ namespace TOW_Core
 
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
+                starter.AddBehavior(new LibraryTownBehaviour());
             }
         }
 

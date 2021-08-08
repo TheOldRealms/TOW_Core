@@ -27,15 +27,15 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void Initialize(CampaignGameStarter obj)
         {
-            obj.AddGameMenuOption("town", "graveyard", "Go to the graveyard.", new GameMenuOption.OnConditionDelegate(raisedeadcondition), new GameMenuOption.OnConsequenceDelegate(raisedeadconsequence), false, 4, false);
+            obj.AddGameMenuOption("town", "graveyard", "Go to the graveyard", new GameMenuOption.OnConditionDelegate(raisedeadcondition), new GameMenuOption.OnConsequenceDelegate(raisedeadconsequence), false, 4, false);
             obj.AddGameMenu("graveyard", "{GRAVEYARD_INTRODUCTION}", new OnInitDelegate(graveyardmenuinit), GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.none, null);
-            obj.AddGameMenuOption("graveyard", "attempt", "Attempt to raise dead from the corpses in the ground.", new GameMenuOption.OnConditionDelegate(attemptcondition), new GameMenuOption.OnConsequenceDelegate(attemptconsequence), false, -1, false);
+            obj.AddGameMenuOption("graveyard", "attempt", "Raise dead from the corpses in the ground (wait 12 hours).", new GameMenuOption.OnConditionDelegate(attemptcondition), new GameMenuOption.OnConsequenceDelegate(attemptconsequence), false, -1, false);
             obj.AddGameMenuOption("graveyard", "leaveoption", "Leave", new GameMenuOption.OnConditionDelegate(leavecondition), delegate (MenuCallbackArgs x)
             {
                 GameMenu.SwitchToMenu("town");
             }, true, -1, false);
 
-            obj.AddWaitGameMenu("raising_dead", "Raising Dead.", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None);
+            obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None);
             _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_warrior");
         }
 
@@ -43,12 +43,15 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             _elapsedTime += dt.ToHours;
             //1 every 2 hours for now. Later we want to tie this into the intelligence skill or something.
-            if(_skeleton != null && MobileParty.MainParty.MemberRoster.TotalManCount <= MobileParty.MainParty.Party.PartySizeLimit && _elapsedTime / _progress > _tickFrequency)
+            if(_elapsedTime / _progress > _tickFrequency)
             {
-                MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 1);
+                if(_skeleton != null && MobileParty.MainParty.MemberRoster.TotalManCount <= MobileParty.MainParty.Party.PartySizeLimit)
+                {
+                    MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 1);
+                }
                 _progress += 1;
             }
-            args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(_progress/9);
+            args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(_progress/6);
         }
 
         private void raisingdeadconsequence(MenuCallbackArgs args)
@@ -84,7 +87,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void graveyardmenuinit(MenuCallbackArgs args)
         {
             args.MenuTitle = new TextObject("Graveyard");
-            var intro = new TextObject("You have arrived at {SETTLEMENT_NAME}'s Graveyard. The commonfolk's graves are ripe for the taking. Morr is going to be furious tonight!");
+            var intro = new TextObject("You have arrived at {SETTLEMENT_NAME}'s Graveyard. Graves, tombstones and family crypts litter the peaceful hillside.");
             MBTextManager.SetTextVariable("SETTLEMENT_NAME", Settlement.CurrentSettlement.Name);
             MBTextManager.SetTextVariable("GRAVEYARD_INTRODUCTION", intro);
         }
