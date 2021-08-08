@@ -57,5 +57,7 @@
 	<!-- Mootland Clan 1 -->
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
 	
+	
+	<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
 	<Hero id="chaos_clan_1_1" is_noble="true" faction="Faction.chaos_clan_1" />
 </Heroes>
