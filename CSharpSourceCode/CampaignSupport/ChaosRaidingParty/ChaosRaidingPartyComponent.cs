@@ -27,15 +27,19 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         private void InitializeChaosRaidingParty(MobileParty mobileParty, int partySize)
         {
-            PartyTemplateObject chaosPartyTemplate = Campaign.Current.ObjectManager.GetObject<PartyTemplateObject>("chaos_cultists");
-            mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
-            mobileParty.ActualClan = Clan.All.ToList().Find(clan => clan.Name.ToString() == "Chaos Warriors");
-            mobileParty.Party.Owner = mobileParty.ActualClan.Leader;
-            mobileParty.HomeSettlement = Portal;
-            mobileParty.Aggressiveness = 2.0f;
-            mobileParty.Party.Visuals.SetMapIconAsDirty();
-            mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
-            mobileParty.SetPartyUsedByQuest(true);
+            Clan chaosClan = Clan.All.ToList().Find(x => x.StringId == "chaos_clan_1");
+            if(chaosClan != null && chaosClan.Culture != null && chaosClan.Culture.StringId == "chaos_culture")
+            {
+                PartyTemplateObject chaosPartyTemplate = chaosClan.Culture.DefaultPartyTemplate;
+                mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
+                mobileParty.ActualClan = chaosClan;
+                mobileParty.Party.Owner = mobileParty.ActualClan.Leader;
+                mobileParty.HomeSettlement = Portal;
+                mobileParty.Aggressiveness = 2.0f;
+                mobileParty.Party.Visuals.SetMapIconAsDirty();
+                mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
+                mobileParty.SetPartyUsedByQuest(true);
+            }
         }
 
         public static MobileParty CreateChaosRaidingParty(

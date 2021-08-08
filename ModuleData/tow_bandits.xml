@@ -18,7 +18,7 @@
     <Equipments>
       <EquipmentRoster>
         <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
-		<equipment slot="Head" id="Item.vc_necromancer_hood" />
+		<equipment slot="Head" id="Item.chaos_cultist_hat_001" />
         <equipment slot="Body" id="Item.monk_robe" />
 		<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 		<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -26,7 +26,7 @@
       </EquipmentRoster>
 		<EquipmentRoster>
 			<equipment slot="Item0" id="Item.skeleton_warrior_spear_001" />
-			<equipment slot="Head" id="Item.pilgrim.hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_002" />
 			<equipment slot="Body" id="Item.thick_sleeved_robe" />
 			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -34,7 +34,7 @@
 		</EquipmentRoster>
       <EquipmentRoster civilian="true">
         <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
-		<equipment slot="Head" id="Item.vc_necromancer_hood" />
+		<equipment slot="Head" id="Item.chaos_cultist_hat_003" />
         <equipment slot="Body" id="Item.monk_robe" />
 		<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 		<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -58,7 +58,7 @@
     <Equipments>
         <EquipmentRoster>
 			<equipment slot="Item0" id="Item.battania_2haxe_1_t2" />
-			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_001" />
 			<equipment slot="Body" id="Item.long_hemp_tunic" />
 			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -66,7 +66,7 @@
           </EquipmentRoster>
 		<EquipmentRoster>
 			<equipment slot="Item0" id="Item.peasant_hatchet_1_t1" />
-			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_002" />
 			<equipment slot="Body" id="Item.rough_fur_armor" />
 			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -74,7 +74,7 @@
 		</EquipmentRoster>
           <EquipmentRoster civilian="true">
 			<equipment slot="Item0" id="Item.battania_2haxe_1_t2" />
-			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_003" />
 			<equipment slot="Body" id="Item.long_hemp_tunic" />
 			<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -97,7 +97,7 @@
     <Equipments>
         <EquipmentRoster>
             <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
-			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_002" />
 			<equipment slot="Body" id="Item.rough_fur_over_chain" />
 			<equipment slot="Cape" id="Item.grave_guard_upperbody_002" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
@@ -105,7 +105,7 @@
           </EquipmentRoster>
           <EquipmentRoster civilian="true">
             <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
-			<equipment slot="Head" id="Item.vc_necromancer_hood" />
+			<equipment slot="Head" id="Item.chaos_cultist_hat_003" />
 			<equipment slot="Body" id="Item.rough_fur_over_chain" />
 			<equipment slot="Cape" id="Item.grave_guard_upperbody_002" />
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />

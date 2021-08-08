@@ -1116,7 +1116,7 @@
 	</NPCCharacter>
 
 	<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
-	<NPCCharacter id="chaos_clan_1_1" name="{=!}Archaon" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="chaos_clan_1_1" name="{=!}Archaon" default_group="cavalry" age="50" voice="curt" culture="Culture.chaos_culture" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
 		</face>
@@ -1131,15 +1131,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.grave_guard_sword_001" />
-				<equipment slot="Item1" id="Item.grave_guard_shield_002" />
-				<equipment slot="Body" id="Item.mannfred_body" />
-				<equipment slot="Cape" id="Item.mannfred_shoulders" />
-				<equipment slot="Gloves" id="Item.mannfred_hands" />
-				<equipment slot="Leg" id="Item.mannfred_legs" />
-				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
-			</EquipmentRoster>
+                <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+                <equipment slot="Head" id="Item.chaos_knight_helmet" />
+                <equipment slot="Cape" id="Item.chaos_knight_shoulders" />
+                <equipment slot="Body" id="Item.chaos_knight_chest" />
+                <equipment slot="Gloves" id="Item.chaos_knight_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_knight_legs" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+              </EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
 		</Equipments>

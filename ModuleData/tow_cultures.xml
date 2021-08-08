@@ -3674,8 +3674,8 @@
 	
 	<Culture id="chaos_culture"
 			 can_have_settlement="true"
-			 name="{=!}Chaos Warriors"
-			 default_party_template="PartyTemplate.empire_lordparty_template"
+			 name="{=!}Chaos Culture"
+			 default_party_template="PartyTemplate.chaos_patrol"
 			 elite_basic_troop="NPCCharacter.guard"
 			 basic_troop="NPCCharacter.guard"/>
 </SPCultures>

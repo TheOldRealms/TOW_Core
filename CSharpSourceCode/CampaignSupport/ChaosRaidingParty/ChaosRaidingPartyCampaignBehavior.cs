@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -17,6 +18,29 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
         {
             CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, DailyTickSettlement);
             CampaignEvents.AiHourlyTickEvent.AddNonSerializedListener(this, HourlyTickPartyAI);
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Start);
+        }
+
+        private void Start(CampaignGameStarter obj)
+        {
+            Clan chaosClan = Clan.All.ToList().Find(x => x.StringId == "chaos_clan_1");
+            foreach(var kingdom in Kingdom.All)
+            {
+                if (!chaosClan.IsAtWarWith(kingdom))
+                {
+                    FactionManager.DeclareWar(chaosClan, kingdom);
+                }
+            }
+            foreach (var faction in Clan.NonBanditFactions)
+            {
+                if(faction.StringId != chaosClan.StringId)
+                {
+                    if (!chaosClan.IsAtWarWith(faction))
+                    {
+                        FactionManager.DeclareWar(chaosClan, faction);
+                    }
+                }
+            }
         }
 
         private void HourlyTickPartyAI(MobileParty party, PartyThinkParams partyThinkParams)
@@ -89,10 +113,6 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
                     ((ChaosRaidingPartyComponent) chaosRaidingParty.PartyComponent).Target = find;
-                    if (!chaosRaidingParty.Party.MapFaction.IsAtWarWith(Clan.PlayerClan))
-                    {
-                        FactionManager.DeclareWar(chaosRaidingParty.Party.MapFaction, Clan.PlayerClan);
-                    }
                 }
 
                 if (questBattleComponent.PatrolParties.Count < 2)
