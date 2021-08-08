@@ -47,7 +47,7 @@ namespace TOW_Core.Abilities
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
                     {
-                        Agent.Main.SelectNextAbility();
+                        Agent.Main.SelectPreviousAbility();
                     }
                 }
                 else

@@ -80,6 +80,14 @@ namespace TOW_Core.Utilities.Extensions
                 abilitycomponent.SelectNextAbility();
             }
         }
+        public static void SelectPreviousAbility(this Agent agent)
+        {
+            var abilitycomponent = agent.GetComponent<AbilityComponent>();
+            if (abilitycomponent != null)
+            {
+                abilitycomponent.SelectPreviousAbility();
+            }
+        }
 
         public static void SelectAbility(this Agent agent, int abilityindex)
         {
