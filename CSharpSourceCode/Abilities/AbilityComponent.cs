@@ -50,7 +50,7 @@ namespace TOW_Core.Abilities
         {
             if (_knownAbilities.Count > 0 && index >= 0)
             {
-                _currentAbilityIndex = index % _knownAbilities.Count;
+                _currentAbilityIndex = Math.Abs(index % _knownAbilities.Count);
                 CurrentAbility = _knownAbilities[_currentAbilityIndex];
             }
         }
@@ -58,6 +58,10 @@ namespace TOW_Core.Abilities
         public void SelectNextAbility()
         {
             SelectAbility(_currentAbilityIndex + 1);
+        }
+        public void SelectPreviousAbility()
+        {
+            SelectAbility(_currentAbilityIndex - 1);
         }
     }
 }
