@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settlements>
   <!--Quest Battle Site "Settlements"-->
-  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" posX="1429.551" posY="895.204" culture="Culture.neutral_culture" prosperity="500" text="{=!}Chaos Portal" owner="Faction.neutral">
+  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal"  owner="Faction.chaos_clan_1" posX="1429.551" posY="895.204" culture="Culture.khuzait" prosperity="500" text="{=!}Chaos Portal" >
     <Components>
       <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="chaos_portal" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
