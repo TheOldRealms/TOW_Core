@@ -23,6 +23,23 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Initialize);
+            CampaignEvents.HourlyTickSettlementEvent.AddNonSerializedListener(this, HourlyTick);
+        }
+
+        private void HourlyTick(Settlement obj)
+        {
+            if (obj == null || !obj.IsFortification) return;
+            foreach(var party in obj.Parties)
+            {
+                if (party.LeaderHero == null || !party.LeaderHero.CanRaiseDead() || party == MobileParty.MainParty) continue;
+                if (party.MemberRoster.TotalManCount < party.Party.PartySizeLimit)
+                {
+                    if (_skeleton != null)
+                    {
+                        MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, Math.Min(10,party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
+                    }
+                }
+            }
         }
 
         private void Initialize(CampaignGameStarter obj)
