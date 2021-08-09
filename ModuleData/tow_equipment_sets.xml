@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EquipmentRosters>
+	<!-- Empire sets -->
   <EquipmentRoster id="bright_wizard_template" culture="Culture.empire">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
@@ -54,37 +55,39 @@
       <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
     </EquipmentSet>
   </EquipmentRoster>
-
+	
+	<!-- VC sets -->
   <EquipmentRoster id="necromancer_template" culture="Culture.khuzait">
     <EquipmentSet>
-      <Equipment slot="Item0" id="nm_staff_001" />
-      <Equipment slot="Head" id="vc_necromancer_hood" />
+      <Equipment slot="Item0" id="Item.nm_staff_001" />
+      <Equipment slot="Head" id="Item.vc_necromancer_hood" />
       <Equipment slot="Body" id="Item.vc_necromancer_body" />
       <Equipment slot="Cape" id="vc_necromancer_shoulders" />
       <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
-      <Equipment slot="Leg" id="vc_necromancer_boots" />
+      <Equipment slot="Leg" id="Item.vc_necromancer_boots" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="nm_staff_001" />
-      <Equipment slot="Head" id="vc_necromancer_hood" />
+      <Equipment slot="Item0" id="Item.nm_staff_001" />
+      <Equipment slot="Head" id="Item.vc_necromancer_hood" />
       <Equipment slot="Body" id="Item.vc_necromancer_body" />
-      <Equipment slot="Cape" id="vc_necromancer_shoulders" />
+      <Equipment slot="Cape" id="Item.vc_necromancer_shoulders" />
       <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
-      <Equipment slot="Leg" id="vc_necromancer_boots" />
+      <Equipment slot="Leg" id="Item.vc_necromancer_boots" />
     </EquipmentSet>
   </EquipmentRoster>
-
   <EquipmentRoster id="vampire_template" culture="Culture.khuzait">
     <EquipmentSet>
-      <Equipment slot="Item0" id="vampire_sword_001" />
+      <Equipment slot="Item0" id="Item.vampire_sword_001" />
       <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
       <Equipment slot="Body" id="Item.vampire_lord_body_001" />
       <Equipment slot="Cape" id="Item.vampire_lord_cape" />
       <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
       <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+      <equipment slot="Horse" id="Item.vc_skeleton_horse" />
+      <equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="vampire_sword_001" />
+      <Equipment slot="Item0" id="Item.vampire_sword_001" />
       <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
       <Equipment slot="Body" id="Item.vampire_lord_body_001" />
       <Equipment slot="Cape" id="Item.vampire_lord_cape" />

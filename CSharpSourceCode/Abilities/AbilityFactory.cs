@@ -14,7 +14,21 @@ namespace TOW_Core.Abilities
         private static Dictionary<string, AbilityTemplate> _templates = new Dictionary<string, AbilityTemplate>();
         private static string _filename = "tow_abilitytemplates.xml";
 
+        public static List<string> GetAllSpellNamesAsList()
+        {
+            List<string> list = new List<string>();
+            var q = _templates.Distinct().Where(x => x.Value.AbilityType == AbilityType.Spell);
+            foreach(var template in q)
+            {
+                list.Add(template.Value.StringID);
+            }
+            return list;
+        }
 
+        public static AbilityTemplate GetTemplate(string id)
+        {
+            return _templates.ContainsKey(id) ? _templates[id] : null;
+        }
 
         public static void LoadTemplates()
         {

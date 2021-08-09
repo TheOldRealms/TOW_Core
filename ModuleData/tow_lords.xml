@@ -36,7 +36,7 @@
 	<!-- Generic Vampire Lord-->
 	<NPCCharacter id="vc_lord" name="{=!}Generic Vampire Lord" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="19" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />

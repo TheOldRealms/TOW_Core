@@ -10,6 +10,7 @@
 	<Hero id="vc_lord_sylvania_first_3" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<Hero id="vc_lord_sylvania_first_4" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<Hero id="vc_lord_sylvania_first_5" is_noble="true" faction="Faction.sylvania_clan_1" />
+	<Hero id="vc_lord_sylvania_first_6" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<!-- Sylvania Clan 2 -->
 	<Hero id="vc_lord_sylvania_second_1" is_noble="true" faction="Faction.sylvania_clan_2" />
 	<Hero id="vc_lord_sylvania_second_2" is_noble="true" faction="Faction.sylvania_clan_2" />
@@ -48,6 +49,15 @@
 	<Hero id="emp_lord_stirland_weststirlander_1" is_noble="true" faction="Faction.stirland_clan_3" />
 	<Hero id="emp_lord_stirland_weststirlander_2" is_noble="true" faction="Faction.stirland_clan_3" />
 	<Hero id="emp_lord_stirland_weststirlander_3" is_noble="true" faction="Faction.stirland_clan_3" />
+	<!-- Stirland Clan 4 -->
+	<Hero id="emp_lord_stirland_sigmarcult_1" is_noble="true" faction="Faction.stirland_clan_4" />
+	<Hero id="emp_lord_stirland_sigmarcult_2" is_noble="true" faction="Faction.stirland_clan_4" />
+	<Hero id="emp_lord_stirland_sigmarcult_3" is_noble="true" faction="Faction.stirland_clan_4" />
+	<Hero id="emp_lord_stirland_sigmarcult_4" is_noble="true" faction="Faction.stirland_clan_4" />
 	<!-- Mootland Clan 1 -->
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
+	
+	
+	<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
+	<Hero id="chaos_clan_1_1" is_noble="true" faction="Faction.chaos_clan_1" />
 </Heroes>

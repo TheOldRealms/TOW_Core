@@ -4,7 +4,7 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="6" 
+      CoolDown="15" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -39,7 +39,7 @@
       StringID="WindOfDeath" 
       Name="Wind of Death" 
       SpriteName="windofdeath_icon" 
-      CoolDown="20" 
+      CoolDown="40" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5" 
@@ -74,17 +74,17 @@
   <AbilityTemplate 
       StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
-      SpriteName="windofdeath_icon" 
-      CoolDown="2" 
+      SpriteName="summonskeleton_icon" 
+      CoolDown="10" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5" 
       Radius="2" 
       AbilityType="Spell" 
-      AbilityEffectType="CenteredStaticAOE" 
+      AbilityEffectType="TargetedStaticAOE" 
       BaseMovementSpeed="0" 
-      TickInterval="2" 
-      TriggerType="TickOnce" 
+      TickInterval="1" 
+      TriggerType="EveryTick" 
       HasLight="false" 
       LightIntensity="0" 
       LightRadius="0" 
@@ -111,8 +111,8 @@
   <AbilityTemplate 
       StringID="Dart" 
       Name="Dart" 
-      SpriteName="fireball_icon" 
-      CoolDown="2" 
+      SpriteName="dart_icon" 
+      CoolDown="12" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -146,8 +146,8 @@
   <AbilityTemplate 
       StringID="BurningHead" 
       Name="The Burning Head" 
-      SpriteName="windofdeath_icon" 
-      CoolDown="3" 
+      SpriteName="burninghead_icon" 
+      CoolDown="30" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="3" 
@@ -182,8 +182,8 @@
   <AbilityTemplate 
       StringID="ScreamingSkull" 
       Name="Screaming Skull" 
-      SpriteName="windofdeath_icon" 
-      CoolDown="3" 
+      SpriteName="screamingskull_icon" 
+      CoolDown="30" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="3" 
@@ -213,6 +213,44 @@
           <x>52</x>
           <y>235</y>
           <z>88</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="HealingAOE" 
+      Name="Healing AOE" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="40" 
+      WindsOfMagicCost="10" 
+      BaseMisCastChance="0.3" 
+      Duration="9" 
+      Radius="0.1" 
+      AbilityType="Prayer" 
+      AbilityEffectType="CenteredStaticAOE" 
+      BaseMovementSpeed="0" 
+      TickInterval="1" 
+      TriggerType="EveryTick" 
+      HasLight="true" 
+      LightIntensity="100" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="healing_circle" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="empire_heal" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="healing_tick"
+      Offset="0"
+      AbilityTargetType="Self">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>

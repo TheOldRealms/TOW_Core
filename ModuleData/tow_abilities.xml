@@ -3,9 +3,10 @@
 	
 	<CharacterAbilityTuple CharacterID="emp_lord">
     <Abilities>WindOfDeath</Abilities>
-    <Abilities>Dart</Abilities>
+    <Abilities>HealingAOE</Abilities>
     <Abilities>BurningHead</Abilities>
     <Abilities>ScreamingSkull</Abilities>
+    <Abilities>SummonSkeleton</Abilities>
 	</CharacterAbilityTuple>
 	<CharacterAbilityTuple CharacterID="vc_lord">
 		<Abilities>Fireball</Abilities>
@@ -20,6 +21,19 @@
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="necromancer_lord">
     <Abilities>SummonSkeleton</Abilities>
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+
+  <CharacterAbilityTuple CharacterID="sylvania_clan_1_1">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_2">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_6">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_third_1">
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
 

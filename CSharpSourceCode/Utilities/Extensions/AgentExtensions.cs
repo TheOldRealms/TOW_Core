@@ -155,9 +155,9 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
         public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
-            if (agent == null)
+            if (agent == null && !agent.IsHuman)
             {
-                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null agent.", LogLevel.Warn);
+                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null or non-human agent.", LogLevel.Warn);
                 return;
             }
             try
@@ -165,14 +165,20 @@ namespace TOW_Core.Utilities.Extensions
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
-                    if (!doBlow && agent.Health > damageAmount)
+                    if (!doBlow && agent.Health > damageAmount + 1)
                     {
                         agent.Health -= damageAmount;
                         return;
                     }
-                    var blow = new Blow();
+                    var blow = new Blow(-1);
+                    blow.DamageCalculated = true;
                     blow.InflictedDamage = damageAmount;
-                    blow.DefenderStunPeriod = 0;
+                    blow.AttackType = AgentAttackType.Bash;
+                    blow.BlowFlag = BlowFlags.NoSound;
+                    blow.BaseMagnitude = 5;
+                    blow.DamageType = DamageTypes.Invalid;
+                    blow.VictimBodyPart = BoneBodyPartType.Abdomen;
+                    blow.StrikeType = StrikeType.Invalid;
                     if (hasShockWave)
                     {
                         if (agent.HasMount)
@@ -180,15 +186,12 @@ namespace TOW_Core.Utilities.Extensions
                         else
                             blow.BlowFlag = BlowFlags.KnockDown;
                     }
-                    //if (damager != null) blow.OwnerId = damager.Index;
-                    if (agent.Health > damageAmount)
+                    if (damager != null)
                     {
-                        agent.RegisterBlow(blow);
+                        var agentAlive = Mission.Current.FindAgentWithIndex(damager.Index);
+                        if (agentAlive != null && agentAlive.State == AgentState.Active && agentAlive.Equals(damager)) blow.OwnerId = damager.Index;
                     }
-                    else
-                    {
-                        agent.Die(blow);
-                    }
+                    agent.RegisterBlow(blow);
                 }
             }
             catch (Exception e)

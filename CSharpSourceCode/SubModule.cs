@@ -37,6 +37,9 @@ using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
+using TOW_Core.CampaignSupport.ChaosRaidingParty;
+using TOW_Core.CampaignSupport.TownBehaviours;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace TOW_Core
 {
@@ -123,7 +126,6 @@ namespace TOW_Core
         {
             UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["tow_spritesheet"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
 		}
 
@@ -138,21 +140,28 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
-                starter.CampaignBehaviors.Add(new ExtendedInfoManager());
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
-                starter.CampaignBehaviors.Add(new BattleInfoCampaignBehavior());
-                starter.CampaignBehaviors.Add(new RaiseDeadCampaignBehavior());
-                starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.AddModel(new TowCompanionHiringPriceCalculationModel());
-                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
-                gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
-                gameStarterObject.AddModel(new TowMapWeatherModel());
 
+                starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+
+                starter.AddBehavior(new ExtendedInfoManager());
+                starter.AddBehavior(new BattleInfoCampaignBehavior());
+                starter.AddBehavior(new RaiseDeadCampaignBehavior());
+                starter.AddBehavior(new QuestBattleLocationBehaviour());
+                starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
+                starter.AddBehavior(new RaiseDeadInTownBehaviour());
+                starter.AddBehavior(new LibraryTownBehaviour());
+
+                starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
+                starter.Models.RemoveAllOfType(typeof(MapWeatherModel));
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
+                starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
+                
                 starter.AddModel(new QuestBattleLocationMenuModel());
-
-                starter.AddBehavior(new QuestBattleLocationBehaviour());
+                starter.AddModel(new TowCompanionHiringPriceCalculationModel());
+                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
+                starter.AddModel(new TowMapWeatherModel());
+                starter.AddModel(new TowKingdomPeaceModel());
             }
         }
 

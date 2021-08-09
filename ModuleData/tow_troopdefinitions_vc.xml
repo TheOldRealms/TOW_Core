@@ -204,6 +204,63 @@
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
+	<!-- Empire Huntsman - basic elite troop, no upgrade -->
+	<NPCCharacter id="tow_empire_huntsman_vc"
+				  default_group="Ranged"
+				  level="16"
+				  name="{=!}Sylvanian Huntsman"
+				  occupation="Soldier"
+				  is_basic_troop="true"
+				  culture="Culture.khuzait"
+				  skill_template="SkillSet.tow_skills_level16">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.rough_bearskin" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.battania_civil_cape" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.battania_shoulder_strap_cloak" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.glen_ranger_bow" />
+				<equipment slot="Item2" id="Item.bodkin_arrows_b" />
+				<equipment slot="Head" id="Item.empire_hat_004" />
+				<equipment slot="Cape" id="Item.leopard_pelt" />
+				<equipment slot="Body" id="Item.veteran_mercenary_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.plated_strip_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
 	
 	
 	<!-- Vampire Counts animated skeleton-->
@@ -256,7 +313,7 @@
 				<equipment slot="Item0"
 						   id="Item.skeleton_warrior_sword_002" />
 				<equipment slot="Item1"
-						   id="Item.skeleton_warrior_shield_002" />
+						   id="Item.skeleton_warrior_shield_004" />
 				<equipment slot="Body"
 						   id="Item.skeleton_body_full_hideskin" />
 			</EquipmentRoster>
@@ -280,7 +337,7 @@
 				<equipment slot="Item0"
 						   id="Item.skeleton_warrior_sword_001" />
 				<equipment slot="Item1"
-						   id="Item.skeleton_warrior_shield_004" />
+						   id="Item.vc_undead_banner_001" />
 				<equipment slot="Body"
 						   id="Item.skeleton_body_full_hideskin" />
 			</EquipmentRoster>
@@ -406,7 +463,7 @@
 	<NPCCharacter id="tow_grave_guard_greatsword"
 			default_group="Infantry"
 			level="21"
-			name="{=!}Grave Guard with GreatSword"
+			name="{=!}Grave Guard with Great Weapons"
 			occupation="Soldier"
 			culture="Culture.khuzait"
 			skill_template="SkillSet.tow_skills_level21">
@@ -450,75 +507,88 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0"
-						   id="Item.peasant_polearm_1_t1" />
+						   id="Item.raven_scythe" />
 				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_001" />
+						   id="Item.cairn_wraith_body_001_hideskin" />
 				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_001" />
+						   id="Item.cairn_wraith_head" />
 				<equipment slot="Leg"
 						   id="Item.cairn_wraith_lowerbody_001" />
 				<equipment slot="Cape"
 						   id="Item.cairn_wraith_shoulders_001" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0"
 						   id="Item.peasant_polearm_1_t1" />
 				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_002" />
+						   id="Item.cairn_wraith_body_003_hideskin" />
 				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_002" />
+						   id="Item.cairn_wraith_head" />
 				<equipment slot="Leg"
-						   id="Item.cairn_wraith_lowerbody_001" />
-				<equipment slot="Cape"
-						   id="Item.cairn_wraith_shoulders_001" />
-			</EquipmentRoster>
-			<EquipmentRoster>
-				<equipment slot="Item0"
-						   id="Item.peasant_polearm_1_t1" />
-				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_003" />
-				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_003" />
-				<equipment slot="Leg"
-						   id="Item.cairn_wraith_lowerbody_003" />
+						   id="Item.cairn_wraith_lowerbody_002" />
 				<equipment slot="Cape"
 						   id="Item.cairn_wraith_shoulders_002" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_002" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0"
 						   id="Item.peasant_polearm_1_t1" />
 				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_004" />
+						   id="Item.cairn_wraith_body_002_hideskin" />
 				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_004" />
+						   id="Item.cairn_wraith_head" />
 				<equipment slot="Leg"
 						   id="Item.cairn_wraith_lowerbody_003" />
-				<equipment slot="Cape"
-						   id="Item.cairn_wraith_shoulders_002" />
-			</EquipmentRoster>
-			<EquipmentRoster>
-				<equipment slot="Item0"
-						   id="Item.peasant_polearm_1_t1" />
-				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_005" />
-				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_005" />
-				<equipment slot="Leg"
-						   id="Item.cairn_wraith_lowerbody_005" />
 				<equipment slot="Cape"
 						   id="Item.cairn_wraith_shoulders_003" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_003" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0"
-						   id="Item.peasant_polearm_1_t1" />
+						   id="Item.wood_scythe" />
 				<equipment slot="Body"
-						   id="Item.cairn_wraith_body_006" />
+						   id="Item.cairn_wraith_body_002_hideskin" />
 				<equipment slot="Gloves"
-						   id="Item.cairn_wraith_helmet_006" />
+						   id="Item.cairn_wraith_head" />
 				<equipment slot="Leg"
-						   id="Item.cairn_wraith_lowerbody_005" />
+						   id="Item.cairn_wraith_lowerbody_001" />
 				<equipment slot="Cape"
 						   id="Item.cairn_wraith_shoulders_004" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_004" />
+						   
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0"
+						   id="Item.vampiric_scythe" />
+				<equipment slot="Body"
+						   id="Item.cairn_wraith_body_003_hideskin" />
+				<equipment slot="Gloves"
+						   id="Item.cairn_wraith_head" />
+				<equipment slot="Leg"
+						   id="Item.cairn_wraith_lowerbody_002" />
+				<equipment slot="Cape"
+						   id="Item.cairn_wraith_shoulders_001" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_005" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0"
+						   id="Item.wood_scythe" />
+				<equipment slot="Body"
+						   id="Item.cairn_wraith_body_002_hideskin" />
+				<equipment slot="Gloves"
+						   id="Item.cairn_wraith_head" />
+				<equipment slot="Leg"
+						   id="Item.cairn_wraith_lowerbody_003" />
+				<equipment slot="Cape"
+						   id="Item.cairn_wraith_shoulders_002" />
+				<equipment slot="Head"
+						   id="Item.cairn_wraith__helmet_006" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>

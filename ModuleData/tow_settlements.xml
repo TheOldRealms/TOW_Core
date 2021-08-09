@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settlements>
   <!--Quest Battle Site "Settlements"-->
-  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" posX="1429.551" posY="895.204" culture="Culture.neutral_culture" prosperity="500" text="{=!}Chaos Portal" owner="Faction.neutral">
+  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal"  owner="Faction.chaos_clan_1" posX="1429.551" posY="895.204" culture="Culture.chaos_culture" prosperity="500" text="{=!}Chaos Portal" >
     <Components>
       <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="chaos_portal" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
@@ -724,7 +724,7 @@
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
       <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
+      <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
       <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
       <Location id="prison" scene_name="empire_dungeon_a" />
       <Location id="house_1" scene_name="empire_house_d_interior_house" />
@@ -832,7 +832,7 @@
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
       <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
+      <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
       <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
       <Location id="prison" scene_name="empire_dungeon_a" />
       <Location id="house_1" scene_name="empire_house_d_interior_house" />
@@ -873,7 +873,7 @@
   </Settlement>
   <Settlement id="village_SY2_3" name="{=Settlements.Settlement.name.village_SY2_3}Eschen" posX="1643.36" posY="1002.446" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_3}When Sylvannia first fell to the Vampire Counts, the residents of Eschen built tall walls around their village. Digging in and fortifying against the cursed undead battering against their walls. Though they survived for a time, the Darkness is patient while flesh rots away. Eventually Eschen was overrun, it’s walls still standing but it’s people made to serve their new masters in death. Now the tall and impregnable walls of Eschen protect the vampires residing inside it.">
     <Components>
-      <Village id="village_comp_SY1_3" village_type="VillageType.trapper" hearth="82" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY2_3" village_type="VillageType.trapper" hearth="82" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
