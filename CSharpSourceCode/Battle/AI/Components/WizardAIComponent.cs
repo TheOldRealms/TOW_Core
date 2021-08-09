@@ -26,13 +26,15 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
-            UpdateBehavior();
+            if(!Mission.Current.IsFriendlyMission)
+            {
+                UpdateBehavior();
 
-            Agent.SelectAbility(0);
-            CastSpell();
-            Agent.SelectAbility(1);
-            CastSpell();
-
+                Agent.SelectAbility(0);
+                CastSpell();
+                Agent.SelectAbility(1);
+                CastSpell();
+            }
             base.OnTickAsAI(dt);
         }
 
