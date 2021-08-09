@@ -283,6 +283,7 @@
   <!-- Files & Classes -->
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
+    <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
