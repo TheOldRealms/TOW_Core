@@ -283,6 +283,11 @@
   <!-- Files & Classes -->
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
+    <Compile Include="Abilities\Crosshairs\CenteredStaticAOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\DirectionalMovingAOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\TargetedStaticCrosshair.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
@@ -290,6 +295,10 @@
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\AOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\SummoningCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\TargetedStaticAOECrosshair.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />

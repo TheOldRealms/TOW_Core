@@ -78,7 +78,7 @@
       CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
-      Duration="5" 
+      Duration="5"
       Radius="2" 
       AbilityType="Spell" 
       AbilityEffectType="Summoning" 
@@ -99,7 +99,7 @@
       CastTime="0" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="summon_skeleton_tick"
-      Offset="10"
+      Offset="0"
       AbilityTargetType="Self">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>

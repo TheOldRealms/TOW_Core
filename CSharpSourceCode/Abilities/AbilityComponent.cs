@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -9,16 +10,19 @@ namespace TOW_Core.Abilities
 {
     public class AbilityComponent : AgentComponent
     {
+        private bool isAbilityModeOn;
         private Ability _currentAbility = null;
         private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
 
+        public bool IsAbilityModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
         public Ability CurrentAbility { get => _currentAbility; set => _currentAbility = value; }
+        public List<Ability> KnownAbilities { get => _knownAbilities; }
 
         public AbilityComponent(Agent agent) : base(agent)
         {
             var abilities = agent.GetAbilities();
-            if(abilities.Count > 0)
+            if (abilities.Count > 0)
             {
                 foreach (var item in abilities)
                 {
@@ -45,7 +49,6 @@ namespace TOW_Core.Abilities
                 }
             }
         }
-
         public void SelectAbility(int index)
         {
             if (_knownAbilities.Count > 0 && index >= 0)
@@ -62,6 +65,19 @@ namespace TOW_Core.Abilities
         public void SelectPreviousAbility()
         {
             SelectAbility(_currentAbilityIndex - 1);
+        }
+
+        public Ability[] GetAbilities()
+        {
+            return _knownAbilities.ToArray();
+        }
+        public void EnableAbilityMode()
+        {
+            isAbilityModeOn = true;
+        }
+        public void DisableAbilityMode()
+        {
+            isAbilityModeOn = false;
         }
     }
 }
