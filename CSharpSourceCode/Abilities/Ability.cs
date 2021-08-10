@@ -7,6 +7,8 @@ using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
+using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Abilities.Crosshairs;
 
 namespace TOW_Core.Abilities
 {
@@ -18,9 +20,11 @@ namespace TOW_Core.Abilities
         private Timer _timer = null;
         private bool _isCasting;
         private object _sync = new object();
+        private AbilityCrosshair crosshair;
 
         public string StringID { get => _stringId; }
         public AbilityTemplate Template { get => _template; }
+        public AbilityCrosshair Crosshair { get => crosshair; }
 
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
@@ -32,6 +36,28 @@ namespace TOW_Core.Abilities
             _timer = new Timer(1000);
             _timer.Elapsed += TimerElapsed;
             _timer.Enabled = false;
+            InitializeCrosshair(_template.AbilityEffectType);
+            //NEED TO CHANGE AbilityTemplate (radius, maxdistance, etc)
+            //
+        }
+
+        private void InitializeCrosshair(AbilityEffectType effectType)
+        {
+            if (effectType == AbilityEffectType.MovingProjectile)
+                crosshair = new ProjectileCrosshair();
+            else if (effectType == AbilityEffectType.DynamicProjectile)
+                crosshair = new DynamicProjectileCrosshair();
+            else if (effectType == AbilityEffectType.CenteredStaticAOE)
+                crosshair = new CenteredStaticAOECrosshair();
+            else if (effectType == AbilityEffectType.DirectionalMovingAOE)
+                crosshair = new DirectionalMovingAOECrosshair();
+            else if (effectType == AbilityEffectType.TargetedStaticAOE)
+                crosshair = new TargetedStaticAOECrosshair();
+            else if (effectType == AbilityEffectType.TargetedStatic)
+                crosshair = new TargetedStaticCrosshair();
+            else if (effectType == AbilityEffectType.Summoning)
+                crosshair = new SummoningCrosshair();
+            else crosshair = null;
         }
 
         private void TimerElapsed(object sender, ElapsedEventArgs e)
@@ -120,6 +146,13 @@ namespace TOW_Core.Abilities
                    Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
 
+        public bool IsUsingCrosshairPosition()
+        {
+            return _template.AbilityEffectType == AbilityEffectType.Summoning ||
+                   _template.AbilityEffectType == AbilityEffectType.TargetedStatic ||
+                   _template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE;
+        }
+
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
@@ -147,7 +180,7 @@ namespace TOW_Core.Abilities
             }
             else if (_template.AbilityEffectType == AbilityEffectType.Summoning)
             {
-                //frame = crosshair.Frame;
+                frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
             }
 
             if (casterAgent.IsAIControlled)
@@ -256,6 +289,7 @@ namespace TOW_Core.Abilities
 
         public void Dispose()
         {
+            crosshair.Dispose();
             _timer.Dispose();
             _timer = null;
             _template = null;
