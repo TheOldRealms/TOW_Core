@@ -31,6 +31,7 @@ namespace TOW_Core.Abilities
                         var ability = AbilityFactory.CreateNew(item);
                         if (ability != null)
                         {
+                            ability.Crosshair.SetAbility(ability);
                             _knownAbilities.Add(ability);
                         }
                         else

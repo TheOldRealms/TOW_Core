@@ -1,5 +1,4 @@
-﻿using System;
-using TaleWorlds.Engine;
+﻿using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -28,18 +27,24 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             Vec3 position;
             Vec3 vec;
-            if (this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
+            if (Agent.Main != null && this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
             {
+                if (Agent.Main.Position.Distance(position) < ability.Template.MaxDistance)
+                    this.Position = position;
+                else
+                {
+                    position = Agent.Main.LookFrame.Advance(ability.Template.MaxDistance).origin;
+                    position.z = Mission.Current.Scene.GetGroundHeightAtPosition(Position);
+                    Position = position;
+                }
                 //WorldPosition worldPosition = new WorldPosition(Mission.Current.Scene, UIntPtr.Zero, position, false);
                 //isOnValidGround = (!this.IsVisible || AOEAbilityCrosshair.IsPositionOnValidGround(worldPosition));
             }
             else
             {
+                Position = new Vec3(0f, 0f, -100000f, -1f);
                 //isOnValidGround = false;
-                position = new Vec3(0f, 0f, -100000f, -1f);
             }
-            this.Position = position;
-            crosshair.GetGlobalFrame().Elevate(100);
         }
         public void SetVisibilty(bool visibility)
         {

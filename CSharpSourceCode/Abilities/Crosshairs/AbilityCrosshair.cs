@@ -17,6 +17,10 @@ namespace TOW_Core.Abilities.Crosshairs
         public virtual void Tick()
         {
         }
+        public void SetAbility(Ability ability)
+        {
+            this.ability = ability;
+        }
         protected void AddLight()
         {
             //crosshair.SetFactorColor(new Color(0.255f, 0, 0, 1f).ToUnsignedInteger());
@@ -61,6 +65,7 @@ namespace TOW_Core.Abilities.Crosshairs
         }
 
         protected GameEntity crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
+        protected Ability ability;
         protected Mission mission;
         protected MissionScreen missionScreen;
         protected uint? friendColor = new Color(0, 0.255f, 0, 1f).ToUnsignedInteger();

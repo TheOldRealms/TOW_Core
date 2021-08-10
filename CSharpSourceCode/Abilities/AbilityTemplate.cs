@@ -71,6 +71,8 @@ namespace TOW_Core.Abilities
         public AbilityTargetType AbilityTargetType = AbilityTargetType.Enemies;
         [XmlAttribute]
         public float Offset = 1.0f;
+        [XmlAttribute]
+        public float MaxDistance = 1.0f;
 
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;

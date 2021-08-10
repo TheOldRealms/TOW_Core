@@ -101,7 +101,8 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="summon_skeleton_tick"
       Offset="0"
-      AbilityTargetType="Self">
+      AbilityTargetType="Self"
+      MaxDistance="30">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>

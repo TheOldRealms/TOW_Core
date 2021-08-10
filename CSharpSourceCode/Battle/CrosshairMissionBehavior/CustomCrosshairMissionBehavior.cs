@@ -76,6 +76,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             if (abilityComponent != null && abilityComponent.IsAbilityModeOn)
             {
+                weaponCrosshair.IsVisible = false;
                 if (currentAbilityCrosshair != null)
                 {
                     if (abilityComponent.CurrentAbility.IsOnCooldown())
@@ -249,6 +250,10 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         }
 
+        public void SetWeaponCrosshairVisibility(bool isVisible)
+        {
+            weaponCrosshair.IsVisible = isVisible;
+        }
         public void SetCrosshair(AbilityCrosshair crosshair)
         {
             currentAbilityCrosshair = crosshair;
