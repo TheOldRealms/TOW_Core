@@ -6,11 +6,11 @@
 			<BodyProperties version="4" age="50.4" weight="0.1047" build="0.5127"  key="00137C0014143002B01B941F0471383019361685D341B6194C1F2F2F67A9944300A826030AA1011A00000000000000000000000000000000000000003B541042"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="BalancedFightingSkills" value="10" />
 			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
+			<Trait id="Politician" value="1" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="+10" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -37,13 +37,13 @@
 			<BodyProperties version="4" age="62.58" weight="1" build="0.7555" key="000500001700038378053E5F73FCF868917A97C001E9093F965D1D76AB76AC85008BF60308A4658A000000000000000000000000000000000000000041042042" />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="BalancedFightingSkills" value="10" />
+			<Trait id="Commander" value="10" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="+10" />
 			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Generosity" value="2" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -63,32 +63,29 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Moot Faction Leader-->
-	<NPCCharacter id="moot_clan_1_1" name="{=!}The Moot Faction Leader" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="moot_clan_1_1" name="{=!}Hisme Stoutheart" default_group="cavalry" age="62" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="000AB806C000300F017677681123123742A683BA549B3D6366390B3C838500150077760307B8B97400000000000000000000000000000000000000003AF43002"  />
+			<BodyProperties version="4" age="62" weight="1" build="1"  key="0020740780002308107FF0F0FF0F00F07BD850635067FF07F1600F6F8008CC8F000FF603F0FF7FFF00000000000000000000000000000000000000007E043002"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
-		</Traits>
+				<Trait id="BalancedFightingSkills" value="2" />
+				<Trait id="Commander" value="7" />
+				<Trait id="Politician" value="2" />
+				<Trait id="Manager" value="6" />
+				<Trait id="Honor" value="5" />
+				<Trait id="Mercy" value="1" />
+				<Trait id="Generosity" value="5" />
+			</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<equipment slot="Item2" id="tow_handgun_002" />
-				<equipment slot="Item3" id="musket_ball" />
-				<equipment slot="Head" id="Item.empire_general_helmet_001" />
-				<equipment slot="Body" id="Item.empire_general_body_001" />
+				<equipment slot="Item0" id="Item.vlandia_2haxe_1_t4" />
+				<equipment slot="Head" id="Item.kettle_helmet_with_leather" />
+				<equipment slot="Body" id="Item.battania_civil_c" />
 				<equipment slot="Cape" id="Item.empire_general_cape_001" />
-				<equipment slot="Gloves" id="Item.empire_general_gauntlets_001" />
-				<equipment slot="Leg" id="Item.empire_general_boots_001" />
+				<equipment slot="Gloves" id="Item.battania_noble_bracers" />
+				<equipment slot="Leg" id="Item.leather_boots" />
 
-				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="Horse" id="Item.mule" />
 				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
@@ -96,18 +93,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Sylvania Faction Leader-->
-	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Mannfred von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Mannfred von Carstein" default_group="cavalry" age="1510" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="19" weight="0.4748" build="0.3466" key="00009804001430006F7C005A99FCEFF8CDD69026843A9C52B9B620493937C83A09957692094B4E8700000000000000000000000000000000FFFFFFFFC334603F" />
-		</face>
-		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+            <BodyProperties version="4" age="19" weight="0.6806" build="0.983"  key="0000000008FC1000F02F06CF001F8186BB77F83E62FF1B00A7A9BCEB4C6971B309AFA692FACC480F00000000000000000000000000000000FFFFFFFFC544103F"  />
+        </face>
+			<Traits>
+			<Trait id="BalancedFightingSkills" value="10" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="-10" />
+			<Trait id="Mercy" value="-10" />
+			<Trait id="Generosity" value="-10" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -124,18 +121,18 @@
 	</NPCCharacter>
 	<!-- AVERLAND LORDS -->
 	<!-- Filibert Leitdorf -->
-	<NPCCharacter id="emp_lord_averland_oberaverlander_2" name="{=!}Filibert Leitdorf" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_averland_oberaverlander_2" name="{=!}Filibert Leitdorf" default_group="cavalry" age="21" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="21.33" weight="0.3441" build="0.4213"  key="0008140C4044200F84A66FE0C5160011796A2A6860940F01C4687846453C868E0006560200BC899B00000000000000000000000000000000000000004A044042"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="1" />
 			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
+			<Trait id="Manager" value="2" />
 			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="1" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -157,7 +154,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Hans Leitdorf -->
-	<NPCCharacter id="emp_lord_averland_oberaverlander_3" name="{=!}Hans Leitdorf" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_averland_oberaverlander_3" name="{=!}Hans Leitdorf" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="66.66" weight="0.3719" build="1"  key="00082C0D0E440204E3D3AC37B8B52B677BB88F4155230509583D6ABC3D49568806AF66680A7A595C0000000000000000000000000000000000000000015C1105"  />
 		</face>
@@ -166,7 +163,7 @@
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="1" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -457,16 +454,16 @@
 
 	<!-- Knights of the Blazing Sun (Averland) LORDS -->
 	<!-- Siegfried Trappenfeld -->
-	<NPCCharacter id="emp_lord_averland_kobs_1" name="{=!}Siegfried Trappenfeld" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_averland_kobs_1" name="{=!}Siegfried Trappenfeld" default_group="cavalry" age="51" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="21.33" weight="0.3441" build="0.4213"  key="0008140C4044200F84A66FE0C5160011796A2A6860940F01C4687846453C868E0006560200BC899B00000000000000000000000000000000000000004A044042"  />
+			<BodyProperties version="4" age="23" weight="0.622" build="0.8933"  key="0008000B915810093F79091FB9D8C480775965867458061D4361142D93CDB688008D9603F86DBEBC000000000000000000000000000000000000000072FC60C2"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="1" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -500,7 +497,7 @@
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="1" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -523,16 +520,16 @@
 	<!-- Volkmar the Grim -->
 	<NPCCharacter id="emp_lord_stirland_sigmarcult_2" name="{=!}Volkmar the Grim" default_group="cavalry" age="68" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="22.44" weight="0.5" build="0.5"  key="0002D80A50003140FB1D3398D010703F963B079168E3120454BB48208BECA93500A776030AC78738000000000000000000000000000000000000000019543102"  />
+			<BodyProperties version="4" age="62.44" weight="0.5" build="0.5"  key="0002D80A50003140FB1D3398D010703F963B079168E3120454BB48208BECA93500A776030AC78738000000000000000000000000000000000000000019543102"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+		<Trait id="BalancedFightingSkills" value="5" />
+		<Trait id="Commander" value="7" />
+		<Trait id="Politician" value="5" />
+		<Trait id="Manager" value="6" />
+		<Trait id="Honor" value="1" />
+		<Trait id="Mercy" value="-1" />
+		<Trait id="Generosity" value="-1" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -550,18 +547,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Valten -->
-	<NPCCharacter id="emp_lord_stirland_sigmarcult_3" name="{=!}Valten" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_sigmarcult_3" name="{=!}Valten" default_group="cavalry" age="1532" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="60.39" weight="0.0006" build="0.708"  key="001E4806D5CC1000A143754FB69091014005239051098A00903800886A89F932067B066707288A0200000000000000000000000000000000000000003AE45142"  />
+			<BodyProperties version="4" age="68.34" weight="0.6528" build="0.983"  key="002000035ECC1783FC86108F6753F8974CA59AC253C70600C4B600398BE55E9900FFA6030FFF4FF900000000000000000000000000000000000000003BEC7002"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="BalancedFightingSkills" value="50" />
+			<Trait id="Commander" value="10" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Honor" value="+10" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="0" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -581,19 +578,19 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Adso Theiss -->
-	<NPCCharacter id="emp_lord_stirland_sigmarcult_4" name="{=!}Adso Theiss" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_sigmarcult_4" name="{=!}Adso Theiss" default_group="cavalry" age="88" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="60.39" weight="0.0006" build="0.708"  key="001E4806D5CC1000A143754FB69091014005239051098A00903800886A89F932067B066707288A0200000000000000000000000000000000000000003AE45142"  />
+			<BodyProperties version="4" age="88" weight="0.622" build="0.6113"  key="0002080FD42C3000F43B369F5568568979FF09F058960800F001806780FC6A5700A99603FACCA5A9000000000000000000000000000000000000000003542105"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
-		</Traits>
+				<Trait id="BalancedFightingSkills" value="6" />
+				<Trait id="Commander" value="7" />
+				<Trait id="Politician" value="3" />
+				<Trait id="Manager" value="6" />
+				<Trait id="Honor" value="9" />
+				<Trait id="Mercy" value="-1" />
+				<Trait id="Generosity" value="9" />
+			</Traits>
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.wp_hammer_001" />
@@ -642,7 +639,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Count Erich von Halstedt -->
-	<NPCCharacter id="emp_lord_stirland_mittelstirlander_3" name="{=!}Count Erich von Halstedt" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_mittelstirlander_3" name="{=!}Count Erich von Halstedt" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="32.11" weight="0.4095" build="0.4916" key="000D7809922C1341125835A11858C9864957AFF0BC27850E5496A48677DBCB990097660309F882CC000000000000000000000000000000000000000013244042" />
 		</face>
@@ -652,7 +649,7 @@
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
 			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
+			<Trait id="Mercy" value="6" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
 		<Equipments>
@@ -673,17 +670,17 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Count Petr von Stolpe -->
-	<NPCCharacter id="emp_lord_stirland_oststirlander_1" name="{=!}Count Petr von Stolpe" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_oststirlander_1" name="{=!}Count Petr von Stolpe" default_group="cavalry" age="32" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="33" weight="0.3005" build="0.3628" key="00052C0280E4220678F757A0197CF0F057951BD898ECC648E9B5B4BA9C21C7AD0085560308EDB867000000000000000000000000000000000000000049148082" />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
 			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
+			<Trait id="Politician" value="10" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
+			<Trait id="Honor" value="0" />
+			<Trait id="Mercy" value="0" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
 		<Equipments>
@@ -704,7 +701,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Baron Immanuel Krebs -->
-	<NPCCharacter id="emp_lord_stirland_oststirlander_2" name="{=!}Baron Immanuel Krebs" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_oststirlander_2" name="{=!}Baron Immanuel Krebs" default_group="cavalry" age="51" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="42.38" weight="0.3503" build="0.6034" key="000858041E2C17C3786C89CC77B5377779A5C7C0941B97DE5C8A2AEC7467DA8A00D956030DAB796A000000000000000000000000000000000000000007C43042" />
 		</face>
@@ -737,18 +734,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Lord Voss -->
-	<NPCCharacter id="emp_lord_stirland_oststirlander_3" name="{=!}Lord Voss" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_oststirlander_3" name="{=!}Lord Voss" default_group="cavalry" age="47" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="82.58" weight="0.3325" build="0.1852" key="0002500019B4370FE4972A1C7B95CB82A738A8F0C5600F07ADF900882957DD8D0043560304FDA3DF0000000000000000000000000000000000000000128C9042" />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="BalancedFightingSkills" value="15" />
+			<Trait id="Commander" value="17" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Honor" value="+10" />
+			<Trait id="Mercy" value="-10" />
+			<Trait id="Generosity" value="0" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -935,18 +932,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Vlad von Carstein -->
-	<NPCCharacter id="vc_lord_sylvania_first_6" name="{=!}Vlad von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_6" name="{=!}Vlad von Carstein" default_group="cavalry" age="1630" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="19" weight="0.7834" build="0.7556"  key="000DF40FC00000097B6CD0F0C3A9F5FB7743CF6A7E6F11B137D38675488A76C3093BC69203BACD5800000000000000000000000000000000FFFFFFFFDA64803F"  />
+            <BodyProperties version="4" age="50" weight="0.3935" build="0.5139"  key="000044000014100410E881A08F04607626FFA0000BAE000196E5081B8F10388609F86692FFE9DC0300000000000000000000000000000000FFFFFFFF99FC003F"  />
 		</face>
-		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Traits>
+			<Trait id="BalancedFightingSkills" value="9" />
 			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Politician" value="9" />
+			<Trait id="Manager" value="9" />
+			<Trait id="Honor" value="5" />
+			<Trait id="Mercy" value="-10" />
+			<Trait id="Generosity" value="2" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -963,16 +960,16 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Khemalla -->
-	<NPCCharacter id="vc_lord_sylvania_second_1" name="{=!}Lady Khemalla" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_1" name="{=!}Lady Khemalla" default_group="cavalry" age="42" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
-			<BodyProperties version="4" age="22" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="42.58" weight="0.1373" build="0.7948"  key="0000540FD1001004F69103CE9CE46F90B784F5A9D899001DB67817689B7AA9A600CC26030C95B35C00000000000000000000000000000000000000006F844084"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="2" />
 			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="1" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="0" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -982,18 +979,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Elize von Carstein -->
-	<NPCCharacter id="vc_lord_sylvania_second_2" name="{=!}Elize von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_2" name="{=!}Elize von Carstein" default_group="cavalry" age="32" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="32.58" weight="0" build="0.5083"  key="0000580012A03006AA90106F72504F90926E9328941B377A537CCB2C9538167200B806030B79685600000000000000000000000000000000000000006B640044"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="BalancedFightingSkills" value="3" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
 			<Trait id="Honor" value="1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Mercy" value="0" />
+			<Trait id="Generosity" value="-10" />
 		</Traits>
         <Equipments>
 			<EquipmentSet id="vampire_template" civilian="true" />
@@ -1001,9 +998,9 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Ariette von Carstein -->
-	<NPCCharacter id="vc_lord_sylvania_second_3" name="{=!}Ariette von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_3" name="{=!}Ariette von Carstein" default_group="cavalry" age="552" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="22.58" weight="0" build="0.3698"  key="0000500FD1FC3015F617643F0E003A47B824BF66FC7E7700A567B70084EA68A900560603057686A200000000000000000000000000000000000000004AA41044"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -1020,18 +1017,18 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Katherina von Dernsbach -->
-	<NPCCharacter id="vc_lord_sylvania_second_4" name="{=!}Katherina von Dernsbach" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_4" name="{=!}Katherina von Dernsbach" default_group="cavalry" age="400" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="92.58" weight="0" build="0"  key="0000540011FC3004F76D67198327B362D9B5885D98CF07004C97764A8829C29800D006030DB793A8000000000000000000000000000000000000000073BC20C4"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
 			<Trait id="Commander" value="7" />
-			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
+			<Trait id="Politician" value="2" />
+			<Trait id="Manager" value="10" />
 			<Trait id="Honor" value="1" />
-			<Trait id="Mercy" value="-1" />
-			<Trait id="Generosity" value="-1" />
+			<Trait id="Mercy" value="0" />
+			<Trait id="Generosity" value="0" />
 		</Traits>
         <Equipments>
 			<EquipmentSet id="vampire_template" civilian="true" />
@@ -1039,17 +1036,17 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Gabriella von Bundebad -->
-	<NPCCharacter id="vc_lord_sylvania_second_5" name="{=!}Countess Gabriella von Bundebad" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_5" name="{=!}Countess Gabriella von Bundebad" default_group="cavalry" age="30" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
-			<BodyProperties version="4" age="22.96" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
+			<BodyProperties version="4" age="52.58" weight="0.3627" build="0.5402"  key="00004C001C14300C87BA078F7B8A86829AC98F78DB7E024597869E9BD267AA5C0098560309B39771000000000000000000000000000000000000000035243084"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="1" />
-			<Trait id="Mercy" value="-1" />
+			<Trait id="Manager" value="1" />
+			<Trait id="Honor" value="-1" />
+			<Trait id="Mercy" value="-10" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
