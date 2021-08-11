@@ -387,7 +387,7 @@
 	</NPCCharacter>
 
 	<!-- Vampire Counts black knight -->
-	<NPCCharacter id="tow_black_knight" default_group="Cavalry" level="21" name="{=!}Black Knight" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+	<NPCCharacter id="tow_black_knight" default_group="Cavalry" level="21" name="{=!}Black Knight" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
