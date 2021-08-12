@@ -19,6 +19,9 @@
 	<Character name="tow_cairn_wraith">
 		<Attribute id="Undead" />
 	</Character>
+	<Character name="tow_black_knight">
+		<Attribute id="Undead" />
+	</Character>
 	<Character name="emp_lord">
 		<Attribute id="AbilityUser" />
 	</Character>

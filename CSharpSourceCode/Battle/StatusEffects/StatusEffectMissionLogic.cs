@@ -16,8 +16,6 @@ namespace TOW_Core.Battle.StatusEffects
     public class StatusEffectMissionLogic : MissionLogic
     {
         private Dictionary<string, StatusEffect> _presentEffects = new Dictionary<string, StatusEffect>();
-
-        public EventHandler<OnTickArgs> NotifyStatusEffectTickObservers;
         
         public override void OnAgentCreated(Agent agent)
         {
@@ -93,10 +91,5 @@ namespace TOW_Core.Battle.StatusEffects
         }
 
         public override MissionBehaviourType BehaviourType { get; }
-    }
-    
-    public class OnTickArgs : EventArgs
-    {
-        public float deltatime;
     }
 }
