@@ -93,7 +93,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Sylvania Faction Leader-->
-	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Mannfred von Carstein" default_group="cavalry" age="1510" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="sylvania_clan_1_1" name="{=!}Mannfred von Carstein" default_group="cavalry" age="51" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
             <BodyProperties version="4" age="19" weight="0.6806" build="0.983"  key="0000000008FC1000F02F06CF001F8186BB77F83E62FF1B00A7A9BCEB4C6971B309AFA692FACC480F00000000000000000000000000000000FFFFFFFFC544103F"  />
         </face>
@@ -156,7 +156,7 @@
 	<!-- Hans Leitdorf -->
 	<NPCCharacter id="emp_lord_averland_oberaverlander_3" name="{=!}Hans Leitdorf" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="66.66" weight="0.3719" build="1"  key="00082C0D0E440204E3D3AC37B8B52B677BB88F4155230509583D6ABC3D49568806AF66680A7A595C0000000000000000000000000000000000000000015C1105"  />
+			<BodyProperties version="4" age="62.66" weight="0.3719" build="1"  key="00082C0D0E440204E3D3AC37B8B52B677BB88F4155230509583D6ABC3D49568806AF66680A7A595C0000000000000000000000000000000000000000015C1105"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -222,7 +222,7 @@
 	<!-- Count Dieter von Heine -->
 	<NPCCharacter id="emp_lord_averland_unteraverlander_2" name="{=!}Count Dieter von Heine" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="87.68" weight="0.946" build="0.0108"  key="0002440996A010C173E67DA0524700EA2C8CE765ADE87323A44675FF753A8A880990E69A0985C6D300000000000000000000000000000000000000007B2C5046"  />
+			<BodyProperties version="4" age="67.68" weight="0.946" build="0.0108"  key="0002440996A010C173E67DA0524700EA2C8CE765ADE87323A44675FF753A8A880990E69A0985C6D300000000000000000000000000000000000000007B2C5046"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -286,7 +286,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Baron Boris Ulbricht -->
-	<NPCCharacter id="emp_lord_averland_unteraverlander_4" name="{=!}Baron Boris Ulbricht" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_averland_unteraverlander_4" name="{=!}Baron Boris Ulbricht" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="60.45" weight="0.5295" build="0.4367"  key="0008EC0795B437C4D974478A5AF37286E207A7340792480075776A6F803769D40687866708D9F099000000000000000000000000000000000000000059146006"  />
 
@@ -320,12 +320,12 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Selena von Kusch -->
-	<NPCCharacter id="emp_lord_averland_westaverlander_1" name="{=!}Countess Selena von Kusch" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+	<NPCCharacter id="emp_lord_averland_westaverlander_1" name="{=!}Countess Selena von Kusch" default_group="cavalry" age="33" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
 		<face>
 			<BodyProperties version="4" age="42.54" weight="0.4354" build="0.4758"  key="0002780612000015B76A72D8C767EB7596BEB8765B4A03B5AA3897E433BC837803877635083B7767000000000000000000000000000000000000000063144083"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="BalancedFightingSkills" value="2" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
@@ -353,16 +353,16 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Baron Sigmund Hindenberg -->
-	<NPCCharacter id="emp_lord_averland_westaverlander_2" name="{=!}Baron Sigmund Hindenberg" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_averland_westaverlander_2" name="{=!}Baron Sigmund Hindenberg" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="38.69" weight="0.0124" build="0.9429"  key="0005F40FD2881100AB5007CF5885F0E8499BF04055711F4ABB7AB48967A258C6027E0625075E8C7500000000000000000000000000000000000000003EF49042"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="BalancedFightingSkills" value="8" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
-			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="0" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -392,11 +392,11 @@
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
-			<Trait id="Commander" value="7" />
+			<Trait id="Commander" value="2" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
 			<Trait id="Honor" value="+1" />
-			<Trait id="Mercy" value="-1" />
+			<Trait id="Mercy" value="0" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
 		<Equipments>
@@ -419,7 +419,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Camilla von Sachs -->
-	<NPCCharacter id="emp_lord_averland_westaverlander_4" name="{=!}Countess Camilla von Sachs" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+	<NPCCharacter id="emp_lord_averland_westaverlander_4" name="{=!}Countess Camilla von Sachs" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
 		<face>
 			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
 		</face>
@@ -428,7 +428,7 @@
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="+1" />
+			<Trait id="Honor" value="-1" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -493,11 +493,11 @@
 			<BodyProperties version="4" age="60.39" weight="0.0006" build="0.708"  key="001E4806D5CC1000A143754FB69091014005239051098A00903800886A89F932067B066707288A0200000000000000000000000000000000000000003AE45142"  />
 		</face>
 		<Traits>
-			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="BalancedFightingSkills" value="15" />
 			<Trait id="Commander" value="7" />
 			<Trait id="Politician" value="5" />
 			<Trait id="Manager" value="6" />
-			<Trait id="Honor" value="1" />
+			<Trait id="Honor" value="11" />
 			<Trait id="Mercy" value="-1" />
 			<Trait id="Generosity" value="-1" />
 		</Traits>
@@ -529,7 +529,7 @@
 		<Trait id="Manager" value="6" />
 		<Trait id="Honor" value="1" />
 		<Trait id="Mercy" value="-1" />
-		<Trait id="Generosity" value="-1" />
+		<Trait id="Generosity" value="2" />
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
@@ -547,9 +547,9 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Valten -->
-	<NPCCharacter id="emp_lord_stirland_sigmarcult_3" name="{=!}Valten" default_group="cavalry" age="1532" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_sigmarcult_3" name="{=!}Valten" default_group="cavalry" age="53" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="68.34" weight="0.6528" build="0.983"  key="002000035ECC1783FC86108F6753F8974CA59AC253C70600C4B600398BE55E9900FFA6030FFF4FF900000000000000000000000000000000000000003BEC7002"  />
+			<BodyProperties version="4" age="58.34" weight="0.6528" build="0.983"  key="002000035ECC1783FC86108F6753F8974CA59AC253C70600C4B600398BE55E9900FFA6030FFF4FF900000000000000000000000000000000000000003BEC7002"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="50" />
@@ -764,7 +764,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Petra Harden -->
-	<NPCCharacter id="emp_lord_stirland_weststirlander_1" name="{=!}Countess Petra Harden" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+	<NPCCharacter id="emp_lord_stirland_weststirlander_1" name="{=!}Countess Petra Harden" default_group="cavalry" age="30" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
 		<face>
 			<BodyProperties version="4" age="23.58" weight="0.4404" build="0.5376" key="001888020058300596662A383454A667B7A13A9A665849B783B8775B769689990008760300AA8996000000000000000000000000000000000000000014041043" />
 		</face>
@@ -793,7 +793,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Count Artur von Treitschke -->
-	<NPCCharacter id="emp_lord_stirland_weststirlander_2" name="{=!}Count Artur von Treitschke" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="emp_lord_stirland_weststirlander_2" name="{=!}Count Artur von Treitschke" default_group="cavalry" age="32" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="46.79" weight="0.9892" build="0.9429"  key="00088C081000400BB8665387A1071071A67AB6B5477507086F96E754C9B83B8804BEF6450B6398C500000000000000000000000000000000000000005F644043"  />
 		</face>
@@ -825,7 +825,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Countess Alexandra von Münsterberg -->
-	<NPCCharacter id="emp_lord_stirland_weststirlander_3" name="{=!}Countess Alexandra von Münsterberg" default_group="cavalry" age="50" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
+	<NPCCharacter id="emp_lord_stirland_weststirlander_3" name="{=!}Countess Alexandra von Münsterberg" default_group="cavalry" age="42" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true" >
 		<face>
 			<BodyProperties version="4" age="32.58" weight="0.8443" build="0.6583" key="0000FC09944410156A37B96DAD497847C74707A71D6802218BA87C6755958CA5005AD603053B6658000000000000000000000000000000000000000038B44083" />
 		</face>
@@ -856,9 +856,9 @@
 	</NPCCharacter>
 	<!-- SYLVANIA LORDS -->
 	<!-- Anark von Carstein -->
-	<NPCCharacter id="vc_lord_sylvania_first_2" name="{=!}Anark von Carstein" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_2" name="{=!}Anark von Carstein" default_group="cavalry" age="57" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="19" weight="0.7834" build="0.7556" key="000DF40FC00000097B6CD0F0C3A9F5FB7743CF6A7E6F11B137D38675488A76C3093BC69203BACD5800000000000000000000000000000000FFFFFFFFDA64803F" />
+			<BodyProperties version="4" age="49" weight="0.7834" build="0.7556" key="000DF40FC00000097B6CD0F0C3A9F5FB7743CF6A7E6F11B137D38675488A76C3093BC69203BACD5800000000000000000000000000000000FFFFFFFFDA64803F" />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="5" />
@@ -875,7 +875,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Helman Ghorst -->
-	<NPCCharacter id="vc_lord_sylvania_first_3" name="{=!}Helman Ghorst" default_group="cavalry" age="80" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_3" name="{=!}Helman Ghorst" default_group="cavalry" age="84" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="80" weight="0.0448" build="0" key="0018140FC04410000EFF9FF0E1F000018F06BA3F788F0F10AB7A7737E90250FF096016920647543800000000000000000000000000000000FFFFFFFFC6D4303F" />
 		</face>
@@ -894,7 +894,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Hermann Schtillmann -->
-	<NPCCharacter id="vc_lord_sylvania_first_4" name="{=!}Hermann Schtillmann" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_4" name="{=!}Hermann Schtillmann" default_group="cavalry" age="56" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.0571" build="0" key="0029240FC0B410008B96E00F0EC0FF01AA7FC9B65C634297010F00E029B357CF09C016920C0FF0E000000000000000000000000000000000FFFFFFFFA38C403F" />
 		</face>
@@ -913,7 +913,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Gothard -->
-	<NPCCharacter id="vc_lord_sylvania_first_5" name="{=!}Gothard" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_5" name="{=!}Gothard" default_group="cavalry" age="49" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.5" build="0.5"  key="0039B8000000300FE90675CE1663F9E2334183BAC5AE860C69B35046831589100077760307A6408700000000000000000000000000000000000000003AF46002"  />
 		</face>
@@ -932,7 +932,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Vlad von Carstein -->
-	<NPCCharacter id="vc_lord_sylvania_first_6" name="{=!}Vlad von Carstein" default_group="cavalry" age="1630" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_first_6" name="{=!}Vlad von Carstein" default_group="cavalry" age="63" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
             <BodyProperties version="4" age="50" weight="0.3935" build="0.5139"  key="000044000014100410E881A08F04607626FFA0000BAE000196E5081B8F10388609F86692FFE9DC0300000000000000000000000000000000FFFFFFFF99FC003F"  />
 		</face>
@@ -1017,7 +1017,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Katherina von Dernsbach -->
-	<NPCCharacter id="vc_lord_sylvania_second_4" name="{=!}Katherina von Dernsbach" default_group="cavalry" age="400" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
+	<NPCCharacter id="vc_lord_sylvania_second_4" name="{=!}Katherina von Dernsbach" default_group="cavalry" age="40" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true" is_female="true">
 		<face>
 			<BodyProperties version="4" age="92.58" weight="0" build="0"  key="0000540011FC3004F76D67198327B362D9B5885D98CF07004C97764A8829C29800D006030DB793A8000000000000000000000000000000000000000073BC20C4"  />
 		</face>
@@ -1055,7 +1055,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Walach Harkon -->
-	<NPCCharacter id="vc_lord_sylvania_third_1" name="{=!}Walach Harkon" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_third_1" name="{=!}Walach Harkon" default_group="cavalry" age="43" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.3873" build="0.9711" key="0000940FCF140001FFAC780677B9E9FF99352AD8876005208A662F7A499185C309FF66920FB8494E00000000000000000000000000000000FFFFFFFFCBFC803F" />
 		</face>
@@ -1074,7 +1074,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Gorgivich Krakvald -->
-	<NPCCharacter id="vc_lord_sylvania_third_2" name="{=!}Gorgivich Krakvald" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_third_2" name="{=!}Gorgivich Krakvald" default_group="cavalry" age="53" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.0503" build="0.9583" key="002E300F0014300DC5363457A6A6557852987356778B5A7C7B7C9A96E77995C2096E16920699634600000000000000000000000000000000FFFFFFFFBEDC603F" />
 		</face>
@@ -1093,7 +1093,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Frich Von Haas -->
-	<NPCCharacter id="vc_lord_sylvania_third_3" name="{=!}Frich Von Haas" default_group="cavalry" age="50" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_third_3" name="{=!}Frich Von Haas" default_group="cavalry" age="33" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.3136" build="0.4895" key="0015600F00E41001FF46B7438476F14470AFA0010FDD0F004786B9C46A74411A09B756920B6FA49800000000000000000000000000000000FFFFFFFFE36C803F" />
 		</face>
