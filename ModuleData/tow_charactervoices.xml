@@ -19,4 +19,6 @@
 	<Character name="tow_skeleton_spearman" voice="skeleton" />
 	<Character name="tow_grave_guard" voice="skeleton" />
 	<Character name="tow_grave_guard_greatsword" voice="skeleton" />
+    <Character name="tow_cairn_wraith" voice="skeleton" />
+    <Character name="tow_black_knight" voice="skeleton" />
 </Characters>
