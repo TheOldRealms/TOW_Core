@@ -29,9 +29,10 @@
 			Intelligence
 	-->
 	<!-- Empire stage 1 -->
-	<CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_greatsword">
+	<CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_noble">
 		<SkillsToIncrease>
-			<string>OneHanded</string>
+			<string>OneHanded</string>			
+			<string>Leadership</string>
 			<string>Leadership</string>
 			<string>Polearm</string>
 			<string>Riding</string>
@@ -53,7 +54,7 @@
 		<OptionFlavourText>Your father had not only served with distinction but survived long enough to receive the title of Sergeant, a veteran that has spilled the blood of beastmen and bandits alike.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_enlisted">
+	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_thieve">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>OneHanded</string>
@@ -65,7 +66,7 @@
 		<OptionFlavourText>Not all within the Empire are blessed by Ranald, your family was poor and scratched a living with quick wit and quicker hands. Stealing coins from loose pockets and stuffing them in their own. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_duelist">
+	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_scholar">
 		<SkillsToIncrease>
 			<string>Charm</string>
 			<string>OneHanded</string>
@@ -112,7 +113,7 @@
 		<OptionFlavourText>Noticing your aptitude for numbers, a merchant passing through your home took you under his wing, offering to teach you his trade in return for daily assistance in his tasks.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_stableboy">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>Roguery</string>
@@ -191,19 +192,20 @@
 		<OptionFlavourText>Heresy was the bane of the good people of the Empire, a rot that needed to be removed. Learning the arts of the Witch Hunters you readied yourself to face all manner of unholy beasts and magicians, with gunpowder and faith. </OptionFlavourText>
 	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option15" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_scholar">
+	<CharacterCreationOption Id="option15" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_caravan_merchant">
 		<SkillsToIncrease>
-			<string>OneHanded</string>
-			<string>Roguery</string>
-			<string>Riding</string>
+			<string>Charm</string>
+			<string>Trade</string>			
+			<string>Trade</string>
+			<string>Trade</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Merchant</OptionText>
 		<OptionFlavourText>There are many trade goods within the Empire and you saw fit to take your place amongst its many Merchants, with the money you saved you set out to form your own caravan and make a name for yourself. </OptionFlavourText>
 	</CharacterCreationOption> 
 
 	<!-- VC stage 1 -->
-	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_noble">
 		<SkillsToIncrease>
 			<string>Leadership</string>
 			<string>Steward</string>
@@ -214,7 +216,7 @@
 		<OptionFlavourText>Ambition is the downfall of many and your family fell out of grace with their Elector, banished to Sylvania with a meagre fortune your family was forced to live amongst the peasant folk. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_scholar">
 		<SkillsToIncrease>
 			<string>Steward</string>
 			<string>Medicine</string>
@@ -225,51 +227,52 @@
 		<OptionFlavourText>The dead do not rest easy in Sylvania and the work of Morr is never done. Your father was a quiet man whose life was a dedication to death. Maintaining a garden of Morr and performing the necessary rights to ensure the dead would rest, normally with a blade of silver by his side.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_graverobber">
 		<SkillsToIncrease>
-			<string>Steward</string>
-			<string>Medicine</string>
-			<string>Tactics</string>
+			<string>Throwing</string>
+			<string>Athletics</string>
+			<string>Roguery</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
 		<OptionText>Graverobbers</OptionText>
 		<OptionFlavourText>There are those within Sylvania who pay well for bodies, this was the trade your family chose. Stealing loved ones in the dead of night and taking them to the castles or keeps of nobility, never questioning why.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option19" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option19" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_informant">
 		<SkillsToIncrease>
 			<string>Steward</string>
 			<string>Medicine</string>
-			<string>Tactics</string>
+			<string>Trade</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Fisherman and his Frog Wife</OptionText>
 		<OptionFlavourText>For generations your family have fished along the River Stir to keep themselves fed, it was far from a spectacular life but it was honest work and your family was content. Even after the disappearance of your brother...</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option20" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option20" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_orphan">
 		<SkillsToIncrease>
-			<string>Steward</string>
-			<string>Medicine</string>
+			<string>Athletics</string>
+			<string>OneHanded</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
 		<OptionText>Orphan</OptionText>
 		<OptionFlavourText>You never knew of your family though many looked at you with fear and whispered in hushed tones, you could do little else but struggle to survive through scrounging and from scraps of others. Often having to hide from the creatures that lurk in the night.</OptionFlavourText>
 	</CharacterCreationOption>
 
 	<!-- VC stage 2 -->
-	<CharacterCreationOption Id="option21" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_informant">
+	<CharacterCreationOption Id="option21" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_vc_noble_attendant">
 		<SkillsToIncrease>
 			<string>Scouting</string>
+			<string>Charm</string>
 			<string>Trade</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Cunning</AttributeToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Noble Attendant </OptionText>
 		<OptionFlavourText>Serving in the courts of a Von Carstein gave you insight into the lives of the everliving, the intricacies and politics of the nobility taught you many things. Your diligence kept you alive and comfortable. </OptionFlavourText>
 	</CharacterCreationOption>
 	
-	<CharacterCreationOption Id="option22" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_apprentice_necromancer">
+	<CharacterCreationOption Id="option22" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_novice_necromancer">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
@@ -279,19 +282,19 @@
 		<OptionFlavourText>Little could be said for your master's sanity, his days were dedicated to dissecting scrolls and performing dark rituals. Obsessed with becoming powerful yet unable to, he sought to use your abilities to bolster his own.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option23" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option23" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_bloodslave">
 		<SkillsToIncrease>
-			<string>Medicine</string>
-			<string>Crafting</string>
+			<string>Roguery</string>
+			<string>Trade</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Blood Slave</OptionText>
 		<OptionFlavourText>There were perks to this chosen life, you had shelter, food and protection. While your life was not your own, you could wander freely in the halls of your master and go unnoticed. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option24" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option24" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_stableboy">
 		<SkillsToIncrease>
-			<string>Medicine</string>
+			<string>Trade</string>
 			<string>Crafting</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
@@ -299,7 +302,7 @@
 		<OptionFlavourText>After the strange disappearance of the previous stableboy the local lord took you in his stead, you tended to the mighty steeds but it always felt like they were eyeing you out of hunger...</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option25" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_townsman_villager">
+	<CharacterCreationOption Id="option25" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_miner">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
@@ -310,20 +313,25 @@
 	</CharacterCreationOption>
 
 	<!-- VC stage 3 -->
-	<CharacterCreationOption Id="option26" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_1">
+	<CharacterCreationOption Id="option26" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_vc_nobility">
 		<SkillsToIncrease>
-			<string>Medicine</string>
-			<string>Crafting</string>
+            <string>Athletics</string>
+			<string>Athletics</string>
+		    <string>Athletics</string>
+			<string>OneHanded</string>
+			<string>Leadership</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Vigor</AttributeToIncrease>
 		<OptionText>Vampiric Nobility</OptionText>
 		<OptionFlavourText>At some point your lord recognized your qualities, lifting you out of poverty and revealing his true nature. After receiving the blood kiss you have been reborn, immortal and more powerful.  -   Gains the the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_wanderer_vampire_0">
+	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_necromancer">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
+			<string>Tactics</string>
+			<string>Roguery</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Intelligence</AttributeToIncrease>
 		<OptionText>Novice Necromancer</OptionText>
@@ -332,30 +340,36 @@
 
 	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop_vc">
 		<SkillsToIncrease>
-			<string>Medicine</string>
-			<string>Crafting</string>
+			<string>OneHanded</string>
+			<string>Polearm</string>
+		    <string>Crossbow</string>
+			<string>Tactics</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Control</AttributeToIncrease>
 		<OptionText>Sylvanian state trooper </OptionText>
 		<OptionFlavourText>The mortals of Sylvania are known to march into battle alongside the undead hordes of their masters. A more dour and superstitious folk you will never meet but they rarely break in the heat of battle. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_informant">
+	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
 		<SkillsToIncrease>
-			<string>Medicine</string>
+			<string>Trade</string>
+			<string>Trade</string>
+			<string>Engineering</string>
 			<string>Crafting</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Travelling Merchant</OptionText>
 		<OptionFlavourText>Few are brave or foolish enough to peddle goods into Sylvania, as all manner of beasts may come for you. You however saw a fortune to be made in bringing luxuries from Wurtbad to the Von Carstein Nobility, the luck during your travels had always seemed unnatural. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option30" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_hunter">
+	<CharacterCreationOption Id="option30" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_vagabond">
 		<SkillsToIncrease>
-			<string>Medicine</string>
-			<string>Crafting</string>
+			<string>OneHanded</string>
+			<string>Roguery</string>
+			<string>Scouting</string>
+			<string>Throwing</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Cunning</AttributeToIncrease>
 		<OptionText>Vagabond</OptionText>
 		<OptionFlavourText>The roads of Sylvania are dark and dangerous, you prey on its few travellers and hoard what little riches you can take with your blade. Yet you are not the only monster lurking within the dark swamps and forests, at times there is nothing left of the travellers to thieve from.</OptionFlavourText>
 	</CharacterCreationOption>
