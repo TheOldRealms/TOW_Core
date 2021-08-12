@@ -207,34 +207,55 @@
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
 				<equipment slot="Item1" id="Item.skeleton_warrior_shield_004" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_002" />
+				<equipment slot="Head" id="Item.skeleton_warrior_helmet_001" />
+				<equipment slot="Gloves" id="Item.skeleton_warrior_bracers_001" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_002" />
+
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_001" />
 				<equipment slot="Item1" id="Item.skeleton_warrior_shield_001" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_001" />
+				<equipment slot="Head" id="Item.skeleton_warrior_helmet_001" />
+				<equipment slot="Gloves" id="Item.skeleton_warrior_bracers_001" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
 				<equipment slot="Item1" id="Item.skeleton_warrior_shield_003" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_003" />
+				<equipment slot="Head" id="Item.skeleton_warrior_helmet_002" />
+				<equipment slot="Gloves" id="Item.skeleton_warrior_bracers_001" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_001" />
-				<equipment slot="Item1" id="Item.vc_undead_banner_001" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_003" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
 				<equipment slot="Item1" id="Item.skeleton_warrior_shield_005" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_001" />
+				<equipment slot="Head" id="Item.skeleton_warrior_helmet_002" />
+				<equipment slot="Gloves" id="Item.skeleton_warrior_bracers_001" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_002" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.skeleton_warrior_sword_001" />
 				<equipment slot="Item1" id="Item.skeleton_warrior_shield_007" />
 				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Gloves" id="Item.skeleton_warrior_bracers_001" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
+	
 	<!-- Vampire Counts skeleton spearman-->
 	<NPCCharacter id="tow_skeleton_spearman" default_group="Infantry" level="11" name="{=!}Skeleton Spearman" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level11">
 		<face>

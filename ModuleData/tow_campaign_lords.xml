@@ -870,8 +870,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_2" civilian="true" />
+      		<EquipmentSet id="vampire_template_2" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Helman Ghorst -->
@@ -908,8 +908,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_banner" civilian="true" />
+      		<EquipmentSet id="vampire_template_banner" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Gothard -->
@@ -974,8 +974,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_2" civilian="true" />
+      		<EquipmentSet id="vampire_template_2" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Elize von Carstein -->
@@ -1012,8 +1012,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_banner" civilian="true" />
+      		<EquipmentSet id="vampire_template_banner" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Katherina von Dernsbach -->
@@ -1088,8 +1088,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_2" civilian="true" />
+      		<EquipmentSet id="vampire_template_2" />
 		</Equipments>
 	</NPCCharacter>
 	<!-- Frich Von Haas -->
@@ -1107,8 +1107,8 @@
 			<Trait id="Generosity" value="-1" />
 		</Traits>
         <Equipments>
-			<EquipmentSet id="vampire_template" civilian="true" />
-      		<EquipmentSet id="vampire_template" />
+			<EquipmentSet id="vampire_template_banner" civilian="true" />
+      		<EquipmentSet id="vampire_template_banner" />
 		</Equipments>
 	</NPCCharacter>
 
