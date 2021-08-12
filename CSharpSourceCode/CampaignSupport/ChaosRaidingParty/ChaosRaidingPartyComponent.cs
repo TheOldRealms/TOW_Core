@@ -40,6 +40,10 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
                 mobileParty.SetPartyUsedByQuest(true);
             }
+            else
+            {
+                throw new MBNotFoundException("Chaos Clan object not found. Can not spawn chaos parties.");
+            }
         }
 
         public static MobileParty CreateChaosRaidingParty(

@@ -8,6 +8,7 @@ using TOW_Core.Battle.AI.Behavior.TacticalBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
 {
@@ -37,11 +38,14 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
-            _dtSinceLastOccasional += dt;
-            if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
+            if (!Mission.Current.IsFriendlyMission)
+            {
+                _dtSinceLastOccasional += dt;
+                if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
-            _tacticalBehavior.ApplyBehaviorParams();
-            _currentCastingBehavior?.Execute();
+                _tacticalBehavior.ApplyBehaviorParams();
+                _currentCastingBehavior?.Execute();
+            }
 
             base.OnTickAsAI(dt);
         }

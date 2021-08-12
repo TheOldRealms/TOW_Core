@@ -60,7 +60,10 @@ namespace TOW_Core.Abilities
             if(template.AbilityType == AbilityType.Spell)
             {
                 ability = new Spell(template);
-                //and so on for the rest of the ability types
+            }
+            if(template.AbilityType == AbilityType.Prayer)
+            {
+                ability = new Prayer(template);
             }
             return ability;
         }

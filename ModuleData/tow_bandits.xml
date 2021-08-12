@@ -32,6 +32,14 @@
 			<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
 			<equipment slot="Leg" id="Item.strapped_shoes" />
 		</EquipmentRoster>
+		<EquipmentRoster>
+        <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+		<equipment slot="Head" id="Item.chaos_cultist_hat_003" />
+        <equipment slot="Body" id="Item.monk_robe" />
+		<equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
+		<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
+        <equipment slot="Leg" id="Item.strapped_shoes" />
+      </EquipmentRoster>
       <EquipmentRoster civilian="true">
         <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
 		<equipment slot="Head" id="Item.chaos_cultist_hat_003" />
@@ -219,9 +227,9 @@
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.sturgia_polearm_1_t5" />
 				<equipment slot="Item1" id="Item.small_heater_shield" />
-				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Head" id="Item.emp_secessionists_helmet_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Cape" id="Item.emp_secessionists_breastplate_001" />
 				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
 				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
 			</EquipmentRoster>
@@ -246,14 +254,14 @@
 				<equipment slot="Item0" id="sturgia_polearm_1_t5" />
 				<equipment slot="Head" id="Item.worn_militia_helmet" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Cape" id="Item.emp_secessionists_breastplate_001" />
 				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
 				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
 			</EquipmentRoster>
 			<EquipmentRoster civilian="true">
 				<equipment slot="Item0" id="Item.sturgia_polearm_1_t5" />
 				<equipment slot="Item1" id="Item.small_heater_shield" />
-				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Head" id="Item.emp_secessionists_helmet_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
 				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
@@ -278,9 +286,9 @@
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.sturgia_sword_1_t2" />
 				<equipment slot="Item1" id="Item.small_heater_shield" />
-				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+				<equipment slot="Head" id="Item.emp_secessionists_helmet_001" />
 				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Cape" id="Item.emp_secessionists_breastplate_001" />
 				<equipment slot="Gloves" id="Item.eastern_plated_leather_vambraces" />
 				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
 			</EquipmentRoster>
@@ -307,7 +315,7 @@
 				<equipment slot="Item1" id="Item.small_heater_shield" />
 				<equipment slot="Head" id="Item.kettle_helmet_over_padded_cloth" />
 				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Cape" id="Item.emp_secessionists_breastplate_001" />
 				<equipment slot="Gloves" id="Item.steppe_leather_vambraces" />
 				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
 			</EquipmentRoster>
@@ -324,7 +332,7 @@
 				<equipment slot="Item0" id="Item.falchion_sword_t2" />
 				<equipment slot="Head" id="Item.worn_militia_helmet" />
 				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_001" />
+				<equipment slot="Cape" id="Item.emp_secessionists_breastplate_001" />
 				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
 				<equipment slot="Leg" id="Item.reinforced_suede_boots" />
 			</EquipmentRoster>
