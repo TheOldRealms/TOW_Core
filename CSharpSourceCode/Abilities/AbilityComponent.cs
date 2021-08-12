@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -16,8 +17,18 @@ namespace TOW_Core.Abilities
         private int _currentAbilityIndex;
 
         public bool IsAbilityModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
-        public Ability CurrentAbility { get => _currentAbility; set => _currentAbility = value; }
+        public Ability CurrentAbility 
+        { 
+            get => _currentAbility;
+            set
+            {
+                _currentAbility = value;
+                CurrentAbilityChanged?.Invoke(_currentAbility.Crosshair);
+            }
+        }
         public List<Ability> KnownAbilities { get => _knownAbilities; }
+        public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
+        public event CurrentAbilityChangedHandler CurrentAbilityChanged;
 
         public AbilityComponent(Agent agent) : base(agent)
         {
@@ -28,10 +39,9 @@ namespace TOW_Core.Abilities
                 {
                     try
                     {
-                        var ability = AbilityFactory.CreateNew(item);
+                        var ability = AbilityFactory.CreateNew(item, agent);
                         if (ability != null)
                         {
-                            ability.Crosshair.SetAbility(ability);
                             _knownAbilities.Add(ability);
                         }
                         else

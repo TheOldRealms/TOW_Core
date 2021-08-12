@@ -36,28 +36,6 @@ namespace TOW_Core.Abilities
             _timer = new Timer(1000);
             _timer.Elapsed += TimerElapsed;
             _timer.Enabled = false;
-            InitializeCrosshair(_template.AbilityEffectType);
-            //NEED TO CHANGE AbilityTemplate (radius, maxdistance, etc)
-            //
-        }
-
-        private void InitializeCrosshair(AbilityEffectType effectType)
-        {
-            if (effectType == AbilityEffectType.MovingProjectile)
-                crosshair = new ProjectileCrosshair();
-            else if (effectType == AbilityEffectType.DynamicProjectile)
-                crosshair = new DynamicProjectileCrosshair();
-            else if (effectType == AbilityEffectType.CenteredStaticAOE)
-                crosshair = new CenteredStaticAOECrosshair();
-            else if (effectType == AbilityEffectType.DirectionalMovingAOE)
-                crosshair = new DirectionalMovingAOECrosshair();
-            else if (effectType == AbilityEffectType.TargetedStaticAOE)
-                crosshair = new TargetedStaticAOECrosshair();
-            else if (effectType == AbilityEffectType.TargetedStatic)
-                crosshair = new TargetedStaticCrosshair();
-            else if (effectType == AbilityEffectType.Summoning)
-                crosshair = new SummoningCrosshair();
-            else crosshair = null;
         }
 
         private void TimerElapsed(object sender, ElapsedEventArgs e)
@@ -285,6 +263,11 @@ namespace TOW_Core.Abilities
             {
                 casterAgent.SetActionChannel(1, ActionIndexCache.Create(_template.AnimationActionName));
             }
+        }
+
+        public void SetCrosshair(AbilityCrosshair crosshair)
+        {
+            this.crosshair = crosshair;
         }
 
         public void Dispose()

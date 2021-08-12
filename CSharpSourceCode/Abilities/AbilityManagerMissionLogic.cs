@@ -9,13 +9,12 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
-        //private bool isChangingModeState = false;
+        private bool isMainAgentChecked;
         private EquipmentIndex mainHand;
         private EquipmentIndex offHand;
         private Ability currentAbility;
         private AbilityComponent abilityComponent;
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private CustomCrosshairMissionBehavior crosshairMissionBehavior = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
         System.Timers.Timer sheathTimer = new System.Timers.Timer(1000);
 
         public AbilityManagerMissionLogic() { }
@@ -35,6 +34,8 @@ namespace TOW_Core.Abilities
                 {
                     if (Input.IsKeyPressed(InputKey.Q))
                     {
+                        if (currentAbility.Crosshair != null)
+                            currentAbility.Crosshair.Hide();
                         DisableSpellMode();
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
@@ -43,17 +44,17 @@ namespace TOW_Core.Abilities
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
                     {
-                        currentAbility.Crosshair.IsVisible = false;
+                        if (currentAbility.Crosshair != null)
+                            currentAbility.Crosshair.Hide();
                         Agent.Main.SelectNextAbility();
                         currentAbility = Agent.Main.GetCurrentAbility();
-                        crosshairMissionBehavior.SetCrosshair(currentAbility.Crosshair);
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
                     {
-                        currentAbility.Crosshair.IsVisible = false;
+                        if (currentAbility.Crosshair != null)
+                            currentAbility.Crosshair.Hide();
                         Agent.Main.SelectPreviousAbility();
                         currentAbility = Agent.Main.GetCurrentAbility();
-                        crosshairMissionBehavior.SetCrosshair(currentAbility.Crosshair);
                     }
                 }
                 else
@@ -64,33 +65,33 @@ namespace TOW_Core.Abilities
                     }
                 }
             }
-            else if (Agent.Main != null)
+            else if (!isMainAgentChecked && Agent.Main != null)
             {
+                isMainAgentChecked = true;
                 abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                currentAbility = abilityComponent.CurrentAbility;
-                crosshairMissionBehavior.SetAbilityComponent(abilityComponent);
+                if (abilityComponent != null)
+                {
+                    currentAbility = abilityComponent.CurrentAbility;
+                }
             }
         }
 
         private void EnableSpellMode()
         {
-            if (crosshairMissionBehavior != null)
-                crosshairMissionBehavior.SetWeaponCrosshairVisibility(false);
+            abilityComponent.EnableAbilityMode();
+            ChangeKeyBindings();
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
             Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
             sheathTimer.Start();
-            abilityComponent.EnableAbilityMode();
-            ChangeKeyBindings();
             TOWCommon.Say("Ability mode is enabled");
         }
         private void DisableSpellMode()
         {
+            abilityComponent.DisableAbilityMode();
+            ChangeKeyBindings();
             Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
             Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-            abilityComponent.DisableAbilityMode();
-            abilityComponent.CurrentAbility.Crosshair.IsVisible = false;
-            ChangeKeyBindings();
             TOWCommon.Say("Ability mode is disabled");
         }
         private void ChangeKeyBindings()

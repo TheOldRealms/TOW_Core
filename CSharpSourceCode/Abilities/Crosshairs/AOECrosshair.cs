@@ -1,25 +1,15 @@
-﻿using System;
-using System.Linq;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
+﻿using System.Linq;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class AOECrosshair : AbilityCrosshair
+    public abstract class AOECrosshair : AbilityCrosshair
     {
-        public AOECrosshair() : base()
+        public AOECrosshair(AbilityTemplate template) : base(template)
         {
-            crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
-            UpdateFrame();
-            //MatrixFrame frame = crosshair.GetFrame();
-            //frame.Scale(new Vec3(10f, 10f, 1f, -1f));
-            //crosshair.SetFrame(ref frame);
-            IsVisible = false;
         }
-        public override void Tick()
+        protected void HighlightNearbyAgents()
         {
-            UpdateFrame();
             if (CollidedAgents != null)
             {
                 previousAgents = (Agent[])CollidedAgents.Clone();
@@ -37,32 +27,16 @@ namespace TOW_Core.Abilities.Crosshairs
                     agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
             }
         }
-        private void UpdateFrame()
-        {
-            Vec3 position;
-            Vec3 vec;
-            if (this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
-            {
-                WorldPosition worldPosition = new WorldPosition(Mission.Current.Scene, UIntPtr.Zero, position, false);
-                //isOnValidGround = (!this.IsVisible || AOEAbilityCrosshair.IsPositionOnValidGround(worldPosition));
-            }
-            else
-            {
-                //isOnValidGround = false;
-                position = new Vec3(0f, 0f, -100000f, -1f);
-            }
-            this.Position = position;
-        }
         private void UpdateColliedeAgents(TargetType targetType)
         {
             if (targetType == TargetType.All)
-                CollidedAgents = mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
+                CollidedAgents = mission.GetNearbyAgents(Position.AsVec2, template.TargetCapturingRadius).ToArray();
             else if (targetType == TargetType.Friendly)
-                CollidedAgents = mission.GetNearbyAllyAgents(Position.AsVec2, 5, mission.PlayerAllyTeam).ToArray();
+                CollidedAgents = mission.GetNearbyAllyAgents(Position.AsVec2, template.TargetCapturingRadius, mission.PlayerAllyTeam).ToArray();
             else if (targetType == TargetType.Enemy)
-                CollidedAgents = mission.GetNearbyEnemyAgents(Position.AsVec2, 5, mission.PlayerEnemyTeam).ToArray();
+                CollidedAgents = mission.GetNearbyEnemyAgents(Position.AsVec2, template.TargetCapturingRadius, mission.PlayerEnemyTeam).ToArray();
         }
-        public void ClearArrays()
+        private void ClearArrays()
         {
             if (CollidedAgents != null)
                 foreach (Agent agent in CollidedAgents)
@@ -73,17 +47,17 @@ namespace TOW_Core.Abilities.Crosshairs
             previousAgents = null;
             CollidedAgents = null;
         }
-        public void SetVisibilty(bool visibility)
+        public override void Show()
         {
-            this.crosshair.SetVisibilityExcludeParents(visibility);
+            base.Show();
+        }
+        public override void Hide()
+        {
+            base.Hide();
+            ClearArrays();
         }
 
-        public static bool IsPositionOnValidGround(WorldPosition worldPosition)
-        {
-            return Mission.Current.IsFormationUnitPositionAvailable(ref worldPosition, Mission.Current.PlayerTeam);
-        }
         public Agent[] CollidedAgents { get; private set; }
-
         private Agent[] previousAgents;
     }
 }

@@ -6,9 +6,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class TargetedStaticAOECrosshair : AbilityCrosshair
+    public class TargetedAOECrosshair : AbilityCrosshair
     {
-        public TargetedStaticAOECrosshair()
+        public TargetedAOECrosshair(AbilityTemplate template) : base(template)
         {
             crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             UpdateFrame();

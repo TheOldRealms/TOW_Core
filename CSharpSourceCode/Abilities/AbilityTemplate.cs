@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
+using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Abilities
@@ -72,7 +73,11 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public float Offset = 1.0f;
         [XmlAttribute]
+        public CrosshairType CrosshairType = CrosshairType.None;
+        [XmlAttribute]
         public float MaxDistance = 1.0f;
+        [XmlAttribute]
+        public float TargetCapturingRadius = 0;
 
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;

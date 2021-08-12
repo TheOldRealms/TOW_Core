@@ -9,27 +9,34 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public abstract class AbilityCrosshair : IDisposable
     {
-        public AbilityCrosshair()
+        public AbilityCrosshair(AbilityTemplate template)
         {
+            this.template = template;
             this.mission = Mission.Current;
             this.missionScreen = mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
         }
+
         public virtual void Tick()
         {
         }
-        public void SetAbility(Ability ability)
+        public virtual void Show()
         {
-            this.ability = ability;
+            IsVisible = true;
+        }
+        public virtual void Hide()
+        {
+            IsVisible = false;
+        }
+        public void Dispose()
+        {
+            crosshair.FadeOut(3, true);
         }
         protected void AddLight()
         {
-            //crosshair.SetFactorColor(new Color(0.255f, 0, 0, 1f).ToUnsignedInteger());
-            var light = Light.CreatePointLight(2);
+            var light = Light.CreatePointLight(template.TargetCapturingRadius);
             light.Intensity = 100;
             light.LightColor = new Vec3(255f, 170f, 0f);
             light.SetShadowType(Light.ShadowType.DynamicShadow);
-            light.ShadowEnabled = true;
-            //light.SetLightFlicker(Template.LightFlickeringMagnitude, Template.LightFlickeringInterval);
             light.Frame = MatrixFrame.Identity;
             light.SetVisibility(true);
             crosshair.AddLight(light);
@@ -41,7 +48,7 @@ namespace TOW_Core.Abilities.Crosshairs
             {
                 return this.crosshair.IsVisibleIncludeParents();
             }
-            set
+            protected set
             {
                 this.crosshair.SetVisibilityExcludeParents(value);
             }
@@ -59,13 +66,9 @@ namespace TOW_Core.Abilities.Crosshairs
                 this.crosshair.SetFrame(ref frame);
             }
         }
-        public void Dispose()
-        {
-            crosshair.FadeOut(3, true);
-        }
 
+        protected AbilityTemplate template;
         protected GameEntity crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
-        protected Ability ability;
         protected Mission mission;
         protected MissionScreen missionScreen;
         protected uint? friendColor = new Color(0, 0.255f, 0, 1f).ToUnsignedInteger();

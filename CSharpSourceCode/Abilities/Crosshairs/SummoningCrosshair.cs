@@ -1,22 +1,18 @@
 ﻿using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
     public class SummoningCrosshair : AbilityCrosshair
     {
-        public SummoningCrosshair()
+        public SummoningCrosshair(AbilityTemplate template) : base(template)
         {
-            //crosshair = GameEntity.CreateEmpty(this.mission.Scene, true);
-            //crosshair.AddComponent(MetaMesh.GetCopy("order_flag_a", true, false));
-            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
+            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker_1", false);
             crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
             UpdateFrame();
-            //MatrixFrame frame = crosshair.GetFrame();
-            //frame.Scale(new Vec3(10f, 10f, 1f, -1f));
-            //crosshair.SetFrame(ref frame);
             IsVisible = false;
         }
         public override void Tick()
@@ -25,15 +21,13 @@ namespace TOW_Core.Abilities.Crosshairs
         }
         private void UpdateFrame()
         {
-            Vec3 position;
-            Vec3 vec;
             if (Agent.Main != null && this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
             {
-                if (Agent.Main.Position.Distance(position) < ability.Template.MaxDistance)
+                if (Agent.Main.Position.Distance(position) < template.MaxDistance)
                     this.Position = position;
                 else
                 {
-                    position = Agent.Main.LookFrame.Advance(ability.Template.MaxDistance).origin;
+                    position = Agent.Main.LookFrame.Advance(template.MaxDistance).origin;
                     position.z = Mission.Current.Scene.GetGroundHeightAtPosition(Position);
                     Position = position;
                 }
@@ -46,13 +40,12 @@ namespace TOW_Core.Abilities.Crosshairs
                 //isOnValidGround = false;
             }
         }
-        public void SetVisibilty(bool visibility)
-        {
-            this.crosshair.SetVisibilityExcludeParents(visibility);
-        }
         public static bool IsPositionOnValidGround(WorldPosition worldPosition)
         {
             return Mission.Current.IsFormationUnitPositionAvailable(ref worldPosition, Mission.Current.PlayerTeam);
         }
+
+        private Vec3 position;
+        private Vec3 vec;
     }
 }

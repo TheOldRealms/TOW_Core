@@ -19,11 +19,11 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
+        private bool isMainAgentChecked;
         private IGauntletMovie _movie;
         private bool _isActive;
         private GauntletLayer _layer;
         private CrosshairVM weaponCrosshair;
-        private List<Ability> abilities;
         private AbilityCrosshair currentAbilityCrosshair;
         private AbilityComponent abilityComponent;
 
@@ -65,35 +65,44 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnMissionScreenTick(float dt)
         {
             base.OnMissionScreenTick(dt);
-            //if (base.DebugInput.IsKeyReleased(InputKey.F5))
-            //{
-            //    this.OnFinalize();
-            //    this.OnInitialize();
-            //}
             if (MBEditor.EditModeEnabled && !this._isActive)
             {
                 return;
             }
             if (abilityComponent != null && abilityComponent.IsAbilityModeOn)
             {
-                weaponCrosshair.IsVisible = false;
+                if (weaponCrosshair.IsVisible)
+                    weaponCrosshair.IsVisible = false;
                 if (currentAbilityCrosshair != null)
                 {
                     if (abilityComponent.CurrentAbility.IsOnCooldown())
                     {
-                        currentAbilityCrosshair.IsVisible = false;
+                        if (currentAbilityCrosshair.IsVisible)
+                            currentAbilityCrosshair.Hide();
                     }
                     else
                     {
                         currentAbilityCrosshair.Tick();
-                        currentAbilityCrosshair.IsVisible = true;
+                        if (!currentAbilityCrosshair.IsVisible)
+                            currentAbilityCrosshair.Show();
                     }
+                }
+            }
+            else if (!isMainAgentChecked && Agent.Main != null)
+            {
+                isMainAgentChecked = true;
+                if((abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+                {
+                    abilityComponent.CurrentAbilityChanged += (crosshair) =>
+                    {
+                        currentAbilityCrosshair = crosshair;
+                    };
                 }
             }
             else
             {
-                UpdateWeaponCrosshairVisibility();
                 UpdateWeaponCrosshair();
+                UpdateWeaponCrosshairVisibility();
             }
         }
         public override void OnMissionScreenInitialize()
@@ -244,37 +253,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             this.weaponCrosshair.SetArrowProperties(array[0], array[1], array[2], array[3]);
             this.weaponCrosshair.IsTargetInvalid = isTargetInvalid;
-        }
-        private void UpdateAbilityCrosshairVisibility()
-        {
-
-        }
-
-        public void SetWeaponCrosshairVisibility(bool isVisible)
-        {
-            weaponCrosshair.IsVisible = isVisible;
-        }
-        public void SetCrosshair(AbilityCrosshair crosshair)
-        {
-            currentAbilityCrosshair = crosshair;
-            foreach (Ability ability in abilities)
-            {
-                if (ability != abilityComponent.CurrentAbility)
-                    ability.Crosshair.IsVisible = false;
-            }
-            if (abilityComponent.CurrentAbility.IsOnCooldown())
-            {
-                currentAbilityCrosshair.IsVisible = false;
-            }
-            else
-            {
-                currentAbilityCrosshair.IsVisible = true;
-            }
-        }
-        public void SetAbilityComponent(AbilityComponent component)
-        {
-            abilityComponent = component;
-            abilities = abilityComponent.KnownAbilities;
         }
 
         private bool IsMissionScreenUsingCustomCamera()

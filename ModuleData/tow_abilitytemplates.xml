@@ -4,7 +4,7 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="2" 
+      CoolDown="6" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -28,7 +28,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="explosion_01"
-      Offset="0.5">
+      Offset="0"
+      CrosshairType="Projectile"
+      MaxDistance="0"
+      TargetCapturingRadius="0">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -40,7 +43,7 @@
       StringID="WindOfDeath" 
       Name="Wind of Death" 
       SpriteName="windofdeath_icon" 
-      CoolDown="40" 
+      CoolDown="20" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5" 
@@ -64,7 +67,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="wind_of_death_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="None"
+      MaxDistance="0"
+      TargetCapturingRadius="0">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -76,7 +82,7 @@
       StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
       SpriteName="summonskeleton_icon" 
-      CoolDown="10" 
+      CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5"
@@ -84,8 +90,8 @@
       AbilityType="Spell" 
       AbilityEffectType="Summoning" 
       BaseMovementSpeed="0" 
-      TickInterval="1" 
-      TriggerType="EveryTick" 
+      TickInterval="2" 
+      TriggerType="TickOnce" 
       HasLight="false" 
       LightIntensity="0" 
       LightRadius="0" 
@@ -102,7 +108,9 @@
       TriggeredEffectID="summon_skeleton_tick"
       Offset="0"
       AbilityTargetType="Self"
-      MaxDistance="30">
+      CrosshairType="Summoning"
+      MaxDistance="30"
+      TargetCapturingRadius="2">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -114,7 +122,7 @@
       StringID="Dart" 
       Name="Dart" 
       SpriteName="dart_icon" 
-      CoolDown="12" 
+      CoolDown="2" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -137,7 +145,11 @@
       CastType="WindUp" 
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
-      TriggeredEffectID="dart_explosion">
+      TriggeredEffectID="dart_explosion"
+      Offset="0"
+      CrosshairType="Projectile"
+      MaxDistance="0"
+      TargetCapturingRadius="0">
       <LightColorRGB x="0" y="204" z="255" w="-1">
         <AsVec2>
           <y>204</y>
@@ -149,7 +161,7 @@
       StringID="BurningHead" 
       Name="The Burning Head" 
       SpriteName="burninghead_icon" 
-      CoolDown="30" 
+      CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="3" 
@@ -173,7 +185,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="burning_head_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="Projectile"
+      MaxDistance="0"
+      TargetCapturingRadius="2">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -185,7 +200,7 @@
       StringID="ScreamingSkull" 
       Name="Screaming Skull" 
       SpriteName="screamingskull_icon" 
-      CoolDown="30" 
+      CoolDown="3" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="3" 
@@ -209,7 +224,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="wind_of_death_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="None"
+      MaxDistance="0"
+      TargetCapturingRadius="0">
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>
           <x>52</x>
@@ -222,12 +240,12 @@
       StringID="HealingAOE" 
       Name="Healing AOE" 
       SpriteName="healingprayer_icon" 
-      CoolDown="40" 
+      CoolDown="2" 
       WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="9" 
       Radius="0.1" 
-      AbilityType="Prayer" 
+      AbilityType="Spell" 
       AbilityEffectType="CenteredStaticAOE" 
       BaseMovementSpeed="0" 
       TickInterval="1" 
@@ -247,7 +265,10 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="healing_tick"
       Offset="0"
-      AbilityTargetType="Self">
+      AbilityTargetType="Self"
+      CrosshairType="CenteredAOE"
+      MaxDistance="0"
+      TargetCapturingRadius="5">
       <LightColorRGB x="255" y="255" z="255" w="-1">
         <AsVec2>
           <x>255</x>
