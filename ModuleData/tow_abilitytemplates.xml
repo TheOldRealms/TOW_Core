@@ -68,7 +68,7 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="wind_of_death_tick"
       Offset="10"
-      CrosshairType="None"
+      CrosshairType="DirectionalAOE"
       MaxDistance="0"
       TargetCapturingRadius="0">
       <LightColorRGB x="255" y="170" z="0" w="-1">
@@ -186,7 +186,7 @@
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="burning_head_tick"
       Offset="10"
-      CrosshairType="Projectile"
+      CrosshairType="DirectionalAOE"
       MaxDistance="0"
       TargetCapturingRadius="2">
       <LightColorRGB x="255" y="170" z="0" w="-1">
@@ -225,7 +225,7 @@
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="wind_of_death_tick"
       Offset="10"
-      CrosshairType="None"
+      CrosshairType="DirectionalAOE"
       MaxDistance="0"
       TargetCapturingRadius="0">
       <LightColorRGB x="52" y="235" z="88" w="-1">

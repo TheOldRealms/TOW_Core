@@ -43,15 +43,12 @@ namespace TOW_Core.Abilities.Crosshairs
             Vec3 vec;
             if (this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
             {
-                WorldPosition worldPosition = new WorldPosition(Mission.Current.Scene, UIntPtr.Zero, position, false);
-                //isOnValidGround = (!this.IsVisible || AOEAbilityCrosshair.IsPositionOnValidGround(worldPosition));
+                Position = position;
             }
             else
             {
-                //isOnValidGround = false;
-                position = new Vec3(0f, 0f, -100000f, -1f);
+                Position = new Vec3(0f, 0f, -100000f, -1f);
             }
-            this.Position = position;
         }
         private void UpdateColliedeAgents(TargetType targetType)
         {

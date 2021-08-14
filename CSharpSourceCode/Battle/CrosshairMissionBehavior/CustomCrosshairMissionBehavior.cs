@@ -12,7 +12,6 @@ using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Utilities;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -20,14 +19,14 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     public class CustomCrosshairMissionBehavior : MissionView
     {
         private bool isMainAgentChecked;
-        private IGauntletMovie _movie;
+        private IGauntletMovie weaponMovie;
         private bool _isActive;
-        private GauntletLayer _layer;
+        private GauntletLayer weaponLayer;
         private CrosshairVM weaponCrosshair;
-        private AbilityCrosshair currentAbilityCrosshair;
+        private AbilityCrosshair abilityCrosshair;
         private AbilityComponent abilityComponent;
 
-        private void OnInitialize()
+        private void OnInitializeWeaponCrosshair()
         {
             if (this._isActive)
             {
@@ -35,16 +34,16 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             CombatLogManager.OnGenerateCombatLog += this.OnCombatLogGenerated;
             this.weaponCrosshair = new CrosshairVM();
-            this.currentAbilityCrosshair = null;
-            this._layer = new GauntletLayer(1, "GauntletLayer", false);
-            this._movie = this._layer.LoadMovie("Crosshair", this.weaponCrosshair);
+            this.abilityCrosshair = null;
+            this.weaponLayer = new GauntletLayer(1, "GauntletLayer", false);
+            this.weaponMovie = this.weaponLayer.LoadMovie("Crosshair", this.weaponCrosshair);
             if (base.Mission.Mode != MissionMode.Conversation && base.Mission.Mode != MissionMode.CutScene)
             {
-                base.MissionScreen.AddLayer(this._layer);
+                base.MissionScreen.AddLayer(this.weaponLayer);
             }
             this._isActive = true;
         }
-        private void OnFinalize()
+        private void OnFinalizeWeaponCrosshair()
         {
             if (!this._isActive)
             {
@@ -54,12 +53,12 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             this._isActive = false;
             if (base.Mission.Mode != MissionMode.Conversation && base.Mission.Mode != MissionMode.CutScene)
             {
-                base.MissionScreen.RemoveLayer(this._layer);
+                base.MissionScreen.RemoveLayer(this.weaponLayer);
             }
             this.weaponCrosshair = null;
-            this.currentAbilityCrosshair = null;
-            this._movie = null;
-            this._layer = null;
+            this.abilityCrosshair = null;
+            this.weaponMovie = null;
+            this.weaponLayer = null;
         }
 
         public override void OnMissionScreenTick(float dt)
@@ -73,29 +72,36 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 if (weaponCrosshair.IsVisible)
                     weaponCrosshair.IsVisible = false;
-                if (currentAbilityCrosshair != null)
+                if (abilityCrosshair != null)
                 {
-                    if (abilityComponent.CurrentAbility.IsOnCooldown())
+                    if (BannerlordConfig.DisplayTargetingReticule &&
+                        base.Mission.Mode != MissionMode.Conversation &&
+                        base.Mission.Mode != MissionMode.CutScene &&
+                        !ScreenManager.GetMouseVisibility())
                     {
-                        if (currentAbilityCrosshair.IsVisible)
-                            currentAbilityCrosshair.Hide();
+                        if (abilityComponent.CurrentAbility.IsOnCooldown())
+                        {
+                            if (abilityCrosshair.IsVisible)
+                                abilityCrosshair.Hide();
+                        }
+                        else
+                        {
+                            abilityCrosshair.Tick();
+                            if (!abilityCrosshair.IsVisible)
+                                abilityCrosshair.Show();
+                        }
                     }
-                    else
-                    {
-                        currentAbilityCrosshair.Tick();
-                        if (!currentAbilityCrosshair.IsVisible)
-                            currentAbilityCrosshair.Show();
-                    }
+                    else abilityCrosshair.Hide();
                 }
             }
             else if (!isMainAgentChecked && Agent.Main != null)
             {
                 isMainAgentChecked = true;
-                if((abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+                if ((abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
                 {
                     abilityComponent.CurrentAbilityChanged += (crosshair) =>
                     {
-                        currentAbilityCrosshair = crosshair;
+                        abilityCrosshair = crosshair;
                     };
                 }
             }
@@ -108,12 +114,12 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnMissionScreenInitialize()
         {
             base.OnMissionScreenInitialize();
-            this.OnInitialize();
+            this.OnInitializeWeaponCrosshair();
         }
         public override void OnMissionScreenFinalize()
         {
             base.OnMissionScreenFinalize();
-            this.OnFinalize();
+            this.OnFinalizeWeaponCrosshair();
         }
 
         private void UpdateWeaponCrosshairVisibility()
@@ -121,7 +127,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             if (BannerlordConfig.DisplayTargetingReticule && base.Mission.Mode != MissionMode.Conversation && base.Mission.Mode != MissionMode.CutScene && !ScreenManager.GetMouseVisibility())
             {
                 Agent mainAgent = base.Mission.MainAgent;
-                if (mainAgent != null && (currentAbilityCrosshair == null || !currentAbilityCrosshair.IsVisible))
+                if (mainAgent != null && (abilityCrosshair == null || !abilityCrosshair.IsVisible))
                 {
                     if (!mainAgent.WieldedWeapon.IsEmpty && base.Mission.MainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
                     {
@@ -272,12 +278,12 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnPhotoModeActivated()
         {
             base.OnPhotoModeActivated();
-            this._layer._gauntletUIContext.ContextAlpha = 0f;
+            this.weaponLayer._gauntletUIContext.ContextAlpha = 0f;
         }
         public override void OnPhotoModeDeactivated()
         {
             base.OnPhotoModeDeactivated();
-            this._layer._gauntletUIContext.ContextAlpha = 1f;
+            this.weaponLayer._gauntletUIContext.ContextAlpha = 1f;
         }
     }
 }

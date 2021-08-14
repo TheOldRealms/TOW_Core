@@ -12,12 +12,14 @@ namespace TOW_Core.Abilities.Crosshairs
         public AbilityCrosshair(AbilityTemplate template)
         {
             this.template = template;
+            this.CrosshairType = template.CrosshairType;
             this.mission = Mission.Current;
             this.missionScreen = mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
         }
 
         public virtual void Tick()
         {
+
         }
         public virtual void Show()
         {
@@ -27,7 +29,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             IsVisible = false;
         }
-        public void Dispose()
+        public virtual void Dispose()
         {
             crosshair.FadeOut(3, true);
         }
@@ -42,7 +44,7 @@ namespace TOW_Core.Abilities.Crosshairs
             crosshair.AddLight(light);
         }
 
-        public bool IsVisible
+        public virtual bool IsVisible
         {
             get
             {
@@ -66,6 +68,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 this.crosshair.SetFrame(ref frame);
             }
         }
+        public CrosshairType CrosshairType { get; }
 
         protected AbilityTemplate template;
         protected GameEntity crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);

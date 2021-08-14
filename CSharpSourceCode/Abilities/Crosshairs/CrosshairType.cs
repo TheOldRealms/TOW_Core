@@ -4,6 +4,7 @@
     {
         None,
         Projectile,
+        Targeted,
         DirectionalAOE,
         CenteredAOE,
         Summoning

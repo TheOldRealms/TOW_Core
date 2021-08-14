@@ -9,7 +9,7 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public SummoningCrosshair(AbilityTemplate template) : base(template)
         {
-            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker_1", false);
+            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
             crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
             UpdateFrame();
@@ -31,13 +31,10 @@ namespace TOW_Core.Abilities.Crosshairs
                     position.z = Mission.Current.Scene.GetGroundHeightAtPosition(Position);
                     Position = position;
                 }
-                //WorldPosition worldPosition = new WorldPosition(Mission.Current.Scene, UIntPtr.Zero, position, false);
-                //isOnValidGround = (!this.IsVisible || AOEAbilityCrosshair.IsPositionOnValidGround(worldPosition));
             }
             else
             {
                 Position = new Vec3(0f, 0f, -100000f, -1f);
-                //isOnValidGround = false;
             }
         }
         public static bool IsPositionOnValidGround(WorldPosition worldPosition)

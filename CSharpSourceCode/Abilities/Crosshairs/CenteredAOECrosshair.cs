@@ -1,7 +1,6 @@
 ﻿using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
@@ -10,7 +9,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public CenteredAOECrosshair(AbilityTemplate template, Agent agent) : base(template)
         {
             this.agent = agent;
-            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker_1", false);
+            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
             crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             MatrixFrame frame = crosshair.GetFrame();
             frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
