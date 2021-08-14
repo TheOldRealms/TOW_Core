@@ -19,6 +19,7 @@
 			 ruler_title="{=!}Elector Count" 
 			 text="{=!}The Grand County of Averland is a major and founding Imperial Province that lies directly to the south-east of the Empire. Averland has an economy based mostly on agriculture, and the raising of cattle and livestock. Unlike most states in the Empire, Averland contains large stretches of unbroken open plains and while this land is not as fertile as those in Ostermark, it proved valuable as grazing grounds for the infamous Averlander cattle herds. Averland also has the 'honour' of defending the site of Black Fire Pass, which leads across the Worlds Edge Mountains from the Dark Lands. This is the clearest pass for thousands of miles and as such, is a popular route for marauding Orcs and Goblins. As a result of years of defending it, the Averlanders are held in high esteem in the art of siege defences.">
 		<relationships>
+			<relationship kingdom="Kingdom.sylvania" value="-1" isAtWar="true" />
 		</relationships>
 		<policies>
 			<policy id="policy_senate" />
@@ -96,6 +97,7 @@
 			 ruler_title="{=!}Vampire Count"
 			text="{=!}Sylvania is a dark and haunted region of the Old World. Though technically a part of the Imperial province of Stirland, it is in fact the independent domain of the Vampire Counts. Under the shadow of the Vampires, its populace has become a terrified, superstitious people. Close to uninhabitable, Sylvania's forests are dingy copses of twisted, half-rotted trees that claw what nourishment they can from the bone-strewn soil. Desolate moorlands and sluggish rivers of clotted blood punctuate the yellow-leafed woods, wind-swept and storm­ shrouded by dark clouds that seep down from the Worlds Edge Mountains on an almost daily basis.">
 		<relationships>
+			<relationship kingdom="Kingdom.averland" value="-1" isAtWar="true" />
 			<relationship kingdom="Kingdom.stirland" value="-1" isAtWar="true" />
 			<relationship kingdom="Kingdom.moot" value="-1" isAtWar="true" />
 		</relationships>
