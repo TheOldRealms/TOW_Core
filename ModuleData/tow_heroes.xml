@@ -62,7 +62,15 @@
 	<!-- Mootland Clan 1 -->
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
 	
-	
-	<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
+		<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
 	<Hero id="chaos_clan_1_1" is_noble="true" faction="Faction.chaos_clan_1" />
+
+	<!-- Dogs of war -->
+	<Hero id="dog_clan_hero_braganza" is_noble="true" faction="Faction.dog_clan_1" text="{=!}The ingenious Borgio the Besieger, the Prince of Miragliano, originally employed the famous regiment of Besiegers, as a special siege unit of crossbowmen during times of war. Borgio wanted marksmen who could pick off defenders on the walls at close range in the face incoming enemy missiles, hold ramparts against assaults, provide missile support for their main infantry, sappers, miners, siege towers, and if need be, stand their ground against enemy units sallying out of the besieged fortress. Bragnaza's troops soon proved their worth in Borgio's many sieges and turned out to be equally good as a rearguard in open battle."/>
+	<Hero id="dog_clan_hero_cursed" is_noble="true" faction="Faction.dog_clan_2" text="{=!}The most common tales revolving around Richter Kreugar's tragic curse tell of a young mercenary captain, proud, talented, and ruthless. He hired out his services freely, uncaring who he fought for as long as the price was right. Centuries ago in the history of the Old World, Richer was said to have allied with a powerful Necromancer, aiding him in his diabolical campaign against the Empire, terrorizing the heavily forested area around Wolfenburg."/>
+	<Hero id="dog_clan_hero_leopard" is_noble="true" faction="Faction.dog_clan_3" text="{=!}''Stiffen the Sinews, summon the blood, disguise fair nature with hard - favoured rage and imitate the actions of the Leopard!''"/>
+	<Hero id="dog_clan_hero_voland" is_noble="true" faction="Faction.dog_clan_4" text="{=!}''We are Voland's Venators... The Drunken Calvary!... We cannot march, we cannot fight... What wretched knights are we!... But when we see the enemy... Our heads are very clear... We Charge straight for their baggage camp... and liberate their gears!''"/>
+	<Hero id="dog_clan_hero_miragliano" is_noble="true" faction="Faction.dog_clan_5" text="{=!}''JOIN US....are you good enough to fight alongside the best warriors in the world?.....THE MARKSMEN OF MIRAGLIANO ARE LOOKING FOR MORE MEN TO JOIN THEIR RANKS!.....if you can handle a crossbow and a life of adventure come to the Merry Archer at noon!.....WE HIT THE RIGHT SPOT EVERY TIME!''"/>
+	<Hero id="dog_clan_hero_ricco" is_noble="true" faction="Faction.dog_clan_6" text="{=!}''No, they didn't look dangerous, more like a bunch of rich kids out to show off in their new armour. Very flashy they were, all gems and silk. We'll have a bit of fun, we thought. Easy pickings, we thought. Well anyone can make a mistake. Poor old captain Malvino, last mistake he ever made...''"/>
+
 </Heroes>

@@ -76,4 +76,42 @@
 			<PartyTemplateStack min_value="5" max_value="20" troop="NPCCharacter.tow_chaos_chosen" />
 		</stacks>
 	</MBPartyTemplate>
+
+	<!--Dogs Of War Parties -->
+	<MBPartyTemplate id="dog_01" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tow_dog_braganza_01" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_02" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tow_dog_cursed_01" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_03" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tow_dog_leopard_01" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_04" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="15" troop="NPCCharacter.tow_dog_voland_01" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_05" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tow_dog_miragliano_01" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_06" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tow_dog_ricco_01" />
+		</stacks>
+	</MBPartyTemplate>
+	
 </partyTemplates>
