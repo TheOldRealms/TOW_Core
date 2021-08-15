@@ -107,15 +107,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
             return LatestScore;
         }
 
-        protected virtual float UtilityFunction()
-        {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
-            {
-                return 0.0f;
-            }
-
-            return 0.5f;
-        }
+        protected abstract float UtilityFunction();
 
         private static Formation ChooseTargetFormation(Agent agent, Formation targetFormation)
         {

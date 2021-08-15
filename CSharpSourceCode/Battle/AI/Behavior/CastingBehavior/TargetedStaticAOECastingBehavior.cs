@@ -4,12 +4,11 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 {
-    public class CenteredStaticAoECastingBehavior : AgentCastingBehavior
+    public class TargetedStaticAoECastingBehavior : AgentCastingBehavior
     {
-        public CenteredStaticAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public TargetedStaticAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
         }
-
         protected override float UtilityFunction()
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
