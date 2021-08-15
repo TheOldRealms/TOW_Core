@@ -1,16 +1,22 @@
-﻿using TOW_Core.Battle.AI.Decision.ScoringFunction;
+﻿using System;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public class Axis
+    public abstract class Axis
     {
-        private AbstractFunction _function;
-        private float _multiplier;
-        public float X;
+        private readonly Scoring.ScoringFunction _function;
+        private readonly Func<Agent, Target, float> _parameterFunction;
 
-        public float Evaluate()
+        protected Axis(Scoring.ScoringFunction function, Func<Agent, Target, float> parameterFunction)
         {
-            return _function.Evaluate(X);
+            _function = function;
+            _parameterFunction = parameterFunction;
+        }
+
+        public float Evaluate(Agent agent, Target target)
+        {
+            return _function.Evaluate(_parameterFunction.Invoke(agent, target));
         }
     }
 }

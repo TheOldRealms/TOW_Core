@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -17,8 +18,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public readonly AbilityTemplate AbilityTemplate;
         public readonly int AbilityIndex;
         public Formation TargetFormation;
-
-        public float LatestScore;
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -94,18 +93,19 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
         }
 
-        public float GetLatestScore()
+        public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
         {
-            return LatestScore;
+            LatestScores = new Dictionary<(IAgentBehavior, Target), float>();
+            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
+            var target = new Target();
+            target.Formation = TargetFormation;
+            LatestScores.Add((this, target), UtilityFunction(target));
+            return LatestScores;
         }
 
-        public float CalculateUtility()
-        {
-            LatestScore = UtilityFunction();
-            return LatestScore;
-        }
+        public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
 
-        protected abstract float UtilityFunction();
+        protected abstract float UtilityFunction(Target target);
 
         protected static Formation ChooseTargetFormation(Agent agent, Formation currentTargetFormation)
         {

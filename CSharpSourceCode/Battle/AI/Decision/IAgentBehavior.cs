@@ -6,7 +6,7 @@ namespace TOW_Core.Battle.AI.Decision
     {
         void Execute();
         void Terminate();
-        float GetLatestScore();
-        float CalculateUtility();
+        Dictionary<(IAgentBehavior, Target), float> CalculateUtility();
+        
     }
 }

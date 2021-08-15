@@ -1,8 +1,6 @@
-using System.Data;
-
-namespace TOW_Core.Battle.AI.Decision.ScoringFunction
+﻿namespace TOW_Core.Battle.AI.Decision.Scoring
 {
-    public abstract class AbstractFunction
+    public abstract class ScoringFunction
     {
         public float Min = 0;
         public float Max = 0;

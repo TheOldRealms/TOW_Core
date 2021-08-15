@@ -1,4 +1,6 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using System;
+using System.Collections.Generic;
+using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
@@ -28,12 +30,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
         public float GetLatestScore()
         {
-            return 0.0f;
+            throw new NotImplementedException();
         }
 
-        public float CalculateUtility()
+        public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
         {
-            return 0.0f;
+            throw new NotImplementedException();
         }
     }
 }

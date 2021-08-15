@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
