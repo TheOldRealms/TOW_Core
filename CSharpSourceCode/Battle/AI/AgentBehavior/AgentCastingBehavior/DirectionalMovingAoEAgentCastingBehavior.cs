@@ -8,7 +8,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class DirectionalMovingAoEAgentCastingBehavior : AgentCastingAgentBehavior
+    public class DirectionalMovingAoEAgentCastingBehavior : AbstractAgentCastingBehavior
     {
         private List<Axis> axes;
 

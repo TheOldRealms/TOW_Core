@@ -3,7 +3,7 @@ using TOW_Core.Abilities;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class ConserveWindsAgentCastingBehavior : AgentCastingAgentBehavior
+    public class ConserveWindsAgentCastingBehavior : AbstractAgentCastingBehavior
     {
         public ConserveWindsAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex) : base(agent, abilityTemplate, abilityIndex)
         {

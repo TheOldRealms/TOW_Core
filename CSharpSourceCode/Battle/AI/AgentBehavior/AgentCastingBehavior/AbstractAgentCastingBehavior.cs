@@ -9,7 +9,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public abstract class AgentCastingAgentBehavior : IAgentBehavior
+    public abstract class AbstractAgentCastingBehavior : IAgentBehavior
     {
         protected readonly Agent Agent;
         protected bool Positional = false;
@@ -20,7 +20,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public float LatestScore;
 
-        protected AgentCastingAgentBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
+        protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
             Agent = agent;
             AbilityIndex = abilityIndex;

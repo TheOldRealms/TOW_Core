@@ -28,7 +28,7 @@ namespace TOW_Core.Battle.AI.Components
             foreach (var item in toRemove) // This is intentional. Components is read-only
                 agent.RemoveComponent(item);
 
-            _currentTacticalBehavior = new KeepSafeAbstractAgentTacticalBehavior(agent, this);
+            _currentTacticalBehavior = new KeepSafeAgentTacticalBehavior(agent, this);
             AvailableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(agent, this));
         }
 
@@ -54,18 +54,18 @@ namespace TOW_Core.Battle.AI.Components
             var newBehavior = DecisionManager.DecideCastingBehavior(AvailableCastingBehaviors);
             if (newBehavior != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
 
-            _currentCastingBehavior = newBehavior as AgentCastingAgentBehavior;
+            _currentCastingBehavior = newBehavior as AbstractAgentCastingBehavior;
             TOWCommon.Say(_currentCastingBehavior.GetType().Name);
         }
 
 
-        private static List<AgentCastingAgentBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
+        private static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
         {
-            var castingBehaviors = new List<AgentCastingAgentBehavior>();
+            var castingBehaviors = new List<AbstractAgentCastingBehavior>();
             var index = 0;
             foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
             {
-                castingBehaviors.Add(CastingAgentBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingAgentBehaviorMapping.BehaviorByType[AbilityEffectType.MovingProjectile])
+                castingBehaviors.Add(AgentCastingBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, AgentCastingBehaviorMapping.BehaviorByType[AbilityEffectType.MovingProjectile])
                     .Invoke(agent, index, knownAbilityTemplate));
                 index++;
             }

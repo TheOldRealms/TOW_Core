@@ -2,9 +2,9 @@
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 {
-    public class KeepSafeAbstractAgentTacticalBehavior : AbstractAgentTacticalBehavior
+    public class KeepSafeAgentTacticalBehavior : AbstractAgentTacticalBehavior
     {
-        public KeepSafeAbstractAgentTacticalBehavior(Agent agent, HumanAIComponent aiComponent) : base(agent, aiComponent)
+        public KeepSafeAgentTacticalBehavior(Agent agent, HumanAIComponent aiComponent) : base(agent, aiComponent)
         {
         }
         

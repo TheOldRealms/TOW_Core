@@ -4,7 +4,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class TargetedStaticAoEAgentCastingBehavior : AgentCastingAgentBehavior
+    public class TargetedStaticAoEAgentCastingBehavior : AbstractAgentCastingBehavior
     {
         public TargetedStaticAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {

@@ -6,10 +6,10 @@ using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public static class CastingAgentBehaviorMapping
+    public static class AgentCastingBehaviorMapping
     {
-        public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingAgentBehavior>> BehaviorByType =
-            new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AgentCastingAgentBehavior>>
+        public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>> BehaviorByType =
+            new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>>
             {
                 {AbilityEffectType.MovingProjectile, (agent, abilityTemplate, abilityIndex) => new MovingProjectileAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.DynamicProjectile, (agent, abilityTemplate, abilityIndex) => new MovingProjectileAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
