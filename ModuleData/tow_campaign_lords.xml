@@ -119,6 +119,123 @@
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>
+	<!-- THE GOLDEN ORDER LORDS -->
+	<NPCCharacter id="emp_lord_averland_golden_1" name="{=!}Balthazar Gelt" default_group="cavalry" age="21" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.88" weight="0.0398" build="0.3761"  key="0005C00AC544300034F0083EA595AF5989A8571076A85848828603DF8CC866A50086160308756D64000000000000000000000000000000000000000023047046"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="1" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.balthazar_gelt_staff" />
+				<equipment slot="Head" id="Item.empire_balthazar_gelt_mask" />
+				<equipment slot="Body" id="Item.empire_balthazar_gelt_body" />
+				<equipment slot="Cape" id="Item.empire_balthazar_gelt_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_balthazar_gelt_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_balthazar_gelt_boots" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<NPCCharacter id="emp_lord_averland_golden_2" name="{=!}Albrecht Helseher" default_group="cavalry" age="35" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.38" weight="0.5" build="0.5"  key="000D7C06DA0034CB8C766487675379467577D66257669889C4B647398C95A0370097760309A7497300000000000000000000000000000000000000003B347002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="1" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.wp_hammer_001" />
+				<equipment slot="Head" id="Item.militia_helmet_gilded" />
+				<equipment slot="Body" id="Item.monk_robe" />
+				<equipment slot="Cape" id="Item.brass_scale_shoulders" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<NPCCharacter id="emp_lord_averland_golden_3" name="{=!}Haqiqah Al-Hikmah" default_group="cavalry" age="35" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="40" weight="0.451" build="0.4378"  key="0034F00FCE2C3849AC7664876753888A7654995054C07648C4230AC98C9BA077005776030597B15600000000000000000000000000000000000000003ABC9002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="1" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_greatsword_001" />
+				<equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+				<equipment slot="Body" id="Item.nordic_sloven_leather" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_005" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<NPCCharacter id="emp_lord_averland_golden_4" name="{=!}Benedict Stross" default_group="cavalry" age="35" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="22.72" weight="0.3448" build="0.7696"  key="0020B80D1E0038CE7C7664876753888A7577866254C6964AC4B647398C95A03700BC56030BABACA800000000000000000000000000000000000000003B743002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="1" />
+			<Trait id="Commander" value="1" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="2" />
+			<Trait id="Honor" value="+1" />
+			<Trait id="Mercy" value="1" />
+			<Trait id="Generosity" value="1" />
+		</Traits>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.wp_hammer_001" />
+				<equipment slot="Head" id="Item.militia_helmet_gilded" />
+				<equipment slot="Body" id="Item.monk_robe" />
+				<equipment slot="Cape" id="Item.brass_scale_shoulders" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
+
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
 	<!-- AVERLAND LORDS -->
 	<!-- Filibert Leitdorf -->
 	<NPCCharacter id="emp_lord_averland_oberaverlander_2" name="{=!}Filibert Leitdorf" default_group="cavalry" age="21" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
