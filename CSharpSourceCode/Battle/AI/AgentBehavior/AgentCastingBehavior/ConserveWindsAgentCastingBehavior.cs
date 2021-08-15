@@ -1,6 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {

@@ -5,7 +5,6 @@ using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
-using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
