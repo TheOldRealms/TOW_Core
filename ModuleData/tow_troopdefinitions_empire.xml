@@ -976,30 +976,26 @@
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
   				<equipment slot="Item1" id="Item.empire_shield_001" />
-  				<equipment slot="Item2" id="Item.tow_handgun_003" />
-  				<equipment slot="Item3" id="Item.musket_ball" />
-  				<equipment slot="Head" id="Item.worn_militia_helmet" />
+  				<equipment slot="Head" id="Item.sallet_no_visor" />
   				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
   				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
   				<equipment slot="Gloves" id="Item.leather_gloves" />
   				<equipment slot="Leg" id="Item.battania_leather_boots" />
 				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
-				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
 			</EquipmentRoster>
 		</Equipments>
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
   				<equipment slot="Item1" id="Item.empire_shield_008" />
-  				<equipment slot="Item2" id="Item.tow_handgun_003" />
-  				<equipment slot="Item3" id="Item.musket_ball" />
-  				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+  				<equipment slot="Head" id="Item.sallet_base" />
   				<equipment slot="Cape" id="Item.empire_halberdier_shoulders_001" />
   				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
   				<equipment slot="Gloves" id="Item.leather_gloves" />
   				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
-				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
@@ -1101,14 +1097,14 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.tow_handgun_003" />
-  				<equipment slot="Item1" id="Item.tow_handgun_003" />
+  				<equipment slot="Item1" id="Item.musket_ball" />
   				<equipment slot="Item2" id="Item.vlandia_sword_1_t2" />
   				<equipment slot="Item3" id="Item.musket_ball" />
-  				<equipment slot="Head" id="Item.worn_militia_helmet" />
-  				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
-  				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+  				<equipment slot="Head" id="Item.helmet_with_faceguard" />
+  				<equipment slot="Cape" id="Item.southern_shawl" />
+  				<equipment slot="Body" id="Item.empire_free_company_armor" />
   				<equipment slot="Gloves" id="Item.leather_gloves" />
-  				<equipment slot="Leg" id="Item.battania_leather_boots" />
+  				<equipment slot="Leg" id="Item.empire_general_boots_001" />
 				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
 				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
 			</EquipmentRoster>
@@ -1116,14 +1112,14 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.tow_handgun_003" />
-  				<equipment slot="Item1" id="Item.tow_handgun_003" />
+  				<equipment slot="Item1" id="Item.musket_ball" />
   				<equipment slot="Item2" id="Item.vlandia_sword_1_t2" />
   				<equipment slot="Item3" id="Item.musket_ball" />
-  				<equipment slot="Head" id="Item.worn_militia_helmet_feather" />
-  				<equipment slot="Cape" id="Item.empire_halberdier_shoulders_001" />
-  				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+  				<equipment slot="Head" id="Item.helmet_with_faceguard" />
+  				<equipment slot="Cape" id="Item.southern_shawl" />
+  				<equipment slot="Body" id="Item.empire_free_company_armor" />
   				<equipment slot="Gloves" id="Item.leather_gloves" />
-  				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+  				<equipment slot="Leg" id="Item.empire_general_boots_001" />
 				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
 				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
 			</EquipmentRoster>

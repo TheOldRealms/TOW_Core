@@ -19,6 +19,9 @@
 	<Character name="tow_cairn_wraith">
 		<Attribute id="Undead" />
 	</Character>
+	<Character name="tow_black_knight">
+		<Attribute id="Undead" />
+	</Character>
 	<Character name="emp_lord">
 		<Attribute id="AbilityUser" />
 	</Character>
@@ -30,6 +33,9 @@
 	<Character name="tow_wanderer_empire_0">
 		<Attribute id="AbilityUser" />
 		<Attribute id="SpellCaster" />
+	</Character>
+	<Character name="tow_wanderer_empire_1">
+		<Attribute id="AbilityUser" />
 	</Character>
 	<Character name="wizard_lord">
 		<Attribute id="AbilityUser" />

@@ -62,7 +62,7 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if(_effectAggregate.HealthOverTime < 0)
                 {
-                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), Agent, doBlow: false);
+                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), null, false, false);
                 }
                 else if(_effectAggregate.HealthOverTime > 0)
                 {

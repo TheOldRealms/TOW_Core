@@ -3,7 +3,7 @@
     <!-- Chaos troops -->
     <NPCCharacter id="tow_nurgle_warrior" default_group="Infantry" level="21" name="{=!}Nurgle Warrior" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
         <face>
-            <face_key_template value="BodyProperty.fighter_empire" />
+            <face_key_template value="BodyProperty.brute" />
         </face>
         <upgrade_targets></upgrade_targets>
         <Equipments>
@@ -36,7 +36,7 @@
 
     <NPCCharacter id="tow_chaos_chosen" default_group="Infantry" level="21" name="{=!}Chaos Chosen" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
         <face>
-            <face_key_template value="BodyProperty.fighter_empire" />
+            <face_key_template value="BodyProperty.brute" />
         </face>
         <upgrade_targets></upgrade_targets>
         <Equipments>
