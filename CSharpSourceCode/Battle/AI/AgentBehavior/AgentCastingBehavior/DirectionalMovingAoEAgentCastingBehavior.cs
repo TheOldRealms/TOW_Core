@@ -3,17 +3,17 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
+namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class DirectionalMovingAoECastingBehavior : AgentCastingBehavior
+    public class DirectionalMovingAoEAgentCastingBehavior : AgentCastingAgentBehavior
     {
         private List<Axis> axes;
 
-        public DirectionalMovingAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Positional = true;
             axes = new List<Axis>();
@@ -59,7 +59,8 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
                 return 0.0f;
             }
 
-            if (TargetFormation.CurrentPosition.Distance(Agent.Position.AsVec2) < 40)
+            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
+            if (TargetFormation != null && TargetFormation.CurrentPosition.Distance(Agent.Position.AsVec2) < 40 )
             {
                 return 0.8f;
             }

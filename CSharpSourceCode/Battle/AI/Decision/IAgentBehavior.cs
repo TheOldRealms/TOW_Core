@@ -2,8 +2,10 @@
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public interface IUtilityObject
+    public interface IAgentBehavior
     {
+        void Execute();
+        void Terminate();
         float GetLatestScore();
         float CalculateUtility();
     }

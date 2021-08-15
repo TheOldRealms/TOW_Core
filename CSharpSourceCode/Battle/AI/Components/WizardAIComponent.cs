@@ -3,10 +3,10 @@ using System.Linq;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AI.Behavior.CastingBehavior;
-using TOW_Core.Battle.AI.Behavior.TacticalBehavior;
+using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
+using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
+using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
@@ -15,14 +15,13 @@ namespace TOW_Core.Battle.AI.Components
     public class WizardAIComponent : HumanAIComponent
     {
         private const float EvalInterval = 1;
-        private readonly List<IUtilityObject> _utilityObjects;
 
         private float _dtSinceLastOccasional = EvalInterval;
-        private AgentCombatBehavior _tacticalBehavior;
-        private AgentCastingBehavior _currentCastingBehavior;
+        private readonly IAgentBehavior _currentTacticalBehavior;
+        private IAgentBehavior _currentCastingBehavior;
 
         public Mat3 SpellTargetRotation = Mat3.Identity;
-        public List<AgentCastingBehavior> AvailableCastingBehaviors { get; }
+        public List<IAgentBehavior> AvailableCastingBehaviors { get; }
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
@@ -30,9 +29,8 @@ namespace TOW_Core.Battle.AI.Components
             foreach (var item in toRemove) // This is intentional. Components is read-only
                 agent.RemoveComponent(item);
 
-            _tacticalBehavior = new KeepSafeTacticalBehavior(agent, this);
-            AvailableCastingBehaviors = PrepareCastingBehaviors(agent, this);
-            _utilityObjects = new List<IUtilityObject>(AvailableCastingBehaviors);
+            _currentTacticalBehavior = new KeepSafeAbstractAgentTacticalBehavior(agent, this);
+            AvailableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(agent, this));
         }
 
 
@@ -43,7 +41,7 @@ namespace TOW_Core.Battle.AI.Components
                 _dtSinceLastOccasional += dt;
                 if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
-                _tacticalBehavior.ApplyBehaviorParams();
+                _currentTacticalBehavior.Execute();
                 _currentCastingBehavior?.Execute();
             }
 
@@ -54,25 +52,26 @@ namespace TOW_Core.Battle.AI.Components
         {
             _dtSinceLastOccasional = 0;
 
-            var newBehavior = DecisionManager.DecideCastingBehavior(_utilityObjects);
+            var newBehavior = DecisionManager.DecideCastingBehavior(AvailableCastingBehaviors);
             if (newBehavior != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
 
-            _currentCastingBehavior = newBehavior as AgentCastingBehavior;
+            _currentCastingBehavior = newBehavior as AgentCastingAgentBehavior;
+            TOWCommon.Say(_currentCastingBehavior.GetType().Name);
         }
 
 
-        private static List<AgentCastingBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
+        private static List<AgentCastingAgentBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
         {
-            var castingBehaviors = new List<AgentCastingBehavior>();
+            var castingBehaviors = new List<AgentCastingAgentBehavior>();
             var index = 0;
             foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
             {
-                castingBehaviors.Add(CastingBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingBehaviorMapping.BehaviorByType[AbilityEffectType.MovingProjectile])
+                castingBehaviors.Add(CastingAgentBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, CastingAgentBehaviorMapping.BehaviorByType[AbilityEffectType.MovingProjectile])
                     .Invoke(agent, index, knownAbilityTemplate));
                 index++;
             }
 
-            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsCastingBehavior(agent, null, index));
+            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, null, index));
 
             return castingBehaviors;
         }

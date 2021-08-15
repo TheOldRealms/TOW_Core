@@ -1,12 +1,13 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
+namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class TargetedStaticAoECastingBehavior : AgentCastingBehavior
+    public class TargetedStaticAoEAgentCastingBehavior : AgentCastingAgentBehavior
     {
-        public TargetedStaticAoECastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public TargetedStaticAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
         }
         protected override float UtilityFunction()

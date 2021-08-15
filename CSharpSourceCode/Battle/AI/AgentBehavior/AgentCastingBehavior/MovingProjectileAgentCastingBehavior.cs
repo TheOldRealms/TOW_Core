@@ -1,13 +1,13 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.Behavior.AgentCastingBehavior;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
+namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class MovingProjectileCastingBehavior : AgentCastingBehavior
+    public class MovingProjectileAgentCastingBehavior : AgentCastingAgentBehavior
     {
-        public MovingProjectileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public MovingProjectileAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
         }
 

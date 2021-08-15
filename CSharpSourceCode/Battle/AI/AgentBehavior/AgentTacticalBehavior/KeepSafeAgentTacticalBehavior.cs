@@ -1,11 +1,19 @@
 ﻿using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
-namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
+namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 {
-    public class KeepSafeTacticalBehavior : AgentCombatBehavior
+    public class KeepSafeAbstractAgentTacticalBehavior : AbstractAgentTacticalBehavior
     {
-        public KeepSafeTacticalBehavior(Agent agent, HumanAIComponent aiComponent) : base(agent, aiComponent)
+        public KeepSafeAbstractAgentTacticalBehavior(Agent agent, HumanAIComponent aiComponent) : base(agent, aiComponent)
+        {
+        }
+        
+        public override void Execute()
+        {
+           ApplyBehaviorParams();
+        }
+
+        public override void Terminate()
         {
         }
 
@@ -30,6 +38,7 @@ namespace TOW_Core.Battle.AI.Behavior.TacticalBehavior
                 }
             }
         }
+
 
 
         protected bool ShouldAgentSkirmish()

@@ -290,19 +290,18 @@
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\AgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\CastingBehaviorMapping.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\CenteredStaticAOECastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\ConserveWindsCastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\MovingProjectileCastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\DirectionalMovingAoECastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\CastingBehavior\TargetedStaticAOECastingBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\TacticalBehavior\AgentTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\TacticalBehavior\KeepSafeTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\Behavior\TacticalBehavior\NormalFormationTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorMapping.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\ConserveWindsAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\MovingProjectileAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\DirectionalMovingAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
-    <Compile Include="Battle\AI\Decision\IUtilityObject.cs" />
+    <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\AbstractFunction.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Linear.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunction\Logistic.cs" />
@@ -417,9 +416,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Battle\AI\Decision\CommonAxis" />
   </ItemGroup>
   <!-- Post-Build -->
   <PropertyGroup>

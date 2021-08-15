@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Battle.AI.Decision.ScoringFunction;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
+namespace TOW_Core.Battle.AI.Behavior.AgentCastingBehavior
 {
-    public abstract class AgentCastingBehavior : IUtilityObject
+    public abstract class AgentCastingAgentBehavior : IAgentBehavior
     {
         protected readonly Agent Agent;
         protected bool Positional = false;
@@ -22,7 +20,7 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
         public float LatestScore;
 
-        protected AgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
+        protected AgentCastingAgentBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
             Agent = agent;
             AbilityIndex = abilityIndex;
@@ -38,9 +36,9 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
         {
             if (Agent.GetCurrentAbility().IsOnCooldown()) return;
 
-            if (TargetFormation == null) return;
+            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
 
-            var medianAgent = TargetFormation.GetMedianAgent(true, false, TargetFormation.GetAveragePositionOfUnits(true, false));
+            var medianAgent = TargetFormation?.GetMedianAgent(true, false, TargetFormation.GetAveragePositionOfUnits(true, false));
 
             if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < Range)
             {
@@ -109,12 +107,12 @@ namespace TOW_Core.Battle.AI.Behavior.CastingBehavior
 
         protected abstract float UtilityFunction();
 
-        private static Formation ChooseTargetFormation(Agent agent, Formation targetFormation)
+        protected static Formation ChooseTargetFormation(Agent agent, Formation currentTargetFormation)
         {
             var formation = agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
-            if (!(formation != null && (targetFormation == null || !formation.HasPlayer || formation.Distance < targetFormation.Distance && formation.Distance < 15 || targetFormation.GetFormationPower() < 15)))
+            if (!(formation != null && (currentTargetFormation == null || !formation.HasPlayer || formation.Distance < currentTargetFormation.Distance && formation.Distance < 15 || currentTargetFormation.GetFormationPower() < 15)))
             {
-                formation = targetFormation;
+                formation = currentTargetFormation;
             }
 
             return formation;
