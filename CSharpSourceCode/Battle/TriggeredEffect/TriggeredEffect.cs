@@ -19,7 +19,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
-        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent)
+        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, Agent[] targets = null)
         {
             Timer timer = new Timer(2000);
             if (_template.SoundEffectLength > 0)
@@ -33,6 +33,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             };
             timer.Start();
             //Cause Damage
+
             if (_template.DamageAmount > 0)
             {
                 TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)),triggererAgent, _template.TargetType, _template.HasShockWave);

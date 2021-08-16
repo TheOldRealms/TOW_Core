@@ -138,10 +138,10 @@ namespace TOW_Core.Abilities
             {
                 frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
             }
-            //else
-            //{
-            //    frame = frame.Elevate(_template.Radius / 2);
-            //}
+            else if (_template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
+            {
+                frame = Crosshair.Frame;
+            }
             else if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 frame = casterAgent.AgentVisuals.GetGlobalFrame();
@@ -161,6 +161,10 @@ namespace TOW_Core.Abilities
                 frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
             }
 
+            //else
+            //{
+            //    frame = frame.Elevate(_template.Radius / 2);
+            //}
             if (casterAgent.IsAIControlled)
                 frame = UpdateFrameRotationForAI(casterAgent, frame);
             if (IsGroundAbility())

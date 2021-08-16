@@ -25,7 +25,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             Vec3 position;
             Vec3 normal;
-            missionScreen.GetProjectedMousePositionOnGround(out position, out normal);
+            _missionScreen.GetProjectedMousePositionOnGround(out position, out normal);
             float distance;
             var agent = Mission.Current.RayCastForClosestAgent(Agent.Main.GetEyeGlobalPosition(), position, out distance, Agent.Main.Index);
             if (agent != null && agent.IsHuman)

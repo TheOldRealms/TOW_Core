@@ -13,8 +13,8 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             this.template = template;
             this.CrosshairType = template.CrosshairType;
-            this.mission = Mission.Current;
-            this.missionScreen = mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
+            this._mission = Mission.Current;
+            this._missionScreen = _mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
         }
 
         public virtual void Tick()
@@ -31,7 +31,7 @@ namespace TOW_Core.Abilities.Crosshairs
         }
         public virtual void Dispose()
         {
-            crosshair.FadeOut(3, true);
+            _crosshair.FadeOut(3, true);
         }
         protected void AddLight()
         {
@@ -41,39 +41,57 @@ namespace TOW_Core.Abilities.Crosshairs
             light.SetShadowType(Light.ShadowType.DynamicShadow);
             light.Frame = MatrixFrame.Identity;
             light.SetVisibility(true);
-            crosshair.AddLight(light);
+            _crosshair.AddLight(light);
         }
 
         public virtual bool IsVisible
         {
             get
             {
-                return this.crosshair.IsVisibleIncludeParents();
+                return this._crosshair.IsVisibleIncludeParents();
             }
             protected set
             {
-                this.crosshair.SetVisibilityExcludeParents(value);
+                this._crosshair.SetVisibilityExcludeParents(value);
             }
         }
         public Vec3 Position
         {
             get
             {
-                return this.crosshair.GlobalPosition;
+                return this._crosshair.GlobalPosition;
             }
             protected set
             {
-                MatrixFrame frame = this.crosshair.GetFrame();
+                MatrixFrame frame = this._crosshair.GetFrame();
                 frame.origin = value;
-                this.crosshair.SetFrame(ref frame);
+                this._crosshair.SetFrame(ref frame);
+            }
+        }
+        public MatrixFrame Frame
+        {
+            get => _crosshair.GetFrame();
+            protected set
+            {
+                _crosshair.SetFrame(ref value);
+            }
+        }
+        public Mat3 Rotation
+        {
+            get => _crosshair.GetFrame().rotation;
+            protected set
+            {
+                MatrixFrame frame = _crosshair.GetFrame();
+                frame.rotation = value;
+                _crosshair.SetFrame(ref frame);
             }
         }
         public CrosshairType CrosshairType { get; }
 
         protected AbilityTemplate template;
-        protected GameEntity crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
-        protected Mission mission;
-        protected MissionScreen missionScreen;
+        protected GameEntity _crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
+        protected Mission _mission;
+        protected MissionScreen _missionScreen;
         protected uint? friendColor = new Color(0, 0.255f, 0, 1f).ToUnsignedInteger();
         protected uint? enemyColor = new Color(0.255f, 0, 0, 1f).ToUnsignedInteger();
         protected uint? colorLess = new Color(0, 0, 0, 0).ToUnsignedInteger();

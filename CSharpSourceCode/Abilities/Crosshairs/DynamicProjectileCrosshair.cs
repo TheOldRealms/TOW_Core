@@ -3,8 +3,7 @@
     public class DynamicProjectileCrosshair : ProjectileCrosshair
     {
         public DynamicProjectileCrosshair(AbilityTemplate template) : base(template)
-        {
-
+        { 
         }
     }
 }

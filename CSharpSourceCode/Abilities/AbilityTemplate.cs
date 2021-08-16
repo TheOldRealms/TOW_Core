@@ -75,6 +75,8 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public CrosshairType CrosshairType = CrosshairType.None;
         [XmlAttribute]
+        public float MinDistance = 1.0f;
+        [XmlAttribute]
         public float MaxDistance = 1.0f;
         [XmlAttribute]
         public float TargetCapturingRadius = 0;

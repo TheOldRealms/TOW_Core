@@ -10,7 +10,7 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public TargetedAOECrosshair(AbilityTemplate template) : base(template)
         {
-            crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
+            _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             UpdateFrame();
             //MatrixFrame frame = crosshair.GetFrame();
             //frame.Scale(new Vec3(10f, 10f, 1f, -1f));
@@ -41,7 +41,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             Vec3 position;
             Vec3 vec;
-            if (this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
+            if (this._missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
             {
                 Position = position;
             }
@@ -53,11 +53,11 @@ namespace TOW_Core.Abilities.Crosshairs
         private void UpdateColliedeAgents(TargetType targetType)
         {
             if (targetType == TargetType.All)
-                CollidedAgents = mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
+                CollidedAgents = _mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
             else if (targetType == TargetType.Friendly)
-                CollidedAgents = mission.GetNearbyAllyAgents(Position.AsVec2, 5, mission.PlayerAllyTeam).ToArray();
+                CollidedAgents = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerAllyTeam).ToArray();
             else if (targetType == TargetType.Enemy)
-                CollidedAgents = mission.GetNearbyEnemyAgents(Position.AsVec2, 5, mission.PlayerEnemyTeam).ToArray();
+                CollidedAgents = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerEnemyTeam).ToArray();
         }
         public void ClearArrays()
         {
@@ -72,7 +72,7 @@ namespace TOW_Core.Abilities.Crosshairs
         }
         public void SetVisibilty(bool visibility)
         {
-            this.crosshair.SetVisibilityExcludeParents(visibility);
+            this._crosshair.SetVisibilityExcludeParents(visibility);
         }
 
         public static bool IsPositionOnValidGround(WorldPosition worldPosition)

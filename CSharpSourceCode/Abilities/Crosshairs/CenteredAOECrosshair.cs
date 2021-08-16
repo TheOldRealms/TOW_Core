@@ -6,14 +6,14 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class CenteredAOECrosshair : AOECrosshair
     {
-        public CenteredAOECrosshair(AbilityTemplate template, Agent agent) : base(template)
+        public CenteredAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
-            this.agent = agent;
-            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
-            crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
-            MatrixFrame frame = crosshair.GetFrame();
+            this._caster = caster;
+            _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
+            _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
+            MatrixFrame frame = _crosshair.GetFrame();
             frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
-            crosshair.SetFrame(ref frame);
+            _crosshair.SetFrame(ref frame);
             AddLight();
             IsVisible = false;
         }
@@ -21,16 +21,16 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             if (!isBound)
             {
-                if (agent.AgentVisuals != null)
+                if (_caster.AgentVisuals != null)
                 {
                     isBound = true;
-                    agent.AgentVisuals.AddChildEntity(crosshair);
+                    _caster.AgentVisuals.AddChildEntity(_crosshair);
                 }
             }
             HighlightNearbyAgents();
         }
 
         private bool isBound;
-        private Agent agent;
+        private Agent _caster;
     }
 }

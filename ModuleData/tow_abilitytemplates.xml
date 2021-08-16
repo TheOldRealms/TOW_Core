@@ -69,7 +69,8 @@
       TriggeredEffectID="wind_of_death_tick"
       Offset="10"
       CrosshairType="DirectionalAOE"
-      MaxDistance="0"
+      MinDistance="2"
+      MaxDistance="10"
       TargetCapturingRadius="0">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
@@ -185,10 +186,11 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="burning_head_tick"
-      Offset="10"
+      Offset="0"
       CrosshairType="DirectionalAOE"
-      MaxDistance="0"
-      TargetCapturingRadius="2">
+      MinDistance="2"
+      MaxDistance="10"
+      TargetCapturingRadius="0">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -226,7 +228,8 @@
       TriggeredEffectID="wind_of_death_tick"
       Offset="10"
       CrosshairType="DirectionalAOE"
-      MaxDistance="0"
+      MinDistance="2"
+      MaxDistance="10"
       TargetCapturingRadius="0">
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>

@@ -7,42 +7,45 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class SummoningCrosshair : AbilityCrosshair
     {
-        public SummoningCrosshair(AbilityTemplate template) : base(template)
+        public SummoningCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
-            crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
-            crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
+            _caster = caster;
+            _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
+            _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
-            UpdateFrame();
+            UpdatePosition();
             IsVisible = false;
         }
         public override void Tick()
         {
-            UpdateFrame();
+            UpdatePosition();
         }
-        private void UpdateFrame()
+        private void UpdatePosition()
         {
-            if (Agent.Main != null && this.missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
+            if (_caster != null)
             {
-                if (Agent.Main.Position.Distance(position) < template.MaxDistance)
-                    this.Position = position;
+                if (_missionScreen.GetProjectedMousePositionOnGround(out _position, out _normal, true))
+                {
+                    _currentDistance = _caster.Position.Distance(_position);
+                    if (_currentDistance > template.MaxDistance)
+                    {
+                        _position = _caster.LookFrame.Advance(template.MaxDistance).origin;
+                        _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
+                    }
+                    Position = _position;
+                }
                 else
                 {
-                    position = Agent.Main.LookFrame.Advance(template.MaxDistance).origin;
-                    position.z = Mission.Current.Scene.GetGroundHeightAtPosition(Position);
-                    Position = position;
+                    _position = _caster.LookFrame.Advance(template.MaxDistance).origin;
+                    _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
+                    Position = _position; 
                 }
             }
-            else
-            {
-                Position = new Vec3(0f, 0f, -100000f, -1f);
-            }
-        }
-        public static bool IsPositionOnValidGround(WorldPosition worldPosition)
-        {
-            return Mission.Current.IsFormationUnitPositionAvailable(ref worldPosition, Mission.Current.PlayerTeam);
         }
 
-        private Vec3 position;
-        private Vec3 vec;
+        private float _currentDistance;
+        private Vec3 _position;
+        private Vec3 _normal;
+        private Agent _caster;
     }
 }
