@@ -4,7 +4,7 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="2" 
+      CoolDown="20" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
