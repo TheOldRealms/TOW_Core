@@ -28,13 +28,40 @@
 	</MBPartyTemplate>
 	<MBPartyTemplate id="empire_caravan_template" >
 		<stacks>
-			<PartyTemplateStack min_value="16" max_value="16" troop="NPCCharacter.tow_empire_recruit" />
-			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_empire_state_troop" />
-			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_empire_archer" />
-			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_empire_crossbowman" />
-			<PartyTemplateStack min_value="2" max_value="2" troop="NPCCharacter.tow_empire_handgunner" />
-			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_empire_swordsman" />
-			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_empire_spearman" />
+			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_caravan_empire_ranged" />
+			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_caravan_empire_guard" />
+			<PartyTemplateStack min_value="2" max_value="2" troop="NPCCharacter.tow_caravan_empire_vetguard" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="sylvanian_caravan_template" >
+		<stacks>
+			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_caravan_vc_ranged" />
+			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_caravan_vc_guard" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="empire_elite_caravan_template" >
+		<stacks>
+			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_caravan_empire_ranged" />
+			<PartyTemplateStack min_value="7" max_value="7" troop="NPCCharacter.tow_caravan_empire_guard" />
+			<PartyTemplateStack min_value="4" max_value="4" troop="NPCCharacter.tow_caravan_empire_vetguard" />
+			<PartyTemplateStack min_value="2" max_value="2" troop="NPCCharacter.tow_caravan_empire_captain" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="sylvanian_elite_caravan_template" >
+		<stacks>
+			<PartyTemplateStack min_value="8" max_value="8" troop="NPCCharacter.tow_caravan_vc_ranged" />
+			<PartyTemplateStack min_value="6" max_value="6" troop="NPCCharacter.tow_caravan_vc_guard" />
+			<PartyTemplateStack min_value="2" max_value="2" troop="NPCCharacter.tow_caravan_vc_captain" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="empire_villager_template" >
+		<stacks>
+		  <PartyTemplateStack min_value="15" max_value="30" troop="NPCCharacter.tow_empire_villager" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="vc_villager_template" >
+		<stacks>
+		  <PartyTemplateStack min_value="15" max_value="30" troop="NPCCharacter.tow_vc_villager" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="empire_militia_template" >
