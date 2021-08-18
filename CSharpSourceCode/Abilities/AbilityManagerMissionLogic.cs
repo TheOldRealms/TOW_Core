@@ -16,16 +16,26 @@ namespace TOW_Core.Abilities
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            if (Mission.CurrentState == Mission.State.Continuing && Agent.Main != null && Agent.Main.IsAbilityUser())
+
+            if (Mission.Scene.IsAtmosphereIndoor) 
+                return;
+
+            if (Mission.CurrentState != Mission.State.Continuing || Agent.Main == null || !Agent.Main.IsAbilityUser()) 
+                return;
+            
+            RegisterInput();
+        }
+
+        private static void RegisterInput()
+        {
+            if (Input.IsKeyPressed(InputKey.Q))
             {
-                if (Input.IsKeyPressed(InputKey.Q))
-                {
-                    Agent.Main.CastCurrentAbility();
-                }
-                if (Input.IsKeyPressed(InputKey.E))
-                {
-                    Agent.Main.SelectNextAbility();
-                }
+                Agent.Main.CastCurrentAbility();
+            }
+
+            if (Input.IsKeyPressed(InputKey.E))
+            {
+                Agent.Main.SelectNextAbility();
             }
         }
     }
