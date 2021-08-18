@@ -666,7 +666,7 @@
 	<!-- Valten -->
 	<NPCCharacter id="emp_lord_stirland_sigmarcult_3" name="{=!}Valten" default_group="cavalry" age="53" voice="curt" culture="Culture.empire" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
-			<BodyProperties version="4" age="58.34" weight="0.6528" build="0.983"  key="002000035ECC1783FC86108F6753F8974CA59AC253C70600C4B600398BE55E9900FFA6030FFF4FF900000000000000000000000000000000000000003BEC7002"  />
+			<BodyProperties version="4" age="22.73" weight="0.5794" build="0.9647"  key="001B5406CF0039C3FC85355A6653488A7C743871A4C6570354A920147774340700FE96030FE9937800000000000000000000000000000000000000003BFC9142"  />
 		</face>
 		<Traits>
 			<Trait id="BalancedFightingSkills" value="50" />
@@ -679,16 +679,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
-				<equipment slot="Body" id="Item.mail_shirt" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_huss_hammer" />
+				<equipment slot="Head" id="Item.empire_valten_helmet" />
+				<equipment slot="Body" id="Item.empire_valten_body" />
+				<equipment slot="Cape" id="Item.empire_valten_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_valten_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_valten_boots" />
 
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
-				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />

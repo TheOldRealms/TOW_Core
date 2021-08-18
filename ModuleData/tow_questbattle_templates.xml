@@ -5,7 +5,8 @@
     <QuestBattleSolveText>Attempt to defeat the chaos forces present and close the portal.</QuestBattleSolveText>
     <InactiveDescription>The portal lies dormant. Come back at a later time.</InactiveDescription>
     <TroopTypes>
-      <QuestBattleLocationNpcTuple TroopId="tow_nurgle_warrior" Count="30" IsFriendly="false" />
+      <QuestBattleLocationNpcTuple TroopId="tow_nurgle_warrior" Count="15" IsFriendly="false" />
+	  <QuestBattleLocationNpcTuple TroopId="tow_nurgle_warrior_002" Count="15" IsFriendly="false" />
       <QuestBattleLocationNpcTuple TroopId="tow_chaos_chosen" Count="20" IsFriendly="false" />
     </TroopTypes>
   </QuestBattleTemplate>
