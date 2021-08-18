@@ -229,7 +229,7 @@ namespace TOW_Core.Abilities
         private void AddExactBehaviour<TAbilityScript>(GameEntity entity, Agent casterAgent)
             where TAbilityScript : AbilityScript
         {
-            entity.CreateAndAddScriptComponent(nameof(TAbilityScript));
+            entity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
             var script = entity.GetFirstScriptOfType<TAbilityScript>();
             script.Initialize(this);
             script.SetAgent(casterAgent);
