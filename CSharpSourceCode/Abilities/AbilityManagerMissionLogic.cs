@@ -17,7 +17,7 @@ namespace TOW_Core.Abilities
         {
             base.OnMissionTick(dt);
 
-            if (Mission.Scene.IsAtmosphereIndoor) 
+            if (Mission.IsFriendlyMission) 
                 return;
 
             if (Mission.CurrentState != Mission.State.Continuing || Agent.Main == null || !Agent.Main.IsAbilityUser()) 
