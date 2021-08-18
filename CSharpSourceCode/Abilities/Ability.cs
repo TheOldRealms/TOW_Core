@@ -12,15 +12,16 @@ namespace TOW_Core.Abilities
 {
     public abstract class Ability : IDisposable
     {
-        private string _stringId;
+        private readonly string _stringId;
         private AbilityTemplate _template;
         private int _coolDownLeft = 0;
         private Timer _timer = null;
         private bool _isCasting;
-        private object _sync = new object();
+        private readonly object _sync = new object();
 
-        public string StringID { get => _stringId; }
-        public AbilityTemplate Template { get => _template; }
+        public string StringID => _stringId;
+
+        public AbilityTemplate Template => _template;
 
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
@@ -59,7 +60,9 @@ namespace TOW_Core.Abilities
 
         protected virtual bool CanCast(Agent casterAgent)
         {
-            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
+            return casterAgent.IsActive() && casterAgent.Health > 0 &&
+                   (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() &&
+                   !IsOnCooldown() && !_isCasting;
         }
 
         protected virtual void DoCast(Agent casterAgent)
@@ -75,12 +78,12 @@ namespace TOW_Core.Abilities
                 var timer = new Timer(_template.CastTime * 1000);
                 timer.AutoReset = false;
                 timer.Elapsed += (s, e) =>
-                {
-                    lock (_sync)
-                    {
-                        ActivateAbility(casterAgent);
-                    }
-                };
+                                 {
+                                     lock (_sync)
+                                     {
+                                         ActivateAbility(casterAgent);
+                                     }
+                                 };
                 timer.Start();
             }
         }
@@ -100,9 +103,9 @@ namespace TOW_Core.Abilities
             AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
-            
+
             frame = frame.Advance(Template.Offset);
-            
+
             if (IsGroundAbility())
             {
                 frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
@@ -113,18 +116,23 @@ namespace TOW_Core.Abilities
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
 
         private bool IsStaticAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
+            return Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE ||
+                   Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
-            if(_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+            if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile ||
+                _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
             {
                 frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
             }
@@ -132,11 +140,13 @@ namespace TOW_Core.Abilities
             {
                 frame = frame.Elevate(_template.Radius / 2);
             }
-            if(casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
+
+            if (casterAgent.IsAIControlled) frame = UpdateFrameRotationForAI(casterAgent, frame);
             if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
             {
                 frame = casterAgent.AgentVisuals.GetGlobalFrame();
             }
+
             return frame;
         }
 
@@ -185,61 +195,51 @@ namespace TOW_Core.Abilities
 
         private void AddPhysics(ref GameEntity entity)
         {
-            if (!IsStaticAbility()) 
+            if (!IsStaticAbility())
             {
                 var mass = 1;
                 entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
-                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
+                entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero,
+                    PhysicsMaterial.GetFromName("missile"), false, -1);
                 entity.SetPhysicsState(true, false);
             }
         }
 
         private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
         {
-            if (Template.AbilityEffectType == AbilityEffectType.MovingProjectile)
+            switch (Template.AbilityEffectType)
             {
-                entity.CreateAndAddScriptComponent("MovingProjectileScript");
-                MovingProjectileScript script = entity.GetFirstScriptOfType<MovingProjectileScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
+                case AbilityEffectType.MovingProjectile:
+                    AddExactBehaviour<MovingProjectileScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.DirectionalMovingAOE:
+                    AddExactBehaviour<DirectionalMovingAOEScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.CenteredStaticAOE:
+                    AddExactBehaviour<CenteredStaticAOEScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.TargetedStaticAOE:
+                    AddExactBehaviour<TargetedStaticAOEScript>(entity, casterAgent);
+                    break;
             }
 
-            if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
-            {
-                entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
-                DirectionalMovingAOEScript script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
-            }
-
-            if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
-            {
-                entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
-                CenteredStaticAOEScript script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
-            }
-
-            if (Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
-            {
-                entity.CreateAndAddScriptComponent("TargetedStaticAOEScript");
-                TargetedStaticAOEScript script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
-                script.Initialize(this);
-                script.SetAgent(casterAgent);
-                entity.CallScriptCallbacks();
-            }
             //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
+        }
+
+        private void AddExactBehaviour<TAbilityScript>(GameEntity entity, Agent casterAgent)
+            where TAbilityScript : AbilityScript
+        {
+            entity.CreateAndAddScriptComponent(nameof(TAbilityScript));
+            var script = entity.GetFirstScriptOfType<TAbilityScript>();
+            script.Initialize(this);
+            script.SetAgent(casterAgent);
+            entity.CallScriptCallbacks();
         }
 
         private void SetAnimationAction(Agent casterAgent)
         {
             if (_template.AnimationActionName != "none")
-            {
                 casterAgent.SetActionChannel(1, ActionIndexCache.Create(_template.AnimationActionName));
-            }
         }
 
         public void Dispose()
