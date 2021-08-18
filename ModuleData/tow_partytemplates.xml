@@ -72,8 +72,9 @@
 	</MBPartyTemplate>
 	<MBPartyTemplate id="chaos_patrol" >
 		<stacks>
-			<PartyTemplateStack min_value="5" max_value="20" troop="NPCCharacter.tow_nurgle_warrior" />
-			<PartyTemplateStack min_value="5" max_value="20" troop="NPCCharacter.tow_chaos_chosen" />
+			<PartyTemplateStack min_value="5" max_value="10" troop="NPCCharacter.tow_nurgle_warrior" />
+			<PartyTemplateStack min_value="5" max_value="15" troop="NPCCharacter.tow_nurgle_warrior_002" />
+			<PartyTemplateStack min_value="5" max_value="15" troop="NPCCharacter.tow_chaos_chosen" />
 		</stacks>
 	</MBPartyTemplate>
 
