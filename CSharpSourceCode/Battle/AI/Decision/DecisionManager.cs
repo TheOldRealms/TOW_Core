@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaleWorlds.Core;
+using System.Linq;
 
 namespace TOW_Core.Battle.AI.Decision
 {
     public static class DecisionManager
     {
-        public static IAgentBehavior DecideCastingBehavior(List<IAgentBehavior> objects)
+        public static (IAgentBehavior, Target) DecideCastingBehavior(List<IAgentBehavior> objects)
         {
-            objects.ForEach(behavior => behavior.CalculateUtility());
-            return Highest(objects);
+            var utilityValues = objects
+                .SelectMany(behavior => behavior.CalculateUtility())
+                .ToDictionary(e => e.Key, e => e.Value);
+            
+            return Highest(utilityValues);
         }
-        
-        public static IAgentBehavior Highest(List<IAgentBehavior> behaviors)
+
+        private static (IAgentBehavior, Target) Highest(Dictionary<(IAgentBehavior, Target), float> utilityValues)
         {
-            return behaviors.MaxBy(behavior => behavior.GetLatestScore());
+            return utilityValues
+                .Aggregate((x, y) => x.Value > y.Value ? x : y)
+                .Key;
         }
 
         public static double WeightedRandom(List<IAgentBehavior> behaviors)

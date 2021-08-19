@@ -13,11 +13,11 @@ namespace TOW_Core.Battle.AI.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
-        private const float EvalInterval = 1;
+        private static readonly float EvalInterval = 1;
 
-        private float _dtSinceLastOccasional = EvalInterval;
+        private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
         private readonly IAgentBehavior _currentTacticalBehavior;
-        private IAgentBehavior _currentCastingBehavior;
+        private AbstractAgentCastingBehavior _currentCastingBehavior;
 
         public Mat3 SpellTargetRotation = Mat3.Identity;
         public List<IAgentBehavior> AvailableCastingBehaviors { get; }
@@ -35,14 +35,11 @@ namespace TOW_Core.Battle.AI.Components
 
         public override void OnTickAsAI(float dt)
         {
-            if (!Mission.Current.IsFriendlyMission)
-            {
-                _dtSinceLastOccasional += dt;
-                if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
+            _dtSinceLastOccasional += dt;
+            if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
-                _currentTacticalBehavior.Execute();
-                _currentCastingBehavior?.Execute();
-            }
+            _currentTacticalBehavior.Execute();
+            _currentCastingBehavior?.Execute();
 
             base.OnTickAsAI(dt);
         }
@@ -52,10 +49,14 @@ namespace TOW_Core.Battle.AI.Components
             _dtSinceLastOccasional = 0;
 
             var newBehavior = DecisionManager.DecideCastingBehavior(AvailableCastingBehaviors);
-            if (newBehavior != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
+            if (newBehavior.Item1 != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
 
-            _currentCastingBehavior = newBehavior as AbstractAgentCastingBehavior;
-            TOWCommon.Say(_currentCastingBehavior.GetType().Name);
+            _currentCastingBehavior = newBehavior.Item1 as AbstractAgentCastingBehavior;
+            if (_currentCastingBehavior != null)
+            {
+                _currentCastingBehavior.Target = newBehavior.Item2;
+                TOWCommon.Say(_currentCastingBehavior?.GetType().Name);
+            }
         }
 
 

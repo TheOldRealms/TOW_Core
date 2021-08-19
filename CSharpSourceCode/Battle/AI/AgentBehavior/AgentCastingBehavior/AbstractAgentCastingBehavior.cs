@@ -17,7 +17,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public int Range;
         public readonly AbilityTemplate AbilityTemplate;
         public readonly int AbilityIndex;
-        public Formation TargetFormation;
+        public Target Target = new Target();
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -35,9 +35,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             if (Agent.GetCurrentAbility().IsOnCooldown()) return;
 
-            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
-
-            var medianAgent = TargetFormation?.GetMedianAgent(true, false, TargetFormation.GetAveragePositionOfUnits(true, false));
+            var medianAgent = Target.Formation?.GetMedianAgent(true, false, Target.Formation.GetAveragePositionOfUnits(true, false));
 
             if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < Range)
             {
@@ -96,10 +94,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
         {
             LatestScores = new Dictionary<(IAgentBehavior, Target), float>();
-            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
+
             var target = new Target();
-            target.Formation = TargetFormation;
-            LatestScores.Add((this, target), UtilityFunction(target));
+            target.Formation = ChooseTargetFormation(Agent, Target.Formation);
+
+            LatestScores.Add((this, target), UtilityFunction(target)); //TODO: Should consider more targets
             return LatestScores;
         }
 

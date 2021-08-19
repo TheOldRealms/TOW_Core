@@ -10,18 +10,14 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
     public class DirectionalMovingAoEAgentCastingBehavior : AbstractAgentCastingBehavior
     {
-        private List<Axis> axes;
-
         public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Positional = true;
-            axes = new List<Axis>();
-            axes.Add(new Axis());
         }
 
         public override void Execute()
         {
-            var castingPosition = CalculateCastingPosition(TargetFormation);
+            var castingPosition = CalculateCastingPosition(Target.Formation);
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 
@@ -51,15 +47,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return castingPosition;
         }
 
-        protected override float UtilityFunction()
+
+        protected override float UtilityFunction(Target target)
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
             {
                 return 0.0f;
             }
 
-            TargetFormation = ChooseTargetFormation(Agent, TargetFormation);
-            if (TargetFormation != null && TargetFormation.CurrentPosition.Distance(Agent.Position.AsVec2) < 40 )
+            var targetFormation = target.Formation;
+            if (targetFormation != null && targetFormation.CurrentPosition.Distance(Agent.Position.AsVec2) < 40)
             {
                 return 0.8f;
             }

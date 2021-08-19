@@ -12,7 +12,9 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
-        public AbilityManagerMissionLogic() { }
+        public AbilityManagerMissionLogic()
+        {
+        }
 
         public override void OnMissionTick(float dt)
         {
@@ -23,6 +25,7 @@ namespace TOW_Core.Abilities
                 {
                     Agent.Main.CastCurrentAbility();
                 }
+
                 if (Input.IsKeyPressed(InputKey.E))
                 {
                     Agent.Main.SelectNextAbility();
@@ -36,7 +39,7 @@ namespace TOW_Core.Abilities
             if (agent.IsAbilityUser())
             {
                 agent.AddComponent(new AbilityComponent(agent));
-                if (agent.IsAIControlled)
+                if (agent.IsAIControlled && !Mission.Current.IsFriendlyMission)
                 {
                     agent.AddComponent(new WizardAIComponent(agent));
                 }
