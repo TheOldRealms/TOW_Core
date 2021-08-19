@@ -37,5 +37,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         {
             throw new NotImplementedException();
         }
+
+        public bool IsPositional()
+        {
+            return false;
+        }
     }
 }

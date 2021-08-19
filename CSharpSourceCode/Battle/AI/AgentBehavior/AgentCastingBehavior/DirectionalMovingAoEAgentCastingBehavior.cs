@@ -12,7 +12,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
-            Positional = true;
+          
         }
 
         public override void Execute()
@@ -47,6 +47,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return castingPosition;
         }
 
+
+        public override bool IsPositional()
+        {
+            return true;
+        }
 
         protected override float UtilityFunction(Target target)
         {

@@ -13,11 +13,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     public abstract class AbstractAgentCastingBehavior : IAgentBehavior
     {
         protected readonly Agent Agent;
-        protected bool Positional = false;
         public int Range;
         public readonly AbilityTemplate AbilityTemplate;
         public readonly int AbilityIndex;
         public Target Target = new Target();
+        public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -30,6 +30,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             AbilityTemplate = abilityTemplate;
         }
+
+        public abstract Boolean IsPositional();
+        protected abstract float UtilityFunction(Target target);
 
         public virtual void Execute()
         {
@@ -87,9 +90,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
 
-        public virtual void Terminate()
-        {
-        }
+        public abstract void Terminate();
 
         public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
         {
@@ -101,10 +102,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             LatestScores.Add((this, target), UtilityFunction(target)); //TODO: Should consider more targets
             return LatestScores;
         }
-
-        public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
-
-        protected abstract float UtilityFunction(Target target);
 
         protected static Formation ChooseTargetFormation(Agent agent, Formation currentTargetFormation)
         {

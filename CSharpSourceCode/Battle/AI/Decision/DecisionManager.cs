@@ -6,13 +6,11 @@ namespace TOW_Core.Battle.AI.Decision
 {
     public static class DecisionManager
     {
-        public static (IAgentBehavior, Target) DecideCastingBehavior(List<IAgentBehavior> objects)
+        public static (IAgentBehavior, Target) EvaluateCastingBehaviors(List<IAgentBehavior> behaviors)
         {
-            var utilityValues = objects
+            return Highest(behaviors
                 .SelectMany(behavior => behavior.CalculateUtility())
-                .ToDictionary(e => e.Key, e => e.Value);
-            
-            return Highest(utilityValues);
+                .ToDictionary(e => e.Key, e => e.Value));
         }
 
         private static (IAgentBehavior, Target) Highest(Dictionary<(IAgentBehavior, Target), float> utilityValues)

@@ -10,7 +10,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public CenteredStaticAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
         }
-        
+
+        public override void Terminate()
+        {
+        }
+
+        public override bool IsPositional()
+        {
+            return true;
+        }
+
         protected override float UtilityFunction(Target target)
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())

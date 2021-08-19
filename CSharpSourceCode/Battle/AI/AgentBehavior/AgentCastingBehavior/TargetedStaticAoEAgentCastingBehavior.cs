@@ -11,6 +11,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
         }
 
+        public override void Terminate()
+        {
+        }
+
+        public override bool IsPositional()
+        {
+            return false;
+        }
+
         protected override float UtilityFunction(Target target)
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())

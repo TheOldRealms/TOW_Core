@@ -18,7 +18,7 @@ namespace TOW_Core.Battle.AI.Components
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
         private readonly IAgentBehavior _currentTacticalBehavior;
         private AbstractAgentCastingBehavior _currentCastingBehavior;
-
+        
         public Mat3 SpellTargetRotation = Mat3.Identity;
         public List<IAgentBehavior> AvailableCastingBehaviors { get; }
 
@@ -29,7 +29,7 @@ namespace TOW_Core.Battle.AI.Components
                 agent.RemoveComponent(item);
 
             _currentTacticalBehavior = new KeepSafeAgentTacticalBehavior(agent, this);
-            AvailableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(agent, this));
+            AvailableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(agent));
         }
 
 
@@ -47,20 +47,23 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-
-            var newBehavior = DecisionManager.DecideCastingBehavior(AvailableCastingBehaviors);
-            if (newBehavior.Item1 != _currentCastingBehavior) _currentCastingBehavior?.Terminate();
-
-            _currentCastingBehavior = newBehavior.Item1 as AbstractAgentCastingBehavior;
-            if (_currentCastingBehavior != null)
-            {
-                _currentCastingBehavior.Target = newBehavior.Item2;
-                TOWCommon.Say(_currentCastingBehavior?.GetType().Name);
-            }
+            _currentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors.FindAll(b => b.IsPositional()), _currentCastingBehavior);
         }
 
+        private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
+        {
+            var (newBehavior, target) = DecisionManager.EvaluateCastingBehaviors(availableCastingBehaviors);
+            if (newBehavior != current) current?.Terminate();
 
-        private static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent, WizardAIComponent component)
+            var returnBehavior = newBehavior as AbstractAgentCastingBehavior;
+            if (returnBehavior != null)
+            {
+                returnBehavior.Target = target;
+            }
+            return returnBehavior;
+        }
+
+        private static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
         {
             var castingBehaviors = new List<AbstractAgentCastingBehavior>();
             var index = 0;
