@@ -143,6 +143,7 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+                starter.CampaignBehaviors.RemoveAllOfType(typeof(KingdomDecisionProposalBehavior));
 
                 starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
@@ -156,7 +157,7 @@ namespace TOW_Core
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
-                
+
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());

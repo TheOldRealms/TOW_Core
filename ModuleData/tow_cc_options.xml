@@ -78,7 +78,7 @@
 		<OptionFlavourText>Strange rituals and a life on the run. You never truly understood what your parents were, all you can remember is having to flee your home to the chants of heretic and a burning pyre.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
+	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_merchant_wine">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Charm</string>
@@ -102,7 +102,7 @@
 		<OptionFlavourText>Beastmen and bandits are rife within the Empire and your home was in need of strong men, training alongside the militia you soon gained a strong arm and a taste for combat.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
+	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_merchant_assistant">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Polearm</string>
