@@ -160,7 +160,6 @@ namespace TOW_Core
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
-                starter.AddModel(new TowMapWeatherModel());
                 starter.AddModel(new TowKingdomPeaceModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
