@@ -23,21 +23,17 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Initialize);
-            CampaignEvents.HourlyTickSettlementEvent.AddNonSerializedListener(this, HourlyTick);
+            CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, SettlementEntered);
         }
 
-        private void HourlyTick(Settlement obj)
+        private void SettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
         {
-            if (obj == null || !obj.IsFortification) return;
-            foreach(var party in obj.Parties)
+            if (arg1 == null || arg2 == null || arg3 == null || !arg3.CanRaiseDead()) return;
+            if (arg1.MemberRoster.TotalManCount < arg1.Party.PartySizeLimit)
             {
-                if (party.LeaderHero == null || !party.LeaderHero.CanRaiseDead() || party == MobileParty.MainParty) continue;
-                if (party.MemberRoster.TotalManCount < party.Party.PartySizeLimit)
+                if (_skeleton != null)
                 {
-                    if (_skeleton != null)
-                    {
-                        MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, Math.Min(10,party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
-                    }
+                    MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, Math.Min(10, arg1.Party.PartySizeLimit - arg1.MemberRoster.TotalManCount));
                 }
             }
         }

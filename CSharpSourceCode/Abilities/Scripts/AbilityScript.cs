@@ -21,6 +21,8 @@ namespace TOW_Core.Abilities.Scripts
         private bool _hasTickedOnce;
         private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
+        private float _minArmingTimeForCollision = 0.1f;
+        private bool _canCollide;
 
         internal void SetAgent(Agent agent)
         {
@@ -74,13 +76,12 @@ namespace TOW_Core.Abilities.Scripts
             {
                 _timeSinceLastTick = 0;
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
-                _hasTickedOnce = true;
             }
             else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
             {
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
-                _hasTickedOnce = true;
             }
+            _hasTickedOnce = true;
         }
 
         private MatrixFrame UpdatePosition(float dt)
@@ -115,6 +116,10 @@ namespace TOW_Core.Abilities.Scripts
                     _isFading = true;
                 }
             }
+            if(_abilityLife > _minArmingTimeForCollision)
+            {
+                _canCollide = true;
+            }
         }
 
         private void UpdateSound(Vec3 position)
@@ -148,7 +153,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override void OnPhysicsCollision(ref PhysicsContact contact)
         {
             base.OnPhysicsCollision(ref contact);
-            if (_ability.Template.TriggerType == TriggerType.OnCollision)
+            if (_ability.Template.TriggerType == TriggerType.OnCollision && _canCollide)
             {
                 HandleCollision(contact.ContactPair0.Contact0.Position, contact.ContactPair0.Contact0.Normal);
             }
@@ -156,7 +161,8 @@ namespace TOW_Core.Abilities.Scripts
 
         protected virtual void HandleCollision(Vec3 position, Vec3 normal)
         {
-            if (!_hasCollided)
+            if (!_hasTickedOnce) return;
+            if (!_hasCollided && position.IsValid && position.IsNonZero)
             {
                 GameEntity.FadeOut(0.05f, true);
                 _isFading = true;

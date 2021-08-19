@@ -40,6 +40,7 @@ using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TOW_Core.Battle.FireArms;
 
 namespace TOW_Core
 {
@@ -142,6 +143,7 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
+                starter.CampaignBehaviors.RemoveAllOfType(typeof(KingdomDecisionProposalBehavior));
 
                 starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
@@ -156,12 +158,14 @@ namespace TOW_Core
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
-                
+
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowMapWeatherModel());
                 starter.AddModel(new TowKingdomPeaceModel());
+
+                CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
         }
 
@@ -173,9 +177,9 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
-            mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
-            mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
+            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
+            mission.AddMissionBehaviour(new AbilityHUDMissionView());
+            mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());

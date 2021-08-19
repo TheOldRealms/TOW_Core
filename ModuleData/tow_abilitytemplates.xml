@@ -4,7 +4,7 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="15" 
+      CoolDown="20" 
       WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -27,7 +27,8 @@
       CastType="WindUp" 
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="explosion_01">
+      TriggeredEffectID="explosion_01"
+      Offset="0.5">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>

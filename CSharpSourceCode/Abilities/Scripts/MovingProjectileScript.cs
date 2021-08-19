@@ -8,7 +8,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             var collisionRadius = _ability.Template.Radius;
             var rayCastForClosestAgent = Mission.Current.RayCastForClosestAgent(_previousFrameOrigin, GameEntity.GetGlobalFrame().origin, out float _, _casterAgent.Index, collisionRadius);
-            return rayCastForClosestAgent != null;
+            return rayCastForClosestAgent != null && !rayCastForClosestAgent.IsMount;
         }
     }
 }

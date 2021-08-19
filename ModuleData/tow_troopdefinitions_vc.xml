@@ -1,5 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <NPCCharacters>
+	<!-- Sylvanian Basic villager-->
+	<NPCCharacter id="tow_vc_villager" default_group="Infantry" level="1" name="{=!}Sylvanian Villager" occupation="Villager" culture="Culture.khuzait" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+		<face>
+			<BodyProperties version="4" age="25.57" weight="0.3164" build="0.2485" key="00052008000000010070030000001603003300110010200000000001010000000144501304010000000000000000000000000000000000000000000010880000" />
+			<BodyPropertiesMax version="4" age="69.94" weight="0.9923" build="0.7052" key="0010F80FC000370FFFFFEFEFFEEFFF7EEEFFFFFFFEF7EFFEFFFFFFFFFEFFFFFF07CBF0780CFFFFEF000000000000000000000000000000000000000061809105" />
+		</face>
+		<upgrade_targets>
+			<upgrade_target id="NPCCharacter.tow_empire_recruit_vc" />
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+				<equipment slot="Head" id="Item.empire_hat_005" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+				<equipment slot="Head" id="Item.empire_hat_005" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_polearm_1_t1" />
+				<equipment slot="Head" id="Item.empire_hat_002" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster civilian="true">
+				<equipment slot="Item0" id="Item.peasant_sickle_1_t1" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_sickle_1_t1" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_2haxe_1_t1" />
+				<equipment slot="Head" id="Item.leather_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_hammer_2_t1" />
+				<equipment slot="Head" id="Item.empire_hat_005" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_hammer_1_t1" />
+				<equipment slot="Head" id="Item.empire_hat_002" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_pitchfork_2_t1" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_hatchet_1_t1" />
+				<equipment slot="Head" id="Item.leather_cap" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_pitchfork_1_t1" />
+				<equipment slot="Head" id="Item.empire_hat_005" />
+				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.western_spear_2_t2" />
+				<equipment slot="Head" id="Item.empire_hat_002" />
+				<equipment slot="Body" id="Item.statetroop_uniform_001_body" />
+				<equipment slot="Leg" id="Item.statetroop_uniform_001_leg" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
 	<!-- Vampire Counts Basic troop tree-->
 	<!-- Sylvanian State Troops-->
 	<NPCCharacter id="tow_empire_recruit_vc" default_group="Infantry" level="6" name="{=!}Sylvanian Recruit" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
@@ -470,6 +554,112 @@
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_bk_horse_harness_001" />
 			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+
+	<!-- Caravan guards, occupation type is important -->
+	<NPCCharacter id="tow_caravan_vc_captain" default_group="Cavalry" level="26" name="{=!}Sylvanian Caravan Captain" occupation="CaravanGuard" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level26">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default" civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+
+	<NPCCharacter id="tow_caravan_vc_guard" default_group="Cavalry" level="21" name="{=!}Caravan Guard Cavalry" occupation="CaravanGuard" culture="Culture.khuzait" upgrade_requires="ItemCategory.horse" skill_template="SkillSet.tow_skills_level21">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.empire_shield_001" />
+				<equipment slot="Head" id="Item.sallet_no_visor" />
+				<equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
+				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
+				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+				<equipment slot="Item1" id="Item.empire_shield_008" />
+				<equipment slot="Head" id="Item.sallet_base" />
+				<equipment slot="Cape" id="Item.empire_halberdier_shoulders_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
+				<equipment slot="HorseHarness" id="Item.imperial_riding_harness" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default" civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+
+	<NPCCharacter id="tow_caravan_vc_ranged" default_group="Ranged" level="21" name="{=!}Sylvanian Crossbowman" occupation="CaravanGuard" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_arming_coif" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_padded_cloth" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_c" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.vlandia_sword_3_t4" />
+				<equipment slot="Head" id="Item.militia_helmet_feather" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.empire_free_company_armor" />
+				<equipment slot="Gloves" id="Item.plated_strip_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default" civilian="true" />
 		</Equipments>
 	</NPCCharacter>
 </NPCCharacters>
