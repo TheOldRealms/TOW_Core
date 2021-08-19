@@ -47,7 +47,7 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-            _currentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors.FindAll(b => b.IsPositional()), _currentCastingBehavior);
+            _currentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors, _currentCastingBehavior);
         }
 
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
@@ -59,6 +59,7 @@ namespace TOW_Core.Battle.AI.Components
             if (returnBehavior != null)
             {
                 returnBehavior.Target = target;
+                TOWCommon.Say(newBehavior.GetType().Name);
             }
             return returnBehavior;
         }

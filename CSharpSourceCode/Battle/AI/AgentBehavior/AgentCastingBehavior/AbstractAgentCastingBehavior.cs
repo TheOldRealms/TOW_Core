@@ -40,7 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             var medianAgent = Target.Formation?.GetMedianAgent(true, false, Target.Formation.GetAveragePositionOfUnits(true, false));
 
-            if (medianAgent != null && medianAgent.Position.Distance(Agent.Position) < Range)
+            if (medianAgent != null && (IsPositional() || medianAgent.Position.Distance(Agent.Position) < Range))
             {
                 if (HaveLineOfSightToAgent(medianAgent))
                 {
