@@ -12,7 +12,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
-          
         }
 
         public override void Execute()
@@ -55,6 +54,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override float UtilityFunction(Target target)
         {
+            var axisList = AgentCastingBehaviorMapping.UtilityByType[this.GetType()];
+            
+            axisList.GeometricMean(Agent, Target);
+            
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
             {
                 return 0.0f;

@@ -309,7 +309,6 @@
     <Compile Include="Battle\AI\Decision\Scoring\PiecewiseLinearCurve.cs" />
     <Compile Include="Battle\AI\Decision\Scoring\Polynomial.cs" />
     <Compile Include="Battle\AI\Decision\Scoring\Quadratic.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Scoring.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
