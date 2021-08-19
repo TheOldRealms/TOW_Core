@@ -21,7 +21,7 @@
         </Equipments>
     </NPCCharacter>
 
-	<NPCCharacter id="cc_sigmar_novitiate" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+	<NPCCharacter id="cc_wp_novitiate" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
         </face>
@@ -29,6 +29,23 @@
             <EquipmentRoster>
                 <Equipment slot="Item0" id="Item.flagellant_mace_001" />
                 <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+                <Equipment slot="Body" id="Item.layered_robe" />
+                <Equipment slot="Gloves" id="Item.armwraps" />
+                <Equipment slot="Leg" id="Item.rough_tied_boots" />
+            </EquipmentRoster>
+            <!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+	<NPCCharacter id="cc_sigmar_novitiate" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentRoster>
+                <Equipment slot="Item0" id="Item.wp_hammer_001" />
+                <Equipment slot="Head" id="Item.empire_luthor_huss_helmet" />
                 <Equipment slot="Body" id="Item.layered_robe" />
                 <Equipment slot="Gloves" id="Item.armwraps" />
                 <Equipment slot="Leg" id="Item.rough_tied_boots" />
@@ -48,6 +65,24 @@
                 <Equipment slot="Item0" id="Item.empire_shield_006" />
                 <Equipment slot="Item1" id="Item.sturgia_sword_1_t2" />
                 <Equipment slot="Head" id="Item.worn_militia_helmet_feather" />
+                <Equipment slot="Body" id="Item.statetroop_uniform_004_body" />
+                <Equipment slot="Leg" id="Item.battania_leather_boots" />
+            </EquipmentRoster>
+            <!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+	
+	<NPCCharacter id="cc_company_militia" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+        <Equipments>
+            <EquipmentRoster>
+                <Equipment slot="Item0" id="Item.empire_shield_006" />
+                <Equipment slot="Item1" id="Item.sturgia_sword_1_t2" />
+                <Equipment slot="Head" id="Item.worn_militia_helmet" />
                 <Equipment slot="Body" id="Item.statetroop_uniform_002_body" />
                 <Equipment slot="Leg" id="Item.battania_leather_boots" />
             </EquipmentRoster>
@@ -64,7 +99,7 @@
         <Equipments>
             <EquipmentRoster>
             
-                <Equipment slot="Head" id="Item.decorated_nomad_cap" />
+                <Equipment slot="Head" id="Item.empire_tracker_hat_001" />
                 <Equipment slot="Body" id="Item.half_apron" />
                 <Equipment slot="Cape" id="Item.a_battania_cloak_a" />
                 <Equipment slot="Leg" id="Item.fine_town_boots" />
@@ -119,11 +154,10 @@
 		</face>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.rapier_001" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.battania_civil_c" />
-				<Equipment slot="Gloves" id="Item.buttoned_leather_bracers" />
-				<Equipment slot="Leg" id="Item.fine_town_boots" />
+				<Equipment slot="Item0" id="Item.battania_mace_2_t2" />
+				<Equipment slot="Head" id="Item.empire_hat_003" />
+				<Equipment slot="Body" id="Item.khuzait_civil_coat" />
+				<Equipment slot="Leg" id="Item.steppe_leather_boots" />
 			</EquipmentRoster>
 			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
 			<EquipmentSet id="npc_wanderer_equipment_template_empire"
@@ -140,6 +174,25 @@
 				<Equipment slot="Item0" id="Item.rapier_001" />
 				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
 				<Equipment slot="Body" id="Item.red_coat_over_mail" />
+				<Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
+				<Equipment slot="Leg" id="Item.steppe_leather_boots" />
+		
+			</EquipmentRoster>
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+			<EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+		</Equipments>
+	</NPCCharacter>nordic_sloven_over_mail
+	
+	<NPCCharacter id="cc_vampire_noble" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<Equipments>
+			<EquipmentRoster>
+				<Equipment slot="Item0" id="Item.rapier_001" />
+				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<Equipment slot="Body" id="Item.nordic_sloven_over_mail" />
 				<Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
 				<Equipment slot="Leg" id="Item.steppe_leather_boots" />
 		
@@ -295,10 +348,11 @@
 		<Equipments>
 			<EquipmentRoster>
 				<Equipment slot="Item0" id="Item.vampire_sword_007" />
-				<Equipment slot="Head" id="Item.vc_necromancer_hood" />
-				<Equipment slot="Cape" id="Item.vampire_lord_cape" />
-				<Equipment slot="Body" id="Item.red_coat_over_mail" />
-				<Equipment slot="Leg" id="Item.fine_town_boots" />
+				<Equipment slot="Head" id="Item.pilgrim_hood" />
+				<Equipment slot="Cape" id="Item.battania_civil_cape" />
+				<Equipment slot="Body" id="Item.nordic_sloven_leather" />
+				<Equipment slot="Leg" id="Item.empire_marius_leitdorf_boots" />
+				<Equipment slot="Gloves" id="Item.empire_marius_leitdorf_gauntlets" />
 			</EquipmentRoster>
 			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
 			<EquipmentSet id="npc_wanderer_equipment_template_empire"
@@ -346,10 +400,47 @@
 		<Equipments>
 			<EquipmentRoster>
 				<Equipment slot="Item0" id="Item.horse_whip" />
-				<Equipment slot="Item1" id="Item.peasant_hammer_1_t2" />
-				<Equipment slot="Head" id="Item.empire_hat_002" />
+				<Equipment slot="Head" id="Item.aserai_civil_f_cape" />
+				<Equipment slot="Body" id="Item.sackcloth_tunic" />
+				<Equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<Equipment slot="Gloves" id="Item.armwraps" />
+				<Equipment slot="Leg" id="Item.steppe_leather_boots" />
+			</EquipmentRoster>
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+			<EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+
+	<NPCCharacter id="cc_blacksmith" default_group="Infantry" name="{=!}dummy" culture="Culture.khuzait" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<Equipments>
+			<EquipmentRoster>
+				<Equipment slot="Item0" id="Item.peasant_hammer_1_t1" />
+				<Equipment slot="Head" id="Item.militia_helmet_black" />	
+				<Equipment slot="Gloves" id="Item.padded_mitten" />
 				<Equipment slot="Body" id="Item.leather_apron" />
 				<Equipment slot="Leg" id="Item.highland_boots" />
+			</EquipmentRoster>
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+			<EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	
+	<NPCCharacter id="cc_engineer" default_group="Infantry" name="{=!}dummy" culture="Culture.khuzait" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<Equipments>
+			<EquipmentRoster>
+				<Equipment slot="Item0" id="Item.peasant_hammer_1_t3" />
+				<Equipment slot="Head" id="Item.open_mail_coif" />	
+				<Equipment slot="Body" id="Item.statetroop_uniform_003_body" />
+				<Equipment slot="Cape" id="Item.pauldron_cape_a" />
+				<Equipment slot="Leg" id="Item.lamellar_plate_boots" />
 			</EquipmentRoster>
 			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
 			<EquipmentSet id="npc_wanderer_equipment_template_empire"
@@ -365,7 +456,7 @@
 			<EquipmentRoster>
 				<Equipment slot="Cape" id="Item.desert_leather_shoulderpad" />
 				<Equipment slot="Head" id="Item.empire_hat_002" />
-				<Equipment slot="Body" id="Item.long_woolen_tunic" />
+				<Equipment slot="Body" id="Item.battania_civil_b" />
 				<Equipment slot="Leg" id="Item.turndown_leather_boots" />
 			</EquipmentRoster>
 			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
@@ -381,9 +472,10 @@
 		<Equipments>
 			<EquipmentRoster>
 				<Equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
-				<Equipment slot="Head" id="Item.leather_studdedhelm_over_headcloth" />
-				<Equipment slot="Body" id="Item.highland_cloth" />
-				<Equipment slot="Leg" id="Item.turndown_leather_boots" />
+				<Equipment slot="Head" id="Item.spangenhelm_with_leather" />
+				<Equipment slot="Body" id="Item.battanian_savage_armor" />
+				<Equipment slot="Leg" id="Item.steppe_leather_boots" />
+				<Equipment slot="Cape" id="Item.a_khuzait_leather_shoulder_b_b" />
 			</EquipmentRoster>
 			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
 			<EquipmentSet id="npc_wanderer_equipment_template_empire"
