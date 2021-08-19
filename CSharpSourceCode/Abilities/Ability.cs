@@ -7,7 +7,6 @@ using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
-using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Abilities.Crosshairs;
 
 namespace TOW_Core.Abilities
@@ -97,7 +96,7 @@ namespace TOW_Core.Abilities
 
             var frame = GetSpawnFrame(casterAgent);
 
-            var entity = SpawnEntity(frame);
+            var entity = SpawnEntity();
             entity.SetGlobalFrame(frame);
 
             AddLight(ref entity);
@@ -123,14 +122,11 @@ namespace TOW_Core.Abilities
                    Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE ||
                    Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
-
-        public bool IsUsingCrosshairPosition()
-        {
-            return _template.AbilityEffectType == AbilityEffectType.Summoning ||
-                   _template.AbilityEffectType == AbilityEffectType.TargetedStatic ||
-                   _template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE;
-        }
-
+        /// <summary>
+        /// Returns Frame of the crosshair
+        /// </summary>
+        /// <param name="casterAgent">Agent is being used for the frame adjustment</param>
+        /// <returns></returns>
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
@@ -167,9 +163,9 @@ namespace TOW_Core.Abilities
             //}
             if (casterAgent.IsAIControlled)
                 frame = UpdateFrameRotationForAI(casterAgent, frame);
-            if (IsGroundAbility())
-                frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-            frame = frame.Advance(Template.Offset);
+            //if (IsGroundAbility())
+            //    frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+            //frame = frame.Advance(Template.Offset);
             return frame;
         }
 
@@ -184,7 +180,7 @@ namespace TOW_Core.Abilities
             return frame;
         }
 
-        private GameEntity SpawnEntity(MatrixFrame frame)
+        private GameEntity SpawnEntity()
         {
             GameEntity entity = null;
             if (Template.ParticleEffectPrefab != "none")

@@ -30,7 +30,9 @@ namespace TOW_Core.Abilities.Scripts
         protected override bool MovesEntity() => true;
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE;
+            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && 
+                   _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE &&
+                   _ability.Template.AbilityEffectType != AbilityEffectType.Summoning;
         }
 
         protected override void OnInit()
@@ -89,7 +91,6 @@ namespace TOW_Core.Abilities.Scripts
                 GameEntity.SetGlobalFrame(newframe);
                 GameEntity.GetBodyShape().ManualInvalidate();
             }
-            frame = GameEntity.GetGlobalFrame();
             return frame;
         }
 

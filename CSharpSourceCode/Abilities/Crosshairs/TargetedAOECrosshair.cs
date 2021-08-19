@@ -12,9 +12,6 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             UpdateFrame();
-            //MatrixFrame frame = crosshair.GetFrame();
-            //frame.Scale(new Vec3(10f, 10f, 1f, -1f));
-            //crosshair.SetFrame(ref frame);
             IsVisible = false;
         }
         public override void Tick()

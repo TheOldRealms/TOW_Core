@@ -10,7 +10,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public SummoningCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
             _caster = caster;
-            _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "custom_marker", false);
+            _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
             UpdatePosition();

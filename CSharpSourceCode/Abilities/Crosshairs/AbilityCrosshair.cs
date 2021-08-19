@@ -7,6 +7,9 @@ using TOW_Core.Battle.CrosshairMissionBehavior;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
+    /// <summary>
+    /// Base class for all crosshairs
+    /// </summary>
     public abstract class AbilityCrosshair : IDisposable
     {
         public AbilityCrosshair(AbilityTemplate template)
@@ -16,23 +19,33 @@ namespace TOW_Core.Abilities.Crosshairs
             this._mission = Mission.Current;
             this._missionScreen = _mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
         }
-
+        /// <summary>
+        /// Method that executes every time the mission screen ticks
+        /// </summary>
         public virtual void Tick()
         {
 
         }
+        /// <summary>
+        /// Method that makes the crosshair visible
+        /// </summary>
         public virtual void Show()
         {
             IsVisible = true;
         }
+        /// <summary>
+        /// Method that makes the crosshair invisible
+        /// </summary>
         public virtual void Hide()
         {
             IsVisible = false;
         }
+        
         public virtual void Dispose()
         {
             _crosshair.FadeOut(3, true);
         }
+
         protected void AddLight()
         {
             var light = Light.CreatePointLight(template.TargetCapturingRadius);
@@ -68,14 +81,6 @@ namespace TOW_Core.Abilities.Crosshairs
                 this._crosshair.SetFrame(ref frame);
             }
         }
-        public MatrixFrame Frame
-        {
-            get => _crosshair.GetFrame();
-            protected set
-            {
-                _crosshair.SetFrame(ref value);
-            }
-        }
         public Mat3 Rotation
         {
             get => _crosshair.GetFrame().rotation;
@@ -84,6 +89,14 @@ namespace TOW_Core.Abilities.Crosshairs
                 MatrixFrame frame = _crosshair.GetFrame();
                 frame.rotation = value;
                 _crosshair.SetFrame(ref frame);
+            }
+        }
+        public MatrixFrame Frame
+        {
+            get => _crosshair.GetFrame();
+            protected set
+            {
+                _crosshair.SetFrame(ref value);
             }
         }
         public CrosshairType CrosshairType { get; }
