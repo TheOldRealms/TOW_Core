@@ -153,7 +153,6 @@ namespace TOW_Core
                 starter.AddBehavior(new LibraryTownBehaviour());
 
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.Models.RemoveAllOfType(typeof(MapWeatherModel));
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
@@ -183,6 +182,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
             if(Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
