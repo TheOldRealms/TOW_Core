@@ -15,73 +15,24 @@ namespace TOW_Core.Battle.StatusEffects
 {
     public class StatusEffectMissionLogic : MissionLogic
     {
-        private Dictionary<string, StatusEffect> _presentEffects = new Dictionary<string, StatusEffect>();
-        
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
-            StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
-            agent.AddComponent(effectComponent);
-            if(!_presentEffects.ContainsKey("crumble") && agent.IsUndead())
+            if (agent.IsHuman)
             {
-                _presentEffects.Add("crumble", StatusEffectManager.GetStatusEffect("crumble"));
-            }
-        }
-        
-        public override void OnAfterMissionCreated()
-        {
-            base.OnAfterMissionCreated();
-            var attacker = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Attacker, true);
-            var defender = Mission.Current.Teams.GetAlliesOf(Mission.Current.Teams.Defender, true);
-            var agents = Mission.Current.Agents;
-            //assign Team allies to Parties
-
-            foreach (var team in attacker)
-            {
-                foreach (Agent agent in team.TeamAgents)
-                {
-                    if(agent.Character.IsPlayerCharacter||agent.Character.IsHero)
-                        TOWCommon.Say(agent.Name);
-                    
-                    if (agent.IsHero|| agent.IsMainAgent)
-                    {
-                        TOWCommon.Say(agent.Name);
-                    }
-                    else
-                    {
-                        TOWCommon.Say("agent: common enemy " );
-                    }
-                }
-            }
-            
-            foreach (var team in defender)
-            {
-                foreach (Agent agent in team.TeamAgents)
-                {
-                    if(agent.Character.IsPlayerCharacter||agent.Character.IsHero)
-                        TOWCommon.Say(agent.Name);
-                    
-                    if (agent.IsHero||agent.IsMainAgent)
-                    {
-                        TOWCommon.Say("agent "+agent.Name);
-                    }
-                    else
-                    {
-                        TOWCommon.Say("agent: common enemy " );
-                    }
-                }
-                
+                StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
+                agent.AddComponent(effectComponent);
             }
         }
         
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            foreach(var agent in Mission.Current.AllAgents)
+            foreach(var agent in Mission.Current.Agents)
             {
                 if (agent.GetComponent<StatusEffectComponent>() != null)
                 {
-                    if (agent.IsActive() && agent.Health > 0.1f)
+                    if (agent.IsActive() && agent.Health > 1f)
                     {
                         var comp = agent.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);

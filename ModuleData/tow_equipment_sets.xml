@@ -139,5 +139,25 @@
 			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
 		</EquipmentSet>
 	</EquipmentRoster>
+	
+	<EquipmentRoster id="wight_king_template" culture="Culture.khuzait">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.vampire_sword_004" />
+	  <Equipment slot="Item1" id="Item.vampire_red_shield_007" />
+      <Equipment slot="Head" id="Item.vc_wight_king_helmet" />
+	  <Equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      <Equipment slot="Cape" id="Item.vc_wight_king_body" />
+      <Equipment slot="Gloves" id="Item.vc_wight_king_gauntlets" />
+      <Equipment slot="Leg" id="Item.vc_wight_king_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.vampire_sword_004" />
+      <Equipment slot="Head" id="Item.vc_wight_king_helmet" />
+	  <Equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      <Equipment slot="Cape" id="Item.vc_wight_king_body" />
+      <Equipment slot="Gloves" id="Item.vc_wight_king_gauntlets" />
+      <Equipment slot="Leg" id="Item.vc_wight_king_boots" />
+    </EquipmentSet>
+  </EquipmentRoster>
 
 </EquipmentRosters>

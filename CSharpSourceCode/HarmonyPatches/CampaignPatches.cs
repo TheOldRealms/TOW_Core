@@ -61,6 +61,78 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
+        [HarmonyPatch(typeof(RecruitmentCampaignBehavior), "FindRandomMercenaryTroop")]
+        public static void OverrideMercenaryTypes(CharacterObject mercenaryTroop, ref float __result, ref CharacterObject ____selectedTroop)
+        {
+            if (____selectedTroop == null) return;
+            if (!____selectedTroop.IsTOWTemplate())
+            {
+                ____selectedTroop = CharacterObject.All.GetRandomElementWithPredicate(x => x.IsTOWTemplate() && x.StringId.StartsWith("tow_dog_"));
+            }
+            __result = 1;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(CaravanPartyComponent), "InitializeCaravanOnCreation")]
+        public static bool CaravanLeaderOverride(MobileParty mobileParty, Hero caravanLeader, ItemRoster caravanItems, int troopToBeGiven, CaravanPartyComponent __instance)
+        {
+            __instance.MobileParty.Party.Owner = __instance.Owner;
+            __instance.MobileParty.HomeSettlement = __instance.Settlement;
+            __instance.MobileParty.Aggressiveness = 0f;
+
+            if (troopToBeGiven == 0)
+            {
+                float num;
+                if (MBRandom.RandomFloat < 0.67f)
+                {
+                    num = (1f - MBRandom.RandomFloat * MBRandom.RandomFloat) * 0.5f + 0.5f;
+                }
+                else
+                {
+                    num = 1f;
+                }
+                int num2 = (int)((float)mobileParty.Party.PartySizeLimit * num);
+                if (num2 >= 10)
+                {
+                    num2--;
+                }
+                troopToBeGiven = num2;
+            }
+            mobileParty.InitializeMobileParty(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, 0f, 0f, troopToBeGiven);
+            if (caravanLeader != null)
+            {
+                mobileParty.MemberRoster.AddToCounts(caravanLeader.CharacterObject, 1, true, 0, 0, true, -1);
+            }
+            else
+            {
+                CharacterObject character2 = __instance.Settlement.Culture.CaravanMaster;
+                mobileParty.MemberRoster.AddToCounts(character2, 1, true, 0, 0, true, -1);
+            }
+            mobileParty.Party.Visuals.SetMapIconAsDirty();
+            mobileParty.InitializePartyTrade(10000 + ((__instance.Owner.Clan == Clan.PlayerClan) ? 5000 : 0));
+            if (caravanItems != null)
+            {
+                mobileParty.ItemRoster.Add(caravanItems);
+                return false;
+            }
+            float num3 = 10000f;
+            ItemObject itemObject = null;
+            foreach (ItemObject itemObject2 in TaleWorlds.CampaignSystem.Items.All)
+            {
+                if (itemObject2.ItemCategory == DefaultItemCategories.PackAnimal && !itemObject2.NotMerchandise && (float)itemObject2.Value < num3)
+                {
+                    itemObject = itemObject2;
+                    num3 = (float)itemObject2.Value;
+                }
+            }
+            if (itemObject != null)
+            {
+                mobileParty.ItemRoster.Add(new ItemRosterElement(itemObject, (int)((float)mobileParty.MemberRoster.TotalManCount * 0.5f), null));
+            }
+            return false;
+        }
+
+        [HarmonyPostfix]
         [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "OnNewGameCreated")]
         public static void AfterWandererTemplatesBuilt(ref List<CharacterObject> ____companionTemplates)
         {
@@ -101,9 +173,13 @@ namespace TOW_Core.HarmonyPatches
                         HeroCreator.CreateHeroAtOccupation(Occupation.GangLeader, settlement);
                     }
 
-                    for (int n = 0; n < list.Count; n++)
+                    for (int n = 0; n < 2; n++)
                     {
-                        ____companions.Add(CreateTowWanderer(settlement, list[n]));
+                        var obj = list.GetRandomElementWithPredicate(x => x.Culture == settlement.Culture);
+                        if(obj != null)
+                        {
+                            ____companions.Add(CreateTowWanderer(settlement, obj));
+                        }
                     }
                 }
                 else if (settlement.IsVillage)
@@ -198,22 +274,6 @@ namespace TOW_Core.HarmonyPatches
             newlist.Add(towOption);
             newlist.Sort((x, y) => x.OrderIndex.CompareTo(y.OrderIndex));
             __result = newlist;
-        }
-
-        //TODO!!! this is partially responsible for poor campaign performance. When Rob is ready with the map, the distance cache has to be generated with a script from within the scene editor.
-        /*[HarmonyPrefix]
-        [HarmonyPatch(typeof(DefaultMapDistanceModel), "LoadCacheFromFile")]
-        public static bool DisableSettlementCache(ref System.IO.BinaryReader reader)
-        {
-            reader = null;
-            return true;
-        }*/
-
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(CampaignOptions), MethodType.Constructor)]
-        public static void DisableLifeDeathCycleByDefault()
-        {
-            CampaignOptions.IsLifeDeathCycleDisabled = true;
         }
 
         [HarmonyPostfix]

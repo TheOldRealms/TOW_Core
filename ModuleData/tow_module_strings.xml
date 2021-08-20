@@ -47,6 +47,15 @@
 		<string id="response_2.tow_wanderer_vampire_1" text="{=!}Hold thy tongue!" />
 		<string id="backstory_d.tow_wanderer_vampire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
 		<string id="generic_backstory.tow_wanderer_vampire_1" text="{=!}I'm a Necromancer. Who needs summoning? " />
+		
+		<string id="prebackstory.tow_wanderer_vampire_2" text="{=!}Make it fast!" />
+		<string id="backstory_a.tow_wanderer_vampire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_b.tow_wanderer_vampire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="backstory_c.tow_wanderer_vampire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="response_1.tow_wanderer_vampire_2" text="{=!}Most wretched of you." />
+		<string id="response_2.tow_wanderer_vampire_2" text="{=!}Hold thy tongue!" />
+		<string id="backstory_d.tow_wanderer_vampire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="generic_backstory.tow_wanderer_vampire_2" text="{=!}I'm a Necromancer. Who needs summoning? " />
 
 	</strings>
 </base>

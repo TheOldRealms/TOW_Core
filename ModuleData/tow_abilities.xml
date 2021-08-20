@@ -1,21 +1,19 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfCharacterAbilityTuple xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	
-	<CharacterAbilityTuple CharacterID="emp_lord">
+
+  <!-- custom battle lords -->
+  <CharacterAbilityTuple CharacterID="emp_lord">
     <Abilities>WindOfDeath</Abilities>
     <Abilities>HealingAOE</Abilities>
     <Abilities>BurningHead</Abilities>
     <Abilities>ScreamingSkull</Abilities>
     <Abilities>SummonSkeleton</Abilities>
-	</CharacterAbilityTuple>
-	<CharacterAbilityTuple CharacterID="vc_lord">
-		<Abilities>Fireball</Abilities>
-		<Abilities>WindOfDeath</Abilities>
-	</CharacterAbilityTuple>
-    <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
-		<Abilities>Fireball</Abilities>
   </CharacterAbilityTuple>
-    <CharacterAbilityTuple CharacterID="wizard_lord">
+  <CharacterAbilityTuple CharacterID="vc_lord">
+    <Abilities>Fireball</Abilities>
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="wizard_lord">
     <Abilities>Fireball</Abilities>
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
@@ -24,6 +22,15 @@
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
 
+  <!-- empire wanderers -->
+  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
+    <Abilities>Fireball</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_1">
+    <Abilities>HealingAOE</Abilities>
+  </CharacterAbilityTuple>
+
+  <!-- VC lords -->
   <CharacterAbilityTuple CharacterID="sylvania_clan_1_1">
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
@@ -34,6 +41,14 @@
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="vc_lord_sylvania_third_1">
+    <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+
+  <!-- vampire wanderers -->
+  <CharacterAbilityTuple CharacterID="tow_wanderer_vampire_0">
+    <Abilities>SummonSkeleton</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="tow_wanderer_vampire_1">
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
 

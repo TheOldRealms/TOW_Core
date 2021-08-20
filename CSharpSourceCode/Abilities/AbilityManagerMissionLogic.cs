@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
@@ -36,6 +37,19 @@ namespace TOW_Core.Abilities
             if (Input.IsKeyPressed(InputKey.E))
             {
                 Agent.Main.SelectNextAbility();
+            }
+        }
+
+        public override void OnAgentCreated(Agent agent)
+        {
+            base.OnAgentCreated(agent);
+            if (agent.IsAbilityUser())
+            {
+                agent.AddComponent(new AbilityComponent(agent));
+                if (agent.IsAIControlled)
+                {
+                    agent.AddComponent(new WizardAIComponent(agent));
+                }
             }
         }
     }
