@@ -58,7 +58,7 @@ namespace TOW_Core.Battle.AI.Components
             var returnBehavior = newBehavior as AbstractAgentCastingBehavior;
             if (returnBehavior != null)
             {
-                returnBehavior.Target = target;
+                returnBehavior.CurrentTarget = target;
                 TOWCommon.Say(newBehavior.GetType().Name);
             }
 

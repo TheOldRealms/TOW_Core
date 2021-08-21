@@ -84,7 +84,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 90, ScoringFunctions.Logistic(0.5f, 4, x => 1 - x), DistanceToTarget()),
+                    new Axis(0, 80, ScoringFunctions.Logistic(0.5f, 4, x => 1 - x), DistanceToTarget()),
                     new Axis(0, 300, x => x, FormationPower()),
                     new Axis(0, 1, x => 1 - x, Dispersedness()),
                     new Axis(0, 1, x => 1 - x, CavalryUnitRatio()),

@@ -18,15 +18,17 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public int Range;
         public readonly AbilityTemplate AbilityTemplate;
         public readonly int AbilityIndex;
-        public Target Target = new Target();
+        public Target CurrentTarget = new Target();
         public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
-        protected WizardAIComponent _component;
+
+        private WizardAIComponent _component;
+        public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
+
         protected List<Axis> AxisList;
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
             Agent = agent;
-            _component = agent.GetComponent<WizardAIComponent>();
             AbilityIndex = abilityIndex;
             if (abilityTemplate != null)
             {
@@ -44,7 +46,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             if (Agent.GetCurrentAbility().IsOnCooldown()) return;
 
-            var medianAgent = Target.Formation?.GetMedianAgent(true, false, Target.Formation.GetAveragePositionOfUnits(true, false));
+            var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
 
             if (medianAgent != null && (IsPositional() || medianAgent.Position.Distance(Agent.Position) < Range))
             {
@@ -116,8 +118,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 return 0.0f;
             }
 
-            var hysteresis = _component.CurrentCastingBehavior == this && target.Formation == Target.Formation ? 0.25f : 0.0f;
-            return hysteresis + AxisList.GeometricMean(Agent, Target);
+            var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? 0.25f : 0.0f;
+            return hysteresis + AxisList.GeometricMean(Agent, target);
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
