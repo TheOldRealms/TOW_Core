@@ -52,16 +52,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return true;
         }
-
-        protected override float UtilityFunction(Target target)
-        {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
-            {
-                return 0.0f;
-            }
-
-            var hysteresis = _component.CurrentCastingBehavior == this ? 0.25f : 0.0f;
-            return hysteresis + AgentCastingBehaviorMapping.UtilityByType[GetType()].GeometricMean(Agent, Target);
-        }
+        
     }
 }

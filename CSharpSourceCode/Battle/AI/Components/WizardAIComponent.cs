@@ -76,7 +76,7 @@ namespace TOW_Core.Battle.AI.Components
                 index++;
             }
 
-            castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
+            castingBehaviors.Add(new PreserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
 
             return castingBehaviors;
         }

@@ -4,9 +4,9 @@ using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class ConserveWindsAgentCastingBehavior : AbstractAgentCastingBehavior
+    public class PreserveWindsAgentCastingBehavior : AbstractAgentCastingBehavior
     {
-        public ConserveWindsAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex) : base(agent, abilityTemplate, abilityIndex)
+        public PreserveWindsAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex) : base(agent, abilityTemplate, abilityIndex)
         {
         }
 
@@ -26,7 +26,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override float UtilityFunction(Target target)
         {
-            return 0.5f;
+            return 0.4f;
         }
     }
 }

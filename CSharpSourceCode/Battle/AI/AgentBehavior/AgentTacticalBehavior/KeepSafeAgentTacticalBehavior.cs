@@ -7,10 +7,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         public KeepSafeAgentTacticalBehavior(Agent agent, HumanAIComponent aiComponent) : base(agent, aiComponent)
         {
         }
-        
+
         public override void Execute()
         {
-           ApplyBehaviorParams();
+            ApplyBehaviorParams();
         }
 
         public override void Terminate()
@@ -38,7 +38,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
                 }
             }
         }
-
 
 
         protected bool ShouldAgentSkirmish()

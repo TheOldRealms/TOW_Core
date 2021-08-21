@@ -291,9 +291,9 @@
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorMapping.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\ConserveWindsAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\PreserveWindsAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\MovingProjectileAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\DirectionalMovingAoEAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
@@ -302,13 +302,6 @@
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\ScoringFunction.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Linear.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Logistic.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Logit.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\PiecewiseLinearCurve.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Polynomial.cs" />
-    <Compile Include="Battle\AI\Decision\Scoring\Quadratic.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />

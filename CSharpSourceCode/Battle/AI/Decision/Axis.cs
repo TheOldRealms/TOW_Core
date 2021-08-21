@@ -5,20 +5,26 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public abstract class Axis
+    public class Axis
     {
-        private readonly Scoring.ScoringFunction _function;
+        private float _min;
+        private float _max;
+
+        private readonly Func<float, float> _function;
         private readonly Func<Agent, Target, float> _parameterFunction;
 
-        protected Axis(Scoring.ScoringFunction function, Func<Agent, Target, float> parameterFunction)
+        public Axis(float minInput, float maxInput, Func<float, float> function, Func<Agent, Target, float> parameterFunction)
         {
+            _min = minInput;
+            _max = maxInput;
             _function = function;
             _parameterFunction = parameterFunction;
         }
 
         public float Evaluate(Agent agent, Target target)
         {
-            return _function.Evaluate(_parameterFunction.Invoke(agent, target));
+            var x = _parameterFunction.Invoke(agent, target);
+            return _function.Invoke(Math.Max(_min, Math.Min(_max, x)) / _max);
         }
     }
 

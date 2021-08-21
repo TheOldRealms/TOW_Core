@@ -21,6 +21,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public Target Target = new Target();
         public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
         protected WizardAIComponent _component;
+        protected List<Axis> AxisList;
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -33,6 +34,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             AbilityTemplate = abilityTemplate;
+            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](abilityTemplate);
         }
 
 
@@ -115,7 +117,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             var hysteresis = _component.CurrentCastingBehavior == this && target.Formation == Target.Formation ? 0.25f : 0.0f;
-            return hysteresis + AgentCastingBehaviorMapping.UtilityByType[GetType()].GeometricMean(Agent, Target);
+            return hysteresis + AxisList.GeometricMean(Agent, Target);
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
