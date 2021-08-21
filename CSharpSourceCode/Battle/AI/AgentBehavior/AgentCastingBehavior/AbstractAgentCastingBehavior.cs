@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using HarmonyLib;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -18,10 +20,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public readonly int AbilityIndex;
         public Target Target = new Target();
         public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
+        protected WizardAIComponent _component;
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
             Agent = agent;
+            _component = agent.GetComponent<WizardAIComponent>();
             AbilityIndex = abilityIndex;
             if (abilityTemplate != null)
             {
@@ -31,8 +35,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             AbilityTemplate = abilityTemplate;
         }
 
+
         public abstract Boolean IsPositional();
-        protected abstract float UtilityFunction(Target target);
 
         public virtual void Execute()
         {
@@ -96,22 +100,44 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             LatestScores = new Dictionary<(IAgentBehavior, Target), float>();
 
-            var target = new Target();
-            target.Formation = ChooseTargetFormation(Agent, Target.Formation);
+            FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+                .Select(target => (target, UtilityFunction(target)))
+                .Do(pair => LatestScores.Add((this, pair.target), pair.Item2));
 
-            LatestScores.Add((this, target), UtilityFunction(target)); //TODO: Should consider more targets
             return LatestScores;
         }
 
-        protected static Formation ChooseTargetFormation(Agent agent, Formation currentTargetFormation)
+        protected virtual float UtilityFunction(Target target)
         {
-            var formation = agent?.Formation?.QuerySystem?.ClosestEnemyFormation?.Formation;
-            if (!(formation != null && (currentTargetFormation == null || !formation.HasPlayer || formation.Distance < currentTargetFormation.Distance && formation.Distance < 15 || currentTargetFormation.GetFormationPower() < 15)))
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
             {
-                formation = currentTargetFormation;
+                return 0.0f;
             }
 
-            return formation;
+            var hysteresis = _component.CurrentCastingBehavior == this && target.Formation == Target.Formation ? 0.25f : 0.0f;
+            return hysteresis + AgentCastingBehaviorMapping.UtilityByType[GetType()].GeometricMean(Agent, Target);
+        }
+
+        protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
+        {
+            switch (targetType)
+            {
+                case AbilityTargetType.Allies:
+                    return agent.Team.QuerySystem.AllyTeams
+                        .SelectMany(team => team.Team.Formations)
+                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .ToList();
+                case AbilityTargetType.Self:
+                    return new List<Target>()
+                    {
+                        new Target {Agent = agent, AbilityTargetType = targetType}
+                    };
+                default:
+                    return agent.Team.QuerySystem.EnemyTeams
+                        .SelectMany(team => team.Team.Formations)
+                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .ToList();
+            }
         }
     }
 }

@@ -19,15 +19,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return false;
         }
-
-        protected override float UtilityFunction(Target target)
-        {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
-            {
-                return 0.0f;
-            }
-
-            return 0.6f;
-        }
+        
     }
 }

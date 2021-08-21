@@ -32,6 +32,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public static List<Axis> CreateMovingProjectileAxis()
         {
+            //Distance
+            //Formation Power
+            //Formation Size / Melee 
+            //LoS?
             return new List<Axis>();
         }
     }

@@ -3,6 +3,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities.Extensions;
 
@@ -54,22 +55,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override float UtilityFunction(Target target)
         {
-            var axisList = AgentCastingBehaviorMapping.UtilityByType[this.GetType()];
-            
-            axisList.GeometricMean(Agent, Target);
-            
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
             {
                 return 0.0f;
             }
 
-            var targetFormation = target.Formation;
-            if (targetFormation != null && targetFormation.CurrentPosition.Distance(Agent.Position.AsVec2) < 40)
-            {
-                return 0.8f;
-            }
-
-            return 0.4f;
+            var hysteresis = _component.CurrentCastingBehavior == this ? 0.25f : 0.0f;
+            return hysteresis + AgentCastingBehaviorMapping.UtilityByType[GetType()].GeometricMean(Agent, Target);
         }
     }
 }

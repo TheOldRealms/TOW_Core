@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities;
 
 namespace TOW_Core.Battle.AI.Decision
 {
@@ -6,5 +7,6 @@ namespace TOW_Core.Battle.AI.Decision
     {
         public Formation Formation;
         public Agent Agent;
+        public AbilityTargetType AbilityTargetType;
     }
 }

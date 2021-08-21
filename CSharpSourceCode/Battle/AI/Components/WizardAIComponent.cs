@@ -17,8 +17,8 @@ namespace TOW_Core.Battle.AI.Components
 
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
         private readonly IAgentBehavior _currentTacticalBehavior;
-        private AbstractAgentCastingBehavior _currentCastingBehavior;
-        
+        public AbstractAgentCastingBehavior CurrentCastingBehavior;
+
         public Mat3 SpellTargetRotation = Mat3.Identity;
         public List<IAgentBehavior> AvailableCastingBehaviors { get; }
 
@@ -39,7 +39,7 @@ namespace TOW_Core.Battle.AI.Components
             if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
             _currentTacticalBehavior.Execute();
-            _currentCastingBehavior?.Execute();
+            CurrentCastingBehavior?.Execute();
 
             base.OnTickAsAI(dt);
         }
@@ -47,7 +47,7 @@ namespace TOW_Core.Battle.AI.Components
         private void TickOccasionally()
         {
             _dtSinceLastOccasional = 0;
-            _currentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors, _currentCastingBehavior);
+            CurrentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors, CurrentCastingBehavior);
         }
 
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
@@ -61,6 +61,7 @@ namespace TOW_Core.Battle.AI.Components
                 returnBehavior.Target = target;
                 TOWCommon.Say(newBehavior.GetType().Name);
             }
+
             return returnBehavior;
         }
 
@@ -75,7 +76,7 @@ namespace TOW_Core.Battle.AI.Components
                 index++;
             }
 
-            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, null, index));
+            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
 
             return castingBehaviors;
         }
