@@ -76,14 +76,9 @@ namespace TOW_Core.Battle.AI.Components
                 index++;
             }
 
-            if (!IsCustomBattle()) castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
+            castingBehaviors.Add(new ConserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
 
             return castingBehaviors;
-        }
-
-        private static bool IsCustomBattle()
-        {
-            return false; //TODO: Not sure how to check this. Dont need magic conservation if not in campaign.
         }
     }
 }
