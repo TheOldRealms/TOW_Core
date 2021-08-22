@@ -1,7 +1,6 @@
 ﻿using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
@@ -13,13 +12,20 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
-            UpdatePosition();
+            //UpdatePosition();
+            InitializeColors();
+            _currentIndex = 0;
+            _crosshair.SetFactorColor(_colors[_currentIndex]);
             IsVisible = false;
         }
+
         public override void Tick()
         {
             UpdatePosition();
+            Rotate();
+            ChangeColor();
         }
+
         private void UpdatePosition()
         {
             if (_caster != null)
@@ -27,16 +33,16 @@ namespace TOW_Core.Abilities.Crosshairs
                 if (_missionScreen.GetProjectedMousePositionOnGround(out _position, out _normal, true))
                 {
                     _currentDistance = _caster.Position.Distance(_position);
-                    if (_currentDistance > template.MaxDistance)
+                    if (_currentDistance > _template.MaxDistance)
                     {
-                        _position = _caster.LookFrame.Advance(template.MaxDistance).origin;
+                        _position = _caster.LookFrame.Advance(_template.MaxDistance).origin;
                         _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
                     }
                     Position = _position;
                 }
                 else
                 {
-                    _position = _caster.LookFrame.Advance(template.MaxDistance).origin;
+                    _position = _caster.LookFrame.Advance(_template.MaxDistance).origin;
                     _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
                     Position = _position; 
                 }

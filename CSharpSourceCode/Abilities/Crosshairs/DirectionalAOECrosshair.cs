@@ -8,14 +8,29 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public DirectionalAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
-            this._caster = caster;
+            _caster = caster;
             _crosshair = GameEntity.Instantiate(_mission.Scene, "custom_marker", false);
+            GameEntity decal = GameEntity.Instantiate(_mission.Scene, "ground_empire_wind_decal", false);
+
+            MatrixFrame frame = decal.GetFrame();
+            frame.rotation.RotateAboutUp(180f.ToRadians());
+            frame.Scale(new Vec3(template.Radius * 5, template.Radius * 5, 1, -1));
+            frame.Advance(-0.8f);
+            frame.Strafe(0.025f);
+            decal.SetFrame(ref frame);
+            _crosshair.AddChild(decal);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
+            InitializeColors();
+            _currentIndex = 0;
+            _crosshair.SetFactorColor(_colors[_currentIndex]);
+            AddLight();
             IsVisible = false;
         }
+
         public override void Tick()
         {
             UpdateFrame();
+            ChangeColor();
         }
 
         private void UpdateFrame()
@@ -28,14 +43,14 @@ namespace TOW_Core.Abilities.Crosshairs
                 _frame = _caster.LookFrame;
                 _frame.rotation.OrthonormalizeAccordingToForwardAndKeepUpAsZAxis();
 
-                if (_currentDistance < template.MinDistance)
+                if (_currentDistance < _template.MinDistance)
                 {
-                    _position = _frame.Advance(template.MinDistance).origin;
+                    _position = _frame.Advance(_template.MinDistance).origin;
                     _position.z = _currentHeight;
                 }
-                else if (_currentDistance > template.MaxDistance)
+                else if (_currentDistance > _template.MaxDistance)
                 {
-                    _position = _caster.LookFrame.Advance(template.MaxDistance).origin;
+                    _position = _caster.LookFrame.Advance(_template.MaxDistance).origin;
                     _position.z = _currentHeight;
                 }
 

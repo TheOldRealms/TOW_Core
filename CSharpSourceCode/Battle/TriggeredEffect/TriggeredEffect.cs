@@ -1,5 +1,4 @@
-﻿using System.Xml.Serialization;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
 using System.Timers;
@@ -112,7 +111,7 @@ namespace TOW_Core.Battle.TriggeredEffect
                         script.OnTrigger(position, agent);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     TOW_Core.Utilities.TOWCommon.Log("Tried to spawn TriggeredScript: " + _template.ScriptNameToTrigger + ", but failed.", NLog.LogLevel.Error);
                 }

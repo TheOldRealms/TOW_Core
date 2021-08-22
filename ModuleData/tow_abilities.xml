@@ -3,6 +3,8 @@
 
   <!-- custom battle lords -->
   <CharacterAbilityTuple CharacterID="emp_lord">
+    <Abilities>Fireball</Abilities>
+    <Abilities>Dart</Abilities>
     <Abilities>WindOfDeath</Abilities>
     <Abilities>HealingAOE</Abilities>
     <Abilities>BurningHead</Abilities>

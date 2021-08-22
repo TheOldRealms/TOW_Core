@@ -30,11 +30,11 @@ namespace TOW_Core.Abilities.Crosshairs
         private void UpdateColliedeAgents(TargetType targetType)
         {
             if (targetType == TargetType.All)
-                CollidedAgents = _mission.GetNearbyAgents(Position.AsVec2, template.TargetCapturingRadius).ToArray();
+                CollidedAgents = _mission.GetNearbyAgents(Position.AsVec2, _template.TargetCapturingRadius).ToArray();
             else if (targetType == TargetType.Friendly)
-                CollidedAgents = _mission.GetNearbyAllyAgents(Position.AsVec2, template.TargetCapturingRadius, _mission.PlayerAllyTeam).ToArray();
+                CollidedAgents = _mission.GetNearbyAllyAgents(Position.AsVec2, _template.TargetCapturingRadius, _mission.PlayerAllyTeam).ToArray();
             else if (targetType == TargetType.Enemy)
-                CollidedAgents = _mission.GetNearbyEnemyAgents(Position.AsVec2, template.TargetCapturingRadius, _mission.PlayerEnemyTeam).ToArray();
+                CollidedAgents = _mission.GetNearbyEnemyAgents(Position.AsVec2, _template.TargetCapturingRadius, _mission.PlayerEnemyTeam).ToArray();
         }
         private void ClearArrays()
         {
