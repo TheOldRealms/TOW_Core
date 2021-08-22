@@ -26,7 +26,7 @@ namespace TOW_Core.Battle.AI.Decision
         public float Evaluate(Agent agent, Target target)
         {
             var x = _parameterFunction.Invoke(agent, target);
-            var range = Math.Max(_min, Math.Min(_max, x - _min)) / _range;
+            var range = (Math.Max(_min, Math.Min(_max, x)) - _min) / _range;
             var invoke = _function.Invoke(range);
             return invoke;
         }
