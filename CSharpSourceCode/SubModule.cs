@@ -4,7 +4,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Texts;
-using TOW_Core.CustomBattles;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
@@ -110,11 +109,7 @@ namespace TOW_Core
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
 
-            if (game.GameType.GetType() == typeof(CustomGame))
-            {
-                CustomBattleTroopManager.LoadCustomBattleTroops();
-            }
-            else if (game.GameType.GetType() == typeof(Campaign))
+            if (game.GameType.GetType() == typeof(Campaign))
             {
                 if (game.ObjectManager != null)
                 {

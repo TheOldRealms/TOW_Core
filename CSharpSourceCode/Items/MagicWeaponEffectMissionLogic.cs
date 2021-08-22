@@ -45,7 +45,7 @@ namespace TOW_Core.Items
                             script.OnHit(affectedAgent, affectorAgent, affectorWeapon);
                         }
                     }
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         TOW_Core.Utilities.TOWCommon.Log("Tried to create magicweapon onhitscript: " + magiceffect.OnHitScriptName + ", but failed.", NLog.LogLevel.Error);
                     }

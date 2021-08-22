@@ -359,8 +359,6 @@
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
-    <Compile Include="CustomBattles\CustomBattleFormationTemplate.cs" />
-    <Compile Include="CustomBattles\CustomBattleTroopManager.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />
     <Compile Include="GameTexts\TOWTextOverride.cs" />
     <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
