@@ -9,7 +9,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public DirectionalAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
             _caster = caster;
-            _crosshair = GameEntity.Instantiate(_mission.Scene, "custom_marker", false);
+            _crosshair = GameEntity.CreateEmpty(_mission.Scene, false);
             GameEntity decal = GameEntity.Instantiate(_mission.Scene, "ground_empire_wind_decal", false);
 
             MatrixFrame frame = decal.GetFrame();
