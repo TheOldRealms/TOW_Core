@@ -91,7 +91,7 @@
 	</CharacterCreationOption>
 
 	<!-- Empire stage 2 -->
-	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
+	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_empire_enlisted">
 		<SkillsToIncrease>
 			<string>Athletics</string>
 			<string>TwoHanded</string>
@@ -104,19 +104,19 @@
 
 	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_merchant_assistant">
 		<SkillsToIncrease>
-			<string>Medicine</string>
+			<string>Trade</string>
 			<string>Polearm</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
-		<AttributeToIncrease>Intelligence</AttributeToIncrease>
+		<AttributeToIncrease>Social</AttributeToIncrease>
 		<OptionText>Merchants assistant</OptionText>
 		<OptionFlavourText>Noticing your aptitude for numbers, a merchant passing through your home took you under his wing, offering to teach you his trade in return for daily assistance in his tasks.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_stableboy">
+	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_blacksmith">
 		<SkillsToIncrease>
-			<string>Throwing</string>
-			<string>Roguery</string>
+			<string>OneHanded</string>
+			<string>Trade</string>
 			<string>Tactics</string>
 		</SkillsToIncrease>
 		<AttributeToIncrease>Cunning</AttributeToIncrease>
@@ -135,7 +135,7 @@
 		<OptionFlavourText>You felt a calling deep within yourself, a need to serve something greater. Donning the cloth of an acolyte, your life became one of constant prayer and learning so that you could better serve Sigmar. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="tow_empire_marksman_handgunner">
+	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_engineer">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Charm</string>
@@ -148,7 +148,7 @@
 	</CharacterCreationOption>
 
 	<!-- Empire stage 3 -->
-	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_swordsman">
+	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_company_militia">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Polearm</string>
@@ -170,7 +170,7 @@
 		<OptionFlavourText>Your aptitude for the Winds of Magic earned you a place within the Colleges of Altdorf, with time you learned to harness the basics of your power and flames would dance at your fingertips.  -  Starts with the fireball spell.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_sigmar_novitiate">
+	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_wp_novitiate">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Medicine</string>
@@ -205,7 +205,7 @@
 	</CharacterCreationOption> 
 
 	<!-- VC stage 1 -->
-	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_noble">
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_vampire_noble">
 		<SkillsToIncrease>
 			<string>Leadership</string>
 			<string>Steward</string>

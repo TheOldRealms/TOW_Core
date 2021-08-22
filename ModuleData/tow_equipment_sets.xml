@@ -140,6 +140,48 @@
 		</EquipmentSet>
 	</EquipmentRoster>
 	
+	 <EquipmentRoster id="vampire_template_3" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_greataxe_002" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
+	<EquipmentRoster id="vampire_template_4" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_greatmace_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
 	<EquipmentRoster id="wight_king_template" culture="Culture.khuzait">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.vampire_sword_004" />
