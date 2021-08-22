@@ -246,7 +246,7 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="healing_tick"
       Offset="0"
-      AbilityTargetType="Self">
+      AbilityTargetType="Allies">
       <LightColorRGB x="255" y="255" z="255" w="-1">
         <AsVec2>
           <x>255</x>

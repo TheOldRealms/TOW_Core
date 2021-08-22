@@ -17,7 +17,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 
-            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 3) return;
+            var distance = Agent.Position.AsVec2.Distance(castingPosition.AsVec2);
+            if (distance > 3) return;
 
             base.Execute();
         }
@@ -34,7 +35,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         private static Vec3 CalculateCastingPosition(Formation targetFormation)
         {
-            return targetFormation.QuerySystem.MedianPosition.Position;
+            var medianPositionPosition = targetFormation.QuerySystem.MedianPosition.Position;
+            return medianPositionPosition+(targetFormation.Direction*targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.z);
         }
 
         public override bool IsPositional()

@@ -48,6 +48,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 if (template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
                 {
                     axes.Add(new Axis(0, 100, x => 1 - x, DistanceToTarget()));
+                    axes.Add(new Axis(0, 3, x => 1 - x, TargetSpeed()));
+                    axes.Add(new Axis(0, 1, x => x, FormationUnderFire()));
+                    axes.Add(new Axis(0, 1, x => x, FormationCasualties()));
                 }
 
                 return axes;
@@ -71,9 +74,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 100, x => 1 - x, DistanceToTarget()),
-                    new Axis(0, 300, x => x * 2, FormationPower()),
-                    new Axis(0.3f, 1, x => x, RangedUnitRatio()),
+                    new Axis(0, 120, x => 1 - x, DistanceToTarget()),
+                    new Axis(0, 150, x => x, FormationPower()),
+                    new Axis(0.0f, 1, x => x, RangedUnitRatio()),
                 };
             };
         }
@@ -84,12 +87,26 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 80, ScoringFunctions.Logistic(0.5f, 4, x => 1 - x), DistanceToTarget()),
+                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.5f, 1, 20).Invoke(1 - x), DistanceToTarget()),
+                    new Axis(0, 15, x => 1 - x, DistanceToHostiles()),
                     new Axis(0, 300, x => x, FormationPower()),
-                    new Axis(0, 1, x => 1 - x, Dispersedness()),
-                    new Axis(0, 1, x => 1 - x, CavalryUnitRatio()),
+                    new Axis(1, 4, x => 1 - x, Dispersedness()),
+                    new Axis(0, 1, x => 1 - x * 2, CavalryUnitRatio()),
                 };
             };
+        }
+        private static Func<Agent, Target, float> FormationUnderFire()
+        {
+            return (agent, target) => target.Formation.QuerySystem.UnderRangedAttackRatio;
+        }
+        
+        private static Func<Agent, Target, float> FormationCasualties()
+        {
+            return (agent, target) => target.Formation.QuerySystem.CasualtyRatio;
+        }
+        private static Func<Agent, Target, float> DistanceToHostiles()
+        {
+            return (agent, target) => target.Agent == null ? target.Formation.CurrentPosition.Distance(target.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition) : agent.Position.AsVec2.Distance(target.Agent.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition);
         }
 
         private static Func<Agent, Target, float> DistanceToTarget()
@@ -106,12 +123,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return (agent, target) => target.Formation.QuerySystem.RangedUnitRatio;
         }
-
-        private static Func<Agent, Target, float> InfatryUnitRatio()
-        {
-            return (agent, target) => target.Formation.QuerySystem.InfantryUnitRatio;
-        }
-
+        
         private static Func<Agent, Target, float> CavalryUnitRatio()
         {
             return (agent, target) => target.Formation.QuerySystem.CavalryUnitRatio;
@@ -120,6 +132,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         private static Func<Agent, Target, float> Dispersedness()
         {
             return (agent, target) => target.Formation.QuerySystem.FormationDispersedness;
+        }    
+        
+        private static Func<Agent, Target, float> TargetSpeed()
+        {
+            return (agent, target) => target.Formation.QuerySystem.MovementSpeed;
         }
 
         private static Func<Agent, Target, float> FreeLineOfSight()

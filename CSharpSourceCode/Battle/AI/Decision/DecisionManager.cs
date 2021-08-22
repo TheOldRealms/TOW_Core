@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TaleWorlds.Core;
 
 namespace TOW_Core.Battle.AI.Decision
 {
@@ -16,7 +17,7 @@ namespace TOW_Core.Battle.AI.Decision
         private static (IAgentBehavior, Target) Highest(Dictionary<(IAgentBehavior, Target), float> utilityValues)
         {
             return utilityValues
-                .Aggregate((x, y) => x.Value > y.Value ? x : y)
+                .MaxBy(entry => entry.Value)
                 .Key;
         }
 

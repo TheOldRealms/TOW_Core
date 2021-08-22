@@ -13,6 +13,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
+            Hysteresis = 0.35f;
         }
 
         public override void Execute()
@@ -52,6 +53,5 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return true;
         }
-        
     }
 }

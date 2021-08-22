@@ -12,11 +12,13 @@ namespace TOW_Core.Battle.AI.Decision
 
         private readonly Func<float, float> _function;
         private readonly Func<Agent, Target, float> _parameterFunction;
+        private readonly float _range;
 
         public Axis(float minInput, float maxInput, Func<float, float> function, Func<Agent, Target, float> parameterFunction)
         {
             _min = minInput;
             _max = maxInput;
+            _range = maxInput - minInput;
             _function = function;
             _parameterFunction = parameterFunction;
         }
@@ -24,7 +26,9 @@ namespace TOW_Core.Battle.AI.Decision
         public float Evaluate(Agent agent, Target target)
         {
             var x = _parameterFunction.Invoke(agent, target);
-            return _function.Invoke(Math.Max(_min, Math.Min(_max, x)) / _max);
+            var range = Math.Max(_min, Math.Min(_max, x - _min)) / _range;
+            var invoke = _function.Invoke(range);
+            return invoke;
         }
     }
 
