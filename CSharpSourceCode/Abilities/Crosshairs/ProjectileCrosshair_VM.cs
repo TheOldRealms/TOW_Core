@@ -6,10 +6,11 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         private string _name = "Projectile Crosshair";
         private string _spriteName = "test_spell_crosshair";
-        private bool isVisible = false;
+        private bool _isVisible;
 
         public ProjectileCrosshair_VM() : base()
         {
+
         }
 
         [DataSourceProperty]
@@ -49,10 +50,10 @@ namespace TOW_Core.Abilities.Crosshairs
         [DataSourceProperty]
         public bool IsVisible
         {
-            get => isVisible;
+            get => _isVisible;
             set
             {
-                isVisible = value;
+                _isVisible = value;
                 base.OnPropertyChangedWithValue(value, "IsVisible");
             }
         }

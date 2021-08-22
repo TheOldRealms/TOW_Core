@@ -108,7 +108,8 @@
       AbilityTargetType="Self"
       CrosshairType="Summoning"
       MinDistance="1"
-      MaxDistance="30">
+      MaxDistance="30"
+      TargetCapturingRadius="2">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>

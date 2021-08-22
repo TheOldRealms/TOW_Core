@@ -50,7 +50,8 @@ namespace TOW_Core.Abilities.Crosshairs
         protected void AddLight()
         {
             var light = Light.CreatePointLight(_template.TargetCapturingRadius);
-            light.Intensity = _template.TargetCapturingRadius / 10;
+            light.Intensity = 100;
+            light.Radius = _template.TargetCapturingRadius;
             light.LightColor = new Vec3(0.255f, 170f, 0);
             light.SetShadowType(Light.ShadowType.DynamicShadow);
             light.Frame = MatrixFrame.Identity;

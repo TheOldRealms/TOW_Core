@@ -9,16 +9,16 @@ namespace TOW_Core.Abilities.Crosshairs
         public ProjectileCrosshair(AbilityTemplate template) : base(template)
         {
             OnInitialize();
-            vm.IsVisible = false;
+            IsVisible = false;
         }
        
         public override void Show()
         {
-            vm.IsVisible = true;
+            IsVisible = true;
         }
         public override void Hide()
         {
-            vm.IsVisible = false;
+            IsVisible = false;
         }
         public override void Dispose()
         {
