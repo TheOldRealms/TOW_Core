@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities.Crosshairs;
 
 namespace TOW_Core.Abilities
 {
@@ -44,28 +46,49 @@ namespace TOW_Core.Abilities
             }
         }
 
-        public static Ability CreateNew(string id)
+        public static Ability CreateNew(string id, Agent caster)
         {
             Ability ability = null;
             if (_templates.ContainsKey(id))
             {
-                ability = InitializeAbility(_templates[id]);
+                ability = InitializeAbility(_templates[id], caster);
             }
             return ability;
         }
 
-        private static Ability InitializeAbility(AbilityTemplate template)
+        private static Ability InitializeAbility(AbilityTemplate template, Agent caster)
         {
             Ability ability = null;
-            if(template.AbilityType == AbilityType.Spell)
+
+            if (template.AbilityType == AbilityType.Spell)
             {
                 ability = new Spell(template);
             }
-            if(template.AbilityType == AbilityType.Prayer)
+            if (template.AbilityType == AbilityType.Prayer)
             {
                 ability = new Prayer(template);
             }
+
+            AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
+            ability.SetCrosshair(crosshair);
+
             return ability;
+        }
+
+        private static AbilityCrosshair InitializeCrosshair(AbilityTemplate template, Agent caster)
+        {
+            AbilityCrosshair crosshair = null;
+            if (template.CrosshairType == CrosshairType.Projectile)
+                crosshair = new ProjectileCrosshair(template);
+            else if (template.CrosshairType == CrosshairType.Targeted)
+                crosshair = new TargetedCrosshair(template);
+            else if (template.CrosshairType == CrosshairType.DirectionalAOE)
+                crosshair = new DirectionalAOECrosshair(template, caster);
+            else if (template.CrosshairType == CrosshairType.CenteredAOE)
+                crosshair = new CenteredAOECrosshair(template, caster);
+            else if (template.CrosshairType == CrosshairType.Summoning)
+                crosshair = new SummoningCrosshair(template, caster);
+            return crosshair;
         }
     }
 }

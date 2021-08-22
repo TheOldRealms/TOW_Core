@@ -3,10 +3,12 @@
 
   <!-- custom battle lords -->
   <CharacterAbilityTuple CharacterID="emp_lord">
-    <Abilities>WindOfDeath</Abilities>
-    <Abilities>HealingAOE</Abilities>
+    <Abilities>Fireball</Abilities>
+    <Abilities>Dart</Abilities>
     <Abilities>BurningHead</Abilities>
+    <Abilities>WindOfDeath</Abilities>
     <Abilities>ScreamingSkull</Abilities>
+    <Abilities>HealingAOE</Abilities>
     <Abilities>SummonSkeleton</Abilities>
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="vc_lord">

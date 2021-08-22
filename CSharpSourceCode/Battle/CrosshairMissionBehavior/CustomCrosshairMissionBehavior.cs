@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.GauntletUI.Data;
-using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
