@@ -9,6 +9,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public MovingProjectileAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
+            Hysteresis = 0.1f;
         }
 
         public override void Terminate()
