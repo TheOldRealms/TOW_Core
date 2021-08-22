@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -73,6 +72,7 @@ namespace TOW_Core.Abilities
         {
             SelectAbility(_currentAbilityIndex + 1);
         }
+        
         public void SelectPreviousAbility()
         {
             SelectAbility(_currentAbilityIndex - 1);
@@ -82,10 +82,12 @@ namespace TOW_Core.Abilities
         {
             return _knownAbilities.ToArray();
         }
+        
         public void EnableAbilityMode()
         {
             isAbilityModeOn = true;
         }
+     
         public void DisableAbilityMode()
         {
             isAbilityModeOn = false;

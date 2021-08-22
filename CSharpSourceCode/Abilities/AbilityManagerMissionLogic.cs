@@ -68,7 +68,6 @@ namespace TOW_Core.Abilities
             }
             else if (!isMainAgentChecked && Agent.Main != null)
             {
-                TOWCommon.Say("YEP");
                 isMainAgentChecked = true;
                 abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
                 if (abilityComponent != null)
@@ -99,7 +98,6 @@ namespace TOW_Core.Abilities
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
             Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
             sheathTimer.Start();
-            TOWCommon.Say("Ability mode is enabled");
         }
 
         private void DisableSpellMode()
@@ -108,7 +106,6 @@ namespace TOW_Core.Abilities
             ChangeKeyBindings();
             Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
             Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-            TOWCommon.Say("Ability mode is disabled");
         }
 
         private void ChangeKeyBindings()

@@ -12,7 +12,6 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             AddLight();
-            //UpdatePosition();
             InitializeColors();
             _currentIndex = 0;
             _crosshair.SetFactorColor(_colors[_currentIndex]);

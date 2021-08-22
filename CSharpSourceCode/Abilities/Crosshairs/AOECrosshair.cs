@@ -8,6 +8,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public AOECrosshair(AbilityTemplate template) : base(template)
         {
         }
+        
         protected void HighlightNearbyAgents()
         {
             if (CollidedAgents != null)
@@ -27,6 +28,7 @@ namespace TOW_Core.Abilities.Crosshairs
                     agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
             }
         }
+        
         private void UpdateColliedeAgents(TargetType targetType)
         {
             if (targetType == TargetType.All)
@@ -36,6 +38,7 @@ namespace TOW_Core.Abilities.Crosshairs
             else if (targetType == TargetType.Enemy)
                 CollidedAgents = _mission.GetNearbyEnemyAgents(Position.AsVec2, _template.TargetCapturingRadius, _mission.PlayerEnemyTeam).ToArray();
         }
+        
         private void ClearArrays()
         {
             if (CollidedAgents != null)
@@ -47,10 +50,12 @@ namespace TOW_Core.Abilities.Crosshairs
             previousAgents = null;
             CollidedAgents = null;
         }
+        
         public override void Show()
         {
             base.Show();
         }
+        
         public override void Hide()
         {
             base.Hide();
@@ -58,6 +63,7 @@ namespace TOW_Core.Abilities.Crosshairs
         }
 
         public Agent[] CollidedAgents { get; private set; }
+        
         private Agent[] previousAgents;
     }
 }

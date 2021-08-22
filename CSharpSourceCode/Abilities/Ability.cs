@@ -112,7 +112,7 @@ namespace TOW_Core.Abilities
             return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
         }
 
-        public bool IsDynamicAbility()
+        private bool IsDynamicAbility()
         {
             return Template.AbilityEffectType == AbilityEffectType.DynamicProjectile ||
                    Template.AbilityEffectType == AbilityEffectType.MovingProjectile ||
@@ -123,42 +123,59 @@ namespace TOW_Core.Abilities
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
-            if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
-            {
-                frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
-            }
-            else if (_template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
-            {
-                frame = Crosshair.Frame;
-            }
-            else if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
-            {
-                frame = casterAgent.AgentVisuals.GetGlobalFrame();
-            }
-            else if (_template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
-            {
-                //frame = crosshair.AimsCenterFrame;
-                //frame.Elevate(_template.Height);
-            }
-            else if (_template.AbilityEffectType == AbilityEffectType.TargetedStatic)
-            {
-                //frame = crosshair.victim.GlobalFrame;
-                //frame.Elevate(_template.Height);
-            }
-            else if (_template.AbilityEffectType == AbilityEffectType.Summoning)
-            {
-                frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-            }
-
-            //else
-            //{
-            //    frame = frame.Elevate(_template.Radius / 2);
-            //}
             if (casterAgent.IsAIControlled)
-                frame = UpdateFrameRotationForAI(casterAgent, frame);
-            //if (IsGroundAbility())
-            //    frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-            //frame = frame.Advance(Template.Offset);
+            {
+                if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+                {
+                    frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                }
+                else
+                {
+                    frame = UpdateFrameRotationForAI(casterAgent, frame);
+                    frame = frame.Advance(Template.Offset);
+                    if (IsGroundAbility())
+                    {
+                        frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+                    }
+                    else if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+                    {
+                        frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
+                    }
+                    else
+                    {
+                        frame = frame.Elevate(_template.Radius / 2);
+                    }
+                }
+            }
+            else
+            {
+                if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+                {
+                    frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
+                }
+                else if (_template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
+                {
+                    frame = Crosshair.Frame;
+                }
+                else if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+                {
+                    frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                }
+                else if (_template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
+                {
+                    //frame = crosshair.AimsCenterFrame;
+                    //frame.Elevate(_template.Height);
+                }
+                else if (_template.AbilityEffectType == AbilityEffectType.TargetedStatic)
+                {
+                    //frame = crosshair.victim.GlobalFrame;
+                    //frame.Elevate(_template.Height);
+                }
+                else if (_template.AbilityEffectType == AbilityEffectType.Summoning)
+                {
+                    frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                }
+            }
             return frame;
         }
 

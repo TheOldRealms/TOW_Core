@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -20,7 +17,7 @@ namespace TOW_Core.Abilities
         {
             List<string> list = new List<string>();
             var q = _templates.Distinct().Where(x => x.Value.AbilityType == AbilityType.Spell);
-            foreach(var template in q)
+            foreach (var template in q)
             {
                 list.Add(template.Value.StringID);
             }
@@ -39,7 +36,7 @@ namespace TOW_Core.Abilities
             if (File.Exists(path))
             {
                 var list = ser.Deserialize(File.OpenRead(path)) as List<AbilityTemplate>;
-                foreach(var item in list)
+                foreach (var item in list)
                 {
                     _templates.Add(item.StringID, item);
                 }

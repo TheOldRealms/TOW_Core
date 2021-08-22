@@ -66,7 +66,7 @@ namespace TOW_Core.Abilities.Scripts
 
             var frame = GameEntity.GetGlobalFrame();
             UpdateSound(frame.origin);
-            
+
             if (_ability.Template.TriggerType == TriggerType.OnCollision && CollidedWithAgent())
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
