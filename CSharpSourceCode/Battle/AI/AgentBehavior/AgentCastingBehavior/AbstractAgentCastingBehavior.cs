@@ -21,12 +21,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
         protected List<Axis> AxisList;
-        
+
         public Target CurrentTarget = new Target();
         public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
 
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
-       
+
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {

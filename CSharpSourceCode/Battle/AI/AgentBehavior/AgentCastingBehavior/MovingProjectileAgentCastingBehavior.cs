@@ -19,6 +19,5 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return false;
         }
-        
     }
 }

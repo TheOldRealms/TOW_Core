@@ -36,7 +36,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         private static Vec3 CalculateCastingPosition(Formation targetFormation)
         {
             var medianPositionPosition = targetFormation.QuerySystem.MedianPosition.Position;
-            return medianPositionPosition+(targetFormation.Direction*targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.z);
+            return medianPositionPosition + (targetFormation.Direction * targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.z);
         }
 
         public override bool IsPositional()

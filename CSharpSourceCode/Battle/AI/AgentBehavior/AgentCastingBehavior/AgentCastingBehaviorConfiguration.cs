@@ -95,18 +95,23 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 };
             };
         }
+
         private static Func<Agent, Target, float> FormationUnderFire()
         {
             return (agent, target) => target.Formation.QuerySystem.UnderRangedAttackRatio;
         }
-        
+
         private static Func<Agent, Target, float> FormationCasualties()
         {
             return (agent, target) => target.Formation.QuerySystem.CasualtyRatio;
         }
+
         private static Func<Agent, Target, float> DistanceToHostiles()
         {
-            return (agent, target) => target.Agent == null ? target.Formation.CurrentPosition.Distance(target.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition) : agent.Position.AsVec2.Distance(target.Agent.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition);
+            return (agent, target) =>
+                target.Agent == null
+                    ? target.Formation.CurrentPosition.Distance(target.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition)
+                    : agent.Position.AsVec2.Distance(target.Agent.Formation.QuerySystem.ClosestEnemyFormation.AveragePosition);
         }
 
         private static Func<Agent, Target, float> DistanceToTarget()
@@ -123,7 +128,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return (agent, target) => target.Formation.QuerySystem.RangedUnitRatio;
         }
-        
+
         private static Func<Agent, Target, float> CavalryUnitRatio()
         {
             return (agent, target) => target.Formation.QuerySystem.CavalryUnitRatio;
@@ -132,8 +137,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         private static Func<Agent, Target, float> Dispersedness()
         {
             return (agent, target) => target.Formation.QuerySystem.FormationDispersedness;
-        }    
-        
+        }
+
         private static Func<Agent, Target, float> TargetSpeed()
         {
             return (agent, target) => target.Formation.QuerySystem.MovementSpeed;

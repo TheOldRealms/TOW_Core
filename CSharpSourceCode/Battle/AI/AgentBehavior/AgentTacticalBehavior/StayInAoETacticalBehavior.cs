@@ -16,7 +16,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         public override void Terminate()
         {
         }
-
         public override void ApplyBehaviorParams()
         {
             AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.Melee, 4f, 3f, 1f, 20f, 1f);
