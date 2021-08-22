@@ -19,7 +19,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return false;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             //Do nothing. I am hoping that we will add some sort of "Channeling" which allows us to restore magic over time later on.
         }
