@@ -16,9 +16,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var castingPosition = CalculateCastingPosition(CurrentTarget.Formation);
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
-
-            var distance = Agent.Position.AsVec2.Distance(castingPosition.AsVec2);
-            if (distance > 3) return;
+            
+            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 6) return;
 
             base.Execute();
         }

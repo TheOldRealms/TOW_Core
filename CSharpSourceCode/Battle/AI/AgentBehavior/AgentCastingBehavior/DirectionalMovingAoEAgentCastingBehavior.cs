@@ -22,7 +22,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 
-            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 4) return;
+            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 6) return;
 
             base.Execute();
         }
