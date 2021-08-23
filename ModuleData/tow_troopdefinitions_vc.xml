@@ -494,6 +494,165 @@
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
+	
+	<NPCCharacter id="tow_blood_knights_mounted" default_group="Cavalry" level="21" name="{=!}Blood Knights Mounted" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
+		<face>
+			
+			<BodyProperties version="4" age="19" weight="0.6785" build="0.9467"  key="0015A00FD34410032E45AB571B5975AC5761B9956B8DA5758CAA598D978A476900FEA6030FC886A4000000000000000000000000000000000000000055EC2102"  />
+			<BodyProperties version="4" age="19" weight="0.6874" build="0.9644"  key="0029C80FC0CC024349BBA478B8579AA7B67849195D8BCCA86BCD985A6668845600DEA6030D56A449000000000000000000000000000000000000000045B440C2"  />
+		</face>
+		<upgrade_targets></upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_010" />
+				<equipment slot="Item2" id="Item.vampire_sword_009" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
+				<equipment slot="Item2" id="Item.vampire_sword_008" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_008" />
+				<equipment slot="Item2" id="Item.vampire_sword_007" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_007" />
+				<equipment slot="Item2" id="Item.vampire_sword_006" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_006" />
+				<equipment slot="Item2" id="Item.vampire_sword_005" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.black_knight_lance_001" />
+				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
+				<equipment slot="Item2" id="Item.vampire_sword_004" />
+				
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+	<NPCCharacter id="tow_blood_knights_foot" default_group="Infantry" level="21" name="{=!}Blood Knights Foot" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
+		<face>
+			<BodyProperties version="4" age="19" weight="0.6874" build="0.9644"  key="0029C80FC0CC024349BBA478B8579AA7B67849195D8BCCA86BCD985A6668845600DEA6030D56A449000000000000000000000000000000000000000045B440C2"  />
+			<BodyProperties version="4" age="19" weight="0.4143" build="0.9409"  key="00182C0D00FC3000795657588755A4B568E9872A936E5757937883A3B491914500EE66030E566A2E000000000000000000000000000000000000000043DC2082"  />
+		</face>
+		<upgrade_targets></upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+
+				<equipment slot="Item1" id="Item.vampire_red_shield_010" />
+				<equipment slot="Item2" id="Item.vampire_sword_009" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+
+			</EquipmentRoster>
+			<EquipmentRoster>
+				
+				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
+				<equipment slot="Item2" id="Item.vampire_sword_008" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item1" id="Item.vampire_red_shield_008" />
+				<equipment slot="Item2" id="Item.vampire_sword_007" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+			
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item1" id="Item.vampire_red_shield_007" />
+				<equipment slot="Item2" id="Item.vampire_sword_006" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+			</EquipmentRoster>
+			<EquipmentRoster>
+			
+				<equipment slot="Item1" id="Item.vampire_red_shield_006" />
+				<equipment slot="Item2" id="Item.vampire_sword_005" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+		
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
+				<equipment slot="Item2" id="Item.vampire_sword_004" />
+				
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
 
 	<!-- Vampire Counts black knight -->
 	<NPCCharacter id="tow_black_knight" default_group="Cavalry" level="21" name="{=!}Black Knight" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">

@@ -92,7 +92,7 @@ namespace TOW_Core.Battle.TriggeredEffect
                         script.OnTrigger(position, agent);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     TOW_Core.Utilities.TOWCommon.Log("Tried to spawn TriggeredScript: " + _template.ScriptNameToTrigger + ", but failed.", NLog.LogLevel.Error);
                 }
