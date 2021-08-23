@@ -29,7 +29,7 @@ namespace TOW_Core.Abilities
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            if (abilityComponent != null)
+            if (Agent.Main != null && Agent.Main.State == AgentState.Active && abilityComponent != null)
             {
                 if (abilityComponent.IsAbilityModeOn)
                 {
