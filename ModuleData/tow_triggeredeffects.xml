@@ -75,7 +75,7 @@
       ScriptNameToTrigger="none">
       </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
-        StringID="summon_skeleton_tick" 
+        StringID="summon_skeleton" 
         BurstParticleEffectPrefab="none" 
         SoundEffectId="none" 
         SoundEffectLength="0" 

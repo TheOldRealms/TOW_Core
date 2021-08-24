@@ -28,7 +28,8 @@
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="explosion_01"
-      Offset="0.5">
+      Offset="0.5"
+      CrosshairType="Projectile">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -64,7 +65,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="wind_of_death_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="DirectionalAOE"
+      MinDistance="2"
+      MaxDistance="10">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -82,10 +86,10 @@
       Duration="5" 
       Radius="2" 
       AbilityType="Spell" 
-      AbilityEffectType="TargetedStaticAOE" 
+      AbilityEffectType="Summoning" 
       BaseMovementSpeed="0" 
-      TickInterval="1" 
-      TriggerType="EveryTick" 
+      TickInterval="2" 
+      TriggerType="TickOnce" 
       HasLight="false" 
       LightIntensity="0" 
       LightRadius="0" 
@@ -99,9 +103,13 @@
       CastType="Instant" 
       CastTime="0" 
       AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="summon_skeleton_tick"
+      TriggeredEffectID="summon_skeleton"
       Offset="10"
-      AbilityTargetType="Self">
+      AbilityTargetType="Self"
+      CrosshairType="Summoning"
+      MinDistance="1"
+      MaxDistance="30"
+      TargetCapturingRadius="2">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -136,7 +144,8 @@
       CastType="WindUp" 
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
-      TriggeredEffectID="dart_explosion">
+      TriggeredEffectID="dart_explosion"
+      CrosshairType="Projectile">
       <LightColorRGB x="0" y="204" z="255" w="-1">
         <AsVec2>
           <y>204</y>
@@ -172,7 +181,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="burning_head_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="DirectionalAOE"
+      MinDistance="2"
+      MaxDistance="10">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -208,7 +220,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="wind_of_death_tick"
-      Offset="10">
+      Offset="10"
+      CrosshairType="DirectionalAOE"
+      MinDistance="2"
+      MaxDistance="10">>
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>
           <x>52</x>
@@ -246,7 +261,9 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="healing_tick"
       Offset="0"
-      AbilityTargetType="Self">
+      AbilityTargetType="Allies"
+      CrosshairType="CenteredAOE"
+      TargetCapturingRadius="5">
       <LightColorRGB x="255" y="255" z="255" w="-1">
         <AsVec2>
           <x>255</x>
