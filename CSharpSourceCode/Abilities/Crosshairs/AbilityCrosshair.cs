@@ -133,6 +133,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 }
             }
         }
+        
         public Vec3 Position
         {
             get
@@ -146,6 +147,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 this._crosshair.SetFrame(ref frame);
             }
         }
+        
         public Mat3 Rotation
         {
             get => _crosshair.GetFrame().rotation;
@@ -156,6 +158,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 _crosshair.SetFrame(ref frame);
             }
         }
+        
         public MatrixFrame Frame
         {
             get => _crosshair.GetFrame();
@@ -164,17 +167,27 @@ namespace TOW_Core.Abilities.Crosshairs
                 _crosshair.SetFrame(ref value);
             }
         }
+        
         public CrosshairType CrosshairType { get; }
 
         protected Int32 _currentIndex;
+        
         protected uint? friendColor = new Color(0, 0.255f, 0, 1f).ToUnsignedInteger();
+        
         protected uint? enemyColor = new Color(0.255f, 0, 0, 1f).ToUnsignedInteger();
+        
         protected uint? colorLess = new Color(0, 0, 0, 0).ToUnsignedInteger();
+        
         protected List<uint> _colors;
+        
         protected MatrixFrame _currentFrame;
+        
         protected AbilityTemplate _template;
+        
         protected GameEntity _crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
+        
         protected Mission _mission;
+        
         protected MissionScreen _missionScreen;
     }
 }

@@ -49,8 +49,11 @@ namespace TOW_Core.Abilities.Crosshairs
         }
 
         private float _currentDistance;
+       
         private Vec3 _position;
+        
         private Vec3 _normal;
+        
         private Agent _caster;
     }
 }

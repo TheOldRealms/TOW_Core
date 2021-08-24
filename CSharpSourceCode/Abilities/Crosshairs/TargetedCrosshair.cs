@@ -39,6 +39,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 RemoveAim();
             }
         }
+
         private void SetAim(Agent aim)
         {
             if (aim != null)
@@ -50,6 +51,7 @@ namespace TOW_Core.Abilities.Crosshairs
                     this.aim.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
             }
         }
+        
         private void RemoveAim()
         {
             if (aim != null)

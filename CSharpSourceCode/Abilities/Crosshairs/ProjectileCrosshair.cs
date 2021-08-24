@@ -16,16 +16,24 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             IsVisible = true;
         }
+        
         public override void Hide()
         {
             IsVisible = false;
         }
+        
         public override void Dispose()
         {
             base.Dispose();
             OnFinalize();
         }
 
+        public override bool IsVisible
+        {
+            get => vm.IsVisible;
+            protected set => vm.IsVisible = value;
+        }
+        
         private void OnInitialize()
         {
             this.vm = new ProjectileCrosshair_VM();
@@ -36,6 +44,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 base._missionScreen.AddLayer(this._layer);
             }
         }
+        
         private void OnFinalize()
         {
             if (base._mission.Mode != MissionMode.Conversation && base._mission.Mode != MissionMode.CutScene)
@@ -47,14 +56,10 @@ namespace TOW_Core.Abilities.Crosshairs
             this._layer = null;
         }
 
-        public override bool IsVisible
-        {
-            get => vm.IsVisible;
-            protected set => vm.IsVisible = value;
-        }
-
         private IGauntletMovie _movie;
+        
         private GauntletLayer _layer;
+        
         private ProjectileCrosshair_VM vm;
     }
 }
