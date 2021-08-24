@@ -75,16 +75,34 @@ namespace TOW_Core.Abilities
         private static AbilityCrosshair InitializeCrosshair(AbilityTemplate template, Agent caster)
         {
             AbilityCrosshair crosshair = null;
-            if (template.CrosshairType == CrosshairType.Projectile)
-                crosshair = new ProjectileCrosshair(template);
-            else if (template.CrosshairType == CrosshairType.Targeted)
-                crosshair = new TargetedCrosshair(template);
-            else if (template.CrosshairType == CrosshairType.DirectionalAOE)
-                crosshair = new DirectionalAOECrosshair(template, caster);
-            else if (template.CrosshairType == CrosshairType.CenteredAOE)
-                crosshair = new CenteredAOECrosshair(template, caster);
-            else if (template.CrosshairType == CrosshairType.Summoning)
-                crosshair = new SummoningCrosshair(template, caster);
+            switch (template.CrosshairType)
+            {
+                case CrosshairType.Projectile:
+                    {
+                        crosshair = new ProjectileCrosshair(template);
+                        break;
+                    }
+                case CrosshairType.Targeted:
+                    {
+                        crosshair = new TargetedCrosshair(template);
+                        break;
+                    }
+                case CrosshairType.DirectionalAOE:
+                    {
+                        crosshair = new DirectionalAOECrosshair(template, caster);
+                        break;
+                    }
+                case CrosshairType.CenteredAOE:
+                    {
+                        crosshair = new CenteredAOECrosshair(template, caster);
+                        break;
+                    }
+                case CrosshairType.Summoning:
+                    {
+                        crosshair = new SummoningCrosshair(template, caster);
+                        break;
+                    }
+            }
             return crosshair;
         }
     }

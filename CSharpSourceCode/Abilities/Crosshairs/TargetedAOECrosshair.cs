@@ -12,28 +12,32 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             UpdateFrame();
+            InitializeColors();
+            _currentIndex = 0;
+            _crosshair.SetFactorColor(_colors[_currentIndex]);
+            AddLight();
             IsVisible = false;
         }
+
         public override void Tick()
         {
             UpdateFrame();
-            if (CollidedAgents != null)
+            if (Targets != null)
             {
-                previousAgents = (Agent[])CollidedAgents.Clone();
+                previousTargets = (Agent[])Targets.Clone();
             }
-            UpdateColliedeAgents(TargetType.All);
-            if (CollidedAgents != null)
-            {
-                foreach (Agent agent in CollidedAgents)
-                    if (agent.State == TaleWorlds.Core.AgentState.Active || agent.State == TaleWorlds.Core.AgentState.Routed)
-                        agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
-            }
-            if (previousAgents != null)
-            {
-                foreach (Agent agent in previousAgents.Except(CollidedAgents))
-                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
-            }
+            UpdateTargets(_template.AbilityTargetType);
+            UpdateAgentsGlow();
+            Rotate();
+            ChangeColor();
         }
+
+        public override void Hide()
+        {
+            base.Hide();
+            ClearArrays();
+        }
+
         private void UpdateFrame()
         {
             Vec3 position;
@@ -47,37 +51,58 @@ namespace TOW_Core.Abilities.Crosshairs
                 Position = new Vec3(0f, 0f, -100000f, -1f);
             }
         }
-        private void UpdateColliedeAgents(TargetType targetType)
+
+        private void UpdateTargets(AbilityTargetType targetType)
         {
-            if (targetType == TargetType.All)
-                CollidedAgents = _mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
-            else if (targetType == TargetType.Friendly)
-                CollidedAgents = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerAllyTeam).ToArray();
-            else if (targetType == TargetType.Enemy)
-                CollidedAgents = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerEnemyTeam).ToArray();
-        }
-        public void ClearArrays()
-        {
-            if (CollidedAgents != null)
-                foreach (Agent agent in CollidedAgents)
-                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
-            if (previousAgents != null)
-                foreach (Agent agent in previousAgents.Except(CollidedAgents))
-                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
-            previousAgents = null;
-            CollidedAgents = null;
-        }
-        public void SetVisibilty(bool visibility)
-        {
-            this._crosshair.SetVisibilityExcludeParents(visibility);
+            switch (targetType)
+            {
+                case AbilityTargetType.All:
+                    {
+                        Targets = _mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
+                        break;
+                    }
+                case AbilityTargetType.Allies:
+                    {
+                        Targets = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerAllyTeam).ToArray();
+                        break;
+                    }
+                case AbilityTargetType.Enemies:
+                    {
+                        Targets = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerEnemyTeam).ToArray();
+                        break;
+                    }
+            }
         }
 
-        public static bool IsPositionOnValidGround(WorldPosition worldPosition)
+        private void UpdateAgentsGlow()
         {
-            return Mission.Current.IsFormationUnitPositionAvailable(ref worldPosition, Mission.Current.PlayerTeam);
+            if (Targets != null)
+            {
+                foreach (Agent agent in Targets)
+                    if (agent.State == TaleWorlds.Core.AgentState.Active || agent.State == TaleWorlds.Core.AgentState.Routed)
+                        agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
+            }
+            if (previousTargets != null)
+            {
+                foreach (Agent agent in previousTargets.Except(Targets))
+                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
+            }
         }
-        public Agent[] CollidedAgents { get; private set; }
 
-        private Agent[] previousAgents;
+        private void ClearArrays()
+        {
+            if (Targets != null)
+                foreach (Agent agent in Targets)
+                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
+            if (previousTargets != null)
+                foreach (Agent agent in previousTargets.Except(Targets))
+                    agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
+            previousTargets = null;
+            Targets = null;
+        }
+
+        public Agent[] Targets { get; private set; }
+
+        private Agent[] previousTargets;
     }
 }

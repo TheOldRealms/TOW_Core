@@ -60,10 +60,15 @@ namespace TOW_Core.Abilities.Crosshairs
         }
 
         private float _currentHeight;
+
         private float _currentDistance;
+
         private Vec3 _position;
+
         private Vec3 _normal;
+
         private MatrixFrame _frame;
+
         private Agent _caster;
     }
 }

@@ -143,37 +143,41 @@ namespace TOW_Core.Abilities
                     }
                     else
                     {
-                        frame = frame.Elevate(_template.Radius / 2);
+                        frame = frame.Elevate(1);
                     }
                 }
             }
             else
             {
-                if (_template.AbilityEffectType == AbilityEffectType.MovingProjectile || _template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
+                switch (_template.AbilityEffectType)
                 {
-                    frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
-                }
-                else if (_template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
-                {
-                    frame = Crosshair.Frame;
-                }
-                else if (_template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
-                {
-                    frame = casterAgent.AgentVisuals.GetGlobalFrame();
-                }
-                else if (_template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
-                {
-                    //frame = crosshair.AimsCenterFrame;
-                    //frame.Elevate(_template.Height);
-                }
-                else if (_template.AbilityEffectType == AbilityEffectType.TargetedStatic)
-                {
-                    //frame = crosshair.victim.GlobalFrame;
-                    //frame.Elevate(_template.Height);
-                }
-                else if (_template.AbilityEffectType == AbilityEffectType.Summoning)
-                {
-                    frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                    case AbilityEffectType.MovingProjectile:
+                    case AbilityEffectType.DynamicProjectile:
+                        {
+                            frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
+                            break;
+                        }
+                    case AbilityEffectType.DirectionalMovingAOE:
+                        {
+                            frame = Crosshair.Frame;
+                            break;
+                        }
+                    case AbilityEffectType.CenteredStaticAOE:
+                        {
+                            frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                            break;
+                        }
+                    case AbilityEffectType.TargetedStaticAOE:
+                    case AbilityEffectType.TargetedStatic:
+                        {
+                            //frame = crosshair.Target.GetFrame();
+                            break;
+                        }
+                    case AbilityEffectType.Summoning:
+                        {
+                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                            break;
+                        }
                 }
             }
             return frame;
@@ -233,30 +237,38 @@ namespace TOW_Core.Abilities
         private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
         {
             AbilityScript script = null;
-            if (Template.AbilityEffectType == AbilityEffectType.MovingProjectile)
+            switch (Template.AbilityEffectType)
             {
-                entity.CreateAndAddScriptComponent("MovingProjectileScript");
-                script = entity.GetFirstScriptOfType<MovingProjectileScript>();
-            }
-            else if (Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE)
-            {
-                entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
-                script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
-            }
-            else if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
-            {
-                entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
-                script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
-            }
-            else if (Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE)
-            {
-                entity.CreateAndAddScriptComponent("TargetedStaticAOEScript");
-                script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
-            }
-            else if (Template.AbilityEffectType == AbilityEffectType.Summoning)
-            {
-                entity.CreateAndAddScriptComponent("SummoningScript");
-                script = entity.GetFirstScriptOfType<SummoningScript>();
+                case AbilityEffectType.MovingProjectile:
+                    {
+                        entity.CreateAndAddScriptComponent("MovingProjectileScript");
+                        script = entity.GetFirstScriptOfType<MovingProjectileScript>();
+                        break;
+                    }
+                case AbilityEffectType.DirectionalMovingAOE:
+                    {
+                        entity.CreateAndAddScriptComponent("DirectionalMovingAOEScript");
+                        script = entity.GetFirstScriptOfType<DirectionalMovingAOEScript>();
+                        break;
+                    }
+                case AbilityEffectType.CenteredStaticAOE:
+                    {
+                        entity.CreateAndAddScriptComponent("CenteredStaticAOEScript");
+                        script = entity.GetFirstScriptOfType<CenteredStaticAOEScript>();
+                        break;
+                    }
+                case AbilityEffectType.TargetedStaticAOE:
+                    {
+                        entity.CreateAndAddScriptComponent("TargetedStaticAOEScript");
+                        script = entity.GetFirstScriptOfType<TargetedStaticAOEScript>();
+                        break;
+                    }
+                case AbilityEffectType.Summoning:
+                    {
+                        entity.CreateAndAddScriptComponent("SummoningScript");
+                        script = entity.GetFirstScriptOfType<SummoningScript>();
+                        break;
+                    }
             }
             if (script != null)
             {

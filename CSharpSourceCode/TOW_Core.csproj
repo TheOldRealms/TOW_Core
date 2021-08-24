@@ -284,7 +284,6 @@
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\AOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\CenteredAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\CrosshairType.cs" />
     <Compile Include="Abilities\Crosshairs\DirectionalAOECrosshair.cs" />

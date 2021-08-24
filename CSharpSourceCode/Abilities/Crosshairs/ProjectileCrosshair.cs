@@ -31,7 +31,7 @@ namespace TOW_Core.Abilities.Crosshairs
             this.vm = new ProjectileCrosshair_VM();
             this._layer = new GauntletLayer(100, "GauntletLayer", false);
             this._movie = this._layer.LoadMovie("ProjectileCrosshair", vm);
-            if (base._mission.Mode != MissionMode.Conversation && base._mission.Mode != MissionMode.CutScene)
+            if (base._mission.Mode == MissionMode.Battle)
             {
                 base._missionScreen.AddLayer(this._layer);
             }
