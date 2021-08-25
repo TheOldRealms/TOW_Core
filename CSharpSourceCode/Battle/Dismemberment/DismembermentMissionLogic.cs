@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -11,23 +10,35 @@ namespace TOW_Core.Battle.Dismemberment
     public class DismembermentMissionLogic : MissionLogic
     {
         private bool isExecutionerModeOn = true;
+
         private bool canTroopDismember = false;
+
         private bool isSlowMotionModeOn = true;
+
         private float slowMotionTimer;
+
         private float maxChance = 33;
+
         private float maxTroopChance = 10;
+
+        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather", "_hat"};
+
+        private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
+
+        private readonly String[] headDressMeshes = { "_hat" };
+
+        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather" };
 
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-
             if (MBCommon.TimeType.Mission.GetTime() >= slowMotionTimer)
                 Mission.Current.Scene.SlowMotionMode = false;
         }
+
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
             base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
-
             bool canBeDismembered = victim != null &&
                                     victim.IsHuman &&
                                     victim != Agent.Main &&
@@ -70,6 +81,7 @@ namespace TOW_Core.Battle.Dismemberment
             }
             else return true;
         }
+
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
             victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
@@ -82,7 +94,8 @@ namespace TOW_Core.Battle.Dismemberment
             }
             GameEntity hat = SpawnHat(victim);
             AddHeadPhysics(head, attackCollision);
-            AddHeaddressPhysics(hat, attackCollision);
+            if (hat != null)
+                AddHeaddressPhysics(hat, attackCollision);
         }
 
         //This method was copied from the jedijosh920 dismemberment mod
@@ -90,21 +103,18 @@ namespace TOW_Core.Battle.Dismemberment
         {
             foreach (Mesh mesh in victim.AgentVisuals.GetEntity().Skeleton.GetAllMeshes())
             {
-                bool isHeadMesh = mesh.Name.ToLower().Contains("head") ||
-                                  mesh.Name.ToLower().Contains("hair") ||
-                                  mesh.Name.ToLower().Contains("beard") ||
-                                  mesh.Name.ToLower().Contains("eyebrow") ||
-                                  mesh.Name.ToLower().Contains("helmet") ||
-                                  mesh.Name.ToLower().Contains("_helm_") ||
-                                  mesh.Name.ToLower().Contains("_bascinet") ||
-                                  mesh.Name.ToLower().Contains("Pothelm") ||
-                                  mesh.Name.ToLower().Contains("sallet") ||
-                                  mesh.Name.ToLower().Contains("_hood") ||
-                                  mesh.Name.ToLower().Contains("_hat_");
-                if (isHeadMesh)
-                    mesh.SetVisibilityMask((VisibilityMaskFlags)4293918720U);
+                String meshName = mesh.Name.ToLower();
+                foreach (String triggerName in allMeshes)
+                {
+                    if (meshName.Contains(triggerName))
+                    {
+                        mesh.SetVisibilityMask((VisibilityMaskFlags)4293918720U);
+                        break;
+                    }
+                }
             }
         }
+
         private GameEntity SpawnHead(Agent victim)
         {
             GameEntity head = GetHeadCopy(victim);
@@ -115,64 +125,108 @@ namespace TOW_Core.Battle.Dismemberment
             head.EnableDynamicBody();
             return head;
         }
+
         private GameEntity SpawnHat(Agent victim)
         {
             GameEntity hat = GetHeaddressCopy(victim);
-            hat.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
-            MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
-            victimFrame.Advance(-0.2f);
-            hat.SetGlobalFrame(victimFrame);
-            hat.SetPhysicsState(true, false);
-            hat.EnableDynamicBody();
+            if (hat != null)
+            {
+                hat.AddSphereAsBody(Vec3.Zero, 0.2f, BodyFlags.Moveable);
+                MatrixFrame victimFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
+                victimFrame.Advance(-0.2f);
+                hat.SetGlobalFrame(victimFrame);
+                hat.SetPhysicsState(true, false);
+                hat.EnableDynamicBody();
+            }
             return hat;
         }
+
         private GameEntity GetHeadCopy(Agent victim)
         {
             var head = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
             foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
-                if (mesh.Name.Contains("head") && !mesh.Name.Contains("lod"))
+                String meshName = mesh.Name.ToLower();
+                foreach (String name in headMeshes)
                 {
-                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                    var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
-                    childMesh.SetLocalFrame(headLocalFrame);
-                    child.AddMesh(childMesh);
-                    head.AddChild(child);
+                    if (meshName.Contains(name) && !meshName.Contains("lod"))
+                    {
+                        Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                        var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                        childMesh.SetLocalFrame(headLocalFrame);
+                        child.AddMesh(childMesh);
+                        head.AddChild(child);
+                        break;
+                    }
                 }
             }
-            String[] meshNames = { "hair", "beard", "eyebrow", "helmet", "_helm_", "Pothelm", "sallet", "_bascinet", "_hood" };
-            foreach (String name in meshNames)
+            foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
-                Mesh mesh = victim.AgentVisuals.GetSkeleton().GetAllMeshes().FirstOrDefault(m => m.Name.Contains(name));
                 if (mesh != default(Mesh))
                 {
-                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                    var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
-                    childMesh.SetLocalFrame(headLocalFrame);
-                    child.AddMesh(childMesh);
-                    head.AddChild(child);
+                    String meshName = mesh.Name.ToLower();
+                    if (meshName.Contains("spangenhelm_a.lod0.gen") || meshName.Contains("battania_fur_helmet_a.lod0.gen"))
+                    {
+                        Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                        var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                        childMesh.SetLocalFrame(headLocalFrame);
+                        child.AddMesh(childMesh);
+                        head.AddChild(child);
+                    }
+                    else
+                    {
+                        foreach (String name in headArmorMeshes)
+                        {
+                            if (meshName.Contains(name) && !meshName.Contains("lod"))
+                            {
+                                Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                                var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                                childMesh.SetLocalFrame(headLocalFrame);
+                                child.AddMesh(childMesh);
+                                head.AddChild(child);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             return head;
         }
+
         private GameEntity GetHeaddressCopy(Agent victim)
         {
-            var hat = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
-            MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
+            GameEntity hat = null;
+            bool hasHeadDress = false;
             foreach (Mesh mesh in victim.AgentVisuals.GetSkeleton().GetAllMeshes())
             {
-                if (mesh.Name.Contains("_hat_") && !mesh.Name.Contains("lod"))
+                if (!hasHeadDress)
                 {
-                    Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                    var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
-                    childMesh.SetLocalFrame(headLocalFrame);
-                    child.AddMesh(childMesh);
-                    hat.AddChild(child);
+                    String meshName = mesh.Name.ToLower();
+                    foreach (String name in headDressMeshes)
+                    {
+                        if (meshName.Contains(name) && !mesh.Name.Contains("lod"))
+                        {
+                            hat = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
+                            Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                            MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
+                            var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                            childMesh.SetLocalFrame(headLocalFrame);
+                            child.AddMesh(childMesh);
+                            hat.AddChild(child);
+                            hasHeadDress = true;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    break;
                 }
             }
             return hat;
         }
+
         private void AddHeadPhysics(GameEntity head, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
@@ -180,6 +234,7 @@ namespace TOW_Core.Battle.Dismemberment
             head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
             head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 5, blowDir.Y * 5, blowDir.Z * 1.1f));
         }
+
         private void AddHeaddressPhysics(GameEntity hat, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
@@ -188,6 +243,7 @@ namespace TOW_Core.Battle.Dismemberment
             hat.AddPhysics(0.1f, hat.CenterOfMass, hat.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
             hat.ApplyImpulseToDynamicBody(new Vec3(hat.GlobalPosition.X, hat.GlobalPosition.Y, hat.GlobalPosition.Z + 1f), new Vec3(blowDir.X * 0.2f, blowDir.Y * 0.2f, blowDir.Z * 0));
         }
+
         private void CoverCutWithFlesh(Agent victim, GameEntity head)
         {
             Mesh throatMesh = Mesh.GetFromResource("dismemberment_head_throat");
@@ -200,6 +256,7 @@ namespace TOW_Core.Battle.Dismemberment
             Mesh neckMesh = Mesh.GetFromResource("dismemberment_head_neck").CreateCopy();
             victim.AgentVisuals.GetSkeleton().AddMesh(neckMesh);
         }
+
         private void CreateBloodBurst(Agent victim)
         {
             MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
