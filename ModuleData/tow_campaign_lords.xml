@@ -1171,7 +1171,7 @@
 		</Equipments>
 	</NPCCharacter>
 	<!-- Walach Harkon -->
-	<NPCCharacter id="vc_lord_sylvania_third_1" name="{=!}Walach Harkon" default_group="cavalry" age="43" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+	<NPCCharacter id="vc_lord_sylvania_third_4" name="{=!}Walach Harkon" default_group="cavalry" age="43" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
 		<face>
 			<BodyProperties version="4" age="19" weight="0.3873" build="0.9711" key="0000940FCF140001FFAC780677B9E9FF99352AD8876005208A662F7A499185C309FF66920FB8494E00000000000000000000000000000000FFFFFFFFCBFC803F" />
 		</face>
@@ -1254,6 +1254,36 @@
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
 				<equipment slot="Leg" id="Item.hallow_boots" />
+				
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			</EquipmentRoster>
+			<EquipmentSet id="emp_civ_template_default"
+                    civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	<!-- Red Duke -->
+	<NPCCharacter id="vc_lord_sylvania_third_1" name="{=!}Red Duke" default_group="cavalry" age="55" voice="curt" culture="Culture.khuzait" occupation="Lord" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
+		<face>
+			<BodyProperties version="4" age="19" weight="0.1725" build="0.9555"  key="002B500D9900200081708BD6CDC85229D00041485DFEB441D22D3DD53989886700FE36030FC2521600000000000000000000000000000000000000003FFC3002"  />
+		</face>
+		<Traits>
+			<Trait id="BalancedFightingSkills" value="5" />
+			<Trait id="Commander" value="7" />
+			<Trait id="Politician" value="5" />
+			<Trait id="Manager" value="6" />
+			<Trait id="Honor" value="1" />
+			<Trait id="Mercy" value="-1" />
+			<Trait id="Generosity" value="-1" />
+		</Traits>
+       <Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
 				
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />

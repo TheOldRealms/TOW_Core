@@ -55,6 +55,38 @@
       <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
     </EquipmentSet>
   </EquipmentRoster>
+  <EquipmentRoster id="light_wizard_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.empire_light_wizard_staff" />
+      <Equipment slot="Head" id="Item.empire_light_wizard_hat" />
+      <Equipment slot="Body" id="Item.empire_light_wizard_body" />
+      <Equipment slot="Cape" id="Item.empire_light_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_light_wizard_braces" />
+      <Equipment slot="Leg" id="Item.empire_light_wizard_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+     <Equipment slot="Item0" id="Item.empire_light_wizard_staff" />
+      <Equipment slot="Head" id="Item.empire_light_wizard_hat" />
+      <Equipment slot="Body" id="Item.empire_light_wizard_body" />
+      <Equipment slot="Cape" id="Item.empire_light_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_light_wizard_braces" />
+      <Equipment slot="Leg" id="Item.empire_light_wizard_boots" />
+    </EquipmentSet>
+  </EquipmentRoster>
+  <EquipmentRoster id="bretonnian_knight_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.bretonnian_sword_003" />
+      <Equipment slot="Body" id="Item.bretonnia_knight_body_001" />
+      <Equipment slot="Cape" id="Item.bretonnian_knight_shoulders_001" />
+      <Equipment slot="Leg" id="Item.bretonnian_knight_boots_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+     <Equipment slot="Item0" id="Item.bretonnian_sword_003" />
+      <Equipment slot="Body" id="Item.bretonnia_knight_body_001" />
+      <Equipment slot="Cape" id="Item.bretonnian_knight_shoulders_001" />
+      <Equipment slot="Leg" id="Item.bretonnian_knight_boots_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
 	
 	<!-- VC sets -->
   <EquipmentRoster id="necromancer_template" culture="Culture.khuzait">
