@@ -1,5 +1,6 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
+using TaleWorlds.Engine.Screens;
 using TaleWorlds.GauntletUI.Data;
 
 namespace TOW_Core.Abilities.Crosshairs
@@ -8,8 +9,6 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public ProjectileCrosshair(AbilityTemplate template) : base(template)
         {
-            OnInitialize();
-            IsVisible = false;
         }
        
         public override void Show()
@@ -34,12 +33,12 @@ namespace TOW_Core.Abilities.Crosshairs
             protected set => vm.IsVisible = value;
         }
         
-        private void OnInitialize()
+        public override void Initialize()
         {
             this.vm = new ProjectileCrosshair_VM();
             this._layer = new GauntletLayer(100, "GauntletLayer", false);
             this._movie = this._layer.LoadMovie("ProjectileCrosshair", vm);
-            if (base._mission.Mode == MissionMode.Battle)
+            if (base._mission.Mode != MissionMode.Conversation && base._mission.Mode != MissionMode.CutScene)
             {
                 base._missionScreen.AddLayer(this._layer);
             }

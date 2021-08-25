@@ -18,7 +18,11 @@ namespace TOW_Core.Abilities.Crosshairs
             _template = template;
             CrosshairType = template.CrosshairType;
             _mission = Mission.Current;
-            _missionScreen = _mission.GetMissionBehaviour<CustomCrosshairMissionBehavior>().MissionScreen;
+        }
+
+        public void SetMissionScreen(MissionScreen screen)
+        {
+            _missionScreen = screen;
         }
         /// <summary>
         /// Method that executes every time the mission screen ticks
@@ -40,6 +44,11 @@ namespace TOW_Core.Abilities.Crosshairs
         public virtual void Hide()
         {
             IsVisible = false;
+        }
+
+        public virtual void Initialize()
+        {
+
         }
 
         public virtual void Dispose()
