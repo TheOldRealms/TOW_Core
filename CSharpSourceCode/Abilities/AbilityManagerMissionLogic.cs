@@ -104,12 +104,15 @@ namespace TOW_Core.Abilities
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
-            if (agent.IsAbilityUser())
+            if (!Mission.IsFriendlyMission && Mission.CombatType != Mission.MissionCombatType.ArenaCombat && Mission.CombatType != Mission.MissionCombatType.NoCombat)
             {
-                agent.AddComponent(new AbilityComponent(agent));
-                if (agent.IsAIControlled && !Mission.Current.IsFriendlyMission)
+                if (agent.IsAbilityUser())
                 {
-                    agent.AddComponent(new WizardAIComponent(agent));
+                    agent.AddComponent(new AbilityComponent(agent));
+                    if (agent.IsAIControlled)
+                    {
+                        agent.AddComponent(new WizardAIComponent(agent));
+                    }
                 }
             }
         }

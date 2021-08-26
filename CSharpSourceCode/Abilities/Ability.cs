@@ -115,9 +115,7 @@ namespace TOW_Core.Abilities
         private bool IsDynamicAbility()
         {
             return Template.AbilityEffectType == AbilityEffectType.DynamicProjectile ||
-                   Template.AbilityEffectType == AbilityEffectType.MovingProjectile ||
-                   Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE ||
-                   Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
+                   Template.AbilityEffectType == AbilityEffectType.MovingProjectile;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
@@ -229,8 +227,8 @@ namespace TOW_Core.Abilities
         private void AddPhysics(ref GameEntity entity)
         {
             var mass = 1;
-            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Moveable);
-            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
+            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Dynamic);
+            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, 1);
             entity.SetPhysicsState(true, false);
         }
 
@@ -276,7 +274,6 @@ namespace TOW_Core.Abilities
                 script.SetAgent(casterAgent);
                 entity.CallScriptCallbacks();
             }
-            //and so on for the rest of the behaviour implementations. Based on AbilityEffectType enum
         }
 
         private void SetAnimationAction(Agent casterAgent)
