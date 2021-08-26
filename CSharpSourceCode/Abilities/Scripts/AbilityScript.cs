@@ -92,7 +92,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);
-            GameEntity.GetBodyShape().ManualInvalidate();
+            if(GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
