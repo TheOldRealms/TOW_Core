@@ -28,7 +28,9 @@ namespace TOW_Core.Abilities
         {
             base.OnBehaviourInitialize();
             sheathTimer.AutoReset = false;
-            sheathTimer.Elapsed += (s, e) => Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
+            sheathTimer.Elapsed += (s, e) =>
+                                       Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand,
+                                           Agent.WeaponWieldActionType.WithAnimationUninterruptible);
         }
 
         protected override void OnEndMission()
@@ -95,6 +97,7 @@ namespace TOW_Core.Abilities
                                 ability.Crosshair.Initialize();
                             }
                         }
+
                         isMainAgentChecked = true;
                     }
                 }
@@ -116,7 +119,8 @@ namespace TOW_Core.Abilities
 
         private bool CanUseAbilities()
         {
-            return Agent.Main != null &&
+            return !Mission.Current.IsFriendlyMission &&
+                   Agent.Main != null &&
                    Agent.Main.State == AgentState.Active &&
                    _abilityComponent != null &&
                    _missionScreen != null &&
@@ -129,7 +133,8 @@ namespace TOW_Core.Abilities
             ChangeKeyBindings();
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
+            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand,
+                Agent.WeaponWieldActionType.WithAnimationUninterruptible);
             sheathTimer.Start();
         }
 
@@ -139,8 +144,10 @@ namespace TOW_Core.Abilities
             ChangeKeyBindings();
             if (Agent.Main != null)
             {
-                Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible,
+                    false);
+                Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible,
+                    false);
             }
         }
 
