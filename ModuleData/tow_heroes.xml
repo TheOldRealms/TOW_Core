@@ -21,6 +21,7 @@
 	<Hero id="vc_lord_sylvania_third_1" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<Hero id="vc_lord_sylvania_third_2" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<Hero id="vc_lord_sylvania_third_3" is_noble="true" faction="Faction.sylvania_clan_3" />
+	<Hero id="vc_lord_sylvania_third_4" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<!-- Averland Clan 1 -->
 	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" text="{=!}Marius Leitdorf, known most infamously as the Mad Count, is the Elector Count of Averland, counted as one of the bravest, albeit most insane Generals within the Empire's armed forces. Not many men can be said to have waged wars against forests, swarms of bees and half-imagined fishmen, so it is not without good reason that Marius Leitdorf is known as the Mad Count. Most knew Marius for his eccentric and flamboyant nature; his bouts of screaming rage, his periods of melancholy and his mercurial conduct at court."/>
 	<Hero id="emp_lord_averland_oberaverlander_2" is_noble="true" faction="Faction.averland_clan_1" />
