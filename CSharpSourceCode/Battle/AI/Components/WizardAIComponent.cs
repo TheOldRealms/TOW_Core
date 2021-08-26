@@ -59,7 +59,6 @@ namespace TOW_Core.Battle.AI.Components
             if (returnBehavior != null)
             {
                 returnBehavior.CurrentTarget = target;
-                TOWCommon.Say(newBehavior.GetType().Name);
             }
 
             return returnBehavior;

@@ -40,13 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var medianPositionPosition = targetFormation.QuerySystem.MedianPosition.Position;
             return medianPositionPosition + (targetFormation.Direction * targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.z);
         }
-
-        protected override float UtilityFunction(Target target)
-        {
-            AxisList.Do(axis => TOWCommon.Say(axis.Evaluate(Agent, target).ToString()));
-            return base.UtilityFunction(target);
-        }
-
+        
         public override bool IsPositional()
         {
             return true;
