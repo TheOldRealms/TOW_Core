@@ -283,11 +283,22 @@
   <!-- Files & Classes -->
   <ItemGroup>
     <Compile Include="Abilities\AbilityTemplate.cs" />
+    <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\CenteredAOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\CrosshairType.cs" />
+    <Compile Include="Abilities\Crosshairs\DirectionalAOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\ProjectileCrosshair_VM.cs" />
+    <Compile Include="Abilities\Crosshairs\SummoningCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />

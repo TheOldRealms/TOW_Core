@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle
@@ -76,6 +77,44 @@ namespace TOW_Core.Battle
                 agent.ApplyStatusEffect(effectId);
             }
 
+        }
+
+        public static void DamageAgents(Agent[] agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
+        {
+            foreach (var agent in agents)
+            {
+                if (maxDamage < minDamage)
+                {
+                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave);
+                }
+                else
+                {
+                    agent.ApplyDamage(TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave);
+                }
+            }
+        }
+
+        public static void HealAgents(Agent[] agents, int minHeal, int maxHeal = -1, Agent healer = null, TargetType targetType = TargetType.Friendly)
+        {
+            foreach (var agent in agents)
+            {
+                if (maxHeal < minHeal)
+                {
+                    agent.Heal(minHeal);
+                }
+                else
+                {
+                    agent.Heal(TOWMath.GetRandomInt(minHeal, maxHeal));
+                }
+            }
+        }
+
+        public static void ApplyStatusEffectToAgents(Agent[] agents, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
+        {
+            foreach (var agent in agents)
+            {
+                agent.ApplyStatusEffect(effectId);
+            }
         }
     }
 }
