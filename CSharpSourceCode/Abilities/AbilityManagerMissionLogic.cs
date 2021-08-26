@@ -138,12 +138,15 @@ namespace TOW_Core.Abilities
 
         private void DisableSpellMode()
         {
-            _abilityComponent.DisableAbilityMode();
-            ChangeKeyBindings();
-            if (Agent.Main != null)
+            if (_abilityComponent != null)
             {
-                Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                _abilityComponent.DisableAbilityMode();
+                ChangeKeyBindings();
+                if (Agent.Main != null)
+                {
+                    Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                    Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                }
             }
         }
 
