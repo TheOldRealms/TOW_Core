@@ -21,9 +21,7 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.AddChild(decal);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             InitializeColors();
-            _currentIndex = 0;
-            _crosshair.SetFactorColor(_colors[_currentIndex]);
-            AddLight();
+            AddLight(4);
             IsVisible = false;
         }
 

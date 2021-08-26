@@ -56,25 +56,33 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.FadeOut(3, true);
         }
 
-        protected void AddLight()
+        protected virtual void AddLight(Int32 amount = 1)
         {
-            var light = Light.CreatePointLight(_template.TargetCapturingRadius);
-            light.Intensity = 100;
-            light.Radius = _template.TargetCapturingRadius;
-            light.LightColor = new Vec3(0.255f, 170f, 0);
-            light.SetShadowType(Light.ShadowType.DynamicShadow);
-            light.Frame = MatrixFrame.Identity;
-            light.SetVisibility(true);
-            _crosshair.AddLight(light);
+            if (amount > 0)
+            {
+                for (Int32 num = 0; num < amount; num++)
+                {
+                    var light = Light.CreatePointLight(_template.TargetCapturingRadius);
+                    light.Intensity = 1000;
+                    light.Radius = _template.TargetCapturingRadius * 2;
+                    light.SetShadowType(Light.ShadowType.DynamicShadow);
+                    //light.SetVolumetricProperties(true, 1f);
+                    light.SetVisibility(true);
+                    var entity = GameEntity.CreateEmpty(_mission.Scene);
+                    var frame = new MatrixFrame(Mat3.Identity, new Vec3(0, num * 5, 2));
+                    entity.SetFrame(ref frame);
+                    entity.AddLight(light);
+                    _crosshair.AddChild(entity);
+                }
+            }
         }
 
         protected void InitializeColors()
         {
-            List<Color> colors = new List<Color>();
+            colors = new List<Color>();
             float r = 0.255f;
             float g = 0;
             float b = 0;
-
             for (g = 0; g < 0.254f; g += 0.001f)
             {
                 colors.Add(new Color(r, g, b));
@@ -100,16 +108,16 @@ namespace TOW_Core.Abilities.Crosshairs
                 colors.Add(new Color(r, g, b));
             }
 
-            _colors = new List<uint>();
-            foreach (Color color in colors)
-            {
-                _colors.Add(color.ToUnsignedInteger());
-            }
+            //_colors = new List<uint>();
+            //foreach (Color color in colors)
+            //{
+            //    _colors.Add(color.ToUnsignedInteger());
+            //}
         }
 
         protected void ChangeColor()
         {
-            if (_currentIndex < _colors.Count - 1)
+            if (_currentIndex < colors.Count - 1)
             {
                 _currentIndex++;
             }
@@ -117,7 +125,15 @@ namespace TOW_Core.Abilities.Crosshairs
             {
                 _currentIndex = 0;
             }
-            _crosshair.SetFactorColor(_colors[_currentIndex]);
+            _crosshair.SetFactorColor(colors[_currentIndex].ToUnsignedInteger());
+
+            foreach (var child in _crosshair.GetChildren())
+            {
+                if (child != null && child.GetLight() != null)
+                {
+                    child.GetLight().LightColor = colors[_currentIndex].ToVec3();
+                }
+            }
         }
 
         protected void Rotate()
@@ -142,7 +158,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 }
             }
         }
-        
+
         public Vec3 Position
         {
             get
@@ -156,7 +172,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 this._crosshair.SetFrame(ref frame);
             }
         }
-        
+
         public Mat3 Rotation
         {
             get => _crosshair.GetFrame().rotation;
@@ -167,7 +183,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 _crosshair.SetFrame(ref frame);
             }
         }
-        
+
         public MatrixFrame Frame
         {
             get => _crosshair.GetFrame();
@@ -176,27 +192,29 @@ namespace TOW_Core.Abilities.Crosshairs
                 _crosshair.SetFrame(ref value);
             }
         }
-        
+
         public CrosshairType CrosshairType { get; }
 
         protected Int32 _currentIndex;
-        
+
         protected uint? friendColor = new Color(0, 0.255f, 0, 1f).ToUnsignedInteger();
-        
+
         protected uint? enemyColor = new Color(0.255f, 0, 0, 1f).ToUnsignedInteger();
-        
+
         protected uint? colorLess = new Color(0, 0, 0, 0).ToUnsignedInteger();
-        
+
+        protected List<Color> colors;
+
         protected List<uint> _colors;
-        
+
         protected MatrixFrame _currentFrame;
-        
+
         protected AbilityTemplate _template;
-        
+
         protected GameEntity _crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
-        
+
         protected Mission _mission;
-        
+
         protected MissionScreen _missionScreen;
     }
 }

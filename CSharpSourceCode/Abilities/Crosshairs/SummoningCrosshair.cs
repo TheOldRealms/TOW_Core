@@ -11,10 +11,11 @@ namespace TOW_Core.Abilities.Crosshairs
             _caster = caster;
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
-            AddLight();
+            MatrixFrame frame = _crosshair.GetFrame();
+            frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
+            _crosshair.SetFrame(ref frame);
             InitializeColors();
-            _currentIndex = 0;
-            _crosshair.SetFactorColor(_colors[_currentIndex]);
+            AddLight();
             IsVisible = false;
         }
 

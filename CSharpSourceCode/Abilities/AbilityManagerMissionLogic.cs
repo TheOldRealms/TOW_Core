@@ -165,6 +165,5 @@ namespace TOW_Core.Abilities
                 keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
             }
         }
-
     }
 }
