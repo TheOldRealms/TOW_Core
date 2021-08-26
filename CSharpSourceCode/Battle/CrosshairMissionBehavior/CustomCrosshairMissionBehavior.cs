@@ -66,7 +66,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 return;
             }
-            if (abilityComponent != null && abilityComponent.IsAbilityModeOn)
+            if (MissionScreen != null && abilityComponent != null && abilityComponent.IsAbilityModeOn)
             {
                 if (weaponCrosshair.IsVisible)
                     weaponCrosshair.IsVisible = false;

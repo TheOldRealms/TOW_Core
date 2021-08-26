@@ -1,8 +1,10 @@
 ﻿using TaleWorlds.Core;
+using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Battle.AI.Components;
-using TOW_Core.Utilities;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
@@ -13,11 +15,14 @@ namespace TOW_Core.Abilities
         private EquipmentIndex mainHand;
         private EquipmentIndex offHand;
         private Ability currentAbility;
-        private AbilityComponent abilityComponent;
+        private AbilityComponent _abilityComponent;
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         System.Timers.Timer sheathTimer = new System.Timers.Timer(1000);
+        private MissionScreen _missionScreen;
 
-        public AbilityManagerMissionLogic() { }
+        public AbilityManagerMissionLogic()
+        {
+        }
 
         public override void OnBehaviourInitialize()
         {
@@ -26,12 +31,18 @@ namespace TOW_Core.Abilities
             sheathTimer.Elapsed += (s, e) => Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
         }
 
+        protected override void OnEndMission()
+        {
+            base.OnEndMission();
+            DisableSpellMode();
+        }
+
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            if (Agent.Main != null && Agent.Main.State == AgentState.Active && abilityComponent != null)
+            if (CanUseAbilities())
             {
-                if (abilityComponent.IsAbilityModeOn)
+                if (_abilityComponent.IsAbilityModeOn)
                 {
                     if (Input.IsKeyPressed(InputKey.Q))
                     {
@@ -68,11 +79,24 @@ namespace TOW_Core.Abilities
             }
             else if (!isMainAgentChecked && Agent.Main != null)
             {
-                isMainAgentChecked = true;
-                abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                if (abilityComponent != null)
+                _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+                if (_abilityComponent != null)
                 {
-                    currentAbility = abilityComponent.CurrentAbility;
+                    currentAbility = _abilityComponent.CurrentAbility;
+                    var crosshairMB = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
+                    if (crosshairMB != null)
+                    {
+                        _missionScreen = crosshairMB.MissionScreen;
+                        foreach (var ability in _abilityComponent.KnownAbilities)
+                        {
+                            if (ability.Crosshair != null)
+                            {
+                                ability.Crosshair.SetMissionScreen(_missionScreen);
+                                ability.Crosshair.Initialize();
+                            }
+                        }
+                        isMainAgentChecked = true;
+                    }
                 }
             }
         }
@@ -90,9 +114,18 @@ namespace TOW_Core.Abilities
             }
         }
 
+        private bool CanUseAbilities()
+        {
+            return Agent.Main != null &&
+                   Agent.Main.State == AgentState.Active &&
+                   _abilityComponent != null &&
+                   _missionScreen != null &&
+                   !ScreenManager.GetMouseVisibility();
+        }
+
         private void EnableSpellMode()
         {
-            abilityComponent.EnableAbilityMode();
+            _abilityComponent.EnableAbilityMode();
             ChangeKeyBindings();
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
@@ -102,15 +135,18 @@ namespace TOW_Core.Abilities
 
         private void DisableSpellMode()
         {
-            abilityComponent.DisableAbilityMode();
+            _abilityComponent.DisableAbilityMode();
             ChangeKeyBindings();
-            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+            if (Agent.Main != null)
+            {
+                Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+            }
         }
 
         private void ChangeKeyBindings()
         {
-            if (abilityComponent.IsAbilityModeOn)
+            if (_abilityComponent.IsAbilityModeOn)
             {
                 keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
                 keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
@@ -129,6 +165,5 @@ namespace TOW_Core.Abilities
                 keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
             }
         }
-
     }
 }

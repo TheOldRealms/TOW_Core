@@ -68,7 +68,8 @@
       Offset="10"
       CrosshairType="DirectionalAOE"
       MinDistance="2"
-      MaxDistance="10">
+      MaxDistance="10"
+      TargetCapturingRadius="3">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -109,7 +110,7 @@
       CrosshairType="Summoning"
       MinDistance="1"
       MaxDistance="30"
-      TargetCapturingRadius="2">
+      TargetCapturingRadius="2.5">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -184,7 +185,8 @@
       Offset="10"
       CrosshairType="DirectionalAOE"
       MinDistance="2"
-      MaxDistance="10">
+      MaxDistance="10"
+      TargetCapturingRadius="3">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -223,7 +225,8 @@
       Offset="10"
       CrosshairType="DirectionalAOE"
       MinDistance="2"
-      MaxDistance="10">>
+      MaxDistance="10"
+      TargetCapturingRadius="3">
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>
           <x>52</x>

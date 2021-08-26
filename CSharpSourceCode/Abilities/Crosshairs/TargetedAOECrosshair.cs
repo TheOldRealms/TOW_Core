@@ -13,8 +13,6 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             UpdateFrame();
             InitializeColors();
-            _currentIndex = 0;
-            _crosshair.SetFactorColor(_colors[_currentIndex]);
             AddLight();
             IsVisible = false;
         }

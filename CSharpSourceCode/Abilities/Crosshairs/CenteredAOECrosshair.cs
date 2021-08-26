@@ -18,8 +18,6 @@ namespace TOW_Core.Abilities.Crosshairs
             frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
             _crosshair.SetFrame(ref frame);
             InitializeColors();
-            _currentIndex = 0;
-            _crosshair.SetFactorColor(_colors[_currentIndex]);
             AddLight();
             IsVisible = false;
         }
