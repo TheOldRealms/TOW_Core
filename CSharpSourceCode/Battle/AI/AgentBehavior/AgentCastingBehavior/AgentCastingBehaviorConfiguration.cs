@@ -48,7 +48,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                     new Axis(0, 1, x => x, (agent, target) => 0.45f)
                 };
 
-                if (template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+                if (template.AbilityTargetType != AbilityTargetType.Self)
                 {
                     axes.Add(new Axis(0, 100, x => 1 - x, DistanceToTarget()));
                     axes.Add(new Axis(0, 7, x => 1 - x, FormationDistanceToHostiles()));
