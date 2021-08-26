@@ -128,6 +128,17 @@ namespace TOW_Core.Utilities.Extensions
             }
             else return new List<string>();
         }
+        
+        public static Ability GetAbility(this Agent agent, int abilityindex)
+        {
+            var abilitycomponent = agent.GetComponent<AbilityComponent>();
+            if (abilitycomponent != null)
+            {
+                return abilitycomponent.GetAbility(abilityindex);
+            }
+
+            return null;
+        }
 
         public static List<string> GetAttributes(this Agent agent)
         {
