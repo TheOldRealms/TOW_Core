@@ -4,7 +4,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Texts;
-using TOW_Core.CustomBattles;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
@@ -110,11 +109,7 @@ namespace TOW_Core
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
 
-            if (game.GameType.GetType() == typeof(CustomGame))
-            {
-                CustomBattleTroopManager.LoadCustomBattleTroops();
-            }
-            else if (game.GameType.GetType() == typeof(Campaign))
+            if (game.GameType.GetType() == typeof(Campaign))
             {
                 if (game.ObjectManager != null)
                 {
@@ -154,7 +149,6 @@ namespace TOW_Core
                 starter.AddBehavior(new LibraryTownBehaviour());
 
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.Models.RemoveAllOfType(typeof(MapWeatherModel));
                 starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
                 starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
@@ -162,7 +156,6 @@ namespace TOW_Core
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
-                starter.AddModel(new TowMapWeatherModel());
                 starter.AddModel(new TowKingdomPeaceModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
@@ -184,6 +177,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
             if(Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());

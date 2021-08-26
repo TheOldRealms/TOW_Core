@@ -4,7 +4,6 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.TriggeredEffect;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Scripts
 {
@@ -19,6 +18,7 @@ namespace TOW_Core.Abilities.Scripts
         private float _timeSinceLastTick = 0;
         private bool _hasCollided;
         private bool _hasTickedOnce;
+        private bool _hasTriggered;
         private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
         private float _minArmingTimeForCollision = 0.1f;
@@ -28,12 +28,12 @@ namespace TOW_Core.Abilities.Scripts
         {
             _casterAgent = agent;
         }
-
         protected override bool MovesEntity() => true;
-
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE && _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE;
+            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE &&
+                   _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE &&
+                   _ability.Template.AbilityEffectType != AbilityEffectType.Summoning;
         }
 
         protected override void OnInit()
@@ -62,40 +62,37 @@ namespace TOW_Core.Abilities.Scripts
             base.OnTick(dt);
             if (_isFading) return;
             _timeSinceLastTick += dt;
+            UpdateLifeTime(dt);
 
-            var frame = UpdatePosition(dt);
+            var frame = GameEntity.GetGlobalFrame();
+            UpdateSound(frame.origin);
+
             if (_ability.Template.TriggerType == TriggerType.OnCollision && CollidedWithAgent())
             {
                 HandleCollision(frame.origin, frame.origin.NormalizedCopy());
             }
-
-            UpdateLifeTime(dt);
-            UpdateSound(frame.origin);
-
             if (_ability.Template.TriggerType == TriggerType.EveryTick && _timeSinceLastTick > _ability.Template.TickInterval)
             {
                 _timeSinceLastTick = 0;
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
             }
-            else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTickedOnce)
+            else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTriggered)
             {
                 TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
+                _hasTriggered = true;
             }
             _hasTickedOnce = true;
-        }
-
-        private MatrixFrame UpdatePosition(float dt)
-        {
-            var frame = GameEntity.GetGlobalFrame();
             if (ShouldMove())
             {
-                var newframe = GetNextFrame(frame, dt);
-                GameEntity.SetGlobalFrame(newframe);
-                GameEntity.GetBodyShape().ManualInvalidate();
+                UpdatePosition(frame, dt);
             }
+        }
 
-            frame = GameEntity.GetGlobalFrame();
-            return frame;
+        private void UpdatePosition(MatrixFrame frame, float dt)
+        {
+            var newframe = GetNextFrame(frame, dt);
+            GameEntity.SetGlobalFrame(newframe);
+            GameEntity.GetBodyShape().ManualInvalidate();
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
@@ -116,7 +113,7 @@ namespace TOW_Core.Abilities.Scripts
                     _isFading = true;
                 }
             }
-            if(_abilityLife > _minArmingTimeForCollision)
+            if (_abilityLife > _minArmingTimeForCollision)
             {
                 _canCollide = true;
             }

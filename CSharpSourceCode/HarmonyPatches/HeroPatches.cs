@@ -24,7 +24,7 @@ namespace TOW_Core.HarmonyPatches
                     StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
                     __result = new BodyProperties(new DynamicBodyProperties(19, __instance.Weight, __instance.Build), staticBodyProperties);
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     TOW_Core.Utilities.TOWCommon.Log("Attempted to override BodyProperties for Hero, but failed.", NLog.LogLevel.Error);
                 }

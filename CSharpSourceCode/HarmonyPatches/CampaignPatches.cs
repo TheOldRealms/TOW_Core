@@ -3,6 +3,7 @@ using MountAndBlade.CampaignBehaviors;
 using SandBox;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
@@ -334,6 +335,21 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-        
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
+        public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
+        {
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_singleplayerbattlescenes.xml");
+            if (File.Exists(path))
+            {
+                XmlDocument moredoc = new XmlDocument();
+                moredoc.Load(path);
+                //doc = MBObjectManager.MergeTwoXmls(doc, moredoc);
+                doc = moredoc;
+            }
+        }
+
+
     }
 }
