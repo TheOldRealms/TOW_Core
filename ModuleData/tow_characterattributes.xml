@@ -22,6 +22,12 @@
 	<Character name="tow_black_knight">
 		<Attribute id="Undead" />
 	</Character>
+	<Character name="tow_blood_knights_foot">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_blood_knights_mounted">
+		<Attribute id="Undead" />
+	</Character>
 	<Character name="emp_lord">
 		<Attribute id="AbilityUser" />
 	</Character>
@@ -46,6 +52,10 @@
 		<Attribute id="SpellCaster" />
 	</Character>
 	<Character name="tow_wanderer_vampire_0">
+		<Attribute id="AbilityUser" />
+		<Attribute id="SpellCaster" />
+	</Character>
+	<Character name="tow_wanderer_vampire_3">
 		<Attribute id="AbilityUser" />
 		<Attribute id="SpellCaster" />
 	</Character>

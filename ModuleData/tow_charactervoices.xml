@@ -22,4 +22,6 @@
 	<Character name="tow_grave_guard_greatsword" voice="skeleton" />
     <Character name="tow_cairn_wraith" voice="skeleton" />
     <Character name="tow_black_knight" voice="skeleton" />
+    <Character name="tow_blood_knights_foot" voice="skeleton" />
+    <Character name="tow_blood_knights_mounted" voice="skeleton" />
 </Characters>

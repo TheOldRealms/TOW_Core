@@ -31,6 +31,9 @@
   <CharacterAbilityTuple CharacterID="tow_wanderer_empire_1">
     <Abilities>HealingAOE</Abilities>
   </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_3">
+    <Abilities>Dart</Abilities>
+  </CharacterAbilityTuple>
 
   <!-- VC lords -->
   <CharacterAbilityTuple CharacterID="sylvania_clan_1_1">
