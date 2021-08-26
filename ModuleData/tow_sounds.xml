@@ -390,5 +390,42 @@
     <module_sound name="/voice/combat/skeleton/02/victory" is_2d="true" sound_category="mission_combat" path="../../TOW_Core/ModuleSounds/skeleton_sound2.mp3" />
     <module_sound name="/voice/combat/skeleton/02/horse_rally" is_2d="true" sound_category="mission_combat" path="../../TOW_Core/ModuleSounds/skeleton_sound2.mp3" />
     <module_sound name="/voice/combat/skeleton/02/horse_stop" is_2d="true" sound_category="mission_combat" path="../../TOW_Core/ModuleSounds/skeleton_sound2.mp3" />
+	
+	<!--******** EMPIRE LORD ********-->
+	<module_sound name="/voice/combat/male_empire_lord/01/commands/infantry" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/unsorted/Freemen.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/cavalry" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/unsorted/Freemen.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/archers" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/unsorted/Hunters.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/everyone" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/unsorted/Sigmars_heirs.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/horse_archers" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/unsorted/Hunters.wav" />
+
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/charge" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/charge_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/move" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/move_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/retreat" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/retreat_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/follow" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/follow_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/advance" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/advance_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/dismount" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/dismount_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/mount" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/mount_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/fall_back" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/fallback_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/fire_at_will" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/fire_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/hold_fire" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/hold_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/stop" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f1_movement/stop_1.wav" />
+    <!-- <module_sound name="/voice/combat/male_empire_lord/01/commands/pick_spears" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/" /> -->
+    <!-- <module_sound name="/voice/combat/male_empire_lord/01/commands/pick_default" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/" /> -->
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/face_enemy" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/enemy_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/face_direction" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/direction_1.wav" />
+    <!-- <module_sound name="/voice/combat/male_empire_lord/01/commands/attack_gate" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/" /> -->
+    <!-- <module_sound name="/voice/combat/male_empire_lord/01/commands/use_siege_weapon" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/" /> -->
+    <!-- <module_sound name="/voice/combat/male_empire_lord/01/commands/use_ladders" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/" /> -->
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/delegate" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/on_1.wav" />
+    <module_sound name="/voice/combat/male_empire_lord/01/commands/undelegate" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f3_toggle/off_1.wav" />
+	
+	<module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/circle" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/circle_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/column" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/column_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/line" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/line_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/loose" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/loose_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/scatter" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/scatter_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/shield_wall" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/shield_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/skein" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/skein_1.wav" />
+    <module_sound name="/module_sound/combat/male_empire_lord/01/commands/formations/square" is_2d="true" sound_category="mission_voice_shout" path="../../TOW_Core/ModuleSounds/Empire/MaleEmpireLord/f2_formation/square_1.wav" />
 	</module_sounds>
 </base>

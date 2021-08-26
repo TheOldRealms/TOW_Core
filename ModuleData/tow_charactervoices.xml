@@ -13,6 +13,7 @@
     voice_definitions with the sound_and_collision_info_class="skeleton".
     -->
 	<Character name="vc_lord" voice="generic_vampire" />
+	<Character name="emp_lord" voice="male_empire_lord" />
 	<!--<Character name="mannfred" voice="generic_vampire"/>-->
 	<Character name="tow_skeleton_recruit" voice="skeleton" />
 	<Character name="tow_skeleton_warrior" voice="skeleton" />
