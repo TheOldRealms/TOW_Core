@@ -70,21 +70,12 @@ namespace TOW_Core.Battle.AI.Decision
 
         public static Func<Target, float> BalanceOfPower(Agent agent)
         {
-            return target =>
-            {
-                var calculateEnemyTotalPower = agent.Team.QuerySystem.TeamPower / (CalculateEnemyTotalPower(agent.Team)+agent.Team.QuerySystem.TeamPower);
-                TOWCommon.Say("Power ratio: " + calculateEnemyTotalPower);
-                return calculateEnemyTotalPower;
-            };
+            return target => agent.Team.QuerySystem.TeamPower / (CalculateEnemyTotalPower(agent.Team) + agent.Team.QuerySystem.TeamPower);
         }
 
         public static Func<Target, float> LocalBalanceOfPower(Agent agent)
         {
-            return target =>
-            {
-                TOWCommon.Say("Local Power Ratio: " + agent.Formation.QuerySystem.LocalPowerRatio);
-                return Math.Max(1, agent.Formation.QuerySystem.LocalPowerRatio);
-            };
+            return target => Math.Max(1, agent.Formation.QuerySystem.LocalPowerRatio);
         }
 
         public static float CalculateEnemyTotalPower(Team chosenTeam)
