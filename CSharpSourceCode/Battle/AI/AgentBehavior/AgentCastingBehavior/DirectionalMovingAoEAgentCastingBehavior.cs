@@ -43,7 +43,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             targetFormationDirection.RotateCCW(1.63f);
             targetFormationDirection = targetFormationDirection * (targetFormation.Width / 1.45f);
             targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
-
             var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
             return castingPosition;
         }

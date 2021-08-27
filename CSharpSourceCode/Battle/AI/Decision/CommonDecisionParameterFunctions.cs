@@ -67,13 +67,13 @@ namespace TOW_Core.Battle.AI.Decision
             return target => target.Formation.QuerySystem.CurrentVelocity.Length;
         }
 
-        public static Func<Target, float> BalanceOfPower()
+        public static Func<Target, float> BalanceOfPower(Agent agent)
         {
             return target =>
             {
-                TOWCommon.Say("Overall Power ratio: " + target.Formation.QuerySystem.Team.OverallPowerRatio);
-                TOWCommon.Say("Power ratio with casualties: " + target.Formation.QuerySystem.Team.PowerRatioIncludingCasualties);
-                return target.Formation.QuerySystem.Team.OverallPowerRatio;
+                TOWCommon.Say("Overall Power ratio: " + agent.Team.QuerySystem.OverallPowerRatio);
+                TOWCommon.Say("Power ratio with casualties: " + agent.Team.QuerySystem.PowerRatioIncludingCasualties);
+                return agent.Team.QuerySystem.OverallPowerRatio;
             };
         }
 
