@@ -49,10 +49,6 @@ namespace TOW_Core.Battle.AI.Components
         {
             _dtSinceLastOccasional = 0;
             CurrentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors, CurrentCastingBehavior);
-            if (CurrentCastingBehavior != null)
-            {
-                TOWCommon.Say(CurrentCastingBehavior.GetType().Name);
-            }
         }
 
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
