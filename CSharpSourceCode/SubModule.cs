@@ -4,6 +4,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Texts;
+using TOW_Core.CustomBattles;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
@@ -29,17 +30,10 @@ using TOW_Core.Battle.AI;
 using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
-using TOW_Core.CampaignSupport.RaiseDead;
-using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
-using TOW_Core.Battle.Grenades;
-using TOW_Core.CampaignSupport.ChaosRaidingParty;
-using TOW_Core.CampaignSupport.TownBehaviours;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
-using TOW_Core.Battle.FireArms;
 
 namespace TOW_Core
 {
@@ -108,10 +102,13 @@ namespace TOW_Core
         {
             TOWTextManager.LoadAdditionalTexts();
             TOWTextManager.LoadTextOverrides();
-
-            if (game.GameType.GetType() == typeof(Campaign))
+            if (game.GameType.GetType() == typeof(CustomGame))
             {
-                if (game.ObjectManager != null)
+                CustomBattleTroopManager.LoadCustomBattleTroops();
+            }
+            else if(game.GameType.GetType() == typeof(Campaign))
+            {
+                if(game.ObjectManager != null)
                 {
                     game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
                 }
@@ -120,8 +117,7 @@ namespace TOW_Core
 
         private void LoadSprites()
         {
-            UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+            UIResourceManager.SpriteData.SpriteCategories["tow_spritesheet"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
 		}
 
@@ -136,29 +132,19 @@ namespace TOW_Core
             else if(game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
-
+                starter.CampaignBehaviors.Add(new ExtendedInfoManager());
                 starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(KingdomDecisionProposalBehavior));
-
-                starter.AddBehavior(new ExtendedInfoManager());
-                starter.AddBehavior(new BattleInfoCampaignBehavior());
-                starter.AddBehavior(new RaiseDeadCampaignBehavior());
-                starter.AddBehavior(new QuestBattleLocationBehaviour());
-                starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
-                starter.AddBehavior(new RaiseDeadInTownBehaviour());
-                starter.AddBehavior(new LibraryTownBehaviour());
-
                 starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
-
-                starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
-                starter.AddModel(new TowKingdomPeaceModel());
+                gameStarterObject.Models.RemoveAllOfType(typeof(MapWeatherModel));
+                gameStarterObject.AddModel(new TowMapWeatherModel());
 
-                CampaignOptions.IsLifeDeathCycleDisabled = true;
+                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
+                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
+                starter.AddModel(new QuestBattleLocationMenuModel());
+
+                starter.AddBehavior(new QuestBattleLocationBehaviour());
             }
         }
 
@@ -170,18 +156,12 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
-            mission.AddMissionBehaviour(new AbilityHUDMissionView());
-            mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
+            mission.AddMissionBehaviour(new Abilities.AbilityManagerMissionLogic());
+            mission.AddMissionBehaviour(new Abilities.AbilityHUDMissionView());
+            mission.AddMissionBehaviour(new Battle.FireArms.MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
-            mission.AddMissionBehaviour(new GrenadesMissionLogic());
-            mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
-            if(Game.Current.GameType is Campaign)
-            {
-                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
-            }
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }

@@ -25,6 +25,15 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic
             {
                 agent.AddComponent(new UndeadMoraleAgentComponent(agent));
             }
+            if (agent.IsAbilityUser())
+            {
+                agent.AddComponent(new AbilityComponent(agent));
+                if (agent.IsAIControlled)
+                {
+                    agent.AddComponent(new WizardAIComponent(agent));
+                }
+            }
+
         }
     }
 }

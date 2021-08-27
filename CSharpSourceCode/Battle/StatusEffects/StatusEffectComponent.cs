@@ -52,17 +52,16 @@ namespace TOW_Core.Battle.StatusEffects
                 if (_currentEffects[effect].Duration <= 0)
                 {
                     RemoveEffect(effect);
-                    return;
                 }
             }
 
             //Temporary method for applying effects from the aggregate. This needs to go to a damage manager/calculator which will use the 
             //aggregated information to determine how much damage to apply to the agent
-            if (Agent.IsActive() && Agent != null && !Agent.IsFadingOut())
+            if (Agent.IsActive() && Agent != null)
             {
                 if(_effectAggregate.HealthOverTime < 0)
                 {
-                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), null, false, false);
+                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), Agent, causeStagger: false);
                 }
                 else if(_effectAggregate.HealthOverTime > 0)
                 {
@@ -71,8 +70,9 @@ namespace TOW_Core.Battle.StatusEffects
             }
         }
         
-        public void OnTick(float dt)
+        public void OnTick(object sender, OnTickArgs e)
         {
+            float dt = e.deltatime;
             _deltaSinceLastTick += dt;
             if(_deltaSinceLastTick > _updateFrequency)
             {

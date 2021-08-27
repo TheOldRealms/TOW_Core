@@ -10,21 +10,6 @@ namespace TOW_Core.Utilities.Extensions
 {
     public static class HeroExtensions
     {
-        public static bool CanRaiseDead(this Hero hero)
-        {
-            return hero.IsHumanPlayerCharacter && hero.IsNecromancer();
-        }
-
-        /// <summary>
-        /// Returns raise dead chance, where, for example, 0.1 is a 10% chance.
-        /// </summary>
-        /// <param name="hero"></param>
-        /// <returns></returns>
-        public static float GetRaiseDeadChance(this Hero hero)
-        {
-            return 0.1f;
-        }
-
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
             var info = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
@@ -55,35 +40,17 @@ namespace TOW_Core.Utilities.Extensions
 
         public static bool HasAttribute(this Hero hero, string attribute)
         {
-            if (hero.GetExtendedInfo() != null)
-            {
-                return hero.GetExtendedInfo().AllAttributes.Contains(attribute);
-            }
-            else return false;
+            return hero.GetExtendedInfo().AllAttributes.Contains(attribute);
         }
 
         public static bool HasAbility(this Hero hero, string ability)
         {
-            if (hero.GetExtendedInfo() != null)
-            {
-                return hero.GetExtendedInfo().AllAbilities.Contains(ability);
-            }
-            else return false;
+            return hero.GetExtendedInfo().AllAbilities.Contains(ability);
         }
 
         public static bool IsSpellCaster(this Hero hero)
         {
             return hero.HasAttribute("SpellCaster");
-        }
-
-        public static bool IsNecromancer(this Hero hero)
-        {
-            return hero.HasAttribute("Necromancer");
-        }
-
-        public static bool IsUndead(this Hero hero)
-        {
-            return hero.HasAttribute("Undead");
         }
     }
 }
