@@ -71,7 +71,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             targetPosition += velocity;
-            targetPosition.z += -3f;
+            targetPosition.z += -2f;
 
             var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
             wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
