@@ -647,7 +647,7 @@
 		<upgrade_targets></upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.chaos_sword_001" />
+				<equipment slot="Item0" id="Item.empire_greatsword_001" />
 				<equipment slot="Head" id="Item.empire_tracker_hat_001" />
 				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_001" />
 				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
