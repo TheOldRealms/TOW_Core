@@ -88,7 +88,7 @@
 			 color2="FFC94B4E"
 			 alternative_color="FFffffff"
 			 alternative_color2="FF660653"
-			 culture="Culture.empire"
+			 culture="Culture.khuzait"
 			 settlement_banner_mesh="encounter_flag_a"
 			 flag_mesh="info_screen_flags_b"
 			 name="{=!}Sylvania"

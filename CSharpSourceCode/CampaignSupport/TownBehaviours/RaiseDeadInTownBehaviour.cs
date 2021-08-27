@@ -9,6 +9,7 @@ using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -26,14 +27,30 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, SettlementEntered);
         }
 
+        private void MakeNecromancers()
+        {
+            foreach(var hero in Hero.AllAliveHeroes)
+            {
+                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && hero.IsNoble)
+                {
+                    hero.AddAttribute("Necromancer");
+                }
+            }
+        }
+
         private void SettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
         {
-            if (arg1 == null || arg2 == null || arg3 == null || !arg3.CanRaiseDead()) return;
+            HeroExtendedInfo info = null;
+            if (arg3 != null)
+            {
+                info = arg3.GetExtendedInfo();
+            }
+            if (arg1 == null || arg2 == null || arg3 == null || !arg3.IsNecromancer()) return;
             if (arg1.MemberRoster.TotalManCount < arg1.Party.PartySizeLimit)
             {
                 if (_skeleton != null)
                 {
-                    MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, Math.Min(10, arg1.Party.PartySizeLimit - arg1.MemberRoster.TotalManCount));
+                    arg1.MemberRoster.AddToCounts(_skeleton, Math.Min(20, arg1.Party.PartySizeLimit - arg1.MemberRoster.TotalManCount));
                 }
             }
         }
@@ -49,7 +66,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             }, true, -1, false);
 
             obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None);
-            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_warrior");
+            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_recruit");
+            MakeNecromancers();
         }
 
         private void raisingdeadtick(MenuCallbackArgs args, CampaignTime dt)

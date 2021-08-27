@@ -345,8 +345,8 @@ namespace TOW_Core.HarmonyPatches
             {
                 XmlDocument moredoc = new XmlDocument();
                 moredoc.Load(path);
-                //doc = MBObjectManager.MergeTwoXmls(doc, moredoc);
-                doc = moredoc;
+                doc = MBObjectManager.MergeTwoXmls(doc, moredoc);
+                //doc = moredoc;
             }
         }
 
