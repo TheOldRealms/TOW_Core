@@ -1,6 +1,7 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Utilities;
@@ -53,12 +54,14 @@ namespace TOW_Core.Abilities
                         TOWCommon.Log("Failed instantiating ability class: " + item, LogLevel.Error);
                     }
                 }
+
                 if (_knownAbilities.Count > 0)
                 {
                     SelectAbility(0);
                 }
             }
         }
+
         public void SelectAbility(int index)
         {
             if (_knownAbilities.Count > 0 && index >= 0)
@@ -91,6 +94,21 @@ namespace TOW_Core.Abilities
         public void DisableAbilityMode()
         {
             isAbilityModeOn = false;
+        }
+        
+        public List<AbilityTemplate> GetKnownAbilityTemplates()
+        {
+            return _knownAbilities.ConvertAll(ability => ability.Template);
+        }
+
+        public Ability GetAbility(int index)
+        {
+            if (_knownAbilities.Count > 0 && index >= 0)
+            {
+                return _knownAbilities[index % _knownAbilities.Count];
+            }
+
+            return null;
         }
     }
 }

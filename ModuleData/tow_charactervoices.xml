@@ -13,6 +13,7 @@
     voice_definitions with the sound_and_collision_info_class="skeleton".
     -->
 	<Character name="vc_lord" voice="generic_vampire" />
+	<Character name="emp_lord" voice="male_empire_lord" />
 	<!--<Character name="mannfred" voice="generic_vampire"/>-->
 	<Character name="tow_skeleton_recruit" voice="skeleton" />
 	<Character name="tow_skeleton_warrior" voice="skeleton" />
@@ -21,4 +22,6 @@
 	<Character name="tow_grave_guard_greatsword" voice="skeleton" />
     <Character name="tow_cairn_wraith" voice="skeleton" />
     <Character name="tow_black_knight" voice="skeleton" />
+    <Character name="tow_blood_knights_foot" voice="skeleton" />
+    <Character name="tow_blood_knights_mounted" voice="skeleton" />
 </Characters>

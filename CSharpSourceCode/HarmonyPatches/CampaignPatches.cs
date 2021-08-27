@@ -173,15 +173,6 @@ namespace TOW_Core.HarmonyPatches
                     {
                         HeroCreator.CreateHeroAtOccupation(Occupation.GangLeader, settlement);
                     }
-
-                    for (int n = 0; n < 2; n++)
-                    {
-                        var obj = list.GetRandomElementWithPredicate(x => x.Culture == settlement.Culture);
-                        if(obj != null)
-                        {
-                            ____companions.Add(CreateTowWanderer(settlement, obj));
-                        }
-                    }
                 }
                 else if (settlement.IsVillage)
                 {
@@ -199,15 +190,29 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
 
+            for (int n = 0; n < 2; n++)
+            {
+                foreach (var item in list)
+                {
+                    ____companions.Add(CreateTowWanderer(item));
+                }
+            }
+            ____companions.Shuffle();
+
             return false;
         }
 
-        private static Hero CreateTowWanderer(Settlement settlement, CharacterObject template)
+        private static Hero CreateTowWanderer(CharacterObject template)
         {
             Hero hero = null;
-            if (template != null && settlement != null)
+            if (template != null)
             {
+                var settlement = Settlement.All.GetRandomElementWithPredicate(x => x.IsTown);
                 hero = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                if(template.StringId == "tow_wanderer_vampire_1")
+                {
+                    hero.AddAttribute("VampireBodyOverride");
+                }
                 Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, template);
                 List<Equipment> equipments = new List<Equipment>();
                 equipments.Add(hero.BattleEquipment);
@@ -335,7 +340,7 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
@@ -345,11 +350,8 @@ namespace TOW_Core.HarmonyPatches
             {
                 XmlDocument moredoc = new XmlDocument();
                 moredoc.Load(path);
-                //doc = MBObjectManager.MergeTwoXmls(doc, moredoc);
                 doc = moredoc;
             }
         }
-
-
     }
 }

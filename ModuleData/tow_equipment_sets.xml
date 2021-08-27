@@ -214,6 +214,25 @@
 		</EquipmentSet>
 	</EquipmentRoster>
 	
+	<EquipmentRoster id="red_duke_template" culture="Culture.khuzait">
+		<EquipmentSet>
+			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
 	<EquipmentRoster id="wight_king_template" culture="Culture.khuzait">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.vampire_sword_004" />

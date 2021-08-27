@@ -621,6 +621,7 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_huss_hammer" />
+				<equipment slot="Item1" id="Item.luthor_shield" />
 				<equipment slot="Head" id="Item.empire_luthor_huss_helmet" />
 				<equipment slot="Body" id="Item.empire_luthor_huss_body" />
 				<equipment slot="Cape" id="Item.empire_luthor_huss_shoulders" />
@@ -866,11 +867,11 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_greatsword_001" />
-				<equipment slot="Head" id="Item.sallet_wings" />
-				<equipment slot="Body" id="Item.swadian_plate_armor" />
-				<equipment slot="Cape" id="Item.empire_general_cape_001" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.empire_knight_boots_001" />
+				<equipment slot="Head" id="Item.empire_lion_red_helmet" />
+				<equipment slot="Body" id="Item.empire_plate_armor_002" />
+				<equipment slot="Cape" id="Item.empire_plate_shoulders_002" />
+				<equipment slot="Gloves" id="Item.empire_plate_gauntlets_002" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
 
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
@@ -1196,7 +1197,7 @@
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
+			<EquipmentSet id="vampire_template_2"
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>
@@ -1227,7 +1228,7 @@
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
+			<EquipmentSet id="vampire_template_3"
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>
@@ -1258,7 +1259,7 @@
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
+			<EquipmentSet id="vampire_template_4"
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>
@@ -1288,7 +1289,7 @@
 				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
 				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
-			<EquipmentSet id="emp_civ_template_default"
+			<EquipmentSet id="red_duke_template"
                     civilian="true" />
 		</Equipments>
 	</NPCCharacter>

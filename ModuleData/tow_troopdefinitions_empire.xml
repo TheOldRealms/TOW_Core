@@ -647,28 +647,52 @@
 		<upgrade_targets></upgrade_targets>
 		<Equipments>
 			<EquipmentRoster>
-				<equipment slot="Item0" id="Item.empire_greatsword_002" />
-				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Item0" id="Item.chaos_sword_001" />
+				<equipment slot="Head" id="Item.empire_tracker_hat_001" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_001" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_greatsword_001" />
 				<equipment slot="Head" id="Item.empire_hat_003" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_002" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_greatsword_002" />
-				<equipment slot="Head" id="Item.sallet_base" />
-				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Head" id="Item.empire_hat_006" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_001" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_greatsword_002" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_002" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_greatsword_002" />
+				<equipment slot="Head" id="Item.empire_tracker_hat_001" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_001" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_002" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_001" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.empire_greatsword_002" />
+				<equipment slot="Head" id="Item.empire_hat_006" />
+				<equipment slot="Cape" id="Item.empire_greatsword_shoulders_002" />
+				<equipment slot="Body" id="Item.empire_greatsword_body_001" />
+				<equipment slot="Gloves" id="Item.empire_greatsword_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_greatsword_boots_002" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>

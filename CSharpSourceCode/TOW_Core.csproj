@@ -16,7 +16,7 @@
   </PropertyGroup>
   <!-- Bannerlord path Property-->
   <PropertyGroup>
-    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameDir>
+    <GameDir>A:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord TOW</GameDir>
   </PropertyGroup>
   <!-- Debug Configuration Properties -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -301,6 +301,23 @@
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\PreserveWindsAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\MovingProjectileAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\DirectionalMovingAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SummoningCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\Decision\Axis.cs" />
+    <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
+    <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
+    <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
+    <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
+    <Compile Include="Battle\AI\Decision\Target.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
@@ -391,6 +408,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
+    <Compile Include="Utilities\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
     <Compile Include="Utilities\Extensions\ItemObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\ListExtensions.cs" />
@@ -405,7 +423,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <!-- Post-Build -->
   <PropertyGroup>
     <PostBuildEvent>
