@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -20,145 +19,101 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
                 {AbilityEffectType.TargetedStaticAOE, (agent, abilityTemplate, abilityIndex) => new TargetedStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.TargetedStatic, (agent, abilityTemplate, abilityIndex) => new TargetedStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new TargetedStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
 
                 {AbilityEffectType.RandomMovingAOE, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.DirectionalMovingAOE, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
 
 
-        public static readonly Dictionary<Type, Func<AbilityTemplate, List<Axis>>> UtilityByType =
-            new Dictionary<Type, Func<AbilityTemplate, List<Axis>>>
+        public static readonly Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>> UtilityByType =
+            new Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>>
             {
                 {typeof(PreserveWindsAgentCastingBehavior), CreatePreserveWindsAxis()},
 
                 {typeof(CenteredStaticAoEAgentCastingBehavior), CreateStaticAoEAxis()},
                 {typeof(TargetedStaticAoEAgentCastingBehavior), CreateStaticAoEAxis()},
+                {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
                 {typeof(DirectionalMovingAoEAgentCastingBehavior), CreateDirectionalMovingAoEAxis()},
                 {typeof(MovingProjectileAgentCastingBehavior), CreateMovingProjectileAxis()},
             };
 
-        private static Func<AbilityTemplate, List<Axis>> CreateStaticAoEAxis()
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateSummoningAxis()
         {
-            return template =>
+            return behavior =>
+            {
+                var axes = new List<Axis>();
+
+                axes.Add(new Axis(0, 1f, x => 1 - x, CommonDecisionFunctions.BalanceOfPower(behavior.Agent)));
+
+                return axes;
+            };
+        }
+
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateStaticAoEAxis()
+        {
+            return behavior =>
             {
                 var axes = new List<Axis>
                 {
-                    new Axis(0, 1, x => x, (agent, target) => 0.45f)
+                    new Axis(0, 1, x => x, (target) => 0.45f)
                 };
 
-                if (template.AbilityTargetType != AbilityTargetType.Self)
+                if (behavior.AbilityTemplate.AbilityTargetType != AbilityTargetType.Self)
                 {
-                    axes.Add(new Axis(0, 100, x => 1 - x, DistanceToTarget()));
-                    axes.Add(new Axis(0, 7, x => 1 - x, FormationDistanceToHostiles()));
-                    axes.Add(new Axis(0, 3, x => 1 - x + 0.1f, TargetSpeed()));
-                    axes.Add(new Axis(0, 0.5f, x => x + 0.01f, FormationUnderFire()));
+                    axes.Add(new Axis(0, 100, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(behavior.Agent)));
+                    axes.Add(new Axis(0, 7, x => 1 - x, CommonDecisionFunctions.FormationDistanceToHostiles()));
+                    axes.Add(new Axis(0, 3, x => 1 - x + 0.1f, CommonDecisionFunctions.TargetSpeed()));
+                    axes.Add(new Axis(0, 0.5f, x => x + 0.01f, CommonDecisionFunctions.FormationUnderFire()));
                 }
 
                 return axes;
             };
         }
 
-        private static Func<AbilityTemplate, List<Axis>> CreatePreserveWindsAxis()
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreatePreserveWindsAxis()
         {
-            return template =>
+            return behavior =>
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 1, x => x, (agent, target) => 0.4f)
+                    new Axis(0, 1, x => x, target => 0.4f)
                 };
             };
         }
 
-        public static Func<AbilityTemplate, List<Axis>> CreateMovingProjectileAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateMovingProjectileAxis()
         {
-            return template =>
+            return behavior =>
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 120, x => 1 - x, DistanceToTarget()),
-                    new Axis(0, 125, x => x, FormationPower()),
-                    new Axis(0.0f, 1, x => x + 0.1f, RangedUnitRatio()),
-                    new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, InfantryUnitRatio()),
+                    new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(behavior.Agent)),
+                    new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team) / 4, x => x, CommonDecisionFunctions.FormationPower()),
+                    new Axis(0.0f, 1, x => x + 0.3f, CommonDecisionFunctions.RangedUnitRatio()),
+                 //   new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, CommonDecisionParameterFunctions.InfantryUnitRatio()),
                 };
             };
         }
 
-        public static Func<AbilityTemplate, List<Axis>> CreateDirectionalMovingAoEAxis()
+
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateDirectionalMovingAoEAxis()
         {
-            return template =>
+            return behavior =>
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), DistanceToTarget()),
-                    new Axis(0, 15, x => 1 - x, FormationDistanceToHostiles()),
-                    new Axis(0, 200, x => x, FormationPower()),
-                    new Axis(1, 2.5f, x => 1 - x, Dispersedness()),
-                    new Axis(0, 1, x => 1 - x, CavalryUnitRatio()),
+                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), CommonDecisionFunctions.DistanceToTarget(behavior.Agent)),
+                    new Axis(0, 15, x => 1 - x, CommonDecisionFunctions.FormationDistanceToHostiles()),
+                    new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team), x => x, CommonDecisionFunctions.FormationPower()),
+                    new Axis(1, 2.5f, x => 1 - x, CommonDecisionFunctions.Dispersedness()),
+                    new Axis(0, 1, x => 1 - x, CommonDecisionFunctions.CavalryUnitRatio()),
                 };
             };
         }
 
-        private static Func<Agent, Target, float> FormationUnderFire()
-        {
-            return (agent, target) => { return target.Formation.QuerySystem.UnderRangedAttackRatio; };
-        }
 
-        private static Func<Agent, Target, float> FormationCasualties()
-        {
-            return (agent, target) => target.Formation.QuerySystem.CasualtyRatio;
-        }
-
-        private static Func<Agent, Target, float> FormationDistanceToHostiles()
-        {
-            return (agent, target) =>
-            {
-                var querySystemClosestEnemyFormation = target.Formation.QuerySystem.ClosestEnemyFormation;
-                if (querySystemClosestEnemyFormation == null)
-                {
-                    return float.MaxValue;
-                }
-
-                return target.Formation.CurrentPosition.Distance(querySystemClosestEnemyFormation.AveragePosition);
-            };
-        }
-
-        private static Func<Agent, Target, float> DistanceToTarget()
-        {
-            return (agent, target) => target.Agent != null
-                ? agent.Position.Distance(target.Agent.Position)
-                : agent.Position.AsVec2.Distance(target.Formation.CurrentPosition);
-        }
-
-        private static Func<Agent, Target, float> FormationPower()
-        {
-            return (agent, target) => target.Formation.QuerySystem.FormationPower;
-        }
-
-        private static Func<Agent, Target, float> RangedUnitRatio()
-        {
-            return (agent, target) => target.Formation.QuerySystem.RangedUnitRatio;
-        }
-
-        private static Func<Agent, Target, float> InfantryUnitRatio()
-        {
-            return (agent, target) => target.Formation.QuerySystem.InfantryUnitRatio;
-        }
-
-        private static Func<Agent, Target, float> CavalryUnitRatio()
-        {
-            return (agent, target) => target.Formation.QuerySystem.CavalryUnitRatio;
-        }
-
-        private static Func<Agent, Target, float> Dispersedness()
-        {
-            return (agent, target) => target.Formation.UnitSpacing;
-        }
-
-        private static Func<Agent, Target, float> TargetSpeed()
-        {
-            return (agent, target) => target.Formation.QuerySystem.CurrentVelocity.Length;
-        }
+     
     }
 }

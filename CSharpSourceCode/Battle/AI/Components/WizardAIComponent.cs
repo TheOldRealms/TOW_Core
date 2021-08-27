@@ -15,12 +15,14 @@ namespace TOW_Core.Battle.AI.Components
     {
         private static readonly float EvalInterval = 1;
 
+        private List<IAgentBehavior> _availableCastingBehaviors;
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
         private readonly IAgentBehavior _currentTacticalBehavior;
         public AbstractAgentCastingBehavior CurrentCastingBehavior;
 
         public Mat3 SpellTargetRotation = Mat3.Identity;
-        public List<IAgentBehavior> AvailableCastingBehaviors { get; }
+
+        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(Agent)));
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
@@ -29,7 +31,6 @@ namespace TOW_Core.Battle.AI.Components
                 agent.RemoveComponent(item);
 
             _currentTacticalBehavior = new KeepSafeAgentTacticalBehavior(agent, this);
-            AvailableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(agent));
         }
 
 
@@ -48,6 +49,10 @@ namespace TOW_Core.Battle.AI.Components
         {
             _dtSinceLastOccasional = 0;
             CurrentCastingBehavior = DetermineBehavior(AvailableCastingBehaviors, CurrentCastingBehavior);
+            if (CurrentCastingBehavior != null)
+            {
+                TOWCommon.Say(CurrentCastingBehavior.GetType().Name);
+            }
         }
 
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
