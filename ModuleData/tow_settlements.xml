@@ -399,7 +399,7 @@
       <Town id="town_comp_ST2" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
+      <Location id="center" scene_name="scn_leicheberg_doomed_city" scene_name_1="scn_leicheberg_doomed_city" scene_name_2="scn_leicheberg_doomed_city" scene_name_3="scn_leicheberg_doomed_city" />
       <Location id="arena" scene_name="arena_empire_a" />
       <Location id="tavern" scene_name="empire_house_c_tavern_a" />
       <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
