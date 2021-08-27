@@ -41,11 +41,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             }
             else
             {
-                var position = Agent.Formation.RearAttachmentPoint.Position;
-                var distance = position.Distance(Agent.Position);
-                if (distance > 10)
+                if (Agent.Formation != null && Agent.Formation.RearAttachmentPoint.Position.Distance(Agent.Position) > 10)
                 {
-                    var pos = new WorldPosition(Mission.Current.Scene, position);
+                    var pos = new WorldPosition(Mission.Current.Scene, Agent.Formation.RearAttachmentPoint.Position);
                     Agent.SetScriptedPosition(ref pos, false);
                 }
                 else
