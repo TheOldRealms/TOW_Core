@@ -275,7 +275,7 @@
   </Settlement>
   <Settlement id="village_ST1_4" name="{=Settlements.Settlement.name.village_ST1_4}Tarshof" owner="Faction.stirland_clan_1" posX="1447.732" posY="993.204" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_4}Tarshof is situated on the Northern edge of the Stirhügel hills. The village enjoys plenty of traffic from traders travelling between Wurtbad and Wörden along the Old Dwarf Road. As a result almost every house in the village professes to be an Inn, although the hospitality varies wildly and travellers are as likely to find themselves sleeping on a pile of hay as a proper pallet bed.">
     <Components>
-      <Village id="village_comp_ST1_4" village_type="VillageType.sheep_farm" hearth="72" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_4" village_type="VillageType.europe_horse_ranch" hearth="72" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
@@ -1014,7 +1014,7 @@
   </Settlement>
   <Settlement id="castle_village_SY6_1" name="{=Settlements.Settlement.name.castle_village_SY6_1}Wartenhof" posX="1652.442" posY="990.342" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY6_1}As the nobles of Wartenhof locked themselves away, the blighted souls of Wartenhof village slowly succumbed to the sickness of Nurgle’s Rot. Many simply died. They were lucky. For Nurgle sees his sickness as a blessing and gift. And one must be alive to experience it all. When the Vampire Counts came for Wartenhof, the few villages left gladly bound themselves to vampiric service in exchange for a cure. As their service wavers the rot returns. So the Villagers do their best to remain loyal.">
     <Components>
-      <Village id="castle_village_comp_SY6_1" village_type="VillageType.clay_mine" hearth="62" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY6_1" village_type="VillageType.europe_horse_ranch" hearth="62" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
