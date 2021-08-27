@@ -35,7 +35,7 @@
       <Village id="village_comp_AV1_1" village_type="VillageType.vineyard" hearth="600" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_i" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -48,7 +48,7 @@
       <Village id="village_comp_AV1_2" village_type="VillageType.fisherman" hearth="560" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -179,7 +179,7 @@
   </Settlement>
   <Settlement id="castle_AV4" name="{=Settlements.Settlement.name.castle_AV4}Peungzig" owner="Faction.averland_clan_1" posX="1522.925" posY="890.502" prosperity="420" culture="Culture.empire" gate_posX="1521.948" gate_posY="890.1547">
     <Components>
-      <Town id="castle_comp_AV4" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_AV4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
