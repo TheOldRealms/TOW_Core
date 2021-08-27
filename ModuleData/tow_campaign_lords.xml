@@ -621,6 +621,7 @@
 		<Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.empire_huss_hammer" />
+				<equipment slot="Item1" id="Item.luthor_shield" />
 				<equipment slot="Head" id="Item.empire_luthor_huss_helmet" />
 				<equipment slot="Body" id="Item.empire_luthor_huss_body" />
 				<equipment slot="Cape" id="Item.empire_luthor_huss_shoulders" />
