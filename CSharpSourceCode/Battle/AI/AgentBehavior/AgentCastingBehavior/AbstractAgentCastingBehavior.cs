@@ -38,7 +38,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             AbilityTemplate = abilityTemplate;
-            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](abilityTemplate, agent);
+            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
         }
 
 

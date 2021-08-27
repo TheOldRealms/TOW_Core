@@ -53,7 +53,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             };
         }
 
-        private static  Func<AbstractAgentCastingBehavior, List<Axis>>CreateStaticAoEAxis()
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateStaticAoEAxis()
         {
             return behavior =>
             {
@@ -74,7 +74,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             };
         }
 
-        private static  Func<AbstractAgentCastingBehavior, List<Axis>>CreatePreserveWindsAxis()
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreatePreserveWindsAxis()
         {
             return behavior =>
             {
@@ -85,7 +85,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             };
         }
 
-        public static  Func<AbstractAgentCastingBehavior, List<Axis>>CreateMovingProjectileAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateMovingProjectileAxis()
         {
             return behavior =>
             {
@@ -99,7 +99,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             };
         }
 
-        public static  Func<AbstractAgentCastingBehavior, List<Axis>>CreateDirectionalMovingAoEAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateDirectionalMovingAoEAxis()
         {
             return behavior =>
             {
