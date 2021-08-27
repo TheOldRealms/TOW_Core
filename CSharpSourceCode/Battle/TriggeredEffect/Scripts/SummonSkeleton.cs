@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
@@ -16,18 +17,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         public void OnTrigger(Vec3 position, Agent triggeredByAgent)
         {
             SpawnAgent(triggeredByAgent, position);
-
-            var pos2 = new Vec3(position.X + 1f, position.Y + 1f);
-            SpawnAgent(triggeredByAgent, pos2);
-
-            var pos3 = new Vec3(position.X - 1f, position.Y + 1f);
-            SpawnAgent(triggeredByAgent, pos3);
-
-            var pos4 = new Vec3(position.X + 1f, position.Y - 1f);
-            SpawnAgent(triggeredByAgent, pos4);
-
-            var pos5 = new Vec3(position.X - 1f, position.Y - 1f);
-            SpawnAgent(triggeredByAgent, pos5);
         }
 
         private void SpawnAgent(Agent caster, Vec3 position)

@@ -19,7 +19,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
-        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, Agent[] targets = null)
+        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent)
         {
             Timer timer = new Timer(2000);
             if (_template.SoundEffectLength > 0)
@@ -32,39 +32,15 @@ namespace TOW_Core.Battle.TriggeredEffect
                 Dispose();
             };
             timer.Start();
-
             //Cause Damage
-            if (targets == null)
+            if (_template.DamageAmount > 0)
             {
-                if (_template.DamageAmount > 0)
-                {
-                    TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
-                }
-                else if (_template.DamageAmount < 0)
-                {
-                    TOWBattleUtilities.HealAgentsInArea(position.AsVec2, _template.Radius, (int)(-_template.DamageAmount * (1 - _template.DamageVariance)), (int)(-_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType);
-                }
-                //Apply status effects
-                if (_template.ImbuedStatusEffectID != "none")
-                {
-                    TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(position.AsVec2, _template.Radius, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
-                }
+                TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)),triggererAgent, _template.TargetType);
             }
-            else
+            //Apply status effects
+            if(_template.ImbuedStatusEffectID != "none")
             {
-                if (_template.DamageAmount > 0)
-                {
-                    TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
-                }
-                else if (_template.DamageAmount < 0)
-                {
-                    TOWBattleUtilities.HealAgents(targets, (int)(-_template.DamageAmount * (1 - _template.DamageVariance)), (int)(-_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType);
-                }
-                //Apply status effects
-                if (_template.ImbuedStatusEffectID != "none")
-                {
-                    TOWBattleUtilities.ApplyStatusEffectToAgents(targets, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
-                }
+                TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(position.AsVec2, _template.Radius, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
             }
             SpawnVisuals(position, normal);
             PlaySound(position);
@@ -112,7 +88,7 @@ namespace TOW_Core.Battle.TriggeredEffect
                         script.OnTrigger(position, agent);
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     TOW_Core.Utilities.TOWCommon.Log("Tried to spawn TriggeredScript: " + _template.ScriptNameToTrigger + ", but failed.", NLog.LogLevel.Error);
                 }

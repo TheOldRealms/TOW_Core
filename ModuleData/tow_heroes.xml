@@ -10,7 +10,6 @@
 	<Hero id="vc_lord_sylvania_first_3" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<Hero id="vc_lord_sylvania_first_4" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<Hero id="vc_lord_sylvania_first_5" is_noble="true" faction="Faction.sylvania_clan_1" />
-	<Hero id="vc_lord_sylvania_first_6" is_noble="true" faction="Faction.sylvania_clan_1" />
 	<!-- Sylvania Clan 2 -->
 	<Hero id="vc_lord_sylvania_second_1" is_noble="true" faction="Faction.sylvania_clan_2" />
 	<Hero id="vc_lord_sylvania_second_2" is_noble="true" faction="Faction.sylvania_clan_2" />
@@ -21,7 +20,6 @@
 	<Hero id="vc_lord_sylvania_third_1" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<Hero id="vc_lord_sylvania_third_2" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<Hero id="vc_lord_sylvania_third_3" is_noble="true" faction="Faction.sylvania_clan_3" />
-	<Hero id="vc_lord_sylvania_third_4" is_noble="true" faction="Faction.sylvania_clan_3" />
 	<!-- Averland Clan 1 -->
 	<Hero id="averland_clan_1_1" is_noble="true" faction="Faction.averland_clan_1" text="{=!}Marius Leitdorf, known most infamously as the Mad Count, is the Elector Count of Averland, counted as one of the bravest, albeit most insane Generals within the Empire's armed forces. Not many men can be said to have waged wars against forests, swarms of bees and half-imagined fishmen, so it is not without good reason that Marius Leitdorf is known as the Mad Count. Most knew Marius for his eccentric and flamboyant nature; his bouts of screaming rage, his periods of melancholy and his mercurial conduct at court."/>
 	<Hero id="emp_lord_averland_oberaverlander_2" is_noble="true" faction="Faction.averland_clan_1" />
@@ -38,11 +36,6 @@
 	<Hero id="emp_lord_averland_westaverlander_4" is_noble="true" faction="Faction.averland_clan_3" />
 	<!-- Averland Clan 4 Knights of the Blazing Sun -->
 	<Hero id="emp_lord_averland_kobs_1" is_noble="true" faction="Faction.averland_clan_4" />
-	<!-- Averland Clan 5 The Golden Order -->
-	<Hero id="emp_lord_averland_golden_1" is_noble="true" faction="Faction.averland_clan_5" />
-	<Hero id="emp_lord_averland_golden_2" is_noble="true" faction="Faction.averland_clan_5" />
-	<Hero id="emp_lord_averland_golden_3" is_noble="true" faction="Faction.averland_clan_5" />
-	<Hero id="emp_lord_averland_golden_4" is_noble="true" faction="Faction.averland_clan_5" />
 	<!-- Stirland Clan 1 -->
 	<Hero id="stirland_clan_1_1" is_noble="true" faction="Faction.stirland_clan_1" />
 	<Hero id="emp_lord_stirland_mittelstirlander_2" is_noble="true" faction="Faction.stirland_clan_1" />
@@ -55,23 +48,6 @@
 	<Hero id="emp_lord_stirland_weststirlander_1" is_noble="true" faction="Faction.stirland_clan_3" />
 	<Hero id="emp_lord_stirland_weststirlander_2" is_noble="true" faction="Faction.stirland_clan_3" />
 	<Hero id="emp_lord_stirland_weststirlander_3" is_noble="true" faction="Faction.stirland_clan_3" />
-	<!-- Stirland Clan 4 -->
-	<Hero id="emp_lord_stirland_sigmarcult_1" is_noble="true" faction="Faction.stirland_clan_4" />
-	<Hero id="emp_lord_stirland_sigmarcult_2" is_noble="true" faction="Faction.stirland_clan_4" />
-	<Hero id="emp_lord_stirland_sigmarcult_3" is_noble="true" faction="Faction.stirland_clan_4" />
-	<Hero id="emp_lord_stirland_sigmarcult_4" is_noble="true" faction="Faction.stirland_clan_4" />
 	<!-- Mootland Clan 1 -->
 	<Hero id="moot_clan_1_1" is_noble="true" faction="Faction.moot_clan_1" />
-	
-		<!-- Archaon is a place holder. I needed a "Dummy" filler to stand in for the chaos behavior implementation -->
-	<Hero id="chaos_clan_1_1" is_noble="true" faction="Faction.chaos_clan_1" />
-
-	<!-- Dogs of war -->
-	<Hero id="dog_clan_hero_braganza" is_noble="true" faction="Faction.dog_clan_1" text="{=!}The ingenious Borgio the Besieger, the Prince of Miragliano, originally employed the famous regiment of Besiegers, as a special siege unit of crossbowmen during times of war. Borgio wanted marksmen who could pick off defenders on the walls at close range in the face incoming enemy missiles, hold ramparts against assaults, provide missile support for their main infantry, sappers, miners, siege towers, and if need be, stand their ground against enemy units sallying out of the besieged fortress. Bragnaza's troops soon proved their worth in Borgio's many sieges and turned out to be equally good as a rearguard in open battle."/>
-	<Hero id="dog_clan_hero_cursed" is_noble="true" faction="Faction.dog_clan_2" text="{=!}The most common tales revolving around Richter Kreugar's tragic curse tell of a young mercenary captain, proud, talented, and ruthless. He hired out his services freely, uncaring who he fought for as long as the price was right. Centuries ago in the history of the Old World, Richer was said to have allied with a powerful Necromancer, aiding him in his diabolical campaign against the Empire, terrorizing the heavily forested area around Wolfenburg."/>
-	<Hero id="dog_clan_hero_leopard" is_noble="true" faction="Faction.dog_clan_3" text="{=!}''Stiffen the Sinews, summon the blood, disguise fair nature with hard - favoured rage and imitate the actions of the Leopard!''"/>
-	<Hero id="dog_clan_hero_voland" is_noble="true" faction="Faction.dog_clan_4" text="{=!}''We are Voland's Venators... The Drunken Calvary!... We cannot march, we cannot fight... What wretched knights are we!... But when we see the enemy... Our heads are very clear... We Charge straight for their baggage camp... and liberate their gears!''"/>
-	<Hero id="dog_clan_hero_miragliano" is_noble="true" faction="Faction.dog_clan_5" text="{=!}''JOIN US....are you good enough to fight alongside the best warriors in the world?.....THE MARKSMEN OF MIRAGLIANO ARE LOOKING FOR MORE MEN TO JOIN THEIR RANKS!.....if you can handle a crossbow and a life of adventure come to the Merry Archer at noon!.....WE HIT THE RIGHT SPOT EVERY TIME!''"/>
-	<Hero id="dog_clan_hero_ricco" is_noble="true" faction="Faction.dog_clan_6" text="{=!}''No, they didn't look dangerous, more like a bunch of rich kids out to show off in their new armour. Very flashy they were, all gems and silk. We'll have a bit of fun, we thought. Easy pickings, we thought. Well anyone can make a mistake. Poor old captain Malvino, last mistake he ever made...''"/>
-
 </Heroes>

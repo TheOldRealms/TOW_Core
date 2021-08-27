@@ -131,29 +131,17 @@ namespace TOW_Core.CharacterCreation
         private void OnOptionFinalize(string id)
         {
             var selectedOption = _options.Find(x => x.Id == id);
-            if(selectedOption.OptionText == "Bright Order Initiate")
+            if(selectedOption.OptionText == "Bright Wizard pupil")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("Fireball");
             }
-            if (selectedOption.OptionText == "Warrior Priest Acolyte")
-            {
-                Hero.MainHero.AddAttribute("AbilityUser");
-                Hero.MainHero.AddAbility("HealingAOE");
-            }
-            else if (selectedOption.OptionText == "Novice Necromancer")
+            else if (selectedOption.OptionText == "Necromancer")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
-                Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
-            }
-            else if (selectedOption.OptionText == "Vampiric Nobility")
-            {
-                Hero.MainHero.AddAttribute("Undead");
-                Hero.MainHero.AddAttribute("VampireBodyOverride");
-                Hero.MainHero.AddAttribute("Necromancer");
             }
         }
 
@@ -200,6 +188,7 @@ namespace TOW_Core.CharacterCreation
         public override void OnCharacterCreationFinalized()
         {
             CultureObject culture = CharacterObject.PlayerCharacter.Culture;
+
             Vec2 position2D = default(Vec2);
 
             switch (culture.StringId)

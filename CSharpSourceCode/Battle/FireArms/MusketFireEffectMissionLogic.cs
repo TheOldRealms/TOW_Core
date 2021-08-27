@@ -31,7 +31,7 @@ namespace TOW_Core.Battle.FireArms
         {
             base.OnAgentShootMissile(shooterAgent, weaponIndex, position, velocity, orientation, hasRigidBody, forcedMissileIndex);
             
-            if(shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgun" || shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgunMatchlock" || shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "pistol")
+            if(shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgun" ||shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgunMatchlock")
             {
                 var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);

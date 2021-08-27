@@ -31,5 +31,21 @@ namespace TOW_Core.HarmonyPatches
             Game.Current.GameStateManager.CleanAndPushState(gameState, 0);
             return false;
         }
+
+
+        //TODO: get rid of this ASAP. need to create specific culture traits. This is only text this way.
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(CharacterCreationCultureVM), MethodType.Constructor, new Type[] { typeof(CultureObject), typeof(Action<CharacterCreationCultureVM>) })]
+        public static void Postfix(CultureObject culture, CharacterCreationCultureVM __instance)
+        {
+            if (culture.StringId == "empire")
+            {
+                __instance.PositiveEffectText = "+20% party size, access to knightly orders, 20% more xp from training for lower tier units";
+            }
+            else if (culture.StringId == "khuzait")
+            {
+                __instance.PositiveEffectText = "+75% party size, access to necromancy, access to blood knight orders";
+            }
+        }
     }
 }

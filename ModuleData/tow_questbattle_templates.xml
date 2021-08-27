@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <ArrayOfQuestBattleTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <QuestBattleTemplate TemplateId="chaosportal_01" RewardItemId="runefang_001" SceneName="TOW_chaos_portal_001_forceatmo" LeaderHeroCharacterId="chaos_clan_1_1">
+  <QuestBattleTemplate TemplateId="chaosportal_01" RewardItemId="runefang_001" SceneName="TOW_empire_village_001" LeaderHeroCharacterId="vc_lord">
     <QuestBattleDescription>You arrive at an active chaos portal. The vile thing pulses with arcane magic, chaos forces are invading in minor numbers from their realm.</QuestBattleDescription>
     <QuestBattleSolveText>Attempt to defeat the chaos forces present and close the portal.</QuestBattleSolveText>
     <InactiveDescription>The portal lies dormant. Come back at a later time.</InactiveDescription>
     <TroopTypes>
-      <QuestBattleLocationNpcTuple TroopId="tow_nurgle_warrior" Count="15" IsFriendly="false" />
-	  <QuestBattleLocationNpcTuple TroopId="tow_nurgle_warrior_002" Count="15" IsFriendly="false" />
-      <QuestBattleLocationNpcTuple TroopId="tow_chaos_chosen" Count="10" IsFriendly="false" />
-	  <QuestBattleLocationNpcTuple TroopId="tow_chs_khorne_warrior" Count="20" IsFriendly="false" />
+      <QuestBattleLocationNpcTuple TroopId="tow_skeleton_warrior" Count="2" IsFriendly="false" />
+      <QuestBattleLocationNpcTuple TroopId="tow_empire_recruit" Count="2" IsFriendly="true" />
+      <QuestBattleLocationNpcTuple TroopId="tow_grave_guard" Count="1" IsFriendly="false" />
     </TroopTypes>
   </QuestBattleTemplate>
 </ArrayOfQuestBattleTemplate>

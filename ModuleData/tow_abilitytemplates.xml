@@ -4,11 +4,11 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="20" 
-      WindsOfMagicCost="15" 
+      CoolDown="6" 
+      WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="3" 
-      Radius="0.4" 
+      Radius="1" 
       AbilityType="Spell" 
       AbilityEffectType="MovingProjectile" 
       BaseMovementSpeed="35" 
@@ -26,10 +26,8 @@
       ShouldSoundLoopOverDuration="true" 
       CastType="WindUp" 
       CastTime="0.5" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="explosion_01"
-      Offset="0.5"
-      CrosshairType="Projectile">
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="explosion_01">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -41,8 +39,8 @@
       StringID="WindOfDeath" 
       Name="Wind of Death" 
       SpriteName="windofdeath_icon" 
-      CoolDown="40" 
-      WindsOfMagicCost="20" 
+      CoolDown="20" 
+      WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5" 
       Radius="2" 
@@ -59,17 +57,12 @@
       ShadowCastEnabled="false" 
       ParticleEffectPrefab="wind_of_death_vfx" 
       ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="windofdeath_whispers" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="wind_of_death_tick"
-      Offset="10"
-      CrosshairType="DirectionalAOE"
-      MinDistance="2"
-      MaxDistance="10"
-      TargetCapturingRadius="3">
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="true"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="none" 
+      TriggeredEffectID="wind_of_death_tick">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -80,14 +73,14 @@
   <AbilityTemplate 
       StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
-      SpriteName="summonskeleton_icon" 
-      CoolDown="40" 
-      WindsOfMagicCost="18" 
+      SpriteName="windofdeath_icon" 
+      CoolDown="2" 
+      WindsOfMagicCost="10" 
       BaseMisCastChance="0.3" 
       Duration="5" 
       Radius="2" 
       AbilityType="Spell" 
-      AbilityEffectType="Summoning" 
+      AbilityEffectType="CenteredStaticAOE" 
       BaseMovementSpeed="0" 
       TickInterval="2" 
       TriggerType="TickOnce" 
@@ -103,175 +96,12 @@
       ShouldSoundLoopOverDuration="true"
       CastType="Instant" 
       CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="summon_skeleton"
-      Offset="10"
-      AbilityTargetType="Self"
-      CrosshairType="Summoning"
-      MinDistance="1"
-      MaxDistance="30"
-      TargetCapturingRadius="2.5">
+      AnimationActionName="none" 
+      TriggeredEffectID="summon_skeleton_tick">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
           <y>170</y>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate 
-      StringID="Dart" 
-      Name="Dart" 
-      SpriteName="dart_icon" 
-      CoolDown="12" 
-      WindsOfMagicCost="8" 
-      BaseMisCastChance="0.05" 
-      Duration="3" 
-      Radius="0.4" 
-      AbilityType="Spell" 
-      AbilityEffectType="MovingProjectile" 
-      BaseMovementSpeed="35" 
-      TickInterval="-1" 
-      TriggerType="OnCollision" 
-      HasLight="true" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="3" 
-      LightFlickeringInterval="0.7" 
-      ShadowCastEnabled="true" 
-      ParticleEffectPrefab="dart_particle" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="dart" 
-      ShouldSoundLoopOverDuration="true" 
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_stone" 
-      TriggeredEffectID="dart_explosion"
-      CrosshairType="Projectile">
-      <LightColorRGB x="0" y="204" z="255" w="-1">
-        <AsVec2>
-          <y>204</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate 
-      StringID="BurningHead" 
-      Name="The Burning Head" 
-      SpriteName="burninghead_icon" 
-      CoolDown="30" 
-      WindsOfMagicCost="16" 
-      BaseMisCastChance="0.3" 
-      Duration="3" 
-      Radius="3" 
-      AbilityType="Spell" 
-      AbilityEffectType="DirectionalMovingAOE" 
-      BaseMovementSpeed="12" 
-      TickInterval="0.5" 
-      TriggerType="EveryTick" 
-      HasLight="true" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="burning_skull" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="passing_fire" 
-      ShouldSoundLoopOverDuration="true"
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_stone" 
-      TriggeredEffectID="burning_head_tick"
-      Offset="10"
-      CrosshairType="DirectionalAOE"
-      MinDistance="2"
-      MaxDistance="10"
-      TargetCapturingRadius="3">
-      <LightColorRGB x="255" y="170" z="0" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>170</y>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate 
-      StringID="ScreamingSkull" 
-      Name="Screaming Skull" 
-      SpriteName="screamingskull_icon" 
-      CoolDown="30" 
-      WindsOfMagicCost="18" 
-      BaseMisCastChance="0.3" 
-      Duration="3" 
-      Radius="3" 
-      AbilityType="Spell" 
-      AbilityEffectType="DirectionalMovingAOE" 
-      BaseMovementSpeed="12" 
-      TickInterval="0.5" 
-      TriggerType="EveryTick" 
-      HasLight="true" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="screaming_skull_vfx" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="scream" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_stone" 
-      TriggeredEffectID="wind_of_death_tick"
-      Offset="10"
-      CrosshairType="DirectionalAOE"
-      MinDistance="2"
-      MaxDistance="10"
-      TargetCapturingRadius="3">
-      <LightColorRGB x="52" y="235" z="88" w="-1">
-        <AsVec2>
-          <x>52</x>
-          <y>235</y>
-          <z>88</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate 
-      StringID="HealingAOE" 
-      Name="Healing AOE" 
-      SpriteName="healingprayer_icon" 
-      CoolDown="40" 
-      WindsOfMagicCost="0" 
-      BaseMisCastChance="0.3" 
-      Duration="9" 
-      Radius="0.1" 
-      AbilityType="Prayer" 
-      AbilityEffectType="CenteredStaticAOE" 
-      BaseMovementSpeed="0" 
-      TickInterval="1" 
-      TriggerType="EveryTick" 
-      HasLight="true" 
-      LightIntensity="100" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="healing_circle" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="empire_heal" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="healing_tick"
-      Offset="0"
-      AbilityTargetType="Allies"
-      CrosshairType="CenteredAOE"
-      TargetCapturingRadius="5">
-      <LightColorRGB x="255" y="255" z="255" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>255</y>
-          <z>255</z>
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>

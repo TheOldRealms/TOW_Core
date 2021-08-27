@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Xml;
 using HarmonyLib;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.MountAndBlade.CustomBattle.CustomBattle;
 using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Multiplayer;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CustomBattles;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.HarmonyPatches
@@ -22,20 +20,10 @@ namespace TOW_Core.HarmonyPatches
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CustomBattleState.Helper), "GetDefaultTroopOfFormationForFaction")]
-        public static void Postfix(ref BasicCharacterObject __result, BasicCultureObject culture)
+        public static void Postfix(ref BasicCharacterObject __result, BasicCultureObject culture, FormationClass formation)
         {
-            switch (culture.GetCultureCode())
-            {
-                case CultureCode.Empire:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_empire_recruit");
-                    break;
-                case CultureCode.Khuzait:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
-                    break;
-                default:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_empire_recruit");
-                    break;
-            }
+            var obj = CustomBattleTroopManager.GetTroopObjectFor(culture, formation);
+            if (obj != null) __result = obj;
         }
 
         //Fill available characters
@@ -50,8 +38,6 @@ namespace TOW_Core.HarmonyPatches
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("emp_lord"));
                 //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("mannfred"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("vc_lord"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("wizard_lord"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("necromancer_lord"));
                 //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("krell")); 
             }
             catch (Exception e)
@@ -80,45 +66,33 @@ namespace TOW_Core.HarmonyPatches
             if (list.Count > 1) __result = list;
         }
 
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(ArmyCompositionItemVM), "IsValidUnitItem")]
-        public static bool Prefix(ref ArmyCompositionItemVM __instance, BasicCharacterObject o, ref bool __result, BasicCultureObject ____culture, ArmyCompositionItemVM.CompositionType ____type)
-        {
-            if (o != null && o.StringId.StartsWith("tow_") && o.Culture.StringId == ____culture.StringId && o.DefaultFormationClass == GetFormationFor(____type))
-            {
-                __result = true;
-            }
-            else __result = false;
-            return false;
-        }
 
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(CustomGame), "LoadCustomBattleScenes")]
-        public static void Postfix5(ref CustomGame __instance, ref XmlDocument doc)
+        //This is prime example of Taleworlds hardcoding simple color strings. Need to override.
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(WidgetsMultiplayerHelper), "GetFactionColorCode")]
+        public static void Postfix4(ref string __result, string lowercaseFactionCode, bool useSecondary)
         {
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_custombattlescenes.xml");
-            if (File.Exists(path))
+            if (useSecondary)
             {
-                XmlDocument moredoc = new XmlDocument();
-                moredoc.Load(path);
-                doc = MBObjectManager.MergeTwoXmls(doc, moredoc);
+                if (lowercaseFactionCode == "empire")
+                {
+                    __result = "#ED3F16FF";
+                }
+                if (lowercaseFactionCode == "khuzait")
+                {
+                    __result = "#ED3F16FF";
+                }
             }
-        }
-
-        private static FormationClass GetFormationFor(ArmyCompositionItemVM.CompositionType type)
-        {
-            switch (type)
+            else
             {
-                case ArmyCompositionItemVM.CompositionType.MeleeInfantry:
-                    return FormationClass.Infantry;
-                case ArmyCompositionItemVM.CompositionType.RangedInfantry:
-                    return FormationClass.Ranged;
-                case ArmyCompositionItemVM.CompositionType.MeleeCavalry:
-                    return FormationClass.Cavalry;
-                case ArmyCompositionItemVM.CompositionType.RangedCavalry:
-                    return FormationClass.HorseArcher;
-                default:
-                    return FormationClass.Infantry;
+                if (lowercaseFactionCode == "empire")
+                {
+                    __result = "#F8F2F0FF";
+                }
+                if (lowercaseFactionCode == "khuzait")
+                {
+                    __result = "#2E2727FF";
+                }
             }
         }
     }

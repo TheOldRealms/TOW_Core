@@ -8,43 +8,12 @@
         DamageType="Fire" 
         DamageAmount="50" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="fireball_dot" 
         ImbuedStatusEffectDuration="5" 
         DamageVariance="0.2" 
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate
-        StringID="grenade_explosion"
-        BurstParticleEffectPrefab="psys_burning_projectile_default_coll"
-        SoundEffectId="fireball_explosion"
-        SoundEffectLength="2.5"
-        DamageType="Fire"
-        DamageAmount="50"
-        Radius="5"
-        HasShockWave="true"
-        TargetType="All"
-        ImbuedStatusEffectID="fireball_dot"
-        ImbuedStatusEffectDuration="5"
-        DamageVariance="0.2"
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate 
-      StringID="dart_explosion" 
-      BurstParticleEffectPrefab="dart_explosion" 
-      SoundEffectId="dart_explosion" 
-      SoundEffectLength="2.5" 
-      DamageType="Magical" 
-      DamageAmount="50" 
-      Radius="5" 
-      HasShockWave="false"
-      TargetType="All" 
-      ImbuedStatusEffectID="none" 
-      ImbuedStatusEffectDuration="5" 
-      DamageVariance="0.2" 
-      ScriptNameToTrigger="none">
-      </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
         StringID="wind_of_death_tick" 
         BurstParticleEffectPrefab="none" 
@@ -53,7 +22,6 @@
         DamageType="Magical" 
         DamageAmount="40" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="5" 
@@ -61,47 +29,17 @@
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
-      StringID="burning_head_tick" 
-      BurstParticleEffectPrefab="none" 
-      SoundEffectId="none" 
-      SoundEffectLength="0" 
-      DamageType="Fire" 
-      DamageAmount="40" 
-      Radius="5" 
-      TargetType="All" 
-      ImbuedStatusEffectID="fireball_dot" 
-      ImbuedStatusEffectDuration="5" 
-      DamageVariance="0.1" 
-      ScriptNameToTrigger="none">
-      </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate 
-        StringID="summon_skeleton" 
+        StringID="summon_skeleton_tick" 
         BurstParticleEffectPrefab="none" 
         SoundEffectId="none" 
         SoundEffectLength="0" 
         DamageType="Magical" 
         DamageAmount="0" 
         Radius="5" 
-        HasShockWave="false"
         TargetType="All" 
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="0" 
         DamageVariance="0" 
         ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonSkeleton">
-  </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate 
-        StringID="healing_tick" 
-        BurstParticleEffectPrefab="none" 
-        SoundEffectId="none" 
-        SoundEffectLength="0" 
-        DamageType="Magical" 
-        DamageAmount="-20" 
-        Radius="5" 
-        HasShockWave="false"
-        TargetType="Friendly" 
-        ImbuedStatusEffectID="none" 
-        ImbuedStatusEffectDuration="0" 
-        DamageVariance="0.1" 
-        ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

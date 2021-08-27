@@ -1,60 +1,17 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfCharacterAbilityTuple xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-  <!-- custom battle lords -->
-  <CharacterAbilityTuple CharacterID="emp_lord">
-    <Abilities>Fireball</Abilities>
-    <Abilities>Dart</Abilities>
-    <Abilities>BurningHead</Abilities>
-    <Abilities>WindOfDeath</Abilities>
-    <Abilities>ScreamingSkull</Abilities>
-    <Abilities>HealingAOE</Abilities>
-    <Abilities>SummonSkeleton</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="vc_lord">
-    <Abilities>Fireball</Abilities>
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="wizard_lord">
-    <Abilities>Fireball</Abilities>
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="necromancer_lord">
-    <Abilities>SummonSkeleton</Abilities>
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-
-  <!-- empire wanderers -->
-  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
-    <Abilities>Fireball</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_1">
-    <Abilities>HealingAOE</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="tow_wanderer_empire_3">
-    <Abilities>Dart</Abilities>
-  </CharacterAbilityTuple>
-
-  <!-- VC lords -->
-  <CharacterAbilityTuple CharacterID="sylvania_clan_1_1">
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_2">
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_first_6">
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="vc_lord_sylvania_third_1">
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
-
-  <!-- vampire wanderers -->
-  <CharacterAbilityTuple CharacterID="tow_wanderer_vampire_0">
-    <Abilities>SummonSkeleton</Abilities>
-  </CharacterAbilityTuple>
-  <CharacterAbilityTuple CharacterID="tow_wanderer_vampire_1">
-    <Abilities>WindOfDeath</Abilities>
-  </CharacterAbilityTuple>
+	
+	<CharacterAbilityTuple CharacterID="emp_lord">
+		<Abilities>Fireball</Abilities>
+		<Abilities>WindOfDeath</Abilities>
+		<Abilities>SummonSkeleton</Abilities>
+	</CharacterAbilityTuple>
+	<CharacterAbilityTuple CharacterID="vc_lord">
+		<Abilities>Fireball</Abilities>
+		<Abilities>WindOfDeath</Abilities>
+	</CharacterAbilityTuple>
+    <CharacterAbilityTuple CharacterID="tow_wanderer_empire_0">
+		<Abilities>Fireball</Abilities>
+    </CharacterAbilityTuple>
 
 </ArrayOfCharacterAbilityTuple>
