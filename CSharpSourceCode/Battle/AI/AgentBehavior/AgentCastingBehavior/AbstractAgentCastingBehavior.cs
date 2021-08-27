@@ -15,10 +15,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     public abstract class AbstractAgentCastingBehavior : IAgentBehavior
     {
         private WizardAIComponent _component;
-        protected readonly Agent Agent;
+        public readonly Agent Agent;
         protected float Hysteresis = 0.20f;
         protected int Range;
-        protected readonly AbilityTemplate AbilityTemplate;
+        public readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
         protected List<Axis> AxisList;
 
@@ -38,7 +38,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             AbilityTemplate = abilityTemplate;
-            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](abilityTemplate);
+            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](abilityTemplate, agent);
         }
 
 
@@ -115,13 +115,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected virtual float UtilityFunction(Target target)
         {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional())
             {
                 return 0.0f;
             }
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
-            return hysteresis + AxisList.GeometricMean(Agent, target);
+            return hysteresis + AxisList.GeometricMean(target);
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
