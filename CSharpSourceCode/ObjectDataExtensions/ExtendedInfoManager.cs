@@ -217,7 +217,7 @@ namespace TOW_Core.ObjectDataExtensions
             }
             else
             {
-                TOWCommon.Say("Already added"); 
+                //TOWCommon.Say("Already added"); 
             }
             
         }

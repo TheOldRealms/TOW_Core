@@ -34,6 +34,8 @@ namespace TOW_Core.Items
                 {
                     affectedAgent.ApplyStatusEffect(magiceffect.ImbuedStatusEffectId);
                 }
+                //TODO: disabling this for first release, we dont actually have an item script. This just clogs system resources and spams the screen with debug messages.
+                /*
                 if(magiceffect.OnHitScriptName != "none")
                 {
                     try
@@ -50,6 +52,7 @@ namespace TOW_Core.Items
                         TOW_Core.Utilities.TOWCommon.Log("Tried to create magicweapon onhitscript: " + magiceffect.OnHitScriptName + ", but failed.", NLog.LogLevel.Error);
                     }
                 }
+                */
             }
         }
 
