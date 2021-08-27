@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -92,12 +91,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 return new List<Axis>
                 {
                     new Axis(0, 120, x => 1 - x, CommonDecisionParameterFunctions.DistanceToTarget(behavior.Agent)),
-                    new Axis(0, 125, x => x, CommonDecisionParameterFunctions.FormationPower()),
+                    new Axis(0, CalculateEnemyTotalPower(behavior) / 4, x => x, CommonDecisionParameterFunctions.FormationPower()),
                     new Axis(0.0f, 1, x => x + 0.1f, CommonDecisionParameterFunctions.RangedUnitRatio()),
                     new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, CommonDecisionParameterFunctions.InfantryUnitRatio()),
                 };
             };
         }
+
 
         public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateDirectionalMovingAoEAxis()
         {
@@ -107,11 +107,20 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 {
                     new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), CommonDecisionParameterFunctions.DistanceToTarget(behavior.Agent)),
                     new Axis(0, 15, x => 1 - x, CommonDecisionParameterFunctions.FormationDistanceToHostiles()),
-                    new Axis(0, 200, x => x, CommonDecisionParameterFunctions.FormationPower()),
+                    new Axis(0, CalculateEnemyTotalPower(behavior) / 2, x => x, CommonDecisionParameterFunctions.FormationPower()),
                     new Axis(1, 2.5f, x => 1 - x, CommonDecisionParameterFunctions.Dispersedness()),
                     new Axis(0, 1, x => 1 - x, CommonDecisionParameterFunctions.CavalryUnitRatio()),
                 };
             };
+        }
+
+
+        private static float CalculateEnemyTotalPower(AbstractAgentCastingBehavior behavior)
+        {
+            var enemyPower = behavior.Agent.Team.QuerySystem.EnemyTeams
+                .Select(team => team.TeamPower)
+                .Aggregate((a, x) => a + x);
+            return enemyPower;
         }
     }
 }
