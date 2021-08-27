@@ -43,6 +43,10 @@
 	<Character name="tow_wanderer_empire_1">
 		<Attribute id="AbilityUser" />
 	</Character>
+	<Character name="tow_wanderer_empire_3">
+		<Attribute id="AbilityUser" />
+		<Attribute id="SpellCaster" />
+	</Character>
 	<Character name="wizard_lord">
 		<Attribute id="AbilityUser" />
 		<Attribute id="SpellCaster" />
