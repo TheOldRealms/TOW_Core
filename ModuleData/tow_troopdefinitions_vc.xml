@@ -498,8 +498,7 @@
 	<NPCCharacter id="tow_blood_knights_mounted" default_group="Cavalry" level="21" name="{=!}Blood Knights Mounted" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
 		<face>
 			
-			<BodyProperties version="4" age="19" weight="0.6785" build="0.9467"  key="0015A00FD34410032E45AB571B5975AC5761B9956B8DA5758CAA598D978A476900FEA6030FC886A4000000000000000000000000000000000000000055EC2102"  />
-			<BodyProperties version="4" age="19" weight="0.6874" build="0.9644"  key="0029C80FC0CC024349BBA478B8579AA7B67849195D8BCCA86BCD985A6668845600DEA6030D56A449000000000000000000000000000000000000000045B440C2"  />
+			<BodyProperties version="4" age="19" weight="0.5831" build="0.7121"  key="0029A80E40A01001C39B36DC4B4766C98564675B9A6A868979A5A7B75B7EB48500BB96030B7963B2000000000000000000000000000000000000000059741002"  />
 		</face>
 		<upgrade_targets></upgrade_targets>
 		<Equipments>
@@ -520,7 +519,7 @@
 				<equipment slot="Item0" id="Item.black_knight_lance_001" />
 				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
 				<equipment slot="Item2" id="Item.vampire_sword_008" />
-				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_002" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -546,7 +545,7 @@
 				<equipment slot="Item0" id="Item.black_knight_lance_001" />
 				<equipment slot="Item1" id="Item.vampire_red_shield_007" />
 				<equipment slot="Item2" id="Item.vampire_sword_006" />
-				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_002" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -559,6 +558,7 @@
 				<equipment slot="Item0" id="Item.black_knight_lance_001" />
 				<equipment slot="Item1" id="Item.vampire_red_shield_006" />
 				<equipment slot="Item2" id="Item.vampire_sword_005" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -571,7 +571,6 @@
 				<equipment slot="Item0" id="Item.black_knight_lance_001" />
 				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
 				<equipment slot="Item2" id="Item.vampire_sword_004" />
-				
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -604,7 +603,7 @@
 				
 				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
 				<equipment slot="Item2" id="Item.vampire_sword_008" />
-				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_002" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -624,7 +623,7 @@
 			<EquipmentRoster>
 				<equipment slot="Item1" id="Item.vampire_red_shield_007" />
 				<equipment slot="Item2" id="Item.vampire_sword_006" />
-				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_002" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
@@ -636,6 +635,7 @@
 				<equipment slot="Item1" id="Item.vampire_red_shield_006" />
 				<equipment slot="Item2" id="Item.vampire_sword_005" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
 				<equipment slot="Leg" id="Item.hallow_boots" />
@@ -644,7 +644,6 @@
 			<EquipmentRoster>
 				<equipment slot="Item1" id="Item.vampire_red_shield_009" />
 				<equipment slot="Item2" id="Item.vampire_sword_004" />
-				
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
 				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
