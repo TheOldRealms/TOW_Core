@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public static class CommonDecisionParameterFunctions
+    public static class CommonDecisionFunctions
     {
         public static Func<Target, float> FormationUnderFire()
         {
@@ -71,9 +72,9 @@ namespace TOW_Core.Battle.AI.Decision
         {
             return target =>
             {
-                TOWCommon.Say("Overall Power ratio: " + agent.Team.QuerySystem.OverallPowerRatio);
-                TOWCommon.Say("Power ratio with casualties: " + agent.Team.QuerySystem.PowerRatioIncludingCasualties);
-                return agent.Team.QuerySystem.OverallPowerRatio;
+                var calculateEnemyTotalPower = agent.Team.QuerySystem.TeamPower / (CalculateEnemyTotalPower(agent.Team)+agent.Team.QuerySystem.TeamPower);
+                TOWCommon.Say("Power ratio: " + calculateEnemyTotalPower);
+                return calculateEnemyTotalPower;
             };
         }
 
@@ -82,8 +83,16 @@ namespace TOW_Core.Battle.AI.Decision
             return target =>
             {
                 TOWCommon.Say("Local Power Ratio: " + agent.Formation.QuerySystem.LocalPowerRatio);
-                return agent.Formation.QuerySystem.LocalPowerRatio;
+                return Math.Max(1, agent.Formation.QuerySystem.LocalPowerRatio);
             };
+        }
+
+        public static float CalculateEnemyTotalPower(Team chosenTeam)
+        {
+            var enemyPower = chosenTeam.QuerySystem.EnemyTeams
+                .Select(team => team.TeamPower)
+                .Aggregate((a, x) => a + x);
+            return enemyPower;
         }
     }
 }

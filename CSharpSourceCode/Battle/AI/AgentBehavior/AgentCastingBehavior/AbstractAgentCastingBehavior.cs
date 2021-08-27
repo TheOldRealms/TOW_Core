@@ -46,7 +46,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public virtual void Execute()
         {
-            if (Agent.GetCurrentAbility().IsOnCooldown()) return;
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
 
             var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
 
@@ -71,7 +71,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             targetPosition += velocity;
-            targetPosition.z += -2f;
+            targetPosition.z += -3f;
 
             var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
             wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
