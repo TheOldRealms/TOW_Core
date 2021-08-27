@@ -18,17 +18,19 @@ namespace TOW_Core.Utilities.Extensions
         /// <returns></returns>
         public static List<string> GetSceneNames(this Settlement settlement)
         {
-            List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
+            
             List<string> sceneNames = new List<string>();
-
-            foreach(Location settlementLocation in settlementLocations)
+            if(settlement.LocationComplex != null)
             {
-                for(int i=0; i<settlementLocation.GetSceneCount(); i++)
+                List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
+                foreach (Location settlementLocation in settlementLocations)
                 {
-                    sceneNames.Add(settlementLocation.GetSceneName(i));
+                    for (int i = 0; i < settlementLocation.GetSceneCount(); i++)
+                    {
+                        sceneNames.Add(settlementLocation.GetSceneName(i));
+                    }
                 }
             }
-            
             return sceneNames;
         }
     }

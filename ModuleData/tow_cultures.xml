@@ -3,9 +3,9 @@
 	<Culture id="empire"
 			 name="{=empirefaction}Empire of Men"
 			 is_main_culture="true"
-			 color="FF4E3A55"
-			 color2="FFDE9953"
-			 elite_basic_troop="NPCCharacter.tow_empire_knight"
+			 color="FF612121"
+			 color2="FFededed"
+			 elite_basic_troop="NPCCharacter.tow_empire_duelist"
 			 basic_troop="NPCCharacter.tow_empire_recruit"
 			 melee_militia_troop="NPCCharacter.tow_empire_state_troop"
 			 ranged_militia_troop="NPCCharacter.tow_empire_archer"
@@ -13,25 +13,26 @@
 			 ranged_elite_militia_troop="NPCCharacter.tow_empire_crossbowman"
 			 can_have_settlement="true"
 			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_empire_template"
+			 villager_party_template="PartyTemplate.empire_villager_template"
 			 default_party_template="PartyTemplate.empire_lordparty_template"
 			 caravan_party_template="PartyTemplate.empire_caravan_template"
-			 elite_caravan_party_template="PartyTemplate.empire_lordparty_template"
+			 elite_caravan_party_template="PartyTemplate.empire_elite_caravan_template"
 			 militia_party_template="PartyTemplate.empire_militia_template"
-			 rebels_party_template="PartyTemplate.rebels_empire_template"
+			 rebels_party_template="PartyTemplate.empire_secessionists"
+			 vassal_reward_party_template="PartyTemplate.empire_lordparty_template"
 			 prosperity_bonus="1"
 			 encounter_background_mesh="empire_friendlyparty"
 			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000"
 			 text="{=X0kKBzsW}Culture description. Not sure where you see this. If you see this pls report with exact location!"
 			 tournament_master="NPCCharacter.tournament_master_empire"
-			 villager="NPCCharacter.villager_empire"
-			 caravan_master="NPCCharacter.caravan_master_empire"
-			 armed_trader="NPCCharacter.armed_trader_empire"
-			 caravan_guard="NPCCharacter.caravan_guard_empire"
-			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_empire"
+			 villager="NPCCharacter.tow_empire_villager"
+			 caravan_master="NPCCharacter.tow_caravan_empire_captain"
+			 armed_trader="NPCCharacter.tow_caravan_empire_ranged"
+			 caravan_guard="NPCCharacter.tow_caravan_empire_guard"
+			 veteran_caravan_guard="NPCCharacter.tow_caravan_empire_vetguard"
 			 duel_preset="NPCCharacter.empire_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_empire"
-			 guard="NPCCharacter.guard_empire"
+			 guard="NPCCharacter.tow_empire_halberdier"
 			 steward="NPCCharacter.steward_empire"
 			 blacksmith="NPCCharacter.blacksmith_empire"
 			 weaponsmith="NPCCharacter.weaponsmith_empire"
@@ -2279,9 +2280,9 @@
 	<Culture id="khuzait"
 			 name="{=sZLd6VHi}Vampire Counts"
 			 is_main_culture="true"
-			 color="FF58888B"
-			 color2="FFCCBB89"
-			 elite_basic_troop="NPCCharacter.khuzait_noble_son"
+			 color="FF303030"
+			 color2="FF1c0d14"
+			 elite_basic_troop="NPCCharacter.tow_empire_huntsman_vc"
 			 basic_troop="NPCCharacter.tow_empire_recruit_vc"
 			 melee_militia_troop="NPCCharacter.tow_empire_state_troop_vc"
 			 ranged_militia_troop="NPCCharacter.tow_empire_archer_vc"
@@ -2289,64 +2290,65 @@
 			 ranged_elite_militia_troop="NPCCharacter.tow_empire_archer_vc"
 			 can_have_settlement="true"
 			 town_edge_number="4"
-			 villager_party_template="PartyTemplate.villager_empire_template"
+			 villager_party_template="PartyTemplate.vc_villager_template"
 			 default_party_template="PartyTemplate.vampire_lordparty_template"
 			 encounter_background_mesh="vampire_necroparty"
-			 elite_caravan_party_template="PartyTemplate.empire_caravan_template"
-			 caravan_party_template="PartyTemplate.empire_caravan_template"
+			 elite_caravan_party_template="PartyTemplate.sylvanian_elite_caravan_template"
+			 caravan_party_template="PartyTemplate.sylvanian_caravan_template"
 			 militia_party_template="PartyTemplate.sylvania_militia_template"
-			 rebels_party_template="PartyTemplate.rebels_khuzait_template"
+			 rebels_party_template="PartyTemplate.empire_secessionists"
+			 vassal_reward_party_template="PartyTemplate.vampire_lordparty_template"
 			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000"
 			 text="{=v5bWtXj1}Culture description. Not sure where you see this. If you see this pls report with exact location!"
-			 tournament_master="NPCCharacter.tournament_master_khuzait"
-			 villager="NPCCharacter.villager_khuzait"
-			 caravan_master="NPCCharacter.caravan_master_khuzait"
-			 armed_trader="NPCCharacter.armed_trader_khuzait"
-			 caravan_guard="NPCCharacter.caravan_guard_khuzait"
-			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_khuzait"
-			 duel_preset="NPCCharacter.khuzait_duel_preset"
-			 prison_guard="NPCCharacter.prison_guard_khuzait"
-			 guard="NPCCharacter.guard_khuzait"
-			 steward="NPCCharacter.steward_khuzait"
-			 blacksmith="NPCCharacter.blacksmith_khuzait"
-			 weaponsmith="NPCCharacter.weaponsmith_khuzait"
-			 townswoman="NPCCharacter.townswoman_khuzait"
-			 townswoman_infant="NPCCharacter.townswoman_infant_khuzait"
-			 townswoman_child="NPCCharacter.townswoman_child_khuzait"
-			 townswoman_teenager="NPCCharacter.townswoman_teenager_khuzait"
-			 townsman="NPCCharacter.townsman_khuzait"
-			 townsman_infant="NPCCharacter.townsman_infant_khuzait"
-			 townsman_child="NPCCharacter.townsman_child_khuzait"
-			 townsman_teenager="NPCCharacter.townsman_teenager_khuzait"
-			 village_woman="NPCCharacter.village_woman_khuzait"
-			 villager_male_child="NPCCharacter.villager_child_khuzait"
-			 villager_male_teenager="NPCCharacter.villager_teenager_khuzait"
-			 villager_female_child="NPCCharacter.village_woman_child_khuzait"
-			 villager_female_teenager="NPCCharacter.village_woman_teenager_khuzait"
-			 ransom_broker="NPCCharacter.ransom_broker_khuzait"
-			 gangleader_bodyguard="NPCCharacter.gangleader_bodyguard_khuzait"
-			 merchant_notary="NPCCharacter.merchant_notary_khuzait"
-			 artisan_notary="NPCCharacter.artisan_notary_khuzait"
-			 preacher_notary="NPCCharacter.preacher_notary_khuzait"
-			 rural_notable_notary="NPCCharacter.rural_notable_notary_khuzait"
-			 shop_worker="NPCCharacter.shop_worker_khuzait"
-			 tavernkeeper="NPCCharacter.tavernkeeper_khuzait"
-			 taverngamehost="NPCCharacter.taverngamehost_khuzait"
-			 musician="NPCCharacter.musician_khuzait"
-			 tavern_wench="NPCCharacter.tavern_wench_khuzait"
-			 armorer="NPCCharacter.armorer_khuzait"
-			 horseMerchant="NPCCharacter.horseMerchant_khuzait"
-			 barber="NPCCharacter.barber_khuzait"
-			 merchant="NPCCharacter.merchant_khuzait"
-			 beggar="NPCCharacter.beggar_khuzait"
-			 female_beggar="NPCCharacter.female_beggar_khuzait"
-			 female_dancer="NPCCharacter.female_dancer_khuzait"
-			 gear_practice_dummy="NPCCharacter.gear_practice_dummy_khuzait"
-			 weapon_practice_stage_1="NPCCharacter.weapon_practice_stage_1_khuzait"
-			 weapon_practice_stage_2="NPCCharacter.weapon_practice_stage_2_khuzait"
-			 weapon_practice_stage_3="NPCCharacter.weapon_practice_stage_3_khuzait"
-			 gear_dummy="NPCCharacter.gear_dummy_khuzait"
-			 board_game_type="Puluc">
+			 tournament_master="NPCCharacter.tournament_master_empire"
+			 villager="NPCCharacter.tow_vc_villager"
+			 caravan_master="NPCCharacter.tow_caravan_vc_captain"
+			 armed_trader="NPCCharacter.tow_caravan_vc_ranged"
+			 caravan_guard="NPCCharacter.tow_caravan_vc_guard"
+			 veteran_caravan_guard="NPCCharacter.tow_caravan_vc_guard"
+			 duel_preset="NPCCharacter.empire_duel_preset"
+			 prison_guard="NPCCharacter.prison_guard_empire"
+			 guard="NPCCharacter.tow_grave_guard"
+			 steward="NPCCharacter.steward_empire"
+			 blacksmith="NPCCharacter.blacksmith_empire"
+			 weaponsmith="NPCCharacter.weaponsmith_empire"
+			 townswoman="NPCCharacter.townswoman_empire"
+			 townswoman_infant="NPCCharacter.townswoman_infant_empire"
+			 townswoman_child="NPCCharacter.townswoman_child_empire"
+			 townswoman_teenager="NPCCharacter.townswoman_teenager_empire"
+			 townsman="NPCCharacter.tow_townsman_villager"
+			 townsman_infant="NPCCharacter.townsman_infant_empire"
+			 townsman_child="NPCCharacter.townsman_child_empire"
+			 village_woman="NPCCharacter.village_woman_empire"
+			 villager_male_child="NPCCharacter.villager_child_empire"
+			 villager_male_teenager="NPCCharacter.villager_teenager_empire"
+			 villager_female_child="NPCCharacter.village_woman_child_empire"
+			 villager_female_teenager="NPCCharacter.village_woman_teenager_empire"
+			 townsman_teenager="NPCCharacter.townsman_teenager_empire"
+			 ransom_broker="NPCCharacter.ransom_broker_empire"
+			 gangleader_bodyguard="NPCCharacter.gangleader_bodyguard_empire"
+			 merchant_notary="NPCCharacter.merchant_notary_empire"
+			 artisan_notary="NPCCharacter.artisan_notary_empire"
+			 preacher_notary="NPCCharacter.preacher_notary_empire"
+			 rural_notable_notary="NPCCharacter.rural_notable_notary_empire"
+			 shop_worker="NPCCharacter.shop_worker_empire"
+			 tavernkeeper="NPCCharacter.tavernkeeper_empire"
+			 taverngamehost="NPCCharacter.taverngamehost_empire"
+			 musician="NPCCharacter.musician_empire"
+			 tavern_wench="NPCCharacter.tavern_wench_empire"
+			 armorer="NPCCharacter.armorer_empire"
+			 horseMerchant="NPCCharacter.horseMerchant_empire"
+			 barber="NPCCharacter.barber_empire"
+			 merchant="NPCCharacter.tow_merchant_empire"
+			 beggar="NPCCharacter.beggar_empire"
+			 female_beggar="NPCCharacter.female_beggar_empire"
+			 female_dancer="NPCCharacter.female_dancer_empire"
+			 gear_practice_dummy="NPCCharacter.gear_practice_dummy_empire"
+			 weapon_practice_stage_1="NPCCharacter.weapon_practice_stage_1_empire"
+			 weapon_practice_stage_2="NPCCharacter.weapon_practice_stage_2_empire"
+			 weapon_practice_stage_3="NPCCharacter.weapon_practice_stage_3_empire"
+			 gear_dummy="NPCCharacter.gear_dummy_empire"
+			 board_game_type="Tablut">
 		<male_names>
 			<name name="{=vampire_counts_male_1}Abelhardt" />
 			<name name="{=vampire_counts_male_2}Abelheim" />
@@ -3600,97 +3602,10 @@
 			<template name="NPCCharacter.tournament_template_khuzait_four_participant_set_v3" />
 		</tournament_team_templates_four_participant>
 	</Culture>
-	<Culture id="nord"
-			 name="{=sYFaoW7G}Nord"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.sturgian_warrior_son"
-			 basic_troop="NPCCharacter.sturgian_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_sturgia_template"
-			 encounter_background_mesh="encounter_sturgia"
-			 caravan_party_template="PartyTemplate.caravan_template_sturgia"
-			 militia_party_template="PartyTemplate.militia_sturgia_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=ig8zAo8f}Ori" />
-		</male_names>
-		<female_names>
-			<name name="{=L0fuYckc}Friga" />
-		</female_names>
-	</Culture>
-	<Culture id="vakken"
-			 name="{=bHh03ob0}Vakken"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.sturgian_warrior_son"
-			 basic_troop="NPCCharacter.sturgian_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_sturgia_template"
-			 encounter_background_mesh="encounter_sturgia"
-			 caravan_party_template="PartyTemplate.caravan_template_sturgia"
-			 militia_party_template="PartyTemplate.militia_sturgia_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=jhT7CfhM}Aivar" />
-			<name name="{=GaMUU2Pf}Kaupi" />
-			<name name="{=3ipKaDWU}Natti" />
-			<name name="{=kL0ldFLG}Pekko" />
-			<name name="{=W1ZpjgQO}Rauko" />
-			<name name="{=WpTXwQw1}Vuoni" />
-		</male_names>
-		<female_names>
-			<name name="{=FlexUfSP}Alivar" />
-			<name name="{=4bQbv3oN}Arha" />
-			<name name="{=rDPExYMQ}Eitar" />
-			<name name="{=jFdZ7mlB}Ilikki" />
-			<name name="{=ELpRLYQt}Jalin" />
-			<name name="{=hBuBpxjb}Kaidi" />
-			<name name="{=j8IOY5Cy}Luona" />
-			<name name="{=iiGXfCWd}Menar" />
-			<name name="{=gG1O5V1n}Olianar" />
-			<name name="{=XAF12HV0}Vikka" />
-		</female_names>
-	</Culture>
-	<Culture id="darshi"
-			 name="{=IHhWB1aa}Darshi"
-			 is_main_culture="false"
-			 elite_basic_troop="NPCCharacter.aserai_youth"
-			 basic_troop="NPCCharacter.aserai_recruit"
-			 can_have_settlement="true"
-			 town_edge_number="16"
-			 villager_party_template="PartyTemplate.villager_aserai_template"
-			 encounter_background_mesh="encounter_aserai"
-			 caravan_party_template="PartyTemplate.caravan_template_aserai"
-			 militia_party_template="PartyTemplate.militia_aserai_template"
-			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000">
-		<male_names>
-			<name name="{=JJtww9pt}Aryush" />
-			<name name="{=Zm0Ee6sp}Azadun" />
-			<name name="{=nisA6W98}Baheshtur" />
-			<name name="{=pEvpjIa9}Bunduk" />
-			<name name="{=Z261F0mj}Hamezan" />
-			<name name="{=KmzQabkH}Hivan" />
-			<name name="{=QR3aNalC}Imirza" />
-			<name name="{=mDZqpa9Z}Sanjar" />
-		</male_names>
-		<female_names>
-			<name name="{=lGRde77R}Anahita" />
-			<name name="{=sa0YrXiv}Azareh" />
-			<name name="{=epxmhQav}Daria" />
-			<name name="{=zSL3MgNQ}Ilzar" />
-			<name name="{=R7avnODK}Nasmeen" />
-			<name name="{=ZPHdPglH}Raksana" />
-			<name name="{=SHXt3kC5}Roshaneh" />
-			<name name="{=wERVdmjj}Sulnaz" />
-			<name name="{=Btb7NzFM}Shima" />
-			<name name="{=GqEEIYay}Tilzad" />
-		</female_names>
-	</Culture>
 	<Culture id="looters"
 			 name="{=!}Outlaws"
-			 elite_basic_troop="NPCCharacter.looter"
-			 basic_troop="NPCCharacter.looter"
+			 elite_basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
+			 basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
 			 is_bandit="true"
 			 can_have_settlement="false"
 			 encounter_background_mesh="bandit_encounter_background" />
@@ -3707,7 +3622,7 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.sea_raiders_boss_party_template" />
 	<Culture id="mountain_bandits"
-			 name="{=mOa9CX13}Mountain Bandits"
+			 name="{=!}Empire Secessionists"
 			 bandit_chief="NPCCharacter.mountain_bandits_chief"
 			 bandit_raider="NPCCharacter.mountain_bandits_raider"
 			 bandit_bandit="NPCCharacter.mountain_bandits_bandit"
@@ -3719,7 +3634,7 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.mountain_bandits_boss_party_template" />
 	<Culture id="forest_bandits"
-			 name="{=sAbjtZbB}Forest Bandits"
+			 name="{=!}Chaos Cultists"
 			 bandit_chief="NPCCharacter.forest_bandits_chief"
 			 bandit_raider="NPCCharacter.forest_bandits_raider"
 			 bandit_bandit="NPCCharacter.forest_bandits_bandit"
@@ -3758,4 +3673,11 @@
 			 name="{=jKviMpbP}Neutral"
 			 elite_basic_troop="NPCCharacter.guard"
 			 basic_troop="NPCCharacter.guard" />
+	
+	<Culture id="chaos_culture"
+			 can_have_settlement="true"
+			 name="{=!}Chaos Culture"
+			 default_party_template="PartyTemplate.chaos_patrol"
+			 elite_basic_troop="NPCCharacter.guard"
+			 basic_troop="NPCCharacter.guard"/>
 </SPCultures>

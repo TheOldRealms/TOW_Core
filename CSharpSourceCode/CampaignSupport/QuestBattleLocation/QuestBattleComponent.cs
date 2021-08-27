@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.ChaosRaidingParty;
 
 namespace TOW_Core.CampaignSupport.QuestBattleLocation
 {
@@ -16,6 +14,8 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         private QuestBattleTemplate _template = null;
         private Hero _enemyLeader = null;
         public MobileParty QuestOpponentParty { get; private set; } = null;
+        public List<ChaosRaidingPartyComponent> RaidingParties { get; private set; } = new List<ChaosRaidingPartyComponent>();
+        public List<ChaosRaidingPartyComponent> PatrolParties { get; private set; } = new List<ChaosRaidingPartyComponent>();
 
         public bool IsActive { get; private set; } = true;
         public QuestBattleTemplate QuestBattleTemplate => _template;
@@ -30,13 +30,14 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public void OnQuestBattleComplete(bool withVictory)
         {
-            if(QuestOpponentParty != null)
+            if (QuestOpponentParty != null)
             {
                 DestroyPartyAction.Apply(MobileParty.MainParty.Party, QuestOpponentParty);
                 QuestOpponentParty = null;
             }
-            if(withVictory) IsActive = false;
-            if(_enemyLeader != null)
+
+            if (withVictory) IsActive = false;
+            if (_enemyLeader != null)
             {
                 //TODO/FIX -> make the enemy hero "stay" so that we dont unnecessarily kill an enemy hero if the player gets defeated.
                 KillCharacterAction.ApplyByBattle(_enemyLeader, Hero.MainHero);
@@ -56,8 +57,9 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     roster.AddToCounts(MBObjectManager.Instance.GetObject<CharacterObject>(item.TroopId), item.Count);
                 }
             }
+
             party.InitializeMobileParty(roster, TroopRoster.CreateDummyTroopRoster(), base.Settlement.Position2D, 2);
-            party.ActualClan = Clan.All.Where(x => x.StringId == "neutral").FirstOrDefault();
+            party.ActualClan = Settlement.OwnerClan;
             CharacterObject character = MBObjectManager.Instance.GetObject<CharacterObject>(_template.LeaderHeroCharacterId);
             if (character != null && character.Culture != null)
             {
@@ -69,6 +71,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     party.ChangePartyLeader(_enemyLeader.CharacterObject);
                 }
             }
+
             party.Party.Visuals.SetMapIconAsDirty();
             QuestOpponentParty = party;
         }
@@ -78,7 +81,9 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             IsQuestBattleUnderway = true;
         }
 
-        protected override void OnInventoryUpdated(ItemRosterElement item, int count){}
+        protected override void OnInventoryUpdated(ItemRosterElement item, int count)
+        {
+        }
 
         public override void Deserialize(MBObjectManager objectManager, XmlNode node)
         {
@@ -87,10 +92,12 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             {
                 base.BackgroundCropPosition = float.Parse(node.Attributes["background_crop_position"].Value);
             }
+
             if (node.Attributes["background_mesh"] != null)
             {
                 base.BackgroundMeshName = node.Attributes["background_mesh"].Value;
             }
+
             if (node.Attributes["wait_mesh"] != null)
             {
                 base.WaitMeshName = node.Attributes["wait_mesh"].Value;

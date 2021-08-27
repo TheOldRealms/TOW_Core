@@ -1,15 +1,8 @@
-﻿using SandBox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
@@ -25,13 +18,12 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, onGameStart);
             CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, onMissionEnded);
         }
-
         private void onMissionEnded(IMission obj)
         {
             if (_component != null && _component.IsQuestBattleUnderway)
             {
                 var mission = obj as Mission;
-                if(mission.MissionResult != null && mission.MissionResult.BattleResolved && mission.MissionResult.PlayerVictory)
+                if (mission.MissionResult != null && mission.MissionResult.BattleResolved && mission.MissionResult.PlayerVictory)
                 {
                     _component.OnQuestBattleComplete(true);
                     var list = new List<InquiryElement>();
@@ -45,7 +37,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     _component.OnQuestBattleComplete(false);
                     var inq = new InquiryData("Defeated!", "The enemy proved more than a match for you. Better luck next time!", true, false, "OK", null, null, null);
                     InformationManager.ShowInquiry(inq);
-                }                
+                }
             }
         }
 
@@ -59,7 +51,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
         {
             obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.none, null);
             obj.AddGameMenuOption("questlocation_menu", "doquestbattle", "{QUEST_TEXT} (battle)", this.doquestbattle_condition, this.doquestbattle_consequence);
-            obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate (MenuCallbackArgs args)
+            obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate(MenuCallbackArgs args)
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Leave;
                 return true;
@@ -68,12 +60,13 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private bool doquestbattle_condition(MenuCallbackArgs args)
         {
-            if(_component != null && _component.QuestBattleTemplate != null && _component.IsActive)
+            if (_component != null && _component.QuestBattleTemplate != null && _component.IsActive)
             {
                 MBTextManager.SetTextVariable("QUEST_TEXT", _component.QuestBattleTemplate.QuestBattleSolveText);
                 args.optionLeaveType = GameMenuOption.LeaveType.HostileAction;
                 return true;
             }
+
             return false;
         }
 
@@ -85,6 +78,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 PlayerEncounter.StartBattle();
                 PlayerEncounter.Update();
             }
+
             _component.StartBattle();
             CampaignMission.OpenBattleMission(_component.QuestBattleTemplate.SceneName);
         }

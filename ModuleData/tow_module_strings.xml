@@ -3,32 +3,77 @@
 	<strings>
 		<string id="tow_placeholder_1" text="{=!}This is how you add more strings." />
 
-		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}I don't mind talking about it." />
-		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_c.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="response_1.tow_wanderer_empire_0" text="{=!}Most noble of you." />
-		<string id="response_2.tow_wanderer_empire_0" text="{=!}I would rather not." />
-		<string id="backstory_d.tow_wanderer_empire_0" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}I was born into a merchant family. Ever since I was little, I liked playing with fire." />
+		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}When I developed magical affinity in my teens, I convinced to my father to use his connections to get me into the imperial college." />
+		<string id="backstory_c.tow_wanderer_empire_0" text="{=!}That fire in Altdorf a few years back that started in a stable? Definitely wasn't me." />
+		<string id="response_1.tow_wanderer_empire_0" text="{=!}Most interesting." />
+		<string id="response_2.tow_wanderer_empire_0" text="{=!}Pff, what a farce." />
+		<string id="backstory_d.tow_wanderer_empire_0" text="{=!}Right." />
 		<string id="generic_backstory.tow_wanderer_empire_0" text="{=!}I'm a bright wizard, with imperial college training. I'm sure by now you've met a few of us around, and know a bit about what we can do." />
 
-		<string id="prebackstory.tow_wanderer_empire_1" text="{=!}I don't mind talking about it." />
-		<string id="backstory_a.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_b.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_c.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="response_1.tow_wanderer_empire_1" text="{=!}Most noble of you." />
-		<string id="response_2.tow_wanderer_empire_1" text="{=!}I would rather not." />
-		<string id="backstory_d.tow_wanderer_empire_1" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="prebackstory.tow_wanderer_empire_1" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_1" text="{=!}I didn't know my parents. The cult raised me since I was little." />
+		<string id="backstory_b.tow_wanderer_empire_1" text="{=!}I studied many holy scriptures and dedicated my life to the never-ending battle against chaos and corruption." />
+		<string id="backstory_c.tow_wanderer_empire_1" text="{=!}I roam the countryside and purge heretics with unwavering determination." />
+		<string id="response_1.tow_wanderer_empire_1" text="{=!}This has my consent." />
+		<string id="response_2.tow_wanderer_empire_1" text="{=!}Yawn. Ohh, you finished?" />
+		<string id="backstory_d.tow_wanderer_empire_1" text="{=!}Right." />
 		<string id="generic_backstory.tow_wanderer_empire_1" text="{=!}I'm a warrior priest from the cult of Sigmar. I'm sure by now you've met a few of us around, and know a bit about what we can do." />
 
-		<string id="prebackstory.tow_wanderer_empire_2" text="{=!}I don't mind talking about it." />
-		<string id="backstory_a.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_b.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="backstory_c.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
-		<string id="response_1.tow_wanderer_empire_2" text="{=!}Most noble of you." />
-		<string id="response_2.tow_wanderer_empire_2" text="{=!}I would rather not." />
-		<string id="backstory_d.tow_wanderer_empire_2" text="{=!}Lore - please override me in tow_module_strings.xml" />
+		<string id="prebackstory.tow_wanderer_empire_2" text="{=!}Mine is not a dark tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_2" text="{=!}My mother worked in a local brothel, we barely had enough to eat. Didn't know my father." />
+		<string id="backstory_b.tow_wanderer_empire_2" text="{=!}I had to learn to defend myself from drunken guests at a very young age. My mother wouldn't leave no matter how much I begged her." />
+		<string id="backstory_c.tow_wanderer_empire_2" text="{=!}One day I had enough. I took the rapier of my mother's client and pierced both their hearts during intercourse, then set fire to the entire establishment. I have dedicated my life to fighting corruption ever since." />
+		<string id="response_1.tow_wanderer_empire_2" text="{=!}You are doing Sigmar's work!" />
+		<string id="response_2.tow_wanderer_empire_2" text="{=!}That is downright pitiful." />
+		<string id="backstory_d.tow_wanderer_empire_2" text="{=!}Right." />
 		<string id="generic_backstory.tow_wanderer_empire_2" text="{=!}I'm a witch hunter. Do you really need me to tell you what we do? " />
+		
+		<string id="prebackstory.tow_wanderer_empire_3" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_3" text="{=!}When I was born, I already showed symptoms of magical affinity. There was no doubt about my future career." />
+		<string id="backstory_b.tow_wanderer_empire_3" text="{=!}In the college, I was always first in class. The others accused me of hubris, but they were blinded by their mediocricity." />
+		<string id="backstory_c.tow_wanderer_empire_3" text="{=!}Trust me, you can't find a more promising upcoming wizard in the realms of the Empire. I am on the path to surpass Balthazar Gelt himself!" />
+		<string id="response_1.tow_wanderer_empire_3" text="{=!}Thank you." />
+		<string id="response_2.tow_wanderer_empire_3" text="{=!}Pff, what a farce." />
+		<string id="backstory_d.tow_wanderer_empire_3" text="{=!}Right." />
+		<string id="generic_backstory.tow_wanderer_empire_3" text="{=!}I'm a light wizard, with imperial college training. I'm sure by now you've met a few of us around, and know a bit about what we can do. " />
+		
+		<string id="prebackstory.tow_wanderer_empire_4" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_empire_4" text="{=!}I was born into a peasant family. I worked the fields from a young age." />
+		<string id="backstory_b.tow_wanderer_empire_4" text="{=!}I wanted to become a knight, but it is impossible with my origin." />
+		<string id="backstory_c.tow_wanderer_empire_4" text="{=!}So I set out to make a name for myself." />
+		<string id="response_1.tow_wanderer_empire_4" text="{=!}I hope you will achieve what you set out to do." />
+		<string id="response_2.tow_wanderer_empire_4" text="{=!}You shouldn't have wandered so far from home." />
+		<string id="backstory_d.tow_wanderer_empire_4" text="{=!}Right." />
+		<string id="generic_backstory.tow_wanderer_empire_4" text="{=!}I'm a bretonnian squire. I'm sure by now you've met a few of us around, and know a bit about what we can do. " />
+
+		<string id="prebackstory.tow_wanderer_vampire_0" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_vampire_0" text="{=!}I am the only child of a Sylvanian serf family. They were taken early from me as part of our village's blood tax." />
+		<string id="backstory_b.tow_wanderer_vampire_0" text="{=!}I vowed to not share their fate, so I became a Necromancer to be an asset to the real rulers of Sylvania." />
+		<string id="backstory_c.tow_wanderer_vampire_0" text="{=!}I am a capable fighter with the staff and I can also raise skeletons in battle." />
+		<string id="response_1.tow_wanderer_vampire_0" text="{=!}Intriguing." />
+		<string id="response_2.tow_wanderer_vampire_0" text="{=!}I couldn't really care less about your wretched origin." />
+		<string id="backstory_d.tow_wanderer_vampire_0" text="{=!}Right." />
+		<string id="generic_backstory.tow_wanderer_vampire_0" text="{=!}I'm a Necromancer. Who needs summoning? " />
+
+		<string id="prebackstory.tow_wanderer_vampire_1" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_vampire_1" text="{=!}I was an orphan. Never knew anything but suffering." />
+		<string id="backstory_b.tow_wanderer_vampire_1" text="{=!}Until one day a vampire lord took interest and turned me - with my consent. I guess their dark hearts are still capable of expressing some mercy." />
+		<string id="backstory_c.tow_wanderer_vampire_1" text="{=!}My lord died a second death in the last Vampire Wars, now I seek a new master." />
+		<string id="response_1.tow_wanderer_vampire_1" text="{=!}Intriguing." />
+		<string id="response_2.tow_wanderer_vampire_1" text="{=!}I couldn't really care less about your wretched origin." />
+		<string id="backstory_d.tow_wanderer_vampire_1" text="{=!}Right." />
+		<string id="generic_backstory.tow_wanderer_vampire_1" text="{=!}I'm a Minor Vampire. Want me to bite you? " />
+		
+		<string id="prebackstory.tow_wanderer_vampire_2" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
+		<string id="backstory_a.tow_wanderer_vampire_2" text="{=!}As a human, I was born in a time long past. It would be futile to explain, you couldn't possibly comprehend." />
+		<string id="backstory_b.tow_wanderer_vampire_2" text="{=!}I was a fierce warrior with superior fighting skills." />
+		<string id="backstory_c.tow_wanderer_vampire_2" text="{=!}Fate caught up to me and I died on the battlefield. I spent centures in the ground, but necromancers always seek out me to bring me back as they value what I can bring to their company." />
+		<string id="response_1.tow_wanderer_vampire_2" text="{=!}Intriguing." />
+		<string id="response_2.tow_wanderer_vampire_2" text="{=!}I couldn't really care less about your wretched origin." />
+		<string id="backstory_d.tow_wanderer_vampire_2" text="{=!}Right." />
+		<string id="generic_backstory.tow_wanderer_vampire_2" text="{=!}I'm a Wight King. Please don't pretend you don't know what that means. " />
 
 	</strings>
 </base>

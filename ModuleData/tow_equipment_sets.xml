@@ -1,61 +1,256 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EquipmentRosters>
-  <EquipmentRoster id="bright_wizard_template"
-                   culture="Culture.empire">
-				<EquipmentSet>
-               <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-               <Equipment slot="Item1" id="Item.bw_staff_001" />
-               <Equipment slot="Head" id="Item.bright_wizard_helmet" />
-               <Equipment slot="Body" id="Item.bright_wizard_armor" />
-               <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-               <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-               <Equipment slot="Leg" id="Item.bright_wizard_boots" />
-				</EquipmentSet>
-            <EquipmentSet civilian="true">
-               <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
-               <Equipment slot="Body" id="Item.bright_wizard_armor" />
-               <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
-               <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
-               <Equipment slot="Leg" id="Item.bright_wizard_boots" />
-				</EquipmentSet>
+	<!-- Empire sets -->
+  <EquipmentRoster id="bright_wizard_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
+      <Equipment slot="Item1" id="Item.bw_staff_001" />
+      <Equipment slot="Head" id="Item.bright_wizard_helmet" />
+      <Equipment slot="Body" id="Item.bright_wizard_armor" />
+      <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
+      <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.empire_sword_1_t2" />
+      <Equipment slot="Body" id="Item.bright_wizard_armor" />
+      <Equipment slot="Cape" id="Item.bright_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.bright_wizard_braces" />
+      <Equipment slot="Leg" id="Item.bright_wizard_boots" />
+    </EquipmentSet>
   </EquipmentRoster>
-  <EquipmentRoster id="witch_hunter_template"
-                   culture="Culture.empire">
-				<EquipmentSet>
-               <Equipment slot="Item0" id="Item.rapier_001" />
-               <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
-               <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
-               <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
-               <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
-               <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
-				</EquipmentSet>
-            <EquipmentSet civilian="true">
-               <Equipment slot="Item0" id="Item.rapier_001" />
-               <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
-               <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
-               <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
-               <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
-               <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
-				</EquipmentSet>
+  <EquipmentRoster id="witch_hunter_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.rapier_001" />
+      <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
+      <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
+      <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
+      <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
+      <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.rapier_001" />
+      <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
+      <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
+      <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
+      <Equipment slot="Gloves" id="Item.empire_witch_hunter_gauntlets_001" />
+      <Equipment slot="Leg" id="Item.empire_witch_hunter_boots_001" />
+    </EquipmentSet>
   </EquipmentRoster>
-  <EquipmentRoster id="warrior_priest_template"
-                   culture="Culture.empire">
-				<EquipmentSet>
-               <Equipment slot="Item0" id="Item.wp_hammer_001" />
-               <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
-               <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
-               <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
-               <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
-               <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
-				</EquipmentSet>
-            <EquipmentSet civilian="true">
-               <Equipment slot="Item0" id="Item.wp_hammer_001" />
-               <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
-               <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
-               <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
-               <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
-               <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
-				</EquipmentSet>
+  <EquipmentRoster id="warrior_priest_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.wp_hammer_001" />
+      <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+      <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
+      <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
+      <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+      <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.wp_hammer_001" />
+      <Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+      <Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
+      <Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
+      <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+      <Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
+  <EquipmentRoster id="light_wizard_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.empire_light_wizard_staff" />
+      <Equipment slot="Head" id="Item.empire_light_wizard_hat" />
+      <Equipment slot="Body" id="Item.empire_light_wizard_body" />
+      <Equipment slot="Cape" id="Item.empire_light_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_light_wizard_braces" />
+      <Equipment slot="Leg" id="Item.empire_light_wizard_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+     <Equipment slot="Item0" id="Item.empire_light_wizard_staff" />
+      <Equipment slot="Head" id="Item.empire_light_wizard_hat" />
+      <Equipment slot="Body" id="Item.empire_light_wizard_body" />
+      <Equipment slot="Cape" id="Item.empire_light_wizard_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_light_wizard_braces" />
+      <Equipment slot="Leg" id="Item.empire_light_wizard_boots" />
+    </EquipmentSet>
+  </EquipmentRoster>
+  <EquipmentRoster id="bretonnian_knight_template" culture="Culture.empire">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.bretonnian_sword_003" />
+      <Equipment slot="Body" id="Item.bretonnia_knight_body_001" />
+      <Equipment slot="Cape" id="Item.bretonnian_knight_shoulders_001" />
+      <Equipment slot="Leg" id="Item.bretonnian_knight_boots_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+     <Equipment slot="Item0" id="Item.bretonnian_sword_003" />
+      <Equipment slot="Body" id="Item.bretonnia_knight_body_001" />
+      <Equipment slot="Cape" id="Item.bretonnian_knight_shoulders_001" />
+      <Equipment slot="Leg" id="Item.bretonnian_knight_boots_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
+	
+	<!-- VC sets -->
+  <EquipmentRoster id="necromancer_template" culture="Culture.khuzait">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.nm_staff_001" />
+      <Equipment slot="Head" id="Item.vc_necromancer_hood" />
+      <Equipment slot="Body" id="Item.vc_necromancer_body" />
+      <Equipment slot="Cape" id="vc_necromancer_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+      <Equipment slot="Leg" id="Item.vc_necromancer_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.nm_staff_001" />
+      <Equipment slot="Head" id="Item.vc_necromancer_hood" />
+      <Equipment slot="Body" id="Item.vc_necromancer_body" />
+      <Equipment slot="Cape" id="Item.vc_necromancer_shoulders" />
+      <Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+      <Equipment slot="Leg" id="Item.vc_necromancer_boots" />
+    </EquipmentSet>
+  </EquipmentRoster>
+	
+  <EquipmentRoster id="vampire_template" culture="Culture.khuzait">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.vampire_sword_001" />
+      <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+      <Equipment slot="Body" id="Item.vampire_lord_body_001" />
+      <Equipment slot="Cape" id="Item.vampire_lord_cape" />
+      <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+      <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+      <equipment slot="Horse" id="Item.vc_skeleton_horse" />
+      <equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.vampire_sword_001" />
+      <Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+      <Equipment slot="Body" id="Item.vampire_lord_body_001" />
+      <Equipment slot="Cape" id="Item.vampire_lord_cape" />
+      <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+      <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
+
+  <EquipmentRoster id="vampire_template_banner" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Item1" id="Item.vc_undead_banner_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+
+  <EquipmentRoster id="vampire_template_2" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_greataxe_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
+	 <EquipmentRoster id="vampire_template_3" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_greataxe_002" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
+	<EquipmentRoster id="vampire_template_4" culture="Culture.khuzait">
+		<EquipmentSet>
+			<Equipment slot="Item0" id="Item.vampire_greatmace_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<Equipment slot="Item0" id="Item.vampire_sword_001" />
+			<Equipment slot="Head" id="Item.vampire_lord_helmet_001" />
+			<Equipment slot="Body" id="Item.vampire_lord_body_001" />
+			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
+			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
+			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
+	<EquipmentRoster id="red_duke_template" culture="Culture.khuzait">
+		<EquipmentSet>
+			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+		</EquipmentSet>
+		<EquipmentSet civilian="true">
+			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+		</EquipmentSet>
+	</EquipmentRoster>
+	
+	<EquipmentRoster id="wight_king_template" culture="Culture.khuzait">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.vampire_sword_004" />
+	  <Equipment slot="Item1" id="Item.vampire_red_shield_007" />
+      <Equipment slot="Head" id="Item.vc_wight_king_helmet" />
+	  <Equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      <Equipment slot="Cape" id="Item.vc_wight_king_body" />
+      <Equipment slot="Gloves" id="Item.vc_wight_king_gauntlets" />
+      <Equipment slot="Leg" id="Item.vc_wight_king_boots" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.vampire_sword_004" />
+      <Equipment slot="Head" id="Item.vc_wight_king_helmet" />
+	  <Equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      <Equipment slot="Cape" id="Item.vc_wight_king_body" />
+      <Equipment slot="Gloves" id="Item.vc_wight_king_gauntlets" />
+      <Equipment slot="Leg" id="Item.vc_wight_king_boots" />
+    </EquipmentSet>
   </EquipmentRoster>
 
 </EquipmentRosters>

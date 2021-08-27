@@ -25,8 +25,6 @@ namespace TOW_Core.ObjectDataExtensions
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
         private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
-        private List<MobilePartyExtendedInfo> _eventPartyInfos;
-        public EventHandler<BattleAttributesArgs> NotifyBattlePartyObservers;
         private static Dictionary<string, CharacterExtendedInfo> _customBattleInfos = new Dictionary<string, CharacterExtendedInfo>();
 
         public ExtendedInfoManager() {}
@@ -43,7 +41,6 @@ namespace TOW_Core.ObjectDataExtensions
 
             //Events and Battles
             CampaignEvents.MapEventStarted.AddNonSerializedListener(this, EventCreated);
-            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnMissionStarted);
 
             //Parties created and destroyed
             CampaignEvents.MobilePartyCreated.AddNonSerializedListener(this, RegisterParty);
@@ -82,11 +79,6 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 _heroInfos.Remove(arg1.StringId);
             }
-        }
-
-        public List<MobilePartyExtendedInfo> GetInfoForActiveInvolvedParties()
-        {
-            return _eventPartyInfos;
         }
 
         public MobilePartyExtendedInfo GetPlayerPartyInfo()
@@ -174,41 +166,6 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
-        private void OnMissionStarted()
-        {
-            // tries to add active parties for the next battlefield for a better overview text output optional 
-            if (_currentPlayerEvent != null)
-            {
-                var eventPartyInfos = new List<MobilePartyExtendedInfo>();
-                string text = "PLAYERFIGHT";
-                foreach (var party in _currentPlayerEvent.AttackerSide.Parties)
-                {
-                    MobilePartyExtendedInfo attackerInfo= GetPartyInfoFor(party.Party.Id.ToString());
-                    eventPartyInfos.Add(attackerInfo);
-                    text += attackerInfo.PartyBaseId;
-                }
-
-                text += " are supporting the attackers (" + _currentPlayerEvent.AttackerSide.Parties.Count+")";
-            
-                foreach (var party in _currentPlayerEvent.DefenderSide.Parties)
-                {
-                    MobilePartyExtendedInfo  defenderInfo= GetPartyInfoFor(party.Party.Id.ToString());
-                    eventPartyInfos.Add(defenderInfo);
-                    text += defenderInfo.PartyBaseId;
-                }
-            
-                text += " are supporting the defenders(" + _currentPlayerEvent.DefenderSide.Parties.Count+")";
-                
-                _eventPartyInfos = eventPartyInfos;
-                BattleAttributesArgs e = new BattleAttributesArgs()
-                {
-                    activeParties = eventPartyInfos
-                };
-                
-                NotifyBattlePartyObservers?.Invoke(this,e);
-            }
-        }        
-
         public  MobilePartyExtendedInfo GetPartyInfoFor(string id)
         {
             return _partyInfos.ContainsKey(id) ? _partyInfos[id] : null;
@@ -260,7 +217,7 @@ namespace TOW_Core.ObjectDataExtensions
             }
             else
             {
-                TOWCommon.Say("Already added"); 
+                //TOWCommon.Say("Already added"); 
             }
             
         }
