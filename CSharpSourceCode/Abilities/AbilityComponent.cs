@@ -17,8 +17,8 @@ namespace TOW_Core.Abilities
         private int _currentAbilityIndex;
 
         public bool IsAbilityModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
-        public Ability CurrentAbility 
-        { 
+        public Ability CurrentAbility
+        {
             get => _currentAbility;
             set
             {
@@ -64,38 +64,53 @@ namespace TOW_Core.Abilities
 
         public void SelectAbility(int index)
         {
-            if (_knownAbilities.Count > 0 && index >= 0)
+            if (_knownAbilities.Count > 0)
             {
-                _currentAbilityIndex = Math.Abs(index % _knownAbilities.Count);
-                CurrentAbility = _knownAbilities[_currentAbilityIndex];
+                CurrentAbility = _knownAbilities[index];
             }
         }
 
         public void SelectNextAbility()
         {
-            SelectAbility(_currentAbilityIndex + 1);
+            if (_currentAbilityIndex < _knownAbilities.Count - 1)
+            {
+                _currentAbilityIndex++;
+            }
+            else
+            {
+                _currentAbilityIndex = 0;
+            }
+            SelectAbility(_currentAbilityIndex);
         }
-        
+
         public void SelectPreviousAbility()
         {
-            SelectAbility(_currentAbilityIndex - 1);
+            if (_currentAbilityIndex > 0)
+            {
+                _currentAbilityIndex--;
+            }
+            else
+            {
+                _currentAbilityIndex = _knownAbilities.Count - 1;
+            }
+            SelectAbility(_currentAbilityIndex);
         }
 
         public Ability[] GetAbilities()
         {
             return _knownAbilities.ToArray();
         }
-        
+
         public void EnableAbilityMode()
         {
             isAbilityModeOn = true;
         }
-     
+
         public void DisableAbilityMode()
         {
             isAbilityModeOn = false;
         }
-        
+
         public List<AbilityTemplate> GetKnownAbilityTemplates()
         {
             return _knownAbilities.ConvertAll(ability => ability.Template);
