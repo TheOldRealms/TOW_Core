@@ -17,7 +17,7 @@
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="wizard_lord">
     <Abilities>Fireball</Abilities>
-    <Abilities>WindOfDeath</Abilities>
+    <Abilities>BurningHead</Abilities>
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="necromancer_lord">
     <Abilities>SummonSkeleton</Abilities>
