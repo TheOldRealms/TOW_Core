@@ -14,7 +14,7 @@ namespace TOW_Core.Abilities
         {
         }
 
-        protected override bool CanCast(Agent casterAgent)
+        public override bool CanCast(Agent casterAgent)
         {
             var hero = casterAgent.GetHero();
             if(hero != null && hero.GetExtendedInfo() != null)

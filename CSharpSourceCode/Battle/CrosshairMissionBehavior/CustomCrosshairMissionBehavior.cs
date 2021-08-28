@@ -9,7 +9,6 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -69,11 +68,15 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             if (MissionScreen != null && abilityComponent != null && abilityComponent.IsAbilityModeOn)
             {
                 if (weaponCrosshair.IsVisible)
+                {
                     weaponCrosshair.IsVisible = false;
-                if(abilityCrosshair == null)
+                }
+                if (abilityCrosshair == null)
                 {
                     if (abilityComponent.CurrentAbility.Crosshair != null)
+                    {
                         abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
+                    }
                 }
                 else
                 {
@@ -82,7 +85,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                         base.Mission.Mode != MissionMode.CutScene &&
                         !ScreenManager.GetMouseVisibility())
                     {
-                        if (abilityComponent.CurrentAbility.IsOnCooldown())
+                        if (Agent.Main != null && !abilityComponent.CurrentAbility.CanCast(Agent.Main))
                         {
                             if (abilityCrosshair.IsVisible)
                                 abilityCrosshair.Hide();

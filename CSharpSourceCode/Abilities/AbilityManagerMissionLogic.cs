@@ -119,9 +119,12 @@ namespace TOW_Core.Abilities
 
         private bool CanUseAbilities()
         {
-            return Agent.Main != null &&
-                   Agent.Main.State == AgentState.Active &&
-                   _abilityComponent != null &&
+            //return Agent.Main != null &&
+            //       Agent.Main.State == AgentState.Active &&
+            //       _abilityComponent != null &&
+            //       _missionScreen != null &&
+            //       !ScreenManager.GetMouseVisibility();
+            return _abilityComponent != null &&
                    _missionScreen != null &&
                    !ScreenManager.GetMouseVisibility();
         }
