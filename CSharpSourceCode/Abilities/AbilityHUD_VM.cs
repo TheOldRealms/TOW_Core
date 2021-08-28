@@ -28,45 +28,43 @@ namespace TOW_Core.Abilities
 
         public void UpdateProperties()
         {
-
-            if (Agent.Main == null) 
+            if (Agent.Main == null)
             {
                 HasAnyAbility = false;
                 return;
             }
             _ability = Agent.Main.GetCurrentAbility();
-            
             HasAnyAbility = _ability != null;
-            
             if (HasAnyAbility)
             {
                 SpriteName = _ability.Template.SpriteName;
                 Name = _ability.Template.Name;
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
-                if(Game.Current.GameType is Campaign && _ability is Spell)
+                if (Game.Current.GameType is Campaign && _ability is Spell)
                 {
                     SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
 
                     if (_windsOfMagicValue < _ability.Template.WindsOfMagicCost)
                     {
+                        if (!IsOnCoolDown)
+                        {
+                            CoolDownLeft = "";
+                        }
                         IsOnCoolDown = true;
-                        CoolDownLeft = "";
                     }
                 }
             }
-            
-            
         }
 
         private void SetWindsOfMagicValue(float value)
         {
             _windsOfMagicValue = value;
-            _WindsOfMagicLeft = ((int) _windsOfMagicValue).ToString();
+            _WindsOfMagicLeft = ((int)_windsOfMagicValue).ToString();
             WindsOfMagicLeft = _WindsOfMagicLeft;
         }
-        
-        
+
+
 
         [DataSourceProperty]
         public bool HasAnyAbility
@@ -84,7 +82,7 @@ namespace TOW_Core.Abilities
                 }
             }
         }
-        
+
         [DataSourceProperty]
         public string WindsOfMagicLeft
         {
