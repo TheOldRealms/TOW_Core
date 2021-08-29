@@ -8,7 +8,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Spells.ConsoleComands
 {
-    public class AddSpellsFromConsole
+    public class SpellsFromConsole
     {
         private static List<string> towSpellNames = AbilityFactory.GetAllSpellNamesAsList();
 
