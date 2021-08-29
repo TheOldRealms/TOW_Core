@@ -17,14 +17,6 @@ namespace TOW_Core.Spells.ConsoleComands
     {
         private static List<string> towSpellNames = AbilityFactory.GetAllSpellNamesAsList();
 
-        private static readonly string invalidCallMessage =
-            "Baby don't break me \n" +
-            "Don't break me\n" +
-            "No - no!\n" +
-            "\n" +
-            "Load TOW save, seriously.\n";
-
-
         [CommandLineFunctionality.CommandLineArgumentFunction("list_spells", "tow")]
         public static string ListSpells(List<string> argumentNames) =>
             AggregateOutput("Available spells are:", towSpellNames);
@@ -61,23 +53,47 @@ namespace TOW_Core.Spells.ConsoleComands
                 }
 
             if (newSpells.Count > 0)
-            {
-                if (!Hero.MainHero.IsSpellCaster())
-                    Hero.MainHero.AddAttribute("SpellCaster");
+                MakePlayerNecromancer();
 
-                if (!Hero.MainHero.IsAbilityUser())
-                    Hero.MainHero.AddAttribute("AbilityUser");
-            }
-
-            return FormatOutput(matchedArguments, knownSpells, newSpells);
+            return FormatAddedSpellsOutput(matchedArguments, knownSpells, newSpells);
         }
 
-        private static string FormatOutput(List<string> matchedArguments, List<string> knownSpells,
+        private static string FormatAddedSpellsOutput(List<string> matchedArguments, List<string> knownSpells,
         List<string> newSpells) =>
             AggregateOutput("Matched spells:", matchedArguments) +
             AggregateOutput("Already known spells in request:", knownSpells) +
             AggregateOutput("Added spells :", newSpells
             );
+
+        [CommandLineFunctionality.CommandLineArgumentFunction("make_player_necromancer", "tow")]
+        public static string MakePlayerNecromancer()
+        {
+            if (!CampaignCheats.CheckCheatUsage(ref CampaignCheats.ErrorType))
+                return CampaignCheats.ErrorType;
+            
+            if (!Hero.MainHero.IsNecromancer())
+                Hero.MainHero.AddAttribute("Necromancer");
+            
+            return MakePlayerNecromancer() + "Player is necromancer now.\n ";
+        }
+
+        [CommandLineFunctionality.CommandLineArgumentFunction("make_player_spell_caster", "tow")]
+        public static string MakePlayerSpellCaster(List<string> arguments)
+        {
+            if (!CampaignCheats.CheckCheatUsage(ref CampaignCheats.ErrorType))
+                return CampaignCheats.ErrorType;
+
+            if (!Hero.MainHero.IsSpellCaster())
+                Hero.MainHero.AddAttribute("SpellCaster");
+
+            if (!Hero.MainHero.IsAbilityUser())
+                Hero.MainHero.AddAttribute("AbilityUser");
+
+            Hero.MainHero.GetExtendedInfo().MaxWindsOfMagic =
+                Math.Max(Hero.MainHero.GetExtendedInfo().MaxWindsOfMagic, 30f);
+
+            return "Player is spell caster now. \n";
+        }
 
         private static string AggregateOutput(string topicHeader, List<string> matchedSpells) =>
             matchedSpells.Aggregate(
