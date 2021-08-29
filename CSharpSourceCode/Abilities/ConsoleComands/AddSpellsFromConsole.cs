@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
-using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -53,7 +48,7 @@ namespace TOW_Core.Spells.ConsoleComands
                 }
 
             if (newSpells.Count > 0)
-                MakePlayerNecromancer();
+                MakePlayerSpellCaster(null);
 
             return FormatAddedSpellsOutput(matchedArguments, knownSpells, newSpells);
         }
@@ -66,15 +61,15 @@ namespace TOW_Core.Spells.ConsoleComands
             );
 
         [CommandLineFunctionality.CommandLineArgumentFunction("make_player_necromancer", "tow")]
-        public static string MakePlayerNecromancer()
+        public static string MakePlayerNecromancer(List<string> arguments)
         {
             if (!CampaignCheats.CheckCheatUsage(ref CampaignCheats.ErrorType))
                 return CampaignCheats.ErrorType;
-            
+
             if (!Hero.MainHero.IsNecromancer())
                 Hero.MainHero.AddAttribute("Necromancer");
-            
-            return MakePlayerNecromancer() + "Player is necromancer now.\n ";
+
+            return MakePlayerSpellCaster(null) + "Player is necromancer now.\n ";
         }
 
         [CommandLineFunctionality.CommandLineArgumentFunction("make_player_spell_caster", "tow")]
