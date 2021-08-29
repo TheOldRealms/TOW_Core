@@ -3,6 +3,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
@@ -21,7 +22,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private float maxTroopChance = 10;
 
-        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather", "_hat"};
+        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather", "_hat" };
 
         private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
 
@@ -33,7 +34,9 @@ namespace TOW_Core.Battle.Dismemberment
         {
             base.OnMissionTick(dt);
             if (MBCommon.TimeType.Mission.GetTime() >= slowMotionTimer)
+            {
                 Mission.Current.Scene.SlowMotionMode = false;
+            }
         }
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
@@ -49,10 +52,13 @@ namespace TOW_Core.Battle.Dismemberment
                                     attacker == Agent.Main) &&
                                     (collisionData.VictimHitBodyPart == BoneBodyPartType.Neck ||
                                     collisionData.VictimHitBodyPart == BoneBodyPartType.Head) &&
-                                    collisionData.StrikeType == 0 &&
-                                    collisionData.DamageType == 0 &&
-                                    blow.WeaponRecord.WeaponClass != WeaponClass.Dagger &&
-                                    (attacker.AttackDirection == Agent.UsageDirection.AttackLeft || attacker.AttackDirection == Agent.UsageDirection.AttackRight);
+                                    blow.DamageType == DamageTypes.Cut &&
+                                    (blow.WeaponRecord.WeaponClass == WeaponClass.OneHandedAxe ||
+                                    blow.WeaponRecord.WeaponClass == WeaponClass.OneHandedSword ||
+                                    blow.WeaponRecord.WeaponClass == WeaponClass.TwoHandedAxe ||
+                                    blow.WeaponRecord.WeaponClass == WeaponClass.TwoHandedSword) &&
+                                    (attacker.AttackDirection == Agent.UsageDirection.AttackLeft ||
+                                    attacker.AttackDirection == Agent.UsageDirection.AttackRight);
 
             if (canBeDismembered && ShouldBeDismembered(attacker, victim, blow))
             {
