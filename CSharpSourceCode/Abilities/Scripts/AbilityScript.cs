@@ -142,9 +142,9 @@ namespace TOW_Core.Abilities.Scripts
         protected virtual bool CollidedWithAgent()
         {
             var collisionRadius = _ability.Template.Radius + 1;
-            return Mission.Current.GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius, true)
-                .Where(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < collisionRadius)
-                .Any();
+            return Mission.Current
+                .GetAgentsInRange(GameEntity.GetGlobalFrame().origin.AsVec2, collisionRadius, true)
+                .Any(agent => agent != _casterAgent && Math.Abs(GameEntity.GetGlobalFrame().origin.Z - agent.Position.Z) < collisionRadius);
         }
 
         protected override void OnPhysicsCollision(ref PhysicsContact contact)
@@ -180,7 +180,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override void OnRemoved(int removeReason)
         {
             base.OnRemoved(removeReason);
-            if (_sound != null) _sound.Release();
+            _sound?.Release();
             _sound = null;
             _ability = null;
             _casterAgent = null;
