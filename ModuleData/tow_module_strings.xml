@@ -4,7 +4,7 @@
 		<string id="tow_placeholder_1" text="{=!}This is how you add more strings." />
 
 		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}Mine is not a very interesting tale, but I don't mind talking about it." />
-		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}I was born into a merchant family. Ever since I was little, I liked playing with fire." />
+		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}I was born into a poor family. Ever since I was little, I liked playing with fire." />
 		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}When I developed magical affinity in my teens, I convinced to my father to use his connections to get me into the imperial college." />
 		<string id="backstory_c.tow_wanderer_empire_0" text="{=!}That fire in Altdorf a few years back that started in a stable? Definitely wasn't me." />
 		<string id="response_1.tow_wanderer_empire_0" text="{=!}Most interesting." />
