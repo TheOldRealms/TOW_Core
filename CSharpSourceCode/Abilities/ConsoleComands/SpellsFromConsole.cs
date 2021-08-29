@@ -96,16 +96,5 @@ namespace TOW_Core.Spells.ConsoleComands
                 (current, spell) =>
                     $"{current}{spell}\n"
             );
-
-        private static List<string> FindValidSpellsInArguments(List<string> argumentNames)
-        {
-            var matchedSpells = new List<string>();
-
-            foreach (var argumentName in argumentNames)
-            foreach (var knownSpell in towSpellNames)
-                if (string.Equals(knownSpell, argumentName, StringComparison.CurrentCultureIgnoreCase))
-                    matchedSpells.Add(knownSpell);
-            return matchedSpells;
-        }
     }
 }
