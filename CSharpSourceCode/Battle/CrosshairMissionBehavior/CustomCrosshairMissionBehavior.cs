@@ -9,7 +9,6 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -23,6 +22,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         private CrosshairVM weaponCrosshair;
         private AbilityCrosshair abilityCrosshair;
         private AbilityComponent abilityComponent;
+        private Agent mainAgent;
 
         private void OnInitializeWeaponCrosshair()
         {
@@ -41,6 +41,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             this._isActive = true;
         }
+
         private void OnFinalizeWeaponCrosshair()
         {
             if (!this._isActive)
@@ -66,196 +67,204 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 return;
             }
-            if (MissionScreen != null && abilityComponent != null && abilityComponent.IsAbilityModeOn)
+            if (CanBeVisible())
             {
-                if (weaponCrosshair.IsVisible)
-                    weaponCrosshair.IsVisible = false;
-                if(abilityCrosshair == null)
+                mainAgent = base.Mission.MainAgent;
+                if (!isMainAgentChecked)
                 {
-                    if (abilityComponent.CurrentAbility.Crosshair != null)
-                        abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
+                    isMainAgentChecked = true;
+                    if ((abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+                    {
+                        abilityComponent.CurrentAbilityChanged += (crosshair) =>
+                        {
+                            abilityCrosshair = crosshair;
+                        };
+                    }
+                }
+                else if (MissionScreen != null && abilityComponent != null && abilityComponent.IsAbilityModeOn)
+                {
+                    UpdateAbilityCrosshairVisibility();
                 }
                 else
                 {
-                    if (BannerlordConfig.DisplayTargetingReticule &&
-                        base.Mission.Mode != MissionMode.Conversation &&
-                        base.Mission.Mode != MissionMode.CutScene &&
-                        !ScreenManager.GetMouseVisibility())
-                    {
-                        if (abilityComponent.CurrentAbility.IsOnCooldown())
-                        {
-                            if (abilityCrosshair.IsVisible)
-                                abilityCrosshair.Hide();
-                        }
-                        else
-                        {
-                            abilityCrosshair.Tick();
-                            if (!abilityCrosshair.IsVisible)
-                                abilityCrosshair.Show();
-                        }
-                    }
-                    else abilityCrosshair.Hide();
-                }
-            }
-            else if (!isMainAgentChecked && Agent.Main != null)
-            {
-                isMainAgentChecked = true;
-                if ((abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
-                {
-                    abilityComponent.CurrentAbilityChanged += (crosshair) =>
-                    {
-                        abilityCrosshair = crosshair;
-                    };
+                    UpdateWeaponCrosshair();
+                    UpdateWeaponCrosshairVisibility();
                 }
             }
             else
             {
-                UpdateWeaponCrosshair();
-                UpdateWeaponCrosshairVisibility();
+                if (abilityCrosshair != null)
+                {
+                    abilityCrosshair.Hide();
+                }
+                weaponCrosshair.IsVisible = false;
             }
         }
+
         public override void OnMissionScreenInitialize()
         {
             base.OnMissionScreenInitialize();
             this.OnInitializeWeaponCrosshair();
         }
+
         public override void OnMissionScreenFinalize()
         {
             base.OnMissionScreenFinalize();
             this.OnFinalizeWeaponCrosshair();
         }
 
+        private bool CanBeVisible()
+        {
+            return Agent.Main != null &&
+                   Agent.Main.State == AgentState.Active &&
+                   base.Mission.Mode != MissionMode.Conversation &&
+                   base.Mission.Mode != MissionMode.Deployment &&
+                   base.Mission.Mode != MissionMode.CutScene &&
+                   base.MissionScreen.CustomCamera == null &&
+                   !base.MissionScreen.IsViewingChar() &&
+                   BannerlordConfig.DisplayTargetingReticule &&
+                   !ScreenManager.GetMouseVisibility();
+        }
+
+        private void UpdateAbilityCrosshairVisibility()
+        {
+            weaponCrosshair.IsVisible = false;
+            if (abilityCrosshair == null)
+            {
+                if (abilityComponent.CurrentAbility.Crosshair != null)
+                {
+                    abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
+                }
+            }
+            else
+            {
+                if (!abilityComponent.CurrentAbility.CanCast(Agent.Main))
+                {
+                    if (abilityCrosshair.IsVisible)
+                        abilityCrosshair.Hide();
+                }
+                else
+                {
+                    abilityCrosshair.Tick();
+                    if (!abilityCrosshair.IsVisible)
+                        abilityCrosshair.Show();
+                }
+            }
+        }
+
         private void UpdateWeaponCrosshairVisibility()
         {
-            if (BannerlordConfig.DisplayTargetingReticule && base.Mission.Mode != MissionMode.Conversation && base.Mission.Mode != MissionMode.CutScene && !ScreenManager.GetMouseVisibility())
+            if (!mainAgent.WieldedWeapon.IsEmpty && mainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
             {
-                Agent mainAgent = base.Mission.MainAgent;
-                if (mainAgent != null && (abilityCrosshair == null || !abilityCrosshair.IsVisible))
-                {
-                    if (!mainAgent.WieldedWeapon.IsEmpty && base.Mission.MainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-                    {
-                        if (!base.MissionScreen.IsViewingChar() && !this.IsMissionScreenUsingCustomCamera())
-                        {
-                            weaponCrosshair.IsVisible = true;
-                            return;
-                        }
-                    }
-                }
+                weaponCrosshair.IsVisible = true;
+                return;
             }
             weaponCrosshair.IsVisible = false;
         }
+
         private void UpdateWeaponCrosshair()
         {
             this.weaponCrosshair.SetReloadProperties(new float[0]);
             double[] array = new double[4];
             bool isTargetInvalid = false;
-
-            if (base.Mission.Mode != MissionMode.Conversation &&
-                base.Mission.Mode != MissionMode.CutScene &&
-                base.Mission.Mode != MissionMode.Deployment &&
-                base.Mission.MainAgent != null &&
-                !base.MissionScreen.IsViewingChar() &&
-                !this.IsMissionScreenUsingCustomCamera())
+            this.weaponCrosshair.CrosshairType = BannerlordConfig.CrosshairType;
+            Agent mainAgent = base.Mission.MainAgent;
+            double num = (double)(base.MissionScreen.CameraViewAngle * 0.017453292f);
+            double num2 = 2.0 * Math.Tan((double)(mainAgent.CurrentAimingError + mainAgent.CurrentAimingTurbulance) * (0.5 / Math.Tan(num * 0.5)));
+            this.weaponCrosshair.SetProperties(num2, (double)(1f + (base.MissionScreen.CombatCamera.HorizontalFov - 1.5707964f) / 1.5707964f));
+            WeaponInfo wieldedWeaponInfo = mainAgent.GetWieldedWeaponInfo(Agent.HandIndex.MainHand);
+            float numberToCheck = MBMath.WrapAngle(mainAgent.LookDirection.AsVec2.RotationInRadians - mainAgent.GetMovementDirection().AsVec2.RotationInRadians);
+            if (wieldedWeaponInfo != null && wieldedWeaponInfo.IsRangedWeapon && BannerlordConfig.DisplayTargetingReticule)
             {
-                this.weaponCrosshair.CrosshairType = BannerlordConfig.CrosshairType;
-                Agent mainAgent = base.Mission.MainAgent;
-                double num = (double)(base.MissionScreen.CameraViewAngle * 0.017453292f);
-                double num2 = 2.0 * Math.Tan((double)(mainAgent.CurrentAimingError + mainAgent.CurrentAimingTurbulance) * (0.5 / Math.Tan(num * 0.5)));
-                this.weaponCrosshair.SetProperties(num2, (double)(1f + (base.MissionScreen.CombatCamera.HorizontalFov - 1.5707964f) / 1.5707964f));
-                WeaponInfo wieldedWeaponInfo = mainAgent.GetWieldedWeaponInfo(Agent.HandIndex.MainHand);
-                float numberToCheck = MBMath.WrapAngle(mainAgent.LookDirection.AsVec2.RotationInRadians - mainAgent.GetMovementDirection().AsVec2.RotationInRadians);
-                if (wieldedWeaponInfo != null && wieldedWeaponInfo.IsRangedWeapon && BannerlordConfig.DisplayTargetingReticule)
+                Agent.ActionCodeType currentActionType = mainAgent.GetCurrentActionType(1);
+                if (mainAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Crossbow && currentActionType == Agent.ActionCodeType.Reload)
                 {
-                    Agent.ActionCodeType currentActionType = mainAgent.GetCurrentActionType(1);
-                    if (mainAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Crossbow && currentActionType == Agent.ActionCodeType.Reload)
+                    bool flag = mainAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Crossbow;
+                    float[] array2 = flag ? new float[2] : new float[1];
+                    Agent.ActionStage currentActionStage = mainAgent.GetCurrentActionStage(1);
+                    int num3 = (!flag) ? 0 : ((currentActionStage == Agent.ActionStage.ReloadPhase2) ? 1 : 0);
+                    if (flag && currentActionStage == Agent.ActionStage.ReloadPhase2)
                     {
-                        bool flag = mainAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Crossbow;
-                        float[] array2 = flag ? new float[2] : new float[1];
-                        Agent.ActionStage currentActionStage = mainAgent.GetCurrentActionStage(1);
-                        int num3 = (!flag) ? 0 : ((currentActionStage == Agent.ActionStage.ReloadPhase2) ? 1 : 0);
-                        if (flag && currentActionStage == Agent.ActionStage.ReloadPhase2)
-                        {
-                            array2[0] = 1f;
-                        }
-                        array2[num3] = mainAgent.GetCurrentActionProgress(1);
-                        if (mainAgent.GetCurrentAction(1).Index != -1)
-                        {
-                            float num4 = 1f - MBActionSet.GetActionBlendOutStartProgress(mainAgent.ActionSet, mainAgent.GetCurrentAction(1));
-                            array2[num3] = mainAgent.GetCurrentActionProgress(1) + num4;
-                        }
-                        this.weaponCrosshair.SetReloadProperties(array2);
+                        array2[0] = 1f;
                     }
-                    if (currentActionType == Agent.ActionCodeType.ReadyRanged)
+                    array2[num3] = mainAgent.GetCurrentActionProgress(1);
+                    if (mainAgent.GetCurrentAction(1).Index != -1)
                     {
-                        Vec2 bodyRotationConstraint = mainAgent.GetBodyRotationConstraint(1);
-                        isTargetInvalid = (base.Mission.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
+                        float num4 = 1f - MBActionSet.GetActionBlendOutStartProgress(mainAgent.ActionSet, mainAgent.GetCurrentAction(1));
+                        array2[num3] = mainAgent.GetCurrentActionProgress(1) + num4;
+                    }
+                    this.weaponCrosshair.SetReloadProperties(array2);
+                }
+                if (currentActionType == Agent.ActionCodeType.ReadyRanged)
+                {
+                    Vec2 bodyRotationConstraint = mainAgent.GetBodyRotationConstraint(1);
+                    isTargetInvalid = (base.Mission.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
+                }
+            }
+            else if ((wieldedWeaponInfo != null && wieldedWeaponInfo.IsMeleeWeapon) || wieldedWeaponInfo == null)
+            {
+                Agent.ActionCodeType currentActionType2 = mainAgent.GetCurrentActionType(1);
+                Agent.UsageDirection currentActionDirection = mainAgent.GetCurrentActionDirection(1);
+                if (BannerlordConfig.DisplayAttackDirection && (currentActionType2 == Agent.ActionCodeType.ReadyMelee || currentActionDirection != Agent.UsageDirection.None))
+                {
+                    if (currentActionType2 == Agent.ActionCodeType.ReadyMelee)
+                    {
+                        switch (mainAgent.AttackDirection)
+                        {
+                            case Agent.UsageDirection.AttackUp:
+                                array[0] = 0.7;
+                                break;
+                            case Agent.UsageDirection.AttackDown:
+                                array[2] = 0.7;
+                                break;
+                            case Agent.UsageDirection.AttackLeft:
+                                array[3] = 0.7;
+                                break;
+                            case Agent.UsageDirection.AttackRight:
+                                array[1] = 0.7;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        isTargetInvalid = true;
+                        switch (currentActionDirection)
+                        {
+                            case Agent.UsageDirection.AttackEnd:
+                                array[0] = 0.7;
+                                break;
+                            case Agent.UsageDirection.DefendDown:
+                                array[2] = 0.7;
+                                break;
+                            case Agent.UsageDirection.DefendLeft:
+                                array[3] = 0.7;
+                                break;
+                            case Agent.UsageDirection.DefendRight:
+                                array[1] = 0.7;
+                                break;
+                        }
                     }
                 }
-                else if ((wieldedWeaponInfo != null && wieldedWeaponInfo.IsMeleeWeapon) || wieldedWeaponInfo == null)
+                else if (BannerlordConfig.DisplayAttackDirection)
                 {
-                    Agent.ActionCodeType currentActionType2 = mainAgent.GetCurrentActionType(1);
-                    Agent.UsageDirection currentActionDirection = mainAgent.GetCurrentActionDirection(1);
-                    if (BannerlordConfig.DisplayAttackDirection && (currentActionType2 == Agent.ActionCodeType.ReadyMelee || currentActionDirection != Agent.UsageDirection.None))
+                    Agent.UsageDirection usageDirection = mainAgent.PlayerAttackDirection();
+                    if (usageDirection >= Agent.UsageDirection.AttackUp && usageDirection < Agent.UsageDirection.AttackEnd)
                     {
-                        if (currentActionType2 == Agent.ActionCodeType.ReadyMelee)
+                        if (usageDirection == Agent.UsageDirection.AttackUp)
                         {
-                            switch (mainAgent.AttackDirection)
-                            {
-                                case Agent.UsageDirection.AttackUp:
-                                    array[0] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.AttackDown:
-                                    array[2] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.AttackLeft:
-                                    array[3] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.AttackRight:
-                                    array[1] = 0.7;
-                                    break;
-                            }
+                            array[0] = 0.7;
                         }
-                        else
+                        else if (usageDirection == Agent.UsageDirection.AttackRight)
                         {
-                            isTargetInvalid = true;
-                            switch (currentActionDirection)
-                            {
-                                case Agent.UsageDirection.AttackEnd:
-                                    array[0] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.DefendDown:
-                                    array[2] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.DefendLeft:
-                                    array[3] = 0.7;
-                                    break;
-                                case Agent.UsageDirection.DefendRight:
-                                    array[1] = 0.7;
-                                    break;
-                            }
+                            array[1] = 0.7;
                         }
-                    }
-                    else if (BannerlordConfig.DisplayAttackDirection)
-                    {
-                        Agent.UsageDirection usageDirection = mainAgent.PlayerAttackDirection();
-                        if (usageDirection >= Agent.UsageDirection.AttackUp && usageDirection < Agent.UsageDirection.AttackEnd)
+                        else if (usageDirection == Agent.UsageDirection.AttackDown)
                         {
-                            if (usageDirection == Agent.UsageDirection.AttackUp)
-                            {
-                                array[0] = 0.7;
-                            }
-                            else if (usageDirection == Agent.UsageDirection.AttackRight)
-                            {
-                                array[1] = 0.7;
-                            }
-                            else if (usageDirection == Agent.UsageDirection.AttackDown)
-                            {
-                                array[2] = 0.7;
-                            }
-                            else if (usageDirection == Agent.UsageDirection.AttackLeft)
-                            {
-                                array[3] = 0.7;
-                            }
+                            array[2] = 0.7;
+                        }
+                        else if (usageDirection == Agent.UsageDirection.AttackLeft)
+                        {
+                            array[3] = 0.7;
                         }
                     }
                 }
@@ -264,10 +273,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             this.weaponCrosshair.IsTargetInvalid = isTargetInvalid;
         }
 
-        private bool IsMissionScreenUsingCustomCamera()
-        {
-            return base.MissionScreen.CustomCamera != null;
-        }
         private void OnCombatLogGenerated(CombatLogData logData)
         {
             bool isAttackerAgentMine = logData.IsAttackerAgentMine;
@@ -278,11 +283,13 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 this.weaponCrosshair.ShowHitMarker(logData.IsFatalDamage, flag2);
             }
         }
+
         public override void OnPhotoModeActivated()
         {
             base.OnPhotoModeActivated();
             this.weaponLayer._gauntletUIContext.ContextAlpha = 0f;
         }
+
         public override void OnPhotoModeDeactivated()
         {
             base.OnPhotoModeDeactivated();

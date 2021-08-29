@@ -17,11 +17,26 @@
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="wizard_lord">
     <Abilities>Fireball</Abilities>
-    <Abilities>WindOfDeath</Abilities>
+    <Abilities>BurningHead</Abilities>
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="necromancer_lord">
     <Abilities>SummonSkeleton</Abilities>
     <Abilities>WindOfDeath</Abilities>
+  </CharacterAbilityTuple>
+
+  <!-- empire lords -->
+  <CharacterAbilityTuple CharacterID="emp_lord_averland_golden_1">
+    <Abilities>Fireball</Abilities>
+    <Abilities>BurningHead</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="emp_lord_stirland_sigmarcult_1">
+    <Abilities>HealingAOE</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="emp_lord_stirland_sigmarcult_2">
+    <Abilities>HealingAOE</Abilities>
+  </CharacterAbilityTuple>
+  <CharacterAbilityTuple CharacterID="emp_lord_stirland_sigmarcult_4">
+    <Abilities>HealingAOE</Abilities>
   </CharacterAbilityTuple>
 
   <!-- empire wanderers -->

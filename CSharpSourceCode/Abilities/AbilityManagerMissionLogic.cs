@@ -28,7 +28,9 @@ namespace TOW_Core.Abilities
         {
             base.OnBehaviourInitialize();
             sheathTimer.AutoReset = false;
-            sheathTimer.Elapsed += (s, e) => Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
+            sheathTimer.Elapsed += (s, e) =>
+                                       Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand,
+                                           Agent.WeaponWieldActionType.WithAnimationUninterruptible);
         }
 
         protected override void OnEndMission()
