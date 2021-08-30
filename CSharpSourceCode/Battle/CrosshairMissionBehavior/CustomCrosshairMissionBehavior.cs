@@ -140,16 +140,35 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 if (!abilityComponent.CurrentAbility.CanCast(Agent.Main))
                 {
-                    if (abilityCrosshair.IsVisible)
-                        abilityCrosshair.Hide();
+                    abilityCrosshair.Hide();
                 }
                 else
                 {
-                    abilityCrosshair.Tick();
-                    if (!abilityCrosshair.IsVisible)
+                    if (abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsCorrectDirection())
+                    {
+                        abilityCrosshair.Tick();
                         abilityCrosshair.Show();
+                    }
+                    else
+                    {
+                        abilityCrosshair.Hide();
+                    }
                 }
             }
+        }
+
+        private bool IsCorrectDirection()
+        {
+            var frame1 = Agent.Main.LookFrame;
+            frame1.rotation.f.z = 0;
+            frame1.Advance(1);
+
+            var frame2 = Agent.Main.LookFrame;
+            frame2.rotation.f = Agent.Main.MountAgent.GetMovementDirection();
+            frame2.rotation.f.z = 0;
+            frame2.Advance(1);
+
+            return frame1.origin.Distance(frame2.origin) < 1.2f;
         }
 
         private void UpdateWeaponCrosshairVisibility()
