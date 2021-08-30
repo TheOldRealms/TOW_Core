@@ -151,7 +151,7 @@ namespace TOW_Core.Abilities
                     case AbilityEffectType.MovingProjectile:
                     case AbilityEffectType.DynamicProjectile:
                         {
-                            frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
+                            frame.origin = casterAgent.GetEyeGlobalPosition();
                             break;
                         }
                     case AbilityEffectType.DirectionalMovingAOE:
@@ -233,7 +233,6 @@ namespace TOW_Core.Abilities
 
         private void AddBehaviour(ref GameEntity entity, Agent casterAgent)
         {
-            AbilityScript script = null;
             switch (Template.AbilityEffectType)
             {
                 case AbilityEffectType.MovingProjectile:
