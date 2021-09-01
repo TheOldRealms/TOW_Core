@@ -94,7 +94,7 @@
   </Settlement>
   <Settlement id="castle_village_AV2_1" name="{=Settlements.Settlement.name.castle_village_AV2_1}Calmfahre" posX="1367.352" posY="903.563" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_1}Tirby sits in the cold misty waters that lie off of the Ebor peninsula. The low-lying lands on the northern side of the Ebor are suited to the growing of flax.">
     <Components>
-      <Village id="castle_village_comp_AV2_1" village_type="VillageType.sheep_farm" hearth="200" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_AV2_1" village_type="VillageType.europe_horse_ranch" hearth="200" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_i" />
@@ -249,7 +249,7 @@
   </Settlement>
   <Settlement id="village_ST1_2" name="{=Settlements.Settlement.name.village_ST1_2}Julbach" owner="Faction.stirland_clan_1" posX="1461.984" posY="1011.453" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_2}Julbach is located halfway between River Stir and River Aver. It sits in a valley shadowed by the Zaya hills where sheep roam freely along Nuln road. The Nattern Forest, a few miles to the West, serves as both a source of wealth and superstition, as even in the coldest nights of winter, when both insect and beast sleep, a rumble of hooves can be heard in the distance.">
     <Components>
-      <Village id="village_comp_ST1_2" village_type="VillageType.silver_mine" hearth="43" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_2" village_type="VillageType.europe_horse_ranch" hearth="43" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
@@ -692,7 +692,7 @@
   </Settlement>
   <Settlement id="village_MT1_3" name="{=Settlements.Settlement.name.village_MT1_3}Haukern" posX="1536.304" posY="933.132" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_3}.">
     <Components>
-      <Village id="village_comp_MT1_3" village_type="VillageType.swine_farm" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_MT1_3" village_type="VillageType.europe_horse_ranch" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
