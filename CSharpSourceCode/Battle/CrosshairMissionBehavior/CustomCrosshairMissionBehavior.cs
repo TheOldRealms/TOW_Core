@@ -144,7 +144,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 }
                 else
                 {
-                    if (abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsCorrectDirection())
+                    if (abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())
                     {
                         abilityCrosshair.Tick();
                         abilityCrosshair.Show();
@@ -157,18 +157,23 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
         }
 
-        private bool IsCorrectDirection()
+        private bool IsRightAngleToCast()
         {
-            var frame1 = Agent.Main.LookFrame;
-            frame1.rotation.f.z = 0;
-            frame1.Advance(1);
+            if (Agent.Main.HasMount)
+            {
+                double xa = Agent.Main.LookDirection.X;
+                double ya = Agent.Main.LookDirection.Y;
+                double xb = Agent.Main.GetMovementDirection().X;
+                double yb = Agent.Main.GetMovementDirection().Y;
 
-            var frame2 = Agent.Main.LookFrame;
-            frame2.rotation.f = Agent.Main.MountAgent.GetMovementDirection();
-            frame2.rotation.f.z = 0;
-            frame2.Advance(1);
+                double angle = Math.Acos((xa * xb + ya * yb) / (Math.Sqrt(Math.Pow(xa, 2) + Math.Pow(ya, 2)) * Math.Sqrt(Math.Pow(xb, 2) + Math.Pow(yb, 2))));
 
-            return frame1.origin.Distance(frame2.origin) < 1.2f;
+                return true ? angle < 1.4 : angle >= 1.4;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void UpdateWeaponCrosshairVisibility()
