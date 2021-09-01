@@ -3,18 +3,17 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
 {
     public class DismembermentMissionLogic : MissionLogic
     {
-        private bool isExecutionerModeOn = true;
-
         private bool canTroopDismember = false;
 
-        private bool isSlowMotionModeOn = true;
+        private Probability dismembermentFrequency = Probability.Always;
+
+        private Probability slowMotionFrequency = Probability.Probably;
 
         private float slowMotionTimer;
 
@@ -22,13 +21,13 @@ namespace TOW_Core.Battle.Dismemberment
 
         private float maxTroopChance = 10;
 
-        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather", "_hat" };
+        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather", "_hat" };
 
         private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
 
         private readonly String[] headDressMeshes = { "_hat" };
 
-        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather" };
+        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather" };
 
         public override void OnMissionTick(float dt)
         {
@@ -63,7 +62,12 @@ namespace TOW_Core.Battle.Dismemberment
             if (canBeDismembered && ShouldBeDismembered(attacker, victim, blow))
             {
                 DismemberHead(victim, collisionData);
-                if (isSlowMotionModeOn)
+                if (slowMotionFrequency == Probability.Always)
+                {
+                    slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
+                    Mission.Current.Scene.SlowMotionMode = true;
+                }
+                else if (slowMotionFrequency == Probability.Probably && MBRandom.RandomFloatRanged(0, 1) > 0.75f)
                 {
                     slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
                     Mission.Current.Scene.SlowMotionMode = true;
@@ -73,7 +77,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private bool ShouldBeDismembered(Agent attacker, Agent victim, Blow blow)
         {
-            if (!isExecutionerModeOn)
+            if (dismembermentFrequency == Probability.Probably)
             {
                 float damageModifier = blow.InflictedDamage / victim.HealthLimit;
                 if (damageModifier > 1) damageModifier = 1;
@@ -85,7 +89,14 @@ namespace TOW_Core.Battle.Dismemberment
 
                 return damageModifier > MBRandom.RandomFloatRanged(0, 1);
             }
-            else return true;
+            else if (dismembermentFrequency == Probability.Always)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
@@ -269,5 +280,101 @@ namespace TOW_Core.Battle.Dismemberment
             Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
             victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
         }
+
+        public enum Probability
+        {
+            Always,
+            Probably,
+            Never
+        }
     }
 }
+// using TaleWorlds.Engine;
+//using TaleWorlds.Library;
+//using TaleWorlds.MountAndBlade;
+//using TOW_Core.Utilities;
+//using TOW_Core.Utilities.Extensions;
+//
+//namespace TOW_Core.Battle.Dismemberment
+//{
+//    public class DismembermentMissionLogic : MissionLogic
+//    {
+//        private bool isExecutionerModeOn = true;
+//
+//        private bool canTroopDismember = false;
+//
+//        private bool isSlowMotionModeOn = true;
+//        private Probability dismembermentFrequency = Probability.Always;
+//
+//        private Probability slowMotionFrequency = Probability.Probably;
+//
+//        private float slowMotionTimer;
+//
+//@ -22,13 +21,13 @@ namespace TOW_Core.Battle.Dismemberment
+//
+//        private float maxTroopChance = 10;
+//
+//        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather", "_hat" };
+//        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather", "_hat" };
+//
+//        private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
+//
+//        private readonly String[] headDressMeshes = { "_hat" };
+//
+//        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_hood", "_mask", "straps", "feather" };
+//        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather" };
+//
+//        public override void OnMissionTick(float dt)
+//        {
+//@ -63,7 + 62,12 @@ namespace TOW_Core.Battle.Dismemberment
+//            if (canBeDismembered && ShouldBeDismembered(attacker, victim, blow))
+//            {
+//                DismemberHead(victim, collisionData);
+//                if (isSlowMotionModeOn)
+//                if (slowMotionFrequency == Probability.Always)
+//                {
+//                    slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
+//                    Mission.Current.Scene.SlowMotionMode = true;
+//                }
+//                else if (slowMotionFrequency == Probability.Probably && MBRandom.RandomFloatRanged(0, 1) > 0.75f)
+//                {
+//                    slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
+//                    Mission.Current.Scene.SlowMotionMode = true;
+//@ -73,7 +77,7 @@ namespace TOW_Core.Battle.Dismemberment
+//
+//        private bool ShouldBeDismembered(Agent attacker, Agent victim, Blow blow)
+//    {
+//        if (!isExecutionerModeOn)
+//            if (dismembermentFrequency == Probability.Probably)
+//            {
+//                float damageModifier = blow.InflictedDamage / victim.HealthLimit;
+//                if (damageModifier > 1) damageModifier = 1;
+//@ -85,7 + 89,14 @@ namespace TOW_Core.Battle.Dismemberment
+//
+//                return damageModifier > MBRandom.RandomFloatRanged(0, 1);
+//            }
+//            else return true;
+//            else if (dismembermentFrequency == Probability.Always)
+//            {
+//                return true;
+//            }
+//            else
+//            {
+//                return false;
+//            }
+//        }
+//
+//        private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
+//@ -269,5 + 280,12 @@ namespace TOW_Core.Battle.Dismemberment
+//            Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
+//victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat* 0.5f);
+//        }
+//
+//public enum Probability
+//{
+//    Always,
+//    Probably,
+//    Never
+//}
+//    }
+//}
