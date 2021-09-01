@@ -1,4 +1,5 @@
-﻿using TaleWorlds.Engine;
+﻿using System;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -21,7 +22,7 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.AddChild(decal);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             InitializeColors();
-            AddLight(4);
+            AddLight((Int32)template.Radius * 8);
             IsVisible = false;
         }
 
