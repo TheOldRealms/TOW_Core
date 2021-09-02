@@ -75,6 +75,11 @@ namespace TOW_Core.Utilities.Extensions
         {
             return hero.HasAttribute("SpellCaster");
         }
+        
+        public static bool IsAbilityUser(this Hero hero)
+        {
+            return hero.HasAttribute("AbilityUser");
+        }
 
         public static bool IsNecromancer(this Hero hero)
         {
