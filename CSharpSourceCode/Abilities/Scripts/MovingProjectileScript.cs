@@ -7,8 +7,15 @@ namespace TOW_Core.Abilities.Scripts
         override protected bool CollidedWithAgent()
         {
             var collisionRadius = _ability.Template.Radius;
-            var rayCastForClosestAgent = Mission.Current.RayCastForClosestAgent(_previousFrameOrigin, GameEntity.GetGlobalFrame().origin, out float _, _casterAgent.Index, collisionRadius);
-            return rayCastForClosestAgent != null && !rayCastForClosestAgent.IsMount;
+            var closestAgent = Mission.Current.RayCastForClosestAgent(_previousFrameOrigin, GameEntity.GetGlobalFrame().origin, out float _, _casterAgent.Index, collisionRadius);
+            if (_casterAgent.HasMount)
+            {
+                return closestAgent != null && closestAgent.Index != _casterAgent.MountAgent.Index;
+            }
+            else
+            {
+                return closestAgent != null;
+            }
         }
     }
 }

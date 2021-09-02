@@ -36,7 +36,7 @@ namespace TOW_Core.Abilities
         protected override void OnEndMission()
         {
             base.OnEndMission();
-            DisableSpellMode();
+            BindWeaponKeys();
         }
 
         public override void OnMissionTick(float dt)
@@ -54,7 +54,8 @@ namespace TOW_Core.Abilities
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                     {
-                        Agent.Main.CastCurrentAbility();
+                        if (currentAbility.Crosshair.IsVisible)
+                            Agent.Main.CastCurrentAbility();
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
                     {
@@ -140,38 +141,42 @@ namespace TOW_Core.Abilities
 
         private void DisableSpellMode()
         {
-            if (_abilityComponent != null)
-            {
-                _abilityComponent.DisableAbilityMode();
-                ChangeKeyBindings();
-                if (Agent.Main != null)
-                {
-                    Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                    Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                }
-            }
+            _abilityComponent.DisableAbilityMode();
+            ChangeKeyBindings();
+            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
         }
 
         private void ChangeKeyBindings()
         {
             if (_abilityComponent.IsAbilityModeOn)
             {
-                keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
-                keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
-                keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
-                keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
-                keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
-                keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
+                UnbindWeaponKeys();
             }
             else
             {
-                keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
-                keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
-                keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
-                keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
-                keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
-                keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
+                BindWeaponKeys();
             }
+        }
+
+        private void BindWeaponKeys()
+        {
+            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
+            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
+            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
+            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
+            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
+            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
+        }
+
+        private void UnbindWeaponKeys()
+        {
+            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
+            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
+            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
+            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
+            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
+            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
         }
     }
 }

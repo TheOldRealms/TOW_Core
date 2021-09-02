@@ -69,7 +69,15 @@ namespace TOW_Core.Abilities.Crosshairs
                     //light.SetVolumetricProperties(true, 1f);
                     light.SetVisibility(true);
                     var entity = GameEntity.CreateEmpty(_mission.Scene);
-                    var frame = new MatrixFrame(Mat3.Identity, new Vec3(0, num * 5, 2));
+                    MatrixFrame frame;
+                    if (num == 0)
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, new Vec3(0, 0, 2));
+                    }
+                    else
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, new Vec3(0, num + 2, 2));
+                    }
                     entity.SetFrame(ref frame);
                     entity.AddLight(light);
                     _crosshair.AddChild(entity);

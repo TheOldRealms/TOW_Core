@@ -1,9 +1,8 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
-using TaleWorlds.Engine.Screens;
 using TaleWorlds.GauntletUI.Data;
+using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
@@ -21,7 +20,15 @@ namespace TOW_Core.Abilities.Crosshairs
             }
             else
             {
-                _movie.RootWidget.MarginBottom = 140;
+                bool isZoomKeyDown = HotKeyManager.GetCategory("CombatHotKeyCategory").GetGameKey(24).KeyboardKey.InputKey.IsDown();
+                if (isZoomKeyDown)
+                {
+                    _movie.RootWidget.MarginBottom = 300;
+                }
+                else
+                {
+                    _movie.RootWidget.MarginBottom = 160;
+                }
             }
         }
 

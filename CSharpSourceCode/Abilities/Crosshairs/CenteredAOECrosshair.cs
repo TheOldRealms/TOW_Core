@@ -16,6 +16,7 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             MatrixFrame frame = _crosshair.GetFrame();
             frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
+            frame.Strafe(0.05f);
             _crosshair.SetFrame(ref frame);
             InitializeColors();
             AddLight();
