@@ -205,7 +205,7 @@ namespace TOW_Core.CharacterCreation
             switch (culture.StringId)
             {
                 case "empire":
-                    position2D = new Vec2(1420.97f, 981.37f);
+                    position2D = new Vec2(1450.97f, 991.37f);
                     break;
                 case "khuzait":
                     position2D = new Vec2(1617.54f, 969.70f);

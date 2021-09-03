@@ -45,7 +45,6 @@ namespace TOW_Core.Battle.FireArms
                 //shooterAgent.GetComponent<StatusEffectComponent>().RunStatusEffect(1);
 
             }
-            
         }
     }
 }
