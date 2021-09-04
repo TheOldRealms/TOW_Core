@@ -319,8 +319,8 @@ namespace TOW_Core.HarmonyPatches
             ____agentRendererSceneController = MBAgentRendererSceneController.CreateNewAgentRendererSceneController(____scene, 4096);
             ____scene.SetOcclusionMode(true);
             SceneInitializationData initData = new SceneInitializationData(true);
-            initData.UsePhysicsMaterials = false;
-            initData.EnableFloraPhysics = false;
+            initData.UsePhysicsMaterials = true;
+            initData.EnableFloraPhysics = true;
             initData.UseTerrainMeshBlending = false;
             Debug.Print("reading map scene", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene.Read("modded_main_map", initData, "");
@@ -335,7 +335,16 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-        
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapScene), "GetMapBorders")]
+        public static void CustomBorders(MapScene __instance, ref Vec2 minimumPosition, ref Vec2 maximumPosition, ref float maximumHeight)
+        {
+            minimumPosition = new Vec2(900, 900);
+            maximumPosition = new Vec2(2100, 2100);
+            maximumHeight = 500;
+        }
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
