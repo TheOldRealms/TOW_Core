@@ -71,6 +71,10 @@
 		<Attribute id="Undead" />
 		<Attribute id="VampireBodyOverride" />
 	</Character>
+	<Character name="vc_lord_sylvania_third_4">
+		<Attribute id="Undead" />
+		<Attribute id="VampireBodyOverride" />
+	</Character>
 
 	<!-- VC wanderers -->
 	<Character name="tow_wanderer_vampire_0">
