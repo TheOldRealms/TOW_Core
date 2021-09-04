@@ -36,7 +36,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             IAgentOriginBase troopOrigin = null;
             if (Game.Current.GameType is Campaign)
             {
-                troopOrigin = new PartyAgentOrigin(MobileParty.MainParty.Party, CharacterObject.FindFirst(x => x.StringId == troopCharacter.StringId));
+                troopOrigin = new PartyAgentOrigin(MobileParty.MainParty.Party, CharacterObject.FindFirst(x => x.StringId == troopCharacter.StringId), 1, new UniqueTroopDescriptor(1), false);
             }
             else
             {

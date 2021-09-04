@@ -340,9 +340,9 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(MapScene), "GetMapBorders")]
         public static void CustomBorders(MapScene __instance, ref Vec2 minimumPosition, ref Vec2 maximumPosition, ref float maximumHeight)
         {
-            minimumPosition = new Vec2(900, 900);
-            maximumPosition = new Vec2(2100, 2100);
-            maximumHeight = 500;
+            minimumPosition = new Vec2(1200, 600);
+            maximumPosition = new Vec2(1750, 1500);
+            maximumHeight = 350;
         }
 
         [HarmonyPrefix]

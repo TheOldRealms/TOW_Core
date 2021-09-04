@@ -335,6 +335,7 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
     <Compile Include="Items\MagicWeaponAgentComponent.cs" />
     <Compile Include="Items\MagicWeaponEffect.cs" />
