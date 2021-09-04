@@ -320,7 +320,7 @@ namespace TOW_Core.HarmonyPatches
             ____scene.SetOcclusionMode(true);
             SceneInitializationData initData = new SceneInitializationData(true);
             initData.UsePhysicsMaterials = true;
-            initData.EnableFloraPhysics = true;
+            initData.EnableFloraPhysics = false;
             initData.UseTerrainMeshBlending = false;
             Debug.Print("reading map scene", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene.Read("modded_main_map", initData, "");
