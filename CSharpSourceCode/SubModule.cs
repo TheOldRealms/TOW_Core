@@ -50,16 +50,6 @@ namespace TOW_Core
             TOWCommon.Say("TOW Core loaded.");
         }
 
-        public override void OnGameInitializationFinished(Game game)
-        {
-            base.OnGameInitializationFinished(game);
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/managed_modded_parameters.xml");
-            if (File.Exists(path))
-            {
-                TaleWorlds.Core.ManagedParameters.Instance.Initialize(path);
-            }
-        }
-
         protected override void OnSubModuleLoad()
         {
             Harmony harmony = new Harmony("mod.harmony.theoldworld");

@@ -17,6 +17,12 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         [SaveableProperty(3)] public Settlement Target { get; set; }
 
+        private Hero _owner;
+        public override Hero PartyOwner => _owner;
+
+        private Settlement _home;
+        public override Settlement HomeSettlement => _home;
+
         [CachedData] private TextObject _cachedName;
 
         private ChaosRaidingPartyComponent(Settlement portal, QuestBattleComponent questBattleSettlementComponent, bool patrol)
@@ -33,8 +39,8 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 PartyTemplateObject chaosPartyTemplate = chaosClan.Culture.DefaultPartyTemplate;
                 mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
                 mobileParty.ActualClan = chaosClan;
-                mobileParty.Party.Owner = mobileParty.ActualClan.Leader;
-                mobileParty.HomeSettlement = Portal;
+                _owner = mobileParty.ActualClan.Leader;
+                _home = Portal;
                 mobileParty.Aggressiveness = 2.0f;
                 mobileParty.Party.Visuals.SetMapIconAsDirty();
                 mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
@@ -85,7 +91,6 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 return _cachedName;
             }
         }
-
 
         protected override void OnInitialize()
         {

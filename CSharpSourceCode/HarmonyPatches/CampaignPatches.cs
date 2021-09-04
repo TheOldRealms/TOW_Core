@@ -8,8 +8,6 @@ using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.AiBehaviors;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
 using TaleWorlds.Core;
@@ -18,7 +16,6 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport.QuestBattleLocation;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -77,8 +74,6 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(CaravanPartyComponent), "InitializeCaravanOnCreation")]
         public static bool CaravanLeaderOverride(MobileParty mobileParty, Hero caravanLeader, ItemRoster caravanItems, int troopToBeGiven, CaravanPartyComponent __instance)
         {
-            __instance.MobileParty.Party.Owner = __instance.Owner;
-            __instance.MobileParty.HomeSettlement = __instance.Settlement;
             __instance.MobileParty.Aggressiveness = 0f;
 
             if (troopToBeGiven == 0)
