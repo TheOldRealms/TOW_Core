@@ -3,6 +3,7 @@ using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -19,13 +20,13 @@ namespace TOW_Core.CampaignSupport
 
         private void CheckEmpireSettlements()
         {
-            empireSettlements = Campaign.Current.Settlements.Where(s => (s.IsVillage || s.IsTown) && s.Culture.Name.Contains("Empire")).ToArray();
+            empireSettlements = Campaign.Current.Settlements.Where(s => IsEmpireSettlement(s)).ToArray();
 
             foreach (var settlement in empireSettlements)
             {
                 foreach (var hero in settlement.Notables.ToArray())
                 {
-                    if (hero.IsNotable && hero.Age < 22)
+                    if (hero.IsNotableVampire())
                     {
                         ReplaceNotableVampire(hero, settlement);
                         areThereKilledVampires = true;
@@ -39,6 +40,14 @@ namespace TOW_Core.CampaignSupport
             areThereKilledVampires = false;
         }
 
+        private bool IsEmpireSettlement(Settlement settlement)
+        {
+            return (settlement.IsVillage || settlement.IsTown) &&
+                   (settlement.MapFaction.Name.Contains("Stirland") ||
+                    settlement.MapFaction.Name.Contains("Averland") ||
+                    settlement.MapFaction.Name.Contains("The Moot"));
+        }
+
         private void ReplaceNotableVampire(Hero vampire, Settlement settlement)
         {
             Occupation occupation = vampire.CharacterObject.Occupation;
@@ -48,12 +57,12 @@ namespace TOW_Core.CampaignSupport
             do
             {
                 newHero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
-                if (newHero.Age < 22)
+                if (newHero.IsNotableVampire())
                 {
-                    KillCharacterAction.ApplyByRemove(newHero, false);
+                    KillCharacterAction.ApplyByRemove(newHero, true);
                 }
             }
-            while (newHero.IsAlive);
+            while (newHero.IsDead);
         }
 
         private bool areThereKilledVampires;

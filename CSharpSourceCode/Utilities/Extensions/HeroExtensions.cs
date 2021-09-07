@@ -90,5 +90,10 @@ namespace TOW_Core.Utilities.Extensions
         {
             return hero.HasAttribute("Undead");
         }
+
+        public static bool IsNotableVampire(this Hero hero)
+        {
+            return hero.IsNotable && hero.Age >= 19 && hero.Age < 20;
+        }
     }
 }
