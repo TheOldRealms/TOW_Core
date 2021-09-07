@@ -23,9 +23,6 @@ using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
-using StoryMode.GameModels;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
-using TOW_Core.Battle.AI;
 using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
@@ -38,7 +35,6 @@ using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TOW_Core.Battle.FireArms;
 
 namespace TOW_Core
@@ -57,6 +53,15 @@ namespace TOW_Core
             if (File.Exists(path))
             {
                 TaleWorlds.Core.ManagedParameters.Instance.Initialize(path);
+            }
+
+            if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
+            {
+                Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
+            }
+            if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
+            {
+                Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
             }
         }
 
@@ -137,9 +142,6 @@ namespace TOW_Core
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(KingdomDecisionProposalBehavior));
-
                 starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
@@ -148,12 +150,6 @@ namespace TOW_Core
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
                 starter.AddBehavior(new SettlementNotableController());
-
-                starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
-
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
