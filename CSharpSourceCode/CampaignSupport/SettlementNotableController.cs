@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TOW_Core.Utilities;
@@ -11,14 +10,14 @@ namespace TOW_Core.CampaignSupport
     {
         public override void RegisterEvents()
         {
-            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, new Action(this.CheckEmpireSettlements));
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, delegate { CheckEmpireSettlements(true); });
         }
 
         public override void SyncData(IDataStore dataStore)
         {
         }
 
-        private void CheckEmpireSettlements()
+        public void CheckEmpireSettlements(bool showNotification)
         {
             empireSettlements = Campaign.Current.Settlements.Where(s => IsEmpireSettlement(s)).ToArray();
 
@@ -28,12 +27,12 @@ namespace TOW_Core.CampaignSupport
                 {
                     if (hero.IsNotableVampire())
                     {
-                        ReplaceNotableVampire(hero, settlement);
+                        ReplaceNotableVampire(hero, settlement, showNotification);
                         areThereKilledVampires = true;
                     }
                 }
             }
-            if (areThereKilledVampires)
+            if (areThereKilledVampires && showNotification)
             {
                 TOWCommon.Say("The Inquisition carried out a cleanup");
             }
@@ -48,10 +47,10 @@ namespace TOW_Core.CampaignSupport
                     settlement.MapFaction.Name.Contains("The Moot"));
         }
 
-        private void ReplaceNotableVampire(Hero vampire, Settlement settlement)
+        private void ReplaceNotableVampire(Hero vampire, Settlement settlement, bool showNotification)
         {
             Occupation occupation = vampire.CharacterObject.Occupation;
-            KillCharacterAction.ApplyByRemove(vampire, false);
+            KillCharacterAction.ApplyByRemove(vampire, showNotification);
             Hero newHero;
 
             do
@@ -59,7 +58,7 @@ namespace TOW_Core.CampaignSupport
                 newHero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
                 if (newHero.IsNotableVampire())
                 {
-                    KillCharacterAction.ApplyByRemove(newHero, true);
+                    KillCharacterAction.ApplyByDeathMarkForced(newHero, false);
                 }
             }
             while (newHero.IsDead);

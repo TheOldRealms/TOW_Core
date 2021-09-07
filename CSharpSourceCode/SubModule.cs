@@ -204,5 +204,11 @@ namespace TOW_Core
 
             LogManager.Configuration = config;
         }
+
+        public override void OnNewGameCreated(Game game, object initializerObject)
+        {
+            base.OnNewGameCreated(game, initializerObject);
+            ((Campaign)game.GameType).GetCampaignBehavior< SettlementNotableController>().CheckEmpireSettlements(false);
+        }
     }
 }
