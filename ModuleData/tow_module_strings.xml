@@ -3,9 +3,9 @@
 	<strings>
 		<string id="tow_placeholder_1" text="{=!}This is how you add more strings." />
 
-		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}My story? Sure, I can share it.." />
-		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}As a boy I discovered I was not like most children, it was not long before the colleges realised this as well. ." />
-		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}Once my affinity for Aqshy was known, I was ripped from my peasant life and become an initiate within the Colleges in Altdorf ." />
+		<string id="prebackstory.tow_wanderer_empire_0" text="{=!}My story? Sure, I can share it." />
+		<string id="backstory_a.tow_wanderer_empire_0" text="{=!}As a boy I discovered I was not like most children, it was not long before the colleges realised this as well." />
+		<string id="backstory_b.tow_wanderer_empire_0" text="{=!}Once my affinity for Aqshy was known, I was ripped from my peasant life and become an initiate within the Colleges in Altdorf." />
 		<string id="backstory_c.tow_wanderer_empire_0" text="{=!}That fire in Altdorf a few years back that started in a tavern? Definitely wasn't me!." />
 		<string id="response_1.tow_wanderer_empire_0" text="{=!}Most interesting." />
 		<string id="response_2.tow_wanderer_empire_0" text="{=!}Pff." />
