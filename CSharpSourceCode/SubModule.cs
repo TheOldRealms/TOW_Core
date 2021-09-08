@@ -46,6 +46,22 @@ namespace TOW_Core
             TOWCommon.Say("TOW Core loaded.");
         }
 
+        public override void OnGameInitializationFinished(Game game)
+        {
+            base.OnGameInitializationFinished(game);
+            if(game.GameType is Campaign)
+            {
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
+                }
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
+                }
+            }
+        }
+
         protected override void OnSubModuleLoad()
         {
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
