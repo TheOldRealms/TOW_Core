@@ -12,17 +12,17 @@
   <!-- Averland 2 Towns 11 villages 2 castles -->
   <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1436.813" posY="925.675" culture="Culture.empire" prosperity="3400" gate_posX="1433.058" gate_posY="923.334" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
     <Components>
-      <Town id="town_comp_AV1" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_AV1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -74,7 +74,7 @@
       <Village id="village_comp_AV1_4" village_type="VillageType.europe_horse_ranch" hearth="420" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -97,7 +97,7 @@
       <Village id="castle_village_comp_AV2_1" village_type="VillageType.europe_horse_ranch" hearth="200" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_i" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -123,7 +123,7 @@
       <Village id="castle_village_comp_AV2_3" village_type="VillageType.wheat_farm" hearth="400" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_i" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -133,17 +133,17 @@
   </Settlement>
   <Settlement id="town_AV3" name="{=Settlements.Settlement.name.town_AV3}Grenzstadt" owner="Faction.averland_clan_1" posX="1493.496" posY="834.908" culture="Culture.empire" prosperity="2520" gate_posX="1492.909" gate_posY="838.9794" text="{=4ENGzVaC}Grenzstadt is an Imperial fortress-town that is located at the northwestern end of Black Fire Pass.">
     <Components>
-      <Town id="town_comp_AV3" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_AV3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="center" scene_name="vlandia_town_e" scene_name_1="vlandia_town_e" scene_name_2="vlandia_town_e" scene_name_3="vlandia_town_e" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -192,7 +192,7 @@
       <Village id="castle_village_comp_AV4_1" village_type="VillageType.wheat_farm" hearth="300" trade_bound="Settlement.town_AV3" bound="Settlement.castle_AV4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_i" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -216,7 +216,7 @@
   <!--Stirland-->
   <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1443.906" posY="1014.65" culture="Culture.empire" prosperity="2000" gate_posX="1444.594" gate_posY="1010.477" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
     <Components>
-      <Town id="town_comp_ST1" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_ST1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
@@ -239,7 +239,7 @@
       <Village id="village_comp_ST1_1" village_type="VillageType.lumberjack" hearth="85" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -252,7 +252,7 @@
       <Village id="village_comp_ST1_2" village_type="VillageType.europe_horse_ranch" hearth="43" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -265,7 +265,7 @@
       <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -278,7 +278,7 @@
       <Village id="village_comp_ST1_4" village_type="VillageType.europe_horse_ranch" hearth="72" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -314,7 +314,7 @@
       <Village id="castle_village_comp_ST1_2" village_type="VillageType.trapper" hearth="48" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -350,7 +350,7 @@
       <Village id="castle_village_comp_ST2_2" village_type="VillageType.swine_farm" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -386,7 +386,7 @@
       <Village id="castle_village_comp_ST3_2" village_type="VillageType.vineyard" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -396,17 +396,17 @@
   </Settlement>
   <Settlement id="town_ST2" name="{=Settlements.Settlement.name.town_ST2}Leicheberg" owner="Faction.stirland_clan_2" posX="1578.421" posY="977.16" culture="Culture.empire" prosperity="3400" gate_posX="1583.151" gate_posY="973.6122" text="{=4ENGzVaC}Amongst the Haunted Hills by the source of the Black Run River, lies the small town of Leicheberg. The people here live in constant fear of its neighbour to the east, Sylvania. Its ruler, Count Petr von Stolpe, has faced the Undead many times in his life and takes many measures to prepare for their return. Many witch hunters and vampire hunters have taken up residence here as a result. The town is notable for hosting a far larger temple and Garden of Morr than the number of inhabitants would otherwise require, for Count von Stolpe feels it is his obligation to ensure proper burials for all who die in his demesne.">
     <Components>
-      <Town id="town_comp_ST2" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_ST2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="scn_leicheberg_doomed_city" scene_name_1="scn_leicheberg_doomed_city" scene_name_2="scn_leicheberg_doomed_city" scene_name_3="scn_leicheberg_doomed_city" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -455,17 +455,17 @@
   </Settlement>
   <Settlement id="town_ST3" name="{=Settlements.Settlement.name.town_ST3}Siegfriedhof" owner="Faction.stirland_clan_2" posX="1561.296" posY="1012.569" culture="Culture.empire" prosperity="3400" gate_posX="1561.612" gate_posY="1008.085" text="{=4ENGzVaC}On the border of traditional Sylvania lies the town of Siegfriedhof. Nestled between the Hunger Wood’s fringes and the Svarsee, it has historically commanded a strategic position in the Eschenstir basin. The town is overseen by the High and Chivalric Order of Deserved Rest, better known as the Raven Knights, whose Grandmaster personally sees to the protection of the people here. Stewardship over Siegfriedhof was granted to the Morrian templars by the Elector Count of Stirland, in gratitude for the Order's contribution in the Battle of Hel Fenn, 400 years prior. The town is also the site of the Abbey of Blessed Aethelbert the Vigilant. Due to the significant cult presence of the Morrians, Siegfriedhof is often used as a staging area for agents to keep watch over Sylvania. The people of Siegfriedhof are quite suspicious of strangers, and preemptive lynchings of unknown travellers have been known to occur.">
     <Components>
-      <Town id="town_comp_ST3" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_ST3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -501,17 +501,17 @@
   </Settlement>
   <Settlement id="town_ST4" name="{=Settlements.Settlement.name.town_ST4}Mittlenburg" owner="Faction.stirland_clan_1" posX="1555.656" posY="878.844" culture="Culture.empire" prosperity="3400" gate_posX="1555.364" gate_posY="882.947" text="{=4ENGzVaC}Sir seaghouls place to hang out it's fresh mountainair for his boypussy">
     <Components>
-      <Town id="town_comp_ST4" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_ST4" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="center" scene_name="vlandia_town_f" scene_name_1="vlandia_town_f" scene_name_2="vlandia_town_f" scene_name_3="vlandia_town_f" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -524,7 +524,7 @@
       <Village id="village_comp_ST4_1" village_type="VillageType.iron_mine" hearth="54" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -550,7 +550,7 @@
       <Village id="village_comp_ST4_3" village_type="VillageType.sheep_farm" hearth="400" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -646,17 +646,17 @@
   <!-- Mootland 1 town 4 villages -->
   <Settlement id="town_MT1" name="{=Settlements.Settlement.name.town_MT1}Eicheschatten" owner="Faction.moot_clan_1" posX="1515.177" posY="943.481" culture="Culture.empire" prosperity="3400" gate_posX="1512.288" gate_posY="946.925" text="{=4ENGzVaC}Eicheschatten, the capital of the Mootland is utterly unprepossessing at first glance. After a longer examination, one’s opinion is confirmed.">
     <Components>
-      <Town id="town_comp_MT1" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_MT1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
-      <Location id="tavern" scene_name="empire_house_c_tavern_a" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="center" scene_name="vlandia_town_g" scene_name_1="vlandia_town_g" scene_name_2="vlandia_town_g" scene_name_3="vlandia_town_g" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -669,7 +669,7 @@
       <Village id="village_comp_MT1_1" village_type="VillageType.sheep_farm" hearth="87" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -682,7 +682,7 @@
       <Village id="village_comp_MT1_2" village_type="VillageType.sheep_farm" hearth="44" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -719,17 +719,17 @@
   <!-- Sylvania -->
   <Settlement id="town_SY1" name="{=Settlements.Settlement.name.town_MT1}Castle Drakenhof" owner="Faction.sylvania_clan_1" posX="1648.721" posY="961.512" culture="Culture.khuzait" prosperity="3400" gate_posX="1644.846" gate_posY="959.0795" text="{=4ENGzVaC}The former Imperial capital of Sylvania has endured much upheaval through the ages. Formerly the home of the Imperial Elector Count Otto von Drak. After the establishment of the Von Carstein bloodline it became the seat of vampiric power in the Old World. Stained with the blood of all Von Carstein patriarchs who fought to become the castle’s next ruler. It is where Manfred Von Carstein resides. It is a dark lair to the terrible and occult. Adventurers often raid the castle seeking to plunder it’s secrets. Most meet a gruesome end within it’s cursed halls.">
     <Components>
-      <Town id="town_comp_SY1" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_SY1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
-      <Location id="arena" scene_name="arena_empire_a" />
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="arena_vlandia_a" />
       <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -755,7 +755,7 @@
       <Village id="village_comp_SY1_2" village_type="VillageType.cattle_farm" hearth="96" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_001" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
@@ -827,17 +827,17 @@
   </Settlement>
   <Settlement id="town_SY2" name="{=Settlements.Settlement.name.town_SY2}Waldenhof" owner="Faction.sylvania_clan_1" posX="1663.27" posY="1021.537" culture="Culture.khuzait" prosperity="3400" gate_posX="1659.397" gate_posY="1019.105" text="{=4ENGzVaC}According to many Vampire Counts, Waldenhof is the true seat of power for Sylvania. It is where many of the Vampires dwell. And where Vlad kept his seat of power. But times change. Manfred resides in Drakenhof. Waldenhof whilst still important and thick with undead is lesser compared to Drakenhof. The town is covered in a persistent, soupy gloom. A miserable, desolate atmosphere hangs over the land. And all mortals inside the town simply live day to day. Waiting for death.">
     <Components>
-      <Town id="town_comp_SY2" is_castle="false" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="town_comp_SY2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
-      <Location id="center" scene_name="empire_town_j_siege" scene_name_1="empire_town_j_siege" scene_name_2="empire_town_j_siege" scene_name_3="empire_town_j_siege" />
+      <Location id="center" scene_name="vlandia_town_f" scene_name_1="vlandia_town_f" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_f" />
       <Location id="arena" scene_name="arena_empire_a" />
       <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
-      <Location id="lordshall" scene_name_1="empire_castle_keep_a_l1_interior" scene_name_2="empire_castle_keep_a_l2_interior" scene_name_3="empire_castle_keep_a_l3_interior" />
-      <Location id="prison" scene_name="empire_dungeon_a" />
-      <Location id="house_1" scene_name="empire_house_d_interior_house" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
-      <Location id="house_3" scene_name="empire_house_d_interior_house" />
+      <Location id="lordshall" scene_name_1="vlandia_keep_interior_b" scene_name_2="vlandia_keep_interior_b" scene_name_3="vlandia_keep_interior_b" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
     </Locations>
     <CommonAreas>
       <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
@@ -912,7 +912,7 @@
       <Village id="castle_village_comp_SY2_1" village_type="VillageType.sheep_farm" hearth="36" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
-      <Location id="village_center" scene_name="vlandia_village_l" />
+      <Location id="village_center" scene_name="TOW_empire_village_002" />
     </Locations>
     <CommonAreas>
       <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
