@@ -44,12 +44,13 @@
         <face>
             <face_key_template value="BodyProperty.fighter_empire" />
 			<hair_tags>
-				<hair_tag name="ShortAndThin" />
-				<hair_tag name="Tousled" />
+				<hair_tag name="LongAndBushy" />
+				<hair_tag name="SlickedLong" />
 				<hair_tag name="Short" />
 			</hair_tags>
 			<beard_tags>
-				<beard_tag name="Cleanshaven" />
+				<beard_tag name="Mustache_and_patch" />
+				<beard_tag name="Drooping_mustache_and_beard" />
 			</beard_tags>
         </face>
         <Traits>

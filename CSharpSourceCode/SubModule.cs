@@ -23,9 +23,6 @@ using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
-using StoryMode.GameModels;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
-using TOW_Core.Battle.AI;
 using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
@@ -38,7 +35,6 @@ using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TOW_Core.Battle.FireArms;
 
 namespace TOW_Core
@@ -56,7 +52,7 @@ namespace TOW_Core
             harmony.PatchAll();
             ConfigureLogging();
 
-            
+
 
             //This has to be here.
             AbilityManager.LoadAbilities();
@@ -86,7 +82,7 @@ namespace TOW_Core
         }
 
         public void LoadFontAssets()
-		{
+        {
             UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
@@ -113,22 +109,19 @@ namespace TOW_Core
             UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
             UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-		}
+        }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
-            if(game.GameType is CustomGame)
+            if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
                 gameStarterObject.AddModel(new TOWBattleMoraleModel());
             }
-            else if(game.GameType is Campaign)
+            else if (game.GameType is Campaign)
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
-
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(BackstoryCampaignBehavior));
-                starter.CampaignBehaviors.RemoveAllOfType(typeof(KingdomDecisionProposalBehavior));
 
                 starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
@@ -137,12 +130,7 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
-
-                starter.Models.RemoveAllOfType(typeof(CompanionHiringPriceCalculationModel));
-                starter.Models.RemoveAllOfType(typeof(StoryModeEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultEncounterGameMenuModel));
-                starter.Models.RemoveAllOfType(typeof(DefaultKingdomDecisionPermissionModel));
-
+                starter.AddBehavior(new SettlementNotableController());
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
@@ -168,12 +156,12 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
-            if(Game.Current.GameType is Campaign)
+            if (Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             }
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
-            if(!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
 
         private void LoadStatusEffects()
@@ -196,6 +184,12 @@ namespace TOW_Core
             config.AddRule(LogLevel.Info, LogLevel.Fatal, logdebugger);
 
             LogManager.Configuration = config;
+        }
+
+        public override void OnNewGameCreated(Game game, object initializerObject)
+        {
+            base.OnNewGameCreated(game, initializerObject);
+            ((Campaign)game.GameType).GetCampaignBehavior< SettlementNotableController>().CheckEmpireSettlements(false);
         }
     }
 }
