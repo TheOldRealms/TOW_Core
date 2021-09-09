@@ -62,7 +62,6 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 				}
 			}
 
-			TOWCommon.Say("Raised " + counter + " troops from the dead.");
 			LastNumberOfTroopsRaised = counter;
 			return elements;
 		}

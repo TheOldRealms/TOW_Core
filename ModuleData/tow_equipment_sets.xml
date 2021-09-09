@@ -22,8 +22,8 @@
   <EquipmentRoster id="witch_hunter_template" culture="Culture.empire">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.rapier_001" />
-      <Equipment slot="Item2" id="Item.tow_handgun_003" />
-      <Equipment slot="Item3" id="Item.musket_ball" />
+      <Equipment slot="Item1" id="Item.tow_handgun_003" />
+      <Equipment slot="Item2" id="Item.musket_ball" />
       <Equipment slot="Head" id="Item.witch_hunter_hat_001" />
       <Equipment slot="Body" id="Item.empire_witch_hunter_body_001" />
       <Equipment slot="Cape" id="Item.empire_witch_hunter_shoulders_001" />
