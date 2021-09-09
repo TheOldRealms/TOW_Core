@@ -387,6 +387,7 @@
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplate.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplateManager.cs" />
+    <Compile Include="CampaignSupport\TowCampaignGameManager.cs" />
     <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />

@@ -299,7 +299,7 @@ namespace TOW_Core.HarmonyPatches
 
         private static void OnCLick()
         {
-            MBGameManager.StartNewGame(new SandBoxGameManager());
+            MBGameManager.StartNewGame(new TowCampaignGameManager());
         }
 
         private static (bool, TextObject) IsDisabledAndReason()
