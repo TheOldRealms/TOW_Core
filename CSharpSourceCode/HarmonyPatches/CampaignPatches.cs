@@ -16,6 +16,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
