@@ -18,9 +18,9 @@ namespace TOW_Core.Utilities.Extensions
         /// <returns></returns>
         public static List<string> GetSceneNames(this Settlement settlement)
         {
-            
+
             List<string> sceneNames = new List<string>();
-            if(settlement.LocationComplex != null)
+            if (settlement.LocationComplex != null)
             {
                 List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
                 foreach (Location settlementLocation in settlementLocations)
@@ -32,6 +32,20 @@ namespace TOW_Core.Utilities.Extensions
                 }
             }
             return sceneNames;
+        }
+
+        public static bool IsEmpireSettlement(this Settlement settlement)
+        {
+            return (settlement.IsTown || settlement.IsVillage) &&
+                   (settlement.MapFaction.Name.Contains("Moot") ||
+                    settlement.MapFaction.Name.Contains("Averland") ||
+                    settlement.MapFaction.Name.Contains("Stirland"));
+        }
+
+        public static bool IsVampireSettlement(this Settlement settlement)
+        {
+            return (settlement.IsTown || settlement.IsVillage) && 
+                    settlement.MapFaction.Name.Contains("Sylvania");
         }
     }
 }
