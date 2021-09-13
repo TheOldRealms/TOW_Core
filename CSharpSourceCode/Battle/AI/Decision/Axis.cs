@@ -15,7 +15,8 @@ namespace TOW_Core.Battle.AI.Decision
         private readonly float _range;
         private readonly Func<Target, bool> _activationFunction;
 
-        public Axis(float minInput, float maxInput, Func<float, float> function, Func<Target, float> parameterFunction, Func<Target, bool> activationFunction = null)
+        public Axis(float minInput, float maxInput, Func<float, float> function, Func<Target, float> parameterFunction,
+            Func<Target, bool> activationFunction = null)
         {
             _min = minInput;
             _max = maxInput;
@@ -50,23 +51,26 @@ namespace TOW_Core.Battle.AI.Decision
         {
             var activeAxes = axes
                 .FindAll(axis => axis.IsActive(target));
-            
-            var aggregate = activeAxes
+
+            var evaluations = activeAxes
                 .Select(axis => axis.Evaluate(target))
-                .Aggregate((a, x) => a * x);
-            return (float) Math.Pow(aggregate, 1.0 / activeAxes.Count);
+                .ToList();
+
+            if (!evaluations.Any()) return 0.0f;
+            return (float) Math.Pow(evaluations.Aggregate((a, x) => a * x), 1.0 / activeAxes.Count);
         }
 
         public static double ArithmeticMean(this List<Axis> axes, Target target)
         {
             var activeAxes = axes
                 .FindAll(axis => axis.IsActive(target));
-            
-            var aggregate = activeAxes
-                .FindAll(axis => axis.IsActive(target))
+
+            var evaluations = activeAxes
                 .Select(axis => axis.Evaluate(target))
-                .Aggregate((a, x) => a + x);
-            return aggregate / activeAxes.Count;
+                .ToList();
+
+            if (!evaluations.Any()) return 0.0f;
+            return evaluations.Aggregate((a, x) => a + x) / activeAxes.Count;
         }
     }
 }
