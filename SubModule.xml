@@ -71,6 +71,7 @@
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
 				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
@@ -78,6 +79,7 @@
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
 				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
@@ -132,6 +134,7 @@
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
 				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
@@ -146,6 +149,7 @@
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
 				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
 			</IncludedGameTypes>
 		</XmlNode>
 	</Xmls>
