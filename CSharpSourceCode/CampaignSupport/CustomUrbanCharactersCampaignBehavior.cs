@@ -471,7 +471,7 @@ namespace TOW_Core.CampaignSupport
                     DestroyPartyAction.Apply(null, caravanPartyComponent2.MobileParty);
                 }
             }
-        IL_C3:
+            IL_C3:
             if (this._companions.Contains(victim))
             {
                 this._companions.Remove(victim);
@@ -563,7 +563,7 @@ namespace TOW_Core.CampaignSupport
             {
                 return;
             }
-            Settlement settlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown);
+            Settlement settlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown && s.Culture == companionTemplate.Culture);
             Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
             if (companionTemplate.StringId == "tow_wanderer_vampire_1")
             {

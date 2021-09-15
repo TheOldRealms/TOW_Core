@@ -7,6 +7,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -31,7 +32,7 @@ namespace TOW_Core.CampaignSupport
         {
             if (i == 0)
             {
-                MBReadOnlyList<CharacterObject> objectTypeList = (MBReadOnlyList<CharacterObject>)Game.Current.ObjectManager.GetObjectTypeList<CharacterObject>().Where(c => c.IsTOWTemplate());
+                List<CharacterObject> objectTypeList = Game.Current.ObjectManager.GetObjectTypeList<CharacterObject>().Where(c => c.IsTOWTemplate()).ToList();
                 IHeroCreationCampaignBehavior campaignBehavior = Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>();
                 if (campaignBehavior != null)
                 {
@@ -96,7 +97,7 @@ namespace TOW_Core.CampaignSupport
             if (!hero.IsDisabled && hero.HeroState != Hero.CharacterStates.Active)
             {
                 hero.ChangeState(Hero.CharacterStates.Active);
-                //TeleportHeroAction.ApplyForCharacter(hero, hero.HomeSettlement);
+                TeleportHeroAction.ApplyForCharacter(hero, hero.HomeSettlement);
             }
         }
 
@@ -113,7 +114,7 @@ namespace TOW_Core.CampaignSupport
                 {
                     settlement = SettlementHelper.FindRandomSettlement((Settlement x) => x.IsTown && x.Culture == companion.Culture);
                 }
-                //TeleportHeroAction.ApplyForCharacter(companion, settlement);
+                TeleportHeroAction.ApplyForCharacter(companion, settlement);
             }
         }
 
@@ -155,7 +156,7 @@ namespace TOW_Core.CampaignSupport
             }
             if (settlement != null)
             {
-                //TeleportHeroAction.ApplyForCharacter(hero, settlement);
+                TeleportHeroAction.ApplyForCharacter(hero, settlement);
                 if (!hero.IsActive)
                 {
                     hero.ChangeState(Hero.CharacterStates.Active);

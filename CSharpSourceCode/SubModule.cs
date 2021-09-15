@@ -67,7 +67,7 @@ namespace TOW_Core
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new HeroSpawnCampaignBehavior());
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new CustomHeroSpawnCampaignBehavior());
                 }
             }
         }
