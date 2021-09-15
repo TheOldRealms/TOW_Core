@@ -40,12 +40,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void SettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
         {
-            HeroExtendedInfo info = null;
-            if (arg3 != null)
-            {
-                info = arg3.GetExtendedInfo();
-            }
-            if (arg1 == null || arg2 == null || arg3 == null || !arg3.IsNecromancer()) return;
+            if (arg1 == null || arg2 == null || arg3 == null || !arg3.IsNecromancer() || arg3.CharacterObject.IsPlayerCharacter) return;
             if (arg1.MemberRoster.TotalManCount < arg1.Party.PartySizeLimit)
             {
                 if (_skeleton != null)
