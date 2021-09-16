@@ -19,12 +19,15 @@ namespace TOW_Core.Utilities
     {
         public override void OnLoadFinished()
         {
-            base.IsLoaded = true;   
+            base.IsLoaded = true;
             LoadScene();
         }
 
-        public override bool IsDevelopmentMode => true;
-
+        public override void BeginGameStart(Game game)
+        {
+            base.BeginGameStart(game);
+            
+        }
 
         private void LoadScene()
         {
@@ -57,7 +60,7 @@ namespace TOW_Core.Utilities
         {
             var characters = new List<BasicCharacterObject>();
             var culture = MBObjectManager.Instance.GetObject<BasicCultureObject>("empire");
-            MBObjectManager.Instance.GetAllInstancesOfObjectType<BasicCharacterObject>(ref characters);
+            MBObjectManager.Instance.GetAllInstancesOfObjectType(ref characters);
             characters = characters.Where(x => x.IsTOWTemplate()).ToList();
             var party = new CustomBattleCombatant(new TextObject("{=sSJSTe5p}Player Party", null), culture, Banner.CreateRandomBanner(-1));
             party.AddCharacter(playerCharacter, 1);

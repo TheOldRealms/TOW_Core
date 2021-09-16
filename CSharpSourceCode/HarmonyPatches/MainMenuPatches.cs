@@ -22,7 +22,7 @@ namespace TOW_Core.HarmonyPatches
             List<InitialStateOption> newlist = new List<InitialStateOption>();
             newlist = __result.Where(x => x.Id != "StoryModeNewGame" && x.Id != "SandBoxNewGame").ToList();
             var towOption = new InitialStateOption("TOWNewgame", new TextObject("Enter the Old World"), 3, OnCLick, IsDisabledAndReason);
-            var towOption2 = new InitialStateOption("TOWForceLoad", new TextObject("Run this first"), 4, OnForceClick, IsDisabledAndReason);
+            var towOption2 = new InitialStateOption("TOWForceLoad", new TextObject("Build Shader Cache"), 4, OnForceClick, IsDisabledAndReason);
             newlist.Add(towOption);
             newlist.Add(towOption2);
             newlist.Sort((x, y) => x.OrderIndex.CompareTo(y.OrderIndex));

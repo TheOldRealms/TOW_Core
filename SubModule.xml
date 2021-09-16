@@ -1,157 +1,161 @@
 ﻿<Module>
-  <Name value="The Old World Core Module"/>
-  <Id value="TOW_Core"/>
-  <Version value="v1.6.1"/>
-  <SingleplayerModule value="true"/>
-  <MultiplayerModule value="false"/>
-  <DependedModules>
-    <DependedModule Id="Native" DependentVersion="e1.6.1"/>
-    <DependedModule Id="SandBoxCore" DependentVersion="e1.6.1"/>
-    <DependedModule Id="Sandbox" DependentVersion="e1.6.1"/>
-    <DependedModule Id="StoryMode" DependentVersion="e1.6.1"/>
-	<DependedModule Id="TOW_ArmoryAssets" DependentVersion="v1.6.1" />
-	<DependedModule Id="TOW_EnvironmentAssets" DependentVersion="v1.6.1" />
-	<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.1" />
-	<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.1" />
-  </DependedModules>
-  <SubModules>
-    <SubModule>
-      <Name value="TOW_Core"/>
-      <DLLName value="TOW_Core.dll"/>
-      <SubModuleClassType value="TOW_Core.SubModule"/>
-      <Tags>
-        <Tag key="DedicatedServerType" value="none" />
-        <Tag key="IsNoRenderModeElement" value="false" />
-      </Tags>
-    </SubModule>
-  </SubModules>
+	<Name value="The Old World Core Module" />
+	<Id value="TOW_Core" />
+	<Version value="v1.6.1" />
+	<SingleplayerModule value="true" />
+	<MultiplayerModule value="false" />
+	<DependedModules>
+		<DependedModule Id="Native" DependentVersion="e1.6.1" />
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.6.1" />
+		<DependedModule Id="Sandbox" DependentVersion="e1.6.1" />
+		<DependedModule Id="StoryMode" DependentVersion="e1.6.1" />
+		<DependedModule Id="TOW_ArmoryAssets" DependentVersion="v1.6.1" />
+		<DependedModule Id="TOW_EnvironmentAssets" DependentVersion="v1.6.1" />
+		<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.1" />
+		<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.1" />
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value="TOW_Core" />
+			<DLLName value="TOW_Core.dll" />
+			<SubModuleClassType value="TOW_Core.SubModule" />
+			<Tags>
+				<Tag key="DedicatedServerType" value="none" />
+				<Tag key="IsNoRenderModeElement" value="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
 	<Xmls>
 		<XmlNode>
-			<XmlName id="Settlements" path="tow_settlements"/>
+			<XmlName id="Settlements" path="tow_settlements" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="SPCultures" path="tow_cultures"/>
+			<XmlName id="SPCultures" path="tow_cultures" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_empire"/>
+			<XmlName id="NPCCharacters" path="tow_troopdefinitions_empire" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_vc"/>
+			<XmlName id="NPCCharacters" path="tow_troopdefinitions_vc" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_lords"/>
+			<XmlName id="NPCCharacters" path="tow_lords" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_campaign_lords"/>
+			<XmlName id="NPCCharacters" path="tow_campaign_lords" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_wanderertemplates"/>
+			<XmlName id="NPCCharacters" path="tow_wanderertemplates" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="SkillSets" path="tow_skillsets"/>
+			<XmlName id="SkillSets" path="tow_skillsets" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="partyTemplates" path="tow_partytemplates"/>
+			<XmlName id="partyTemplates" path="tow_partytemplates" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>                
-			<XmlName id="BodyProperties" path="tow_bodyproperties"/>
-			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
-				<GameType value = "EditorGame"/>
-			</IncludedGameTypes>
-		</XmlNode> 
-		<XmlNode>                
-			<XmlName id="EquipmentRosters" path="tow_equipment_sets"/>
-			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
-				<GameType value = "EditorGame"/>
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>                
-			<XmlName id="LocationComplexTemplates" path="tow_locationtemplates"/>
-			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_townspeople"/>
+			<XmlName id="BodyProperties" path="tow_bodyproperties" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
+				<GameType value="EditorGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_bandits"/>
+			<XmlName id="EquipmentRosters" path="tow_equipment_sets" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
+				<GameType value="EditorGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_designerNPCs"/>
+			<XmlName id="LocationComplexTemplates" path="tow_locationtemplates" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_chaos"/>
+			<XmlName id="NPCCharacters" path="tow_townspeople" />
 			<IncludedGameTypes>
-				<GameType value = "Campaign"/>
-				<GameType value = "CampaignStoryMode"/>
-				<GameType value = "CustomGame"/>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_bandits" />
+			<IncludedGameTypes>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_designerNPCs" />
+			<IncludedGameTypes>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_troopdefinitions_chaos" />
+			<IncludedGameTypes>
+				<GameType value="Campaign" />
+				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_shadergenlords" />
+			<IncludedGameTypes>
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 	</Xmls>
-	
+
 </Module>
