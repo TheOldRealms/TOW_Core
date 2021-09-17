@@ -32,6 +32,7 @@ namespace TOW_Core.HarmonyPatches
             }
         }
 
+        /*
         [HarmonyPrefix]
         [HarmonyPatch(typeof(PlayerEncounter), "DoLootParty")]
         public static void GenerateRaiseDeadTroops()
@@ -58,5 +59,6 @@ namespace TOW_Core.HarmonyPatches
                 PartyScreenManager.OpenScreenAsLoot(memberRosterReceivingLootShare, prisonerRosterReceivingLootShare, TextObject.Empty, memberRosterReceivingLootShare.TotalManCount + prisonerRosterReceivingLootShare.TotalManCount, null);
             }
         }
+        */
     }
 }

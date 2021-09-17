@@ -11,6 +11,7 @@ namespace TOW_Core.HarmonyPatches
 	[HarmonyPatch]
     public static class SummonRaisePartyRosterFixPatch
     {
+		/*
 		[HarmonyPrefix]
 		[HarmonyPatch(typeof(TroopRoster), "AddToCountsAtIndex")]
 		public static bool FindIndexOfTroop(int index)
@@ -18,5 +19,6 @@ namespace TOW_Core.HarmonyPatches
 			if (index < 0) return false;
 			return true;
 		}
+		*/
 	}
 }
