@@ -22,11 +22,9 @@ namespace TOW_Core.HarmonyPatches
                 RaiseDeadCampaignBehavior raiseDeadBehavior = Campaign.Current.GetCampaignBehavior<RaiseDeadCampaignBehavior>();
                 foreach (TroopRosterElement element in raiseDeadBehavior.TroopsForVM)
                 {
-                    if (element.Character != null)
-                    {
-                        currentTroopRoster.AddToCounts(element.Character, 1);
-                    }
+                    currentTroopRoster.AddToCounts(element.Character, 1);
                 }
+
                 raiseDeadBehavior.TroopsForVM.Clear();
             }
         }
