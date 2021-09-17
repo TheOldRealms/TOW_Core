@@ -121,7 +121,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    base.Mission.Mode != MissionMode.Deployment &&
                    base.Mission.Mode != MissionMode.CutScene &&
                    base.MissionScreen.CustomCamera == null &&
-                   !base.MissionScreen.OrderFlag.IsVisible &&
+                   (base.MissionScreen.OrderFlag == null || !base.MissionScreen.OrderFlag.IsVisible) &&
                    !base.MissionScreen.IsViewingCharacter() &&
                    BannerlordConfig.DisplayTargetingReticule &&
                    !ScreenManager.GetMouseVisibility();
