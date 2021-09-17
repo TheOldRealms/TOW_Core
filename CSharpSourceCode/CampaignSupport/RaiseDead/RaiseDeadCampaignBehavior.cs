@@ -10,6 +10,7 @@ using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
+using LogLevel = NLog.LogLevel;
 
 namespace TOW_Core.CampaignSupport.RaiseDead
 {
@@ -55,10 +56,18 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 			foreach (CharacterInfo enemy in killedEnemies)
 			{
 				List<CharacterObject> filteredVamps = _raiseableCharacters.Where(character => character.Level <= enemy.Level).ToList();
-				if (TOWMath.GetRandomDouble(0, 1) <= raiseDeadChance)
+				if (TOWMath.GetRandomDouble(0, 1) <= raiseDeadChance && !filteredVamps.IsEmpty())
 				{
-					elements.Add(new TroopRosterElement(filteredVamps.GetRandomElement()));
-					counter++;
+					var characterObject = filteredVamps.GetRandomElement();
+					if (characterObject != null)
+					{
+						elements.Add(new TroopRosterElement(characterObject));
+						counter++;
+					}
+					else
+					{
+						TOWCommon.Log("Null encountered when generating raise dead characters list", LogLevel.Error);
+					}
 				}
 			}
 
