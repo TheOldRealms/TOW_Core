@@ -36,6 +36,7 @@ using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
+using TOW_Core.CampaignSupport.Models;
 
 namespace TOW_Core
 {
@@ -151,6 +152,7 @@ namespace TOW_Core
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowKingdomPeaceModel());
+                starter.AddModel(new CustomBanditDensityModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
