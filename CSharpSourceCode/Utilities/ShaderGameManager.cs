@@ -60,12 +60,12 @@ namespace TOW_Core.Utilities
         {
             var characters = MBObjectManager.Instance.GetObjectTypeList<BasicCharacterObject>();
             var culture = MBObjectManager.Instance.GetObject<BasicCultureObject>("empire");
-            characters = (TaleWorlds.Library.MBReadOnlyList<BasicCharacterObject>)characters.Where(x => x.IsTOWTemplate());
+            var characterslist = characters.Where(x => x.IsTOWTemplate());
             var party = new CustomBattleCombatant(new TextObject("{=sSJSTe5p}Player Party", null), culture, Banner.CreateRandomBanner(-1));
             party.AddCharacter(playerCharacter, 1);
             party.SetGeneral(playerCharacter);
             party.Side = BattleSideEnum.Defender;
-            foreach(var unit in characters)
+            foreach(var unit in characterslist)
             {
                 int num = 1;
                 if (unit.IsSoldier) num = 5;
