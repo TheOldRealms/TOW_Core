@@ -58,10 +58,9 @@ namespace TOW_Core.Utilities
 
         private CustomBattleCombatant GetPlayerParty(BasicCharacterObject playerCharacter)
         {
-            var characters = new List<BasicCharacterObject>();
+            var characters = MBObjectManager.Instance.GetObjectTypeList<BasicCharacterObject>();
             var culture = MBObjectManager.Instance.GetObject<BasicCultureObject>("empire");
-            MBObjectManager.Instance.GetAllInstancesOfObjectType(ref characters);
-            characters = characters.Where(x => x.IsTOWTemplate()).ToList();
+            characters = (TaleWorlds.Library.MBReadOnlyList<BasicCharacterObject>)characters.Where(x => x.IsTOWTemplate());
             var party = new CustomBattleCombatant(new TextObject("{=sSJSTe5p}Player Party", null), culture, Banner.CreateRandomBanner(-1));
             party.AddCharacter(playerCharacter, 1);
             party.SetGeneral(playerCharacter);

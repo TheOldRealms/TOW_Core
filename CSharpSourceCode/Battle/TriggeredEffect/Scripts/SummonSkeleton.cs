@@ -43,7 +43,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
                 troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier as CustomBattleTroopSupplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             }
-            MatrixFrame frame = new MatrixFrame(Mat3.Identity, position);
             Formation formation = null;
             if (caster.Team.Formations.Count() > 0)
             {
@@ -58,7 +57,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 CivilianEquipment(Mission.Current.DoesMissionRequireCivilianEquipment).
                 IsReinforcement(true).
                 SpawnOnInitialPoint(true).
-                InitialFrame(frame);
+                InitialPosition(position);
             Agent troop = Mission.Current.SpawnAgent(buildData, false, 1);
             troop.SetWatchState(Agent.WatchState.Alarmed);
         }

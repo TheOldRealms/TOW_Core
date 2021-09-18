@@ -77,10 +77,9 @@ namespace TOW_Core.CampaignSupport.RaiseDead
 
 		private List<CharacterObject> GetRaiseableCharacters()
 		{
-			var characters = new List<CharacterObject>();
-			MBObjectManager.Instance.GetAllInstancesOfObjectType<CharacterObject>(ref characters);
-			characters = characters.Where(character => character.IsUndead() && character.IsBasicTroop && character.Culture.ToString().Equals(Hero.MainHero.Culture.ToString())).ToList();
-			return characters;
+			var characters = MBObjectManager.Instance.GetObjectTypeList<CharacterObject>();
+			var characterlist = characters.Where(character => character.IsUndead() && character.IsBasicTroop && character.Culture.ToString().Equals(Hero.MainHero.Culture.ToString())).ToList();
+			return characterlist;
 		}
 
 		private void InitializeRaiseableCharacters()
