@@ -11,6 +11,8 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
+        private bool shouldSheathWeapon;
+        private bool shouldWieldWeapon;
         private bool isMainAgentChecked;
         private EquipmentIndex mainHand;
         private EquipmentIndex offHand;
@@ -86,8 +88,21 @@ namespace TOW_Core.Abilities
                         Agent.Main.SelectPreviousAbility();
                         currentAbility = Agent.Main.GetCurrentAbility();
                     }
-                    Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
-                    Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimation);
+                    if (shouldSheathWeapon)
+                    {
+                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != EquipmentIndex.None)
+                        {
+                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
+                        }
+                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != EquipmentIndex.None)
+                        {
+                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimation);
+                        }
+                        else
+                        {
+                            shouldSheathWeapon = false;
+                        }
+                    }
                 }
                 else
                 {
@@ -95,8 +110,21 @@ namespace TOW_Core.Abilities
                     {
                         EnableSpellMode();
                     }
-                    Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                    Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimation, false);
+                    if (shouldWieldWeapon)
+                    {
+                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != mainHand)
+                        {
+                            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                        }
+                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != offHand)
+                        {
+                            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                        }
+                        else
+                        {
+                            shouldWieldWeapon = false;
+                        }
+                    }
                 }
             }
         }
@@ -132,6 +160,7 @@ namespace TOW_Core.Abilities
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
             _abilityComponent.EnableAbilityMode();
             ChangeKeyBindings();
+            shouldSheathWeapon = true;
         }
 
         private void DisableSpellMode(bool isTakingNewWeapon)
@@ -141,8 +170,13 @@ namespace TOW_Core.Abilities
                 mainHand = EquipmentIndex.None;
                 offHand = EquipmentIndex.None;
             }
+            else
+            {
+                shouldWieldWeapon = true;
+            }
             _abilityComponent.DisableAbilityMode();
             ChangeKeyBindings();
+
         }
 
         private void ChangeKeyBindings()
