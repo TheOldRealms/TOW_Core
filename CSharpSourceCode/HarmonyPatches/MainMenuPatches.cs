@@ -38,19 +38,24 @@ namespace TOW_Core.HarmonyPatches
         {
             var data = new InquiryData(
                 "Important warning",
-                "This will load a scene with all the unique troops and NPCs present in our mod. The purpose of this is to compile the local shader cache on your PC.\n" +
-                "THIS WILL TAKE A LONG TIME!!!" +
-                "Our users report anything between 20 and 70 minutes." +
-                "This is ensures that you won't need to compile the shaders individually during normal gameplay, as it can cause issues with stability." +
+                "This will load a scene with all the unique troops and NPCs present in our mod. The purpose of this is to compile the local shader cache on your PC.\n \n" +
+                "THIS WILL TAKE A LONG TIME!!!\n" +
+                "Our users report anything between 20 and 70 minutes.\n \n" +
+                "This is ensures that you won't need to compile the shaders individually during normal gameplay, as it can cause issues with stability.\n" +
                 "This is meant to reduce the number of UI portrait generation crashes and also eliminate the long battle loading times during normal gameplay.",
                 true,
-                false,
-                "Understood",
-                null,
+                true,
+                "Do it",
+                "Not now",
                 BuildShaderCache,
-                null
+                HideWindow
                 );
             InformationManager.ShowInquiry(data);
+        }
+
+        private static void HideWindow()
+        {
+            InformationManager.HideInquiry();
         }
 
         private static void BuildShaderCache()
