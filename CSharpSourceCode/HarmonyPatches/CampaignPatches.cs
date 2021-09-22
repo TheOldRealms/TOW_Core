@@ -206,9 +206,15 @@ namespace TOW_Core.HarmonyPatches
             {
                 var settlement = Settlement.All.GetRandomElementWithPredicate(x => x.IsTown);
                 hero = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                if(template.StringId == "tow_wanderer_vampire_1")
+                var attributes = template.GetAttributes();
+                foreach(var attribute in attributes)
                 {
-                    hero.AddAttribute("VampireBodyOverride");
+                    hero.AddAttribute(attribute);
+                }
+                var abilities = template.GetAbilities();
+                foreach(var ability in abilities)
+                {
+                    hero.AddAbility(ability);
                 }
                 Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, template);
                 List<Equipment> equipments = new List<Equipment>();

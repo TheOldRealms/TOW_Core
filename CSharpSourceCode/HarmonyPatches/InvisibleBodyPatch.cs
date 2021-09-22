@@ -7,7 +7,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.HarmonyPatches
 {
-    /*
+    
     [HarmonyPatch]
     public static class InvisibleBodyPatch
     {
@@ -31,5 +31,5 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
         }
-    }*/
+    }
 }
