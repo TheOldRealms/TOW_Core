@@ -3,6 +3,7 @@ using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -29,10 +30,15 @@ namespace TOW_Core.CampaignSupport.Models
                 }
             }
             int num2 = party.Party.NumberOfAllMembers - GetUndeadMemberCount(party);
-            num2 += party.Party.NumberOfPrisoners > 0 ? party.Party.NumberOfPrisoners - GetUndeadPrisonerCount(party) / 2 : 0;
-            if (num > 0)
+            num2 += party.Party.NumberOfPrisoners > 0 ? (party.Party.NumberOfPrisoners - GetUndeadPrisonerCount(party)) / 2 : 0;
+            if (num2 > 0)
             {
-                if (num2 <= 1)
+                if (party.Leader != null && party.Leader.GetPerkValue(DefaultPerks.Roguery.Promises))
+                {
+                    num2 += (int)((float)num * DefaultPerks.Roguery.Promises.PrimaryBonus * 0.01f);
+                    TOWCommon.Say($"> 0 promises {num2}");
+                }
+                if (num2 < 1)
                 {
                     if (party.LeaderHero != null && party.LeaderHero.IsUndead())
                     {
@@ -43,11 +49,12 @@ namespace TOW_Core.CampaignSupport.Models
                         num2 = 1;
                     }
                 }
-                if (party.Leader != null && party.Leader.GetPerkValue(DefaultPerks.Roguery.Promises))
-                {
-                    num2 += (int)((float)num * DefaultPerks.Roguery.Promises.PrimaryBonus * 0.01f);
-                }
             }
+            else
+            {
+                return new ExplainedNumber(-0.001f);
+            }
+
             float baseNumber = -(float)num2 / 20f;
             ExplainedNumber result = new ExplainedNumber(baseNumber, includeDescription, null);
             this.CalculatePerkEffects(party, ref result);
