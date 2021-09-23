@@ -108,7 +108,7 @@ namespace TOW_Core.Abilities
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE || Template.AbilityEffectType == AbilityEffectType.Summoning;
         }
 
         private bool IsDynamicAbility()

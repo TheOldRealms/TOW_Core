@@ -53,12 +53,13 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 Formation(formation).
                 ClothingColor1(caster.Team.Color).
                 ClothingColor2(caster.Team.Color2).
+                Equipment(troopCharacter.GetFirstEquipment(false)).
                 TroopOrigin(troopOrigin).
-                CivilianEquipment(Mission.Current.DoesMissionRequireCivilianEquipment).
                 IsReinforcement(true).
-                SpawnOnInitialPoint(true).
-                InitialPosition(position);
+                InitialPosition(position).
+                InitialDirection(Vec2.Forward);
             Agent troop = Mission.Current.SpawnAgent(buildData, false, 1);
+            troop.FadeIn();
             troop.SetWatchState(Agent.WatchState.Alarmed);
         }
     }
