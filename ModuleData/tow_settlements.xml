@@ -6,7 +6,8 @@
       <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="chaos_portal" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.questbattle_template">
-      <Location id="questbattle_location" scene_name="training_field_2" max_prosperity="70" /> <!-- The scene's name here is actually irrelevant. It is set from the quuest battle template xml.-->
+      <Location id="questbattle_location" scene_name="training_field_2" max_prosperity="70" />
+      <!-- The scene's name here is actually irrelevant. It is set from the quuest battle template xml.-->
     </Locations>
   </Settlement>
   <!-- Averland 2 Towns 11 villages 2 castles -->
