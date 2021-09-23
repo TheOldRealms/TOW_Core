@@ -9,7 +9,7 @@ namespace TOW_Core.Battle.Dismemberment
 {
     public class DismembermentMissionLogic : MissionLogic
     {
-        private bool canTroopDismember = false;
+        private bool canTroopDismember = true;
 
         private Probability dismembermentFrequency = Probability.Always;
 
@@ -25,9 +25,9 @@ namespace TOW_Core.Battle.Dismemberment
 
         private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
 
-        private readonly String[] headDressMeshes = { "_hat" };
+        private readonly String[] headDressMeshes = { "_hat", "feather" };
 
-        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather" };
+        private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps" };
 
         public override void OnMissionTick(float dt)
         {
@@ -47,8 +47,6 @@ namespace TOW_Core.Battle.Dismemberment
                                     victim.Health <= 0 &&
                                     victim.State == AgentState.Killed &&
                                     attacker != null &&
-                                    ((attacker != Agent.Main && canTroopDismember) ||
-                                    attacker == Agent.Main) &&
                                     (collisionData.VictimHitBodyPart == BoneBodyPartType.Neck ||
                                     collisionData.VictimHitBodyPart == BoneBodyPartType.Head) &&
                                     blow.DamageType == DamageTypes.Cut &&
@@ -59,20 +57,34 @@ namespace TOW_Core.Battle.Dismemberment
                                     (attacker.AttackDirection == Agent.UsageDirection.AttackLeft ||
                                     attacker.AttackDirection == Agent.UsageDirection.AttackRight);
 
-            if (canBeDismembered && ShouldBeDismembered(attacker, victim, blow))
+            if (canBeDismembered)
             {
-                DismemberHead(victim, collisionData);
-                if (slowMotionFrequency == Probability.Always)
+                if (attacker == Agent.Main)
                 {
-                    slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
-                    Mission.Current.Scene.SlowMotionMode = true;
+                    if (ShouldBeDismembered(attacker, victim, blow))
+                    {
+                        DismemberHead(victim, collisionData);
+                        if (slowMotionFrequency == Probability.Always)
+                        {
+                            EnableSlowMotion();
+                        }
+                        else if (slowMotionFrequency == Probability.Probably && MBRandom.RandomFloatRanged(0, 1) > 0.75f)
+                        {
+                            EnableSlowMotion();
+                        }
+                    }
                 }
-                else if (slowMotionFrequency == Probability.Probably && MBRandom.RandomFloatRanged(0, 1) > 0.75f)
+                else if (attacker.IsHuman && canTroopDismember)
                 {
-                    slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
-                    Mission.Current.Scene.SlowMotionMode = true;
+                    DismemberHead(victim, collisionData);
                 }
             }
+        }
+
+        private void EnableSlowMotion()
+        {
+            slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
+            Mission.Current.Scene.SlowMotionMode = true;
         }
 
         private bool ShouldBeDismembered(Agent attacker, Agent victim, Blow blow)
