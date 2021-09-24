@@ -1,5 +1,5 @@
 ﻿<Module>
-	<Name value="The Old World Core Module" />
+	<Name value="The Old Realms Core Module" />
 	<Id value="TOW_Core" />
 	<Version value="v1.6.2" />
 	<SingleplayerModule value="true" />
