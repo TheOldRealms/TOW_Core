@@ -259,6 +259,21 @@
 
 
 	<!-- Vampire Counts animated skeleton-->
+  <NPCCharacter id="tow_summoned_skeleton" default_group="Infantry" level="6" name="{=!}Animated Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.skeleton_warrior_sword_002" />
+        <equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.skeleton_warrior_sword_001" />
+        <equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
 	<NPCCharacter id="tow_skeleton_recruit" default_group="Infantry" level="6" name="{=!}Animated Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />

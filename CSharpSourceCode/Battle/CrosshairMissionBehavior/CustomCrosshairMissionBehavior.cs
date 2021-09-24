@@ -9,6 +9,7 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -22,7 +23,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         private CrosshairVM weaponCrosshair;
         private AbilityCrosshair abilityCrosshair;
         private AbilityComponent abilityComponent;
-        private Agent mainAgent;
 
         private void OnInitializeWeaponCrosshair()
         {
@@ -67,9 +67,8 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 return;
             }
-            if (CanUseAbilities())
+            if (CanUseCrosshair())
             {
-                mainAgent = base.Mission.MainAgent;
                 if (!isMainAgentChecked)
                 {
                     isMainAgentChecked = true;
@@ -81,12 +80,17 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                         };
                     }
                 }
-                else if (MissionScreen != null && abilityComponent != null && abilityComponent.IsAbilityModeOn)
+                else if (IsUsingAbility())
                 {
+                    weaponCrosshair.IsVisible = false;
                     UpdateAbilityCrosshairVisibility();
                 }
                 else
                 {
+                    if (abilityCrosshair != null)
+                    {
+                        abilityCrosshair.Hide();
+                    }
                     UpdateWeaponCrosshair();
                     UpdateWeaponCrosshairVisibility();
                 }
@@ -101,6 +105,26 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
         }
 
+        private bool CanUseCrosshair()
+        {
+            return Agent.Main != null &&
+                   Agent.Main.State == AgentState.Active &&
+                   Mission.Mode != MissionMode.Conversation &&
+                   Mission.Mode != MissionMode.Deployment &&
+                   Mission.Mode != MissionMode.CutScene &&
+                   MissionScreen != null &&
+                   MissionScreen.CustomCamera == null &&
+                   (MissionScreen.OrderFlag == null || !MissionScreen.OrderFlag.IsVisible) &&
+                   !MissionScreen.IsViewingCharacter() &&
+                   BannerlordConfig.DisplayTargetingReticule &&
+                   !ScreenManager.GetMouseVisibility();
+        }
+
+        private bool IsUsingAbility()
+        {
+            return abilityComponent != null && abilityComponent.IsAbilityModeOn;
+        }
+
         public override void OnMissionScreenInitialize()
         {
             base.OnMissionScreenInitialize();
@@ -113,23 +137,8 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             this.OnFinalizeWeaponCrosshair();
         }
 
-        private bool CanUseAbilities()
-        {
-            return Agent.Main != null &&
-                   Agent.Main.State == AgentState.Active &&
-                   base.Mission.Mode != MissionMode.Conversation &&
-                   base.Mission.Mode != MissionMode.Deployment &&
-                   base.Mission.Mode != MissionMode.CutScene &&
-                   base.MissionScreen.CustomCamera == null &&
-                   (base.MissionScreen.OrderFlag == null || !base.MissionScreen.OrderFlag.IsVisible) &&
-                   !base.MissionScreen.IsViewingCharacter() &&
-                   BannerlordConfig.DisplayTargetingReticule &&
-                   !ScreenManager.GetMouseVisibility();
-        }
-
         private void UpdateAbilityCrosshairVisibility()
         {
-            weaponCrosshair.IsVisible = false;
             if (abilityCrosshair == null)
             {
                 if (abilityComponent.CurrentAbility.Crosshair != null)
@@ -179,7 +188,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         private void UpdateWeaponCrosshairVisibility()
         {
-            if (!mainAgent.WieldedWeapon.IsEmpty && mainAgent.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
+            if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
             {
                 weaponCrosshair.IsVisible = true;
                 return;
