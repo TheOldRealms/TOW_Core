@@ -32,7 +32,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         private void SpawnAgent(Agent caster, Vec3 position)
         {
-            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
+            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_summoned_skeleton");
             IAgentOriginBase troopOrigin = null;
             if (Game.Current.GameType is Campaign)
             {
