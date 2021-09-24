@@ -32,7 +32,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         private void SpawnAgent(Agent caster, Vec3 position)
         {
-            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
+            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_summoned_skeleton");
             IAgentOriginBase troopOrigin = null;
             if (Game.Current.GameType is Campaign)
             {
@@ -43,7 +43,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
                 troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier as CustomBattleTroopSupplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             }
-            MatrixFrame frame = new MatrixFrame(Mat3.Identity, position);
             Formation formation = null;
             if (caster.Team.Formations.Count() > 0)
             {
@@ -54,12 +53,13 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 Formation(formation).
                 ClothingColor1(caster.Team.Color).
                 ClothingColor2(caster.Team.Color2).
+                Equipment(troopCharacter.GetFirstEquipment(false)).
                 TroopOrigin(troopOrigin).
-                CivilianEquipment(Mission.Current.DoesMissionRequireCivilianEquipment).
                 IsReinforcement(true).
-                SpawnOnInitialPoint(true).
-                InitialFrame(frame);
+                InitialPosition(position).
+                InitialDirection(Vec2.Forward);
             Agent troop = Mission.Current.SpawnAgent(buildData, false, 1);
+            troop.FadeIn();
             troop.SetWatchState(Agent.WatchState.Alarmed);
         }
     }

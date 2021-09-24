@@ -11,26 +11,18 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
+        private bool shouldSheathWeapon;
+        private bool shouldWieldWeapon;
         private bool isMainAgentChecked;
         private EquipmentIndex mainHand;
         private EquipmentIndex offHand;
         private Ability currentAbility;
         private AbilityComponent _abilityComponent;
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        System.Timers.Timer sheathTimer = new System.Timers.Timer(1000);
         private MissionScreen _missionScreen;
 
         public AbilityManagerMissionLogic()
         {
-        }
-
-        public override void OnBehaviourInitialize()
-        {
-            base.OnBehaviourInitialize();
-            sheathTimer.AutoReset = false;
-            sheathTimer.Elapsed += (s, e) =>
-                                       Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand,
-                                           Agent.WeaponWieldActionType.WithAnimationUninterruptible);
         }
 
         protected override void OnEndMission()
@@ -42,6 +34,31 @@ namespace TOW_Core.Abilities
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
+            if (!isMainAgentChecked)
+            {
+                if (Agent.Main != null)
+                {
+                    _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+                    if (_abilityComponent != null)
+                    {
+                        currentAbility = _abilityComponent.CurrentAbility;
+                        var crosshairMB = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
+                        if (crosshairMB != null)
+                        {
+                            _missionScreen = crosshairMB.MissionScreen;
+                            foreach (var ability in _abilityComponent.KnownAbilities)
+                            {
+                                if (ability.Crosshair != null)
+                                {
+                                    ability.Crosshair.SetMissionScreen(_missionScreen);
+                                    ability.Crosshair.Initialize();
+                                }
+                            }
+                            isMainAgentChecked = true;
+                        }
+                    }
+                }
+            }
             if (CanUseAbilities())
             {
                 if (_abilityComponent.IsAbilityModeOn)
@@ -50,7 +67,7 @@ namespace TOW_Core.Abilities
                     {
                         if (currentAbility.Crosshair != null)
                             currentAbility.Crosshair.Hide();
-                        DisableSpellMode();
+                        DisableSpellMode(false);
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                     {
@@ -71,6 +88,21 @@ namespace TOW_Core.Abilities
                         Agent.Main.SelectPreviousAbility();
                         currentAbility = Agent.Main.GetCurrentAbility();
                     }
+                    if (shouldSheathWeapon)
+                    {
+                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != EquipmentIndex.None)
+                        {
+                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
+                        }
+                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != EquipmentIndex.None)
+                        {
+                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimation);
+                        }
+                        else
+                        {
+                            shouldSheathWeapon = false;
+                        }
+                    }
                 }
                 else
                 {
@@ -78,27 +110,20 @@ namespace TOW_Core.Abilities
                     {
                         EnableSpellMode();
                     }
-                }
-            }
-            else if (!isMainAgentChecked && Agent.Main != null)
-            {
-                _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                if (_abilityComponent != null)
-                {
-                    currentAbility = _abilityComponent.CurrentAbility;
-                    var crosshairMB = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
-                    if (crosshairMB != null)
+                    if (shouldWieldWeapon)
                     {
-                        _missionScreen = crosshairMB.MissionScreen;
-                        foreach (var ability in _abilityComponent.KnownAbilities)
+                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != mainHand)
                         {
-                            if (ability.Crosshair != null)
-                            {
-                                ability.Crosshair.SetMissionScreen(_missionScreen);
-                                ability.Crosshair.Initialize();
-                            }
+                            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
                         }
-                        isMainAgentChecked = true;
+                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != offHand)
+                        {
+                            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                        }
+                        else
+                        {
+                            shouldWieldWeapon = false;
+                        }
                     }
                 }
             }
@@ -131,20 +156,27 @@ namespace TOW_Core.Abilities
 
         private void EnableSpellMode()
         {
-            _abilityComponent.EnableAbilityMode();
-            ChangeKeyBindings();
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
-            sheathTimer.Start();
+            _abilityComponent.EnableAbilityMode();
+            ChangeKeyBindings();
+            shouldSheathWeapon = true;
         }
 
-        private void DisableSpellMode()
+        private void DisableSpellMode(bool isTakingNewWeapon)
         {
+            if (isTakingNewWeapon)
+            {
+                mainHand = EquipmentIndex.None;
+                offHand = EquipmentIndex.None;
+            }
+            else
+            {
+                shouldWieldWeapon = true;
+            }
             _abilityComponent.DisableAbilityMode();
             ChangeKeyBindings();
-            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+
         }
 
         private void ChangeKeyBindings()
@@ -177,6 +209,12 @@ namespace TOW_Core.Abilities
             keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
             keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
             keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
+        }
+
+        public override void OnItemPickup(Agent agent, SpawnedItemEntity item)
+        {
+            base.OnItemPickup(agent, item);
+            DisableSpellMode(true);
         }
     }
 }

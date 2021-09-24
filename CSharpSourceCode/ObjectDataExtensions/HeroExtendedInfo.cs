@@ -28,7 +28,7 @@ namespace TOW_Core.ObjectDataExtensions
         public HeroExtendedInfo(CharacterObject character)
         {
             _baseCharacter = character;
-            _templateCharacterOrigin = character.TemplateCharacter;
+            //_templateCharacterOrigin = character.TemplateCharacter;
         }
         public List<string> AllAbilities 
         { 

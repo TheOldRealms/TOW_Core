@@ -154,6 +154,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("Undead");
                 Hero.MainHero.AddAttribute("VampireBodyOverride");
                 Hero.MainHero.AddAttribute("Necromancer");
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAttribute("SpellCaster");
+                Hero.MainHero.AddAbility("WindOfDeath");
             }
         }
 

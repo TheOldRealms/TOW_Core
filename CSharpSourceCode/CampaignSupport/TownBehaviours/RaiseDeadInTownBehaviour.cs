@@ -40,12 +40,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void SettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
         {
-            HeroExtendedInfo info = null;
-            if (arg3 != null)
-            {
-                info = arg3.GetExtendedInfo();
-            }
-            if (arg1 == null || arg2 == null || arg3 == null || !arg3.IsNecromancer()) return;
+            if (arg1 == null || arg2 == null || arg3 == null || !arg3.IsNecromancer() || arg3.CharacterObject.IsPlayerCharacter) return;
             if (arg1.MemberRoster.TotalManCount < arg1.Party.PartySizeLimit)
             {
                 if (_skeleton != null)
@@ -65,7 +60,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 GameMenu.SwitchToMenu("town");
             }, true, -1, false);
 
-            obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None);
+            obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowProgressAndHoursOption, GameOverlays.MenuOverlayType.None);
             _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_recruit");
             MakeNecromancers();
         }
@@ -73,12 +68,12 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void raisingdeadtick(MenuCallbackArgs args, CampaignTime dt)
         {
             _elapsedTime += dt.ToHours;
-            //1 every 2 hours for now. Later we want to tie this into the intelligence skill or something.
+            //2 every 2 hours for now. Later we want to tie this into the intelligence skill or something.
             if(_elapsedTime / _progress > _tickFrequency)
             {
                 if(_skeleton != null && MobileParty.MainParty.MemberRoster.TotalManCount <= MobileParty.MainParty.Party.PartySizeLimit)
                 {
-                    MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 1);
+                    MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 2);
                 }
                 _progress += 1;
             }
@@ -94,7 +89,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private bool raisingdeadcondition(MenuCallbackArgs args) => true;
 
-        private void raisingdeadinit(MenuCallbackArgs args) { }
+        private void raisingdeadinit(MenuCallbackArgs args) { args.MenuContext.GameMenu.StartWait(); }
 
         private bool raisedeadcondition(MenuCallbackArgs args)
         {
