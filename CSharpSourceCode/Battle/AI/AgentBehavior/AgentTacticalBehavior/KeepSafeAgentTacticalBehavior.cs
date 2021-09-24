@@ -1,5 +1,7 @@
-﻿using TaleWorlds.Engine;
+﻿using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 {
@@ -12,6 +14,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         public override void Execute()
         {
             ApplyBehaviorParams();
+            var behavior = Agent.Formation?.AI?.ActiveBehavior;
+            if (Agent.Team.GeneralAgent == Agent && Agent.Team.HasTeamAi && behavior != null && behavior.GetType() == typeof(BehaviorCharge))
+            {
+                Agent.Formation.AI.SetBehaviorWeight<BehaviorCharge>(0);  
+            }
         }
 
         public override void Terminate()
@@ -29,7 +36,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             if (currentOrderType != null && (currentOrderType == OrderType.Charge || currentOrderType == OrderType.ChargeWithTarget))
             {
                 Agent.DisableScriptedMovement();
-                AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
+                 AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 3f, 8f, 5f, 20f, 6f);
                 if (ShouldAgentSkirmish())
                 {
                     AIComponent.SetBehaviorParams(HumanAIComponent.AISimpleBehaviorKind.RangedHorseback, 5f, 7f, 3f, 20f, 5.5f);
@@ -41,15 +48,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             }
             else
             {
-                if (Agent.Formation != null && Agent.Formation.RearAttachmentPoint.Position.Distance(Agent.Position) > 10)
-                {
-                    var pos = new WorldPosition(Mission.Current.Scene, Agent.Formation.RearAttachmentPoint.Position);
-                    Agent.SetScriptedPosition(ref pos, false);
-                }
-                else
-                {
-                    Agent.DisableScriptedMovement();
-                }
+             Agent.DisableScriptedMovement();
             }
         }
 

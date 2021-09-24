@@ -25,7 +25,7 @@ namespace TOW_Core.Utilities
                 frame.origin = agent.Position;
                 frame.rotation = agent.Frame.rotation;
             }
-            agentBuildData.InitialFrame(frame);
+            agentBuildData.InitialPosition(frame.origin);
 
             return Mission.Current.SpawnAgent(agentBuildData, false, 0);
         }
