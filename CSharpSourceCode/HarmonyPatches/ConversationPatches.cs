@@ -17,7 +17,7 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(LordConversationsCampaignBehavior), "conversation_wanderer_introduction_on_condition")]
-        public static bool Prefix(ref bool __result, ref Dictionary<CharacterObject, CharacterObject> ____previouslyMetWandererTemplates)
+        public static bool WandererString(ref bool __result, ref Dictionary<CharacterObject, CharacterObject> ____previouslyMetWandererTemplates)
         {
 			if (CharacterObject.OneToOneConversationCharacter != null && CharacterObject.OneToOneConversationCharacter.IsHero && CharacterObject.OneToOneConversationCharacter.Occupation == Occupation.Wanderer && CharacterObject.OneToOneConversationCharacter.HeroObject.HeroState != Hero.CharacterStates.Prisoner)
 			{
@@ -49,5 +49,36 @@ namespace TOW_Core.HarmonyPatches
             else __result = false;
             return false;
         }
-    }
+
+		[HarmonyPostfix]
+		[HarmonyPatch(typeof(LordConversationsCampaignBehavior), "conversation_lord_introduction_on_condition")]
+		public static void LordStrings(ref bool __result)
+		{
+			if (Hero.OneToOneConversationHero != null && Campaign.Current.ConversationManager.CurrentConversationIsFirst && Hero.OneToOneConversationHero.IsNoble && !Hero.OneToOneConversationHero.IsRebel && Hero.OneToOneConversationHero.Clan.MapFaction.IsKingdomFaction)
+			{
+				string text = "you should never see this";
+				if (Hero.OneToOneConversationHero.MapFaction.Leader == Hero.OneToOneConversationHero)
+				{
+					if(Hero.OneToOneConversationHero.MapFaction.StringId == "averland")
+                    {
+						text = "I am {CONVERSATION_CHARACTER.LINK} of the house of {CLAN_NAME_CUSTOM}, elector count of Averland.";
+					}
+					else if (Hero.OneToOneConversationHero.MapFaction.StringId == "stirland")
+					{
+						text = "I am {CONVERSATION_CHARACTER.LINK} of the house of {CLAN_NAME_CUSTOM}, elector count of Stirland.";
+					}
+					else if(Hero.OneToOneConversationHero.MapFaction.StringId == "sylvania")
+                    {
+						text = "I am {CONVERSATION_CHARACTER.LINK} of the {CLAN_NAME_CUSTOM}, ruler of Sylvania.";
+					}
+				}
+				else
+				{
+					text = "I am {CONVERSATION_CHARACTER.LINK}, of the {CLAN_NAME_CUSTOM}.";
+				}
+				MBTextManager.SetTextVariable("CLAN_NAME_CUSTOM", Hero.OneToOneConversationHero.Clan.Name, false);
+				MBTextManager.SetTextVariable("LORD_INTRODUCTION_STRING", text, false);
+			}
+		}
+	}
 }

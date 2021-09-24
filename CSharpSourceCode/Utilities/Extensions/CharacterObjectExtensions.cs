@@ -13,7 +13,7 @@ namespace TOW_Core.Utilities.Extensions
     {
         public static bool IsTOWTemplate(this CharacterObject characterObject)
         {
-            return characterObject.StringId.Contains("tow_");
+            return characterObject.StringId.StartsWith("tow_");
         }
 
         public static List<string> GetAbilities(this BasicCharacterObject characterObject)
@@ -81,6 +81,11 @@ namespace TOW_Core.Utilities.Extensions
                 }
             }
             return s;
+        }
+
+        public static bool IsUndead(this BasicCharacterObject characterObject)
+        {
+            return characterObject.GetAttributes().Contains("Undead");
         }
     }
 }

@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+    <!-- Chaos troops -->
+    <NPCCharacter id="tow_nurgle_warrior" default_group="Infantry" level="21" name="{=!}Putrid Blightking" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+        <face>
+            <BodyProperties version="4" age="45" weight="0.8537" build="0.9555" key="0039FC0D1D003A00E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+            <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />
+            <BodyProperties version="4" age="60" weight="0.8537" build="0.9555" key="0039FC0ADB003440E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+        </face>
+        <upgrade_targets></upgrade_targets>
+        <Equipments>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_001" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_003" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_001" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.chaos_banner_002" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_003" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.abomination_body" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+        </Equipments>
+    </NPCCharacter>
+
+    <NPCCharacter id="tow_nurgle_warrior_002" default_group="Infantry" level="21" name="{=!}Nurgle Warrior" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+        <face>
+            <BodyProperties version="4" age="45" weight="0.8537" build="0.9555" key="0039FC0D1D003A00E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+            <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />
+            <BodyProperties version="4" age="60" weight="0.8537" build="0.9555" key="0039FC0ADB003440E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+        </face>
+        <upgrade_targets></upgrade_targets>
+        <Equipments>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_003" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_004" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_004" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_003" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.chaos_banner_001" />
+                <equipment slot="Head" id="Item.nurgle_helmet_002" />
+                <equipment slot="Cape" id="Item.nurgle_shoulders_002" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+        </Equipments>
+    </NPCCharacter>
+
+    <NPCCharacter id="tow_nurgle_warrior_003" default_group="Infantry" level="21" name="{=!}Nurgle Chosen" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+        <face>
+            <BodyProperties version="4" age="45" weight="0.8537" build="0.9555" key="0039FC0D1D003A00E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+            <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />
+            <BodyProperties version="4" age="60" weight="0.8537" build="0.9555" key="0039FC0ADB003440E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+        </face>
+        <upgrade_targets></upgrade_targets>
+        <Equipments>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.chaos_shield_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_001" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.chaos_shield_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_002" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.chaos_shield_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_003" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_hammer_001" />
+                <equipment slot="Item1" id="Item.chaos_shield_001" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_004" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.hallow_boots" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.nurgle_shield_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_005" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.nurgle_greataxe_001" />
+                <equipment slot="Item1" id="Item.chaos_shield_001" />
+                <equipment slot="Head" id="Item.chs_chosen_helmet_005" />
+                <equipment slot="Cape" id="Item.chs_chosen_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_nurgle_knight_chest" />
+                <equipment slot="Gloves" id="Item.hallow_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_nurgle_knight_legs" />
+            </EquipmentRoster>
+        </Equipments>
+    </NPCCharacter>
+
+    <NPCCharacter id="tow_chaos_chosen" default_group="Infantry" level="21" name="{=!}Chaos Chosen" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+        <face>
+            <BodyProperties version="4" age="45" weight="0.8537" build="0.9555" key="0039FC0D1D003A00E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+            <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />
+            <BodyProperties version="4" age="60" weight="0.8537" build="0.9555" key="0039FC0ADB003440E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+        </face>
+        <upgrade_targets></upgrade_targets>
+        <Equipments>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+                <equipment slot="Head" id="Item.chaos_knight_helmet" />
+                <equipment slot="Cape" id="Item.chaos_knight_shoulders" />
+                <equipment slot="Body" id="Item.chaos_knight_chest" />
+                <equipment slot="Gloves" id="Item.chaos_knight_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_knight_legs" />
+            </EquipmentRoster>
+        </Equipments>
+    </NPCCharacter>
+    <NPCCharacter id="tow_chs_khorne_warrior" default_group="Infantry" level="21" name="{=!}Khorne Warrior" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+        <face>
+            <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />
+            <BodyProperties version="4" age="60" weight="0.8537" build="0.9555" key="0039FC0ADB003440E6766487675388887577866254C66834C4B647398C95A09700FED6030FA7497B00000000000000000000000000000000000000003BFC5002" />
+        </face>
+        <upgrade_targets></upgrade_targets>
+        <Equipments>
+            <EquipmentRoster>
+                <equipment slot="Item0" id="Item.chaos_sword_001" />
+                <equipment slot="Head" id="Item.chaos_khorne_warrior_helmet_001" />
+                <equipment slot="Cape" id="Item.chaos_khorne_warrior_shoulders_001" />
+                <equipment slot="Body" id="Item.chaos_khorne_warrior_body_001" />
+                <equipment slot="Gloves" id="Item.chaos_khorne_warrior_gauntlets_001" />
+                <equipment slot="Leg" id="Item.chaos_khorne_warrior_boots_001" />
+            </EquipmentRoster>
+        </Equipments>
+    </NPCCharacter>
+</NPCCharacters>

@@ -131,17 +131,29 @@ namespace TOW_Core.CharacterCreation
         private void OnOptionFinalize(string id)
         {
             var selectedOption = _options.Find(x => x.Id == id);
-            if(selectedOption.OptionText == "Bright Wizard pupil")
+            if(selectedOption.OptionText == "Bright Order Initiate")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("Fireball");
             }
-            else if (selectedOption.OptionText == "Necromancer")
+            if (selectedOption.OptionText == "Warrior Priest Acolyte")
+            {
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAbility("HealingAOE");
+            }
+            else if (selectedOption.OptionText == "Novice Necromancer")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
+                Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
+            }
+            else if (selectedOption.OptionText == "Vampiric Nobility")
+            {
+                Hero.MainHero.AddAttribute("Undead");
+                Hero.MainHero.AddAttribute("VampireBodyOverride");
+                Hero.MainHero.AddAttribute("Necromancer");
             }
         }
 
@@ -188,13 +200,12 @@ namespace TOW_Core.CharacterCreation
         public override void OnCharacterCreationFinalized()
         {
             CultureObject culture = CharacterObject.PlayerCharacter.Culture;
-
             Vec2 position2D = default(Vec2);
 
             switch (culture.StringId)
             {
                 case "empire":
-                    position2D = new Vec2(1420.97f, 981.37f);
+                    position2D = new Vec2(1450.97f, 991.37f);
                     break;
                 case "khuzait":
                     position2D = new Vec2(1617.54f, 969.70f);

@@ -12,6 +12,7 @@ using TOW_Core.Battle.StatusEffects;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.CampaignSystem;
+using System.Runtime.ExceptionServices;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -20,17 +21,17 @@ namespace TOW_Core.Utilities.Extensions
         /// <summary>
         /// Maps all character IDs to a list of attributes for that character. For example, <"skeleton_warrior" <=> {"Expendable", "Undead"}>
         /// </summary>
-        
+
         public static bool IsExpendable(this Agent agent)
         {
             return agent.GetAttributes().Contains("Expendable");
         }
-        
+
         public static bool IsHuman(this Agent agent)
         {
             return agent.GetAttributes().Contains("Human");
         }
-        
+
         public static bool IsUndead(this Agent agent)
         {
             return agent.GetAttributes().Contains("Undead");
@@ -54,10 +55,10 @@ namespace TOW_Core.Utilities.Extensions
         public static void CastCurrentAbility(this Agent agent)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
-           
-            if(abilitycomponent != null)
+
+            if (abilitycomponent != null)
             {
-                if(abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
+                if (abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
         }
 
@@ -80,6 +81,15 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
+        public static void SelectPreviousAbility(this Agent agent)
+        {
+            var abilitycomponent = agent.GetComponent<AbilityComponent>();
+            if (abilitycomponent != null)
+            {
+                abilitycomponent.SelectPreviousAbility();
+            }
+        }
+
         public static void SelectAbility(this Agent agent, int abilityindex)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
@@ -93,7 +103,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             if (agent.Character == null) return null;
             Hero hero = null;
-            if(Game.Current.GameType is Campaign)
+            if (Game.Current.GameType is Campaign)
             {
                 var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
                 if (list != null && list.Count() > 0)
@@ -118,6 +128,17 @@ namespace TOW_Core.Utilities.Extensions
             }
             else return new List<string>();
         }
+        
+        public static Ability GetAbility(this Agent agent, int abilityindex)
+        {
+            var abilitycomponent = agent.GetComponent<AbilityComponent>();
+            if (abilitycomponent != null)
+            {
+                return abilitycomponent.GetAbility(abilityindex);
+            }
+
+            return null;
+        }
 
         public static List<string> GetAttributes(this Agent agent)
         {
@@ -140,36 +161,58 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="agent">The agent that will be damaged</param>
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
-        /// <param name="causeStagger">A flag that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool causeStagger = true)
+        /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
+        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
-            if (agent == null)
+            if (agent == null && !agent.IsHuman)
             {
-                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null agent.", LogLevel.Warn);
+                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null or non-human agent.", LogLevel.Warn);
                 return;
             }
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (!causeStagger && agent.Health > damageAmount)
+                if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
-                    agent.Health -= damageAmount;
-                }
-                else
-                {
-                    bool agentIsActive = agent.State == AgentState.Active;
-                    bool agentIsRouted = agent.State == AgentState.Routed;
-                    if (agentIsActive || agentIsRouted)
+                    if (!doBlow && agent.Health > damageAmount + 1)
                     {
-                        var blow = new Blow();
+                        agent.Health -= damageAmount;
+                        return;
+                    }
+                    else if(agent.Health > 1 && !agent.IsFadingOut())
+                    {
+                        var blow = new Blow(-1);
+                        blow.DamageCalculated = true;
                         blow.InflictedDamage = damageAmount;
-                        blow.DefenderStunPeriod = 0;
-                        if (damager != null) blow.OwnerId = damager.Index;
+                        blow.AttackType = AgentAttackType.Bash;
+                        blow.BlowFlag = BlowFlags.NoSound;
+                        blow.BaseMagnitude = 5;
+                        blow.DamageType = DamageTypes.Invalid;
+                        blow.VictimBodyPart = BoneBodyPartType.Abdomen;
+                        blow.StrikeType = StrikeType.Invalid;
+                        if (hasShockWave)
+                        {
+                            if (agent.HasMount)
+                                blow.BlowFlag = BlowFlags.CanDismount;
+                            else
+                                blow.BlowFlag = BlowFlags.KnockDown;
+                        }
+                        if (damager != null)
+                        {
+                            var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
+                            if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
+                        }
+                        else
+                        {
+                            blow.InflictedDamage = 0;
+                            blow.SelfInflictedDamage = damageAmount;
+                            blow.OwnerId = agent.Index;
+                        }
                         agent.RegisterBlow(blow);
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
@@ -186,7 +229,7 @@ namespace TOW_Core.Utilities.Extensions
             agent.Health = Math.Min(agent.Health + healingAmount, agent.HealthLimit);
         }
 
-        public static void ApplyStatusEffect(this Agent agent, string effectId)
+        public static void ApplyStatusEffect(this Agent agent, string effectId, Agent damager = null)
         {
             agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId);
         }

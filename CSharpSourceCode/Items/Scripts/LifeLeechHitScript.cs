@@ -11,7 +11,6 @@ namespace TOW_Core.Items.Scripts
     {
         public void OnHit(Agent affectedAgent, Agent affectorAgent, MissionWeapon affectorWeapon)
         {
-            TOW_Core.Utilities.TOWCommon.Say("Life leech hit script called.");
         }
     }
 }

@@ -1,18 +1,18 @@
 ﻿<Module>
   <Name value="The Old World Core Module"/>
   <Id value="TOW_Core"/>
-  <Version value="v1.6.0"/>
+  <Version value="v1.6.1"/>
   <SingleplayerModule value="true"/>
   <MultiplayerModule value="false"/>
   <DependedModules>
-    <DependedModule Id="Native" DependentVersion="e1.6.0"/>
-    <DependedModule Id="SandBoxCore" DependentVersion="e1.6.0"/>
-    <DependedModule Id="Sandbox" DependentVersion="e1.6.0"/>
-    <DependedModule Id="StoryMode" DependentVersion="e1.6.0"/>
-	<DependedModule Id="TOW_ArmoryAssets" DependentVersion="v1.6.0" />
-	<DependedModule Id="TOW_EnvironmentAssets" DependentVersion="v1.6.0" />
-	<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.0" />
-	<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.0" />
+    <DependedModule Id="Native" DependentVersion="e1.6.1"/>
+    <DependedModule Id="SandBoxCore" DependentVersion="e1.6.1"/>
+    <DependedModule Id="Sandbox" DependentVersion="e1.6.1"/>
+    <DependedModule Id="StoryMode" DependentVersion="e1.6.1"/>
+	<DependedModule Id="TOW_ArmoryAssets" DependentVersion="v1.6.1" />
+	<DependedModule Id="TOW_EnvironmentAssets" DependentVersion="v1.6.1" />
+	<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.1" />
+	<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.1" />
   </DependedModules>
   <SubModules>
     <SubModule>
@@ -122,6 +122,27 @@
 		</XmlNode>
 		<XmlNode>
 			<XmlName id="NPCCharacters" path="tow_townspeople"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_bandits"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_designerNPCs"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="tow_troopdefinitions_chaos"/>
 			<IncludedGameTypes>
 				<GameType value = "Campaign"/>
 				<GameType value = "CampaignStoryMode"/>
