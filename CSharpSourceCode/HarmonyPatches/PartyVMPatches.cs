@@ -13,7 +13,6 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class PartyVMPatches
     {
-        /*
         [HarmonyPrefix]
         [HarmonyPatch(typeof(PartyVM), "InitializePartyList")]
         public static void AddRaiseDeadToOtherTroops(ref TroopRoster currentTroopRoster, ref PartyScreenLogic.TroopType type, int side)
@@ -29,6 +28,5 @@ namespace TOW_Core.HarmonyPatches
                 raiseDeadBehavior.TroopsForVM.Clear();
             }
         }
-        */
     }
 }

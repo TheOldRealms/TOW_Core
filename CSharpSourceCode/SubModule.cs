@@ -141,7 +141,7 @@ namespace TOW_Core
 
                 starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
-                //starter.AddBehavior(new RaiseDeadCampaignBehavior());
+                starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
