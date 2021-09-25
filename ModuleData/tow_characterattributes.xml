@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Characters>
 	<!-- VC troops -->
+  <Character name="tow_summoned_skeleton">
+    <Attribute id="Undead" />
+    <Attribute id="Expendable" />
+  </Character>
 	<Character name="tow_skeleton_recruit">
 		<Attribute id="Undead" />
 		<Attribute id="Expendable" />
