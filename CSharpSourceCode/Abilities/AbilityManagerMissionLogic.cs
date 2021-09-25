@@ -61,7 +61,7 @@ namespace TOW_Core.Abilities
             }
             if (CanUseAbilities())
             {
-                if (_abilityComponent.IsAbilityModeOn)
+                if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
                 {
                     if (Input.IsKeyPressed(InputKey.Q))
                     {
@@ -132,7 +132,7 @@ namespace TOW_Core.Abilities
         public override void OnAgentCreated(Agent agent)
         {
             base.OnAgentCreated(agent);
-            if (!Mission.IsFriendlyMission && Mission.CombatType != Mission.MissionCombatType.ArenaCombat && Mission.CombatType != Mission.MissionCombatType.NoCombat)
+            if (IsCastingMission(Mission))
             {
                 if (agent.IsAbilityUser())
                 {
@@ -143,6 +143,11 @@ namespace TOW_Core.Abilities
                     }
                 }
             }
+        }
+
+        public static bool IsCastingMission(Mission mission)
+        {
+            return !mission.IsFriendlyMission && mission.CombatType != Mission.MissionCombatType.ArenaCombat && mission.CombatType != Mission.MissionCombatType.NoCombat;
         }
 
         private bool CanUseAbilities()
@@ -158,7 +163,7 @@ namespace TOW_Core.Abilities
         {
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-            _abilityComponent.EnableAbilityMode();
+            _abilityComponent?.EnableAbilityMode();
             ChangeKeyBindings();
             shouldSheathWeapon = true;
         }
@@ -174,14 +179,14 @@ namespace TOW_Core.Abilities
             {
                 shouldWieldWeapon = true;
             }
-            _abilityComponent.DisableAbilityMode();
+            _abilityComponent?.DisableAbilityMode();
             ChangeKeyBindings();
 
         }
 
         private void ChangeKeyBindings()
         {
-            if (_abilityComponent.IsAbilityModeOn)
+            if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
             {
                 UnbindWeaponKeys();
             }

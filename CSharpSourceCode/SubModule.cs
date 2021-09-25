@@ -50,12 +50,13 @@ namespace TOW_Core
         public override void OnGameInitializationFinished(Game game)
         {
             base.OnGameInitializationFinished(game);
-            if(game.GameType is Campaign)
+            if (game.GameType is Campaign)
             {
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
                 }
+
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
@@ -68,7 +69,6 @@ namespace TOW_Core
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
             ConfigureLogging();
-
 
 
             //This has to be here.
@@ -166,7 +166,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
+            if (AbilityManagerMissionLogic.IsCastingMission(mission)) mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new AbilityHUDMissionView());
             mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
@@ -178,6 +178,7 @@ namespace TOW_Core
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             }
+
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
         }
@@ -194,7 +195,7 @@ namespace TOW_Core
             var config = new LoggingConfiguration();
 
             // Log debug/exception info to the log file
-            var logfile = new FileTarget("logfile") { FileName = path };
+            var logfile = new FileTarget("logfile") {FileName = path};
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
 
             // Log info and higher to the VS debugger
@@ -207,7 +208,7 @@ namespace TOW_Core
         public override void OnNewGameCreated(Game game, object initializerObject)
         {
             base.OnNewGameCreated(game, initializerObject);
-            ((Campaign)game.GameType).GetCampaignBehavior< SettlementNotableController>().CheckEmpireSettlements(false);
+            ((Campaign) game.GameType).GetCampaignBehavior<SettlementNotableController>().CheckEmpireSettlements(false);
         }
     }
 }
