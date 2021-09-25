@@ -166,7 +166,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            if (AbilityManagerMissionLogic.IsCastingMission(mission)) mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
+            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new AbilityHUDMissionView());
             mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
