@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System.IO;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -37,6 +36,7 @@ using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
+using TOW_Core.Battle;
 
 namespace TOW_Core
 {
@@ -69,7 +69,6 @@ namespace TOW_Core
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
             ConfigureLogging();
-
 
             //This has to be here.
             AbilityManager.LoadAbilities();
@@ -181,6 +180,11 @@ namespace TOW_Core
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+
+            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<BattleEndLogic>());
+            var beh = new TORBattleEndLogic();
+            beh.OnBehaviourInitialize();
+            mission.AddMissionBehaviour(beh);
         }
 
         private void LoadStatusEffects()
@@ -195,7 +199,7 @@ namespace TOW_Core
             var config = new LoggingConfiguration();
 
             // Log debug/exception info to the log file
-            var logfile = new FileTarget("logfile") {FileName = path};
+            var logfile = new FileTarget("logfile") { FileName = path };
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
 
             // Log info and higher to the VS debugger
@@ -208,7 +212,7 @@ namespace TOW_Core
         public override void OnNewGameCreated(Game game, object initializerObject)
         {
             base.OnNewGameCreated(game, initializerObject);
-            ((Campaign) game.GameType).GetCampaignBehavior<SettlementNotableController>().CheckEmpireSettlements(false);
+            ((Campaign)game.GameType).GetCampaignBehavior<SettlementNotableController>().CheckEmpireSettlements(false);
         }
     }
 }
