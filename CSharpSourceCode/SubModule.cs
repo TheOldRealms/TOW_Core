@@ -152,6 +152,7 @@ namespace TOW_Core
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new CustomBanditDensityModel());
+                starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
