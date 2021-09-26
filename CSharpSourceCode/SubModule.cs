@@ -182,10 +182,14 @@ namespace TOW_Core
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
 
-            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<BattleEndLogic>());
-            var beh = new TORBattleEndLogic();
-            beh.OnBehaviourInitialize();
-            mission.AddMissionBehaviour(beh);
+            var battleEndLogic = mission.GetMissionBehaviour<BattleEndLogic>();
+            if (battleEndLogic != null)
+            {
+                mission.RemoveMissionBehaviour(battleEndLogic);
+                var beh = new TORBattleEndLogic();
+                beh.OnBehaviourInitialize();
+                mission.AddMissionBehaviour(beh);
+            }
         }
 
         private void LoadStatusEffects()
