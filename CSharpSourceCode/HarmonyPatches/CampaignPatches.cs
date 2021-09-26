@@ -15,6 +15,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle.CustomBattle;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
@@ -205,9 +206,15 @@ namespace TOW_Core.HarmonyPatches
             {
                 var settlement = Settlement.All.GetRandomElementWithPredicate(x => x.IsTown);
                 hero = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                if(template.StringId == "tow_wanderer_vampire_1")
+                var attributes = template.GetAttributes();
+                foreach(var attribute in attributes)
                 {
-                    hero.AddAttribute("VampireBodyOverride");
+                    hero.AddAttribute(attribute);
+                }
+                var abilities = template.GetAbilities();
+                foreach(var ability in abilities)
+                {
+                    hero.AddAbility(ability);
                 }
                 Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, template);
                 List<Equipment> equipments = new List<Equipment>();
@@ -267,18 +274,6 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(Module), "GetInitialStateOptions")]
-        public static void MainMenuSkipStoryMode(ref IEnumerable<InitialStateOption> __result)
-        {
-            List<InitialStateOption> newlist = new List<InitialStateOption>();
-            newlist = __result.Where(x => x.Id != "StoryModeNewGame" && x.Id != "SandBoxNewGame").ToList();
-            var towOption = new InitialStateOption("TOWNewgame", new TextObject("Enter the Old World"), 3, OnCLick, IsDisabledAndReason);
-            newlist.Add(towOption);
-            newlist.Sort((x, y) => x.OrderIndex.CompareTo(y.OrderIndex));
-            __result = newlist;
-        }
-
-        [HarmonyPostfix]
         [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
             typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
             typeof(Action), typeof(TextObject), typeof(int), typeof(int), typeof(int), typeof(Action<int>))]
@@ -296,17 +291,6 @@ namespace TOW_Core.HarmonyPatches
             var option = __instance.OptionsController.Options.First(o => o.Identifier == "IsLifeDeathCycleEnabled");
             __instance.OptionsController.Options.Remove(option);
             __instance.RefreshValues();
-        }
-
-        private static void OnCLick()
-        {
-            MBGameManager.StartNewGame(new TowCampaignGameManager());
-        }
-
-        private static (bool, TextObject) IsDisabledAndReason()
-        {
-            TextObject coreContentDisabledReason = new TextObject("{=V8BXjyYq}Disabled during installation.", null);
-            return new ValueTuple<bool, TextObject>(Module.CurrentModule.IsOnlyCoreContentEnabled, coreContentDisabledReason);
         }
 
         [HarmonyPrefix]

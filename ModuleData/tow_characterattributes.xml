@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Characters>
-  <!-- VC troops -->
-  <Character name="tow_skeleton_recruit">
+	<!-- VC troops -->
+  <Character name="tow_summoned_skeleton">
     <Attribute id="Undead" />
     <Attribute id="Expendable" />
   </Character>
-  <Character name="tow_skeleton_warrior">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_skeleton_spearman">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_grave_guard">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_grave_guard_greatsword">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_cairn_wraith">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_black_knight">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_blood_knights_foot">
-    <Attribute id="Undead" />
-  </Character>
-  <Character name="tow_blood_knights_mounted">
-    <Attribute id="Undead" />
-  </Character>
+	<Character name="tow_skeleton_recruit">
+		<Attribute id="Undead" />
+		<Attribute id="Expendable" />
+	</Character>
+	<Character name="tow_skeleton_warrior">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_skeleton_spearman">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_grave_guard">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_grave_guard_greatsword">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_cairn_wraith">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_black_knight">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_blood_knights_foot">
+		<Attribute id="Undead" />
+	</Character>
+	<Character name="tow_blood_knights_mounted">
+		<Attribute id="Undead" />
+	</Character>
 
   <!-- VC lords -->
   <Character name="sylvania_clan_1_1">

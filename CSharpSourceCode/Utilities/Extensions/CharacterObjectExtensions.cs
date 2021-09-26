@@ -16,6 +16,11 @@ namespace TOW_Core.Utilities.Extensions
             return characterObject.StringId.StartsWith("tow_");
         }
 
+        public static bool IsTOWTemplate(this BasicCharacterObject characterObject)
+        {
+            return characterObject.StringId.StartsWith("tow_");
+        }
+
         public static List<string> GetAbilities(this BasicCharacterObject characterObject)
         {
             var list = new List<string>();
