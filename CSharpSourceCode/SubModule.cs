@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System.IO;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -36,6 +35,8 @@ using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
+using TOW_Core.CampaignSupport.Models;
+using TOW_Core.Battle;
 
 namespace TOW_Core
 {
@@ -49,25 +50,16 @@ namespace TOW_Core
         public override void OnGameInitializationFinished(Game game)
         {
             base.OnGameInitializationFinished(game);
-            if(game.GameType is Campaign)
+            if (game.GameType is Campaign)
             {
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
                 }
+
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new CustomUrbanCharactersCampaignBehavior());
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new CustomHeroSpawnCampaignBehavior());
                 }
             }
         }
@@ -77,8 +69,6 @@ namespace TOW_Core
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
             ConfigureLogging();
-
-
 
             //This has to be here.
             AbilityManager.LoadAbilities();
@@ -156,10 +146,13 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
+                starter.AddBehavior(new SettlementNotableController());
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowKingdomPeaceModel());
+                starter.AddModel(new CustomBanditDensityModel());
+                starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
@@ -185,8 +178,18 @@ namespace TOW_Core
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             }
+
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+
+            var battleEndLogic = mission.GetMissionBehaviour<BattleEndLogic>();
+            if (battleEndLogic != null)
+            {
+                mission.RemoveMissionBehaviour(battleEndLogic);
+                var beh = new TORBattleEndLogic();
+                beh.OnBehaviourInitialize();
+                mission.AddMissionBehaviour(beh);
+            }
         }
 
         private void LoadStatusEffects()
@@ -209,6 +212,12 @@ namespace TOW_Core
             config.AddRule(LogLevel.Info, LogLevel.Fatal, logdebugger);
 
             LogManager.Configuration = config;
+        }
+
+        public override void OnNewGameCreated(Game game, object initializerObject)
+        {
+            base.OnNewGameCreated(game, initializerObject);
+            ((Campaign)game.GameType).GetCampaignBehavior<SettlementNotableController>().CheckEmpireSettlements(false);
         }
     }
 }

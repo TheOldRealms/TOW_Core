@@ -140,8 +140,7 @@ namespace TOW_Core.ObjectDataExtensions
         {
             //construct character info for all CharacterObject templates loaded by the game.
             //this can be safely reconstructed at each session start without the need to save/load.
-            var characters = new List<CharacterObject>();
-            MBObjectManager.Instance.GetAllInstancesOfObjectType<CharacterObject>(ref characters);
+            var characters = MBObjectManager.Instance.GetObjectTypeList<CharacterObject>();
             foreach (var character in characters)
             {
                 if (!_characterInfos.ContainsKey(character.StringId))

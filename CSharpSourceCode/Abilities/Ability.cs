@@ -17,6 +17,7 @@ namespace TOW_Core.Abilities
         private Timer _timer = null;
         private bool _isCasting;
         private object _sync = new object();
+        private float _cooldown_end_time;
 
         public string StringID { get; }
 
@@ -38,12 +39,23 @@ namespace TOW_Core.Abilities
 
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            _coolDownLeft -= 1;
+            if (Mission.Current == null)
+            {
+                FinalizeTimer();
+                return;
+            }
+
+            _coolDownLeft = (int) (_cooldown_end_time - Mission.Current.Time);
             if (_coolDownLeft <= 0)
             {
-                _coolDownLeft = 0;
-                _timer.Stop();
+                FinalizeTimer();
             }
+        }
+
+        private void FinalizeTimer()
+        {
+            _coolDownLeft = 0;
+            _timer.Stop();
         }
 
         public virtual void TryCast(Agent casterAgent)
@@ -91,6 +103,7 @@ namespace TOW_Core.Abilities
         {
             _isCasting = false;
             _coolDownLeft = Template.CoolDown;
+            _cooldown_end_time = Mission.Current.Time + _coolDownLeft + 0.8f; //Adjustment was needed for natural tick on UI
             _timer.Start();
 
             var frame = GetSpawnFrame(casterAgent);
@@ -108,7 +121,11 @@ namespace TOW_Core.Abilities
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE;
+            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE
+                   || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE
+                   || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE
+                   || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE
+                   || Template.AbilityEffectType == AbilityEffectType.Summoning;
         }
 
         private bool IsDynamicAbility()
@@ -150,33 +167,34 @@ namespace TOW_Core.Abilities
                 {
                     case AbilityEffectType.MovingProjectile:
                     case AbilityEffectType.DynamicProjectile:
-                        {
-                            frame.origin = casterAgent.GetEyeGlobalPosition();
-                            break;
-                        }
+                    {
+                        frame.origin = casterAgent.GetEyeGlobalPosition();
+                        break;
+                    }
                     case AbilityEffectType.DirectionalMovingAOE:
-                        {
-                            frame = Crosshair.Frame;
-                            break;
-                        }
+                    {
+                        frame = Crosshair.Frame;
+                        break;
+                    }
                     case AbilityEffectType.CenteredStaticAOE:
-                        {
-                            frame = casterAgent.AgentVisuals.GetGlobalFrame();
-                            break;
-                        }
+                    {
+                        frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                        break;
+                    }
                     case AbilityEffectType.TargetedStaticAOE:
                     case AbilityEffectType.TargetedStatic:
-                        {
-                            //frame = crosshair.Target.GetFrame();
-                            break;
-                        }
+                    {
+                        //frame = crosshair.Target.GetFrame();
+                        break;
+                    }
                     case AbilityEffectType.Summoning:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            break;
-                        }
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                        break;
+                    }
                 }
             }
+
             return frame;
         }
 
@@ -248,11 +266,11 @@ namespace TOW_Core.Abilities
                     AddExactBehaviour<TargetedStaticAOEScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.Summoning:
-                        AddExactBehaviour<SummoningScript>(entity, casterAgent);
-                        break;
+                    AddExactBehaviour<SummoningScript>(entity, casterAgent);
+                    break;
             }
         }
-        
+
         private void AddExactBehaviour<TAbilityScript>(GameEntity entity, Agent casterAgent)
             where TAbilityScript : AbilityScript
         {
@@ -270,7 +288,7 @@ namespace TOW_Core.Abilities
                 casterAgent.SetActionChannel(1, ActionIndexCache.Create(Template.AnimationActionName));
             }
         }
-        
+
         public void SetCrosshair(AbilityCrosshair crosshair)
         {
             Crosshair = crosshair;

@@ -15,6 +15,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle.CustomBattle;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
@@ -130,6 +131,126 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
+        [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "OnNewGameCreated")]
+        public static void AfterWandererTemplatesBuilt(ref List<CharacterObject> ____companionTemplates)
+        {
+            ____companionTemplates = ____companionTemplates.Where(x => x.IsTOWTemplate()).ToList();
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "OnGameLoaded")]
+        public static void AfterWandererTemplatesBuilt2(ref List<CharacterObject> ____companionTemplates)
+        {
+            ____companionTemplates = ____companionTemplates.Where(x => x.IsTOWTemplate()).ToList();
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(UrbanCharactersCampaignBehavior), "SpawnUrbanCharactersAtGameStart")]
+        public static bool SpawnWanderersAtStart(UrbanCharactersCampaignBehavior __instance, ref List<Hero> ____companions, List<CharacterObject> ____companionTemplates)
+        {
+            List<CharacterObject> list = ____companionTemplates.Where(x => x.IsTOWTemplate()).ToList();
+            foreach (Settlement settlement in Settlement.All)
+            {
+                if (settlement.IsTown)
+                {
+                    int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.Artisan);
+                    for (int i = 0; i < targetNotableCountForSettlement; i++)
+                    {
+                        HeroCreator.CreateHeroAtOccupation(Occupation.Artisan, settlement);
+                    }
+
+                    int targetNotableCountForSettlement2 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.Merchant);
+                    for (int j = 0; j < targetNotableCountForSettlement2; j++)
+                    {
+                        HeroCreator.CreateHeroAtOccupation(Occupation.Merchant, settlement);
+                    }
+
+                    int targetNotableCountForSettlement3 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.GangLeader);
+                    for (int k = 0; k < targetNotableCountForSettlement3; k++)
+                    {
+                        HeroCreator.CreateHeroAtOccupation(Occupation.GangLeader, settlement);
+                    }
+                }
+                else if (settlement.IsVillage)
+                {
+                    int targetNotableCountForSettlement4 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.RuralNotable);
+                    for (int l = 0; l < targetNotableCountForSettlement4; l++)
+                    {
+                        HeroCreator.CreateHeroAtOccupation(Occupation.RuralNotable, settlement);
+                    }
+
+                    int targetNotableCountForSettlement5 = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, Occupation.Headman);
+                    for (int m = 0; m < targetNotableCountForSettlement5; m++)
+                    {
+                        HeroCreator.CreateHeroAtOccupation(Occupation.Headman, settlement);
+                    }
+                }
+            }
+
+            for (int n = 0; n < 2; n++)
+            {
+                foreach (var item in list)
+                {
+                    ____companions.Add(CreateTowWanderer(item));
+                }
+            }
+            ____companions.Shuffle();
+
+            return false;
+        }
+
+        private static Hero CreateTowWanderer(CharacterObject template)
+        {
+            Hero hero = null;
+            if (template != null)
+            {
+                var settlement = Settlement.All.GetRandomElementWithPredicate(x => x.IsTown);
+                hero = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                var attributes = template.GetAttributes();
+                foreach(var attribute in attributes)
+                {
+                    hero.AddAttribute(attribute);
+                }
+                var abilities = template.GetAbilities();
+                foreach(var ability in abilities)
+                {
+                    hero.AddAbility(ability);
+                }
+                Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, template);
+                List<Equipment> equipments = new List<Equipment>();
+                equipments.Add(hero.BattleEquipment);
+                equipments.Add(hero.CivilianEquipment);
+                ItemModifier @object = MBObjectManager.Instance.GetObject<ItemModifier>("companion_armor");
+                ItemModifier object2 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_weapon");
+                ItemModifier object3 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_horse");
+                foreach (var equipment in equipments)
+                {
+                    for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumEquipmentSetSlots; equipmentIndex++)
+                    {
+                        EquipmentElement equipmentElement = equipment[equipmentIndex];
+                        if (equipmentElement.Item != null)
+                        {
+                            if (equipmentElement.Item.ArmorComponent != null)
+                            {
+                                equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, @object);
+                            }
+                            else if (equipmentElement.Item.HorseComponent != null)
+                            {
+                                equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object3);
+                            }
+                            else if (equipmentElement.Item.WeaponComponent != null)
+                            {
+                                equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return hero;
+        }
+
+        [HarmonyPostfix]
         [HarmonyPatch(typeof(Kingdom), "InitialHomeLand", MethodType.Getter)]
         public static void InitialHomeLandFix(ref Settlement __result, Kingdom __instance)
         {
@@ -153,18 +274,6 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(Module), "GetInitialStateOptions")]
-        public static void MainMenuSkipStoryMode(ref IEnumerable<InitialStateOption> __result)
-        {
-            List<InitialStateOption> newlist = new List<InitialStateOption>();
-            newlist = __result.Where(x => x.Id != "StoryModeNewGame" && x.Id != "SandBoxNewGame").ToList();
-            var towOption = new InitialStateOption("TOWNewgame", new TextObject("Enter the Old World"), 3, OnCLick, IsDisabledAndReason);
-            newlist.Add(towOption);
-            newlist.Sort((x, y) => x.OrderIndex.CompareTo(y.OrderIndex));
-            __result = newlist;
-        }
-
-        [HarmonyPostfix]
         [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
             typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
             typeof(Action), typeof(TextObject), typeof(int), typeof(int), typeof(int), typeof(Action<int>))]
@@ -182,17 +291,6 @@ namespace TOW_Core.HarmonyPatches
             var option = __instance.OptionsController.Options.First(o => o.Identifier == "IsLifeDeathCycleEnabled");
             __instance.OptionsController.Options.Remove(option);
             __instance.RefreshValues();
-        }
-
-        private static void OnCLick()
-        {
-            MBGameManager.StartNewGame(new TowCampaignGameManager());
-        }
-
-        private static (bool, TextObject) IsDisabledAndReason()
-        {
-            TextObject coreContentDisabledReason = new TextObject("{=V8BXjyYq}Disabled during installation.", null);
-            return new ValueTuple<bool, TextObject>(Module.CurrentModule.IsOnlyCoreContentEnabled, coreContentDisabledReason);
         }
 
         [HarmonyPrefix]
