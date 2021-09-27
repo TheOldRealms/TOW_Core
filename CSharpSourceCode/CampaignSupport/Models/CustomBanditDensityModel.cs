@@ -1,4 +1,5 @@
-﻿using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+﻿using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace TOW_Core.CampaignSupport.Models
 {
@@ -8,7 +9,18 @@ namespace TOW_Core.CampaignSupport.Models
         {
             get
             {
-                return 100;
+                if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 10)
+                {
+                    return 100;
+                }
+                else if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 20)
+                {
+                    return 150;
+                }
+                else
+                {
+                    return 200;
+                }
             }
         }
     }
