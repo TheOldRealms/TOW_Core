@@ -16,9 +16,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.CustomBattle.CustomBattle;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -355,7 +353,6 @@ namespace TOW_Core.HarmonyPatches
             }
             else
             {
-                TOWCommon.Say($"{kingdom.Name} was trying to make peace with {otherFaction.Name}");
                 decision = new MakePeaceKingdomDecision(clan, otherFaction, 0, false);
                 __result = false;
                 return false;
