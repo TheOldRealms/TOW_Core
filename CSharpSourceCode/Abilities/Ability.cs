@@ -268,6 +268,9 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.Summoning:
                     AddExactBehaviour<SummoningScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.AgentMoving:
+                    AddExactBehaviour<AgentMovingScript>(entity, casterAgent);
+                    break;
             }
         }
 
