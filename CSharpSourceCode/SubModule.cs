@@ -52,11 +52,6 @@ namespace TOW_Core
             base.OnGameInitializationFinished(game);
             if (game.GameType is Campaign)
             {
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
-                }
-
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();

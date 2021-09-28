@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Election;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
@@ -207,12 +208,12 @@ namespace TOW_Core.HarmonyPatches
                 var settlement = Settlement.All.GetRandomElementWithPredicate(x => x.IsTown);
                 hero = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
                 var attributes = template.GetAttributes();
-                foreach(var attribute in attributes)
+                foreach (var attribute in attributes)
                 {
                     hero.AddAttribute(attribute);
                 }
                 var abilities = template.GetAbilities();
-                foreach(var ability in abilities)
+                foreach (var ability in abilities)
                 {
                     hero.AddAbility(ability);
                 }
@@ -340,6 +341,24 @@ namespace TOW_Core.HarmonyPatches
                 XmlDocument moredoc = new XmlDocument();
                 moredoc.Load(path);
                 doc = moredoc;
+            }
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(KingdomDecisionProposalBehavior), "ConsiderPeace")]
+        public static bool ConsiderPeacePatch(ref bool __result, Clan clan, Clan otherClan, Kingdom kingdom, IFaction otherFaction, out MakePeaceKingdomDecision decision)
+        {
+            if (!kingdom.Name.Contains("Sylvania") && !otherFaction.Name.Contains("Sylvania"))
+            {
+                decision = null;
+                return true;
+            }
+            else
+            {
+                TOWCommon.Say($"{kingdom.Name} was trying to make peace with {otherFaction.Name}");
+                decision = new MakePeaceKingdomDecision(clan, otherFaction, 0, false);
+                __result = false;
+                return false;
             }
         }
     }
