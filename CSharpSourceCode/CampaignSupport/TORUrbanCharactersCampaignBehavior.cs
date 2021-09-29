@@ -1,22 +1,20 @@
-﻿using HarmonyLib;
-using Helpers;
-using MountAndBlade.CampaignBehaviors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
+using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
-    public class CustomUrbanCharactersCampaignBehavior : CampaignBehaviorBase
+    public class TORUrbanCharactersCampaignBehavior : CampaignBehaviorBase
     {
-        public CustomUrbanCharactersCampaignBehavior()
+        public TORUrbanCharactersCampaignBehavior()
         {
             this._companionSettlements = new Dictionary<Settlement, CampaignTime>();
             this._settlementPassedDaysForWeeklyTick = new Dictionary<Settlement, int>();
@@ -62,28 +60,6 @@ namespace TOW_Core.CampaignSupport
                                                                  select x);
             this._nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(this._randomCompanionSpawnFrequencyInWeeks);
             this.SpawnUrbanCharactersAtGameStart();
-        }
-
-        private void DetermineRelation(Hero hero1, Hero hero2, float randomValue, float chanceOfConflict)
-        {
-            float num = 0.3f;
-            if (randomValue < num)
-            {
-                int num2 = (int)((num - randomValue) * (num - randomValue) / (num * num) * 100f);
-                if (num2 > 0)
-                {
-                    ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num2, true);
-                    return;
-                }
-            }
-            else if (randomValue > 1f - chanceOfConflict)
-            {
-                int num3 = -(int)((randomValue - (1f - chanceOfConflict)) * (randomValue - (1f - chanceOfConflict)) / (chanceOfConflict * chanceOfConflict) * 100f);
-                if (num3 < 0)
-                {
-                    ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num3, true);
-                }
-            }
         }
 
         public void SetInitialRelationsBetweenNotablesAndLords()
@@ -143,6 +119,28 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
+        private void DetermineRelation(Hero hero1, Hero hero2, float randomValue, float chanceOfConflict)
+        {
+            float num = 0.3f;
+            if (randomValue < num)
+            {
+                int num2 = (int)((num - randomValue) * (num - randomValue) / (num * num) * 100f);
+                if (num2 > 0)
+                {
+                    ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num2, true);
+                    return;
+                }
+            }
+            else if (randomValue > 1f - chanceOfConflict)
+            {
+                int num3 = -(int)((randomValue - (1f - chanceOfConflict)) * (randomValue - (1f - chanceOfConflict)) / (chanceOfConflict * chanceOfConflict) * 100f);
+                if (num3 < 0)
+                {
+                    ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num3, true);
+                }
+            }
+        }
+
         public void OnNewGameCreatedPartialFollowUp(CampaignGameStarter starter, int i)
         {
             if (i == 1)
@@ -163,7 +161,6 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        //There is Traverse
         private void OnGameLoaded(CampaignGameStarter campaignGameStarter)
         {
             this._companionTemplates = new List<CharacterObject>(from x in CharacterObject.Templates
@@ -173,7 +170,7 @@ namespace TOW_Core.CampaignSupport
             {
                 if ((hero.IsNotable || hero.IsWanderer) && hero.DeathDay.ElapsedDaysUntilNow >= 7f)
                 {
-                    Traverse.Create(Campaign.Current.CampaignObjectManager).Field<List<Hero>>("_deadOrDisabledHeroes").Value.Remove(hero);
+                    Traverse.Create(Campaign.Current.CampaignObjectManager).Method("UnregisterDeadHero", hero);
                 }
             }
         }
@@ -245,6 +242,7 @@ namespace TOW_Core.CampaignSupport
                         Occupation.Headman
                     };
                 }
+                float randomFloat = MBRandom.RandomFloat;
                 int num = 0;
                 foreach (Occupation occupation in list)
                 {
@@ -253,7 +251,7 @@ namespace TOW_Core.CampaignSupport
                 int count = settlement.Notables.Count;
                 float num2 = settlement.Notables.Any<Hero>() ? ((float)(num - settlement.Notables.Count) / (float)num) : 1f;
                 num2 *= (float)Math.Pow((double)num2, 0.36000001430511475);
-                if (MBRandom.RandomFloat <= num2)
+                if (randomFloat <= num2)
                 {
                     List<Occupation> list2 = new List<Occupation>();
                     foreach (Occupation occupation2 in list)
@@ -277,9 +275,26 @@ namespace TOW_Core.CampaignSupport
                     }
                     if (list2.Count > 0)
                     {
-                        EnterSettlementAction.ApplyForCharacterOnly(HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement), settlement);
+                        Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
+                        CheckNotable(settlement, hero);
+                        EnterSettlementAction.ApplyForCharacterOnly(hero, settlement);
                     }
                 }
+            }
+        }
+
+        private void DailyTickHero(Hero hero)
+        {
+            if (hero.IsNotable && hero.CurrentSettlement != null)
+            {
+                if (MBRandom.RandomFloat < 0.01f)
+                {
+                    this.UpdateNotableRelations(hero);
+                }
+                this.UpdateNotableSupport(hero);
+                this.BalanceGoldAndPowerOfNotable(hero);
+                this.ManageCaravanExpensesOfNotable(hero);
+                this.CheckAndMakeNotableDisappear(hero);
             }
         }
 
@@ -368,21 +383,6 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        private void DailyTickHero(Hero hero)
-        {
-            if (hero.IsNotable && hero.CurrentSettlement != null)
-            {
-                if (MBRandom.RandomFloat < 0.01f)
-                {
-                    this.UpdateNotableRelations(hero);
-                }
-                this.UpdateNotableSupport(hero);
-                this.BalanceGoldAndPowerOfNotable(hero);
-                this.ManageCaravanExpensesOfNotable(hero);
-                this.CheckAndMakeNotableDisappear(hero);
-            }
-        }
-
         private void CheckAndMakeNotableDisappear(Hero notable)
         {
             if (notable.OwnedWorkshops.IsEmpty<Workshop>() && notable.OwnedCaravans.IsEmpty<CaravanPartyComponent>() && notable.OwnedCommonAreas.IsEmpty<CommonAreaPartyComponent>() && notable.CanHaveQuestsOrIssues() && notable.Power < (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
@@ -431,6 +431,8 @@ namespace TOW_Core.CampaignSupport
             return ((float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit - hero.Power) / (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit * 0.02f;
         }
 
+
+        //CHECK CODE
         public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
             if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
@@ -456,6 +458,9 @@ namespace TOW_Core.CampaignSupport
                     {
                         this.ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
                     }
+
+                    CheckNotable(hero.CurrentSettlement, hero);
+
                     using (List<CaravanPartyComponent>.Enumerator enumerator = victim.OwnedCaravans.ToList<CaravanPartyComponent>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -471,7 +476,7 @@ namespace TOW_Core.CampaignSupport
                     DestroyPartyAction.Apply(null, caravanPartyComponent2.MobileParty);
                 }
             }
-            IL_C3:
+        IL_C3:
             if (this._companions.Contains(victim))
             {
                 this._companions.Remove(victim);
@@ -501,9 +506,41 @@ namespace TOW_Core.CampaignSupport
             this._companionSettlements.Clear();
             foreach (Hero hero in Hero.AllAliveHeroes)
             {
-                if (hero.CanBeCompanion && !hero.IsTemplate)
+                if (hero.CanBeCompanion && !hero.CharacterObject.IsTOWTemplate())
                 {
                     this._companions.Add(hero);
+                }
+            }
+        }
+
+        private void AdjustEquipment(Hero hero)
+        {
+            this.AdjustEquipmentImp(hero.BattleEquipment);
+            this.AdjustEquipmentImp(hero.CivilianEquipment);
+        }
+
+        private void AdjustEquipmentImp(Equipment equipment)
+        {
+            ItemModifier @object = MBObjectManager.Instance.GetObject<ItemModifier>("companion_armor");
+            ItemModifier object2 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_weapon");
+            ItemModifier object3 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_horse");
+            for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumEquipmentSetSlots; equipmentIndex++)
+            {
+                EquipmentElement equipmentElement = equipment[equipmentIndex];
+                if (equipmentElement.Item != null)
+                {
+                    if (equipmentElement.Item.ArmorComponent != null)
+                    {
+                        equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, @object, null);
+                    }
+                    else if (equipmentElement.Item.HorseComponent != null)
+                    {
+                        equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object3, null);
+                    }
+                    else if (equipmentElement.Item.WeaponComponent != null)
+                    {
+                        equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object2, null);
+                    }
                 }
             }
         }
@@ -546,14 +583,19 @@ namespace TOW_Core.CampaignSupport
             for (int i = 0; i < targetNotableCountForSettlement; i++)
             {
                 Hero hero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
-                if (settlement.IsEmpireSettlement() && hero.IsVampireNotable())
-                {
-                    hero.TurnIntoHuman();
-                }
-                else if (settlement.IsVampireSettlement() && hero.IsEmpireNotable())
-                {
-                    hero.TurnIntoVampire();
-                }
+                CheckNotable(settlement, hero);
+            }
+        }
+
+        private static void CheckNotable(Settlement settlement, Hero hero)
+        {
+            if (settlement.IsEmpireSettlement() && hero.IsVampireNotable())
+            {
+                hero.TurnIntoHuman();
+            }
+            else if (settlement.IsVampireSettlement() && hero.IsEmpireNotable())
+            {
+                hero.TurnIntoVampire();
             }
         }
 
@@ -563,42 +605,28 @@ namespace TOW_Core.CampaignSupport
             {
                 return;
             }
-            Settlement settlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown && s.Culture == companionTemplate.Culture);
-            Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-            if (companionTemplate.StringId == "tow_wanderer_vampire_1")
+            Town randomElementWithPredicate = Town.AllTowns.GetRandomElementWithPredicate((Town settlement) => settlement.Culture == companionTemplate.Culture);
+            Settlement settlement2 = (randomElementWithPredicate != null) ? randomElementWithPredicate.Settlement : null;
+            if (settlement2 != null)
             {
-                hero.AddAttribute("VampireBodyOverride");
-            }
-            Campaign.Current.GetCampaignBehavior<IHeroCreationCampaignBehavior>().DeriveSkillsFromTraits(hero, companionTemplate);
-            List<Equipment> equipments = new List<Equipment>();
-            equipments.Add(hero.BattleEquipment);
-            equipments.Add(hero.CivilianEquipment);
-            ItemModifier @object = MBObjectManager.Instance.GetObject<ItemModifier>("companion_armor");
-            ItemModifier object2 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_weapon");
-            ItemModifier object3 = MBObjectManager.Instance.GetObject<ItemModifier>("companion_horse");
-            foreach (var equipment in equipments)
-            {
-                for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumEquipmentSetSlots; equipmentIndex++)
+                List<Settlement> list = new List<Settlement>();
+                foreach (Village village in Village.All)
                 {
-                    EquipmentElement equipmentElement = equipment[equipmentIndex];
-                    if (equipmentElement.Item != null)
+                    if (Campaign.Current.Models.MapDistanceModel.GetDistance(village.Settlement, settlement2) < 30f)
                     {
-                        if (equipmentElement.Item.ArmorComponent != null)
-                        {
-                            equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, @object);
-                        }
-                        else if (equipmentElement.Item.HorseComponent != null)
-                        {
-                            equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object3);
-                        }
-                        else if (equipmentElement.Item.WeaponComponent != null)
-                        {
-                            equipment[equipmentIndex] = new EquipmentElement(equipmentElement.Item, object2);
-                        }
+                        list.Add(village.Settlement);
                     }
                 }
+                settlement2 = ((list.Count > 0) ? list.GetRandomElement<Settlement>().Village.Bound : settlement2);
+
+                Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                if (companionTemplate.StringId == "tow_wanderer_vampire_1")
+                {
+                    hero.AddAttribute("VampireBodyOverride");
+                }
+                this.AdjustEquipment(hero);
+                this._companions.Add(hero);
             }
-            this._companions.Add(hero);
         }
 
         public void SpecialCharacterActions()
@@ -663,9 +691,9 @@ namespace TOW_Core.CampaignSupport
             bool result = false;
             Settlement settlement = null;
             float num = 9999f;
-            foreach (Settlement settlement2 in Campaign.Current.Settlements.Where(s => s.Culture == character.Culture))
+            foreach (Settlement settlement2 in Campaign.Current.Settlements)
             {
-                if (settlement2.IsTown && settlement2 != startPoint)
+                if (settlement2.IsTown && settlement2 != startPoint && settlement2.Culture == character.Culture)
                 {
                     float num2 = 10000f;
                     float num3;

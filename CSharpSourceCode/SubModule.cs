@@ -61,6 +61,18 @@ namespace TOW_Core
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
                 }
+
+                if(Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
+                }
+
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
+                }
             }
         }
 
@@ -146,7 +158,6 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
-                starter.AddBehavior(new SettlementNotableController());
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
@@ -212,12 +223,6 @@ namespace TOW_Core
             config.AddRule(LogLevel.Info, LogLevel.Fatal, logdebugger);
 
             LogManager.Configuration = config;
-        }
-
-        public override void OnNewGameCreated(Game game, object initializerObject)
-        {
-            base.OnNewGameCreated(game, initializerObject);
-            ((Campaign)game.GameType).GetCampaignBehavior<SettlementNotableController>().CheckEmpireSettlements(false);
         }
     }
 }
