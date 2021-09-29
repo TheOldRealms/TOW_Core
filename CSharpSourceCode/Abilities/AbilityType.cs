@@ -23,7 +23,8 @@ namespace TOW_Core.Abilities
         CenteredStaticAOE,
         TargetedStaticAOE,
         TargetedStatic,
-        Summoning
+        Summoning,
+        AgentMoving
     }
 
     public enum AbilityTargetType
