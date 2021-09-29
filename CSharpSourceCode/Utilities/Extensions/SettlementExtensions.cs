@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 
 namespace TOW_Core.Utilities.Extensions
@@ -36,17 +33,35 @@ namespace TOW_Core.Utilities.Extensions
 
         public static bool IsEmpireSettlement(this Settlement settlement)
         {
-            return (settlement.MapFaction.Name.Contains("Moot") ||
+            return (settlement.IsTown || 
+                    settlement.IsCastle||
+                    settlement.IsVillage) &&
+                   (settlement.MapFaction.Name.Contains("Moot") ||
                     settlement.MapFaction.Name.Contains("Averland") ||
                     settlement.MapFaction.Name.Contains("Stirland"));
         }
 
         public static bool IsVampireSettlement(this Settlement settlement)
         {
-            return settlement.MapFaction.Name.Contains("Sylvania");
+            return (settlement.IsTown ||
+                    settlement.IsCastle ||
+                    settlement.IsVillage) &&
+                    settlement.MapFaction.Name.Contains("Sylvania");
         }
 
         public static bool IsSuitableForHero(this Settlement settlement, Hero hero)
+        {
+            if (hero.Culture.Name.Contains("Vampire"))
+            {
+                return IsVampireSettlement(settlement);
+            }
+            else
+            {
+                return IsEmpireSettlement(settlement);
+            }
+        }
+
+        public static bool IsSuitableForHero(this Settlement settlement, CharacterObject hero)
         {
             if (hero.Culture.Name.Contains("Vampire"))
             {

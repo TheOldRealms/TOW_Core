@@ -116,5 +116,17 @@ namespace TOW_Core.Utilities.Extensions
         {
             Traverse.Create(hero).Field("_defaultAge").SetValue(21);
         }
+
+        public static bool IsSuitableForSettlement(this Hero hero, Settlement settlement)
+        {
+            if (settlement.IsVampireSettlement())
+            {
+                return hero.Culture.Name.Contains("Vampire");
+            }
+            else
+            {
+                return hero.Culture.Name.Contains("Empire");
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -248,7 +249,6 @@ namespace TOW_Core.CampaignSupport
                 {
                     num += Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation);
                 }
-                int count = settlement.Notables.Count;
                 float num2 = settlement.Notables.Any<Hero>() ? ((float)(num - settlement.Notables.Count) / (float)num) : 1f;
                 num2 *= (float)Math.Pow((double)num2, 0.36000001430511475);
                 if (randomFloat <= num2)
@@ -383,25 +383,6 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        private void CheckAndMakeNotableDisappear(Hero notable)
-        {
-            if (notable.OwnedWorkshops.IsEmpty<Workshop>() && notable.OwnedCaravans.IsEmpty<CaravanPartyComponent>() && notable.OwnedCommonAreas.IsEmpty<CommonAreaPartyComponent>() && notable.CanHaveQuestsOrIssues() && notable.Power < (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
-            {
-                float randomFloat = MBRandom.RandomFloat;
-                float notableDisappearProbability = this.GetNotableDisappearProbability(notable);
-                if (randomFloat < notableDisappearProbability)
-                {
-                    KillCharacterAction.ApplyByRemove(notable, false);
-                    IssueBase issue = notable.Issue;
-                    if (issue == null)
-                    {
-                        return;
-                    }
-                    issue.CompleteIssueWithAiLord(notable.CurrentSettlement.OwnerClan.Leader);
-                }
-            }
-        }
-
         private void ManageCaravanExpensesOfNotable(Hero notable)
         {
             for (int i = notable.OwnedCaravans.Count - 1; i >= 0; i--)
@@ -426,27 +407,47 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
+        private void CheckAndMakeNotableDisappear(Hero notable)
+        {
+            if (notable.OwnedWorkshops.IsEmpty<Workshop>() && notable.OwnedCaravans.IsEmpty<CaravanPartyComponent>() && notable.OwnedCommonAreas.IsEmpty<CommonAreaPartyComponent>() && notable.CanHaveQuestsOrIssues() && notable.Power < (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
+            {
+                float randomFloat = MBRandom.RandomFloat;
+                float notableDisappearProbability = this.GetNotableDisappearProbability(notable);
+                if (randomFloat < notableDisappearProbability)
+                {
+                    KillCharacterAction.ApplyByRemove(notable, false);
+                    IssueBase issue = notable.Issue;
+                    if (issue == null)
+                    {
+                        return;
+                    }
+                    issue.CompleteIssueWithAiLord(notable.CurrentSettlement.OwnerClan.Leader);
+                }
+            }
+        }
+
         private float GetNotableDisappearProbability(Hero hero)
         {
             return ((float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit - hero.Power) / (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit * 0.02f;
         }
 
-
-        //CHECK CODE
         public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
             if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
             {
-                int index = 0;
-                MBRandom.ChooseWeighted<Hero>(this._companions, (Hero x) => (float)((x.Culture == settlement.Culture) ? 5 : 1), out index);
-                Hero hero2 = this._companions[index];
-                hero2.ChangeState(Hero.CharacterStates.Active);
-                EnterSettlementAction.ApplyForCharacterOnly(hero2, settlement);
+                Hero wanderer = this._companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
+                wanderer.ChangeState(Hero.CharacterStates.Active);
+                EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
                 this._companionSettlements.Add(settlement, CampaignTime.Now);
-                this._companions.Remove(hero2);
+                this._companions.Remove(wanderer);
             }
+            //if (settlement.IsSuitableForHero(hero))
+            //{
+            //    PurgeSettlement(mobileParty, settlement, hero);
+            //}
         }
 
+        //NEED TO CHECK THE CODE
         private void OnHeroKilled(Hero victim, Hero killer, KillCharacterAction.KillCharacterActionDetail detail, bool showNotification)
         {
             if (victim.IsNotable)
@@ -605,7 +606,7 @@ namespace TOW_Core.CampaignSupport
             {
                 return;
             }
-            Town randomElementWithPredicate = Town.AllTowns.GetRandomElementWithPredicate((Town settlement) => settlement.Culture == companionTemplate.Culture);
+            Town randomElementWithPredicate = Town.AllTowns.GetRandomElementWithPredicate((Town settlement) => settlement.Settlement.IsSuitableForHero(companionTemplate));
             Settlement settlement2 = (randomElementWithPredicate != null) ? randomElementWithPredicate.Settlement : null;
             if (settlement2 != null)
             {
@@ -729,6 +730,55 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
+        private void PurgeSettlement(MobileParty mobileParty, Settlement settlement, Hero hero)
+        {
+            if (mobileParty != null)
+            {
+                if (settlement.Notables.Count > 0)
+                {
+                    for (int i = 0; i < settlement.Notables.Count; i++)
+                    {
+                        if (settlement.Notables[i] != null)
+                        {
+                            if (settlement.IsVampireSettlement())
+                            {
+                                settlement.Notables[i].TurnIntoVampire();
+                            }
+                            else
+                            {
+                                if (settlement.Notables[i].IsVampireNotable())
+                                {
+                                    KillCharacterAction.ApplyByExecution(settlement.Notables[i], hero, true);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (settlement.HeroesWithoutParty.Count > 0)
+                {
+                    for (int j = 0; j < settlement.HeroesWithoutParty.Count; j++)
+                    {
+                        if (settlement.HeroesWithoutParty[j] != null)
+                        {
+                            if (!settlement.IsSuitableForHero(settlement.HeroesWithoutParty[j]))
+                            {
+                                LeaveSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j]);
+                                Settlement newSettlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown && s.IsSuitableForHero(settlement.HeroesWithoutParty[j]));
+                                EnterSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j], newSettlement);
+                            }
+                        }
+                    }
+                }
+                if (settlement.MapFaction.Name.Contains("Sylvania"))
+                {
+                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of undead");
+                }
+                else
+                {
+                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of humans");
+                }
+            }
+        }
 
 
         private const int GoldLimitForNotablesToStartGainingPower = 10000;
