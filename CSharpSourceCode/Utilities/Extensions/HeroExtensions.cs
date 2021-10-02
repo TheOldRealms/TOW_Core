@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,9 +92,41 @@ namespace TOW_Core.Utilities.Extensions
             return hero.HasAttribute("Undead");
         }
 
-        public static bool IsNotableVampire(this Hero hero)
+        public static bool IsVampireNotable(this Hero hero)
         {
-            return hero.IsNotable && hero.Age >= 19 && hero.Age < 20;
+            return hero.IsNotable &&
+                   hero.Age >= 18 &&
+                   hero.Age < 21;
+        }
+
+        public static bool IsEmpireNotable(this Hero hero)
+        {
+            return hero.IsNotable && 
+                   hero.Age >= 21;
+        }
+
+        //There is Traverse
+        public static void TurnIntoVampire(this Hero hero)
+        {
+            Traverse.Create(hero).Field("_defaultAge").SetValue(18);
+        }
+
+        //There is Traverse
+        public static void TurnIntoHuman(this Hero hero)
+        {
+            Traverse.Create(hero).Field("_defaultAge").SetValue(21);
+        }
+
+        public static bool IsSuitableForSettlement(this Hero hero, Settlement settlement)
+        {
+            if (settlement.IsVampireSettlement())
+            {
+                return hero.Culture.Name.Contains("Vampire");
+            }
+            else
+            {
+                return hero.Culture.Name.Contains("Empire");
+            }
         }
     }
 }
