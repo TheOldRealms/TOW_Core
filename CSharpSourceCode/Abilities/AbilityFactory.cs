@@ -61,9 +61,13 @@ namespace TOW_Core.Abilities
             {
                 ability = new Spell(template);
             }
-            if (template.AbilityType == AbilityType.Prayer)
+            else if (template.AbilityType == AbilityType.Prayer)
             {
                 ability = new Prayer(template);
+            }
+            else if (template.AbilityType == AbilityType.SpecialMove)
+            {
+                ability = new SpecialMove(template);
             }
 
             AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
@@ -97,9 +101,9 @@ namespace TOW_Core.Abilities
                         crosshair = new CenteredAOECrosshair(template, caster);
                         break;
                     }
-                case CrosshairType.Summoning:
+                case CrosshairType.Pointer:
                     {
-                        crosshair = new SummoningCrosshair(template, caster);
+                        crosshair = new Pointer(template, caster);
                         break;
                     }
             }

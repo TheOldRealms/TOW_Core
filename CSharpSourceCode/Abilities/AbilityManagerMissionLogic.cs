@@ -11,6 +11,7 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
+        private bool isSpecialMoveCanceled;
         private bool shouldSheathWeapon;
         private bool shouldWieldWeapon;
         private bool isMainAgentChecked;
@@ -54,6 +55,8 @@ namespace TOW_Core.Abilities
                                     ability.Crosshair.Initialize();
                                 }
                             }
+                            _abilityComponent.SpecialMove.Crosshair.SetMissionScreen(_missionScreen);
+                            _abilityComponent.SpecialMove.Crosshair.Initialize();
                             isMainAgentChecked = true;
                         }
                     }
@@ -61,32 +64,97 @@ namespace TOW_Core.Abilities
             }
             if (CanUseAbilities())
             {
-                if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
+                if (_abilityComponent != null)
                 {
-                    if (Input.IsKeyPressed(InputKey.Q))
+                    //if (Input.IsKeyPressed(InputKey.RightMouseButton))
+                    //{
+                    //    isSpecialMoveCanceled = true;
+                    //    _abilityComponent.DisableSpecialMoveMode();
+                    //}
+                    //if (Input.IsDown(InputKey.LeftControl))
+                    //{
+                    //    if (!isSpecialMoveCanceled && !Agent.Main.HasMount)
+                    //    {
+                    //        _abilityComponent.EnableSpecialMoveMode();
+                    //    }
+                    //}
+                    //else if (Input.IsKeyReleased(InputKey.LeftControl))
+                    //{
+                    //    if (!isSpecialMoveCanceled && !Agent.Main.GetCurrentAction(0).Name.Contains("mount"))
+                    //    {
+                    //        Agent.Main.UseSpecialMove();
+                    //    }
+                    //    else
+                    //    {
+                    //        isSpecialMoveCanceled = false;
+                    //    }
+                    //    _abilityComponent.DisableSpecialMoveMode();
+                    //}
+
+                    if (_abilityComponent.IsSpecialMoveAtReady)
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        DisableSpellMode(false);
+                        if (Input.IsKeyPressed(InputKey.RightMouseButton))
+                        {
+                            isSpecialMoveCanceled = true;
+                            _abilityComponent.DisableSpecialMoveMode();
+                        }
+                        else if (Input.IsKeyReleased(InputKey.LeftControl))
+                        {
+                            if (!isSpecialMoveCanceled && !Agent.Main.GetCurrentAction(0).Name.Contains("mount"))
+                            {
+                                Agent.Main.UseSpecialMove();
+                            }
+                            else
+                            {
+                                _abilityComponent.DisableSpecialMoveMode();
+                                isSpecialMoveCanceled = false;
+                            }
+                        }
                     }
-                    else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
+                    else
                     {
-                        if (currentAbility.Crosshair.IsVisible)
-                            Agent.Main.CastCurrentAbility();
+                        if (Input.IsKeyPressed(InputKey.LeftControl))
+                        {
+                            if (!isSpecialMoveCanceled && !Agent.Main.HasMount)
+                            {
+                                _abilityComponent.EnableSpecialMoveMode();
+                            }
+                        }
                     }
-                    else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
+                    if (_abilityComponent.IsSpellModeOn)
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        Agent.Main.SelectNextAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
+                        if (Input.IsKeyPressed(InputKey.Q))
+                        {
+                            if (currentAbility.Crosshair != null)
+                                currentAbility.Crosshair.Hide();
+                            DisableSpellMode(false);
+                        }
+                        else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
+                        {
+                            if (currentAbility.Crosshair.IsVisible)
+                                Agent.Main.CastCurrentAbility();
+                        }
+                        else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
+                        {
+                            if (currentAbility.Crosshair != null)
+                                currentAbility.Crosshair.Hide();
+                            Agent.Main.SelectNextAbility();
+                            currentAbility = Agent.Main.GetCurrentAbility();
+                        }
+                        else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
+                        {
+                            if (currentAbility.Crosshair != null)
+                                currentAbility.Crosshair.Hide();
+                            Agent.Main.SelectPreviousAbility();
+                            currentAbility = Agent.Main.GetCurrentAbility();
+                        }
                     }
-                    else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
+                    else
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        Agent.Main.SelectPreviousAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
+                        if (Input.IsKeyPressed(InputKey.Q))
+                        {
+                            EnableSpellMode();
+                        }
                     }
                     if (shouldSheathWeapon)
                     {
@@ -102,13 +170,6 @@ namespace TOW_Core.Abilities
                         {
                             shouldSheathWeapon = false;
                         }
-                    }
-                }
-                else
-                {
-                    if (Input.IsKeyPressed(InputKey.Q))
-                    {
-                        EnableSpellMode();
                     }
                     if (shouldWieldWeapon)
                     {
@@ -163,7 +224,7 @@ namespace TOW_Core.Abilities
         {
             mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
             offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-            _abilityComponent?.EnableAbilityMode();
+            _abilityComponent?.EnableSpellMode();
             ChangeKeyBindings();
             shouldSheathWeapon = true;
         }
@@ -179,14 +240,14 @@ namespace TOW_Core.Abilities
             {
                 shouldWieldWeapon = true;
             }
-            _abilityComponent?.DisableAbilityMode();
+            _abilityComponent?.DisableSpellMode();
             ChangeKeyBindings();
 
         }
 
         private void ChangeKeyBindings()
         {
-            if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
+            if (_abilityComponent != null && _abilityComponent.IsSpellModeOn)
             {
                 UnbindWeaponKeys();
             }

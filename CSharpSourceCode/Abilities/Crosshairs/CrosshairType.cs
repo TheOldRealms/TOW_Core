@@ -7,6 +7,6 @@
         Targeted,
         DirectionalAOE,
         CenteredAOE,
-        Summoning
+        Pointer
     }
 }

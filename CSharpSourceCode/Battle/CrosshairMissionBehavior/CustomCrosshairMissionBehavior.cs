@@ -9,7 +9,6 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
@@ -22,6 +21,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         private GauntletLayer weaponLayer;
         private CrosshairVM weaponCrosshair;
         private AbilityCrosshair abilityCrosshair;
+        private AbilityCrosshair specialMoveCrosshair;
         private AbilityComponent abilityComponent;
 
         private void OnInitializeWeaponCrosshair()
@@ -78,21 +78,27 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                         {
                             abilityCrosshair = crosshair;
                         };
+                        if (abilityComponent.SpecialMove != null && abilityComponent.SpecialMove.Crosshair != null)
+                        {
+                            specialMoveCrosshair = abilityComponent.SpecialMove.Crosshair;
+                        }
                     }
                 }
-                else if (IsUsingAbility())
+                if (abilityComponent != null)
                 {
-                    weaponCrosshair.IsVisible = false;
-                    UpdateAbilityCrosshairVisibility();
-                }
-                else
-                {
-                    if (abilityCrosshair != null)
+                    if (abilityComponent.IsSpellModeOn)
                     {
-                        abilityCrosshair.Hide();
+                        OnSpellModeOn();
+                        return;
                     }
-                    UpdateWeaponCrosshair();
-                    UpdateWeaponCrosshairVisibility();
+                    if (abilityComponent.IsSpecialMoveAtReady)
+                    {
+                        OnSpecialMoveAtReady();
+                    }
+                }
+                if (!abilityComponent.IsSpellModeOn)
+                {
+                    OnUsingWeapon();
                 }
             }
             else
@@ -100,6 +106,10 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 if (abilityCrosshair != null)
                 {
                     abilityCrosshair.Hide();
+                }
+                if (specialMoveCrosshair != null)
+                {
+                    specialMoveCrosshair.Hide();
                 }
                 weaponCrosshair.IsVisible = false;
             }
@@ -120,24 +130,17 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    !ScreenManager.GetMouseVisibility();
         }
 
-        private bool IsUsingAbility()
+        private void OnSpecialMoveAtReady()
         {
-            return abilityComponent != null && abilityComponent.IsAbilityModeOn;
+            if (abilityCrosshair != null)
+            {
+                abilityCrosshair.Hide();
+            }
+            specialMoveCrosshair.Tick();
+            specialMoveCrosshair.Show();
         }
 
-        public override void OnMissionScreenInitialize()
-        {
-            base.OnMissionScreenInitialize();
-            this.OnInitializeWeaponCrosshair();
-        }
-
-        public override void OnMissionScreenFinalize()
-        {
-            base.OnMissionScreenFinalize();
-            this.OnFinalizeWeaponCrosshair();
-        }
-
-        private void UpdateAbilityCrosshairVisibility()
+        private void OnSpellModeOn()
         {
             if (abilityCrosshair == null)
             {
@@ -148,6 +151,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             else
             {
+                weaponCrosshair.IsVisible = false;
                 if (!abilityComponent.CurrentAbility.CanCast(Agent.Main))
                 {
                     abilityCrosshair.Hide();
@@ -167,6 +171,21 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
         }
 
+        private void OnUsingWeapon()
+        {
+            if (abilityCrosshair != null)
+            {
+                abilityCrosshair.Hide();
+            }
+            UpdateWeaponCrosshair();
+            if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
+            {
+                weaponCrosshair.IsVisible = true;
+                return;
+            }
+            weaponCrosshair.IsVisible = false;
+        }
+
         private bool IsRightAngleToCast()
         {
             if (Agent.Main.HasMount)
@@ -184,16 +203,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 return true;
             }
-        }
-
-        private void UpdateWeaponCrosshairVisibility()
-        {
-            if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-            {
-                weaponCrosshair.IsVisible = true;
-                return;
-            }
-            weaponCrosshair.IsVisible = false;
         }
 
         private void UpdateWeaponCrosshair()
@@ -305,6 +314,18 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
             this.weaponCrosshair.SetArrowProperties(array[0], array[1], array[2], array[3]);
             this.weaponCrosshair.IsTargetInvalid = isTargetInvalid;
+        }
+
+        public override void OnMissionScreenInitialize()
+        {
+            base.OnMissionScreenInitialize();
+            this.OnInitializeWeaponCrosshair();
+        }
+
+        public override void OnMissionScreenFinalize()
+        {
+            base.OnMissionScreenFinalize();
+            this.OnFinalizeWeaponCrosshair();
         }
 
         private void OnCombatLogGenerated(CombatLogData logData)

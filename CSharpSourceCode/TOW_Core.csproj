@@ -291,12 +291,13 @@
     <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair_VM.cs" />
-    <Compile Include="Abilities\Crosshairs\SummoningCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\Pointer.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
+    <Compile Include="Abilities\Scripts\SpecialMoveScript.cs" />
+    <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
-    <Compile Include="Abilities\Scripts\AgentMovingScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
