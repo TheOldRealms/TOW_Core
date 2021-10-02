@@ -52,11 +52,6 @@ namespace TOW_Core
             base.OnGameInitializationFinished(game);
             if (game.GameType is Campaign)
             {
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<KingdomDecisionProposalBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<KingdomDecisionProposalBehavior>();
-                }
-
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
@@ -193,13 +188,10 @@ namespace TOW_Core
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
 
-            var battleEndLogic = mission.GetMissionBehaviour<BattleEndLogic>();
-            if (battleEndLogic != null)
+            if (mission.GetMissionBehaviour<BattleEndLogic>() != null)
             {
-                mission.RemoveMissionBehaviour(battleEndLogic);
-                var beh = new TORBattleEndLogic();
-                beh.OnBehaviourInitialize();
-                mission.AddMissionBehaviour(beh);
+                mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<BattleEndLogic>());
+                mission.AddMissionBehaviour(new TORBattleEndLogic());
             }
         }
 

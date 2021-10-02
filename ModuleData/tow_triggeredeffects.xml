@@ -104,4 +104,19 @@
         DamageVariance="0.1" 
         ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+        StringID="shadow_step"
+        BurstParticleEffectPrefab="none"
+        SoundEffectId="none"
+        SoundEffectLength="0"
+        DamageType="Magical"
+        DamageAmount="0"
+        Radius="5"
+        HasShockWave="false"
+        TargetType="All"
+        ImbuedStatusEffectID="none"
+        ImbuedStatusEffectDuration="0"
+        DamageVariance="0"
+        ScriptNameToTrigger="none">
+  </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

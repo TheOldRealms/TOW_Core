@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Election;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
@@ -15,9 +16,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.CustomBattle.CustomBattle;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -220,6 +219,23 @@ namespace TOW_Core.HarmonyPatches
                 XmlDocument moredoc = new XmlDocument();
                 moredoc.Load(path);
                 doc = moredoc;
+            }
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(KingdomDecisionProposalBehavior), "ConsiderPeace")]
+        public static bool ConsiderPeacePatch(ref bool __result, Clan clan, Clan otherClan, Kingdom kingdom, IFaction otherFaction, out MakePeaceKingdomDecision decision)
+        {
+            if (!kingdom.Name.Contains("Sylvania") && !otherFaction.Name.Contains("Sylvania"))
+            {
+                decision = null;
+                return true;
+            }
+            else
+            {
+                decision = new MakePeaceKingdomDecision(clan, otherFaction, 0, false);
+                __result = false;
+                return false;
             }
         }
     }

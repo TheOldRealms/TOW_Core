@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities;
@@ -80,10 +81,12 @@ namespace TOW_Core.Battle.AI.Decision
 
         public static float CalculateEnemyTotalPower(Team chosenTeam)
         {
-            var enemyPower = chosenTeam.QuerySystem.EnemyTeams
-                .Select(team => team.TeamPower)
-                .Aggregate((a, x) => a + x);
-            return enemyPower;
+            float power = 0;
+            foreach (var team in chosenTeam.QuerySystem.EnemyTeams)
+            {
+                power += team.TeamPower;
+            }
+            return power;
         }
     }
 }

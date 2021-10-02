@@ -8,6 +8,11 @@ namespace TOW_Core.Battle
     {
         private IMissionAgentSpawnLogic spawnLogic;
 
+        public TORBattleEndLogic()
+        {
+            OnBehaviourInitialize();
+        }
+
         public override bool MissionEnded(ref MissionResult missionResult)
         {
             bool result = false;
