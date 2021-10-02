@@ -20,19 +20,19 @@ namespace TOW_Core.Battle
             {
                 list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
             }
-            else if(targetType == TargetType.All)
+            else if (targetType == TargetType.All)
             {
                 list = Mission.Current.GetNearbyAgents(center, radius).ToList();
             }
-            foreach(var agent in list)
+            foreach (var agent in list)
             {
-                if(maxDamage < minDamage)
+                if (maxDamage < minDamage)
                 {
-                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave:hasShockWave);
+                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave);
                 }
                 else
                 {
-                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave) ;
+                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace TOW_Core.Battle
             {
                 list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
             }
-            else if(targetType == TargetType.All)
+            else if (targetType == TargetType.All)
             {
                 list = Mission.Current.GetNearbyAgents(center, radius).ToList();
             }

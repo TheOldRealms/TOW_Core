@@ -1,5 +1,4 @@
-﻿using System.Xml.Serialization;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
 using System.Timers;
