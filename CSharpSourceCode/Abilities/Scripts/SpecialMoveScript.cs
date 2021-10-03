@@ -20,11 +20,11 @@ namespace TOW_Core.Abilities.Scripts
             }
             if (!_hasTriggered)
             {
+                _hasTriggered = true;
                 Move(GameEntity.GetGlobalFrame());
                 _abilityLife = 0;
                 _casterAgent.SetInvulnerable(true);
                 if (shouldDisappear) _casterAgent.Disappear();
-                _hasTriggered = true;
             }
             else
             {
@@ -32,8 +32,7 @@ namespace TOW_Core.Abilities.Scripts
                 var frame = GetNextFrame(GameEntity.GetGlobalFrame());
                 if (_abilityLife > _ability.Template.Duration && !_isFading)
                 {
-                    GameEntity.FadeOut(0.05f, true);
-                    _isFading = true;
+                    Stop();
                 }
                 Move(frame);
             }
@@ -59,5 +58,14 @@ namespace TOW_Core.Abilities.Scripts
             frame.origin.z = heightAtPosition + base._ability.Template.Radius / 2;
             return frame;
         }
+
+        public void Stop()
+        {
+            GameEntity.FadeOut(0.05f, true);
+            _isFading = true;
+        }
+
+
+        public bool IsFadinOut { get => _isFading; }
     }
 }

@@ -101,13 +101,19 @@ namespace TOW_Core.Abilities
         public void EnableSpecialMoveMode()
         {
             isMovingAbilityReady = true;
-            SpecialMove.Crosshair.Show();
         }
 
         public void DisableSpecialMoveMode()
         {
             isMovingAbilityReady = false;
-            SpecialMove.Crosshair.Hide();
+        }
+
+        public void StopSpecialMove()
+        {
+            if (SpecialMove != null)
+            {
+                SpecialMove.Stop();
+            }
         }
 
         public List<AbilityTemplate> GetKnownAbilityTemplates()
@@ -135,6 +141,7 @@ namespace TOW_Core.Abilities
 
         public bool IsSpellModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
         public bool IsSpecialMoveAtReady { get => isMovingAbilityReady; private set => isMovingAbilityReady = value; }
+        public bool IsSpecialMoveUsing { get => SpecialMove.IsUsing; }
         public Ability CurrentAbility
         {
             get => _currentAbility;

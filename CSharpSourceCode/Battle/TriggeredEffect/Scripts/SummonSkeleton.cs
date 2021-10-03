@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -9,7 +10,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class SummonSkeleton : ITriggeredScript
     {
-        public void OnTrigger(Vec3 position, Agent triggeredByAgent)
+        public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             SpawnAgent(triggeredByAgent, position);
 

@@ -86,14 +86,29 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 }
                 if (abilityComponent != null)
                 {
-                    if (abilityComponent.IsSpellModeOn)
+                    if (!abilityComponent.IsSpecialMoveUsing)
                     {
-                        OnSpellModeOn();
-                        return;
+                        if (abilityComponent.IsSpecialMoveAtReady)
+                        {
+                            OnSpecialMoveAtReady();
+                        }
+                        else if (abilityComponent.IsSpellModeOn)
+                        {
+                            OnSpellModeOn();
+                            return;
+                        }
                     }
-                    if (abilityComponent.IsSpecialMoveAtReady)
+                    else
                     {
-                        OnSpecialMoveAtReady();
+                        specialMoveCrosshair.Hide();
+                        if (abilityComponent.IsSpellModeOn)
+                        {
+                            OnSpellModeOn();
+                        }
+                        else
+                        {
+                            OnUsingWeapon();
+                        }
                     }
                 }
                 if (!abilityComponent.IsSpellModeOn)

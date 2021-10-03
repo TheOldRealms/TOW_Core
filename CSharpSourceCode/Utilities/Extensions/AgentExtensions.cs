@@ -248,7 +248,7 @@ namespace TOW_Core.Utilities.Extensions
 
         public static void FallDown(this Agent agent)
         {
-            agent.SetActionChannel(1, ActionIndexCache.Create("act_strike_fall_back_heavy_back_rise_continue"));
+            agent.SetActionChannel(0, ActionIndexCache.Create("act_strike_fall_back_heavy_back_rise_continue"));
         }
 
         public static void Appear(this Agent agent)

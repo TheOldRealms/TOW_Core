@@ -265,9 +265,9 @@ namespace TOW_Core.Abilities
             where TAbilityScript : AbilityScript
         {
             entity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
-            var script = entity.GetFirstScriptOfType<TAbilityScript>();
-            script?.Initialize(this);
-            script?.SetAgent(casterAgent);
+            AbilityScript = entity.GetFirstScriptOfType<TAbilityScript>();
+            AbilityScript?.Initialize(this);
+            AbilityScript?.SetAgent(casterAgent);
             entity.CallScriptCallbacks();
         }
 
@@ -301,6 +301,8 @@ namespace TOW_Core.Abilities
         public string StringID { get; }
 
         public AbilityTemplate Template { get; private set; }
+
+        public AbilityScript AbilityScript { get; private set; }
 
         public AbilityCrosshair Crosshair { get; private set; }
 
