@@ -63,10 +63,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnMissionScreenTick(float dt)
         {
             base.OnMissionScreenTick(dt);
-            if (MBEditor.EditModeEnabled && !this._isActive)
-            {
-                return;
-            }
             if (CanUseCrosshair())
             {
                 if (!isMainAgentChecked)
@@ -78,61 +74,77 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                         {
                             abilityCrosshair = crosshair;
                         };
+                        if (abilityComponent.CurrentAbility != null && abilityComponent.CurrentAbility.Crosshair != null)
+                        {
+                            abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
+                        }
                         if (abilityComponent.SpecialMove != null && abilityComponent.SpecialMove.Crosshair != null)
                         {
                             specialMoveCrosshair = abilityComponent.SpecialMove.Crosshair;
                         }
                     }
                 }
-                if (abilityComponent != null)
+                if (specialMoveCrosshair != null && abilityComponent.IsSpecialMoveAtReady)
                 {
-                    if (!abilityComponent.IsSpecialMoveUsing)
+                    weaponCrosshair.IsVisible = false;
+                    if (abilityCrosshair != null)
                     {
-                        if (abilityComponent.IsSpecialMoveAtReady)
-                        {
-                            OnSpecialMoveAtReady();
-                        }
-                        else if (abilityComponent.IsSpellModeOn)
-                        {
-                            OnSpellModeOn();
-                            return;
-                        }
+                        abilityCrosshair.Hide();
+                    }
+                    specialMoveCrosshair.Show();
+                    specialMoveCrosshair.Tick();
+                }
+                else if (abilityCrosshair != null && abilityComponent.IsSpellModeOn)
+                {
+                    weaponCrosshair.IsVisible = false;
+                    if (specialMoveCrosshair != null)
+                    {
+                        specialMoveCrosshair.Hide();
+                    }
+                    if (!abilityComponent.CurrentAbility.CanCast(Agent.Main))
+                    {
+                        abilityCrosshair.Hide();
                     }
                     else
                     {
-                        specialMoveCrosshair.Hide();
-                        if (abilityComponent.IsSpellModeOn)
+                        if (abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())
                         {
-                            OnSpellModeOn();
+                            abilityCrosshair.Tick();
+                            abilityCrosshair.Show();
                         }
                         else
                         {
-                            OnUsingWeapon();
+                            abilityCrosshair.Hide();
                         }
                     }
                 }
-                if (!abilityComponent.IsSpellModeOn)
+                else
                 {
-                    OnUsingWeapon();
+                    if(specialMoveCrosshair != null)
+                    {
+                        specialMoveCrosshair.Hide();
+                    }
+                    if(abilityCrosshair != null)
+                    {
+                        abilityCrosshair.Hide();
+                    }
+                    UpdateWeaponCrosshair();
+                    if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
+                    {
+                        weaponCrosshair.IsVisible = true;
+                    }
+                    else
+                    {
+                        weaponCrosshair.IsVisible = false;
+                    }
                 }
-            }
-            else
-            {
-                if (abilityCrosshair != null)
-                {
-                    abilityCrosshair.Hide();
-                }
-                if (specialMoveCrosshair != null)
-                {
-                    specialMoveCrosshair.Hide();
-                }
-                weaponCrosshair.IsVisible = false;
             }
         }
 
         private bool CanUseCrosshair()
         {
-            return Agent.Main != null &&
+            return _isActive &&
+                   Agent.Main != null &&
                    Agent.Main.State == AgentState.Active &&
                    Mission.Mode != MissionMode.Conversation &&
                    Mission.Mode != MissionMode.Deployment &&
@@ -141,64 +153,9 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    MissionScreen.CustomCamera == null &&
                    (MissionScreen.OrderFlag == null || !MissionScreen.OrderFlag.IsVisible) &&
                    !MissionScreen.IsViewingCharacter() &&
+                   !MBEditor.EditModeEnabled &&
                    BannerlordConfig.DisplayTargetingReticule &&
                    !ScreenManager.GetMouseVisibility();
-        }
-
-        private void OnSpecialMoveAtReady()
-        {
-            if (abilityCrosshair != null)
-            {
-                abilityCrosshair.Hide();
-            }
-            specialMoveCrosshair.Tick();
-            specialMoveCrosshair.Show();
-        }
-
-        private void OnSpellModeOn()
-        {
-            if (abilityCrosshair == null)
-            {
-                if (abilityComponent.CurrentAbility.Crosshair != null)
-                {
-                    abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
-                }
-            }
-            else
-            {
-                weaponCrosshair.IsVisible = false;
-                if (!abilityComponent.CurrentAbility.CanCast(Agent.Main))
-                {
-                    abilityCrosshair.Hide();
-                }
-                else
-                {
-                    if (abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())
-                    {
-                        abilityCrosshair.Tick();
-                        abilityCrosshair.Show();
-                    }
-                    else
-                    {
-                        abilityCrosshair.Hide();
-                    }
-                }
-            }
-        }
-
-        private void OnUsingWeapon()
-        {
-            if (abilityCrosshair != null)
-            {
-                abilityCrosshair.Hide();
-            }
-            UpdateWeaponCrosshair();
-            if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-            {
-                weaponCrosshair.IsVisible = true;
-                return;
-            }
-            weaponCrosshair.IsVisible = false;
         }
 
         private bool IsRightAngleToCast()

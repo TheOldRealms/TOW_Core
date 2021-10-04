@@ -1,11 +1,11 @@
-﻿using TaleWorlds.Core;
+﻿using System.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Battle.AI.Components;
-using TOW_Core.Battle.CrosshairMissionBehavior;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
@@ -18,13 +18,13 @@ namespace TOW_Core.Abilities
         private bool isMainAgentChecked;
         private EquipmentIndex mainHand;
         private EquipmentIndex offHand;
-        private Ability currentAbility;
         private AbilityComponent _abilityComponent;
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private MissionScreen _missionScreen;
+        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
         public AbilityManagerMissionLogic()
         {
+
         }
 
         protected override void OnEndMission()
@@ -40,27 +40,8 @@ namespace TOW_Core.Abilities
             {
                 if (Agent.Main != null)
                 {
+                    isMainAgentChecked = true;
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                    if (_abilityComponent != null)
-                    {
-                        currentAbility = _abilityComponent.CurrentAbility;
-                        var crosshairMB = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
-                        if (crosshairMB != null)
-                        {
-                            _missionScreen = crosshairMB.MissionScreen;
-                            foreach (var ability in _abilityComponent.KnownAbilities)
-                            {
-                                if (ability.Crosshair != null)
-                                {
-                                    ability.Crosshair.SetMissionScreen(_missionScreen);
-                                    ability.Crosshair.Initialize();
-                                }
-                            }
-                            _abilityComponent.SpecialMove.Crosshair.SetMissionScreen(_missionScreen);
-                            _abilityComponent.SpecialMove.Crosshair.Initialize();
-                            isMainAgentChecked = true;
-                        }
-                    }
                 }
             }
             if (CanUseAbilities())
@@ -69,28 +50,19 @@ namespace TOW_Core.Abilities
                 {
                     if (Input.IsKeyPressed(InputKey.Q))
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
                         DisableSpellMode(false);
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                     {
-                        if (currentAbility.Crosshair.IsVisible)
-                            Agent.Main.CastCurrentAbility();
+                        Agent.Main.CastCurrentAbility();
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
                         Agent.Main.SelectNextAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
                     {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
                         Agent.Main.SelectPreviousAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
                     }
                 }
                 else
@@ -130,28 +102,49 @@ namespace TOW_Core.Abilities
                         shouldWieldWeapon = false;
                     }
                 }
-
-                if (!Agent.Main.HasMount)
+                if (_abilityComponent.SpecialMove != null)
                 {
-                    if (_abilityComponent.IsSpecialMoveUsing)
+                    if (!Agent.Main.HasMount)
                     {
-                        if (Input.IsKeyPressed(InputKey.LeftMouseButton))
+                        if (_abilityComponent.IsSpecialMoveUsing)
                         {
-                            _abilityComponent.StopSpecialMove();
-                        }
-                        if (Input.IsKeyPressed(InputKey.RightMouseButton))
-                        {
-                            _abilityComponent.StopSpecialMove();
-                        }
-                    }
-                    else
-                    {
-                        if (_abilityComponent.IsSpecialMoveAtReady)
-                        {
-                            if (Input.IsKeyPressed(InputKey.LeftMouseButton) || Input.IsKeyPressed(InputKey.RightMouseButton))
+                            if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                             {
-                                _abilityComponent.DisableSpecialMoveMode();
-                                isSpecialMoveCanceled = true;
+                                _abilityComponent.StopSpecialMove();
+                            }
+                            if (Input.IsKeyPressed(InputKey.RightMouseButton))
+                            {
+                                _abilityComponent.StopSpecialMove();
+                            }
+                        }
+                        else
+                        {
+                            if (_abilityComponent.IsSpecialMoveAtReady)
+                            {
+                                if (Input.IsKeyPressed(InputKey.LeftMouseButton) || Input.IsKeyPressed(InputKey.RightMouseButton))
+                                {
+                                    _abilityComponent.DisableSpecialMoveMode();
+                                    isSpecialMoveCanceled = true;
+                                }
+                                if (Input.IsKeyReleased(InputKey.LeftControl))
+                                {
+                                    if (isSpecialMoveCanceled)
+                                    {
+                                        isSpecialMoveCanceled = false;
+                                    }
+                                    else
+                                    {
+                                        Agent.Main.UseSpecialMove();
+                                        _abilityComponent.DisableSpecialMoveMode();
+                                    }
+                                }
+                            }
+                            else if (Input.IsKeyDown(InputKey.LeftControl))
+                            {
+                                if (!isSpecialMoveCanceled)
+                                {
+                                    _abilityComponent.EnableSpecialMoveMode();
+                                }
                             }
                             if (Input.IsKeyReleased(InputKey.LeftControl))
                             {
@@ -159,39 +152,15 @@ namespace TOW_Core.Abilities
                                 {
                                     isSpecialMoveCanceled = false;
                                 }
-                                else
-                                {
-                                    Agent.Main.UseSpecialMove();
-                                    _abilityComponent.DisableSpecialMoveMode();
-                                }
+                                _abilityComponent.DisableSpecialMoveMode();
                             }
-                        }
-                        else if (Input.IsKeyDown(InputKey.LeftControl))
-                        {
-                            if (!isSpecialMoveCanceled)
-                            {
-                                _abilityComponent.EnableSpecialMoveMode();
-                            }
-                        }
-                        if (Input.IsKeyReleased(InputKey.LeftControl))
-                        {
-                            if (isSpecialMoveCanceled)
-                            {
-                                isSpecialMoveCanceled = false;
-                            }
-                            if (_abilityComponent.SpecialMove.Crosshair.IsVisible)
-                            {
-                                _abilityComponent.SpecialMove.Crosshair.Hide();
-                            }
-                            _abilityComponent.DisableSpecialMoveMode();
                         }
                     }
-                    TOWCommon.Say($"{_abilityComponent.IsSpecialMoveUsing} {_abilityComponent.IsSpecialMoveAtReady} {isSpecialMoveCanceled}");
-                }
-                else
-                {
-                    _abilityComponent.DisableSpecialMoveMode();
-                    isSpecialMoveCanceled = false;
+                    else
+                    {
+                        _abilityComponent.DisableSpecialMoveMode();
+                        isSpecialMoveCanceled = false;
+                    }
                 }
             }
         }

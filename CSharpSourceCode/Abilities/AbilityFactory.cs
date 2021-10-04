@@ -70,8 +70,11 @@ namespace TOW_Core.Abilities
                 ability = new SpecialMove(template);
             }
 
-            AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
-            ability.SetCrosshair(crosshair);
+            if (caster.CommonAIComponent == null)
+            {
+                AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
+                ability.SetCrosshair(crosshair);
+            }
 
             return ability;
         }
@@ -106,6 +109,10 @@ namespace TOW_Core.Abilities
                         crosshair = new Pointer(template, caster);
                         break;
                     }
+            }
+            if (crosshair != null)
+            {
+                crosshair.Initialize();
             }
             return crosshair;
         }
