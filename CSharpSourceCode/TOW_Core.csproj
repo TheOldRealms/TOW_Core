@@ -335,12 +335,13 @@
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\LibraryTownBehaviour.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
-    <Compile Include="CampaignSupport\SettlementNotableController.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
