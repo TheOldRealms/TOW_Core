@@ -27,6 +27,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("Expendable");
         }
 
+        public static bool IsUnbreakable(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("Unbreakable");
+        }
+
         public static bool IsHuman(this Agent agent)
         {
             return agent.GetAttributes().Contains("Human");
