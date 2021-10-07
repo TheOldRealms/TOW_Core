@@ -44,6 +44,21 @@ namespace TOW_Core.CharacterCreation
             _attributes.Add(DefaultCharacterAttributes.Vigor);
         }
 
+        public override IEnumerable<Type> CharacterCreationStages
+        {
+            get
+            {
+                yield return typeof(CharacterCreationCultureStage);
+                yield return typeof(CharacterCreationFaceGeneratorStage);
+                yield return typeof(CharacterCreationGenericStage);
+                yield return typeof(CharacterCreationOptionsStage);
+                yield return typeof(CharacterCreationBannerEditorStage);
+                yield return typeof(CharacterCreationClanNamingStage);
+                yield return typeof(CharacterCreationReviewStage);
+                yield break;
+            }
+        }
+
         public override TextObject ReviewPageDescription
         {
             get
@@ -54,10 +69,10 @@ namespace TOW_Core.CharacterCreation
 
         protected override void OnInitialized(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation characterCreation)
         {
-            AddStages(characterCreation);
+            AddMenus(characterCreation);
         }
 
-        private void AddStages(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation characterCreation)
+        private void AddMenus(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation characterCreation)
         {
             //stages
             CharacterCreationMenu stage1Menu = new CharacterCreationMenu(new TextObject("{=!}Origin", null), new TextObject("{=!}Choose your family's background...", null), new CharacterCreationOnInit(OnMenuInit), CharacterCreationMenu.MenuTypes.MultipleChoice);
@@ -224,12 +239,12 @@ namespace TOW_Core.CharacterCreation
                 mapState.Handler.ResetCamera();
                 mapState.Handler.TeleportCameraToMainParty();
             }
-            SelectClanName();
+            SetHeroAge(25);
         }
 
-        private void SelectClanName()
+        protected void SetHeroAge(float age)
         {
-            InformationManager.ShowTextInquiry(new TextInquiryData(new TextObject("{=JJiKk4ow}Select your family name: ", null).ToString(), string.Empty, true, false, GameTexts.FindText("str_done", null).ToString(), null, new Action<string>(this.OnChangeClanNameDone), null, false, new Func<string, Tuple<bool, string>>(FactionHelper.IsClanNameApplicable), "", ""), false);
+            Hero.MainHero.SetBirthDay(CampaignTime.YearsFromNow(-age));
         }
 
         private void OnChangeClanNameDone(string newClanName)

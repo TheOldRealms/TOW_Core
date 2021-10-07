@@ -23,7 +23,7 @@ namespace TOW_Core.CampaignSupport
             CampaignEvents.DailyTickClanEvent.AddNonSerializedListener(this, new Action<Clan>(this.OnNonBanditClanDailyTick));
             CampaignEvents.HeroComesOfAgeEvent.AddNonSerializedListener(this, new Action<Hero>(this.OnHeroComesOfAge));
             CampaignEvents.DailyTickHeroEvent.AddNonSerializedListener(this, new Action<Hero>(this.OnHeroDailyTick));
-            CampaignEvents.CompanionRemoved.AddNonSerializedListener(this, new Action<Hero>(this.OnCompanionRemoved));
+            CampaignEvents.CompanionRemoved.AddNonSerializedListener(this, OnCompanionRemoved);
             CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnGameLoaded));
         }
 
@@ -99,7 +99,7 @@ namespace TOW_Core.CampaignSupport
         }
 
         //Look for suitable town
-        private void OnCompanionRemoved(Hero companion)
+        private void OnCompanionRemoved(Hero companion, RemoveCompanionAction.RemoveCompanionDetail arg2)
         {
             if (!companion.IsFugitive && !companion.IsDead)
             {
