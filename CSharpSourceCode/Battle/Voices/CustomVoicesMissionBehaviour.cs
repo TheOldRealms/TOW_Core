@@ -19,13 +19,11 @@ namespace TOW_Core.Battle.Voices
         public override void OnAgentCreated(Agent agent)
         {
             _voicesAssigned = false;
-            base.OnAgentCreated(agent);
             allAgents.Enqueue(agent);
         }
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             if (!_voicesAssigned && Mission.Current.CurrentState.Equals(Mission.State.Continuing))
             {
                 while(allAgents.Count > 0)

@@ -19,7 +19,6 @@ namespace TOW_Core.Battle.ShieldPatterns
 
         public override void OnAgentBuild (Agent agent, Banner banner)
         {
-            base.OnAgentBuild(agent, banner);
             if (agent.IsHuman)
             {
                 _hasUnprocessedAgents = true;
@@ -29,7 +28,6 @@ namespace TOW_Core.Battle.ShieldPatterns
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             if (_hasUnprocessedAgents)
             {
                 while(_unprocessedAgents.Count > 0)

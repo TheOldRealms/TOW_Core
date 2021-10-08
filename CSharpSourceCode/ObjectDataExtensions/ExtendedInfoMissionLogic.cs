@@ -25,7 +25,6 @@ namespace TOW_Core.ObjectDataExtensions
                 _tickWindsOfMagic = true;
 
             }
-            base.OnMissionTick(dt);
             if (_tickWindsOfMagic)
             {
                 foreach (var agent in Mission.Agents)

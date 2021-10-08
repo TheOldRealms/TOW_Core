@@ -31,7 +31,6 @@ namespace TOW_Core.Battle.Dismemberment
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             if (Mission.CurrentTime >= slowMotionEndTime)
             {
                 Mission.Current.Scene.SlowMotionMode = false;
@@ -40,7 +39,6 @@ namespace TOW_Core.Battle.Dismemberment
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
-            base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
             bool canBeDismembered = victim != null &&
                                     victim.IsHuman &&
                                     victim != Agent.Main &&
