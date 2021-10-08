@@ -1,6 +1,10 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TOW_Core.CampaignSupport.SettlementComponents;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport.CampaignBehaviors
 {
@@ -9,39 +13,44 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
         public override void RegisterEvents()
         {
             CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, new Action<Settlement, bool, Hero, Hero, Hero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail>(OnOwnerChanged));
-            CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, new Action<Settlement>(CheckForAssimilationComponent));
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, new Action(CheckForAssimilationComponent));
+            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoadFinishedEvent);
+            
+            CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(DEBUGOnSettlementEntered));
+        }
+
+        private void OnGameLoadFinishedEvent()
+        {
+            foreach (var comp in _assimilationComponents)
+            {
+                Traverse.Create(comp.Settlement).Field("_settlementComponents").GetValue<List<SettlementComponent>>().Add(comp);
+                comp.UpdateCulture();
+            }
         }
 
         private void OnOwnerChanged(Settlement settlement, bool openToClaim, Hero newOwner, Hero oldOwner, Hero capturerHero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail detail)
         {
-            if (settlement.IsTown && settlement.Culture != newOwner.MapFaction.Culture)
+            if (settlement.Culture != newOwner.MapFaction.Culture && (settlement.IsCastle || settlement.IsTown))
             {
-                if (settlement.IsCastle)
+                var component = settlement.GetComponent<AssimilationComponent>();
+                if (component == null)
                 {
-                    settlement.Culture = newOwner.MapFaction.Culture;
+                    component = settlement.AddComponent<AssimilationComponent>();
+                    _assimilationComponents.Add(component);
+                    component.SetParameters(settlement);
                 }
-
-                if (settlement.Town.Villages.Count > 0 || settlement.IsTown)
+                else
                 {
-                    var component = settlement.GetComponent<AssimilationComponent>();
-                    if (component == null)
-                    {
-                        settlement.AddComponent<AssimilationComponent>();
-                    }
-                    else
-                    {
-                        component.Reset();
-                    }
+                    component.Reset();
                 }
             }
         }
 
-        private void CheckForAssimilationComponent(Settlement settlement)
+        private void CheckForAssimilationComponent()
         {
-            var component = settlement.GetComponent<AssimilationComponent>();
-            if (component != null)
+            foreach (var component in _assimilationComponents)
             {
-                if (!component.IsAssimilationComplete)
+                if (component != null && !component.IsAssimilationComplete)
                 {
                     component.Tick();
                 }
@@ -50,6 +59,35 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
 
         public override void SyncData(IDataStore dataStore)
         {
+            dataStore.SyncData<List<AssimilationComponent>>("_assimilationComponents", ref _assimilationComponents);
+        }
+
+        private List<AssimilationComponent> _assimilationComponents = new List<AssimilationComponent>();
+
+
+
+
+        private void DEBUGOnSettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
+        {
+            if (arg3 != null && arg3.CharacterObject != null && arg3.CharacterObject.IsPlayerCharacter)
+            {
+                if (arg2.Owner != arg3)
+                {
+                    ChangeOwnerOfSettlementAction.ApplyByGift(arg2, arg3);
+                }
+                else
+                {
+                    var comp = arg2.GetComponent<AssimilationComponent>();
+                    if (comp != null)
+                    {
+                        TOWCommon.Say($"{comp.Settlement.Name}");
+                    }
+                    else
+                    {
+                        TOWCommon.Say("There is no component");
+                    }
+                }
+            }
         }
     }
 }

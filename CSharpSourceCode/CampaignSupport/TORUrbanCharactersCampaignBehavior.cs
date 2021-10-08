@@ -49,9 +49,9 @@ namespace TOW_Core.CampaignSupport
 
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncData<Dictionary<Settlement, CampaignTime>>("companionSettlements", ref this._companionSettlements);
-            dataStore.SyncData<Dictionary<Settlement, int>>("_settlementPassedDaysForWeeklyTick", ref this._settlementPassedDaysForWeeklyTick);
-            dataStore.SyncData<List<Hero>>("companions", ref this._companions);
+            dataStore.SyncData<Dictionary<Settlement, CampaignTime>>("companionSettlements", ref _companionSettlements);
+            dataStore.SyncData<Dictionary<Settlement, int>>("_settlementPassedDaysForWeeklyTick", ref _settlementPassedDaysForWeeklyTick);
+            dataStore.SyncData<List<Hero>>("companions", ref _companions);
         }
 
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
@@ -727,56 +727,6 @@ namespace TOW_Core.CampaignSupport
             if (hero != null)
             {
                 hero.SpcDaysInLocation = 0;
-            }
-        }
-
-        private void PurgeSettlement(MobileParty mobileParty, Settlement settlement, Hero hero)
-        {
-            if (mobileParty != null)
-            {
-                if (settlement.Notables.Count > 0)
-                {
-                    for (int i = 0; i < settlement.Notables.Count; i++)
-                    {
-                        if (settlement.Notables[i] != null)
-                        {
-                            if (settlement.IsVampireSettlement())
-                            {
-                                settlement.Notables[i].TurnIntoVampire();
-                            }
-                            else
-                            {
-                                if (settlement.Notables[i].IsVampireNotable())
-                                {
-                                    KillCharacterAction.ApplyByExecution(settlement.Notables[i], hero, true);
-                                }
-                            }
-                        }
-                    }
-                }
-                if (settlement.HeroesWithoutParty.Count > 0)
-                {
-                    for (int j = 0; j < settlement.HeroesWithoutParty.Count; j++)
-                    {
-                        if (settlement.HeroesWithoutParty[j] != null)
-                        {
-                            if (!settlement.IsSuitableForHero(settlement.HeroesWithoutParty[j]))
-                            {
-                                LeaveSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j]);
-                                Settlement newSettlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown && s.IsSuitableForHero(settlement.HeroesWithoutParty[j]));
-                                EnterSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j], newSettlement);
-                            }
-                        }
-                    }
-                }
-                if (settlement.MapFaction.Name.Contains("Sylvania"))
-                {
-                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of undead");
-                }
-                else
-                {
-                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of humans");
-                }
             }
         }
 
