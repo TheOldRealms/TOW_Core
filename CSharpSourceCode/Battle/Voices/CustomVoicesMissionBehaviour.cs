@@ -13,14 +13,14 @@ namespace TOW_Core.Battle.Voices
     {
         public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
 
-        private List<Agent> allAgents = new List<Agent>();
+        private Queue<Agent> allAgents = new Queue<Agent>();
         private bool _voicesAssigned = false;
 
         public override void OnAgentCreated(Agent agent)
         {
             _voicesAssigned = false;
             base.OnAgentCreated(agent);
-            allAgents.Add(agent);
+            allAgents.Enqueue(agent);
         }
 
         public override void OnMissionTick(float dt)
@@ -28,15 +28,15 @@ namespace TOW_Core.Battle.Voices
             base.OnMissionTick(dt);
             if (!_voicesAssigned && Mission.Current.CurrentState.Equals(Mission.State.Continuing))
             {
-                foreach (Agent agent in allAgents)
+                while(allAgents.Count > 0)
                 {
+                    var agent = allAgents.Dequeue();
                     string voiceName = agent.Character?.GetCustomVoiceClassName();
                     if (voiceName != null)
                     {
                         agent.SetAgentVoiceByClassName(voiceName);
                     }
                 }
-
                 _voicesAssigned = true;
             }
         }

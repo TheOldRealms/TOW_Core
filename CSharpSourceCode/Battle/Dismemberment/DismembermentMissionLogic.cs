@@ -113,7 +113,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
-            victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
+            //victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
             MakeHeadInvisible(victim);
             GameEntity head = SpawnHead(victim);
             if (!victim.IsUndead())

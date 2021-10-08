@@ -14,7 +14,7 @@ namespace TOW_Core.Battle.ShieldPatterns
 {
     class ShieldPatternsMissionLogic : MissionLogic
     {
-        private List<Agent> _unprocessedAgents = new List<Agent>();
+        private Queue<Agent> _unprocessedAgents = new Queue<Agent>();
         private bool _hasUnprocessedAgents;
 
         public override void OnAgentBuild (Agent agent, Banner banner)
@@ -23,7 +23,7 @@ namespace TOW_Core.Battle.ShieldPatterns
             if (agent.IsHuman)
             {
                 _hasUnprocessedAgents = true;
-                _unprocessedAgents.Add(agent);
+                _unprocessedAgents.Enqueue(agent);
             }
         }
 
@@ -32,11 +32,18 @@ namespace TOW_Core.Battle.ShieldPatterns
             base.OnMissionTick(dt);
             if (_hasUnprocessedAgents)
             {
-                foreach(var agent in _unprocessedAgents)
+                while(_unprocessedAgents.Count > 0)
                 {
-                    SwitchShieldPattern(agent);
+                    var agent = _unprocessedAgents.Dequeue();
+                    try
+                    {
+                        SwitchShieldPattern(agent);
+                    }
+                    catch
+                    {
+                        Utilities.TOWCommon.Log("Tried to assign shield pattern to agent but failed.", NLog.LogLevel.Error);
+                    }
                 }
-                _unprocessedAgents.Clear();
                 _hasUnprocessedAgents = false;
             }
         }
