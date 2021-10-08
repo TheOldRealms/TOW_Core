@@ -40,6 +40,7 @@ namespace TOW_Core.Battle.Dismemberment
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
             bool canBeDismembered = victim != null &&
+                                    !victim.HasMount &&
                                     victim.IsHuman &&
                                     victim != Agent.Main &&
                                     victim.Health <= 0 &&

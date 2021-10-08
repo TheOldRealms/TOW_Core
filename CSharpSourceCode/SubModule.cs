@@ -147,7 +147,7 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.AddBehavior(new ExtendedInfoManager());
-                starter.AddBehavior(new BattleInfoCampaignBehavior());
+                //starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
@@ -176,13 +176,13 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new AbilityHUDMissionView());
             mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-       //     mission.AddMissionBehaviour(new DismembermentMissionLogic());
+            //mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
             if (Game.Current.GameType is Campaign)
             {
-                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+                //mission.AddMissionBehaviour(new BattleInfoMissionLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
