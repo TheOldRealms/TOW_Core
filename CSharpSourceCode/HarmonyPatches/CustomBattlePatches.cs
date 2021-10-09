@@ -21,7 +21,7 @@ namespace TOW_Core.HarmonyPatches
     {
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(CustomBattleState.Helper), "GetDefaultTroopOfFormationForFaction")]
+        [HarmonyPatch(typeof(CustomBattleHelper), "GetDefaultTroopOfFormationForFaction")]
         public static void Postfix(ref BasicCharacterObject __result, BasicCultureObject culture)
         {
             switch (culture.GetCultureCode())

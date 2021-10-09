@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignSupport
 
         public override bool IsKingSelectionDecisionAllowed(Kingdom kingdom) => false;
 
-        public override bool IsPeaceDecisionAllowedBetweenKingdoms(Kingdom kingdom1, IFaction kingdom2) => false;
+        public override bool IsPeaceDecisionAllowedBetweenKingdoms(Kingdom kingdom1, Kingdom kingdom2) => false;
 
         public override bool IsPolicyDecisionAllowed(PolicyObject policy) => false;
 

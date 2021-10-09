@@ -187,7 +187,7 @@ namespace TOW_Core.HarmonyPatches
             initData.EnableFloraPhysics = false;
             initData.UseTerrainMeshBlending = false;
             Debug.Print("reading map scene", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene.Read("modded_main_map", initData, "");
+            ____scene.Read("modded_main_map", ref initData, "");
             TaleWorlds.Engine.Utilities.SetAllocationAlwaysValidScene(____scene);
             ____scene.DisableStaticShadows(true);
             ____scene.InvalidateTerrainPhysicsMaterials();
