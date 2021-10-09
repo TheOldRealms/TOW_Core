@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.SaveSystem;
-using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.SettlementComponents
 {
@@ -19,81 +19,64 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
         public void SetParameters(Settlement settlement)
         {
             _settlement = settlement;
-            if (_settlement.IsCastle)
+            _settlement.Culture = settlement.MapFaction.Culture;
+
+            _outsiders = new List<Hero>();
+            foreach (var notable in _settlement.Notables)
             {
-                _settlement.Culture = _settlement.MapFaction.Culture;
+                if (!notable.IsSuitableForSettlement(_settlement))
+                {
+                    _outsiders.Add(notable);
+                }
             }
-            if (_settlement.IsTown)
+            foreach (var village in _settlement.BoundVillages)
             {
-                _assimilationProgressRate = 33 / Settlement.BoundVillages.Count + 1;
+                village.Settlement.Culture = _settlement.Culture;
+                foreach (var notable in village.Settlement.Notables)
+                {
+                    if (!notable.IsSuitableForSettlement(village.Settlement))
+                    {
+                        _outsiders.Add(notable);
+                    }
+                }
             }
-            else
+            _outsiders.Shuffle();
+
+            if (_initialOutriderAmount == 0)
             {
-                _assimilationProgressRate = 33 / Settlement.BoundVillages.Count;
+                _initialOutriderAmount = _outsiders.Count;
             }
         }
 
         public void Tick()
         {
-            _assimilationProgress += _assimilationProgressRate;
-            TOWCommon.Say($"{Settlement.Name} + {_assimilationProgressRate} = {_assimilationProgress}");
-
-            if (_assimilationProgress > 50)
+            for (byte num = 0; num < 2; num++)
             {
-                Settlement.Culture = Settlement.MapFaction.Culture;
-            }
-            if (_assimilationProgress > 66)
-            {
-                var village = Settlement.BoundVillages.FirstOrDefault(v => v.Settlement.Culture != Settlement.Culture);
-                if (village != null)
+                var outsider = _outsiders[num];
+                if (outsider != null)
                 {
-                    village.Settlement.Culture = Settlement.Culture;
-                    _assimilatedVillageAmount++;
+                    outsider.DecideNotableFate();
                 }
+                _outsiders.Remove(outsider);
             }
         }
 
-        public void UpdateCulture()
-        {
-            if ((_settlement.IsTown && _assimilationProgress > 50) || _settlement.IsCastle)
-            {
-                _settlement.Culture = _settlement.MapFaction.Culture;
-            }
-            if (_assimilationProgress >= 100)
-            {
-                foreach (var village in Settlement.BoundVillages)
-                {
-                    village.Settlement.Culture = _settlement.MapFaction.Culture;
-                }
-            }
-            else
-            {
-                for (int b = 0; b < _assimilatedVillageAmount; b++)
-                {
-                    _settlement.BoundVillages[b].Settlement.Culture = Settlement.MapFaction.Culture;
-                }
-            }
-        }
 
-        public void Reset()
-        {
-            _assimilationProgress = 0;
-            _assimilationProgressRate = 0;
-            _assimilatedVillageAmount = 0;
-        }
+        public bool IsAssimilationComplete { get => _outsiders.Count == 0; }
+
+        public float AssimilationProgress { get => 100 - (_initialOutriderAmount * _outsiders.Count / 100); }
+
+        public int InitialOutriderAmount { get => _initialOutriderAmount; }
+
+        public List<Hero> Outriders { get => _outsiders; }
+
+        public new Settlement Settlement { get => _settlement; }
 
 
-        public bool IsAssimilationComplete { get => _assimilationProgress >= 100; }
+        private List<Hero> _outsiders;
 
-        public new Settlement Settlement { get => _settlement; set => _settlement = value; }
+        [SaveableField(81)] private Settlement _settlement;
 
-
-        [SaveableField(81)] private float _assimilationProgress;
-
-        [SaveableField(82)] private float _assimilationProgressRate;
-
-        [SaveableField(83)] private int _assimilatedVillageAmount;
-
-        [SaveableField(84)] private Settlement _settlement;
+        [SaveableField(82)] private int _initialOutriderAmount;
     }
 }

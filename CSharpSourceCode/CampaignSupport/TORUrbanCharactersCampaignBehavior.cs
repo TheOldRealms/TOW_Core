@@ -277,6 +277,7 @@ namespace TOW_Core.CampaignSupport
                     {
                         Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
                         CheckNotable(settlement, hero);
+                        TOWCommon.Say($"IfNeeded {hero.Name} {hero.Culture.Name}");
                         EnterSettlementAction.ApplyForCharacterOnly(hero, settlement);
                     }
                 }
@@ -291,10 +292,10 @@ namespace TOW_Core.CampaignSupport
                 {
                     this.UpdateNotableRelations(hero);
                 }
-                this.UpdateNotableSupport(hero);
-                this.BalanceGoldAndPowerOfNotable(hero);
-                this.ManageCaravanExpensesOfNotable(hero);
-                this.CheckAndMakeNotableDisappear(hero);
+                UpdateNotableSupport(hero);
+                BalanceGoldAndPowerOfNotable(hero);
+                ManageCaravanExpensesOfNotable(hero);
+                CheckAndMakeNotableDisappear(hero);
             }
         }
 
@@ -433,18 +434,17 @@ namespace TOW_Core.CampaignSupport
 
         public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
+            if (mobileParty == MobileParty.MainParty && settlement.IsTown && !_companionSettlements.ContainsKey(settlement) && _companions.Count > 0)
             {
                 Hero wanderer = this._companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
-                wanderer.ChangeState(Hero.CharacterStates.Active);
-                EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
-                this._companionSettlements.Add(settlement, CampaignTime.Now);
-                this._companions.Remove(wanderer);
+                if (wanderer != null)
+                {
+                    wanderer.ChangeState(Hero.CharacterStates.Active);
+                    EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                    _companionSettlements.Add(settlement, CampaignTime.Now);
+                    _companions.Remove(wanderer);
+                }
             }
-            //if (settlement.IsSuitableForHero(hero))
-            //{
-            //    PurgeSettlement(mobileParty, settlement, hero);
-            //}
         }
 
         //NEED TO CHECK THE CODE
@@ -457,11 +457,11 @@ namespace TOW_Core.CampaignSupport
                     Hero hero = HeroCreator.CreateRelativeNotableHero(victim);
                     if (victim.CurrentSettlement != null)
                     {
-                        this.ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
+                        ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
                     }
 
                     CheckNotable(hero.CurrentSettlement, hero);
-
+                    TOWCommon.Say($"OnHeroKilled {victim.Name} - {hero.Name} {hero.Culture.Name}");
                     using (List<CaravanPartyComponent>.Enumerator enumerator = victim.OwnedCaravans.ToList<CaravanPartyComponent>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())

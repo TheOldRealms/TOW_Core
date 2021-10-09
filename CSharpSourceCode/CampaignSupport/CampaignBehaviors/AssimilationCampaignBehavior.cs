@@ -15,7 +15,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
             CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, new Action<Settlement, bool, Hero, Hero, Hero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail>(OnOwnerChanged));
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, new Action(CheckForAssimilationComponent));
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoadFinishedEvent);
-            
+
             CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(DEBUGOnSettlementEntered));
         }
 
@@ -24,7 +24,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
             foreach (var comp in _assimilationComponents)
             {
                 Traverse.Create(comp.Settlement).Field("_settlementComponents").GetValue<List<SettlementComponent>>().Add(comp);
-                comp.UpdateCulture();
+                comp.SetParameters(comp.Settlement);
             }
         }
 
@@ -41,7 +41,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
                 }
                 else
                 {
-                    component.Reset();
+                    component.SetParameters(settlement);
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
                     var comp = arg2.GetComponent<AssimilationComponent>();
                     if (comp != null)
                     {
-                        TOWCommon.Say($"{comp.Settlement.Name}");
+                        TOWCommon.Say($"{comp.Settlement.Name} {comp.InitialOutriderAmount} {comp.Outriders.Count} {comp.AssimilationProgress}");
                     }
                     else
                     {
