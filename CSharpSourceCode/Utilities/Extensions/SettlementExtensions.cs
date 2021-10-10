@@ -36,7 +36,7 @@ namespace TOW_Core.Utilities.Extensions
             return (settlement.IsTown ||
                     settlement.IsCastle ||
                     settlement.IsVillage) &&
-                    settlement.Culture.Name.Contains("Empire");
+                    settlement.MapFaction.Culture.Name.Contains("Empire");
         }
 
         public static bool IsVampireSettlement(this Settlement settlement)
@@ -44,7 +44,7 @@ namespace TOW_Core.Utilities.Extensions
             return (settlement.IsTown ||
                     settlement.IsCastle ||
                     settlement.IsVillage) &&
-                    settlement.Culture.Name.Contains("Vampire");
+                    settlement.MapFaction.Culture.Name.Contains("Vampire");
         }
 
         public static bool IsSuitableForHero(this Settlement settlement, Hero hero)

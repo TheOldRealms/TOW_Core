@@ -96,15 +96,14 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsVampireNotable(this Hero hero)
         {
             return hero.IsNotable &&
-                   ((hero.Age >= 18 && hero.Age < 21) ||
-                   hero.Culture.Name.Contains("Vampire"));
+                   hero.Age >= 18 && 
+                   hero.Age < 21;
         }
 
         public static bool IsEmpireNotable(this Hero hero)
         {
             return hero.IsNotable &&
-                   hero.Age >= 21 &&
-                   hero.Culture.Name.Contains("Empire");
+                   hero.Age >= 21;
 
         }
 
@@ -140,24 +139,32 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
+        public static bool IsOutrider(this Hero hero, CultureObject culture)
+        {
+            return hero.Culture != culture;
+        }
+
         public static void DecideNotableFate(this Hero hero)
         {
-            if (hero.CurrentSettlement.IsEmpireSettlement() && !hero.IsEmpireNotable())
+            if (hero != null && hero.HeroState != Hero.CharacterStates.Dead)
             {
-                if (hero.IsVampireNotable())
+                if (hero.CurrentSettlement.IsEmpireSettlement() && !hero.IsEmpireNotable())
                 {
-                    KillCharacterAction.ApplyByMurder(hero, null, false);
+                    if (hero.IsVampireNotable())
+                    {
+                        KillCharacterAction.ApplyByMurder(hero, null, false);
+                    }
                 }
-            }
-            else if (hero.CurrentSettlement.IsVampireSettlement() && !hero.IsVampireNotable())
-            {
-                if (hero.IsEmpireNotable())
+                else if (hero.CurrentSettlement.IsVampireSettlement() && !hero.IsVampireNotable())
                 {
-                    hero.TurnIntoVampire();
-                }
-                else
-                {
-                    KillCharacterAction.ApplyByMurder(hero, null, false);
+                    if (hero.IsEmpireNotable())
+                    {
+                        hero.TurnIntoVampire();
+                    }
+                    else
+                    {
+                        KillCharacterAction.ApplyByMurder(hero, null, false);
+                    }
                 }
             }
         }
