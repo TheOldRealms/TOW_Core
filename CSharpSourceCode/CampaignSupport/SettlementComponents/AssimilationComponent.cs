@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.SaveSystem;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.SettlementComponents
@@ -19,64 +20,96 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
         public void SetParameters(Settlement settlement)
         {
             _settlement = settlement;
-            _settlement.Culture = settlement.MapFaction.Culture;
-
-            _outsiders = new List<Hero>();
-            foreach (var notable in _settlement.Notables)
+            //_oldCulture = Campaign.Current.Factions.FirstOrDefault(f => f.Culture == _settlement.Culture).Culture;
+            _newCulture = _settlement.MapFaction.Culture;
+            if (_settlement.IsCastle)
             {
-                if (!notable.IsSuitableForSettlement(_settlement))
-                {
-                    _outsiders.Add(notable);
-                }
+                _settlement.Culture = _newCulture;
+                _settlementsToAssimilate = _settlement.BoundVillages.Count;
             }
-            foreach (var village in _settlement.BoundVillages)
+            else
             {
-                village.Settlement.Culture = _settlement.Culture;
-                foreach (var notable in village.Settlement.Notables)
-                {
-                    if (!notable.IsSuitableForSettlement(village.Settlement))
-                    {
-                        _outsiders.Add(notable);
-                    }
-                }
+                _settlementsToAssimilate = _settlement.BoundVillages.Count + 1;
             }
-            _outsiders.Shuffle();
-
-            if (_initialOutriderAmount == 0)
-            {
-                _initialOutriderAmount = _outsiders.Count;
-            }
+            UpdateCulture();
         }
 
         public void Tick()
         {
-            for (byte num = 0; num < 2; num++)
+            if (_settlement.IsCastle)
             {
-                var outsider = _outsiders[num];
-                if (outsider != null)
+                foreach (var village in _settlement.BoundVillages)
                 {
-                    outsider.DecideNotableFate();
+                    village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
                 }
-                _outsiders.Remove(outsider);
             }
+            else if (_settlement.IsTown)
+            {
+                if (GetOutriderCoefficient(_settlement) <= 0.5f)
+                {
+                    foreach (var village in _settlement.BoundVillages)
+                    {
+                        village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
+                    }
+                }
+                _settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
+            }
+            UpdateCulture();
+            TOWCommon.Say($"{_settlement.Name}'s area - {_assimilationProgress}");
+        }
+
+        private void UpdateCulture()
+        {
+            _assimilationProgress = 0;
+            float _setCoef;
+            if (_settlement.IsTown)
+            {
+                _setCoef = GetOutriderCoefficient(_settlement);
+                _assimilationProgress += _setCoef;
+                if (_setCoef <= 0.5f)
+                {
+                    _settlement.Culture = _newCulture;
+                }
+            }
+
+            foreach (var village in _settlement.BoundVillages)
+            {
+                float _vilCoef = GetOutriderCoefficient(village.Settlement);
+                _assimilationProgress += _vilCoef;
+                if (_vilCoef <= 0.5f)
+                {
+                    village.Settlement.Culture = _newCulture;
+                }
+            }
+
+            _assimilationProgress = 1 - (_assimilationProgress / _settlementsToAssimilate);
+        }
+
+        private float GetOutriderCoefficient(Settlement settlement)
+        {
+            return (float)settlement.Notables.Where(n => n.IsOutrider(_newCulture)).Count() / (float)settlement.Notables.Count;
         }
 
 
-        public bool IsAssimilationComplete { get => _outsiders.Count == 0; }
+        public bool IsAssimilationComplete { get => _assimilationProgress == 1; }
 
-        public float AssimilationProgress { get => 100 - (_initialOutriderAmount * _outsiders.Count / 100); }
+        public float AssimilationProgress { get => _assimilationProgress; }
 
-        public int InitialOutriderAmount { get => _initialOutriderAmount; }
+        public int SettlementsToAssimilate { get => _settlementsToAssimilate; }
 
-        public List<Hero> Outriders { get => _outsiders; }
+        public CultureObject NewCulture { get => _newCulture; }
 
         public new Settlement Settlement { get => _settlement; }
 
 
-        private List<Hero> _outsiders;
+        private int _settlementsToAssimilate;
+
+        private float _assimilationProgress;
 
         [SaveableField(81)] private Settlement _settlement;
 
-        [SaveableField(82)] private int _initialOutriderAmount;
+        [SaveableField(82)] private CultureObject _newCulture;
+
+        //[SaveableField(83)] private CultureObject _oldCulture;
     }
 }
