@@ -17,7 +17,6 @@ namespace TOW_Core.Battle.StatusEffects
     {
         public override void OnAgentCreated(Agent agent)
         {
-            base.OnAgentCreated(agent);
             if (agent.IsHuman)
             {
                 StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
@@ -27,7 +26,6 @@ namespace TOW_Core.Battle.StatusEffects
         
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             foreach(var agent in Mission.Current.Agents)
             {
                 if (agent.GetComponent<StatusEffectComponent>() != null)
@@ -40,7 +38,5 @@ namespace TOW_Core.Battle.StatusEffects
                 }
             }
         }
-
-        public override MissionBehaviourType BehaviourType { get; }
     }
 }

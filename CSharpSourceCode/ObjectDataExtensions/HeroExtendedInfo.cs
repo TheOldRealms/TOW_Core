@@ -16,7 +16,7 @@ namespace TOW_Core.ObjectDataExtensions
         [SaveableField(1)] public List<string> AcquiredAttributes = new List<string>();
         [SaveableField(2)] public float CurrentWindsOfMagic = 0;
         [SaveableField(3)] public float MaxWindsOfMagic = 0;
-        [SaveableField(4)] public float WindsOfMagicRechargeRate = 1;
+        [SaveableField(4)] public float WindsOfMagicRechargeRate = 0.2f;
         [SaveableField(5)] public int Corruption = 0; //between 0 and 100, 0 = pure af, 100 = fallen to chaos
         [SaveableField(6)] private CharacterObject _baseCharacter;
         [SaveableField(7)] private CharacterObject _templateCharacterOrigin;

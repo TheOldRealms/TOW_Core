@@ -23,7 +23,7 @@ namespace TOW_Core.CampaignSupport
             CampaignEvents.DailyTickClanEvent.AddNonSerializedListener(this, new Action<Clan>(this.OnNonBanditClanDailyTick));
             CampaignEvents.HeroComesOfAgeEvent.AddNonSerializedListener(this, new Action<Hero>(this.OnHeroComesOfAge));
             CampaignEvents.DailyTickHeroEvent.AddNonSerializedListener(this, new Action<Hero>(this.OnHeroDailyTick));
-            CampaignEvents.CompanionRemoved.AddNonSerializedListener(this, new Action<Hero>(this.OnCompanionRemoved));
+            CampaignEvents.CompanionRemoved.AddNonSerializedListener(this, OnCompanionRemoved);
             CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnGameLoaded));
         }
 
@@ -99,7 +99,7 @@ namespace TOW_Core.CampaignSupport
         }
 
         //Look for suitable town
-        private void OnCompanionRemoved(Hero companion)
+        private void OnCompanionRemoved(Hero companion, RemoveCompanionAction.RemoveCompanionDetail arg2)
         {
             if (!companion.IsFugitive && !companion.IsDead)
             {
@@ -122,11 +122,11 @@ namespace TOW_Core.CampaignSupport
                 {
                     if (hero.IsPlayerCompanion || hero.IsWanderer)
                     {
-                        settlement = this.FindASuitableSettlementToTeleportForCompanion(hero);
+                        settlement = FindASuitableSettlementToTeleportForCompanion(hero);
                     }
                     else if (MBRandom.RandomFloat < 0.3f || (hero.CurrentSettlement != null && hero.CurrentSettlement.MapFaction.IsAtWarWith(hero.MapFaction)))
                     {
-                        settlement = this.FindASuitableSettlementToTeleportForNoble(hero, 0f);
+                        settlement = FindASuitableSettlementToTeleportForNoble(hero, 0f);
                     }
                 }
             }
@@ -144,9 +144,9 @@ namespace TOW_Core.CampaignSupport
                         settlement = this.FindASuitableSettlementToTeleportForNoble(hero, 0f);
                     }
                 }
-                else if (this.CanHeroMoveToAnotherSettlement(hero))
+                else if (CanHeroMoveToAnotherSettlement(hero))
                 {
-                    settlement = (hero.IsWanderer ? this.FindASuitableSettlementToTeleportForCompanion(hero) : this.FindASuitableSettlementToTeleportForNoble(hero, 10f));
+                    settlement = (hero.IsWanderer ? FindASuitableSettlementToTeleportForCompanion(hero) : FindASuitableSettlementToTeleportForNoble(hero, 10f));
                 }
             }
             if (settlement != null)
@@ -236,7 +236,7 @@ namespace TOW_Core.CampaignSupport
             }
             else
             {
-                settlement = Town.AllTowns.Where(s => s.Settlement.IsSuitableForHero(hero)).GetRandomElementInefficiently().Settlement;
+                settlement = Settlement.All.Where(s => s.IsTown && s.IsSuitableForHero(hero)).GetRandomElementInefficiently();
             }
             return settlement;
         }

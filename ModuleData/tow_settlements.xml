@@ -17,9 +17,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -89,7 +89,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -138,9 +138,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_e" scene_name_1="vlandia_town_e" scene_name_2="vlandia_town_e" scene_name_3="vlandia_town_e" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -184,7 +184,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -221,9 +221,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -293,7 +293,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -329,7 +329,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -365,7 +365,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -401,9 +401,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="scn_leicheberg_doomed_city" scene_name_1="scn_leicheberg_doomed_city" scene_name_2="scn_leicheberg_doomed_city" scene_name_3="scn_leicheberg_doomed_city" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -460,9 +460,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -506,9 +506,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_f" scene_name_1="vlandia_town_f" scene_name_2="vlandia_town_f" scene_name_3="vlandia_town_f" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -578,7 +578,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -614,7 +614,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -651,9 +651,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_g" scene_name_1="vlandia_town_g" scene_name_2="vlandia_town_g" scene_name_3="vlandia_town_g" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
       <Location id="tavern" scene_name="empire_tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -724,9 +724,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
-      <Location id="arena" scene_name="arena_vlandia_a" />
+      <Location id="arena" scene_name="TOR_Arena_Vampire_a_forceatmo" />
       <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -753,7 +753,7 @@
   </Settlement>
   <Settlement id="village_SY1_2" name="{=Settlements.Settlement.name.village_SY1_2}Nachthafen" posX="1632.187" posY="942.906" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_2}Nachthafen is a very uninteresting place. Which is just as it’s ruler Countess Gabriella von Bundebad prefers. Nachthafen does not get involved in the petty squabbles of vampiric intrigue. Nor does it seek war with the Empire. It exists purely as a quiet, normal village. With nothing to see here. Just tasty villagers minding their business until it is time for the masters to feed.">
     <Components>
-      <Village id="village_comp_SY1_2" village_type="VillageType.cattle_farm" hearth="96" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY1_2" village_type="VillageType.cattle_farm" hearth="96" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -796,7 +796,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -832,9 +832,9 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.town_complex">
       <Location id="center" scene_name="vlandia_town_f" scene_name_1="vlandia_town_f" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_f" />
-      <Location id="arena" scene_name="arena_empire_a" />
+      <Location id="arena" scene_name="TOR_Arena_Vampire_a_forceatmo" />
       <Location id="tavern" scene_name="TOW_Vampire_Tavern_01" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
       <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
@@ -904,7 +904,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -927,7 +927,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -963,13 +963,13 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
   <Settlement id="castle_village_SY4_1" name="{=Settlements.Settlement.name.castle_village_SY4_1}Gallhof" posX="1682.087" posY="948.918" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY4_1}Gallhof is often a favourite haunt of Brettonian Blood Knights. Used as a training camp and feasting hall for these bloodthirsty creatures.">
     <Components>
-      <Village id="castle_village_comp_SY4_1" village_type="VillageType.flax_plant" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY4_1" village_type="VillageType.flax_plant" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="vlandia_village_l" />
@@ -986,7 +986,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -1009,7 +1009,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
@@ -1045,7 +1045,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
-      <Location id="lordshall" scene_name_1="european_castle_keep_a_l1_interior" scene_name_2="european_castle_keep_a_l2_interior" scene_name_3="european_castle_keep_a_l3_interior" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l3" />
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>

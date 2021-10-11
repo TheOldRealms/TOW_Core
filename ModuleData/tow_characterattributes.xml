@@ -140,4 +140,42 @@
     <Attribute id="AbilityUser" />
     <Attribute id="SpellCaster" />
   </Character>
+
+  <!-- bandits -->
+  <Character name="tow_chaos_cult_acolyte">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_chaos_cult_darksoul">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_outlaw">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_spearman">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_swordsman">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_hunter">
+    <Attribute id="Expendable" />
+  </Character>
+  
+  <!-- chaos -->
+  <Character name="tow_nurgle_warrior">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_nurgle_warrior_002">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_nurgle_warrior_003">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_chaos_chosen">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_chs_khorne_warrior">
+    <Attribute id="Unbreakable" />
+  </Character>
+
 </Characters>

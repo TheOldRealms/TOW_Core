@@ -32,15 +32,11 @@ namespace TOW_Core.ObjectDataExtensions
         public override void RegisterEvents()
         {
             //Game Saving Events
-            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoaded);
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
             CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
 
             //Tick events
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, FillWindsOfMagic);
-
-            //Events and Battles
-            CampaignEvents.MapEventStarted.AddNonSerializedListener(this, EventCreated);
 
             //Parties created and destroyed
             CampaignEvents.MobilePartyCreated.AddNonSerializedListener(this, RegisterParty);
@@ -157,14 +153,6 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
-        private void EventCreated(MapEvent mapEvent, PartyBase partyBase, PartyBase arg3)
-        {
-            if (mapEvent.IsPlayerMapEvent)
-            {
-                _currentPlayerEvent = mapEvent;
-            }
-        }
-
         public  MobilePartyExtendedInfo GetPartyInfoFor(string id)
         {
             return _partyInfos.ContainsKey(id) ? _partyInfos[id] : null;
@@ -227,16 +215,6 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 _partyInfos.Remove(party.Party.ToString());
             }
-        }
-        private void OnGameLoaded()
-        {
-            /*
-            TOWCommon.Say("save game restored with "+ _partyInfos.Count + "parties in the dictionary");
-            _isloaded = true;
-
-            _mainPartyInfo = GetPartyInfoFor(Campaign.Current.MainParty.Party.Id);
-            //for later: Check if Attributes are valid, reinitalize for parties if not
-            */
         }
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)

@@ -60,6 +60,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override void OnTick(float dt)
         {
             base.OnTick(dt);
+            if (_ability == null) return;
             if (_isFading) return;
             _timeSinceLastTick += dt;
             UpdateLifeTime(dt);

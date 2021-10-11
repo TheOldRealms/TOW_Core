@@ -12,7 +12,6 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic
 
         public override void OnAgentCreated(Agent agent)
         {
-            base.OnAgentCreated(agent);
             if (agent.IsUndead())
             {
                 agent.AddComponent(new UndeadMoraleAgentComponent(agent));

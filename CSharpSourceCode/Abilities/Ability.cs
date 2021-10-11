@@ -30,7 +30,7 @@ namespace TOW_Core.Abilities
                 return;
             }
 
-            _coolDownLeft = (int)(_cooldown_end_time - Mission.Current.Time);
+            _coolDownLeft = (int) (_cooldown_end_time - Mission.Current.CurrentTime);
             if (_coolDownLeft <= 0)
             {
                 FinalizeTimer();
@@ -88,7 +88,7 @@ namespace TOW_Core.Abilities
         {
             _isCasting = false;
             _coolDownLeft = Template.CoolDown;
-            _cooldown_end_time = Mission.Current.Time + _coolDownLeft + 0.8f; //Adjustment was needed for natural tick on UI
+            _cooldown_end_time = Mission.Current.CurrentTime + _coolDownLeft + 0.8f; //Adjustment was needed for natural tick on UI
             _timer.Start();
 
             var frame = GetSpawnFrame(casterAgent);

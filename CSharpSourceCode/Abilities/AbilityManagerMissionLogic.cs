@@ -29,13 +29,11 @@ namespace TOW_Core.Abilities
 
         protected override void OnEndMission()
         {
-            base.OnEndMission();
             BindWeaponKeys();
         }
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             if (!isMainAgentChecked)
             {
                 if (Agent.Main != null)
@@ -167,7 +165,6 @@ namespace TOW_Core.Abilities
 
         public override void OnAgentCreated(Agent agent)
         {
-            base.OnAgentCreated(agent);
             if (IsCastingMission(Mission))
             {
                 if (agent.IsAbilityUser())
@@ -254,7 +251,6 @@ namespace TOW_Core.Abilities
 
         public override void OnItemPickup(Agent agent, SpawnedItemEntity item)
         {
-            base.OnItemPickup(agent, item);
             DisableSpellMode(true);
         }
     }
