@@ -26,6 +26,7 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
 
         public void SetParameters(Settlement settlement)
         {
+            _assimilationProgress = 0;
             _settlement = settlement;
             _newCulture = _settlement.MapFaction.Culture;
             if (_settlement.IsCastle)
@@ -42,7 +43,7 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
             {
                 this.DecideWandererFate(wanderers[i]);
             }
-            UpdateCulture();
+            CalculateConversion();
         }
 
         public void Tick()
@@ -68,10 +69,10 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
                 var outrider = _settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture));
                 this.DecideNotableFate(outrider);
             }
-            UpdateCulture();
+            CalculateConversion();
         }
 
-        private void UpdateCulture()
+        private void CalculateConversion()
         {
             _assimilationProgress = 0;
             float _setCoef;
@@ -96,6 +97,10 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
             }
 
             _assimilationProgress = 1 - (_assimilationProgress / _settlementsToAssimilate);
+            if (IsAssimilationComplete)
+            {
+                AssimilationIsComplete?.Invoke(this, new AssimilationIsCompleteEventArgs(_settlement, _newCulture));
+            }
         }
 
         private float GetOutriderCoefficient(Settlement settlement)
@@ -262,6 +267,10 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
 
         public new Settlement Settlement { get => _settlement; }
 
+        public delegate void AssimilationIsCompleteEvent(object obj, AssimilationIsCompleteEventArgs e);
+
+        public event AssimilationIsCompleteEvent AssimilationIsComplete;
+
 
         private int _settlementsToAssimilate;
 
@@ -271,5 +280,22 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
         [SaveableField(81)] private Settlement _settlement;
 
         [SaveableField(82)] private CultureObject _newCulture;
+    }
+
+    public class AssimilationIsCompleteEventArgs
+    {
+        public AssimilationIsCompleteEventArgs(Settlement settlement, CultureObject culture)
+        {
+            this._settlement = settlement;
+            this._culture = culture;
+        }
+
+        public Settlement Settlement { get => _settlement; }
+
+        public CultureObject Culture { get => _culture; }
+
+        private Settlement _settlement;
+
+        private CultureObject _culture;
     }
 }
