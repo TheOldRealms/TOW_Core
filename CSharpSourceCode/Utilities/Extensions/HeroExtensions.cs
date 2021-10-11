@@ -96,24 +96,32 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsVampireNotable(this Hero hero)
         {
             return hero.IsNotable &&
-                   hero.Age >= 18 && 
-                   hero.Age < 21;
+                   hero.Age >= 18 &&
+                   hero.Age < 21 &&
+                   hero.Culture.Name.Contains("Vampire");
         }
 
         public static bool IsEmpireNotable(this Hero hero)
         {
             return hero.IsNotable &&
-                   hero.Age >= 21;
-
+                   hero.Age >= 21 &&
+                   hero.Culture.Name.Contains("Empire");
         }
 
         //There is Traverse
         public static void TurnIntoVampire(this Hero hero)
         {
-            Traverse.Create(hero).Field("_defaultAge").SetValue(18);
+            if (!hero.CharacterObject.IsFemale)
+            {
+                Traverse.Create(hero).Field("_defaultAge").SetValue(18);
+            }
             if (Campaign.Current != null)
             {
-                hero.Culture = Campaign.Current.Factions.FirstOrDefault(f => f.Culture.Name.Contains("Vampire")).Culture;
+                var faction = Campaign.Current.Factions.FirstOrDefault(f => f.Culture.Name.Contains("Vampire"));
+                if (faction != null)
+                {
+                    hero.Culture = faction.Culture;
+                }
             }
         }
 
@@ -142,31 +150,6 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsOutrider(this Hero hero, CultureObject culture)
         {
             return hero.Culture != culture;
-        }
-
-        public static void DecideNotableFate(this Hero hero)
-        {
-            if (hero != null && hero.HeroState != Hero.CharacterStates.Dead)
-            {
-                if (hero.CurrentSettlement.IsEmpireSettlement() && !hero.IsEmpireNotable())
-                {
-                    if (hero.IsVampireNotable())
-                    {
-                        KillCharacterAction.ApplyByMurder(hero, null, false);
-                    }
-                }
-                else if (hero.CurrentSettlement.IsVampireSettlement() && !hero.IsVampireNotable())
-                {
-                    if (hero.IsEmpireNotable())
-                    {
-                        hero.TurnIntoVampire();
-                    }
-                    else
-                    {
-                        KillCharacterAction.ApplyByMurder(hero, null, false);
-                    }
-                }
-            }
         }
     }
 }

@@ -1,9 +1,16 @@
-﻿using System.Linq;
+﻿using HarmonyLib;
+using SandBox.View.Map;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.ViewModelCollection.GameMenu;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.SaveSystem;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
+using static TaleWorlds.CampaignSystem.Hero;
 
 namespace TOW_Core.CampaignSupport.SettlementComponents
 {
@@ -20,7 +27,6 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
         public void SetParameters(Settlement settlement)
         {
             _settlement = settlement;
-            //_oldCulture = Campaign.Current.Factions.FirstOrDefault(f => f.Culture == _settlement.Culture).Culture;
             _newCulture = _settlement.MapFaction.Culture;
             if (_settlement.IsCastle)
             {
@@ -31,6 +37,11 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
             {
                 _settlementsToAssimilate = _settlement.BoundVillages.Count + 1;
             }
+            var wanderers = _settlement.HeroesWithoutParty.Where(h => h.Occupation == Occupation.Wanderer).ToArray();
+            for (int i = 0; i < wanderers.Length; i++)
+            {
+                this.DecideWandererFate(wanderers[i]);
+            }
             UpdateCulture();
         }
 
@@ -40,7 +51,8 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
             {
                 foreach (var village in _settlement.BoundVillages)
                 {
-                    village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
+                    var villageOutrider = village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture));
+                    this.DecideNotableFate(villageOutrider);
                 }
             }
             else if (_settlement.IsTown)
@@ -49,13 +61,14 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
                 {
                     foreach (var village in _settlement.BoundVillages)
                     {
-                        village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
+                        var villageOutrider = village.Settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture));
+                        this.DecideNotableFate(villageOutrider);
                     }
                 }
-                _settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture)).DecideNotableFate();
+                var outrider = _settlement.Notables.FirstOrDefault(n => n.IsOutrider(_newCulture));
+                this.DecideNotableFate(outrider);
             }
             UpdateCulture();
-            TOWCommon.Say($"{_settlement.Name}'s area - {_assimilationProgress}");
         }
 
         private void UpdateCulture()
@@ -90,12 +103,160 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
             return (float)settlement.Notables.Where(n => n.IsOutrider(_newCulture)).Count() / (float)settlement.Notables.Count;
         }
 
+        private void DecideWandererFate(Hero hero)
+        {
+            if (hero != null && hero.Culture != _newCulture)
+            {
+                if (MBRandom.RandomFloat >= 0.25f)
+                {
+                    List<ValueTuple<Settlement, float>> list = new List<ValueTuple<Settlement, float>>(Settlement.All.Count);
+                    foreach (Settlement settlement in Settlement.All.Where(s => s.IsSuitableForHero(hero)))
+                    {
+                        list.Add(new ValueTuple<Settlement, float>(settlement, GetMoveScoreForCompanion(hero)));
+                    }
+                    var nextSettlement = (from x in list
+                                          orderby x.Item2 descending
+                                          select x).Take(5).GetRandomElementInefficiently<ValueTuple<Settlement, float>>().Item1;
+                    if (nextSettlement != null)
+                    {
+                        LeaveSettlementAction.ApplyForCharacterOnly(hero);
+                        EnterSettlementAction.ApplyForCharacterOnly(hero, nextSettlement);
+                    }
+                    else
+                    {
+                        KillCharacterAction.ApplyByMurder(hero, null, false);
+                    }
+                }
+                else
+                {
+                    KillCharacterAction.ApplyByMurder(hero, null, false);
+                }
+            }
+        }
+
+        private float GetMoveScoreForCompanion(Hero companion)
+        {
+            float num = 0f;
+            if (_settlement.IsTown)
+            {
+                num = 1E-06f;
+                if (!FactionManager.IsAtWarAgainstFaction(_settlement.Party.MapFaction, companion.MapFaction))
+                {
+                    num += (_settlement == companion.HomeSettlement) ? 25f : 0f;
+                    num += FactionManager.IsNeutralWithFaction(_settlement.Party.MapFaction, companion.MapFaction) ? 50f : 100f;
+                    Settlement settlement2 = companion.LastSeenPlace ?? companion.HomeSettlement;
+                    Vec2 v = new Vec2((settlement2.Position2D.x + MobileParty.MainParty.Position2D.x) / 2f, (settlement2.Position2D.y + MobileParty.MainParty.Position2D.y) / 2f);
+                    float num2 = _settlement.Position2D.Distance(v);
+                    if (num2 <= 50f)
+                    {
+                        num += 150f;
+                    }
+                    else if (num2 <= 100f)
+                    {
+                        num += 100f;
+                    }
+                    else if (num2 <= 150f)
+                    {
+                        num += 50f;
+                    }
+                    else
+                    {
+                        num += 10f;
+                    }
+                    if (num <= 60f)
+                    {
+                        num = 1f;
+                    }
+                }
+            }
+            return num;
+        }
+
+        private void DecideNotableFate(Hero hero)
+        {
+            if (hero != null && hero.HeroState != CharacterStates.Dead && _newCulture != hero.Culture)
+            {
+                if (hero.IsVampireNotable())
+                {
+                    KillCharacterAction.ApplyByMurder(hero, null, false);
+                }
+                else if (hero.IsEmpireNotable())
+                {
+                    if (_newCulture.Name.Contains("Vampire"))
+                    {
+                        hero.TurnIntoVampire();
+                        if (!hero.CharacterObject.IsFemale)
+                        {
+                            if (hero.CurrentSettlement == Hero.MainHero.CurrentSettlement)
+                            {
+                                this.ReplaceImageIdentifier(hero.CharacterObject);
+                            }
+                        }
+                        return;
+                    }
+                }
+                if (hero.HeroState == CharacterStates.Dead)
+                {
+                    CreateNewNotable(hero);
+                }
+            }
+        }
+
+        private void CreateNewNotable(Hero victim)
+        {
+            Hero newNotable = HeroCreator.CreateRelativeNotableHero(victim);
+            EnterSettlementAction.ApplyForCharacterOnly(newNotable, newNotable.CurrentSettlement);
+            if (newNotable.CurrentSettlement.IsEmpireSettlement())
+            {
+                newNotable.TurnIntoHuman();
+            }
+            else if (newNotable.CurrentSettlement.IsVampireSettlement())
+            {
+                newNotable.TurnIntoVampire();
+            }
+            foreach (Hero otherHero in Hero.AllAliveHeroes)
+            {
+                int relation = victim.GetRelation(otherHero);
+                if (relation != 0)
+                {
+                    newNotable.SetPersonalRelation(otherHero, relation);
+                }
+            }
+            if (victim.Issue != null)
+            {
+                Campaign.Current.IssueManager.ChangeIssueOwner(victim.Issue, newNotable);
+            }
+
+            using (List<CaravanPartyComponent>.Enumerator enumerator = victim.OwnedCaravans.ToList<CaravanPartyComponent>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    CaravanPartyComponent caravanPartyComponent = enumerator.Current;
+                    CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, newNotable);
+                }
+            }
+        }
+
+        private void ReplaceImageIdentifier(CharacterObject character)
+        {
+            MapScreen mapScreen = MapScreen.Instance;
+            var overlayVM = (SettlementMenuOverlayVM)Traverse.Create(mapScreen).Field("_menuViewContext").Field("_menuOverlayBase").Field("_overlayDataSource").GetValue();
+            if (overlayVM != null)
+            {
+                var target = overlayVM.CharacterList.FirstOrDefault(ch => ch.Character == character);
+                if (target != null)
+                {
+                    var charCode = CharacterCode.CreateFrom(character);
+                    var newImageIdentifier = new ImageIdentifierVM(charCode);
+                    target.Visual = newImageIdentifier;
+                }
+            }
+        }
+
 
         public bool IsAssimilationComplete { get => _assimilationProgress == 1; }
 
         public float AssimilationProgress { get => _assimilationProgress; }
-
-        public int SettlementsToAssimilate { get => _settlementsToAssimilate; }
 
         public CultureObject NewCulture { get => _newCulture; }
 
@@ -106,10 +267,9 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
 
         private float _assimilationProgress;
 
+
         [SaveableField(81)] private Settlement _settlement;
 
         [SaveableField(82)] private CultureObject _newCulture;
-
-        //[SaveableField(83)] private CultureObject _oldCulture;
     }
 }

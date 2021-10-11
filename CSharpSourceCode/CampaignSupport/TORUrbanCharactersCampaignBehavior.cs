@@ -8,7 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities;
+using TOW_Core.CampaignSupport.SettlementComponents;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -277,7 +277,6 @@ namespace TOW_Core.CampaignSupport
                     {
                         Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
                         CheckNotable(settlement, hero);
-                        TOWCommon.Say($"IfNeeded {hero.Name} {hero.Culture.Name}");
                         EnterSettlementAction.ApplyForCharacterOnly(hero, settlement);
                     }
                 }
@@ -452,16 +451,18 @@ namespace TOW_Core.CampaignSupport
         {
             if (victim.IsNotable)
             {
-                if (victim.Power >= (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
+                var comp = victim.CurrentSettlement.GetComponent<AssimilationComponent>();
+                if (victim.Power >= (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit &&
+                    comp != null && 
+                    comp.IsAssimilationComplete)
                 {
                     Hero hero = HeroCreator.CreateRelativeNotableHero(victim);
                     if (victim.CurrentSettlement != null)
                     {
                         ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
                     }
-
                     CheckNotable(hero.CurrentSettlement, hero);
-                    TOWCommon.Say($"OnHeroKilled {victim.Name} - {hero.Name} {hero.Culture.Name}");
+                    //TOWCommon.Say($"OnHeroKilled {victim.Name} - {hero.Name} {hero.Culture.Name}");
                     using (List<CaravanPartyComponent>.Enumerator enumerator = victim.OwnedCaravans.ToList<CaravanPartyComponent>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -478,9 +479,9 @@ namespace TOW_Core.CampaignSupport
                 }
             }
         IL_C3:
-            if (this._companions.Contains(victim))
+            if (_companions.Contains(victim))
             {
-                this._companions.Remove(victim);
+                _companions.Remove(victim);
             }
         }
 
@@ -566,16 +567,16 @@ namespace TOW_Core.CampaignSupport
                 }
             }
 
-            int count = this._companionTemplates.Count;
+            int count = _companionTemplates.Count;
             float num = MathF.Clamp(25f / (float)count, 0.33f, 1f);
-            foreach (CharacterObject companionTemplate in this._companionTemplates)
+            foreach (CharacterObject companionTemplate in _companionTemplates)
             {
                 if (MBRandom.RandomFloat < num)
                 {
-                    this.CreateCompanion(companionTemplate);
+                    CreateCompanion(companionTemplate);
                 }
             }
-            this._companions.Shuffle<Hero>();
+            _companions.Shuffle<Hero>();
         }
 
         private void CreateHeroes(Occupation occupation, Settlement settlement)
@@ -590,11 +591,11 @@ namespace TOW_Core.CampaignSupport
 
         private static void CheckNotable(Settlement settlement, Hero hero)
         {
-            if (settlement.IsEmpireSettlement() && hero.IsVampireNotable())
+            if (settlement.IsEmpireSettlement())
             {
                 hero.TurnIntoHuman();
             }
-            else if (settlement.IsVampireSettlement() && hero.IsEmpireNotable())
+            else if (settlement.IsVampireSettlement())
             {
                 hero.TurnIntoVampire();
             }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TOW_Core.CampaignSupport.SettlementComponents;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport.CampaignBehaviors
 {
@@ -12,11 +11,9 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
     {
         public override void RegisterEvents()
         {
-            CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, new Action<Settlement, bool, Hero, Hero, Hero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail>(OnOwnerChanged));
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, new Action(CheckForAssimilationComponent));
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoadFinishedEvent);
-
-            CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(DEBUGOnSettlementEntered));
+            CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, new Action<Settlement, bool, Hero, Hero, Hero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail>(OnSettlementOwnerChanged));
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, new Action(OnDailyTick));
         }
 
         private void OnGameLoadFinishedEvent()
@@ -28,7 +25,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
             }
         }
 
-        private void OnOwnerChanged(Settlement settlement, bool openToClaim, Hero newOwner, Hero oldOwner, Hero capturerHero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail detail)
+        private void OnSettlementOwnerChanged(Settlement settlement, bool openToClaim, Hero newOwner, Hero oldOwner, Hero capturerHero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail detail)
         {
             if (settlement.Culture != newOwner.MapFaction.Culture && (settlement.IsCastle || settlement.IsTown))
             {
@@ -46,7 +43,7 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
             }
         }
 
-        private void CheckForAssimilationComponent()
+        private void OnDailyTick()
         {
             foreach (var component in _assimilationComponents)
             {
@@ -63,31 +60,5 @@ namespace TOW_Core.CampaignSupport.CampaignBehaviors
         }
 
         private List<AssimilationComponent> _assimilationComponents = new List<AssimilationComponent>();
-
-
-
-
-        private void DEBUGOnSettlementEntered(MobileParty arg1, Settlement arg2, Hero arg3)
-        {
-            if (arg3 != null && arg3.CharacterObject != null && arg3.CharacterObject.IsPlayerCharacter)
-            {
-                if (arg2.Owner != arg3)
-                {
-                    ChangeOwnerOfSettlementAction.ApplyByGift(arg2, arg3);
-                }
-                else
-                {
-                    var comp = arg2.GetComponent<AssimilationComponent>();
-                    if (comp != null)
-                    {
-                        TOWCommon.Say($"{comp.Settlement.Name} {comp.InitialOutriderAmount} {comp.Outriders.Count} {comp.AssimilationProgress}");
-                    }
-                    else
-                    {
-                        TOWCommon.Say("There is no component");
-                    }
-                }
-            }
-        }
     }
 }
