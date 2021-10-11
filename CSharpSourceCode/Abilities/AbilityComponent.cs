@@ -26,10 +26,6 @@ namespace TOW_Core.Abilities
                             {
                                 _knownAbilities.Add(ability);
                             }
-                            else if (ability is SpecialMove)
-                            {
-                                specialMove = (SpecialMove)ability;
-                            }
                         }
                         else
                         {
@@ -46,6 +42,10 @@ namespace TOW_Core.Abilities
                 {
                     SelectAbility(0);
                 }
+            }
+            if (agent.HasAttribute("VampireBodyOverride"))
+            {
+                specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", agent);
             }
         }
 
