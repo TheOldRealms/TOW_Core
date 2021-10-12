@@ -333,6 +333,7 @@
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />

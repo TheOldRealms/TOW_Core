@@ -159,6 +159,7 @@ namespace TOW_Core
                 starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new CustomBanditDensityModel());
                 starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
+                starter.AddModel(new TORPartySizeModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
