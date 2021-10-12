@@ -7,9 +7,6 @@ namespace TOW_Core.Abilities.Scripts
 {
     public class SpecialMoveScript : AbilityScript
     {
-        private bool shouldDisappear = true;
-        private bool canChangeDirection = true;
-
         protected override void OnTick(float dt)
         {
             if (_isFading)
@@ -68,5 +65,8 @@ namespace TOW_Core.Abilities.Scripts
 
 
         public bool IsFadinOut { get => _isFading; }
+
+        private bool shouldDisappear = true;
+        private bool canChangeDirection = true;
     }
 }

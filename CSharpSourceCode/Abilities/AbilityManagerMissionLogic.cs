@@ -104,13 +104,9 @@ namespace TOW_Core.Abilities
                 {
                     if (!Agent.Main.HasMount)
                     {
-                        if (_abilityComponent.IsSpecialMoveUsing)
+                        if (_abilityComponent.SpecialMove.IsUsing)
                         {
-                            if (Input.IsKeyPressed(InputKey.LeftMouseButton))
-                            {
-                                _abilityComponent.StopSpecialMove();
-                            }
-                            if (Input.IsKeyPressed(InputKey.RightMouseButton))
+                            if (Input.IsKeyPressed(InputKey.LeftMouseButton) || Input.IsKeyPressed(InputKey.RightMouseButton))
                             {
                                 _abilityComponent.StopSpecialMove();
                             }
@@ -132,8 +128,8 @@ namespace TOW_Core.Abilities
                                     }
                                     else
                                     {
-                                        Agent.Main.UseSpecialMove();
                                         _abilityComponent.DisableSpecialMoveMode();
+                                        _abilityComponent.SpecialMove.TryCast(Agent.Main);
                                     }
                                 }
                             }
@@ -186,7 +182,7 @@ namespace TOW_Core.Abilities
         private bool CanUseAbilities()
         {
             return Agent.Main != null &&
-                   Agent.Main.State == AgentState.Active &&
+                   Agent.Main.IsActive() &&
                    _abilityComponent != null &&
                    _missionScreen != null &&
                    !ScreenManager.GetMouseVisibility();

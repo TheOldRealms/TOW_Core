@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Abilities.Scripts;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -110,10 +111,7 @@ namespace TOW_Core.Abilities
 
         public void StopSpecialMove()
         {
-            if (SpecialMove != null)
-            {
-                SpecialMove.Stop();
-            }
+            ((SpecialMoveScript)SpecialMove.AbilityScript)?.Stop();
         }
 
         public List<AbilityTemplate> GetKnownAbilityTemplates()
@@ -141,7 +139,6 @@ namespace TOW_Core.Abilities
 
         public bool IsSpellModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
         public bool IsSpecialMoveAtReady { get => isMovingAbilityReady; private set => isMovingAbilityReady = value; }
-        public bool IsSpecialMoveUsing { get => SpecialMove.IsUsing; }
         public Ability CurrentAbility
         {
             get => _currentAbility;

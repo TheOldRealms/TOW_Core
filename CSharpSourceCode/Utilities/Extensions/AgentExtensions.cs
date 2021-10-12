@@ -265,15 +265,5 @@ namespace TOW_Core.Utilities.Extensions
         {
             agent.AgentVisuals.SetVisible(false);
         }
-
-        public static void UseSpecialMove(this Agent agent)
-        {
-            var abilitycomponent = agent.GetComponent<AbilityComponent>();
-
-            if (abilitycomponent != null && abilitycomponent.SpecialMove != null)
-            {
-                abilitycomponent.SpecialMove.TryCast(agent);
-            }
-        }
     }
 }
