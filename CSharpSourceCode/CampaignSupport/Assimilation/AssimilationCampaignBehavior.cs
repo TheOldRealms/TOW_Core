@@ -61,7 +61,7 @@ namespace TOW_Core.CampaignSupport.Assimilation
         private void ShowMapNotification(Settlement settlement, CultureObject culture)
         {
             LogEntry.AddLogEntry(new SettlementCultureChangedLogEntry(settlement, culture));
-            var description = new TextObject($"Culture of {settlement.Name} area converted to {culture.Name}");
+            var description = new TextObject($"{settlement.Name} has converted to {culture.Name}");
             Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new SettlementCultureChangedMapNotification(settlement, culture, description));
         }
 

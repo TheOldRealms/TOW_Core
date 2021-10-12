@@ -24,7 +24,7 @@ namespace TOW_Core.CampaignSupport.Assimilation
         {
             get
             {
-                return new TextObject("{=3NCExCi1}Settlement Culture Converted", null);
+                return new TextObject("{=3NCExCi1}Area Culture Converted", null);
             }
         }
 
