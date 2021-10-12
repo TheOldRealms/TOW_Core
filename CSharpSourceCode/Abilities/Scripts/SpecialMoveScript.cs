@@ -54,8 +54,9 @@ namespace TOW_Core.Abilities.Scripts
                 frame.rotation = _casterAgent.LookRotation;
             }
             frame = frame.Advance(_ability.Template.BaseMovementSpeed);
-            var heightAtPosition = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-            frame.origin.z = heightAtPosition + base._ability.Template.Radius / 2;
+            float height = 0;
+            Mission.Current.Scene.GetHeightAtPoint(frame.origin.AsVec2, BodyFlags.None, ref height);
+            frame.origin.z = height + base._ability.Template.Radius / 2;
             return frame;
         }
 
