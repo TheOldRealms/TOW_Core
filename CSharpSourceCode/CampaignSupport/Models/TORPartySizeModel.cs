@@ -12,11 +12,11 @@ namespace TOW_Core.CampaignSupport.Models
             {
                 if (party.Leader != null && party.Leader.IsPlayerCharacter)
                 {
-                    num.Add(10);
+                    num.Add(20);
                 }
                 else
                 {
-                    num.Add(50);
+                    num.Add(150);
                 }
             }
             return num;
