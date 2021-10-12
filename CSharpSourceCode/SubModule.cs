@@ -37,7 +37,7 @@ using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
-using TOW_Core.CampaignSupport.CampaignBehaviors;
+using TOW_Core.CampaignSupport.Assimilation;
 
 namespace TOW_Core
 {

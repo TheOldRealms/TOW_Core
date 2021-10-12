@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaleWorlds.SaveSystem;
-using TOW_Core.CampaignSupport.CampaignBehaviors;
-using TOW_Core.CampaignSupport.SettlementComponents;
 
-namespace TOW_Core.CampaignSupport.SaveableTypeDefiners
+namespace TOW_Core.CampaignSupport.Assimilation
 {
     public class AssimilationSaveableTypeDefiner : SaveableTypeDefiner
     {

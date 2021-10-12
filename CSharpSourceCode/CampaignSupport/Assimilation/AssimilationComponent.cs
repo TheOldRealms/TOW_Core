@@ -12,7 +12,7 @@ using TaleWorlds.SaveSystem;
 using TOW_Core.Utilities.Extensions;
 using static TaleWorlds.CampaignSystem.Hero;
 
-namespace TOW_Core.CampaignSupport.SettlementComponents
+namespace TOW_Core.CampaignSupport.Assimilation
 {
     public class AssimilationComponent : SettlementComponent
     {
@@ -280,22 +280,5 @@ namespace TOW_Core.CampaignSupport.SettlementComponents
         [SaveableField(81)] private Settlement _settlement;
 
         [SaveableField(82)] private CultureObject _newCulture;
-    }
-
-    public class AssimilationIsCompleteEventArgs
-    {
-        public AssimilationIsCompleteEventArgs(Settlement settlement, CultureObject culture)
-        {
-            this._settlement = settlement;
-            this._culture = culture;
-        }
-
-        public Settlement Settlement { get => _settlement; }
-
-        public CultureObject Culture { get => _culture; }
-
-        private Settlement _settlement;
-
-        private CultureObject _culture;
-    }
+    }    
 }

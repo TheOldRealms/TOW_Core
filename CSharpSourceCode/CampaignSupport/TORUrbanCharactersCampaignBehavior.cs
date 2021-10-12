@@ -8,7 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport.SettlementComponents;
+using TOW_Core.CampaignSupport.Assimilation;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport

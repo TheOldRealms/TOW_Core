@@ -331,11 +331,11 @@
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
-    <Compile Include="CampaignSupport\CampaignBehaviors\AssimilationCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
-    <Compile Include="CampaignSupport\SaveableTypeDefiners\AssimilationSaveableTypeDefiner.cs" />
-    <Compile Include="CampaignSupport\SettlementComponents\AssimilationComponent.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
