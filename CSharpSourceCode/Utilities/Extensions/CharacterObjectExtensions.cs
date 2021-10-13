@@ -88,13 +88,21 @@ namespace TOW_Core.Utilities.Extensions
             return s;
         }
 
-        public static bool IsUndead(this BasicCharacterObject characterObject)
+        public static bool IsUndead(this CharacterObject characterObject)
         {
+            if (characterObject.IsHero)
+            {
+                return characterObject.HeroObject.IsUndead();
+            }
             return characterObject.GetAttributes().Contains("Undead");
         }
 
-        public static bool IsVampire(this BasicCharacterObject characterObject)
+        public static bool IsVampire(this CharacterObject characterObject)
         {
+            if (characterObject.IsHero)
+            {
+                return characterObject.HeroObject.IsVampire();
+            }
             return characterObject.GetAttributes().Contains("VampireBodyOverride");
         }
     }
