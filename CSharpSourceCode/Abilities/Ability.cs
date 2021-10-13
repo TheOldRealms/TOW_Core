@@ -58,13 +58,7 @@ namespace TOW_Core.Abilities
 
         public virtual bool CanCast(Agent casterAgent)
         {
-            return casterAgent.IsActive() && 
-                   casterAgent.Health > 0 && 
-                   (casterAgent.GetMorale() > 1 || 
-                   casterAgent.IsPlayerControlled) && 
-                   casterAgent.IsAbilityUser() && 
-                   !IsOnCooldown() && 
-                   !_isCasting;
+            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
         }
 
         protected virtual void DoCast(Agent casterAgent)
