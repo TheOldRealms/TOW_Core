@@ -1345,17 +1345,13 @@
 			<icon id="400" />
 		</possible_clan_banner_icon_ids>
 		<tournament_team_templates_one_participant>
-			<template name="NPCCharacter.tournament_template_empire_one_participant_set_v1" />
+			<template name="NPCCharacter.tournament_template_emp_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
 		<tournament_team_templates_two_participant>
-			<template name="NPCCharacter.tournament_template_empire_two_participant_set_v1" />
-			<template name="NPCCharacter.tournament_template_empire_two_participant_set_v2" />
-			<template name="NPCCharacter.tournament_template_empire_two_participant_set_v3" />
+			<template name="NPCCharacter.tournament_template_emp_two_participant_set_v1" />
 		</tournament_team_templates_two_participant>
 		<tournament_team_templates_four_participant>
-			<template name="NPCCharacter.tournament_template_empire_four_participant_set_v1" />
-			<template name="NPCCharacter.tournament_template_empire_four_participant_set_v2" />
-			<template name="NPCCharacter.tournament_template_empire_four_participant_set_v3" />
+			<template name="NPCCharacter.tournament_template_emp_four_participant_set_v1" />
 		</tournament_team_templates_four_participant>
 	</Culture>
 	<Culture id="aserai"
@@ -3588,18 +3584,13 @@
 			<icon id="314" />
 		</possible_clan_banner_icon_ids>
 		<tournament_team_templates_one_participant>
-			<template name="NPCCharacter.tournament_template_khuzait_one_participant_set_v1" />
-			<template name="NPCCharacter.tournament_template_khuzait_one_participant_set_v2" />
+			<template name="NPCCharacter.tournament_template_vampire_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
 		<tournament_team_templates_two_participant>
-			<template name="NPCCharacter.tournament_template_khuzait_two_participant_set_v1" />
-			<template name="NPCCharacter.tournament_template_khuzait_two_participant_set_v2" />
-			<template name="NPCCharacter.tournament_template_khuzait_two_participant_set_v3" />
+			<template name="NPCCharacter.tournament_template_vampire_two_participant_set_v1" />
 		</tournament_team_templates_two_participant>
 		<tournament_team_templates_four_participant>
-			<template name="NPCCharacter.tournament_template_khuzait_four_participant_set_v1" />
-			<template name="NPCCharacter.tournament_template_khuzait_four_participant_set_v2" />
-			<template name="NPCCharacter.tournament_template_khuzait_four_participant_set_v3" />
+			<template name="NPCCharacter.tournament_template_vampire_four_participant_set_v1" />
 		</tournament_team_templates_four_participant>
 	</Culture>
 	<Culture id="looters"
