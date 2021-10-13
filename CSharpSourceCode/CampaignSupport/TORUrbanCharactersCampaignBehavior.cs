@@ -436,15 +436,14 @@ namespace TOW_Core.CampaignSupport
             if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
             {
                 Hero wanderer = this._companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
-                wanderer.ChangeState(Hero.CharacterStates.Active);
-                EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
-                this._companionSettlements.Add(settlement, CampaignTime.Now);
-                this._companions.Remove(wanderer);
+                if (wanderer != null)
+                {
+                    wanderer.ChangeState(Hero.CharacterStates.Active);
+                    EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                    this._companionSettlements.Add(settlement, CampaignTime.Now);
+                    this._companions.Remove(wanderer);
+                }
             }
-            //if (settlement.IsSuitableForHero(hero))
-            //{
-            //    PurgeSettlement(mobileParty, settlement, hero);
-            //}
         }
 
         //NEED TO CHECK THE CODE
@@ -619,11 +618,16 @@ namespace TOW_Core.CampaignSupport
                     }
                 }
                 settlement2 = ((list.Count > 0) ? list.GetRandomElement<Settlement>().Village.Bound : settlement2);
-
                 Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                if (companionTemplate.StringId == "tow_wanderer_vampire_1")
+                var attributes = companionTemplate.GetAttributes();
+                foreach (var attribute in attributes)
                 {
-                    hero.AddAttribute("VampireBodyOverride");
+                    hero.AddAttribute(attribute);
+                }
+                var abilities = companionTemplate.GetAbilities();
+                foreach (var ability in abilities)
+                {
+                    hero.AddAbility(ability);
                 }
                 this.AdjustEquipment(hero);
                 this._companions.Add(hero);

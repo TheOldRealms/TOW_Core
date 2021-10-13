@@ -18,6 +18,10 @@ namespace TOW_Core.CampaignSupport.Models
                 {
                     num.Add(50);
                 }
+                else if (party.IsSettlement)
+                {
+                    num.Add(300);
+                }
                 else if (party.IsMobile)
                 {
                     num.Add(150);

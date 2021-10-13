@@ -40,9 +40,14 @@ namespace TOW_Core.CampaignSupport.Models
             {
                 TroopRosterElement elementCopyAtIndex = mobileParty.MemberRoster.GetElementCopyAtIndex(i);
                 CharacterObject character = elementCopyAtIndex.Character;
-                int num14 = flag ? elementCopyAtIndex.Number : (elementCopyAtIndex.Number - elementCopyAtIndex.WoundedNumber);
-                if (!character.IsUndead())
+
+                //SHOULD BE CHANGED
+                var isAliveHero = character.IsHero && !character.HeroObject.IsUndead();
+                var isAliveTroop = !character.IsHero && !character.IsUndead();
+                if (isAliveHero || isAliveTroop)
                 {
+
+                    int num14 = flag ? elementCopyAtIndex.Number : (elementCopyAtIndex.Number - elementCopyAtIndex.WoundedNumber);
                     if (character.IsHero)
                     {
                         Hero heroObject = elementCopyAtIndex.Character.HeroObject;
@@ -113,6 +118,7 @@ namespace TOW_Core.CampaignSupport.Models
                     }
                 }
             }
+
             ExplainedNumber explainedNumber = new ExplainedNumber(0f, false, null);
             if (mobileParty.LeaderHero != null && mobileParty.LeaderHero.GetPerkValue(DefaultPerks.Roguery.DeepPockets))
             {

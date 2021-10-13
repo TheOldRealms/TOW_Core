@@ -82,8 +82,8 @@
 	</MBPartyTemplate>
 	<MBPartyTemplate id="sylvania_militia_template" >
 		<stacks>
-			<PartyTemplateStack min_value="100" max_value="200" troop="NPCCharacter.tow_empire_state_troop_vc" />
-			<PartyTemplateStack min_value="100" max_value="200" troop="NPCCharacter.tow_empire_archer_vc" />
+			<PartyTemplateStack min_value="56" max_value="200" troop="NPCCharacter.tow_empire_state_troop_vc" />
+			<PartyTemplateStack min_value="56" max_value="200" troop="NPCCharacter.tow_empire_archer_vc" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="empire_outlaws" >
