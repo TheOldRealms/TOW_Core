@@ -14,7 +14,11 @@ namespace TOW_Core.CampaignSupport.Models
                 {
                     num.Add(20);
                 }
-                else
+                else if (party.Id.Contains("caravan"))
+                {
+                    num.Add(50);
+                }
+                else if (party.IsMobile)
                 {
                     num.Add(150);
                 }
