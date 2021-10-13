@@ -382,7 +382,7 @@
     <Compile Include="Battle\StatusEffects\StatusEffectComponent.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectMissionLogic.cs" />
-    <Compile Include="Battle\TORBattleUtilities.cs" />
+    <Compile Include="Battle\TOWBattleUtilities.cs" />
     <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />

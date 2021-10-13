@@ -11,7 +11,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle
 {
-    public static class TORBattleUtilities
+    public static class TOWBattleUtilities
     {
         public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
         {
