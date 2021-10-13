@@ -1,5 +1,6 @@
 ﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.Localization;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -14,7 +15,7 @@ namespace TOW_Core.CampaignSupport.Models
                 var info = Hero.MainHero.GetExtendedInfo();
                 if (Campaign.Current.CampaignBehaviorManager != null && info != null && info.AcquiredAttributes.Contains("VampireBodyOverride"))
                 {
-                    num.Add(100);
+                    num.Add(100, new TextObject("Vampire body"));
                     if (character.HeroObject != null && Campaign.Current.CampaignStartTime.IsNow)
                     {
                         character.HeroObject.HitPoints = (int)num.ResultNumber;
