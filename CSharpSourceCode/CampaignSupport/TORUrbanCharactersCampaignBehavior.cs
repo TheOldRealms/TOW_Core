@@ -57,8 +57,8 @@ namespace TOW_Core.CampaignSupport
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
         {
             this._companionTemplates = new List<CharacterObject>(from x in CharacterObject.Templates
-                                                                 where x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()
-                                                                 select x);
+                where x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()
+                select x);
             this._nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(this._randomCompanionSpawnFrequencyInWeeks);
             this.SpawnUrbanCharactersAtGameStart();
         }
@@ -76,7 +76,7 @@ namespace TOW_Core.CampaignSupport
                         {
                             if (hero2 != hero && hero2 == hero2.Clan.Leader && hero2.MapFaction == settlement.MapFaction)
                             {
-                                float chanceOfConflict = (float)HeroHelper.NPCPersonalityClashWithNPC(hero, hero2) * 0.01f * 2.5f;
+                                float chanceOfConflict = (float) HeroHelper.NPCPersonalityClashWithNPC(hero, hero2) * 0.01f * 2.5f;
                                 float num = MBRandom.RandomFloat;
                                 float num2 = Campaign.MapDiagonal;
                                 foreach (Settlement settlement2 in hero2.Clan.Settlements)
@@ -87,31 +87,36 @@ namespace TOW_Core.CampaignSupport
                                         num2 = num3;
                                     }
                                 }
+
                                 float num4 = (num2 < 100f) ? (1f - num2 / 100f) : 0f;
                                 float num5 = num4 * MBRandom.RandomFloat + (1f - num4);
                                 if (MBRandom.RandomFloat < 0.2f)
                                 {
                                     num5 = 1f / (0.5f + 0.5f * num5);
                                 }
+
                                 num *= num5;
                                 if (num > 1f)
                                 {
                                     num = 1f;
                                 }
+
                                 this.DetermineRelation(hero, hero2, num, chanceOfConflict);
                             }
                         }
+
                         for (int j = i + 1; j < settlement.Notables.Count; j++)
                         {
                             Hero hero3 = settlement.Notables[j];
                             if (hero3.IsNotable)
                             {
-                                float chanceOfConflict2 = (float)HeroHelper.NPCPersonalityClashWithNPC(hero, hero) * 0.01f * 2.5f;
+                                float chanceOfConflict2 = (float) HeroHelper.NPCPersonalityClashWithNPC(hero, hero) * 0.01f * 2.5f;
                                 float randomValue = MBRandom.RandomFloat;
                                 if (hero.CharacterObject.Occupation == hero3.CharacterObject.Occupation)
                                 {
                                     randomValue = 1f - 0.25f * MBRandom.RandomFloat;
                                 }
+
                                 this.DetermineRelation(hero, hero3, randomValue, chanceOfConflict2);
                             }
                         }
@@ -125,7 +130,7 @@ namespace TOW_Core.CampaignSupport
             float num = 0.3f;
             if (randomValue < num)
             {
-                int num2 = (int)((num - randomValue) * (num - randomValue) / (num * num) * 100f);
+                int num2 = (int) ((num - randomValue) * (num - randomValue) / (num * num) * 100f);
                 if (num2 > 0)
                 {
                     ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num2, true);
@@ -134,7 +139,7 @@ namespace TOW_Core.CampaignSupport
             }
             else if (randomValue > 1f - chanceOfConflict)
             {
-                int num3 = -(int)((randomValue - (1f - chanceOfConflict)) * (randomValue - (1f - chanceOfConflict)) / (chanceOfConflict * chanceOfConflict) * 100f);
+                int num3 = -(int) ((randomValue - (1f - chanceOfConflict)) * (randomValue - (1f - chanceOfConflict)) / (chanceOfConflict * chanceOfConflict) * 100f);
                 if (num3 < 0)
                 {
                     ChangeRelationAction.ApplyRelationChangeBetweenHeroes(hero1, hero2, num3, true);
@@ -165,8 +170,8 @@ namespace TOW_Core.CampaignSupport
         private void OnGameLoaded(CampaignGameStarter campaignGameStarter)
         {
             this._companionTemplates = new List<CharacterObject>(from x in CharacterObject.Templates
-                                                                 where x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()
-                                                                 select x);
+                where x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()
+                select x);
             foreach (Hero hero in Hero.DeadOrDisabledHeroes.ToList<Hero>())
             {
                 if ((hero.IsNotable || hero.IsWanderer) && hero.DeathDay.ElapsedDaysUntilNow >= 7f)
@@ -193,6 +198,7 @@ namespace TOW_Core.CampaignSupport
                     this._companionSettlements.Remove(keyValuePair.Key);
                 }
             }
+
             if (this._nextRandomCompanionSpawnDate.IsPast)
             {
                 CharacterObject randomElementWithPredicate = this._companionTemplates.GetRandomElementWithPredicate((CharacterObject x) => !this._companions.Contains(x.HeroObject));
@@ -243,14 +249,16 @@ namespace TOW_Core.CampaignSupport
                         Occupation.Headman
                     };
                 }
+
                 float randomFloat = MBRandom.RandomFloat;
                 int num = 0;
                 foreach (Occupation occupation in list)
                 {
                     num += Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation);
                 }
-                float num2 = settlement.Notables.Any<Hero>() ? ((float)(num - settlement.Notables.Count) / (float)num) : 1f;
-                num2 *= (float)Math.Pow((double)num2, 0.36000001430511475);
+
+                float num2 = settlement.Notables.Any<Hero>() ? ((float) (num - settlement.Notables.Count) / (float) num) : 1f;
+                num2 *= (float) Math.Pow((double) num2, 0.36000001430511475);
                 if (randomFloat <= num2)
                 {
                     List<Occupation> list2 = new List<Occupation>();
@@ -267,12 +275,14 @@ namespace TOW_Core.CampaignSupport
                                 }
                             }
                         }
+
                         int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation2);
                         if (num3 < targetNotableCountForSettlement)
                         {
                             list2.Add(occupation2);
                         }
                     }
+
                     if (list2.Count > 0)
                     {
                         Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
@@ -291,6 +301,7 @@ namespace TOW_Core.CampaignSupport
                 {
                     this.UpdateNotableRelations(hero);
                 }
+
                 this.UpdateNotableSupport(hero);
                 this.BalanceGoldAndPowerOfNotable(hero);
                 this.ManageCaravanExpensesOfNotable(hero);
@@ -307,7 +318,7 @@ namespace TOW_Core.CampaignSupport
                     int relation = notable.GetRelation(clan.Leader);
                     if (relation > 0)
                     {
-                        float num = (float)relation / 1000f;
+                        float num = (float) relation / 1000f;
                         if (MBRandom.RandomFloat < num)
                         {
                             ChangeRelationAction.ApplyRelationChangeBetweenHeroes(notable, clan.Leader, -20, true);
@@ -315,7 +326,7 @@ namespace TOW_Core.CampaignSupport
                     }
                     else if (relation < 0)
                     {
-                        float num2 = (float)(-(float)relation) / 1000f;
+                        float num2 = (float) (-(float) relation) / 1000f;
                         if (MBRandom.RandomFloat < num2)
                         {
                             ChangeRelationAction.ApplyRelationChangeBetweenHeroes(notable, clan.Leader, 20, true);
@@ -339,7 +350,7 @@ namespace TOW_Core.CampaignSupport
                             int relation = notable.GetRelation(clan.Leader);
                             if (relation > 50)
                             {
-                                float num = (float)(relation - 50) / 2000f;
+                                float num = (float) (relation - 50) / 2000f;
                                 if (MBRandom.RandomFloat < num)
                                 {
                                     notable.SupporterOf = clan;
@@ -347,18 +358,21 @@ namespace TOW_Core.CampaignSupport
                             }
                         }
                     }
+
                     return;
                 }
             }
+
             int relation2 = notable.GetRelation(notable.SupporterOf.Leader);
             if (relation2 < 0)
             {
                 notable.SupporterOf = null;
                 return;
             }
+
             if (relation2 < 50)
             {
-                float num2 = (float)(50 - relation2) / 500f;
+                float num2 = (float) (50 - relation2) / 500f;
                 if (MBRandom.RandomFloat < num2)
                 {
                     notable.SupporterOf = null;
@@ -372,14 +386,15 @@ namespace TOW_Core.CampaignSupport
             {
                 int num = (notable.Gold - 10000) / 500;
                 GiveGoldAction.ApplyBetweenCharacters(notable, null, num * 500, true);
-                notable.AddPower((float)num);
+                notable.AddPower((float) num);
                 return;
             }
+
             if (notable.Gold < 4500 && notable.Power > 0f)
             {
                 int num2 = (5000 - notable.Gold) / 500;
                 GiveGoldAction.ApplyBetweenCharacters(null, notable, num2 * 500, true);
-                notable.AddPower((float)(-(float)num2));
+                notable.AddPower((float) (-(float) num2));
             }
         }
 
@@ -398,6 +413,7 @@ namespace TOW_Core.CampaignSupport
                     int num = Math.Min(totalWage, notable.Gold);
                     notable.Gold -= num;
                 }
+
                 if (caravanPartyComponent.MobileParty.PartyTradeGold < 5000)
                 {
                     int num2 = Math.Min(5000 - caravanPartyComponent.MobileParty.PartyTradeGold, notable.Gold);
@@ -409,7 +425,8 @@ namespace TOW_Core.CampaignSupport
 
         private void CheckAndMakeNotableDisappear(Hero notable)
         {
-            if (notable.OwnedWorkshops.IsEmpty<Workshop>() && notable.OwnedCaravans.IsEmpty<CaravanPartyComponent>() && notable.OwnedCommonAreas.IsEmpty<CommonAreaPartyComponent>() && notable.CanHaveQuestsOrIssues() && notable.Power < (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
+            if (notable.OwnedWorkshops.IsEmpty<Workshop>() && notable.OwnedCaravans.IsEmpty<CaravanPartyComponent>() && notable.OwnedCommonAreas.IsEmpty<CommonAreaPartyComponent>() && notable.CanHaveQuestsOrIssues() &&
+                notable.Power < (float) Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
             {
                 float randomFloat = MBRandom.RandomFloat;
                 float notableDisappearProbability = this.GetNotableDisappearProbability(notable);
@@ -421,6 +438,7 @@ namespace TOW_Core.CampaignSupport
                     {
                         return;
                     }
+
                     issue.CompleteIssueWithAiLord(notable.CurrentSettlement.OwnerClan.Leader);
                 }
             }
@@ -428,7 +446,7 @@ namespace TOW_Core.CampaignSupport
 
         private float GetNotableDisappearProbability(Hero hero)
         {
-            return ((float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit - hero.Power) / (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit * 0.02f;
+            return ((float) Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit - hero.Power) / (float) Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit * 0.02f;
         }
 
         public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
@@ -436,10 +454,13 @@ namespace TOW_Core.CampaignSupport
             if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
             {
                 Hero wanderer = this._companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
+                
+                if (wanderer == null) return;
+
                 wanderer.ChangeState(Hero.CharacterStates.Active);
                 EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
-                this._companionSettlements.Add(settlement, CampaignTime.Now);
-                this._companions.Remove(wanderer);
+                _companionSettlements.Add(settlement, CampaignTime.Now);
+                _companions.Remove(wanderer);
             }
             //if (settlement.IsSuitableForHero(hero))
             //{
@@ -452,7 +473,7 @@ namespace TOW_Core.CampaignSupport
         {
             if (victim.IsNotable)
             {
-                if (victim.Power >= (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
+                if (victim.Power >= (float) Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
                 {
                     Hero hero = HeroCreator.CreateRelativeNotableHero(victim);
                     if (victim.CurrentSettlement != null)
@@ -469,15 +490,18 @@ namespace TOW_Core.CampaignSupport
                             CaravanPartyComponent caravanPartyComponent = enumerator.Current;
                             CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, hero);
                         }
+
                         goto IL_C3;
                     }
                 }
+
                 foreach (CaravanPartyComponent caravanPartyComponent2 in victim.OwnedCaravans.ToList<CaravanPartyComponent>())
                 {
                     DestroyPartyAction.Apply(null, caravanPartyComponent2.MobileParty);
                 }
             }
-        IL_C3:
+
+            IL_C3:
             if (this._companions.Contains(victim))
             {
                 this._companions.Remove(victim);
@@ -495,6 +519,7 @@ namespace TOW_Core.CampaignSupport
                     newNotable.SetPersonalRelation(otherHero, relation);
                 }
             }
+
             if (deadNotable.Issue != null)
             {
                 Campaign.Current.IssueManager.ChangeIssueOwner(deadNotable.Issue, newNotable);
@@ -567,7 +592,7 @@ namespace TOW_Core.CampaignSupport
             }
 
             int count = this._companionTemplates.Count;
-            float num = MathF.Clamp(25f / (float)count, 0.33f, 1f);
+            float num = MathF.Clamp(25f / (float) count, 0.33f, 1f);
             foreach (CharacterObject companionTemplate in this._companionTemplates)
             {
                 if (MBRandom.RandomFloat < num)
@@ -575,6 +600,7 @@ namespace TOW_Core.CampaignSupport
                     this.CreateCompanion(companionTemplate);
                 }
             }
+
             this._companions.Shuffle<Hero>();
         }
 
@@ -606,6 +632,7 @@ namespace TOW_Core.CampaignSupport
             {
                 return;
             }
+
             Town randomElementWithPredicate = Town.AllTowns.GetRandomElementWithPredicate((Town settlement) => settlement.Settlement.IsSuitableForHero(companionTemplate));
             Settlement settlement2 = (randomElementWithPredicate != null) ? randomElementWithPredicate.Settlement : null;
             if (settlement2 != null)
@@ -618,6 +645,7 @@ namespace TOW_Core.CampaignSupport
                         list.Add(village.Settlement);
                     }
                 }
+
                 settlement2 = ((list.Count > 0) ? list.GetRandomElement<Settlement>().Village.Bound : settlement2);
 
                 Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
@@ -631,6 +659,7 @@ namespace TOW_Core.CampaignSupport
                 {
                     hero.AddAbility(ability);
                 }
+
                 this.AdjustEquipment(hero);
                 this._companions.Add(hero);
             }
@@ -657,30 +686,36 @@ namespace TOW_Core.CampaignSupport
                                     flag = true;
                                 }
                             }
+
                             if (settlement.IsTown && specialCharacter.IsPreacher && specialCharacter.GetTraitLevel(DefaultTraits.Generosity) < 1)
                             {
                                 flag = true;
                             }
+
                             if (specialCharacter.IsMerchant && specialCharacter.Power < 60f && settlement.IsTown && settlement.Town.Workshops.All((Workshop x) => x.Owner != specialCharacter) && randomFloat < specialCharacter.Power / 500f)
                             {
                                 flag = true;
                             }
+
                             if (specialCharacter.IsArtisan || specialCharacter.IsRuralNotable)
                             {
                                 flag = false;
                             }
+
                             if (flag)
                             {
                                 list.Add(specialCharacter.CharacterObject);
                             }
                         }
                     }
+
                     foreach (CharacterObject character in list)
                     {
                         this.MoveSpecialCharacter(character, settlement);
                     }
                 }
             }
+
             foreach (Settlement settlement2 in Campaign.Current.Settlements)
             {
                 if (settlement2.IsTown)
@@ -708,6 +743,7 @@ namespace TOW_Core.CampaignSupport
                     {
                         num2 = (num3 + 10f) * (MBRandom.RandomFloat + 0.1f);
                     }
+
                     if (num2 < num)
                     {
                         settlement = settlement2;
@@ -715,11 +751,13 @@ namespace TOW_Core.CampaignSupport
                     }
                 }
             }
+
             if (settlement != null)
             {
                 this.CharacterChangeLocation(character.HeroObject, startPoint, settlement);
                 result = true;
             }
+
             return result;
         }
 
@@ -729,6 +767,7 @@ namespace TOW_Core.CampaignSupport
             {
                 LeaveSettlementAction.ApplyForCharacterOnly(hero);
             }
+
             EnterSettlementAction.ApplyForCharacterOnly(hero, endLocation);
             if (hero != null)
             {
@@ -760,6 +799,7 @@ namespace TOW_Core.CampaignSupport
                         }
                     }
                 }
+
                 if (settlement.HeroesWithoutParty.Count > 0)
                 {
                     for (int j = 0; j < settlement.HeroesWithoutParty.Count; j++)
@@ -775,6 +815,7 @@ namespace TOW_Core.CampaignSupport
                         }
                     }
                 }
+
                 if (settlement.MapFaction.Name.Contains("Sylvania"))
                 {
                     TOWCommon.Say($"{hero.Name} purged {settlement.Name} of undead");

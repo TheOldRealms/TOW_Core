@@ -15,7 +15,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private Probability slowMotionFrequency = Probability.Probably;
 
-        private float slowMotionTimer;
+        private float slowMotionEndTime;
 
         private float maxChance = 33;
 
@@ -31,8 +31,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
-            if (MBCommon.TimeType.Mission.GetTime() >= slowMotionTimer)
+            if (Mission.CurrentTime >= slowMotionEndTime)
             {
                 Mission.Current.Scene.SlowMotionMode = false;
             }
@@ -40,8 +39,8 @@ namespace TOW_Core.Battle.Dismemberment
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
-            base.OnRegisterBlow(attacker, victim, realHitEntity, blow, ref collisionData, attackerWeapon);
             bool canBeDismembered = victim != null &&
+                                    //!victim.HasMount &&
                                     victim.IsHuman &&
                                     victim != Agent.Main &&
                                     victim.Health <= 0 &&
@@ -83,7 +82,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private void EnableSlowMotion()
         {
-            slowMotionTimer = MBCommon.TimeType.Mission.GetTime() + 0.5f;
+            slowMotionEndTime = Mission.CurrentTime + 0.5f;
             Mission.Current.Scene.SlowMotionMode = true;
         }
 
@@ -259,18 +258,14 @@ namespace TOW_Core.Battle.Dismemberment
         private void AddHeadPhysics(GameEntity head, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
-            Vec3 velocityVec = new Vec3(blowDir.X, blowDir.Y, blowDir.Z);
-            head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), velocityVec, Vec3.Zero, PhysicsMaterial.GetFromName("flesh"), false, -1);
-            head.ApplyImpulseToDynamicBody(new Vec3(head.GlobalPosition.X, head.GlobalPosition.Y, head.GlobalPosition.Z + 0.1f), new Vec3(blowDir.X * 5, blowDir.Y * 5, blowDir.Z * 1.1f));
+            head.AddPhysics(1f, head.CenterOfMass, head.GetBodyShape(), blowDir * 2, blowDir * 10, PhysicsMaterial.GetFromName("flesh"), false, -1);
         }
 
         private void AddHeaddressPhysics(GameEntity hat, AttackCollisionData collisionData)
         {
             Vec3 blowDir = collisionData.WeaponBlowDir;
-            Vec3 velocityVec = new Vec3(blowDir.X * 6, blowDir.Y * 6, blowDir.Z);
-            Vec3 angularVec = new Vec3(-6, -6, 1);
-            hat.AddPhysics(0.1f, hat.CenterOfMass, hat.GetBodyShape(), velocityVec, angularVec, PhysicsMaterial.GetFromName("flesh"), false, -1);
-            hat.ApplyImpulseToDynamicBody(new Vec3(hat.GlobalPosition.X, hat.GlobalPosition.Y, hat.GlobalPosition.Z + 1f), new Vec3(blowDir.X * 0.2f, blowDir.Y * 0.2f, blowDir.Z * 0));
+            Vec3 velocity = new Vec3(blowDir.X * 6, blowDir.Y * 6, blowDir.Z);
+            hat.AddPhysics(0.1f, hat.CenterOfMass, hat.GetBodyShape(), velocity, velocity, PhysicsMaterial.GetFromName("flesh"), false, -1);
         }
 
         private void CoverCutWithFlesh(Agent victim, GameEntity head)

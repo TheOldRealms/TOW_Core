@@ -21,7 +21,6 @@ namespace TOW_Core.Abilities
         
         public override void OnMissionScreenTick(float dt)
         {
-            base.OnMissionScreenTick(dt);
             if (!_isInitialized)
             {
                 this._dataSource = new AbilityHUD_VM();
@@ -34,8 +33,6 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
-
             if (this._isInitialized)
             {
                 this._dataSource.UpdateProperties();

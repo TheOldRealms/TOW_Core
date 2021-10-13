@@ -17,10 +17,10 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         [SaveableProperty(3)] public Settlement Target { get; set; }
 
-        private Hero _owner;
+        [SaveableField(4)] private Hero _owner;
         public override Hero PartyOwner => _owner;
 
-        private Settlement _home;
+        [SaveableField(5)] private Settlement _home;
         public override Settlement HomeSettlement => _home;
 
         [CachedData] private TextObject _cachedName;
