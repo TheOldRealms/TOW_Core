@@ -621,9 +621,15 @@ namespace TOW_Core.CampaignSupport
                 settlement2 = ((list.Count > 0) ? list.GetRandomElement<Settlement>().Village.Bound : settlement2);
 
                 Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                if (companionTemplate.StringId == "tow_wanderer_vampire_1")
+                var attributes = companionTemplate.GetAttributes();
+                foreach (var attribute in attributes)
                 {
-                    hero.AddAttribute("VampireBodyOverride");
+                    hero.AddAttribute(attribute);
+                }
+                var abilities = companionTemplate.GetAbilities();
+                foreach (var ability in abilities)
+                {
+                    hero.AddAbility(ability);
                 }
                 this.AdjustEquipment(hero);
                 this._companions.Add(hero);
