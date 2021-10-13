@@ -56,7 +56,7 @@ namespace TOW_Core.Battle
                 spawnLogic = beh;
                 Traverse.Create(this).Field("_missionAgentSpawnLogic").SetValue(beh);
             }
-            Traverse.Create(this).Field("_checkRetreatingTimer").SetValue(new BasicTimer(MBCommon.TimeType.Mission));
+            Traverse.Create(this).Field("_checkRetreatingTimer").SetValue(new BasicMissionTimer());
         }
     }
 }

@@ -16,13 +16,11 @@ namespace TOW_Core.Battle.Grenades
     {
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
             if (!(Game.Current.GameType is Campaign) && Input.IsKeyPressed(InputKey.L))
                 DebugOnlyEquipGrenades();
         }
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
-            base.OnAgentShootMissile(shooterAgent, weaponIndex, position, velocity, orientation, hasRigidBody, forcedMissileIndex);
             if (shooterAgent.WieldedWeapon.Item.Name.Contains("Grenade"))
             {
                 Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
@@ -33,7 +31,6 @@ namespace TOW_Core.Battle.Grenades
         }
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         {
-            base.OnAgentHit(affectedAgent, affectorAgent, damage, affectorWeapon);
             if (affectorWeapon.Item != null && affectorWeapon.Item.Name.Contains("Grenade"))
             {
                 Mission.Missile grenade = Mission.Current.Missiles.ToList().FirstOrDefault(m => m.Weapon.Item.Name.Contains("Grenade") && IsNearbyAgent(m, affectedAgent));

@@ -62,7 +62,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnMissionScreenTick(float dt)
         {
-            base.OnMissionScreenTick(dt);
             if (MBEditor.EditModeEnabled && !this._isActive)
             {
                 return;
@@ -127,14 +126,12 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnMissionScreenInitialize()
         {
-            base.OnMissionScreenInitialize();
-            this.OnInitializeWeaponCrosshair();
+            OnInitializeWeaponCrosshair();
         }
 
         public override void OnMissionScreenFinalize()
         {
-            base.OnMissionScreenFinalize();
-            this.OnFinalizeWeaponCrosshair();
+            OnFinalizeWeaponCrosshair();
         }
 
         private void UpdateAbilityCrosshairVisibility()
@@ -320,14 +317,12 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnPhotoModeActivated()
         {
-            base.OnPhotoModeActivated();
-            this.weaponLayer._gauntletUIContext.ContextAlpha = 0f;
+            weaponLayer._gauntletUIContext.ContextAlpha = 0f;
         }
 
         public override void OnPhotoModeDeactivated()
         {
-            base.OnPhotoModeDeactivated();
-            this.weaponLayer._gauntletUIContext.ContextAlpha = 1f;
+            weaponLayer._gauntletUIContext.ContextAlpha = 1f;
         }
     }
 }
