@@ -23,9 +23,12 @@ namespace TOW_Core.Abilities
 
         public AbilityTemplate Template { get; private set; }
 
+        public AbilityScript AbilityScript { get; private set; }
+
         public AbilityCrosshair Crosshair { get; private set; }
 
         public bool IsOnCooldown() => _timer.Enabled;
+
         public int GetCoolDownLeft() => _coolDownLeft;
 
         public Ability(AbilityTemplate template)
