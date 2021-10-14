@@ -13,6 +13,21 @@ namespace TOW_Core.Abilities
 {
     public abstract class Ability : IDisposable
     {
+        private int _coolDownLeft = 0;
+        private Timer _timer = null;
+        private bool _isCasting;
+        private object _sync = new object();
+        private float _cooldown_end_time;
+
+        public string StringID { get; }
+
+        public AbilityTemplate Template { get; private set; }
+
+        public AbilityCrosshair Crosshair { get; private set; }
+
+        public bool IsOnCooldown() => _timer.Enabled;
+        public int GetCoolDownLeft() => _coolDownLeft;
+
         public Ability(AbilityTemplate template)
         {
             StringID = template.StringID;
@@ -290,24 +305,5 @@ namespace TOW_Core.Abilities
             _timer = null;
             Template = null;
         }
-
-
-        private int _coolDownLeft = 0;
-        private Timer _timer = null;
-        private bool _isCasting;
-        private object _sync = new object();
-        private float _cooldown_end_time;
-
-        public string StringID { get; }
-
-        public AbilityTemplate Template { get; private set; }
-
-        public AbilityScript AbilityScript { get; private set; }
-
-        public AbilityCrosshair Crosshair { get; private set; }
-
-        public bool IsOnCooldown() => _timer.Enabled;
-
-        public int GetCoolDownLeft() => _coolDownLeft;
     }
 }
