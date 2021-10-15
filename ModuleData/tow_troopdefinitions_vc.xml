@@ -259,7 +259,7 @@
 
 
 	<!-- Vampire Counts animated skeleton-->
-	<NPCCharacter id="tow_summoned_skeleton" default_group="Infantry" level="6" name="{=!}Animated Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
+	<NPCCharacter id="tow_summoned_skeleton" default_group="Infantry" level="6" name="{=!}Summoned Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
