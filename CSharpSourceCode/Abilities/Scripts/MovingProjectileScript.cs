@@ -10,7 +10,7 @@ namespace TOW_Core.Abilities.Scripts
             var closestAgent = Mission.Current.RayCastForClosestAgent(_previousFrameOrigin, GameEntity.GetGlobalFrame().origin, out float _, _casterAgent.Index, collisionRadius);
             if (closestAgent != null)
             {
-                return closestAgent.Index != _casterAgent.MountAgent.Index;
+                return closestAgent.Index != _casterAgent.MountAgent?.Index;
             }
             return false;
         }

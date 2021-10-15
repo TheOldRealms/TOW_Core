@@ -106,6 +106,11 @@ namespace TOW_Core.Battle.TriggeredEffect
                 try
                 {
                     var obj = Activator.CreateInstance(Type.GetType(_template.ScriptNameToTrigger));
+                    if(obj is PrefabSpawnerScript)
+                    {
+                        var script = obj as PrefabSpawnerScript;
+                        script.OnInit(_template.SpawnPrefabName);
+                    }
                     if (obj is ITriggeredScript)
                     {
                         var script = obj as ITriggeredScript;

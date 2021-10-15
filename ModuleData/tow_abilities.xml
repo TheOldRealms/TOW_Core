@@ -3,6 +3,7 @@
 
   <!-- custom battle lords -->
   <CharacterAbilityTuple CharacterID="emp_lord">
+    <Abilities>MortarSpawner</Abilities>
     <Abilities>Fireball</Abilities>
     <Abilities>Dart</Abilities>
     <Abilities>BurningHead</Abilities>
