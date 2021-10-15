@@ -16,16 +16,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.runefang_001" />
-				<Equipment slot="Item1" id="Item.empire_banner_002" />
-				<Equipment slot="Head" id="Item.empire_marius_leitdorf_hat" />
-				<Equipment slot="Body" id="Item.empire_marius_leitdorf_body" />
-				<Equipment slot="Cape" id="Item.empire_marius_leitdorf_shoulders" />
-				<Equipment slot="Gloves" id="Item.empire_marius_leitdorf_gauntlets" />
-				<Equipment slot="Leg" id="Item.empire_marius_leitdorf_boots" />
-
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Item0" id="Item.runefang_001" />
+				<equipment slot="Item1" id="Item.empire_banner_002" />
+				<equipment slot="Head" id="Item.empire_marius_leitdorf_hat" />
+				<equipment slot="Body" id="Item.empire_marius_leitdorf_body" />
+				<equipment slot="Cape" id="Item.empire_marius_leitdorf_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_marius_leitdorf_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_marius_leitdorf_boots" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -47,16 +46,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<Equipment slot="Item1" id="Item.empire_banner_001" />
-				<Equipment slot="Head" id="Item.empire_hat_003" />
-				<Equipment slot="Body" id="Item.battanian_chainmail_armor_b" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<Equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.plate_boots" />
-
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.empire_banner_001" />
+				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Body" id="Item.battanian_chainmail_armor_b" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -78,15 +76,15 @@
 			</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.vlandia_2haxe_1_t4" />
-				<Equipment slot="Head" id="Item.kettle_helmet_with_leather" />
-				<Equipment slot="Body" id="Item.battania_civil_c" />
-				<Equipment slot="Cape" id="Item.empire_general_cape_001" />
-				<Equipment slot="Gloves" id="Item.battania_noble_bracers" />
-				<Equipment slot="Leg" id="Item.leather_boots" />
+				<equipment slot="Item0" id="Item.vlandia_2haxe_1_t4" />
+				<equipment slot="Head" id="Item.kettle_helmet_with_leather" />
+				<equipment slot="Body" id="Item.battania_civil_c" />
+				<equipment slot="Cape" id="Item.empire_general_cape_001" />
+				<equipment slot="Gloves" id="Item.battania_noble_bracers" />
+				<equipment slot="Leg" id="Item.leather_boots" />
 
-				<Equipment slot="Horse" id="Item.mule" />
-				<Equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+				<equipment slot="Horse" id="Item.mule" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -108,12 +106,12 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.mannfred_sword" />
-				<Equipment slot="Body" id="Item.vc_mannfred_body" />
-				<Equipment slot="Cape" id="Item.vc_mannfred_shoulders" />
-				<Equipment slot="Leg" id="Item.vc_mannfred_boots" />
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+				<equipment slot="Item0" id="Item.mannfred_sword" />
+				<equipment slot="Body" id="Item.vc_mannfred_body" />
+				<equipment slot="Cape" id="Item.vc_mannfred_shoulders" />
+				<equipment slot="Leg" id="Item.vc_mannfred_boots" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -135,15 +133,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.balthazar_gelt_staff" />
-				<Equipment slot="Head" id="Item.empire_balthazar_gelt_mask" />
-				<Equipment slot="Body" id="Item.empire_balthazar_gelt_body" />
-				<Equipment slot="Cape" id="Item.empire_balthazar_gelt_shoulders" />
-				<Equipment slot="Gloves" id="Item.empire_balthazar_gelt_gauntlets" />
-				<Equipment slot="Leg" id="Item.empire_balthazar_gelt_boots" />
+				<equipment slot="Item0" id="Item.balthazar_gelt_staff" />
+				<equipment slot="Head" id="Item.empire_balthazar_gelt_mask" />
+				<equipment slot="Body" id="Item.empire_balthazar_gelt_body" />
+				<equipment slot="Cape" id="Item.empire_balthazar_gelt_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_balthazar_gelt_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_balthazar_gelt_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -164,15 +162,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.wp_hammer_001" />
-				<Equipment slot="Head" id="Item.militia_helmet_gilded" />
-				<Equipment slot="Body" id="Item.monk_robe" />
-				<Equipment slot="Cape" id="Item.brass_scale_shoulders" />
-				<Equipment slot="Gloves" id="Item.northern_brass_bracers" />
-				<Equipment slot="Leg" id="Item.empire_plate_boots_002" />
+				<equipment slot="Item0" id="Item.wp_hammer_001" />
+				<equipment slot="Head" id="Item.militia_helmet_gilded" />
+				<equipment slot="Body" id="Item.monk_robe" />
+				<equipment slot="Cape" id="Item.brass_scale_shoulders" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -193,15 +191,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_greatsword_001" />
-				<Equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
-				<Equipment slot="Body" id="Item.nordic_sloven_leather" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_005" />
-				<Equipment slot="Gloves" id="Item.northern_brass_bracers" />
-				<Equipment slot="Leg" id="Item.empire_plate_boots_002" />
+				<equipment slot="Item0" id="Item.empire_greatsword_001" />
+				<equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+				<equipment slot="Body" id="Item.nordic_sloven_leather" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_005" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -222,15 +220,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.wp_hammer_001" />
-				<Equipment slot="Head" id="Item.militia_helmet_gilded" />
-				<Equipment slot="Body" id="Item.monk_robe" />
-				<Equipment slot="Cape" id="Item.brass_scale_shoulders" />
-				<Equipment slot="Gloves" id="Item.northern_brass_bracers" />
-				<Equipment slot="Leg" id="Item.empire_plate_boots_002" />
+				<equipment slot="Item0" id="Item.wp_hammer_001" />
+				<equipment slot="Head" id="Item.militia_helmet_gilded" />
+				<equipment slot="Body" id="Item.monk_robe" />
+				<equipment slot="Cape" id="Item.brass_scale_shoulders" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_silver_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -253,18 +251,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -286,18 +284,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -319,18 +317,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -352,18 +350,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -385,18 +383,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -419,18 +417,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -452,18 +450,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -485,18 +483,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -518,18 +516,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -551,18 +549,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.empire_halberdier_body_001" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<!--<Equipment slot="Gloves" id="Item.louen_hands" />-->
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.empire_halberdier_body_001" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<!--<equipment slot="Gloves" id="Item.louen_hands" />-->
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -586,17 +584,17 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<Equipment slot="Item1" id="Item.vlandian_lance_colored1" />
-				<Equipment slot="Item2" id="Item.empire_shield_002" />
-				<Equipment slot="Head" id="Item.empire_kobs_helmet_002" />
-				<Equipment slot="Body" id="Item.empire_kobs_body_001" />
-				<Equipment slot="Cape" id="Item.empire_kobs_shoulders_001" />
-				<Equipment slot="Gloves" id="Item.empire_kobs_gauntlet_001" />
-				<Equipment slot="Leg" id="Item.empire_kobs_boots_001" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.vlandian_lance_colored1" />
+				<equipment slot="Item2" id="Item.empire_shield_002" />
+				<equipment slot="Head" id="Item.empire_kobs_helmet_002" />
+				<equipment slot="Body" id="Item.empire_kobs_body_001" />
+				<equipment slot="Cape" id="Item.empire_kobs_shoulders_001" />
+				<equipment slot="Gloves" id="Item.empire_kobs_gauntlet_001" />
+				<equipment slot="Leg" id="Item.empire_kobs_boots_001" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_002" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_002" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -620,16 +618,16 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_huss_hammer" />
-				<Equipment slot="Item1" id="Item.luthor_shield" />
-				<Equipment slot="Head" id="Item.empire_luthor_huss_helmet" />
-				<Equipment slot="Body" id="Item.empire_luthor_huss_body" />
-				<Equipment slot="Cape" id="Item.empire_luthor_huss_shoulders" />
-				<Equipment slot="Gloves" id="Item.empire_luthor_huss_gauntlets" />
-				<Equipment slot="Leg" id="Item.empire_luthor_huss_boots" />
+				<equipment slot="Item0" id="Item.empire_huss_hammer" />
+				<equipment slot="Item1" id="Item.luthor_shield" />
+				<equipment slot="Head" id="Item.empire_luthor_huss_helmet" />
+				<equipment slot="Body" id="Item.empire_luthor_huss_body" />
+				<equipment slot="Cape" id="Item.empire_luthor_huss_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_luthor_huss_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_luthor_huss_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -651,14 +649,14 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.volkmar_staff" />
-				<Equipment slot="Body" id="Item.empire_volkmar_body" />
-				<Equipment slot="Cape" id="Item.empire_volkmar_shoulders" />
-				<Equipment slot="Gloves" id="Item.empire_volkmar_gauntlets" />
-				<Equipment slot="Leg" id="Item.empire_volkmar_boots" />
+				<equipment slot="Item0" id="Item.volkmar_staff" />
+				<equipment slot="Body" id="Item.empire_volkmar_body" />
+				<equipment slot="Cape" id="Item.empire_volkmar_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_volkmar_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_volkmar_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -680,15 +678,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_huss_hammer" />
-				<Equipment slot="Head" id="Item.empire_valten_helmet" />
-				<Equipment slot="Body" id="Item.empire_valten_body" />
-				<Equipment slot="Cape" id="Item.empire_valten_shoulders" />
-				<Equipment slot="Gloves" id="Item.empire_valten_gauntlets" />
-				<Equipment slot="Leg" id="Item.empire_valten_boots" />
+				<equipment slot="Item0" id="Item.empire_huss_hammer" />
+				<equipment slot="Head" id="Item.empire_valten_helmet" />
+				<equipment slot="Body" id="Item.empire_valten_body" />
+				<equipment slot="Cape" id="Item.empire_valten_shoulders" />
+				<equipment slot="Gloves" id="Item.empire_valten_gauntlets" />
+				<equipment slot="Leg" id="Item.empire_valten_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_royal_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -710,15 +708,15 @@
 			</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.wp_hammer_001" />
-				<Equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
-				<Equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
-				<Equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
-				<Equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
-				<Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
+				<equipment slot="Item0" id="Item.wp_hammer_001" />
+				<equipment slot="Head" id="Item.empire_warrior_priest_helmet_001" />
+				<equipment slot="Body" id="Item.empire_warrior_priest_body_001" />
+				<equipment slot="Cape" id="Item.empire_warrior_priest_shoulders_001" />
+				<equipment slot="Gloves" id="Item.empire_warrior_priest_braces_001" />
+				<equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -740,16 +738,16 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<Equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
-				<Equipment slot="Body" id="Item.mail_shirt" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<Equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Head" id="Item.peaked_helmet_over_mail_coif" />
+				<equipment slot="Body" id="Item.mail_shirt" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_free_company_armor_leg" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -771,16 +769,16 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.swadian_striped_plate_armor" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<Equipment slot="Gloves" id="Item.woven_leather_bracers" />
-				<Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.swadian_striped_plate_armor" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Gloves" id="Item.woven_leather_bracers" />
+				<equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -802,16 +800,16 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<Equipment slot="Head" id="Item.kettle_helmet_over_arming_coif" />
-				<Equipment slot="Body" id="Item.mail_shirt" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
-				<Equipment slot="Gloves" id="Item.leather_gloves" />
-				<Equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Head" id="Item.kettle_helmet_over_arming_coif" />
+				<equipment slot="Body" id="Item.mail_shirt" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
+				<equipment slot="Gloves" id="Item.leather_gloves" />
+				<equipment slot="Leg" id="Item.plate_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -833,18 +831,18 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_sword_4_t4" />
-				<!--<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
-				<Equipment slot="Item2" id="tow_handgun_002" />
-				<Equipment slot="Item3" id="musket_ball" />
-				<Equipment slot="Head" id="Item.kettle_hat_over_mail_coif" />
-				<Equipment slot="Body" id="Item.swadian_striped_plate_armor" />
-				<Equipment slot="Cape" id="Item.green_hood" />
-				<Equipment slot="Gloves" id="Item.guarded_padded_vambrace" />
-				<Equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
+				<equipment slot="Item0" id="Item.empire_sword_4_t4" />
+				<!--<equipment slot="Item1" id="Item.emp_shield_stirland_008" />-->
+				<equipment slot="Item2" id="tow_handgun_002" />
+				<equipment slot="Item3" id="musket_ball" />
+				<equipment slot="Head" id="Item.kettle_hat_over_mail_coif" />
+				<equipment slot="Body" id="Item.swadian_striped_plate_armor" />
+				<equipment slot="Cape" id="Item.green_hood" />
+				<equipment slot="Gloves" id="Item.guarded_padded_vambrace" />
+				<equipment slot="Leg" id="Item.empire_warrior_priest_boots_001" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -866,15 +864,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_greatsword_001" />
-				<Equipment slot="Head" id="Item.empire_lion_red_helmet" />
-				<Equipment slot="Body" id="Item.empire_plate_armor_002" />
-				<Equipment slot="Cape" id="Item.empire_plate_shoulders_002" />
-				<Equipment slot="Gloves" id="Item.empire_plate_gauntlets_002" />
-				<Equipment slot="Leg" id="Item.empire_plate_boots_002" />
+				<equipment slot="Item0" id="Item.empire_greatsword_001" />
+				<equipment slot="Head" id="Item.empire_lion_red_helmet" />
+				<equipment slot="Body" id="Item.empire_plate_armor_002" />
+				<equipment slot="Cape" id="Item.empire_plate_shoulders_002" />
+				<equipment slot="Gloves" id="Item.empire_plate_gauntlets_002" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_002" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -896,14 +894,14 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.battania_2hsword_4_t4" />
-				<Equipment slot="Head" id="Item.pilgrim_hood" />
-				<Equipment slot="Body" id="Item.swadian_cuirass" />
-				<Equipment slot="Cape" id="Item.generic_empire_lord_cape" />
-				<Equipment slot="Leg" id="Item.empire_knight_boots_004" />
+				<equipment slot="Item0" id="Item.battania_2hsword_4_t4" />
+				<equipment slot="Head" id="Item.pilgrim_hood" />
+				<equipment slot="Body" id="Item.swadian_cuirass" />
+				<equipment slot="Cape" id="Item.generic_empire_lord_cape" />
+				<equipment slot="Leg" id="Item.empire_knight_boots_004" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -925,17 +923,17 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.hooked_axe_t4" />
-				<Equipment slot="Item1" id="Item.emp_shield_stirland_008" />
-				<Equipment slot="Item2" id="battania_mace_2_t2" />
-				<Equipment slot="Head" id="Item.empire_hat_003" />
-				<Equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
-				<Equipment slot="Gloves" id="Item.empire_luthor_huss_gauntlets" />
-				<Equipment slot="Leg" id="Item.battania_leather_boots" />
+				<equipment slot="Item0" id="Item.hooked_axe_t4" />
+				<equipment slot="Item1" id="Item.emp_shield_stirland_008" />
+				<equipment slot="Item2" id="battania_mace_2_t2" />
+				<equipment slot="Head" id="Item.empire_hat_003" />
+				<equipment slot="Body" id="Item.statetroop_uniform_002_body" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_002" />
+				<equipment slot="Gloves" id="Item.empire_luthor_huss_gauntlets" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -957,15 +955,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.falchion_sword_t2" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Body" id="Item.banded_leather_over_mail" />
-				<Equipment slot="Cape" id="Item.battania_woodland_cloak" />
-				<Equipment slot="Gloves" id="Item.highland_gloves" />
-				<Equipment slot="Leg" id="Item.plate_boots" />
+				<equipment slot="Item0" id="Item.falchion_sword_t2" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Body" id="Item.banded_leather_over_mail" />
+				<equipment slot="Cape" id="Item.battania_woodland_cloak" />
+				<equipment slot="Gloves" id="Item.highland_gloves" />
+				<equipment slot="Leg" id="Item.plate_boots" />
 
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -1064,13 +1062,13 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.mannfred_sword" />
-				<Equipment slot="Body" id="Item.vc_vlad_body" />
-				<Equipment slot="Cape" id="Item.vc_vlad_shoulders" />
-				<Equipment slot="Gloves" id="Item.vc_vlad_gauntlets" />
-				<Equipment slot="Leg" id="Item.vc_vlad_boots" />
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
+				<equipment slot="Item0" id="Item.mannfred_sword" />
+				<equipment slot="Body" id="Item.vc_vlad_body" />
+				<equipment slot="Cape" id="Item.vc_vlad_shoulders" />
+				<equipment slot="Gloves" id="Item.vc_vlad_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_vlad_boots" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
                     civilian="true" />
@@ -1187,15 +1185,15 @@
 		</Traits>
         <Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item1" id="Item.vampire_greataxe_002" />
-				<Equipment slot="Item2" id="Item.vampire_sword_009" />
-				<Equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
-				<Equipment slot="Body" id="Item.vc_blood_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.hallow_boots" />
+				<equipment slot="Item1" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item2" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
 				
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="vampire_template_2"
                     civilian="true" />
@@ -1217,16 +1215,16 @@
 		</Traits>
          <Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item1" id="Item.vampire_greataxe_001" />
-				<Equipment slot="Item2" id="Item.vampire_sword_009" />
-				<Equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
-				<Equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
-				<Equipment slot="Body" id="Item.vc_blood_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.hallow_boots" />
+				<equipment slot="Item1" id="Item.vampire_greataxe_001" />
+				<equipment slot="Item2" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_001" />
+				<equipment slot="Head" id="Item.vc_blood_knight_helmet_001" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
 				
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="vampire_template_3"
                     civilian="true" />
@@ -1248,16 +1246,16 @@
 		</Traits>
        <Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.vampire_greatmace_001" />
-				<Equipment slot="Item1" id="Item.vc_undead_banner_001" />
-				<Equipment slot="Item2" id="Item.vampire_sword_009" />
-				<Equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
-				<Equipment slot="Body" id="Item.vc_blood_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.hallow_boots" />
+				<equipment slot="Item0" id="Item.vampire_greatmace_001" />
+				<equipment slot="Item1" id="Item.vc_undead_banner_001" />
+				<equipment slot="Item2" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
+				<equipment slot="Gloves" id="Item.vc_blood_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.hallow_boots" />
 				
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="vampire_template_4"
                     civilian="true" />
@@ -1279,15 +1277,15 @@
 		</Traits>
        <Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.vampire_greataxe_002" />
-				<Equipment slot="Item1" id="Item.vampire_sword_009" />
-				<Equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
-				<Equipment slot="Body" id="Item.vc_red_duke_body" />
-				<Equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
-				<Equipment slot="Leg" id="Item.vc_red_duke_boots" />
+				<equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<equipment slot="Item1" id="Item.vampire_sword_009" />
+				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<equipment slot="Body" id="Item.vc_red_duke_body" />
+				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
 				
-				<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
-				<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+				<equipment slot="Horse" id="Item.vc_skeleton_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="red_duke_template"
                     civilian="true" />
@@ -1310,14 +1308,14 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-                <Equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
-                <Equipment slot="Head" id="Item.chaos_knight_helmet" />
-                <Equipment slot="Cape" id="Item.chaos_knight_shoulders" />
-                <Equipment slot="Body" id="Item.chaos_knight_chest" />
-                <Equipment slot="Gloves" id="Item.chaos_knight_gauntlets" />
-                <Equipment slot="Leg" id="Item.chaos_knight_legs" />
-				<Equipment slot="Horse" id="Item.t2_empire_horse" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+                <equipment slot="Item0" id="Item.grave_guard_greataxe_001" />
+                <equipment slot="Head" id="Item.chaos_knight_helmet" />
+                <equipment slot="Cape" id="Item.chaos_knight_shoulders" />
+                <equipment slot="Body" id="Item.chaos_knight_chest" />
+                <equipment slot="Gloves" id="Item.chaos_knight_gauntlets" />
+                <equipment slot="Leg" id="Item.chaos_knight_legs" />
+				<equipment slot="Horse" id="Item.t2_empire_horse" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
               </EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1340,15 +1338,15 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.empire_crossbow_001" />
-				<Equipment slot="Item1" id="Item.pavise_shield" />
-				<Equipment slot="Item2" id="Item.bolt_a" />
-				<Equipment slot="Item3" id="Item.empire_greatsword_002" />
-				<Equipment slot="Head" id="Item.empire_battle_crown_north" />
-				<Equipment slot="Cape" id="Item.empire_statetrooper_breastplate_005" />
-				<Equipment slot="Body" id="Item.battanian_scale_armor_a" />
-				<Equipment slot="Gloves" id="Item.northern_brass_bracers" />
-				<Equipment slot="Leg" id="Item.plate_boots2" />
+				<equipment slot="Item0" id="Item.empire_crossbow_001" />
+				<equipment slot="Item1" id="Item.pavise_shield" />
+				<equipment slot="Item2" id="Item.bolt_a" />
+				<equipment slot="Item3" id="Item.empire_greatsword_002" />
+				<equipment slot="Head" id="Item.empire_battle_crown_north" />
+				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_005" />
+				<equipment slot="Body" id="Item.battanian_scale_armor_a" />
+				<equipment slot="Gloves" id="Item.northern_brass_bracers" />
+				<equipment slot="Leg" id="Item.plate_boots2" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1370,14 +1368,14 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.generic_javelin_1_t3" />
-				<Equipment slot="Item1" id="Item.generic_javelin_1_t3" />
-				<Equipment slot="Item2" id="Item.justicier_2hsword" />
-				<Equipment slot="Head" id="Item.spiked_helmet" />
-				<Equipment slot="Cape" id="Item.skeleton_warrior_body_002" />
-				<Equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
-				<Equipment slot="Gloves" id="Item.grave_guard_braces_002" />
-				<Equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
+				<equipment slot="Item0" id="Item.generic_javelin_1_t3" />
+				<equipment slot="Item1" id="Item.generic_javelin_1_t3" />
+				<equipment slot="Item2" id="Item.justicier_2hsword" />
+				<equipment slot="Head" id="Item.spiked_helmet" />
+				<equipment slot="Cape" id="Item.skeleton_warrior_body_002" />
+				<equipment slot="Body" id="Item.skeleton_body_full_hideskin" />
+				<equipment slot="Gloves" id="Item.grave_guard_braces_002" />
+				<equipment slot="Leg" id="Item.skeleton_warrior_boots_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1399,13 +1397,13 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.vlandia_pike_1_t5" />
-				<Equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
-				<Equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-				<Equipment slot="Cape" id="Item.pauldron_cape_a" />
-				<Equipment slot="Body" id="Item.brass_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.studded_leather_vambraces" />
-				<Equipment slot="Leg" id="Item.battania_leather_boots" />
+				<equipment slot="Item0" id="Item.vlandia_pike_1_t5" />
+				<equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
+				<equipment slot="Head" id="Item.empire_halberdier_hat_001" />
+				<equipment slot="Cape" id="Item.pauldron_cape_a" />
+				<equipment slot="Body" id="Item.brass_knight_body_001" />
+				<equipment slot="Gloves" id="Item.studded_leather_vambraces" />
+				<equipment slot="Leg" id="Item.battania_leather_boots" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1427,16 +1425,16 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.wide_heater_shield" />
-				<Equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
-				<Equipment slot="Item2" id="Item.highland_spear_3_t3" />
-				<Equipment slot="Head" id="Item.sallet_no_visor" />
-				<Equipment slot="Cape" id="Item.tilean_knight_shoulders_002" />
-				<Equipment slot="Body" id="Item.tilean_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.tilean_knight_boots_001" />
-				<Equipment slot="Horse" id="Item.vlandia_horse_tournament" />
-				<Equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
+				<equipment slot="Item0" id="Item.wide_heater_shield" />
+				<equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
+				<equipment slot="Item2" id="Item.highland_spear_3_t3" />
+				<equipment slot="Head" id="Item.sallet_no_visor" />
+				<equipment slot="Cape" id="Item.tilean_knight_shoulders_002" />
+				<equipment slot="Body" id="Item.tilean_knight_body_001" />
+				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
+				<equipment slot="Leg" id="Item.tilean_knight_boots_001" />
+				<equipment slot="Horse" id="Item.vlandia_horse_tournament" />
+				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1458,14 +1456,14 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.crossbow_a" />
-				<Equipment slot="Item1" id="Item.bolt_b" />
-				<Equipment slot="Item2" id="Item.aserai_sword_1_t2" />
-				<Equipment slot="Head" id="Item.kettle_helmet_with_leather" />
-				<Equipment slot="Cape" id="Item.battanian_chainmail_shoulder_b" />
-				<Equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
-				<Equipment slot="Gloves" id="Item.strapped_leather_bracers" />
-				<Equipment slot="Leg" id="Item.leather_boots" />
+				<equipment slot="Item0" id="Item.crossbow_a" />
+				<equipment slot="Item1" id="Item.bolt_b" />
+				<equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+				<equipment slot="Head" id="Item.kettle_helmet_with_leather" />
+				<equipment slot="Cape" id="Item.battanian_chainmail_shoulder_b" />
+				<equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
+				<equipment slot="Gloves" id="Item.strapped_leather_bracers" />
+				<equipment slot="Leg" id="Item.leather_boots" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
@@ -1487,13 +1485,13 @@
 		</Traits>
 		<Equipments>
 			<EquipmentRoster>
-				<Equipment slot="Item0" id="Item.vlandia_pike_1_t5" />
-				<Equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
-				<Equipment slot="Head" id="Item.brass_knight_helmet_001" />
-				<Equipment slot="Cape" id="Item.empire_general_cape_001" />
-				<Equipment slot="Body" id="Item.brass_knight_body_001" />
-				<Equipment slot="Gloves" id="Item.empire_plate_gauntlets_001" />
-				<Equipment slot="Leg" id="Item.empire_plate_boots_001" />
+				<equipment slot="Item0" id="Item.vlandia_pike_1_t5" />
+				<equipment slot="Item1" id="Item.battania_2hsword_5_t4" />
+				<equipment slot="Head" id="Item.brass_knight_helmet_001" />
+				<equipment slot="Cape" id="Item.empire_general_cape_001" />
+				<equipment slot="Body" id="Item.brass_knight_body_001" />
+				<equipment slot="Gloves" id="Item.empire_plate_gauntlets_001" />
+				<equipment slot="Leg" id="Item.empire_plate_boots_001" />
 			</EquipmentRoster>
 			<EquipmentSet id="emp_civ_template_default"
 						  civilian="true" />
