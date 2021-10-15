@@ -37,6 +37,7 @@ using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
+using TOW_Core.Battle.Artillery;
 
 namespace TOW_Core
 {
@@ -180,6 +181,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
+            mission.AddMissionBehaviour(new ArtilleryViewController());
             if (Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehaviour(new BattleInfoMissionLogic());
