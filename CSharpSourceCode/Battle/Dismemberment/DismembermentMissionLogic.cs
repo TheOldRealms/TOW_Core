@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
@@ -13,7 +15,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private Probability dismembermentFrequency = Probability.Always;
 
-        private Probability slowMotionFrequency = Probability.Probably;
+        private Probability slowMotionFrequency = Probability.Always;
 
         private float slowMotionEndTime;
 
@@ -21,7 +23,8 @@ namespace TOW_Core.Battle.Dismemberment
 
         private float maxTroopChance = 10;
 
-        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps", "feather", "_hat" };
+        private readonly String[] allMeshes = { "head", "hair", "beard", "eyebrow", "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood",
+                                                "_mask", "straps", "feather", "_hat" };
 
         private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
 
@@ -29,8 +32,16 @@ namespace TOW_Core.Battle.Dismemberment
 
         private readonly String[] headArmorMeshes = { "helmet", "helm_", "_bascinet", "Pothelm", "sallet", "_cap_", "_hood", "_mask", "straps" };
 
+
+        private string fileName;
+
         public override void OnMissionTick(float dt)
         {
+            if (String.IsNullOrEmpty(fileName))
+            {
+                fileName = MBRandom.RandomInt().ToString();
+            }
+            //TOWCommon.Say($"{Mission.Current.CurrentTime}");
             if (Mission.CurrentTime >= slowMotionEndTime)
             {
                 Mission.Current.Scene.SlowMotionMode = false;
@@ -55,9 +66,26 @@ namespace TOW_Core.Battle.Dismemberment
                                     blow.WeaponRecord.WeaponClass == WeaponClass.TwoHandedSword) &&
                                     (attacker.AttackDirection == Agent.UsageDirection.AttackLeft ||
                                     attacker.AttackDirection == Agent.UsageDirection.AttackRight);
-
             if (canBeDismembered)
             {
+                //File.AppendAllText($@"C:\Users\User\Desktop\Crashes\{fileName}.txt", $"{victim.Name}\n");
+                //foreach (var entity in )
+                //{
+                //    File.AppendAllText($@"C:\Users\User\Desktop\Crashes\{fileName}.txt", $"{entity.Name}\n");
+                //}
+                //File.AppendAllText($@"C:\Users\User\Desktop\Crashes\{fileName}.txt", "\n");
+            }
+            if (canBeDismembered)
+            {
+                var armor = victim.Character.Equipment.GetEquipmentFromSlot(EquipmentIndex.Head);
+                if (!armor.IsEmpty && armor.Item != null)
+                {
+                    File.AppendAllText($@"C:\Users\User\Desktop\Crashes\{fileName}.txt", $"{attacker.Name} {attackerWeapon.Item.Name} - {victim.Name} {armor.Item.Name} {Mission.Current.CurrentTime}\n");
+                }
+                else
+                {
+                    File.AppendAllText($@"C:\Users\User\Desktop\Crashes\{fileName}.txt", $"{attacker.Name} {attackerWeapon.Item.Name} - {victim.Name} EMPTY {Mission.Current.CurrentTime}\n");
+                }
                 if (attacker == Agent.Main)
                 {
                     if (ShouldBeDismembered(attacker, victim, blow))
@@ -112,7 +140,6 @@ namespace TOW_Core.Battle.Dismemberment
 
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
-            //victim.AgentVisuals.SetVoiceDefinitionIndex(-1, 0f);
             MakeHeadInvisible(victim);
             GameEntity head = SpawnHead(victim);
             if (!victim.IsUndead())
@@ -196,11 +223,11 @@ namespace TOW_Core.Battle.Dismemberment
                     String meshName = mesh.Name.ToLower();
                     if (meshName.Contains("spangenhelm_a.lod0.gen") || meshName.Contains("battania_fur_helmet_a.lod0.gen"))
                     {
-                        Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                        var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
-                        childMesh.SetLocalFrame(headLocalFrame);
-                        child.AddMesh(childMesh);
-                        head.AddChild(child);
+                        //Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                        //var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
+                        //childMesh.SetLocalFrame(headLocalFrame);
+                        //child.AddMesh(childMesh);
+                        //head.AddChild(child);
                     }
                     else
                     {
@@ -208,11 +235,14 @@ namespace TOW_Core.Battle.Dismemberment
                         {
                             if (meshName.Contains(name) && !meshName.Contains("lod"))
                             {
-                                Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                                Mesh childMesh = mesh.GetBaseMesh();
+                                TOWCommon.Say($"{childMesh.Name} {childMesh.IsValid} {childMesh.Billboard}");
                                 var child = GameEntity.CreateEmpty(Mission.Current.Scene, true);
                                 childMesh.SetLocalFrame(headLocalFrame);
                                 child.AddMesh(childMesh);
-                                head.AddChild(child);
+
+                                //head.AddChild(child);
+                                //head.AddMesh(childMesh);
                                 break;
                             }
                         }
