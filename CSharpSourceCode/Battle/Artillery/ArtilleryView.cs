@@ -96,7 +96,7 @@ namespace TOW_Core.Battle.Artillery
 			this.HandleUserAiming(dt);
 		}
 
-		private void CreateCamera()
+        private void CreateCamera()
 		{
 			this.Camera = Camera.CreateCamera();
 			float aspectRatio = Screen.AspectRatio;
@@ -140,8 +140,8 @@ namespace TOW_Core.Battle.Artillery
 			}
 			this._cameraYaw -= this.MissionScreen.SceneLayer.Input.GetMouseMoveX() * dt * 0.2f;
 			this._cameraPitch -= this.MissionScreen.SceneLayer.Input.GetMouseMoveY() * dt * 0.2f;
-			//this._cameraYaw = MBMath.ClampFloat(this._cameraYaw, 1.5707964f, 4.712389f);
-			//this._cameraPitch = MBMath.ClampFloat(this._cameraPitch, 1.0471976f, 1.7453294f);
+			this._cameraYaw = MBMath.ClampFloat(this._cameraYaw, 0, 0);
+			this._cameraPitch = MBMath.ClampFloat(this._cameraPitch, 1.3f, 2);
 			if (cameraPitch != this._cameraPitch || cameraYaw != this._cameraYaw)
 			{
 				this.ApplyCameraRotation();
@@ -190,10 +190,7 @@ namespace TOW_Core.Battle.Artillery
 					hasinput = true;
 				}
 			}
-			if (hasinput)
-			{
-				this.Artillery.GiveInput(inputX, inputY, dt);
-			}
+			this.Artillery.GiveInput(inputX, inputY, dt, hasinput);
 		}
 
 		private float _cameraYaw = 0;
