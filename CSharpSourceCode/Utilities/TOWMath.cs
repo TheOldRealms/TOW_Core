@@ -37,5 +37,10 @@ namespace TOW_Core.Utilities
         {
             return degree * (float)Math.PI / 180;
         }
+
+        public static float GetDegreeFromRadians(float radian)
+        {
+            return radian * 180 / (float)Math.PI;
+        }
     }
 }
