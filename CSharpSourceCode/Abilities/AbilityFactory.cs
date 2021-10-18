@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
@@ -62,20 +61,13 @@ namespace TOW_Core.Abilities
             {
                 ability = new Spell(template);
             }
-            else if (template.AbilityType == AbilityType.Prayer)
+            if (template.AbilityType == AbilityType.Prayer)
             {
                 ability = new Prayer(template);
             }
-            else if (template.AbilityType == AbilityType.SpecialMove)
-            {
-                ability = new SpecialMove(template);
-            }
 
-            if (caster.Character.IsHero && caster.Character.IsPlayerCharacter)
-            {
-                AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
-                ability.SetCrosshair(crosshair);
-            }
+            AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
+            ability.SetCrosshair(crosshair);
 
             return ability;
         }
@@ -105,15 +97,11 @@ namespace TOW_Core.Abilities
                         crosshair = new CenteredAOECrosshair(template, caster);
                         break;
                     }
-                case CrosshairType.Pointer:
+                case CrosshairType.Summoning:
                     {
-                        crosshair = new Pointer(template, caster);
+                        crosshair = new SummoningCrosshair(template, caster);
                         break;
                     }
-            }
-            if (crosshair != null)
-            {
-                crosshair.Initialize();
             }
             return crosshair;
         }

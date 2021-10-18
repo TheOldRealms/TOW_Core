@@ -23,12 +23,9 @@ namespace TOW_Core.Abilities
 
         public AbilityTemplate Template { get; private set; }
 
-        public AbilityScript AbilityScript { get; private set; }
-
         public AbilityCrosshair Crosshair { get; private set; }
 
         public bool IsOnCooldown() => _timer.Enabled;
-
         public int GetCoolDownLeft() => _coolDownLeft;
 
         public Ability(AbilityTemplate template)
@@ -128,8 +125,7 @@ namespace TOW_Core.Abilities
                    || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE
                    || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE
                    || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE
-                   || Template.AbilityEffectType == AbilityEffectType.Summoning
-                   || Template.AbilityEffectType == AbilityEffectType.AgentMoving;
+                   || Template.AbilityEffectType == AbilityEffectType.Summoning;
         }
 
         private bool IsDynamicAbility()
@@ -155,7 +151,7 @@ namespace TOW_Core.Abilities
                     {
                         frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
                     }
-                    else if (IsDynamicAbility())
+                    else if (Template.AbilityEffectType == AbilityEffectType.MovingProjectile || Template.AbilityEffectType == AbilityEffectType.DynamicProjectile)
                     {
                         frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
                     }
@@ -171,32 +167,31 @@ namespace TOW_Core.Abilities
                 {
                     case AbilityEffectType.MovingProjectile:
                     case AbilityEffectType.DynamicProjectile:
-                        {
-                            frame.origin = casterAgent.GetEyeGlobalPosition();
-                            break;
-                        }
+                    {
+                        frame.origin = casterAgent.GetEyeGlobalPosition();
+                        break;
+                    }
                     case AbilityEffectType.DirectionalMovingAOE:
-                        {
-                            frame = Crosshair.Frame;
-                            break;
-                        }
+                    {
+                        frame = Crosshair.Frame;
+                        break;
+                    }
                     case AbilityEffectType.CenteredStaticAOE:
-                    case AbilityEffectType.AgentMoving:
-                        {
-                            frame = casterAgent.LookFrame;
-                            break;
-                        }
+                    {
+                        frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                        break;
+                    }
                     case AbilityEffectType.TargetedStaticAOE:
                     case AbilityEffectType.TargetedStatic:
-                        {
-                            //frame = crosshair.Target.GetFrame();
-                            break;
-                        }
+                    {
+                        //frame = crosshair.Target.GetFrame();
+                        break;
+                    }
                     case AbilityEffectType.Summoning:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            break;
-                        }
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                        break;
+                    }
                 }
             }
 
@@ -274,7 +269,7 @@ namespace TOW_Core.Abilities
                     AddExactBehaviour<SummoningScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.AgentMoving:
-                    AddExactBehaviour<SpecialMoveScript>(entity, casterAgent);
+                    AddExactBehaviour<AgentMovingScript>(entity, casterAgent);
                     break;
             }
         }
@@ -283,9 +278,9 @@ namespace TOW_Core.Abilities
             where TAbilityScript : AbilityScript
         {
             entity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
-            AbilityScript = entity.GetFirstScriptOfType<TAbilityScript>();
-            AbilityScript?.Initialize(this);
-            AbilityScript?.SetAgent(casterAgent);
+            var script = entity.GetFirstScriptOfType<TAbilityScript>();
+            script?.Initialize(this);
+            script?.SetAgent(casterAgent);
             entity.CallScriptCallbacks();
         }
 
