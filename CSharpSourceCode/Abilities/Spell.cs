@@ -17,10 +17,10 @@ namespace TOW_Core.Abilities
         public override bool CanCast(Agent casterAgent)
         {
             var hero = casterAgent.GetHero();
-            if (hero != null && hero.GetExtendedInfo() != null)
+            if(hero != null && hero.GetExtendedInfo() != null)
             {
                 var info = hero.GetExtendedInfo();
-                if (info.CurrentWindsOfMagic < Template.WindsOfMagicCost)
+                if(info.CurrentWindsOfMagic < Template.WindsOfMagicCost)
                 {
                     return false;
                 }

@@ -291,13 +291,12 @@
     <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair_VM.cs" />
-    <Compile Include="Abilities\Crosshairs\Pointer.cs" />
+    <Compile Include="Abilities\Crosshairs\SummoningCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
-    <Compile Include="Abilities\Scripts\SpecialMoveScript.cs" />
-    <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\AgentMovingScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
@@ -324,7 +323,6 @@
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TORBattleEndLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
@@ -333,18 +331,8 @@
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
-    <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
-    <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
-    <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
@@ -352,7 +340,6 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
-    <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
@@ -447,7 +434,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <!-- Post-Build -->
   <PropertyGroup>
     <PostBuildEvent>

@@ -10,7 +10,6 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public ProjectileCrosshair(AbilityTemplate template) : base(template)
         {
-            _vm = new ProjectileCrosshair_VM();
         }
 
         public override void Tick()
@@ -51,35 +50,36 @@ namespace TOW_Core.Abilities.Crosshairs
 
         public override bool IsVisible
         {
-            get => _vm.IsVisible;
-            protected set => _vm.IsVisible = value;
+            get => vm.IsVisible;
+            protected set => vm.IsVisible = value;
         }
 
         public override void Initialize()
         {
-            _layer = new GauntletLayer(100, "GauntletLayer", false);
-            _movie = _layer.LoadMovie("ProjectileCrosshair", _vm);
-            if (_mission.Mode != MissionMode.Conversation && _mission.Mode != MissionMode.CutScene)
+            this.vm = new ProjectileCrosshair_VM();
+            this._layer = new GauntletLayer(100, "GauntletLayer", false);
+            this._movie = this._layer.LoadMovie("ProjectileCrosshair", vm);
+            if (base._mission.Mode != MissionMode.Conversation && base._mission.Mode != MissionMode.CutScene)
             {
-                _missionScreen.AddLayer(_layer);
+                base._missionScreen.AddLayer(this._layer);
             }
         }
 
         private void OnFinalize()
         {
-            if (_mission.Mode != MissionMode.Conversation && _mission.Mode != MissionMode.CutScene)
+            if (base._mission.Mode != MissionMode.Conversation && base._mission.Mode != MissionMode.CutScene)
             {
-                _missionScreen.RemoveLayer(_layer);
+                base._missionScreen.RemoveLayer(this._layer);
             }
-            _vm = null;
-            _movie = null;
-            _layer = null;
+            this.vm = null;
+            this._movie = null;
+            this._layer = null;
         }
 
         private IGauntletMovie _movie;
 
         private GauntletLayer _layer;
 
-        private ProjectileCrosshair_VM _vm;
+        private ProjectileCrosshair_VM vm;
     }
 }
