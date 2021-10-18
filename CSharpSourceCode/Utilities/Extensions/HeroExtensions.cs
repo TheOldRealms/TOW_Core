@@ -92,6 +92,11 @@ namespace TOW_Core.Utilities.Extensions
             return hero.HasAttribute("Undead");
         }
 
+        public static bool IsVampire(this Hero hero)
+        {
+            return hero.HasAttribute("VampireBodyOverride");
+        }
+
         public static bool IsVampireNotable(this Hero hero)
         {
             return hero.IsNotable &&
