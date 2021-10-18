@@ -332,6 +332,10 @@
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
