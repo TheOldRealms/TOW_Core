@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
@@ -40,7 +39,7 @@ namespace TOW_Core.Utilities.Extensions
         public static void AddAbility(this Hero hero, string ability)
         {
             var info = hero.GetExtendedInfo();
-            if (info != null && !info.AllAbilities.Contains(ability))
+            if(info != null && !info.AllAbilities.Contains(ability))
             {
                 info.AcquiredAbilities.Add(ability);
             }
@@ -77,7 +76,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             return hero.HasAttribute("SpellCaster");
         }
-
+        
         public static bool IsAbilityUser(this Hero hero)
         {
             return hero.HasAttribute("AbilityUser");
@@ -102,42 +101,25 @@ namespace TOW_Core.Utilities.Extensions
         {
             return hero.IsNotable &&
                    hero.Age >= 18 &&
-                   hero.Age < 21 &&
-                   hero.Culture.Name.Contains("Vampire");
+                   hero.Age < 21;
         }
 
         public static bool IsEmpireNotable(this Hero hero)
         {
-            return hero.IsNotable &&
-                   hero.Age >= 21 &&
-                   hero.Culture.Name.Contains("Empire");
+            return hero.IsNotable && 
+                   hero.Age >= 21;
         }
 
         //There is Traverse
         public static void TurnIntoVampire(this Hero hero)
         {
-            if (!hero.CharacterObject.IsFemale)
-            {
-                Traverse.Create(hero).Field("_defaultAge").SetValue(18);
-            }
-            if (Campaign.Current != null)
-            {
-                var faction = Campaign.Current.Factions.FirstOrDefault(f => f.Culture.Name.Contains("Vampire"));
-                if (faction != null)
-                {
-                    hero.Culture = faction.Culture;
-                }
-            }
+            Traverse.Create(hero).Field("_defaultAge").SetValue(18);
         }
 
         //There is Traverse
         public static void TurnIntoHuman(this Hero hero)
         {
             Traverse.Create(hero).Field("_defaultAge").SetValue(21);
-            if (Campaign.Current != null)
-            {
-                hero.Culture = Campaign.Current.Factions.FirstOrDefault(f => f.Culture.Name.Contains("Empire")).Culture;
-            }
         }
 
         public static bool IsSuitableForSettlement(this Hero hero, Settlement settlement)
@@ -150,11 +132,6 @@ namespace TOW_Core.Utilities.Extensions
             {
                 return hero.Culture.Name.Contains("Empire");
             }
-        }
-
-        public static bool IsOutrider(this Hero hero, CultureObject culture)
-        {
-            return hero.Culture != culture;
         }
     }
 }
