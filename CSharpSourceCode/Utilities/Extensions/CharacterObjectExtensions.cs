@@ -48,7 +48,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             var list = new List<string>();
             if (characterObject == null) return list;
-            var infoManager = Campaign.Current?.CampaignBehaviorManager?.GetBehavior<ExtendedInfoManager>();
+            var infoManager = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
             if (infoManager != null)
             {
                 var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
@@ -88,22 +88,9 @@ namespace TOW_Core.Utilities.Extensions
             return s;
         }
 
-        public static bool IsUndead(this CharacterObject characterObject)
+        public static bool IsUndead(this BasicCharacterObject characterObject)
         {
-            if (characterObject.IsHero)
-            {
-                return characterObject.HeroObject.IsUndead();
-            }
             return characterObject.GetAttributes().Contains("Undead");
-        }
-
-        public static bool IsVampire(this CharacterObject characterObject)
-        {
-            if (characterObject.IsHero)
-            {
-                return characterObject.HeroObject.IsVampire();
-            }
-            return characterObject.GetAttributes().Contains("VampireBodyOverride");
         }
     }
 }
