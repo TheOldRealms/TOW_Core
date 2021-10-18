@@ -118,8 +118,8 @@
       <Equipment slot="Cape" id="Item.vampire_lord_cape" />
       <Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
       <Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
-      <equipment slot="Horse" id="Item.vc_skeleton_horse" />
-      <equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+      <Equipment slot="Horse" id="Item.vc_skeleton_horse" />
+      <Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.vampire_sword_001" />
@@ -140,8 +140,8 @@
 			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
 			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
 			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
-			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-			<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 		</EquipmentSet>
 		<EquipmentSet civilian="true">
 			<Equipment slot="Item0" id="Item.vampire_sword_001" />
@@ -161,8 +161,8 @@
 			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
 			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
 			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
-			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-			<equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
+			<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<Equipment slot="HorseHarness" id="Item.vc_horse_harness_001" />
 		</EquipmentSet>
 		<EquipmentSet civilian="true">
 			<Equipment slot="Item0" id="Item.vampire_sword_001" />
@@ -182,8 +182,8 @@
 			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
 			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
 			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
-			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+			<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<Equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
 		</EquipmentSet>
 		<EquipmentSet civilian="true">
 			<Equipment slot="Item0" id="Item.vampire_sword_001" />
@@ -203,8 +203,8 @@
 			<Equipment slot="Cape" id="Item.vampire_lord_cape" />
 			<Equipment slot="Gloves" id="Item.vampire_lord_gauntlets" />
 			<Equipment slot="Leg" id="Item.vampire_lord_boots_001" />
-			<equipment slot="Horse" id="Item.vc_skeleton_horse" />
-			<equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
+			<Equipment slot="Horse" id="Item.vc_skeleton_horse" />
+			<Equipment slot="HorseHarness" id="Item.vc_horse_harness_003" />
 		</EquipmentSet>
 		<EquipmentSet civilian="true">
 			<Equipment slot="Item0" id="Item.vampire_sword_001" />
@@ -218,20 +218,20 @@
 	
 	<EquipmentRoster id="red_duke_template" culture="Culture.khuzait">
 		<EquipmentSet>
-			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
-				<equipment slot="Item1" id="Item.vampire_sword_009" />
-				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
-				<equipment slot="Body" id="Item.vc_red_duke_body" />
-				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
-				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+			<Equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<Equipment slot="Item1" id="Item.vampire_sword_009" />
+				<Equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<Equipment slot="Body" id="Item.vc_red_duke_body" />
+				<Equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<Equipment slot="Leg" id="Item.vc_red_duke_boots" />
 		</EquipmentSet>
 		<EquipmentSet civilian="true">
-			<equipment slot="Item0" id="Item.vampire_greataxe_002" />
-				<equipment slot="Item1" id="Item.vampire_sword_009" />
-				<equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
-				<equipment slot="Body" id="Item.vc_red_duke_body" />
-				<equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
-				<equipment slot="Leg" id="Item.vc_red_duke_boots" />
+			<Equipment slot="Item0" id="Item.vampire_greataxe_002" />
+				<Equipment slot="Item1" id="Item.vampire_sword_009" />
+				<Equipment slot="Cape" id="Item.vc_red_duke_shoulders" />
+				<Equipment slot="Body" id="Item.vc_red_duke_body" />
+				<Equipment slot="Gloves" id="Item.vc_red_duke_gauntlets" />
+				<Equipment slot="Leg" id="Item.vc_red_duke_boots" />
 		</EquipmentSet>
 	</EquipmentRoster>
 	

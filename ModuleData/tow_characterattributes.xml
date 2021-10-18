@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Characters>
 	<!-- VC troops -->
+  <Character name="tow_summoned_skeleton">
+    <Attribute id="Undead" />
+    <Attribute id="Expendable" />
+  </Character>
 	<Character name="tow_skeleton_recruit">
 		<Attribute id="Undead" />
 		<Attribute id="Expendable" />
@@ -20,6 +24,9 @@
 	<Character name="tow_cairn_wraith">
 		<Attribute id="Undead" />
 	</Character>
+  <Character name="tow_hex_wraith">
+		<Attribute id="Undead" />
+	</Character>
 	<Character name="tow_black_knight">
 		<Attribute id="Undead" />
 	</Character>
@@ -30,111 +37,148 @@
 		<Attribute id="Undead" />
 	</Character>
 
-	<!-- VC lords -->
-	<Character name="sylvania_clan_1_1">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="vc_lord_sylvania_first_2">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="vc_lord_sylvania_first_4">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-	</Character>
-	<Character name="vc_lord_sylvania_first_5">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-	</Character>
-	<Character name="vc_lord_sylvania_first_6">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="vc_lord_sylvania_third_1">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="vc_lord_sylvania_third_2">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-	</Character>
-	<Character name="vc_lord_sylvania_third_3">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-	</Character>
-	<Character name="vc_lord_sylvania_third_4">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-	</Character>
+  <!-- VC lords -->
+  <Character name="sylvania_clan_1_1">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="vc_lord_sylvania_first_2">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="vc_lord_sylvania_first_4">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+  </Character>
+  <Character name="vc_lord_sylvania_first_5">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+  </Character>
+  <Character name="vc_lord_sylvania_first_6">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="vc_lord_sylvania_third_1">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="vc_lord_sylvania_third_2">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+  </Character>
+  <Character name="vc_lord_sylvania_third_3">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+  </Character>
+  <Character name="vc_lord_sylvania_third_4">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+  </Character>
 
-	<!-- VC wanderers -->
-	<Character name="tow_wanderer_vampire_0">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="tow_wanderer_vampire_3">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="tow_wanderer_vampire_1">
-		<Attribute id="Undead" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
+  <!-- VC wanderers -->
+  <Character name="tow_wanderer_vampire_0">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="tow_wanderer_vampire_1">
+    <Attribute id="Undead" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="tow_wanderer_vampire_2">
+    <Attribute id="Undead" />
+  </Character>
 
-	<!-- Empire lords -->
-	<Character name="emp_lord_averland_golden_1">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="emp_lord_stirland_sigmarcult_1">
-		<Attribute id="AbilityUser" />
-	</Character>
-	<Character name="emp_lord_stirland_sigmarcult_2">
-		<Attribute id="AbilityUser" />
-	</Character>
-	<Character name="emp_lord_stirland_sigmarcult_4">
-		<Attribute id="AbilityUser" />
-	</Character>
+  <!-- Empire lords -->
+  <Character name="emp_lord_averland_golden_1">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="emp_lord_stirland_sigmarcult_1">
+    <Attribute id="AbilityUser" />
+  </Character>
+  <Character name="emp_lord_stirland_sigmarcult_2">
+    <Attribute id="AbilityUser" />
+  </Character>
+  <Character name="emp_lord_stirland_sigmarcult_4">
+    <Attribute id="AbilityUser" />
+  </Character>
 
-	<!-- Empire wanderers -->
-	<Character name="tow_wanderer_empire_0">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="tow_wanderer_empire_1">
-		<Attribute id="AbilityUser" />
-	</Character>
-	<Character name="tow_wanderer_empire_3">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
+  <!-- Empire wanderers -->
+  <Character name="tow_wanderer_empire_0">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="tow_wanderer_empire_1">
+    <Attribute id="AbilityUser" />
+  </Character>
+  <Character name="tow_wanderer_empire_3">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
 
-	<!-- custom battle lords -->
-	<Character name="emp_lord">
-		<Attribute id="AbilityUser" />
-	</Character>
-	<Character name="vc_lord">
-		<Attribute id="AbilityUser" />
-		<Attribute id="VampireBodyOverride" />
-		<Attribute id="Undead" />
-	</Character>
-	<Character name="wizard_lord">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
-	<Character name="necromancer_lord">
-		<Attribute id="AbilityUser" />
-		<Attribute id="SpellCaster" />
-	</Character>
+  <!-- custom battle lords -->
+  <Character name="emp_lord">
+    <Attribute id="AbilityUser" />
+  </Character>
+  <Character name="vc_lord">
+    <Attribute id="AbilityUser" />
+    <Attribute id="VampireBodyOverride" />
+    <Attribute id="Undead" />
+  </Character>
+  <Character name="wizard_lord">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+  <Character name="necromancer_lord">
+    <Attribute id="AbilityUser" />
+    <Attribute id="SpellCaster" />
+  </Character>
+
+  <!-- bandits -->
+  <Character name="tow_chaos_cult_acolyte">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_chaos_cult_darksoul">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_outlaw">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_spearman">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_swordsman">
+    <Attribute id="Expendable" />
+  </Character>
+  <Character name="tow_empire_secessionist_hunter">
+    <Attribute id="Expendable" />
+  </Character>
+  
+  <!-- chaos -->
+  <Character name="tow_nurgle_warrior">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_nurgle_warrior_002">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_nurgle_warrior_003">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_chaos_chosen">
+    <Attribute id="Unbreakable" />
+  </Character>
+  <Character name="tow_chs_khorne_warrior">
+    <Attribute id="Unbreakable" />
+  </Character>
+
 </Characters>

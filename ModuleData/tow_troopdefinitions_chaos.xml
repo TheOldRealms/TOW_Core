@@ -209,6 +209,7 @@
             </EquipmentRoster>
         </Equipments>
     </NPCCharacter>
+    
     <NPCCharacter id="tow_chs_khorne_warrior" default_group="Infantry" level="21" name="{=!}Khorne Warrior" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
         <face>
             <BodyProperties version="4" age="56" weight="0.9599" build="0.7652" key="0039FC0AD5003000E6766487675388887577866254C66834C4B647398C95A09700CBE6030CA7497B00000000000000000000000000000000000000003B945002" />

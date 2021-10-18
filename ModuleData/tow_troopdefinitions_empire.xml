@@ -1387,4 +1387,82 @@
 		</Equipments>
 	</NPCCharacter>
 
+	<!-- tournament presets - only weapons matter -->
+	<NPCCharacter id="tournament_template_emp_one_participant_set_v1"
+                default_group="Infantry"
+                level="6"
+                name="{=!}tournament_template_emp_one_participant_set_v1"
+                culture="Culture.empire"
+                skill_template="SkillSet.tow_skills_level6">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills></skills>
+    <upgrade_targets></upgrade_targets>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+        <equipment slot="Item1" id="Item.empire_shield_001" />
+      </EquipmentRoster>
+      <EquipmentSet id="npc_wanderer_equipment_template_empire_civilian"
+                    civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="tournament_template_emp_two_participant_set_v1"
+                default_group="Infantry"
+                level="6"
+                name="{=!}tournament_template_emp_two_participant_set_v1"
+                culture="Culture.empire"
+                skill_template="SkillSet.tow_skills_level6">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills></skills>
+    <upgrade_targets></upgrade_targets>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+        <equipment slot="Item1" id="Item.empire_shield_008" />
+      </EquipmentRoster>
+	  <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_greatsword_001" />
+      </EquipmentRoster>
+      <EquipmentSet id="npc_wanderer_equipment_template_empire_civilian"
+                    civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+
+  <NPCCharacter id="tournament_template_emp_four_participant_set_v1"
+                default_group="Infantry"
+                level="6"
+                name="{=!}tournament_template_emp_four_participant_set_v1"
+                culture="Culture.empire"
+                skill_template="SkillSet.tow_skills_level6">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills></skills>
+    <upgrade_targets></upgrade_targets>
+    <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+        <equipment slot="Item1" id="Item.empire_shield_008" />
+      </EquipmentRoster>
+	  <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_greatsword_001" />
+      </EquipmentRoster>
+	  <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_halberd_003" />
+      </EquipmentRoster>
+	  <EquipmentRoster>
+        <equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
+		<equipment slot="Item1" id="Item.tow_handgun_001" />
+		<equipment slot="Item2" id="Item.musket_ball" />
+      </EquipmentRoster>
+      <EquipmentSet id="npc_wanderer_equipment_template_empire_civilian"
+                    civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+
 </NPCCharacters>

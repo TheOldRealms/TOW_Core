@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
-using System.Timers;
 
 namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
 {
@@ -30,23 +23,26 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
         public override void OnTickAsAI(float dt)
         {
             base.OnTickAsAI(dt);
-            _timeElapsed += dt;
-            if(_timeElapsed >= 0.5)
+            if (_moraleComponent != null) // Main agent has UndeadMoralComponent somehow
             {
-                _timeElapsed = 0;
-                try
+                _timeElapsed += dt;
+                if (_timeElapsed >= 0.5)
                 {
-                    if (Agent.IsActive() || Agent.IsRetreating())
+                    _timeElapsed = 0;
+                    try
                     {
-                        if (_moraleComponent.Morale < _crumbleThreshold)
+                        if (Agent.IsActive() || Agent.IsRetreating())
                         {
-                            ApplyCrumble();
+                            if (_moraleComponent.Morale < _crumbleThreshold)
+                            {
+                                ApplyCrumble();
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    TOWCommon.Log("Attempted to apply crumbling to agent. Error: " + ex.Message, NLog.LogLevel.Error);
+                    catch (Exception ex)
+                    {
+                        TOWCommon.Log("Attempted to apply crumbling to agent. Error: " + ex.Message, NLog.LogLevel.Error);
+                    }
                 }
             }
         }
@@ -56,4 +52,4 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
             Agent.ApplyStatusEffect("crumble");
         }
     }
-} 
+}

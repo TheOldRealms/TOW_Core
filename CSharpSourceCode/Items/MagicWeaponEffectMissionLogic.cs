@@ -15,7 +15,6 @@ namespace TOW_Core.Items
     {
         public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            base.OnAgentBuild(agent, banner);
             if (HasMagicWeapon(agent))
             {
                 var comp = new MagicWeaponAgentComponent(agent);
@@ -26,7 +25,6 @@ namespace TOW_Core.Items
 
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         {
-            base.OnAgentHit(affectedAgent, affectorAgent, damage, affectorWeapon);
             if(affectorWeapon.Item != null && affectorWeapon.Item.IsMagicWeapon())
             {
                 var magiceffect = affectorWeapon.Item.GetMagicalProperties();

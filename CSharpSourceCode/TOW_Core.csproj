@@ -41,7 +41,7 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(GameDir)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOW_ArmoryAssets*TOW_EnvironmentAssets*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
+    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOR_Armory*TOW_EnvironmentAssets*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
     <StartWorkingDirectory>$(GameDir)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
@@ -296,6 +296,7 @@
     <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
+    <Compile Include="Abilities\Scripts\AgentMovingScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
@@ -320,6 +321,7 @@
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
+    <Compile Include="Battle\TORBattleEndLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
@@ -330,12 +332,14 @@
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
     <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\LibraryTownBehaviour.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
-    <Compile Include="CampaignSupport\SettlementNotableController.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />

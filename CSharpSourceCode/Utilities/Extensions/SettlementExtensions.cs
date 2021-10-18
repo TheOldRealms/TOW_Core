@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 
 namespace TOW_Core.Utilities.Extensions
@@ -18,9 +15,9 @@ namespace TOW_Core.Utilities.Extensions
         /// <returns></returns>
         public static List<string> GetSceneNames(this Settlement settlement)
         {
-            
+
             List<string> sceneNames = new List<string>();
-            if(settlement.LocationComplex != null)
+            if (settlement.LocationComplex != null)
             {
                 List<Location> settlementLocations = settlement.LocationComplex.GetListOfLocations().ToList();
                 foreach (Location settlementLocation in settlementLocations)
@@ -32,6 +29,48 @@ namespace TOW_Core.Utilities.Extensions
                 }
             }
             return sceneNames;
+        }
+
+        public static bool IsEmpireSettlement(this Settlement settlement)
+        {
+            return (settlement.IsTown || 
+                    settlement.IsCastle||
+                    settlement.IsVillage) &&
+                   (settlement.MapFaction.Name.Contains("Moot") ||
+                    settlement.MapFaction.Name.Contains("Averland") ||
+                    settlement.MapFaction.Name.Contains("Stirland"));
+        }
+
+        public static bool IsVampireSettlement(this Settlement settlement)
+        {
+            return (settlement.IsTown ||
+                    settlement.IsCastle ||
+                    settlement.IsVillage) &&
+                    settlement.MapFaction.Name.Contains("Sylvania");
+        }
+
+        public static bool IsSuitableForHero(this Settlement settlement, Hero hero)
+        {
+            if (hero.Culture.Name.Contains("Vampire"))
+            {
+                return IsVampireSettlement(settlement);
+            }
+            else
+            {
+                return IsEmpireSettlement(settlement);
+            }
+        }
+
+        public static bool IsSuitableForHero(this Settlement settlement, CharacterObject hero)
+        {
+            if (hero.Culture.Name.Contains("Vampire"))
+            {
+                return IsVampireSettlement(settlement);
+            }
+            else
+            {
+                return IsEmpireSettlement(settlement);
+            }
         }
     }
 }

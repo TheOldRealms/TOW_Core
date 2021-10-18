@@ -13,12 +13,12 @@ namespace TOW_Core.Abilities.Scripts
         private int _soundIndex;
         private SoundEvent _sound;
         protected Agent _casterAgent;
-        private float _abilityLife = -1;
-        private bool _isFading;
-        private float _timeSinceLastTick = 0;
+        protected float _abilityLife = -1;
+        protected bool _isFading;
+        protected float _timeSinceLastTick = 0;
         private bool _hasCollided;
         private bool _hasTickedOnce;
-        private bool _hasTriggered;
+        protected bool _hasTriggered;
         private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
         private float _minArmingTimeForCollision = 0.1f;
@@ -60,6 +60,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override void OnTick(float dt)
         {
             base.OnTick(dt);
+            if (_ability == null) return;
             if (_isFading) return;
             _timeSinceLastTick += dt;
             UpdateLifeTime(dt);
@@ -88,7 +89,7 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        private void UpdatePosition(MatrixFrame frame, float dt)
+        protected void UpdatePosition(MatrixFrame frame, float dt)
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);
@@ -101,7 +102,7 @@ namespace TOW_Core.Abilities.Scripts
             return oldFrame.Advance(_ability.Template.BaseMovementSpeed * dt);
         }
 
-        private void UpdateLifeTime(float dt)
+        protected void UpdateLifeTime(float dt)
         {
             if (_abilityLife < 0) _abilityLife = 0;
             else _abilityLife += dt;
@@ -119,7 +120,7 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        private void UpdateSound(Vec3 position)
+        protected void UpdateSound(Vec3 position)
         {
             if (_sound != null)
             {
@@ -168,7 +169,7 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        private void TriggerEffect(Vec3 position, Vec3 normal)
+        protected void TriggerEffect(Vec3 position, Vec3 normal)
         {
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)

@@ -16,7 +16,6 @@ namespace TOW_Core.CampaignSupport.BattleHistory
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
             if(affectedAgent?.Character != null && agentState.Equals(AgentState.Killed))
             {
                 if(affectedAgent.Team.IsPlayerTeam)
@@ -38,12 +37,10 @@ namespace TOW_Core.CampaignSupport.BattleHistory
 
         protected override void OnEndMission()
         {
-            base.OnEndMission();
             BattleInfoCampaignBehavior battleInfoContainer = Campaign.Current.GetCampaignBehavior<BattleInfoCampaignBehavior>();
             BattleInfo battleInfo = new BattleInfo();
             battleInfo.EnemiesKilled = EnemiesKilled.Select(charObj => new CharacterInfo(charObj)).ToList();
             battleInfo.AlliesKilled = AlliesKilled.Select(charObj => new CharacterInfo(charObj)).ToList();
-
             battleInfoContainer.PlayerBattleHistory.Add(battleInfo);
         }
     }

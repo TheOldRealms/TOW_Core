@@ -52,6 +52,7 @@
         <module_sound name="passing_fire" sound_category="mission_ambient_3d_big" path="passing_fire.ogg" />
         <module_sound name="scream" sound_category="mission_ambient_3d_big" path="scream.ogg" />
         <module_sound name="empire_heal" sound_category="mission_ambient_3d_big" path="empire_heal.ogg" />
+        <module_sound name="bats_loop" sound_category="mission_ambient_3d_big" path="bats_loop.ogg" />
         <module_sound name="dwarf_hand_grenade_tick" sound_category="mission_combat" path="dwarf_hand_grenade_tick.wav" />
 
         <!-- The Old World -->
