@@ -8,7 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.CampaignSupport.Assimilation;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -49,9 +49,9 @@ namespace TOW_Core.CampaignSupport
 
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncData<Dictionary<Settlement, CampaignTime>>("companionSettlements", ref _companionSettlements);
-            dataStore.SyncData<Dictionary<Settlement, int>>("_settlementPassedDaysForWeeklyTick", ref _settlementPassedDaysForWeeklyTick);
-            dataStore.SyncData<List<Hero>>("companions", ref _companions);
+            dataStore.SyncData<Dictionary<Settlement, CampaignTime>>("companionSettlements", ref this._companionSettlements);
+            dataStore.SyncData<Dictionary<Settlement, int>>("_settlementPassedDaysForWeeklyTick", ref this._settlementPassedDaysForWeeklyTick);
+            dataStore.SyncData<List<Hero>>("companions", ref this._companions);
         }
 
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
@@ -451,7 +451,7 @@ namespace TOW_Core.CampaignSupport
 
         public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            if (mobileParty == MobileParty.MainParty && settlement.IsTown && !_companionSettlements.ContainsKey(settlement) && _companions.Count > 0)
+            if (mobileParty == MobileParty.MainParty && settlement.IsTown && !this._companionSettlements.ContainsKey(settlement) && this._companions.Count > 0)
             {
                 Hero wanderer = this._companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
                 
@@ -469,18 +469,16 @@ namespace TOW_Core.CampaignSupport
         {
             if (victim.IsNotable)
             {
-                var comp = victim.CurrentSettlement.GetComponent<AssimilationComponent>();
-                if (victim.Power >= (float)Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit &&
-                    comp != null && 
-                    comp.IsAssimilationComplete)
+                if (victim.Power >= (float) Campaign.Current.Models.NotablePowerModel.NotableDisappearPowerLimit)
                 {
                     Hero hero = HeroCreator.CreateRelativeNotableHero(victim);
                     if (victim.CurrentSettlement != null)
                     {
-                        ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
+                        this.ChangeDeadNotable(victim, hero, victim.CurrentSettlement);
                     }
+
                     CheckNotable(hero.CurrentSettlement, hero);
-                    //TOWCommon.Say($"OnHeroKilled {victim.Name} - {hero.Name} {hero.Culture.Name}");
+
                     using (List<CaravanPartyComponent>.Enumerator enumerator = victim.OwnedCaravans.ToList<CaravanPartyComponent>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -502,7 +500,7 @@ namespace TOW_Core.CampaignSupport
             IL_C3:
             if (this._companions.Contains(victim))
             {
-                _companions.Remove(victim);
+                this._companions.Remove(victim);
             }
         }
 
@@ -595,7 +593,7 @@ namespace TOW_Core.CampaignSupport
             {
                 if (MBRandom.RandomFloat < num)
                 {
-                    CreateCompanion(companionTemplate);
+                    this.CreateCompanion(companionTemplate);
                 }
             }
 
@@ -614,11 +612,11 @@ namespace TOW_Core.CampaignSupport
 
         private static void CheckNotable(Settlement settlement, Hero hero)
         {
-            if (settlement.IsEmpireSettlement())
+            if (settlement.IsEmpireSettlement() && hero.IsVampireNotable())
             {
                 hero.TurnIntoHuman();
             }
-            else if (settlement.IsVampireSettlement())
+            else if (settlement.IsVampireSettlement() && hero.IsEmpireNotable())
             {
                 hero.TurnIntoVampire();
             }
@@ -769,6 +767,58 @@ namespace TOW_Core.CampaignSupport
             if (hero != null)
             {
                 hero.SpcDaysInLocation = 0;
+            }
+        }
+
+        private void PurgeSettlement(MobileParty mobileParty, Settlement settlement, Hero hero)
+        {
+            if (mobileParty != null)
+            {
+                if (settlement.Notables.Count > 0)
+                {
+                    for (int i = 0; i < settlement.Notables.Count; i++)
+                    {
+                        if (settlement.Notables[i] != null)
+                        {
+                            if (settlement.IsVampireSettlement())
+                            {
+                                settlement.Notables[i].TurnIntoVampire();
+                            }
+                            else
+                            {
+                                if (settlement.Notables[i].IsVampireNotable())
+                                {
+                                    KillCharacterAction.ApplyByExecution(settlement.Notables[i], hero, true);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (settlement.HeroesWithoutParty.Count > 0)
+                {
+                    for (int j = 0; j < settlement.HeroesWithoutParty.Count; j++)
+                    {
+                        if (settlement.HeroesWithoutParty[j] != null)
+                        {
+                            if (!settlement.IsSuitableForHero(settlement.HeroesWithoutParty[j]))
+                            {
+                                LeaveSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j]);
+                                Settlement newSettlement = Settlement.All.GetRandomElementWithPredicate(s => s.IsTown && s.IsSuitableForHero(settlement.HeroesWithoutParty[j]));
+                                EnterSettlementAction.ApplyForCharacterOnly(settlement.HeroesWithoutParty[j], newSettlement);
+                            }
+                        }
+                    }
+                }
+
+                if (settlement.MapFaction.Name.Contains("Sylvania"))
+                {
+                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of undead");
+                }
+                else
+                {
+                    TOWCommon.Say($"{hero.Name} purged {settlement.Name} of humans");
+                }
             }
         }
 

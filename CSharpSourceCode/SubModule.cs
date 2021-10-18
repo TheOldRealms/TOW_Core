@@ -37,7 +37,7 @@ using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
-using TOW_Core.CampaignSupport.Assimilation;
+using System.IO;
 
 namespace TOW_Core
 {
@@ -154,8 +154,6 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
-                starter.AddBehavior(new AssimilationCampaignBehavior());
-
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
