@@ -23,7 +23,6 @@
 				<equipment slot="Cape" id="Item.empire_marius_leitdorf_shoulders" />
 				<equipment slot="Gloves" id="Item.empire_marius_leitdorf_gauntlets" />
 				<equipment slot="Leg" id="Item.empire_marius_leitdorf_boots" />
-
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.empire_horse_armor_001" />
 			</EquipmentRoster>
@@ -54,7 +53,6 @@
 				<equipment slot="Cape" id="Item.empire_statetrooper_breastplate_007" />
 				<equipment slot="Gloves" id="Item.tilean_knight_gauntlets_001" />
 				<equipment slot="Leg" id="Item.plate_boots" />
-
 				<equipment slot="Horse" id="Item.t2_empire_horse" />
 				<equipment slot="HorseHarness" id="Item.stripped_leather_harness" />
 			</EquipmentRoster>
@@ -1249,7 +1247,7 @@
        <Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vampire_greatmace_001" />
-				<Equipment slot="Item1" id="Item.vc_undead_banner_001" />
+				<equipment slot="Item1" id="Item.vc_undead_banner_001" />
 				<equipment slot="Item2" id="Item.vampire_sword_009" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />

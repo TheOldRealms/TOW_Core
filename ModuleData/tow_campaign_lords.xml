@@ -1249,7 +1249,7 @@
        <Equipments>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vampire_greatmace_001" />
-				<Equipment slot="Item1" id="Item.vc_undead_banner_001" />
+				<equipment slot="Item1" id="Item.vc_undead_banner_001" />
 				<equipment slot="Item2" id="Item.vampire_sword_009" />
 				<equipment slot="Cape" id="Item.vc_blood_knight_shoulders_002" />
 				<equipment slot="Body" id="Item.vc_blood_knight_body_001" />
