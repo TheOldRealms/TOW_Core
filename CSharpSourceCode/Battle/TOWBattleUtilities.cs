@@ -13,7 +13,73 @@ namespace TOW_Core.Battle
 {
     public static class TOWBattleUtilities
     {
-        public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
+        public static void DamageAgentsInArea(Vec2 center, float radius, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
+        {
+            var list = new List<Agent>();
+            if (targetType == TargetType.Enemy && damager != null)
+            {
+                list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
+            }
+            else if(targetType == TargetType.All)
+            {
+                list = Mission.Current.GetNearbyAgents(center, radius).ToList();
+            }
+            foreach(var agent in list)
+            {
+                if(maxDamage < minDamage)
+                {
+                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave:hasShockWave);
+                }
+                else
+                {
+                    agent.ApplyDamage(TOW_Core.Utilities.TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave) ;
+                }
+            }
+        }
+
+        public static void HealAgentsInArea(Vec2 center, float radius, int minHeal, int maxHeal = -1, Agent healer = null, TargetType targetType = TargetType.Friendly)
+        {
+            var list = new List<Agent>();
+            if (targetType == TargetType.Friendly && healer != null)
+            {
+                list = Mission.Current.GetNearbyAllyAgents(center, radius, healer.Team).ToList();
+            }
+            else if (targetType == TargetType.All)
+            {
+                list = Mission.Current.GetNearbyAgents(center, radius).ToList();
+            }
+            foreach (var agent in list)
+            {
+                if (maxHeal < minHeal)
+                {
+                    agent.Heal(minHeal);
+                }
+                else
+                {
+                    agent.Heal(TOW_Core.Utilities.TOWMath.GetRandomInt(minHeal, maxHeal));
+                }
+            }
+        }
+
+        public static void ApplyStatusEffectToAgentsInArea(Vec2 center, float radius, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
+        {
+            var list = new List<Agent>();
+            if (targetType == TargetType.Enemy && damager != null)
+            {
+                list = Mission.Current.GetNearbyEnemyAgents(center, radius, damager.Team).ToList();
+            }
+            else if(targetType == TargetType.All)
+            {
+                list = Mission.Current.GetNearbyAgents(center, radius).ToList();
+            }
+            foreach (var agent in list)
+            {
+                agent.ApplyStatusEffect(effectId);
+            }
+
+        }
+
+        public static void DamageAgents(Agent[] agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
         {
             foreach (var agent in agents)
             {
@@ -28,7 +94,7 @@ namespace TOW_Core.Battle
             }
         }
 
-        public static void HealAgents(IEnumerable<Agent> agents, int minHeal, int maxHeal = -1, Agent healer = null, TargetType targetType = TargetType.Friendly)
+        public static void HealAgents(Agent[] agents, int minHeal, int maxHeal = -1, Agent healer = null, TargetType targetType = TargetType.Friendly)
         {
             foreach (var agent in agents)
             {
@@ -43,7 +109,7 @@ namespace TOW_Core.Battle
             }
         }
 
-        public static void ApplyStatusEffectToAgents(IEnumerable<Agent> agents, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
+        public static void ApplyStatusEffectToAgents(Agent[] agents, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
         {
             foreach (var agent in agents)
             {
