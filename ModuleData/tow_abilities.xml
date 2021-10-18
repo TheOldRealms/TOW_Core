@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfCharacterAbilityTuple xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
   <!-- custom battle lords -->
   <CharacterAbilityTuple CharacterID="emp_lord">
     <Abilities>Fireball</Abilities>
