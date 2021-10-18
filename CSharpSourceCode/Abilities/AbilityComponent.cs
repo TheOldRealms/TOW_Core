@@ -96,6 +96,10 @@ namespace TOW_Core.Abilities
 
         public void DisableSpellMode()
         {
+            if (_currentAbility != null && _currentAbility.Crosshair != null)
+            {
+                _currentAbility.Crosshair.Hide();
+            }
             isAbilityModeOn = false;
         }
 

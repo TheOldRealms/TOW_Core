@@ -52,6 +52,10 @@ namespace TOW_Core.Abilities
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                     {
+                        if (_abilityComponent.CurrentAbility.Crosshair == null || !_abilityComponent.CurrentAbility.Crosshair.IsVisible)
+                        {
+                            return;
+                        }
                         Agent.Main.CastCurrentAbility();
                     }
                     else if (Input.IsKeyPressed(InputKey.MouseScrollUp))

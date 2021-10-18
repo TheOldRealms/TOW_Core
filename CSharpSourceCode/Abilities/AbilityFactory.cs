@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
@@ -70,7 +71,7 @@ namespace TOW_Core.Abilities
                 ability = new SpecialMove(template);
             }
 
-            if (caster.CommonAIComponent == null)
+            if (caster.Character.IsHero && caster.Character.IsPlayerCharacter)
             {
                 AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
                 ability.SetCrosshair(crosshair);
