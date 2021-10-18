@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TOW_Core.Abilities
+﻿namespace TOW_Core.Abilities
 {
     public enum AbilityType
     {
         Innate,
         Spell,
         Prayer,
-        ItemBound
+        ItemBound,
+        SpecialMove
     }
 
     public enum AbilityEffectType

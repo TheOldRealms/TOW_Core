@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -13,7 +10,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class SummonSkeleton : ITriggeredScript
     {
-        public void OnTrigger(Vec3 position, Agent triggeredByAgent)
+        public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             SpawnAgent(triggeredByAgent, position);
 
@@ -43,10 +40,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var supplier = new CustomBattleTroopSupplier((CustomBattleCombatant)caster.Origin.BattleCombatant, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
                 troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier as CustomBattleTroopSupplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
             }
-            Formation formation = null;
-            if (caster.Team.Formations.Count() > 0)
+            Formation formation = caster.Team.GetFormation(troopCharacter.GetFormationClass(troopOrigin.BattleCombatant));
+            if (formation == default)
             {
-                formation = caster.Team.Formations.Where(x => x.FormationIndex.GetName() == troopCharacter.DefaultFormationClass.GetName()).FirstOrDefault();
+                formation = new Formation(caster.Team, caster.Team.Formations.Count());
             }
             AgentBuildData buildData = new AgentBuildData(troopCharacter).
                 Team(caster.Team).
