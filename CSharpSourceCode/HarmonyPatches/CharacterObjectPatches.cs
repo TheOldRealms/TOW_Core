@@ -2,6 +2,8 @@
 using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
+using TOW_Core.CampaignSupport.Models;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.HarmonyPatches
@@ -16,9 +18,14 @@ namespace TOW_Core.HarmonyPatches
             if (__instance.IsUndead())
             {
                 __result = 0;
-                return false;
             }
-            return true;
+            else
+            {
+                var model = Campaign.Current.Models.PartyWageModel;
+                __result = model.GetCharacterWage(__instance.Tier);
+                TOWCommon.Say($"{model.GetType().Name}");
+            }
+            return false;
         }
 
         [HarmonyPrefix]

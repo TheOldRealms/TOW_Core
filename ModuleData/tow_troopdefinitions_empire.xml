@@ -866,7 +866,7 @@
 	</NPCCharacter>
 
 	<!-- Empire Duelist -->
-	<NPCCharacter id="tow_empire_duelist" default_group="Infantry" level="11" name="{=!}Empire Duelist" occupation="Soldier" is_basic_troop="true" culture="Culture.empire" skill_template="SkillSet.tow_skills_level11">
+	<NPCCharacter id="tow_empire_duelist" default_group="Infantry" level="35" name="{=!}Empire Duelist" occupation="Soldier" is_basic_troop="true" culture="Culture.empire" skill_template="SkillSet.tow_skills_level11">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
@@ -909,7 +909,7 @@
 	</NPCCharacter>
 
 	<!-- Empire Cavalry -->
-	<NPCCharacter id="tow_empire_cavalry" default_group="Cavalry" level="16" name="{=!}Empire Cavalry" occupation="Soldier" culture="Culture.empire" upgrade_requires="ItemCategory.horse" skill_template="SkillSet.tow_skills_level16">
+	<NPCCharacter id="tow_empire_cavalry" default_group="Cavalry" level="40" name="{=!}Empire Cavalry" occupation="Soldier" culture="Culture.empire" upgrade_requires="ItemCategory.horse" skill_template="SkillSet.tow_skills_level16">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
@@ -944,7 +944,7 @@
 	</NPCCharacter>
 
 	<!-- Empire Knight -->
-	<NPCCharacter id="tow_empire_knight" default_group="Cavalry" level="21" name="{=!}Empire Knight" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+	<NPCCharacter id="tow_empire_knight" default_group="Cavalry" level="45" name="{=!}Empire Knight" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
@@ -1015,7 +1015,7 @@
 
 
 	<!-- Empire Pistolier -->
-	<NPCCharacter id="tow_empire_pistolier" default_group="HorseArcher" level="21" name="{=!}Empire Pistolier" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+	<NPCCharacter id="tow_empire_pistolier" default_group="HorseArcher" level="45" name="{=!}Empire Pistolier" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
@@ -1053,7 +1053,7 @@
 	</NPCCharacter>
 
 	<!-- Empire Outrider -->
-	<NPCCharacter id="tow_empire_outrider" default_group="HorseArcher" level="26" name="{=!}Empire Outrider" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+	<NPCCharacter id="tow_empire_outrider" default_group="HorseArcher" level="50" name="{=!}Empire Outrider" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
