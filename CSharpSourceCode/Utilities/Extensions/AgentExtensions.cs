@@ -2,17 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Battle.StatusEffects;
-using TOW_Core.Utilities;
-using TOW_Core.Utilities.Extensions;
 using TaleWorlds.CampaignSystem;
-using System.Runtime.ExceptionServices;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -133,7 +127,7 @@ namespace TOW_Core.Utilities.Extensions
             }
             else return new List<string>();
         }
-        
+
         public static Ability GetAbility(this Agent agent, int abilityindex)
         {
             var abilitycomponent = agent.GetComponent<AbilityComponent>();
@@ -184,16 +178,16 @@ namespace TOW_Core.Utilities.Extensions
                         agent.Health -= damageAmount;
                         return;
                     }
-                    else if(agent.Health > 1 && !agent.IsFadingOut())
+                    else if (agent.Health > 1 && !agent.IsFadingOut())
                     {
                         var blow = new Blow(-1);
                         blow.DamageCalculated = true;
                         blow.InflictedDamage = damageAmount;
-                        blow.AttackType = AgentAttackType.Bash;
+                        blow.AttackType = AgentAttackType.Kick;
                         blow.BlowFlag = BlowFlags.NoSound;
                         blow.BaseMagnitude = 5;
                         blow.DamageType = DamageTypes.Invalid;
-                        blow.VictimBodyPart = BoneBodyPartType.Abdomen;
+                        blow.VictimBodyPart = BoneBodyPartType.Chest;
                         blow.StrikeType = StrikeType.Invalid;
                         if (hasShockWave)
                         {
@@ -256,5 +250,20 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
         #endregion
+
+        public static void FallDown(this Agent agent)
+        {
+            agent.SetActionChannel(0, ActionIndexCache.Create("act_strike_fall_back_heavy_back_rise_continue"));
+        }
+
+        public static void Appear(this Agent agent)
+        {
+            agent.AgentVisuals.SetVisible(true);
+        }
+
+        public static void Disappear(this Agent agent)
+        {
+            agent.AgentVisuals.SetVisible(false);
+        }
     }
 }
