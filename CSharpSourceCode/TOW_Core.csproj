@@ -336,6 +336,9 @@
     <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
+    <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
@@ -343,6 +346,7 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
+    <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
