@@ -342,6 +342,7 @@
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
+    <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
     <Compile Include="Items\MagicWeaponAgentComponent.cs" />
