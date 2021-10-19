@@ -9,7 +9,7 @@ public static class TestPatch
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(Mission), "ComputeBlowMagnitudeMissile")]
-    public static void MissionPostfix(ItemObject weaponItem, ref float baseMagnitude)
+    public static void MissionPostfix(ref float baseMagnitude)
     {
         baseMagnitude = baseMagnitude <= limit ? baseMagnitude : limit;
     }
