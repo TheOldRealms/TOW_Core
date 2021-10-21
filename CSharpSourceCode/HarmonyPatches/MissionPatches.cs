@@ -2,7 +2,7 @@
 using TaleWorlds.MountAndBlade;
 
 [HarmonyPatch]
-public static class TestPatch
+public static class MissionPatches
 {
     private static float limit = 140;
 
