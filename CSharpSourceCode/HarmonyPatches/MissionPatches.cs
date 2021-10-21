@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 [HarmonyPatch]
@@ -9,7 +8,7 @@ public static class TestPatch
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(Mission), "ComputeBlowMagnitudeMissile")]
-    public static void MissionPostfix(ref float baseMagnitude)
+    public static void ComputeBlowMagnitudeMissilePostfix(ref float baseMagnitude)
     {
         baseMagnitude = baseMagnitude <= limit ? baseMagnitude : limit;
     }
