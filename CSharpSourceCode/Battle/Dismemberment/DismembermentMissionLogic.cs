@@ -52,7 +52,12 @@ namespace TOW_Core.Battle.Dismemberment
                                     (attacker.AttackDirection == Agent.UsageDirection.AttackLeft ||
                                     attacker.AttackDirection == Agent.UsageDirection.AttackRight);
 
-            if (canBeDismembered)
+            bool test = victim != null &&
+                        victim.IsHuman &&
+                        victim != Agent.Main && 
+                        attacker != null;
+
+            if (test)
             {
                 if (attacker == Agent.Main)
                 {
@@ -74,6 +79,8 @@ namespace TOW_Core.Battle.Dismemberment
                     DismemberHead(victim, collisionData);
                 }
             }
+
+            victim.Die(blow);
         }
 
         private void EnableSlowMotion()
