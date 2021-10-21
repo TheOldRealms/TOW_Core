@@ -259,7 +259,7 @@
 
 
 	<!-- Vampire Counts animated skeleton-->
-	<NPCCharacter id="tow_summoned_skeleton" default_group="Infantry" level="6" name="{=!}Animated Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
+	<NPCCharacter id="tow_summoned_skeleton" default_group="Infantry" level="6" name="{=!}Summoned Skeleton" occupation="Soldier" is_basic_troop="true" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level6">
 		<face>
 			<face_key_template value="BodyProperty.fighter_empire" />
 		</face>
@@ -527,6 +527,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_001" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_003" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.peasant_polearm_1_t1" />
@@ -536,6 +537,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_002" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_002" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.peasant_polearm_1_t1" />
@@ -545,6 +547,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_003" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_003" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.wood_scythe" />
@@ -554,6 +557,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_004" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_004" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.vampiric_scythe" />
@@ -563,6 +567,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_001" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_005" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 			<EquipmentRoster>
 				<equipment slot="Item0" id="Item.wood_scythe" />
@@ -572,6 +577,7 @@
 				<equipment slot="Cape" id="Item.cairn_wraith_shoulders_002" />
 				<equipment slot="Head" id="Item.cairn_wraith__helmet_006" />
 				<equipment slot="Horse" id="Item.vc_ghost_horse" />
+				<equipment slot="HorseHarness" id="Item.vc_ghost_horse_harness_001" />
 			</EquipmentRoster>
 		</Equipments>
 	</NPCCharacter>
