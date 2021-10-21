@@ -275,47 +275,6 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate
-       StringID="ShadowStep"
-       Name="Shadow Step"
-       SpriteName="windofdeath_icon"
-       CoolDown="5"
-       WindsOfMagicCost="0"
-       BaseMisCastChance="0.3"
-       Duration="2"
-       Radius="2"
-       AbilityType="Spell"
-       AbilityEffectType="AgentMoving"
-       BaseMovementSpeed="9"
-       TickInterval="0.01"
-       TriggerType="EveryTick"
-       HasLight="false"
-       LightIntensity="0"
-       LightRadius="0"
-       LightFlickeringMagnitude="0"
-       LightFlickeringInterval="0"
-       ShadowCastEnabled="false"
-       ParticleEffectPrefab="wind_of_death_vfx"
-       ParticleEffectSizeModifier="1"
-       SoundEffectToPlay="windofdeath_whispers"
-       ShouldSoundLoopOverDuration="false"
-       CastType="WindUp"
-       CastTime="0.5"
-       AnimationActionName="act_release_heavy_thrown"
-       TriggeredEffectID="shadow_step"
-       Offset="10"
-       CrosshairType="DirectionalAOE"
-       MinDistance="0.5"
-       MaxDistance="0.5"
-       TargetCapturingRadius="1">
-    <LightColorRGB x="255" y="255" z="255" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>255</y>
-        <z>255</z>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
   <AbilityTemplate 
     StringID="MortarSpawner" 
     Name="Place Mortar" 

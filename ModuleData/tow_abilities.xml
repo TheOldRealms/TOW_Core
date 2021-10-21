@@ -14,7 +14,6 @@
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="vc_lord">
     <Abilities>Fireball</Abilities>
-    <Abilities>ShadowStep</Abilities>
     <Abilities>WindOfDeath</Abilities>
   </CharacterAbilityTuple>
   <CharacterAbilityTuple CharacterID="wizard_lord">

@@ -1,4 +1,6 @@
-﻿using TaleWorlds.Core;
+﻿using System.Collections.Generic;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
@@ -21,8 +23,10 @@ namespace TOW_Core.Abilities
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         private MissionScreen _missionScreen;
 
+        public Dictionary<Agent, PartyGroupTroopSupplier> SummonedCreatures { get; set; }
         public AbilityManagerMissionLogic()
         {
+            SummonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
         }
 
         protected override void OnEndMission()
