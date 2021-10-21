@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private Probability dismembermentFrequency = Probability.Always;
 
-        private Probability slowMotionFrequency = Probability.Always;
+        private Probability slowMotionFrequency = Probability.Never;
 
         private float slowMotionEndTime;
 
@@ -32,6 +32,8 @@ namespace TOW_Core.Battle.Dismemberment
             {
                 Mission.Current.Scene.SlowMotionMode = false;
             }
+            if (Agent.Main != null)
+                TOWCommon.Say($"{Agent.Main.WalkSpeedCached} {Agent.Main.Velocity} {Agent.Main.MovementVelocity}");
         }
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
@@ -54,7 +56,7 @@ namespace TOW_Core.Battle.Dismemberment
 
             bool test = victim != null &&
                         victim.IsHuman &&
-                        victim != Agent.Main && 
+                        victim != Agent.Main &&
                         attacker != null;
 
             if (test)
@@ -79,8 +81,6 @@ namespace TOW_Core.Battle.Dismemberment
                     DismemberHead(victim, collisionData);
                 }
             }
-
-            victim.Die(blow);
         }
 
         private void EnableSlowMotion()
@@ -115,26 +115,28 @@ namespace TOW_Core.Battle.Dismemberment
 
         private void DismemberHead(Agent victim, AttackCollisionData attackCollision)
         {
-            GameEntity head = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
+            GameEntity head = CopyHead(victim);
             MatrixFrame headFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
             head.SetGlobalFrame(headFrame);
-            MeshTag tag;
-            String meshName = CopyHead(victim, head, out tag);
+
             float weight = 0;
-            if (tag != MeshTag.None)
+            var headEquipment = victim.SpawnEquipment[EquipmentIndex.Head];
+            if (!headEquipment.IsEmpty)
             {
-                var headArmor = CopyHeadArmor(victim, meshName, out weight);
-                if (tag == MeshTag.NSHA)
-                {
-                    head.AddChild(headArmor);
-                }
-                else if (tag == MeshTag.SHA)
+                MeshTag tag;
+                weight = headEquipment.Weight;
+                var headArmor = CopyHeadArmor(victim, headEquipment, out tag);
+                if (tag == MeshTag.SHA)
                 {
                     headArmor.SetGlobalFrame(headFrame);
                     AddPhysics(headArmor, attackCollision, weight);
                 }
+                else
+                {
+                    head.AddChild(headArmor);
+                }
             }
-            AddPhysics(head, attackCollision, 1 + weight);
+            AddPhysics(head, attackCollision, 1.5f + weight);
             if (!victim.IsUndead())
             {
                 CoverCutWithFlesh(victim, head);
@@ -142,85 +144,55 @@ namespace TOW_Core.Battle.Dismemberment
             }
         }
 
-        private string CopyHead(Agent victim, GameEntity head, out MeshTag tag)
+        private GameEntity CopyHead(Agent victim)
         {
-            tag = MeshTag.None;
+            GameEntity head = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headLocalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
-            String headArmorName = "";
             var meshes = victim.AgentVisuals.GetSkeleton().GetAllMeshes();
             foreach (Mesh mesh in meshes)
             {
                 String meshName = mesh.Name.ToLower();
-                if (mesh.HasTag("SHA"))
+                foreach (String name in headMeshes)
                 {
-                    mesh.SetVisibilityMask((VisibilityMaskFlags)16U);
-                    if (headArmorName == "")
+                    bool flag = false;
+                    if (meshName.Contains(name))
                     {
-                        tag = MeshTag.SHA;
-                        headArmorName = mesh.Name;
-                        TOWCommon.Say($"{mesh.Name} {tag}");
-                    }
-                }
-                else if (mesh.HasTag("NSHA"))
-                {
-                    mesh.SetVisibilityMask((VisibilityMaskFlags)16U);
-                    if (headArmorName == "")
-                    {
-                        tag = MeshTag.NSHA;
-                        headArmorName = mesh.Name;
-                        TOWCommon.Say($"{mesh.Name} {tag}");
-                    }
-                }
-                else
-                {
-                    foreach (String name in headMeshes)
-                    {
-                        bool flag = false;
-                        if (meshName.Contains(name))
+                        mesh.SetVisibilityMask((VisibilityMaskFlags)16U);
+                        if (!flag)
                         {
-                            mesh.SetVisibilityMask((VisibilityMaskFlags)16U);
-                            if (!flag)
-                            {
-                                Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                                childMesh.SetLocalFrame(headLocalFrame);
-                                head.AddMesh(childMesh, true);
-                                flag = true;
-                                break;
-                            }
+                            Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                            childMesh.SetLocalFrame(headLocalFrame);
+                            head.AddMesh(childMesh, true);
+                            flag = true;
+                            break;
                         }
                     }
                 }
             }
-            return headArmorName;
+            return head;
         }
 
-        private GameEntity CopyHeadArmor(Agent victim, String name, out float weight)
+        private GameEntity CopyHeadArmor(Agent victim, EquipmentElement equipment, out MeshTag tag)
         {
+            tag = MeshTag.NSHA;
             var headArmor = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
             MatrixFrame headMeshFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
-            var headEquipments = victim.Character.AllEquipments;
-            foreach (var equip in headEquipments)
+            var multiMesh = equipment.GetMultiMesh(victim.IsFemale, false, true);
+            var meshes = victim.AgentVisuals.GetSkeleton().GetAllMeshes();
+            for (int i = 0; i < multiMesh.MeshCount; i++)
             {
-                if (!equip.IsCivilian)
-                {
-                    var multiMesh = equip[EquipmentIndex.Head].GetMultiMesh(victim.IsFemale, false, true);
-                    for (int i = 0; i < multiMesh.MeshCount; i++)
-                    {
-                        var mesh = multiMesh.GetMeshAtIndex(i);
-                        if (mesh.Name.Contains(name))
-                        {
-                            multiMesh = multiMesh.CreateCopy();
-                            TOWCommon.Say($"{multiMesh.GetName()} {multiMesh.GetVisibilityMask()} {mesh.VisibilityMask} copied");
-                            headArmor.AddMultiMesh(multiMesh, true);
-                            multiMesh.Frame = headMeshFrame;
-                            weight = equip[EquipmentIndex.Head].Weight;
-                            return headArmor;
-                        }
-                    }
-                }
+                var equipMesh = multiMesh.GetMeshAtIndex(i);
+                var agentMesh = meshes.FirstOrDefault(m => m.Name == equipMesh.Name);
+                agentMesh.SetVisibilityMask(VisibilityMaskFlags.ShadowStatic);
             }
-            weight = 0;
-            return null;
+            if (multiMesh.GetFirstMeshWithTag("SHA") != null)
+            {
+                tag = MeshTag.SHA;
+            }
+            multiMesh = multiMesh.CreateCopy();
+            headArmor.AddMultiMesh(multiMesh, true);
+            multiMesh.Frame = headMeshFrame;
+            return headArmor;
         }
 
         private void AddPhysics(GameEntity entity, AttackCollisionData collisionData, float weight = 1)
