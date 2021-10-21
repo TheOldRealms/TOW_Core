@@ -187,8 +187,6 @@ namespace TOW_Core.Battle.Dismemberment
         private GameEntity CopyHeadArmor(Agent victim, String name)
         {
             var headArmor = GameEntity.CreateEmptyDynamic(Mission.Current.Scene, true);
-            MatrixFrame armorFrame = new MatrixFrame(victim.LookFrame.rotation, victim.GetEyeGlobalPosition());
-            headArmor.SetGlobalFrame(armorFrame);
             MatrixFrame headMeshFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), new Vec3(0, 0, -1.6f));
             var headEquipments = victim.Character.AllEquipments;
             foreach (var equip in headEquipments)
@@ -196,19 +194,21 @@ namespace TOW_Core.Battle.Dismemberment
                 if (!equip.IsCivilian)
                 {
                     var multiMesh = equip[EquipmentIndex.Head].GetMultiMesh(victim.IsFemale, false, true);
-                    bool equals = multiMesh.GetMeshAtIndex(0).Name == name;
-                    bool contains = multiMesh.GetMeshAtIndex(0).Name.Contains(name);
-                    TOWCommon.Say($"{headEquipments.Count} {multiMesh.MeshCount} {multiMesh.GetMeshAtIndex(0).Name} {equals}");
-                    if (equals)
+                    for (int i = 0; i < multiMesh.MeshCount; i++)
                     {
-                        multiMesh.Frame = headMeshFrame;
-                        TOWCommon.Say($"{multiMesh.GetName()} copied");
-                        headArmor.AddMultiMesh(multiMesh, true);
-                        break;
+                        var mesh = multiMesh.GetMeshAtIndex(i);
+                        if (mesh.Name.Contains(name))
+                        {
+                            multiMesh = multiMesh.CreateCopy();
+                            TOWCommon.Say($"{multiMesh.GetName()} {multiMesh.GetVisibilityMask()} {mesh.VisibilityMask} copied");
+                            headArmor.AddMultiMesh(multiMesh, true);
+                            multiMesh.Frame = headMeshFrame;
+                            return headArmor;
+                        }
                     }
                 }
             }
-            return headArmor;
+            return null;
         }
 
         private void AddPhysics(GameEntity entity, AttackCollisionData collisionData)
