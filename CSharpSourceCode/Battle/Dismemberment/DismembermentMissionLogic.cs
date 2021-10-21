@@ -32,8 +32,6 @@ namespace TOW_Core.Battle.Dismemberment
             {
                 Mission.Current.Scene.SlowMotionMode = false;
             }
-            if (Agent.Main != null)
-                TOWCommon.Say($"{Agent.Main.WalkSpeedCached} {Agent.Main.Velocity} {Agent.Main.MovementVelocity}");
         }
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
