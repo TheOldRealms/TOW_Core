@@ -5,7 +5,6 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
@@ -56,9 +55,12 @@ namespace TOW_Core.Battle.Dismemberment
                         victim.IsHuman &&
                         victim != Agent.Main &&
                         attacker != null;
-
             if (test)
             {
+                if (victim.Health > 0)
+                {
+                    victim.Die(blow);
+                }
                 if (attacker == Agent.Main)
                 {
                     if (ShouldBeDismembered(attacker, victim, blow))
