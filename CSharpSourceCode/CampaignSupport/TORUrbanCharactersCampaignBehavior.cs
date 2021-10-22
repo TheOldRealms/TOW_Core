@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
@@ -462,10 +462,6 @@ namespace TOW_Core.CampaignSupport
                 _companionSettlements.Add(settlement, CampaignTime.Now);
                 _companions.Remove(wanderer);
             }
-            //if (settlement.IsSuitableForHero(hero))
-            //{
-            //    PurgeSettlement(mobileParty, settlement, hero);
-            //}
         }
 
         //NEED TO CHECK THE CODE
@@ -647,7 +643,6 @@ namespace TOW_Core.CampaignSupport
                 }
 
                 settlement2 = ((list.Count > 0) ? list.GetRandomElement<Settlement>().Village.Bound : settlement2);
-
                 Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
                 var attributes = companionTemplate.GetAttributes();
                 foreach (var attribute in attributes)
