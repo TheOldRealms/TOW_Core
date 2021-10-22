@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -12,7 +13,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class SummonScript : ITriggeredScript
     {
-        public void OnTrigger(Vec3 position, Agent triggeredByAgent)
+        public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             IAgentOriginBase agentOrigin = triggeredByAgent.Origin;
             IMissionTroopSupplier supplier = null;
@@ -91,5 +92,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
 
         public string CreatureName { get; internal set; }
+   
     }
 }
