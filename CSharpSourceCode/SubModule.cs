@@ -37,6 +37,7 @@ using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
+using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 
 namespace TOW_Core
@@ -154,6 +155,8 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
+                starter.AddBehavior(new AssimilationCampaignBehavior());
+
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
@@ -191,6 +194,12 @@ namespace TOW_Core
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+
+            if (mission.GetMissionBehaviour<BattleEndLogic>() != null)
+            {
+                mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<BattleEndLogic>());
+                mission.AddMissionBehaviour(new TORBattleEndLogic());
+            }
         }
 
         private void LoadStatusEffects()
