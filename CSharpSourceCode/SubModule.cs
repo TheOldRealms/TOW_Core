@@ -174,13 +174,13 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
-            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
-            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
             mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new AbilityHUDMissionView());
+            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
+            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());

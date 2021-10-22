@@ -1,10 +1,11 @@
-﻿using System.Xml.Serialization;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.Engine;
 using System.Timers;
 using System;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
+using System.Collections.Generic;
+using TOW_Core.Abilities;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
@@ -19,7 +20,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
-        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, Agent[] targets = null)
+        public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, IEnumerable<Agent> targets = null)
         {
             Timer timer = new Timer(2000);
             if (_template.SoundEffectLength > 0)
@@ -34,41 +35,37 @@ namespace TOW_Core.Battle.TriggeredEffect
             timer.Start();
 
             //Cause Damage
-            if (targets == null)
+            if (targets == null && triggererAgent != null)
             {
-                if (_template.DamageAmount > 0)
+                if (_template.TargetType == TargetType.Enemy)
                 {
-                    TOWBattleUtilities.DamageAgentsInArea(position.AsVec2, _template.Radius, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
+                    targets = Mission.Current.GetNearbyEnemyAgents(position.AsVec2, _template.Radius, triggererAgent.Team);
                 }
-                else if (_template.DamageAmount < 0)
+                else if (_template.TargetType == TargetType.Friendly)
                 {
-                    TOWBattleUtilities.HealAgentsInArea(position.AsVec2, _template.Radius, (int)(-_template.DamageAmount * (1 - _template.DamageVariance)), (int)(-_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType);
+                    targets = Mission.Current.GetNearbyAllyAgents(position.AsVec2, _template.Radius, triggererAgent.Team);
                 }
-                //Apply status effects
-                if (_template.ImbuedStatusEffectID != "none")
+                else if (_template.TargetType == TargetType.All)
                 {
-                    TOWBattleUtilities.ApplyStatusEffectToAgentsInArea(position.AsVec2, _template.Radius, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
+                    targets = Mission.Current.GetNearbyAgents(position.AsVec2, _template.Radius);
                 }
             }
-            else
+            if (_template.DamageAmount > 0)
             {
-                if (_template.DamageAmount > 0)
-                {
-                    TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
-                }
-                else if (_template.DamageAmount < 0)
-                {
-                    TOWBattleUtilities.HealAgents(targets, (int)(-_template.DamageAmount * (1 - _template.DamageVariance)), (int)(-_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType);
-                }
-                //Apply status effects
-                if (_template.ImbuedStatusEffectID != "none")
-                {
-                    TOWBattleUtilities.ApplyStatusEffectToAgents(targets, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
-                }
+                TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
+            }
+            else if (_template.DamageAmount < 0)
+            {
+                TOWBattleUtilities.HealAgents(targets, (int)(-_template.DamageAmount * (1 - _template.DamageVariance)), (int)(-_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType);
+            }
+            //Apply status effects
+            if (_template.ImbuedStatusEffectID != "none")
+            {
+                TOWBattleUtilities.ApplyStatusEffectToAgents(targets, _template.ImbuedStatusEffectID, triggererAgent, _template.TargetType);
             }
             SpawnVisuals(position, normal);
             PlaySound(position);
-            TriggerScript(position, triggererAgent);
+            TriggerScript(position, triggererAgent, targets);
         }
 
         private void SpawnVisuals(Vec3 position, Vec3 normal)
@@ -99,9 +96,9 @@ namespace TOW_Core.Battle.TriggeredEffect
             }
         }
 
-        private void TriggerScript(Vec3 position, Agent agent)
+        private void TriggerScript(Vec3 position, Agent triggerer, IEnumerable<Agent> triggeredAgents)
         {
-            if(_template.ScriptNameToTrigger != "none")
+            if (_template.ScriptNameToTrigger != "none")
             {
                 try
                 {
@@ -109,7 +106,7 @@ namespace TOW_Core.Battle.TriggeredEffect
                     if (obj is ITriggeredScript)
                     {
                         var script = obj as ITriggeredScript;
-                        script.OnTrigger(position, agent);
+                        script.OnTrigger(position, triggerer, triggeredAgents);
                     }
                 }
                 catch (Exception)

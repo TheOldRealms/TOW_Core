@@ -4,9 +4,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class SummoningCrosshair : AbilityCrosshair
+    public class Pointer : AbilityCrosshair
     {
-        public SummoningCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public Pointer(AbilityTemplate template, Agent caster) : base(template)
         {
             _caster = caster;
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
