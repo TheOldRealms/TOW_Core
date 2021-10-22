@@ -1,18 +1,18 @@
 ﻿<Module>
 	<Name value="The Old Realms Core Module" />
 	<Id value="TOW_Core" />
-	<Version value="v1.6.2" />
+	<Version value="v1.6.4" />
 	<SingleplayerModule value="true" />
 	<MultiplayerModule value="false" />
 	<DependedModules>
-		<DependedModule Id="Native" DependentVersion="e1.6.2" />
-		<DependedModule Id="SandBoxCore" DependentVersion="e1.6.2" />
-		<DependedModule Id="Sandbox" DependentVersion="e1.6.2" />
-		<DependedModule Id="StoryMode" DependentVersion="e1.6.2" />
-		<DependedModule Id="TOR_Armory" DependentVersion="v1.6.2" />
-		<DependedModule Id="TOW_EnvironmentAssets" DependentVersion="v1.6.2" />
-		<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.2" />
-		<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.2" />
+		<DependedModule Id="Native" DependentVersion="e1.6.4" />
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.6.4" />
+		<DependedModule Id="Sandbox" DependentVersion="e1.6.4" />
+		<DependedModule Id="StoryMode" DependentVersion="e1.6.4" />
+		<DependedModule Id="TOR_Armory" DependentVersion="v1.6.4" />
+		<DependedModule Id="TOR_Environment" DependentVersion="v1.6.4" />
+		<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.4" />
+		<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.4" />
 	</DependedModules>
 	<SubModules>
 		<SubModule>

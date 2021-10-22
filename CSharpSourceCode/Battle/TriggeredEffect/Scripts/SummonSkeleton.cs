@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿namespace TOW_Core.Battle.TriggeredEffect.Scripts
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -6,10 +7,14 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
-namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
-    public class SummonSkeleton : ITriggeredScript
+    public class SummonSkeleton : SummonScript
     {
+        public SummonSkeleton()
+        {
+            CreatureName = "tow_summoned_skeleton";
+        }
+        
         public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             SpawnAgent(triggeredByAgent, position);
