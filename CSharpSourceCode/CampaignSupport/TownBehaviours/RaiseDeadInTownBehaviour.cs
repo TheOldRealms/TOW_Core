@@ -1,15 +1,10 @@
 ﻿using Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -31,7 +26,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             foreach(var hero in Hero.AllAliveHeroes)
             {
-                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && hero.IsNoble)
+                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsNoble || hero.IsWanderer))
                 {
                     hero.AddAttribute("Necromancer");
                 }
