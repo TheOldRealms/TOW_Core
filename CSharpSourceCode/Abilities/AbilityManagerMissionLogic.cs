@@ -1,4 +1,8 @@
-﻿using TaleWorlds.Core;
+﻿using HarmonyLib;
+using System.Collections.Generic;
+using System.Linq;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
@@ -20,10 +24,7 @@ namespace TOW_Core.Abilities
         private AbilityComponent _abilityComponent;
         private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         private MissionScreen _missionScreen;
-
-        public AbilityManagerMissionLogic()
-        {
-        }
+        private Dictionary<Agent, PartyGroupTroopSupplier> summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
 
         protected override void OnEndMission()
         {
@@ -217,5 +218,25 @@ namespace TOW_Core.Abilities
         {
             DisableSpellMode(true);
         }
+
+        public void AddSummonedCreature(Agent creature, PartyGroupTroopSupplier supplier)
+        {
+            creature.OnAgentHealthChanged += (agent, oldHealth, newHealth) => CheckState(agent, newHealth);
+            summonedCreatures.Add(creature, supplier);
+        }
+
+        private void CheckState(Agent agent, float newHealth)
+        {
+            if (newHealth <= 0)
+            {
+                PartyGroupTroopSupplier supplier = summonedCreatures.FirstOrDefault(sm => sm.Key == agent).Value;
+                if (supplier != null)
+                {
+                    var num = Traverse.Create(supplier).Field("_numKilled").GetValue<int>();
+                    Traverse.Create(supplier).Field("_numKilled").SetValue(num + 1);
+                }
+            }
+        }
+
     }
 }

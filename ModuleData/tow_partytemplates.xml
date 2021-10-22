@@ -31,6 +31,7 @@
 			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tow_grave_guard" />
 			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tow_grave_guard_greatsword" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tow_cairn_wraith" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tow_hex_wraith" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tow_black_knight" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tow_blood_knights_mounted" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tow_blood_knights_foot" />
