@@ -15,7 +15,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private Probability dismembermentFrequency = Probability.Always;
 
-        private Probability slowMotionFrequency = Probability.Never;
+        private Probability slowMotionFrequency = Probability.Probably;
 
         private float slowMotionEndTime;
 
@@ -51,16 +51,8 @@ namespace TOW_Core.Battle.Dismemberment
                                     (attacker.AttackDirection == Agent.UsageDirection.AttackLeft ||
                                     attacker.AttackDirection == Agent.UsageDirection.AttackRight);
 
-            bool test = victim != null &&
-                        victim.IsHuman &&
-                        victim != Agent.Main &&
-                        attacker != null;
-            if (test)
+            if (canBeDismembered)
             {
-                if (victim.Health > 0)
-                {
-                    victim.Die(blow);
-                }
                 if (attacker == Agent.Main)
                 {
                     if (ShouldBeDismembered(attacker, victim, blow))
@@ -151,21 +143,15 @@ namespace TOW_Core.Battle.Dismemberment
             var meshes = victim.AgentVisuals.GetSkeleton().GetAllMeshes();
             foreach (Mesh mesh in meshes)
             {
-                String meshName = mesh.Name.ToLower();
                 foreach (String name in headMeshes)
                 {
-                    bool flag = false;
-                    if (meshName.Contains(name))
+                    if (mesh.Name.ToLower().Contains(name))
                     {
                         mesh.SetVisibilityMask((VisibilityMaskFlags)16U);
-                        if (!flag)
-                        {
-                            Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
-                            childMesh.SetLocalFrame(headLocalFrame);
-                            head.AddMesh(childMesh, true);
-                            flag = true;
-                            break;
-                        }
+                        Mesh childMesh = mesh.GetBaseMesh().CreateCopy();
+                        childMesh.SetLocalFrame(headLocalFrame);
+                        head.AddMesh(childMesh, true);
+                        break;
                     }
                 }
             }
