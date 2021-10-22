@@ -38,6 +38,7 @@ using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.CampaignSupport.Assimilation;
+using System.IO;
 
 namespace TOW_Core
 {
@@ -184,7 +185,7 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
             mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
-            mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            //mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
             if (Game.Current.GameType is Campaign)
             {
