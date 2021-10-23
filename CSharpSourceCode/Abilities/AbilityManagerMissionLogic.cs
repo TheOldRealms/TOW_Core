@@ -26,11 +26,6 @@ namespace TOW_Core.Abilities
         private Dictionary<Agent, PartyGroupTroopSupplier> summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
         private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
-        public AbilityManagerMissionLogic()
-        {
-
-        }
-
         protected override void OnEndMission()
         {
             BindWeaponKeys();
@@ -44,7 +39,9 @@ namespace TOW_Core.Abilities
                 {
                     isMainAgentChecked = true;
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+                    _abilityComponent.InitializeCrosshairs();
                 }
+                return;
             }
             if (CanUseAbilities())
             {
@@ -276,6 +273,7 @@ namespace TOW_Core.Abilities
                 }
             }
         }
+
 
     }
 }

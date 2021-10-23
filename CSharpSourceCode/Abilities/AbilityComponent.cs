@@ -50,6 +50,16 @@ namespace TOW_Core.Abilities
             }
         }
 
+        internal void InitializeCrosshairs()
+        {
+            foreach (var ability in KnownAbilities)
+            {
+                AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template, Agent.Main);
+                ability.SetCrosshair(crosshair);
+            }
+            SelectAbility(0);
+        }
+
         public void SelectAbility(int index)
         {
             if (_knownAbilities.Count > 0)
