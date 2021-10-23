@@ -279,7 +279,7 @@
        StringID="ShadowStep"
        Name="Shadow Step"
        SpriteName="windofdeath_icon"
-       CoolDown="60"
+       CoolDown="1"
        WindsOfMagicCost="0"
        BaseMisCastChance="0.3"
        Duration="3"
