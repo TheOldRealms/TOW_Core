@@ -107,7 +107,7 @@
       TriggeredEffectID="summon_skeleton"
       Offset="10"
       AbilityTargetType="Self"
-      CrosshairType="Summoning"
+      CrosshairType="Pointer"
       MinDistance="1"
       MaxDistance="30"
       TargetCapturingRadius="2.5">
@@ -313,6 +313,47 @@
       <AsVec2>
         <x>255</x>
         <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+       StringID="ShadowStep"
+       Name="Shadow Step"
+       SpriteName="windofdeath_icon"
+       CoolDown="1"
+       WindsOfMagicCost="0"
+       BaseMisCastChance="0.3"
+       Duration="3"
+       Radius="2"
+       AbilityType="SpecialMove"
+       AbilityEffectType="AgentMoving"
+       BaseMovementSpeed="0.25"
+       TickInterval="0.01"
+       TriggerType="EveryTick"
+       HasLight="false"
+       LightIntensity="0"
+       LightRadius="0"
+       LightFlickeringMagnitude="0"
+       LightFlickeringInterval="0"
+       ShadowCastEnabled="false"
+       ParticleEffectPrefab="bats_vfx"
+       ParticleEffectSizeModifier="1"
+       SoundEffectToPlay="bats_loop"
+       ShouldSoundLoopOverDuration="false"
+       CastType="Instant"
+       CastTime="0.5"
+       AnimationActionName="none"
+       TriggeredEffectID="shadow_step"
+       Offset="10"
+       CrosshairType="None"
+       MinDistance="1"
+       MaxDistance="1"
+       TargetCapturingRadius="1">
+    <LightColorRGB x="255" y="255" z="255" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>255</y>
+        <z>255</z>
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>

@@ -111,13 +111,13 @@
         SoundEffectLength="0"
         DamageType="Magical"
         DamageAmount="0"
-        Radius="5"
+        Radius="1.5"
         HasShockWave="false"
-        TargetType="All"
+        TargetType="Enemy"
         ImbuedStatusEffectID="none"
         ImbuedStatusEffectDuration="0"
         DamageVariance="0"
-        ScriptNameToTrigger="none">
+        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript">
   </TriggeredEffectTemplate>
   <TriggeredEffectTemplate 
         StringID="place_mortar" 

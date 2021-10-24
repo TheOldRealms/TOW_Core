@@ -38,6 +38,8 @@ using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.Battle.Artillery;
+using TOW_Core.CampaignSupport.Assimilation;
+using System.IO;
 
 namespace TOW_Core
 {
@@ -58,7 +60,7 @@ namespace TOW_Core
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
                 }
 
-                if(Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
                 {
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
                     Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
@@ -154,12 +156,17 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
+                starter.AddBehavior(new AssimilationCampaignBehavior());
+
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new CustomBanditDensityModel());
                 starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
+                starter.AddModel(new TORPartySizeModel());
+                starter.AddModel(new TORCharacterStatsModel());
+                starter.AddModel(new TORPartyWageModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
@@ -168,16 +175,16 @@ namespace TOW_Core
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
-            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
-            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
             mission.AddMissionBehaviour(new StatusEffectMissionLogic());
             mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
             mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
             mission.AddMissionBehaviour(new AbilityHUDMissionView());
+            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
+            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
             mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            //mission.AddMissionBehaviour(new DismembermentMissionLogic());
+            mission.AddMissionBehaviour(new DismembermentMissionLogic());
             mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
             //mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());

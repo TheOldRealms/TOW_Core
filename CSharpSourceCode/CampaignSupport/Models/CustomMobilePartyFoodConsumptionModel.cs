@@ -36,7 +36,6 @@ namespace TOW_Core.CampaignSupport.Models
                 if (party.Leader != null && party.Leader.GetPerkValue(DefaultPerks.Roguery.Promises))
                 {
                     num2 += (int)((float)num * DefaultPerks.Roguery.Promises.PrimaryBonus * 0.01f);
-                    TOWCommon.Say($"> 0 promises {num2}");
                 }
                 if (num2 < 1)
                 {
