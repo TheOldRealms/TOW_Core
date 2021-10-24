@@ -1,61 +1,48 @@
 ﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities
 {
     public class SpecialMoveHUD_VM : ViewModel
     {
-        private SpecialMove _specialMove = null;
         private string _name = "";
         private string _spriteName = "";
         private string _coolDownLeft = "";
-        private bool _hasSpecialMove;
+        private bool _isVisible;
         private bool _onCoolDown;
 
         public SpecialMoveHUD_VM() : base() { }
 
         public void UpdateProperties()
-        {
-            if (Agent.Main == null)
+        {            
+            CoolDownLeft = SpecialMove.GetCoolDownLeft().ToString();
+            IsOnCoolDown = SpecialMove.IsOnCooldown();
+            if (Game.Current.GameType is Campaign)
             {
-                HasSpecialMove = false;
-                return;
-            }
-            _specialMove = Agent.Main.GetComponent<AbilityComponent>().SpecialMove;
-            HasSpecialMove = _specialMove != null;
-            if (HasSpecialMove)
-            {
-                SpriteName = _specialMove.Template.SpriteName;
-                Name = _specialMove.Template.Name;
-                CoolDownLeft = _specialMove.GetCoolDownLeft().ToString();
-                IsOnCoolDown = _specialMove.IsOnCooldown();
-                if (Game.Current.GameType is Campaign)
+                if (!IsOnCoolDown)
                 {
-                    if (!IsOnCoolDown)
-                    {
-                        CoolDownLeft = "";
-                    }
-                    IsOnCoolDown = true;
+                    CoolDownLeft = "";
                 }
+                IsOnCoolDown = true;
             }
         }
 
+        public SpecialMove SpecialMove { get; set; }
+
         [DataSourceProperty]
-        public bool HasSpecialMove
+        public bool IsVisible
         {
             get
             {
-                return _hasSpecialMove;
+                return _isVisible;
             }
             set
             {
-                if (value != _hasSpecialMove)
+                if (value != _isVisible)
                 {
-                    _hasSpecialMove = value;
-                    base.OnPropertyChangedWithValue(value, "HasSpecialMove");
+                    _isVisible = value;
+                    base.OnPropertyChangedWithValue(value, "IsVisible");
                 }
             }
         }

@@ -15,15 +15,15 @@ namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
-        private bool isSpecialMoveCanceled;
-        private bool shouldSheathWeapon;
-        private bool shouldWieldWeapon;
-        private bool isMainAgentChecked;
-        private EquipmentIndex mainHand;
-        private EquipmentIndex offHand;
+        private bool _isSpecialMoveCanceled;
+        private bool _shouldSheathWeapon;
+        private bool _shouldWieldWeapon;
+        private bool _isAbilityUser;
+        private EquipmentIndex _mainHand;
+        private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
-        private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private Dictionary<Agent, PartyGroupTroopSupplier> summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
+        private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
+        private Dictionary<Agent, PartyGroupTroopSupplier> _summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
         private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
         protected override void OnEndMission()
@@ -33,13 +33,16 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
-            if (!isMainAgentChecked)
+            if (!_isAbilityUser)
             {
                 if (Agent.Main != null)
                 {
-                    isMainAgentChecked = true;
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                    _abilityComponent.InitializeCrosshairs();
+                    if (_abilityComponent != null)
+                    {
+                        _abilityComponent.InitializeCrosshairs();
+                        _isAbilityUser = true;
+                    }
                 }
                 return;
             }
@@ -75,7 +78,7 @@ namespace TOW_Core.Abilities
                         EnableSpellMode();
                     }
                 }
-                if (shouldSheathWeapon)
+                if (_shouldSheathWeapon)
                 {
                     if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != EquipmentIndex.None)
                     {
@@ -87,22 +90,22 @@ namespace TOW_Core.Abilities
                     }
                     else
                     {
-                        shouldSheathWeapon = false;
+                        _shouldSheathWeapon = false;
                     }
                 }
-                if (shouldWieldWeapon)
+                if (_shouldWieldWeapon)
                 {
-                    if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != mainHand)
+                    if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != _mainHand)
                     {
-                        Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                        Agent.Main.TryToWieldWeaponInSlot(_mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
                     }
-                    else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != offHand)
+                    else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != _offHand)
                     {
-                        Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
+                        Agent.Main.TryToWieldWeaponInSlot(_offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
                     }
                     else
                     {
-                        shouldWieldWeapon = false;
+                        _shouldWieldWeapon = false;
                     }
                 }
                 if (_abilityComponent.SpecialMove != null)
@@ -123,13 +126,13 @@ namespace TOW_Core.Abilities
                                 if (Input.IsKeyPressed(InputKey.LeftMouseButton) || Input.IsKeyPressed(InputKey.RightMouseButton))
                                 {
                                     _abilityComponent.DisableSpecialMoveMode();
-                                    isSpecialMoveCanceled = true;
+                                    _isSpecialMoveCanceled = true;
                                 }
                                 if (Input.IsKeyReleased(InputKey.LeftControl))
                                 {
-                                    if (isSpecialMoveCanceled)
+                                    if (_isSpecialMoveCanceled)
                                     {
-                                        isSpecialMoveCanceled = false;
+                                        _isSpecialMoveCanceled = false;
                                     }
                                     else
                                     {
@@ -140,16 +143,16 @@ namespace TOW_Core.Abilities
                             }
                             else if (Input.IsKeyDown(InputKey.LeftControl))
                             {
-                                if (!isSpecialMoveCanceled)
+                                if (!_isSpecialMoveCanceled)
                                 {
                                     _abilityComponent.EnableSpecialMoveMode();
                                 }
                             }
                             if (Input.IsKeyReleased(InputKey.LeftControl))
                             {
-                                if (isSpecialMoveCanceled)
+                                if (_isSpecialMoveCanceled)
                                 {
-                                    isSpecialMoveCanceled = false;
+                                    _isSpecialMoveCanceled = false;
                                 }
                                 _abilityComponent.DisableSpecialMoveMode();
                             }
@@ -158,7 +161,7 @@ namespace TOW_Core.Abilities
                     else
                     {
                         _abilityComponent.DisableSpecialMoveMode();
-                        isSpecialMoveCanceled = false;
+                        _isSpecialMoveCanceled = false;
                     }
                 }
             }
@@ -195,23 +198,23 @@ namespace TOW_Core.Abilities
 
         private void EnableSpellMode()
         {
-            mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-            offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+            _mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+            _offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
             _abilityComponent?.EnableSpellMode();
             ChangeKeyBindings();
-            shouldSheathWeapon = true;
+            _shouldSheathWeapon = true;
         }
 
         private void DisableSpellMode(bool isTakingNewWeapon)
         {
             if (isTakingNewWeapon)
             {
-                mainHand = EquipmentIndex.None;
-                offHand = EquipmentIndex.None;
+                _mainHand = EquipmentIndex.None;
+                _offHand = EquipmentIndex.None;
             }
             else
             {
-                shouldWieldWeapon = true;
+                _shouldWieldWeapon = true;
             }
             _abilityComponent?.DisableSpellMode();
             ChangeKeyBindings();
@@ -232,22 +235,22 @@ namespace TOW_Core.Abilities
 
         private void BindWeaponKeys()
         {
-            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
-            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
-            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
-            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
-            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
-            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
+            _keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
+            _keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
+            _keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
+            _keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
+            _keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
+            _keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
         }
 
         private void UnbindWeaponKeys()
         {
-            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
         }
 
         public override void OnItemPickup(Agent agent, SpawnedItemEntity item)
@@ -258,14 +261,14 @@ namespace TOW_Core.Abilities
         public void AddSummonedCreature(Agent creature, PartyGroupTroopSupplier supplier)
         {
             creature.OnAgentHealthChanged += (agent, oldHealth, newHealth) => CheckState(agent, newHealth);
-            summonedCreatures.Add(creature, supplier);
+            _summonedCreatures.Add(creature, supplier);
         }
 
         private void CheckState(Agent agent, float newHealth)
         {
             if (newHealth <= 0)
             {
-                PartyGroupTroopSupplier supplier = summonedCreatures.FirstOrDefault(sm => sm.Key == agent).Value;
+                PartyGroupTroopSupplier supplier = _summonedCreatures.FirstOrDefault(sm => sm.Key == agent).Value;
                 if (supplier != null)
                 {
                     var num = Traverse.Create(supplier).Field("_numKilled").GetValue<int>();
