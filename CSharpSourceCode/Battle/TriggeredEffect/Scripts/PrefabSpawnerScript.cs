@@ -13,7 +13,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     {
         public string PrefabName { get; private set; }
 
-        public void OnTrigger(Vec3 position, Agent triggeredByAgent)
+        public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             SpawnPrefab(position, triggeredByAgent);
         }
