@@ -20,11 +20,15 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         private void SpawnPrefab(Vec3 position, Agent triggeredByAgent)
         {
+            var team = Mission.Current.Teams.FirstOrDefault(x => x != triggeredByAgent.Team);
+            var target = team.Formations.First().GetFirstUnit().Position;
+            var direction = (target - position).NormalizedCopy();
+            var rotation = Mat3.CreateMat3WithForward(direction);
             var entity = GameEntity.Instantiate(Mission.Current.Scene, PrefabName, true);
             entity.SetMobility(GameEntity.Mobility.dynamic);
             entity.EntityFlags = (entity.EntityFlags | EntityFlags.DontSaveToScene);
-            MatrixFrame identity = new MatrixFrame(Mat3.Identity, position);
-            entity.SetFrame(ref identity);
+            var frame = new MatrixFrame(rotation, position);
+            entity.SetFrame(ref frame);
         }
 
         internal void OnInit(string spawnPrefabName)

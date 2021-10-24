@@ -142,10 +142,7 @@ namespace TOW_Core.Battle.Artillery
 			this._cameraPitch -= this.MissionScreen.SceneLayer.Input.GetMouseMoveY() * dt * 0.2f;
 			this._cameraYaw = MBMath.ClampFloat(this._cameraYaw, 0, 0);
 			this._cameraPitch = MBMath.ClampFloat(this._cameraPitch, 1.3f, 2);
-			if (cameraPitch != this._cameraPitch || cameraYaw != this._cameraYaw)
-			{
-				this.ApplyCameraRotation();
-			}
+			this.ApplyCameraRotation();
 		}
 
 		private void ApplyCameraRotation()
@@ -160,7 +157,6 @@ namespace TOW_Core.Battle.Artillery
 
 		private void HandleUserAiming(float dt)
 		{
-			bool hasinput = false;
 			float inputX = 0f;
 			float inputY = 0f;
 			if (this.PilotAgent != null && this.PilotAgent.IsMainAgent)
@@ -181,16 +177,8 @@ namespace TOW_Core.Battle.Artillery
 				{
 					inputY = -1f;
 				}
-				if (inputX != 0f)
-				{
-					hasinput = true;
-				}
-				if (inputY != 0f)
-				{
-					hasinput = true;
-				}
 			}
-			this.Artillery.GiveInput(inputX, inputY, dt, hasinput);
+			this.Artillery.GiveInput(inputX, inputY, dt);
 		}
 
 		private float _cameraYaw = 0;

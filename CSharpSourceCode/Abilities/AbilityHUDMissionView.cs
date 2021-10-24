@@ -23,10 +23,10 @@ namespace TOW_Core.Abilities
                 _abilityLayer.LoadMovie("AbilityHUD", _abilityHUD_VM);
                 MissionScreen.AddLayer(_abilityLayer);
 
-                _specialMoveHUD_VM = new SpecialMoveHUD_VM();
-                _specialMoveLayer = new GauntletLayer(99);
-                _specialMoveLayer.LoadMovie("SpecialMoveHUD", _specialMoveHUD_VM);
-                MissionScreen.AddLayer(_specialMoveLayer);
+                //_specialMoveHUD_VM = new SpecialMoveHUD_VM();
+                //_specialMoveLayer = new GauntletLayer(99);
+                //_specialMoveLayer.LoadMovie("SpecialMoveHUD", _specialMoveHUD_VM);
+                //MissionScreen.AddLayer(_specialMoveLayer);
 
                 _isInitialized = true;
             }
@@ -37,7 +37,7 @@ namespace TOW_Core.Abilities
             if (_isInitialized)
             {
                 _abilityHUD_VM.UpdateProperties();
-                _specialMoveHUD_VM.UpdateProperties();
+                //_specialMoveHUD_VM.UpdateProperties();
             }
         }
     }

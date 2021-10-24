@@ -52,6 +52,8 @@ namespace TOW_Core.Battle.Artillery
         private ItemObject _ammoItem;
         private bool _isRotating;
         private float _rotationDirection = 0;
+        private float _elevationDirection = 0;
+        private bool _isPitchDirty;
         private ArtilleryState _currentState;
         private MissionTimer _shootingTimer;
         private float _lastRecoilTimeStart;
@@ -164,6 +166,8 @@ namespace TOW_Core.Battle.Artillery
             HandleAmmoLoad();
             HandleAmmoPickUp();
             HandleAnimations(dt);
+            UpdateRotation(dt);
+            AdjustElevation(dt);
             UpdateWheelRotation(dt);
             UpdateRecoilEffect(dt);
         }
@@ -331,6 +335,14 @@ namespace TOW_Core.Battle.Artillery
             }
         }
 
+        private void UpdateRotation(float dt)
+        {
+            if (!_isRotating) return;
+            var frame = _artilleryBase.GetFrame();
+            frame.rotation.RotateAboutUp(_rotationDirection * dt * 0.2f);
+            _artilleryBase.SetFrame(ref frame);
+        }
+
         private void UpdateWheelRotation(float dt)
         {
             if (_isRotating)
@@ -339,31 +351,41 @@ namespace TOW_Core.Battle.Artillery
             }
         }
 
-        internal void GiveInput(float deltaYaw, float deltaPitch, float deltaTime, bool hasinput)
+        internal void GiveInput(float deltaYaw, float deltaPitch, float deltatime)
         {
+            _isPitchDirty = false;
             if (CanRotate())
             {
-                if (hasinput && !_isRotating)
+                if (deltaYaw != 0 && !_isRotating)
                 {
                     OnRotationStarted(deltaYaw);
                 }
-                if (_isRotating == true && !hasinput)
+                else if(deltaYaw != 0 && _isRotating)
+                {
+                    _rotationDirection = deltaYaw;
+                }
+                if (_isRotating && deltaYaw == 0)
                 {
                     OnRotationStopped();
                 }
-                var frame = _artilleryBase.GetFrame();
-                frame.rotation.RotateAboutUp(deltaYaw * deltaTime * 0.2f);
-                _artilleryBase.SetFrame(ref frame);
-                if (_barrel != null)
+                if (deltaPitch != 0)
                 {
-                    var frame2 = _barrel.GetFrame();
-                    frame2.rotation.RotateAboutSide(deltaPitch * deltaTime * 0.2f);
-                    var angles = frame2.rotation.GetEulerAngles();
-                    var currentelevation = TOWMath.GetDegreeFromRadians(angles.x);
-                    if (currentelevation <= MaxPitch && currentelevation >= MinPitch)
-                    {
-                        _barrel.SetFrame(ref frame2);
-                    }
+                    _isPitchDirty = true;
+                    _elevationDirection = deltaPitch;
+                }
+            }
+        }
+
+        private void AdjustElevation(float dt)
+        {
+            if (_barrel != null && _isPitchDirty)
+            {
+                var frame = _barrel.GetFrame();
+                frame.rotation.RotateAboutSide(_elevationDirection * dt * 0.2f);
+                var elevation = TOWMath.GetDegreeFromRadians(frame.rotation.GetEulerAngles().x);
+                if(elevation >= MinPitch && elevation <= MaxPitch)
+                {
+                    _barrel.SetFrame(ref frame);
                 }
             }
         }

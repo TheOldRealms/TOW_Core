@@ -305,7 +305,7 @@
     TriggeredEffectID="place_mortar"
     Offset="10"
     AbilityTargetType="Self"
-    CrosshairType="Summoning"
+    CrosshairType="Pointer"
     MinDistance="1"
     MaxDistance="30"
     TargetCapturingRadius="2.5">
