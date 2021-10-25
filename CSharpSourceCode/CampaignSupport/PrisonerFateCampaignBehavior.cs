@@ -31,11 +31,11 @@ namespace TOW_Core.CampaignSupport
                             case "empire":
                             case "chaos":
                                 KillRegularPrisoners(party);
-                                //FilterNewMemebers(party, true);
+                                FilterNewMemebers(party, true);
                                 break;
                             case "khuzait":
                                 SacrificePrisoners(party);
-                                //FilterNewMemebers(party, false);
+                                FilterNewMemebers(party, false);
                                 break;
                         }
                     }
@@ -45,15 +45,15 @@ namespace TOW_Core.CampaignSupport
 
         private void FilterNewMemebers(MapEventParty party, bool shouldKill)
         {
-            foreach (var troop in party.RosterToReceiveLootMembers.GetTroopRoster())
+            foreach (var troopRoster in party.RosterToReceiveLootMembers.GetTroopRoster())
             {
-                if (troop.Character.Culture != party.Party.Culture)
+                if (troopRoster.Character.Culture != party.Party.Culture)
                 {
                     if (!shouldKill)
                     {
-                    //    party.RosterToReceiveLootPrisoners.Add()
+                        party.RosterToReceiveLootPrisoners.AddToCounts(troopRoster.Character, troopRoster.Number);
                     }
-                    party.RosterToReceiveLootMembers.RemoveTroop(troop.Character, troop.Number);
+                    party.RosterToReceiveLootMembers.RemoveTroop(troopRoster.Character, troopRoster.Number);
                 }
             }
         }
@@ -78,6 +78,7 @@ namespace TOW_Core.CampaignSupport
             if (_skeleton != null)
             {
                 party.Party.MemberRoster.AddToCounts(_skeleton, number);
+                //party.Party.AddElementToMemberRoster()
             }
         }
 
@@ -86,5 +87,5 @@ namespace TOW_Core.CampaignSupport
         }
 
         private CharacterObject _skeleton;
-    }
+    }   
 }
