@@ -21,7 +21,7 @@ namespace TOW_Core.CampaignSupport
                 {
                     if (troopRoster.Character.IsHero && troopRoster.Character.HeroObject.IsVampire())
                     {
-                        troopRoster.Character.HeroObject.Heal(party.Party, 10, false);
+                        troopRoster.Character.HeroObject.Heal(party.Party, 20, false);
                     }
                 }
             }
