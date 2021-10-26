@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.DotNet;
 using TaleWorlds.Engine;
@@ -11,15 +9,15 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Artillery
 {
-
-
-    public class Artillery : UsableMachine
+    public class Artillery : SiegeWeapon
     {
         #region animation fields
+
         private ActionIndexCache _idleAnimationActionIndex;
         private ActionIndexCache _shootAnimationActionIndex;
         private ActionIndexCache _reload1AnimationActionIndex;
@@ -41,6 +39,7 @@ namespace TOW_Core.Battle.Artillery
         public string LoadAmmoBeginActionName;
         public string LoadAmmoEndActionName;
         public string Reload2IdleActionName;
+
         #endregion
 
         public GameEntity CameraHolder;
@@ -51,14 +50,16 @@ namespace TOW_Core.Battle.Artillery
         private GameEntity _wheel_R;
         private ItemObject _ammoItem;
         private bool _isRotating;
-        private float _rotationDirection = 0;
-        private float _elevationDirection = 0;
+        private float _rotationDirection;
+        private float _elevationDirection;
         private bool _isPitchDirty;
-        private ArtilleryState _currentState;
+        private RangedSiegeWeapon.WeaponState _currentState;
         private MissionTimer _shootingTimer;
         private float _lastRecoilTimeStart;
         private float _currentRecoilTimer;
-        private StandingPointWithWeaponRequirement _ammoLoadPoint;
+        private StandingPointWithWeaponRequirement _loadAmmoStandingPoint;
+        private List<StandingPointWithWeaponRequirement> _ammoPickUpStandingPoints = new List<StandingPointWithWeaponRequirement>();
+        private List<StandingPoint> _reloadStandingPoints = new List<StandingPoint>(); 
         private int _moveSoundIndex;
         private SoundEvent _moveSound;
         private int _fireSoundIndex;
@@ -67,6 +68,7 @@ namespace TOW_Core.Battle.Artillery
         private MatrixFrame _currentSlideBackFrameOrig;
 
         #region Prefab editable fields
+
         public string Name = "Artillery piece";
         public string ProjectilePrefabName = "pot";
         public float ShootingAgentAnimationLength = 0.35f;
@@ -82,6 +84,7 @@ namespace TOW_Core.Battle.Artillery
         public string RightWheelTag = "Wheel_R";
         public string FireSoundID = "mortar_shot";
         public string ProjectileReleaseTag = "projectile_release";
+
         #endregion
 
         protected override void OnInit()
@@ -92,7 +95,8 @@ namespace TOW_Core.Battle.Artillery
             LoadSounds();
             RegisterAnimationParameters();
             InitStandingPoints();
-            _currentState = ArtilleryState.Loaded;
+            _currentState = RangedSiegeWeapon.WeaponState.Idle;
+            ForcedUse = false;
         }
 
         private void CollectEntities()
@@ -126,17 +130,22 @@ namespace TOW_Core.Battle.Artillery
 
         private void InitStandingPoints()
         {
-            foreach (StandingPoint point in base.StandingPoints)
+            foreach (StandingPoint point in StandingPoints)
             {
                 point.AddComponent(new ResetAnimationOnStopUsageComponent(ActionIndexCache.act_none));
+                if (point.GameEntity.HasTag(ReloadTag))
+                    _reloadStandingPoints.Add(point);
+
                 if (point is StandingPointWithWeaponRequirement && point.GameEntity.HasTag(ReloadTag))
                 {
-                    _ammoLoadPoint = point as StandingPointWithWeaponRequirement;
-                    _ammoLoadPoint.InitRequiredWeapon(_ammoItem);
+                    _loadAmmoStandingPoint = point as StandingPointWithWeaponRequirement;
+                    _loadAmmoStandingPoint.InitRequiredWeapon(_ammoItem);
+                    _loadAmmoStandingPoint.SetIsDeactivatedSynched(true);
                 }
                 else if (point is StandingPointWithWeaponRequirement && point.GameEntity.HasTag(AmmoPickUpTag))
                 {
                     var ammoPickUpPoint = point as StandingPointWithWeaponRequirement;
+                    _ammoPickUpStandingPoints.Add(ammoPickUpPoint);
                     ammoPickUpPoint.InitGivenWeapon(_ammoItem);
                 }
             }
@@ -147,22 +156,24 @@ namespace TOW_Core.Battle.Artillery
             base.OnTick(dt);
             if (PilotAgent != null)
             {
-                if (_currentState == ArtilleryState.Loaded)
+                if (_currentState == RangedSiegeWeapon.WeaponState.Idle)
                 {
                     if (PilotAgent.MovementFlags.HasAnyFlag(Agent.MovementControlFlag.AttackMask))
                     {
-                        DoShooting();
+                        Shoot();
                     }
                 }
-                else if (_currentState == ArtilleryState.Shooting && _shootingTimer != null)
+                if (_currentState == RangedSiegeWeapon.WeaponState.Shooting && _shootingTimer != null)
                 {
                     if (_shootingTimer.Check())
                     {
                         FireProjectile();
                         _shootingTimer = null;
+                        _loadAmmoStandingPoint.SetIsDeactivatedSynched(false);
                     }
                 }
             }
+
             HandleAmmoLoad();
             HandleAmmoPickUp();
             HandleAnimations(dt);
@@ -171,10 +182,14 @@ namespace TOW_Core.Battle.Artillery
             UpdateWheelRotation(dt);
             UpdateRecoilEffect(dt);
         }
-        private void DoShooting()
+
+        public void Shoot()
         {
-            _currentState = ArtilleryState.Shooting;
-            _shootingTimer = new MissionTimer(ShootingAgentAnimationLength);
+            if (_currentState == RangedSiegeWeapon.WeaponState.Idle) 
+            {
+                _currentState = RangedSiegeWeapon.WeaponState.Shooting;
+                _shootingTimer = new MissionTimer(ShootingAgentAnimationLength);
+            }
         }
 
         private void FireProjectile()
@@ -183,20 +198,22 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(this.PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, 20, false, null);
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, 20, false, null);
             }
-            if (this._fireSound == null || !this._fireSound.IsValid)
+
+            if (_fireSound == null || !_fireSound.IsValid)
             {
-                this._fireSound = SoundEvent.CreateEvent(this._fireSoundIndex, base.Scene);
-                this._fireSound.PlayInPosition(GameEntity.GlobalPosition);
+                _fireSound = SoundEvent.CreateEvent(_fireSoundIndex, Scene);
+                _fireSound.PlayInPosition(GameEntity.GlobalPosition);
             }
+
             DoSlideBack();
-            PilotAgent?.StopUsingGameObject(true, true);
+            PilotAgent?.StopUsingGameObject();
         }
 
         private void DoSlideBack()
         {
-            _currentState = ArtilleryState.SlideBack;
+            _currentState = RangedSiegeWeapon.WeaponState.WaitingAfterShooting;
             var frame = _artilleryBase.GetFrame();
             _currentSlideBackFrameOrig = frame;
             _currentSlideBackFrame = frame.Advance(-0.6f);
@@ -206,25 +223,27 @@ namespace TOW_Core.Battle.Artillery
 
         private void UpdateRecoilEffect(float dt)
         {
-            if (_currentState != ArtilleryState.SlideBack) return;
+            if (_currentState != RangedSiegeWeapon.WeaponState.WaitingAfterShooting) return;
             _currentRecoilTimer += dt;
-            if(_currentRecoilTimer  > RecoilDuration + Recoil2Duration)
+            if (_currentRecoilTimer > RecoilDuration + Recoil2Duration)
             {
-                _currentState = ArtilleryState.WaitingForReload;
-                if(_fireSound != null)
+                _currentState =RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
+                if (_fireSound != null)
                 {
                     _fireSound.Stop();
                     _fireSound.Release();
                     _fireSound = null;
                 }
+
                 return;
             }
-            if(_currentRecoilTimer < RecoilDuration)
+
+            if (_currentRecoilTimer < RecoilDuration)
             {
                 var frame = _artilleryBase.GetFrame();
                 var amount = _currentRecoilTimer / RecoilDuration;
                 frame = MatrixFrame.Lerp(_currentSlideBackFrameOrig, _currentSlideBackFrame, amount);
-                if(amount < 0.5f)
+                if (amount < 0.5f)
                 {
                     frame.origin.z = MBMath.Lerp(frame.origin.z, frame.origin.z + 0.2f, amount * 2);
                 }
@@ -232,6 +251,7 @@ namespace TOW_Core.Battle.Artillery
                 {
                     frame.origin.z = MBMath.Lerp(frame.origin.z, frame.origin.z + 0.2f, 1 - amount);
                 }
+
                 _artilleryBase.SetFrame(ref frame);
                 DoWheelRotation(dt, 1, 1, 5);
             }
@@ -247,31 +267,34 @@ namespace TOW_Core.Battle.Artillery
 
         private void HandleAmmoLoad()
         {
-            if (_ammoLoadPoint != null && _ammoLoadPoint.HasUser)
+            if (_loadAmmoStandingPoint != null && _loadAmmoStandingPoint.HasUser)
             {
-                var user = _ammoLoadPoint.UserAgent;
-                if (user.GetCurrentAction(1) == this._loadAmmoEndAnimationActionIndex)
+                var user = _loadAmmoStandingPoint.UserAgent;
+                if (user.GetCurrentAction(1) == _loadAmmoEndAnimationActionIndex)
                 {
                     EquipmentIndex wieldedItemIndex = user.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-                    if (wieldedItemIndex != EquipmentIndex.None && user.Equipment[wieldedItemIndex].CurrentUsageItem.WeaponClass == this._ammoItem.PrimaryWeapon.WeaponClass)
+                    if (wieldedItemIndex != EquipmentIndex.None && user.Equipment[wieldedItemIndex].CurrentUsageItem.WeaponClass == _ammoItem.PrimaryWeapon.WeaponClass)
                     {
                         user.RemoveEquippedWeapon(wieldedItemIndex);
-                        this._currentState = ArtilleryState.Loaded;
+                        _currentState = RangedSiegeWeapon.WeaponState.Idle;
+                        _loadAmmoStandingPoint.SetIsDeactivatedSynched(true);
                     }
-                    this._ammoLoadPoint.UserAgent.StopUsingGameObject(true, true);
+
+                    _loadAmmoStandingPoint.UserAgent.StopUsingGameObject();
                 }
                 else
                 {
-                    if (user.GetCurrentAction(1) != this._loadAmmoBeginAnimationActionIndex && !this._ammoLoadPoint.UserAgent.SetActionChannel(1, this._loadAmmoBeginAnimationActionIndex, false, 0UL, 0f, 1f, -0.2f, 0.4f, 0f, false, -0.2f, 0, true))
+                    if (user.GetCurrentAction(1) != _loadAmmoBeginAnimationActionIndex && !_loadAmmoStandingPoint.UserAgent.SetActionChannel(1, _loadAmmoBeginAnimationActionIndex))
                     {
                         for (EquipmentIndex equipmentIndex = EquipmentIndex.WeaponItemBeginSlot; equipmentIndex < EquipmentIndex.NumAllWeaponSlots; equipmentIndex++)
                         {
-                            if (!user.Equipment[equipmentIndex].IsEmpty && user.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == this._ammoItem.PrimaryWeapon.WeaponClass)
+                            if (!user.Equipment[equipmentIndex].IsEmpty && user.Equipment[equipmentIndex].CurrentUsageItem.WeaponClass == _ammoItem.PrimaryWeapon.WeaponClass)
                             {
                                 user.RemoveEquippedWeapon(equipmentIndex);
                             }
                         }
-                        this._ammoLoadPoint.UserAgent.StopUsingGameObject(true, true);
+
+                        _loadAmmoStandingPoint.UserAgent.StopUsingGameObject();
                     }
                 }
             }
@@ -288,17 +311,17 @@ namespace TOW_Core.Battle.Artillery
                     {
                         var user = point.UserAgent;
                         var action = user.GetCurrentAction(1);
-                        if (!(action == Artillery.act_pickup_boulder_begin))
+                        if (!(action == act_pickup_boulder_begin))
                         {
-                            if (action == Artillery.act_pickup_boulder_end)
+                            if (action == act_pickup_boulder_end)
                             {
-                                MissionWeapon missionWeapon = new MissionWeapon(this._ammoItem, null, null, 1);
+                                MissionWeapon missionWeapon = new MissionWeapon(_ammoItem, null, null, 1);
                                 user.EquipWeaponToExtraSlotAndWield(ref missionWeapon);
-                                user.StopUsingGameObject(true, true);
+                                user.StopUsingGameObject();
                             }
-                            else if (!user.SetActionChannel(1, Artillery.act_pickup_boulder_begin, false, 0UL, 0f, 1f, -0.2f, 0.4f, 0f, false, -0.2f, 0, true))
+                            else if (!user.SetActionChannel(1, act_pickup_boulder_begin))
                             {
-                                user.StopUsingGameObject(true, true);
+                                user.StopUsingGameObject();
                             }
                         }
                     }
@@ -311,25 +334,25 @@ namespace TOW_Core.Battle.Artillery
             if (PilotAgent != null)
             {
                 var action = PilotAgent.GetCurrentAction(1);
-                if (_currentState != ArtilleryState.Shooting && _isRotating)
+                if (_currentState != RangedSiegeWeapon.WeaponState.Shooting && _isRotating)
                 {
-                    if (!base.PilotAgent.SetActionChannel(1, this._rotateLeftAnimationActionIndex, true, 0UL, 0f, 1f, -0.2f, 0.4f, 0f, false, -0.2f, 0, true))
+                    if (!PilotAgent.SetActionChannel(1, _rotateLeftAnimationActionIndex, true))
                     {
-                        base.PilotAgent.StopUsingGameObject(true, true);
+                        PilotAgent.StopUsingGameObject();
                     }
                 }
-                else if (_currentState != ArtilleryState.Shooting && action != _shootAnimationActionIndex)
+                else if (_currentState != RangedSiegeWeapon.WeaponState.Shooting && action != _shootAnimationActionIndex)
                 {
-                    if (!base.PilotAgent.SetActionChannel(1, this._idleAnimationActionIndex, true, 0UL, 0f, 1f, -0.2f, 0.4f, 0f, false, -0.2f, 0, true))
+                    if (!PilotAgent.SetActionChannel(1, _idleAnimationActionIndex, true))
                     {
-                        base.PilotAgent.StopUsingGameObject(true, true);
+                        PilotAgent.StopUsingGameObject();
                     }
                 }
-                else if (_currentState == ArtilleryState.Shooting)
+                else if (_currentState == RangedSiegeWeapon.WeaponState.Shooting)
                 {
-                    if (!base.PilotAgent.SetActionChannel(1, this._shootAnimationActionIndex, true, 0UL, 0f, 1f, -0.2f, 0.4f, 0f, false, -0.2f, 0, true))
+                    if (!PilotAgent.SetActionChannel(1, _shootAnimationActionIndex, true))
                     {
-                        base.PilotAgent.StopUsingGameObject(true, true);
+                        PilotAgent.StopUsingGameObject();
                     }
                 }
             }
@@ -360,14 +383,16 @@ namespace TOW_Core.Battle.Artillery
                 {
                     OnRotationStarted(deltaYaw);
                 }
-                else if(deltaYaw != 0 && _isRotating)
+                else if (deltaYaw != 0 && _isRotating)
                 {
                     _rotationDirection = deltaYaw;
                 }
+
                 if (_isRotating && deltaYaw == 0)
                 {
                     OnRotationStopped();
                 }
+
                 if (deltaPitch != 0)
                 {
                     _isPitchDirty = true;
@@ -383,7 +408,7 @@ namespace TOW_Core.Battle.Artillery
                 var frame = _barrel.GetFrame();
                 frame.rotation.RotateAboutSide(_elevationDirection * dt * 0.2f);
                 var elevation = TOWMath.GetDegreeFromRadians(frame.rotation.GetEulerAngles().x);
-                if(elevation >= MinPitch && elevation <= MaxPitch)
+                if (elevation >= MinPitch && elevation <= MaxPitch)
                 {
                     _barrel.SetFrame(ref frame);
                 }
@@ -392,17 +417,17 @@ namespace TOW_Core.Battle.Artillery
 
         private bool CanRotate()
         {
-            return _currentState == ArtilleryState.Loaded || _currentState == ArtilleryState.WaitingForReload;
+            return _currentState == RangedSiegeWeapon.WeaponState.Idle || _currentState == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
         }
 
         protected void OnRotationStarted(float direction)
         {
             _isRotating = true;
             _rotationDirection = direction;
-            if (this._moveSound == null || !this._moveSound.IsValid)
+            if (_moveSound == null || !_moveSound.IsValid)
             {
-                this._moveSound = SoundEvent.CreateEvent(this._moveSoundIndex, base.Scene);
-                this._moveSound.PlayInPosition(GameEntity.GlobalPosition);
+                _moveSound = SoundEvent.CreateEvent(_moveSoundIndex, Scene);
+                _moveSound.PlayInPosition(GameEntity.GlobalPosition);
             }
         }
 
@@ -410,8 +435,8 @@ namespace TOW_Core.Battle.Artillery
         {
             _isRotating = false;
             _rotationDirection = 0;
-            this._moveSound.Stop();
-            this._moveSound = null;
+            _moveSound.Stop();
+            _moveSound = null;
         }
 
         private void DoWheelRotation(float dt, float leftwheeldirection, float rightwheeldirection, float speed = 1)
@@ -427,29 +452,31 @@ namespace TOW_Core.Battle.Artillery
         public override TextObject GetActionTextForStandingPoint(UsableMissionObject usableGameObject)
         {
             TextObject textObject;
-            if (usableGameObject.GameEntity.HasTag(this.ReloadTag))
+            if (usableGameObject.GameEntity.HasTag(ReloadTag))
             {
-                textObject = new TextObject("{=Na81xuXn}{KEY} Reload", null);
+                textObject = new TextObject("{=Na81xuXn}{KEY} Reload");
             }
-            else if (usableGameObject.GameEntity.HasTag(this.AmmoPickUpTag))
+            else if (usableGameObject.GameEntity.HasTag(AmmoPickUpTag))
             {
-                textObject = new TextObject("{=bNYm3K6b}{KEY} Pick Up", null);
+                textObject = new TextObject("{=bNYm3K6b}{KEY} Pick Up");
             }
             else
             {
-                textObject = new TextObject("{=fEQAPJ2e}{KEY} Use", null);
+                textObject = new TextObject("{=fEQAPJ2e}{KEY} Use");
             }
+
             textObject.SetTextVariable("KEY", HyperlinkTexts.GetKeyHyperlinkText(HotKeyManager.GetHotKeyId("CombatHotKeyCategory", 13)));
             return textObject;
         }
 
         public override string GetDescriptionText(GameEntity gameEntity = null)
         {
-            if (gameEntity.HasTag(this.AmmoPickUpTag))
+            if (gameEntity.HasTag(AmmoPickUpTag))
             {
-                return new TextObject("{=pzfbPbWW}Boulder", null).ToString();
+                return new TextObject("{=pzfbPbWW}Boulder").ToString();
             }
-            return new TextObject(this.Name, null).ToString();
+
+            return new TextObject(Name).ToString();
         }
 
         protected override void OnRemoved(int removeReason)
@@ -462,6 +489,80 @@ namespace TOW_Core.Battle.Artillery
         protected override bool IsStandingPointNotUsedOnAccountOfBeingAmmoLoad(StandingPoint standingPoint)
         {
             return standingPoint.GameEntity.HasTag(ReloadTag);
+        }
+
+        //Copied from Mangonel.cs
+        public override TargetFlags GetTargetFlags()
+        {
+            TargetFlags targetFlags = (TargetFlags) (0 | 2 | 8 | 16);
+            if (IsDestroyed || IsDeactivated)
+                targetFlags |= TargetFlags.NotAThreat;
+            if (Side == BattleSideEnum.Attacker && DebugSiegeBehaviour.DebugDefendState == DebugSiegeBehaviour.DebugStateDefender.DebugDefendersToMangonels)
+                targetFlags |= TargetFlags.DebugThreat;
+            if (Side == BattleSideEnum.Defender && DebugSiegeBehaviour.DebugAttackState == DebugSiegeBehaviour.DebugStateAttacker.DebugAttackersToMangonels)
+                targetFlags |= TargetFlags.DebugThreat;
+            return targetFlags;
+        }
+
+        //Copied from Mangonel.cs
+        public override float GetTargetValue(List<Vec3> weaponPos) => 40f * GetUserMultiplierOfWeapon() * GetDistanceMultiplierOfWeapon(weaponPos[0]) * GetHitpointMultiplierofWeapon();
+
+        //Copied from Mangonel.cs
+        public override SiegeEngineType GetSiegeEngineType() => Side != BattleSideEnum.Attacker ? DefaultSiegeEngineTypes.Catapult : DefaultSiegeEngineTypes.Onager;
+
+
+        //Copied from Mangonel.cs
+        protected override float GetDetachmentWeightAux(BattleSideEnum side)
+        {
+            if (IsDisabledForBattleSideAI(side))
+                return float.MinValue;
+            _usableStandingPoints.Clear();
+            bool flag1 = false;
+            bool flag2 = false;
+            bool isDeactivated = _loadAmmoStandingPoint.IsDeactivated;
+            bool flag3 = _loadAmmoStandingPoint.HasUser || _loadAmmoStandingPoint.HasAIMovingTo;
+            bool flag4 = CurrentlyUsedAmmoPickUpPoint != null;
+            bool flag5 = false;
+            for (int index = 0; index < StandingPoints.Count; ++index)
+            {
+                StandingPoint standingPoint = StandingPoints[index];
+                if (standingPoint.GameEntity.HasTag(AmmoPickUpTag))
+                {
+                    if (!flag5 && !(isDeactivated | flag3) && (!flag4 || standingPoint == CurrentlyUsedAmmoPickUpPoint))
+                        flag5 = true;
+                    else
+                        continue;
+                }
+                else if (standingPoint == _loadAmmoStandingPoint && isDeactivated | flag4)
+                    continue;
+
+                // if (standingPoint.IsUsableBySide(side))
+                // {
+                if (!standingPoint.HasAIMovingTo)
+                {
+                    if (!flag2)
+                        _usableStandingPoints.Clear();
+                    flag2 = true;
+                }
+                else if (flag2 || standingPoint.MovingAgents[0].Formation.Team.Side != side)
+                    continue;
+
+                flag1 = true;
+                _usableStandingPoints.Add((index, standingPoint));
+                // }
+            }
+
+            _areUsableStandingPointsVacant = flag2;
+            if (!flag1)
+                return float.MinValue;
+            if (flag2)
+                return 1f;
+            return !_isDetachmentRecentlyEvaluated ? 0.1f : 0.01f;
+        }
+
+        public override UsableMachineAIBase CreateAIBehaviourObject()
+        {
+            return new UsableMachineAI(this);
         }
 
         private enum ArtilleryState
