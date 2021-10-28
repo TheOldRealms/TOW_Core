@@ -29,6 +29,11 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             entity.EntityFlags = (entity.EntityFlags | EntityFlags.DontSaveToScene);
             var frame = new MatrixFrame(rotation, position);
             entity.SetFrame(ref frame);
+            var artillery = entity.GetFirstScriptOfType<Artillery.Artillery>();
+            if(artillery != null)
+            {
+                artillery.SetSide(triggeredByAgent.Team.Side);
+            }
         }
 
         internal void OnInit(string spawnPrefabName)

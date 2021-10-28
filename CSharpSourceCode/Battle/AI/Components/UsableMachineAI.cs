@@ -12,11 +12,18 @@ namespace TOW_Core.Battle.AI.Components
             this._artillery = usableMachine;
         }
 
+        public override bool HasActionCompleted => base.HasActionCompleted;
+
         protected override void OnTick(Func<Agent, bool> isAgentManagedByThisMachineAI, Team potentialUsersTeam, float dt)
         {
             base.OnTick(isAgentManagedByThisMachineAI, potentialUsersTeam, dt);
-
-            _artillery.Shoot(); //Targeting logic goes around this. Should probably trigger it by .MovementFlags.HasAnyFlag(Agent.MovementControlFlag.AttackMask)) instead?
+            if(_artillery.PilotAgent != null && _artillery.PilotAgent.IsAIControlled)
+            {
+                if(_artillery.State == RangedSiegeWeapon.WeaponState.Idle)
+                {
+                    _artillery.Shoot();
+                }
+            }
         }
     }
 }
