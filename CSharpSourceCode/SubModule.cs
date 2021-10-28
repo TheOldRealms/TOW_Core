@@ -164,8 +164,8 @@ namespace TOW_Core
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
                 starter.AddModel(new TowKingdomPeaceModel());
-                starter.AddModel(new CustomBanditDensityModel());
-                starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
+                starter.AddModel(new TORBanditDensityModel());
+                starter.AddModel(new TORMobilePartyFoodConsumptionModel());
                 starter.AddModel(new TORPartySizeModel());
                 starter.AddModel(new TORCharacterStatsModel());
                 starter.AddModel(new TORPartyWageModel());

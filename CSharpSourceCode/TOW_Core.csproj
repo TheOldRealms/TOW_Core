@@ -339,8 +339,8 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
-    <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
-    <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
