@@ -46,8 +46,18 @@ namespace TOW_Core.Abilities
             }
             if (agent.HasAttribute("VampireBodyOverride"))
             {
-                specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", agent);
+                _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", agent);
             }
+        }
+
+        internal void InitializeCrosshairs()
+        {
+            foreach (var ability in KnownAbilities)
+            {
+                AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template, Agent.Main);
+                ability.SetCrosshair(crosshair);
+            }
+            SelectAbility(0);
         }
 
         public void SelectAbility(int index)
@@ -91,7 +101,7 @@ namespace TOW_Core.Abilities
 
         public void EnableSpellMode()
         {
-            isAbilityModeOn = true;
+            _isAbilityModeOn = true;
         }
 
         public void DisableSpellMode()
@@ -100,17 +110,17 @@ namespace TOW_Core.Abilities
             {
                 _currentAbility.Crosshair.Hide();
             }
-            isAbilityModeOn = false;
+            _isAbilityModeOn = false;
         }
 
         public void EnableSpecialMoveMode()
         {
-            isMovingAbilityReady = true;
+            _isMovingAbilityReady = true;
         }
 
         public void DisableSpecialMoveMode()
         {
-            isMovingAbilityReady = false;
+            _isMovingAbilityReady = false;
         }
 
         public void StopSpecialMove()
@@ -134,15 +144,15 @@ namespace TOW_Core.Abilities
         }
 
 
-        private bool isAbilityModeOn;
-        private bool isMovingAbilityReady;
+        private bool _isAbilityModeOn;
+        private bool _isMovingAbilityReady;
         private Ability _currentAbility = null;
-        private SpecialMove specialMove = null;
+        private SpecialMove _specialMove = null;
         private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
 
-        public bool IsSpellModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
-        public bool IsSpecialMoveAtReady { get => isMovingAbilityReady; private set => isMovingAbilityReady = value; }
+        public bool IsSpellModeOn { get => _isAbilityModeOn; private set => _isAbilityModeOn = value; }
+        public bool IsSpecialMoveAtReady { get => _isMovingAbilityReady; private set => _isMovingAbilityReady = value; }
         public Ability CurrentAbility
         {
             get => _currentAbility;
@@ -152,7 +162,7 @@ namespace TOW_Core.Abilities
                 CurrentAbilityChanged?.Invoke(_currentAbility.Crosshair);
             }
         }
-        public SpecialMove SpecialMove { get => specialMove; private set => specialMove = value; }
+        public SpecialMove SpecialMove { get => _specialMove; private set => _specialMove = value; }
         public List<Ability> KnownAbilities { get => _knownAbilities; }
         public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
         public event CurrentAbilityChangedHandler CurrentAbilityChanged;

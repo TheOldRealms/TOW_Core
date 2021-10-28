@@ -282,6 +282,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\ConsoleComands\SpellsFromConsole.cs" />
     <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
@@ -346,6 +347,7 @@
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\LibraryTownBehaviour.cs" />

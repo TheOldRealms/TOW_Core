@@ -62,10 +62,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnMissionScreenTick(float dt)
         {
-            if (MBEditor.EditModeEnabled && !this._isActive)
-            {
-                return;
-            }
             if (CanUseCrosshair())
             {
                 if (!isMainAgentChecked)
@@ -75,17 +71,13 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                     {
                         abilityComponent.CurrentAbilityChanged += (crosshair) =>
                         {
-                            abilityCrosshair.Hide();
+                            if (abilityCrosshair != null)
+                            {
+                                abilityCrosshair.Hide();
+                            }
                             abilityCrosshair = crosshair;
                         };
-                        if (abilityComponent.CurrentAbility != null && abilityComponent.CurrentAbility.Crosshair != null)
-                        {
-                            abilityCrosshair = abilityComponent.CurrentAbility.Crosshair;
-                        }
-                        if (abilityComponent.SpecialMove != null && abilityComponent.SpecialMove.Crosshair != null)
-                        {
-                            specialMoveCrosshair = abilityComponent.SpecialMove.Crosshair;
-                        }
+                        abilityCrosshair = abilityComponent.CurrentAbility?.Crosshair;
                     }
                 }
                 if (specialMoveCrosshair != null && abilityComponent.IsSpecialMoveAtReady)

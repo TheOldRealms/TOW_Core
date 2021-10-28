@@ -21,11 +21,18 @@ namespace TOW_Core.CampaignSupport.Models
                 }
                 else if (party.IsSettlement)
                 {
-                    num.Add(300, new TextObject("Settlement of Vampire Counts"));
+                    if (party.Settlement.IsVillage)
+                    {
+                        num.Add(50, new TextObject("Settlement of Vampire Counts"));
+                    }
+                    else
+                    {
+                        num.Add(300, new TextObject("Settlement of Vampire Counts"));
+                    }
                 }
                 else if (party.IsMobile)
                 {
-                    num.Add(150, new TextObject("Vampire lord"));
+                    num.Add(300, new TextObject("Vampire lord"));
                 }
             }
             return num;
