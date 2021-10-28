@@ -322,6 +322,7 @@
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
+    <Compile Include="Battle\FireArms\BlunderbussMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
