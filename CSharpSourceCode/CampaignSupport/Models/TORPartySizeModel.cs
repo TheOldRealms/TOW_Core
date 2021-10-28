@@ -11,13 +11,20 @@ namespace TOW_Core.CampaignSupport.Models
             var num = base.GetPartyMemberSizeLimit(party, includeDescriptions);
             if (party.Culture.Name.Contains("Vampire"))
             {
-                if (party.Leader != null && party.Leader.IsPlayerCharacter)
+                if (party.IsMobile)
                 {
-                    num.Add(20, new TextObject("Friend of undead"));
-                }
-                else if (party.Id.Contains("caravan"))
-                {
-                    num.Add(50, new TextObject("Caravan of death"));
+                    if (party.Leader != null && party.Leader.IsPlayerCharacter)
+                    {
+                        num.Add(20, new TextObject("Friend of undead"));
+                    }
+                    else if (party.Id.Contains("caravan"))
+                    {
+                        num.Add(50, new TextObject("Caravan of death"));
+                    }
+                    else
+                    {
+                        num.Add(150, new TextObject("Vampire lord"));
+                    }
                 }
                 else if (party.IsSettlement)
                 {
@@ -29,10 +36,6 @@ namespace TOW_Core.CampaignSupport.Models
                     {
                         num.Add(300, new TextObject("Settlement of Vampire Counts"));
                     }
-                }
-                else if (party.IsMobile)
-                {
-                    num.Add(300, new TextObject("Vampire lord"));
                 }
             }
             return num;

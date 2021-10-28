@@ -68,6 +68,10 @@ namespace TOW_Core.CampaignSupport.Models
                 {
                     number.Add(300, new TextObject("Tier4"));
                 }
+                if (info.AcquiredAttributes.Contains("VampireBodyOverride"))
+                {
+                    number.Add(100, new TextObject("Vampire body"));
+                }
             }
             if (Campaign.Current.CampaignStartTime.IsNow)
             {

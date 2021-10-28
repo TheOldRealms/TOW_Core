@@ -31,11 +31,11 @@ namespace TOW_Core.CampaignSupport
                             case "empire":
                             case "chaos":
                                 KillRegularPrisoners(party);
-                                FilterNewMemebers(party, true);
+                                //FilterNewMemebers(party, true);
                                 break;
                             case "khuzait":
                                 SacrificePrisoners(party);
-                                FilterNewMemebers(party, false);
+                                //FilterNewMemebers(party, false);
                                 break;
                         }
                     }
