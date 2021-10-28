@@ -70,6 +70,26 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
+        private void KillRegularPrisoners(MapEventParty party, int amount)
+        {
+            foreach (var troop in party.RosterToReceiveLootPrisoners.GetTroopRoster())
+            {
+                if (!troop.Character.IsHero)
+                {
+                    if (troop.Number >= amount)
+                    {
+                        party.RosterToReceiveLootPrisoners.RemoveTroop(troop.Character, amount);
+                        break;
+                    }
+                    else
+                    {
+                        party.RosterToReceiveLootPrisoners.RemoveTroop(troop.Character, troop.Number);
+                        amount -= troop.Number;
+                    }
+                }
+            }
+        }
+
         private void KillUnholyPrisoners(MapEventParty party)
         {
             foreach (var troop in party.RosterToReceiveLootPrisoners.GetTroopRoster())
@@ -96,5 +116,5 @@ namespace TOW_Core.CampaignSupport
         }
 
         private CharacterObject _skeleton;
-    }   
+    }
 }
