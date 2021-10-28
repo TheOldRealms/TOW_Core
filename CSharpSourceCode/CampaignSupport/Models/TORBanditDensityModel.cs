@@ -3,7 +3,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace TOW_Core.CampaignSupport.Models
 {
-    public class CustomBanditDensityModel : DefaultBanditDensityModel
+    public class TORBanditDensityModel : DefaultBanditDensityModel
     {
         public override int NumberOfMaximumLooterParties
         {
