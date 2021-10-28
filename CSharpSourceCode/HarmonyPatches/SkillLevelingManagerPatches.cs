@@ -9,7 +9,7 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SkillLevelingManager), "OnSurgeryApplied")]
-        public static bool PatchPrefix2(ref MobileParty party)
+        public static bool OnSurgeryAppliedPrefix(ref MobileParty party)
         {
             if (party == null)
             {
