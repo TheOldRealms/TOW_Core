@@ -67,6 +67,11 @@ namespace TOW_Core.Battle.Artillery
         private SoundEvent _fireSound;
         private MatrixFrame _currentSlideBackFrame;
         private MatrixFrame _currentSlideBackFrameOrig;
+        private Threat _target;
+        private Vec3 _originalDirection;
+        private float _currentPitch;
+        private float _currentYaw;
+        private float _tolerance = 1f;
 
         #region Prefab editable fields
 
@@ -85,12 +90,16 @@ namespace TOW_Core.Battle.Artillery
         public string RightWheelTag = "Wheel_R";
         public string FireSoundID = "mortar_shot";
         public string ProjectileReleaseTag = "projectile_release";
+        public float MuzzleVelocity = 20;
+        public float MinRange = 10;
 
         #endregion
 
         public RangedSiegeWeapon.WeaponState State => _currentState;
         public override BattleSideEnum Side => _side;
         public void SetSide(BattleSideEnum side) => _side = side;
+        internal bool HasTarget => _target != null && _target.Formation != null && _target.Formation.GetCountOfUnitsWithCondition(x=>x.IsActive()) > 0;
+        private Vec3 CurrentDirection => _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
 
         protected override void OnInit()
         {
@@ -102,6 +111,9 @@ namespace TOW_Core.Battle.Artillery
             InitStandingPoints();
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
             ForcedUse = true;
+            _originalDirection = _artilleryBase.GetFrame().rotation.f.NormalizedCopy();
+            _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetFrame().rotation.GetEulerAngles().x);
+            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetFrame().rotation.f.RotationZ);
         }
 
         private void CollectEntities()
@@ -177,6 +189,10 @@ namespace TOW_Core.Battle.Artillery
                     }
                 }   
             }
+            else if (_isRotating)
+            {
+                OnRotationStopped();
+            }
 
             HandleAmmoLoad();
             HandleAmmoPickUp();
@@ -185,6 +201,7 @@ namespace TOW_Core.Battle.Artillery
             AdjustElevation(dt);
             UpdateWheelRotation(dt);
             UpdateRecoilEffect(dt);
+            HandleAimingForAI(dt);
         }
 
         public void Shoot()
@@ -202,7 +219,7 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, 20, false, null);
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity, false, null);
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
@@ -364,8 +381,10 @@ namespace TOW_Core.Battle.Artillery
         {
             if (!_isRotating) return;
             var frame = _artilleryBase.GetFrame();
-            frame.rotation.RotateAboutUp(_rotationDirection * dt * 0.2f);
+            var amount = _rotationDirection * dt * 0.2f;
+            frame.rotation.RotateAboutUp(amount);
             _artilleryBase.SetFrame(ref frame);
+            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetFrame().rotation.f.RotationZ);
         }
 
         private void UpdateWheelRotation(float dt)
@@ -376,7 +395,7 @@ namespace TOW_Core.Battle.Artillery
             }
         }
 
-        internal void GiveInput(float deltaYaw, float deltaPitch, float deltatime)
+        internal void GiveInput(float deltaYaw, float deltaPitch)
         {
             _isPitchDirty = false;
             if (CanRotate())
@@ -413,13 +432,14 @@ namespace TOW_Core.Battle.Artillery
                 if (elevation >= MinPitch && elevation <= MaxPitch)
                 {
                     _barrel.SetFrame(ref frame);
+                    _currentPitch = elevation;
                 }
             }
         }
 
         private bool CanRotate()
         {
-            return _currentState == RangedSiegeWeapon.WeaponState.Idle || _currentState == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
+            return _currentState == RangedSiegeWeapon.WeaponState.Idle;// || _currentState == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
         }
 
         protected void OnRotationStarted(float direction)
@@ -449,6 +469,31 @@ namespace TOW_Core.Battle.Artillery
             var frame2 = _wheel_R.GetFrame();
             frame2.rotation.RotateAboutSide(rightwheeldirection * dt * speed);
             _wheel_R.SetFrame(ref frame2);
+        }
+
+        private void HandleAimingForAI(float dt)
+        {
+            if (!HasTarget || PilotAgent == null || !PilotAgent.IsAIControlled) return;
+            float requiredElevation = TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(_target.Position));
+            float requiredYaw = TOWMath.GetDegreeFromRadians(GetTargetDirection(_target.Position).AsVec2.Normalized().AngleBetween(_originalDirection.AsVec2.Normalized()));
+            float x = 0;
+            float y = 0;
+            if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
+            {
+                if (requiredElevation - _currentPitch > 0) y = 1;
+                else if (requiredElevation - _currentPitch < 0) y = -1;
+            }
+            if(!IsWithinToleranceRange(requiredYaw, _currentYaw))
+            {
+                if (requiredYaw - _currentYaw > 0) x = 1;
+                else if (requiredYaw - _currentYaw < 0) x = -1;
+            }
+            GiveInput(x, y);
+        }
+
+        private bool IsWithinToleranceRange(float num1, float num2)
+        {
+            return num1 > num2 - _tolerance && num1 < num2 + _tolerance;
         }
 
         public override TextObject GetActionTextForStandingPoint(UsableMissionObject usableGameObject)
@@ -506,6 +551,39 @@ namespace TOW_Core.Battle.Artillery
             return targetFlags;
         }
 
+        public float ProcessTargetValue(float baseValue, TargetFlags flags)
+        {
+            if (flags.HasAnyFlag(TargetFlags.NotAThreat))
+            {
+                return -1000f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.None))
+            {
+                baseValue *= 1.5f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.IsSiegeEngine))
+            {
+                baseValue *= 2f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.IsStructure))
+            {
+                baseValue *= 1.5f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.IsSmall))
+            {
+                baseValue *= 0.5f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.IsMoving))
+            {
+                baseValue *= 0.8f;
+            }
+            if (flags.HasAnyFlag(TargetFlags.DebugThreat))
+            {
+                baseValue *= 10000f;
+            }
+            return baseValue;
+        }
+
         //Copied from Mangonel.cs
         public override float GetTargetValue(List<Vec3> weaponPos) => 40f * GetUserMultiplierOfWeapon() * GetDistanceMultiplierOfWeapon(weaponPos[0]) * GetHitpointMultiplierofWeapon();
 
@@ -551,9 +629,51 @@ namespace TOW_Core.Battle.Artillery
             return num;
         }
 
+        internal bool CanShootAtTarget()
+        {
+            if (!HasTarget) return false;
+            else
+            {
+                return CanShootAtPoint(_target.Position);
+            }
+        }
+
+        public bool CanShootAtPoint(Vec3 target)
+        {
+            if((target - GameEntity.GetGlobalFrame().origin).Length <= MinRange)
+            {
+                return false;
+            }
+            float requiredElevation = TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(_target.Position));
+            float requiredYaw = TOWMath.GetDegreeFromRadians(GetTargetDirection(_target.Position).AsVec2.Normalized().AngleBetween(_originalDirection.AsVec2.Normalized()));
+            if (requiredElevation < MinPitch || requiredElevation > MaxPitch)
+            {
+                return false;
+            }
+            TOWCommon.Say(requiredYaw.ToString());
+            TOWCommon.Say(_currentYaw.ToString());
+            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw) && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
+        }
+
+        public virtual float GetTargetReleaseAngle(Vec3 target)
+        {
+            MissionWeapon missionWeapon = new MissionWeapon(_ammoItem, null, null);
+            WeaponStatsData weaponStatsDataForUsage = missionWeapon.GetWeaponStatsDataForUsage(0);
+            return Mission.GetMissileVerticalAimCorrection(target - _projectileReleasePoint.GlobalPosition, MuzzleVelocity, ref weaponStatsDataForUsage, ItemObject.GetAirFrictionConstant(_ammoItem.PrimaryWeapon.WeaponClass, _ammoItem.PrimaryWeapon.WeaponFlags));
+        }
+
+        private Vec3 GetTargetDirection(Vec3 target)
+        {
+            return (target - _artilleryBase.GlobalPosition).NormalizedCopy();
+        }
+
+        internal void SetTarget(Threat target) => _target = target;
+        internal void ClearTarget() => _target = null;
+        internal Threat GetTarget() => _target;
+
         public override UsableMachineAIBase CreateAIBehaviourObject()
         {
-            return new UsableMachineAI(this);
+            return new ArtilleryAI(this);
         }
     }
 }

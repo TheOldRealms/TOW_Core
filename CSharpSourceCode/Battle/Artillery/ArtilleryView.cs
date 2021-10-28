@@ -178,7 +178,7 @@ namespace TOW_Core.Battle.Artillery
 					inputY = -1f;
 				}
 			}
-			this.Artillery.GiveInput(inputX, inputY, dt);
+			this.Artillery.GiveInput(inputX, inputY);
 		}
 
 		private float _cameraYaw = 0;
