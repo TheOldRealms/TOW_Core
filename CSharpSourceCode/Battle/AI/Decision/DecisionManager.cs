@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
@@ -15,11 +14,11 @@ namespace TOW_Core.Battle.AI.Decision
                 .ToDictionary(e => e.Key, e => e.Value));
         }
 
-        private static (IAgentBehavior, Target) Highest(Dictionary<(IAgentBehavior, Target), float> utilityValues)
+        private static (IAgentBehavior, Target) Highest(Dictionary<IAgentBehavior, Target> utilityValues)
         {
-            return utilityValues
-                .MaxBy(entry => entry.Value)
-                .Key;
+            var keyValuePair = utilityValues
+                .MaxBy(entry => entry.Value.UtilityValue);
+            return (keyValuePair.Key, keyValuePair.Value);
         }
 
         public static double WeightedRandom(List<IAgentBehavior> behaviors)

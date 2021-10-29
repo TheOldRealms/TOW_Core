@@ -23,7 +23,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected List<Axis> AxisList;
 
         public Target CurrentTarget = new Target();
-        public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
+        public Dictionary<IAgentBehavior, Target> LatestScores { get; private set; }
 
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
 
@@ -102,26 +102,27 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public abstract void Terminate();
 
-        public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
+        public Dictionary<IAgentBehavior, Target> CalculateUtility()
         {
-            LatestScores = new Dictionary<(IAgentBehavior, Target), float>();
-
-            FindTargets(Agent, AbilityTemplate.AbilityTargetType)
-                .Select(target => (target, UtilityFunction(target)))
-                .Do(pair => LatestScores.Add((this, pair.target), pair.Item2));
+            LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+                .Select(CalculateUtility)
+                .ToDictionary(target => (IAgentBehavior) this);
 
             return LatestScores;
         }
 
-        protected virtual float UtilityFunction(Target target)
+        protected virtual Target CalculateUtility(Target target)
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional())
             {
-                return 0.0f;
+                target.UtilityValue = 0.0f;
+                return target;
             }
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
-            return hysteresis + AxisList.GeometricMean(target);
+            AxisList.GeometricMean(target);
+            target.UtilityValue += hysteresis;
+            return target;
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
