@@ -430,7 +430,6 @@
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
-    <Compile Include="HarmonyPatches\PartyVMPatches.cs" />
     <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
