@@ -97,7 +97,7 @@ namespace TOW_Core.Battle.Artillery
         public string FireSoundID = "mortar_shot";
         public string ProjectileReleaseTag = "projectile_release";
         public float MuzzleVelocity = 40;
-        public float MinRange = 10;
+        public float MinRange = 20;
 
         #endregion
 
@@ -120,6 +120,7 @@ namespace TOW_Core.Battle.Artillery
             _originalDirection = _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
             _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetGlobalFrame().rotation.f.RotationX);
             _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
+            EnemyRangeToStopUsing = MinRange;
         }
 
         private void CollectEntities()
@@ -226,7 +227,7 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, _ammoItem.PrimaryWeapon.MissileSpeed, MuzzleVelocity, false, null);
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity, false, null);
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
@@ -621,12 +622,16 @@ namespace TOW_Core.Battle.Artillery
 
         private Vec3 GetTargetPosition()
         {
-            return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Position;
+            return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(5).origin;
         }
 
         public bool CanShootAtPoint(Vec3 target)
         {
             if ((target - GameEntity.GetGlobalFrame().origin).Length <= MinRange)
+            {
+                return false;
+            }
+            else if (!IsInRange(target))
             {
                 return false;
             }
@@ -643,11 +648,23 @@ namespace TOW_Core.Battle.Artillery
             return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
         }
 
+        private bool IsInRange(Vec3 target)
+        {
+            var maxrange = BallisticSolver.GetMaxRange(MuzzleVelocity, MBGlobals.Gravity, (target - _projectileReleasePoint.GlobalPosition).z);
+            var distancetotarget = (target - _projectileReleasePoint.GlobalPosition).AsVec2.Length;
+            return maxrange >= distancetotarget;
+        }
+
         public virtual float GetTargetReleaseAngle(Vec3 target)
         {
-            MissionWeapon missionWeapon = new MissionWeapon(_ammoItem, null, null);
-            WeaponStatsData weaponStatsDataForUsage = missionWeapon.GetWeaponStatsDataForUsage(0);
-            return Mission.GetMissileVerticalAimCorrection(target - _projectileReleasePoint.GlobalPosition, MuzzleVelocity, ref weaponStatsDataForUsage, ItemObject.GetAirFrictionConstant(_ammoItem.PrimaryWeapon.WeaponClass, _ammoItem.PrimaryWeapon.WeaponFlags));
+            Vec3 lowAngle, highAngle;
+            BallisticSolver.SolveBallisticArc(_projectileReleasePoint.GlobalPosition, MuzzleVelocity, target, MBGlobals.Gravity, out lowAngle, out highAngle);
+            float low, high;
+            low = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, lowAngle));
+            high = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, highAngle));
+            if (low > MinPitch && low < MaxPitch) return low;
+            else if (high < MaxPitch && high > MinPitch) return high;
+            else return 0;
         }
 
         private Vec3 GetTargetDirection(Vec3 target)
@@ -664,12 +681,17 @@ namespace TOW_Core.Battle.Artillery
 
         private float GetRequiredPitchForTarget(Vec3 target)
         {
-            return TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(GetTargetPosition()));
+            return GetTargetReleaseAngle(GetTargetPosition());
         }
 
         internal void SetTarget(Threat target) => _target = target;
         internal void ClearTarget() => _target = null;
         internal Threat GetTarget() => _target;
+
+        public override bool IsDisabledForBattleSideAI(BattleSideEnum sideEnum)
+        {
+            return sideEnum != Side;
+        }
 
         public override UsableMachineAIBase CreateAIBehaviourObject()
         {

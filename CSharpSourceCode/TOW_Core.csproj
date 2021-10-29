@@ -316,7 +316,7 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\Components\UsableMachineAI.cs" />
+    <Compile Include="Battle\AI\Components\ArtilleryAI.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
@@ -326,6 +326,7 @@
     <Compile Include="Battle\Artillery\Artillery.cs" />
     <Compile Include="Battle\Artillery\ArtilleryView.cs" />
     <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
+    <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
