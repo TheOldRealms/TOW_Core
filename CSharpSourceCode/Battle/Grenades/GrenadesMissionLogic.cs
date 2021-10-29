@@ -14,11 +14,6 @@ namespace TOW_Core.Battle.Grenades
 {
     public class GrenadesMissionLogic : MissionLogic
     {
-        public override void OnMissionTick(float dt)
-        {
-            if (!(Game.Current.GameType is Campaign) && Input.IsKeyPressed(InputKey.L))
-                DebugOnlyEquipGrenades();
-        }
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
             if (shooterAgent.WieldedWeapon.Item.Name.Contains("Grenade"))
@@ -55,15 +50,6 @@ namespace TOW_Core.Battle.Grenades
         private bool IsNearbyAgent(Mission.Missile missile, Agent agent)
         {
             return Math.Abs(missile.GetPosition().X - agent.Position.X) < 0.8f && Math.Abs(missile.GetPosition().Y - agent.Position.Y) < 0.8f;
-        }
-        private void DebugOnlyEquipGrenades()
-        {
-            if (Agent.Main != null)
-            {
-                ItemObject itemObject = MBObjectManager.Instance.GetObject<ItemObject>("dwarf_hand_grenade");
-                MissionWeapon grenades = new MissionWeapon(itemObject, null, Banner.CreateRandomBanner());
-                Agent.Main.EquipWeaponToExtraSlotAndWield(ref grenades);
-            }
         }
     }
 }
