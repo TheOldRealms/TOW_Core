@@ -1,7 +1,6 @@
 ﻿using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -29,13 +28,15 @@ namespace TOW_Core.CampaignSupport
                         switch (party.Party.Culture.StringId)
                         {
                             case "empire":
+                                KillUnholyPrisoners(party);
+                                break;
                             case "chaos":
-                                KillRegularPrisoners(party);
-                                FilterNewMemebers(party, true);
+                                KillAllRegularPrisoners(party);
+                                //FilterNewMemebers(party, true);
                                 break;
                             case "khuzait":
                                 SacrificePrisoners(party);
-                                FilterNewMemebers(party, false);
+                                //FilterNewMemebers(party, false);
                                 break;
                         }
                     }
@@ -58,9 +59,8 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        private void KillRegularPrisoners(MapEventParty party)
+        private void KillAllRegularPrisoners(MapEventParty party)
         {
-            TOWCommon.Say($"{party.Party} killed {party.RosterToReceiveLootPrisoners.TotalRegulars} prisoners");
             foreach (var troop in party.RosterToReceiveLootPrisoners.GetTroopRoster())
             {
                 if (!troop.Character.IsHero)
@@ -70,15 +70,44 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
+        private void KillRegularPrisoners(MapEventParty party, int amount)
+        {
+            foreach (var troop in party.RosterToReceiveLootPrisoners.GetTroopRoster())
+            {
+                if (!troop.Character.IsHero)
+                {
+                    if (troop.Number >= amount)
+                    {
+                        party.RosterToReceiveLootPrisoners.RemoveTroop(troop.Character, amount);
+                        break;
+                    }
+                    else
+                    {
+                        party.RosterToReceiveLootPrisoners.RemoveTroop(troop.Character, troop.Number);
+                        amount -= troop.Number;
+                    }
+                }
+            }
+        }
+
+        private void KillUnholyPrisoners(MapEventParty party)
+        {
+            foreach (var troop in party.RosterToReceiveLootPrisoners.GetTroopRoster())
+            {
+                if (!troop.Character.IsHero && (troop.Character.Culture.StringId == "khuzait" || troop.Character.Culture.StringId == "chaos"))
+                {
+                    party.RosterToReceiveLootPrisoners.RemoveTroop(troop.Character, troop.Number);
+                }
+            }
+        }
+
         private void SacrificePrisoners(MapEventParty party)
         {
             var number = Math.Min(party.RosterToReceiveLootPrisoners.TotalRegulars, party.Party.PartySizeLimit - party.Party.MemberRoster.TotalManCount);
-            KillRegularPrisoners(party);
-            TOWCommon.Say($"{party.Party} raised {number} skeletons");
+            KillAllRegularPrisoners(party);
             if (_skeleton != null)
             {
                 party.Party.MemberRoster.AddToCounts(_skeleton, number);
-                //party.Party.AddElementToMemberRoster()
             }
         }
 
@@ -87,5 +116,5 @@ namespace TOW_Core.CampaignSupport
         }
 
         private CharacterObject _skeleton;
-    }   
+    }
 }
