@@ -45,6 +45,12 @@ namespace TOW_Core.Battle.Artillery
         public GameEntity CameraHolder;
         private GameEntity _barrel;
         private GameEntity _artilleryBase;
+
+        public Vec3 Position
+        {
+            get => _artilleryBase.GlobalPosition;
+        }
+
         private GameEntity _projectileReleasePoint;
         private GameEntity _wheel_L;
         private GameEntity _wheel_R;
@@ -60,7 +66,7 @@ namespace TOW_Core.Battle.Artillery
         private float _currentRecoilTimer;
         private StandingPointWithWeaponRequirement _loadAmmoStandingPoint;
         private List<StandingPointWithWeaponRequirement> _ammoPickUpStandingPoints = new List<StandingPointWithWeaponRequirement>();
-        private List<StandingPoint> _reloadStandingPoints = new List<StandingPoint>(); 
+        private List<StandingPoint> _reloadStandingPoints = new List<StandingPoint>();
         private int _moveSoundIndex;
         private SoundEvent _moveSound;
         private int _fireSoundIndex;
@@ -98,7 +104,7 @@ namespace TOW_Core.Battle.Artillery
         public RangedSiegeWeapon.WeaponState State => _currentState;
         public override BattleSideEnum Side => _side;
         public void SetSide(BattleSideEnum side) => _side = side;
-        internal bool HasTarget => _target != null && _target.Formation != null && _target.Formation.GetCountOfUnitsWithCondition(x=>x.IsActive()) > 0;
+        internal bool HasTarget => _target != null && _target.Formation != null && _target.Formation.GetCountOfUnitsWithCondition(x => x.IsActive()) > 0;
         private Vec3 CurrentDirection => _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
 
         protected override void OnInit()
@@ -180,6 +186,7 @@ namespace TOW_Core.Battle.Artillery
                         Shoot();
                     }
                 }
+
                 if (_currentState == RangedSiegeWeapon.WeaponState.Shooting && _shootingTimer != null)
                 {
                     if (_shootingTimer.Check())
@@ -187,7 +194,7 @@ namespace TOW_Core.Battle.Artillery
                         FireProjectile();
                         _shootingTimer = null;
                     }
-                }   
+                }
             }
             else if (_isRotating)
             {
@@ -206,7 +213,7 @@ namespace TOW_Core.Battle.Artillery
 
         public void Shoot()
         {
-            if (_currentState == RangedSiegeWeapon.WeaponState.Idle) 
+            if (_currentState == RangedSiegeWeapon.WeaponState.Idle)
             {
                 _currentState = RangedSiegeWeapon.WeaponState.Shooting;
                 _shootingTimer = new MissionTimer(ShootingAgentAnimationLength);
@@ -227,6 +234,7 @@ namespace TOW_Core.Battle.Artillery
                 _fireSound = SoundEvent.CreateEvent(_fireSoundIndex, Scene);
                 _fireSound.PlayInPosition(GameEntity.GlobalPosition);
             }
+
             DoSlideBack();
         }
 
@@ -312,6 +320,7 @@ namespace TOW_Core.Battle.Artillery
                                 user.RemoveEquippedWeapon(equipmentIndex);
                             }
                         }
+
                         user.StopUsingGameObject();
                     }
                 }
@@ -439,7 +448,7 @@ namespace TOW_Core.Battle.Artillery
 
         private bool CanRotate()
         {
-            return _currentState == RangedSiegeWeapon.WeaponState.Idle;// || _currentState == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
+            return _currentState == RangedSiegeWeapon.WeaponState.Idle; // || _currentState == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading;
         }
 
         protected void OnRotationStarted(float direction)
@@ -483,11 +492,13 @@ namespace TOW_Core.Battle.Artillery
                 if (requiredElevation - _currentPitch > 0) y = 1;
                 else if (requiredElevation - _currentPitch < 0) y = -1;
             }
-            if(!IsWithinToleranceRange(requiredYaw, _currentYaw))
+
+            if (!IsWithinToleranceRange(requiredYaw, _currentYaw))
             {
                 if (requiredYaw - _currentYaw > 0) x = -1;
                 else if (requiredYaw - _currentYaw < 0) x = 1;
             }
+
             GiveInput(x, y);
         }
 
@@ -551,39 +562,6 @@ namespace TOW_Core.Battle.Artillery
             return targetFlags;
         }
 
-        public float ProcessTargetValue(float baseValue, TargetFlags flags)
-        {
-            if (flags.HasAnyFlag(TargetFlags.NotAThreat))
-            {
-                return -1000f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.None))
-            {
-                baseValue *= 1.5f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.IsSiegeEngine))
-            {
-                baseValue *= 2f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.IsStructure))
-            {
-                baseValue *= 1.5f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.IsSmall))
-            {
-                baseValue *= 0.5f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.IsMoving))
-            {
-                baseValue *= 0.8f;
-            }
-            if (flags.HasAnyFlag(TargetFlags.DebugThreat))
-            {
-                baseValue *= 10000f;
-            }
-            return baseValue;
-        }
-
         //Copied from Mangonel.cs
         public override float GetTargetValue(List<Vec3> weaponPos) => 40f * GetUserMultiplierOfWeapon() * GetDistanceMultiplierOfWeapon(weaponPos[0]) * GetHitpointMultiplierofWeapon();
 
@@ -596,7 +574,7 @@ namespace TOW_Core.Battle.Artillery
 
             var num = float.MinValue;
             _usableStandingPoints.Clear();
-            for(int i = 0; i < StandingPoints.Count; i++)
+            for (int i = 0; i < StandingPoints.Count; i++)
             {
                 var sp = StandingPoints[i];
                 if (!sp.IsDisabled)
@@ -607,25 +585,28 @@ namespace TOW_Core.Battle.Artillery
                     }
                 }
             }
+
             if (_usableStandingPoints.Count > 0) _areUsableStandingPointsVacant = true;
-            foreach(var sp in StandingPoints)
+            foreach (var sp in StandingPoints)
             {
-                if(!sp.HasUser && !sp.HasAIMovingTo && !sp.IsDisabled)
+                if (!sp.HasUser && !sp.HasAIMovingTo && !sp.IsDisabled)
                 {
                     if (sp == PilotStandingPoint && State == RangedSiegeWeapon.WeaponState.Idle)
                     {
                         return 1;
                     }
-                    else if (State == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading && !AmmoPickUpPoints.Any(x=>x.HasAIMovingTo || x.HasUser))
+                    else if (State == RangedSiegeWeapon.WeaponState.WaitingBeforeReloading && !AmmoPickUpPoints.Any(x => x.HasAIMovingTo || x.HasUser))
                     {
                         return 1;
                     }
+
                     if (sp == _loadAmmoStandingPoint && State == RangedSiegeWeapon.WeaponState.Reloading)
                     {
                         return 1;
                     }
                 }
             }
+
             return num;
         }
 
@@ -645,16 +626,18 @@ namespace TOW_Core.Battle.Artillery
 
         public bool CanShootAtPoint(Vec3 target)
         {
-            if((target - GameEntity.GetGlobalFrame().origin).Length <= MinRange)
+            if ((target - GameEntity.GetGlobalFrame().origin).Length <= MinRange)
             {
                 return false;
             }
+
             float requiredElevation = GetRequiredPitchForTarget(target);
             float requiredYaw = GetRequiredYawForTarget(target);
             if (requiredElevation < MinPitch || requiredElevation > MaxPitch)
             {
                 return false;
             }
+
             TOWCommon.Say(requiredYaw.ToString());
             TOWCommon.Say(_currentYaw.ToString());
             return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);

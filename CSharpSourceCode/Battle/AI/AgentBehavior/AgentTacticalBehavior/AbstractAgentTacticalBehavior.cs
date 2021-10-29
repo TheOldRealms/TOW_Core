@@ -33,7 +33,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             throw new NotImplementedException();
         }
 
-        public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
+        public Dictionary<IAgentBehavior, Target> CalculateUtility()
         {
             throw new NotImplementedException();
         }

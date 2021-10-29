@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities;
 
@@ -32,9 +33,9 @@ namespace TOW_Core.Battle.AI.Decision
             };
         }
 
-        public static Func<Target, float> DistanceToTarget(Agent agent)
+        public static Func<Target, float> DistanceToTarget(Vec3 position)
         {
-            return target => agent.Position.Distance(target.Position);
+            return target => position.Distance(target.Position);
         }
 
         public static Func<Target, float> FormationPower()
