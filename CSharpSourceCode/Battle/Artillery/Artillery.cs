@@ -71,7 +71,7 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 _originalDirection;
         private float _currentPitch;
         private float _currentYaw;
-        private float _tolerance = 1f;
+        private float _tolerance = 0.1f;
 
         #region Prefab editable fields
 
@@ -111,9 +111,9 @@ namespace TOW_Core.Battle.Artillery
             InitStandingPoints();
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
             ForcedUse = true;
-            _originalDirection = _artilleryBase.GetFrame().rotation.f.NormalizedCopy();
+            _originalDirection = _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
             _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetFrame().rotation.GetEulerAngles().x);
-            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetFrame().rotation.f.RotationZ);
+            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
         }
 
         private void CollectEntities()
@@ -380,11 +380,11 @@ namespace TOW_Core.Battle.Artillery
         private void UpdateRotation(float dt)
         {
             if (!_isRotating) return;
-            var frame = _artilleryBase.GetFrame();
+            var frame = _artilleryBase.GetGlobalFrame();
             var amount = _rotationDirection * dt * 0.2f;
             frame.rotation.RotateAboutUp(amount);
-            _artilleryBase.SetFrame(ref frame);
-            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetFrame().rotation.f.RotationZ);
+            _artilleryBase.SetGlobalFrame(frame);
+            _currentYaw = -TOWMath.GetDegreeFromRadians(frame.rotation.f.RotationZ);
         }
 
         private void UpdateWheelRotation(float dt)
@@ -474,8 +474,8 @@ namespace TOW_Core.Battle.Artillery
         private void HandleAimingForAI(float dt)
         {
             if (!HasTarget || PilotAgent == null || !PilotAgent.IsAIControlled) return;
-            float requiredElevation = TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(_target.Position));
-            float requiredYaw = TOWMath.GetDegreeFromRadians(GetTargetDirection(_target.Position).AsVec2.Normalized().AngleBetween(_originalDirection.AsVec2.Normalized()));
+            float requiredElevation = GetRequiredPitchForTarget(GetTargetPosition());
+            float requiredYaw = GetRequiredYawForTarget(GetTargetPosition());
             float x = 0;
             float y = 0;
             if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
@@ -485,8 +485,8 @@ namespace TOW_Core.Battle.Artillery
             }
             if(!IsWithinToleranceRange(requiredYaw, _currentYaw))
             {
-                if (requiredYaw - _currentYaw > 0) x = 1;
-                else if (requiredYaw - _currentYaw < 0) x = -1;
+                if (requiredYaw - _currentYaw > 0) x = -1;
+                else if (requiredYaw - _currentYaw < 0) x = 1;
             }
             GiveInput(x, y);
         }
@@ -634,8 +634,13 @@ namespace TOW_Core.Battle.Artillery
             if (!HasTarget) return false;
             else
             {
-                return CanShootAtPoint(_target.Position);
+                return CanShootAtPoint(GetTargetPosition());
             }
+        }
+
+        private Vec3 GetTargetPosition()
+        {
+            return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Position;
         }
 
         public bool CanShootAtPoint(Vec3 target)
@@ -644,8 +649,8 @@ namespace TOW_Core.Battle.Artillery
             {
                 return false;
             }
-            float requiredElevation = TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(_target.Position));
-            float requiredYaw = TOWMath.GetDegreeFromRadians(GetTargetDirection(_target.Position).AsVec2.Normalized().AngleBetween(_originalDirection.AsVec2.Normalized()));
+            float requiredElevation = GetRequiredPitchForTarget(target);
+            float requiredYaw = GetRequiredYawForTarget(target);
             if (requiredElevation < MinPitch || requiredElevation > MaxPitch)
             {
                 return false;
@@ -665,6 +670,18 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 GetTargetDirection(Vec3 target)
         {
             return (target - _artilleryBase.GlobalPosition).NormalizedCopy();
+        }
+
+        private float GetRequiredYawForTarget(Vec3 target)
+        {
+            var dir = GetTargetDirection(GetTargetPosition());
+            var angle = Vec3.AngleBetweenTwoVectors(dir, _originalDirection);
+            return TOWMath.GetDegreeFromRadians(angle);
+        }
+
+        private float GetRequiredPitchForTarget(Vec3 target)
+        {
+            return TOWMath.GetDegreeFromRadians(GetTargetReleaseAngle(GetTargetPosition()));
         }
 
         internal void SetTarget(Threat target) => _target = target;
