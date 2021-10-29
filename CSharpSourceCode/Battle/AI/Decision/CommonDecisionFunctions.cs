@@ -33,9 +33,9 @@ namespace TOW_Core.Battle.AI.Decision
             };
         }
 
-        public static Func<Target, float> DistanceToTarget(Vec3 position)
+        public static Func<Target, float> DistanceToTarget(Func<Vec3> provider)
         {
-            return target => position.Distance(target.Position);
+            return target => provider.Invoke().Distance(target.Position);
         }
 
         public static Func<Target, float> FormationPower()
