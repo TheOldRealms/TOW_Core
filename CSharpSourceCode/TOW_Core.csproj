@@ -341,6 +341,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
@@ -348,6 +349,7 @@
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
