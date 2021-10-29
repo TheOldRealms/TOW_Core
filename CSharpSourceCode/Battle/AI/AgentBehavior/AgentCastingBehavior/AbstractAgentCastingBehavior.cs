@@ -131,17 +131,17 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 case AbilityTargetType.Allies:
                     return agent.Team.QuerySystem.AllyTeams
                         .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .Select(form => new Target {Formation = form})
                         .ToList();
                 case AbilityTargetType.Self:
                     return new List<Target>()
                     {
-                        new Target {Agent = agent, AbilityTargetType = targetType}
+                        new Target {Agent = agent}
                     };
                 default:
                     return agent.Team.QuerySystem.EnemyTeams
                         .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .Select(form => new Target {Formation = form})
                         .ToList();
             }
         }
