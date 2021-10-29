@@ -90,7 +90,7 @@ namespace TOW_Core.Battle.Artillery
         public string RightWheelTag = "Wheel_R";
         public string FireSoundID = "mortar_shot";
         public string ProjectileReleaseTag = "projectile_release";
-        public float MuzzleVelocity = 20;
+        public float MuzzleVelocity = 40;
         public float MinRange = 10;
 
         #endregion
@@ -112,7 +112,7 @@ namespace TOW_Core.Battle.Artillery
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
             ForcedUse = true;
             _originalDirection = _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
-            _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetFrame().rotation.GetEulerAngles().x);
+            _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetGlobalFrame().rotation.f.RotationX);
             _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
         }
 
@@ -426,12 +426,12 @@ namespace TOW_Core.Battle.Artillery
         {
             if (_barrel != null && _isPitchDirty)
             {
-                var frame = _barrel.GetFrame();
+                var frame = _barrel.GetGlobalFrame();
                 frame.rotation.RotateAboutSide(_elevationDirection * dt * 0.2f);
-                var elevation = TOWMath.GetDegreeFromRadians(frame.rotation.GetEulerAngles().x);
+                var elevation = TOWMath.GetDegreeFromRadians(frame.rotation.f.RotationX);
                 if (elevation >= MinPitch && elevation <= MaxPitch)
                 {
-                    _barrel.SetFrame(ref frame);
+                    _barrel.SetGlobalFrame(frame);
                     _currentPitch = elevation;
                 }
             }
@@ -657,7 +657,7 @@ namespace TOW_Core.Battle.Artillery
             }
             TOWCommon.Say(requiredYaw.ToString());
             TOWCommon.Say(_currentYaw.ToString());
-            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw) && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
+            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
         }
 
         public virtual float GetTargetReleaseAngle(Vec3 target)
