@@ -226,7 +226,7 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity, false, null);
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, _ammoItem.PrimaryWeapon.MissileSpeed, MuzzleVelocity, false, null);
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
