@@ -98,6 +98,7 @@ namespace TOW_Core.Battle.Artillery
         public string ProjectileReleaseTag = "projectile_release";
         public float MuzzleVelocity = 40;
         public float MinRange = 20;
+        public Team Team;
 
         #endregion
 
@@ -697,5 +698,6 @@ namespace TOW_Core.Battle.Artillery
         {
             return new ArtilleryAI(this);
         }
+
     }
 }

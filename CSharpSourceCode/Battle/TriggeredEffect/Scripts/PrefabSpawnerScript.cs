@@ -30,9 +30,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             var frame = new MatrixFrame(rotation, position);
             entity.SetFrame(ref frame);
             var artillery = entity.GetFirstScriptInFamilyDescending<Artillery.Artillery>();
-            if(artillery != null)
+            if (artillery != null)
             {
                 artillery.SetSide(triggeredByAgent.Team.Side);
+                artillery.Team = triggeredByAgent.Team;
             }
         }
 
