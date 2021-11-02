@@ -1,4 +1,5 @@
-﻿using TaleWorlds.Library;
+﻿using System;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
@@ -7,11 +8,11 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public TargetedCrosshair(AbilityTemplate template) : base(template)
         {
+
         }
 
         public override void Tick()
         {
-            base.Tick();
             FindAim();
         }
 
@@ -26,13 +27,20 @@ namespace TOW_Core.Abilities.Crosshairs
             Vec3 position;
             Vec3 normal;
             _missionScreen.GetProjectedMousePositionOnGround(out position, out normal);
+
             float distance;
-            var agent = Mission.Current.RayCastForClosestAgent(Agent.Main.GetEyeGlobalPosition(), position, out distance, Agent.Main.Index);
-            if (agent != null && agent.IsHuman)
+            var agent = Mission.Current.RayCastForClosestAgent(Agent.Main.GetEyeGlobalPosition(), position, out distance, Agent.Main.Index, 0.1f);
+            if (agent != null)
             {
-                if (agent != aim)
-                    RemoveAim();
-                SetAim(agent);
+                if (agent.IsHuman)
+                {
+                    if (agent != aim)
+                    {
+                        RemoveAim();
+                    }
+                    lastAimIndex = agent.Index;
+                    SetAim(agent);
+                }
             }
             else
             {
@@ -51,7 +59,7 @@ namespace TOW_Core.Abilities.Crosshairs
                     this.aim.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
             }
         }
-        
+
         private void RemoveAim()
         {
             if (aim != null)
@@ -61,10 +69,18 @@ namespace TOW_Core.Abilities.Crosshairs
             }
         }
 
+
+        public Int32 LastAimIndex
+        {
+            get => lastAimIndex;
+        }
+
         public Agent Aim
         {
             get => aim;
         }
+
+        private Int32 lastAimIndex;
 
         private Agent aim;
     }

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Abilities.Scripts
@@ -93,7 +95,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);
-            if(GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
+            if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
@@ -174,7 +176,22 @@ namespace TOW_Core.Abilities.Scripts
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)
             {
-                effect.Trigger(position, normal, _casterAgent);
+                List<Agent> targets = null;
+                if (_ability.Template.CrosshairType == CrosshairType.Targeted)
+                {
+                    var aim = ((TargetedCrosshair)_ability.Crosshair).Aim;
+                    if (aim == null)
+                    {
+                        var index = ((TargetedCrosshair)_ability.Crosshair).LastAimIndex;
+                        aim = Mission.Current.Agents.FirstOrDefault(a => a.Index == index);
+                    }
+                    if (aim != null)
+                    {
+                        targets = new List<Agent>();
+                        targets.Add(aim);
+                    }
+                }
+                effect.Trigger(position, normal, _casterAgent, targets);
             }
         }
 

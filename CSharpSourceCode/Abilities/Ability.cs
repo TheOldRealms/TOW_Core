@@ -276,6 +276,9 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.AgentMoving:
                     AddExactBehaviour<SpecialMoveScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.TargetedStatic:
+                    AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
+                    break;
             }
         }
 
