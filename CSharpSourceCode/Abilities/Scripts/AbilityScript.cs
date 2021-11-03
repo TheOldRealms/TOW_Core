@@ -176,22 +176,17 @@ namespace TOW_Core.Abilities.Scripts
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)
             {
-                List<Agent> targets = null;
                 if (_ability.Template.CrosshairType == CrosshairType.Targeted)
                 {
-                    var aim = ((TargetedCrosshair)_ability.Crosshair).Aim;
-                    if (aim == null)
+                    var crosshair = (TargetedCrosshair)_ability.Crosshair;
+                    var target = crosshair.LastTargetIndex != -1 ? Mission.Current.Agents.FirstOrDefault(a => a.Index == crosshair.LastTargetIndex) : null;
+                    if (target != null)
                     {
-                        var index = ((TargetedCrosshair)_ability.Crosshair).LastAimIndex;
-                        aim = Mission.Current.Agents.FirstOrDefault(a => a.Index == index);
+                        effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { target });
                     }
-                    if (aim != null)
-                    {
-                        targets = new List<Agent>();
-                        targets.Add(aim);
-                    }
+                    return;
                 }
-                effect.Trigger(position, normal, _casterAgent, targets);
+                effect.Trigger(position, normal, _casterAgent);
             }
         }
 

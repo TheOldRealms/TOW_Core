@@ -41,7 +41,7 @@ namespace TOW_Core.Abilities
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
                     if (_abilityComponent != null)
                     {
-                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("Knives", Agent.Main));
+                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("HurlWeapons", Agent.Main));
                         _abilityComponent.InitializeCrosshairs();
                         _isAbilityUser = true;
                     }
@@ -61,7 +61,7 @@ namespace TOW_Core.Abilities
                         bool flag = _abilityComponent.CurrentAbility.Crosshair == null ||
                                     !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
                                     (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.Targeted &&
-                                    ((TargetedCrosshair)_abilityComponent.CurrentAbility.Crosshair).Aim == null);
+                                    ((TargetedCrosshair)_abilityComponent.CurrentAbility.Crosshair).Target == null);
                         if (flag)
                         {
                             return;
@@ -282,7 +282,5 @@ namespace TOW_Core.Abilities
                 }
             }
         }
-
-
     }
 }

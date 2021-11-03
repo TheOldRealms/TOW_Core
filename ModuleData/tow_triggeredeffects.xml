@@ -120,7 +120,7 @@
         ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript">
   </TriggeredEffectTemplate>
   <TriggeredEffectTemplate
-          StringID="magnetto"
+          StringID="hurl_weapons"
           BurstParticleEffectPrefab=""
           SoundEffectId=""
           SoundEffectLength="0"
@@ -132,6 +132,6 @@
           ImbuedStatusEffectID="none"
           ImbuedStatusEffectDuration="0"
           DamageVariance="0.2"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.MagnettoScript">
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
   </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>
