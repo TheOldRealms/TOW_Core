@@ -119,4 +119,19 @@
         DamageVariance="0"
         ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript">
   </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="hurl_weapons"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Physical"
+          DamageAmount="0"
+          Radius="0"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="none"
+          ImbuedStatusEffectDuration="0"
+          DamageVariance="0.2"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
+  </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

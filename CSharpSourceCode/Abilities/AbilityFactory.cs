@@ -84,7 +84,7 @@ namespace TOW_Core.Abilities
                     }
                 case CrosshairType.Targeted:
                     {
-                        crosshair = new TargetedCrosshair(template);
+                        crosshair = new TargetedCrosshair(template, caster);
                         break;
                     }
                 case CrosshairType.DirectionalAOE:
