@@ -28,8 +28,22 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 {
                     var frame = agent.Frame;
                     frame.Advance(100);
-                    agent.Retreat(new WorldPosition(Mission.Current.Scene, frame.origin));
-                    agent.SetActionChannel(0, ActionIndexCache.Create("act_death_by_fire1"), true);
+                    //agent.Retreat(new WorldPosition(Mission.Current.Scene, frame.origin));
+
+                    //var worldPos = agent.GetWorldPosition();
+                    //var dir = agent.MovementDirectionAsAngle;
+                    //agent.SetScriptedPositionAndDirection(ref worldPos, dir, true, Agent.AIScriptedFrameFlags.GoToPosition);
+                    //agent.SetIsAIPaused(true);
+                    //agent.SetLookToPointOfInterest(frame.origin);
+                    var vec = frame.origin.AsVec2;
+                    agent.SetMovementDirection(in vec);
+                    agent.Controller = Agent.ControllerType.None;
+
+                    var action = agent.GetCurrentAction(0);
+                    if (action.Name != "act_death_by_fire1")
+                    {
+                        agent.SetActionChannel(0, ActionIndexCache.Create("act_death_by_fire1"), true);
+                    }
                 }
             }
         }

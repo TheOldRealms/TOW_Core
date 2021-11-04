@@ -57,7 +57,8 @@ namespace TOW_Core.Battle.StatusEffects
                     if (_currentEffects[effect].Duration <= 0)
                     {
                         Agent.SetActionChannel(0, ActionIndexCache.Create("act_strike_fall_back_back_rise_continue"), true, actionSpeed: 0.5f);
-                        Agent.StopRetreating();
+                        //Agent.StopRetreating(); 
+                        Agent.Controller = Agent.ControllerType.AI;
                         Vec3 vec = Agent.Position - new Vec3(5, 5, 1f, -1f);
                         Vec3 vec2 = Agent.Position + new Vec3(5, 5, 1.8f, -1f);
                         GameEntity[] entities = new GameEntity[50];
