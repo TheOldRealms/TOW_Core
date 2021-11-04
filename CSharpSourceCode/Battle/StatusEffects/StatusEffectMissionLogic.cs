@@ -23,14 +23,15 @@ namespace TOW_Core.Battle.StatusEffects
                 agent.AddComponent(effectComponent);
             }
         }
-        
+
         public override void OnMissionTick(float dt)
         {
-            foreach(var agent in Mission.Current.Agents)
+            for (var num = 0; num < Mission.Current.Agents.Count; num++)
             {
-                if (agent.GetComponent<StatusEffectComponent>() != null)
+                var agent = Mission.Current.Agents[num];
+                if (agent != null && agent.IsActive() && agent.Health > 0f)
                 {
-                    if (agent.IsActive() && agent.Health > 1f)
+                    if (agent.GetComponent<StatusEffectComponent>() != null)
                     {
                         var comp = agent.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);

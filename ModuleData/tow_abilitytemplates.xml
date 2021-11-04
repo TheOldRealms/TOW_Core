@@ -354,4 +354,42 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate
+      StringID="WordOfPain"
+      Name="Word of Pain"
+      SpriteName="fireball_icon"
+      CoolDown="1"
+      WindsOfMagicCost="0"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="TargetedStatic"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName=""
+      TriggeredEffectID="word_of_pain"
+      Offset="0.5"
+      AbilityTargetType="Enemies"
+      CrosshairType="Targeted">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
 </ArrayOfAbilityTemplate>

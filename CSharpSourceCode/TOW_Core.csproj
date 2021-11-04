@@ -331,6 +331,7 @@
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\WordOfPainScript.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
     <Compile Include="Abilities\AbilityFactory.cs" />
     <Compile Include="Abilities\AbilityType.cs" />

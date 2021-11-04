@@ -21,4 +21,11 @@
 		health_over_time="-1"
 		duration="12"
 		type="Health"/>
+  <StatusEffect
+		id="word_of_pain"
+		particle_id="psys_game_step_dust_on_default"
+		particle_intensity="High"
+    flat_damage_effect="10"
+		duration="8"
+		type="Health"/>
 </StatusEffects>

@@ -32,9 +32,10 @@ namespace TOW_Core.Abilities.Crosshairs
             var target = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), position, out distance, _caster.Index, 0.1f);
             var targetType = _template.AbilityTargetType;
             bool isAimMatching = target != null &&
-                                (targetType == AbilityTargetType.All ||
-                                (targetType == AbilityTargetType.Enemies && target.IsEnemyOf(_caster)) ||
-                                (targetType == AbilityTargetType.Allies && !target.IsEnemyOf(_caster)));
+                                 target.IsHuman &&
+                                 (targetType == AbilityTargetType.All ||
+                                 (targetType == AbilityTargetType.Enemies && target.IsEnemyOf(_caster)) ||
+                                 (targetType == AbilityTargetType.Allies && !target.IsEnemyOf(_caster)));
             if (isAimMatching)
             {
                 if (target != _target)
