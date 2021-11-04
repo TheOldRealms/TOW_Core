@@ -346,6 +346,7 @@
       TriggeredEffectID="hurl_weapons"
       Offset="0.5"
       AbilityTargetType="Enemies"
+      MaxDistance="20"
       CrosshairType="Targeted">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
@@ -384,6 +385,7 @@
       TriggeredEffectID="word_of_pain"
       Offset="0.5"
       AbilityTargetType="Enemies"
+      MaxDistance="10"
       CrosshairType="Targeted">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>

@@ -26,6 +26,6 @@
 		particle_id="psys_game_step_dust_on_default"
 		particle_intensity="High"
     flat_damage_effect="10"
-		duration="8"
+		duration="10"
 		type="Health"/>
 </StatusEffects>
