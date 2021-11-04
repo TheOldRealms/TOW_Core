@@ -74,7 +74,12 @@ namespace TOW_Core.Battle.StatusEffects
                                 if (weapon != null && weapon.WeaponCopy.Item.HasWeaponComponent)
                                 {
                                     TOWCommon.Say("3");
-                                    Agent.EquipWeaponFromSpawnedItemEntity(EquipmentIndex.Weapon0, weapon, false);
+                                    if (Agent.CanInteractableWeaponBePickedUp(weapon))
+                                    {
+                                        Agent.OnItemPickup(weapon, EquipmentIndex.Weapon0, out _);
+                                        //Agent.EquipWeaponFromSpawnedItemEntity(EquipmentIndex.Weapon0, weapon, false);
+                                        break;
+                                    }
                                 }
                             }
                         }

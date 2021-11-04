@@ -42,6 +42,7 @@ namespace TOW_Core.Abilities
                     if (_abilityComponent != null)
                     {
                         _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("HurlWeapons", Agent.Main));
+                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("WordOfPain", Agent.Main));
                         _abilityComponent.InitializeCrosshairs();
                         _isAbilityUser = true;
                     }

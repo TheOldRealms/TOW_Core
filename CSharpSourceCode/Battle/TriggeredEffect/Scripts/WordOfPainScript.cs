@@ -27,7 +27,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 if (!agent.HasMount)
                 {
                     var frame = agent.Frame;
-                    frame.Advance(10);
+                    frame.Advance(100);
                     agent.Retreat(new WorldPosition(Mission.Current.Scene, frame.origin));
                     agent.SetActionChannel(0, ActionIndexCache.Create("act_death_by_fire1"), true);
                 }

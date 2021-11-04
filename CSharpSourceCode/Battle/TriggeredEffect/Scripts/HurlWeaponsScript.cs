@@ -15,7 +15,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     public class HurlWeaponsScript : ITriggeredScript
     {
         public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
-        {            
+        {
             maxAmount = 3; // it should be related to caster skills
             PutWeaponsInAir(triggeredByAgent);
             timer.AutoReset = false;
@@ -44,7 +44,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     {
                         bool flag = weapon.WeaponCopy.Item.Type == ItemTypeEnum.OneHandedWeapon ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.Polearm ||
-                                    weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown ||
+                                    (weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown &&
+                                    weapon.WeaponCopy.GetWeaponComponentDataForUsage(0).WeaponClass != WeaponClass.Boulder) ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.TwoHandedWeapon;
                         if (flag)
                         {
