@@ -1,5 +1,4 @@
 ﻿using System;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
@@ -24,12 +23,8 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindAim()
         {
-            Vec3 position;
-            Vec3 normal;
-            _missionScreen.GetProjectedMousePositionOnGround(out position, out normal);
-
-            float distance;
-            var target = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), position, out distance, _caster.Index, 0.1f);
+            var endPoint = _caster.LookFrame.Advance(_template.MaxDistance).origin;
+            var target = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
             var targetType = _template.AbilityTargetType;
             bool isAimMatching = target != null &&
                                  target.IsHuman &&
