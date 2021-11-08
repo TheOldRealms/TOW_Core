@@ -4,7 +4,7 @@
            action_set="as_human_warrior"
            monster_usage="human"
            weight="80"
-           hit_points="200"
+           hit_points="100"
            absorbed_damage_ratio="1.0"
            walking_speed_limit="1.8"
            crouch_walking_speed_limit="1.3"
@@ -48,7 +48,7 @@
            CanGetScared="false"
            CanRetreat="false" />
   </Monster>
-  <Monster id="horse"
+  <Monster id="demigriff"
            action_set="as_horse"
            monster_usage="horse"
            weight="400"

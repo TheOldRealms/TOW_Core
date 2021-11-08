@@ -23,18 +23,25 @@ public static class MissionPatches
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
     public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
     {
-        var character = agentBuildData.AgentCharacter;
-        if (character != null && character.IsHero && (character as CharacterObject).HeroObject != null && (character as CharacterObject).HeroObject.IsVampire())
+        var character = agentBuildData.AgentCharacter as CharacterObject;
+        if (character != null)
         {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(ModuleHelper.GetModuleFullPath("TOW_Core") + "ModuleData/tor_monsters.xml");
-            foreach (var node in xmlDoc.ChildNodes.Item(1).ChildNodes)
+            string name = null;
+            if (character.HeroObject != null && character.HeroObject.IsVampire())
             {
-                XmlNode xmlNode = (XmlNode)node;
-                var monster = new Monster();
-                monster.Deserialize(MBObjectManager.Instance, xmlNode);
-                Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(monster);
-                break;
+                name = "vampire";
+            }
+            else if (character.IsVampire())
+            {
+                name = "vampire";
+            }
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                Monster monster = GetCustomMonster(name);
+                if (monster != null)
+                {
+                    Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(monster);
+                }
             }
         }
         return true;
@@ -49,5 +56,25 @@ public static class MissionPatches
             return false;
         }
         return true;
+    }
+
+    private static Monster GetCustomMonster(string name)
+    {
+        Monster monster = null;
+        var xmlDoc = new XmlDocument();
+        xmlDoc.Load(ModuleHelper.GetModuleFullPath("TOW_Core") + "ModuleData/tor_monsters.xml");
+        var children = xmlDoc.ChildNodes.Item(1).ChildNodes;
+        for (int i = 0; i < children.Count; i++)
+        {
+            var child = children[i];
+            var id = child.Attributes.GetNamedItem("id").Value;
+            if (id == name)
+            {
+                monster = new Monster();
+                monster.Deserialize(MBObjectManager.Instance, child);
+                break;
+            }
+        }
+        return monster;
     }
 }
