@@ -142,6 +142,7 @@ namespace TOW_Core
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
+            gameStarterObject.AddModel(new TORDamageParticleModel());
             if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));

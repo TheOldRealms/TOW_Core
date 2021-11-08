@@ -343,6 +343,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
@@ -432,7 +433,6 @@
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
-    <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
     <Compile Include="HarmonyPatches\RotatingMainMenuPatch.cs" />
