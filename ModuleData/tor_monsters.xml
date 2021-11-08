@@ -45,6 +45,7 @@
            CanRide="true"
            CanWieldWeapon="true"
            CanCrouch="true"
+           CanGetScared="false"
            CanRetreat="false" />
   </Monster>
   <Monster id="horse"

@@ -21,10 +21,10 @@ public static class MissionPatches
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
-    public static bool SpawnAgentPrefixprivate(AgentBuildData agentBuildData)
+    public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
     {
         var character = agentBuildData.AgentCharacter;
-        if (character != null && character.IsHero && (character as CharacterObject).IsVampire())
+        if (character != null && character.IsHero && (character as CharacterObject).HeroObject != null && (character as CharacterObject).HeroObject.IsVampire())
         {
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(ModuleHelper.GetModuleFullPath("TOW_Core") + "ModuleData/tor_monsters.xml");
@@ -42,15 +42,11 @@ public static class MissionPatches
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "FallDamageCallback")]
-    public static bool FallDamageCallbackPrefix(ref AttackCollisionData collisionData, Blow b, Agent attacker, Agent victim)
+    public static bool FallDamageCallbackPrefix(Agent victim)
     {
-        if (victim.IsHuman && victim.Character != null)
+        if (victim.IsVampire())
         {
-            var character = victim.Character as CharacterObject;
-            if (character.IsHero && character.HeroObject.IsVampire())
-            {
-                return false;
-            }
+            return false;
         }
         return true;
     }

@@ -36,6 +36,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("Undead");
         }
 
+        public static bool IsVampire(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("VampireBodyOverride");
+        }
+
         public static bool IsAbilityUser(this Agent agent)
         {
             return agent.GetAttributes().Contains("AbilityUser");
