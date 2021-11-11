@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.Engine;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
@@ -11,50 +12,66 @@ namespace TOW_Core.Abilities.Scripts
         {
             if (_isFading)
             {
-                if (shouldDisappear) _casterAgent.Appear();
+                if (_shouldDisappear)
+                {
+                    _casterAgent.Appear();
+                }
                 _casterAgent.SetInvulnerable(false);
                 return;
             }
             if (!_hasTriggered)
             {
                 _hasTriggered = true;
-                Move(GameEntity.GetGlobalFrame());
+
+                var frame = _casterAgent.Frame.Elevate(1);
+                var sphere = GameEntity.Instantiate(Scene, "magic_sphere_test", MatrixFrame.Identity);
+                sphere.AddBodyFlags(BodyFlags.DontCollideWithCamera);
+                sphere.AddBodyFlags(BodyFlags.Barrier3D);
+                sphere.EntityVisibilityFlags = EntityVisibilityFlags.VisibleOnlyForEnvmap;
+                GameEntity.SetGlobalFrame(frame);
+                GameEntity.AddChild(sphere);
+                _speed = _ability.Template.BaseMovementSpeed / 2;
+                _casterAgent.SetSoundOcclusion(0);
+
                 _abilityLife = 0;
                 _casterAgent.SetInvulnerable(true);
-                if (shouldDisappear) _casterAgent.Disappear();
+                if (_shouldDisappear)
+                {
+                    _casterAgent.Disappear();
+                }
             }
             else
             {
                 _abilityLife += dt;
-                var frame = GetNextFrame(GameEntity.GetGlobalFrame());
+                ChangePosition();
                 if (_abilityLife > _ability.Template.Duration && !_isFading)
                 {
                     Stop();
                 }
-                Move(frame);
             }
         }
 
-        private void Move(MatrixFrame frame)
+        private void ChangePosition()
         {
-            GameEntity.SetGlobalFrame(frame);
-            if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
-            _casterAgent.TeleportToPosition(frame.origin);
-            TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
-            UpdateSound(frame.origin);
-        }
-
-        protected MatrixFrame GetNextFrame(MatrixFrame frame)
-        {
-            if (canChangeDirection)
+            MatrixFrame frame = GameEntity.GetFrame();
+            frame.rotation = Agent.Main.LookRotation;
+            if (Input.IsKeyPressed(InputKey.W) || Input.IsKeyDown(InputKey.W))
             {
-                frame.rotation = _casterAgent.LookRotation;
+                frame.Advance(_speed);
             }
-            frame = frame.Advance(_ability.Template.BaseMovementSpeed);
-            float height = 0;
-            Mission.Current.Scene.GetHeightAtPoint(frame.origin.AsVec2, BodyFlags.None, ref height);
-            frame.origin.z = height + base._ability.Template.Radius / 2;
-            return frame;
+            if (Input.IsKeyPressed(InputKey.S) || Input.IsKeyDown(InputKey.S))
+            {
+                frame.Advance(-_speed);
+            }
+            if (Input.IsKeyPressed(InputKey.A) || Input.IsKeyDown(InputKey.A))
+            {
+                frame.Strafe(-_speed);
+            }
+            if (Input.IsKeyPressed(InputKey.D) || Input.IsKeyDown(InputKey.D))
+            {
+                frame.Strafe(_speed);
+            }
+            GameEntity.SetGlobalFrame(frame);
         }
 
         public void Stop()
@@ -66,7 +83,7 @@ namespace TOW_Core.Abilities.Scripts
 
         public bool IsFadinOut { get => _isFading; }
 
-        private bool shouldDisappear = true;
-        private bool canChangeDirection = true;
+        private bool _shouldDisappear = true;
+        private float _speed;
     }
 }
