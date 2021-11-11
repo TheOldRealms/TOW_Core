@@ -279,7 +279,7 @@
     StringID="MortarSpawner" 
     Name="Place Mortar" 
     SpriteName="summonskeleton_icon" 
-    CoolDown="5" 
+    CoolDown="1" 
     WindsOfMagicCost="0" 
     BaseMisCastChance="0.0" 
     Duration="1" 

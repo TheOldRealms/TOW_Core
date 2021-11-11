@@ -327,6 +327,7 @@
     <Compile Include="Battle\Artillery\ArtilleryView.cs" />
     <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
+    <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />

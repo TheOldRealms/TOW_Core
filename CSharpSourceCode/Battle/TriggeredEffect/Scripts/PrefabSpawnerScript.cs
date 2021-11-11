@@ -28,7 +28,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             entity.SetMobility(GameEntity.Mobility.dynamic);
             entity.EntityFlags = (entity.EntityFlags | EntityFlags.DontSaveToScene);
             var frame = new MatrixFrame(rotation, position);
-            entity.SetFrame(ref frame);
+            entity.SetGlobalFrame(frame);
             var artillery = entity.GetFirstScriptInFamilyDescending<Artillery.Artillery>();
             if (artillery != null)
             {
