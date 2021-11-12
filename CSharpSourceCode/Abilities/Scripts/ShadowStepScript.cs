@@ -6,39 +6,29 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public class SpecialMoveScript : AbilityScript
+    public class ShadowStepScript : AbilityScript
     {
         protected override void OnTick(float dt)
         {
             if (_isFading)
             {
-                if (_shouldDisappear)
-                {
-                    _casterAgent.Appear();
-                }
-                _casterAgent.SetInvulnerable(false);
                 return;
             }
             if (!_hasTriggered)
             {
                 _hasTriggered = true;
+                _abilityLife = 0;
+                _casterAgent.SetInvulnerable(true);
+                _casterAgent.Disappear();
+                _speed = _ability.Template.BaseMovementSpeed / 2;
 
                 var frame = _casterAgent.Frame.Elevate(1);
-                var sphere = GameEntity.Instantiate(Scene, "magic_sphere_test", MatrixFrame.Identity);
+                var sphere = GameEntity.Instantiate(Scene, "magic_sphere", MatrixFrame.Identity);
                 sphere.AddBodyFlags(BodyFlags.DontCollideWithCamera);
                 sphere.AddBodyFlags(BodyFlags.Barrier3D);
                 sphere.EntityVisibilityFlags = EntityVisibilityFlags.VisibleOnlyForEnvmap;
                 GameEntity.SetGlobalFrame(frame);
                 GameEntity.AddChild(sphere);
-                _speed = _ability.Template.BaseMovementSpeed / 2;
-                _casterAgent.SetSoundOcclusion(0);
-
-                _abilityLife = 0;
-                _casterAgent.SetInvulnerable(true);
-                if (_shouldDisappear)
-                {
-                    _casterAgent.Disappear();
-                }
             }
             else
             {
@@ -77,13 +67,14 @@ namespace TOW_Core.Abilities.Scripts
         public void Stop()
         {
             GameEntity.FadeOut(0.05f, true);
+            _casterAgent.Appear();
+            _casterAgent.SetInvulnerable(false);
             _isFading = true;
         }
 
 
         public bool IsFadinOut { get => _isFading; }
 
-        private bool _shouldDisappear = true;
         private float _speed;
     }
 }

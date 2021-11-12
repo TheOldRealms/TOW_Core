@@ -295,7 +295,7 @@
        LightFlickeringMagnitude="0"
        LightFlickeringInterval="0"
        ShadowCastEnabled="false"
-       ParticleEffectPrefab="bats_vfx"
+       ParticleEffectPrefab="none"
        ParticleEffectSizeModifier="1"
        SoundEffectToPlay="bats_loop"
        ShouldSoundLoopOverDuration="false"
