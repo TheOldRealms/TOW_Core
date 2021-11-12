@@ -354,4 +354,44 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate
+        StringID="FireShield"
+        Name="Fire Shield"
+        SpriteName="healingprayer_icon"
+        CoolDown="3"
+        WindsOfMagicCost="0"
+        BaseMisCastChance="0.3"
+        Duration="10"
+        Radius="3"
+        AbilityType="Spell"
+        AbilityEffectType="ShieldScript"
+        BaseMovementSpeed="0"
+        TickInterval="0"
+        TriggerType="EveryTick"
+        HasLight="true"
+        LightIntensity="0"
+        LightRadius="0"
+        LightFlickeringMagnitude="0"
+        LightFlickeringInterval="0"
+        ShadowCastEnabled="false"
+        ParticleEffectPrefab="none"
+        ParticleEffectSizeModifier="1"
+        SoundEffectToPlay="none"
+        ShouldSoundLoopOverDuration="false"
+        CastType="Instant"
+        CastTime="0"
+        AnimationActionName="none"
+        TriggeredEffectID="none"
+        Offset="0"
+        AbilityTargetType="Allies"
+        CrosshairType="CenteredAOE"
+        TargetCapturingRadius="3">
+    <LightColorRGB x="255" y="255" z="255" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>255</y>
+        <z>255</z>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
 </ArrayOfAbilityTemplate>

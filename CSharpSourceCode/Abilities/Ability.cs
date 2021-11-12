@@ -279,6 +279,9 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.ShieldScript:
+                    AddExactBehaviour<ShieldScript>(entity, casterAgent);
+                    break;
             }
         }
 

@@ -19,7 +19,8 @@
         TargetedStaticAOE,
         TargetedStatic,
         Summoning,
-        AgentMoving
+        AgentMoving,
+        ShieldScript
     }
 
     public enum AbilityTargetType
