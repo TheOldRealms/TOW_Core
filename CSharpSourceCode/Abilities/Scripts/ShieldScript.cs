@@ -14,7 +14,7 @@ namespace TOW_Core.Abilities.Scripts
             var shield = GameEntity.Instantiate(Scene, "magic_sphere", frame);
             var meta = shield.GetMetaMesh(0);
             var metaFrame = meta.Frame;
-            metaFrame.Scale(new Vec3(1.5f, 1.5f, 1.5f));
+            metaFrame.Scale(new Vec3(1.8f, 1.8f, 1.8f));
             shield.SetFrame(ref metaFrame);
             GameEntity.AddChild(shield);
         }

@@ -358,7 +358,7 @@
         StringID="FireShield"
         Name="Fire Shield"
         SpriteName="healingprayer_icon"
-        CoolDown="3"
+        CoolDown="10"
         WindsOfMagicCost="0"
         BaseMisCastChance="0.3"
         Duration="10"
