@@ -213,7 +213,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
         {
-            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_singleplayerbattlescenes.xml");
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_singleplayerbattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();

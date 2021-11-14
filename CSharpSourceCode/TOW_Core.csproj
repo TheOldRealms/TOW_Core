@@ -278,7 +278,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
@@ -364,6 +366,7 @@
     <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="HarmonyPatches\InventoryPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
