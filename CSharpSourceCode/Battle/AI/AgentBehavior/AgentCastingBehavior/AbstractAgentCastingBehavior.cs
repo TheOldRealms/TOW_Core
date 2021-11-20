@@ -23,7 +23,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected List<Axis> AxisList;
 
         public Target CurrentTarget = new Target();
-        public Dictionary<IAgentBehavior, Target> LatestScores { get; private set; }
+        public List<TacticalBehaviorOption> LatestScores { get; private set; }
 
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
 
@@ -102,11 +102,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public abstract void Terminate();
 
-        public Dictionary<IAgentBehavior, Target> CalculateUtility()
+        public List<TacticalBehaviorOption> CalculateUtility()
         {
             LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
                 .Select(CalculateUtility)
-                .ToDictionary(target => (IAgentBehavior) this);
+                .Select(target => new TacticalBehaviorOption {Target = target, Behavior = this})
+                .ToList();
 
             return LatestScores;
         }

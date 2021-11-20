@@ -7,7 +7,7 @@ namespace TOW_Core.Battle.AI.Decision
     {
         void Execute();
         void Terminate();
-        Dictionary<IAgentBehavior, Target> CalculateUtility();
+        List<TacticalBehaviorOption> CalculateUtility();
 
         bool IsPositional();
     }
