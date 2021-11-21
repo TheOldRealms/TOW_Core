@@ -39,6 +39,7 @@ using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
+using System;
 
 namespace TOW_Core
 {
@@ -78,6 +79,11 @@ namespace TOW_Core
 
         protected override void OnSubModuleLoad()
         {
+            if(AppDomain.CurrentDomain.BaseDirectory == "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Mount & Blade II Bannerlord\\Modules\\TOW_Core\\bin\\Win64_Shipping_wEditor")
+            {
+                return;
+            }
+
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
             ConfigureLogging();
