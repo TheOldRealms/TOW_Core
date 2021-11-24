@@ -486,7 +486,7 @@ namespace TOW_Core.CampaignSupport
                         while (enumerator.MoveNext())
                         {
                             CaravanPartyComponent caravanPartyComponent = enumerator.Current;
-                            CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, hero);
+                            CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, hero, hero.HomeSettlement);
                         }
 
                         goto IL_C3;

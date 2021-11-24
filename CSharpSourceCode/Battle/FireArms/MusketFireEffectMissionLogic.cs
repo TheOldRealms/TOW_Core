@@ -37,7 +37,7 @@ namespace TOW_Core.Battle.FireArms
                 if (!areEnemiesAlarmed)
                 {
                     areEnemiesAlarmed = true;
-                    var spawnLogic = Mission.Current.GetMissionBehaviour<HideoutMissionController>();
+                    var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();
                     if (spawnLogic != null)
                     {
                         foreach (var agent in base.Mission.PlayerEnemyTeam.TeamAgents)

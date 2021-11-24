@@ -9,9 +9,9 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Voices
 {
-    public class CustomVoicesMissionBehavior : MissionBehaviour
+    public class CustomVoicesMissionBehavior : MissionBehavior
     {
-        public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+        public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
         private Queue<Agent> allAgents = new Queue<Agent>();
         private bool _voicesAssigned = false;

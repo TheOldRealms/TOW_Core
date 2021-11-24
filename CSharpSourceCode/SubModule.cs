@@ -33,7 +33,6 @@ using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
-using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
@@ -61,13 +60,13 @@ namespace TOW_Core
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
                 {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
+                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
+                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
                 {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
+                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
+                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
                 {
@@ -185,25 +184,25 @@ namespace TOW_Core
             }
         }
 
-        public override void OnMissionBehaviourInitialize(Mission mission)
+        public override void OnMissionBehaviorInitialize(Mission mission)
         {
-            base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
-            mission.AddMissionBehaviour(new StatusEffectMissionLogic());
-            mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
-            mission.AddMissionBehaviour(new AbilityHUDMissionView());
-            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
-            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
-            mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            mission.AddMissionBehaviour(new DismembermentMissionLogic());
-            mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
-            //mission.AddMissionBehaviour(new GrenadesMissionLogic());
-            mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
+            base.OnMissionBehaviorInitialize(mission);
+            mission.AddMissionBehavior(new AttributeSystemMissionLogic());
+            mission.AddMissionBehavior(new StatusEffectMissionLogic());
+            mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
+            mission.AddMissionBehavior(new AbilityManagerMissionLogic());
+            mission.AddMissionBehavior(new AbilityHUDMissionView());
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+            mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
+            mission.AddMissionBehavior(new MusketFireEffectMissionLogic());
+            mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
+            mission.AddMissionBehavior(new DismembermentMissionLogic());
+            mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());
+            //mission.AddMissionBehavior(new GrenadesMissionLogic());
+            mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             if (Game.Current.GameType is Campaign)
             {
-                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+                mission.AddMissionBehavior(new BattleInfoMissionLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
