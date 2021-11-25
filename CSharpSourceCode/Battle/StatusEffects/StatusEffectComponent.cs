@@ -27,10 +27,8 @@ namespace TOW_Core.Battle.StatusEffects
             _effectAggregate = new EffectAggregate(); 
         }
 
-        public void RunStatusEffect(string id)
+        public void RunStatusEffect(string id, Agent affector=null)
         {
-            
-            
             if(Agent == null)
                 return;
             
@@ -43,8 +41,10 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 //
                 effect = StatusEffectManager.GetStatusEffect(id);
-                TOWCommon.Say(effect.Duration+ "is added");
+              //  TOWCommon.Say(effect.Duration+ "is added");
                 effect.CurrentDuration= effect.Duration;
+                if(affector!=null)
+                    effect.Affector = affector;
                 AddEffect(effect);
             }
         }
@@ -55,6 +55,8 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 return;
             }
+
+            Agent affector = null;
             
             foreach (StatusEffect effect in _currentEffects.Keys.ToList())
             {
@@ -66,6 +68,8 @@ namespace TOW_Core.Battle.StatusEffects
                     //TOWCommon.Say("effect has gone");
                     return;
                 }
+                if(effect.Affector!=null)
+                    affector = effect.Affector;
 
                 if (effect.CurrentDuration > 0)
                 {
@@ -80,13 +84,15 @@ namespace TOW_Core.Battle.StatusEffects
                 if(_effectAggregate.HealthOverTime < 0)
                 {
                    // TOWCommon.Say("apply damage :" +(int)_effectAggregate.HealthOverTime );
-                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), null, false, false);
+                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), affector, false, false);
                 }
                 else if(_effectAggregate.HealthOverTime > 0)
                 {
                     Agent.Heal((int)_effectAggregate.HealthOverTime);
                 }
+                
             }
+            
 
             
         }

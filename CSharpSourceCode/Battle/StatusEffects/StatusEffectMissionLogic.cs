@@ -46,16 +46,18 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (agent.GetComponent<StatusEffectComponent>() != null)
                 {
+                    if (agent.GetComponent<StatusEffectComponent>().IsDisabled())
+                    {
+                        activeAgents.Remove(agent);
+                        continue;
+                    }
                     if (agent.IsActive() && agent.Health > 1f)
                     {
                         var comp = agent.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);
                     }
 
-                    if (agent.GetComponent<StatusEffectComponent>().IsDisabled())
-                    {
-                        activeAgents.Remove(agent);
-                    }
+                    
                 }
             }
         }

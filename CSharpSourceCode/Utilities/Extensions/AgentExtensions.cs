@@ -161,7 +161,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
+        public static void  ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
             if (agent == null && !agent.IsHuman)
             {
@@ -173,11 +173,15 @@ namespace TOW_Core.Utilities.Extensions
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
+                    
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
                         agent.Health -= damageAmount;
+                        TOWCommon.Say(agent.Name+agent.Index+" health:"+ (agent.Health+damageAmount)+ "-"+ damageAmount +"= "+ agent.Health);
                         return;
                     }
+                    
+                    
                     else if (agent.Health > 1 && !agent.IsFadingOut())
                     {
                         var blow = new Blow(-1);
@@ -200,6 +204,7 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
                             if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
+                            //blow.OwnerId = damager.Index;
                         }
                         else
                         {
@@ -207,26 +212,25 @@ namespace TOW_Core.Utilities.Extensions
                             blow.SelfInflictedDamage = damageAmount;
                             blow.OwnerId = agent.Index;
                         }
-                        agent.RegisterBlow(blow);
-                    }
 
-                    if (agent.Health < damageAmount)
-                    {
-                        var blow = new Blow(-1);
-                        blow.AttackType = AgentAttackType.Kick;
-                        blow.InflictedDamage = damageAmount;
-                        blow.BlowFlag = BlowFlags.NoSound;
-                        blow.BaseMagnitude = 5;
-                        blow.DamageType = DamageTypes.Invalid;
-                        blow.VictimBodyPart = BoneBodyPartType.Chest;
-                        if (Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>() != null)
+                        
+                        agent.RegisterBlow(blow);
+
+                        if (agent.Health < damageAmount)
                         {
-                            Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent,blow); 
+                            
+                            if (Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>() != null)
+                            {
+                                Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent,blow); 
+                            }
+                            if(!doBlow) TOWCommon.Say(agent.Name+agent.Index+" died of dot");
+                            //agent.RegisterBlow(blow);
+                            agent.Die(blow);
                         }
                         
-                        agent.Die(blow);
-                        TOWCommon.Say(agent.Name+ "died");
+                        
                     }
+                    
                     
                     
                 }
@@ -284,6 +288,21 @@ namespace TOW_Core.Utilities.Extensions
         public static void Disappear(this Agent agent)
         {
             agent.AgentVisuals.SetVisible(false);
+        }
+
+        public static void KillImmediately(this Agent agent, Agent damager=null)
+        {
+            var blow = new Blow(-1);
+            blow.InflictedDamage = 0;
+            blow.DamageCalculated = true;
+            blow.InflictedDamage = 1;
+            blow.AttackType = AgentAttackType.Kick;
+            blow.BlowFlag = BlowFlags.NoSound;
+            blow.BaseMagnitude = 5;
+            blow.DamageType = DamageTypes.Invalid;
+            blow.VictimBodyPart = BoneBodyPartType.Chest;
+            blow.StrikeType = StrikeType.Invalid;
+            agent.Die(blow);
         }
     }
 }
