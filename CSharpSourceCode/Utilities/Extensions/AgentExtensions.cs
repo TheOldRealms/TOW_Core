@@ -209,6 +209,26 @@ namespace TOW_Core.Utilities.Extensions
                         }
                         agent.RegisterBlow(blow);
                     }
+
+                    if (agent.Health < damageAmount)
+                    {
+                        var blow = new Blow(-1);
+                        blow.AttackType = AgentAttackType.Kick;
+                        blow.InflictedDamage = damageAmount;
+                        blow.BlowFlag = BlowFlags.NoSound;
+                        blow.BaseMagnitude = 5;
+                        blow.DamageType = DamageTypes.Invalid;
+                        blow.VictimBodyPart = BoneBodyPartType.Chest;
+                        if (Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>() != null)
+                        {
+                            Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent,blow); 
+                        }
+                        
+                        agent.Die(blow);
+                        TOWCommon.Say(agent.Name+ "died");
+                    }
+                    
+                    
                 }
             }
             catch (Exception e)

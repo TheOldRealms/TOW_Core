@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
@@ -15,18 +16,33 @@ namespace TOW_Core.Battle.StatusEffects
 {
     public class StatusEffectMissionLogic : MissionLogic
     {
+        public List<Agent> activeAgents;
+        private bool init;
+
+      
         public override void OnAgentCreated(Agent agent)
         {
+            if (activeAgents == null&&!init)
+            {
+                activeAgents = new List<Agent>();
+                init = true;
+            }
+            
             if (agent.IsHuman)
             {
                 StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
                 agent.AddComponent(effectComponent);
+                activeAgents.Add(agent);
             }
         }
         
         public override void OnMissionTick(float dt)
         {
-            foreach(var agent in Mission.Current.Agents)
+            
+            if (!init)
+                return;
+            
+            foreach(var agent in activeAgents.ToList())
             {
                 if (agent.GetComponent<StatusEffectComponent>() != null)
                 {
@@ -35,8 +51,24 @@ namespace TOW_Core.Battle.StatusEffects
                         var comp = agent.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);
                     }
+
+                    if (agent.GetComponent<StatusEffectComponent>().IsDisabled())
+                    {
+                        activeAgents.Remove(agent);
+                    }
                 }
             }
+        }
+
+        public void RemoveAgent(Agent agent, Blow test)
+        {
+            if (activeAgents.Contains(agent))
+            {
+                agent.GetComponent<StatusEffectComponent>().RenderDisabled(true);
+                //agent.Die(test);
+            }
+            
+            
         }
     }
 }
