@@ -18,7 +18,7 @@
 		id="fireball_dot" 
 		particle_id="torch_fire_sparks"
 		particle_intensity="High"
-		health_over_time="-1"
-		duration="12"
+		health_over_time="-5"
+		duration="30"
 		type="Health"/>
 </StatusEffects>
