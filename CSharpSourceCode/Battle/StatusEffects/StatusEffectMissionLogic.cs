@@ -16,15 +16,15 @@ namespace TOW_Core.Battle.StatusEffects
 {
     public class StatusEffectMissionLogic : MissionLogic
     {
-        public List<Agent> activeAgents;
+        private Dictionary<int, Agent> _activeAgents;
         private bool init;
 
       
         public override void OnAgentCreated(Agent agent)
         {
-            if (activeAgents == null&&!init)
+            if (_activeAgents == null&&!init)
             {
-                activeAgents = new List<Agent>();
+                _activeAgents = new Dictionary<int, Agent>(); 
                 init = true;
             }
             
@@ -32,7 +32,7 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 StatusEffectComponent effectComponent = new StatusEffectComponent(agent);
                 agent.AddComponent(effectComponent);
-                activeAgents.Add(agent);
+                _activeAgents?.Add(agent.Index, agent);
             }
         }
         
@@ -41,19 +41,19 @@ namespace TOW_Core.Battle.StatusEffects
             
             if (!init)
                 return;
-            
-            foreach(var agent in activeAgents.ToList())
+
+            foreach (var agent in _activeAgents.ToDictionary(x =>x.Key, x=> x.Value))
             {
-                if (agent.GetComponent<StatusEffectComponent>() != null)
+                if (agent.Value.GetComponent<StatusEffectComponent>() != null)
                 {
-                    if (agent.GetComponent<StatusEffectComponent>().IsDisabled())
+                    if (agent.Value.GetComponent<StatusEffectComponent>().IsDisabled())
                     {
-                        activeAgents.Remove(agent);
+                        _activeAgents.Remove(agent.Key);
                         continue;
                     }
-                    if (agent.IsActive() && agent.Health > 1f)
+                    if (agent.Value.IsActive() && agent.Value.Health > 1f)
                     {
-                        var comp = agent.GetComponent<StatusEffectComponent>();
+                        var comp = agent.Value.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);
                     }
 
@@ -62,14 +62,12 @@ namespace TOW_Core.Battle.StatusEffects
             }
         }
 
-        public void RemoveAgent(Agent agent, Blow test)
+        public void RemoveAgent(Agent agent)
         {
-            if (activeAgents.Contains(agent))
+            if (_activeAgents.Values.Contains(agent))
             {
                 agent.GetComponent<StatusEffectComponent>().RenderDisabled(true);
-                //agent.Die(test);
             }
-            
             
         }
     }

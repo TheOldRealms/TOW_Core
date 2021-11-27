@@ -19,13 +19,19 @@ namespace TOW_Core.Battle.StatusEffects
         private float _deltaSinceLastTick = (float)TOWMath.GetRandomDouble(0, 0.1);
         private Dictionary<StatusEffect, EffectData> _currentEffects;
         private EffectAggregate _effectAggregate;
+        private Dictionary<Agent,float> _damagingAffectors;
+        private Agent dominantAffector;
         private bool _isRenderedDisabled;
 
         public StatusEffectComponent(Agent agent) : base(agent)
         {
             _currentEffects = new Dictionary<StatusEffect, EffectData>();
-            _effectAggregate = new EffectAggregate(); 
+            _effectAggregate = new EffectAggregate();
+            _damagingAffectors = new Dictionary<Agent, float>();
+            dominantAffector = this.Agent;
         }
+        
+        
 
         public void RunStatusEffect(string id, Agent affector=null)
         {
@@ -43,8 +49,13 @@ namespace TOW_Core.Battle.StatusEffects
                 effect = StatusEffectManager.GetStatusEffect(id);
               //  TOWCommon.Say(effect.Duration+ "is added");
                 effect.CurrentDuration= effect.Duration;
-                if(affector!=null)
-                    effect.Affector = affector;
+
+
+                if (affector != null)
+                {
+                   CheckAffectorsForNewEntry(affector,effect.FlatDamageEffect);
+                }
+                
                 AddEffect(effect);
             }
         }
@@ -68,9 +79,7 @@ namespace TOW_Core.Battle.StatusEffects
                     //TOWCommon.Say("effect has gone");
                     return;
                 }
-                if(effect.Affector!=null)
-                    affector = effect.Affector;
-
+                
                 if (effect.CurrentDuration > 0)
                 {
                     //TOWCommon.Say(effect.CurrentDuration.ToString());
@@ -84,7 +93,15 @@ namespace TOW_Core.Battle.StatusEffects
                 if(_effectAggregate.HealthOverTime < 0)
                 {
                    // TOWCommon.Say("apply damage :" +(int)_effectAggregate.HealthOverTime );
-                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), affector, false, false);
+                   if (dominantAffector != null)
+                   {
+                       Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), dominantAffector, false, false);
+                   }
+                   else
+                   {
+                       Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), null, false, false);
+                   }
+                    
                 }
                 else if(_effectAggregate.HealthOverTime > 0)
                 {
@@ -96,6 +113,7 @@ namespace TOW_Core.Battle.StatusEffects
 
             
         }
+        
 
         public bool IsDisabled()
         {
@@ -115,9 +133,51 @@ namespace TOW_Core.Battle.StatusEffects
                 OnElapsed(_updateFrequency);
             }
         }
+        
+        
+        private void CheckAffectorsForNewEntry(Agent agent, float damage)
+        {
+            if(_damagingAffectors.ContainsKey(agent))
+            {
+                if (damage > _damagingAffectors[agent])
+                {
+                    _damagingAffectors[agent]=damage;
+                }
+            }
+            else
+            {
+                _damagingAffectors.Add(agent,damage);
+            }
+
+            dominantAffector = _damagingAffectors.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+        }
+
+        private void RemoveAffectorFromDictionary(Agent agent)
+        {
+            if (dominantAffector == agent)
+            {
+                dominantAffector = null;
+                if (!_damagingAffectors.IsEmpty())
+                {
+                    dominantAffector = _damagingAffectors.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+                }
+            }
+            
+            if (_damagingAffectors.ContainsKey(agent))
+            {
+                _damagingAffectors.Remove(agent);
+            }
+
+            
+        }
 
         private void RemoveEffect(StatusEffect effect)
         {
+            if (effect.Affector != null)
+            {
+                RemoveAffectorFromDictionary(effect.Affector);
+            }
+            
             EffectData data = _currentEffects[effect];
 
             data.ParticleEntities.ForEach(pe =>
@@ -163,9 +223,13 @@ namespace TOW_Core.Battle.StatusEffects
             public float PercentageArmorEffect { get; set; } = 0;
             public float FlatDamageEffect { get; set; } = 0;
             public float PercentageDamageEffect { get; set; } = 0;
+            
+
+            public bool hasDamagingAffector;
 
             public void AddEffect(StatusEffect effect)
             {
+
                 switch (effect.Type)
                 {
                     case StatusEffect.EffectType.Armor:
@@ -185,6 +249,7 @@ namespace TOW_Core.Battle.StatusEffects
 
             public void RemoveEffect(StatusEffect effect)
             {
+                
                 switch (effect.Type)
                 {
                     case StatusEffect.EffectType.Armor:

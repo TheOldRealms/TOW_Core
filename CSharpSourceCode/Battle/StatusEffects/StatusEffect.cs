@@ -38,8 +38,6 @@ namespace TOW_Core.Battle.StatusEffects
         [XmlIgnore]
         public Agent Affector { get; set; }
 
-        public int AffectorID;
-
         public enum EffectType
         {
             Armor,

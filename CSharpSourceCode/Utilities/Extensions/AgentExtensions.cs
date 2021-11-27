@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -177,7 +177,7 @@ namespace TOW_Core.Utilities.Extensions
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
                         agent.Health -= damageAmount;
-                        TOWCommon.Say(agent.Name+agent.Index+" health:"+ (agent.Health+damageAmount)+ "-"+ damageAmount +"= "+ agent.Health);
+                       // TOWCommon.Say(agent.Name+agent.Index+" health:"+ (agent.Health+damageAmount)+ "-"+ damageAmount +"= "+ agent.Health);
                         return;
                     }
                     
@@ -193,6 +193,12 @@ namespace TOW_Core.Utilities.Extensions
                         blow.DamageType = DamageTypes.Invalid;
                         blow.VictimBodyPart = BoneBodyPartType.Chest;
                         blow.StrikeType = StrikeType.Invalid;
+
+                        if (damager == null)
+                        {
+                            TOWCommon.Say("damager not found");
+                        }
+                        
                         if (hasShockWave)
                         {
                             if (agent.HasMount)
@@ -202,9 +208,9 @@ namespace TOW_Core.Utilities.Extensions
                         }
                         if (damager != null)
                         {
-                            var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
-                            if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
-                            //blow.OwnerId = damager.Index;
+                            //var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
+                            //if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
+                            blow.OwnerId = damager.Index;
                         }
                         else
                         {
@@ -216,15 +222,20 @@ namespace TOW_Core.Utilities.Extensions
                         
                         agent.RegisterBlow(blow);
 
-                        if (agent.Health < damageAmount)
+                        if (agent.Health <= damageAmount)
                         {
                             
                             if (Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>() != null)
                             {
-                                Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent,blow); 
+                                Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent); 
                             }
-                            if(!doBlow) TOWCommon.Say(agent.Name+agent.Index+" died of dot");
-                            //agent.RegisterBlow(blow);
+
+                            if (damager != null&&!doBlow)
+                            {
+                                blow.OwnerId = damager.Index;
+                            }
+
+                            if (!doBlow) TOWCommon.Say(agent.Name + agent.Index + " died of dot");
                             agent.Die(blow);
                         }
                         
@@ -254,7 +265,7 @@ namespace TOW_Core.Utilities.Extensions
 
         public static void ApplyStatusEffect(this Agent agent, string effectId, Agent damager = null)
         {
-            agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId);
+            agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId,damager);
         }
 
         #region voice
@@ -289,20 +300,6 @@ namespace TOW_Core.Utilities.Extensions
         {
             agent.AgentVisuals.SetVisible(false);
         }
-
-        public static void KillImmediately(this Agent agent, Agent damager=null)
-        {
-            var blow = new Blow(-1);
-            blow.InflictedDamage = 0;
-            blow.DamageCalculated = true;
-            blow.InflictedDamage = 1;
-            blow.AttackType = AgentAttackType.Kick;
-            blow.BlowFlag = BlowFlags.NoSound;
-            blow.BaseMagnitude = 5;
-            blow.DamageType = DamageTypes.Invalid;
-            blow.VictimBodyPart = BoneBodyPartType.Chest;
-            blow.StrikeType = StrikeType.Invalid;
-            agent.Die(blow);
-        }
+        
     }
 }
