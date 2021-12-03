@@ -39,6 +39,7 @@ using TOW_Core.Battle;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
+using TOW_Core.CampaignSupport.TownBehaviours;
 
 namespace TOW_Core
 {
@@ -206,8 +207,8 @@ namespace TOW_Core
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
-            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
-            mission.AddMissionBehaviour(new BlunderbussMissionLogic());
+            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehavior(new ShieldPatternsMissionLogic());
+            mission.AddMissionBehavior(new BlunderbussMissionLogic());
         }
 
         private void LoadStatusEffects()

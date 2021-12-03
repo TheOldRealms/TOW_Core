@@ -13,8 +13,8 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Utilities
 {
-    public class TORWorldMapScript : ScriptComponentBehaviour
-    {
+    public class TORWorldMapScript : ScriptComponentBehavior
+	{
 		private static string SettlementsXmlPath
 		{
 			get

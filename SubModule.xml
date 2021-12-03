@@ -11,7 +11,7 @@
 		<DependedModule Id="StoryMode" DependentVersion="e1.6.4" />
 		<DependedModule Id="TOR_Armory" DependentVersion="v1.6.4" />
 		<DependedModule Id="TOR_Environment" DependentVersion="v1.6.4" />
-		<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.4" />
+		<!--<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.4" />-->
 	</DependedModules>
 	<SubModules>
 		<SubModule>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settlements>
   <!--Quest Battle Site "Settlements"-->
-  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" owner="Faction.chaos_clan_1" posX="1429.551" posY="895.204" culture="Culture.chaos_culture" prosperity="500" text="{=!}Chaos Portal">
+  <Settlement id="chaos_portal_01" name="{=!}Chaos Portal" owner="Faction.chaos_clan_1" posX="1423.376" posY="896.319" culture="Culture.chaos_culture" prosperity="500" text="{=!}Chaos Portal">
     <Components>
       <QuestBattleComponent id="chaos_portal_01" map_icon="chaos_portal" background_crop_position="0.0" background_mesh="chaos_portal" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
@@ -11,7 +11,7 @@
     </Locations>
   </Settlement>
   <!-- Averland 2 Towns 11 villages 2 castles -->
-  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1436.813" posY="925.675" culture="Culture.empire" prosperity="3400" gate_posX="1433.058" gate_posY="923.334" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
+  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1436.813" posY="921.6229" culture="Culture.empire" prosperity="3400" gate_posX="1436.858" gate_posY="920.8823" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
     <Components>
       <Town id="town_comp_AV1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -83,9 +83,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="420" culture="Culture.empire" gate_posX="1394.443" gate_posY="890.3879">
+  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="420" culture="Culture.empire" gate_posX="1394.305" gate_posY="890.4186">
     <Components>
-      <Town id="castle_comp_AV2" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_AV2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -132,7 +132,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_AV3" name="{=Settlements.Settlement.name.town_AV3}Grenzstadt" owner="Faction.averland_clan_1" posX="1493.496" posY="834.908" culture="Culture.empire" prosperity="2520" gate_posX="1492.909" gate_posY="838.9794" text="{=4ENGzVaC}Grenzstadt is an Imperial fortress-town that is located at the northwestern end of Black Fire Pass.">
+  <Settlement id="town_AV3" name="{=Settlements.Settlement.name.town_AV3}Grenzstadt" owner="Faction.averland_clan_1" posX="1491.507" posY="835.1763" culture="Culture.empire" prosperity="2520" gate_posX="1490.986" gate_posY="835.705" text="{=4ENGzVaC}Grenzstadt is an Imperial fortress-town that is located at the northwestern end of Black Fire Pass.">
     <Components>
       <Town id="town_comp_AV3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -178,7 +178,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AV4" name="{=Settlements.Settlement.name.castle_AV4}Peungzig" owner="Faction.averland_clan_1" posX="1522.925" posY="890.502" prosperity="420" culture="Culture.empire" gate_posX="1521.948" gate_posY="890.1547">
+  <Settlement id="castle_AV4" name="{=Settlements.Settlement.name.castle_AV4}Peungzig" owner="Faction.averland_clan_1" posX="1522.925" posY="890.502" prosperity="420" culture="Culture.empire" gate_posX="1522.215" gate_posY="890.2866">
     <Components>
       <Town id="castle_comp_AV4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -215,7 +215,7 @@
     </CommonAreas>
   </Settlement>
   <!--Stirland-->
-  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1443.906" posY="1014.65" culture="Culture.empire" prosperity="2000" gate_posX="1444.594" gate_posY="1010.477" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
+  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1447.203" posY="1013.329" culture="Culture.empire" prosperity="2000" gate_posX="1447.241" gate_posY="1012.588" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
     <Components>
       <Town id="town_comp_ST1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -287,9 +287,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_3" posX="1382.927" posY="986.824" prosperity="420" culture="Culture.empire" gate_posX="1383.047" gate_posY="985.6456" text="{=Settlements.Settlement.text.castle_ST1}Flensburg is a small market town nestled in the Zaya Hills to the West of the Stirhügel. The hills are perfect for sheep grazing, and the town’s economy is based on fleece, lamb and mutton trade. The town is also noted in the region for having a major temple of Shallya.">
+  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_3" posX="1382.927" posY="986.824" prosperity="420" culture="Culture.empire" gate_posX="1383.128" gate_posY="986.1098" text="{=Settlements.Settlement.text.castle_ST1}Flensburg is a small market town nestled in the Zaya Hills to the West of the Stirhügel. The hills are perfect for sheep grazing, and the town’s economy is based on fleece, lamb and mutton trade. The town is also noted in the region for having a major temple of Shallya.">
     <Components>
-      <Town id="castle_comp_ST1" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_ST1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -323,9 +323,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1428.838" posY="942.029" prosperity="420" culture="Culture.empire" gate_posX="1430" gate_posY="942.2568" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
+  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1431.738" posY="942.6418" prosperity="420" culture="Culture.empire" gate_posX="1432.43" gate_posY="942.9082" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
     <Components>
-      <Town id="castle_comp_ST2" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_ST2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -359,9 +359,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_AV1}Halstedt" owner="Faction.stirland_clan_1" posX="1473.685" posY="962.959" prosperity="420" culture="Culture.empire" gate_posX="1473.554" gate_posY="963.7392" text="{=Settlements.Settlement.text.castle_village_ST2_2}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
+  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_AV1}Halstedt" owner="Faction.stirland_clan_1" posX="1473.761" posY="960.7732" prosperity="420" culture="Culture.empire" gate_posX="1473.141" gate_posY="960.3666" text="{=Settlements.Settlement.text.castle_village_ST2_2}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
     <Components>
-      <Town id="castle_comp_ST3" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_ST3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -395,7 +395,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST2" name="{=Settlements.Settlement.name.town_ST2}Leicheberg" owner="Faction.stirland_clan_2" posX="1578.421" posY="977.16" culture="Culture.empire" prosperity="3400" gate_posX="1583.151" gate_posY="973.6122" text="{=4ENGzVaC}Amongst the Haunted Hills by the source of the Black Run River, lies the small town of Leicheberg. The people here live in constant fear of its neighbour to the east, Sylvania. Its ruler, Count Petr von Stolpe, has faced the Undead many times in his life and takes many measures to prepare for their return. Many witch hunters and vampire hunters have taken up residence here as a result. The town is notable for hosting a far larger temple and Garden of Morr than the number of inhabitants would otherwise require, for Count von Stolpe feels it is his obligation to ensure proper burials for all who die in his demesne.">
+  <Settlement id="town_ST2" name="{=Settlements.Settlement.name.town_ST2}Leicheberg" owner="Faction.stirland_clan_2" posX="1578.421" posY="977.16" culture="Culture.empire" prosperity="3400" gate_posX="1579.018" gate_posY="976.7192" text="{=4ENGzVaC}Amongst the Haunted Hills by the source of the Black Run River, lies the small town of Leicheberg. The people here live in constant fear of its neighbour to the east, Sylvania. Its ruler, Count Petr von Stolpe, has faced the Undead many times in his life and takes many measures to prepare for their return. Many witch hunters and vampire hunters have taken up residence here as a result. The town is notable for hosting a far larger temple and Garden of Morr than the number of inhabitants would otherwise require, for Count von Stolpe feels it is his obligation to ensure proper burials for all who die in his demesne.">
     <Components>
       <Town id="town_comp_ST2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -454,7 +454,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST3" name="{=Settlements.Settlement.name.town_ST3}Siegfriedhof" owner="Faction.stirland_clan_2" posX="1561.296" posY="1012.569" culture="Culture.empire" prosperity="3400" gate_posX="1561.612" gate_posY="1008.085" text="{=4ENGzVaC}On the border of traditional Sylvania lies the town of Siegfriedhof. Nestled between the Hunger Wood’s fringes and the Svarsee, it has historically commanded a strategic position in the Eschenstir basin. The town is overseen by the High and Chivalric Order of Deserved Rest, better known as the Raven Knights, whose Grandmaster personally sees to the protection of the people here. Stewardship over Siegfriedhof was granted to the Morrian templars by the Elector Count of Stirland, in gratitude for the Order's contribution in the Battle of Hel Fenn, 400 years prior. The town is also the site of the Abbey of Blessed Aethelbert the Vigilant. Due to the significant cult presence of the Morrians, Siegfriedhof is often used as a staging area for agents to keep watch over Sylvania. The people of Siegfriedhof are quite suspicious of strangers, and preemptive lynchings of unknown travellers have been known to occur.">
+  <Settlement id="town_ST3" name="{=Settlements.Settlement.name.town_ST3}Siegfriedhof" owner="Faction.stirland_clan_2" posX="1561.296" posY="1012.569" culture="Culture.empire" prosperity="3400" gate_posX="1561.321" gate_posY="1011.827" text="{=4ENGzVaC}On the border of traditional Sylvania lies the town of Siegfriedhof. Nestled between the Hunger Wood’s fringes and the Svarsee, it has historically commanded a strategic position in the Eschenstir basin. The town is overseen by the High and Chivalric Order of Deserved Rest, better known as the Raven Knights, whose Grandmaster personally sees to the protection of the people here. Stewardship over Siegfriedhof was granted to the Morrian templars by the Elector Count of Stirland, in gratitude for the Order's contribution in the Battle of Hel Fenn, 400 years prior. The town is also the site of the Abbey of Blessed Aethelbert the Vigilant. Due to the significant cult presence of the Morrians, Siegfriedhof is often used as a staging area for agents to keep watch over Sylvania. The people of Siegfriedhof are quite suspicious of strangers, and preemptive lynchings of unknown travellers have been known to occur.">
     <Components>
       <Town id="town_comp_ST3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -500,7 +500,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST4" name="{=Settlements.Settlement.name.town_ST4}Mittlenburg" owner="Faction.stirland_clan_1" posX="1555.656" posY="878.844" culture="Culture.empire" prosperity="3400" gate_posX="1555.364" gate_posY="882.947" text="{=4ENGzVaC}Sir seaghouls place to hang out it's fresh mountainair for his boypussy">
+  <Settlement id="town_ST4" name="{=Settlements.Settlement.name.town_ST4}Mittlenburg" owner="Faction.stirland_clan_1" posX="1556.358" posY="882.6536" culture="Culture.empire" prosperity="3400" gate_posX="1556.378" gate_posY="883.3954" text="{=4ENGzVaC}Sir seaghouls place to hang out it's fresh mountainair for his boypussy">
     <Components>
       <Town id="town_comp_ST4" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -572,9 +572,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1451.011" posY="972.307" prosperity="420" culture="Culture.empire" gate_posX="1451.798" gate_posY="972.2277" text="{=Settlements.Settlement.text.castle_village_ST4_1}Wördern is a small town hidden between mountains and valleys. The rough terrain makes expansion near impossible, but the intersection of the Old Dwarf Road and the Prager strasse makes passing along viable; not that it matters, as no outsider finds kindness in Wörden. The odd mootlander can occasionally be seen purchasing supplies for the road, but its main attraction is the Wörden Meat and Cattle auction house. It’s the only town in Stirland that can be smelled before it is seen.">
+  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1451.011" posY="972.307" prosperity="420" culture="Culture.empire" gate_posX="1451.751" gate_posY="972.3613" text="{=Settlements.Settlement.text.castle_village_ST4_1}Wördern is a small town hidden between mountains and valleys. The rough terrain makes expansion near impossible, but the intersection of the Old Dwarf Road and the Prager strasse makes passing along viable; not that it matters, as no outsider finds kindness in Wörden. The odd mootlander can occasionally be seen purchasing supplies for the road, but its main attraction is the Wörden Meat and Cattle auction house. It’s the only town in Stirland that can be smelled before it is seen.">
     <Components>
-      <Town id="castle_comp_ST4" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_ST4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -608,9 +608,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1498.114" posY="1029.143" prosperity="420" culture="Culture.empire" gate_posX="1498.901" gate_posY="1029.064" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
+  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1498.114" posY="1029.143" prosperity="420" culture="Culture.empire" gate_posX="1498.854" gate_posY="1029.197" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
     <Components>
-      <Town id="castle_comp_ST5" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_ST5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -645,7 +645,7 @@
     </CommonAreas>
   </Settlement>
   <!-- Mootland 1 town 4 villages -->
-  <Settlement id="town_MT1" name="{=Settlements.Settlement.name.town_MT1}Eicheschatten" owner="Faction.moot_clan_1" posX="1515.177" posY="943.481" culture="Culture.empire" prosperity="3400" gate_posX="1512.288" gate_posY="946.925" text="{=4ENGzVaC}Eicheschatten, the capital of the Mootland is utterly unprepossessing at first glance. After a longer examination, one’s opinion is confirmed.">
+  <Settlement id="town_MT1" name="{=Settlements.Settlement.name.town_MT1}Eicheschatten" owner="Faction.moot_clan_1" posX="1513.47" posY="946.1437" culture="Culture.empire" prosperity="3400" gate_posX="1513.317" gate_posY="946.8698" text="{=4ENGzVaC}Eicheschatten, the capital of the Mootland is utterly unprepossessing at first glance. After a longer examination, one’s opinion is confirmed.">
     <Components>
       <Town id="town_comp_MT1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -718,7 +718,7 @@
     </CommonAreas>
   </Settlement>
   <!-- Sylvania -->
-  <Settlement id="town_SY1" name="{=Settlements.Settlement.name.town_MT1}Castle Drakenhof" owner="Faction.sylvania_clan_1" posX="1648.721" posY="961.512" culture="Culture.khuzait" prosperity="3400" gate_posX="1644.846" gate_posY="959.0795" text="{=4ENGzVaC}The former Imperial capital of Sylvania has endured much upheaval through the ages. Formerly the home of the Imperial Elector Count Otto von Drak. After the establishment of the Von Carstein bloodline it became the seat of vampiric power in the Old World. Stained with the blood of all Von Carstein patriarchs who fought to become the castle’s next ruler. It is where Manfred Von Carstein resides. It is a dark lair to the terrible and occult. Adventurers often raid the castle seeking to plunder it’s secrets. Most meet a gruesome end within it’s cursed halls.">
+  <Settlement id="town_SY1" name="{=Settlements.Settlement.name.town_MT1}Castle Drakenhof" owner="Faction.sylvania_clan_1" posX="1635.872" posY="952.9607" culture="Culture.khuzait" prosperity="3400" gate_posX="1635.137" gate_posY="953.0563" text="{=4ENGzVaC}The former Imperial capital of Sylvania has endured much upheaval through the ages. Formerly the home of the Imperial Elector Count Otto von Drak. After the establishment of the Von Carstein bloodline it became the seat of vampiric power in the Old World. Stained with the blood of all Von Carstein patriarchs who fought to become the castle’s next ruler. It is where Manfred Von Carstein resides. It is a dark lair to the terrible and occult. Adventurers often raid the castle seeking to plunder it’s secrets. Most meet a gruesome end within it’s cursed halls.">
     <Components>
       <Town id="town_comp_SY1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -790,9 +790,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_1" posX="1594.735" posY="992.207" prosperity="420" culture="Culture.khuzait" gate_posX="1594.978" gate_posY="991.2422" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
+  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_1" posX="1594.735" posY="992.207" prosperity="420" culture="Culture.khuzait" gate_posX="1594.865" gate_posY="991.4764" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
     <Components>
-      <Town id="castle_comp_SY1" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -826,7 +826,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_SY2" name="{=Settlements.Settlement.name.town_SY2}Waldenhof" owner="Faction.sylvania_clan_1" posX="1663.27" posY="1021.537" culture="Culture.khuzait" prosperity="3400" gate_posX="1659.397" gate_posY="1019.105" text="{=4ENGzVaC}According to many Vampire Counts, Waldenhof is the true seat of power for Sylvania. It is where many of the Vampires dwell. And where Vlad kept his seat of power. But times change. Manfred resides in Drakenhof. Waldenhof whilst still important and thick with undead is lesser compared to Drakenhof. The town is covered in a persistent, soupy gloom. A miserable, desolate atmosphere hangs over the land. And all mortals inside the town simply live day to day. Waiting for death.">
+  <Settlement id="town_SY2" name="{=Settlements.Settlement.name.town_SY2}Waldenhof" owner="Faction.sylvania_clan_1" posX="1665.448" posY="1021.413" culture="Culture.khuzait" prosperity="3400" gate_posX="1665.489" gate_posY="1020.672" text="{=4ENGzVaC}According to many Vampire Counts, Waldenhof is the true seat of power for Sylvania. It is where many of the Vampires dwell. And where Vlad kept his seat of power. But times change. Manfred resides in Drakenhof. Waldenhof whilst still important and thick with undead is lesser compared to Drakenhof. The town is covered in a persistent, soupy gloom. A miserable, desolate atmosphere hangs over the land. And all mortals inside the town simply live day to day. Waiting for death.">
     <Components>
       <Town id="town_comp_SY2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -898,9 +898,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_1" posX="1532.138" posY="987.682" prosperity="420" culture="Culture.khuzait" gate_posX="1531.101" gate_posY="988.2551" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
+  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_1" posX="1532.429" posY="990.735" prosperity="420" culture="Culture.khuzait" gate_posX="1531.727" gate_posY="990.9764" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
     <Components>
-      <Town id="castle_comp_SY2" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -921,9 +921,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_1" posX="1587.614" posY="912.944" prosperity="420" culture="Culture.khuzait" gate_posX="1586.658" gate_posY="913.2186" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
+  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_1" posX="1587.617" posY="912.944" prosperity="420" culture="Culture.khuzait" gate_posX="1586.92" gate_posY="913.1987" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
     <Components>
-      <Town id="castle_comp_SY3" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -957,9 +957,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1651.078" posY="927.899" prosperity="420" culture="Culture.khuzait" gate_posX="1650.724" gate_posY="928.8286" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1650.334" posY="929.981" prosperity="420" culture="Culture.khuzait" gate_posX="1649.974" gate_posY="930.6271" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
     <Components>
-      <Town id="castle_comp_SY4" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -967,7 +967,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY4_1" name="{=Settlements.Settlement.name.castle_village_SY4_1}Gallhof" posX="1682.087" posY="948.918" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY4_1}Gallhof is often a favourite haunt of Brettonian Blood Knights. Used as a training camp and feasting hall for these bloodthirsty creatures.">
+  <Settlement id="castle_village_SY4_1" name="{=Settlements.Settlement.name.castle_village_SY4_1}Gallhof" posX="1684.438" posY="951.062" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY4_1}Gallhof is often a favourite haunt of Brettonian Blood Knights. Used as a training camp and feasting hall for these bloodthirsty creatures.">
     <Components>
       <Village id="castle_village_comp_SY4_1" village_type="VillageType.flax_plant" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -980,9 +980,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_1" posX="1674.036" posY="958.23" prosperity="420" culture="Culture.khuzait" gate_posX="1673.699" gate_posY="957.2939" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_1" posX="1673.771" posY="955.3638" prosperity="420" culture="Culture.khuzait" gate_posX="1673.471" gate_posY="954.6852" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
-      <Town id="castle_comp_SY5" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -1003,9 +1003,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_1" posX="1664.257" posY="977.81" prosperity="420" culture="Culture.khuzait" gate_posX="1663.363" gate_posY="978.2469" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
+  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_1" posX="1664.257" posY="977.81" prosperity="420" culture="Culture.khuzait" gate_posX="1663.647" gate_posY="978.2312" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
     <Components>
-      <Town id="castle_comp_SY6" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -1039,9 +1039,9 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_1" posX="1698.861" posY="1000.173" prosperity="420" culture="Culture.khuzait" gate_posX="1698.119" gate_posY="999.5107">
+  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_1" posX="1699.247" posY="997.0617" prosperity="420" culture="Culture.khuzait" gate_posX="1698.66" gate_posY="996.6082">
     <Components>
-      <Town id="castle_comp_SY7" is_castle="true" level="1" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
+      <Town id="castle_comp_SY7" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.castle_complex">
       <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
@@ -1082,12 +1082,12 @@
       <Hideout id="hideout_forest_1" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_2" name="{=Settlements.Settlement.name.hideout_forest_2}Hideout" type="Hideout" posX="1396.267" posY="932.942" culture="Culture.forest_bandits">
+  <Settlement id="hideout_forest_2" name="{=Settlements.Settlement.name.hideout_forest_2}Hideout" type="Hideout" posX="1432.746" posY="913.081" culture="Culture.forest_bandits">
     <Components>
       <Hideout id="hideout_forest_2" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_3" name="{=Settlements.Settlement.name.hideout_forest_3}Hideout" type="Hideout" posX="1515.833" posY="845.504" culture="Culture.forest_bandits">
+  <Settlement id="hideout_forest_3" name="{=Settlements.Settlement.name.hideout_forest_3}Hideout" type="Hideout" posX="1516.517" posY="854.188" culture="Culture.forest_bandits">
     <Components>
       <Hideout id="hideout_forest_3" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
@@ -1102,141 +1102,30 @@
       <Hideout id="hideout_forest_5" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_6" name="{=Settlements.Settlement.name.hideout_forest_6}Hideout" type="Hideout" posX="1587.574" posY="951.436" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_6" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_7" name="{=Settlements.Settlement.name.hideout_forest_7}Hideout" type="Hideout" posX="1351.113" posY="975.863" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_7" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_8" name="{=Settlements.Settlement.name.hideout_forest_8}Hideout" type="Hideout" posX="1593.862" posY="901.618" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_8" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_9" name="{=Settlements.Settlement.name.hideout_forest_9}Hideout" type="Hideout" posX="1603.574" posY="935.458" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_9" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_10" name="{=Settlements.Settlement.name.hideout_forest_10}Hideout" type="Hideout" posX="1355.861" posY="915.113" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_10" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_11" name="{=Settlements.Settlement.name.hideout_forest_11}Hideout" type="Hideout" posX="1627.898" posY="1003.282" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_11" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_12" name="{=Settlements.Settlement.name.hideout_forest_12}Hideout" type="Hideout" posX="1516.141" posY="839.677" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_12" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_13" name="{=Settlements.Settlement.name.hideout_forest_13}Hideout" type="Hideout" posX="1422.559" posY="863.268" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_13" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_14" name="{=Settlements.Settlement.name.hideout_forest_14}Hideout" type="Hideout" posX="1538.223" posY="1035.974" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_14" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_15" name="{=Settlements.Settlement.name.hideout_forest_15}Hideout" type="Hideout" posX="1475.855" posY="914.329" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_15" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <!-- number 16 is missing -->
-  <Settlement id="hideout_forest_17" name="{=Settlements.Settlement.name.hideout_forest_17}Hideout" type="Hideout" posX="1549.788" posY="1025.913" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_17" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_18" name="{=Settlements.Settlement.name.hideout_forest_18}Hideout" type="Hideout" posX="1682.765" posY="988.61" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_18" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_19" name="{=Settlements.Settlement.name.hideout_forest_19}Hideout" type="Hideout" posX="1370.662" posY="1010.82" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_19" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_forest_20" name="{=Settlements.Settlement.name.hideout_forest_20}Hideout" type="Hideout" posX="1392.667" posY="941.803" culture="Culture.forest_bandits">
-    <Components>
-      <Hideout id="hideout_forest_20" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
   <!-- Mountain Bandit  Hideouts -->
-  <Settlement id="hideout_mountain_1" name="{=Settlements.Settlement.name.hideout_mountain_1}Hideout" type="Hideout" posX="1511.585" posY="832.015" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_1" name="{=Settlements.Settlement.name.hideout_mountain_1}Hideout" type="Hideout" posX="1501.716" posY="838.305" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_1" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_2" name="{=Settlements.Settlement.name.hideout_mountain_2}Hideout" type="Hideout" posX="1560.056" posY="848.8" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_2" name="{=Settlements.Settlement.name.hideout_mountain_2}Hideout" type="Hideout" posX="1560.129" posY="848.8" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_2" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1598.234" posY="876.254" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1677.558" posY="946.558" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_3" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_4" name="{=Settlements.Settlement.name.hideout_mountain_4}Hideout" type="Hideout" posX="1603.714" posY="889.604" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_4" name="{=Settlements.Settlement.name.hideout_mountain_4}Hideout" type="Hideout" posX="1608.522" posY="904.666" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_4" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_5" name="{=Settlements.Settlement.name.hideout_mountain_5}Hideout" type="Hideout" posX="1648.267" posY="925.43" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_5" name="{=Settlements.Settlement.name.hideout_mountain_5}Hideout" type="Hideout" posX="1637.34" posY="925.43" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_5" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_6" name="{=Settlements.Settlement.name.hideout_mountain_6}Hideout" type="Hideout" posX="1692.679" posY="934.399" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_6" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_7" name="{=Settlements.Settlement.name.hideout_mountain_7}Hideout" type="Hideout" posX="1701.825" posY="950.57" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_7" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_8" name="{=Settlements.Settlement.name.hideout_mountain_8}Hideout" type="Hideout" posX="1682.193" posY="963.756" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_8" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_9" name="{=Settlements.Settlement.name.hideout_mountain_9}Hideout" type="Hideout" posX="1708.055" posY="987.421" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_9" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_10" name="{=Settlements.Settlement.name.hideout_mountain_10}Hideout" type="Hideout" posX="1689.015" posY="1016.093" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_10" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_20" name="{=Settlements.Settlement.name.hideout_mountain_20}Hideout" type="Hideout" posX="1567.539" posY="622.099" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_20" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_21" name="{=Settlements.Settlement.name.hideout_mountain_21}Hideout" type="Hideout" posX="1701.933" posY="946.517" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_21" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
-    </Components>
-  </Settlement>
-  <Settlement id="hideout_mountain_22" name="{=Settlements.Settlement.name.hideout_mountain_22}Hideout" type="Hideout" posX="1655.955" posY="973.257" culture="Culture.mountain_bandits">
-    <Components>
-      <Hideout id="hideout_mountain_22" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
 </Settlements>
