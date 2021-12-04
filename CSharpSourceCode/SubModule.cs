@@ -75,11 +75,6 @@ namespace TOW_Core
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
                     Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
                 }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
-                }
             }
         }
 

@@ -97,7 +97,7 @@
         ImbuedStatusEffectDuration="0" 
         DamageVariance="0.1" 
         ScriptNameToTrigger="none"/>
-  <TriggeredEffectTemplate
+<TriggeredEffectTemplate
         StringID="shadow_step"
         BurstParticleEffectPrefab="none"
         SoundEffectId="none"
@@ -111,7 +111,7 @@
         ImbuedStatusEffectDuration="0"
         DamageVariance="0"
         ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript"/>
-  <TriggeredEffectTemplate 
+<TriggeredEffectTemplate 
         StringID="place_mortar" 
         BurstParticleEffectPrefab="none" 
         SoundEffectId="none" 
@@ -126,7 +126,7 @@
         DamageVariance="0" 
         ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.PrefabSpawnerScript"
         SpawnPrefabName="tor_mortar"/>
-  <TriggeredEffectTemplate
+<TriggeredEffectTemplate
           StringID="hurl_weapons"
           BurstParticleEffectPrefab=""
           SoundEffectId=""
