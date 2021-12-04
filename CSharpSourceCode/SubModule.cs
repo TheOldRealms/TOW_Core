@@ -62,13 +62,13 @@ namespace TOW_Core
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
                 {
-                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
-                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
                 {
-                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
                 {
@@ -80,10 +80,6 @@ namespace TOW_Core
 
         protected override void OnSubModuleLoad()
         {
-            if(AppDomain.CurrentDomain.BaseDirectory == "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Mount & Blade II Bannerlord\\Modules\\TOW_Core\\bin\\Win64_Shipping_wEditor")
-            {
-                return;
-            }
 
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
@@ -118,7 +114,7 @@ namespace TOW_Core
 
         public void LoadFontAssets()
         {
-            UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+            //UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         /// <summary>
@@ -188,21 +184,21 @@ namespace TOW_Core
 
         public override void OnMissionBehaviorInitialize(Mission mission)
         {
-            base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
-            mission.AddMissionBehaviour(new StatusEffectMissionLogic());
-            mission.AddMissionBehaviour(new ExtendedInfoMissionLogic());
-            mission.AddMissionBehaviour(new AbilityManagerMissionLogic());
-            mission.AddMissionBehaviour(new AbilityHUDMissionView());
-            mission.RemoveMissionBehaviour(mission.GetMissionBehaviour<MissionGauntletCrosshair>());
-            mission.AddMissionBehaviour(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehaviour(new MusketFireEffectMissionLogic());
-            mission.AddMissionBehaviour(new CustomVoicesMissionBehavior());
-            mission.AddMissionBehaviour(new DismembermentMissionLogic());
-            mission.AddMissionBehaviour(new MagicWeaponEffectMissionLogic());
+            base.OnMissionBehaviorInitialize(mission);
+            mission.AddMissionBehavior(new AttributeSystemMissionLogic());
+            mission.AddMissionBehavior(new StatusEffectMissionLogic());
+            mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
+            mission.AddMissionBehavior(new AbilityManagerMissionLogic());
+            mission.AddMissionBehavior(new AbilityHUDMissionView());
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+            mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
+            mission.AddMissionBehavior(new MusketFireEffectMissionLogic());
+            mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
+            mission.AddMissionBehavior(new DismembermentMissionLogic());
+            mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());
             //mission.AddMissionBehaviour(new GrenadesMissionLogic());
-            mission.AddMissionBehaviour(new AtmosphereOverrideMissionLogic());
-            mission.AddMissionBehaviour(new ArtilleryViewController());
+            mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
+            mission.AddMissionBehavior(new ArtilleryViewController());
             if (Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehavior(new BattleInfoMissionLogic());

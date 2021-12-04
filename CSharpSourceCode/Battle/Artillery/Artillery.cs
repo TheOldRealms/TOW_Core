@@ -248,7 +248,7 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity, false, null);
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity+20, false, null);
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
@@ -577,15 +577,15 @@ namespace TOW_Core.Battle.Artillery
             TargetFlags targetFlags = (TargetFlags) (0 | 2 | 8 | 16);
             if (IsDestroyed || IsDeactivated)
                 targetFlags |= TargetFlags.NotAThreat;
-            if (Side == BattleSideEnum.Attacker && DebugSiegeBehaviour.DebugDefendState == DebugSiegeBehaviour.DebugStateDefender.DebugDefendersToMangonels)
+            if (Side == BattleSideEnum.Attacker && DebugSiegeBehavior.DebugDefendState == DebugSiegeBehavior.DebugStateDefender.DebugDefendersToMangonels)
                 targetFlags |= TargetFlags.DebugThreat;
-            if (Side == BattleSideEnum.Defender && DebugSiegeBehaviour.DebugAttackState == DebugSiegeBehaviour.DebugStateAttacker.DebugAttackersToMangonels)
+            if (Side == BattleSideEnum.Defender && DebugSiegeBehavior.DebugAttackState == DebugSiegeBehavior.DebugStateAttacker.DebugAttackersToMangonels)
                 targetFlags |= TargetFlags.DebugThreat;
             return targetFlags;
         }
 
         //Copied from Mangonel.cs
-        public override float GetTargetValue(List<Vec3> weaponPos) => 40f * GetUserMultiplierOfWeapon() * GetDistanceMultiplierOfWeapon(weaponPos[0]) * GetHitpointMultiplierofWeapon();
+        public override float GetTargetValue(List<Vec3> weaponPos) => 40f * GetUserMultiplierOfWeapon() * GetDistanceMultiplierOfWeapon(weaponPos[0]) * GetHitPointMultiplierOfWeapon();
 
         //Copied from Mangonel.cs
         public override SiegeEngineType GetSiegeEngineType() => Side != BattleSideEnum.Attacker ? DefaultSiegeEngineTypes.Catapult : DefaultSiegeEngineTypes.Onager;
@@ -643,7 +643,7 @@ namespace TOW_Core.Battle.Artillery
 
         private Vec3 GetTargetPosition()
         {
-            return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(5).origin;
+            return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.origin;
         }
 
         public bool CanShootAtPoint(Vec3 target)
@@ -711,7 +711,7 @@ namespace TOW_Core.Battle.Artillery
             return sideEnum != Side;
         }
 
-        public override UsableMachineAIBase CreateAIBehaviourObject()
+        public override UsableMachineAIBase CreateAIBehaviorObject()
         {
             return new ArtilleryAI(this);
         }
