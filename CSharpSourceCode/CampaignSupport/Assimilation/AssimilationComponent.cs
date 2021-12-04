@@ -237,7 +237,7 @@ namespace TOW_Core.CampaignSupport.Assimilation
                 while (enumerator.MoveNext())
                 {
                     CaravanPartyComponent caravanPartyComponent = enumerator.Current;
-                    CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, newNotable);
+                    CaravanPartyComponent.TransferCaravanOwnership(caravanPartyComponent.MobileParty, newNotable, newNotable.HomeSettlement);
                 }
             }
         }

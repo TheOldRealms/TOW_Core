@@ -8,6 +8,7 @@ using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities.Extensions;
 
@@ -24,7 +25,7 @@ namespace TOW_Core.Abilities
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         private Dictionary<Agent, PartyGroupTroopSupplier> _summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
-        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
+        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
         protected override void OnEndMission()
         {
@@ -40,6 +41,7 @@ namespace TOW_Core.Abilities
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
                     if (_abilityComponent != null)
                     {
+                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("HurlWeapons", Agent.Main));
                         _abilityComponent.InitializeCrosshairs();
                         _isAbilityUser = true;
                     }
@@ -56,7 +58,11 @@ namespace TOW_Core.Abilities
                     }
                     else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
                     {
-                        if (_abilityComponent.CurrentAbility.Crosshair == null || !_abilityComponent.CurrentAbility.Crosshair.IsVisible)
+                        bool flag = _abilityComponent.CurrentAbility.Crosshair == null ||
+                                    !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
+                                    (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.Targeted &&
+                                    ((TargetedCrosshair)_abilityComponent.CurrentAbility.Crosshair).Target == null);
+                        if (flag)
                         {
                             return;
                         }
@@ -276,7 +282,5 @@ namespace TOW_Core.Abilities
                 }
             }
         }
-
-
     }
 }

@@ -278,7 +278,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
@@ -305,6 +307,7 @@
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Abilities\Scripts\TargetedStaticScript.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
@@ -329,7 +332,9 @@
     <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
+    <Compile Include="Battle\FireArms\BlunderbussMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
@@ -347,13 +352,17 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
-    <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
-    <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />
     <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
@@ -362,10 +371,13 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
+    <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="HarmonyPatches\InventoryPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
+    <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
     <Compile Include="Items\MagicWeaponAgentComponent.cs" />
@@ -432,8 +444,6 @@
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
-    <Compile Include="HarmonyPatches\PartyVMPatches.cs" />
-    <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
     <Compile Include="HarmonyPatches\RotatingMainMenuPatch.cs" />
@@ -450,6 +460,7 @@
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
+    <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
@@ -458,10 +469,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <!-- Post-Build -->
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(TargetDir)*" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\TOW_Core\bin\Win64_Shipping_wEditor\" /S /Y /I</PostBuildEvent>
+  </PropertyGroup>
 </Project>

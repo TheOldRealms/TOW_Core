@@ -222,17 +222,19 @@ namespace TOW_Core.CampaignSupport
                                   where x.IsTown && x.IsSuitableForHero(hero)
                                   select x).ToArray<Settlement>();
             Settlement settlement;
-            if (array.Any<Settlement>())
+            if (hero.IsNotable)
             {
-                settlement = MBRandom.ChooseWeighted<Settlement>(array, delegate (Settlement x)
+                settlement = hero.BornSettlement;
+            }
+            else if (array.Any<Settlement>())
+            {
+                List<ValueTuple<Settlement, float>> list2 = new List<ValueTuple<Settlement, float>>();
+                foreach (Settlement settlement2 in array)
                 {
-                    float moveScoreForNoble = this.GetMoveScoreForNoble(hero, x.Town);
-                    if (moveScoreForNoble < minimumScore)
-                    {
-                        return 0f;
-                    }
-                    return moveScoreForNoble;
-                });
+                    float moveScoreForNoble = this.GetMoveScoreForNoble(hero, settlement2.Town);
+                    list2.Add(new ValueTuple<Settlement, float>(settlement2, (moveScoreForNoble >= minimumScore) ? moveScoreForNoble : 0f));
+                }
+                settlement = MBRandom.ChooseWeighted<Settlement>(list2);
             }
             else
             {

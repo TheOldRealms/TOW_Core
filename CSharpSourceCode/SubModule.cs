@@ -33,13 +33,14 @@ using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
-using TOW_Core.CampaignSupport.TownBehaviours;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.Battle.Artillery;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
+using System;
+using TOW_Core.CampaignSupport.TownBehaviours;
 
 namespace TOW_Core
 {
@@ -61,13 +62,18 @@ namespace TOW_Core
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
                 {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
+                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
+                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
                 {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
+                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
+                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
+                }
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
                 }
                 if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
                 {
@@ -79,6 +85,11 @@ namespace TOW_Core
 
         protected override void OnSubModuleLoad()
         {
+            if(AppDomain.CurrentDomain.BaseDirectory == "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Mount & Blade II Bannerlord\\Modules\\TOW_Core\\bin\\Win64_Shipping_wEditor")
+            {
+                return;
+            }
+
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
             ConfigureLogging();
@@ -143,6 +154,7 @@ namespace TOW_Core
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
+            gameStarterObject.AddModel(new TORDamageParticleModel());
             if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
@@ -160,22 +172,26 @@ namespace TOW_Core
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
+                //starter.AddBehavior(new PrisonerFateCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
                 starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
-                starter.AddModel(new TowKingdomPeaceModel());
-                starter.AddModel(new CustomBanditDensityModel());
-                starter.AddModel(new CustomMobilePartyFoodConsumptionModel());
+                //starter.AddModel(new TowKingdomPeaceModel());
+                starter.AddModel(new TORBanditDensityModel());
+                starter.AddModel(new TORMobilePartyFoodConsumptionModel());
                 starter.AddModel(new TORPartySizeModel());
                 starter.AddModel(new TORCharacterStatsModel());
                 starter.AddModel(new TORPartyWageModel());
+                starter.AddModel(new TORPartySpeedCalculatingModel());
+                starter.AddModel(new TORPrisonerRecruitmentCalculationModel());
+                starter.AddModel(new TORMarriageModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
         }
 
-        public override void OnMissionBehaviourInitialize(Mission mission)
+        public override void OnMissionBehaviorInitialize(Mission mission)
         {
             base.OnMissionBehaviourInitialize(mission);
             mission.AddMissionBehaviour(new AttributeSystemMissionLogic());
@@ -194,11 +210,12 @@ namespace TOW_Core
             mission.AddMissionBehaviour(new ArtilleryViewController());
             if (Game.Current.GameType is Campaign)
             {
-                mission.AddMissionBehaviour(new BattleInfoMissionLogic());
+                mission.AddMissionBehavior(new BattleInfoMissionLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
-            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehaviour(new ShieldPatternsMissionLogic());
+            if (!mission.SceneName.Contains("arena")) mission.AddMissionBehavior(new ShieldPatternsMissionLogic());
+            mission.AddMissionBehavior(new BlunderbussMissionLogic());
         }
 
         private void LoadStatusEffects()

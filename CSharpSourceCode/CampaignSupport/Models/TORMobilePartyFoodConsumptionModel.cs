@@ -3,12 +3,11 @@ using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
 {
-    public class CustomMobilePartyFoodConsumptionModel : DefaultMobilePartyFoodConsumptionModel
+    public class TORMobilePartyFoodConsumptionModel : DefaultMobilePartyFoodConsumptionModel
     {
         public override ExplainedNumber CalculateDailyFoodConsumptionf(MobileParty party, bool includeDescription = false)
         {

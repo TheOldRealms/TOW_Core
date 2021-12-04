@@ -143,15 +143,6 @@ namespace TOW_Core.HarmonyPatches
             }
         }
 
-        //Ideally this should not need a harmony patch, but somehow removing this on gamestart in submodule.cs still makes it run on NewGameStart event.
-        //This behaviour contains hardcoded hero / lord references that are not present because we skip loading the vanilla files.
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(BackstoryCampaignBehavior), "RegisterEvents")]
-        public static bool WhyIsThisNeeded()
-        {
-            return false;
-        }
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
             typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
@@ -213,7 +204,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
         {
-            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_singleplayerbattlescenes.xml");
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_singleplayerbattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();
