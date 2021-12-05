@@ -511,14 +511,26 @@ namespace TOW_Core.Battle.Artillery
             float y = 0;
             if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
             {
-                if (requiredElevation - _currentPitch > 0) y = 1;
-                else if (requiredElevation - _currentPitch < 0) y = -1;
+                if (GetShortestAngleIsClockwise(requiredElevation, _currentPitch))
+                {
+                    y = 1;
+                }
+                else
+                {
+                    y = -1;
+                }
             }
 
             if (!IsWithinToleranceRange(requiredYaw, _currentYaw))
             {
-                if (requiredYaw - _currentYaw > 0) x = SideCorrection;
-                else if (requiredYaw - _currentYaw < 0) x = -SideCorrection;
+                if (GetShortestAngleIsClockwise(requiredYaw, _currentYaw))
+                {
+                    x = 1;
+                }
+                else
+                {
+                    x = -1;
+                }
             }
 
             GiveInput(x, y);
@@ -709,6 +721,23 @@ namespace TOW_Core.Battle.Artillery
         public override bool IsDisabledForBattleSideAI(BattleSideEnum sideEnum)
         {
             return sideEnum != Side;
+        }
+        
+        private bool GetShortestAngleIsClockwise(float targetDegree, float startDegree)
+        {
+            bool result=Math.Abs(startDegree - targetDegree) < 180;
+            
+            if (startDegree - targetDegree<0)
+            {
+                result = !result;
+            }
+            return result;
+        }
+
+        private float SimulateRotationMovement(float current, float target, float deltaTime)
+        {
+            float val = ((Math.Abs(target - Math.Abs(current))) / 3) * 5f;
+            return  val*deltaTime;
         }
 
         public override UsableMachineAIBase CreateAIBehaviorObject()
