@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Core;
@@ -77,7 +77,7 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 _originalDirection;
         private float _currentPitch;
         private float _currentYaw;
-        private float _tolerance = 1f;
+        private float _tolerance = 0.1f;
 
 
         private float miniumMuzzleVelocity = 10f;
@@ -526,7 +526,7 @@ namespace TOW_Core.Battle.Artillery
                 }
                 else
                 {
-                    y = -1;
+                    y = 1;
                 }
             }
 
