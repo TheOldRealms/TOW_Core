@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.DotNet;
 using TaleWorlds.Engine;
@@ -253,9 +254,11 @@ namespace TOW_Core.Battle.Artillery
         {
             var frame = _projectileReleasePoint.GetGlobalFrame();
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
+            
             if (PilotAgent != null)
             {
                 var mf = _calculatedMuzzle;
+                TOWCommon.Say(""+ItemObject.GetAirFrictionConstant(WeaponClass.Boulder,WeaponFlags.RangedWeapon));
                 Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, mf, false, null);
             }
 
@@ -515,7 +518,7 @@ namespace TOW_Core.Battle.Artillery
             if (!HasTarget || PilotAgent == null || !PilotAgent.IsAIControlled) return;
             float requiredElevation = GetRequiredPitch();
             float requiredYaw = GetRequiredYaw();
-            TOWCommon.Say("P" +requiredElevation+ "Y" + requiredYaw);
+            //TOWCommon.Say("P" +requiredElevation+ "Y" + requiredYaw);
             float x = 0;
             float y = 0;
             if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
@@ -685,8 +688,7 @@ namespace TOW_Core.Battle.Artillery
                 return false;
             }
 
-            TOWCommon.Say("here" + "pitch: " +_currentPitch+ " req :"+ requiredElevation+ IsWithinToleranceRange(requiredElevation, _currentPitch) +" "+
-                          Math.Abs(requiredElevation - _currentPitch));
+            //TOWCommon.Say("here" + "pitch: " +_currentPitch+ " req :"+ requiredElevation+ IsWithinToleranceRange(requiredElevation, _currentPitch) +" "+ Math.Abs(requiredElevation - _currentPitch));
             return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
         }
 
@@ -705,7 +707,7 @@ namespace TOW_Core.Battle.Artillery
             Vec3 highAngle = Vec3.Zero;
             float calculatedMuzzle = MuzzleVelocity;
             
-            for (float i = miniumMuzzleVelocity; i < maximumMuzzleVelocity; i += 0.1f)
+            for (float i = miniumMuzzleVelocity; i <maximumMuzzleVelocity; i += 0.1f)
             {
                 var result = BallisticSolver.SolveBallisticArc(_projectileReleasePoint.GlobalPosition, i, target, MBGlobals.Gravity, out lowAngle, out highAngle);
 
