@@ -13,9 +13,9 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPostfix]
         [HarmonyPatch(typeof(ItemObject), "GetAirFrictionConstant")]
-        public static void PostFix(ref float __result, WeaponClass ___weaponClass)
+        public static void PostFix(ref float __result, WeaponClass weaponClass)
         {
-            if(___weaponClass == WeaponClass.Boulder)
+            if(weaponClass == WeaponClass.Boulder)
             {
                 __result = 0.0001f;
             }
