@@ -77,7 +77,12 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 _originalDirection;
         private float _currentPitch;
         private float _currentYaw;
-        private float _tolerance = 0.1f;
+        private float _tolerance = 1f;
+
+
+        private float miniumMuzzleVelocity = 10f;
+        private float maximumMuzzleVelocity;
+        private float _calculatedMuzzle;
 
         #region Prefab editable fields
 
@@ -123,6 +128,8 @@ namespace TOW_Core.Battle.Artillery
             _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetGlobalFrame().rotation.f.RotationX);
             _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
             EnemyRangeToStopUsing = MinRange;
+            maximumMuzzleVelocity = MuzzleVelocity + 20f;
+            _calculatedMuzzle = maximumMuzzleVelocity;
         }
 
         private void CollectEntities()
@@ -248,7 +255,8 @@ namespace TOW_Core.Battle.Artillery
             MissionWeapon projectile = new MissionWeapon(_ammoItem, null, null);
             if (PilotAgent != null)
             {
-                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, MuzzleVelocity+20, false, null);
+                var mf = _calculatedMuzzle;
+                Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, mf, false, null);
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
@@ -507,13 +515,14 @@ namespace TOW_Core.Battle.Artillery
             if (!HasTarget || PilotAgent == null || !PilotAgent.IsAIControlled) return;
             float requiredElevation = GetRequiredPitch();
             float requiredYaw = GetRequiredYaw();
+            TOWCommon.Say("P" +requiredElevation+ "Y" + requiredYaw);
             float x = 0;
             float y = 0;
             if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
             {
                 if (GetShortestAngleIsClockwise(requiredElevation, _currentPitch))
                 {
-                    y = 1;
+                    y = -1;
                 }
                 else
                 {
@@ -675,20 +684,40 @@ namespace TOW_Core.Battle.Artillery
             {
                 return false;
             }
+
+            TOWCommon.Say("here" + "pitch: " +_currentPitch+ " req :"+ requiredElevation+ IsWithinToleranceRange(requiredElevation, _currentPitch) +" "+
+                          Math.Abs(requiredElevation - _currentPitch));
             return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
         }
 
         private bool IsInRange(Vec3 target)
         {
-            var maxrange = BallisticSolver.GetMaxRange(MuzzleVelocity, MBGlobals.Gravity, (target - _projectileReleasePoint.GlobalPosition).z);
+            var maxrange = BallisticSolver.GetMaxRange(maximumMuzzleVelocity, MBGlobals.Gravity, (target - _projectileReleasePoint.GlobalPosition).z);
             var distancetotarget = (target - _projectileReleasePoint.GlobalPosition).AsVec2.Length;
             return maxrange >= distancetotarget;
         }
 
         public virtual float GetTargetReleaseAngle(Vec3 target)
         {
-            Vec3 lowAngle, highAngle;
-            BallisticSolver.SolveBallisticArc(_projectileReleasePoint.GlobalPosition, MuzzleVelocity, target, MBGlobals.Gravity, out lowAngle, out highAngle);
+           // Vec3 lowAngle, highAngle;
+            
+            Vec3 lowAngle= Vec3.Zero;
+            Vec3 highAngle = Vec3.Zero;
+            float calculatedMuzzle = MuzzleVelocity;
+            
+            for (float i = miniumMuzzleVelocity; i < maximumMuzzleVelocity; i += 0.1f)
+            {
+                var result = BallisticSolver.SolveBallisticArc(_projectileReleasePoint.GlobalPosition, i, target, MBGlobals.Gravity, out lowAngle, out highAngle);
+
+                if (result != 0)
+                {
+                    calculatedMuzzle = i;
+                    break;
+                }
+            }
+
+            _calculatedMuzzle = calculatedMuzzle;
+            
             float low, high;
             low = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, lowAngle));
             high = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, highAngle));
