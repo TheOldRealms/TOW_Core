@@ -82,7 +82,7 @@ namespace TOW_Core.Battle.Artillery
         private float _tolerance = 0.1f;
 
 
-        private float miniumMuzzleVelocity = 10f;
+        private float miniumMuzzleVelocity = 20f;
         private float maximumMuzzleVelocity;
         private float _calculatedMuzzle;
         private float _currentCalculatedFlightTime;
@@ -215,7 +215,6 @@ namespace TOW_Core.Battle.Artillery
             {
                 OnRotationStopped();
             }
-
             HandleAmmoLoad();
             HandleAmmoPickUp();
             HandleAnimations(dt);
@@ -263,7 +262,6 @@ namespace TOW_Core.Battle.Artillery
             {
                 var muzzleVeloCheat = _target.Formation.GetMovementSpeedOfUnits()>0.1?  _target.Formation.GetMovementSpeedOfUnits()/2: 0f;
                 var mf = _calculatedMuzzle - muzzleVeloCheat + MBRandom.RandomFloatRanged(-1 + 3);
-                TOWCommon.Say("speed of target" + _target.Formation.GetMovementSpeedOfUnits()+" calculated flight:"+_currentCalculatedFlightTime);
                 Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, mf, false, null);
             }
 
@@ -345,7 +343,6 @@ namespace TOW_Core.Battle.Artillery
                         _currentState = RangedSiegeWeapon.WeaponState.Idle;
                         _loadAmmoStandingPoint.SetIsDeactivatedSynched(true);
                     }
-                    //user.StopUsingGameObject();
                 }
                 else
                 {
@@ -528,7 +525,6 @@ namespace TOW_Core.Battle.Artillery
             if (!CanRotate()) return;
             float requiredElevation = GetRequiredPitch();
             float requiredYaw = GetRequiredYaw();
-            //TOWCommon.Say("P" +requiredElevation+ "Y" + requiredYaw);
             float x = 0;
             float y = 0;
             if (!IsWithinToleranceRange(requiredElevation, _currentPitch))
@@ -600,11 +596,6 @@ namespace TOW_Core.Battle.Artillery
             _moveSound = null;
         }
 
-        protected override float GetWeightOfStandingPoint(StandingPoint sp)
-        {
-            return base.GetWeightOfStandingPoint(sp);
-        }
-
         //Copied from Mangonel.cs
         public override TargetFlags GetTargetFlags()
         {
@@ -674,51 +665,17 @@ namespace TOW_Core.Battle.Artillery
                 return CanShootAtPoint(GetTargetPosition());
             }
         }
-
+        
         private Vec3 GetTargetPosition()
         {
-            /*if (CanShootAtTarget())
-            {
-                float angle = GetRequiredPitch();
-                float velocity = _calculatedMuzzle;
-                float travelTime = GetTimeOfProjectileFlight(velocity, angle);
-                return  _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(_target.Formation.GetMovementSpeedOfUnits()+travelTime).origin;
-            }*/
-            
-            /*Vec3 troopPosition= _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.origin;
-           
-            
-            Vec3 advancedPositon = _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(speedOfTarget).origin;
-            
-            Vec2 troopPosition2D = new Vec2(troopPosition.x, troopPosition.z);
-            Vec2 advancedPosition2D = new Vec2(advancedPositon.x, advancedPositon.z);
-            
-            TOWCommon.Say(speedOfTarget+"*"+ troopPosition.x + " +" + troopPosition.y + " = " +advancedPositon);
-            
-            Vec2 projectileOrigin = new Vec2(_projectileReleasePoint.GlobalPosition.x,
-                _projectileReleasePoint.GlobalPosition.z);*/
-            
             var speedOfTarget = _target.Formation.GetMovementSpeedOfUnits();
-            
-            if (speedOfTarget > 0.01&& _currentCalculatedFlightTime>1.0f)      //threshold because of floating point
+            if (speedOfTarget > 0.01&& _currentCalculatedFlightTime>1.0f) 
             {
-                
-                /*Vec2 collisionPoint = PointIntersect(projectileOrigin, _currentCalculatedFlightTime, troopPosition2D,
-                    speedOfTarget);
-                TOWCommon.Say("adjusting " + speedOfTarget + " "+ _currentCalculatedFlightTime +" pos "+  collisionPoint);
-                return new Vec3(collisionPoint.x, troopPosition.y, collisionPoint.y);*/
-                
-               return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(Mathf.Abs(_currentCalculatedFlightTime+speedOfTarget)).origin;
+
+                return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(Mathf.Abs(_currentCalculatedFlightTime+speedOfTarget)).origin;
             }
             return  _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(speedOfTarget).origin;
-
         }
-        
-        /*public Point2D.Double intersect(Gerade line) {
-            double x = (line.b - this.b) / (this.m - line.m);
-            double y = this.m * x + this.b;
-            return new Point2D.Double(x, y);
-        }*/
 
         private Vec2 PointIntersect(Vec2 pos, float velo1, Vec2 pos2, float velo2)
         {
@@ -736,44 +693,17 @@ namespace TOW_Core.Battle.Artillery
             var timeTraveledToMaximumHeight = Mathf.Abs((2 * velocity * Mathf.Sin(angle)) / MBGlobals.Gravity)/2;
             
             //calculate from the maximum height down to the end height
-
             var maximumRelativeToEnd = traveledHeight - heightEnd;
-
-            var term = velocity * Mathf.Sin(0);
-            term +=(float) Math.Pow((velocity * Mathf.Sin(0)), 2);
-            term += 2 * MBGlobals.Gravity * maximumRelativeToEnd;
-
-            term = term / MBGlobals.Gravity;
-           
+            
+            var term = (velocity * Mathf.Sin(0)+(float) Math.Pow((velocity * Mathf.Sin(0)), 2)+2 * MBGlobals.Gravity * maximumRelativeToEnd)/ MBGlobals.Gravity;;
             var timeTravelFromMiddleToEnd = velocity * Mathf.Sin(0);
             
-
-           var  result = timeTraveledToMaximumHeight + timeTravelFromMiddleToEnd;
-
-           
-            return (float) result;
-            /*var result = Math.Abs(velocity*Math.Sin(angle)  + Math.Sqrt(Math.Pow(velocity*Math.Sin(angle),2)+2*MBGlobals.Gravity*heightDifference)/MBGlobals.Gravity);
-
-            var firstDeriviative = GetTimeOfProjectileFlightDxI(velocity, angle, heightDifference);
-            
-            
-            return (float) Math.Abs(velocity*Math.Sin(angle)  + Math.Sqrt(Math.Pow(velocity*Math.Sin(angle),2)+2*MBGlobals.Gravity*heightDifference)/MBGlobals.Gravity);
-            
-            
-            
-            float GetTimeOfProjectileFlightDxI(float v, float a, float h)
-            {
-                return (float)((Math.Sin(a) + Math.Pow(Math.Sin(a), 2) / Math.Sqrt(Math.Pow(Math.Sin(a), 2) * v * v + 2 * MBGlobals.Gravity * heightDifference)))/MBGlobals.Gravity;
-            }*/
-
+            return timeTraveledToMaximumHeight + timeTravelFromMiddleToEnd;
         }
-
         
-      
-
         public bool CanShootAtPoint(Vec3 target)
         {
-            if ((target - _artilleryBase.GlobalPosition).Length <= MinRange)
+            if ((target - _artilleryBase.GlobalPosition).Length <= MinRange+20)
             {
                 return false;
             }
@@ -788,9 +718,8 @@ namespace TOW_Core.Battle.Artillery
             {
                 return false;
             }
-
-            //TOWCommon.Say("here" + "pitch: " +_currentPitch+ " req :"+ requiredElevation+ IsWithinToleranceRange(requiredElevation, _currentPitch) +" "+ Math.Abs(requiredElevation - _currentPitch));
-            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);// && Scene.CheckPointCanSeePoint(_projectileReleasePoint.GetGlobalFrame().Advance(1).origin, target, null);
+            
+            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);
         }
 
         private bool IsInRange(Vec3 target)
@@ -808,7 +737,7 @@ namespace TOW_Core.Battle.Artillery
             Vec3 highAngle = Vec3.Zero;
             float calculatedMuzzle = MuzzleVelocity;
 
-            for (float i = miniumMuzzleVelocity; i <maximumMuzzleVelocity; i += 0.1f)
+            for (float i = miniumMuzzleVelocity; i <maximumMuzzleVelocity; i += 2.5f+MBRandom.RandomFloatRanged(-1 , 1))
             {
                 var result = BallisticSolver.SolveBallisticArc(_projectileReleasePoint.GlobalPosition, i, target, MBGlobals.Gravity, out lowAngle, out highAngle);
 
@@ -818,25 +747,18 @@ namespace TOW_Core.Battle.Artillery
                     break;
                 }
             }
-
-            
             
             float low, high;
             low = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, lowAngle));
             high = TOWMath.GetDegreeFromRadians(Vec3.AngleBetweenTwoVectors(_artilleryBase.GetGlobalFrame().rotation.f, highAngle));
             var heightDifference = target.ToWorldPosition().GetGroundZ()- _projectileReleasePoint.GetGlobalFrame().origin.ToWorldPosition().GetGroundVec3().Z;
             
-            //eightDifference= _projectileReleasePoint.GlobalPosition.y < target.y ? heightDifference * -1 : heightDifference;
             if (low > MinPitch && low < MaxPitch)
             {
-              
                 _calculatedMuzzle = calculatedMuzzle;
-              
-               
                 _currentCalculatedFlightTime = GetTimeOfProjectileFlight(_calculatedMuzzle, low.ToRadians(),
                     _projectileReleasePoint.GetGlobalFrame().origin.ToWorldPosition().GetGroundVec3().Z, 
                     target.ToWorldPosition().GetGroundZ());
-                // TOWCommon.Say("height diff "+heightDifference+ "+" + _currentCalculatedFlightTime);
                 return low;
             } 
             else if(high < MaxPitch && high > MinPitch)
@@ -846,9 +768,8 @@ namespace TOW_Core.Battle.Artillery
                 _currentCalculatedFlightTime = GetTimeOfProjectileFlight(_calculatedMuzzle, high.ToRadians(),
                     _projectileReleasePoint.GetGlobalFrame().origin.ToWorldPosition().GetGroundVec3().Z, 
                     target.ToWorldPosition().GetGroundZ());
-                //TOWCommon.Say("projectile entry"+ _projectileReleasePoint.GetGlobalFrame().origin.ToWorldPosition().GetGroundVec3() + "| y  target" + _currentCalculatedFlightTime);
-                
-                 return high;
+
+                return high;
             }
             _calculatedMuzzle = MuzzleVelocity;
             _currentCalculatedFlightTime = 5;
