@@ -34,7 +34,7 @@ namespace TOW_Core.Battle.StatusEffects
         public EffectType Type { get; set; }
 
         [XmlIgnore]
-        public int CurrentDuration { get; set; }
+        public float CurrentDuration { get; set; }
         [XmlIgnore]
         public Agent Affector { get; set; }
 

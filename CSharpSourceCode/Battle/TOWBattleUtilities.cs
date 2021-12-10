@@ -47,7 +47,15 @@ namespace TOW_Core.Battle
         {
             foreach (var agent in agents)
             {
-                agent.ApplyStatusEffect(effectId);
+                if (damager != null)
+                {
+                    agent.ApplyStatusEffect(effectId,damager);
+                }
+                else
+                {
+                    agent.ApplyStatusEffect(effectId);
+                }
+                
             }
         }
     }
