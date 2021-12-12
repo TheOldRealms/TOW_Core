@@ -15,6 +15,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
+        /*
         private bool isMainAgentChecked;
         private IGauntletMovie weaponMovie;
         private bool _isActive;
@@ -315,6 +316,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnPhotoModeDeactivated()
         {
             weaponLayer._gauntletUIContext.ContextAlpha = 1f;
-        }
+        }*/
     }
 }

@@ -179,7 +179,7 @@ namespace TOW_Core
                 starter.AddModel(new TORPartySizeModel());
                 starter.AddModel(new TORCharacterStatsModel());
                 starter.AddModel(new TORPartyWageModel());
-                starter.AddModel(new TORPartySpeedCalculatingModel());
+                //starter.AddModel(new TORPartySpeedCalculatingModel());
                 starter.AddModel(new TORPrisonerRecruitmentCalculationModel());
                 starter.AddModel(new TORMarriageModel());
 
@@ -195,8 +195,8 @@ namespace TOW_Core
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
-            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
-            mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
+            //mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+            //mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehavior(new MusketFireEffectMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());

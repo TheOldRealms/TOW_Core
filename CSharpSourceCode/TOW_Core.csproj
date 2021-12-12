@@ -372,12 +372,12 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
+    <Compile Include="HarmonyPatches\AgentPatches.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\InventoryPatches.cs" />
     <Compile Include="HarmonyPatches\ItemObjectPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
-    <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\IMagicWeaponHitEffect.cs" />
@@ -451,7 +451,6 @@
     <Compile Include="HarmonyPatches\WorldMapDebugPatch.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />

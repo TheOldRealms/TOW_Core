@@ -13,6 +13,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
+    /*
     public class TORUrbanCharactersCampaignBehavior : CampaignBehaviorBase
     {
         public TORUrbanCharactersCampaignBehavior()
@@ -56,7 +57,13 @@ namespace TOW_Core.CampaignSupport
 
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
         {
-            this._companionTemplates = new List<CharacterObject>(from x in CharacterObject.Templates
+            var cultures = MBObjectManager.Instance.GetObjectTypeList<CultureObject>();
+            List<CharacterObject> templates = new List<CharacterObject>();
+            foreach(var culture in cultures)
+            {
+                templates.AddRange(culture.NotableAndWandererTemplates);
+            }
+            this._companionTemplates = new List<CharacterObject>(from x in templates
                 where x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()
                 select x);
             this._nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(this._randomCompanionSpawnFrequencyInWeeks);
@@ -800,5 +807,6 @@ namespace TOW_Core.CampaignSupport
         private const float NotableSpawnChance = 0.8f;
 
         private const float TargetCompanionNumber = 25f;
-    }
+
+    }*/
 }

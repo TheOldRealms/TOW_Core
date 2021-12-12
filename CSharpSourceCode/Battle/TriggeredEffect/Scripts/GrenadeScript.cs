@@ -44,7 +44,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, shooterAgent);
             }
         }
-        protected override TickRequirement GetTickRequirement()
+        public override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }

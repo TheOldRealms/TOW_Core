@@ -95,7 +95,7 @@ namespace TOW_Core.HarmonyPatches
                 }
                 troopToBeGiven = num2;
             }
-            mobileParty.InitializeMobileParty(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, 0f, 0f, troopToBeGiven);
+            mobileParty.InitializeMobilePartyAtPosition(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, troopToBeGiven);
             if (caravanLeader != null)
             {
                 mobileParty.MemberRoster.AddToCounts(caravanLeader.CharacterObject, 1, true, 0, 0, true, -1);

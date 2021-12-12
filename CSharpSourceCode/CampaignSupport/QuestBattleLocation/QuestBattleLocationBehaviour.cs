@@ -3,6 +3,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
@@ -49,7 +50,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void onGameStart(CampaignGameStarter obj)
         {
-            obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.none, null);
+            obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.None, null);
             obj.AddGameMenuOption("questlocation_menu", "doquestbattle", "{QUEST_TEXT} (battle)", this.doquestbattle_condition, this.doquestbattle_consequence);
             obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate(MenuCallbackArgs args)
             {

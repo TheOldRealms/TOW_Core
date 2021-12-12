@@ -44,7 +44,7 @@ namespace TOW_Core.Abilities.Scripts
             SetScriptComponentToTick(GetTickRequirement());
         }
 
-        protected override TickRequirement GetTickRequirement()
+        public override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }

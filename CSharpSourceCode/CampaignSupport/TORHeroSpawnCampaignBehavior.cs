@@ -481,20 +481,20 @@ namespace TOW_Core.CampaignSupport
                 if (firstTime)
                 {
                     int num2 = 0;
-                    while (num2 < clan.TemplateCharacterList.Count && num > 0)
+                    while (num2 < clan.MinorFactionCharacterTemplates.Count && num > 0)
                     {
-                        TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.TemplateCharacterList[num2], clan);
+                        TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.MinorFactionCharacterTemplates[num2], clan);
                         num--;
                         num2++;
                     }
                 }
-                if (num > 0 && clan.TemplateCharacterList != null && !clan.TemplateCharacterList.IsEmpty<CharacterObject>())
+                if (num > 0 && clan.MinorFactionCharacterTemplates != null && !clan.MinorFactionCharacterTemplates.IsEmpty<CharacterObject>())
                 {
                     for (int i = 0; i < num; i++)
                     {
                         if (MBRandom.RandomFloat < Campaign.Current.Models.HeroSpawnModel.DailyMinorFactionHeroSpawnChance)
                         {
-                            TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.TemplateCharacterList.GetRandomElementInefficiently<CharacterObject>(), clan);
+                            TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.MinorFactionCharacterTemplates.GetRandomElementInefficiently<CharacterObject>(), clan);
                         }
                     }
                 }
