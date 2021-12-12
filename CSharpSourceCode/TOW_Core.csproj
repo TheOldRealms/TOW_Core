@@ -41,7 +41,7 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(GameDir)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOR_Armory*TOR_Environment*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
+    <StartArguments>/singleplayer _MODULES_%2aTOW_PreNative%2aNative%2aSandBoxCore%2aSandBox%2aStoryMode%2aCustomBattle%2aTOR_Armory%2aTOR_Environment%2aTOW_Core%2a_MODULES_</StartArguments>
     <StartWorkingDirectory>$(GameDir)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
@@ -319,16 +319,24 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\Components\ArtilleryAI.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
+    <Compile Include="Battle\AI\Decision\TacticalBehaviorOption.cs" />
     <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
+    <Compile Include="Battle\Artillery\Artillery.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryView.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
+    <Compile Include="Battle\Artillery\BallisticSolver.cs" />
+    <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\FireArms\BlunderbussMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
@@ -367,6 +375,7 @@
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\InventoryPatches.cs" />
+    <Compile Include="HarmonyPatches\ItemObjectPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />

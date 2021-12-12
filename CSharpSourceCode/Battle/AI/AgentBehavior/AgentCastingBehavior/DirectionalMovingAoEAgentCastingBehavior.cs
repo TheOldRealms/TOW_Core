@@ -18,7 +18,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Execute()
         {
-            var castingPosition = CalculateCastingPosition(CurrentTarget.Formation);
+            var castingPosition = CurrentTarget.Formation != null ? CalculateCastingPosition(CurrentTarget.Formation) : Agent.Position;
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 

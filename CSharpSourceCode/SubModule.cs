@@ -36,6 +36,7 @@ using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
+using TOW_Core.Battle.Artillery;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
@@ -74,15 +75,16 @@ namespace TOW_Core
                     Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
                     Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
                 }
+                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
+                {
+                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
+                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
+                }
             }
         }
 
         protected override void OnSubModuleLoad()
         {
-            if(AppDomain.CurrentDomain.BaseDirectory == "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Mount & Blade II Bannerlord\\Modules\\TOW_Core\\bin\\Win64_Shipping_wEditor")
-            {
-                return;
-            }
 
             Harmony harmony = new Harmony("mod.harmony.theoldworld");
             harmony.PatchAll();
@@ -117,7 +119,7 @@ namespace TOW_Core
 
         public void LoadFontAssets()
         {
-            UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+            //UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         /// <summary>
@@ -199,8 +201,9 @@ namespace TOW_Core
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());
-            //mission.AddMissionBehavior(new GrenadesMissionLogic());
+            //mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
+            mission.AddMissionBehavior(new ArtilleryViewController());
             if (Game.Current.GameType is Campaign)
             {
                 mission.AddMissionBehavior(new BattleInfoMissionLogic());
