@@ -34,6 +34,7 @@ namespace TOW_Core.HarmonyPatches
             {"Heroes", "tow_heroes.xml"},
             {"Kingdoms", "tow_kingdoms.xml"},
             {"Factions", "tow_clans.xml"},
+            {"SPCultures", "tow_cultures.xml" }
         };
 
         [HarmonyPrefix]
