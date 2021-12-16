@@ -222,17 +222,19 @@ namespace TOW_Core.CampaignSupport
                                   where x.IsTown && x.IsSuitableForHero(hero)
                                   select x).ToArray<Settlement>();
             Settlement settlement;
-            if (array.Any<Settlement>())
+            if (hero.IsNotable)
             {
-                settlement = MBRandom.ChooseWeighted<Settlement>(array, delegate (Settlement x)
+                settlement = hero.BornSettlement;
+            }
+            else if (array.Any<Settlement>())
+            {
+                List<ValueTuple<Settlement, float>> list2 = new List<ValueTuple<Settlement, float>>();
+                foreach (Settlement settlement2 in array)
                 {
-                    float moveScoreForNoble = this.GetMoveScoreForNoble(hero, x.Town);
-                    if (moveScoreForNoble < minimumScore)
-                    {
-                        return 0f;
-                    }
-                    return moveScoreForNoble;
-                });
+                    float moveScoreForNoble = this.GetMoveScoreForNoble(hero, settlement2.Town);
+                    list2.Add(new ValueTuple<Settlement, float>(settlement2, (moveScoreForNoble >= minimumScore) ? moveScoreForNoble : 0f));
+                }
+                settlement = MBRandom.ChooseWeighted<Settlement>(list2);
             }
             else
             {
@@ -479,20 +481,20 @@ namespace TOW_Core.CampaignSupport
                 if (firstTime)
                 {
                     int num2 = 0;
-                    while (num2 < clan.TemplateCharacterList.Count && num > 0)
+                    while (num2 < clan.MinorFactionCharacterTemplates.Count && num > 0)
                     {
-                        TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.TemplateCharacterList[num2], clan);
+                        TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.MinorFactionCharacterTemplates[num2], clan);
                         num--;
                         num2++;
                     }
                 }
-                if (num > 0 && clan.TemplateCharacterList != null && !clan.TemplateCharacterList.IsEmpty<CharacterObject>())
+                if (num > 0 && clan.MinorFactionCharacterTemplates != null && !clan.MinorFactionCharacterTemplates.IsEmpty<CharacterObject>())
                 {
                     for (int i = 0; i < num; i++)
                     {
                         if (MBRandom.RandomFloat < Campaign.Current.Models.HeroSpawnModel.DailyMinorFactionHeroSpawnChance)
                         {
-                            TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.TemplateCharacterList.GetRandomElementInefficiently<CharacterObject>(), clan);
+                            TORHeroSpawnCampaignBehavior.CreateMinorFactionHeroFromTemplate(clan.MinorFactionCharacterTemplates.GetRandomElementInefficiently<CharacterObject>(), clan);
                         }
                     }
                 }

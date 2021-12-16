@@ -55,9 +55,8 @@ namespace TOW_Core.Battle.AI.Decision
             var evaluations = activeAxes
                 .Select(axis => axis.Evaluate(target))
                 .ToList();
-
-            if (!evaluations.Any()) return 0.0f;
-            return (float) Math.Pow(evaluations.Aggregate((a, x) => a * x), 1.0 / activeAxes.Count);
+            
+            return target.UtilityValue = !evaluations.Any() ? 0.0f : (float) Math.Pow(evaluations.Aggregate((a, x) => a * x), 1.0 / activeAxes.Count);
         }
 
         public static double ArithmeticMean(this List<Axis> axes, Target target)

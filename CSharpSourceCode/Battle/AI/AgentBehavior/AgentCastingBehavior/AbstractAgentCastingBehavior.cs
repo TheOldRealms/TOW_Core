@@ -23,7 +23,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected List<Axis> AxisList;
 
         public Target CurrentTarget = new Target();
-        public Dictionary<(IAgentBehavior, Target), float> LatestScores { get; private set; }
+        public List<TacticalBehaviorOption> LatestScores { get; private set; }
 
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
 
@@ -102,26 +102,28 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public abstract void Terminate();
 
-        public Dictionary<(IAgentBehavior, Target), float> CalculateUtility()
+        public List<TacticalBehaviorOption> CalculateUtility()
         {
-            LatestScores = new Dictionary<(IAgentBehavior, Target), float>();
-
-            FindTargets(Agent, AbilityTemplate.AbilityTargetType)
-                .Select(target => (target, UtilityFunction(target)))
-                .Do(pair => LatestScores.Add((this, pair.target), pair.Item2));
+            LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+                .Select(CalculateUtility)
+                .Select(target => new TacticalBehaviorOption {Target = target, Behavior = this})
+                .ToList();
 
             return LatestScores;
         }
 
-        protected virtual float UtilityFunction(Target target)
+        protected virtual Target CalculateUtility(Target target)
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional())
             {
-                return 0.0f;
+                target.UtilityValue = 0.0f;
+                return target;
             }
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
-            return hysteresis + AxisList.GeometricMean(target);
+            AxisList.GeometricMean(target);
+            target.UtilityValue += hysteresis;
+            return target;
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
@@ -131,17 +133,17 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 case AbilityTargetType.Allies:
                     return agent.Team.QuerySystem.AllyTeams
                         .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .Select(form => new Target {Formation = form})
                         .ToList();
                 case AbilityTargetType.Self:
                     return new List<Target>()
                     {
-                        new Target {Agent = agent, AbilityTargetType = targetType}
+                        new Target {Agent = agent}
                     };
                 default:
                     return agent.Team.QuerySystem.EnemyTeams
                         .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form, AbilityTargetType = targetType})
+                        .Select(form => new Target {Formation = form})
                         .ToList();
             }
         }

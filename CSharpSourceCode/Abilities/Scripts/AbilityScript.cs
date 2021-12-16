@@ -9,7 +9,7 @@ using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public abstract class AbilityScript : ScriptComponentBehaviour
+    public abstract class AbilityScript : ScriptComponentBehavior
     {
         protected Ability _ability;
         private int _soundIndex;
@@ -44,7 +44,7 @@ namespace TOW_Core.Abilities.Scripts
             SetScriptComponentToTick(GetTickRequirement());
         }
 
-        protected override TickRequirement GetTickRequirement()
+        public override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }

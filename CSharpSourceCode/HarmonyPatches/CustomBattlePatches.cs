@@ -96,7 +96,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(CustomGame), "LoadCustomBattleScenes")]
         public static void Postfix5(ref CustomGame __instance, ref XmlDocument doc)
         {
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_custombattlescenes.xml");
+            var path = Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_custombattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();

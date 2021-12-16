@@ -44,6 +44,7 @@
         <module_sound name="musket_fire_sound_3" sound_category="mission_combat" path="musket_fire3.wav" />
         <module_sound name="musket_fire_sound_4" sound_category="mission_combat" path="musket_fire4.wav" />
         <module_sound name="musket_fire_sound_5" sound_category="mission_combat" path="musket_fire5.wav" />
+        <module_sound name="mortar_shot" sound_category="mission_combat" path="mortar_shot.ogg" />
         <module_sound name="fireball" sound_category="mission_ambient_3d_big" path="fireball.wav" />
         <module_sound name="dart" sound_category="mission_ambient_3d_big" path="dart_sound.ogg" />
         <module_sound name="fireball_explosion" sound_category="mission_ambient_3d_big" path="fireball_explosion.wav" />

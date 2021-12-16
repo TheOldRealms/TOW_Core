@@ -18,12 +18,15 @@ namespace TOW_Core.HarmonyPatches
         {
             if (__instance.Position2D.IsNonZero() && !PartyBase.IsPositionOkForTraveling(__instance.Position2D))
             {
+                //teleport party to a valid navmesh position.
+                __instance.Position2D = Settlement.All.First().GatePosition;
+                /*
                 var debug = SettlementHelper.FindNearestVillage(null, __instance);
                 if (debug == null)
                 {
-                    //teleport party to a valid navmesh position.
-                    __instance.Position2D = Settlement.All.First().GatePosition;
-                }
+                    
+                    
+                }*/
             }
             return true;
         }
