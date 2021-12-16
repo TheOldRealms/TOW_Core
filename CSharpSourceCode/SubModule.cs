@@ -195,9 +195,9 @@ namespace TOW_Core
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
-            //mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
-            //mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehavior(new MusketFireEffectMissionLogic());
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+            mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
+            mission.AddMissionBehavior(new FireArmsMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());
@@ -211,7 +211,6 @@ namespace TOW_Core
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehavior(new ShieldPatternsMissionLogic());
-            mission.AddMissionBehavior(new BlunderbussMissionLogic());
         }
 
         private void LoadStatusEffects()
