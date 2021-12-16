@@ -195,9 +195,9 @@ namespace TOW_Core
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
-            //mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
-            //mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehavior(new MusketFireEffectMissionLogic());
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+            mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
+            mission.AddMissionBehavior(new FireArmsMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());

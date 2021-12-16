@@ -332,6 +332,7 @@
     <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
+    <Compile Include="Battle\Crosshairs\Crosshair.cs" />
     <Compile Include="Battle\FireArms\BlunderbussMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
@@ -405,7 +406,7 @@
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
-    <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\FireArms\FireArmsMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
