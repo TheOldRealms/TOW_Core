@@ -34,7 +34,7 @@ namespace TOW_Core.HarmonyPatches
             {"Heroes", "tow_heroes.xml"},
             {"Kingdoms", "tow_kingdoms.xml"},
             {"Factions", "tow_clans.xml"},
-            {"SPCultures", "tow_cultures.xml" }
+            //{"SPCultures", "tow_cultures.xml" }
         };
 
         [HarmonyPrefix]
@@ -163,14 +163,14 @@ namespace TOW_Core.HarmonyPatches
             __instance.OptionsController.Options.Remove(option);
             __instance.RefreshValues();
         }
-
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(MapScene), "Load")]
         public static bool CustomMapSceneLoad(MapScene __instance, ref Scene ____scene, ref MBAgentRendererSceneController ____agentRendererSceneController)
         {
             Debug.Print("Creating map scene", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene = Scene.CreateNewScene(false);
-            ____scene.SetName("MapScene");
+            ____scene.SetName("TorMapScene");
             ____scene.SetClothSimulationState(true);
             ____agentRendererSceneController = MBAgentRendererSceneController.CreateNewAgentRendererSceneController(____scene, 4096);
             ____scene.SetOcclusionMode(true);
@@ -191,7 +191,7 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-
+        
         [HarmonyPostfix]
         [HarmonyPatch(typeof(MapScene), "GetMapBorders")]
         public static void CustomBorders(MapScene __instance, ref Vec2 minimumPosition, ref Vec2 maximumPosition, ref float maximumHeight)
@@ -200,7 +200,7 @@ namespace TOW_Core.HarmonyPatches
             maximumPosition = new Vec2(1750, 1500);
             maximumHeight = 350;
         }
-
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
