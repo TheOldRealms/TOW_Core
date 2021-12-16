@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Execute()
         {
-            var castingPosition = CalculateCastingPosition(CurrentTarget.Formation);
+            var castingPosition = CurrentTarget.Formation != null ? CalculateCastingPosition(CurrentTarget.Formation) : Agent.Position;
             var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
 
@@ -40,7 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var medianPositionPosition = targetFormation.QuerySystem.MedianPosition;
             return medianPositionPosition.GetGroundVec3() + (targetFormation.Direction * targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.GetGroundZ());
         }
-        
+
         public override bool IsPositional()
         {
             return true;

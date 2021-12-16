@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
@@ -28,11 +29,56 @@ namespace TOW_Core.Utilities
             logger.Log(severity, message);
         }
 
+        public static void CopyEquipmentToClipBoard(SPInventoryVM vm)
+        {
+            XElement xelement = new XElement("EquipmentRoster");
+            AddItem(xelement, vm.CharacterWeapon1Slot.ItemRosterElement.EquipmentElement.Item, "Item0");
+            AddItem(xelement, vm.CharacterWeapon2Slot.ItemRosterElement.EquipmentElement.Item, "Item1");
+            AddItem(xelement, vm.CharacterWeapon3Slot.ItemRosterElement.EquipmentElement.Item, "Item2");
+            AddItem(xelement, vm.CharacterWeapon4Slot.ItemRosterElement.EquipmentElement.Item, "Item3");
+            AddItem(xelement, vm.CharacterHelmSlot.ItemRosterElement.EquipmentElement.Item, "Head");
+            AddItem(xelement, vm.CharacterCloakSlot.ItemRosterElement.EquipmentElement.Item, "Cape");
+            AddItem(xelement, vm.CharacterTorsoSlot.ItemRosterElement.EquipmentElement.Item, "Body");
+            AddItem(xelement, vm.CharacterGloveSlot.ItemRosterElement.EquipmentElement.Item, "Gloves");
+            AddItem(xelement, vm.CharacterBootSlot.ItemRosterElement.EquipmentElement.Item, "Leg");
+            AddItem(xelement, vm.CharacterMountSlot.ItemRosterElement.EquipmentElement.Item, "Horse");
+            AddItem(xelement, vm.CharacterMountArmorSlot.ItemRosterElement.EquipmentElement.Item, "HorseHarness");
+
+            XElement xelement2 = new XElement("EquipmentRoster");
+            xelement2.Add(new XAttribute("civilian", true));
+            AddItem(xelement2, vm.CharacterWeapon1Slot.ItemRosterElement.EquipmentElement.Item, "Item0");
+            AddItem(xelement2, vm.CharacterWeapon2Slot.ItemRosterElement.EquipmentElement.Item, "Item1");
+            AddItem(xelement2, vm.CharacterWeapon3Slot.ItemRosterElement.EquipmentElement.Item, "Item2");
+            AddItem(xelement2, vm.CharacterWeapon4Slot.ItemRosterElement.EquipmentElement.Item, "Item3");
+            AddItem(xelement2, vm.CharacterHelmSlot.ItemRosterElement.EquipmentElement.Item, "Head");
+            AddItem(xelement2, vm.CharacterCloakSlot.ItemRosterElement.EquipmentElement.Item, "Cape");
+            AddItem(xelement2, vm.CharacterTorsoSlot.ItemRosterElement.EquipmentElement.Item, "Body");
+            AddItem(xelement2, vm.CharacterGloveSlot.ItemRosterElement.EquipmentElement.Item, "Gloves");
+            AddItem(xelement2, vm.CharacterBootSlot.ItemRosterElement.EquipmentElement.Item, "Leg");
+            AddItem(xelement2, vm.CharacterMountSlot.ItemRosterElement.EquipmentElement.Item, "Horse");
+            AddItem(xelement2, vm.CharacterMountArmorSlot.ItemRosterElement.EquipmentElement.Item, "HorseHarness");
+            string text = xelement.ToString() + "\r\n" + xelement2.ToString();
+
+            Clipboard.SetText(text);
+            InformationManager.DisplayMessage(new InformationMessage("Equipment XML copied!", Colors.Green));
+        }
+
+        private static void AddItem(XElement element, ItemObject item, string slot)
+        {
+            if (item != null)
+            {
+                XElement xelement = new XElement("equipment");
+                xelement.Add(new XAttribute("slot", slot));
+                xelement.Add(new XAttribute("id", "Item." + item.StringId));
+                element.Add(xelement);
+            }
+        }
+
         public static string GetRandomScene()
         {
             var filterednames = new List<string>();
             string pickedname = "towmm_menuscene_01";
-            var path = BasePath.Name + "Modules/TOW_EnvironmentAssets/SceneObj/";
+            var path = BasePath.Name + "Modules/TOR_Environment/SceneObj/";
             if (Directory.Exists(path))
             {
                 var dirnames = Directory.GetDirectories(path);

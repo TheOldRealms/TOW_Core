@@ -2,6 +2,7 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -10,6 +11,10 @@ namespace TOW_Core.CampaignSupport.Models
     {
         public override ExplainedNumber CalculateFinalSpeed(MobileParty mobileParty, ExplainedNumber finalSpeed)
         {
+            if (mobileParty.IsCustomParty && !((CustomPartyComponent)mobileParty.PartyComponent).CustomPartyBaseSpeed.ApproximatelyEqualsTo(0f, 1E-05f))
+            {
+                finalSpeed = new ExplainedNumber(((CustomPartyComponent)mobileParty.PartyComponent).CustomPartyBaseSpeed, false, null);
+            }
             PartyBase party = mobileParty.Party;
             TerrainType faceTerrainType = Campaign.Current.MapSceneWrapper.GetFaceTerrainType(mobileParty.CurrentNavigationFace);
             Hero effectiveScout = mobileParty.EffectiveScout;
@@ -28,10 +33,9 @@ namespace TOW_Core.CampaignSupport.Models
                 }
                 float num2 = (num / (float)mobileParty.MemberRoster.Count > 0.75f) ? -0.15f : -0.3f;
                 finalSpeed.AddFactor(num2, _movingInForest);
-                CharacterObject leader = mobileParty.Leader;
-                if (leader != null && leader.GetFeatValue(DefaultFeats.Cultural.BattanianForestFeat))
+                if (PartyBaseHelper.HasFeat(mobileParty.Party, DefaultCulturalFeats.BattanianForestSpeedFeat))
                 {
-                    float value = DefaultFeats.Cultural.BattanianForestFeat.EffectBonus * -num2;
+                    float value = DefaultCulturalFeats.BattanianForestSpeedFeat.EffectBonus * -num2;
                     finalSpeed.AddFactor(value, _culture);
                 }
             }
@@ -41,7 +45,7 @@ namespace TOW_Core.CampaignSupport.Models
             }
             else if (faceTerrainType == TerrainType.Desert || faceTerrainType == TerrainType.Dune)
             {
-                if (mobileParty.Leader == null || !mobileParty.Leader.GetFeatValue(DefaultFeats.Cultural.AseraiDesertFeat))
+                if (!PartyBaseHelper.HasFeat(mobileParty.Party, DefaultCulturalFeats.AseraiDesertFeat))
                 {
                     finalSpeed.AddFactor(-0.1f, _desert);
                 }
@@ -58,12 +62,9 @@ namespace TOW_Core.CampaignSupport.Models
             {
                 finalSpeed.AddFactor(-0.1f, _snow);
             }
-            if (Campaign.Current.IsNight)
+            if (Campaign.Current.IsNight && mobileParty.Party.Culture.StringId != "khuzait")
             {
-                if (mobileParty.Party.Culture.StringId != "khuzait")
-                {
-                    finalSpeed.AddFactor(-0.25f, _night);
-                }
+                finalSpeed.AddFactor(-0.25f, _night);
                 if (effectiveScout != null && effectiveScout.GetPerkValue(DefaultPerks.Scouting.NightRunner))
                 {
                     finalSpeed.AddFactor(DefaultPerks.Scouting.NightRunner.PrimaryBonus, DefaultPerks.Scouting.NightRunner.Name);
@@ -73,9 +74,9 @@ namespace TOW_Core.CampaignSupport.Models
             {
                 finalSpeed.AddFactor(DefaultPerks.Scouting.DayTraveler.PrimaryBonus, DefaultPerks.Scouting.DayTraveler.Name);
             }
-            if (party.Leader != null)
+            if (party.LeaderHero != null)
             {
-                PerkHelper.AddEpicPerkBonusForCharacter(DefaultPerks.Scouting.UncannyInsight, party.Leader, DefaultSkills.Scouting, true, ref finalSpeed, 200);
+                PerkHelper.AddEpicPerkBonusForCharacter(DefaultPerks.Scouting.UncannyInsight, party.LeaderHero.CharacterObject, DefaultSkills.Scouting, true, ref finalSpeed, 200);
             }
             if (effectiveScout != null)
             {
@@ -102,16 +103,11 @@ namespace TOW_Core.CampaignSupport.Models
         }
 
 
-        private static readonly TextObject _movingInForest = new TextObject("{=rTFaZCdY}Forest", null);
-
-        private static readonly TextObject _fordEffect = new TextObject("{=NT5fwUuJ}Fording", null);
-
-        private static readonly TextObject _night = new TextObject("{=fAxjyMt5}Night", null);
-
-        private static readonly TextObject _snow = new TextObject("{=vLjgcdgB}Snow", null);
-
-        private static readonly TextObject _desert = new TextObject("{=ecUwABe2}Desert", null);
-
-        private static readonly TextObject _culture = new TextObject("{=PUjDWe5j}Culture", null);
+        private readonly TextObject _movingInForest = new TextObject("{=rTFaZCdY}Forest", null);
+        private readonly TextObject _fordEffect = new TextObject("{=NT5fwUuJ}Fording", null);
+        private readonly TextObject _night = new TextObject("{=fAxjyMt5}Night", null);
+        private readonly TextObject _snow = new TextObject("{=vLjgcdgB}Snow", null);
+        private readonly TextObject _desert = new TextObject("{=ecUwABe2}Desert", null);
+        private readonly TextObject _culture = GameTexts.FindText("str_culture", null);
     }
 }

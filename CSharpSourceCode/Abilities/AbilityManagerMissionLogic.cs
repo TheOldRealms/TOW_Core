@@ -25,7 +25,7 @@ namespace TOW_Core.Abilities
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         private Dictionary<Agent, PartyGroupTroopSupplier> _summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
-        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
+        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
         protected override void OnEndMission()
         {
