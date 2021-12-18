@@ -1,0 +1,912 @@
+<?xml version="1.0"?>
+<ArrayOfCharacterExtendedInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CharacterExtendedInfo TroopId="tow_wanderer_empire_0">
+    <Abilities>
+      <string>Fireball</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_empire_1">
+    <Abilities>
+      <string>HealingAOE</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_empire_2">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_empire_3">
+    <Abilities>
+      <string>Dart</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_empire_4">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_vampire_0">
+    <Abilities>
+      <string>SummonSkeleton</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_vampire_1">
+    <Abilities>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_wanderer_vampire_2">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_nurgle_warrior">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_braganza_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_cursed_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_leopard_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_voland_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_miragliano_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_dog_ricco_01">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_recruit">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_duelist">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_cavalry">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_state_troop">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_scout">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_archer">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_empire_captain">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_empire_ranged">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_empire_vetguard">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_empire_guard">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_crossbowman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_spearman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_swordsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_outrider">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_huntsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_pistolier">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_marksman_handgunner">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_handgunner">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_greatsword">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_armored_swordsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_armored_spearman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_halberdier">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_knight">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_blood_knights_foot" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_skeleton_recruit" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_skeleton_spearman" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_black_knight" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_skeleton_warrior" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_grave_guard" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_hex_wraith">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_blood_knights_mounted" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_grave_guard_greatsword" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_cairn_wraith" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_secessionist_spearman">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_secessionist_swordsman">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_secessionist_hunter">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_chaos_cult_acolyte">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_chaos_cult_darksoul">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_chaos_cult_magister">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_state_troop_vc">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_archer_vc">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_outlaw">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_outlaw_leader">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_vc_captain">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_vc_ranged">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_caravan_vc_guard">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_chaos_chosen">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_nurgle_warrior_002">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_nurgle_warrior_003">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_chs_khorne_warrior">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_villager">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_vc_villager">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_secessionist_sergeant">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_townsman_villager">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_merchant_empire">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_huntsman_vc">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_empire_recruit_vc">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="tow_summoned_skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="sylvania_clan_1_1">
+    <Abilities>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_first_2">
+    <Abilities>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_first_4">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_first_5">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_first_6">
+    <Abilities>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_third_1">
+    <Abilities>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_third_2">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_third_3">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord_sylvania_third_4">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="emp_lord_averland_golden_1">
+    <Abilities>
+      <string>Fireball</string>
+      <string>BurningHead</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="emp_lord_stirland_sigmarcult_1">
+    <Abilities>
+      <string>HealingAOE</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="emp_lord_stirland_sigmarcult_2">
+    <Abilities>
+      <string>HealingAOE</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="emp_lord_stirland_sigmarcult_4">
+    <Abilities>
+      <string>HealingAOE</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="emp_lord" VoiceClassName="male_empire_lord">
+    <Abilities>
+      <string>MortarSpawner</string>
+      <string>Fireball</string>
+      <string>Dart</string>
+      <string>BurningHead</string>
+      <string>WindOfDeath</string>
+      <string>ScreamingSkull</string>
+      <string>HealingAOE</string>
+      <string>SummonSkeleton</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="vc_lord" VoiceClassName="generic_vampire">
+    <Abilities>
+      <string>Fireball</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>VampireBodyOverride</string>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="wizard_lord">
+    <Abilities>
+      <string>Fireball</string>
+      <string>BurningHead</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo TroopId="necromancer_lord">
+    <Abilities>
+      <string>SummonSkeleton</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+    <DefensiveProperties>
+      <DefenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageResistance>0</DamageResistance>
+        <IsWardSave>false</IsWardSave>
+      </DefenseProperty>
+    </DefensiveProperties>
+    <OffensiveProperties>
+      <OffenseProperty>
+        <DamageType>Physical</DamageType>
+        <DamageBonusPercent>0</DamageBonusPercent>
+        <ArmorPenetration>0</ArmorPenetration>
+      </OffenseProperty>
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+</ArrayOfCharacterExtendedInfo>
