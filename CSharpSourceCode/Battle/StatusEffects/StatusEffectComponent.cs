@@ -51,14 +51,10 @@ namespace TOW_Core.Battle.StatusEffects
             foreach (StatusEffect effect in _currentEffects.Keys)
             {
                 effect.CurrentDuration--;
-
                 if (effect.CurrentDuration <= 0)
                 {
-                    if (_currentEffects[effect].Duration <= 0)
-                    {
-                        RemoveEffect(effect);
-                        return;
-                    }
+                    RemoveEffect(effect);
+                    return;
                 }
             }
 
@@ -69,13 +65,13 @@ namespace TOW_Core.Battle.StatusEffects
             if (dotEffect != null)
             {
                 data = _currentEffects[dotEffect];
-            } 
+            }
 
             //Temporary method for applying effects from the aggregate. This needs to go to a damage manager/calculator which will use the 
             //aggregated information to determine how much damage to apply to the agent
             if (Agent.IsActive() && Agent != null && !Agent.IsFadingOut())
             {
-                if(_effectAggregate.DamageOverTime > 0 && data != null)
+                if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
@@ -89,7 +85,7 @@ namespace TOW_Core.Battle.StatusEffects
         private void CalculateEffectAggregate()
         {
             _effectAggregate = new EffectAggregate();
-            foreach(var effect in _currentEffects.Keys)
+            foreach (var effect in _currentEffects.Keys)
             {
                 _effectAggregate.AddEffect(effect);
             }

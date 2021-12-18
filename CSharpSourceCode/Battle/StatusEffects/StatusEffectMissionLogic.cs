@@ -28,7 +28,6 @@ namespace TOW_Core.Battle.StatusEffects
         {
             foreach(var agent in Mission.Current.AllAgents)
             {
-                var agent = Mission.Current.Agents[num];
                 if (agent != null && agent.IsActive() && agent.Health > 0f)
                 {
                     if (agent.GetComponent<StatusEffectComponent>() != null)

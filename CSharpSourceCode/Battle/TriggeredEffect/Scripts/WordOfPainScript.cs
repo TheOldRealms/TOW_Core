@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using Timer = System.Timers.Timer;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
@@ -28,13 +28,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 {
                     var frame = agent.Frame;
                     frame.Advance(100);
-                    //agent.Retreat(new WorldPosition(Mission.Current.Scene, frame.origin));
-
-                    //var worldPos = agent.GetWorldPosition();
-                    //var dir = agent.MovementDirectionAsAngle;
-                    //agent.SetScriptedPositionAndDirection(ref worldPos, dir, true, Agent.AIScriptedFrameFlags.GoToPosition);
-                    //agent.SetIsAIPaused(true);
-                    //agent.SetLookToPointOfInterest(frame.origin);
                     var vec = frame.origin.AsVec2;
                     agent.SetMovementDirection(in vec);
                     agent.Controller = Agent.ControllerType.None;
@@ -46,6 +39,21 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     }
                 }
             }
+
+            endTimer = new Timer(9000);
+            endTimer.AutoReset = false;
+            endTimer.Elapsed += (s, e) =>
+            {
+                var enemy = triggeredAgents.FirstOrDefault();
+                if (enemy != null && enemy.Health > 0)
+                {
+                    enemy.SetActionChannel(0, ActionIndexCache.Create("act_strike_fall_back_back_rise_continue"), true, actionSpeed: 0.5f);
+                    enemy.Controller = Agent.ControllerType.AI;
+                }
+            };
+            endTimer.Start();
         }
+
+        private Timer endTimer;
     }
 }
