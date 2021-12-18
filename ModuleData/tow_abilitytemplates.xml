@@ -383,7 +383,7 @@
       ShouldSoundLoopOverDuration="false"
       CastType="Instant"
       CastTime="0.5"
-      AnimationActionName=""
+      AnimationActionName="act_release_heavy_thrown"
       TriggeredEffectID="hurl_weapons"
       Offset="0.5"
       AbilityTargetType="Enemies"
