@@ -34,6 +34,7 @@ namespace TOW_Core.HarmonyPatches
             {"Heroes", "tow_heroes.xml"},
             {"Kingdoms", "tow_kingdoms.xml"},
             {"Factions", "tow_clans.xml"},
+            //{"SPCultures", "tow_cultures.xml" }
         };
 
         [HarmonyPrefix]
@@ -95,7 +96,7 @@ namespace TOW_Core.HarmonyPatches
                 }
                 troopToBeGiven = num2;
             }
-            mobileParty.InitializeMobileParty(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, 0f, 0f, troopToBeGiven);
+            mobileParty.InitializeMobilePartyAtPosition(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, troopToBeGiven);
             if (caravanLeader != null)
             {
                 mobileParty.MemberRoster.AddToCounts(caravanLeader.CharacterObject, 1, true, 0, 0, true, -1);
@@ -143,15 +144,6 @@ namespace TOW_Core.HarmonyPatches
             }
         }
 
-        //Ideally this should not need a harmony patch, but somehow removing this on gamestart in submodule.cs still makes it run on NewGameStart event.
-        //This behaviour contains hardcoded hero / lord references that are not present because we skip loading the vanilla files.
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(BackstoryCampaignBehavior), "RegisterEvents")]
-        public static bool WhyIsThisNeeded()
-        {
-            return false;
-        }
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
             typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
@@ -171,14 +163,14 @@ namespace TOW_Core.HarmonyPatches
             __instance.OptionsController.Options.Remove(option);
             __instance.RefreshValues();
         }
-
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(MapScene), "Load")]
         public static bool CustomMapSceneLoad(MapScene __instance, ref Scene ____scene, ref MBAgentRendererSceneController ____agentRendererSceneController)
         {
             Debug.Print("Creating map scene", 0, Debug.DebugColor.White, 17592186044416UL);
             ____scene = Scene.CreateNewScene(false);
-            ____scene.SetName("MapScene");
+            ____scene.SetName("TorMapScene");
             ____scene.SetClothSimulationState(true);
             ____agentRendererSceneController = MBAgentRendererSceneController.CreateNewAgentRendererSceneController(____scene, 4096);
             ____scene.SetOcclusionMode(true);
@@ -199,7 +191,7 @@ namespace TOW_Core.HarmonyPatches
             ____scene.Tick(0.1f);
             return false;
         }
-
+        
         [HarmonyPostfix]
         [HarmonyPatch(typeof(MapScene), "GetMapBorders")]
         public static void CustomBorders(MapScene __instance, ref Vec2 minimumPosition, ref Vec2 maximumPosition, ref float maximumHeight)
@@ -208,12 +200,12 @@ namespace TOW_Core.HarmonyPatches
             maximumPosition = new Vec2(1750, 1500);
             maximumHeight = 350;
         }
-
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
         {
-            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_singleplayerbattlescenes.xml");
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_singleplayerbattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();

@@ -58,7 +58,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 }
             }
 
-            party.InitializeMobileParty(roster, TroopRoster.CreateDummyTroopRoster(), base.Settlement.Position2D, 2);
+            party.InitializeMobilePartyAtPosition(roster, TroopRoster.CreateDummyTroopRoster(), Settlement.Position2D);
             party.ActualClan = Settlement.OwnerClan;
             CharacterObject character = MBObjectManager.Instance.GetObject<CharacterObject>(_template.LeaderHeroCharacterId);
             if (character != null && character.Culture != null)
@@ -68,7 +68,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 if (_enemyLeader != null)
                 {
                     party.AddElementToMemberRoster(_enemyLeader.CharacterObject, 1);
-                    party.ChangePartyLeader(_enemyLeader.CharacterObject);
+                    party.ChangePartyLeader(_enemyLeader);
                 }
             }
 

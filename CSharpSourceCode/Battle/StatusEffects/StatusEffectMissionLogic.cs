@@ -26,7 +26,7 @@ namespace TOW_Core.Battle.StatusEffects
 
         public override void OnMissionTick(float dt)
         {
-            for (var num = 0; num < Mission.Current.Agents.Count; num++)
+            foreach(var agent in Mission.Current.AllAgents)
             {
                 var agent = Mission.Current.Agents[num];
                 if (agent != null && agent.IsActive() && agent.Health > 0f)

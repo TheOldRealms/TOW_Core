@@ -9,11 +9,11 @@ namespace TOW_Core.Utilities.Extensions
 {
     public static class MissionExtensions
     {
-        public static void RemoveMissionBehaviourIfNotNull(this Mission mission, MissionBehaviour behaviour) 
+        public static void RemoveMissionBehaviourIfNotNull(this Mission mission, MissionBehavior behavior) 
         {
-            if(behaviour != null)
+            if(behavior != null)
             {
-                mission.RemoveMissionBehaviour(behaviour);
+                mission.RemoveMissionBehavior(behavior);
             }
         }
     }

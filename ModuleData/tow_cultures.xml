@@ -30,6 +30,7 @@
 			 armed_trader="NPCCharacter.tow_caravan_empire_ranged"
 			 caravan_guard="NPCCharacter.tow_caravan_empire_guard"
 			 veteran_caravan_guard="NPCCharacter.tow_caravan_empire_vetguard"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_braganza_01"
 			 duel_preset="NPCCharacter.empire_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_empire"
 			 guard="NPCCharacter.tow_empire_halberdier"
@@ -1344,6 +1345,89 @@
 			<icon id="223" />
 			<icon id="400" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.tow_wanderer_empire_0" />
+			<template name="NPCCharacter.tow_wanderer_empire_1" />
+			<template name="NPCCharacter.tow_wanderer_empire_2" />
+			<template name="NPCCharacter.tow_wanderer_empire_3" />
+			<template name="NPCCharacter.tow_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_emp_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
@@ -1382,6 +1466,7 @@
 			 armed_trader="NPCCharacter.armed_trader_aserai"
 			 caravan_guard="NPCCharacter.caravan_guard_aserai"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_aserai"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_braganza_01"
 			 duel_preset="NPCCharacter.aserai_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_aserai"
 			 guard="NPCCharacter.guard_aserai"
@@ -1562,6 +1647,96 @@
 			<icon id="430" />
 			<icon id="309" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_aserai_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
@@ -1605,6 +1780,7 @@
 			 armed_trader="NPCCharacter.armed_trader_sturgia"
 			 caravan_guard="NPCCharacter.caravan_guard_sturgia"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_sturgia"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_braganza_01"
 			 duel_preset="NPCCharacter.sturgia_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_sturgia"
 			 guard="NPCCharacter.guard_sturgia"
@@ -1798,6 +1974,96 @@
 			<icon id="444" />
 			<icon id="445" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_sturgia_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_sturgia_one_participant_set_v2" />
@@ -1841,6 +2107,7 @@
 			 armed_trader="NPCCharacter.armed_trader_vlandia"
 			 caravan_guard="NPCCharacter.caravan_guard_vlandia"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_vlandia"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_braganza_01"
 			 duel_preset="NPCCharacter.vlandia_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_vlandia"
 			 guard="NPCCharacter.guard_vlandia"
@@ -2048,6 +2315,96 @@
 			<icon id="303" />
 			<icon id="315" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_vlandia_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_vlandia_one_participant_set_v2" />
@@ -2095,6 +2452,7 @@
 			 armed_trader="NPCCharacter.armed_trader_battania"
 			 caravan_guard="NPCCharacter.caravan_guard_battania"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_battania"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_braganza_01"
 			 duel_preset="NPCCharacter.battania_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_battania"
 			 guard="NPCCharacter.guard_battania"
@@ -2256,6 +2614,96 @@
 			<icon id="414" />
 			<icon id="415" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_battania_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_battania_one_participant_set_v2" />
@@ -2302,6 +2750,7 @@
 			 armed_trader="NPCCharacter.tow_caravan_vc_ranged"
 			 caravan_guard="NPCCharacter.tow_caravan_vc_guard"
 			 veteran_caravan_guard="NPCCharacter.tow_caravan_vc_guard"
+			 basic_mercenary_troop="NPCCharacter.tow_dog_cursed_01"
 			 duel_preset="NPCCharacter.empire_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_empire"
 			 guard="NPCCharacter.tow_grave_guard"
@@ -3583,6 +4032,87 @@
 			<icon id="313" />
 			<icon id="314" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.tow_wanderer_vampire_0" />
+			<template name="NPCCharacter.tow_wanderer_vampire_1" />
+			<template name="NPCCharacter.tow_wanderer_vampire_2" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_vampire_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>

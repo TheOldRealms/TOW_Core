@@ -49,7 +49,7 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
 
         private void ApplyCrumble()
         {
-            Agent.ApplyStatusEffect("crumble");
+            Agent.ApplyStatusEffect("crumble", Agent);
         }
     }
 }

@@ -43,11 +43,11 @@ namespace TOW_Core.Battle
             }
         }
 
-        public static void ApplyStatusEffectToAgents(IEnumerable<Agent> agents, string effectId, Agent damager = null, TargetType targetType = TargetType.All)
+        public static void ApplyStatusEffectToAgents(IEnumerable<Agent> agents, string effectId, Agent applierAgent, TargetType targetType = TargetType.All)
         {
             foreach (var agent in agents)
             {
-                agent.ApplyStatusEffect(effectId);
+                agent.ApplyStatusEffect(effectId, applierAgent);
             }
         }
     }

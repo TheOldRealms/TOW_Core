@@ -53,13 +53,13 @@ namespace TOW_Core.Battle.AI.Components
 
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
         {
-            var (newBehavior, target) = DecisionManager.EvaluateCastingBehaviors(availableCastingBehaviors);
-            if (newBehavior != current) current?.Terminate();
+            var option = DecisionManager.EvaluateCastingBehaviors(availableCastingBehaviors);
+            if (option.Behavior != current) current?.Terminate();
 
-            var returnBehavior = newBehavior as AbstractAgentCastingBehavior;
+            var returnBehavior = option.Behavior as AbstractAgentCastingBehavior;
             if (returnBehavior != null)
             {
-                returnBehavior.CurrentTarget = target;
+                returnBehavior.CurrentTarget = option.Target;
             }
 
             return returnBehavior;
