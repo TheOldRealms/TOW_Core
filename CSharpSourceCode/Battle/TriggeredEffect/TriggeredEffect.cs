@@ -14,25 +14,33 @@ namespace TOW_Core.Battle.TriggeredEffect
         private TriggeredEffectTemplate _template;
         private int _soundIndex;
         private SoundEvent _sound;
+        private Timer _timer;
+        private object _sync = new object();
 
         public TriggeredEffect(TriggeredEffectTemplate template)
         {
             _template = template;
+            
         }
 
         public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, IEnumerable<Agent> targets = null)
         {
-            Timer timer = new Timer(2000);
+            if (_template == null) return;
+            _timer = new Timer(2000);
+            _timer.AutoReset = false;
+            _timer.Enabled = false;
+            _timer.Elapsed += (s, e) =>
+            {
+                lock (_sync)
+                {
+                    Dispose();
+                }
+            };
             if (_template.SoundEffectLength > 0)
             {
-                timer.Interval = _template.SoundEffectLength * 1000;
+                _timer.Interval = _template.SoundEffectLength * 1000;
             }
-            timer.AutoReset = false;
-            timer.Elapsed += (s, e) =>
-            {
-                Dispose();
-            };
-            timer.Start();
+            _timer.Start();
 
             //Cause Damage
             if (targets == null && triggererAgent != null)
@@ -132,6 +140,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             _sound = null;
             _soundIndex = -1;
             _template = null;
+            _timer.Stop();
         }
     }
 }
