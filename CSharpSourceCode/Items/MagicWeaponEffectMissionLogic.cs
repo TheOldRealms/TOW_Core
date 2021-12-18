@@ -30,7 +30,7 @@ namespace TOW_Core.Items
                 var magiceffect = affectorWeapon.Item.GetMagicalProperties();
                 if(magiceffect.ImbuedStatusEffectId != "none")
                 {
-                    affectedAgent.ApplyStatusEffect(magiceffect.ImbuedStatusEffectId);
+                    affectedAgent.ApplyStatusEffect(magiceffect.ImbuedStatusEffectId, affectorAgent);
                 }
                 //TODO: disabling this for first release, we dont actually have an item script. This just clogs system resources and spams the screen with debug messages.
                 /*
