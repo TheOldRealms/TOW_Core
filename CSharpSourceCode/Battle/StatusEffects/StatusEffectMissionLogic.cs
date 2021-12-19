@@ -30,7 +30,7 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (agent.GetComponent<StatusEffectComponent>() != null)
                 {
-                    if (agent != null && agent.IsActive() && agent.Health > 0f)
+                    if (agent.IsActive() && agent.Health > 1f)
                     {
                         var comp = agent.GetComponent<StatusEffectComponent>();
                         comp.OnTick(dt);
