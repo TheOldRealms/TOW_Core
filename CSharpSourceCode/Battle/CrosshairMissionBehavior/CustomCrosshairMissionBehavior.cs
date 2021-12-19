@@ -23,10 +23,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnMissionScreenTick(float dt)
         {
             New();
-            if (Input.IsKeyPressed(InputKey.P))
-            {
-                TOWDebug.EquipWeapon(Agent.Main, "tow_empire_flintlock_001");
-            }
         }
 
         private void New()

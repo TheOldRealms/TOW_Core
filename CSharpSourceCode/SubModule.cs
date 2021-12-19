@@ -91,9 +91,7 @@ namespace TOW_Core
             ConfigureLogging();
 
             //This has to be here.
-            AbilityManager.LoadAbilities();
-            CustomVoiceManager.LoadVoices();
-            AttributeManager.LoadAttributes();
+            ExtendedInfoManager.Load();
             LoadStatusEffects();
             LoadSprites();
             LoadShieldPatterns();
@@ -160,7 +158,7 @@ namespace TOW_Core
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
-                starter.AddBehavior(new ExtendedInfoManager());
+                starter.AddBehavior(ExtendedInfoManager.Instance);
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());

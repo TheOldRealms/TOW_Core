@@ -139,5 +139,21 @@
           ImbuedStatusEffectID="none"
           ImbuedStatusEffectDuration="0"
           DamageVariance="0.2"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript"/>
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="word_of_pain"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Magical"
+          DamageAmount="0"
+          Radius="0"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="word_of_pain"
+          ImbuedStatusEffectDuration="5"
+          DamageVariance="0.2"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript">
+  </TriggeredEffectTemplate>          
 </ArrayOfTriggeredEffectTemplate>

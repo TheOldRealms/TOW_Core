@@ -4,6 +4,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using SandBox.Source.Missions;
+using TOW_Core.Utilities;
+using TaleWorlds.InputSystem;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -24,7 +26,7 @@ namespace TOW_Core.Battle.FireArms
 
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
-            if (shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgun" || shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "handgunMatchlock" || shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage == "pistol")
+            if (shooterAgent.WieldedWeapon.AmmoWeapon.GetModifiedItemName().ToString() == "Musket Ball")
             {
                 var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);
@@ -47,16 +49,43 @@ namespace TOW_Core.Battle.FireArms
                         }
                     }
                 }
-            }
-            if (shooterAgent.WieldedWeapon.Item.Name.Contains("Blunderbuss"))
-            {
-                var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
-                var scattering = 1f / (weaponData.Accuracy * 1.2f);
-                for (int i = 0; i < 10; i++)
+
+
+                if (shooterAgent.WieldedWeapon.Item.Name.Contains("Blunderbuss"))
                 {
+                    var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
+                    var scattering = 1f / (weaponData.Accuracy * 1.2f);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
+                        var _orientation = GetRandomOrientationForBlunderbass(orientation, scattering);
+                        Mission.AddCustomMissile(shooterAgent, missile, position, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                    }
+                }
+                if (shooterAgent.WieldedWeapon.Item.Name.Contains("Two-Barrels Pistol"))
+                {
+                    var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
                     var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-                    var _orientation = GetRandomOrientationForBlunderbass(orientation, scattering);
-                    Mission.AddCustomMissile(shooterAgent, missile, position, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                    var pos = position;
+                    pos.y -= 0.1f;
+                    Mission.AddCustomMissile(shooterAgent, missile, pos, orientation.f, orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                }
+                if (shooterAgent.WieldedWeapon.Item.Name.Contains("Four-Barrels Pistol"))
+                {
+                    var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
+                    var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
+
+                    Mat3 orient1 = orientation;
+                    orient1.RotateAboutUp(10f);
+                    Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient1, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+
+                    Mat3 orient2 = orientation;
+                    orient2.RotateAboutUp(20f);
+                    Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient2, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+
+                    Mat3 orient3 = orientation;
+                    orient3.RotateAboutUp(-15f);
+                    Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient3, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
                 }
             }
         }

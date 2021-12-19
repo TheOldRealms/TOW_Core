@@ -41,8 +41,10 @@ namespace TOW_Core.Abilities
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
                     if (_abilityComponent != null)
                     {
-                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("HurlWeapons", Agent.Main));
-                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("FireShield", Agent.Main));
+                        if (Agent.Main.HasAttribute("VampireBodyOverride") && Mission.Current.MissionTeamAIType != Mission.MissionTeamAITypeEnum.NoTeamAI)
+                        {
+                            _abilityComponent.SetSpecialMove((SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent.Main));
+                        }
                         _abilityComponent.InitializeCrosshairs();
                         _isAbilityUser = true;
                     }

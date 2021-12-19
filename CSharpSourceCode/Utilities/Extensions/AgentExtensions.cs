@@ -233,9 +233,9 @@ namespace TOW_Core.Utilities.Extensions
             agent.Health = Math.Min(agent.Health + healingAmount, agent.HealthLimit);
         }
 
-        public static void ApplyStatusEffect(this Agent agent, string effectId, Agent damager = null)
+        public static void ApplyStatusEffect(this Agent agent, string effectId, Agent applierAgent)
         {
-            agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId);
+            agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId, applierAgent);
         }
 
         #region voice
