@@ -461,7 +461,7 @@
         ShouldSoundLoopOverDuration="false"
         CastType="Instant"
         CastTime="0"
-        AnimationActionName="none"
+        AnimationActionName="act_release_heavy_thrown"
         TriggeredEffectID="none"
         Offset="0"
         AbilityTargetType="Allies"

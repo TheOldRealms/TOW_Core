@@ -865,6 +865,7 @@
     <Abilities>
       <string>Fireball</string>
       <string>BurningHead</string>
+      <string>FireShield</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
