@@ -23,4 +23,12 @@
 		damage_over_time="15"
 		duration="12"
 		type="DamageOverTime"/>
+  <StatusEffectTemplate
+		id="word_of_pain"
+		particle_id="psys_game_step_dust_on_default"
+		particle_intensity="High"
+    health_over_time="0"
+    damage_over_time="10"
+		duration="10"
+		type="DamageOverTime"/>
 </StatusEffects>

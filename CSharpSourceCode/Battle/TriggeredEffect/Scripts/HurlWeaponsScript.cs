@@ -50,7 +50,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     {
                         bool flag = weapon.WeaponCopy.Item.Type == ItemTypeEnum.OneHandedWeapon ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.Polearm ||
-                                    weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown ||
+                                    (weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown &&
+                                    weapon.WeaponCopy.GetWeaponComponentDataForUsage(0).WeaponClass != WeaponClass.Boulder) ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.TwoHandedWeapon;
                         if (flag)
                         {

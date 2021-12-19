@@ -10,10 +10,12 @@ using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using System.Linq;
+using TaleWorlds.Library;
+using static TaleWorlds.Core.ItemObject;
 
 namespace TOW_Core.Battle.StatusEffects
 {
-    public class StatusEffectComponent: AgentComponent
+    public class StatusEffectComponent : AgentComponent
     {
         private float _updateFrequency = 1;
         private float _deltaSinceLastTick = (float)TOWMath.GetRandomDouble(0, 0.1);
@@ -23,12 +25,12 @@ namespace TOW_Core.Battle.StatusEffects
         public StatusEffectComponent(Agent agent) : base(agent)
         {
             _currentEffects = new Dictionary<StatusEffect, EffectData>();
-            _effectAggregate = new EffectAggregate(); 
+            _effectAggregate = new EffectAggregate();
         }
 
         public void RunStatusEffect(string id, Agent applierAgent)
         {
-            if(Agent == null)
+            if (Agent == null)
                 return;
 
             StatusEffect effect = _currentEffects.Keys.Where(e => e.Template.Id.Equals(id)).FirstOrDefault();
@@ -49,7 +51,6 @@ namespace TOW_Core.Battle.StatusEffects
             foreach (StatusEffect effect in _currentEffects.Keys)
             {
                 effect.CurrentDuration--;
-
                 if (effect.CurrentDuration <= 0)
                 {
                     RemoveEffect(effect);
@@ -64,17 +65,17 @@ namespace TOW_Core.Battle.StatusEffects
             if (dotEffect != null)
             {
                 data = _currentEffects[dotEffect];
-            } 
+            }
 
             //Temporary method for applying effects from the aggregate. This needs to go to a damage manager/calculator which will use the 
             //aggregated information to determine how much damage to apply to the agent
             if (Agent.IsActive() && Agent != null && !Agent.IsFadingOut())
             {
-                if(_effectAggregate.DamageOverTime > 0 && data != null)
+                if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
-                else if(_effectAggregate.HealthOverTime > 0)
+                else if (_effectAggregate.HealthOverTime > 0)
                 {
                     Agent.Heal((int)_effectAggregate.HealthOverTime);
                 }
@@ -84,7 +85,7 @@ namespace TOW_Core.Battle.StatusEffects
         private void CalculateEffectAggregate()
         {
             _effectAggregate = new EffectAggregate();
-            foreach(var effect in _currentEffects.Keys)
+            foreach (var effect in _currentEffects.Keys)
             {
                 _effectAggregate.AddEffect(effect);
             }
@@ -93,7 +94,7 @@ namespace TOW_Core.Battle.StatusEffects
         public void OnTick(float dt)
         {
             _deltaSinceLastTick += dt;
-            if(_deltaSinceLastTick > _updateFrequency)
+            if (_deltaSinceLastTick > _updateFrequency)
             {
                 _deltaSinceLastTick = (float)TOWMath.GetRandomDouble(0, 0.1);
                 OnElapsed(dt);
@@ -109,7 +110,7 @@ namespace TOW_Core.Battle.StatusEffects
                 pe.RemoveAllParticleSystems();
                 pe = null;
             });
-            
+
             _currentEffects.Remove(effect);
         }
 
