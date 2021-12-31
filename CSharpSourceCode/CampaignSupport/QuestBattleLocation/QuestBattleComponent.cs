@@ -47,7 +47,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public void SpawnDefenderParty()
         {
-            MobileParty party = MobileParty.CreateParty(_template.TemplateId + "_party");
+            MobileParty party = ChaosRaidingPartyComponent.CreateChaosPatrolParty(_template.TemplateId + "_party", this.Settlement, this, 70);
             party.SetCustomHomeSettlement(Settlement);
             TroopRoster roster = new TroopRoster(party.Party);
             foreach (var item in _template.TroopTypes)

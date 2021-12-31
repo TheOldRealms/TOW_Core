@@ -838,8 +838,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo TroopId="vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
-      <string>Fireball</string>
-      <string>WindOfDeath</string>
+      <string>Dart</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

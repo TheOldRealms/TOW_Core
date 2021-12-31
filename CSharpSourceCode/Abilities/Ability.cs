@@ -120,6 +120,11 @@ namespace TOW_Core.Abilities
                 AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
+
+            if (AbilityScript.GetType() == typeof(TargetedMovingProjectileScript) && casterAgent.IsAIControlled)
+            {
+                ((TargetedMovingProjectileScript) AbilityScript).SetTarget(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget);
+            }
         }
 
         private bool IsGroundAbility()
@@ -171,39 +176,39 @@ namespace TOW_Core.Abilities
                 {
                     case AbilityEffectType.MovingProjectile:
                     case AbilityEffectType.DynamicProjectile:
-                        {
-                            frame.origin = casterAgent.GetEyeGlobalPosition();
-                            break;
-                        }
+                    {
+                        frame.origin = casterAgent.GetEyeGlobalPosition();
+                        break;
+                    }
                     case AbilityEffectType.DirectionalMovingAOE:
-                        {
-                            frame = Crosshair.Frame;
-                            break;
-                        }
+                    {
+                        frame = Crosshair.Frame;
+                        break;
+                    }
                     case AbilityEffectType.CenteredStaticAOE:
                     case AbilityEffectType.AgentMoving:
-                        {
-                            frame = casterAgent.LookFrame;
-                            break;
-                        }
+                    {
+                        frame = casterAgent.LookFrame;
+                        break;
+                    }
                     case AbilityEffectType.TargetedStaticAOE:
                     case AbilityEffectType.TargetedStatic:
-                        {
-                            //frame = crosshair.Target.GetFrame();
-                            break;
-                        }
+                    {
+                        //frame = crosshair.Target.GetFrame();
+                        break;
+                    }
                     case AbilityEffectType.Summoning:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            break;
-                        }
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                        break;
+                    }
                 }
             }
 
             return frame;
         }
 
-        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        protected MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
         {
             var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
             if (wizardAiComponent != null && casterAgent.IsAIControlled)
@@ -260,6 +265,10 @@ namespace TOW_Core.Abilities
             {
                 case AbilityEffectType.MovingProjectile:
                     AddExactBehaviour<MovingProjectileScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.TargetedMovingProjectile:
+                    AddExactBehaviour<TargetedMovingProjectileScript>(entity, casterAgent);
+                    ((TargetedMovingProjectileScript) AbilityScript).SetSteeringGain(Template.SeekingProportional, Template.SeekingDerivative);
                     break;
                 case AbilityEffectType.DirectionalMovingAOE:
                     AddExactBehaviour<DirectionalMovingAOEScript>(entity, casterAgent);

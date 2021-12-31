@@ -19,7 +19,8 @@
         TargetedStaticAOE,
         TargetedStatic,
         Summoning,
-        AgentMoving
+        AgentMoving,
+        TargetedMovingProjectile
     }
 
     public enum AbilityTargetType

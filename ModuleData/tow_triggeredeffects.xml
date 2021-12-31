@@ -34,7 +34,7 @@
       SoundEffectId="dart_explosion" 
       SoundEffectLength="2.5" 
       DamageType="Magical" 
-      DamageAmount="50" 
+      DamageAmount="10" 
       Radius="5" 
       HasShockWave="false"
       TargetType="All" 
