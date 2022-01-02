@@ -8,6 +8,7 @@ using TaleWorlds.Engine;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Abilities
 {
@@ -280,10 +281,17 @@ namespace TOW_Core.Abilities
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
             }
-            
-            if (Template.SeekerParameters != null && casterAgent.IsAIControlled)
+
+            if (Template.SeekerParameters != null)
             {
-                AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
+                if (casterAgent.IsAIControlled)
+                {
+                    AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
+                }
+                else
+                {
+                    AbilityScript.SetTargetSeeking(new Target {Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation}, Template.SeekerParameters); //TODO: Need crosshair
+                }
             }
         }
 

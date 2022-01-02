@@ -837,10 +837,11 @@
     </OffensiveProperties>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo TroopId="vc_lord" VoiceClassName="generic_vampire">
-    <Abilities>
-      <string>Dart</string>
-    </Abilities>
-    <Attributes>
+      <Abilities>
+          <string>Fireball</string>
+          <string>WindOfDeath</string>
+      </Abilities>
+      <Attributes>
       <string>AbilityUser</string>
       <string>VampireBodyOverride</string>
       <string>Undead</string>
