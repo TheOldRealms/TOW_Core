@@ -120,11 +120,6 @@ namespace TOW_Core.Abilities
                 AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
-
-            if (AbilityScript.GetType() == typeof(TargetedMovingProjectileScript) && casterAgent.IsAIControlled)
-            {
-                ((TargetedMovingProjectileScript) AbilityScript).SetTarget(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget);
-            }
         }
 
         private bool IsGroundAbility()
@@ -266,10 +261,6 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.MovingProjectile:
                     AddExactBehaviour<MovingProjectileScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.TargetedMovingProjectile:
-                    AddExactBehaviour<TargetedMovingProjectileScript>(entity, casterAgent);
-                    ((TargetedMovingProjectileScript) AbilityScript).SetSteeringGain(Template.SeekingProportional, Template.SeekingDerivative);
-                    break;
                 case AbilityEffectType.DirectionalMovingAOE:
                     AddExactBehaviour<DirectionalMovingAOEScript>(entity, casterAgent);
                     break;
@@ -288,6 +279,11 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
+            }
+            
+            if (Template.SeekerParameters != null && casterAgent.IsAIControlled)
+            {
+                AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
             }
         }
 

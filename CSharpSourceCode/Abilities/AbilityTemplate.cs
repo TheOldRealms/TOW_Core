@@ -81,11 +81,9 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
 
-        [XmlAttribute] 
-        public float SeekingProportional = 4f;
-        [XmlAttribute] 
-        public float SeekingDerivative = 5f;
-
+        public SeekerParameters SeekerParameters;
+    
+        
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;
     }

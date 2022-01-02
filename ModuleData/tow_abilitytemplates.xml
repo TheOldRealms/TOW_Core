@@ -128,7 +128,7 @@
       Duration="300" 
       Radius="0.4" 
       AbilityType="Spell" 
-      AbilityEffectType="TargetedMovingProjectile" 
+      AbilityEffectType="MovingProjectile" 
       BaseMovementSpeed="15" 
       TickInterval="-1" 
       TriggerType="OnCollision" 
@@ -153,6 +153,7 @@
           <z>255</z>
         </AsVec2>
       </LightColorRGB>
+      <SeekerParameters Proportional="0.5" Derivative="0" DisableDistance="10"/>
   </AbilityTemplate>
   <AbilityTemplate 
       StringID="BurningHead" 

@@ -284,6 +284,8 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\SeekerController.cs" />
+    <Compile Include="Abilities\SeekerParameters.cs" />
     <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\ConsoleComands\SpellsFromConsole.cs" />
@@ -303,7 +305,6 @@
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
     <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
     <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
-    <Compile Include="Abilities\Scripts\HomingMovingProjectileScript.cs" />
     <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
