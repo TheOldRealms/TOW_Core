@@ -15,7 +15,7 @@ namespace TOW_Core.Items
     public static class ExtendedItemObjectManager
     {
         private static Dictionary<string, ExtendedItemObjectProperties> _itemToInfoMap = new Dictionary<string, ExtendedItemObjectProperties>();
-        private static string XMLPath = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_extendeditemproperties_test.xml");
+        private static string XMLPath = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_extendeditemproperties.xml");
 
 
         internal static ExtendedItemObjectProperties GetAdditionalProperties(string itemId)
