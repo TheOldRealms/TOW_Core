@@ -1,18 +1,17 @@
 ﻿<Module>
 	<Name value="The Old Realms Core Module" />
 	<Id value="TOW_Core" />
-	<Version value="v1.6.4" />
+	<Version value="v1.7.0" />
 	<SingleplayerModule value="true" />
 	<MultiplayerModule value="false" />
 	<DependedModules>
-		<DependedModule Id="Native" DependentVersion="e1.6.4" />
-		<DependedModule Id="SandBoxCore" DependentVersion="e1.6.4" />
-		<DependedModule Id="Sandbox" DependentVersion="e1.6.4" />
-		<DependedModule Id="StoryMode" DependentVersion="e1.6.4" />
-		<DependedModule Id="TOR_Armory" DependentVersion="v1.6.4" />
-		<DependedModule Id="TOR_Environment" DependentVersion="v1.6.4" />
-		<DependedModule Id="TOW_CoreAssets" DependentVersion="v1.6.4" />
-		<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.4" />
+		<DependedModule Id="Native" DependentVersion="e1.7.0" />
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.7.0" />
+		<DependedModule Id="Sandbox" DependentVersion="e1.7.0" />
+		<DependedModule Id="StoryMode" DependentVersion="e1.7.0" />
+		<DependedModule Id="TOR_Armory" DependentVersion="v1.7.0" />
+		<DependedModule Id="TOR_Environment" DependentVersion="v1.7.0" />
+		<!--<DependedModule Id="TOW_PreNative" DependentVersion="v1.6.5" />-->
 	</DependedModules>
 	<SubModules>
 		<SubModule>
@@ -42,26 +41,8 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_empire" />
-			<IncludedGameTypes>
-				<GameType value="Campaign" />
-				<GameType value="CampaignStoryMode" />
-				<GameType value="CustomGame" />
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_vc" />
-			<IncludedGameTypes>
-				<GameType value="Campaign" />
-				<GameType value="CampaignStoryMode" />
-				<GameType value="CustomGame" />
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>
 			<XmlName id="NPCCharacters" path="tow_lords" />
 			<IncludedGameTypes>
-				<GameType value="Campaign" />
-				<GameType value="CampaignStoryMode" />
 				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
@@ -70,6 +51,7 @@
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
 				<GameType value="CampaignStoryMode" />
+				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
@@ -77,7 +59,6 @@
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
 				<GameType value="CampaignStoryMode" />
-				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
@@ -128,14 +109,6 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_bandits" />
-			<IncludedGameTypes>
-				<GameType value="Campaign" />
-				<GameType value="CampaignStoryMode" />
-				<GameType value="CustomGame" />
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>
 			<XmlName id="NPCCharacters" path="tow_designerNPCs" />
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
@@ -143,16 +116,10 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_troopdefinitions_chaos" />
+			<XmlName id="NPCCharacters" path="tow_troopdefinitions" />
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
 				<GameType value="CampaignStoryMode" />
-				<GameType value="CustomGame" />
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_shadergenlords" />
-			<IncludedGameTypes>
 				<GameType value="CustomGame" />
 			</IncludedGameTypes>
 		</XmlNode>

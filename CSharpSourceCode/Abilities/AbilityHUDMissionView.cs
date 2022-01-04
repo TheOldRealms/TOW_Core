@@ -15,9 +15,9 @@ namespace TOW_Core.Abilities
         private GauntletLayer _abilityLayer;
         private GauntletLayer _specialMoveLayer;
 
-        public override void OnBehaviourInitialize()
+        public override void OnBehaviorInitialize()
         {
-            base.OnBehaviourInitialize();
+            base.OnBehaviorInitialize();
             Mission.Current.OnMainAgentChanged += (o, s) => CheckMainAgent();
 
             _abilityHUD_VM = new AbilityHUD_VM();

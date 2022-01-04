@@ -41,7 +41,7 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(GameDir)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOR_Armory*TOR_Environment*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
+    <StartArguments>/singleplayer _MODULES_%2aTOW_PreNative%2aNative%2aSandBoxCore%2aSandBox%2aStoryMode%2aCustomBattle%2aTOR_Armory%2aTOR_Environment%2aTOW_Core%2a_MODULES_</StartArguments>
     <StartWorkingDirectory>$(GameDir)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
@@ -284,6 +284,8 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\SeekerController.cs" />
+    <Compile Include="Abilities\SeekerParameters.cs" />
     <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\ConsoleComands\SpellsFromConsole.cs" />
@@ -319,20 +321,33 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\Components\ArtilleryAI.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
+    <Compile Include="Battle\AI\Decision\TacticalBehaviorOption.cs" />
     <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
-    <Compile Include="Battle\FireArms\BlunderbussMissionLogic.cs" />
+    <Compile Include="Battle\Artillery\Artillery.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryStandingPoint.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryView.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
+    <Compile Include="Battle\Artillery\BallisticSolver.cs" />
+    <Compile Include="Battle\Artillery\CannonBallPile.cs" />
+    <Compile Include="Battle\Crosshairs\Crosshair.cs" />
+    <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
+    <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\WordOfPainScript.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
     <Compile Include="Abilities\AbilityFactory.cs" />
     <Compile Include="Abilities\AbilityType.cs" />
@@ -364,18 +379,21 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
+    <Compile Include="HarmonyPatches\AgentPatches.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\InventoryPatches.cs" />
+    <Compile Include="HarmonyPatches\ItemObjectPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
-    <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
-    <Compile Include="Items\IMagicWeaponHitEffect.cs" />
-    <Compile Include="Items\MagicWeaponAgentComponent.cs" />
-    <Compile Include="Items\MagicWeaponEffect.cs" />
-    <Compile Include="Items\MagicWeaponEffectManager.cs" />
-    <Compile Include="Items\MagicWeaponEffectMissionLogic.cs" />
+    <Compile Include="Items\ExtendedItemMenuVM.cs" />
+    <Compile Include="Items\ExtendedItemObjectProperties.cs" />
+    <Compile Include="Items\IWeaponHitEffect.cs" />
+    <Compile Include="Items\ItemTraitAgentComponent.cs" />
+    <Compile Include="Items\ItemTrait.cs" />
+    <Compile Include="Items\ExtendedItemObjectManager.cs" />
+    <Compile Include="Items\WeaponEffectMissionLogic.cs" />
     <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
@@ -387,16 +405,14 @@
     <Compile Include="Abilities\AbilityHUD_VM.cs" />
     <Compile Include="Abilities\AbilityManagerMissionLogic.cs" />
     <Compile Include="Abilities\Ability.cs" />
-    <Compile Include="Abilities\AbilityManager.cs" />
     <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
-    <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
-    <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
+    <Compile Include="Battle\FireArms\FireArmsMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
@@ -409,7 +425,6 @@
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectMissionLogic.cs" />
     <Compile Include="Battle\TOWBattleUtilities.cs" />
-    <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
     <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
     <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
@@ -442,7 +457,6 @@
     <Compile Include="HarmonyPatches\WorldMapDebugPatch.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
@@ -452,6 +466,7 @@
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
+    <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
@@ -460,10 +475,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <!-- Post-Build -->
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(TargetDir)*" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\TOW_Core\bin\Win64_Shipping_wEditor\" /S /Y /I</PostBuildEvent>
+  </PropertyGroup>
 </Project>

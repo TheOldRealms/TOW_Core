@@ -1,0 +1,14 @@
+<Window>
+  <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent">
+    <Children>
+      <AgentStatus1 />
+
+      <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" IsVisible="@IsInteractionAvailable">
+        <Children>
+          <AgentFocus />
+        </Children>
+      </Widget>
+      <!--<Compass />-->
+    </Children>
+  </Widget>
+</Window>

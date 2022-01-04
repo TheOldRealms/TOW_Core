@@ -31,6 +31,24 @@ namespace TOW_Core.Utilities
 
         public static void CopyEquipmentToClipBoard(SPInventoryVM vm)
         {
+            string text = "";
+            text += GetText(vm.CharacterWeapon1Slot) + ",";
+            text += GetText(vm.CharacterWeapon2Slot) + ",";
+            text += GetText(vm.CharacterWeapon3Slot) + ",";
+            text += GetText(vm.CharacterWeapon4Slot) + ",";
+            text += GetText(vm.CharacterHelmSlot) + ",";
+            text += GetText(vm.CharacterTorsoSlot) + ",";
+            text += GetText(vm.CharacterCloakSlot) + ",";
+            text += GetText(vm.CharacterGloveSlot) + ",";
+            text += GetText(vm.CharacterBootSlot) + ",";
+            text += GetText(vm.CharacterMountSlot) + ",";
+            text += GetText(vm.CharacterMountArmorSlot);
+            Clipboard.SetText(text);
+            InformationManager.DisplayMessage(new InformationMessage("Equipment items copied!", Colors.Green));
+        }
+        /*
+        public static void CopyEquipmentToClipBoard(SPInventoryVM vm)
+        {
             XElement xelement = new XElement("EquipmentRoster");
             AddItem(xelement, vm.CharacterWeapon1Slot.ItemRosterElement.EquipmentElement.Item, "Item0");
             AddItem(xelement, vm.CharacterWeapon2Slot.ItemRosterElement.EquipmentElement.Item, "Item1");
@@ -62,16 +80,11 @@ namespace TOW_Core.Utilities
             Clipboard.SetText(text);
             InformationManager.DisplayMessage(new InformationMessage("Equipment XML copied!", Colors.Green));
         }
-
-        private static void AddItem(XElement element, ItemObject item, string slot)
+        */
+        private static string GetText(SPItemVM slot)
         {
-            if (item != null)
-            {
-                XElement xelement = new XElement("equipment");
-                xelement.Add(new XAttribute("slot", slot));
-                xelement.Add(new XAttribute("id", "Item." + item.StringId));
-                element.Add(xelement);
-            }
+            if (slot.StringId != "" && slot.StringId != null) return "Item." + slot.StringId;
+            else return "none";
         }
 
         public static string GetRandomScene()

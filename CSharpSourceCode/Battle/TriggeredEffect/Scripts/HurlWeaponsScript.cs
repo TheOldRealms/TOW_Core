@@ -15,12 +15,18 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     public class HurlWeaponsScript : ITriggeredScript
     {
         public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
-        {            
+        {
             maxAmount = 3; // it should be related to caster skills
-            PutWeaponsInAir(triggeredByAgent);
-            timer.AutoReset = false;
-            timer.Elapsed += (s, e) => HurlWeaponsAtTarget(triggeredByAgent, triggeredAgents.First());
-            timer.Start();
+
+            hurlWeaponsTimer.AutoReset = false;
+            hurlWeaponsTimer.Elapsed += (s, e) => HurlWeaponsAtTarget(triggeredByAgent, triggeredAgents.First());
+            effectStartTimer.AutoReset = false;
+            effectStartTimer.Elapsed += (s, e) =>
+            {
+                PutWeaponsInAir(triggeredByAgent);
+                hurlWeaponsTimer.Start();
+            };
+            effectStartTimer.Start();
         }
 
         private void PutWeaponsInAir(Agent caster)
@@ -44,7 +50,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     {
                         bool flag = weapon.WeaponCopy.Item.Type == ItemTypeEnum.OneHandedWeapon ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.Polearm ||
-                                    weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown ||
+                                    (weapon.WeaponCopy.Item.Type == ItemTypeEnum.Thrown &&
+                                    weapon.WeaponCopy.GetWeaponComponentDataForUsage(0).WeaponClass != WeaponClass.Boulder) ||
                                     weapon.WeaponCopy.Item.Type == ItemTypeEnum.TwoHandedWeapon;
                         if (flag)
                         {
@@ -76,10 +83,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     var position = weapon.GameEntity.GlobalPosition;
                     var hurlDirection = target.GetEyeGlobalPosition() - position;
                     hurlDirection.Normalize();
-                    var orientation = weapon.GameEntity.GetFrame().rotation;
+                    var orientation = weapon.GameEntityWithWorldPosition.WorldFrame.Rotation;
                     var speed = 75 / weapon.GameEntity.Mass;
                     Mission.Current.AddCustomMissile(Agent.Main, missile, position, hurlDirection, orientation, 0, speed, false, null);
-                    weapon.GameEntity.FadeOut(0.1f, true);
+                    weapon.GameEntity.FadeOut(0.001f, true);
                 }
             }
             weapons.Clear();
@@ -87,7 +94,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
 
         private List<SpawnedItemEntity> weapons = new List<SpawnedItemEntity>();
-        private Timer timer = new Timer(1000);
+        private Timer hurlWeaponsTimer = new Timer(1000);
+        private Timer effectStartTimer = new Timer(1000);
         private int maxAmount = 0;
     }
 }

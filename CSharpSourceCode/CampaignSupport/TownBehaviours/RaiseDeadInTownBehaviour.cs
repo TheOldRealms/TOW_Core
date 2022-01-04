@@ -48,7 +48,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void Initialize(CampaignGameStarter obj)
         {
             obj.AddGameMenuOption("town", "graveyard", "Go to the graveyard", new GameMenuOption.OnConditionDelegate(raisedeadcondition), new GameMenuOption.OnConsequenceDelegate(raisedeadconsequence), false, 4, false);
-            obj.AddGameMenu("graveyard", "{GRAVEYARD_INTRODUCTION}", new OnInitDelegate(graveyardmenuinit), GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.none, null);
+            obj.AddGameMenu("graveyard", "{GRAVEYARD_INTRODUCTION}", new OnInitDelegate(graveyardmenuinit), GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.None, null);
             obj.AddGameMenuOption("graveyard", "attempt", "Raise dead from the corpses in the ground (wait 12 hours).", new GameMenuOption.OnConditionDelegate(attemptcondition), new GameMenuOption.OnConsequenceDelegate(attemptconsequence), false, -1, false);
             obj.AddGameMenuOption("graveyard", "leaveoption", "Leave", new GameMenuOption.OnConditionDelegate(leavecondition), delegate (MenuCallbackArgs x)
             {
@@ -56,7 +56,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             }, true, -1, false);
 
             obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowProgressAndHoursOption, GameOverlays.MenuOverlayType.None);
-            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_recruit");
+            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tor_vc_skeleton_recruit");
             MakeNecromancers();
         }
 

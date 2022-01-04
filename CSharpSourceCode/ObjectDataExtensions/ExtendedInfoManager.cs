@@ -1,7 +1,13 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
@@ -21,13 +27,14 @@ namespace TOW_Core.ObjectDataExtensions
     public class ExtendedInfoManager: CampaignBehaviorBase
     {
         private MobilePartyExtendedInfo _mainPartyInfo;
-        private MapEvent _currentPlayerEvent;
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
-        private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
+        private static Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
-        private static Dictionary<string, CharacterExtendedInfo> _customBattleInfos = new Dictionary<string, CharacterExtendedInfo>();
+        private static ExtendedInfoManager _instance = new ExtendedInfoManager();
 
-        public ExtendedInfoManager() {}
+        public static ExtendedInfoManager Instance => _instance;
+
+        private ExtendedInfoManager() {}
         
         public override void RegisterEvents()
         {
@@ -82,74 +89,52 @@ namespace TOW_Core.ObjectDataExtensions
             return _mainPartyInfo;
         }
         
-        internal CharacterExtendedInfo GetCharacterInfoFor(string id)
+        internal static CharacterExtendedInfo GetCharacterInfoFor(string id)
         {
             if(_characterInfos.Count < 1)
             {
-                TryLoadCharacters();
+                TryLoadCharacters(out _characterInfos);
             }
             return _characterInfos.ContainsKey(id) ? _characterInfos[id] : null;
         }
 
         private void OnSessionStart(CampaignGameStarter obj)
         {
-            TryLoadCharacters();
+            TryLoadCharacters(out _characterInfos);
             _mainPartyInfo = MobileParty.MainParty.GetInfo();
         }
 
-        internal static CharacterExtendedInfo GetCharacterInfoForStatic(string id)
+        public static void Load()
         {
-            if(_customBattleInfos.Count < 1)
-            {
-                TryLoadCharactersStatic();
-            }
-            CharacterExtendedInfo info = null;
-            _customBattleInfos.TryGetValue(id, out info);
-            return info;
+            TryLoadCharacters(out _characterInfos);
         }
 
-        private static void TryLoadCharactersStatic()
-        {
-            var characters = new List<string>();
-            characters.AddRange(AttributeManager.GetAllCharacterIds());
-            foreach(var character in AbilityManager.GetAllCharacterIds())
-            {
-                if (!characters.Contains(character)) characters.Add(character);
-            }
-            foreach (var character in characters)
-            {
-                if (!_customBattleInfos.ContainsKey(character))
-                {
-                    var info = new CharacterExtendedInfo();
-                    info.CharacterStringId = character;
-                    var attributes = AttributeManager.GetAttributesFor(character);
-                    if (attributes != null) info.CharacterAttributes = attributes;
-                    var abilities = AbilityManager.GetAbilitesForCharacter(character);
-                    if (abilities != null) info.Abilities = abilities;
-                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character);
-                    _customBattleInfos.Add(character, info);
-                }
-            }
-        }
-
-        private void TryLoadCharacters()
+        private static void TryLoadCharacters(out Dictionary<string, CharacterExtendedInfo> infos)
         {
             //construct character info for all CharacterObject templates loaded by the game.
             //this can be safely reconstructed at each session start without the need to save/load.
-            var characters = MBObjectManager.Instance.GetObjectTypeList<CharacterObject>();
-            foreach (var character in characters)
+            Dictionary<string, CharacterExtendedInfo> unitlist = new Dictionary<string, CharacterExtendedInfo>();
+            infos = unitlist;
+            try
             {
-                if (!_characterInfos.ContainsKey(character.StringId))
+                var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_extendedunitproperties.xml");
+                if (File.Exists(path))
                 {
-                    var info = new CharacterExtendedInfo();
-                    info.CharacterStringId = character.StringId;
-                    var attributes = AttributeManager.GetAttributesFor(character.StringId);
-                    if (attributes != null) info.CharacterAttributes = attributes;
-                    var abilities = AbilityManager.GetAbilitesForCharacter(character.StringId);
-                    if (abilities != null) info.Abilities = abilities;
-                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character.StringId);
-                    _characterInfos.Add(character.StringId, info);
+                    var ser = new XmlSerializer(typeof(List<CharacterExtendedInfo>));
+                    var list = ser.Deserialize(File.OpenRead(path)) as List<CharacterExtendedInfo>;
+                    foreach (var item in list)
+                    {
+                        if (!infos.ContainsKey(item.CharacterStringId))
+                        {
+                            infos.Add(item.CharacterStringId, item);
+                        }
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                TOWCommon.Log(e.ToString(), LogLevel.Error);
+                throw e; //TODO handle this more gracefully.
             }
         }
 
@@ -219,7 +204,7 @@ namespace TOW_Core.ObjectDataExtensions
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
-            TryLoadCharacters();
+            TryLoadCharacters(out _characterInfos);
             InitializeHeroes();
             InitializeParties();
         }

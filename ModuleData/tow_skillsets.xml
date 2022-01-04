@@ -133,4 +133,42 @@
 		<skill id="Throwing"
 			   value="160" />
 	</SkillSet>
+	<!--Tier 8-->
+	<SkillSet id="tow_skills_level41">
+		<skill id="Athletics"
+			   value="180" />
+		<skill id="Riding"
+			   value="180" />
+		<skill id="OneHanded"
+			   value="180" />
+		<skill id="TwoHanded"
+			   value="180" />
+		<skill id="Polearm"
+			   value="180" />
+		<skill id="Bow"
+			   value="180" />
+		<skill id="Crossbow"
+			   value="180" />
+		<skill id="Throwing"
+			   value="180" />
+	</SkillSet>
+	<!--Tier 9-->
+	<SkillSet id="tow_skills_level46">
+		<skill id="Athletics"
+			   value="200" />
+		<skill id="Riding"
+			   value="200" />
+		<skill id="OneHanded"
+			   value="200" />
+		<skill id="TwoHanded"
+			   value="200" />
+		<skill id="Polearm"
+			   value="200" />
+		<skill id="Bow"
+			   value="200" />
+		<skill id="Crossbow"
+			   value="200" />
+		<skill id="Throwing"
+			   value="200" />
+	</SkillSet>
 </SkillSets>

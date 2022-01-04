@@ -1,4 +1,4 @@
-using NLog;
+﻿using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,7 +161,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void  ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
+        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
             if (agent == null && !agent.IsHuman)
             {
@@ -173,15 +173,11 @@ namespace TOW_Core.Utilities.Extensions
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
-                    
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
                         agent.Health -= damageAmount;
-                       // TOWCommon.Say(agent.Name+agent.Index+" health:"+ (agent.Health+damageAmount)+ "-"+ damageAmount +"= "+ agent.Health);
                         return;
                     }
-                    
-                    
                     else if (agent.Health > 1 && !agent.IsFadingOut())
                     {
                         var blow = new Blow(-1);
@@ -193,12 +189,6 @@ namespace TOW_Core.Utilities.Extensions
                         blow.DamageType = DamageTypes.Invalid;
                         blow.VictimBodyPart = BoneBodyPartType.Chest;
                         blow.StrikeType = StrikeType.Invalid;
-
-                        if (damager == null)
-                        {
-                            TOWCommon.Say("damager not found");
-                        }
-                        
                         if (hasShockWave)
                         {
                             if (agent.HasMount)
@@ -208,9 +198,8 @@ namespace TOW_Core.Utilities.Extensions
                         }
                         if (damager != null)
                         {
-                            //var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
-                            //if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
-                            blow.OwnerId = damager.Index;
+                            var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
+                            if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
                         }
                         else
                         {
@@ -218,32 +207,8 @@ namespace TOW_Core.Utilities.Extensions
                             blow.SelfInflictedDamage = damageAmount;
                             blow.OwnerId = agent.Index;
                         }
-
-                        
                         agent.RegisterBlow(blow);
-
-                        if (agent.Health <= damageAmount)
-                        {
-                            
-                            if (Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>() != null)
-                            {
-                                Mission.Current.GetMissionBehaviour<StatusEffectMissionLogic>().RemoveAgent(agent); 
-                            }
-
-                            if (damager != null&&!doBlow)
-                            {
-                                blow.OwnerId = damager.Index;
-                            }
-
-                            if (!doBlow) TOWCommon.Say(agent.Name + agent.Index + " died of dot");
-                            agent.Die(blow);
-                        }
-                        
-                        
                     }
-                    
-                    
-                    
                 }
             }
             catch (Exception e)
@@ -263,9 +228,10 @@ namespace TOW_Core.Utilities.Extensions
             agent.Health = Math.Min(agent.Health + healingAmount, agent.HealthLimit);
         }
 
-        public static void ApplyStatusEffect(this Agent agent, string effectId, Agent damager = null)
+        public static void ApplyStatusEffect(this Agent agent, string effectId, Agent applierAgent)
         {
-            agent.GetComponent<StatusEffectComponent>().RunStatusEffect(effectId,damager);
+            var comp = agent.GetComponent<StatusEffectComponent>();
+            if(comp != null) comp.RunStatusEffect(effectId, applierAgent);
         }
 
         #region voice
@@ -300,6 +266,5 @@ namespace TOW_Core.Utilities.Extensions
         {
             agent.AgentVisuals.SetVisible(false);
         }
-        
     }
 }

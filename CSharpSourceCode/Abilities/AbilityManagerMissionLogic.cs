@@ -25,7 +25,7 @@ namespace TOW_Core.Abilities
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
         private Dictionary<Agent, PartyGroupTroopSupplier> _summonedCreatures = new Dictionary<Agent, PartyGroupTroopSupplier>();
-        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
+        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
 
         protected override void OnEndMission()
         {
@@ -41,7 +41,10 @@ namespace TOW_Core.Abilities
                     _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
                     if (_abilityComponent != null)
                     {
-                        _abilityComponent.KnownAbilities.Add(AbilityFactory.CreateNew("HurlWeapons", Agent.Main));
+                        if (Agent.Main.HasAttribute("VampireBodyOverride") && Mission.Current.MissionTeamAIType != Mission.MissionTeamAITypeEnum.NoTeamAI)
+                        {
+                            _abilityComponent.SetSpecialMove((SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent.Main));
+                        }
                         _abilityComponent.InitializeCrosshairs();
                         _isAbilityUser = true;
                     }

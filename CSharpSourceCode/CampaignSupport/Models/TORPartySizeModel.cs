@@ -11,7 +11,7 @@ namespace TOW_Core.CampaignSupport.Models
             var num = base.GetPartyMemberSizeLimit(party, includeDescriptions);
             if (party.Culture.Name.Contains("Vampire"))
             {
-                if (party.Leader != null && party.Leader.IsPlayerCharacter)
+                if (party.LeaderHero != null && party.LeaderHero.IsHumanPlayerCharacter)
                 {
                     num.Add(20, new TextObject("Friend of undead"));
                 }
