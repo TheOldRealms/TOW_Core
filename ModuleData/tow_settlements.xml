@@ -11,7 +11,7 @@
     </Locations>
   </Settlement>
   <!-- Averland 2 Towns 11 villages 2 castles -->
-  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1436.813" posY="921.623" culture="Culture.empire" prosperity="3400" gate_posX="1436.858" gate_posY="920.8823" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
+  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1437.863" posY="923.03" culture="Culture.empire" prosperity="3400" gate_posX="1437.908" gate_posY="922.2894" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
     <Components>
       <Town id="town_comp_AV1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -31,7 +31,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV1_1" name="{=Settlements.Settlement.name.village_AV1_1}Streissen" posX="1415.208" posY="930.732" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_1}Streissen is a town in Averland that harbors a ferry system, and a history of volatile conspiracy.">
+  <Settlement id="village_AV1_1" name="{=Settlements.Settlement.name.village_AV1_1}Streissen" posX="1414.719" posY="931.71" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_1}Streissen is a town in Averland that harbors a ferry system, and a history of volatile conspiracy.">
     <Components>
       <Village id="village_comp_AV1_1" village_type="VillageType.vineyard" hearth="600" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -44,7 +44,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV1_2" name="{=Settlements.Settlement.name.village_AV1_2}Lengenfeld" posX="1372.671" posY="950.497" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_2}Lengenveld">
+  <Settlement id="village_AV1_2" name="{=Settlements.Settlement.name.village_AV1_2}Lengenfeld" posX="1372.166" posY="950.92" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_2}Lengenveld">
     <Components>
       <Village id="village_comp_AV1_2" village_type="VillageType.fisherman" hearth="560" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -57,7 +57,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV1_3" name="{=Settlements.Settlement.name.village_AV1_3}Bieswang" posX="1467.662" posY="918.354" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_3}bieswang">
+  <Settlement id="village_AV1_3" name="{=Settlements.Settlement.name.village_AV1_3}Bieswang" posX="1466.266" posY="918.149" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_3}bieswang">
     <Components>
       <Village id="village_comp_AV1_3" village_type="VillageType.wheat_farm" hearth="320" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -70,7 +70,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV1_4" name="{=Settlements.Settlement.name.village_AV1_4}Heideck" posX="1440.979" posY="893.249" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_4}Heideck is an Imperial town located at the crossroads of the Old Dwarf Road just before reaching the capital of Averheim.">
+  <Settlement id="village_AV1_4" name="{=Settlements.Settlement.name.village_AV1_4}Heideck" posX="1438.82" posY="892.275" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_4}Heideck is an Imperial town located at the crossroads of the Old Dwarf Road just before reaching the capital of Averheim.">
     <Components>
       <Village id="village_comp_AV1_4" village_type="VillageType.europe_horse_ranch" hearth="420" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -83,7 +83,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="420" culture="Culture.empire" gate_posX="1394.305" gate_posY="890.4186">
+  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="420" culture="Culture.empire" gate_posX="1393.126" gate_posY="888.7435">
     <Components>
       <Town id="castle_comp_AV2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -93,7 +93,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_AV2_1" name="{=Settlements.Settlement.name.castle_village_AV2_1}Calmfahre" posX="1367.352" posY="903.563" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_1}Tirby sits in the cold misty waters that lie off of the Ebor peninsula. The low-lying lands on the northern side of the Ebor are suited to the growing of flax.">
+  <Settlement id="castle_village_AV2_1" name="{=Settlements.Settlement.name.castle_village_AV2_1}Calmfahre" posX="1365.47" posY="902.33" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_1}Tirby sits in the cold misty waters that lie off of the Ebor peninsula. The low-lying lands on the northern side of the Ebor are suited to the growing of flax.">
     <Components>
       <Village id="castle_village_comp_AV2_1" village_type="VillageType.europe_horse_ranch" hearth="200" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -106,7 +106,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_AV2_2" name="{=Settlements.Settlement.name.castle_village_AV2_2}Loningbruck" posX="1410.368" posY="872.786" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_2}Loningbruck is a small town in south-central Averland. Located at a major crossroads just north of the Upper Reik.">
+  <Settlement id="castle_village_AV2_2" name="{=Settlements.Settlement.name.castle_village_AV2_2}Loningbruck" posX="1410.71" posY="872.534" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_2}Loningbruck is a small town in south-central Averland. Located at a major crossroads just north of the Upper Reik.">
     <Components>
       <Village id="castle_village_comp_AV2_2" village_type="VillageType.vineyard" hearth="340" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -119,7 +119,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_AV2_3" name="{=Settlements.Settlement.name.village_AV3_3}Bernloch" posX="1439.42" posY="874.697" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV2_3}Bernloch.">
+  <Settlement id="castle_village_AV2_3" name="{=Settlements.Settlement.name.village_AV3_3}Bernloch" posX="1439.735" posY="875.128" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV2_3}Bernloch.">
     <Components>
       <Village id="castle_village_comp_AV2_3" village_type="VillageType.wheat_farm" hearth="400" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -132,7 +132,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_AV3" name="{=Settlements.Settlement.name.town_AV3}Grenzstadt" owner="Faction.averland_clan_1" posX="1491.507" posY="835.176" culture="Culture.empire" prosperity="2520" gate_posX="1490.986" gate_posY="835.7049" text="{=4ENGzVaC}Grenzstadt is an Imperial fortress-town that is located at the northwestern end of Black Fire Pass.">
+  <Settlement id="town_AV3" name="{=Settlements.Settlement.name.town_AV3}Grenzstadt" owner="Faction.averland_clan_1" posX="1491.507" posY="835.176" culture="Culture.empire" prosperity="2520" gate_posX="1491.01" gate_posY="835.584" text="{=4ENGzVaC}Grenzstadt is an Imperial fortress-town that is located at the northwestern end of Black Fire Pass.">
     <Components>
       <Town id="town_comp_AV3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -152,7 +152,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1467.31" posY="843.793" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
+  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1466.391" posY="839.553" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
     <Components>
       <Village id="village_comp_AV3_1" village_type="VillageType.iron_mine" hearth="400" trade_bound="Settlement.town_AV3" bound="Settlement.town_AV3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -165,7 +165,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV3_2" name="{=Settlements.Settlement.name.village_AV3_2}Agheiten" posX="1434.861" posY="853.771" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_2}Agheiten">
+  <Settlement id="village_AV3_2" name="{=Settlements.Settlement.name.village_AV3_2}Agheiten" posX="1435.807" posY="853.891" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_2}Agheiten">
     <Components>
       <Village id="village_comp_AV3_2" village_type="VillageType.sheep_farm" hearth="300" trade_bound="Settlement.town_AV3" bound="Settlement.town_AV3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -215,7 +215,7 @@
     </CommonAreas>
   </Settlement>
   <!--Stirland-->
-  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1447.203" posY="1013.329" culture="Culture.empire" prosperity="2000" gate_posX="1447.241" gate_posY="1012.588" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
+  <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1441.044" posY="1016.251" culture="Culture.empire" prosperity="2000" gate_posX="1441.206" gate_posY="1015.527" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
     <Components>
       <Town id="town_comp_ST1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -287,7 +287,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_3" posX="1382.927" posY="986.824" prosperity="420" culture="Culture.empire" gate_posX="1383.128" gate_posY="986.1098" text="{=Settlements.Settlement.text.castle_ST1}Flensburg is a small market town nestled in the Zaya Hills to the West of the Stirhügel. The hills are perfect for sheep grazing, and the town’s economy is based on fleece, lamb and mutton trade. The town is also noted in the region for having a major temple of Shallya.">
+  <Settlement id="castle_ST1" name="{=Settlements.Settlement.name.castle_ST1}Flensburg" owner="Faction.stirland_clan_3" posX="1382.963" posY="985.17" prosperity="420" culture="Culture.empire" gate_posX="1382.936" gate_posY="986.4858" text="{=Settlements.Settlement.text.castle_ST1}Flensburg is a small market town nestled in the Zaya Hills to the West of the Stirhügel. The hills are perfect for sheep grazing, and the town’s economy is based on fleece, lamb and mutton trade. The town is also noted in the region for having a major temple of Shallya.">
     <Components>
       <Town id="castle_comp_ST1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -310,7 +310,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_ST1_2" name="{=Settlements.Settlement.name.castle_village_ST1_2}Ramsau" owner="Faction.stirland_clan_3" posX="1374.748" posY="978.696" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_2}">
+  <Settlement id="castle_village_ST1_2" name="{=Settlements.Settlement.name.castle_village_ST1_2}Ramsau" owner="Faction.stirland_clan_3" posX="1374.464" posY="978.549" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_2}">
     <Components>
       <Village id="castle_village_comp_ST1_2" village_type="VillageType.trapper" hearth="48" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -323,7 +323,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1431.738" posY="942.642" prosperity="420" culture="Culture.empire" gate_posX="1432.431" gate_posY="942.9084" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
+  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1430.238" posY="941.062" prosperity="420" culture="Culture.empire" gate_posX="1428.929" gate_posY="940.924" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
     <Components>
       <Town id="castle_comp_ST2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -572,7 +572,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1451.011" posY="972.307" prosperity="420" culture="Culture.empire" gate_posX="1451.751" gate_posY="972.3613" text="{=Settlements.Settlement.text.castle_village_ST4_1}Wördern is a small town hidden between mountains and valleys. The rough terrain makes expansion near impossible, but the intersection of the Old Dwarf Road and the Prager strasse makes passing along viable; not that it matters, as no outsider finds kindness in Wörden. The odd mootlander can occasionally be seen purchasing supplies for the road, but its main attraction is the Wörden Meat and Cattle auction house. It’s the only town in Stirland that can be smelled before it is seen.">
+  <Settlement id="castle_ST4" name="{=Settlements.Settlement.name.castle_ST4}Wördern" owner="Faction.stirland_clan_1" posX="1449.83" posY="969.534" prosperity="420" culture="Culture.empire" gate_posX="1451.627" gate_posY="973.068" text="{=Settlements.Settlement.text.castle_village_ST4_1}Wördern is a small town hidden between mountains and valleys. The rough terrain makes expansion near impossible, but the intersection of the Old Dwarf Road and the Prager strasse makes passing along viable; not that it matters, as no outsider finds kindness in Wörden. The odd mootlander can occasionally be seen purchasing supplies for the road, but its main attraction is the Wörden Meat and Cattle auction house. It’s the only town in Stirland that can be smelled before it is seen.">
     <Components>
       <Town id="castle_comp_ST4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -608,7 +608,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1498.114" posY="1029.143" prosperity="420" culture="Culture.empire" gate_posX="1498.854" gate_posY="1029.197" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
+  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1501.008" posY="1028.845" prosperity="420" culture="Culture.empire" gate_posX="1499.877" gate_posY="1029.518" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
     <Components>
       <Town id="castle_comp_ST5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1082,7 +1082,7 @@
       <Hideout id="hideout_forest_1" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_2" name="{=Settlements.Settlement.name.hideout_forest_2}Hideout" type="Hideout" posX="1432.746" posY="913.081" culture="Culture.forest_bandits">
+  <Settlement id="hideout_forest_2" name="{=Settlements.Settlement.name.hideout_forest_2}Hideout" type="Hideout" posX="1470.874" posY="904.675" culture="Culture.forest_bandits">
     <Components>
       <Hideout id="hideout_forest_2" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
