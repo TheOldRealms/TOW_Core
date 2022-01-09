@@ -71,5 +71,19 @@ namespace TOW_Core.Utilities.Extensions
             }
             return characterObject.GetAttributes().Contains("VampireBodyOverride");
         }
+
+        public static List<ItemObject> GetCharacterEquipment(this BasicCharacterObject characterObject,
+            bool WithWeapons = true)
+        {
+            List<ItemObject> CharacterEquipmentItems = new List<ItemObject>();
+            for (int i = 0; i < 9; i++)
+            {
+                if (characterObject.Equipment[i].Item!=null)
+                {
+                    CharacterEquipmentItems.Add(characterObject.Equipment[i].Item);
+                }
+            }
+            return CharacterEquipmentItems;
+        }
     }
 }
