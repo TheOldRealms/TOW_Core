@@ -18,16 +18,26 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class DamagePatch
     {
-        /*[HarmonyPrefix]
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
         public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
         {
             //check for new Damage system, will change that 
 
+            Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
+            Agent Victim = __instance;
+            
+            // get attacker information
+            
+            
+            
+            
+            
+
 
 
             return true;
 
-        }*/
+        }
     }
 }
