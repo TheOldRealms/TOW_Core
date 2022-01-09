@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms.VisualStyles;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
@@ -33,6 +34,9 @@ namespace TOW_Core.HarmonyPatches
             if (!attacker.IsHero)
             {
                 //soldier attributes
+                
+                
+                
             }
             else
             {
@@ -40,11 +44,12 @@ namespace TOW_Core.HarmonyPatches
 
                 List<ItemTrait> itemTraits= new List<ItemTrait>();
                 List<ItemObject> items;
+                ItemDamageProperty damageProperty;
 
                 float ArmorPenetration=0f;
                 float bonusDamage=0f;
 
-                DamageType damageType= DamageType.Physical;
+                DamageType overrideDamageType= DamageType.Physical;
 
 
 
@@ -53,28 +58,72 @@ namespace TOW_Core.HarmonyPatches
                 items = attacker.Character.GetCharacterEquipment();
                 foreach (var item in items)
                 {
-                    itemTraits.AddRange(item.GetTraits());
+                    if(item.HasTrait())
+                        itemTraits.AddRange(item.GetTraits());
 
-
+                    
                     itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
                 }
+                
+           
+                
+                
 
                 foreach (var itemTrait in itemTraits)
                 {
+                    if(itemTrait.OffenseProperty==null) 
+                        continue;
+                    
                     ArmorPenetration += itemTrait.OffenseProperty.ArmorPenetration;
                     bonusDamage += itemTrait.OffenseProperty.BonusDamagePercent;
+                    
+                    //TODO i am still not so sure if we should have a Override, in that form. 
 
                     var tmpDamageType = itemTrait.OffenseProperty.DefaultDamageTypeOverride;
                     if (tmpDamageType != DamageType.Physical)
                     {
-                        if (tmpDamageType == DamageType.Fire &&damageType != DamageType.Magical)
+                        if (tmpDamageType == DamageType.Fire &&overrideDamageType != DamageType.Magical)
                         {
-                            damageType = tmpDamageType;
                             continue;
                         }
-                        damageType = tmpDamageType;
+                        overrideDamageType = tmpDamageType;
                     }
                 }
+
+                var resultDamageType = DamageType.Physical;
+                
+                //weapon properties
+                var damageProperties = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
+                if (damageProperties != null)
+                {
+                    
+                    
+                    if (overrideDamageType != DamageType.Physical)
+                    {
+                        if (damageProperties.DamageType == DamageType.Fire &&overrideDamageType != DamageType.Magical)
+                        {
+                        }
+                        else
+                        {
+                            resultDamageType = damageProperties.DamageType;
+                        }
+                    }
+                    else
+                    {
+                        resultDamageType = damageProperties.DamageType;
+                    }
+                    
+                    
+                    
+                    // maximum minimum is really not needed. just go with objects.xml in the prenative module do it here anywhere
+                    Mathf.Clamp(b.InflictedDamage, damageProperties.MinDamage, damageProperties.MaxDamage);
+                }
+                
+                
+                
+                
+                
+                
             }
             
 
