@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using TaleWorlds.Core;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Battle.Damage;
 
 namespace TOW_Core.Items
@@ -14,7 +16,7 @@ namespace TOW_Core.Items
         [XmlAttribute]
         public string ItemStringId;
         [XmlElement]
-        public ItemDamageProperty ItemDamageProperty = new ItemDamageProperty { DamageType = DamageType.Physical, MinDamage = 0, MaxDamage = 500 };
+        public ItemDamageProperty ItemDamageProperty = null;
         [XmlArray]
         public List<ItemTrait> Traits = new List<ItemTrait>();
 
@@ -24,7 +26,13 @@ namespace TOW_Core.Items
 
         public static ExtendedItemObjectProperties CreateDefault(string id)
         {
-            return new ExtendedItemObjectProperties(id);
+            var item = MBObjectManager.Instance.GetObject<ItemObject>(id);
+            var props = new ExtendedItemObjectProperties(id);
+            if(item != null && item.HasWeaponComponent)
+            {
+                props.ItemDamageProperty = new ItemDamageProperty { DamageType = DamageType.Physical, MinDamage = 0 , MaxDamage = 500};
+            }
+            return props;
         }
     }
 }
