@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -44,6 +44,12 @@ namespace TOW_Core.Battle.StatusEffects
                 effect.CurrentDuration = effect.Template.BaseDuration;
                 AddEffect(effect, applierAgent);
             }
+        }
+
+
+        public EffectAggregate GetEffectAggregate()
+        {
+            return _effectAggregate;
         }
 
         public void OnElapsed(float dt)
@@ -139,7 +145,7 @@ namespace TOW_Core.Battle.StatusEffects
             public Agent ApplierAgent { get; set; }
         }
 
-        private class EffectAggregate
+        public class EffectAggregate
         {
             public float HealthOverTime { get; set; } = 0;
             public float WardSaveFactor { get; set; } = 0;
