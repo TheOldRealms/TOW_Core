@@ -12,6 +12,8 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.TwoDimension;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Artillery
@@ -276,6 +278,7 @@ namespace TOW_Core.Battle.Artillery
                 var muzzleVeloCheat = _target.Formation.GetMovementSpeedOfUnits()>0.1?  _target.Formation.GetMovementSpeedOfUnits()/2: 0f;
                 var mf = _calculatedMuzzle - muzzleVeloCheat + MBRandom.RandomFloatRanged(-1 + 3);
                 Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, mf, false, null);
+                AddCannonballScript();
             }
 
             if (_fireSound == null || !_fireSound.IsValid)
@@ -836,6 +839,20 @@ namespace TOW_Core.Battle.Artillery
         public override UsableMachineAIBase CreateAIBehaviorObject()
         {
             return new ArtilleryAI(this);
+        }
+
+        private void AddCannonballScript()
+        {
+            var cannonball = Mission.Current.Missiles.FirstOrDefault(missile => missile.ShooterAgent == PilotAgent);
+            if (cannonball != null)
+            {
+                GameEntity entity = cannonball.Entity;
+                entity.CreateAndAddScriptComponent("CannonBallScript");
+                CannonBallScript cannonBallScript = entity.GetFirstScriptOfType<CannonBallScript>();
+                cannonBallScript.SetShooterAgent(PilotAgent);
+                cannonBallScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("cannonball_explosion"));
+                entity.CallScriptCallbacks();
+            }
         }
     }
 }
