@@ -21,6 +21,25 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class DamagePatch
     {
+        
+        
+        
+        // we should decide, if we really want to override the damage type , if so we have to do some hierachical structuring
+
+        private static DamageType DecideOnDominantEffectOverride(DamageType current, DamageType newType)
+        {
+            if (newType != DamageType.Physical)
+            {
+                if (current == DamageType.Fire && newType != DamageType.Magical)
+                {
+                    return current;
+                }
+                return newType;
+            }
+            return current;
+        }
+        
+        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
         public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
@@ -29,45 +48,56 @@ namespace TOW_Core.HarmonyPatches
 
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent Victim = __instance;
-            
+            float ArmorPenetration=0f;
+            float bonusDamage=0f;
+            var resultDamageType = DamageType.Physical;
+
+    
             // get attacker information
             if (!attacker.IsHero)
             {
-                //soldier attributes
+                //unit attributes
+                var offenseProperties = attacker.Character.GetAttackProperties();
                 
+                //add all offense properties
+                foreach (var property in offenseProperties)
+                {
+                    ArmorPenetration += property.ArmorPenetration;
+                    bonusDamage += property.BonusDamagePercent;
+                    resultDamageType = property.DefaultDamageTypeOverride;       
+                }
                 
-                
+                //add temporary effects like buffs to attack bonuses
+                List<ItemTrait> itemTraits = attacker.GetComponent<ItemTraitAgentComponent>()
+                    .GetDynamicTraits(attacker.WieldedWeapon.Item);
+                foreach (var temporaryTraits in itemTraits)
+                {
+                    if (temporaryTraits.OffenseProperty != null)
+                    {
+                        ArmorPenetration += temporaryTraits.OffenseProperty.ArmorPenetration;
+                        bonusDamage += temporaryTraits.OffenseProperty.BonusDamagePercent;
+                        resultDamageType = DecideOnDominantEffectOverride(resultDamageType, temporaryTraits.OffenseProperty.DefaultDamageTypeOverride);
+                    }
+                }
             }
             else
             {
-                //item level attributes
+                //Hero item level attributes 
 
                 List<ItemTrait> itemTraits= new List<ItemTrait>();
                 List<ItemObject> items;
                 ItemDamageProperty damageProperty;
-
-                float ArmorPenetration=0f;
-                float bonusDamage=0f;
-
-                DamageType overrideDamageType= DamageType.Physical;
-
-
-
-                    // get all equipment Pieces
+                
+                // get all equipment Pieces
 
                 items = attacker.Character.GetCharacterEquipment();
                 foreach (var item in items)
                 {
                     if(item.HasTrait())
                         itemTraits.AddRange(item.GetTraits());
-
                     
                     itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
                 }
-                
-           
-                
-                
 
                 foreach (var itemTrait in itemTraits)
                 {
@@ -79,52 +109,22 @@ namespace TOW_Core.HarmonyPatches
                     
                     //TODO i am still not so sure if we should have a Override, in that form. 
 
-                    var tmpDamageType = itemTrait.OffenseProperty.DefaultDamageTypeOverride;
-                    if (tmpDamageType != DamageType.Physical)
-                    {
-                        if (tmpDamageType == DamageType.Fire &&overrideDamageType != DamageType.Magical)
-                        {
-                            continue;
-                        }
-                        overrideDamageType = tmpDamageType;
-                    }
+                    resultDamageType = DecideOnDominantEffectOverride(resultDamageType, itemTrait.OffenseProperty.DefaultDamageTypeOverride);
                 }
-
-                var resultDamageType = DamageType.Physical;
                 
                 //weapon properties
                 var damageProperties = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
                 if (damageProperties != null)
                 {
-                    
-                    
-                    if (overrideDamageType != DamageType.Physical)
-                    {
-                        if (damageProperties.DamageType == DamageType.Fire &&overrideDamageType != DamageType.Magical)
-                        {
-                        }
-                        else
-                        {
-                            resultDamageType = damageProperties.DamageType;
-                        }
-                    }
-                    else
-                    {
-                        resultDamageType = damageProperties.DamageType;
-                    }
-                    
-                    
-                    
-                    // maximum minimum is really not needed. just go with objects.xml in the prenative module do it here anywhere
+                    resultDamageType = DecideOnDominantEffectOverride(resultDamageType, damageProperties.DamageType);
+                       // maximum minimum is really not needed. just go with objects.xml in the prenative module do it here anywhere
                     Mathf.Clamp(b.InflictedDamage, damageProperties.MinDamage, damageProperties.MaxDamage);
                 }
-                
-                
-                
-                
-                
-                
             }
+            
+            
+            
+            
             
 
 

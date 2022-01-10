@@ -43,6 +43,30 @@ namespace TOW_Core.Utilities.Extensions
             return list;
         }
 
+        public static List<DefenseProperty> GetDefenseProperties(this BasicCharacterObject characterObject)
+        {
+            var list = new List<DefenseProperty>();
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Defense;
+            if (info != null)
+            {
+                list.AddRange(info);
+            }
+            return list;
+        }
+        
+        public static List<OffenseProperty> GetAttackProperties(this BasicCharacterObject characterObject)
+        {
+            var list = new List<OffenseProperty>();
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Offense;
+            if (info != null)
+            {
+                list.AddRange(info);
+            }
+            return list;
+        }
+        
+        
+
         public static string GetCustomVoiceClassName(this BasicCharacterObject characterObject)
         {
             string s = null;
@@ -73,10 +97,10 @@ namespace TOW_Core.Utilities.Extensions
         }
 
         public static List<ItemObject> GetCharacterEquipment(this BasicCharacterObject characterObject,
-            bool WithWeapons = true)
+            EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0)
         {
             List<ItemObject> CharacterEquipmentItems = new List<ItemObject>();
-            for (int i = 0; i < 9; i++)
+            for (int i = (int) BeginningFrom; i < 9; i++)
             {
                 if (characterObject.Equipment[i].Item!=null)
                 {
