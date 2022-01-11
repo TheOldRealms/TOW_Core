@@ -10,15 +10,6 @@ using TOW_Core.Utilities.Extensions;
 [HarmonyPatch]
 public static class MissionPatches
 {
-    private static float limit = 140;
-
-    [HarmonyPostfix]
-    [HarmonyPatch(typeof(Mission), "ComputeBlowMagnitudeMissile")]
-    public static void ComputeBlowMagnitudeMissilePostfix(ref float baseMagnitude)
-    {
-        baseMagnitude = baseMagnitude <= limit ? baseMagnitude : limit;
-    }
-
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
     public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
