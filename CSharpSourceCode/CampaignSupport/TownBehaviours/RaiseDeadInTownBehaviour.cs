@@ -56,7 +56,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             }, true, -1, false);
 
             obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!", raisingdeadinit, raisingdeadcondition, raisingdeadconsequence, raisingdeadtick, GameMenu.MenuAndOptionType.WaitMenuShowProgressAndHoursOption, GameOverlays.MenuOverlayType.None);
-            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_recruit");
+            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tor_vc_skeleton_recruit");
             MakeNecromancers();
         }
 

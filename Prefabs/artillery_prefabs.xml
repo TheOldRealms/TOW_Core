@@ -21,7 +21,7 @@
 						<variables>
 							<variable name="NavMeshPrefabName" value=""/>
 							<variable name="Name" value="Mortar"/>
-							<variable name="ProjectilePrefabName" value="cannonball"/>
+							<variable name="ProjectilePrefabName" value="tor_neutral_weapon_ammo_cannonball"/>
                             <variable name="ShootingAgentAnimationLength" value="0.350"/>
                             <variable name="RecoilDuration" value="0.100"/>
                             <variable name="Recoil2Duration" value="0.800"/>
@@ -85,7 +85,7 @@
 									<meta_mesh_component name="icon_man"/>
 								</components>
 								<scripts>
-									<script name="StandingPoint">
+									<script name="ArtilleryStandingPoint">
 										<variables>
 											<variable name="AutoSheathWeapons" value="true"/>
 											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
@@ -181,7 +181,7 @@
 									<meta_mesh_component name="icon_man"/>
 								</components>
 								<scripts>
-									<script name="StandingPointWithWeaponRequirement">
+									<script name="AmmoPickUpStandingPoint">
 										<variables>
 											<variable name="AutoSheathWeapons" value="false"/>
 											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
@@ -208,7 +208,7 @@
 									<meta_mesh_component name="icon_man"/>
 								</components>
 								<scripts>
-									<script name="StandingPointWithWeaponRequirement">
+									<script name="AmmoPickUpStandingPoint">
 										<variables>
 											<variable name="AutoSheathWeapons" value="false"/>
 											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
@@ -241,7 +241,7 @@
 									<meta_mesh_component name="icon_man"/>
 								</components>
 								<scripts>
-									<script name="StandingPointWithWeaponRequirement">
+									<script name="AmmoPickUpStandingPoint">
 										<variables>
 											<variable name="AutoSheathWeapons" value="false"/>
 											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>

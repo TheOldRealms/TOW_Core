@@ -58,8 +58,14 @@ namespace TOW_Core.Battle.Artillery
         private GameEntity _wheel_R;
         private ItemObject _ammoItem;
         private BattleSideEnum _side;
+        private bool _isInitialized;
         private bool _isRotating;
         private float _rotationDirection;
+        public float RotationDirection
+        {
+            get => _rotationDirection;
+            private set => _rotationDirection = value;
+        }
         private float _elevationDirection;
         private bool _isPitchDirty;
         private RangedSiegeWeapon.WeaponState _currentState;
@@ -68,7 +74,6 @@ namespace TOW_Core.Battle.Artillery
         private float _currentRecoilTimer;
         private StandingPointWithWeaponRequirement _loadAmmoStandingPoint;
         private List<StandingPointWithWeaponRequirement> _ammoPickUpStandingPoints = new List<StandingPointWithWeaponRequirement>();
-        private List<StandingPoint> _reloadStandingPoints = new List<StandingPoint>();
         private int _moveSoundIndex;
         private SoundEvent _moveSound;
         private int _fireSoundIndex;
@@ -79,6 +84,11 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 _originalDirection;
         private float _currentPitch;
         private float _currentYaw;
+        public float CurrentYaw
+        {
+            get => _currentYaw;
+            private set => _currentYaw = value;
+        }
         private float _tolerance = 0.1f;
 
 
@@ -127,9 +137,6 @@ namespace TOW_Core.Battle.Artillery
             InitStandingPoints();
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
             ForcedUse = true;
-            _originalDirection = _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
-            _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetGlobalFrame().rotation.f.RotationX);
-            _currentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
             EnemyRangeToStopUsing = MinRange;
             maximumMuzzleVelocity = MuzzleVelocity + 20f;
             _calculatedMuzzle = maximumMuzzleVelocity;
@@ -170,8 +177,6 @@ namespace TOW_Core.Battle.Artillery
             foreach (StandingPoint point in StandingPoints)
             {
                 point.AddComponent(new ResetAnimationOnStopUsageComponent(ActionIndexCache.act_none));
-                if (point.GameEntity.HasTag(ReloadTag))
-                    _reloadStandingPoints.Add(point);
 
                 if (point is StandingPointWithWeaponRequirement && point.GameEntity.HasTag(ReloadTag))
                 {
@@ -191,6 +196,14 @@ namespace TOW_Core.Battle.Artillery
         protected override void OnTick(float dt)
         {
             base.OnTick(dt);
+
+            if (!_isInitialized)
+            {
+                _originalDirection = _artilleryBase.GetGlobalFrame().rotation.f.NormalizedCopy();
+                _currentPitch = TOWMath.GetDegreeFromRadians(_barrel.GetGlobalFrame().rotation.f.RotationX);
+                CurrentYaw = TOWMath.GetDegreeFromRadians(_artilleryBase.GetGlobalFrame().rotation.f.RotationZ);
+                _isInitialized = true;
+            }
             if (PilotAgent != null)
             {
                 if (_currentState == RangedSiegeWeapon.WeaponState.Idle)
@@ -423,23 +436,24 @@ namespace TOW_Core.Battle.Artillery
 
         private void UpdateRotation(float dt)
         {
-            if (!_isRotating)
+            if (!_isRotating && RotationDirection != 0f)
             {
-                _rotationDirection = 0f;
+                RotationDirection = 0f;
                 return;
             }
             var frame = _artilleryBase.GetGlobalFrame();
-            var amount = _rotationDirection * dt * 0.2f;
+            var amount = RotationDirection * dt * 0.2f;
             frame.rotation.RotateAboutUp(amount);
             _artilleryBase.SetGlobalFrame(frame);
-            _currentYaw = TOWMath.GetDegreeFromRadians(frame.rotation.f.RotationZ) * SideCorrection;
+            var angle = Vec3.AngleBetweenTwoVectors(_originalDirection, CurrentDirection);
+            CurrentYaw = TOWMath.GetDegreeFromRadians(angle);// * SideCorrection;
         }
 
         private void UpdateWheelRotation(float dt)
         {
             if (_isRotating)
             {
-                DoWheelRotation(dt, _rotationDirection, -_rotationDirection);
+                DoWheelRotation(dt, RotationDirection, -RotationDirection);
             }
         }
 
@@ -454,7 +468,7 @@ namespace TOW_Core.Battle.Artillery
                 }
                 else if (deltaYaw != 0 && _isRotating)
                 {
-                    _rotationDirection = deltaYaw;
+                    RotationDirection = deltaYaw;
                 }
 
                 if (_isRotating && deltaYaw == 0)
@@ -493,7 +507,7 @@ namespace TOW_Core.Battle.Artillery
         protected void OnRotationStarted(float direction)
         {
             _isRotating = true;
-            _rotationDirection = direction;
+            RotationDirection = direction;
             if (_moveSound == null || !_moveSound.IsValid)
             {
                 _moveSound = SoundEvent.CreateEvent(_moveSoundIndex, Scene);
@@ -504,7 +518,7 @@ namespace TOW_Core.Battle.Artillery
         protected void OnRotationStopped()
         {
             _isRotating = false;
-            _rotationDirection = 0;
+            RotationDirection = 0;
             _moveSound.Stop();
             _moveSound = null;
         }
@@ -539,9 +553,9 @@ namespace TOW_Core.Battle.Artillery
                 }
             }
 
-            if (!IsWithinToleranceRange(requiredYaw, _currentYaw))
+            if (!IsWithinToleranceRange(requiredYaw, CurrentYaw))
             {
-                if (GetShortestAngleIsClockwise(requiredYaw, _currentYaw))
+                if (GetShortestAngleIsClockwise(requiredYaw, CurrentYaw))
                 {
                     x = 1;
                 }
@@ -669,7 +683,7 @@ namespace TOW_Core.Battle.Artillery
         private Vec3 GetTargetPosition()
         {
             var speedOfTarget = _target.Formation.GetMovementSpeedOfUnits();
-            if (speedOfTarget > 0.01&& _currentCalculatedFlightTime>1.0f) 
+            if (speedOfTarget > 0.01 && _currentCalculatedFlightTime > 1.0f) 
             {
 
                 return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(Mathf.Abs(_currentCalculatedFlightTime+speedOfTarget)).origin;
@@ -703,7 +717,7 @@ namespace TOW_Core.Battle.Artillery
         
         public bool CanShootAtPoint(Vec3 target)
         {
-            if ((target - _artilleryBase.GlobalPosition).Length <= MinRange+20)
+            if ((target - _artilleryBase.GlobalPosition).Length <= MinRange + 20)
             {
                 return false;
             }
@@ -719,7 +733,7 @@ namespace TOW_Core.Battle.Artillery
                 return false;
             }
             
-            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, _currentYaw);
+            return IsWithinToleranceRange(requiredElevation, _currentPitch) && IsWithinToleranceRange(requiredYaw, CurrentYaw);
         }
 
         private bool IsInRange(Vec3 target)
@@ -804,9 +818,9 @@ namespace TOW_Core.Battle.Artillery
         
         private bool GetShortestAngleIsClockwise(float targetDegree, float startDegree)
         {
-            bool result=Math.Abs(startDegree - targetDegree) < 180;
+            bool result = Math.Abs(startDegree - targetDegree) < 180;
             
-            if (startDegree - targetDegree<0)
+            if (startDegree - targetDegree < 0)
             {
                 result = !result;
             }
@@ -816,13 +830,12 @@ namespace TOW_Core.Battle.Artillery
         private float SimulateRotationMovement(float current, float target, float deltaTime)
         {
             float val = ((Math.Abs(target - Math.Abs(current))) / 3) * 5f;
-            return  val*deltaTime;
+            return  val * deltaTime;
         }
 
         public override UsableMachineAIBase CreateAIBehaviorObject()
         {
             return new ArtilleryAI(this);
         }
-
     }
 }

@@ -11,13 +11,13 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Items
 {
-    public class MagicWeaponEffectMissionLogic : MissionLogic
+    public class WeaponEffectMissionLogic : MissionLogic
     {
         public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            if (HasMagicWeapon(agent))
+            if (HasWeaponWithTrait(agent))
             {
-                var comp = new MagicWeaponAgentComponent(agent);
+                var comp = new ItemTraitAgentComponent(agent);
                 agent.AddComponent(comp);
                 agent.OnAgentWieldedItemChange += comp.OnWieldedItemChanged;
             }
@@ -25,12 +25,15 @@ namespace TOW_Core.Items
 
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         {
-            if(affectorWeapon.Item != null && affectorWeapon.Item.IsMagicWeapon())
+            if(affectorWeapon.Item != null && affectorWeapon.Item.HasTrait(affectorAgent))
             {
-                var magiceffect = affectorWeapon.Item.GetMagicalProperties();
-                if(magiceffect.ImbuedStatusEffectId != "none")
+                var relevantTraits = affectorWeapon.Item.GetTraits(affectorAgent).Where(x=>x.ImbuedStatusEffectId != "none");
+                if(relevantTraits != null && relevantTraits.Count()>0)
                 {
-                    affectedAgent.ApplyStatusEffect(magiceffect.ImbuedStatusEffectId);
+                    foreach(var trait in relevantTraits)
+                    {
+                        affectedAgent.ApplyStatusEffect(trait.ImbuedStatusEffectId, affectorAgent);
+                    }
                 }
                 //TODO: disabling this for first release, we dont actually have an item script. This just clogs system resources and spams the screen with debug messages.
                 /*
@@ -54,7 +57,7 @@ namespace TOW_Core.Items
             }
         }
 
-        private bool HasMagicWeapon(Agent agent)
+        private bool HasWeaponWithTrait(Agent agent)
         {
             if (agent.IsHuman)
             {
@@ -63,7 +66,7 @@ namespace TOW_Core.Items
                     var weapon = agent.Equipment[i];
                     if (weapon.Item != null)
                     {
-                        var magiceffect = weapon.Item.GetMagicalProperties();
+                        var magiceffect = weapon.Item.GetTraits(agent);
                         if (magiceffect != null)
                         {
                             return true;

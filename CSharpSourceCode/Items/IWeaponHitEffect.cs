@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Items
 {
-    public interface IMagicWeaponHitEffect
+    public interface IWeaponHitEffect
     {
         void OnHit(Agent affectedAgent, Agent affectorAgent, MissionWeapon affectorWeapon);
     }

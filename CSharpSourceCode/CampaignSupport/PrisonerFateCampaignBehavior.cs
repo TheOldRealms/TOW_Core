@@ -14,7 +14,7 @@ namespace TOW_Core.CampaignSupport
 
         private void Initialize(CampaignGameStarter obj)
         {
-            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tow_skeleton_recruit");
+            _skeleton = MBObjectManager.Instance.GetObject<CharacterObject>("tor_vc_skeleton_recruit");
         }
 
         private void OnMapEventEnded(MapEvent mapEvent)

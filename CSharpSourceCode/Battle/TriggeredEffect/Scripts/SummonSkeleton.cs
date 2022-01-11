@@ -4,7 +4,7 @@
     {
         public SummonSkeleton()
         {
-            CreatureName = "tow_summoned_skeleton";
+            CreatureName = "tor_vc_summoned_skeleton";
         }
 
     }

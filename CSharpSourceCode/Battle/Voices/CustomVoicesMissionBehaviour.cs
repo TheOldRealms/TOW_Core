@@ -30,7 +30,7 @@ namespace TOW_Core.Battle.Voices
                 {
                     var agent = allAgents.Dequeue();
                     string voiceName = agent.Character?.GetCustomVoiceClassName();
-                    if (voiceName != null)
+                    if (voiceName != null && voiceName != "none")
                     {
                         agent.SetAgentVoiceByClassName(voiceName);
                     }

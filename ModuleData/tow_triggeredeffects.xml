@@ -34,7 +34,7 @@
       SoundEffectId="dart_explosion" 
       SoundEffectLength="2.5" 
       DamageType="Magical" 
-      DamageAmount="50" 
+      DamageAmount="10" 
       Radius="5" 
       HasShockWave="false"
       TargetType="All" 
@@ -139,5 +139,36 @@
           ImbuedStatusEffectID="none"
           ImbuedStatusEffectDuration="0"
           DamageVariance="0.2"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript"/>
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="word_of_pain"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Magical"
+          DamageAmount="0"
+          Radius="0"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="word_of_pain"
+          ImbuedStatusEffectDuration="5"
+          DamageVariance="0.2"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="apply_flaming_sword_trait"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Fire"
+          DamageAmount="0"
+          Radius="5"
+          HasShockWave="false"
+          TargetType="Friendly"
+          ImbuedStatusEffectID="none"
+          ImbuedStatusEffectDuration="0"
+          DamageVariance="0"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.ApplyFlamingItemTraitScript">
+  </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

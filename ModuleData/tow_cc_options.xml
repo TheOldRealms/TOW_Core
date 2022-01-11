@@ -42,7 +42,7 @@
 		<OptionFlavourText>Your parents loyally served Graf Haupt-Anderrson, while not major nobility they nonetheless held sway within the courts of the Elector Count and thus ensured your childhood was one of comfort. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop">
+	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tor_empire_state_troop">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>TwoHanded</string>
@@ -338,7 +338,7 @@
 		<OptionFlavourText>You broke away from the role of a communion slave to a much older necromancer, stealing one of his tomes on your way out. You are now free to delve into dark lores and determine your own fate.  -   Gains access to summon skeleton spell and the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop_vc">
+	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tor_vc_empire_state_troop">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Polearm</string>
@@ -350,7 +350,7 @@
 		<OptionFlavourText>The mortals of Sylvania are known to march into battle alongside the undead hordes of their masters. A more dour and superstitious folk you will never meet but they rarely break in the heat of battle. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
+	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tor_merchant_empire">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Trade</string>

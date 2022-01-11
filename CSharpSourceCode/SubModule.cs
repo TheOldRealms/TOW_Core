@@ -91,16 +91,15 @@ namespace TOW_Core
             ConfigureLogging();
 
             //This has to be here.
-            AbilityManager.LoadAbilities();
-            CustomVoiceManager.LoadVoices();
-            AttributeManager.LoadAttributes();
+            ExtendedInfoManager.Load();
             LoadStatusEffects();
             LoadSprites();
             LoadShieldPatterns();
             LoadQuestBattleTemplates();
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
-            MagicWeaponEffectManager.LoadXML();
+            ExtendedItemObjectManager.LoadXML();
+            
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
@@ -160,7 +159,7 @@ namespace TOW_Core
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
-                starter.AddBehavior(new ExtendedInfoManager());
+                starter.AddBehavior(ExtendedInfoManager.Instance);
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
@@ -201,7 +200,7 @@ namespace TOW_Core
             mission.AddMissionBehavior(new FireArmsMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
-            mission.AddMissionBehavior(new MagicWeaponEffectMissionLogic());
+            mission.AddMissionBehavior(new WeaponEffectMissionLogic());
             //mission.AddMissionBehaviour(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
