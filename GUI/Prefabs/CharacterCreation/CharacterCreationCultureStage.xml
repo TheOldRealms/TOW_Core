@@ -1,0 +1,149 @@
+<Prefab>
+  <Constants>
+    <Constant Name="NextButton.Width" BrushLayer="Default" BrushName="ButtonBrush1" BrushValueType="Width" />
+    <Constant Name="NextButton.Height" BrushLayer="Default" BrushName="ButtonBrush1" BrushValueType="Height" />
+
+    <Constant Name="PreviousButton.Width" BrushLayer="Default" BrushName="ButtonBrush2" BrushValueType="Width" />
+    <Constant Name="PreviousButton.Height" BrushLayer="Default" BrushName="ButtonBrush2" BrushValueType="Height" />
+
+    <Constant Name="ParallaxDuration" Value="6"/>
+
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#000000FF">
+      <Children>
+        <!--<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionXOffset="-290" Sprite="InventoryBackground" />-->
+
+        <Standard.Background Parameter.SmokeColorFactor="2" Parameter.ParticleOpacity="1.6" />
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="382" VerticalAlignment="Bottom" Sprite="General\CharacterCreation\character_creation_background_gradient" />
+
+        <!--Gradient Layer-->
+        <CharacterCreationBackgroundGradientWidget DataSource="{CurrentSelectedCulture}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="CharacterCreation\Culture\background_gradient" Brush.GlobalAlphaFactor="0.7" Brush.ColorFactor="1.8" CurrentCultureId="@CultureID" />
+
+        <!--Left Side-->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="694" DoNotUseCustomScaleAndChildren="true">
+          <Children>
+
+
+            <!--Big Banner-->
+            <CharacterCreationCultureVisualWidget DataSource="{CurrentSelectedCulture}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="1300" SuggestedHeight="700" HorizontalAlignment="Left" Layer1Widget="Layer1Widget" Layer2Widget="Layer2Widget" Layer3Widget="Layer3Widget" Layer4Widget="Layer4Widget" UseSmallVisuals="false" CurrentCultureId="@CultureID">
+              <Children>
+                <ParallaxItemWidget Id="Layer4Widget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="938" SuggestedHeight="840" Brush="Culture.Banner.Layer.4" OneDirectionDuration="!ParallaxDuration" OneDirectionDistance="4" InitialDirection="Left"  IsEaseInOutEnabled="true" HorizontalAlignment="Center"/>
+                <ParallaxItemWidget Id="Layer3Widget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="938" SuggestedHeight="840" Brush="Culture.Banner.Layer.3" OneDirectionDuration="!ParallaxDuration" OneDirectionDistance="14" InitialDirection="Left" IsEaseInOutEnabled="true" HorizontalAlignment="Center"/>
+                <ParallaxItemWidget Id="Layer2Widget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="938" SuggestedHeight="840" Brush="Culture.Banner.Layer.2" OneDirectionDuration="!ParallaxDuration" OneDirectionDistance="25" InitialDirection="Left" IsEaseInOutEnabled="true" HorizontalAlignment="Center"/>
+                <ParallaxItemWidget Id="Layer1Widget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="938" SuggestedHeight="840" Brush="Culture.Banner.Layer.1"  OneDirectionDuration="!ParallaxDuration" OneDirectionDistance="40" InitialDirection="Left" IsEaseInOutEnabled="true" HorizontalAlignment="Center"/>
+              </Children>
+            </CharacterCreationCultureVisualWidget>
+
+
+            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Stage.Title.Text" Text="@SelectionText" IsHidden="@AnyItemSelected"/>
+
+            <ListPanel DataSource="{CurrentSelectedCulture}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="20" StackLayout.LayoutMethod="VerticalBottomToTop">
+              <Children>
+                <ParallaxItemWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom"  OneDirectionDuration="!ParallaxDuration" OneDirectionDistance="15" InitialDirection="Right" IsEaseInOutEnabled="true">
+                  <Children>
+                    <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" Brush="Stage.Title.Text" Text="@NameText" />
+                  </Children>
+                </ParallaxItemWidget>
+                <RichTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="900" SuggestedHeight="200" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Stage.Selection.Description.Text" Brush.TextVerticalAlignment="Top" Text="@DescriptionText" />
+              </Children>
+            </ListPanel>
+
+          </Children>
+        </Widget>
+
+        <!-- Right Panel -->
+        <Widget Id="RightPanel" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="694" SuggestedHeight="1080" HorizontalAlignment="Right" Sprite="General\CharacterCreation\character_creation_panel" VerticalAlignment="Center" DoNotUseCustomScaleAndChildren="true">
+          <Children>
+
+            <!--Title-->
+            <RichTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="670" SuggestedHeight="55" HorizontalAlignment="Right" Brush="Stage.Title.Text" Text="@Title" />
+
+            <!--Description-->
+            <RichTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="620" SuggestedHeight="90" HorizontalAlignment="Right" MarginRight="15" MarginTop="100" Brush="Stage.Description.Text" Text="@Description" />
+
+            <Widget Id="InnerPanel" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="573" SuggestedHeight="750" HorizontalAlignment="Center" VerticalAlignment="Center" PositionXOffset="23" PositionYOffset="37">
+              <Children>
+                    
+                <ScrollablePanel Id="ScrollablePanel" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" AutoHideScrollBars="true" ClipRect="ClipRect" InnerPanel="ClipRect\Grid" VerticalScrollbar="..\VerticalScrollbar">
+                  <Children>
+                    <Widget Id="ClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ClipContents="true">
+                      <Children>
+                        <GridWidget Id="Grid" DataSource="{Cultures}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" DefaultCellWidth="188" DefaultCellHeight="370" ColumnCount="3" HorizontalAlignment="Center" >
+                          <ItemTemplate>
+
+                            <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" Command.Click="ExecuteSelectCulture" IsSelected="@IsSelected" UpdateChildrenStates="true" Brush="CharacterCreation.Culture.Banner.SoundBrush" DoNotUseCustomScaleAndChildren="true">
+                              <Children>
+
+                                <!--Culture Flag-->
+                                <CharacterCreationCultureVisualWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="181" SuggestedHeight="333" CurrentCultureId="@CultureID" Brush="CharacterCreation.Culture.Banner" UpdateChildrenStates="true" DoNotUseCustomScaleAndChildren="true">
+                                  <Children>
+                                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="217" SuggestedHeight="315" PositionXOffset="0" HorizontalAlignment="Center" MarginLeft="0" PositionYOffset="-14" Sprite="General\CharacterCreation\culture_flag_small_selection" IsVisible="@IsSelected" />
+                                  </Children>
+                                </CharacterCreationCultureVisualWidget>
+
+                                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="181" SuggestedHeight="30" VerticalAlignment="Bottom" PositionYOffset="3" Brush="Culture.Text" Text="@ShortenedNameText" />
+
+
+                              </Children>
+                            </ButtonWidget>
+
+                          </ItemTemplate>
+                        </GridWidget>
+                      </Children>
+                    </Widget>
+                  </Children>  
+                </ScrollablePanel>
+                    
+                <ScrollbarWidget Id="VerticalScrollbar" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="6" HorizontalAlignment="Right" VerticalAlignment="Top" MarginTop="6" MarginBottom="15" AlignmentAxis="Vertical" Handle="VerticalScrollbarHandle" MaxValue="100" MinValue="0" >
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9" Color="#5a4033FF" AlphaFactor="0.2" />
+                    <ImageWidget Id="VerticalScrollbarHandle" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="10" SuggestedWidth="8" HorizontalAlignment="Center" Brush="FaceGen.Scrollbar.Handle" />
+                  </Children>
+                </ScrollbarWidget>
+
+                <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom" MarginTop="20" Brush.FontSize="25" Text="@CurrentSelectedCultureText" />
+
+              </Children>
+            </Widget>
+
+            <!--Widget Id="FillCanvasWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="490" SuggestedHeight="6" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="60" MarginBottom="80" Sprite="General\CharacterCreation\creation_progress_bar_canvas">
+              <Children>
+                <Widget Id="FillWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="490" SuggestedHeight="19" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\CharacterCreation\creation_progress_bar_fill" />
+              </Children>
+            </Widget-->
+
+            <!--Stage Selection Bar-->
+            <!--CharacterCreationStageSelectionBarWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="517" SuggestedHeight="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="45" MarginBottom="53" Command.OnStageSelection="ExecuteGoToIndex" CurrentStageIndex="@CurrentStageIndex" StackLayout.LayoutMethod="HorizontalSpaced" StageButtonTemplate="StageButtonTemplateButtonWidget" TotalStagesCount="@TotalStageCount" OpenedStageIndex="@FurthestIndex" FullButtonBrush="Stages.Bar.Full.Button" EmptyButtonBrush="Stages.Bar.Empty.Button" FullBrightButtonBrush="Stages.Bar.FullCurrent.Button" BarFillWidget="..\FillCanvasWidget\FillWidget" BarCanvasWidget="..\FillCanvasWidget" >
+              <Children>
+                <ButtonWidget Id="StageButtonTemplateButtonWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="59" SuggestedHeight="59" Brush="ButtonSimpleBrush" />
+              </Children>
+            </CharacterCreationStageSelectionBarWidget-->
+
+            <!--Previous and Next Buttons-->
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="50" MarginRight="40">
+              <Children>
+
+                <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="125" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="20" Brush="Standard.BackButton" Command.Click="OnPreviousStage" UpdateChildrenStates="true" GamepadNavigationIndex="1">
+                  <Children>
+                  </Children>
+                </ButtonWidget>
+
+                <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="400" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" MarginLeft="20" Brush="Popup.Done.Button.NineGrid" Command.Click="OnNextStage" IsEnabled="@CanAdvance" UpdateChildrenStates="true" GamepadNavigationIndex="0">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@NextStageText" />
+                  </Children>
+                </ButtonWidget>
+
+              </Children>
+            </ListPanel>
+
+          </Children>
+        </Widget>
+
+        <CharacterCreationFirstStageFadeOutWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#000000FF" StayTime="1.5" FadeOutTime="1"/>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

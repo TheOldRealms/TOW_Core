@@ -37,7 +37,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             if(chaosClan != null && chaosClan.Culture != null && chaosClan.Culture.StringId == "chaos_culture")
             {
                 PartyTemplateObject chaosPartyTemplate = chaosClan.Culture.DefaultPartyTemplate;
-                mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
+                mobileParty.Party.MobileParty.InitializeMobilePartyAroundPosition(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
                 mobileParty.ActualClan = chaosClan;
                 _owner = mobileParty.ActualClan.Leader;
                 _home = Portal;

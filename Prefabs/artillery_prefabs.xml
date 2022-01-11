@@ -1,0 +1,262 @@
+<prefabs>
+	<game_entity name="tor_mortar" old_prefab_name="" mobility="1">
+		<flags>
+			<flag name="record_to_scene_replay" value="true"/>
+		</flags>
+		<tags>
+			<tag name="machine_parent"/>
+		</tags>
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<scripts>
+			<script name="SynchedMissionObject">
+				<variables>
+					<variable name="NavMeshPrefabName" value=""/>
+				</variables>
+			</script>
+		</scripts>
+		<children>
+			<game_entity name="ScriptHolder" old_prefab_name="" mobility="1">
+				<scripts>
+					<script name="Artillery">
+						<variables>
+							<variable name="NavMeshPrefabName" value=""/>
+							<variable name="Name" value="Mortar"/>
+							<variable name="ProjectilePrefabName" value="tor_neutral_weapon_ammo_cannonball"/>
+                            <variable name="ShootingAgentAnimationLength" value="0.350"/>
+                            <variable name="RecoilDuration" value="0.100"/>
+                            <variable name="Recoil2Duration" value="0.800"/>
+							<variable name="MinPitch" value="30"/>
+							<variable name="MaxPitch" value="80"/>
+							<variable name="IdleActionName" value="act_walk_idle_torch"/>
+							<variable name="ShootActionName" value="act_usage_mangonel_big_shoot"/>
+							<variable name="Reload1ActionName" value="act_usage_mangonel_big_reload"/>
+							<variable name="Reload2ActionName" value="act_usage_mangonel_reload_2"/>
+							<variable name="RotateLeftActionName" value="act_usage_mangonel_rotate_left"/>
+							<variable name="RotateRightActionName" value="act_usage_mangonel_rotate_right"/>
+							<variable name="LoadAmmoBeginActionName" value="act_usage_mangonel_big_load_ammo_begin"/>
+							<variable name="LoadAmmoEndActionName" value="act_usage_mangonel_big_load_ammo_end"/>
+							<variable name="Reload2IdleActionName" value="act_usage_mangonel_reload_2_idle"/>
+						</variables>
+					</script>
+				</scripts>
+				<children>
+					<game_entity name="artillery_base" old_prefab_name="" mobility="1">
+						<tags>
+							<tag name="Battery_Base"/>
+						</tags>
+						<transform position="0.000, 1.219, 0.302"/>
+						<physics shape="bo_empire_mortar_001_base" override_material="siege_engines" center_of_mass="0.000, 0.531, 0.145"/>
+						<components>
+							<meta_mesh_component name="empire_mortar_001_base"/>
+						</components>
+						<children>
+							<game_entity name="artillery_barrel" old_prefab_name="" mobility="1">
+								<tags>
+									<tag name="Barrel"/>
+								</tags>
+								<transform position="0.024, 0.000, 0.528" rotation_euler="0.932, 0.000, 0.000"/>
+								<components>
+									<meta_mesh_component name="empire_mortar_001_barrel"/>
+								</components>
+								<children>
+									<game_entity name="projectile_leave_position" old_prefab_name="" mobility="1">
+										<visibility_masks>
+											<visibility_mask name="visible_only_when_editing" value="true"/>
+										</visibility_masks>
+										<tags>
+											<tag name="projectile_release"/>
+										</tags>
+										<transform position="0.000, 0.773, -0.072"/>
+										<components>
+											<meta_mesh_component name="arrow_new_icon"/>
+										</components>
+									</game_entity>
+								</children>
+							</game_entity>
+							<game_entity name="use_position" old_prefab_name="" mobility="1">
+								<visibility_masks>
+									<visibility_mask name="visible_only_when_editing" value="true"/>
+								</visibility_masks>
+								<tags>
+									<tag name="Pilot"/>
+								</tags>
+								<transform position="-1.200, -0.078, -0.350" rotation_euler="0.000, 0.000, -1.098"/>
+								<components>
+									<meta_mesh_component name="icon_man"/>
+								</components>
+								<scripts>
+									<script name="ArtilleryStandingPoint">
+										<variables>
+											<variable name="AutoSheathWeapons" value="true"/>
+											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
+											<variable name="AutoWieldWeapons" value="false"/>
+											<variable name="TranslateUser" value="true"/>
+											<variable name="HasRecentlyBeenRechecked" value="false"/>
+											<variable name="NavMeshPrefabName" value=""/>
+										</variables>
+									</script>
+								</scripts>
+							</game_entity>
+							<game_entity name="artillery_wheel_r" old_prefab_name="" mobility="1">
+								<tags>
+									<tag name="Wheel_R"/>
+								</tags>
+								<transform position="0.808, 0.438, 0.218"/>
+								<physics shape="bo_empire_mortar_001_wheel" override_material="siege_engines" center_of_mass="0.019, 0.013, -0.008"/>
+								<components>
+									<meta_mesh_component name="empire_mortar_001_wheel"/>
+								</components>
+							</game_entity>
+							<game_entity name="artillery_wheel_l" old_prefab_name="" mobility="1">
+								<tags>
+									<tag name="Wheel_L"/>
+								</tags>
+								<transform position="-0.776, 0.440, 0.218"/>
+								<physics shape="bo_empire_mortar_001_wheel" override_material="siege_engines" center_of_mass="0.019, 0.013, -0.008"/>
+								<components>
+									<meta_mesh_component name="empire_mortar_001_wheel"/>
+								</components>
+							</game_entity>
+							<game_entity name="CameraHolder" old_prefab_name="" mobility="1">
+								<tags>
+									<tag name="CameraHolder"/>
+								</tags>
+								<transform position="0.000, -4.449, 1.650"/>
+							</game_entity>
+							<game_entity name="reload_position" old_prefab_name="" mobility="1">
+								<visibility_masks>
+									<visibility_mask name="visible_only_when_editing" value="true"/>
+								</visibility_masks>
+								<tags>
+									<tag name="reload"/>
+								</tags>
+								<transform position="0.045, 1.441, -0.350" rotation_euler="0.000, 0.000, 3.141"/>
+								<components>
+									<meta_mesh_component name="icon_man"/>
+								</components>
+								<scripts>
+									<script name="StandingPointWithWeaponRequirement">
+										<variables>
+											<variable name="AutoSheathWeapons" value="false"/>
+											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
+											<variable name="AutoWieldWeapons" value="false"/>
+											<variable name="TranslateUser" value="true"/>
+											<variable name="HasRecentlyBeenRechecked" value="false"/>
+											<variable name="NavMeshPrefabName" value=""/>
+										</variables>
+									</script>
+								</scripts>
+							</game_entity>
+						</children>
+					</game_entity>
+					<game_entity name="projectile_pile" old_prefab_name="" mobility="1">
+						<transform position="2.490, 2.619, 0.000"/>
+						<physics override_material="wood"/>
+						<components>
+							<meta_mesh_component name="cannonball_pile_001"/>
+						</components>
+						<scripts>
+							<script name="CannonBallPile">
+								<variables>
+									<variable name="PilotStandingPointTag" value="Pilot"/>
+									<variable name="AmmoPickUpTag" value="ammopickup"/>
+									<variable name="WaitStandingPointTag" value="Wait"/>
+									<variable name="NavMeshPrefabName" value="projectile_pile_a_blocker_dnm"/>
+								</variables>
+							</script>
+						</scripts>
+						<children>
+							<game_entity name="ammo_pos_e" old_prefab_name="" mobility="1">
+								<flags>
+									<flag name="record_to_scene_replay" value="true"/>
+								</flags>
+								<visibility_masks>
+									<visibility_mask name="visible_only_when_editing" value="true"/>
+								</visibility_masks>
+								<tags>
+									<tag name="ammopickup"/>
+								</tags>
+								<transform position="0.000, -0.768, 0.000"/>
+								<components>
+									<meta_mesh_component name="icon_man"/>
+								</components>
+								<scripts>
+									<script name="AmmoPickUpStandingPoint">
+										<variables>
+											<variable name="AutoSheathWeapons" value="false"/>
+											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
+											<variable name="AutoWieldWeapons" value="false"/>
+											<variable name="TranslateUser" value="true"/>
+											<variable name="HasRecentlyBeenRechecked" value="false"/>
+											<variable name="NavMeshPrefabName" value=""/>
+										</variables>
+									</script>
+								</scripts>
+							</game_entity>
+							<game_entity name="ammo_pos_b" old_prefab_name="" mobility="1">
+								<flags>
+									<flag name="record_to_scene_replay" value="true"/>
+								</flags>
+								<visibility_masks>
+									<visibility_mask name="visible_only_when_editing" value="true"/>
+								</visibility_masks>
+								<tags>
+									<tag name="ammopickup"/>
+								</tags>
+								<transform position="-0.612, 0.417, 0.000" rotation_euler="0.000, 0.000, -2.182"/>
+								<components>
+									<meta_mesh_component name="icon_man"/>
+								</components>
+								<scripts>
+									<script name="AmmoPickUpStandingPoint">
+										<variables>
+											<variable name="AutoSheathWeapons" value="false"/>
+											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
+											<variable name="AutoWieldWeapons" value="false"/>
+											<variable name="TranslateUser" value="true"/>
+											<variable name="HasRecentlyBeenRechecked" value="false"/>
+											<variable name="NavMeshPrefabName" value=""/>
+										</variables>
+									</script>
+								</scripts>
+							</game_entity>
+							<game_entity name="pile_collider" old_prefab_name="" mobility="1">
+								<tags>
+									<tag name="pile_collider"/>
+								</tags>
+								<physics shape="bo_mangonel_rock_pile" override_material="stone"/>
+							</game_entity>
+							<game_entity name="ammo_pos_h" old_prefab_name="" mobility="1">
+								<flags>
+									<flag name="record_to_scene_replay" value="true"/>
+								</flags>
+								<visibility_masks>
+									<visibility_mask name="visible_only_when_editing" value="true"/>
+								</visibility_masks>
+								<tags>
+									<tag name="ammopickup"/>
+								</tags>
+								<transform position="0.610, 0.334, 0.000" rotation_euler="0.000, 0.000, 2.275"/>
+								<components>
+									<meta_mesh_component name="icon_man"/>
+								</components>
+								<scripts>
+									<script name="AmmoPickUpStandingPoint">
+										<variables>
+											<variable name="AutoSheathWeapons" value="false"/>
+											<variable name="AutoEquipWeaponsOnUseStopped" value="false"/>
+											<variable name="AutoWieldWeapons" value="false"/>
+											<variable name="TranslateUser" value="true"/>
+											<variable name="HasRecentlyBeenRechecked" value="false"/>
+											<variable name="NavMeshPrefabName" value=""/>
+										</variables>
+									</script>
+								</scripts>
+							</game_entity>
+						</children>
+					</game_entity>
+				</children>
+			</game_entity>
+		</children>
+	</game_entity>
+</prefabs>

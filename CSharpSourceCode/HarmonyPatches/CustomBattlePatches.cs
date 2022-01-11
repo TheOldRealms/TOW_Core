@@ -27,13 +27,13 @@ namespace TOW_Core.HarmonyPatches
             switch (culture.GetCultureCode())
             {
                 case CultureCode.Empire:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_empire_recruit");
+                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit");
                     break;
                 case CultureCode.Khuzait:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_skeleton_recruit");
+                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_vc_skeleton_recruit");
                     break;
                 default:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tow_empire_recruit");
+                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit");
                     break;
             }
         }
@@ -46,13 +46,11 @@ namespace TOW_Core.HarmonyPatches
             var list = new List<BasicCharacterObject>();
             try
             {
-                //Ideally this should not be hardcoded. Maybe create a custombattlelords xml template and load that?
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("emp_lord"));
-                //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("mannfred"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("vc_lord"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("wizard_lord"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("necromancer_lord"));
-                //list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("krell")); 
+                //Ideally this should not be hardcoded. 
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_emp_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_vc_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_wizard_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_necromancer_lord"));
             }
             catch (Exception e)
             {
@@ -84,7 +82,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(ArmyCompositionItemVM), "IsValidUnitItem")]
         public static bool Prefix(ref ArmyCompositionItemVM __instance, BasicCharacterObject o, ref bool __result, BasicCultureObject ____culture, ArmyCompositionItemVM.CompositionType ____type)
         {
-            if (o != null && o.StringId.StartsWith("tow_") && o.Culture.StringId == ____culture.StringId && o.DefaultFormationClass == GetFormationFor(____type))
+            if (o != null && o.StringId.StartsWith("tor_") && o.Culture.StringId == ____culture.StringId && o.DefaultFormationClass == GetFormationFor(____type))
             {
                 __result = true;
             }
@@ -96,7 +94,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(CustomGame), "LoadCustomBattleScenes")]
         public static void Postfix5(ref CustomGame __instance, ref XmlDocument doc)
         {
-            var path = Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_custombattlescenes.xml");
+            var path = Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_custombattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();

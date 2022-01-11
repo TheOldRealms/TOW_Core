@@ -81,6 +81,9 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
 
+        public SeekerParameters SeekerParameters;
+    
+        
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;
     }

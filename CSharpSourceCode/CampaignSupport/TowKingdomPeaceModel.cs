@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.Localization;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -16,10 +17,18 @@ namespace TOW_Core.CampaignSupport
 
         public override bool IsKingSelectionDecisionAllowed(Kingdom kingdom) => false;
 
-        public override bool IsPeaceDecisionAllowedBetweenKingdoms(Kingdom kingdom1, Kingdom kingdom2) => false;
+        public override bool IsPeaceDecisionAllowedBetweenKingdoms(Kingdom kingdom1, Kingdom kingdom2, out TextObject reason)
+        {
+            reason = new TextObject("Peace is never an option.");
+            return false;
+        }
 
         public override bool IsPolicyDecisionAllowed(PolicyObject policy) => false;
 
-        public override bool IsWarDecisionAllowedBetweenKingdoms(Kingdom kingdom1, Kingdom kingdom2) => false;
+        public override bool IsWarDecisionAllowedBetweenKingdoms(Kingdom kingdom1, Kingdom kingdom2, out TextObject reason)
+        {
+            reason = new TextObject("Declaring war between empire factions is not allowed.");
+            return false;
+        }
     }
 }

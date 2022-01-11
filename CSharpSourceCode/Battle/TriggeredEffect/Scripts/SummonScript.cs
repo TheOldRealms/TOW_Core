@@ -43,7 +43,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
             if (Game.Current.GameType is Campaign)
             {
-                var manager = Mission.Current.GetMissionBehaviour<AbilityManagerMissionLogic>();
+                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
                 manager.AddSummonedCreature(skeleton, supplier as PartyGroupTroopSupplier);
                 manager.AddSummonedCreature(skeleton2, supplier as PartyGroupTroopSupplier);
                 manager.AddSummonedCreature(skeleton3, supplier as PartyGroupTroopSupplier);

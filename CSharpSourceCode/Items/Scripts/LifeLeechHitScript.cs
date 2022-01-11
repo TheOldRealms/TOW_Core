@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Items.Scripts
 {
-    public class LifeLeechHitScript : IMagicWeaponHitEffect
+    public class LifeLeechHitScript : IWeaponHitEffect
     {
         public void OnHit(Agent affectedAgent, Agent affectorAgent, MissionWeapon affectorWeapon)
         {

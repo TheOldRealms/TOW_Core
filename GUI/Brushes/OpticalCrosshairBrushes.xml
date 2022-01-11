@@ -1,0 +1,68 @@
+<Brushes>
+  <Brush Name="OpticalCrosshair.Top">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="OpticalCrosshair.Left">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair_rotated" HorizontalFlip="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="OpticalCrosshair.Right">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair_rotated" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="OpticalCrosshair.NightTop">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="OpticalCrosshair.NightLeft">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair_rotated" HorizontalFlip="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="OpticalCrosshair.NightRight">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="General\Crosshair\crosshair_rotated" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+      <Style Name="Invalid">
+        <StyleLayer Name="Default" Color="#FF0000AA" />
+      </Style>
+    </Styles>
+  </Brush>
+</Brushes>

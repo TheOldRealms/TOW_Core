@@ -1,0 +1,21 @@
+<prefabs>
+	<game_entity name="custom_marker" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<decal_component material="map_cursor_valid_decal" argument="0.166, 1.000, 0.000, 0.000"/>
+		</components>
+	</game_entity>
+	<game_entity name="targeting_rune_empire" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<decal_component material="ground_targeting_decal" argument="1.000, 1.000, 0.000, 0.000"/>
+		</components>
+	</game_entity>
+	<game_entity name="ground_empire_wind_decal" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<decal_component material="ground_column_decal" argument="1.000, 1.000, -0.200, 0.000"/>
+		</components>
+	</game_entity>
+</prefabs>
+

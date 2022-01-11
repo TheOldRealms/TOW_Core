@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
@@ -6,7 +7,7 @@ namespace TOW_Core.Battle.AI.Decision
     {
         void Execute();
         void Terminate();
-        Dictionary<(IAgentBehavior, Target), float> CalculateUtility();
+        List<TacticalBehaviorOption> CalculateUtility();
 
         bool IsPositional();
     }
