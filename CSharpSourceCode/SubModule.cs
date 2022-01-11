@@ -93,7 +93,6 @@ namespace TOW_Core
             //This has to be here.
             ExtendedInfoManager.Load();
             LoadStatusEffects();
-            LoadSprites();
             LoadShieldPatterns();
             LoadQuestBattleTemplates();
             TriggeredEffectManager.LoadTemplates();
@@ -103,7 +102,6 @@ namespace TOW_Core
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
-            LoadFontAssets();
         }
 
         private void LoadQuestBattleTemplates()
@@ -114,11 +112,6 @@ namespace TOW_Core
         private void LoadShieldPatterns()
         {
             ShieldPatternsManager.LoadShieldPatterns();
-        }
-
-        public void LoadFontAssets()
-        {
-            //UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         /// <summary>
@@ -137,13 +130,6 @@ namespace TOW_Core
                     game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
                 }
             }
-        }
-
-        private void LoadSprites()
-        {
-            UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
