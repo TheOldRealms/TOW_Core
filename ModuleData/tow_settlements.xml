@@ -11,7 +11,7 @@
     </Locations>
   </Settlement>
   <!-- Averland 2 Towns 11 villages 2 castles -->
-  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1437.863" posY="923.03" culture="Culture.empire" prosperity="3400" gate_posX="1437.908" gate_posY="922.2894" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
+  <Settlement id="town_AV1" name="{=Settlements.Settlement.name.town_AV1}Averheim" owner="Faction.averland_clan_1" posX="1437.863" posY="923.03" culture="Culture.empire" prosperity="3400" gate_posX="1438.372" gate_posY="921.7656" text="{=4ENGzVaC}Averheim is the capital city of the Grand Province of Averland, and the original capital of the ancient Brigundians tribe.">
     <Components>
       <Town id="town_comp_AV1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -31,7 +31,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV1_1" name="{=Settlements.Settlement.name.village_AV1_1}Streissen" posX="1414.719" posY="931.71" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_1}Streissen is a town in Averland that harbors a ferry system, and a history of volatile conspiracy.">
+  <Settlement id="village_AV1_1" name="{=Settlements.Settlement.name.village_AV1_1}Streissen" posX="1415.182" posY="932.069" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV1_1}Streissen is a town in Averland that harbors a ferry system, and a history of volatile conspiracy.">
     <Components>
       <Village id="village_comp_AV1_1" village_type="VillageType.vineyard" hearth="600" gate_rotation="0.008" trade_bound="Settlement.town_AV1" bound="Settlement.town_AV1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -106,7 +106,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_AV2_2" name="{=Settlements.Settlement.name.castle_village_AV2_2}Loningbruck" posX="1410.71" posY="872.534" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_2}Loningbruck is a small town in south-central Averland. Located at a major crossroads just north of the Upper Reik.">
+  <Settlement id="castle_village_AV2_2" name="{=Settlements.Settlement.name.castle_village_AV2_2}Loningbruck" posX="1410.841" posY="872.72" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV2_2}Loningbruck is a small town in south-central Averland. Located at a major crossroads just north of the Upper Reik.">
     <Components>
       <Village id="castle_village_comp_AV2_2" village_type="VillageType.vineyard" hearth="340" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -152,7 +152,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1466.391" posY="839.553" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
+  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1466.885" posY="840.38" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
     <Components>
       <Village id="village_comp_AV3_1" village_type="VillageType.iron_mine" hearth="400" trade_bound="Settlement.town_AV3" bound="Settlement.town_AV3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -178,7 +178,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AV4" name="{=Settlements.Settlement.name.castle_AV4}Peungzig" owner="Faction.averland_clan_1" posX="1522.925" posY="890.502" prosperity="420" culture="Culture.empire" gate_posX="1522.215" gate_posY="890.2866">
+  <Settlement id="castle_AV4" name="{=Settlements.Settlement.name.castle_AV4}Peungzig" owner="Faction.averland_clan_1" posX="1520.65" posY="888.975" prosperity="420" culture="Culture.empire" gate_posX="1521.725" gate_posY="889.7338">
     <Components>
       <Town id="castle_comp_AV4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -188,7 +188,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_AV4_1" name="{=Settlements.Settlement.name.castle_village_AV4_1}Zell" posX="1507.229" posY="887.079" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV4_1}Zell.">
+  <Settlement id="castle_village_AV4_1" name="{=Settlements.Settlement.name.castle_village_AV4_1}Zell" posX="1507.211" posY="886.141" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV4_1}Zell.">
     <Components>
       <Village id="castle_village_comp_AV4_1" village_type="VillageType.wheat_farm" hearth="300" trade_bound="Settlement.town_AV3" bound="Settlement.castle_AV4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -201,7 +201,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_AV4_2" name="{=Settlements.Settlement.name.castle_village_AV4_2}Dietfurt" posX="1520.991" posY="873.344" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV4_2}Bernloch.">
+  <Settlement id="castle_village_AV4_2" name="{=Settlements.Settlement.name.castle_village_AV4_2}Dietfurt" posX="1520.813" posY="873.21" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_AV4_2}Bernloch.">
     <Components>
       <Village id="castle_village_comp_AV4_2" village_type="VillageType.swine_farm" hearth="200" trade_bound="Settlement.town_AV3" bound="Settlement.castle_AV4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -261,7 +261,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" owner="Faction.stirland_clan_1" posX="1415.446" posY="1012.701" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
+  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" owner="Faction.stirland_clan_1" posX="1414.985" posY="1018.9" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
     <Components>
       <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -359,7 +359,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_AV1}Halstedt" owner="Faction.stirland_clan_1" posX="1473.761" posY="960.773" prosperity="420" culture="Culture.empire" gate_posX="1473.14" gate_posY="960.3666" text="{=Settlements.Settlement.text.castle_village_ST2_2}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
+  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_AV1}Halstedt" owner="Faction.stirland_clan_1" posX="1473.422" posY="962.008" prosperity="420" culture="Culture.empire" gate_posX="1473.13" gate_posY="960.7247" text="{=Settlements.Settlement.text.castle_village_ST2_2}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
     <Components>
       <Town id="castle_comp_ST3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -395,7 +395,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST2" name="{=Settlements.Settlement.name.town_ST2}Leicheberg" owner="Faction.stirland_clan_2" posX="1578.421" posY="977.16" culture="Culture.empire" prosperity="3400" gate_posX="1579.018" gate_posY="976.7192" text="{=4ENGzVaC}Amongst the Haunted Hills by the source of the Black Run River, lies the small town of Leicheberg. The people here live in constant fear of its neighbour to the east, Sylvania. Its ruler, Count Petr von Stolpe, has faced the Undead many times in his life and takes many measures to prepare for their return. Many witch hunters and vampire hunters have taken up residence here as a result. The town is notable for hosting a far larger temple and Garden of Morr than the number of inhabitants would otherwise require, for Count von Stolpe feels it is his obligation to ensure proper burials for all who die in his demesne.">
+  <Settlement id="town_ST2" name="{=Settlements.Settlement.name.town_ST2}Leicheberg" owner="Faction.stirland_clan_2" posX="1575.87" posY="975.987" culture="Culture.empire" prosperity="3400" gate_posX="1575.128" gate_posY="975.994" text="{=4ENGzVaC}Amongst the Haunted Hills by the source of the Black Run River, lies the small town of Leicheberg. The people here live in constant fear of its neighbour to the east, Sylvania. Its ruler, Count Petr von Stolpe, has faced the Undead many times in his life and takes many measures to prepare for their return. Many witch hunters and vampire hunters have taken up residence here as a result. The town is notable for hosting a far larger temple and Garden of Morr than the number of inhabitants would otherwise require, for Count von Stolpe feels it is his obligation to ensure proper burials for all who die in his demesne.">
     <Components>
       <Town id="town_comp_ST2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -428,7 +428,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST2_2" name="{=Settlements.Settlement.name.village_ST2_2}Naubonum" owner="Faction.stirland_clan_2" posX="1591.995" posY="981.776" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_2}Naubonum is a small village right on the border of Sylvania. The people here get by mostly by raising crops to feed themselves, with any other goods purchased through the sale of excess crops or labour. Situated near the Haunted Hills, the inhabitants are often worried about outsiders from the east, Spectres and foul creatures. The Halfling Fieldwardens are known to stop in the settlement from time to time while patrolling the eastern reaches of the Moot.">
+  <Settlement id="village_ST2_2" name="{=Settlements.Settlement.name.village_ST2_2}Naubonum" owner="Faction.stirland_clan_2" posX="1591.913" posY="982.266" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_2}Naubonum is a small village right on the border of Sylvania. The people here get by mostly by raising crops to feed themselves, with any other goods purchased through the sale of excess crops or labour. Situated near the Haunted Hills, the inhabitants are often worried about outsiders from the east, Spectres and foul creatures. The Halfling Fieldwardens are known to stop in the settlement from time to time while patrolling the eastern reaches of the Moot.">
     <Components>
       <Village id="village_comp_ST2_2" village_type="VillageType.cattle_farm" hearth="94" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -454,7 +454,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST3" name="{=Settlements.Settlement.name.town_ST3}Siegfriedhof" owner="Faction.stirland_clan_2" posX="1561.296" posY="1012.569" culture="Culture.empire" prosperity="3400" gate_posX="1561.321" gate_posY="1011.827" text="{=4ENGzVaC}On the border of traditional Sylvania lies the town of Siegfriedhof. Nestled between the Hunger Wood’s fringes and the Svarsee, it has historically commanded a strategic position in the Eschenstir basin. The town is overseen by the High and Chivalric Order of Deserved Rest, better known as the Raven Knights, whose Grandmaster personally sees to the protection of the people here. Stewardship over Siegfriedhof was granted to the Morrian templars by the Elector Count of Stirland, in gratitude for the Order's contribution in the Battle of Hel Fenn, 400 years prior. The town is also the site of the Abbey of Blessed Aethelbert the Vigilant. Due to the significant cult presence of the Morrians, Siegfriedhof is often used as a staging area for agents to keep watch over Sylvania. The people of Siegfriedhof are quite suspicious of strangers, and preemptive lynchings of unknown travellers have been known to occur.">
+  <Settlement id="town_ST3" name="{=Settlements.Settlement.name.town_ST3}Siegfriedhof" owner="Faction.stirland_clan_2" posX="1562.062" posY="1012.272" culture="Culture.empire" prosperity="3400" gate_posX="1562.209" gate_posY="1011.111" text="{=4ENGzVaC}On the border of traditional Sylvania lies the town of Siegfriedhof. Nestled between the Hunger Wood’s fringes and the Svarsee, it has historically commanded a strategic position in the Eschenstir basin. The town is overseen by the High and Chivalric Order of Deserved Rest, better known as the Raven Knights, whose Grandmaster personally sees to the protection of the people here. Stewardship over Siegfriedhof was granted to the Morrian templars by the Elector Count of Stirland, in gratitude for the Order's contribution in the Battle of Hel Fenn, 400 years prior. The town is also the site of the Abbey of Blessed Aethelbert the Vigilant. Due to the significant cult presence of the Morrians, Siegfriedhof is often used as a staging area for agents to keep watch over Sylvania. The people of Siegfriedhof are quite suspicious of strangers, and preemptive lynchings of unknown travellers have been known to occur.">
     <Components>
       <Town id="town_comp_ST3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -500,7 +500,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_ST4" name="{=Settlements.Settlement.name.town_ST4}Mittlenburg" owner="Faction.stirland_clan_1" posX="1556.358" posY="882.654" culture="Culture.empire" prosperity="3400" gate_posX="1556.379" gate_posY="883.3958" text="{=4ENGzVaC}Sir seaghouls place to hang out it's fresh mountainair for his boypussy">
+  <Settlement id="town_ST4" name="{=Settlements.Settlement.name.town_ST4}Mittlenburg" owner="Faction.stirland_clan_1" posX="1554.695" posY="881.514" culture="Culture.empire" prosperity="3400" gate_posX="1554.273" gate_posY="882.5858" text="{=4ENGzVaC}Sir seaghouls place to hang out it's fresh mountainair for his boypussy">
     <Components>
       <Town id="town_comp_ST4" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -608,7 +608,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1501.008" posY="1028.845" prosperity="420" culture="Culture.empire" gate_posX="1499.877" gate_posY="1029.518" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
+  <Settlement id="castle_ST5" name="{=Settlements.Settlement.name.castle_ST5}Marberg" owner="Faction.stirland_clan_1" posX="1499.605" posY="1027.02" prosperity="420" culture="Culture.empire" gate_posX="1498.865" gate_posY="1027.864" text="{=Settlements.Settlement.text.castle_ST5}Marberg Castle lies to the south of Mittlenburg near the pilgrim trail leading to the seven temples of Sharanorak. The castle was erected to safeguard the passes leading out of the World’s Edge mountains for Dwarf traders as well as to watch over the territory north of the Black Fire Pass.">
     <Components>
       <Town id="castle_comp_ST5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -645,7 +645,7 @@
     </CommonAreas>
   </Settlement>
   <!-- Mootland 1 town 4 villages -->
-  <Settlement id="town_MT1" name="{=Settlements.Settlement.name.town_MT1}Eicheschatten" owner="Faction.moot_clan_1" posX="1513.47" posY="946.144" culture="Culture.empire" prosperity="3400" gate_posX="1513.317" gate_posY="946.8701" text="{=4ENGzVaC}Eicheschatten, the capital of the Mootland is utterly unprepossessing at first glance. After a longer examination, one’s opinion is confirmed.">
+  <Settlement id="town_MT1" name="{=Settlements.Settlement.name.town_MT1}Eicheschatten" owner="Faction.moot_clan_1" posX="1514.916" posY="945.121" culture="Culture.empire" prosperity="3400" gate_posX="1514.363" gate_posY="945.9019" text="{=4ENGzVaC}Eicheschatten, the capital of the Mootland is utterly unprepossessing at first glance. After a longer examination, one’s opinion is confirmed.">
     <Components>
       <Town id="town_comp_MT1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
