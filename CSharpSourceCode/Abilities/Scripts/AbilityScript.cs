@@ -32,7 +32,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             _controller = new SeekerController(target, parameters);
         }
-        internal void SetAgent(Agent agent)
+        internal virtual void SetAgent(Agent agent)
         {
             _casterAgent = agent;
         }
