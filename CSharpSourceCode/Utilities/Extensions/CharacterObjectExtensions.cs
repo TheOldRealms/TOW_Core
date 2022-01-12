@@ -97,7 +97,7 @@ namespace TOW_Core.Utilities.Extensions
         }
 
         public static List<ItemObject> GetCharacterEquipment(this BasicCharacterObject characterObject,
-            EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0)
+            EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0, EquipmentIndex EndingAt=EquipmentIndex.ArmorItemEndSlot)
         {
             List<ItemObject> CharacterEquipmentItems = new List<ItemObject>();
             for (int i = (int) BeginningFrom; i < 9; i++)

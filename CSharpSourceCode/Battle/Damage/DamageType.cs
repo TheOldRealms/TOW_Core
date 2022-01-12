@@ -8,9 +8,11 @@ namespace TOW_Core.Battle.Damage
 {
     public enum DamageType
     {
-        Invalid,
-        Physical,
-        Magical,
-        Fire
+        Invalid=-1,
+        Physical=0,
+        Fire=1,
+        Lightning=2,
+        Holy=3,
+        Magical=4
     }
 }

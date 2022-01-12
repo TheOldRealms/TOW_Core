@@ -25,6 +25,8 @@ namespace TOW_Core.Battle.Damage
         float baseDamage)
       {
 
+        int[] damageCategories = new int[3]; 
+
         float additionalDamage =0;
         float combinedArmorValue = 0;
         float combinedArmorWeight = 0;

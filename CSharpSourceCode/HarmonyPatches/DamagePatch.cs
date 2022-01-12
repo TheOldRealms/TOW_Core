@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms.VisualStyles;
 using HarmonyLib;
@@ -24,186 +25,266 @@ namespace TOW_Core.HarmonyPatches
     {
         
         // helper function
-
-        private static DamageType DecideOnDominantDamageEffectOverride(DamageType current, DamageType newType)
-        {
-            if (newType != DamageType.Physical)
-            {
-                if (current == DamageType.Fire && newType != DamageType.Magical)
-                {
-                    return current;
-                }
-                return newType;
-            }
-            return current;
-        }
-        
-        
-
         
         
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
         public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
         {
+
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent Victim = __instance;
+
+
+            if (Victim.IsMount || attacker.IsMount)
+            {
+                return true;
+            }
+
+
+                //currently unused
+            float Convertion=0.5f;
+            float damageAmplification=0.0f;
+            float damageReduction = 0f;
+            
             
             //attack
-            float ArmorPenetration=0f;
-            float bonusDamage=0f;
-            var resultDamageType = DamageType.Physical;
+            float armorPenetration=0f;
             
-            //defense
-            float damageReduction = 0f;
-            var DamageResistanceType = DamageType.Physical;
-            DefenseType DefenseType = DefenseType.None;
+            var targetDamageType = DamageType.Physical;
+            
+            float[] damagePercentages = new float[5];
+            
+            
 
+            DamageType additionalDamageType = DamageType.Physical;
+            
+            
+           
+             if (!attacker.IsHero)
+             {
+                 //unit attributes
+                 var offenseProperties = attacker.Character.GetAttackProperties();
+                 DamageType overrideDamage;
+                
+                 //add all offense properties
+                 foreach (var property in offenseProperties)
+                 {
+                     armorPenetration += property.ArmorPenetration;
+                     damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
+                 }
+                
+                 //add temporary effects like buffs to attack bonuses
+                 List<ItemTrait> itemTraits = attacker.GetComponent<ItemTraitAgentComponent>()
+                     .GetDynamicTraits(attacker.WieldedWeapon.Item);
+                 foreach (var temporaryTraits in itemTraits)
+                 {
+                     var attackProperty = temporaryTraits.OffenseProperty;
+                     if (attackProperty != null)
+                     {
+                         armorPenetration += attackProperty.ArmorPenetration;
+                         damagePercentages[(int) temporaryTraits.OffenseProperty.DefaultDamageTypeOverride] += attackProperty.BonusDamagePercent;
+                     }
+                    
+                 }
+                
+             }
+             else
+             {
+                 //Hero item level attributes 
 
-            // get attacker information
-            if (!attacker.IsHero)
+                 List<ItemTrait> itemTraits= new List<ItemTrait>();
+                 List<ItemObject> items;
+                 ItemDamageProperty damageProperty;
+                
+                 // get all equipment Pieces
+
+                 items = attacker.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
+                 foreach (var item in items)
+                 {
+                     if(item.HasTrait())
+                         itemTraits.AddRange(item.GetTraits());
+                    
+                     itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
+                 }
+
+                 foreach (var itemTrait in itemTraits)
+                 {
+                     var property = itemTrait.OffenseProperty;
+                     if(property==null) 
+                         continue;
+                     armorPenetration += property.ArmorPenetration;
+                     damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
+                    
+                 }
+                
+                 //weapon properties
+                 var weaponProperty = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
+                 if (weaponProperty != null)
+                 {
+                     damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
+                   
+                 }
+             }
+            
+            // suggestion: the damage type with the most % (without physical) is selected as resulting additional damage type
+            additionalDamageType = DamageType.Physical; 
+            var maximum = 0f;
+            for (int i = 1; i < 5; i++)
             {
-                //unit attributes
-                var offenseProperties = attacker.Character.GetAttackProperties();
-                
-                //add all offense properties
-                foreach (var property in offenseProperties)
+                if (maximum < damagePercentages[i])
                 {
-                    ArmorPenetration += property.ArmorPenetration;
-                    bonusDamage += property.BonusDamagePercent;
-                    resultDamageType = property.DefaultDamageTypeOverride;       
-                }
-                
-                //add temporary effects like buffs to attack bonuses
-                List<ItemTrait> itemTraits = attacker.GetComponent<ItemTraitAgentComponent>()
-                    .GetDynamicTraits(attacker.WieldedWeapon.Item);
-                foreach (var temporaryTraits in itemTraits)
-                {
-                    if (temporaryTraits.OffenseProperty != null)
-                    {
-                        ArmorPenetration += temporaryTraits.OffenseProperty.ArmorPenetration;
-                        bonusDamage += temporaryTraits.OffenseProperty.BonusDamagePercent;
-                        resultDamageType = DecideOnDominantDamageEffectOverride(resultDamageType, temporaryTraits.OffenseProperty.DefaultDamageTypeOverride);
-                    }
-                }
-            }
-            else
-            {
-                //Hero item level attributes 
-
-                List<ItemTrait> itemTraits= new List<ItemTrait>();
-                List<ItemObject> items;
-                ItemDamageProperty damageProperty;
-                
-                // get all equipment Pieces
-
-                items = attacker.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
-                foreach (var item in items)
-                {
-                    if(item.HasTrait())
-                        itemTraits.AddRange(item.GetTraits());
-                    
-                    itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
-                }
-
-                foreach (var itemTrait in itemTraits)
-                {
-                    if(itemTrait.OffenseProperty==null) 
-                        continue;
-                    
-                    ArmorPenetration += itemTrait.OffenseProperty.ArmorPenetration;
-                    bonusDamage += itemTrait.OffenseProperty.BonusDamagePercent;
-                    
-                    //TODO i am still not so sure if we should have a Override, in that form. 
-
-                    resultDamageType = DecideOnDominantDamageEffectOverride(resultDamageType, itemTrait.OffenseProperty.DefaultDamageTypeOverride);
-                }
-                
-                //weapon properties
-                var damageProperties = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
-                if (damageProperties != null)
-                {
-                    resultDamageType = DecideOnDominantDamageEffectOverride(resultDamageType, damageProperties.DamageType);
-                       // maximum minimum is really not needed anymore. just go with objects.xml in the prenative module do it here anywhere
-                    Mathf.Clamp(b.InflictedDamage, damageProperties.MinDamage, damageProperties.MaxDamage);
+                    maximum = damagePercentages[i];
+                    additionalDamageType = (DamageType) i;
                 }
             }
             
             //defender information
+            
 
-            if (!Victim.IsHero)
+           
+                //armor for penetration otherwise no use since the physical calculation has already taken place.
+            var victimEquipment = Victim.Character.Equipment;
+            float armor = 0f;
+            var bodyPart = b.VictimBodyPart;
+            switch (bodyPart)
             {
-                //unit attributes
-                var defenseProperties = attacker.Character.GetDefenseProperties();
-                
-                //add all defense properties from unit properties
-                foreach (var property in defenseProperties)
-                {
-                    damageReduction += property.ReductionPercent;
-                    DamageResistanceType = property.ResistedDamageType;      // do not know how to act on this probably Bitmask for Damage and Resistance is imo much cleaner. 
-                }
-                
-            }
-            else
-            {
-                //Hero item level attributes 
-
-                List<ItemTrait> itemTraits= new List<ItemTrait>();
-                List<ItemObject> items;
-                ItemDamageProperty damageProperty;
-                
-                // get all equipment Pieces
-
-                items = attacker.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
-                foreach (var item in items)
-                {
-                    if(item.HasTrait())
-                        itemTraits.AddRange(item.GetTraits());
-                    
-                    itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
-                }
-
-                foreach (var itemTrait in itemTraits)
-                {
-                    if(itemTrait.DefenseProperty==null) 
-                        continue;
-                    
-                    damageReduction += itemTrait.DefenseProperty.ReductionPercent;
-                }
-                
-                //weapon properties
-                var damageProperties = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
-                if (damageProperties != null)
-                {
-                    resultDamageType = DecideOnDominantDamageEffectOverride(resultDamageType, damageProperties.DamageType);
-                    // maximum minimum is really not needed anymore. just go with objects.xml in the prenative module do it here anywhere
-                    Mathf.Clamp(b.InflictedDamage, damageProperties.MinDamage, damageProperties.MaxDamage);
-                }
-                
+                case BoneBodyPartType.Abdomen:
+                case BoneBodyPartType.Chest:
+                    armor += victimEquipment.GetHumanBodyArmorSum();
+                    break;
+                case BoneBodyPartType.Head:
+                case BoneBodyPartType.Neck:
+                    armor += victimEquipment.GetHeadArmorSum();
+                    break;
+                case BoneBodyPartType.Legs:
+                    armor += victimEquipment.GetLegArmorSum();
+                    break;
+                case BoneBodyPartType.ArmLeft:
+                case BoneBodyPartType.ShoulderLeft:
+                case BoneBodyPartType.ArmRight:
+                case BoneBodyPartType.ShoulderRight:
+                    armor += victimEquipment.GetArmArmorSum();
+                    break;
             }
             
+            float[] resistancePercentages = new float[5];
             
-            //reading out Status Effect Component of Victim (FOR debuffs and buffs on the Unit, not weapon related) do we want to have damage enhancing status effects? for what do we need dynamic item properties then?
+            
+            
+            
+            // get attacker information
+           
+            
+            
+                if (!Victim.IsHero)
+                {
+                    //unit attributes
+                    var defenseProperties = Victim.Character.GetDefenseProperties();
+                
+                    foreach (var property in defenseProperties)
+                    {
+                        damagePercentages[(int) property.ResistedDamageType] += property.ReductionPercent;
+                    }
+                
+                    //add temporary effects like buffs to defenese bonuses
+                    List<ItemTrait> itemTraits = Victim.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(Victim.WieldedWeapon.Item);
+                
+                    foreach (var temporaryTraits in itemTraits)
+                    {
+                        var defenseProperty = temporaryTraits.DefenseProperty;
+                        if (defenseProperty != null)
+                        {
+                            damagePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                        }
+                    }
+                
+                }
+                else
+                {
+                    //Hero item level attributes 
+
+                    List<ItemTrait> itemTraits= new List<ItemTrait>();
+                    List<ItemObject> items;
+
+                    // get all equipment Pieces
+
+                    items = Victim.Character.GetCharacterEquipment();
+                    foreach (var item in items)
+                    {
+                        if(item.HasTrait())
+                            itemTraits.AddRange(item.GetTraits());
+                    
+                        itemTraits.AddRange(Victim.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
+                    }
+
+                    foreach (var itemTrait in itemTraits)
+                    {
+                        var defenseProperty = itemTrait.DefenseProperty;
+                        if(defenseProperty==null) 
+                            continue;
+                    
+                        damagePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
+                    }
+                
+                
+                    //add temporary effects like buffs to defenese bonuses
+                    List<ItemTrait> dynamicTraits = attacker.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(attacker.WieldedWeapon.Item);
+                
+                    foreach (var temporaryTraits in dynamicTraits)
+                    {
+                        var defenseProperty = temporaryTraits.DefenseProperty;
+                        if (defenseProperty != null)
+                        {
+                            damagePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                        }
+                    }
+                }
+            
+            //reading out Status Effect Component of Victim we probably should redesign status effects 
             StatusEffectComponent.EffectAggregate effectAggregate = Victim.GetComponent<StatusEffectComponent>().GetEffectAggregate();
             damageReduction += effectAggregate.PercentageArmorEffect;
-            
-            
-            
+            armorPenetration += effectAggregate.PercentageArmorEffect;
             
             // final calculation
+            float physical = b.InflictedDamage;
+            //armor penetration is only calculated if physical damage is 
+            //extra damage is added on top by armor penetration, which is applied only to the maximum value of the armor
+
+            physical = physical + Math.Min(armorPenetration, armor);
             
-            //all damage types and their values were added ( e.g. Physical, Fire, Death, Shadow...  )  
-            // all defense values were added 
-            // all damage and defense values were subtracted from each other by pairs, final numbers and were added together
-            // negative values decrease the inflicted damage , positive increase
-            // damage amplification percentage - reduction percentage
-            // if positive, damage is amplified by %
-            // if negative damage is shrinked by %
+            // damage is converted partly to the target non-physical damage type, rest resides physical
+            var nonPhysical = 0f;
+            if (additionalDamageType != DamageType.Physical)
+            {
+                nonPhysical = physical;
+                physical = Convertion * physical;
+                nonPhysical -= physical;
+            }
+           
+            
+            //modifiers were calculated, by subtracting damage type percentage and resistance type percentage
+            damagePercentages[0]= (damagePercentages[0] - resistancePercentages[0]);
+            damagePercentages[(int) additionalDamageType]= 1+ (damagePercentages[(int) additionalDamageType] - resistancePercentages[(int) additionalDamageType]);
+            //modify damage
+
+            physical *=1+  damagePercentages[0];
+            nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
+            
+            //calculate general amplification and WardSave 
+            damageAmplification = 1 + damageAmplification - damageReduction;
+
+          
 
             // calculation for resistances and damag
-            b.InflictedDamage =(int) (b.InflictedDamage + bonusDamage - damageReduction);
+            b.InflictedDamage = (int)(damageAmplification * (physical + nonPhysical));
+            if (nonPhysical > 0)
+            {
+                InformationManager.DisplayMessage(new InformationMessage("damaged by"+ b.InflictedDamage+ "with transformed " + nonPhysical, new Color(0, 250, 250)));
+            }
             
-
             
             return true;
 

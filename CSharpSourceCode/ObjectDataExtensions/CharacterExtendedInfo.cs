@@ -70,9 +70,9 @@ namespace TOW_Core.ObjectDataExtensions
     public class OffenseProperty
     {
         [XmlAttribute]
-        public DamageType DefaultDamageTypeOverride = DamageType.Invalid;
+        public DamageType DefaultDamageTypeOverride = DamageType.Physical;  // todo name is missleading
         [XmlAttribute]
-        public float BonusDamagePercent = 0;
+        public float BonusDamagePercent = 0;    //todo remove Bonus
         [XmlAttribute]
         public float ArmorPenetration = 0;
     }
