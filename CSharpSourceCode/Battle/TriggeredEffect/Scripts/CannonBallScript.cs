@@ -4,6 +4,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -39,7 +40,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         protected override void OnRemoved(int removeReason)
         {
-            _explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent); //just visuals and sound
+            _explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent);
             var agentsToTearApart = Mission.Current.GetNearbyAgents(GameEntity.GlobalPosition.AsVec2, _explosionRadius).ToArray();
             for (int i = 0; i < agentsToTearApart.Length; i++)
             {
@@ -47,21 +48,31 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var distance = agent.Position.Distance(GameEntity.GlobalPosition);
                 if (distance < _explosionRadius)
                 {
-                    if (distance < 1)
+                    var damage = (_explosionRadius - distance) / _explosionRadius * _damage;
+                    agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true);
+                    if (distance < 2 && agent.State == AgentState.Killed)
                     {
-                        agent.ApplyDamage(_damage, _shooterAgent, doBlow: true, hasShockWave: true);
-                        if (agent.State == AgentState.Killed)
+                        agent.Disappear();
+                        for (int j = 0; j < 5; j++)
                         {
-                            //Tear apart victim
+                            var limb = GameEntity.Instantiate(Mission.Current.Scene, "musical_instrument_harp", false);
+                            var pos = agent.Frame.Elevate(1).origin;
+                            limb.SetLocalPosition(pos);
+                            var dir = GetRandomDirection();
+                            limb.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.BodyOwnerEntity);
+                            limb.EnableDynamicBody();
+                            limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 10, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
                         }
-                    }
-                    else
-                    {
-                        var recalculatedDamage = (_explosionRadius - distance) / _explosionRadius * 200;
-                        agent.ApplyDamage((int)recalculatedDamage, _shooterAgent, doBlow: true, hasShockWave: true);
                     }
                 }
             }
+        }
+
+        private Vec3 GetRandomDirection()
+        {
+            var x = MBRandom.RandomFloatRanged(-3, 3);
+            var y = MBRandom.RandomFloatRanged(-3, 3);
+            return new Vec3(x, y, 3);
         }
     }
 }
