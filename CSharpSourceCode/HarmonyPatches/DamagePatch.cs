@@ -34,10 +34,12 @@ namespace TOW_Core.HarmonyPatches
         {
 
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
-            Agent Victim = __instance;
+            Agent victim = __instance;
+
+            bool isSpell = false;
 
 
-            if (Victim.IsMount || attacker.IsMount)
+            if (victim.IsMount || attacker.IsMount)
             {
                 return true;
             }
@@ -110,32 +112,45 @@ namespace TOW_Core.HarmonyPatches
                  }
                 
                  //weapon properties
-                 var weaponProperty = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
-                 if (weaponProperty != null)
+                 //the ultimate comparision if the blow is a spell 
+                 if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
                  {
-                     damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
-                     additionalDamageType = weaponProperty.DamageType;
-                     // chose damage type depending on dominant override type 
-                     if (weaponProperty.DamageType == DamageType.Physical)
+                     //apply here spell properties
+                     isSpell = true;
+                     additionalDamageType = DamageType.Magical;
+                     transformation = 1;
+                 }
+                 else
+                 {
+                     var weaponProperty = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
+                     if (weaponProperty != null)
                      {
-                         additionalDamageType = DamageType.Physical; 
-                         var maximum = 0f;
-                         for (int i = 1; i < 5; i++)
+                         damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
+                         additionalDamageType = weaponProperty.DamageType;
+                         // chose damage type depending on dominant override type 
+                         if (weaponProperty.DamageType == DamageType.Physical)
                          {
-                             if (maximum < damagePercentages[i])
+                             additionalDamageType = DamageType.Physical; 
+                             var maximum = 0f;
+                             for (int i = 1; i < 5; i++)
                              {
-                                 maximum = damagePercentages[i];
-                                 additionalDamageType = (DamageType) i;
+                                 if (maximum < damagePercentages[i])
+                                 {
+                                     maximum = damagePercentages[i];
+                                     additionalDamageType = (DamageType) i;
+                                 }
                              }
                          }
                      }
                  }
+                 
+                 
              }
 
             //defender information
 
                 //armor for penetration otherwise no use since the physical calculation has already taken place.
-            var victimEquipment = Victim.Character.Equipment;
+            var victimEquipment = victim.Character.Equipment;
             float armor = 0f;
             var bodyPart = b.VictimBodyPart;
             switch (bodyPart)
@@ -161,10 +176,10 @@ namespace TOW_Core.HarmonyPatches
             
             float[] resistancePercentages = new float[5];
 
-                if (!Victim.IsHero)
+                if (!victim.IsHero)
                 {
                     //unit attributes
-                    var defenseProperties = Victim.Character.GetDefenseProperties();
+                    var defenseProperties = victim.Character.GetDefenseProperties();
                 
                     foreach (var property in defenseProperties)
                     {
@@ -172,8 +187,8 @@ namespace TOW_Core.HarmonyPatches
                     }
                 
                     //add temporary effects like buffs to defenese bonuses
-                    List<ItemTrait> itemTraits = Victim.GetComponent<ItemTraitAgentComponent>()
-                        .GetDynamicTraits(Victim.WieldedWeapon.Item);
+                    List<ItemTrait> itemTraits = victim.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(victim.WieldedWeapon.Item);
                 
                     foreach (var temporaryTraits in itemTraits)
                     {
@@ -193,13 +208,13 @@ namespace TOW_Core.HarmonyPatches
 
                     // get all equipment Pieces
 
-                    items = Victim.Character.GetCharacterEquipment();
+                    items = victim.Character.GetCharacterEquipment();
                     foreach (var item in items)
                     {
                         if(item.HasTrait())
                             itemTraits.AddRange(item.GetTraits());
                     
-                        itemTraits.AddRange(Victim.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
+                        itemTraits.AddRange(victim.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
                     }
 
                     foreach (var itemTrait in itemTraits)
@@ -227,19 +242,35 @@ namespace TOW_Core.HarmonyPatches
                 }
             
             //reading out Status Effect Component of Victim we probably should redesign status effects 
-            StatusEffectComponent.EffectAggregate effectAggregate = Victim.GetComponent<StatusEffectComponent>().GetEffectAggregate();
+            StatusEffectComponent.EffectAggregate effectAggregate = victim.GetComponent<StatusEffectComponent>().GetEffectAggregate();
             damageReduction += effectAggregate.PercentageArmorEffect;
             armorPenetration += effectAggregate.PercentageArmorEffect;
             
             // final calculation
             float physical = b.InflictedDamage;
+            
+            var nonPhysical = 0f;
+            
+            if (isSpell)
+            {
+                nonPhysical = physical;
+                additionalDamageType = DamageType.Magical;
+                damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
+                nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
+                damageAmplification = 1 + damageAmplification - damageReduction;
+                
+                b.InflictedDamage = (int)(damageAmplification * nonPhysical);
+                
+                DisplaySpellDamageResult(additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
+                return true;
+            }
+
             //armor penetration is only calculated if physical damage is 
             //extra damage is added on top by armor penetration, which is applied only to the maximum value of the armor
-
             physical = physical + Math.Min(armorPenetration, armor);
             
             // damage is converted partly to the target non-physical damage type, rest resides physical
-            var nonPhysical = 0f;
+            
             if (additionalDamageType != DamageType.Physical)
             {
                 nonPhysical = physical;
@@ -251,8 +282,9 @@ namespace TOW_Core.HarmonyPatches
             //modifiers were calculated, by subtracting damage type percentage and resistance type percentage
             damagePercentages[0]-= resistancePercentages[0];
             damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
+            
+            
             //modify damage
-
             physical *=1+  damagePercentages[0];
             nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
             
@@ -261,7 +293,7 @@ namespace TOW_Core.HarmonyPatches
             
             
 
-            // calculation for resistances and damag
+            
             
             var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
             
@@ -273,6 +305,40 @@ namespace TOW_Core.HarmonyPatches
             return true;
 
         }
+
+        private static void DisplaySpellDamageResult(DamageType additionalDamageType, 
+            int resultDamage, float[] damagePercentages, float nonPhysical)
+        {
+            var displaycolor = new Color();
+            string displaytext = "";
+
+            switch (additionalDamageType)
+            {
+                case DamageType.Fire:
+                    displaycolor = Colors.Red;
+                    displaytext = "fire";
+                    break;
+                case DamageType.Holy:
+                    displaycolor = Colors.Yellow;
+                    displaytext = "holy";
+                    break;
+                case DamageType.Lightning:
+                    displaycolor = Colors.Blue;
+                    displaytext = "lightning";
+                    break;
+                case DamageType.Magical:
+                    displaycolor = Colors.Cyan;
+                    displaytext = "magical";
+                    break;
+                case DamageType.Physical:
+                    displaycolor = Color.White;
+                    displaytext = "Physical";
+                    break;
+            }
+            
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied as "+displaytext +" damage" , displaycolor));
+        }
+        
 
         private static void DisplayDamageResult(DamageType additionalDamageType, float armorPenetration, float nonPhysical,
             int resultDamage, float[] damagePercentages, float physical)
@@ -303,6 +369,8 @@ namespace TOW_Core.HarmonyPatches
                     displaytext = "Physical";
                     break;
             }
+
+           
 
             if (armorPenetration > 0)
             {
