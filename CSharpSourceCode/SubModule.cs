@@ -141,7 +141,7 @@ namespace TOW_Core
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
                 gameStarterObject.AddModel(new TOWBattleMoraleModel());
-                gameStarterObject.AddModel(new TorAgentApplyDamageModel());
+               //gameStarterObject.AddModel(new TorAgentApplyDamageModel());
             }
             else if (game.GameType is Campaign)
             {

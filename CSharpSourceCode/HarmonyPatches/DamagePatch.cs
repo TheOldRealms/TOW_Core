@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms.VisualStyles;
 using HarmonyLib;
@@ -40,14 +41,11 @@ namespace TOW_Core.HarmonyPatches
             {
                 return true;
             }
-
-
-                //currently unused
-            float Convertion=0.5f;
-            float damageAmplification=0.0f;
-            float damageReduction = 0f;
             
-            
+                //currently unused need assignment in data table
+            var transformation=0.5f;        //called it previously "conversion"
+            var damageAmplification=0.0f;
+            var damageReduction = 0f;
             //attack
             float armorPenetration=0f;
             
@@ -55,12 +53,8 @@ namespace TOW_Core.HarmonyPatches
             
             float[] damagePercentages = new float[5];
             
-            
-
             DamageType additionalDamageType = DamageType.Physical;
             
-            
-           
              if (!attacker.IsHero)
              {
                  //unit attributes
@@ -87,7 +81,6 @@ namespace TOW_Core.HarmonyPatches
                      }
                     
                  }
-                
              }
              else
              {
@@ -95,8 +88,7 @@ namespace TOW_Core.HarmonyPatches
 
                  List<ItemTrait> itemTraits= new List<ItemTrait>();
                  List<ItemObject> items;
-                 ItemDamageProperty damageProperty;
-                
+
                  // get all equipment Pieces
 
                  items = attacker.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
@@ -115,7 +107,6 @@ namespace TOW_Core.HarmonyPatches
                          continue;
                      armorPenetration += property.ArmorPenetration;
                      damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
-                    
                  }
                 
                  //weapon properties
@@ -123,26 +114,26 @@ namespace TOW_Core.HarmonyPatches
                  if (weaponProperty != null)
                  {
                      damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
-                   
+                     additionalDamageType = weaponProperty.DamageType;
+                     // chose damage type depending on dominant override type 
+                     if (weaponProperty.DamageType == DamageType.Physical)
+                     {
+                         additionalDamageType = DamageType.Physical; 
+                         var maximum = 0f;
+                         for (int i = 1; i < 5; i++)
+                         {
+                             if (maximum < damagePercentages[i])
+                             {
+                                 maximum = damagePercentages[i];
+                                 additionalDamageType = (DamageType) i;
+                             }
+                         }
+                     }
                  }
              }
-            
-            // suggestion: the damage type with the most % (without physical) is selected as resulting additional damage type
-            additionalDamageType = DamageType.Physical; 
-            var maximum = 0f;
-            for (int i = 1; i < 5; i++)
-            {
-                if (maximum < damagePercentages[i])
-                {
-                    maximum = damagePercentages[i];
-                    additionalDamageType = (DamageType) i;
-                }
-            }
-            
-            //defender information
-            
 
-           
+            //defender information
+
                 //armor for penetration otherwise no use since the physical calculation has already taken place.
             var victimEquipment = Victim.Character.Equipment;
             float armor = 0f;
@@ -169,14 +160,7 @@ namespace TOW_Core.HarmonyPatches
             }
             
             float[] resistancePercentages = new float[5];
-            
-            
-            
-            
-            // get attacker information
-           
-            
-            
+
                 if (!Victim.IsHero)
                 {
                     //unit attributes
@@ -184,7 +168,7 @@ namespace TOW_Core.HarmonyPatches
                 
                     foreach (var property in defenseProperties)
                     {
-                        damagePercentages[(int) property.ResistedDamageType] += property.ReductionPercent;
+                        resistancePercentages[(int) property.ResistedDamageType] += property.ReductionPercent;
                     }
                 
                     //add temporary effects like buffs to defenese bonuses
@@ -196,10 +180,9 @@ namespace TOW_Core.HarmonyPatches
                         var defenseProperty = temporaryTraits.DefenseProperty;
                         if (defenseProperty != null)
                         {
-                            damagePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
-                
                 }
                 else
                 {
@@ -225,7 +208,7 @@ namespace TOW_Core.HarmonyPatches
                         if(defenseProperty==null) 
                             continue;
                     
-                        damagePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
+                        resistancePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
                     }
                 
                 
@@ -238,7 +221,7 @@ namespace TOW_Core.HarmonyPatches
                         var defenseProperty = temporaryTraits.DefenseProperty;
                         if (defenseProperty != null)
                         {
-                            damagePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
                 }
@@ -260,14 +243,14 @@ namespace TOW_Core.HarmonyPatches
             if (additionalDamageType != DamageType.Physical)
             {
                 nonPhysical = physical;
-                physical = Convertion * physical;
+                physical = transformation * physical;
                 nonPhysical -= physical;
             }
            
             
             //modifiers were calculated, by subtracting damage type percentage and resistance type percentage
-            damagePercentages[0]= (damagePercentages[0] - resistancePercentages[0]);
-            damagePercentages[(int) additionalDamageType]= 1+ (damagePercentages[(int) additionalDamageType] - resistancePercentages[(int) additionalDamageType]);
+            damagePercentages[0]-= resistancePercentages[0];
+            damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
             //modify damage
 
             physical *=1+  damagePercentages[0];
@@ -275,19 +258,76 @@ namespace TOW_Core.HarmonyPatches
             
             //calculate general amplification and WardSave 
             damageAmplification = 1 + damageAmplification - damageReduction;
-
-          
+            
+            
 
             // calculation for resistances and damag
-            b.InflictedDamage = (int)(damageAmplification * (physical + nonPhysical));
-            if (nonPhysical > 0)
-            {
-                InformationManager.DisplayMessage(new InformationMessage("damaged by"+ b.InflictedDamage+ "with transformed " + nonPhysical, new Color(0, 250, 250)));
-            }
             
+            var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
+            
+
+            DisplayDamageResult(additionalDamageType, armorPenetration, nonPhysical, resultDamage, damagePercentages, physical);
+
+            b.InflictedDamage = resultDamage;
             
             return true;
 
+        }
+
+        private static void DisplayDamageResult(DamageType additionalDamageType, float armorPenetration, float nonPhysical,
+            int resultDamage, float[] damagePercentages, float physical)
+        {
+            var displaycolor = new Color();
+            string displaytext = "";
+
+            switch (additionalDamageType)
+            {
+                case DamageType.Fire:
+                    displaycolor = Colors.Red;
+                    displaytext = "fire";
+                    break;
+                case DamageType.Holy:
+                    displaycolor = Colors.Yellow;
+                    displaytext = "holy";
+                    break;
+                case DamageType.Lightning:
+                    displaycolor = Colors.Blue;
+                    displaytext = "Lightning";
+                    break;
+                case DamageType.Magical:
+                    displaycolor = Colors.Cyan;
+                    displaytext = "Magical";
+                    break;
+                case DamageType.Physical:
+                    displaycolor = Color.White;
+                    displaytext = "Physical";
+                    break;
+            }
+
+            if (armorPenetration > 0)
+            {
+                InformationManager.DisplayMessage(
+                    new InformationMessage("additional armor penetration damage " + armorPenetration,
+                        new Color(100, 100, 100)));
+            }
+
+            if (nonPhysical > 0)
+            {
+                InformationManager.DisplayMessage(new InformationMessage(
+                    "damaged by " + resultDamage + "with " + nonPhysical + " transformed to " + displaytext + " damage " +
+                    " modified by " +
+                    (1 + damagePercentages[(int)additionalDamageType]).ToString("P", CultureInfo.InvariantCulture),
+                    displaycolor));
+                InformationManager.DisplayMessage(new InformationMessage(
+                    "physical part " + (physical + armorPenetration) + " with modifier " +
+                    (1 + damagePercentages[0]).ToString("P", CultureInfo.InvariantCulture), Colors.White));
+            }
+            else
+            {
+                InformationManager.DisplayMessage(new InformationMessage(
+                    "physical part " + (physical + armorPenetration) + " with modifier " +
+                    (1 + damagePercentages[0]).ToString("P", CultureInfo.InvariantCulture), Colors.White));
+            }
         }
     }
 }
