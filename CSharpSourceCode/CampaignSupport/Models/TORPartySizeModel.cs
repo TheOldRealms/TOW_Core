@@ -13,18 +13,11 @@ namespace TOW_Core.CampaignSupport.Models
             {
                 if (party.LeaderHero != null && party.LeaderHero.IsHumanPlayerCharacter)
                 {
-                    if (party.Leader != null && party.Leader.IsPlayerCharacter)
-                    {
-                        num.Add(20, new TextObject("Friend of undead"));
-                    }
-                    else if (party.Id.Contains("caravan"))
-                    {
-                        num.Add(50, new TextObject("Caravan of death"));
-                    }
-                    else
-                    {
-                        num.Add(150, new TextObject("Vampire lord"));
-                    }
+                    num.Add(20, new TextObject("Friend of undead"));
+                }
+                else if (party.Id.Contains("caravan"))
+                {
+                    num.Add(50, new TextObject("Caravan of death"));
                 }
                 else if (party.IsSettlement)
                 {
