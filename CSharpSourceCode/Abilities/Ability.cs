@@ -275,7 +275,7 @@ namespace TOW_Core.Abilities
                     AddExactBehaviour<SummoningScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.AgentMoving:
-                    AddExactBehaviour<SpecialMoveScript>(entity, casterAgent);
+                    AddExactBehaviour<ShadowStepScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
