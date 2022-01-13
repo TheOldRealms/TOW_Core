@@ -497,7 +497,7 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets>
-      <upgrade_target id="NPCCharacter.tor_vc_crypt_guard" />
+      <upgrade_target id="NPCCharacter.tor_vc_skeleton_crypt_guard" />
     </upgrade_targets>
     <Equipments>
       <EquipmentSet id="tor_vc_skeleton_champion_template" />
@@ -559,9 +559,7 @@
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
-    <upgrade_targets>
-      <upgrade_target id="NPCCharacter.tor_vc_crypt_wraith" />
-    </upgrade_targets>
+    <upgrade_targets />
     <Equipments>
       <EquipmentSet id="tor_vc_cairn_wraith_template" />
       <EquipmentSet id="tor_vc_cairn_wraith_template" civilian="true" />
