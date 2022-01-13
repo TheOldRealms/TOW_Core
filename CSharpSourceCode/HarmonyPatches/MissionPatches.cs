@@ -10,6 +10,8 @@ using TOW_Core.Utilities.Extensions;
 [HarmonyPatch]
 public static class MissionPatches
 {
+    private static readonly Monster _vampireMonster = GetCustomMonster("vampire");
+
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
     public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
@@ -17,22 +19,13 @@ public static class MissionPatches
         var character = agentBuildData.AgentCharacter as CharacterObject;
         if (character != null)
         {
-            string name = null;
             if (character.HeroObject != null && character.HeroObject.IsVampire())
             {
-                name = "vampire";
+                Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
             }
             else if (character.IsVampire())
             {
-                name = "vampire";
-            }
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                Monster monster = GetCustomMonster(name);
-                if (monster != null)
-                {
-                    Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(monster);
-                }
+                Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
             }
         }
         return true;
