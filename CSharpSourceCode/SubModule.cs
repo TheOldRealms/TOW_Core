@@ -167,7 +167,6 @@ namespace TOW_Core
                 starter.AddModel(new TORPartySpeedCalculatingModel());
                 starter.AddModel(new TORPrisonerRecruitmentCalculationModel());
                 starter.AddModel(new TORMarriageModel());
-                starter.AddModel(new TORAgentStatCalculateModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
