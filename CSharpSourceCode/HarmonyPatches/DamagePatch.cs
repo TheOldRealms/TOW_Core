@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
@@ -255,12 +255,18 @@ namespace TOW_Core.HarmonyPatches
             {
                 nonPhysical = physical;
                 additionalDamageType = DamageType.Magical;
+                
+                //test
+                if(attacker.IsPlayerControlled)
+                    damagePercentages[(int)DamageType.Magical] = 0.5f;
+                
+                
                 damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
                 nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
                 damageAmplification = 1 + damageAmplification - damageReduction;
                 
                 b.InflictedDamage = (int)(damageAmplification * nonPhysical);
-                
+
                 DisplaySpellDamageResult(additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
                 return true;
             }
@@ -336,7 +342,7 @@ namespace TOW_Core.HarmonyPatches
                     break;
             }
             
-            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied as "+displaytext +" damage" , displaycolor));
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied as "+displaytext +" damage" + " which was modfied by " + (1+damagePercentages[(int) additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
         }
         
 
@@ -384,17 +390,17 @@ namespace TOW_Core.HarmonyPatches
                 InformationManager.DisplayMessage(new InformationMessage(
                     "damaged by " + resultDamage + "with " + nonPhysical + " transformed to " + displaytext + " damage " +
                     " modified by " +
-                    (1 + damagePercentages[(int)additionalDamageType]).ToString("P", CultureInfo.InvariantCulture),
+                    (1 + damagePercentages[(int)additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture),
                     displaycolor));
                 InformationManager.DisplayMessage(new InformationMessage(
                     "physical part " + (physical + armorPenetration) + " with modifier " +
-                    (1 + damagePercentages[0]).ToString("P", CultureInfo.InvariantCulture), Colors.White));
+                    (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
             }
             else
             {
                 InformationManager.DisplayMessage(new InformationMessage(
                     "physical part " + (physical + armorPenetration) + " with modifier " +
-                    (1 + damagePercentages[0]).ToString("P", CultureInfo.InvariantCulture), Colors.White));
+                    (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
             }
         }
     }
