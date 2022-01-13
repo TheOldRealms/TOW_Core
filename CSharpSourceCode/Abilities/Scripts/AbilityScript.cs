@@ -119,8 +119,7 @@ namespace TOW_Core.Abilities.Scripts
             {
                 if (_abilityLife > _ability.Template.Duration && !_isFading)
                 {
-                    GameEntity.FadeOut(0.05f, true);
-                    _isFading = true;
+                    Stop();
                 }
             }
             if (_abilityLife > _minArmingTimeForCollision)
@@ -204,6 +203,12 @@ namespace TOW_Core.Abilities.Scripts
             _sound = null;
             _ability = null;
             _casterAgent = null;
+        }
+
+        public virtual void Stop()
+        {
+            GameEntity.FadeOut(0.05f, true);
+            _isFading = true;
         }
     }
 }

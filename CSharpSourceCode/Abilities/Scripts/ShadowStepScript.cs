@@ -2,7 +2,6 @@
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities.Scripts
@@ -48,17 +47,18 @@ namespace TOW_Core.Abilities.Scripts
 
         protected override void OnTick(float dt)
         {
+            if (_ability == null) return;
+            if (_isFading) return;
+            _timeSinceLastTick += dt;
+            UpdateLifeTime(dt);
+
             if (_casterAgent != null && _casterAgent.Health > 0)
             {
                 UpdateSound(_casterAgent.Position);
                 var dist = GetDistance();
                 if (Input.IsKeyDown(InputKey.W) || Input.IsKeyPressed(InputKey.W))
                 {
-                    if (dist > 3)
-                    {
-                        Fly();
-                    }
-                    else if (dist.Equals(float.NaN))
+                    if (dist > 3 || dist.Equals(float.NaN))
                     {
                         Fly();
                     }
@@ -82,13 +82,12 @@ namespace TOW_Core.Abilities.Scripts
             GameEntity.SetGlobalFrame(frame);
         }
 
-        public void Stop()
+        public override void Stop()
         {
-            GameEntity.FadeOut(0.05f, true);
+            base.Stop();
             BindKeyBindings();
-            base._casterAgent.Appear();
-            base._casterAgent.SetInvulnerable(false);
-            _isFading = true;
+            _casterAgent.Appear();
+            _casterAgent.SetInvulnerable(false);
         }
 
 
