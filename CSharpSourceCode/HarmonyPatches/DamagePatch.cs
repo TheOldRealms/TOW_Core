@@ -11,8 +11,10 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Gameplay.Perks.Effects;
 using TaleWorlds.TwoDimension;
+using TOW_Core.Abilities;
 using TOW_Core.Battle.Damage;
 using TOW_Core.Battle.StatusEffects;
+using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities;
@@ -253,12 +255,16 @@ namespace TOW_Core.HarmonyPatches
             
             if (isSpell)
             {
+                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index,false);
+                
+                
+                
                 nonPhysical = physical;
-                additionalDamageType = DamageType.Magical;
+               additionalDamageType =   spellInfo.DamageType;
                 
                 //test
                 if(attacker.IsPlayerControlled)
-                    damagePercentages[(int)DamageType.Magical] = 0.5f;
+                    damagePercentages[(int)DamageType.Fire] = 0.5f;
                 
                 
                 damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
@@ -266,8 +272,9 @@ namespace TOW_Core.HarmonyPatches
                 damageAmplification = 1 + damageAmplification - damageReduction;
                 
                 b.InflictedDamage = (int)(damageAmplification * nonPhysical);
-
+                
                 DisplaySpellDamageResult(additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
+
                 return true;
             }
 
@@ -303,10 +310,13 @@ namespace TOW_Core.HarmonyPatches
             
             var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
             
-
+           
+            
             DisplayDamageResult(additionalDamageType, armorPenetration, nonPhysical, resultDamage, damagePercentages, physical);
 
             b.InflictedDamage = resultDamage;
+
+            
             
             return true;
 
@@ -398,7 +408,8 @@ namespace TOW_Core.HarmonyPatches
             }
             else
             {
-                InformationManager.DisplayMessage(new InformationMessage(
+                if(physical>0&& damagePercentages[0]>0)
+                    InformationManager.DisplayMessage(new InformationMessage(
                     "physical part " + (physical + armorPenetration) + " with modifier " +
                     (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
             }

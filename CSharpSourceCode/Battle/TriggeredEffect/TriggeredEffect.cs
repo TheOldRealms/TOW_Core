@@ -6,6 +6,8 @@ using System;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using System.Collections.Generic;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.Damage;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
@@ -22,6 +24,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             _template = template;
         }
 
+        
         public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, IEnumerable<Agent> targets = null)
         {
             if (_template == null) return;
@@ -59,7 +62,8 @@ namespace TOW_Core.Battle.TriggeredEffect
             }
             if (_template.DamageAmount > 0)
             {
-                TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType, _template.HasShockWave);
+                
+                TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType,_template.StringID,_template.DamageType, _template.HasShockWave);
             }
             else if (_template.DamageAmount < 0)
             {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -11,6 +11,8 @@ using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using System.Linq;
 using TaleWorlds.Library;
+using TOW_Core.Battle.Damage;
+using TOW_Core.ObjectDataExtensions;
 using static TaleWorlds.Core.ItemObject;
 
 namespace TOW_Core.Battle.StatusEffects
@@ -79,6 +81,8 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
+                    SpellBlowInfoManager.EnterSpellBlow(data.ApplierAgent.Index,"dot",DamageType.Magical);
+
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
                 else if (_effectAggregate.HealthOverTime > 0)

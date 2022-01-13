@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms.VisualStyles;
 using Helpers;
 using JetBrains.Annotations;
@@ -43,16 +43,8 @@ namespace TOW_Core.Battle.Damage
 
         //access weapon traits of a mission weapon
         var traits = weapon.Item.GetTraits();
+
         
-        
-        
-        
-        
-        
-        foreach (var trait in traits)
-        {
-          TOWCommon.Say(trait.ItemTraitName);
-        }
 
         //attacker data 
         if (attackerAgentCharacter != null)
@@ -163,7 +155,7 @@ namespace TOW_Core.Battle.Damage
         if ((baseDamage + damageValue)>_minimumMagicTriggerDamage)
           return baseDamage+(damageValue)-absorbValue;*/
 
-        TOWCommon.Say(weapon.Item.StringId+ " "+  baseDamage);
+       // TOWCommon.Say(weapon.Item.StringId+ " "+  baseDamage);
         
         
         return baseDamage;
@@ -190,58 +182,7 @@ namespace TOW_Core.Battle.Damage
         
         return (MathF.Log(5*damage) * 16)/100 ;
       }
-
-      /*
-      private TorWeaponItem TryGetAdditionalTorWeaponValues(MissionWeapon? item)
-      {
-        if (item.Value.Item != null)
-        {
-          TorWeaponItem TorItem = TORItemBaseManager.GetWeaponFromDataBase(item.Value.Item.ToString());
-          return TorItem;
-        }
-        else
-        {
-          return new TorWeaponItem();
-        }
-      }
       
-      private TorArmorItem TryGetAdditionalTorArmorValues(EquipmentElement? item)
-      {
-        if (item.Value.Item != null)
-        {
-          TorArmorItem TorItem = TORItemBaseManager.GetArmorFromDataBase(item.Value.Item.ToString());
-          return TorItem;
-        }
-        return new TorArmorItem();
-
-      }
-      */
-      
-      
-      /*private TorArmorItem TryGetAdditionalTorArmorValues([CanBeNull] string item)
-      {
-        if (!string.IsNullOrEmpty(item))
-        {
-          TorArmorItem TorItem = TORItemBaseManager.GetArmorFromDataBase(item);
-          return TorItem;
-        }
-        return new TorArmorItem();
-      }
-
-      private float CalculateDamageForBodyPart(BoneBodyPartType bodyPart, TorWeaponItem torWeapon, TorArmorItem torArmor, AttackCollisionData collisionData)
-      {
-        var damage = Math.Max(torWeapon.FlatDamage - torArmor.ArmorValue, 0);
-
-        return (float) damage;
-      }
-
-      public override float CalculateEffectiveMissileSpeed(Agent attackerAgent, WeaponComponentData missileWeapon,
-          ref Vec3 missileStartDirection, float missileStartSpeed)
-      {
-        throw new NotImplementedException();
-      }*/
-      
-
     public override void DecideMissileWeaponFlags(
       Agent attackerAgent,
       MissionWeapon missileWeapon,
