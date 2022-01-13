@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +25,9 @@ namespace TOW_Core.Items
 
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         {
+            if(affectedAgent==affectorAgent)
+                return;
+            
             if(affectorWeapon.Item != null && affectorWeapon.Item.HasTrait(affectorAgent))
             {
                 var relevantTraits = affectorWeapon.Item.GetTraits(affectorAgent).Where(x=>x.ImbuedStatusEffectId != "none");
