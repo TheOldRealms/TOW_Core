@@ -15,7 +15,7 @@ namespace TOW_Core.Abilities.Scripts
             var sphere = GameEntity.Instantiate(Mission.Current.Scene, "flying_sphere", true);
             sphere.BodyFlag = BodyFlags.Barrier3D;
             sphere.BodyFlag |= BodyFlags.DontCollideWithCamera;
-            sphere.SetVisibilityExcludeParents(false);
+            sphere.EntityVisibilityFlags |= EntityVisibilityFlags.VisibleOnlyForEnvmap;
             GameEntity.AddChild(sphere);
             DisbindKeyBindings();
         }
