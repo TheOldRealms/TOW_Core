@@ -460,7 +460,7 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets>
-      <upgrade_target id="NPCCharacter.tor_vc_skeleton_warrior" />
+      <upgrade_target id="NPCCharacter.tor_vc_skeleton_swordsman" />
       <upgrade_target id="NPCCharacter.tor_vc_skeleton_spearman" />
     </upgrade_targets>
     <Equipments>
@@ -646,9 +646,9 @@
       <EquipmentSet id="tor_vc_von_carstein_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_vc_von_carstein_sister" default_group="horsearcher" level="26" name="{=str_tor_vc_von_carstein_sister}Von Carstein Sister" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level26">
+  <NPCCharacter id="tor_vc_von_carstein_sister" default_group="horsearcher" level="26" name="{=str_tor_vc_von_carstein_sister}Von Carstein Sister" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level26" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.townswoman_empire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_vc_von_carstein_noblewoman" />
@@ -670,9 +670,9 @@
       <EquipmentSet id="tor_vc_blood_knight_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_vc_von_carstein_noblewoman" default_group="cavalry" level="31" name="{=str_tor_vc_von_carstein_noblewoman}Von Carstein Noblewoman" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31">
+  <NPCCharacter id="tor_vc_von_carstein_noblewoman" default_group="cavalry" level="31" name="{=str_tor_vc_von_carstein_noblewoman}Von Carstein Noblewoman" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.townswoman_empire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_vc_von_carstein_countess" />
@@ -694,9 +694,9 @@
       <EquipmentSet id="tor_vc_drakenhof_templar_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_vc_von_carstein_countess" default_group="cavalry" level="41" name="{=str_tor_vc_von_carstein_countess}Von Carstein Countess" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level41">
+  <NPCCharacter id="tor_vc_von_carstein_countess" default_group="cavalry" level="41" name="{=str_tor_vc_von_carstein_countess}Von Carstein Countess" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level41" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.townswoman_empire" />
     </face>
     <upgrade_targets />
     <Equipments>
