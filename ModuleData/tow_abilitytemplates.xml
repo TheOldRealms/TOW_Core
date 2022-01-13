@@ -467,7 +467,8 @@
       Offset="0.5"
       AbilityTargetType="Allies"
       TargetCapturingRadius="5"
-      CrosshairType="CenteredAOE">
+      MaxDistance="20"
+      CrosshairType="TargetedAOE">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>

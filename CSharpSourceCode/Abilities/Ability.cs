@@ -188,14 +188,14 @@ namespace TOW_Core.Abilities
                         break;
                     }
                     case AbilityEffectType.TargetedStaticAOE:
+                    case AbilityEffectType.Summoning:
+                        {
+                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                            break;
+                        }
                     case AbilityEffectType.TargetedStatic:
                     {
                         //frame = crosshair.Target.GetFrame();
-                        break;
-                    }
-                    case AbilityEffectType.Summoning:
-                    {
-                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
                         break;
                     }
                 }

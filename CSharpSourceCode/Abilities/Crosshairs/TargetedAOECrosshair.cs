@@ -15,9 +15,7 @@ namespace TOW_Core.Abilities.Crosshairs
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             MatrixFrame frame = _crosshair.GetFrame();
             frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
-            frame.Strafe(0.05f);
             _crosshair.SetFrame(ref frame);
-            UpdateFrame();
             InitializeColors();
             AddLight();
             IsVisible = false;
@@ -27,7 +25,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             if (_caster != null)
             {
-                UpdateFrame();
+                UpdatePosition();
                 if (Targets != null)
                 {
                     _previousTargets = (Agent[])Targets.Clone();
@@ -45,11 +43,11 @@ namespace TOW_Core.Abilities.Crosshairs
             ClearArrays();
         }
 
-        private void UpdateFrame()
+        private void UpdatePosition()
         {
             if (_caster != null)
             {
-                if (_missionScreen.GetProjectedMousePositionOnGround(out _position, out _, true))
+                if (_missionScreen.GetProjectedMousePositionOnGround(out _position, out _normal, true))
                 {
                     _currentDistance = _caster.Position.Distance(_position);
                     if (_currentDistance > _template.MaxDistance)
@@ -148,6 +146,8 @@ namespace TOW_Core.Abilities.Crosshairs
         private Vec3 _position;
 
         private Agent _caster;
+
+        private Vec3 _normal;
 
         private AbilityTargetType _targetType;
     }
