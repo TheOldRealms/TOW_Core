@@ -130,7 +130,7 @@ namespace TOW_Core.Abilities
 
         public void StopSpecialMove()
         {
-            ((SpecialMoveScript)SpecialMove.AbilityScript)?.Stop();
+            ((ShadowStepScript)SpecialMove.AbilityScript)?.Stop();
         }
 
         public List<AbilityTemplate> GetKnownAbilityTemplates()

@@ -13,7 +13,7 @@ namespace TOW_Core.Abilities
         {
             get
             {
-                return (SpecialMoveScript)AbilityScript != null && !((SpecialMoveScript)AbilityScript).IsFadinOut;
+                return (ShadowStepScript)AbilityScript != null && !((ShadowStepScript)AbilityScript).IsFadinOut;
             }
         }
     }

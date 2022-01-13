@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<prefabs>
+  <game_entity name="magic_sphere" old_prefab_name="">
+    <physics mass="1" shape="bo_magic_sphere"/>
+    <components>
+      <meta_mesh_component name="magic_sphere_fire"/>
+      <light_component color="1.000, 0.442, 0.145" intensity="600.000" radius="10.000" local_frame_rot="10.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 10.000000" hotspot_angle="30.000" falloff_angle="45.000" shadow="1" shadow_size_multiplier="1" shadow_radius="3.000"/>
+    </components>
+  </game_entity>
+  <game_entity name="flying_sphere" old_prefab_name="">
+    <physics mass="1" shape="bo_magic_sphere"/>
+    <components>
+      <meta_mesh_component name="invisible_sphere"/>
+      <light_component color="1.000, 0.442, 0.145" intensity="600.000" radius="10.000" local_frame_rot="10.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 10.000000" hotspot_angle="30.000" falloff_angle="45.000" shadow="1" shadow_size_multiplier="1" shadow_radius="3.000"/>
+    </components>
+    <scripts>
+      <!--<script name="ShadowStepScript"/>-->
+    </scripts>
+  </game_entity>
+</prefabs>

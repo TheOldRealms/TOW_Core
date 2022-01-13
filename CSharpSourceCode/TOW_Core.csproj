@@ -284,6 +284,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
     <Compile Include="Abilities\SeekerController.cs" />
     <Compile Include="Abilities\SeekerParameters.cs" />
     <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
@@ -299,7 +300,6 @@
     <Compile Include="Abilities\Crosshairs\Pointer.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
-    <Compile Include="Abilities\Scripts\SpecialMoveScript.cs" />
     <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
