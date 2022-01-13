@@ -621,7 +621,7 @@
       <EquipmentSet id="tor_vc_hell_wraith_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tr_vc_vampire_newblood" default_group="infantry" level="21" name="{=str_tr_vc_vampire_newblood}Vampire Newblood" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+  <NPCCharacter id="tor_vc_vampire_newblood" default_group="infantry" level="21" name="{=str_tor_vc_vampire_newblood}Vampire Newblood" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.vampire" />
     </face>

@@ -388,7 +388,7 @@
     </DefensiveProperties>
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tr_vc_vampire_newblood">
+  <CharacterExtendedInfo id="tor_vc_vampire_newblood">
     <Abilities />
     <Attributes>
       <string>VampireBodyOverride</string>
