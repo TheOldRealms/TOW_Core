@@ -1,17 +1,17 @@
-﻿using TaleWorlds.Library;
+﻿using System;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
     public class TargetedCrosshair : ProjectileCrosshair
     {
-        public TargetedCrosshair(AbilityTemplate template) : base(template)
+        public TargetedCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
+            _caster = caster;
         }
 
         public override void Tick()
         {
-            base.Tick();
             FindAim();
         }
 
@@ -23,16 +23,21 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindAim()
         {
-            Vec3 position;
-            Vec3 normal;
-            _missionScreen.GetProjectedMousePositionOnGround(out position, out normal);
-            float distance;
-            var agent = Mission.Current.RayCastForClosestAgent(Agent.Main.GetEyeGlobalPosition(), position, out distance, Agent.Main.Index);
-            if (agent != null && agent.IsHuman)
+            var endPoint = _caster.LookFrame.Advance(_template.MaxDistance).origin;
+            var target = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
+            var targetType = _template.AbilityTargetType;
+            bool isAimMatching = target != null &&
+                                 target.IsHuman &&
+                                 (targetType == AbilityTargetType.All ||
+                                 (targetType == AbilityTargetType.Enemies && target.IsEnemyOf(_caster)) ||
+                                 (targetType == AbilityTargetType.Allies && !target.IsEnemyOf(_caster)));
+            if (isAimMatching)
             {
-                if (agent != aim)
+                if (target != _target)
+                {
                     RemoveAim();
-                SetAim(agent);
+                }
+                SetTarget(target);
             }
             else
             {
@@ -40,32 +45,44 @@ namespace TOW_Core.Abilities.Crosshairs
             }
         }
 
-        private void SetAim(Agent aim)
+        private void SetTarget(Agent newAim)
         {
-            if (aim != null)
+            _target = newAim;
+            _lastTargetIndex = newAim.Index;
+            if (newAim.IsEnemyOf(_caster))
             {
-                this.aim = aim;
-                if (aim.IsEnemyOf(Agent.Main))
-                    this.aim.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor);
-                else
-                    this.aim.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
+                _target.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor);
+            }
+            else
+            {
+                _target.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
             }
         }
-        
+
         private void RemoveAim()
         {
-            if (aim != null)
+            if (_target != null)
             {
-                aim.AgentVisuals.GetEntity().Root.SetContourColor(colorLess);
-                aim = null;
+                _target.AgentVisuals.GetEntity().Root.SetContourColor(colorLess);
+                _target = null;
             }
         }
 
-        public Agent Aim
+
+        public Int32 LastTargetIndex
         {
-            get => aim;
+            get => _lastTargetIndex;
         }
 
-        private Agent aim;
+        public Agent Target
+        {
+            get => _target;
+        }
+
+        private Int32 _lastTargetIndex = -1;
+
+        private Agent _target;
+
+        private Agent _caster;
     }
 }

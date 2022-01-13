@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <StatusEffects>
-	<StatusEffect 
+	<StatusEffectTemplate 
 		id="crumble" 
 		particle_id="undead_crumbling"
 		particle_intensity="High"
-		health_over_time="-5"
+		health_over_time="0"
+		damage_over_time="5"
 		duration="3"
-		type="Health"/>
-	<StatusEffect 
+		type="DamageOverTime"/>
+	<StatusEffectTemplate 
 		id="regeneration" 
 		particle_id="undead_crumbling"
 		particle_intensity="Low"
 		health_over_time="3"
 		duration="3"
-		type="Health"/>
-	<StatusEffect 
+		type="HealthOverTime"/>
+	<StatusEffectTemplate 
 		id="fireball_dot" 
 		particle_id="torch_fire_sparks"
 		particle_intensity="High"
-		health_over_time="-1"
+		health_over_time="0"
+		damage_over_time="3"
 		duration="12"
-		type="Health"/>
+		type="DamageOverTime"/>
+  <StatusEffectTemplate
+		id="word_of_pain"
+		particle_id="psys_game_step_dust_on_default"
+		particle_intensity="High"
+    	health_over_time="0"
+    	damage_over_time="10"
+		duration="10"
+		type="DamageOverTime"/>
 </StatusEffects>

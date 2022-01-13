@@ -8,6 +8,7 @@ using TaleWorlds.Engine;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Abilities
 {
@@ -171,39 +172,39 @@ namespace TOW_Core.Abilities
                 {
                     case AbilityEffectType.MovingProjectile:
                     case AbilityEffectType.DynamicProjectile:
-                        {
-                            frame.origin = casterAgent.GetEyeGlobalPosition();
-                            break;
-                        }
+                    {
+                        frame.origin = casterAgent.GetEyeGlobalPosition();
+                        break;
+                    }
                     case AbilityEffectType.DirectionalMovingAOE:
-                        {
-                            frame = Crosshair.Frame;
-                            break;
-                        }
+                    {
+                        frame = Crosshair.Frame;
+                        break;
+                    }
                     case AbilityEffectType.CenteredStaticAOE:
                     case AbilityEffectType.AgentMoving:
-                        {
-                            frame = casterAgent.LookFrame;
-                            break;
-                        }
+                    {
+                        frame = casterAgent.LookFrame;
+                        break;
+                    }
                     case AbilityEffectType.TargetedStaticAOE:
                     case AbilityEffectType.TargetedStatic:
-                        {
-                            //frame = crosshair.Target.GetFrame();
-                            break;
-                        }
+                    {
+                        //frame = crosshair.Target.GetFrame();
+                        break;
+                    }
                     case AbilityEffectType.Summoning:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            break;
-                        }
+                    {
+                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                        break;
+                    }
                 }
             }
 
             return frame;
         }
 
-        protected static MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
+        protected MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
         {
             var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
             if (wizardAiComponent != null && casterAgent.IsAIControlled)
@@ -276,6 +277,21 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.AgentMoving:
                     AddExactBehaviour<SpecialMoveScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.TargetedStatic:
+                    AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
+                    break;
+            }
+
+            if (Template.SeekerParameters != null)
+            {
+                if (casterAgent.IsAIControlled)
+                {
+                    AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
+                }
+                else
+                {
+                    AbilityScript.SetTargetSeeking(new Target {Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation}, Template.SeekerParameters); //TODO: Need crosshair
+                }
             }
         }
 

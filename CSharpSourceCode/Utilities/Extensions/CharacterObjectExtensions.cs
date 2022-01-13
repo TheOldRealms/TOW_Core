@@ -13,33 +13,21 @@ namespace TOW_Core.Utilities.Extensions
     {
         public static bool IsTOWTemplate(this CharacterObject characterObject)
         {
-            return characterObject.StringId.StartsWith("tow_");
+            return characterObject.StringId.StartsWith("tor_");
         }
 
         public static bool IsTOWTemplate(this BasicCharacterObject characterObject)
         {
-            return characterObject.StringId.StartsWith("tow_");
+            return characterObject.StringId.StartsWith("tor_");
         }
 
         public static List<string> GetAbilities(this BasicCharacterObject characterObject)
         {
             var list = new List<string>();
-            var infoManager = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
-            if(infoManager != null)
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId);
+            if(info != null)
             {
-                var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
-                if(info != null && info.Abilities != null)
-                {
-                    list.AddRange(info.Abilities);
-                }
-            }
-            else
-            {
-                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
-                if (info != null && info.Abilities != null)
-                {
-                    list.AddRange(info.Abilities);
-                }
+                list.AddRange(info.Abilities);
             }
             return list;
         }
@@ -47,23 +35,10 @@ namespace TOW_Core.Utilities.Extensions
         public static List<string> GetAttributes(this BasicCharacterObject characterObject)
         {
             var list = new List<string>();
-            if (characterObject == null) return list;
-            var infoManager = Campaign.Current?.CampaignBehaviorManager?.GetBehavior<ExtendedInfoManager>();
-            if (infoManager != null)
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId);
+            if (info != null)
             {
-                var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
-                if(info != null && info.CharacterAttributes != null)
-                {
-                    list.AddRange(info.CharacterAttributes);
-                }
-            }
-            else
-            {
-                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
-                if (info != null && info.CharacterAttributes != null)
-                {
-                    list.AddRange(info.CharacterAttributes);
-                }
+                list.AddRange(info.CharacterAttributes);
             }
             return list;
         }
@@ -71,19 +46,10 @@ namespace TOW_Core.Utilities.Extensions
         public static string GetCustomVoiceClassName(this BasicCharacterObject characterObject)
         {
             string s = null;
-            var infoManager = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
-            if (infoManager != null)
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId);
+            if (info != null)
             {
-                var info = infoManager.GetCharacterInfoFor(characterObject.StringId);
-                if(info != null) s = info.VoiceClassName;
-            }
-            else
-            {
-                var info = ExtendedInfoManager.GetCharacterInfoForStatic(characterObject.StringId);
-                if (info != null && info.VoiceClassName != null)
-                {
-                    s = info.VoiceClassName;
-                }
+                s = info.VoiceClassName;
             }
             return s;
         }

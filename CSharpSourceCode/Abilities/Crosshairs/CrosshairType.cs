@@ -5,6 +5,7 @@
         None,
         Projectile,
         Targeted,
+        TargetedAOE,
         DirectionalAOE,
         CenteredAOE,
         Pointer

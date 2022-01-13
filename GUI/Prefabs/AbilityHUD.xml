@@ -1,0 +1,29 @@
+﻿<Prefab>
+	<Constants>
+	</Constants>
+
+  <Window>
+		<Widget WidthSizePolicy="Fixed"
+				HeightSizePolicy="Fixed"
+				SuggestedWidth="132"
+				SuggestedHeight="220"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Left"
+				MarginBottom="15"
+				MarginLeft="15"
+				IsVisible="@IsVisible" >
+			<Children>
+				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="100" Sprite="@SpriteName" HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="96">
+					<Children>
+						<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#000000FF" AlphaFactor="0.5" IsVisible="@IsOnCoolDown"/>
+						<TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@CoolDownLeft" Brush.FontSize="20" IsVisible="@IsOnCoolDown"/>
+					</Children>
+				</Widget>
+				<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="165" Sprite="abilityframe_empire" VerticalAlignment="Top" PositionYOffset="36" IsVisible="true"/>
+				<TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="112" SuggestedHeight="50" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Winds of Magic" Brush.FontSize="18" Brush.FontColor="#0066ffff"/>
+				<TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="20" SuggestedHeight="50" HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="20" Text="@WindsOfMagicLeft" Brush.FontSize="18" Brush.FontColor="#0066ffff"/>
+				<TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="@Name" Brush.FontSize="14"/>
+			</Children>
+		</Widget>
+	</Window>
+</Prefab>

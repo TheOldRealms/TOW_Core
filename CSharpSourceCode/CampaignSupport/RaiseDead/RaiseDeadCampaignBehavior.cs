@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.ModuleManager;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.BattleHistory;
 using TOW_Core.Utilities;
@@ -17,30 +13,33 @@ namespace TOW_Core.CampaignSupport.RaiseDead
     public class RaiseDeadCampaignBehavior : CampaignBehaviorBase
     {
         private List<CharacterObject> _raiseableCharacters = new List<CharacterObject>();
-        public List<TroopRosterElement> TroopsForVM = new List<TroopRosterElement>();
         public int LastNumberOfTroopsRaised = 0;
 
         public override void RegisterEvents()
         {
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, InitializeRaiseableCharacters);
+            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this, RaiseDead);
+        }
+
+        private void RaiseDead(MapEvent mapEvent)
+        {
+            if (mapEvent.PlayerSide == mapEvent.WinningSide && Hero.MainHero.CanRaiseDead())
+            {
+                var troops = GenerateRaisedTroopsForVM();
+                for (int i = 0; i < troops.Count; i++)
+                {
+                    PlayerEncounter.Current.RosterToReceiveLootMembers.AddToCounts(troops[0], 1);
+                }
+            }
         }
 
         public override void SyncData(IDataStore dataStore)
         {
         }
 
-        public RaiseDeadCampaignBehavior()
+        public List<CharacterObject> GenerateRaisedTroopsForVM()
         {
-        }
-
-        public List<TroopRosterElement> GenerateRaisedTroopsForVM()
-        {
-            if (!Hero.MainHero.CanRaiseDead())
-                return new List<TroopRosterElement>();
-
-            if (_raiseableCharacters.Count == 0)
-                InitializeRaiseableCharacters();
-
-            List<TroopRosterElement> elements = new List<TroopRosterElement>();
+            List<CharacterObject> elements = new List<CharacterObject>();
 
             List<CharacterInfo> killedEnemies = Campaign.Current
                 .GetCampaignBehavior<BattleInfoCampaignBehavior>()?
@@ -64,7 +63,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
                         var characterObject = filteredVamps.GetRandomElement();
                         if (characterObject != null)
                         {
-                            elements.Add(new TroopRosterElement(characterObject));
+                            elements.Add(characterObject);
                             counter++;
                         }
                         else
@@ -79,16 +78,10 @@ namespace TOW_Core.CampaignSupport.RaiseDead
             return elements;
         }
 
-        private List<CharacterObject> GetRaiseableCharacters()
+        private void InitializeRaiseableCharacters(CampaignGameStarter gameStarter)
         {
             var characters = MBObjectManager.Instance.GetObjectTypeList<CharacterObject>();
-            var characterlist = characters.Where(character => character.IsUndead() && character.IsBasicTroop && character.Culture.ToString().Equals(Hero.MainHero.Culture.ToString())).ToList();
-            return characterlist;
-        }
-
-        private void InitializeRaiseableCharacters()
-        {
-            _raiseableCharacters = GetRaiseableCharacters();
+            _raiseableCharacters = characters.Where(character => character.IsUndead() && character.IsBasicTroop && character.Culture.ToString().Equals(Hero.MainHero.Culture.ToString())).ToList();
         }
     }
 }

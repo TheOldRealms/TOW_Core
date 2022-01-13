@@ -4,8 +4,8 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="20" 
-      WindsOfMagicCost="15" 
+      CoolDown="1" 
+      WindsOfMagicCost="1" 
       BaseMisCastChance="0.05" 
       Duration="3" 
       Radius="0.4" 
@@ -125,11 +125,11 @@
       CoolDown="12" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
-      Duration="3" 
+      Duration="300" 
       Radius="0.4" 
       AbilityType="Spell" 
       AbilityEffectType="MovingProjectile" 
-      BaseMovementSpeed="35" 
+      BaseMovementSpeed="15" 
       TickInterval="-1" 
       TriggerType="OnCollision" 
       HasLight="true" 
@@ -153,6 +153,7 @@
           <z>255</z>
         </AsVec2>
       </LightColorRGB>
+      <SeekerParameters Proportional="0.5" Derivative="0" DisableDistance="10"/>
   </AbilityTemplate>
   <AbilityTemplate 
       StringID="BurningHead" 
@@ -275,11 +276,52 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate 
+    StringID="MortarSpawner" 
+    Name="Place Mortar" 
+    SpriteName="summonskeleton_icon" 
+    CoolDown="1" 
+    WindsOfMagicCost="0" 
+    BaseMisCastChance="0.0" 
+    Duration="1" 
+    Radius="2" 
+    AbilityType="Spell" 
+    AbilityEffectType="Summoning" 
+    BaseMovementSpeed="0" 
+    TickInterval="0.2" 
+    TriggerType="TickOnce" 
+    HasLight="false" 
+    LightIntensity="0" 
+    LightRadius="0" 
+    LightFlickeringMagnitude="0" 
+    LightFlickeringInterval="0" 
+    ShadowCastEnabled="false" 
+    ParticleEffectPrefab="none" 
+    ParticleEffectSizeModifier="1" 
+    SoundEffectToPlay="none" 
+    ShouldSoundLoopOverDuration="true"
+    CastType="Instant" 
+    CastTime="0" 
+    AnimationActionName="act_release_heavy_thrown" 
+    TriggeredEffectID="place_mortar"
+    Offset="10"
+    AbilityTargetType="Self"
+    CrosshairType="Pointer"
+    MinDistance="1"
+    MaxDistance="30"
+    TargetCapturingRadius="2.5">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
   <AbilityTemplate
        StringID="ShadowStep"
        Name="Shadow Step"
        SpriteName="windofdeath_icon"
-       CoolDown="1"
+       CoolDown="100"
        WindsOfMagicCost="0"
        BaseMisCastChance="0.3"
        Duration="3"
@@ -313,6 +355,123 @@
         <x>255</x>
         <y>255</y>
         <z>255</z>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+      StringID="HurlWeapons"
+      Name="Hurl Weapons"
+      SpriteName="fireball_icon"
+      CoolDown="3"
+      WindsOfMagicCost="0"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="TargetedStatic"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="hurl_weapons"
+      Offset="0.5"
+      AbilityTargetType="Enemies"
+      MaxDistance="20"
+      CrosshairType="Targeted">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+      StringID="WordOfPain"
+      Name="Word of Pain"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="0"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="TargetedStatic"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="word_of_pain"
+      Offset="0.5"
+      AbilityTargetType="Enemies"
+      MaxDistance="10"
+      CrosshairType="Targeted">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+      StringID="FlamingSwords"
+      Name="Flaming Sword of Rhuin"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="5"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="TargetedStaticAOE"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="apply_flaming_sword_trait"
+      Offset="0.5"
+      AbilityTargetType="Allies"
+      TargetCapturingRadius="5"
+      CrosshairType="CenteredAOE">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>

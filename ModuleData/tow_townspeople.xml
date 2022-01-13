@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <NPCCharacters>
-  <NPCCharacter id="tow_townsman_villager" default_group="Infantry" name="{=muu5cofb}Townsman" occupation="Townsfolk" culture="Culture.empire" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+  <NPCCharacter id="tor_townsman_villager" default_group="Infantry" name="{=muu5cofb}Townsman" occupation="Townsfolk" culture="Culture.empire" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <face_key_template value="BodyProperty.villager_empire" />
       <hair_tags>
@@ -18,7 +18,7 @@
     </face>
     <skills></skills>
     <Equipments>
-      <EquipmentRoster civilian="true">
+      <EquipmentRoster>
         <equipment slot="Body" id="Item.statetroop_uniform_001_body" />
         <equipment slot="Leg" id="Item.battania_leather_boots" />
         <equipment slot="Head" id="Item.empire_halberdier_hat_001" />
@@ -38,7 +38,7 @@
     </Equipments>
   </NPCCharacter>
   <!--Merchant-->
-  <NPCCharacter id="tow_merchant_empire" default_group="Infantry" is_hero="true" occupation="GoodsTrader" culture="Culture.empire" name="{=thbcgVVO}Trader" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+  <NPCCharacter id="tor_merchant_empire" default_group="Infantry" occupation="GoodsTrader" culture="Culture.empire" name="{=thbcgVVO}Trader" skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <face_key_template value="BodyProperty.villager_empire" />
     </face>
@@ -57,7 +57,7 @@
         <equipment slot="Head" id="Item.empire_hat_002" />
         <equipment slot="Leg" id="Item.battania_leather_boots" />
       </EquipmentRoster>
-      <EquipmentRoster civilian="true">
+      <EquipmentRoster>
         <equipment slot="Item0" id="Item.short_sword_t3" />
         <equipment slot="Body" id="Item.merchants_fur_coat" />
         <equipment slot="Head" id="Item.empire_hat_002" />

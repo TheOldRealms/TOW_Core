@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public abstract class AbilityScript : ScriptComponentBehaviour
+    public abstract class AbilityScript : ScriptComponentBehavior
     {
         protected Ability _ability;
         private int _soundIndex;
@@ -23,7 +26,12 @@ namespace TOW_Core.Abilities.Scripts
         protected Vec3 _previousFrameOrigin;
         private float _minArmingTimeForCollision = 0.1f;
         private bool _canCollide;
+        private SeekerController _controller;
 
+        public void SetTargetSeeking(Target target, SeekerParameters parameters)
+        {
+            _controller = new SeekerController(target, parameters);
+        }
         internal void SetAgent(Agent agent)
         {
             _casterAgent = agent;
@@ -42,7 +50,7 @@ namespace TOW_Core.Abilities.Scripts
             SetScriptComponentToTick(GetTickRequirement());
         }
 
-        protected override TickRequirement GetTickRequirement()
+        public override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }
@@ -66,6 +74,7 @@ namespace TOW_Core.Abilities.Scripts
             UpdateLifeTime(dt);
 
             var frame = GameEntity.GetGlobalFrame();
+            if (_controller != null) frame = _controller.CalculateRotatedFrame(frame, dt);
             UpdateSound(frame.origin);
 
             if (_ability.Template.TriggerType == TriggerType.OnCollision && CollidedWithAgent())
@@ -93,7 +102,7 @@ namespace TOW_Core.Abilities.Scripts
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);
-            if(GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
+            if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
@@ -174,6 +183,16 @@ namespace TOW_Core.Abilities.Scripts
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)
             {
+                if (_ability.Template.CrosshairType == CrosshairType.Targeted)
+                {
+                    var crosshair = (TargetedCrosshair)_ability.Crosshair;
+                    var target = crosshair.LastTargetIndex != -1 ? Mission.Current.Agents.FirstOrDefault(a => a.Index == crosshair.LastTargetIndex) : null;
+                    if (target != null)
+                    {
+                        effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { target });
+                    }
+                    return;
+                }
                 effect.Trigger(position, normal, _casterAgent);
             }
         }

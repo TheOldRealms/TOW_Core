@@ -13,8 +13,7 @@
         ImbuedStatusEffectID="fireball_dot" 
         ImbuedStatusEffectDuration="5" 
         DamageVariance="0.2" 
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
+        ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate
         StringID="grenade_explosion"
         BurstParticleEffectPrefab="psys_burning_projectile_default_coll"
@@ -28,23 +27,21 @@
         ImbuedStatusEffectID="fireball_dot"
         ImbuedStatusEffectDuration="5"
         DamageVariance="0.2"
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
+        ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate 
       StringID="dart_explosion" 
       BurstParticleEffectPrefab="dart_explosion" 
       SoundEffectId="dart_explosion" 
       SoundEffectLength="2.5" 
       DamageType="Magical" 
-      DamageAmount="50" 
+      DamageAmount="10" 
       Radius="5" 
       HasShockWave="false"
       TargetType="All" 
       ImbuedStatusEffectID="none" 
       ImbuedStatusEffectDuration="5" 
       DamageVariance="0.2" 
-      ScriptNameToTrigger="none">
-      </TriggeredEffectTemplate>
+      ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate 
         StringID="wind_of_death_tick" 
         BurstParticleEffectPrefab="none" 
@@ -58,8 +55,7 @@
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="5" 
         DamageVariance="0.1" 
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
+        ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate 
       StringID="burning_head_tick" 
       BurstParticleEffectPrefab="none" 
@@ -72,8 +68,7 @@
       ImbuedStatusEffectID="fireball_dot" 
       ImbuedStatusEffectDuration="5" 
       DamageVariance="0.1" 
-      ScriptNameToTrigger="none">
-      </TriggeredEffectTemplate>
+      ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate 
         StringID="summon_skeleton" 
         BurstParticleEffectPrefab="none" 
@@ -87,8 +82,7 @@
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="0" 
         DamageVariance="0" 
-        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonSkeleton">
-  </TriggeredEffectTemplate>
+        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonSkeleton"/>
   <TriggeredEffectTemplate 
         StringID="healing_tick" 
         BurstParticleEffectPrefab="none" 
@@ -102,9 +96,8 @@
         ImbuedStatusEffectID="none" 
         ImbuedStatusEffectDuration="0" 
         DamageVariance="0.1" 
-        ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
-  <TriggeredEffectTemplate
+        ScriptNameToTrigger="none"/>
+<TriggeredEffectTemplate
         StringID="shadow_step"
         BurstParticleEffectPrefab="none"
         SoundEffectId="none"
@@ -117,6 +110,65 @@
         ImbuedStatusEffectID="none"
         ImbuedStatusEffectDuration="0"
         DamageVariance="0"
-        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript">
+        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.KnockDownScript"/>
+<TriggeredEffectTemplate 
+        StringID="place_mortar" 
+        BurstParticleEffectPrefab="none" 
+        SoundEffectId="none" 
+        SoundEffectLength="0" 
+        DamageType="Magical" 
+        DamageAmount="0" 
+        Radius="5" 
+        HasShockWave="false"
+        TargetType="All" 
+        ImbuedStatusEffectID="none" 
+        ImbuedStatusEffectDuration="0" 
+        DamageVariance="0" 
+        ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.PrefabSpawnerScript"
+        SpawnPrefabName="tor_mortar"/>
+<TriggeredEffectTemplate
+          StringID="hurl_weapons"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Physical"
+          DamageAmount="0"
+          Radius="0"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="none"
+          ImbuedStatusEffectDuration="0"
+          DamageVariance="0.2"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="word_of_pain"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Magical"
+          DamageAmount="0"
+          Radius="0"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="word_of_pain"
+          ImbuedStatusEffectDuration="5"
+          DamageVariance="0.2"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="apply_flaming_sword_trait"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Fire"
+          DamageAmount="0"
+          Radius="5"
+          HasShockWave="false"
+          TargetType="Friendly"
+          ImbuedStatusEffectID="none"
+          ImbuedStatusEffectDuration="0"
+          DamageVariance="0"
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.ApplyFlamingItemTraitScript">
   </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

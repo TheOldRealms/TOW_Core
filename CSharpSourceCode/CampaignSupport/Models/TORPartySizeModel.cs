@@ -11,7 +11,7 @@ namespace TOW_Core.CampaignSupport.Models
             var num = base.GetPartyMemberSizeLimit(party, includeDescriptions);
             if (party.Culture.Name.Contains("Vampire"))
             {
-                if (party.IsMobile)
+                if (party.LeaderHero != null && party.LeaderHero.IsHumanPlayerCharacter)
                 {
                     if (party.Leader != null && party.Leader.IsPlayerCharacter)
                     {
@@ -36,6 +36,10 @@ namespace TOW_Core.CampaignSupport.Models
                     {
                         num.Add(300, new TextObject("Settlement of Vampire Counts"));
                     }
+                }
+                else if (party.IsMobile)
+                {
+                    num.Add(150, new TextObject("Vampire lord"));
                 }
             }
             return num;

@@ -1,0 +1,73 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Button.SuggestedWidth" Value="338"/>
+    <Constant Name="Button.SuggestedHeight" Value="47"/>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" DoNotAcceptEvents="true">
+      <Children>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="445" MarginLeft="85" Sprite="" AlphaFactor="0.0">
+      <Children>
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" VerticalAlignment="Center">
+          <Children>
+            <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center">
+              <Children>
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="380" SuggestedHeight="103" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="100" Sprite="InitialMenu\main_menu_logo" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="94" SuggestedHeight="10" HorizontalAlignment="Center" MarginTop="75" Sprite="InitialMenu\information_panel_separator" Color="#D09365FF" IsVisible="false" />
+                    <ListPanel Id="MyInnerPanel" DataSource="{MenuOptions}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MinHeight="630" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="65" MarginBottom="15" StackLayout.LayoutMethod="VerticalBottomToTop">
+                      <ItemTemplate>
+                        <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="50" HorizontalAlignment="Center" MarginTop="18" UseSiblingIndexForNavigation="true">
+                          <Children>
+                            <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Button.SuggestedWidth" SuggestedHeight="!Button.SuggestedHeight" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="InitialMenuButtonBrush" Command.Click="ExecuteAction" IsDisabled="@IsDisabled" UpdateChildrenStates="true">
+                              <Children>
+                                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" Brush="InitialMenuButtonBrush" ClipContents="false" Text="@NameText" UpdateChildrenStates="true">
+                                  <Children>
+                                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="46" SuggestedHeight="20" HorizontalAlignment="Left" VerticalAlignment="Center" PositionXOffset="-55" MarginBottom="2" Brush="HoverIndicatorBrush" />
+                                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="46" SuggestedHeight="20" HorizontalAlignment="Right" VerticalAlignment="Center" PositionXOffset="55" MarginBottom="2" Brush="HoverIndicatorBrushFlipped" />
+                                  </Children>
+                                </TextWidget>
+                              </Children>
+                            </ButtonWidget>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Button.SuggestedWidth" SuggestedHeight="!Button.SuggestedHeight" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="@IsDisabled">
+                              <Children>
+                                <HintWidget DataSource="{DisabledHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />    
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </Widget>
+                      </ItemTemplate>
+                    </ListPanel>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="94" SuggestedHeight="10" HorizontalAlignment="Center" Sprite="InitialMenu\information_panel_separator" Color="#D09365FF" VerticalFlip="true" MarginTop="45" IsVisible="false"/>
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+
+        <!--Select Profile-->
+
+        <ListPanel WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="50" MarginRight="50" Sprite="BlankWhiteSquare_9" Color="#000000AA" AlphaFactor="0.7" IsVisible="@IsProfileSelectionEnabled" LayoutImp.LayoutMethod="VerticalBottomToTop">
+          <Children>
+
+            <!--Profile Name-->
+            <TextWidget WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" Text="@ProfileName" Brush="InitialMenuButtonBrush" HorizontalAlignment="Center" DoNotAcceptEvents="true" MarginTop="10"/>
+
+            <ListPanel WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" HorizontalAlignment="Center" MarginTop="10">
+              <Children>
+                <InputKeyVisualWidget DataSource="{SelectProfileKey}" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="60" SuggestedHeight="60" VerticalAlignment="Center" KeyID="@KeyID" IsVisible="@IsVisible"/>
+                <TextWidget WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" Text="@SelectProfileText" VerticalAlignment="Center" MarginRight="10" Brush="InitialMenuButtonBrush" DoNotAcceptEvents="true"/>
+              </Children>
+            </ListPanel>
+
+          </Children>
+        </ListPanel>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

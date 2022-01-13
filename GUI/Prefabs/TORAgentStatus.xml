@@ -1,0 +1,228 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Icon.Width" BrushName="Mission.MainAgentHUD.HeroHealthBar.Icon" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Icon.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Icon" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Frame.Width" BrushName="Mission.MainAgentHUD.HeroHealthBar.Frame" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Frame" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Canvas.Width" BrushName="Mission.MainAgentHUD.HeroHealthBar.Canvas" BrushLayer="Default" BrushValueType="Width" Additive="5"/>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Canvas.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Canvas" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Fill.Width" BrushName="Mission.MainAgentHUD.HeroHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Fill.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.FillGlow.Width" BrushName="Mission.MainAgentHUD.HeroHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.FillGlow.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Icon.Width" BrushName="Mission.MainAgentHUD.MountHealthBar.Icon" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Icon.Height" BrushName="Mission.MainAgentHUD.MountHealthBar.Icon" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Frame.Width" BrushName="Mission.MainAgentHUD.MountHealthBar.Frame" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.MountHealthBar.Frame" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Canvas.Width" BrushName="Mission.MainAgentHUD.MountHealthBar.Canvas" BrushLayer="Default" BrushValueType="Width" Additive="5"/>
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Canvas.Height" BrushName="Mission.MainAgentHUD.MountHealthBar.Canvas" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Fill.Width" BrushName="Mission.MainAgentHUD.MountHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.Fill.Height" BrushName="Mission.MainAgentHUD.MountHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.FillGlow.Width" BrushName="Mission.MainAgentHUD.MountHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.MountHealthBar.FillGlow.Height" BrushName="Mission.MainAgentHUD.MountHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Icon.Width" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Icon" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Icon.Height" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Icon" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Frame.Width" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Frame" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Frame" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Canvas.Width" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Canvas" BrushLayer="Default" BrushValueType="Width" Additive="5"/>
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Canvas.Height" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Canvas" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Fill.Width" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.Fill.Height" BrushName="Mission.MainAgentHUD.ShieldHealthBar.Fill" BrushLayer="DefaultFill" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.FillGlow.Width" BrushName="Mission.MainAgentHUD.ShieldHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.ShieldHealthBar.FillGlow.Height" BrushName="Mission.MainAgentHUD.ShieldHealthBar.FillGlow" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Mission.MainAgentHUD.TakenDamageFeed.Background.Width" BrushName="Mission.MainAgentHUD.TakenDamageFeed.Background" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Mission.MainAgentHUD.TakenDamageFeed.Background.Height" BrushName="Mission.MainAgentHUD.TakenDamageFeed.Background" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="true">
+      <Children>
+
+        <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginRight="135" MarginBottom="190" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+          <Children>
+
+            <!--Couch Lance State Visual-->
+            <AgentWeaponPassiveUsageVisualWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="65" SuggestedHeight="55" VerticalAlignment="Center" HorizontalAlignment="Center" Brush="Mission.Agent.CouchLance.State" CouchLanceState="@CouchLanceState" MarginRight="10"/>
+
+            <AgentWeaponPassiveUsageVisualWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="82" SuggestedHeight="66" VerticalAlignment="Center" HorizontalAlignment="Center" Brush="Mission.Agent.SpearBrace.State" CouchLanceState="@SpearBraceState" MarginRight="10"/>
+            
+            <!-- Troop Count -->
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="15" IsVisible="@IsTroopsActive" >
+              <Children>
+                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" IntText="@TroopCount" PositionYOffset="7" Brush="MPHUD.TroopCount.Text"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="90" SuggestedHeight="95" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="MPClassLoadout\icon_troop_count" Color="#F3DCB8FF" />
+                  </Children>
+                </Widget>
+              </Children>
+            </ListPanel>
+
+            <SliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="50" SuggestedWidth="10" HorizontalAlignment="Center" VerticalAlignment="Center" DoNotUpdateHandleSize="true" Filler="Filler" Handle="SliderHandle" MaxValueFloat="1" MinValueFloat="0" ValueFloat="@TroopsAmmoPercentage" AlignmentAxis="Vertical" IsVisible="@TroopsAmmoAvailable" PositionXOffset="-15">
+              <Children>
+                <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="50" SuggestedWidth="10" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare_9" Color="#000000FF" />
+                <Widget Id="Filler" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="50" SuggestedWidth="10" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare_9" Color="#EB8334FF" />
+                <!--<BrushWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="5" MarginBottom="5" Brush="*FrameBrush" Brush.SaturationFactor="25" Brush.ValueFactor="-15" />-->
+                <Widget Id="SliderHandle" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="2" SuggestedHeight="2" HorizontalAlignment="Left" VerticalAlignment="Center" IsVisible="false" />
+              </Children>
+            </SliderWidget>
+            
+          </Children>
+        </ListPanel>
+
+        <ListPanel StackLayout.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="118" MarginRight="40">
+          <Children>
+            <!-- Weapon info -->
+            <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" PositionYOffset="4">
+              <Children>
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="20">
+                  <Children>
+                    <ImageIdentifierWidget DataSource="{PrimaryWeapon}" ImageId="@Id" AdditionalArgs="@AdditionalArgs" ImageTypeCode="@ImageTypeCode" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="50" PositionXOffset="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" HideWhenNull="true">
+                      <Children>
+                        <AgentAmmoTextWidget DataSource="{..\..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="120" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10" Brush="AgentAmmoCount.Text" IntText="@AmmoCount" IsVisible="@ShowAmmoCount" IsAlertEnabled="@IsAmmoCountAlertEnabled"/>
+                      </Children>
+                    </ImageIdentifierWidget>
+                    <ImageIdentifierWidget DataSource="{OffhandWeapon}" ImageId="@Id" AdditionalArgs="@AdditionalArgs" ImageTypeCode="@ImageTypeCode" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="50" PositionXOffset="-30" HorizontalAlignment="Right" VerticalAlignment="Bottom" HideWhenNull="true"/>
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <Widget Id="SpaceBalanceWidget" IsHidden="@ShowShieldHealthBar" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="1" SuggestedHeight="8" />
+
+            <!-- Shield Health info -->
+            <AgentHealthWidget Id="ShieldHealthWidget" Health="@ShieldHealth" MaxHealth="@ShieldHealthMax" HealthBar="Canvas\FillBar" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.ShieldHealthBar.Frame.Width" SuggestedHeight="!Mission.MainAgentHUD.ShieldHealthBar.Frame.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="40" MarginBottom="10" ShowHealthBar="@ShowShieldHealthBar" HealthDropContainer="Canvas\HealthDropContainer" HealthDropBrush="Mission.MainAgentHUD.ShieldHealthBar.FillChange">
+              <Children>
+                <Widget Id="Canvas" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.ShieldHealthBar.Canvas.Width" SuggestedHeight="!Mission.MainAgentHUD.ShieldHealthBar.Canvas.Height" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\Mission\shield_canvas">
+                  <Children>
+                    <Widget Id="HealthDropContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="12" VerticalAlignment="Center" PositionYOffset="-2" MarginRight="15" MarginTop="5">
+                      <Children>
+                      </Children>
+                    </Widget>
+                    <FillBarWidget Id="FillBar" ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Mission.MainAgentHUD.ShieldHealthBar.Fill.Height" VerticalAlignment="Center" PositionYOffset="-2" IsVertical="false" MarginLeft="14" MarginRight="17" MarginTop="5" FillWidget="FillVisualParent\FillVisual">
+                      <Children>
+                        <Widget Id="FillVisualParent" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="164">
+                          <Children>
+                            <BrushWidget Id="FillVisual" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="!Mission.MainAgentHUD.ShieldHealthBar.Canvas.Width" HorizontalAlignment="Left" Brush="Mission.MainAgentHUD.ShieldHealthBar.Fill">
+                              <Children>
+                                <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.ShieldHealthBar.FillGlow.Width" SuggestedHeight="!Mission.MainAgentHUD.ShieldHealthBar.FillGlow.Height" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Mission.MainAgentHUD.ShieldHealthBar.FillGlow" />
+                              </Children>
+                            </BrushWidget>
+                          </Children>
+                        </Widget>
+                      </Children>
+                    </FillBarWidget>
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="General\Mission\shield_frame" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.ShieldHealthBar.Icon.Width" SuggestedHeight="!Mission.MainAgentHUD.ShieldHealthBar.Icon.Height" VerticalAlignment="Center" HorizontalAlignment="Left" PositionXOffset="-33" PositionYOffset="-8" Sprite="General\Mission\shield_icon" />
+              </Children>
+            </AgentHealthWidget>
+          </Children>
+        </ListPanel>
+
+        <!-- Mount Health info -->
+        <AgentHealthWidget Id="HorseHealthWidget" Health="@HorseHealth" MaxHealth="@HorseHealthMax" HealthBar="Canvas\FillBar" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.MountHealthBar.Frame.Width" SuggestedHeight="!Mission.MainAgentHUD.MountHealthBar.Frame.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="81" MarginRight="80" ShowHealthBar="@ShowMountHealthBar" HealthDropContainer="Canvas\HealthDropContainer" HealthDropBrush="Mission.MainAgentHUD.MountHealthBar.FillChange">
+          <Children>
+            <Widget Id="Canvas" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.MountHealthBar.Canvas.Width" SuggestedHeight="!Mission.MainAgentHUD.MountHealthBar.Canvas.Height" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\Mission\horse_canvas">
+              <Children>
+                <Widget Id="HealthDropContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="12" VerticalAlignment="Center" PositionYOffset="-2" MarginRight="15" MarginTop="5">
+                  <Children>
+                  </Children>
+                </Widget>
+                <FillBarWidget Id="FillBar" ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Mission.MainAgentHUD.MountHealthBar.Fill.Height" VerticalAlignment="Center" PositionYOffset="-2" IsVertical="false" MarginLeft="14" MarginRight="17" MarginTop="5" FillWidget="FillVisualParent\FillVisual">
+                  <Children>
+                    <Widget Id="FillVisualParent" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="164">
+                      <Children>
+                        <BrushWidget Id="FillVisual" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="!Mission.MainAgentHUD.MountHealthBar.Canvas.Width" HorizontalAlignment="Left" Brush="Mission.MainAgentHUD.MountHealthBar.Fill">
+                          <Children>
+                            <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.MountHealthBar.FillGlow.Width" SuggestedHeight="!Mission.MainAgentHUD.MountHealthBar.FillGlow.Height" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Mission.MainAgentHUD.MountHealthBar.FillGlow" />
+                          </Children>
+                        </BrushWidget>
+                      </Children>
+                    </Widget>
+                  </Children>
+                </FillBarWidget>
+              </Children>
+            </Widget>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="General\Mission\horse_frame" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.MountHealthBar.Icon.Width" SuggestedHeight="!Mission.MainAgentHUD.MountHealthBar.Icon.Height" VerticalAlignment="Center" HorizontalAlignment="Left" PositionXOffset="-35" PositionYOffset="8" Sprite="General\Mission\mount_icon" />
+          </Children>
+        </AgentHealthWidget>
+
+        <!-- Agent Health info -->
+        <AgentHealthWidget Id="HeroHealthWidget" Health="@AgentHealth" MaxHealth="@AgentHealthMax" HealthBar="Canvas\FillBar" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Frame.Width" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="90" MarginRight="40" ShowHealthBar="true" HealthDropContainer="Canvas\HealthDropContainer" HealthDropBrush="Mission.MainAgentHUD.HeroHealthBar.FillChange">
+          <Children>
+            <Widget Id="Canvas" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Canvas.Width" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Canvas.Height" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\Mission\hero_canvas">
+              <Children>
+                <Widget Id="HealthDropContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="12" VerticalAlignment="Center" PositionYOffset="-2" MarginRight="22" MarginTop="5">
+                  <Children>
+                  </Children>
+                </Widget>
+                <FillBarWidget Id="FillBar" ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Fill.Height" VerticalAlignment="Center" PositionYOffset="-2" IsVertical="false" MarginLeft="22" MarginRight="22" MarginTop="5" FillWidget="FillVisualParent\FillVisual">
+                  <Children>
+                    <Widget Id="FillVisualParent" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="205">
+                      <Children>
+                        <BrushWidget Id="FillVisual" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Canvas.Width" HorizontalAlignment="Left" Brush="Mission.MainAgentHUD.HeroHealthBar.Fill">
+                          <Children>
+                            <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.FillGlow.Width" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.FillGlow.Height" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Mission.MainAgentHUD.HeroHealthBar.FillGlow" />
+                          </Children>
+                        </BrushWidget>
+                      </Children>
+                    </Widget>
+                  </Children>
+                </FillBarWidget>
+              </Children>
+            </Widget>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="abilityframe_empire"/>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Icon.Width" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Icon.Height" VerticalAlignment="Center" HorizontalAlignment="Left" PositionXOffset="-36" MarginBottom="15" Sprite="General\Mission\hero_icon"/>
+          </Children>
+        </AgentHealthWidget>
+
+        <!-- Agent Taken Damage Feed -->
+        <MissionAgentDamageFeedWidget DataSource="{TakenDamageFeed\FeedList}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="82" MarginRight="315">
+          <ItemTemplate>
+            <MissionAgentDamageFeedItemWidget Command.OnRemove="ExecuteRemove" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.TakenDamageFeed.Background.Width" SuggestedHeight="!Mission.MainAgentHUD.TakenDamageFeed.Background.Height" Sprite="General\Mission\damage_taken_background" Color="#740F0FFF">
+              <Children>
+                <TextWidget Text="@FeedText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="3" Brush="Mission.MainAgentHUD.TakenDamageFeed.Text"/>
+              </Children>
+            </MissionAgentDamageFeedItemWidget>
+          </ItemTemplate>
+        </MissionAgentDamageFeedWidget>
+
+        <AgentTakenDamage DataSource="{TakenDamageController}" />
+
+        <!-- Gold Amount -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="200" SuggestedHeight="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" MarginBottom="10" MarginRight="15" Sprite="General\Mission\PersonalKillfeed\personal_killfeed_notification_9" Color="#D7931CFF" AlphaFactor="0.7" IsVisible="@IsGoldActive">
+          <Children>
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="45">
+              <Children>
+                <CounterTextWidget Id="HUDGoldAmountCounterTextWidget" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginRight="5" Brush="MPHUD.GoldAmount.Text" PositionYOffset="3" ClipContents="false" IntTarget="@GoldAmount" Representation="Integer" Clamped="true" MinValue="0" Brush.FontSize="42" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="30" HorizontalAlignment="Right" VerticalAlignment="Center"  Sprite="General\Mission\PersonalKillfeed\bracelet_icon_shadow" />
+              </Children>
+            </ListPanel>
+          </Children>
+        </Widget>
+
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

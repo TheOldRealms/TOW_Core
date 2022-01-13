@@ -1,0 +1,94 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Crosshair.Size" BrushName="Crosshair.Top" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Crosshair.Arrow.Width" Value="131"/>
+    <Constant Name="Crosshair.Arrow.Height" Value="31"/>
+    <Constant Name="Crosshair.Arrow.Offset" Value="350"/>
+    <Constant Name="Crosshair.Arrow.Offset.Negative" Value="!Crosshair.Arrow.Offset" MultiplyResult="-1"/>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent"
+            HeightSizePolicy="StretchToParent"
+            IsDisabled="true">
+      <Children>
+        <OpticalCrosshairWidget IsVisible="@IsVisible"
+                                WidthSizePolicy = "Fixed"
+                                HeightSizePolicy = "Fixed"
+                                SuggestedWidth = "74"
+                                SuggestedHeight = "74"
+                                HorizontalAlignment = "Center"
+                                VerticalAlignment = "Center"
+                                CrosshairAccuracy="@CrosshairAccuracy"
+                                CrosshairScale="@CrosshairScale">
+          <Children>
+            <!--Day mode-->
+            <ValueBasedVisibilityWidget WidthSizePolicy="StretchToParent"
+                                        HeightSizePolicy="StretchToParent"
+                                        WatchType="Equal"
+                                        IndexToBeVisible="0"
+                                        IndexToWatch="@CrosshairMode">
+              <Children>
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             Brush="OpticalCrosshair.Top"/>
+
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             Brush="OpticalCrosshair.Left"/>
+
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Brush="OpticalCrosshair.Right"/>
+
+              </Children>
+            </ValueBasedVisibilityWidget>
+            <!--Night mode-->
+            <ValueBasedVisibilityWidget WidthSizePolicy="StretchToParent"
+                                    HeightSizePolicy="StretchToParent"
+                                    WatchType="Equal"
+                                    IndexToBeVisible="1"
+                                    IndexToWatch="@CrosshairMode">
+              <Children>
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             Brush="OpticalCrosshair.NightTop"/>
+
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             Brush="OpticalCrosshair.NightLeft"/>
+
+                <BrushWidget WidthSizePolicy="Fixed"
+                             HeightSizePolicy="Fixed"
+                             SuggestedWidth = "!Crosshair.Size"
+                             SuggestedHeight = "!Crosshair.Size"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Brush="OpticalCrosshair.NightRight"/>
+              </Children>
+            </ValueBasedVisibilityWidget>
+          </Children>
+        </OpticalCrosshairWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

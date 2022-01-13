@@ -19,7 +19,7 @@ namespace TOW_Core.Abilities.Crosshairs
             _template = template;
             CrosshairType = template.CrosshairType;
             _mission = Mission.Current;
-            _missionScreen = ((MissionView)Mission.Current.MissionBehaviours.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
+            _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
         }
 
         public void SetMissionScreen(MissionScreen screen)
