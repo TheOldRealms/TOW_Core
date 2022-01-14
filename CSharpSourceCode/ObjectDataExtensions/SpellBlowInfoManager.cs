@@ -1,75 +1,60 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using TaleWorlds.Core;
 using TOW_Core.Battle.Damage;
 
 namespace TOW_Core.ObjectDataExtensions
 {
     public static class SpellBlowInfoManager
     {
-        private static Dictionary<int, SpellInfo> SpellIDs;
-
-
-
+        private static Dictionary<int, Queue<SpellInfo>> SpellIDs;
+        
         public static void EnterSpellBlow(int agentIndex, string spellName, DamageType damageType)
         {
             if (agentIndex == -1)
                 return;
-
-
+            
             if (SpellIDs == null)
             {
-                SpellIDs = new Dictionary<int, SpellInfo>();
+                SpellIDs = new Dictionary<int, Queue<SpellInfo>>();
             }
             
             if(SpellIDs.ContainsKey(agentIndex))
             {
-                if (SpellIDs[agentIndex].SpellID == spellName)
-                {
-                    SpellIDs[agentIndex].Amount++;
-                }
-
+                SpellInfo info = new SpellInfo();
+                info.SpellID = spellName;
+                info.DamageType = damageType;
+                SpellIDs[agentIndex].Enqueue(info);
                 return;
-
             }
+            
             var spellItem = new SpellInfo();
-            spellItem.Amount = 1;
             spellItem.SpellID = spellName;
             spellItem.DamageType = damageType;
-            SpellIDs.Add(agentIndex, spellItem);
+            Queue<SpellInfo> queue = new Queue<SpellInfo>();
+            queue.Enqueue(spellItem);
+            SpellIDs.Add(agentIndex, queue);
         }
-
         
-        public static  SpellInfo GetSpellInfo(int agentIndex, bool removeAfterAccess=true)
+        public static  SpellInfo GetSpellInfo(int agentIndex)
         {
-            var id = SpellIDs[agentIndex];
-            if(removeAfterAccess)
-                RemoveId(agentIndex);
-            return id;
-        }
+            if (!SpellIDs.ContainsKey(agentIndex)) return new SpellInfo();
+            
+            var item = SpellIDs[agentIndex].Dequeue();
 
-        private static void RemoveId(int agentIndex)
-        {
-            if (SpellIDs.ContainsKey(agentIndex))
+            if (!SpellIDs[agentIndex].IsEmpty())
             {
-                if (SpellIDs[agentIndex].Amount - 1 == 0)
-                {
-                    SpellIDs.Remove(agentIndex);
-                }
-                else
-                {
-                    SpellIDs[agentIndex].Amount--;
-                }
+                return item;
             }
+
+            SpellIDs.Remove(agentIndex);
+
+            return item;
         }
-        
-        
     }
-
-
-
-    public  class SpellInfo
+    
+    public  struct SpellInfo
     {
         public string SpellID;
         public DamageType DamageType;
-        public int Amount;
     }
 }
