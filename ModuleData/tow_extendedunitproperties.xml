@@ -12,12 +12,65 @@
     <Abilities />
     <Attributes>
       <string>Expendable</string>
-      <string>ArtilleryCrew</string>
     </Attributes>
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_state_troop">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_swordsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_spearman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_armored_spearman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_veteran_swordsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_halberdier">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties>
+      <OffenseProperty ArmorPenetration="25" />
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_greatsword">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties>
+      <OffenseProperty ArmorPenetration="25" />
+    </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_pikeman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_sergeant">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
@@ -35,13 +88,7 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_huntsman">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_crossbowman">
+  <CharacterExtendedInfo id="tor_empire_skirmisher">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
@@ -53,65 +100,49 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_crossbowman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_longbowman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_huntsman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_marksman_crossbowman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_marksman_handgunner">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_swordsman">
+  <CharacterExtendedInfo id="tor_empire_young_noble_squire">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_armored_swordsman">
+  <CharacterExtendedInfo id="tor_empire_noble_cavalry">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_greatsword">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties>
-      <OffenseProperty ArmorPenetration="25" />
-    </OffensiveProperties>
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_spearman">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_armored_spearman">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_halberdier">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties>
-      <OffenseProperty ArmorPenetration="25" />
-    </OffensiveProperties>
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_duelist">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_cavalry">
-    <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_knight">
+  <CharacterExtendedInfo id="tor_empire_reiksguard_knight">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
@@ -124,6 +155,42 @@
     <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_reiksguard_preceptor">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_innercircle_knight">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_demigryph_knight">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_valiant_outrider">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_reiksguard_preceptor_innercircle">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_demigryph_innercircle">
     <Abilities />
     <Attributes />
     <DefensiveProperties />
@@ -171,19 +238,17 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_empire_state_troop">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_empire_archer">
     <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_empire_huntsman">
-    <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
@@ -196,7 +261,7 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_skeleton_recruit" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_skeleton" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
@@ -205,7 +270,25 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_skeleton_warrior" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_skeleton_swordsman" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_skeleton_spearman" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Expendable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_skeleton_champion" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
@@ -213,7 +296,15 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_skeleton_spearman" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_skeleton_crypt_guard" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_spirit_host" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
@@ -229,7 +320,7 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_grave_guard_greatsword" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_grave_guard_seneschal" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
@@ -248,6 +339,14 @@
     <OffensiveProperties>
       <OffenseProperty DefaultDamageTypeOverride="Magical" />
     </OffensiveProperties>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_drakenhof_guard" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hex_wraith" VoiceClassName="skeleton">
     <Abilities />
@@ -269,10 +368,9 @@
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_blood_knights_foot" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_hell_knight" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
     <DefensiveProperties>
@@ -280,15 +378,75 @@
     </DefensiveProperties>
     <OffensiveProperties />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_blood_knights_mounted" VoiceClassName="skeleton">
+  <CharacterExtendedInfo id="tor_vc_hell_wraith" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
     <DefensiveProperties>
       <DefenseProperty DefenseType="WardSave" ReductionPercent="5" />
     </DefensiveProperties>
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_vampire_newblood">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_von_carstein">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_von_carstein_sister">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_blood_knight">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_von_carstein_noblewoman">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_drakenhof_templar">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_von_carstein_countess">
+    <Abilities />
+    <Attributes />
+    <DefensiveProperties />
+    <OffensiveProperties />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_drakenhof_kastelan">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_captain">
@@ -351,7 +509,9 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_braganza_01">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
     <DefensiveProperties />
     <OffensiveProperties />
   </CharacterExtendedInfo>

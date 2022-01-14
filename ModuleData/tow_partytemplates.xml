@@ -3,38 +3,58 @@
 	<MBPartyTemplate id="empire_lordparty_template" >
 		<stacks>
 			<PartyTemplateStack min_value="16" max_value="24" troop="NPCCharacter.tor_empire_recruit" />
-			<PartyTemplateStack min_value="6" max_value="12" troop="NPCCharacter.tor_empire_duelist" />
+			<PartyTemplateStack min_value="6" max_value="12" troop="NPCCharacter.tor_empire_young_noble_squire" />
 			<PartyTemplateStack min_value="8" max_value="16" troop="NPCCharacter.tor_empire_state_troop" />
 			<PartyTemplateStack min_value="6" max_value="12" troop="NPCCharacter.tor_empire_archer" />
 			<PartyTemplateStack min_value="8" max_value="16" troop="NPCCharacter.tor_empire_scout" />
-			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_huntsman" />
+			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_skirmisher" />
 			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_crossbowman" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_empire_handgunner" />
 			<PartyTemplateStack min_value="2" max_value="6" troop="NPCCharacter.tor_empire_marksman_handgunner" />
 			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_swordsman" />
-			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_armored_swordsman" />
+			<PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_empire_veteran_swordsman" />
 			<PartyTemplateStack min_value="2" max_value="4" troop="NPCCharacter.tor_empire_spearman" />
 			<PartyTemplateStack min_value="2" max_value="4" troop="NPCCharacter.tor_empire_armored_spearman" />
 			<PartyTemplateStack min_value="1" max_value="8" troop="NPCCharacter.tor_empire_greatsword" />
 			<PartyTemplateStack min_value="1" max_value="8" troop="NPCCharacter.tor_empire_halberdier" />
-			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_knight" />
-			<PartyTemplateStack min_value="1" max_value="8" troop="NPCCharacter.tor_empire_cavalry" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_reiksguard_knight" />
+			<PartyTemplateStack min_value="1" max_value="8" troop="NPCCharacter.tor_empire_noble_cavalry" />
 			<PartyTemplateStack min_value="1" max_value="8" troop="NPCCharacter.tor_empire_pistolier" />
 			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_outrider" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_pikeman" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_sergeant" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_longbowman" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_huntsman" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_marksman_crossbowman" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_reiksguard_preceptor" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_empire_innercircle_knight" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_demigryph_knight" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_valiant_outrider" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_reiksguard_preceptor_innercircle" />
+			<PartyTemplateStack min_value="1" max_value="6" troop="NPCCharacter.tor_demigryph_innercircle" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="vampire_lordparty_template" >
 		<stacks>
-			<PartyTemplateStack min_value="16" max_value="24" troop="NPCCharacter.tor_vc_skeleton_recruit" />
-			<PartyTemplateStack min_value="8" max_value="16" troop="NPCCharacter.tor_vc_skeleton_warrior" />
+			<PartyTemplateStack min_value="16" max_value="24" troop="NPCCharacter.tor_vc_skeleton" />
+			<PartyTemplateStack min_value="8" max_value="16" troop="NPCCharacter.tor_vc_skeleton_swordsman" />
 			<PartyTemplateStack min_value="8" max_value="16" troop="NPCCharacter.tor_vc_skeleton_spearman" />
-			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tor_vc_grave_guard" />
-			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tor_vc_grave_guard_greatsword" />
+			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tor_vc_skeleton_champion" />
+			<PartyTemplateStack min_value="4" max_value="16" troop="NPCCharacter.tor_vc_skeleton_crypt_guard" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_spirit_host" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_grave_guard" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_grave_guard_seneschal" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_cairn_wraith" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_drakenhof_guard" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_hex_wraith" />
 			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_black_knight" />
-			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_blood_knights_mounted" />
-			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_blood_knights_foot" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_hell_knight" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_hell_wraith" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_vampire_newblood" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_von_carstein" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_blood_knight" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_drakenhof_templar" />
+			<PartyTemplateStack min_value="2" max_value="8" troop="NPCCharacter.tor_vc_drakenhof_kastelan" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="empire_caravan_template" >
