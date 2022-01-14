@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -81,8 +81,11 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
-                    SpellBlowInfoManager.EnterSpellBlow(data.ApplierAgent.Index,"dot",DamageType.Magical);
-
+                    if (Agent.Health < _effectAggregate.DamageOverTime)
+                    {
+                        SpellBlowInfoManager.EnterSpellBlow(data.ApplierAgent.Index,"dot",DamageType.Magical);
+                    }
+                    
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
                 else if (_effectAggregate.HealthOverTime > 0)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
@@ -255,7 +255,7 @@ namespace TOW_Core.HarmonyPatches
             
             if (isSpell)
             {
-                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index,false);
+                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index);
                 
                 
                 
