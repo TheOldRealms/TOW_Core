@@ -273,7 +273,7 @@ namespace TOW_Core.HarmonyPatches
                 
                 b.InflictedDamage = (int)(damageAmplification * nonPhysical);
                 
-                DisplaySpellDamageResult(additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
+                DisplaySpellDamageResult(spellInfo.SpellID,additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
 
                 return true;
             }
@@ -322,37 +322,37 @@ namespace TOW_Core.HarmonyPatches
 
         }
 
-        private static void DisplaySpellDamageResult(DamageType additionalDamageType, 
+        private static void DisplaySpellDamageResult(string SpellName, DamageType additionalDamageType, 
             int resultDamage, float[] damagePercentages, float nonPhysical)
         {
             var displaycolor = new Color();
-            string displaytext = "";
+            string displayDamageType = "";
 
             switch (additionalDamageType)
             {
                 case DamageType.Fire:
                     displaycolor = Colors.Red;
-                    displaytext = "fire";
+                    displayDamageType = "fire";
                     break;
                 case DamageType.Holy:
                     displaycolor = Colors.Yellow;
-                    displaytext = "holy";
+                    displayDamageType = "holy";
                     break;
                 case DamageType.Lightning:
                     displaycolor = Colors.Blue;
-                    displaytext = "lightning";
+                    displayDamageType = "lightning";
                     break;
                 case DamageType.Magical:
                     displaycolor = Colors.Cyan;
-                    displaytext = "magical";
+                    displayDamageType = "magical";
                     break;
                 case DamageType.Physical:
                     displaycolor = Color.White;
-                    displaytext = "Physical";
+                    displayDamageType = "Physical";
                     break;
             }
             
-            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied as "+displaytext +" damage" + " which was modfied by " + (1+damagePercentages[(int) additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied by "+SpellName+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damagePercentages[(int) additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
         }
         
 

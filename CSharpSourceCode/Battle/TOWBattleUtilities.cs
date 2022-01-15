@@ -20,7 +20,7 @@ namespace TOW_Core.Battle
             foreach (var agent in agents)
             {
                 if(spellID!="")
-                    SpellBlowInfoManager.EnterSpellBlow(damager==null?-1:damager.Index,spellID,damageType);
+                    SpellBlowInfoManager.PushSpellInfo(damager==null?-1:damager.Index,spellID,damageType);
                 
                 if (maxDamage < minDamage)
                 {
