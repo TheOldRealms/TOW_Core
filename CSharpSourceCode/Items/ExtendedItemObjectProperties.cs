@@ -39,7 +39,7 @@ namespace TOW_Core.Items
         {
             var prop = new ExtendedItemObjectProperties();
             prop.ItemStringId = ItemStringId;
-            prop.ItemDamageProperty = new ItemDamageProperty { DamageType=ItemDamageProperty.DamageType, MinDamage = ItemDamageProperty.MinDamage, MaxDamage = ItemDamageProperty.MaxDamage};
+            if(ItemDamageProperty != null) prop.ItemDamageProperty = new ItemDamageProperty { DamageType = ItemDamageProperty.DamageType, MinDamage = ItemDamageProperty.MinDamage, MaxDamage = ItemDamageProperty.MaxDamage };
             prop.Traits = new List<ItemTrait>();
             foreach(var trait in Traits)
             {
