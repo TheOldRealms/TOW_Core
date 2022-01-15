@@ -8,7 +8,7 @@ namespace TOW_Core.ObjectDataExtensions
     {
         private static Dictionary<int, Queue<SpellInfo>> SpellIDs;
         
-        public static void PushSpellInfo(int agentIndex, string spellName, DamageType damageType)
+        public static void EnqueueSpellInfo(int agentIndex, string spellName, DamageType damageType)
         {
             if (agentIndex == -1)
                 return;
