@@ -64,10 +64,42 @@ namespace TOW_Core.Items
             }
             else
             {
+                var length = weapon.CurrentUsageItem.GetRealWeaponLength();
+                float startOffsetPrc = 0;
+                switch (weapon.CurrentUsageItem.WeaponClass)
+                {
+                    case WeaponClass.OneHandedSword:
+                    case WeaponClass.TwoHandedSword:
+                        startOffsetPrc = 0.3f;
+                        break;
+                    case WeaponClass.LowGripPolearm:
+                    case WeaponClass.OneHandedPolearm:
+                    case WeaponClass.TwoHandedPolearm:
+                        startOffsetPrc = 0.7f;
+                        break;
+                    default:
+                        startOffsetPrc = 0.85f;
+                        break;
+                }
+                float startOffset = length * startOffsetPrc;
+                float effectlength = length - startOffset;
+                int num = (int)(effectlength / 0.1f);
+                if (num <= 0) num = 1;
                 GameEntity entity;
-                var particle = TOWParticleSystem.ApplyParticleToAgentBone(Agent, preset.ParticlePrefab, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
                 List<ParticleSystem> particles = new List<ParticleSystem>();
-                particles.Add(particle); ;
+                if (preset.IsUniqueSingleCopy)
+                {
+                    var particle = TOWParticleSystem.ApplyParticleToAgentBone(Agent, preset.ParticlePrefab, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
+                    particles.Add(particle);
+                }
+                else
+                {
+                    for (int j = 0; j < num; j++)
+                    {
+                        var particle = TOWParticleSystem.ApplyParticleToAgentBone(Agent, preset.ParticlePrefab, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity, startOffset + j * 0.1f);
+                        particles.Add(particle);
+                    }
+                }
                 _currentPresets.Add(new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(preset, particles, true));
             }
         }
@@ -77,10 +109,13 @@ namespace TOW_Core.Items
             if (trait != null && duration > 0)
             {
                 var weapon = Agent.WieldedWeapon;
-                if(!_dynamicTraits.Any(x => x.Item1.Item == weapon.Item))
+                if(weapon.CurrentUsageItem != null && !weapon.CurrentUsageItem.IsRangedWeapon)
                 {
-                    _dynamicTraits.Add(new Tuple<MissionWeapon, ItemTrait, float>(weapon, trait, duration));
-                    UpdatePresets();
+                    if (!_dynamicTraits.Any(x => x.Item1.Item == weapon.Item))
+                    {
+                        _dynamicTraits.Add(new Tuple<MissionWeapon, ItemTrait, float>(weapon, trait, duration));
+                        UpdatePresets();
+                    }
                 }
             }
         }
@@ -95,9 +130,6 @@ namespace TOW_Core.Items
                 _currentPresets[i] = new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(item.Item1, item.Item2, false);
             }
             var weapon = Agent.WieldedWeapon;
-            var data = weapon.GetWeaponStatsData();
-            
-            //data[0].WeaponLength
             if (weapon.Item != null && weapon.Item.HasTrait(Agent))
             {
                 var info = weapon.Item.GetTorSpecificData(Agent);

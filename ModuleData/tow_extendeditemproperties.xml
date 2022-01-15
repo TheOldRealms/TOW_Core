@@ -745,7 +745,7 @@
     <Traits>
       <ItemTrait ItemTraitName="Magic Sword" OnHitScriptName="none" ImbuedStatusEffectId="fireball_dot">
         <ItemTraitDescription>Runefang. It deals magic damage and applies the burning damage over time effect.</ItemTraitDescription>
-        <WeaponParticlePreset ParticlePrefab="magic_sparks" ParticlesStartOffset="0.5" ParticlesEndOffset="1.2" NumberOfParticleSystems="1" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </Traits>
     <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />

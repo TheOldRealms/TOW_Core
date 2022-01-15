@@ -41,35 +41,5 @@ namespace TOW_Core.Items
                 }
             }
         }
-
-        internal static void WriteXML()
-        {
-            var trait1 = new ItemTrait();
-            trait1.ItemTraitName = "Flaming Sword";
-            trait1.ItemTraitDescription = "This sword is on fire. It deals fire damage and applies the burning damage over time effect. Bonus fire damage: 10%";
-            trait1.ImbuedStatusEffectId = "fireball_dot";
-            trait1.WeaponParticlePreset = new WeaponParticlePreset { ParticlePrefab = "magic_sparks", ParticlesStartOffset = 0.5f, ParticlesEndOffset = 1.2f, NumberOfParticleSystems = 1 };
-            trait1.OnHitScriptName = "none";
-            trait1.OffenseProperty = new ObjectDataExtensions.OffenseProperty { ArmorPenetration = 0, DefaultDamageTypeOverride = Battle.Damage.DamageType.Fire, BonusDamagePercent = 10 };
-
-            var items = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x=>x.IsTorItem());
-            foreach(var item in items)
-            {
-                var info = new ExtendedItemObjectProperties(item.StringId);
-                if(item.HasWeaponComponent)
-                {
-                    info.ItemDamageProperty = new Battle.Damage.ItemDamageProperty { DamageType = Battle.Damage.DamageType.Fire, MinDamage = 10, MaxDamage = 120 };
-                    if(item.StringId == "tor_empire_weapon_sword_runefang_001")
-                    {
-                        info.Traits.Add(trait1);
-                    }
-                }
-                _itemToInfoMap.Add(item.StringId, info);
-            }
-            var ser = new XmlSerializer(typeof(List<ExtendedItemObjectProperties>));
-            var stream = File.OpenWrite(XMLPath);
-            ser.Serialize(stream, _itemToInfoMap.Values.ToList());
-            stream.Close();
-        }
     }
 }
