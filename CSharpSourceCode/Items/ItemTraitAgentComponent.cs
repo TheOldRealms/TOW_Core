@@ -16,25 +16,32 @@ namespace TOW_Core.Items
     {
         private List<Tuple<MissionWeapon, ItemTrait, float>> _dynamicTraits = new List<Tuple<MissionWeapon, ItemTrait, float>>();
         private List<Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>> _currentPresets = new List<Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>>();
+        private BasicMissionTimer _missionTimer = new BasicMissionTimer();
+        private readonly float _tickInterval = 1f;
 
         public ItemTraitAgentComponent(Agent agent) : base(agent) { }
 
         public override void OnTickAsAI(float dt)
         {
             base.OnTickAsAI(dt);
-            if (_dynamicTraits.Count > 0)
+            if(_missionTimer.ElapsedTime > _tickInterval)
             {
-                for(int i = 0; i< _dynamicTraits.Count; i++)
+                _missionTimer.Reset();
+                if (_dynamicTraits.Count > 0)
                 {
-                    var itemTrait = _dynamicTraits[i];
-                    _dynamicTraits[i] = new Tuple<MissionWeapon, ItemTrait, float>(itemTrait.Item1, itemTrait.Item2, itemTrait.Item3 - dt); 
-                    if (itemTrait.Item3 < 0)
+                    for (int i = 0; i < _dynamicTraits.Count; i++)
                     {
-                        _dynamicTraits.RemoveAt(i);
-                        UpdatePresets();
+                        var itemTrait = _dynamicTraits[i];
+                        _dynamicTraits[i] = new Tuple<MissionWeapon, ItemTrait, float>(itemTrait.Item1, itemTrait.Item2, itemTrait.Item3 - _tickInterval);
+                        if (itemTrait.Item3 < 0)
+                        {
+                            _dynamicTraits.RemoveAt(i);
+                            UpdatePresets();
+                        }
                     }
                 }
             }
+            
         }
 
         public void OnWieldedItemChanged()
@@ -54,13 +61,15 @@ namespace TOW_Core.Items
                         _currentPresets[i] = new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(tuple.Item1, tuple.Item2, true);
                     }
                 }
-                return;
             }
-            GameEntity entity;
-            var particle = TOWParticleSystem.ApplyParticleToAgentBone(Agent, preset.ParticlePrefab, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
-            List<ParticleSystem> particles = new List<ParticleSystem>();
-            particles.Add(particle); ;
-            _currentPresets.Add(new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(preset, particles, true));
+            else
+            {
+                GameEntity entity;
+                var particle = TOWParticleSystem.ApplyParticleToAgentBone(Agent, preset.ParticlePrefab, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
+                List<ParticleSystem> particles = new List<ParticleSystem>();
+                particles.Add(particle); ;
+                _currentPresets.Add(new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(preset, particles, true));
+            }
         }
 
         public void AddTraitToWieldedWeapon(ItemTrait trait, float duration)

@@ -22,6 +22,7 @@ namespace TOW_Core.Items
         {
             ExtendedItemObjectProperties info = null;
             _itemToInfoMap.TryGetValue(itemId, out info);
+            if(info != null) info = info.Clone();
             return info;
         }
 
