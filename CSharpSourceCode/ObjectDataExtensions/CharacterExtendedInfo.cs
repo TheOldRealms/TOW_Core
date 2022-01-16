@@ -7,6 +7,10 @@ using TOW_Core.Battle.Damage;
 using TaleWorlds.Library;
 using System.IO;
 using System;
+using System.Net.NetworkInformation;
+using TaleWorlds.Core;
+using TaleWorlds.Engine;
+using Path = System.IO.Path;
 
 namespace TOW_Core.ObjectDataExtensions
 {
@@ -75,5 +79,57 @@ namespace TOW_Core.ObjectDataExtensions
         public float BonusDamagePercent = 0;    //todo remove Bonus
         [XmlAttribute]
         public float ArmorPenetration = 0;
+    }
+
+
+    public struct AgentPropertyContainer
+    {
+        public float[] DamagePercentages;
+        public float[] ResistancePercentages;
+        public int ArmorPenetration;
+        public float Amplifier;
+        public float WardSave;
+        public DamageType DamageType;
+
+        public AgentPropertyContainer(float physicalDamage, float fireDamage, float lightningDamage, float holyDamage, float magicDamage,
+         float phyiscalResistance, float fireResistance, float lightningResistance, float holyResistance, float magicResistance, int armorPenetration, float amplifier, float wardSave, DamageType damageType=DamageType.Physical)
+        {
+            DamagePercentages = new[]
+            {
+                physicalDamage, fireDamage, lightningDamage, holyDamage, magicDamage
+            };
+            ResistancePercentages = new[]
+            {
+                phyiscalResistance, fireResistance, lightningResistance, holyResistance, magicResistance
+            };
+            
+            ArmorPenetration = armorPenetration;
+            Amplifier = amplifier;
+            WardSave = wardSave;
+            DamageType = damageType;
+        }
+        
+        public AgentPropertyContainer(float[] damagePercentages, float[] resistancePercentages, int armorPenetration,
+            float amplfier, float wardSave, DamageType damageType=DamageType.Physical)
+        {
+            DamagePercentages = damagePercentages;
+            ResistancePercentages = resistancePercentages;
+            ArmorPenetration = armorPenetration;
+            Amplifier = amplfier;
+            WardSave = wardSave;
+            DamageType = damageType;
+        }
+
+
+
+     
+        
+    }
+    
+    public enum PropertyFlag : int
+    {
+        Attack=0,
+        Defense=1,
+        All=2
     }
 }

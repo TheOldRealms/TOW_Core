@@ -34,124 +34,60 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
         public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
         {
-
+           
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent victim = __instance;
-
-            bool isSpell = false;
-
-
+            
             if (victim.IsMount || attacker.IsMount)
             {
                 return true;
             }
+
+            bool isSpell = false;
+
+            var additionalDamageType = DamageType.Physical;
+            var transformation = 0.5f;
+
+            var attackerPropertyContainer = attacker.GetAgentProperties(PropertyFlag.Attack);
+            var victimPropertyContainer = victim.GetAgentProperties(PropertyFlag.Defense);
+
+            //attack properties;
+            var armorPenetration = attackerPropertyContainer.ArmorPenetration;
+            var damagePercentages = attackerPropertyContainer.DamagePercentages;
+            var damageAmplification = attackerPropertyContainer.Amplifier;
+            additionalDamageType = attackerPropertyContainer.DamageType;
             
-                //currently unused need assignment in data table
-            var transformation=0.5f;        //called it previously "conversion"
-            var damageAmplification=0.0f;
-            var damageReduction = 0f;
-            //attack
-            float armorPenetration=0f;
+            //defense properties
             
-            var targetDamageType = DamageType.Physical;
+            var resistancePercentages = victimPropertyContainer.ResistancePercentages;
+            var damageReduction = victimPropertyContainer.WardSave;
+
+
+
+            if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
+            {
+                //apply here spell properties
+                isSpell = true;
+                additionalDamageType = DamageType.Magical;
+                transformation = 1;
+            }
             
-            float[] damagePercentages = new float[5];
+            float physical=b.InflictedDamage;
+            var nonPhysical = 0f;
+
+            if (isSpell)
+            {
+                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index);
+
+                 nonPhysical =(int) physical;
+                additionalDamageType = DamageType.Magical;
+                transformation = 1;
+                damageAmplification = 1 + (damageAmplification - damageReduction);
+                b.InflictedDamage = (int)(damageAmplification * nonPhysical);
+                DisplaySpellDamageResult(spellInfo.SpellID,additionalDamageType,b.InflictedDamage,damagePercentages, nonPhysical);
+                return true;
+            }
             
-            DamageType additionalDamageType = DamageType.Physical;
-            
-             if (!attacker.IsHero)
-             {
-                 //unit attributes
-                 var offenseProperties = attacker.Character.GetAttackProperties();
-                 DamageType overrideDamage;
-                
-                 //add all offense properties
-                 foreach (var property in offenseProperties)
-                 {
-                     armorPenetration += property.ArmorPenetration;
-                     damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
-                 }
-                
-                 //add temporary effects like buffs to attack bonuses
-                 List<ItemTrait> itemTraits = attacker.GetComponent<ItemTraitAgentComponent>()
-                     .GetDynamicTraits(attacker.WieldedWeapon.Item);
-                 foreach (var temporaryTraits in itemTraits)
-                 {
-                     var attackProperty = temporaryTraits.OffenseProperty;
-                     if (attackProperty != null)
-                     {
-                         armorPenetration += attackProperty.ArmorPenetration;
-                         damagePercentages[(int) temporaryTraits.OffenseProperty.DefaultDamageTypeOverride] += attackProperty.BonusDamagePercent;
-                     }
-                    
-                 }
-             }
-             else
-             {
-                 //Hero item level attributes 
-
-                 List<ItemTrait> itemTraits= new List<ItemTrait>();
-                 List<ItemObject> items;
-
-                 // get all equipment Pieces
-
-                 items = attacker.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
-                 foreach (var item in items)
-                 {
-                     if(item.HasTrait())
-                         itemTraits.AddRange(item.GetTraits());
-                    
-                     itemTraits.AddRange(attacker.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
-                 }
-
-                 foreach (var itemTrait in itemTraits)
-                 {
-                     var property = itemTrait.OffenseProperty;
-                     if(property==null) 
-                         continue;
-                     armorPenetration += property.ArmorPenetration;
-                     damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
-                 }
-                
-                 //weapon properties
-                 //the ultimate comparision if the blow is a spell 
-                 if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
-                 {
-                     //apply here spell properties
-                     isSpell = true;
-                     additionalDamageType = DamageType.Magical;
-                     transformation = 1;
-                 }
-                 else
-                 {
-                     var weaponProperty = attacker.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
-                     if (weaponProperty != null)
-                     {
-                         damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
-                         additionalDamageType = weaponProperty.DamageType;
-                         // chose damage type depending on dominant override type 
-                         if (weaponProperty.DamageType == DamageType.Physical)
-                         {
-                             additionalDamageType = DamageType.Physical; 
-                             var maximum = 0f;
-                             for (int i = 1; i < 5; i++)
-                             {
-                                 if (maximum < damagePercentages[i])
-                                 {
-                                     maximum = damagePercentages[i];
-                                     additionalDamageType = (DamageType) i;
-                                 }
-                             }
-                         }
-                     }
-                 }
-                 
-                 
-             }
-
-            //defender information
-
-                //armor for penetration otherwise no use since the physical calculation has already taken place.
             var victimEquipment = victim.Character.Equipment;
             float armor = 0f;
             var bodyPart = b.VictimBodyPart;
@@ -175,151 +111,46 @@ namespace TOW_Core.HarmonyPatches
                     armor += victimEquipment.GetArmArmorSum();
                     break;
             }
-            
-            float[] resistancePercentages = new float[5];
-
-                if (!victim.IsHero)
-                {
-                    //unit attributes
-                    var defenseProperties = victim.Character.GetDefenseProperties();
-                
-                    foreach (var property in defenseProperties)
-                    {
-                        resistancePercentages[(int) property.ResistedDamageType] += property.ReductionPercent;
-                    }
-                
-                    //add temporary effects like buffs to defenese bonuses
-                    List<ItemTrait> itemTraits = victim.GetComponent<ItemTraitAgentComponent>()
-                        .GetDynamicTraits(victim.WieldedWeapon.Item);
-                
-                    foreach (var temporaryTraits in itemTraits)
-                    {
-                        var defenseProperty = temporaryTraits.DefenseProperty;
-                        if (defenseProperty != null)
-                        {
-                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
-                        }
-                    }
-                }
-                else
-                {
-                    //Hero item level attributes 
-
-                    List<ItemTrait> itemTraits= new List<ItemTrait>();
-                    List<ItemObject> items;
-
-                    // get all equipment Pieces
-
-                    items = victim.Character.GetCharacterEquipment();
-                    foreach (var item in items)
-                    {
-                        if(item.HasTrait())
-                            itemTraits.AddRange(item.GetTraits());
-                    
-                        itemTraits.AddRange(victim.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
-                    }
-
-                    foreach (var itemTrait in itemTraits)
-                    {
-                        var defenseProperty = itemTrait.DefenseProperty;
-                        if(defenseProperty==null) 
-                            continue;
-                    
-                        resistancePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
-                    }
-                
-                
-                    //add temporary effects like buffs to defenese bonuses
-                    List<ItemTrait> dynamicTraits = attacker.GetComponent<ItemTraitAgentComponent>()
-                        .GetDynamicTraits(attacker.WieldedWeapon.Item);
-                
-                    foreach (var temporaryTraits in dynamicTraits)
-                    {
-                        var defenseProperty = temporaryTraits.DefenseProperty;
-                        if (defenseProperty != null)
-                        {
-                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
-                        }
-                    }
-                }
-            
-            //reading out Status Effect Component of Victim we probably should redesign status effects 
-            StatusEffectComponent.EffectAggregate effectAggregate = victim.GetComponent<StatusEffectComponent>().GetEffectAggregate();
-            damageReduction += effectAggregate.PercentageArmorEffect;
-            armorPenetration += effectAggregate.PercentageArmorEffect;
-            
-            // final calculation
-            float physical = b.InflictedDamage;
-            
-            var nonPhysical = 0f;
-            
-            if (isSpell)
-            {
-                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index);
-                
-                
-                
-                nonPhysical = physical;
-               additionalDamageType =   spellInfo.DamageType;
-                
-                //test
-                if(attacker.IsPlayerControlled)
-                    damagePercentages[(int)DamageType.Fire] = 0.5f;
-                
-                
-                damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
-                nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
-                damageAmplification = 1 + damageAmplification - damageReduction;
-                
-                b.InflictedDamage = (int)(damageAmplification * nonPhysical);
-                
-                DisplaySpellDamageResult(spellInfo.SpellID,additionalDamageType,b.InflictedDamage,damagePercentages,nonPhysical);
-
-                return true;
-            }
 
             //armor penetration is only calculated if physical damage is 
             //extra damage is added on top by armor penetration, which is applied only to the maximum value of the armor
-            physical = physical + Math.Min(armorPenetration, armor);
-            
+            physical = physical + Math.Min(armorPenetration, (int) armor);
+                
             // damage is converted partly to the target non-physical damage type, rest resides physical
-            
+                
             if (additionalDamageType != DamageType.Physical)
             {
                 nonPhysical = physical;
                 physical = transformation * physical;
                 nonPhysical -= physical;
             }
-           
-            
+               
+                
             //modifiers were calculated, by subtracting damage type percentage and resistance type percentage
             damagePercentages[0]-= resistancePercentages[0];
             damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
-            
-            
+                
+                
             //modify damage
             physical *=1+  damagePercentages[0];
             nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
-            
+                
             //calculate general amplification and WardSave 
-            damageAmplification = 1 + damageAmplification - damageReduction;
-            
-            
+            damageAmplification= 1 + damageAmplification - damageReduction;
+                
 
-            
-            
             var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
-            
-           
-            
+
             DisplayDamageResult(additionalDamageType, armorPenetration, nonPhysical, resultDamage, damagePercentages, physical);
 
             b.InflictedDamage = resultDamage;
 
-            
-            
             return true;
+    
 
+            //defender information
+
+                //armor for penetration otherwise no use since the physical calculation has already taken place.
         }
 
         private static void DisplaySpellDamageResult(string SpellName, DamageType additionalDamageType, 
@@ -385,8 +216,6 @@ namespace TOW_Core.HarmonyPatches
                     displaytext = "Physical";
                     break;
             }
-
-           
 
             if (armorPenetration > 0)
             {
