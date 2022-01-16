@@ -442,11 +442,11 @@
                   </Children>
                 </HintWidget>
 
-                <HintWidget DataSource="{WindsHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                <HintWidget DataSource="{WindsHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" >
                   <Children>
                     <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
                       <Children>
-                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="winds_icon_45" />
                         <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="65" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@WindsOfMagic" />
                       </Children>
                     </ListPanel>

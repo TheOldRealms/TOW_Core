@@ -17,6 +17,8 @@ namespace TOW_Core.CampaignSupport.MapBar
 		private string _windsOfMagic = "0";
 		private bool _isSpellCaster = false;
 		private BasicTooltipViewModel _windsHint;
+		private float _windRechargeRate = 0f;
+		private int _maxWinds = 0;
 
 		public TorMapInfoVM() : base()
         {
@@ -25,9 +27,12 @@ namespace TOW_Core.CampaignSupport.MapBar
 
         private List<TooltipProperty> GetHintText()
         {
-			ExplainedNumber num = new ExplainedNumber();
-			//TODO add recharge
-			return CampaignUIHelper.GetTooltipForAccumulatingPropertyWithResult("Winds of Magic", float.Parse(WindsOfMagic), ref num);
+			List<TooltipProperty> list = new List<TooltipProperty>();
+			list.Add(new TooltipProperty("Winds of Magic", WindsOfMagic, 0, false, TooltipProperty.TooltipPropertyFlags.Title));
+			list.Add(new TooltipProperty("", string.Empty, 0, false, TooltipProperty.TooltipPropertyFlags.RundownSeperator));
+			list.Add(new TooltipProperty("Maximum:", _maxWinds.ToString(), 0, false, TooltipProperty.TooltipPropertyFlags.None));
+			list.Add(new TooltipProperty("Recharge Rate:", _windRechargeRate.ToString(), 0, false, TooltipProperty.TooltipPropertyFlags.None));
+			return list;
         }
 
         public override void RefreshValues()
@@ -41,8 +46,10 @@ namespace TOW_Core.CampaignSupport.MapBar
 			IsSpellCaster = Hero.MainHero.IsSpellCaster();
             if (IsSpellCaster)
             {
-				var wom = Hero.MainHero.GetExtendedInfo().CurrentWindsOfMagic;
-				WindsOfMagic = ((int)wom).ToString();
+				var info = Hero.MainHero.GetExtendedInfo();
+				WindsOfMagic = ((int)info.CurrentWindsOfMagic).ToString();
+				_maxWinds = (int)info.MaxWindsOfMagic;
+				_windRechargeRate = info.WindsOfMagicRechargeRate;
             }
         }
 
