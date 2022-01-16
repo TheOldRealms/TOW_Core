@@ -18,6 +18,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.MapBar;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -230,6 +231,21 @@ namespace TOW_Core.HarmonyPatches
                 __result = false;
                 return false;
             }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), MethodType.Constructor, typeof(INavigationHandler), typeof(IMapStateHandler), typeof(MapBarShortcuts), typeof(Action))]
+        public static void ReplaceMapVM(MapVM __instance)
+        {
+            __instance.MapInfo = new TorMapInfoVM();
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), "OnRefresh")]
+        public static void RefreshExtraProperties(MapVM __instance)
+        {
+            var info = __instance.MapInfo as TorMapInfoVM;
+            if (info != null) info.RefreshExtraProperties();
         }
     }
 }

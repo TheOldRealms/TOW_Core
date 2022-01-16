@@ -359,6 +359,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
+    <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
     <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
