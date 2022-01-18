@@ -15,38 +15,6 @@ namespace TOW_Core.CampaignSupport
 {
     public class TORUrbanCharactersCampaignBehavior : CampaignBehaviorBase
     {
-        private const int GoldLimitForNotablesToStartGainingPower = 10000;
-
-        private const int GoldLimitForNotablesToStartLosingPower = 5000;
-
-        private const int GoldNeededToGainOnePower = 500;
-
-        private const int CaravanGoldLowLimit = 5000;
-
-        private const int RemoveNotableCharacterAfterDays = 7;
-
-        private const int RemoveWandererCharacterAfterDays = 70;
-
-        private Dictionary<Settlement, CampaignTime> _companionSettlements;
-
-        private Dictionary<Settlement, int> _settlementPassedDaysForWeeklyTick;
-
-        private List<Hero> _companions;
-
-        private List<CharacterObject> _companionTemplates;
-
-        private CampaignTime _nextRandomCompanionSpawnDate;
-
-        private float _randomCompanionSpawnFrequencyInWeeks = 6f;
-
-        private float _companionSpawnCooldownForSettlementInWeeks = 6f;
-
-        private const float NotableSpawnChance = 0.8f;
-
-        private const float TargetCompanionNumber = 25f;
-
-
-
         public TORUrbanCharactersCampaignBehavior()
         {
             _companionSettlements = new Dictionary<Settlement, CampaignTime>();
@@ -54,23 +22,33 @@ namespace TOW_Core.CampaignSupport
             _companions = new List<Hero>();
         }
 
+        public override void RegisterEvents()
+        {
+            CampaignEvents.OnNewGameCreatedPartialFollowUpEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUp);
+            CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameCreated);
+            CampaignEvents.SettlementEntered.AddNonSerializedListener(this, OnSettlementEntered);
+            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, WeeklyTick);
+            CampaignEvents.NewCompanionAdded.AddNonSerializedListener(this, CompanionAdded);
+            CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, OnHeroKilled);
+            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
+            CampaignEvents.OnGameEarlyLoadedEvent.AddNonSerializedListener(this, OnGameEarlyLoaded);
+            CampaignEvents.DailyTickHeroEvent.AddNonSerializedListener(this, DailyTickHero);
+            CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, DailyTickSettlement);
+        }
+
+        public override void SyncData(IDataStore dataStore)
+        {
+            dataStore.SyncData("companionSettlements", ref _companionSettlements);
+            dataStore.SyncData("_settlementPassedDaysForWeeklyTick", ref _settlementPassedDaysForWeeklyTick);
+            dataStore.SyncData("companions", ref _companions);
+        }
+
+
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
         {
             InitializeWandererList();
             _nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(_randomCompanionSpawnFrequencyInWeeks);
             SpawnUrbanCharactersAtGameStart();
-        }
-
-        private void InitializeWandererList()
-        {
-            _companionTemplates = new List<CharacterObject>();
-            foreach (CultureObject objectType in MBObjectManager.Instance.GetObjectTypeList<CultureObject>())
-            {
-                if (objectType.IsMainCulture)
-                {
-                    _companionTemplates.AddRange(objectType.NotableAndWandererTemplates.WhereQ((CharacterObject x) => x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()));
-                }
-            }
         }
 
         private void OnGameLoaded(CampaignGameStarter campaignGameStarter)
@@ -82,75 +60,6 @@ namespace TOW_Core.CampaignSupport
                 {
                     Traverse.Create(Campaign.Current.CampaignObjectManager).Method("UnregisterDeadHero", hero);
                 }
-            }
-        }
-
-        private void SpawnNotablesIfNeeded(Settlement settlement)
-        {
-            if (!settlement.IsTown && !settlement.IsVillage)
-            {
-                return;
-            }
-
-            List<Occupation> list = new List<Occupation>();
-            if (settlement.IsTown)
-            {
-                list = new List<Occupation>
-                {
-                    Occupation.GangLeader,
-                    Occupation.Artisan,
-                    Occupation.Merchant
-                };
-            }
-            else if (settlement.IsVillage)
-            {
-                list = new List<Occupation>
-                {
-                    Occupation.RuralNotable,
-                    Occupation.Headman
-                };
-            }
-
-            float randomFloat = MBRandom.RandomFloat;
-            float num = 0f;
-            int num2 = 0;
-            foreach (Occupation item in list)
-            {
-                num2 += Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, item);
-            }
-
-            _ = settlement.Notables.Count;
-            num = (settlement.Notables.Any() ? ((float)(num2 - settlement.Notables.Count) / (float)num2) : 1f);
-            num *= MathF.Pow(num, 0.36f);
-            if (!(randomFloat <= num))
-            {
-                return;
-            }
-
-            List<Occupation> list2 = new List<Occupation>();
-            foreach (Occupation item2 in list)
-            {
-                int num3 = 0;
-                foreach (Hero notable in settlement.Notables)
-                {
-                    if (notable.CharacterObject.Occupation == item2)
-                    {
-                        num3++;
-                    }
-                }
-
-                int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, item2);
-                if (num3 < targetNotableCountForSettlement)
-                {
-                    list2.Add(item2);
-                }
-            }
-
-            if (list2.Count > 0)
-            {
-                Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
-                CheckNotable(settlement, hero);
-                EnterSettlementAction.ApplyForCharacterOnly(hero, settlement);
             }
         }
 
@@ -190,37 +99,121 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        private void CreateHeroes(Occupation occupation, Settlement settlement)
+        public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation);
-            for (int i = 0; i < targetNotableCountForSettlement; i++)
+            if (mobileParty != MobileParty.MainParty || !settlement.IsTown || _companionSettlements.ContainsKey(settlement) || _companions.Count <= 0)
             {
-                Hero hero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
-                CheckNotable(settlement, hero);
+                return;
             }
+
+            Hero wanderer = _companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
+            wanderer.ChangeState(Hero.CharacterStates.Active);
+            EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+            _companionSettlements.Add(settlement, CampaignTime.Now);
+            _companions.Remove(wanderer);
         }
 
-        private static void CheckNotable(Settlement settlement, Hero hero)
+        private void OnGameEarlyLoaded(CampaignGameStarter obj)
         {
-            if (settlement.IsEmpireSettlement())
+            foreach (Hero allAliveHero in Hero.AllAliveHeroes)
             {
-                hero.TurnIntoHuman();
-            }
-            else if (settlement.IsVampireSettlement())
-            {
-                hero.TurnIntoVampire();
-            }
-        }
-
-        public void InitCompanions()
-        {
-            _companions.Clear();
-            _companionSettlements.Clear();
-            foreach (Hero aliveHero in Hero.AllAliveHeroes)
-            {
-                if (aliveHero.CanBeCompanion && !aliveHero.IsTemplate && !aliveHero.CharacterObject.IsTOWTemplate())
+                if (allAliveHero.IsNotable && allAliveHero.CurrentSettlement == null && allAliveHero.PartyBelongedTo == null && allAliveHero.PartyBelongedToAsPrisoner == null && allAliveHero.IsActive && allAliveHero.HomeSettlement != null && allAliveHero.CanHaveQuestsOrIssues())
                 {
-                    _companions.Add(aliveHero);
+                    EnterSettlementAction.ApplyForCharacterOnly(allAliveHero, allAliveHero.HomeSettlement);
+                }
+            }
+        }
+
+        public void OnNewGameCreatedPartialFollowUp(CampaignGameStarter starter, int i)
+        {
+            if (i != 1)
+            {
+                return;
+            }
+
+            InitCompanions();
+            SetInitialRelationsBetweenNotablesAndLords();
+            int num = 50;
+            for (int j = 0; j < num; j++)
+            {
+                foreach (Hero allAliveHero in Hero.AllAliveHeroes)
+                {
+                    if (allAliveHero.IsNotable)
+                    {
+                        UpdateNotableSupport(allAliveHero);
+                    }
+                }
+            }
+        }
+
+        public void WeeklyTick()
+        {
+            foreach (KeyValuePair<Settlement, CampaignTime> item in new Dictionary<Settlement, CampaignTime>(_companionSettlements))
+            {
+                if (item.Value.ElapsedWeeksUntilNow > _companionSpawnCooldownForSettlementInWeeks)
+                {
+                    _companionSettlements.Remove(item.Key);
+                }
+            }
+
+            if (_nextRandomCompanionSpawnDate.IsPast)
+            {
+                CharacterObject randomElementWithPredicate = _companionTemplates.GetRandomElementWithPredicate((CharacterObject x) => !_companions.Contains(x.HeroObject));
+                CreateCompanion(randomElementWithPredicate ?? _companionTemplates.GetRandomElement());
+                _nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(_randomCompanionSpawnFrequencyInWeeks);
+            }
+        }
+
+        private void DailyTickSettlement(Settlement settlement)
+        {
+            if (_settlementPassedDaysForWeeklyTick.ContainsKey(settlement))
+            {
+                _settlementPassedDaysForWeeklyTick[settlement]++;
+                if (_settlementPassedDaysForWeeklyTick[settlement] == 7)
+                {
+                    SpawnNotablesIfNeeded(settlement);
+                    _settlementPassedDaysForWeeklyTick[settlement] = 0;
+                }
+            }
+            else
+            {
+                _settlementPassedDaysForWeeklyTick.Add(settlement, 0);
+            }
+        }
+
+        private void DailyTickHero(Hero hero)
+        {
+            if (hero.IsNotable && hero.CurrentSettlement != null)
+            {
+                if (MBRandom.RandomFloat < 0.01f)
+                {
+                    UpdateNotableRelations(hero);
+                }
+
+                UpdateNotableSupport(hero);
+                BalanceGoldAndPowerOfNotable(hero);
+                ManageCaravanExpensesOfNotable(hero);
+                CheckAndMakeNotableDisappear(hero);
+            }
+        }
+
+        public void CompanionAdded(Hero hero)
+        {
+            if (hero.CompanionOf != null && _companions.Contains(hero))
+            {
+                _companions.Remove(hero);
+            }
+        }
+
+
+        private void InitializeWandererList()
+        {
+            _companionTemplates = new List<CharacterObject>();
+            foreach (CultureObject objectType in MBObjectManager.Instance.GetObjectTypeList<CultureObject>())
+            {
+                if (objectType.IsMainCulture)
+                {
+                    _companionTemplates.AddRange(objectType.NotableAndWandererTemplates.WhereQ((CharacterObject x) => x.Occupation == Occupation.Wanderer && x.IsTOWTemplate()));
                 }
             }
         }
@@ -253,6 +246,108 @@ namespace TOW_Core.CampaignSupport
             }
 
             _companions.Shuffle();
+        }
+
+        private void SpawnNotablesIfNeeded(Settlement settlement)
+        {
+            if (settlement.IsTown || settlement.IsVillage)
+            {
+                List<Occupation> list = new List<Occupation>();
+                if (settlement.IsTown)
+                {
+                    list = new List<Occupation>
+                    {
+                        Occupation.GangLeader,
+                        Occupation.Artisan,
+                        Occupation.Merchant
+                    };
+                }
+                else if (settlement.IsVillage)
+                {
+                    list = new List<Occupation>
+                    {
+                        Occupation.RuralNotable,
+                        Occupation.Headman
+                    };
+                }
+                float num = 0;
+                foreach (Occupation occupation in _townOccupations)
+                {
+                    num += Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation);
+                }
+                float randomFloat = MBRandom.RandomFloat;
+                float num2 = settlement.Notables.Any<Hero>() ? ((num - settlement.Notables.Count) / num) : 1f;
+                num2 *= MathF.Pow(num2, 0.36f);
+                if (randomFloat <= num2)
+                {
+                    List<Occupation> list2 = new List<Occupation>();
+                    foreach (Occupation occupation2 in list)
+                    {
+                        int num3 = 0;
+                        using (List<Hero>.Enumerator enumerator2 = settlement.Notables.GetEnumerator())
+                        {
+                            while (enumerator2.MoveNext())
+                            {
+                                if (enumerator2.Current.CharacterObject.Occupation == occupation2)
+                                {
+                                    num3++;
+                                }
+                            }
+                        }
+                        int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation2);
+                        if (num3 < targetNotableCountForSettlement)
+                        {
+                            list2.Add(occupation2);
+                        }
+                    }
+                    if (list2.Count > 0)
+                    {
+                        Hero hero = HeroCreator.CreateHeroAtOccupation(list2.GetRandomElement<Occupation>(), settlement);
+                        CheckNotable(settlement, hero);
+                        EnterSettlementAction.ApplyForCharacterOnly(hero, settlement);
+                    }
+                }
+            }
+        }
+
+        private void CreateHeroes(Occupation occupation, Settlement settlement)
+        {
+            Hero hero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
+            CheckNotable(settlement, hero);
+            //int targetNotableCountForSettlement = Campaign.Current.Models.NotableSpawnModel.GetTargetNotableCountForSettlement(settlement, occupation);
+            //else
+            //{
+            //    for (int i = 0; i < targetNotableCountForSettlement; i++)
+            //    {
+            //        Hero hero = HeroCreator.CreateHeroAtOccupation(occupation, settlement);
+            //        CheckNotable(settlement, hero);
+            //    }
+            //}
+        }
+
+        private void CheckNotable(Settlement settlement, Hero hero)
+        {
+            if (settlement.IsEmpireSettlement())
+            {
+                hero.TurnIntoHuman();
+            }
+            else if (settlement.IsVampireSettlement())
+            {
+                hero.TurnIntoVampire();
+            }
+        }
+
+        public void InitCompanions()
+        {
+            _companions.Clear();
+            _companionSettlements.Clear();
+            foreach (Hero aliveHero in Hero.AllAliveHeroes)
+            {
+                if (aliveHero.CanBeCompanion && !aliveHero.IsTemplate && !aliveHero.CharacterObject.IsTOWTemplate())
+                {
+                    _companions.Add(aliveHero);
+                }
+            }
         }
 
         private void CreateCompanion(CharacterObject companionTemplate)
@@ -324,54 +419,6 @@ namespace TOW_Core.CampaignSupport
             }
 
             return result;
-        }
-
-        public void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
-        {
-            if (mobileParty != MobileParty.MainParty || !settlement.IsTown || _companionSettlements.ContainsKey(settlement) || _companions.Count <= 0)
-            {
-                return;
-            }
-
-            Hero wanderer = _companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
-            wanderer.ChangeState(Hero.CharacterStates.Active);
-            EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
-            _companionSettlements.Add(settlement, CampaignTime.Now);
-            _companions.Remove(wanderer);
-        }
-
-        private List<Village> _allVillages;
-
-        public override void RegisterEvents()
-        {
-            CampaignEvents.OnNewGameCreatedPartialFollowUpEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUp);
-            CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameCreated);
-            CampaignEvents.SettlementEntered.AddNonSerializedListener(this, OnSettlementEntered);
-            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, WeeklyTick);
-            CampaignEvents.NewCompanionAdded.AddNonSerializedListener(this, CompanionAdded);
-            CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, OnHeroKilled);
-            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
-            CampaignEvents.OnGameEarlyLoadedEvent.AddNonSerializedListener(this, OnGameEarlyLoaded);
-            CampaignEvents.DailyTickHeroEvent.AddNonSerializedListener(this, DailyTickHero);
-            CampaignEvents.DailyTickSettlementEvent.AddNonSerializedListener(this, DailyTickSettlement);
-        }
-
-        private void OnGameEarlyLoaded(CampaignGameStarter obj)
-        {
-            foreach (Hero allAliveHero in Hero.AllAliveHeroes)
-            {
-                if (allAliveHero.IsNotable && allAliveHero.CurrentSettlement == null && allAliveHero.PartyBelongedTo == null && allAliveHero.PartyBelongedToAsPrisoner == null && allAliveHero.IsActive && allAliveHero.HomeSettlement != null && allAliveHero.CanHaveQuestsOrIssues())
-                {
-                    EnterSettlementAction.ApplyForCharacterOnly(allAliveHero, allAliveHero.HomeSettlement);
-                }
-            }
-        }
-
-        public override void SyncData(IDataStore dataStore)
-        {
-            dataStore.SyncData("companionSettlements", ref _companionSettlements);
-            dataStore.SyncData("_settlementPassedDaysForWeeklyTick", ref _settlementPassedDaysForWeeklyTick);
-            dataStore.SyncData("companions", ref _companions);
         }
 
         private void DetermineRelation(Hero hero1, Hero hero2, float randomValue, float chanceOfConflict)
@@ -461,71 +508,6 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        public void OnNewGameCreatedPartialFollowUp(CampaignGameStarter starter, int i)
-        {
-            if (i != 1)
-            {
-                return;
-            }
-
-            InitCompanions();
-            SetInitialRelationsBetweenNotablesAndLords();
-            int num = 50;
-            for (int j = 0; j < num; j++)
-            {
-                foreach (Hero allAliveHero in Hero.AllAliveHeroes)
-                {
-                    if (allAliveHero.IsNotable)
-                    {
-                        UpdateNotableSupport(allAliveHero);
-                    }
-                }
-            }
-        }
-
-        public void CompanionAdded(Hero hero)
-        {
-            if (hero.CompanionOf != null && _companions.Contains(hero))
-            {
-                _companions.Remove(hero);
-            }
-        }
-
-        public void WeeklyTick()
-        {
-            foreach (KeyValuePair<Settlement, CampaignTime> item in new Dictionary<Settlement, CampaignTime>(_companionSettlements))
-            {
-                if (item.Value.ElapsedWeeksUntilNow > _companionSpawnCooldownForSettlementInWeeks)
-                {
-                    _companionSettlements.Remove(item.Key);
-                }
-            }
-
-            if (_nextRandomCompanionSpawnDate.IsPast)
-            {
-                CharacterObject randomElementWithPredicate = _companionTemplates.GetRandomElementWithPredicate((CharacterObject x) => !_companions.Contains(x.HeroObject));
-                CreateCompanion(randomElementWithPredicate ?? _companionTemplates.GetRandomElement());
-                _nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(_randomCompanionSpawnFrequencyInWeeks);
-            }
-        }
-
-        private void DailyTickSettlement(Settlement settlement)
-        {
-            if (_settlementPassedDaysForWeeklyTick.ContainsKey(settlement))
-            {
-                _settlementPassedDaysForWeeklyTick[settlement]++;
-                if (_settlementPassedDaysForWeeklyTick[settlement] == 7)
-                {
-                    SpawnNotablesIfNeeded(settlement);
-                    _settlementPassedDaysForWeeklyTick[settlement] = 0;
-                }
-            }
-            else
-            {
-                _settlementPassedDaysForWeeklyTick.Add(settlement, 0);
-            }
-        }
-
         private void UpdateNotableRelations(Hero notable)
         {
             foreach (Clan item in Clan.All)
@@ -608,22 +590,6 @@ namespace TOW_Core.CampaignSupport
                 int num2 = (5000 - notable.Gold) / 500;
                 GiveGoldAction.ApplyBetweenCharacters(null, notable, num2 * 500, disableNotification: true);
                 notable.AddPower(-num2);
-            }
-        }
-
-        private void DailyTickHero(Hero hero)
-        {
-            if (hero.IsNotable && hero.CurrentSettlement != null)
-            {
-                if (MBRandom.RandomFloat < 0.01f)
-                {
-                    UpdateNotableRelations(hero);
-                }
-
-                UpdateNotableSupport(hero);
-                BalanceGoldAndPowerOfNotable(hero);
-                ManageCaravanExpensesOfNotable(hero);
-                CheckAndMakeNotableDisappear(hero);
             }
         }
 
@@ -797,5 +763,26 @@ namespace TOW_Core.CampaignSupport
                 hero.SpcDaysInLocation = 0;
             }
         }
+
+
+
+        private List<Village> _allVillages;
+        private readonly List<Occupation> _townOccupations = new List<Occupation>() { Occupation.GangLeader, Occupation.Artisan, Occupation.Merchant };
+        private readonly List<Occupation> _villageOccupations = new List<Occupation>() { Occupation.RuralNotable, Occupation.Headman };
+        private const int GoldLimitForNotablesToStartGainingPower = 10000;
+        private const int GoldLimitForNotablesToStartLosingPower = 5000;
+        private const int GoldNeededToGainOnePower = 500;
+        private const int CaravanGoldLowLimit = 5000;
+        private const int RemoveNotableCharacterAfterDays = 7;
+        private const int RemoveWandererCharacterAfterDays = 70;
+        private Dictionary<Settlement, CampaignTime> _companionSettlements;
+        private Dictionary<Settlement, int> _settlementPassedDaysForWeeklyTick;
+        private List<Hero> _companions;
+        private List<CharacterObject> _companionTemplates;
+        private CampaignTime _nextRandomCompanionSpawnDate;
+        private float _randomCompanionSpawnFrequencyInWeeks = 6f;
+        private float _companionSpawnCooldownForSettlementInWeeks = 6f;
+        private const float NotableSpawnChance = 0.8f;
+        private const float TargetCompanionNumber = 25f;
     }
 }
