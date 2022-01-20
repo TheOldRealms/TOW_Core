@@ -345,6 +345,7 @@
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SmokingLimbScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />

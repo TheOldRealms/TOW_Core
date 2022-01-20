@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
@@ -49,23 +46,31 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 if (distance < _explosionRadius)
                 {
                     var damage = (_explosionRadius - distance) / _explosionRadius * _damage;
-                    agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true);
+                    agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true, impactPosition: GameEntity.GlobalPosition);
                     if (distance < 2 && agent.State == AgentState.Killed)
                     {
                         agent.Disappear();
-                        for (int j = 0; j < 5; j++)
-                        {
-                            var limb = GameEntity.Instantiate(Mission.Current.Scene, "musical_instrument_harp", false);
-                            var pos = agent.Frame.Elevate(1).origin;
-                            limb.SetLocalPosition(pos);
-                            var dir = GetRandomDirection();
-                            limb.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.BodyOwnerEntity);
-                            limb.EnableDynamicBody();
-                            limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 10, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
-                        }
+                        var position = agent.Frame.Elevate(1).origin;
+                        LaunchLimb(position, "musical_instrument_harp");
+                        //LaunchLimb(position, "musical_instrument_harp");
+                        //LaunchLimb(position, "musical_instrument_harp");
+                        //LaunchLimb(position, "musical_instrument_harp");
+                        //LaunchLimb(position, "musical_instrument_harp");
                     }
                 }
             }
+        }
+
+        private void LaunchLimb(Vec3 position, string name)
+        {
+            var limb = GameEntity.Instantiate(Mission.Current.Scene, name, false);
+            limb.SetLocalPosition(position);
+            limb.CreateAndAddScriptComponent("SmokingLimbScript");
+            limb.CallScriptCallbacks();
+            var dir = GetRandomDirection();
+            limb.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.BodyOwnerEntity);
+            limb.EnableDynamicBody();
+            limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 15, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
         }
 
         private Vec3 GetRandomDirection()

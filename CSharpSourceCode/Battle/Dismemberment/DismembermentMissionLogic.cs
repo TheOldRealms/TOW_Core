@@ -2,9 +2,12 @@
 using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
+using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
@@ -31,7 +34,45 @@ namespace TOW_Core.Battle.Dismemberment
             {
                 Mission.Current.Scene.SlowMotionMode = false;
             }
+            if (Input.IsKeyPressed(InputKey.P))
+            {
+                var next = Mission.PlayerEnemyTeam.ActiveAgents.FirstOrDefault();
+                if (next != null)
+                {
+                    Remove(next);
+                }
+            }
         }
+
+        private void Remove(Agent agent)
+        {
+            EnableSlowMotion();
+            TriggeredEffect.TriggeredEffect _explosion = TriggeredEffectManager.CreateNew("cannonball_explosion");
+            _explosion.Trigger(agent.Position, Vec3.Zero, Agent.Main);
+            var damage = 300;
+            agent.ApplyDamage((int)damage, Agent.Main, doBlow: true, hasShockWave: true, impactPosition: agent.Position);
+            agent.Disappear();
+            for (int j = 0; j < 5; j++)
+            {
+                var limb = GameEntity.Instantiate(Mission.Current.Scene, "musical_instrument_harp", false);
+                var pos = agent.Frame.Elevate(1).origin;
+                limb.SetLocalPosition(pos);
+                limb.CreateAndAddScriptComponent("SmokingLimbScript");
+                limb.CallScriptCallbacks();
+                var dir = GetRandomDirection();
+                limb.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.BodyOwnerEntity);
+                limb.EnableDynamicBody();
+                limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 15, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            }
+        }
+        private Vec3 GetRandomDirection()
+        {
+            var x = MBRandom.RandomFloatRanged(-3, 3);
+            var y = MBRandom.RandomFloatRanged(-3, 3);
+            return new Vec3(x, y, 2);
+        }
+
+
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow blow, ref AttackCollisionData collisionData, in MissionWeapon attackerWeapon)
         {
