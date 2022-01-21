@@ -77,7 +77,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             {
                 foreach (var weapon in weapons)
                 {
-                    var item = MBObjectManager.Instance.GetObject<ItemObject>("empty_missile");
+                    var item = MBObjectManager.Instance.GetObject<ItemObject>("tor_neutral_weapon_ammo_broken_weapon");
                     Traverse.Create(item).Property("WeaponDesign").SetValue(weapon.WeaponCopy.Item.WeaponDesign);
                     var missile = new MissionWeapon(item, null, Banner.CreateRandomBanner());
                     var position = weapon.GameEntity.GlobalPosition;

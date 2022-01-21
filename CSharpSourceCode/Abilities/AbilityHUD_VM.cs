@@ -15,7 +15,9 @@ namespace TOW_Core.Abilities
         private string _WindsOfMagicLeft = "-";
         private bool _isVisible;
         private bool _onCoolDown;
+        private bool _isSpell;
         private float _windsOfMagicValue;
+        private string _windsCost = "";
 
         public AbilityHUD_VM() : base() { }
 
@@ -25,8 +27,10 @@ namespace TOW_Core.Abilities
             IsVisible = _ability != null;
             if (IsVisible)
             {
+                IsSpell = _ability is Spell;
                 SpriteName = _ability.Template.SpriteName;
                 Name = _ability.Template.Name;
+                WindsCost = _ability.Template.WindsOfMagicCost.ToString();
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
                 if (Game.Current.GameType is Campaign && _ability is Spell)
@@ -148,6 +152,40 @@ namespace TOW_Core.Abilities
                 {
                     _onCoolDown = value;
                     base.OnPropertyChangedWithValue(value, "IsOnCoolDown");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public string WindsCost
+        {
+            get
+            {
+                return _windsCost;
+            }
+            set
+            {
+                if (value != _windsCost)
+                {
+                    _windsCost = value;
+                    base.OnPropertyChangedWithValue(value, "WindsCost");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public bool IsSpell
+        {
+            get
+            {
+                return _isSpell;
+            }
+            set
+            {
+                if (value != _isSpell)
+                {
+                    _isSpell = value;
+                    base.OnPropertyChangedWithValue(value, "IsSpell");
                 }
             }
         }

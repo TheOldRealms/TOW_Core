@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Election;
@@ -17,6 +18,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.CampaignSupport.MapBar;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -164,34 +166,34 @@ namespace TOW_Core.HarmonyPatches
             __instance.RefreshValues();
         }
         
-        [HarmonyPrefix]
         [HarmonyPatch(typeof(MapScene), "Load")]
-        public static bool CustomMapSceneLoad(MapScene __instance, ref Scene ____scene, ref MBAgentRendererSceneController ____agentRendererSceneController)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            Debug.Print("Creating map scene", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene = Scene.CreateNewScene(false);
-            ____scene.SetName("TorMapScene");
-            ____scene.SetClothSimulationState(true);
-            ____agentRendererSceneController = MBAgentRendererSceneController.CreateNewAgentRendererSceneController(____scene, 4096);
-            ____scene.SetOcclusionMode(true);
-            SceneInitializationData initData = new SceneInitializationData(true);
-            initData.UsePhysicsMaterials = true;
-            initData.EnableFloraPhysics = false;
-            initData.UseTerrainMeshBlending = false;
-            Debug.Print("reading map scene", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene.Read("modded_main_map", ref initData, "");
-            TaleWorlds.Engine.Utilities.SetAllocationAlwaysValidScene(____scene);
-            ____scene.DisableStaticShadows(true);
-            ____scene.InvalidateTerrainPhysicsMaterials();
-            MBMapScene.LoadAtmosphereData(____scene);
-            __instance.DisableUnwalkableNavigationMeshes();
-            MBMapScene.ValidateTerrainSoundIds();
-            ____scene.OptimizeScene(true, false);
-            Debug.Print("Ticking map scene for first initialization", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene.Tick(0.1f);
-            return false;
+            int truthOccurance = -1;
+            bool truthFlag = false;
+            foreach (CodeInstruction instruction in instructions)
+            {
+                if (instruction.opcode == OpCodes.Ldstr && instruction.OperandIs("Main_map"))
+                {
+                    instruction.operand = "modded_main_map";
+                }
+                else if (instruction.opcode == OpCodes.Ldloca_S)
+                {
+                    truthOccurance++;
+                    truthFlag = true;
+                }
+                else if (instruction.opcode == OpCodes.Stfld)
+                {
+                    truthFlag = false;
+                }
+                else if (instruction.opcode == OpCodes.Ldc_I4_0 && truthFlag && (truthOccurance == 1 || truthOccurance == 3))
+                {
+                    instruction.opcode = OpCodes.Ldc_I4_1;
+                }
+                yield return instruction;
+            }
         }
-        
+
         [HarmonyPostfix]
         [HarmonyPatch(typeof(MapScene), "GetMapBorders")]
         public static void CustomBorders(MapScene __instance, ref Vec2 minimumPosition, ref Vec2 maximumPosition, ref float maximumHeight)
@@ -229,6 +231,21 @@ namespace TOW_Core.HarmonyPatches
                 __result = false;
                 return false;
             }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), MethodType.Constructor, typeof(INavigationHandler), typeof(IMapStateHandler), typeof(MapBarShortcuts), typeof(Action))]
+        public static void ReplaceMapVM(MapVM __instance)
+        {
+            __instance.MapInfo = new TorMapInfoVM();
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), "OnRefresh")]
+        public static void RefreshExtraProperties(MapVM __instance)
+        {
+            var info = __instance.MapInfo as TorMapInfoVM;
+            if (info != null) info.RefreshExtraProperties();
         }
     }
 }

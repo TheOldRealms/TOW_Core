@@ -34,5 +34,18 @@ namespace TOW_Core.Items
             }
             return props;
         }
+
+        public ExtendedItemObjectProperties Clone()
+        {
+            var prop = new ExtendedItemObjectProperties();
+            prop.ItemStringId = ItemStringId;
+            if(ItemDamageProperty != null) prop.ItemDamageProperty = new ItemDamageProperty { DamageType = ItemDamageProperty.DamageType, MinDamage = ItemDamageProperty.MinDamage, MaxDamage = ItemDamageProperty.MaxDamage };
+            prop.Traits = new List<ItemTrait>();
+            foreach(var trait in Traits)
+            {
+                prop.Traits.Add(trait);
+            }
+            return prop;
+        }
     }
 }

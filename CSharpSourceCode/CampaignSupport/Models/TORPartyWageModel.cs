@@ -6,15 +6,6 @@ namespace TOW_Core.CampaignSupport.Models
 {
     public class TORPartyWageModel : DefaultPartyWageModel
     {
-        public override int GetTroopRecruitmentCost(CharacterObject troop, Hero buyerHero, bool withoutItemCost = false)
-        {
-            if (troop.IsUndead())
-            {
-                return 0;
-            }
-            return base.GetTroopRecruitmentCost(troop, buyerHero, withoutItemCost);
-        }
-
         public override int GetCharacterWage(int tier)
         {
             switch (tier)

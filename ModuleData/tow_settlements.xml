@@ -7,7 +7,7 @@
     </Components>
     <Locations complex_template="LocationComplexTemplate.questbattle_template">
       <Location id="questbattle_location" scene_name="training_field_2" max_prosperity="70" />
-      <!-- The scene's name here is actually irrelevant. It is set from the quuest battle template xml.-->
+      <!-- The scene's name here is actually irrelevant. It is set from the quest battle template xml.-->
     </Locations>
   </Settlement>
   <!-- Averland 2 Towns 11 villages 2 castles -->
@@ -119,7 +119,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_AV2_3" name="{=Settlements.Settlement.name.village_AV3_3}Bernloch" posX="1439.735" posY="875.128" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV2_3}Bernloch.">
+  <Settlement id="castle_village_AV2_3" name="{=Settlements.Settlement.name.village_AV2_3}Bernloch" posX="1439.735" posY="875.128" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV2_3}Bernloch.">
     <Components>
       <Village id="castle_village_comp_AV2_3" village_type="VillageType.wheat_farm" hearth="400" trade_bound="Settlement.town_AV1" bound="Settlement.castle_AV2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -214,7 +214,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <!--Stirland-->
+  <!--Stirland 4 towns 23 villages 5 castles-->
   <Settlement id="town_ST1" name="{=Settlements.Settlement.name.town_ST1}Wurtbad" owner="Faction.stirland_clan_1" posX="1441.044" posY="1016.251" culture="Culture.empire" prosperity="2000" gate_posX="1441.206" gate_posY="1015.527" text="{=4ENGzVaC}Wurtbad rests on the banks of the river Stir and it´s the capital of the province. By far the most densely populated town in Stirland, it is also home to the crumbling Temple of Myrmida. The nobility and people of Wurtbad are famous for its suspiciousness and sombreness, as the lost province of Sylvania is too close for comfort. It is one of the few places where goods can be carried over the river, making it an excellent strategic checkpoint for anyone wishing to push onwards into the land.">
     <Components>
       <Town id="town_comp_ST1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
@@ -261,7 +261,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" owner="Faction.stirland_clan_1" posX="1414.985" posY="1018.9" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
+  <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" owner="Faction.stirland_clan_1" posX="1414.642" posY="1017.597" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
     <Components>
       <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -359,7 +359,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_AV1}Halstedt" owner="Faction.stirland_clan_1" posX="1473.422" posY="962.008" prosperity="420" culture="Culture.empire" gate_posX="1473.13" gate_posY="960.7247" text="{=Settlements.Settlement.text.castle_village_ST2_2}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
+  <Settlement id="castle_ST3" name="{=Settlements.Settlement.name.castle_ST3}Halstedt" owner="Faction.stirland_clan_1" posX="1473.422" posY="962.008" prosperity="420" culture="Culture.empire" gate_posX="1473.13" gate_posY="960.7247" text="{=Settlements.Settlement.text.castle_ST3}Halstedt Keep is on the South-East edge of the Stirhügel hills and is a staging point for the Roadwardens of the region. Originally it was a manor house belonging to some long forgotten lord, over time it has become more fortified as each subsequent owner has sought to protect its inhabitants against bandits and the greenskins from nearby Altern Forest. Eventually it fell into state hands, and was turned into a fortress lodge for the official Roadwardens who protect the locale.">
     <Components>
       <Town id="castle_comp_ST3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -717,8 +717,8 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <!-- Sylvania -->
-  <Settlement id="town_SY1" name="{=Settlements.Settlement.name.town_MT1}Castle Drakenhof" owner="Faction.sylvania_clan_1" posX="1635.872" posY="952.961" culture="Culture.khuzait" prosperity="3400" gate_posX="1635.136" gate_posY="953.0568" text="{=4ENGzVaC}The former Imperial capital of Sylvania has endured much upheaval through the ages. Formerly the home of the Imperial Elector Count Otto von Drak. After the establishment of the Von Carstein bloodline it became the seat of vampiric power in the Old World. Stained with the blood of all Von Carstein patriarchs who fought to become the castle’s next ruler. It is where Manfred Von Carstein resides. It is a dark lair to the terrible and occult. Adventurers often raid the castle seeking to plunder it’s secrets. Most meet a gruesome end within it’s cursed halls.">
+  <!-- Sylvania 2 towns 19 villages 7 castles-->
+  <Settlement id="town_SY1" name="{=Settlements.Settlement.name.town_SY1}Castle Drakenhof" owner="Faction.sylvania_clan_1" posX="1634.313" posY="956.188" culture="Culture.khuzait" prosperity="3400" gate_posX="1633.529" gate_posY="955.3813" text="{=4ENGzVaC}The former Imperial capital of Sylvania has endured much upheaval through the ages. Formerly the home of the Imperial Elector Count Otto von Drak. After the establishment of the Von Carstein bloodline it became the seat of vampiric power in the Old World. Stained with the blood of all Von Carstein patriarchs who fought to become the castle’s next ruler. It is where Manfred Von Carstein resides. It is a dark lair to the terrible and occult. Adventurers often raid the castle seeking to plunder it’s secrets. Most meet a gruesome end within it’s cursed halls.">
     <Components>
       <Town id="town_comp_SY1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -790,7 +790,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_1" posX="1594.735" posY="992.207" prosperity="420" culture="Culture.khuzait" gate_posX="1594.865" gate_posY="991.4764" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
+  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_1" posX="1595.036" posY="990.484" prosperity="420" culture="Culture.khuzait" gate_posX="1595.199" gate_posY="991.7899" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
     <Components>
       <Town id="castle_comp_SY1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -826,7 +826,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_SY2" name="{=Settlements.Settlement.name.town_SY2}Waldenhof" owner="Faction.sylvania_clan_1" posX="1665.448" posY="1021.413" culture="Culture.khuzait" prosperity="3400" gate_posX="1665.489" gate_posY="1020.672" text="{=4ENGzVaC}According to many Vampire Counts, Waldenhof is the true seat of power for Sylvania. It is where many of the Vampires dwell. And where Vlad kept his seat of power. But times change. Manfred resides in Drakenhof. Waldenhof whilst still important and thick with undead is lesser compared to Drakenhof. The town is covered in a persistent, soupy gloom. A miserable, desolate atmosphere hangs over the land. And all mortals inside the town simply live day to day. Waiting for death.">
+  <Settlement id="town_SY2" name="{=Settlements.Settlement.name.town_SY2}Waldenhof" owner="Faction.sylvania_clan_1" posX="1662.502" posY="1022.54" culture="Culture.khuzait" prosperity="3400" gate_posX="1662.071" gate_posY="1021.936" text="{=4ENGzVaC}According to many Vampire Counts, Waldenhof is the true seat of power for Sylvania. It is where many of the Vampires dwell. And where Vlad kept his seat of power. But times change. Manfred resides in Drakenhof. Waldenhof whilst still important and thick with undead is lesser compared to Drakenhof. The town is covered in a persistent, soupy gloom. A miserable, desolate atmosphere hangs over the land. And all mortals inside the town simply live day to day. Waiting for death.">
     <Components>
       <Town id="town_comp_SY2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -859,7 +859,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_SY2_2" name="{=Settlements.Settlement.name.village_SY2_2}Hundam" posX="1658.891" posY="1009.086" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY2_2}Though unassuming at first, Hundham is a place of whispered rumours. It is said that the dead walk freely on it’s streets. As if mimicking the appearance of life. Others say puppets dance the night away, stringless and alive somehow. No one knows for sure for few have braved it’s narrow streets, it’s dusty shops, or it’s surprisingly open and inviting tavern. But all who go near have warned others to never approach Hundham in the night. For that is when bands of Vampires emerge to dance and make merry. And they’d just love to have a flushed and oh so juicy mortal to dance with.">
+  <Settlement id="village_SY2_2" name="{=Settlements.Settlement.name.village_SY2_2}Hundam" posX="1661.501" posY="1008.252" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY2_2}Though unassuming at first, Hundham is a place of whispered rumours. It is said that the dead walk freely on it’s streets. As if mimicking the appearance of life. Others say puppets dance the night away, stringless and alive somehow. No one knows for sure for few have braved it’s narrow streets, it’s dusty shops, or it’s surprisingly open and inviting tavern. But all who go near have warned others to never approach Hundham in the night. For that is when bands of Vampires emerge to dance and make merry. And they’d just love to have a flushed and oh so juicy mortal to dance with.">
     <Components>
       <Village id="village_comp_SY2_2" village_type="VillageType.cattle_farm" hearth="92" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -898,7 +898,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_1" posX="1532.429" posY="990.735" prosperity="420" culture="Culture.khuzait" gate_posX="1531.727" gate_posY="990.9764" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
+  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_1" posX="1533.541" posY="987.166" prosperity="420" culture="Culture.khuzait" gate_posX="1533.958" gate_posY="988.4143" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
     <Components>
       <Town id="castle_comp_SY2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -921,7 +921,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_1" posX="1587.617" posY="912.944" prosperity="420" culture="Culture.khuzait" gate_posX="1586.92" gate_posY="913.1987" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
+  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_1" posX="1585.804" posY="916.724" prosperity="420" culture="Culture.khuzait" gate_posX="1586.017" gate_posY="915.4252" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
     <Components>
       <Town id="castle_comp_SY3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -957,7 +957,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1650.334" posY="929.981" prosperity="420" culture="Culture.khuzait" gate_posX="1649.974" gate_posY="930.6272" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1650.291" posY="931.336" prosperity="420" culture="Culture.khuzait" gate_posX="1650.504" gate_posY="930.0372" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
     <Components>
       <Town id="castle_comp_SY4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -980,7 +980,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_1" posX="1673.771" posY="955.364" prosperity="420" culture="Culture.khuzait" gate_posX="1673.471" gate_posY="954.6854" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_1" posX="1673.197" posY="954.593" prosperity="420" culture="Culture.khuzait" gate_posX="1673.807" gate_posY="955.759" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
       <Town id="castle_comp_SY5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -990,7 +990,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.105" posY="951.525" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.123" posY="951.5565" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
       <Village id="castle_village_comp_SY5_1" village_type="VillageType.flax_plant" hearth="53" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1003,7 +1003,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_1" posX="1664.257" posY="977.81" prosperity="420" culture="Culture.khuzait" gate_posX="1663.647" gate_posY="978.2313" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
+  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_1" posX="1662.545" posY="977.536" prosperity="420" culture="Culture.khuzait" gate_posX="1663.298" gate_posY="976.4568" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
     <Components>
       <Town id="castle_comp_SY6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1039,7 +1039,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_1" posX="1699.247" posY="997.062" prosperity="420" culture="Culture.khuzait" gate_posX="1698.66" gate_posY="996.6085">
+  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_1" posX="1698.386" posY="996.875" prosperity="420" culture="Culture.khuzait" gate_posX="1699.648" gate_posY="997.2495">
     <Components>
       <Town id="castle_comp_SY7" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1049,7 +1049,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY7_1" name="{=Settlements.Settlement.name.castle_village_SY7_1}Zherden" posX="1687.544" posY="1000.167" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY7_1}">
+  <Settlement id="castle_village_SY7_1" name="{=Settlements.Settlement.name.castle_village_SY7_1}Zherden" posX="1688.236" posY="999.933" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY7_1}">
     <Components>
       <Village id="castle_village_comp_SY7_1" village_type="VillageType.clay_mine" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY7" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1075,6 +1075,642 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
+  <!--Wissenland 6 towns 6 castles 35 villages -->
+  <Settlement id="town_WI1" name="{=Settlements.Settlement.name.town_WI1}Nuln" owner="Faction.stirland_clan_1" posX="1339.895" posY="948.423" culture="Culture.empire" prosperity="3400" gate_posX="1340.964" gate_posY="946.2166" text="{=4ENGzVaC}Nuln test ">
+    <Components>
+      <Town id="town_comp_WI1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="town_WI2" name="{=Settlements.Settlement.name.town_WI2}Pfeildorf" owner="Faction.stirland_clan_1" posX="1352.865" posY="900.187" culture="Culture.empire" prosperity="3400" gate_posX="1351.992" gate_posY="901.2131" text="{=4ENGzVaC}Pfeildorf test ">
+    <Components>
+      <Town id="town_comp_WI2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="town_WI3" name="{=Settlements.Settlement.name.town_WI3}Kreutzhofen" owner="Faction.stirland_clan_1" posX="1312.953" posY="734.918" culture="Culture.empire" prosperity="3400" gate_posX="1311.232" gate_posY="733.0435" text="{=4ENGzVaC}Kreutzhofen test ">
+    <Components>
+      <Town id="town_comp_WI3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="town_WI4" name="{=Settlements.Settlement.name.town_WI4}Meissen" owner="Faction.stirland_clan_1" posX="1352.206" posY="860.295" culture="Culture.empire" prosperity="3400" gate_posX="1353.683" gate_posY="860.5034" text="{=4ENGzVaC}Meissen test ">
+    <Components>
+      <Town id="town_comp_WI4" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="town_WI5" name="{=Settlements.Settlement.name.town_WI5}Geschburg" owner="Faction.stirland_clan_1" posX="1360.969" posY="831.361" culture="Culture.empire" prosperity="3400" gate_posX="1359.609" gate_posY="831.3774" text="{=4ENGzVaC}Geschburg test ">
+    <Components>
+      <Town id="town_comp_WI5" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="town_WI6" name="{=Settlements.Settlement.name.town_WI6}Erbshauen" owner="Faction.stirland_clan_1" posX="1432.394" posY="830.449" culture="Culture.empire" prosperity="3400" gate_posX="1433.684" gate_posY="830.8799" text="{=4ENGzVaC}Erbshauen test ">
+    <Components>
+      <Town id="town_comp_WI6" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.town_complex">
+      <Location id="center" scene_name="vlandia_town_a" scene_name_1="vlandia_town_a" scene_name_2="vlandia_town_a" scene_name_3="vlandia_town_a" />
+      <Location id="arena" scene_name="TOW_arena_empire_a" />
+      <Location id="tavern" scene_name="empire_tavern_01" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="vlandia_dungeon_a" />
+      <Location id="house_1" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_2" scene_name="vlandia_city_house_b_interior" />
+      <Location id="house_3" scene_name="vlandia_city_house_b_interior" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Backstreet" name="{=a0MVffcN}Backstreet" />
+      <Area type="Clearing" name="{=LWHIVshb}Clearing" />
+      <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_WI1" name="{=Settlements.Settlement.name.castle_WI1}Wusterburg" owner="Faction.averland_clan_1" posX="1372.608" posY="777.494" prosperity="420" culture="Culture.empire" gate_posX="1373.921" gate_posY="777.588">
+    <Components>
+      <Town id="castle_comp_WI1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="castle_WI2" name="{=Settlements.Settlement.name.castle_WI2}Nehren" owner="Faction.averland_clan_1" posX="1318.63" posY="799.401" prosperity="420" culture="Culture.empire" gate_posX="1317.365" gate_posY="799.7661">
+    <Components>
+      <Town id="castle_comp_WI2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="castle_WI3" name="{=Settlements.Settlement.name.castle_WI3}Sonnefurt" owner="Faction.averland_clan_1" posX="1360.027" posY="750.485" prosperity="420" culture="Culture.empire" gate_posX="1359.783" gate_posY="750.1743">
+    <Components>
+      <Town id="castle_comp_WI3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="castle_WI4" name="{=Settlements.Settlement.name.castle_WI4}Mendelhof" owner="Faction.averland_clan_1" posX="1446.746" posY="818.957" prosperity="420" culture="Culture.empire" gate_posX="1445.437" gate_posY="818.8215">
+    <Components>
+      <Town id="castle_comp_WI4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="castle_WI5" name="{=Settlements.Settlement.name.castle_WI5}Kolbhugel" owner="Faction.averland_clan_1" posX="1398.247" posY="794.033" prosperity="420" culture="Culture.empire" gate_posX="1398.556" gate_posY="792.7538">
+    <Components>
+      <Town id="castle_comp_WI5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="castle_WI6" name="{=Settlements.Settlement.name.castle_WI6}Staig" owner="Faction.averland_clan_1" posX="1391.286" posY="870.426" prosperity="420" culture="Culture.empire" gate_posX="1392.311" gate_posY="871.2509">
+    <Components>
+      <Town id="castle_comp_WI6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.castle_complex">
+      <Location id="center" scene_name="empire_siege_001" scene_name_1="empire_siege_001" scene_name_2="empire_siege_001" scene_name_3="empire_siege_001" />
+      <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
+      <Location id="prison" scene_name="empire_dungeon_a" />
+    </Locations>
+  </Settlement>
+  <Settlement id="village_WI1_1" name="{=Settlements.Settlement.name.village_WI1_1}Grissenwald" posX="1329.703" posY="963.569" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_1}">
+    <Components>
+      <Village id="village_comp_WI1_1" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI1_2" name="{=Settlements.Settlement.name.village_WI1_2}Rhorhausen" posX="1316.124" posY="939.227" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_2}">
+    <Components>
+      <Village id="village_comp_WI1_2" village_type="VillageType.silver_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI1_3" name="{=Settlements.Settlement.name.village_WI1_3}Wissenburg" posX="1338.184" posY="927.824" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_3}Wissenburg the capital of wissenland not as big as Nuln but forever captured in Jax's heart">
+    <Components>
+      <Village id="village_comp_WI1_3" village_type="VillageType.europe_horse_ranch" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI1_4" name="{=Settlements.Settlement.name.village_WI1_2}Dotternbach" posX="1323.213" posY="920.162" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_4}">
+    <Components>
+      <Village id="village_comp_WI1_4" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI2_1" name="{=Settlements.Settlement.name.village_WI2_1}Halgerbach" posX="1334.456" posY="904.452" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_1}">
+    <Components>
+      <Village id="village_comp_WI2_1" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI2_2" name="{=Settlements.Settlement.name.village_WI2_2}Durbheim" posX="1341.922" posY="893.292" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_2}">
+    <Components>
+      <Village id="village_comp_WI2_2" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI2_3" name="{=Settlements.Settlement.name.village_WI2_3}Bernau" posX="1358.836" posY="894" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_3}">
+    <Components>
+      <Village id="village_comp_WI2_3" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI2_4" name="{=Settlements.Settlement.name.village_WI2_4}Sexau" posX="1355.634" posY="876.625" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_4}">
+    <Components>
+      <Village id="village_comp_WI2_4" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI3_1" name="{=Settlements.Settlement.name.village_WI3_1}Weilerberg" posX="1311.677" posY="742.223" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI3_1}">
+    <Components>
+      <Village id="village_comp_WI3_1" village_type="VillageType.lumberjack" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI3_2" name="{=Settlements.Settlement.name.village_WI3_2}Serrig" posX="1335.208" posY="752.979" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI3_2}">
+    <Components>
+      <Village id="village_comp_WI3_2" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI4_1" name="{=Settlements.Settlement.name.village_WI4_1}Owingen" posX="1337.446" posY="868.897" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_1}">
+    <Components>
+      <Village id="village_comp_WI4_1" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI4_2" name="{=Settlements.Settlement.name.village_WI4_2}heisenberg" posX="1333.084" posY="850.325" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_2}">
+    <Components>
+      <Village id="village_comp_WI4_2" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI4_3" name="{=Settlements.Settlement.name.village_WI4_3}Augen" posX="1346.603" posY="842.308" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_3}">
+    <Components>
+      <Village id="village_comp_WI4_3" village_type="VillageType.iron_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI4_4" name="{=Settlements.Settlement.name.village_WI4_4}Kelgard" posX="1334.442" posY="823.6689" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_4}">
+    <Components>
+      <Village id="village_comp_WI4_4" village_type="VillageType.iron_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI5_1" name="{=Settlements.Settlement.name.village_WI5_1}Fluorin" posX="1360.525" posY="838.106" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_1}">
+    <Components>
+      <Village id="village_comp_WI5_1" village_type="VillageType.vineyard" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI5_2" name="{=Settlements.Settlement.name.village_WI5_2}Althausen" posX="1361.061" posY="824.5649" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_2}">
+    <Components>
+      <Village id="village_comp_WI5_2" village_type="VillageType.europe_horse_ranch" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI5_3" name="{=Settlements.Settlement.name.village_WI5_3}Sochtenau" posX="1380.501" posY="809.4109" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_3}">
+    <Components>
+      <Village id="village_comp_WI5_3" village_type="VillageType.lumberjack" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI6_1" name="{=Settlements.Settlement.name.village_WI6_1}Steingart" posX="1437.105" posY="822.745" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_1}">
+    <Components>
+      <Village id="village_comp_WI6_1" village_type="VillageType.clay_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI6_2" name="{=Settlements.Settlement.name.village_WI6_2}Moasach" posX="1408.396" posY="834.697" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_2}">
+    <Components>
+      <Village id="village_comp_WI6_2" village_type="VillageType.vineyard" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="village_WI6_3" name="{=Settlements.Settlement.name.village_WI6_3}Ballenhof" posX="1424.547" posY="849.547" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_3}">
+    <Components>
+      <Village id="village_comp_WI6_3" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="vlandia_village_l" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI1_1" name="{=Settlements.Settlement.name.castle_village_WI1_1}Eigenhof" posX="1367.912" posY="784.574" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI1_1}Eigenhof test">
+    <Components>
+      <Village id="castle_village_comp_WI1_1" village_type="VillageType.europe_horse_ranch" hearth="200" trade_bound="Settlement.town_WI3" bound="Settlement.castle_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI1_2" name="{=Settlements.Settlement.name.castle_village_WI1_2}Rotenbach" posX="1359.081" posY="779.884" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI1_2}Rotenbach test">
+    <Components>
+      <Village id="castle_village_comp_WI1_2" village_type="VillageType.wheat_farm" hearth="200" trade_bound="Settlement.town_WI3" bound="Settlement.castle_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI2_1" name="{=Settlements.Settlement.name.castle_village_WI2_1}Salmfahre" posX="1333.825" posY="803.967" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI2_1}Salmfahre test">
+    <Components>
+      <Village id="castle_village_comp_WI2_1" village_type="VillageType.clay_mine" hearth="200" trade_bound="Settlement.town_WI5" bound="Settlement.castle_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI2_2" name="{=Settlements.Settlement.name.castle_village_WI2_2}Trulben" posX="1346.921" posY="810.051" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI2_2}Trulben test">
+    <Components>
+      <Village id="castle_village_comp_WI2_2" village_type="VillageType.lumberjack" hearth="200" trade_bound="Settlement.town_WI5" bound="Settlement.castle_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI3_1" name="{=Settlements.Settlement.name.castle_village_WI3_1}Scharmbeck" posX="1359.077" posY="733.197" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI3_1}Scharmbeck test">
+    <Components>
+      <Village id="castle_village_comp_WI3_1" village_type="VillageType.iron_mine" hearth="200" trade_bound="Settlement.town_WI3" bound="Settlement.castle_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI3_2" name="{=Settlements.Settlement.name.castle_village_WI3_2}Thalfang" posX="1371.837" posY="758.131" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI3_2}Thalfang test">
+    <Components>
+      <Village id="castle_village_comp_WI3_2" village_type="VillageType.iron_mine" hearth="200" trade_bound="Settlement.town_WI3" bound="Settlement.castle_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI4_1" name="{=Settlements.Settlement.name.castle_village_WI4_1}Merfeld" posX="1466.468" posY="829.457" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI4_1}Merfeld test">
+    <Components>
+      <Village id="castle_village_comp_WI4_1" village_type="VillageType.wheat_farm" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI4_2" name="{=Settlements.Settlement.name.castle_village_WI4_2}Jengen" posX="1463.144" posY="815.097" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI4_2}Jengen test">
+    <Components>
+      <Village id="castle_village_comp_WI4_2" village_type="VillageType.iron_mine" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI4_3" name="{=Settlements.Settlement.name.castle_village_WI4_1}Osterzell" posX="1450.83" posY="833.086" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI4_3}Osterzell test">
+    <Components>
+      <Village id="castle_village_comp_WI4_3" village_type="VillageType.clay_mine" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI5_1" name="{=Settlements.Settlement.name.castle_village_WI5_1}Pahl" posX="1403.842" posY="814.389" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI5_1}Pahl test">
+    <Components>
+      <Village id="castle_village_comp_WI5_1" village_type="VillageType.vineyard" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI5_2" name="{=Settlements.Settlement.name.castle_village_WI5_2}Kroppenleben" posX="1394.389" posY="770.024" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI5_2}Pahl test">
+    <Components>
+      <Village id="castle_village_comp_WI5_2" village_type="VillageType.wheat_farm" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI5_3" name="{=Settlements.Settlement.name.castle_village_WI5_3}Bedernau" posX="1374.72" posY="791.512" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI5_3}Pahl test">
+    <Components>
+      <Village id="castle_village_comp_WI5_3" village_type="VillageType.lumberjack" hearth="200" trade_bound="Settlement.town_WI6" bound="Settlement.castle_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI6_1" name="{=Settlements.Settlement.name.castle_village_WI6_1}Pforzen" posX="1375.195" posY="861.601" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI6_1}Pforzen test">
+    <Components>
+      <Village id="castle_village_comp_WI6_1" village_type="VillageType.lumberjack" hearth="200" trade_bound="Settlement.town_WI4" bound="Settlement.castle_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI6_2" name="{=Settlements.Settlement.name.castle_village_WI6_2}Mauchen" posX="1375.785" posY="882.227" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI6_2}Mauchen test">
+    <Components>
+      <Village id="castle_village_comp_WI6_2" village_type="VillageType.fisherman" hearth="200" trade_bound="Settlement.town_WI2" bound="Settlement.castle_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
+  <Settlement id="castle_village_WI6_3" name="{=Settlements.Settlement.name.castle_village_WI6_3}Ellwangen" posX="1410.14" posY="857.614" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI6_3}Ellwangen test">
+    <Components>
+      <Village id="castle_village_comp_WI6_3" village_type="VillageType.lumberjack" hearth="200" trade_bound="Settlement.town_WI2" bound="Settlement.castle_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+    </Components>
+    <Locations complex_template="LocationComplexTemplate.village_complex">
+      <Location id="village_center" scene_name="TOW_empire_village_003" />
+    </Locations>
+    <CommonAreas>
+      <Area type="Pasture" name="{=fOUsLdZR}Pasture" />
+      <Area type="Thicket" name="{=66Mzk0NZ}Thicket" />
+      <Area type="Bog" name="{=iXA5SttU}Bog" />
+    </CommonAreas>
+  </Settlement>
   <!-- Hideouts -->
   <!-- hideout forest -->
   <Settlement id="hideout_forest_1" name="{=Settlements.Settlement.name.hideout_forest_1}Hideout" type="Hideout" posX="1518.176" posY="1021.992" culture="Culture.forest_bandits">
@@ -1087,7 +1723,7 @@
       <Hideout id="hideout_forest_2" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_forest_3" name="{=Settlements.Settlement.name.hideout_forest_3}Hideout" type="Hideout" posX="1516.517" posY="854.188" culture="Culture.forest_bandits">
+  <Settlement id="hideout_forest_3" name="{=Settlements.Settlement.name.hideout_forest_3}Hideout" type="Hideout" posX="1514.444" posY="846.766" culture="Culture.forest_bandits">
     <Components>
       <Hideout id="hideout_forest_3" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="6.283" />
     </Components>
@@ -1102,8 +1738,28 @@
       <Hideout id="hideout_forest_5" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
   </Settlement>
+  <Settlement id="hideout_forest_6" name="{=Settlements.Settlement.name.hideout_forest_6}Hideout" type="Hideout" posX="1325.956" posY="764.635" culture="Culture.forest_bandits">
+    <Components>
+      <Hideout id="hideout_forest_6" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_forest_7" name="{=Settlements.Settlement.name.hideout_forest_7}Hideout" type="Hideout" posX="1326.16" posY="808.797" culture="Culture.forest_bandits">
+    <Components>
+      <Hideout id="hideout_forest_7" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_forest_8" name="{=Settlements.Settlement.name.hideout_forest_8}Hideout" type="Hideout" posX="1322.792" posY="951.121" culture="Culture.forest_bandits">
+    <Components>
+      <Hideout id="hideout_forest_8" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_forest_9" name="{=Settlements.Settlement.name.hideout_forest_9}Hideout" type="Hideout" posX="1420.815" posY="801.719" culture="Culture.forest_bandits">
+    <Components>
+      <Hideout id="hideout_forest_9" map_icon="bandit_hideout_b" scene_name="bandit_forest" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
   <!-- Mountain Bandit  Hideouts -->
-  <Settlement id="hideout_mountain_1" name="{=Settlements.Settlement.name.hideout_mountain_1}Hideout" type="Hideout" posX="1501.716" posY="838.305" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_1" name="{=Settlements.Settlement.name.hideout_mountain_1}Hideout" type="Hideout" posX="1478.825" posY="819.026" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_1" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
@@ -1113,7 +1769,7 @@
       <Hideout id="hideout_mountain_2" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1677.558" posY="946.558" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_3" name="{=Settlements.Settlement.name.hideout_mountain_3}Hideout" type="Hideout" posX="1696.036" posY="948.541" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_3" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
@@ -1123,9 +1779,29 @@
       <Hideout id="hideout_mountain_4" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_forest" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="hideout_mountain_5" name="{=Settlements.Settlement.name.hideout_mountain_5}Hideout" type="Hideout" posX="1637.34" posY="925.43" culture="Culture.mountain_bandits">
+  <Settlement id="hideout_mountain_5" name="{=Settlements.Settlement.name.hideout_mountain_5}Hideout" type="Hideout" posX="1636.947" posY="925.073" culture="Culture.mountain_bandits">
     <Components>
       <Hideout id="hideout_mountain_5" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_mountain_6" name="{=Settlements.Settlement.name.hideout_mountain_6}Hideout" type="Hideout" posX="1323.845" posY="832.088" culture="Culture.mountain_bandits">
+    <Components>
+      <Hideout id="hideout_mountain_6" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_mountain_7" name="{=Settlements.Settlement.name.hideout_mountain_7}Hideout" type="Hideout" posX="1325.221" posY="888.1429" culture="Culture.mountain_bandits">
+    <Components>
+      <Hideout id="hideout_mountain_7" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_mountain_8" name="{=Settlements.Settlement.name.hideout_mountain_8}Hideout" type="Hideout" posX="1418.294" posY="785.78" culture="Culture.mountain_bandits">
+    <Components>
+      <Hideout id="hideout_mountain_8" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
+    </Components>
+  </Settlement>
+  <Settlement id="hideout_mountain_9" name="{=Settlements.Settlement.name.hideout_mountain_9}Hideout" type="Hideout" posX="1349.293" posY="740.837" culture="Culture.mountain_bandits">
+    <Components>
+      <Hideout id="hideout_mountain_9" map_icon="bandit_hideout_c" scene_name="forest_hideout_003" background_crop_position="0.0" background_mesh="empire_twn_scene_bg" wait_mesh="wait_hideout_mountain" gate_rotation="0.0" />
     </Components>
   </Settlement>
 </Settlements>

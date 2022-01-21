@@ -1,20 +1,18 @@
 ﻿using System;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
-using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.Crosshairs;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
-        private bool isMainAgentChecked;
+        private bool _isMainAgentChecked;
         private bool _isActive;
         private Crosshair _weaponCrosshair;
         private AbilityCrosshair _abilityCrosshair;
@@ -22,16 +20,11 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnMissionScreenTick(float dt)
         {
-            New();
-        }
-
-        private void New()
-        {
             if (CanUseCrosshair())
             {
-                if (!isMainAgentChecked)
+                if (!_isMainAgentChecked)
                 {
-                    isMainAgentChecked = true;
+                    _isMainAgentChecked = true;
                     if ((_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
                     {
                         _abilityComponent.CurrentAbilityChanged += (crosshair) =>
@@ -76,45 +69,10 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                     }
                 }
             }
-        }
-
-        private void Old()
-        {
-            if (CanUseCrosshair())
-            {
-                if (!isMainAgentChecked)
-                {
-                    isMainAgentChecked = true;
-                    if ((_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
-                    {
-                        _abilityComponent.CurrentAbilityChanged += (crosshair) =>
-                        {
-                            if (_abilityCrosshair != null)
-                            {
-                                _abilityCrosshair.Hide();
-                            }
-                            _abilityCrosshair = crosshair;
-                        };
-                        _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
-                    }
-                }
-                else
-                {
-                    if (_abilityCrosshair != null)
-                    {
-                        _abilityCrosshair.Hide();
-                    }
-                    _weaponCrosshair.Tick();
-                    UpdateWeaponCrosshairVisibility();
-                }
-            }
             else
             {
-                if (_abilityCrosshair != null)
-                {
-                    _abilityCrosshair.Hide();
-                }
-                _weaponCrosshair.Hide();
+                _weaponCrosshair?.Hide();
+                _abilityCrosshair?.Hide();
             }
         }
 
@@ -160,36 +118,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _isActive = false;
         }
 
-        private void UpdateAbilityCrosshairVisibility()
-        {
-            if (_abilityCrosshair == null)
-            {
-                if (_abilityComponent.CurrentAbility.Crosshair != null)
-                {
-                    _abilityCrosshair = _abilityComponent.CurrentAbility.Crosshair;
-                }
-            }
-            else
-            {
-                if (!_abilityComponent.CurrentAbility.CanCast(Agent.Main))
-                {
-                    _abilityCrosshair.Hide();
-                }
-                else
-                {
-                    if (_abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())
-                    {
-                        _abilityCrosshair.Tick();
-                        _abilityCrosshair.Show();
-                    }
-                    else
-                    {
-                        _abilityCrosshair.Hide();
-                    }
-                }
-            }
-        }
-
         private bool IsRightAngleToCast()
         {
             if (Agent.Main.HasMount)
@@ -207,24 +135,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             {
                 return true;
             }
-        }
-
-        private void UpdateWeaponCrosshairVisibility()
-        {
-            if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-            {
-                //&& Agent.Main.WieldedWeapon.Item.Name.Contains("scope")
-                if (Mission.GetMainAgentMaxCameraZoom() > 1)
-                {
-                    _weaponCrosshair.Hide();
-                }
-                else if (BannerlordConfig.DisplayTargetingReticule)
-                {
-                    _weaponCrosshair.Show();
-                }
-                return;
-            }
-            _weaponCrosshair.Hide();
         }
 
         public override void OnPhotoModeActivated()

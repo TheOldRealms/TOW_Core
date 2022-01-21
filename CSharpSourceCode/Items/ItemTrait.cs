@@ -34,10 +34,6 @@ namespace TOW_Core.Items
         [XmlAttribute]
         public string ParticlePrefab { get; set; } = "invalid";
         [XmlAttribute]
-        public float ParticlesStartOffset { get; set; }
-        [XmlAttribute]
-        public float ParticlesEndOffset { get; set; }
-        [XmlAttribute]
-        public int NumberOfParticleSystems { get; set; }
+        public bool IsUniqueSingleCopy { get; set; } = false;
     }
 }

@@ -15,7 +15,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             var result = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
             if (result == null) result = ExtendedItemObjectProperties.CreateDefault(item.StringId);
-            return result.Traits;
+            return result.Traits.ToList();
         }
 
         public static List<ItemTrait> GetTraits(this ItemObject item, Agent agent)
@@ -39,7 +39,7 @@ namespace TOW_Core.Utilities.Extensions
 
         public static ExtendedItemObjectProperties GetTorSpecificData(this ItemObject item, Agent agent)
         {
-            var result = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
+            var result = item.GetTorSpecificData();
             if (result == null) result = ExtendedItemObjectProperties.CreateDefault(item.StringId);
             var comp = agent.GetComponent<ItemTraitAgentComponent>();
             if(comp != null)
