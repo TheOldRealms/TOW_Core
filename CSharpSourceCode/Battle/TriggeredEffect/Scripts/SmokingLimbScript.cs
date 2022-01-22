@@ -1,5 +1,7 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Engine;
+using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
@@ -7,12 +9,16 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     {
         private float _liveTime = 0;
         private float _endTime = 0;
-        private ParticleSystem _smokeParticles;
-        private object _locker = new object();
+        private GameEntity _smoke;
 
         protected override void OnInit()
         {
-            _endTime = MBRandom.RandomFloatRanged(12, 20);
+            MatrixFrame frame = MatrixFrame.Identity;
+            _smoke = GameEntity.CreateEmpty(Scene);
+            _smoke.SetFrame(ref frame);
+            ParticleSystem.CreateParticleSystemAttachedToEntity("psys_burnt_limb_smoke", _smoke, ref frame);
+            GameEntity.AddChild(_smoke);
+            _endTime = MBRandom.RandomFloatRanged(10, 15);
             SetScriptComponentToTick(TickRequirement.Tick);
         }
 
@@ -24,20 +30,9 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             }
             else
             {
-                _smokeParticles?.SetEnable(false);
+                GameEntity.RemoveAllChildren();
+                _smoke.FadeOut(0.5f, true);
                 SetScriptComponentToTick(TickRequirement.None);
-            }
-        }
-
-        protected override void OnPhysicsCollision(ref PhysicsContact contact)
-        {
-            if (_smokeParticles == null)
-            {
-                lock (_locker)
-                {
-                    var frame = GameEntity.GetFrame();
-                    _smokeParticles = ParticleSystem.CreateParticleSystemAttachedToEntity("psys_game_burning_jar_trail", GameEntity, ref frame);
-                }
             }
         }
     }

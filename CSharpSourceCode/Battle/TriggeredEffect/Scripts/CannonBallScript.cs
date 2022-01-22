@@ -12,7 +12,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private Agent _shooterAgent;
         private TriggeredEffect _explsion;
         private int _damage = 150;
-        private float _explosionRadius = 20;
+        private float _explosionRadius = 10;
 
         protected override void OnInit()
         {
@@ -52,10 +52,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                         agent.Disappear();
                         var position = agent.Frame.Elevate(1).origin;
                         LaunchLimb(position, "musical_instrument_harp");
-                        //LaunchLimb(position, "musical_instrument_harp");
-                        //LaunchLimb(position, "musical_instrument_harp");
-                        //LaunchLimb(position, "musical_instrument_harp");
-                        //LaunchLimb(position, "musical_instrument_harp");
+                        LaunchLimb(position, "musical_instrument_harp");
+                        LaunchLimb(position, "musical_instrument_harp");
+                        LaunchLimb(position, "musical_instrument_harp");
+                        LaunchLimb(position, "musical_instrument_harp");
                     }
                 }
             }
@@ -77,7 +77,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         {
             var x = MBRandom.RandomFloatRanged(-3, 3);
             var y = MBRandom.RandomFloatRanged(-3, 3);
-            return new Vec3(x, y, 3);
+            return new Vec3(x, y, 2);
         }
     }
 }
