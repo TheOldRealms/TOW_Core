@@ -383,7 +383,15 @@ namespace TOW_Core.CampaignSupport
             }
 
             Hero hero = HeroCreator.CreateSpecialHero(companionTemplate, settlement2, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-            if (companionTemplate.IsVampire())
+            foreach(var attribute in companionTemplate.GetAttributes())
+            {
+                if(!hero.HasAttribute(attribute)) hero.AddAttribute(attribute);
+            }
+            foreach(var ability in companionTemplate.GetAbilities())
+            {
+                if(!hero.HasAbility(ability)) hero.AddAbility(ability);
+            }
+            if(companionTemplate.IsVampire() && !hero.IsVampire())
             {
                 hero.AddAttribute("VampireBodyOverride");
             }
