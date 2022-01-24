@@ -107,10 +107,13 @@ namespace TOW_Core.CampaignSupport
             }
 
             Hero wanderer = _companions.GetRandomElementWithPredicate((Hero h) => h.IsSuitableForSettlement(settlement));
-            wanderer.ChangeState(Hero.CharacterStates.Active);
-            EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
-            _companionSettlements.Add(settlement, CampaignTime.Now);
-            _companions.Remove(wanderer);
+            if(wanderer != null)
+            {
+                wanderer.ChangeState(Hero.CharacterStates.Active);
+                EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                _companionSettlements.Add(settlement, CampaignTime.Now);
+                _companions.Remove(wanderer);
+            }
         }
 
         private void OnGameEarlyLoaded(CampaignGameStarter obj)
@@ -236,15 +239,10 @@ namespace TOW_Core.CampaignSupport
             }
 
             int count = _companionTemplates.Count;
-            float num = MathF.Clamp(25f / (float)count, 0.33f, 1f);
             foreach (CharacterObject companionTemplate in _companionTemplates)
             {
-                if (MBRandom.RandomFloat < num)
-                {
-                    CreateCompanion(companionTemplate);
-                }
+                CreateCompanion(companionTemplate);
             }
-
             _companions.Shuffle();
         }
 
