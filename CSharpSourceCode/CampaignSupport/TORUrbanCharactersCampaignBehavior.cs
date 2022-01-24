@@ -352,7 +352,7 @@ namespace TOW_Core.CampaignSupport
         {
             if (companionTemplate == null)
             {
-                Debug.FailedAssert("companion template is null", "C:\\Develop\\mb3\\Source\\Bannerlord\\TaleWorlds.CampaignSystem\\SandBox\\CampaignBehaviors\\UrbanCharactersCampaignBehavior.cs", "CreateCompanion", 745);
+                Utilities.TOWCommon.Log("Create companion failed. Companion template is null.", NLog.LogLevel.Error);
                 return;
             }
 
