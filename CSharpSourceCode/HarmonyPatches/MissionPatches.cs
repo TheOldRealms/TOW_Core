@@ -44,21 +44,6 @@ public static class MissionPatches
 
     private static Monster GetCustomMonster(string name)
     {
-        Monster monster = null;
-        var xmlDoc = new XmlDocument();
-        xmlDoc.Load(ModuleHelper.GetModuleFullPath("TOW_Core") + "ModuleData/tor_monsters.xml");
-        var children = xmlDoc.ChildNodes.Item(1).ChildNodes;
-        for (int i = 0; i < children.Count; i++)
-        {
-            var child = children[i];
-            var id = child.Attributes.GetNamedItem("id").Value;
-            if (id == name)
-            {
-                monster = new Monster();
-                monster.Deserialize(MBObjectManager.Instance, child);
-                break;
-            }
-        }
-        return monster;
+        return MBObjectManager.Instance.GetObject<Monster>(name);
     }
 }

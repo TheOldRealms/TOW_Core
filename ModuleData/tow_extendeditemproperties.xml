@@ -87,6 +87,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_bright_wizard_001">
     <Traits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_001">
+    <Traits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pigface_bascinet_001">
     <Traits />
   </ExtendedItemObjectProperties>
@@ -210,7 +213,7 @@
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_head_helm_general_001">
     <Traits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_halberdier_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_halberdier_001">
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_worn_001">
@@ -435,6 +438,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_swadian_cuirass_002">
     <Traits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_cannon_crew_001">
+    <Traits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_body_skeleton_hideskin">
     <Traits />
   </ExtendedItemObjectProperties>
@@ -546,6 +552,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_witch_hunter_001">
     <Traits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_cannon_crew_001">
+    <Traits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_skeleton_warrior_001">
     <Traits />
   </ExtendedItemObjectProperties>
@@ -586,9 +595,6 @@
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tiliean_arm_gauntlet_knight_002">
-    <Traits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_statetroop_001">
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_free_company_001">
@@ -664,6 +670,9 @@
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_plate_002">
+    <Traits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_cannon_crew_001">
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_001">
@@ -742,12 +751,7 @@
     <Traits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_001">
-    <Traits>
-      <ItemTrait ItemTraitName="Magic Sword" OnHitScriptName="none" ImbuedStatusEffectId="fireball_dot">
-        <ItemTraitDescription>Runefang. It deals magic damage and applies the burning damage over time effect.</ItemTraitDescription>
-        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
-      </ItemTrait>
-    </Traits>
+    <Traits />
     <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_002">
@@ -938,15 +942,31 @@
     <Traits />
     <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
-  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_huss">
     <Traits />
     <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_001">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_002">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_003">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_004">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_mace_nurgle_001">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_002">
     <Traits />
     <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
   </ExtendedItemObjectProperties>
@@ -1159,6 +1179,10 @@
     <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_banner_003">
+    <Traits />
+    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_banner_001">
     <Traits />
     <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
   </ExtendedItemObjectProperties>
