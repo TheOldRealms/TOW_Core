@@ -70,6 +70,7 @@ namespace TOW_Core.HarmonyPatches
                 //Ideally this should not be hardcoded. Maybe create a custombattlecultures xml template and load that?
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("empire"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("khuzait"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("chaos_culture"));
             }
             catch (Exception e)
             {
