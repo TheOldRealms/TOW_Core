@@ -122,7 +122,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_wanderer_vampire_1" default_group="infantry" name="{=str_ tor_wanderer_vampire_1}{HERO.FIRSTNAME} Vampire" occupation="Wanderer" culture="Culture.khuzait" voice="curt" age="19" is_template="true" is_hero="false">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
       <hair_tags>
         <hair_tag name="ShortAndThin" />
       </hair_tags>
