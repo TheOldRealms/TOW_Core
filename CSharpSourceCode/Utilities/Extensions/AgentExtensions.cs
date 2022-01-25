@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,10 +81,11 @@ namespace TOW_Core.Utilities.Extensions
             float amplifier=0f;
             float wardSave=0f;
             var damageType = DamageType.Physical;
-            
+
+            #region Unit
+
             if (!agent.IsHero)
             {
-                //unit attributes
                 if (flag ==PropertyFlag.Attack|| flag== PropertyFlag.All)
                 {
                     var offenseProperties = agent.Character.GetAttackProperties();
@@ -115,9 +116,8 @@ namespace TOW_Core.Utilities.Extensions
                     StatusEffectComponent.EffectAggregate effectAggregate = agent.GetComponent<StatusEffectComponent>().GetEffectAggregate();
                     wardSave += effectAggregate.WardSaveFactor;
                 }
-                if(flag == PropertyFlag.Defense|| flag== PropertyFlag.All)
+                if(flag == PropertyFlag.Defense|| flag== PropertyFlag.All)      
                 {
-                    var defensiveProperties = agent.Character.GetDefenseProperties();
                     //unit attributes
                     var defenseProperties = agent.Character.GetDefenseProperties();
                 
@@ -140,59 +140,61 @@ namespace TOW_Core.Utilities.Extensions
                     }
                 }
             }
+            #endregion
+            
+            #region Character
+             
             else
             {
                 if (flag ==PropertyFlag.Attack|| flag== PropertyFlag.All)
                 {
-                     //Hero item level attributes 
+                    //Hero item level attributes 
 
-                 List<ItemTrait> itemTraits= new List<ItemTrait>();
-                 List<ItemObject> items;
+                    List<ItemTrait> itemTraits= new List<ItemTrait>();
+                    List<ItemObject> items;
 
-                 // get all equipment Pieces
+                    // get all equipment Pieces
 
-                 items = agent.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
-                 foreach (var item in items)
-                 {
-                     if(item.HasTrait())
-                         itemTraits.AddRange(item.GetTraits());
-                    
-                     itemTraits.AddRange(agent.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
-                 }
+                    items = agent.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
+                    foreach (var item in items)
+                    {
+                        if(item.HasTrait())
+                            itemTraits.AddRange(item.GetTraits(agent));
+                    }
 
-                 foreach (var itemTrait in itemTraits)
-                 {
-                     var property = itemTrait.OffenseProperty;
-                     if(property==null) 
-                         continue;
-                     armorPenetration += property.ArmorPenetration;
-                     damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
-                 }
+                    foreach (var itemTrait in itemTraits)
+                    {
+                        var property = itemTrait.OffenseProperty;
+                        if(property==null) 
+                            continue;
+                        armorPenetration += property.ArmorPenetration;
+                        damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
+                    }
                 
-                 //weapon properties
-                 if (agent.WieldedWeapon.Item != null)
-                 {
-                     var weaponProperty = agent.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
-                     if (weaponProperty != null)
-                     {
-                         damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
-                         damageType = weaponProperty.DamageType;
-                         // chose damage type depending on dominant override type 
-                         if (weaponProperty.DamageType == DamageType.Physical)
-                         {
-                             damageType = DamageType.Physical; 
-                             var maximum = 0f;
-                             for (int i = 1; i < 5; i++)
-                             {
-                                 if (maximum < damagePercentages[i])
-                                 {
-                                     maximum = damagePercentages[i];
-                                     damageType = (DamageType) i;
-                                 }
-                             }
-                         }
-                     }
-                 }
+                    //weapon properties
+                    if (agent.WieldedWeapon.Item != null)
+                    {
+                        var weaponProperty = agent.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
+                        if (weaponProperty != null)
+                        {
+                            damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
+                            damageType = weaponProperty.DamageType;
+                            // chose damage type depending on dominant override type 
+                            if (weaponProperty.DamageType == DamageType.Physical)
+                            {
+                                damageType = DamageType.Physical; 
+                                var maximum = 0f;
+                                for (int i = 1; i < 5; i++)
+                                {
+                                    if (maximum < damagePercentages[i])
+                                    {
+                                        maximum = damagePercentages[i];
+                                        damageType = (DamageType) i;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 if( flag == PropertyFlag.Defense|| flag== PropertyFlag.All)
                 {
@@ -207,9 +209,7 @@ namespace TOW_Core.Utilities.Extensions
                     foreach (var item in items)
                     {
                         if(item.HasTrait())
-                            itemTraits.AddRange(item.GetTraits());
-                    
-                        itemTraits.AddRange(agent.GetComponent<ItemTraitAgentComponent>().GetDynamicTraits(item));
+                            itemTraits.AddRange(item.GetTraits(agent));
                     }
 
                     foreach (var itemTrait in itemTraits)
@@ -220,8 +220,7 @@ namespace TOW_Core.Utilities.Extensions
                     
                         resistancePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
                     }
-                
-                
+                    
                     //add temporary effects like buffs to defenese bonuses
                     List<ItemTrait> dynamicTraits = agent.GetComponent<ItemTraitAgentComponent>()
                         .GetDynamicTraits(agent.WieldedWeapon.Item);
@@ -235,8 +234,10 @@ namespace TOW_Core.Utilities.Extensions
                         }
                     }
                 }
+                
+              
             }
-
+            #endregion
 
             return new AgentPropertyContainer(damagePercentages, resistancePercentages, (int)armorPenetration, amplifier, wardSave, damageType);
             
