@@ -11,6 +11,9 @@ namespace TOW_Core.Battle.Damage
         Invalid,
         Physical,
         Magical,
-        Fire
+        Fire,
+        Holy,
+        Lightning,
+        All
     }
 }

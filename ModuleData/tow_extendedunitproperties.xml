@@ -5,252 +5,369 @@
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_recruit">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_state_troop">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_swordsman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_spearman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_armored_spearman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_veteran_swordsman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_halberdier">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties>
-      <OffenseProperty ArmorPenetration="25" />
-    </OffensiveProperties>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_greatsword">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties>
-      <OffenseProperty ArmorPenetration="25" />
-    </OffensiveProperties>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pikeman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_sergeant">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_scout">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_archer">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_skirmisher">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_handgunner">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_crossbowman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_longbowman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_huntsman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_marksman_crossbowman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_marksman_handgunner">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_young_noble_squire">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_noble_cavalry">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_reiksguard_knight">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_reiksguard_preceptor">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_innercircle_knight">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_demigryph_knight">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_valiant_outrider">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_reiksguard_preceptor_innercircle">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_demigryph_innercircle">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_caravan_captain">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_caravan_guard">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_caravan_vetguard">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_caravan_ranged">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_villager">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_empire_recruit">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_empire_state_troop">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_empire_archer">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_summoned_skeleton" VoiceClassName="skeleton">
     <Abilities />
@@ -258,8 +375,13 @@
       <string>Undead</string>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton" VoiceClassName="skeleton">
     <Abilities />
@@ -267,8 +389,13 @@
       <string>Undead</string>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_swordsman" VoiceClassName="skeleton">
     <Abilities />
@@ -276,8 +403,13 @@
       <string>Undead</string>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_spearman" VoiceClassName="skeleton">
     <Abilities />
@@ -285,130 +417,206 @@
       <string>Undead</string>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_champion" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_crypt_guard" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_spirit_host" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard_seneschal" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_cairn_wraith" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="Resistance" ReductionPercent="75" ResistedDamageType="Physical" />
-    </DefensiveProperties>
-    <OffensiveProperties>
-      <OffenseProperty DefaultDamageTypeOverride="Magical" />
-    </OffensiveProperties>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_crypt_wraith" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_guard" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hex_wraith" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="Resistance" ReductionPercent="75" ResistedDamageType="Physical" />
-    </DefensiveProperties>
-    <OffensiveProperties>
-      <OffenseProperty DefaultDamageTypeOverride="Magical" />
-    </OffensiveProperties>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_black_knight" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hell_knight" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
-      <string>VampireBodyOverride</string>
+      <string>Undead</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="WardSave" ReductionPercent="5" />
-    </DefensiveProperties>
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.05" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hell_wraith" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="WardSave" ReductionPercent="5" />
-    </DefensiveProperties>
-    <OffensiveProperties />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_vampire_newblood">
     <Abilities />
     <Attributes>
       <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein">
     <Abilities />
     <Attributes>
       <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_sister">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_blood_knight">
     <Abilities />
@@ -416,14 +624,20 @@
       <string>VampireBodyOverride</string>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_noblewoman">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_templar">
     <Abilities />
@@ -431,14 +645,22 @@
       <string>VampireBodyOverride</string>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_countess">
     <Abilities />
-    <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_kastelan">
     <Abilities />
@@ -446,190 +668,245 @@
       <string>VampireBodyOverride</string>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_captain">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_guard">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_ranged">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_nurgle_warrior">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_nurgle_warrior_002">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_nurgle_warrior_003">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_chosen">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_khorne_warrior">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_braganza_01">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_cursed_01" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_leopard_01">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_voland_01">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_miragliano_01">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_ricco_01">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_cult_acolyte">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_cult_darksoul">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_cult_magister">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outlaw">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outlaw_leader">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
-  </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_empire_secessionist_spearman">
-    <Abilities />
-    <Attributes>
-      <string>Expendable</string>
-    </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_secessionist_swordsman">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_secessionist_sergeant">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_secessionist_hunter">
     <Abilities />
     <Attributes>
       <string>Expendable</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_factionleader">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_factionleader">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_moot_factionleader">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_1">
     <Abilities>
@@ -641,92 +918,62 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_4">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_oberaverlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_oberaverlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_1">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_4">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_1">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_4">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_kobs_1">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_sigmarcult_1">
     <Abilities>
@@ -735,8 +982,6 @@
     <Attributes>
       <string>AbilityUser</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_sigmarcult_2">
     <Abilities>
@@ -745,8 +990,6 @@
     <Attributes>
       <string>AbilityUser</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_sigmarcult_3">
     <Abilities>
@@ -755,8 +998,6 @@
     <Attributes>
       <string>AbilityUser</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_sigmarcult_4">
     <Abilities>
@@ -765,56 +1006,38 @@
     <Attributes>
       <string>AbilityUser</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_mittelstirlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_mittelstirlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_1">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_1">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_3">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_factionleader">
     <Abilities>
@@ -825,11 +1048,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_2">
     <Abilities>
@@ -840,11 +1060,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_3">
     <Abilities>
@@ -854,8 +1071,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_4">
     <Abilities>
@@ -866,11 +1081,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_5">
     <Abilities>
@@ -881,11 +1093,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_6">
     <Abilities>
@@ -896,11 +1105,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_1">
     <Abilities>
@@ -913,8 +1119,6 @@
       <string>SpellCaster</string>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_2">
     <Abilities>
@@ -927,8 +1131,6 @@
       <string>SpellCaster</string>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_3">
     <Abilities>
@@ -941,8 +1143,6 @@
       <string>SpellCaster</string>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_4">
     <Abilities>
@@ -955,8 +1155,6 @@
       <string>SpellCaster</string>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_5">
     <Abilities>
@@ -969,8 +1167,6 @@
       <string>SpellCaster</string>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_1">
     <Abilities>
@@ -981,11 +1177,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_2">
     <Abilities>
@@ -996,11 +1189,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_3">
     <Abilities>
@@ -1011,11 +1201,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_4">
     <Abilities>
@@ -1026,11 +1213,8 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_lord_factionleader">
     <Abilities>
@@ -1040,48 +1224,30 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="WardSave" ReductionPercent="20" />
-    </DefensiveProperties>
-    <OffensiveProperties>
-      <OffenseProperty DefaultDamageTypeOverride="Fire" BonusDamagePercent="20" ArmorPenetration="50" />
-    </OffensiveProperties>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_braganza">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_cursed">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_leopard">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_voland">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_miragliano">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_ricco">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
@@ -1093,8 +1259,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wizard_lord">
     <Abilities>
@@ -1106,8 +1270,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
@@ -1120,8 +1282,6 @@
       <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_necromancer_lord">
     <Abilities>
@@ -1131,8 +1291,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_0">
     <Abilities>
@@ -1142,12 +1300,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="Resistance" ReductionPercent="25" ResistedDamageType="Fire" />
-    </DefensiveProperties>
-    <OffensiveProperties>
-      <OffenseProperty DefaultDamageTypeOverride="Fire" BonusDamagePercent="25" />
-    </OffensiveProperties>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_1">
     <Abilities>
@@ -1156,14 +1308,10 @@
     <Attributes>
       <string>AbilityUser</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_2">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_3">
     <Abilities>
@@ -1173,14 +1321,10 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_4">
     <Abilities />
     <Attributes />
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_0">
     <Abilities>
@@ -1190,8 +1334,6 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
-    <DefensiveProperties />
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_1">
     <Abilities>
@@ -1203,21 +1345,11 @@
       <string>Undead</string>
       <string>VampireBodyOverride</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="WardSave" ReductionPercent="5" />
-    </DefensiveProperties>
-    <OffensiveProperties />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_2" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
       <string>Undead</string>
     </Attributes>
-    <DefensiveProperties>
-      <DefenseProperty DefenseType="Resistance" ReductionPercent="25" ResistedDamageType="Physical" />
-    </DefensiveProperties>
-    <OffensiveProperties>
-      <OffenseProperty ArmorPenetration="20" />
-    </OffensiveProperties>
   </CharacterExtendedInfo>
 </ArrayOfCharacterExtendedInfo>
