@@ -19,21 +19,18 @@
     <skills></skills>
     <Equipments>
       <EquipmentRoster>
-        <equipment slot="Body" id="Item.statetroop_uniform_001_body" />
-        <equipment slot="Leg" id="Item.battania_leather_boots" />
-        <equipment slot="Head" id="Item.empire_halberdier_hat_001" />
-        <equipment slot="Cape" id="Item.scarf" />
+        <equipment slot="Body" id="Item.tied_cloth_tunic" />
+        <equipment slot="Leg" id="Item.steppe_leather_boots" />
+        <equipment slot="Head" id="Item.tor_empire_head_helm_hunter_001" />
       </EquipmentRoster>
       <EquipmentRoster civilian="true">
-        <equipment slot="Body" id="Item.statetroop_uniform_002_body" />
-        <equipment slot="Leg" id="Item.battania_leather_boots" />
-        <equipment slot="Head" id="Item.leather_cap" />
+        <equipment slot="Body" id="Item.leather_coat_over_cloth" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.tor_empire_head_hat_woodsman_001" />
       </EquipmentRoster>
       <EquipmentRoster civilian="true">
-        <equipment slot="Body" id="Item.statetroop_uniform_003_body" />
-        <equipment slot="Leg" id="Item.battania_leather_boots" />
-        <equipment slot="Head" id="Item.thinhide_coif" />
-        <equipment slot="Cape" id="Item.battania_woodland_cloak" />
+        <equipment slot="Body" id="Item.sackcloth_tunic" />
+        <equipment slot="Leg" id="Item.Item.wrapped_shoes" />
       </EquipmentRoster>
     </Equipments>
   </NPCCharacter>

@@ -115,9 +115,8 @@
 	</MBPartyTemplate>
 	<MBPartyTemplate id="empire_secessionists" >
 		<stacks>
-		  <PartyTemplateStack min_value="6" max_value="30" troop="NPCCharacter.tor_empire_secessionist_spearman" />
-		  <PartyTemplateStack min_value="2" max_value="20" troop="NPCCharacter.tor_empire_secessionist_swordsman" />
-		  <PartyTemplateStack min_value="1" max_value="10" troop="NPCCharacter.tor_empire_secessionist_hunter" />
+		  <PartyTemplateStack min_value="2" max_value="30" troop="NPCCharacter.tor_empire_secessionist_swordsman" />
+		  <PartyTemplateStack min_value="1" max_value="20" troop="NPCCharacter.tor_empire_secessionist_hunter" />
 		  <PartyTemplateStack min_value="1" max_value="4" troop="NPCCharacter.tor_empire_secessionist_sergeant" />
 		</stacks>
 	</MBPartyTemplate>

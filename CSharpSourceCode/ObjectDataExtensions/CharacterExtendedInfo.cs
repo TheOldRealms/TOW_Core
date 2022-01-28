@@ -27,58 +27,39 @@ namespace TOW_Core.ObjectDataExtensions
         public List<string> Abilities = new List<string>();
         [XmlArray("Attributes")]
         public List<string> CharacterAttributes = new List<string>();
-        [XmlArray("DefensiveProperties")]
-        public List<DefenseProperty> Defense = new List<DefenseProperty>();
-        [XmlArray("OffensiveProperties")]
-        public List<OffenseProperty> Offense = new List<OffenseProperty>();
-
-        public static void WriteToXml(List<CharacterExtendedInfo> infosToWrite)
-        {
-            if(infosToWrite != null)
-            {
-                try
-                {
-                    var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_extendedunitproperties.xml");
-                    var ser = new XmlSerializer(typeof(List<CharacterExtendedInfo>));
-                    var stream = File.OpenWrite(path);
-                    ser.Serialize(stream, infosToWrite);
-                    stream.Close();
-                }
-                catch (Exception e)
-                {
-                    throw e; //TODO handle this more gracefully.
-                }
-            }
-        }
+        [XmlArray("DamageProportions")]
+        public List<DamageProportionTuple> DamageProportions = new List<DamageProportionTuple>();
+        [XmlArray("Resistances")]
+        public List<ResistanceTuple> Resistances = new List<ResistanceTuple>();
+        [XmlArray("DamageAmplifiers")]
+        public List<AmplifierTuple> DamageAmplifiers = new List<AmplifierTuple>();
     }
 
     [Serializable]
-    public class DefenseProperty
+    public class ResistanceTuple
     {
         [XmlAttribute]
         public DamageType ResistedDamageType = DamageType.Invalid;
         [XmlAttribute]
-        public DefenseType DefenseType = DefenseType.None;
-        [XmlAttribute]
         public float ReductionPercent = 0;
     }
 
-    public enum DefenseType
+    [Serializable]
+    public class AmplifierTuple
     {
-        None,
-        WardSave,
-        Resistance
+        [XmlAttribute]
+        public DamageType AmplifiedDamageType = DamageType.Invalid;
+        [XmlAttribute]
+        public float DamageAmplifier = 0;
     }
 
     [Serializable]
-    public class OffenseProperty
+    public class DamageProportionTuple
     {
         [XmlAttribute]
-        public DamageType DefaultDamageTypeOverride = DamageType.Physical;  // todo name is missleading
+        public DamageType DamageType = DamageType.Physical;
         [XmlAttribute]
-        public float BonusDamagePercent = 0;    //todo remove Bonus
-        [XmlAttribute]
-        public float ArmorPenetration = 0;
+        public float Percent = 1;
     }
 
 

@@ -164,11 +164,6 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 switch (effect.Template.Type)
                 {
-                    case StatusEffectTemplate.EffectType.Armor:
-                        FlatArmorEffect += effect.Template.FlatArmorEffect;
-                        PercentageArmorEffect += effect.Template.PercentageArmorEffect;
-                        WardSaveFactor += effect.Template.WardSaveFactor;
-                        break;
                     case StatusEffectTemplate.EffectType.DamageOverTime:
                         DamageOverTime += effect.Template.DamageOverTime;
                         break;

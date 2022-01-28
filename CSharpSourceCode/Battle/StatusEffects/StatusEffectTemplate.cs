@@ -19,22 +19,15 @@ namespace TOW_Core.Battle.StatusEffects
         public ParticleIntensity ParticleIntensity { get; set; }
         [XmlAttribute("health_over_time")]
         public float HealthOverTime { get; set; } = 0;
-        [XmlAttribute("ward_save_factor")]
-        public float WardSaveFactor { get; set; } = 0;
-        [XmlAttribute("flat_armor_effect")]
-        public float FlatArmorEffect { get; set; } = 0;
-        [XmlAttribute("percentage_armor_effect")]
-        public float PercentageArmorEffect { get; set; } = 0;
-        [XmlAttribute("damage_over_time")]
-        public float DamageOverTime { get; set; } = 0;
         [XmlAttribute("duration")]
         public int BaseDuration { get; set; } = 0;
         [XmlAttribute("type")]
         public EffectType Type { get; set; } = EffectType.Invalid;
+        [XmlAttribute("damage_over_time")]
+        public float DamageOverTime { get; set; } = 0;
 
         public enum EffectType
         {
-            Armor,
             HealthOverTime,
             DamageOverTime,
             Invalid

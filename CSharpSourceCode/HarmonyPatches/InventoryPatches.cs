@@ -34,12 +34,15 @@ namespace TOW_Core.HarmonyPatches
             var props = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
             if(props != null)
             {
-                if(props.ItemDamageProperty != null)
+                /*
+                if(props.DamageProportions != null && props.DamageProportions.Count > 0)
                 {
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("Damage Type", props.ItemDamageProperty.DamageType.ToString(), 0, GetColorForDamageType(props.ItemDamageProperty.DamageType), false));
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("(debug)MinDmg", props.ItemDamageProperty.MinDamage.ToString(), 0, Color.White, false));
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("(debug)MaxDmg", props.ItemDamageProperty.MaxDamage.ToString(), 0, Color.White, false));
+                    foreach(var p in props.DamageProportions)
+                    {
+                        __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM(p.DamageType.ToString(), "test", 0, GetColorForDamageType(p.DamageType), false));
+                    }
                 }
+                */
             }
         }
 

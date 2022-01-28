@@ -15,7 +15,7 @@ namespace TOW_Core.Utilities.Extensions
         {
             var result = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
             if (result == null) result = ExtendedItemObjectProperties.CreateDefault(item.StringId);
-            return result.Traits.ToList();
+            return result.ItemTraits.ToList();
         }
 
         public static List<ItemTrait> GetTraits(this ItemObject item, Agent agent)
@@ -44,7 +44,7 @@ namespace TOW_Core.Utilities.Extensions
             var comp = agent.GetComponent<ItemTraitAgentComponent>();
             if(comp != null)
             {
-                result.Traits.AddRange(comp.GetDynamicTraits(item));
+                result.ItemTraits.AddRange(comp.GetDynamicTraits(item));
             }
             return result;
         }

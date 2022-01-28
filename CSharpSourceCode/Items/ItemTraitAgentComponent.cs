@@ -135,7 +135,7 @@ namespace TOW_Core.Items
                 var info = weapon.Item.GetTorSpecificData(Agent);
                 if (info != null)
                 {
-                    var traitsWithParticles = info.Traits.FindAll(x => x.WeaponParticlePreset != null && x.WeaponParticlePreset.ParticlePrefab != "invalid" && x.WeaponParticlePreset.ParticlePrefab != "none");
+                    var traitsWithParticles = info.ItemTraits.FindAll(x => x.WeaponParticlePreset != null && x.WeaponParticlePreset.ParticlePrefab != "invalid" && x.WeaponParticlePreset.ParticlePrefab != "none");
                     foreach (var trait in traitsWithParticles)
                     {
                         ApplyParticlePreset(trait.WeaponParticlePreset, weapon);

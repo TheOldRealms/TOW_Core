@@ -16,16 +16,15 @@ namespace TOW_Core.Items
         [XmlElement]
         public string ItemTraitDescription { get; set; }
         [XmlElement]
-        public DefenseProperty DefenseProperty { get; set; }
+        public ResistanceTuple ResistanceTuple { get; set; }
         [XmlElement]
-        public OffenseProperty OffenseProperty { get; set; }
+        public AmplifierTuple AmplifierTuple { get; set; }
         [XmlAttribute]
         public string OnHitScriptName { get; set; } = "none";
         [XmlAttribute]
         public string ImbuedStatusEffectId { get; set; } = "none";
         [XmlElement]
         public WeaponParticlePreset WeaponParticlePreset { get; set; }
-
     }
 
     [Serializable]
