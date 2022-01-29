@@ -204,6 +204,8 @@ namespace TOW_Core.ObjectDataExtensions
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
+            if(_characterInfos.Count > 0) _characterInfos.Clear();
+            if (_heroInfos.Count > 0) _heroInfos.Clear();
             TryLoadCharacters(out _characterInfos);
             InitializeHeroes();
             InitializeParties();

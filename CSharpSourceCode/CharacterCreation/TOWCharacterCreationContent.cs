@@ -14,6 +14,7 @@ using System.IO;
 using TaleWorlds.CampaignSystem.GameState;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
+using TaleWorlds.ObjectSystem;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -183,17 +184,17 @@ namespace TOW_Core.CharacterCreation
 
         private void OnOptionSelected(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation charInfo, string optionId)
         {
-            
             var selectedOption = _options.Find(x => x.Id == optionId);
             List<Equipment> list = new List<Equipment>();
             Equipment equipment = null;
             try
             {
-                equipment = Game.Current.ObjectManager.GetObject<CharacterObject>(selectedOption.CharacterIdToCopyEquipmentFrom).Equipment;
+                equipment = MBObjectManager.Instance.GetObject<MBEquipmentRoster>(selectedOption.EquipmentSetId).DefaultEquipment;
+                if(equipment == null) MBObjectManager.Instance.CreateObject<MBEquipmentRoster>(selectedOption.EquipmentSetId);
             }
             catch (NullReferenceException)
             {
-                TOW_Core.Utilities.TOWCommon.Log("Attempted to read characterobject " + selectedOption.CharacterIdToCopyEquipmentFrom + " in Character Creation, but no such entry exists in XML. Falling back to default.", NLog.LogLevel.Error);
+                TOW_Core.Utilities.TOWCommon.Log("Attempted to read characterobject " + selectedOption.EquipmentSetId + " in Character Creation, but no such entry exists in XML. Falling back to default.", NLog.LogLevel.Error);
                 throw;
             }
             if (equipment != null)

@@ -85,7 +85,13 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_bright_wizard_001">
-    <ItemTraits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_001">
     <ItemTraits />
@@ -298,7 +304,13 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_bright_wizard_001">
-    <ItemTraits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_001">
     <ItemTraits />
@@ -409,7 +421,13 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_bright_wizard_001">
-    <ItemTraits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_general_001">
     <ItemTraits />
@@ -529,7 +547,13 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_bright_wizard_001">
-    <ItemTraits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_light_wizard_001">
     <ItemTraits />
@@ -667,7 +691,13 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_bright_wizard_001">
-    <ItemTraits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_knight_001">
     <ItemTraits />
