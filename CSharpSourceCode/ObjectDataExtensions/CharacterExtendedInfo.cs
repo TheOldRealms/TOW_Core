@@ -65,14 +65,12 @@ namespace TOW_Core.ObjectDataExtensions
 
     public struct AgentPropertyContainer
     {
+        public float[] DamageProportions;
         public float[] DamagePercentages;
         public float[] ResistancePercentages;
-        public float Amplifier;
-        public float WardSave;
-        public DamageType DamageType;
 
         public AgentPropertyContainer(float physicalDamage, float fireDamage, float lightningDamage, float holyDamage, float magicDamage,
-         float phyiscalResistance, float fireResistance, float lightningResistance, float holyResistance, float magicResistance, float amplifier, float wardSave, DamageType damageType=DamageType.Physical)
+         float phyiscalResistance, float fireResistance, float lightningResistance, float holyResistance, float magicResistance)
         {
             DamagePercentages = new[]
             {
@@ -82,25 +80,15 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 phyiscalResistance, fireResistance, lightningResistance, holyResistance, magicResistance
             };
-            
-            Amplifier = amplifier;
-            WardSave = wardSave;
-            DamageType = damageType;
+            DamageProportions = new float[7];
         }
         
-        public AgentPropertyContainer(float[] damagePercentages, float[] resistancePercentages,
-            float amplfier, float wardSave, DamageType damageType=DamageType.Physical)
+        public AgentPropertyContainer(float[] damageProportions, float[] damagePercentages, float[] resistancePercentages, DamageType damageType=DamageType.Physical)
         {
+            DamageProportions = damageProportions;
             DamagePercentages = damagePercentages;
             ResistancePercentages = resistancePercentages;
-            Amplifier = amplfier;
-            WardSave = wardSave;
-            DamageType = damageType;
         }
-
-
-
-     
         
     }
     

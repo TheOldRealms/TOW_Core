@@ -78,10 +78,7 @@ namespace TOW_Core.Utilities.Extensions
             float[] damageProportions = new float[7];
             float[] damagePercentages = new float[7];
             float[] resistancePercentages = new float[7];
-            float amplifier=0f;
-            float wardSave=0f;
-            var damageType = DamageType.Physical;
-
+            
             #region Unit
 
             if (!agent.IsHero)
@@ -107,7 +104,6 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             damagePercentages[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
-                    
                     }
                     /*// status effects act on data, needs rework
                     StatusEffectComponent.EffectAggregate effectAggregate = agent.GetComponent<StatusEffectComponent>().GetEffectAggregate();
@@ -177,7 +173,6 @@ namespace TOW_Core.Utilities.Extensions
                             {
                                 damageProportions[(int)tuple.DamageType] = tuple.Percent;
                             }
-                            
                         }
                     }
                 }
@@ -187,7 +182,6 @@ namespace TOW_Core.Utilities.Extensions
 
                     List<ItemTrait> itemTraits= new List<ItemTrait>();
                     List<ItemObject> items;
-                    
                     
                     items = agent.Character.GetCharacterEquipment();
                     foreach (var item in items)
@@ -203,7 +197,6 @@ namespace TOW_Core.Utilities.Extensions
                         var defenseProperty = itemTrait.ResistanceTuple;
                         if(defenseProperty==null) 
                             continue;
-                    
                         resistancePercentages[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                     }
                     
@@ -220,12 +213,10 @@ namespace TOW_Core.Utilities.Extensions
                         }
                     }
                 }
-                
-              
             }
             #endregion
 
-            return new AgentPropertyContainer(damagePercentages, resistancePercentages, amplifier, wardSave, damageType);
+            return new AgentPropertyContainer(damageProportions, damagePercentages, resistancePercentages);
             
 
         }

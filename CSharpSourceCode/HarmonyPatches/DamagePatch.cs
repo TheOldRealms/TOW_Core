@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms.VisualStyles;
 using HarmonyLib;
@@ -44,114 +45,64 @@ namespace TOW_Core.HarmonyPatches
             }
 
             bool isSpell = false;
-
-            var additionalDamageType = DamageType.Physical;
-            var transformation = 0.5f;
+            
+            float[] damageCategories=new float[7];
 
             var attackerPropertyContainer = attacker.GetProperties(PropertyFlag.Attack);
             var victimPropertyContainer = victim.GetProperties(PropertyFlag.Defense);
 
             //attack properties;
+            var damageProportions = attackerPropertyContainer.DamageProportions;
             var damagePercentages = attackerPropertyContainer.DamagePercentages;
-            var damageAmplification = attackerPropertyContainer.Amplifier;
-            additionalDamageType = attackerPropertyContainer.DamageType;
             
             //defense properties
-            
             var resistancePercentages = victimPropertyContainer.ResistancePercentages;
-            var damageReduction = victimPropertyContainer.WardSave;
-
-
 
             if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
             {
                 //apply here spell properties
                 isSpell = true;
-                additionalDamageType = DamageType.Magical;
-                transformation = 1;
             }
             
-            float physical=b.InflictedDamage;
-            var nonPhysical = 0f;
-
             if (isSpell)
             {
+                //for now 100% converted to target type
                 var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index);
-
-                 nonPhysical =(int) physical;
-                additionalDamageType = DamageType.Magical;
-                transformation = 1;
-                damageAmplification = 1 + (damageAmplification - damageReduction);
-                b.InflictedDamage = (int)(damageAmplification * nonPhysical);
-                DisplaySpellDamageResult(spellInfo.SpellID,additionalDamageType,b.InflictedDamage,damagePercentages, nonPhysical);
+                int damageType = (int) spellInfo.DamageType;
+                damageCategories[damageType] = b.InflictedDamage;
+                damagePercentages[damageType] -= resistancePercentages[damageType];
+                damageCategories[damageType] *= 1 + damagePercentages[damageType];
+                b.InflictedDamage = (int)damageCategories[damageType];
+                DisplaySpellDamageResult(spellInfo.SpellID,spellInfo.DamageType,b.InflictedDamage,damagePercentages[damageType]);
                 return true;
             }
-            
-            var victimEquipment = victim.Character.Equipment;
-            float armor = 0f;
-            var bodyPart = b.VictimBodyPart;
-            switch (bodyPart)
-            {
-                case BoneBodyPartType.Abdomen:
-                case BoneBodyPartType.Chest:
-                    armor += victimEquipment.GetHumanBodyArmorSum();
-                    break;
-                case BoneBodyPartType.Head:
-                case BoneBodyPartType.Neck:
-                    armor += victimEquipment.GetHeadArmorSum();
-                    break;
-                case BoneBodyPartType.Legs:
-                    armor += victimEquipment.GetLegArmorSum();
-                    break;
-                case BoneBodyPartType.ArmLeft:
-                case BoneBodyPartType.ShoulderLeft:
-                case BoneBodyPartType.ArmRight:
-                case BoneBodyPartType.ShoulderRight:
-                    armor += victimEquipment.GetArmArmorSum();
-                    break;
-            }
-            
-            // damage is converted partly to the target non-physical damage type, rest resides physical
-                
-            if (additionalDamageType != DamageType.Physical)
-            {
-                nonPhysical = physical;
-                physical = transformation * physical;
-                nonPhysical -= physical;
-            }
-               
-                
-            //modifiers were calculated, by subtracting damage type percentage and resistance type percentage
-            damagePercentages[0]-= resistancePercentages[0];
-            damagePercentages[(int) additionalDamageType] -= resistancePercentages[(int) additionalDamageType];
-                
-                
-            //modify damage
-            physical *=1+  damagePercentages[0];
-            nonPhysical *=1+  damagePercentages[(int)additionalDamageType];
-                
-            //calculate general amplification and WardSave 
-            damageAmplification= 1 + damageAmplification - damageReduction;
-                
 
-            var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
+            var resultDamage = 0;
+            for (int i = 0; i < damageCategories.Length; i++)
+            {
+                damageCategories[i] = b.InflictedDamage * damageProportions[i];
 
-            DisplayDamageResult(additionalDamageType, nonPhysical, resultDamage, damagePercentages, physical);
+                if (damageCategories[i] > 0)
+                {
+                    damagePercentages[i] -= resistancePercentages[i];
+                    damageCategories[i] *=1+ damagePercentages[i];
+                    resultDamage +=(int) damageCategories[i];
+                }
+            }
+
+
+            DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
 
             b.InflictedDamage = resultDamage;
 
             return true;
-    
-
-            //defender information
-
-                //armor for penetration otherwise no use since the physical calculation has already taken place.
+            
         }
 
         private static void DisplaySpellDamageResult(string SpellName, DamageType additionalDamageType, 
-            int resultDamage, float[] damagePercentages, float nonPhysical)
+            int resultDamage, float damageAmplifier)
         {
-            var displaycolor = new Color();
+            var displaycolor = Color.White;
             string displayDamageType = "";
 
             switch (additionalDamageType)
@@ -178,59 +129,61 @@ namespace TOW_Core.HarmonyPatches
                     break;
             }
             
-            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied by "+SpellName+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damagePercentages[(int) additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied by "+SpellName+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damageAmplifier).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
         }
         
 
-        private static void DisplayDamageResult(DamageType additionalDamageType, float nonPhysical,
-            int resultDamage, float[] damagePercentages, float physical)
+        private static void DisplayDamageResult(int resultDamage, float[] categories, float[] amplifier)
         {
-            var displaycolor = new Color();
+            var displaycolor = Color.White;
             string displaytext = "";
 
-            switch (additionalDamageType)
+            var dominantAdditionalEffect = DamageType.Physical;
+            float dominantCategory=0;
+            string additionalDamageTypeText= "";
+            for (int i = 2; i < categories.Length; i++) //starting from first real additional damage type
+            {
+                if (dominantCategory < categories[i])
+                {
+                    dominantCategory = categories[i];
+                    dominantAdditionalEffect = (DamageType) i;
+                }
+
+                if (categories[i] > 0)
+                {
+                    DamageType t = (DamageType)i;
+                    string s = ", " + categories[i] + " was dealt in " + t;
+                    if (additionalDamageTypeText == "")
+                    {
+                        additionalDamageTypeText = s;
+                    }
+                    else
+                    {
+                        additionalDamageTypeText.Add(s,false);
+                    }
+                }
+            }
+
+            switch (dominantAdditionalEffect)
             {
                 case DamageType.Fire:
                     displaycolor = Colors.Red;
-                    displaytext = "fire";
                     break;
                 case DamageType.Holy:
                     displaycolor = Colors.Yellow;
-                    displaytext = "holy";
                     break;
                 case DamageType.Lightning:
                     displaycolor = Colors.Blue;
-                    displaytext = "Lightning";
                     break;
                 case DamageType.Magical:
                     displaycolor = Colors.Cyan;
-                    displaytext = "Magical";
-                    break;
-                case DamageType.Physical:
-                    displaycolor = Color.White;
-                    displaytext = "Physical";
                     break;
             }
-            
 
-            if (nonPhysical > 0)
-            {
-                InformationManager.DisplayMessage(new InformationMessage(
-                    "damaged by " + resultDamage + "with " + nonPhysical + " transformed to " + displaytext + " damage " +
-                    " modified by " +
-                    (1 + damagePercentages[(int)additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture),
-                    displaycolor));
-                InformationManager.DisplayMessage(new InformationMessage(
-                    "physical part " + (physical) + " with modifier " +
-                    (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
-            }
-            else
-            {
-                if(physical>0&& damagePercentages[0]>0)
-                    InformationManager.DisplayMessage(new InformationMessage(
-                    "physical part " + (physical) + " with modifier " +
-                    (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
-            }
+            string resultText;
+            resultText = resultDamage+ " was dealt of which was "+ categories[1]+ " "+ nameof(DamageType.Physical)+additionalDamageTypeText ;
+            InformationManager.DisplayMessage(new InformationMessage(resultText, displaycolor));
+            
         }
     }
 }
