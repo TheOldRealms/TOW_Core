@@ -55,6 +55,7 @@
         <module_sound name="empire_heal" sound_category="mission_ambient_3d_big" path="empire_heal.ogg" />
         <module_sound name="bats_loop" sound_category="mission_ambient_3d_big" path="bats_loop.ogg" />
         <module_sound name="dwarf_hand_grenade_tick" sound_category="mission_combat" path="dwarf_hand_grenade_tick.wav" />
+        <module_sound name="cannonball_explosion_1" sound_category="mission_combat" path="cannonball_explosion_1.ogg" />
 
         <!-- The Old World -->
 

@@ -30,8 +30,8 @@
         ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate
         StringID="cannonball_explosion"
-        BurstParticleEffectPrefab="psys_burning_projectile_default_coll"
-        SoundEffectId="fireball_explosion"
+        BurstParticleEffectPrefab="cannonball_explosion_6"
+        SoundEffectId="cannonball_explosion_1"
         SoundEffectLength="2.5"
         DamageType="Fire"
         DamageAmount="0"

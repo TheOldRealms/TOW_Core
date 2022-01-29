@@ -10,14 +10,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private float _liveTime = 0;
         private float _endTime = 0;
         private GameEntity _smoke;
+        private object _locker = new object();
 
         protected override void OnInit()
-        {
-            MatrixFrame frame = MatrixFrame.Identity;
-            _smoke = GameEntity.CreateEmpty(Scene);
-            _smoke.SetFrame(ref frame);
-            ParticleSystem.CreateParticleSystemAttachedToEntity("psys_burnt_limb_smoke", _smoke, ref frame);
-            GameEntity.AddChild(_smoke);
+        {            
             _endTime = MBRandom.RandomFloatRanged(10, 15);
             SetScriptComponentToTick(TickRequirement.Tick);
         }
@@ -33,6 +29,21 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 GameEntity.RemoveAllChildren();
                 _smoke.FadeOut(0.5f, true);
                 SetScriptComponentToTick(TickRequirement.None);
+            }
+        }
+
+        protected override void OnPhysicsCollision(ref PhysicsContact contact)
+        {
+            lock (_locker)
+            {
+                if(_smoke == null)
+                {
+                    MatrixFrame frame = MatrixFrame.Identity;
+                    _smoke = GameEntity.CreateEmpty(Scene);
+                    _smoke.SetFrame(ref frame);
+                    ParticleSystem.CreateParticleSystemAttachedToEntity("psys_burnt_limb_smoke", _smoke, ref frame);
+                    GameEntity.AddChild(_smoke);
+                }
             }
         }
     }

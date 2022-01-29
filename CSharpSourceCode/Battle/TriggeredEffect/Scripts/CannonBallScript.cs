@@ -70,14 +70,14 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             var dir = GetRandomDirection();
             limb.AddSphereAsBody(Vec3.Zero, 0.15f, BodyFlags.BodyOwnerEntity);
             limb.EnableDynamicBody();
-            limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 15, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
+            limb.AddPhysics(1, limb.CenterOfMass, limb.GetBodyShape(), dir * 5, dir * 2, PhysicsMaterial.GetFromName("flesh"), false, -1);
         }
 
         private Vec3 GetRandomDirection()
         {
             var x = MBRandom.RandomFloatRanged(-3, 3);
             var y = MBRandom.RandomFloatRanged(-3, 3);
-            return new Vec3(x, y, 2);
+            return new Vec3(x, y, 1);
         }
     }
 }
