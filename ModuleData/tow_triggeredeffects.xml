@@ -31,7 +31,7 @@
   <TriggeredEffectTemplate
         StringID="cannonball_explosion"
         BurstParticleEffectPrefab="cannonball_explosion_6"
-        SoundEffectId="cannonball_explosion_1"
+        SoundEffectId="fireball_explosion"
         SoundEffectLength="2.5"
         DamageType="Fire"
         DamageAmount="0"
