@@ -67,13 +67,12 @@ namespace TOW_Core.ObjectDataExtensions
     {
         public float[] DamagePercentages;
         public float[] ResistancePercentages;
-        public int ArmorPenetration;
         public float Amplifier;
         public float WardSave;
         public DamageType DamageType;
 
         public AgentPropertyContainer(float physicalDamage, float fireDamage, float lightningDamage, float holyDamage, float magicDamage,
-         float phyiscalResistance, float fireResistance, float lightningResistance, float holyResistance, float magicResistance, int armorPenetration, float amplifier, float wardSave, DamageType damageType=DamageType.Physical)
+         float phyiscalResistance, float fireResistance, float lightningResistance, float holyResistance, float magicResistance, float amplifier, float wardSave, DamageType damageType=DamageType.Physical)
         {
             DamagePercentages = new[]
             {
@@ -84,18 +83,16 @@ namespace TOW_Core.ObjectDataExtensions
                 phyiscalResistance, fireResistance, lightningResistance, holyResistance, magicResistance
             };
             
-            ArmorPenetration = armorPenetration;
             Amplifier = amplifier;
             WardSave = wardSave;
             DamageType = damageType;
         }
         
-        public AgentPropertyContainer(float[] damagePercentages, float[] resistancePercentages, int armorPenetration,
+        public AgentPropertyContainer(float[] damagePercentages, float[] resistancePercentages,
             float amplfier, float wardSave, DamageType damageType=DamageType.Physical)
         {
             DamagePercentages = damagePercentages;
             ResistancePercentages = resistancePercentages;
-            ArmorPenetration = armorPenetration;
             Amplifier = amplfier;
             WardSave = wardSave;
             DamageType = damageType;

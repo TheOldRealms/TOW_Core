@@ -43,10 +43,10 @@ namespace TOW_Core.Utilities.Extensions
             return list;
         }
 
-        public static List<DefenseProperty> GetDefenseProperties(this BasicCharacterObject characterObject)
+        public static List<ResistanceTuple> GetDefenseProperties(this BasicCharacterObject characterObject)
         {
-            var list = new List<DefenseProperty>();
-            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Defense;
+            var list = new List<ResistanceTuple>();
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Resistances;
             if (info != null)
             {
                 list.AddRange(info);
@@ -54,10 +54,10 @@ namespace TOW_Core.Utilities.Extensions
             return list;
         }
         
-        public static List<OffenseProperty> GetAttackProperties(this BasicCharacterObject characterObject)
+        public static List<AmplifierTuple> GetAttackProperties(this BasicCharacterObject characterObject)
         {
-            var list = new List<OffenseProperty>();
-            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Offense;
+            var list = new List<AmplifierTuple>();
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).DamageAmplifiers;
             if (info != null)
             {
                 list.AddRange(info);

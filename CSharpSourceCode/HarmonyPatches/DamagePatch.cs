@@ -48,11 +48,10 @@ namespace TOW_Core.HarmonyPatches
             var additionalDamageType = DamageType.Physical;
             var transformation = 0.5f;
 
-            var attackerPropertyContainer = attacker.GetAgentProperties(PropertyFlag.Attack);
-            var victimPropertyContainer = victim.GetAgentProperties(PropertyFlag.Defense);
+            var attackerPropertyContainer = attacker.GetProperties(PropertyFlag.Attack);
+            var victimPropertyContainer = victim.GetProperties(PropertyFlag.Defense);
 
             //attack properties;
-            var armorPenetration = attackerPropertyContainer.ArmorPenetration;
             var damagePercentages = attackerPropertyContainer.DamagePercentages;
             var damageAmplification = attackerPropertyContainer.Amplifier;
             additionalDamageType = attackerPropertyContainer.DamageType;
@@ -111,11 +110,7 @@ namespace TOW_Core.HarmonyPatches
                     armor += victimEquipment.GetArmArmorSum();
                     break;
             }
-
-            //armor penetration is only calculated if physical damage is 
-            //extra damage is added on top by armor penetration, which is applied only to the maximum value of the armor
-            physical = physical + Math.Min(armorPenetration, (int) armor);
-                
+            
             // damage is converted partly to the target non-physical damage type, rest resides physical
                 
             if (additionalDamageType != DamageType.Physical)
@@ -141,7 +136,7 @@ namespace TOW_Core.HarmonyPatches
 
             var resultDamage = (int)(damageAmplification * (physical + nonPhysical));
 
-            DisplayDamageResult(additionalDamageType, armorPenetration, nonPhysical, resultDamage, damagePercentages, physical);
+            DisplayDamageResult(additionalDamageType, nonPhysical, resultDamage, damagePercentages, physical);
 
             b.InflictedDamage = resultDamage;
 
@@ -187,7 +182,7 @@ namespace TOW_Core.HarmonyPatches
         }
         
 
-        private static void DisplayDamageResult(DamageType additionalDamageType, float armorPenetration, float nonPhysical,
+        private static void DisplayDamageResult(DamageType additionalDamageType, float nonPhysical,
             int resultDamage, float[] damagePercentages, float physical)
         {
             var displaycolor = new Color();
@@ -216,13 +211,7 @@ namespace TOW_Core.HarmonyPatches
                     displaytext = "Physical";
                     break;
             }
-
-            if (armorPenetration > 0)
-            {
-                InformationManager.DisplayMessage(
-                    new InformationMessage("additional armor penetration damage " + armorPenetration,
-                        new Color(100, 100, 100)));
-            }
+            
 
             if (nonPhysical > 0)
             {
@@ -232,14 +221,14 @@ namespace TOW_Core.HarmonyPatches
                     (1 + damagePercentages[(int)additionalDamageType]).ToString("##%", CultureInfo.InvariantCulture),
                     displaycolor));
                 InformationManager.DisplayMessage(new InformationMessage(
-                    "physical part " + (physical + armorPenetration) + " with modifier " +
+                    "physical part " + (physical) + " with modifier " +
                     (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
             }
             else
             {
                 if(physical>0&& damagePercentages[0]>0)
                     InformationManager.DisplayMessage(new InformationMessage(
-                    "physical part " + (physical + armorPenetration) + " with modifier " +
+                    "physical part " + (physical) + " with modifier " +
                     (1 + damagePercentages[0]).ToString("##%", CultureInfo.InvariantCulture), Colors.White));
             }
         }

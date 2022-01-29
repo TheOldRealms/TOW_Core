@@ -69,15 +69,15 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
-        public static AgentPropertyContainer GetAgentProperties(this Agent agent, PropertyFlag flag)
+        public static AgentPropertyContainer GetProperties(this Agent agent, PropertyFlag flag=PropertyFlag.All)
         {
             if (agent.IsMount)
             {
                 return new AgentPropertyContainer();
             }
-            var armorPenetration=0f;
-            float[] damagePercentages = new float[5];
-            float[] resistancePercentages = new float[5];
+            float[] damageProportions = new float[7];
+            float[] damagePercentages = new float[7];
+            float[] resistancePercentages = new float[7];
             float amplifier=0f;
             float wardSave=0f;
             var damageType = DamageType.Physical;
@@ -91,12 +91,10 @@ namespace TOW_Core.Utilities.Extensions
                     var offenseProperties = agent.Character.GetAttackProperties();
                     DamageType overrideDamage;
                     
-
-                    //add all offense properties
+                    //add all offense properties of the Unit
                     foreach (var property in offenseProperties)
                     {
-                        armorPenetration += property.ArmorPenetration;
-                        damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
+                        damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                 
                     //add temporary effects like buffs to attack bonuses on items
@@ -104,21 +102,20 @@ namespace TOW_Core.Utilities.Extensions
                         .GetDynamicTraits(agent.WieldedWeapon.Item);
                     foreach (var temporaryTraits in itemTraits)
                     {
-                        var attackProperty = temporaryTraits.OffenseProperty;
+                        var attackProperty = temporaryTraits.AmplifierTuple;
                         if (attackProperty != null)
                         {
-                            armorPenetration += attackProperty.ArmorPenetration;
-                            damagePercentages[(int) temporaryTraits.OffenseProperty.DefaultDamageTypeOverride] += attackProperty.BonusDamagePercent;
+                            damagePercentages[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
                     
                     }
-                    // status effects act on data, needs rework
+                    /*// status effects act on data, needs rework
                     StatusEffectComponent.EffectAggregate effectAggregate = agent.GetComponent<StatusEffectComponent>().GetEffectAggregate();
-                    wardSave += effectAggregate.WardSaveFactor;
+                    wardSave += effectAggregate.WardSaveFactor;*/
                 }
                 if(flag == PropertyFlag.Defense|| flag== PropertyFlag.All)      
                 {
-                    //unit attributes
+                    //add all offense properties of the Unit
                     var defenseProperties = agent.Character.GetDefenseProperties();
                 
                     foreach (var property in defenseProperties)
@@ -132,10 +129,10 @@ namespace TOW_Core.Utilities.Extensions
                 
                     foreach (var temporaryTraits in itemTraits)
                     {
-                        var defenseProperty = temporaryTraits.DefenseProperty;
+                        var defenseProperty = temporaryTraits.ResistanceTuple;
                         if (defenseProperty != null)
                         {
-                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            resistancePercentages[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
                 }
@@ -164,35 +161,23 @@ namespace TOW_Core.Utilities.Extensions
 
                     foreach (var itemTrait in itemTraits)
                     {
-                        var property = itemTrait.OffenseProperty;
+                        var property = itemTrait.AmplifierTuple;
                         if(property==null) 
                             continue;
-                        armorPenetration += property.ArmorPenetration;
-                        damagePercentages[(int) property.DefaultDamageTypeOverride] += property.BonusDamagePercent;
+                        damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                 
                     //weapon properties
                     if (agent.WieldedWeapon.Item != null)
                     {
-                        var weaponProperty = agent.WieldedWeapon.Item.GetTorSpecificData().ItemDamageProperty;
+                        var weaponProperty = agent.WieldedWeapon.Item.GetTorSpecificData().DamageProportions;
                         if (weaponProperty != null)
                         {
-                            damagePercentages[(int)weaponProperty.DamageType] += 0; //should provide some additional damage maybe?
-                            damageType = weaponProperty.DamageType;
-                            // chose damage type depending on dominant override type 
-                            if (weaponProperty.DamageType == DamageType.Physical)
+                            foreach (var tuple in weaponProperty)
                             {
-                                damageType = DamageType.Physical; 
-                                var maximum = 0f;
-                                for (int i = 1; i < 5; i++)
-                                {
-                                    if (maximum < damagePercentages[i])
-                                    {
-                                        maximum = damagePercentages[i];
-                                        damageType = (DamageType) i;
-                                    }
-                                }
+                                damageProportions[(int)tuple.DamageType] = tuple.Percent;
                             }
+                            
                         }
                     }
                 }
@@ -202,23 +187,24 @@ namespace TOW_Core.Utilities.Extensions
 
                     List<ItemTrait> itemTraits= new List<ItemTrait>();
                     List<ItemObject> items;
-
-                    // get all equipment Pieces
-
+                    
+                    
                     items = agent.Character.GetCharacterEquipment();
                     foreach (var item in items)
                     {
                         if(item.HasTrait())
                             itemTraits.AddRange(item.GetTraits(agent));
                     }
+                    
+                    //equipment amplifiers
 
                     foreach (var itemTrait in itemTraits)
                     {
-                        var defenseProperty = itemTrait.DefenseProperty;
+                        var defenseProperty = itemTrait.ResistanceTuple;
                         if(defenseProperty==null) 
                             continue;
                     
-                        resistancePercentages[(int)defenseProperty.ResistedDamageType] += itemTrait.DefenseProperty.ReductionPercent;
+                        resistancePercentages[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                     }
                     
                     //add temporary effects like buffs to defenese bonuses
@@ -227,10 +213,10 @@ namespace TOW_Core.Utilities.Extensions
                 
                     foreach (var temporaryTraits in dynamicTraits)
                     {
-                        var defenseProperty = temporaryTraits.DefenseProperty;
+                        var defenseProperty = temporaryTraits.ResistanceTuple;
                         if (defenseProperty != null)
                         {
-                            resistancePercentages[(int) temporaryTraits.DefenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            resistancePercentages[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
                 }
@@ -239,7 +225,7 @@ namespace TOW_Core.Utilities.Extensions
             }
             #endregion
 
-            return new AgentPropertyContainer(damagePercentages, resistancePercentages, (int)armorPenetration, amplifier, wardSave, damageType);
+            return new AgentPropertyContainer(damagePercentages, resistancePercentages, amplifier, wardSave, damageType);
             
 
         }
