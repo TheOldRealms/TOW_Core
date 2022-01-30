@@ -111,8 +111,9 @@ namespace TOW_Core.Utilities.Extensions
             EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0, EquipmentIndex EndingAt=EquipmentIndex.ArmorItemEndSlot)
         {
             int index = (int) BeginningFrom;
+            int end = (int)EndingAt;
             List<ItemObject> CharacterEquipmentItems = new List<ItemObject>();
-            for (int i = index; i < 9; i++)
+            for (int i = index; i <= end; i++)
             {
                 if (characterObject.Equipment[i].Item!=null)
                 {

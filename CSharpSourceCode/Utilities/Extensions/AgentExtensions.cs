@@ -85,15 +85,24 @@ namespace TOW_Core.Utilities.Extensions
             {
                 if (mask ==PropertyMask.Attack|| mask== PropertyMask.All)
                 {
+                    var unitDamageProportion = agent.Character.GetUnitDamageProportions();
+
+                    foreach (var proportionTuple in unitDamageProportion)
+                    {
+                        damageProportions[(int)proportionTuple.DamageType] = proportionTuple.Percent;
+                    }
+                    
+                    
                     var offenseProperties = agent.Character.GetAttackProperties();
                     DamageType overrideDamage;
+                    
                     
                     //add all offense properties of the Unit
                     foreach (var property in offenseProperties)
                     {
                         damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                        
                     }
-                    
 
                     //add temporary effects like buffs to attack bonuses on items
                     List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
