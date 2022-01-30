@@ -92,7 +92,7 @@ namespace TOW_Core.ObjectDataExtensions
         
     }
     
-    public enum PropertyFlag : int
+    public enum PropertyMask : int
     {
         Attack=0,
         Defense=1,

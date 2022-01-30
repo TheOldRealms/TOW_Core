@@ -69,7 +69,7 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
-        public static AgentPropertyContainer GetProperties(this Agent agent, PropertyFlag flag=PropertyFlag.All)
+        public static AgentPropertyContainer GetProperties(this Agent agent, PropertyMask mask=PropertyMask.All)
         {
             if (agent.IsMount)
             {
@@ -83,7 +83,7 @@ namespace TOW_Core.Utilities.Extensions
 
             if (!agent.IsHero)
             {
-                if (flag ==PropertyFlag.Attack|| flag== PropertyFlag.All)
+                if (mask ==PropertyMask.Attack|| mask== PropertyMask.All)
                 {
                     var offenseProperties = agent.Character.GetAttackProperties();
                     DamageType overrideDamage;
@@ -93,7 +93,8 @@ namespace TOW_Core.Utilities.Extensions
                     {
                         damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
-                
+                    
+
                     //add temporary effects like buffs to attack bonuses on items
                     List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
                         .GetDynamicTraits(agent.WieldedWeapon.Item);
@@ -105,11 +106,13 @@ namespace TOW_Core.Utilities.Extensions
                             damagePercentages[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
                     }
+                    
+                    
                     /*// status effects act on data, needs rework
                     StatusEffectComponent.EffectAggregate effectAggregate = agent.GetComponent<StatusEffectComponent>().GetEffectAggregate();
                     wardSave += effectAggregate.WardSaveFactor;*/
                 }
-                if(flag == PropertyFlag.Defense|| flag== PropertyFlag.All)      
+                if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
                 {
                     //add all offense properties of the Unit
                     var defenseProperties = agent.Character.GetDefenseProperties();
@@ -139,7 +142,7 @@ namespace TOW_Core.Utilities.Extensions
              
             else
             {
-                if (flag ==PropertyFlag.Attack|| flag== PropertyFlag.All)
+                if (mask ==PropertyMask.Attack|| mask== PropertyMask.All)
                 {
                     //Hero item level attributes 
 
@@ -176,7 +179,7 @@ namespace TOW_Core.Utilities.Extensions
                         }
                     }
                 }
-                if( flag == PropertyFlag.Defense|| flag== PropertyFlag.All)
+                if( mask == PropertyMask.Defense|| mask== PropertyMask.All)
                 {
                     //Hero item level attributes 
 
@@ -320,7 +323,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="agent">The agent that will be damaged</param>
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
-        /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
+        /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
         public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
             if (agent == null && !agent.IsHuman)

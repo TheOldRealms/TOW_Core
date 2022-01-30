@@ -48,8 +48,8 @@ namespace TOW_Core.HarmonyPatches
             
             float[] damageCategories=new float[7];
 
-            var attackerPropertyContainer = attacker.GetProperties(PropertyFlag.Attack);
-            var victimPropertyContainer = victim.GetProperties(PropertyFlag.Defense);
+            var attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack);
+            var victimPropertyContainer = victim.GetProperties(PropertyMask.Defense);
 
             //attack properties;
             var damageProportions = attackerPropertyContainer.DamageProportions;
@@ -90,11 +90,11 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
 
+            b.InflictedDamage = resultDamage;
 
             DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
 
-            b.InflictedDamage = resultDamage;
-
+           
             return true;
             
         }
@@ -152,7 +152,7 @@ namespace TOW_Core.HarmonyPatches
                 if (categories[i] > 0)
                 {
                     DamageType t = (DamageType)i;
-                    string s = ", " + categories[i] + " was dealt in " + t;
+                    string s = ", " +(int) categories[i] + " was dealt in " + t;
                     if (additionalDamageTypeText == "")
                     {
                         additionalDamageTypeText = s;
@@ -181,7 +181,7 @@ namespace TOW_Core.HarmonyPatches
             }
 
             string resultText;
-            resultText = resultDamage+ " was dealt of which was "+ categories[1]+ " "+ nameof(DamageType.Physical)+additionalDamageTypeText ;
+            resultText = (int) resultDamage+ " damage was dealt of which was "+ (int) categories[1]+ " "+ nameof(DamageType.Physical)+additionalDamageTypeText ;
             InformationManager.DisplayMessage(new InformationMessage(resultText, displaycolor));
             
         }
