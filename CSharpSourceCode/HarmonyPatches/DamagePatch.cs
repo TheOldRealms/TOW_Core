@@ -92,11 +92,11 @@ namespace TOW_Core.HarmonyPatches
 
             b.InflictedDamage = resultDamage;
 
-            DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
-
-           
+            if (b.InflictedDamage > 0)
+            {
+                DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
+            }
             return true;
-            
         }
 
         private static void DisplaySpellDamageResult(string SpellName, DamageType additionalDamageType, 
