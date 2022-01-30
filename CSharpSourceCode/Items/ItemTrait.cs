@@ -23,6 +23,8 @@ namespace TOW_Core.Items
         public string OnHitScriptName { get; set; } = "none";
         [XmlAttribute]
         public string ImbuedStatusEffectId { get; set; } = "none";
+        [XmlAttribute]
+        public string IconName { get; set; } = "none";
         [XmlElement]
         public WeaponParticlePreset WeaponParticlePreset { get; set; }
     }

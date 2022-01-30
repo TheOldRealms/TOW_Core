@@ -1,0 +1,91 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Tooltip.WeaponAlternativeUsageButton.Width" BrushLayer="Default" BrushName="Inventory.Tooltip.WeaponAlternativeUsageButton" BrushValueType="Width" />
+    <Constant Name="Tooltip.WeaponAlternativeUsageButton.Height" BrushLayer="Default" BrushName="Inventory.Tooltip.WeaponAlternativeUsageButton" BrushValueType="Height" />
+
+    <Constant Name="Tooltip.WeaponAlternativeUsageButton.Width.WithMultiply" MultiplyResult="0.85" Value="!Tooltip.WeaponAlternativeUsageButton.Width" />
+    <Constant Name="Tooltip.WeaponAlternativeUsageButton.Height.WithMultiply" MultiplyResult="0.85" Value="!Tooltip.WeaponAlternativeUsageButton.Height" />
+
+    <Constant Name="PropertyWidgetComparedAlignment" BooleanCheck="*IsPlayerItem" OnFalse="Left" OnTrue="Right" />
+    <Constant Name="PropertyWidgetAlignment" BooleanCheck="*IsComparedItem" OnFalse="Center" OnTrue="!PropertyWidgetComparedAlignment" />
+  </Constants>
+  <Parameters>
+    <Parameter Name="IsComparedItem" DefaultValue="false" />
+    <Parameter Name="IsPlayerItem" DefaultValue="false" />
+    <Parameter Name="ItemFlagsDataSource" DefaultValue="" />
+    <Parameter Name="PropertiesDataSource" DefaultValue="" />
+  </Parameters>
+  <Window>
+    <ListPanel DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="VerticalBottomToTop">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="156" />
+
+        <ListPanel DataSource="*ItemFlagsDataSource" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalLeftToRight">
+          <ItemTemplate>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35">
+              <Children>
+                <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-3" Brush.FontSize="35" Text="@Icon" >
+                  <Children>
+                    <HintWidget DataSource="{Hint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                  </Children>
+                </RichTextWidget>
+              </Children>
+            </Widget>
+          </ItemTemplate>
+        </ListPanel>
+
+        <RadioContainer DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="20" MarginRight="20" Container="List" IsHidden="*IsComparedItem" SelectedIndex="@AlternativeUsageIndex">
+          <Children>
+            <InventoryAlternativeUsageContainerWidget Id="List" DataSource="{AlternativeUsages}" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" CellHeight="!Tooltip.WeaponAlternativeUsageButton.Height.WithMultiply" CellWidth="!Tooltip.WeaponAlternativeUsageButton.Width.WithMultiply" ColumnLimit="2" StackLayout.LayoutMethod="HorizontalLeftToRight">
+              <ItemTemplate>
+                <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Tooltip.WeaponAlternativeUsageButton.Width.WithMultiply" SuggestedHeight="!Tooltip.WeaponAlternativeUsageButton.Height.WithMultiply" HorizontalAlignment="Center" Brush="Inventory.Tooltip.WeaponAlternativeUsageButton" ButtonType="Radio">
+                  <Children>
+                    <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="5" Brush="InventoryDefaultFontBrush" Brush.FontSize="16" Brush.TextHorizontalAlignment="Center" Text="@Text" />
+                    <HintWidget DataSource="{Hint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                  </Children>
+                </ButtonWidget>
+              </ItemTemplate>
+            </InventoryAlternativeUsageContainerWidget>
+          </Children>
+        </RadioContainer>
+
+        <TooltipWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="20" MarginRight="20" MarginBottom="20" PropertyList="MyInnerPanel">
+          <Children>
+            <ListPanel Id="MyInnerPanel" DataSource="*PropertiesDataSource" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Left" >
+              <ItemTemplate>
+
+                <TooltipPropertyWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="!PropertyWidgetAlignment" MarginLeft="3" MarginRight="3" DefaultSeperatorSpriteName="General\TooltipHint\tooltip_frame" DefinitionLabelContainer="ListPanel\ValueBackgroundSpriteWidget\DefinitionLabelContainer" DefinitionLabel="ListPanel\ValueBackgroundSpriteWidget\DefinitionLabelContainer\DefinitionLabel" DefinitionText="@DefinitionLabel" DescriptionTextBrush="Tooltip.Description.Text" RundownSeperatorSpriteName="tooltip_divider_abovestats_9" SubtextBrush="Tooltip.SubText.Text" TextColor="@TextColor" TextHeight="@TextHeight" TitleBackgroundSpriteName="General\TooltipHint\tooltip_title_base" TitleTextBrush="Tooltip.Title.Text" ValueBackgroundSpriteWidget="ListPanel\ValueBackgroundSpriteWidget" ValueLabel="ListPanel\ValueBackgroundSpriteWidget\ValueLabelContainer\ValueLabel" ValueLabelContainer="ListPanel\ValueBackgroundSpriteWidget\ValueLabelContainer" ValueNameTextBrush="Tooltip.ValueName.Text" ValueText="@ValueLabel" ValueTextBrush="Tooltip.Value.Text" >
+                  <Children>
+                    <ListPanel DataSource="{PropertyHint}" DoNotPassEventsToChildren="true" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" Id="ListPanel" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" StackLayout.LayoutMethod="HorizontalLeftToRight" >
+                      <Children>
+
+                        <ListPanel Id="ValueBackgroundSpriteWidget" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="HorizontalLeftToRight">
+                          <Children>
+                            <Widget Id="DefinitionLabelContainer" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" >
+                              <Children>
+                                <RichTextWidget Id="DefinitionLabel" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" Brush="InventoryTooltipDescriptionFontBrush" />
+                              </Children>
+                            </Widget>
+
+                            <Widget Id="ValueLabelContainer" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" >
+                              <Children>
+                                <RichTextWidget Id="ValueLabel" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" Brush="Tooltip.Value.Text" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ListPanel>
+
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </TooltipPropertyWidget>
+
+              </ItemTemplate>
+            </ListPanel>
+          </Children>
+        </TooltipWidget>
+
+      </Children>
+    </ListPanel>
+  </Window>
+</Prefab>

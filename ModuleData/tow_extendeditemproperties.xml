@@ -86,8 +86,8 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_bright_wizard_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Fire Resistance">
-        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -305,8 +305,8 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_bright_wizard_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Fire Resistance">
-        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -422,8 +422,8 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_bright_wizard_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Fire Resistance">
-        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -548,8 +548,8 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_bright_wizard_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Fire Resistance">
-        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -692,8 +692,8 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_bright_wizard_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Fire Resistance">
-        <ItemTraitDescription>This item provides its wearer 10% fire resistance. Also provides 10% fire damage amplification.</ItemTraitDescription>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -800,7 +800,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -813,7 +813,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -826,7 +826,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_003">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -839,7 +839,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_004">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -852,7 +852,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_005">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -865,7 +865,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_006">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -878,7 +878,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_007">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -891,7 +891,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_008">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -904,7 +904,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_009">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -917,7 +917,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_010">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -930,7 +930,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_011">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -943,7 +943,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_012">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Runefang">
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
@@ -1565,7 +1565,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_luthor">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Physical Resistance">
+      <ItemTrait ItemTraitName="Physical Resistance" IconName="winds_icon_45">
         <ItemTraitDescription>This item provides its wearer 20% physical resistance.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
       </ItemTrait>
