@@ -804,7 +804,31 @@
       <EquipmentSet id="tor_chaos_khorne_warrior_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_braganza_01" default_group="ranged" level="21" name="{=str_tor_dog_braganza_01}Braganza Besieger" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_braganza_01" default_group="ranged" level="21" name="{=str_tor_dog_braganza_01}Besieger Crossbowman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_braganza_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_besieger_crossbowman_template" />
+      <EquipmentSet id="tor_dog_besieger_crossbowman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_braganza_02" default_group="ranged" level="26" name="{=str_tor_dog_braganza_02}Besieger Arbalest" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_braganza_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_besieger_arbalest_template" />
+      <EquipmentSet id="tor_dog_besieger_arbalest_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_braganza_03" default_group="ranged" level="31" name="{=str_tor_dog_braganza_03}Braganza's Besieger" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -814,29 +838,101 @@
       <EquipmentSet id="tor_dog_braganza_besieger_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_cursed_01" default_group="infantry" level="21" name="{=str_tor_dog_cursed_01}Cursed Company Warrior" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_cursed_company_01" default_group="infantry" level="21" name="{=str_tor_dog_cursed_company_01}Enslaved Warrior" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_cursed_company_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_the_enslaved_template" />
+      <EquipmentSet id="tor_dog_the_enslaved_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_cursed_company_02" default_group="infantry" level="26" name="{=str_tor_dog_cursed_company_02}Damned Warrior" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_cursed_company_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_the_damned_warrior_template" />
+      <EquipmentSet id="tor_dog_the_damned_warrior_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_cursed_company_03" default_group="infantry" level="31" name="{=str_tor_dog_cursed_company_03}Cursed Companyman" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets />
     <Equipments>
-      <EquipmentSet id="tor_dog_cursed_warrior_template" />
-      <EquipmentSet id="tor_dog_cursed_warrior_template" civilian="true" />
+      <EquipmentSet id="tor_dog_the_cursed_template" />
+      <EquipmentSet id="tor_dog_the_cursed_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_leopard_01" default_group="infantry" level="21" name="{=str_tor_dog_leopard_01}Leopard Company Pikeman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_leopard_01" default_group="infantry" level="21" name="{=str_tor_dog_leopard_01}Leopard Mercenary" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
-    <upgrade_targets />
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_leopard_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_leopard_mercenary_template" />
+      <EquipmentSet id="tor_dog_leopard_mercenary_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_leopard_02" default_group="infantry" level="26" name="{=str_tor_dog_leopard_02}Leopard Pikeman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_leopard_03" />
+    </upgrade_targets>
     <Equipments>
       <EquipmentSet id="tor_dog_leopard_pikeman_template" />
       <EquipmentSet id="tor_dog_leopard_pikeman_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_voland_01" default_group="cavalry" level="21" name="{=str_tor_dog_voland_01}Venator Knight" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_leopard_03" default_group="infantry" level="31" name="{=str_tor_dog_leopard_03}Leopold's Leopard Pikeman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
     <face>
-      <face_key_template value="BodyProperty.brute" />
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_dog_leopold_leopard_pikeman_template" />
+      <EquipmentSet id="tor_dog_leopold_leopard_pikeman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_voland_01" default_group="cavalry" level="21" name="{=str_tor_dog_voland_01}Venator Mercenary Horseman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_voland_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_venator_horseman_template" />
+      <EquipmentSet id="tor_dog_venator_horseman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_voland_02" default_group="cavalry" level="26" name="{=str_tor_dog_voland_02}Venator Condottiero" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_voland_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_voland_condotierro_template" />
+      <EquipmentSet id="tor_dog_voland_condotierro_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_voland_03" default_group="cavalry" level="31" name="{=str_tor_dog_voland_03}Voland's Venator" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets />
     <Equipments>
@@ -844,7 +940,65 @@
       <EquipmentSet id="tor_dog_voland_venator_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_miragliano_01" default_group="ranged" level="21" name="{=str_tor_dog_miragliano_01}Marksman of Miragliano" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_muktar_01" default_group="cavalry" level="21" name="{=str_tor_dog_muktar_01}Arabyian Mercenary Horseman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_muktar_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_arabyian_mercenary_horseman_template" />
+      <EquipmentSet id="tor_dog_arabyian_mercenary_horseman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_muktar_02" default_group="cavalry" level="26" name="{=str_tor_dog_muktar_02}Arabyian Desert Destrier" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_muktar_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_arabyian_desert_destrier_template" />
+      <EquipmentSet id="tor_dog_arabyian_desert_destrier_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_muktar_03" default_group="cavalry" level="31" name="{=}Al Muktar's Desert Dog" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_dog_muktar_desert_dog_template" />
+      <EquipmentSet id="tor_dog_muktar_desert_dog_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_miragliano_01" default_group="ranged" level="21" name="{=}Crossbowman of Miragliano" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_miragliano_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_crossbowman_miragliano_template" />
+      <EquipmentSet id="tor_dog_crossbowman_miragliano_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_miragliano_02" default_group="ranged" level="26" name="{=}Arbelast of Miragliano" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_miragliano_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_arbelast_miragliano_template" />
+      <EquipmentSet id="tor_dog_arbelast_miragliano_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_miragliano_03" default_group="ranged" level="31" name="{=}Marksman of Miragliano" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -854,7 +1008,31 @@
       <EquipmentSet id="tor_dog_marksman_miragliano_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_dog_ricco_01" default_group="infantry" level="21" name="{=str_tor_dog_ricco_01}Republican Pikemen" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_dog_ricco_01" default_group="infantry" level="21" name="{=}Reman Patriot" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_ricco_02" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_reman_patriot_template" />
+      <EquipmentSet id="tor_dog_reman_patriot_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_ricco_02" default_group="infantry" level="26" name="{=}Reman Pikeman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_dog_ricco_03" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_dog_reman_pikeman_template" />
+      <EquipmentSet id="tor_dog_reman_pikeman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_dog_ricco_03" default_group="infantry" level="31" name="{=}Ricco's Republican Guard" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level31">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -864,7 +1042,166 @@
       <EquipmentSet id="tor_dog_riccos_republican_guard_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_chaos_cult_acolyte" default_group="infantry" level="11" name="{=str_tor_chaos_cult_acolyte}Acolyte" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level11">
+  <NPCCharacter id="tor_ror_kragsburg_retainer" default_group="infantry" level="16" name="{=}Von Kragsburg Retainer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_kragsburg_sergeant" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_kragsburg_retainer_template" />
+      <EquipmentSet id="tor_kragsburg_retainer_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_kragsburg_sergeant" default_group="infantry" level="21" name="{=}Von Kragsburg Sergeant" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_kragsburg_house_guard" />
+      <upgrade_target id="NPCCharacter.tor_ror_kragsburg_personal_guard" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_kragsburg_sergeant_template" />
+      <EquipmentSet id="tor_kragsburg_sergeant_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_kragsburg_house_guard" default_group="infantry" level="26" name="{=}Von Kragsburg House Guard" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_kragsburg_house_guard_template" />
+      <EquipmentSet id="tor_kragsburg_house_guard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_kragsburg_personal_guard" default_group="infantry" level="26" name="{=}Von Kragsburg Personal Guard" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_kragsburg_personal_guard_template" />
+      <EquipmentSet id="tor_kragsburg_personal_guard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_stir_river_scout" default_group="ranged" level="16" name="{=}Stir River Scout" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_stir_river_patrolman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_stir_river_scout_template" />
+      <EquipmentSet id="tor_stir_river_scout_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_stir_river_patrolman" default_group="ranged" level="21" name="{=}Stir River Patrolman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_stir_river_patrol_guardsman" />
+      <upgrade_target id="NPCCharacter.tor_ror_stir_river_patrol_nimrod" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_stir_river_patrolman_template" />
+      <EquipmentSet id="tor_stir_river_patrolman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_stir_river_patrol_guardsman" default_group="infantry" level="26" name="{=}Stir River Patrol Guardsman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_stir_river_patrol_guardsman_template" />
+      <EquipmentSet id="tor_stir_river_patrol_guardsman_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_stir_river_patrol_nimrod" default_group="ranged" level="26" name="{=}Stir River Patrol Nimrod" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_blazing_river_patrol_nimrod_template" />
+      <EquipmentSet id="tor_blazing_river_patrol_nimrod_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_intiate" default_group="cavalry" level="21" name="{=}Blazing Sun Initiate" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_blazing_sun_knight" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_initiate_template" />
+      <EquipmentSet id="tor_blazing_sun_initiate_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_knight" default_group="cavalry" level="26" name="{=}Knight of the Blazing Sun" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_blazing_sun_preceptor" />
+      <upgrade_target id="NPCCharacter.tor_ror_blazing_sun_demigryph_knight" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_knight_template" />
+      <EquipmentSet id="tor_blazing_sun_knight_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_preceptor" default_group="cavalry" level="36" name="{=}Preceptor of the Blazing Sun" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level36">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_blazing_sun_innercircle" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_preceptor_template" />
+      <EquipmentSet id="tor_blazing_sun_preceptor_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_demigryph_knight" default_group="cavalry" level="36" name="{=}Demigryph Knight of the Blazing Sun" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level36">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_ror_blazing_sun_demigryph_innercircle" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_demigryph_knight_template" />
+      <EquipmentSet id="tor_blazing_sun_demigryph_knight_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_innercircle" default_group="cavalry" level="46" name="{=}Inner Circle Knight of the Blazing Sun" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level46">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_innercircle_template" />
+      <EquipmentSet id="tor_blazing_sun_innercircle_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_ror_blazing_sun_demigryph_innercircle" default_group="cavalry" level="46" name="{=}Inner Circle Demigryph of the Blazing Sun" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level46">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_blazing_sun_demigryph_innercircle_template" />
+      <EquipmentSet id="tor_blazing_sun_demigryph_innercircle_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_chaos_cult_acolyte" default_group="infantry" level="11" name="{=}Cultist of Chaos" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -876,7 +1213,7 @@
       <EquipmentSet id="tor_chaos_cult_acolyte_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_chaos_cult_darksoul" default_group="infantry" level="16" name="{=str_tor_chaos_cult_darksoul}Possessed Darksoul" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_chaos_cult_darksoul" default_group="infantry" level="16" name="{=}Darksoul of Chaos" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -888,7 +1225,7 @@
       <EquipmentSet id="tor_chaos_cult_darksoul_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_chaos_cult_magister" default_group="infantry" level="21" name="{=str_tor_chaos_cult_magister}Possessed Magister" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_chaos_cult_magister" default_group="infantry" level="21" name="{=}Fallen Magister" occupation="Bandit" culture="Culture.forest_bandits" skill_template="SkillSet.tow_skills_level21">
     <face>
       <face_key_template value="BodyProperty.brute" />
     </face>
@@ -898,7 +1235,7 @@
       <EquipmentSet id="tor_chaos_cult_magister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_outlaw" default_group="infantry" level="6" name="{=str_tor_empire_outlaw}Empire Outlaw" occupation="Bandit" culture="Culture.looters" skill_template="SkillSet.tow_skills_level6">
+  <NPCCharacter id="tor_empire_outlaw" default_group="infantry" level="6" name="{=}Empire Outlaw" occupation="Bandit" culture="Culture.looters" skill_template="SkillSet.tow_skills_level6" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -910,7 +1247,7 @@
       <EquipmentSet id="tor_empire_outlaw_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_outlaw_leader" default_group="infantry" level="16" name="{=str_tor_empire_outlaw_leader}Empire Outlaw Captain" occupation="Bandit" culture="Culture.looters" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_empire_outlaw_leader" default_group="infantry" level="16" name="{=}Empire Outlaw Captain" occupation="Bandit" culture="Culture.looters" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.brute" />
     </face>
@@ -920,36 +1257,37 @@
       <EquipmentSet id="tor_empire_outlaw_leader_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_secessionist_swordsman" default_group="infantry" level="11" name="{=str_tor_empire_secessionist_swordsman}Secessionist Swordman" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level11">
+  <NPCCharacter id="tor_empire_deserter" default_group="infantry" level="11" name="{=}Deserter" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets>
-      <upgrade_target id="NPCCharacter.tor_empire_secessionist_sergeant" />
+      <upgrade_target id="NPCCharacter.tor_empire_deserter_sergeant" />
+      <upgrade_target id="NPCCharacter.tor_empire_deserter_scout" />
     </upgrade_targets>
     <Equipments>
-      <EquipmentSet id="tor_empire_desserter_template" />
-      <EquipmentSet id="tor_empire_desserter_template" civilian="true" />
+      <EquipmentSet id="tor_empire_deserter_template" />
+      <EquipmentSet id="tor_empire_deserter_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_secessionist_sergeant" default_group="infantry" level="16" name="{=str_tor_empire_secessionist_sergeant}Traitor Sergeant" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_empire_deserter_sergeant" default_group="infantry" level="16" name="{=}Deserter Sergeant" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.brute" />
     </face>
     <upgrade_targets />
     <Equipments>
-      <EquipmentSet id="tor_empire_desserter_sergeant_template" />
-      <EquipmentSet id="tor_empire_desserter_sergeant_template" civilian="true" />
+      <EquipmentSet id="tor_empire_deserter_sergeant_template" />
+      <EquipmentSet id="tor_empire_deserter_sergeant_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_secessionist_hunter" default_group="ranged" level="11" name="{=str_tor_empire_secessionist_hunter}Secessionist Hunter" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level11">
+  <NPCCharacter id="tor_empire_deserter_scout" default_group="ranged" level="16" name="{=}Deserter Scout" occupation="Bandit" culture="Culture.mountain_bandits" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <upgrade_targets />
     <Equipments>
-      <EquipmentSet id="tor_empire_desserter_scout_template" />
-      <EquipmentSet id="tor_empire_desserter_scout_template" civilian="true" />
+      <EquipmentSet id="tor_empire_deserter_scout_template" />
+      <EquipmentSet id="tor_empire_deserter_scout_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
 </NPCCharacters>

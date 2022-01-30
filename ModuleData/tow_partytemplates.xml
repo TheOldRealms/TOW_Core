@@ -113,11 +113,11 @@
 		  <PartyTemplateStack min_value="1" max_value="4" troop="NPCCharacter.tor_empire_outlaw_leader" />
 		</stacks>
 	</MBPartyTemplate>
-	<MBPartyTemplate id="empire_secessionists" >
+	<MBPartyTemplate id="empire_deserters" >
 		<stacks>
-		  <PartyTemplateStack min_value="2" max_value="30" troop="NPCCharacter.tor_empire_secessionist_swordsman" />
-		  <PartyTemplateStack min_value="1" max_value="20" troop="NPCCharacter.tor_empire_secessionist_hunter" />
-		  <PartyTemplateStack min_value="1" max_value="4" troop="NPCCharacter.tor_empire_secessionist_sergeant" />
+		  <PartyTemplateStack min_value="2" max_value="30" troop="NPCCharacter.tor_empire_deserter" />
+		  <PartyTemplateStack min_value="1" max_value="20" troop="NPCCharacter.tor_empire_deserter_scout" />
+		  <PartyTemplateStack min_value="1" max_value="4" troop="NPCCharacter.tor_empire_deserter_sergeant" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="chaos_cultists" >
@@ -141,36 +141,48 @@
 	<MBPartyTemplate id="dog_01" >
 		<stacks>
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_braganza_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_braganza_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_braganza_03" />
 		</stacks>
 	</MBPartyTemplate>
 
 	<MBPartyTemplate id="dog_02" >
 		<stacks>
-			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_cursed_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_cursed_company_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_cursed_company_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_cursed_company_03" />
 		</stacks>
 	</MBPartyTemplate>
 
 	<MBPartyTemplate id="dog_03" >
 		<stacks>
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_leopard_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_leopard_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_leopard_03" />
 		</stacks>
 	</MBPartyTemplate>
 
 	<MBPartyTemplate id="dog_04" >
 		<stacks>
 			<PartyTemplateStack min_value="7" max_value="15" troop="NPCCharacter.tor_dog_voland_01" />
+			<PartyTemplateStack min_value="7" max_value="15" troop="NPCCharacter.tor_dog_voland_02" />
+			<PartyTemplateStack min_value="7" max_value="15" troop="NPCCharacter.tor_dog_voland_03" />
 		</stacks>
 	</MBPartyTemplate>
 
 	<MBPartyTemplate id="dog_05" >
 		<stacks>
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_miragliano_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_miragliano_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_miragliano_03" />
 		</stacks>
 	</MBPartyTemplate>
 
 	<MBPartyTemplate id="dog_06" >
 		<stacks>
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_03" />
 		</stacks>
 	</MBPartyTemplate>
 	
