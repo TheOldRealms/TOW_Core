@@ -65,6 +65,17 @@ namespace TOW_Core.Utilities.Extensions
             return list;
         }
         
+        public static List<DamageProportionTuple> GetUnitDamageProportions(this BasicCharacterObject characterObject)
+        {
+            var list = new List<DamageProportionTuple>();
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).DamageProportions;
+            if (info != null)
+            {
+                list.AddRange(info);
+            }
+            return list;
+        }
+        
         
 
         public static string GetCustomVoiceClassName(this BasicCharacterObject characterObject)
@@ -99,8 +110,9 @@ namespace TOW_Core.Utilities.Extensions
         public static List<ItemObject> GetCharacterEquipment(this BasicCharacterObject characterObject,
             EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0, EquipmentIndex EndingAt=EquipmentIndex.ArmorItemEndSlot)
         {
+            int index = (int) BeginningFrom;
             List<ItemObject> CharacterEquipmentItems = new List<ItemObject>();
-            for (int i = (int) BeginningFrom; i < 9; i++)
+            for (int i = index; i < 9; i++)
             {
                 if (characterObject.Equipment[i].Item!=null)
                 {
