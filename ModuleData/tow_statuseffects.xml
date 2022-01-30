@@ -7,22 +7,25 @@
 		health_over_time="0"
 		damage_over_time="5"
 		duration="3"
-		type="DamageOverTime"/>
+		type="DamageOverTime"
+		damage_type="Holy"/>
 	<StatusEffectTemplate 
 		id="regeneration" 
 		particle_id="undead_crumbling"
 		particle_intensity="Low"
 		health_over_time="3"
 		duration="3"
-		type="HealthOverTime"/>
+		type="HealthOverTime"
+		damage_type="Holy"/>
 	<StatusEffectTemplate 
 		id="fireball_dot" 
 		particle_id="torch_fire_sparks"
 		particle_intensity="High"
 		health_over_time="0"
-		damage_over_time="3"
+		damage_over_time="10"
 		duration="12"
-		type="DamageOverTime"/>
+		type="DamageOverTime"
+		damage_type="Fire"/>
   <StatusEffectTemplate
 		id="word_of_pain"
 		particle_id="psys_game_step_dust_on_default"

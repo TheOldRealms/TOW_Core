@@ -73,7 +73,8 @@ namespace TOW_Core.HarmonyPatches
                 damagePercentages[damageType] -= resistancePercentages[damageType];
                 damageCategories[damageType] *= 1 + damagePercentages[damageType];
                 b.InflictedDamage = (int)damageCategories[damageType];
-                DisplaySpellDamageResult(spellInfo.SpellID,spellInfo.DamageType,b.InflictedDamage,damagePercentages[damageType]);
+                if(attacker==Agent.Main || victim==Agent.Main)
+                    DisplaySpellDamageResult(spellInfo.SpellID,spellInfo.DamageType,b.InflictedDamage,damagePercentages[damageType]);
                 return true;
             }
 
@@ -94,7 +95,8 @@ namespace TOW_Core.HarmonyPatches
 
             if (b.InflictedDamage > 0)
             {
-                DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
+                if(attacker==Agent.Main || victim==Agent.Main)
+                    DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
             }
             return true;
         }
@@ -128,8 +130,7 @@ namespace TOW_Core.HarmonyPatches
                     displayDamageType = "Physical";
                     break;
             }
-            
-            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage applied by "+SpellName+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damageAmplifier).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage consisting of  "+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damageAmplifier).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
         }
         
 

@@ -81,11 +81,9 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
-                    if (Agent.Health < _effectAggregate.DamageOverTime)
-                    {
-                        SpellBlowInfoManager.EnqueueSpellInfo(data.ApplierAgent.Index,"dot",DamageType.Magical);
-                    }
-                    
+                    var effect = data.Effect.Template;
+                    SpellBlowInfoManager.EnqueueSpellInfo(data.ApplierAgent.Index,effect.Id,effect.DamageType);
+
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
                 else if (_effectAggregate.HealthOverTime > 0)

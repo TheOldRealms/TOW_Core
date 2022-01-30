@@ -347,6 +347,13 @@ namespace TOW_Core.Utilities.Extensions
                 {
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
+                        if (damager != null)
+                        {
+                            var dotInfo= SpellBlowInfoManager.GetSpellInfo(damager.Index);
+                            var properties = damager.GetProperties(PropertyMask.Attack);
+                            TOWCommon.Say(dotInfo.SpellID);
+                            damageAmount = (int) (damageAmount*(1+properties.DamagePercentages[(int)dotInfo.DamageType]));
+                        }
                         agent.Health -= damageAmount;
                         return;
                     }
