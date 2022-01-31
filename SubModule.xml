@@ -109,7 +109,7 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_designerNPCs" />
+			<XmlName id="NPCCharacters" path="tow_dummyNPCs" />
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
 				<GameType value="CampaignStoryMode" />
