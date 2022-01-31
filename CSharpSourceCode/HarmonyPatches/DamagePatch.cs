@@ -40,28 +40,22 @@ namespace TOW_Core.HarmonyPatches
             }
 
             bool isSpell = false;
-            
             float[] damageCategories=new float[7];
-
             var attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack);
             var victimPropertyContainer = victim.GetProperties(PropertyMask.Defense);
-
             //attack properties;
             var damageProportions = attackerPropertyContainer.DamageProportions;
             var damagePercentages = attackerPropertyContainer.DamagePercentages;
-            
             //defense properties
             var resistancePercentages = victimPropertyContainer.ResistancePercentages;
 
             if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
             {
-                //apply here spell properties
                 isSpell = true;
             }
             
             if (isSpell)
             {
-                //for now 100% converted to target type
                 var spellInfo = SpellBlowInfoManager.GetSpellInfo(victim.Index,attacker.Index);
                 int damageType = (int) spellInfo.DamageType;
                 damageCategories[damageType] = b.InflictedDamage;
@@ -99,7 +93,7 @@ namespace TOW_Core.HarmonyPatches
                 }
                 
                 if(attacker==Agent.Main || victim==Agent.Main)
-                    DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
+                    DisplayDamageResult(resultDamage, damageCategories);
             }
             return true;
         }
@@ -107,37 +101,37 @@ namespace TOW_Core.HarmonyPatches
         private static void DisplaySpellDamageResult(string SpellName, DamageType additionalDamageType, 
             int resultDamage, float damageAmplifier)
         {
-            var displaycolor = Color.White;
+            var displayColor = Color.White;
             string displayDamageType = "";
 
             switch (additionalDamageType)
             {
                 case DamageType.Fire:
-                    displaycolor = Colors.Red;
+                    displayColor = Colors.Red;
                     displayDamageType = "fire";
                     break;
                 case DamageType.Holy:
-                    displaycolor = Colors.Yellow;
+                    displayColor = Colors.Yellow;
                     displayDamageType = "holy";
                     break;
                 case DamageType.Lightning:
-                    displaycolor = Colors.Blue;
+                    displayColor = Colors.Blue;
                     displayDamageType = "lightning";
                     break;
                 case DamageType.Magical:
-                    displaycolor = Colors.Cyan;
+                    displayColor = Colors.Cyan;
                     displayDamageType = "magical";
                     break;
                 case DamageType.Physical:
-                    displaycolor = Color.White;
+                    displayColor = Color.White;
                     displayDamageType = "Physical";
                     break;
             }
-            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage consisting of  "+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damageAmplifier).ToString("##%", CultureInfo.InvariantCulture) , displaycolor));
+            InformationManager.DisplayMessage(new InformationMessage(resultDamage + "cast damage consisting of  "+" ("+displayDamageType +") was applied "+ "which was modified by " + (1+damageAmplifier).ToString("##%", CultureInfo.InvariantCulture) , displayColor));
         }
         
 
-        private static void DisplayDamageResult(int resultDamage, float[] categories, float[] amplifier)
+        private static void DisplayDamageResult(int resultDamage, float[] categories)
         {
             var displaycolor = Color.White;
             string displaytext = "";
