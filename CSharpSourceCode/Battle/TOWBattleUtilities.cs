@@ -19,9 +19,9 @@ namespace TOW_Core.Battle
         {
             foreach (var agent in agents)
             {
-                if(spellID!="")
-                    SpellBlowInfoManager.EnqueueSpellInfo(damager==null?-1:damager.Index,spellID,damageType);
-                
+                if(spellID!=""&& damager!=null)
+                    SpellBlowInfoManager.EnqueueSpellInfo(agent.Index,damager.Index,spellID,damageType);
+
                 if (maxDamage < minDamage)
                 {
                     agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave);

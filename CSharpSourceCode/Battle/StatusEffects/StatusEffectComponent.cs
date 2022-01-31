@@ -81,9 +81,6 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
-                    var effect = data.Effect.Template;
-                    SpellBlowInfoManager.EnqueueDotInfo(data.ApplierAgent.Index,effect.Id,effect.DamageType);
-
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
                 else if (_effectAggregate.HealthOverTime > 0)

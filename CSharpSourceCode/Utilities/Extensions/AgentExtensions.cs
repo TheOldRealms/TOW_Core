@@ -340,17 +340,12 @@ namespace TOW_Core.Utilities.Extensions
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
+
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
-                        if (damager != null)
-                        {
-                            var dotInfo= SpellBlowInfoManager.GetDotInfo(damager.Index);
-                            var properties = damager.GetProperties(PropertyMask.Attack);
-                            damageAmount = (int) (damageAmount*(1+properties.DamagePercentages[(int)dotInfo.DamageType]));
-                        }
-                        agent.Health -= damageAmount;
-                        return;
+                       return;
                     }
+                    
                     else if (agent.Health > 1 && !agent.IsFadingOut())
                     {
                         var blow = new Blow(-1);
@@ -386,6 +381,7 @@ namespace TOW_Core.Utilities.Extensions
             }
             catch (Exception e)
             {
+                TOWCommon.Say("ERROR");
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
         }

@@ -62,7 +62,7 @@ namespace TOW_Core.HarmonyPatches
             if (isSpell)
             {
                 //for now 100% converted to target type
-                var spellInfo = SpellBlowInfoManager.GetSpellInfo(attacker.Index);
+                var spellInfo = SpellBlowInfoManager.GetSpellInfo(victim.Index,attacker.Index);
                 int damageType = (int) spellInfo.DamageType;
                 damageCategories[damageType] = b.InflictedDamage;
                 damagePercentages[damageType] -= resistancePercentages[damageType];

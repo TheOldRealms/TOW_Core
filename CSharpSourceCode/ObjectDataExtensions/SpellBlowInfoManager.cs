@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TaleWorlds.Core;
 using TOW_Core.Battle.Damage;
@@ -6,68 +7,24 @@ namespace TOW_Core.ObjectDataExtensions
 {
     public static class SpellBlowInfoManager
     {
-        private static Dictionary<int, Queue<SpellInfo>> SpellIDs;
-        private static Dictionary<int, Queue<SpellInfo>> DotIDs;
-        
-        
-        public static void EnqueueDotInfo(int agentIndex, string dotName, DamageType damageType)
-        {
-            if (agentIndex == -1)
-                return;
-            
-            if (DotIDs == null)
-            {
-                DotIDs = new Dictionary<int, Queue<SpellInfo>>();
-            }
-            
-            if(DotIDs.ContainsKey(agentIndex))
-            {
-                SpellInfo info = new SpellInfo();
-                info.SpellID = dotName;
-                info.DamageType = damageType;
-                DotIDs[agentIndex].Enqueue(info);
-                return;
-            }
-            
-            var spellItem = new SpellInfo();
-            spellItem.SpellID = dotName;
-            spellItem.DamageType = damageType;
-            Queue<SpellInfo> queue = new Queue<SpellInfo>();
-            queue.Enqueue(spellItem);
-            DotIDs.Add(agentIndex, queue);
-        }
-        
-        public static  SpellInfo GetDotInfo(int agentIndex)
-        {
-            if (!DotIDs.ContainsKey(agentIndex)) return new SpellInfo();
-            var item = DotIDs[agentIndex].Dequeue();
+        private static Dictionary<Tuple<int,int>, Queue<SpellInfo>> SpellIDs = new Dictionary<Tuple<int, int>, Queue<SpellInfo>>();
 
-            if (!DotIDs[agentIndex].IsEmpty())
-            {
-                return item;
-            }
-
-            DotIDs.Remove(agentIndex);
-            return item;
-        }
-        
-        
-        public static void EnqueueSpellInfo(int agentIndex, string spellName, DamageType damageType)
+        public static void EnqueueSpellInfo(int victimAgentIndex, int attackAgentIndex, string spellName, DamageType damageType)
         {
-            if (agentIndex == -1)
+            if (victimAgentIndex == -1 || attackAgentIndex ==-1)
                 return;
+
+           
+
+            var coord = new Tuple<int, int>(victimAgentIndex, attackAgentIndex);
             
-            if (SpellIDs == null)
-            {
-                SpellIDs = new Dictionary<int, Queue<SpellInfo>>();
-            }
-            
-            if(SpellIDs.ContainsKey(agentIndex))
+            if(SpellIDs.ContainsKey(coord))
             {
                 SpellInfo info = new SpellInfo();
                 info.SpellID = spellName;
                 info.DamageType = damageType;
-                SpellIDs[agentIndex].Enqueue(info);
+                info.DamagerIndex = attackAgentIndex;
+                SpellIDs[coord].Enqueue(info);
                 return;
             }
             
@@ -76,28 +33,28 @@ namespace TOW_Core.ObjectDataExtensions
             spellItem.DamageType = damageType;
             Queue<SpellInfo> queue = new Queue<SpellInfo>();
             queue.Enqueue(spellItem);
-            SpellIDs.Add(agentIndex, queue);
+            SpellIDs.Add(coord, queue);
         }
         
-        public static  SpellInfo GetSpellInfo(int agentIndex)
+        public static  SpellInfo GetSpellInfo(int victimAgentIndex, int attackAgentIndex)
         {
-            if (!SpellIDs.ContainsKey(agentIndex)) return new SpellInfo();
+            var coord = new Tuple<int, int>(victimAgentIndex, attackAgentIndex);
+            if (!SpellIDs.ContainsKey(coord)) return new SpellInfo();
             
-            var item = SpellIDs[agentIndex].Dequeue();
+            var item = SpellIDs[coord].Dequeue();
 
-            if (!SpellIDs[agentIndex].IsEmpty())
+            if (!SpellIDs[coord].IsEmpty())
             {
                 return item;
             }
-
-            SpellIDs.Remove(agentIndex);
-
+            
             return item;
         }
     }
     
     public  struct SpellInfo
     {
+        public int DamagerIndex;
         public string SpellID;
         public DamageType DamageType;
     }
