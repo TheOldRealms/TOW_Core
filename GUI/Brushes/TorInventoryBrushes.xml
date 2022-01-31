@@ -1,0 +1,7 @@
+<Brushes>
+  <Brush Name="TorInventoryMagicItemBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#0095A4FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+</Brushes>

@@ -47,6 +47,7 @@ namespace TOW_Core.CampaignSupport
         public void OnNewGameCreated(CampaignGameStarter campaignGameStarter)
         {
             InitializeWandererList();
+            InitCompanions();
             _nextRandomCompanionSpawnDate = CampaignTime.WeeksFromNow(_randomCompanionSpawnFrequencyInWeeks);
             SpawnUrbanCharactersAtGameStart();
         }
@@ -134,7 +135,6 @@ namespace TOW_Core.CampaignSupport
                 return;
             }
 
-            InitCompanions();
             SetInitialRelationsBetweenNotablesAndLords();
             int num = 50;
             for (int j = 0; j < num; j++)

@@ -398,6 +398,8 @@
     <Compile Include="Items\ItemTraitAgentComponent.cs" />
     <Compile Include="Items\ItemTrait.cs" />
     <Compile Include="Items\ExtendedItemObjectManager.cs" />
+    <Compile Include="Items\TorItemMenuVM.cs" />
+    <Compile Include="Items\TorItemTraitVM.cs" />
     <Compile Include="Items\WeaponEffectMissionLogic.cs" />
     <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
