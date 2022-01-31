@@ -27,15 +27,10 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class DamagePatch
     {
-        
-        // helper function
-        
-        
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
         public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
         {
-           
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent victim = __instance;
             
@@ -95,6 +90,14 @@ namespace TOW_Core.HarmonyPatches
 
             if (b.InflictedDamage > 0)
             {
+                if (!attacker.IsHero)
+                {
+                    InformationManager.DisplayMessage(attacker.Team.IsPlayerAlly
+                        ? new InformationMessage(b.InflictedDamage + " damage", Colors.Green)
+                        : new InformationMessage(b.InflictedDamage + " damage", Colors.Red));
+                    return true;
+                }
+                
                 if(attacker==Agent.Main || victim==Agent.Main)
                     DisplayDamageResult(resultDamage, damageCategories, damagePercentages);
             }
@@ -138,10 +141,10 @@ namespace TOW_Core.HarmonyPatches
         {
             var displaycolor = Color.White;
             string displaytext = "";
-
             var dominantAdditionalEffect = DamageType.Physical;
             float dominantCategory=0;
             string additionalDamageTypeText= "";
+            
             for (int i = 2; i < categories.Length; i++) //starting from first real additional damage type
             {
                 if (dominantCategory < categories[i])
@@ -155,13 +158,9 @@ namespace TOW_Core.HarmonyPatches
                     DamageType t = (DamageType)i;
                     string s = ", " +(int) categories[i] + " was dealt in " + t;
                     if (additionalDamageTypeText == "")
-                    {
                         additionalDamageTypeText = s;
-                    }
                     else
-                    {
                         additionalDamageTypeText.Add(s,false);
-                    }
                 }
             }
 
@@ -181,8 +180,7 @@ namespace TOW_Core.HarmonyPatches
                     break;
             }
 
-            string resultText;
-            resultText = (int) resultDamage+ " damage was dealt of which was "+ (int) categories[1]+ " "+ nameof(DamageType.Physical)+additionalDamageTypeText ;
+            var resultText = (int) resultDamage+ " damage was dealt of which was "+ (int) categories[1]+ " "+ nameof(DamageType.Physical)+additionalDamageTypeText;
             InformationManager.DisplayMessage(new InformationMessage(resultText, displaycolor));
             
         }

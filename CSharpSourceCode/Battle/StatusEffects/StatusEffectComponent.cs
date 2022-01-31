@@ -82,7 +82,7 @@ namespace TOW_Core.Battle.StatusEffects
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
                     var effect = data.Effect.Template;
-                    SpellBlowInfoManager.EnqueueSpellInfo(data.ApplierAgent.Index,effect.Id,effect.DamageType);
+                    SpellBlowInfoManager.EnqueueDotInfo(data.ApplierAgent.Index,effect.Id,effect.DamageType);
 
                     Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
                 }
@@ -125,6 +125,11 @@ namespace TOW_Core.Battle.StatusEffects
             _currentEffects.Remove(effect);
         }
 
+        public float[] GetDamageReductions()
+        {
+            return _effectAggregate.DamageReduction;
+        }
+
         private void AddEffect(StatusEffect effect, Agent applierAgent)
         {
             List<GameEntity> childEntities;
@@ -153,20 +158,23 @@ namespace TOW_Core.Battle.StatusEffects
         public class EffectAggregate
         {
             public float HealthOverTime { get; set; } = 0;
-            public float WardSaveFactor { get; set; } = 0;
-            public float FlatArmorEffect { get; set; } = 0;
-            public float PercentageArmorEffect { get; set; } = 0;
             public float DamageOverTime { get; set; } = 0;
+
+            public readonly float[] DamageReduction = new float[7];
 
             public void AddEffect(StatusEffect effect)
             {
-                switch (effect.Template.Type)
+                var template = effect.Template;
+                switch (template.Type)
                 {
                     case StatusEffectTemplate.EffectType.DamageOverTime:
-                        DamageOverTime += effect.Template.DamageOverTime;
+                        DamageOverTime += template.DamageOverTime;
                         break;
                     case StatusEffectTemplate.EffectType.HealthOverTime:
-                        HealthOverTime += effect.Template.HealthOverTime;
+                        HealthOverTime += template.HealthOverTime;
+                        break;
+                    case StatusEffectTemplate.EffectType.Reduction :
+                        DamageReduction[(int)template.DamageReduction.AmplifiedDamageType] = template.DamageReduction.DamageAmplifier;
                         break;
                 }
             }

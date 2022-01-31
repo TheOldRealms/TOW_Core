@@ -29,10 +29,13 @@ namespace TOW_Core.Battle.StatusEffects
         public float DamageOverTime { get; set; } = 0;
         [XmlAttribute("damage_type")]
         public DamageType DamageType { get; set; } = DamageType.Physical;
+        [XmlElement]
+        public AmplifierTuple DamageReduction { get; set; } = new AmplifierTuple();
         public enum EffectType
         {
             HealthOverTime,
             DamageOverTime,
+            Reduction,
             Invalid
         };
 
