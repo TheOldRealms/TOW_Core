@@ -42,7 +42,6 @@
         </Widget>
 
         <!--Compared Item (Right Side)-->
-        <!--
         <Widget Id="ComparedItemTooltip" IsVisible="@IsComparing" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom">
           <Children>
             <Widget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" ExtendTop="10" ExtendLeft="10" ExtendRight="10" ExtendBottom="10" Sprite="inventory_tooltip_9">
@@ -62,7 +61,6 @@
             </Widget>
           </Children>
         </Widget>
-        -->
       </Children>
     </ListPanel>
   </Window>
