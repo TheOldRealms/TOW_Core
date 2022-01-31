@@ -337,8 +337,7 @@
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
-    <Compile Include="Battle\Damage\TestDamageMissionLogic.cs" />
-    <Compile Include="Battle\Damage\TorApplyDamageModel.cs" />
+    <Compile Include="Battle\Damage\TestingDamageMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />

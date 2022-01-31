@@ -8,14 +8,11 @@ namespace TOW_Core.ObjectDataExtensions
     public static class SpellBlowInfoManager
     {
         private static Dictionary<Tuple<int,int>, Queue<SpellInfo>> SpellIDs = new Dictionary<Tuple<int, int>, Queue<SpellInfo>>();
-
         public static void EnqueueSpellInfo(int victimAgentIndex, int attackAgentIndex, string spellName, DamageType damageType)
         {
             if (victimAgentIndex == -1 || attackAgentIndex ==-1)
                 return;
-
-           
-
+            
             var coord = new Tuple<int, int>(victimAgentIndex, attackAgentIndex);
             
             if(SpellIDs.ContainsKey(coord))
@@ -49,6 +46,11 @@ namespace TOW_Core.ObjectDataExtensions
             }
             
             return item;
+        }
+
+        public static void Clear()
+        {
+            SpellIDs.Clear();
         }
     }
     

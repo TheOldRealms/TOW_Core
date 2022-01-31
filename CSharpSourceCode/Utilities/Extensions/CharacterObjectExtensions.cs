@@ -106,7 +106,10 @@ namespace TOW_Core.Utilities.Extensions
             }
             return characterObject.GetAttributes().Contains("VampireBodyOverride");
         }
-
+        /// <summary>
+        /// Access item objects from the equipment of the character
+        /// Equipment Indexes can define the Range. Note that horses are not a valid item object to be accessed
+        /// </summary>
         public static List<ItemObject> GetCharacterEquipment(this BasicCharacterObject characterObject,
             EquipmentIndex BeginningFrom=EquipmentIndex.Weapon0, EquipmentIndex EndingAt=EquipmentIndex.ArmorItemEndSlot)
         {

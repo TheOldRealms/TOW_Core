@@ -69,15 +69,26 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
         
-
+        /// <summary>
+        /// Get Extented Character properties, based on dynamic properties like temporary weapon enhancements
+        /// and status effects and static properties  like equipment and unit information.
+        /// 
+        /// </summary>
+        /// <param name="agent">The agent we are accessing. Note that Units are handled differently from Heroes.
+        /// Hero equipment information and gets read out for Heroes specifically resides in the 'tow_extendeditemproperties.xml'
+        /// Unit information gets read out from the tow_extendedunitproperties.xml
+        /// </param>
+        /// <paramref name="agent"/>
+        /// <param name="mask">Which properties needs to be accessed? be mindful about which information is really required for your specific situation. Not used properties are returned as empty arrays</param>
+        ///<returns>A struct containing 3 arrays, each containing the  properties:  proportions, damage amplifications and resistances.</returns>
         public static AgentPropertyContainer GetProperties(this Agent agent, PropertyMask mask=PropertyMask.All)
         {
             if (agent.IsMount)
                 return new AgentPropertyContainer();
             
-            float[] damageProportions = new float[7];
-            float[] damagePercentages = new float[7];
-            float[] resistancePercentages = new float[7];
+            float[] damageProportions = new float[(int) DamageType.All];
+            float[] damageAmplifications = new float[(int) DamageType.All];
+            float[] damageResistances = new float[(int) DamageType.All];
             
             #region Unit
             if (!agent.IsHero)
@@ -94,7 +105,7 @@ namespace TOW_Core.Utilities.Extensions
                     //add all offense properties of the Unit
                     foreach (var property in offenseProperties)
                     {
-                        damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                     //add temporary effects like buffs to attack bonuses on items
                     List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
@@ -104,13 +115,13 @@ namespace TOW_Core.Utilities.Extensions
                         var attackProperty = temporaryTraits.AmplifierTuple;
                         if (attackProperty != null)
                         {
-                            damagePercentages[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
+                            damageAmplifications[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
                     }
                     var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
-                    for (int i = 0; i < damagePercentages.Length; i++)
+                    for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damagePercentages[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectReductions[i];
                     }
                 }
                 if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
@@ -120,7 +131,7 @@ namespace TOW_Core.Utilities.Extensions
                 
                     foreach (var property in defenseProperties)
                     {
-                        resistancePercentages[(int) property.ResistedDamageType] += property.ReductionPercent;
+                        damageResistances[(int) property.ResistedDamageType] += property.ReductionPercent;
                     }
                 
                     //add temporary effects like buffs to defense bonuses
@@ -132,7 +143,7 @@ namespace TOW_Core.Utilities.Extensions
                         var defenseProperty = temporaryTraits.ResistanceTuple;
                         if (defenseProperty != null)
                         {
-                            resistancePercentages[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
                 }
@@ -161,14 +172,14 @@ namespace TOW_Core.Utilities.Extensions
                         var property = itemTrait.AmplifierTuple;
                         if(property==null) 
                             continue;
-                        damagePercentages[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                     
                     var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
 
-                    for (int i = 0; i < damagePercentages.Length; i++)
+                    for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damagePercentages[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectReductions[i];
                     }
                 
                     //weapon properties
@@ -204,7 +215,7 @@ namespace TOW_Core.Utilities.Extensions
                         var defenseProperty = itemTrait.ResistanceTuple;
                         if(defenseProperty==null) 
                             continue;
-                        resistancePercentages[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                        damageResistances[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                     }
                     
                     //add temporary effects like buffs to defenese bonuses
@@ -216,14 +227,14 @@ namespace TOW_Core.Utilities.Extensions
                         var defenseProperty = temporaryTraits.ResistanceTuple;
                         if (defenseProperty != null)
                         {
-                            resistancePercentages[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                            damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
                     }
                 }
             }
             #endregion
 
-            return new AgentPropertyContainer(damageProportions, damagePercentages, resistancePercentages);
+            return new AgentPropertyContainer(damageProportions, damageAmplifications, damageResistances);
             
 
         }
