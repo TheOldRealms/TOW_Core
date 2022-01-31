@@ -1,7 +1,5 @@
 ﻿using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
-
 
 namespace TOW_Core.Battle.Damage
 {
@@ -14,7 +12,6 @@ namespace TOW_Core.Battle.Damage
         {
             base.OnMissionTick(dt);
             
-
             if (Input.IsKeyPressed(InputKey.N))
             {
                 Blow b = new Blow();
@@ -28,8 +25,6 @@ namespace TOW_Core.Battle.Damage
                     Mission.Teams.Attacker.Leader.Die(b);
                 }
             }
-
-
         }
     }
 }

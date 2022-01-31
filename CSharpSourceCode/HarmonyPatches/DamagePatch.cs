@@ -1,27 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms.VisualStyles;
 using HarmonyLib;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.Network.Gameplay.Perks.Effects;
-using TaleWorlds.TwoDimension;
-using TOW_Core.Abilities;
 using TOW_Core.Battle.Damage;
-using TOW_Core.Battle.StatusEffects;
-using TOW_Core.Battle.TriggeredEffect;
-using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
-using ItemObjectExtensions = TOW_Core.Utilities.Extensions.ItemObjectExtensions;
-
 namespace TOW_Core.HarmonyPatches
 {
     [HarmonyPatch]
