@@ -48,12 +48,7 @@ namespace TOW_Core.Battle.StatusEffects
             }
         }
 
-
-        public EffectAggregate GetEffectAggregate()
-        {
-            return _effectAggregate;
-        }
-
+        
         public void OnElapsed(float dt)
         {
             foreach (StatusEffect effect in _currentEffects.Keys)
@@ -65,9 +60,7 @@ namespace TOW_Core.Battle.StatusEffects
                     return;
                 }
             }
-
             CalculateEffectAggregate();
-
             StatusEffect dotEffect = _currentEffects.Keys.Where(x => x.Template.Type == StatusEffectTemplate.EffectType.DamageOverTime).FirstOrDefault();
             EffectData data = null;
             if (dotEffect != null)
@@ -152,11 +145,10 @@ namespace TOW_Core.Battle.StatusEffects
             public Agent ApplierAgent { get; set; }
         }
 
-        public class EffectAggregate
+        private class EffectAggregate
         {
             public float HealthOverTime { get; set; } = 0;
             public float DamageOverTime { get; set; } = 0;
-
             public readonly float[] DamageReduction = new float[7];
 
             public void AddEffect(StatusEffect effect)
