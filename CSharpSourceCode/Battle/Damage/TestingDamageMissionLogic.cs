@@ -15,14 +15,17 @@ namespace TOW_Core.Battle.Damage
             if (Input.IsKeyPressed(InputKey.N))
             {
                 Blow b = new Blow();
-
+                
+                
                 if (Mission.Current.PlayerTeam.IsAttacker)
                 {
-                    Mission.Teams.Defender.Leader.Die(b);
+                    if(Mission.Teams.Defender.Leader.Health>0)
+                        Mission.Teams.Defender.Leader.Die(b);
                 }
                 else
                 {
-                    Mission.Teams.Attacker.Leader.Die(b);
+                    if(Mission.Teams.Defender.Leader.Health>0)
+                        Mission.Teams.Attacker.Leader.Die(b);
                 }
             }
         }
