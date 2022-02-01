@@ -149,7 +149,7 @@ namespace TOW_Core.Battle.StatusEffects
         {
             public float HealthOverTime { get; set; } = 0;
             public float DamageOverTime { get; set; } = 0;
-            public readonly float[] DamageReduction = new float[7];
+            public readonly float[] DamageReduction = new float[(int)DamageType.All];
 
             public void AddEffect(StatusEffect effect)
             {

@@ -184,6 +184,6 @@
           ImbuedStatusEffectID="curse_of_years"
           ImbuedStatusEffectDuration="15"
           DamageVariance="0.0"
-	  ScriptNameToTrigger="">
+	  ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>
