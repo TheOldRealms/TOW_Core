@@ -392,7 +392,6 @@ namespace TOW_Core.Utilities.Extensions
             }
             catch (Exception e)
             {
-                TOWCommon.Say("ERROR");
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
         }

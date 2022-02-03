@@ -68,14 +68,6 @@ namespace TOW_Core.HarmonyPatches
 
             if (b.InflictedDamage > 0)
             {
-                if (!attacker.IsHero)
-                {
-                    InformationManager.DisplayMessage(attacker.Team.IsPlayerAlly
-                        ? new InformationMessage(b.InflictedDamage + " damage", Colors.Green)
-                        : new InformationMessage(b.InflictedDamage + " damage", Colors.Red));
-                    return true;
-                }
-                
                 if(attacker==Agent.Main || victim==Agent.Main)
                     DisplayDamageResult(resultDamage, damageCategories);
             }
