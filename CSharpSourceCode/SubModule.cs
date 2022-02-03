@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -40,6 +40,7 @@ using TOW_Core.Battle.Artillery;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
+using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 
 namespace TOW_Core
@@ -161,6 +162,7 @@ namespace TOW_Core
             base.OnMissionBehaviorInitialize(mission);
             mission.AddMissionBehavior(new AttributeSystemMissionLogic());
             mission.AddMissionBehavior(new StatusEffectMissionLogic());
+            mission.AddMissionBehavior(new TestingDamageMissionLogic());
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());

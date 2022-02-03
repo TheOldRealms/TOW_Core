@@ -43,5 +43,12 @@ namespace TOW_Core.ObjectDataExtensions
                 _tickWindsOfMagic = false;
             }
         }
+
+
+        public override void OnMissionDeactivate()
+        {
+            base.OnMissionDeactivate();
+            SpellBlowInfoManager.Clear();
+        }
     }
 }

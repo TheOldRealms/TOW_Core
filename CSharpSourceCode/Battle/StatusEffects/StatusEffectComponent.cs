@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -11,6 +11,8 @@ using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using System.Linq;
 using TaleWorlds.Library;
+using TOW_Core.Battle.Damage;
+using TOW_Core.ObjectDataExtensions;
 using static TaleWorlds.Core.ItemObject;
 
 namespace TOW_Core.Battle.StatusEffects
@@ -46,6 +48,7 @@ namespace TOW_Core.Battle.StatusEffects
             }
         }
 
+        
         public void OnElapsed(float dt)
         {
             foreach (StatusEffect effect in _currentEffects.Keys)
@@ -57,9 +60,7 @@ namespace TOW_Core.Battle.StatusEffects
                     return;
                 }
             }
-
             CalculateEffectAggregate();
-
             StatusEffect dotEffect = _currentEffects.Keys.Where(x => x.Template.Type == StatusEffectTemplate.EffectType.DamageOverTime).FirstOrDefault();
             EffectData data = null;
             if (dotEffect != null)
@@ -114,6 +115,11 @@ namespace TOW_Core.Battle.StatusEffects
             _currentEffects.Remove(effect);
         }
 
+        public float[] GetDamageReductions()
+        {
+            return _effectAggregate.DamageReduction;
+        }
+
         private void AddEffect(StatusEffect effect, Agent applierAgent)
         {
             List<GameEntity> childEntities;
@@ -142,20 +148,22 @@ namespace TOW_Core.Battle.StatusEffects
         private class EffectAggregate
         {
             public float HealthOverTime { get; set; } = 0;
-            public float WardSaveFactor { get; set; } = 0;
-            public float FlatArmorEffect { get; set; } = 0;
-            public float PercentageArmorEffect { get; set; } = 0;
             public float DamageOverTime { get; set; } = 0;
+            public readonly float[] DamageReduction = new float[(int)DamageType.All];
 
             public void AddEffect(StatusEffect effect)
             {
-                switch (effect.Template.Type)
+                var template = effect.Template;
+                switch (template.Type)
                 {
                     case StatusEffectTemplate.EffectType.DamageOverTime:
-                        DamageOverTime += effect.Template.DamageOverTime;
+                        DamageOverTime += template.DamageOverTime;
                         break;
                     case StatusEffectTemplate.EffectType.HealthOverTime:
-                        HealthOverTime += effect.Template.HealthOverTime;
+                        HealthOverTime += template.HealthOverTime;
+                        break;
+                    case StatusEffectTemplate.EffectType.Reduction :
+                        DamageReduction[(int)template.DamageReduction.AmplifiedDamageType] = template.DamageReduction.DamageAmplifier;
                         break;
                 }
             }
