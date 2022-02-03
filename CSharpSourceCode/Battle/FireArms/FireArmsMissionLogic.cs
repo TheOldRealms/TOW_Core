@@ -6,6 +6,7 @@ using TaleWorlds.MountAndBlade;
 using SandBox.Source.Missions;
 using TOW_Core.Utilities;
 using TaleWorlds.InputSystem;
+using TaleWorlds.MountAndBlade.View.Screen;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -99,6 +100,16 @@ namespace TOW_Core.Battle.FireArms
             float rand3 = MBRandom.RandomFloatRanged(-scattering, scattering);
             orientation.f.RotateAboutZ(rand3);
             return orientation;
+        }
+
+
+        public override void OnMissionTick(float dt)
+        {
+            if (Input.IsKeyPressed(InputKey.P))
+            {
+                var frame = Agent.Main.LookFrame.Advance(0.5f).Elevate(2);
+                Mission.Current.SetCameraFrame(ref frame, 1);
+            }
         }
     }
 }
