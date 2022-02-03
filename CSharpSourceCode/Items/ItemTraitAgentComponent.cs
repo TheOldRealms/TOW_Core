@@ -7,6 +7,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -140,6 +141,27 @@ namespace TOW_Core.Items
                     {
                         ApplyParticlePreset(trait.WeaponParticlePreset, weapon);
                     }
+                }
+            }
+            RefreshVisuals();
+        }
+
+        public void EnableAllParticles(bool enable)
+        {
+            if (enable)
+            {
+                for (int i = 0; i < _currentPresets.Count; i++)
+                {
+                    var item = _currentPresets[i];
+                    if(_currentPresets[i].Item3 == false) _currentPresets[i] = new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(item.Item1, item.Item2, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _currentPresets.Count; i++)
+                {
+                    var item = _currentPresets[i];
+                    if (_currentPresets[i].Item3 == true) _currentPresets[i] = new Tuple<WeaponParticlePreset, List<ParticleSystem>, bool>(item.Item1, item.Item2, false);
                 }
             }
             RefreshVisuals();

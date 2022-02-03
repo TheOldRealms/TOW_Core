@@ -16,14 +16,10 @@ public static class MissionPatches
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
     public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
     {
-        var character = agentBuildData.AgentCharacter as CharacterObject;
+        var character = agentBuildData.AgentCharacter;
         if (character != null)
         {
-            if (character.HeroObject != null && character.HeroObject.IsVampire())
-            {
-                Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
-            }
-            else if (character.IsVampire())
+            if (character.IsVampire())
             {
                 Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
             }

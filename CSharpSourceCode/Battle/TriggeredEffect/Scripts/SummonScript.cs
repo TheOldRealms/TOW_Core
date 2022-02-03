@@ -25,10 +25,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             {
                 supplier = Traverse.Create(agentOrigin).Field("_troopSupplier").GetValue<CustomBattleTroopSupplier>();
             }
-            if (supplier != null)
-            {
-                Traverse.Create(supplier).Field("_numAllocated").SetValue(supplier.NumActiveTroops + 5);
-            }
             var data = GetAgentBuildData(triggeredByAgent, supplier);
 
             var skeleton = SpawnAgent(data, position);
@@ -41,14 +37,14 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             var pos5 = new Vec3(position.X - 1f, position.Y - 1f);
             var skeleton5 = SpawnAgent(data, pos5);
 
-            if (Game.Current.GameType is Campaign)
+            var component = triggeredByAgent.GetComponent<AbilityComponent>();
+            if(component != null)
             {
-                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-                manager.AddSummonedCreature(skeleton, supplier as PartyGroupTroopSupplier);
-                manager.AddSummonedCreature(skeleton2, supplier as PartyGroupTroopSupplier);
-                manager.AddSummonedCreature(skeleton3, supplier as PartyGroupTroopSupplier);
-                manager.AddSummonedCreature(skeleton4, supplier as PartyGroupTroopSupplier);
-                manager.AddSummonedCreature(skeleton5, supplier as PartyGroupTroopSupplier);
+                component.AddSummonedAgent(skeleton);
+                component.AddSummonedAgent(skeleton2);
+                component.AddSummonedAgent(skeleton3);
+                component.AddSummonedAgent(skeleton4);
+                component.AddSummonedAgent(skeleton5);
             }
         }
 
