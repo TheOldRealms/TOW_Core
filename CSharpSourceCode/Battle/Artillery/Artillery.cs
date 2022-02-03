@@ -850,7 +850,6 @@ namespace TOW_Core.Battle.Artillery
                 entity.CreateAndAddScriptComponent("CannonBallScript");
                 CannonBallScript cannonBallScript = entity.GetFirstScriptOfType<CannonBallScript>();
                 cannonBallScript.SetShooterAgent(PilotAgent);
-                cannonBallScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("cannonball_explosion"));
                 entity.CallScriptCallbacks();
             }
         }
