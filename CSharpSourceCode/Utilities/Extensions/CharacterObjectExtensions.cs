@@ -42,7 +42,7 @@ namespace TOW_Core.Utilities.Extensions
         public static List<ResistanceTuple> GetDefenseProperties(this BasicCharacterObject characterObject)
         {
             var list = new List<ResistanceTuple>();
-            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).Resistances;
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId)?.Resistances;
             if (info != null)
             {
                 list.AddRange(info);
@@ -53,7 +53,7 @@ namespace TOW_Core.Utilities.Extensions
         public static List<AmplifierTuple> GetAttackProperties(this BasicCharacterObject characterObject)
         {
             var list = new List<AmplifierTuple>();
-            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).DamageAmplifiers;
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId)?.DamageAmplifiers;
             if (info != null)
             {
                 list.AddRange(info);
@@ -64,7 +64,7 @@ namespace TOW_Core.Utilities.Extensions
         public static List<DamageProportionTuple> GetUnitDamageProportions(this BasicCharacterObject characterObject)
         {
             var list = new List<DamageProportionTuple>();
-            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId).DamageProportions;
+            var info = ExtendedInfoManager.GetCharacterInfoFor(characterObject.StringId)?.DamageProportions;
             if (info != null)
             {
                 list.AddRange(info);
