@@ -76,18 +76,6 @@ namespace TOW_Core.Abilities
             }
         }
 
-        public override void OnAgentRemoved()
-        {
-            base.OnAgentRemoved();
-            if(_summonedAgents.Count > 0)
-            {
-                foreach(var agent in _summonedAgents)
-                {
-                    if (agent.IsActive()) agent.Die(new Blow());
-                }
-            }
-        }
-
         internal void InitializeCrosshairs()
         {
             foreach (var ability in KnownAbilities)
@@ -152,16 +140,10 @@ namespace TOW_Core.Abilities
             return null;
         }
 
-        public void AddSummonedAgent(Agent agent)
-        {
-            _summonedAgents.Add(agent);
-        }
-
         private Ability _currentAbility = null;
         private SpecialMove _specialMove = null;
         private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
-        private List<Agent> _summonedAgents = new List<Agent>();
         public Ability CurrentAbility
         {
             get => _currentAbility;

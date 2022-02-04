@@ -32,7 +32,24 @@ namespace TOW_Core.Abilities
         private static readonly ActionIndexCache _idleAnimation = ActionIndexCache.Create("act_spellcasting_idle");
         private ParticleSystem[] _psys = null;
         private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
+        private SummonedCombatant _defenderSummoningCombatant;
+        private SummonedCombatant _attackerSummoningCombatant;
+
         public AbilityModeState CurrentState => _currentState;
+
+        public override void OnFormationUnitsSpawned(Team team)
+        {
+            if(team.Side == BattleSideEnum.Attacker && _attackerSummoningCombatant == null)
+            {
+                var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
+                _attackerSummoningCombatant = new SummonedCombatant(team, culture);
+            }
+            else if (team.Side == BattleSideEnum.Defender && _defenderSummoningCombatant == null)
+            {
+                var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
+                _defenderSummoningCombatant = new SummonedCombatant(team, culture);
+            }
+        }
 
         protected override void OnEndMission()
         {
@@ -50,6 +67,12 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
+            /*
+            if (!_initializedCombatants && Mission.CurrentState == Mission.State.Continuing)
+            {
+                SetupCombatants();
+                _initializedCombatants = true;
+            }*/
             if (!_isAbilityUser)
             {
                 if (Agent.Main != null)
@@ -296,6 +319,13 @@ namespace TOW_Core.Abilities
         public override void OnItemPickup(Agent agent, SpawnedItemEntity item)
         {
             if(agent == Agent.Main) DisableAbilityMode(true);
+        }
+
+        public SummonedCombatant GetSummoningCombatant(Team team)
+        {
+            if (team.Side == BattleSideEnum.Attacker) return _attackerSummoningCombatant;
+            else if (team.Side == BattleSideEnum.Defender) return _defenderSummoningCombatant;
+            else return null;
         }
     }
 

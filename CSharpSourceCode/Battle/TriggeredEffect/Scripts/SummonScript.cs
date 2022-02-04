@@ -15,17 +15,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     {
         public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
-            IAgentOriginBase agentOrigin = triggeredByAgent.Origin;
-            IMissionTroopSupplier supplier = null;
-            if (Game.Current.GameType is Campaign)
-            {
-                supplier = Traverse.Create(agentOrigin).Field("_supplier").GetValue<PartyGroupTroopSupplier>();
-            }
-            else if (Game.Current.GameType is CustomGame)
-            {
-                supplier = Traverse.Create(agentOrigin).Field("_troopSupplier").GetValue<CustomBattleTroopSupplier>();
-            }
-            var data = GetAgentBuildData(triggeredByAgent, supplier);
+            var data = GetAgentBuildData(triggeredByAgent);
 
             var skeleton = SpawnAgent(data, position);
             var pos2 = new Vec3(position.X + 1f, position.Y + 1f);
@@ -36,30 +26,13 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             var skeleton4 = SpawnAgent(data, pos4);
             var pos5 = new Vec3(position.X - 1f, position.Y - 1f);
             var skeleton5 = SpawnAgent(data, pos5);
-
-            var component = triggeredByAgent.GetComponent<AbilityComponent>();
-            if(component != null)
-            {
-                component.AddSummonedAgent(skeleton);
-                component.AddSummonedAgent(skeleton2);
-                component.AddSummonedAgent(skeleton3);
-                component.AddSummonedAgent(skeleton4);
-                component.AddSummonedAgent(skeleton5);
-            }
         }
 
-        private AgentBuildData GetAgentBuildData(Agent caster, IMissionTroopSupplier supplier)
+        private AgentBuildData GetAgentBuildData(Agent caster)
         {
             BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>(CreatureName);
-            IAgentOriginBase troopOrigin = null;
-            if (Game.Current.GameType is Campaign)
-            {
-                troopOrigin = new PartyAgentOrigin(MobileParty.MainParty.Party, CharacterObject.FindFirst(x => x.StringId == troopCharacter.StringId), 1, new UniqueTroopDescriptor(1), false);
-            }
-            else
-            {
-                troopOrigin = new CustomBattleAgentOrigin((CustomBattleCombatant)caster.Origin.BattleCombatant, troopCharacter, supplier as CustomBattleTroopSupplier, !caster.Team.IsEnemyOf(Mission.Current.PlayerTeam));
-            }
+            
+            IAgentOriginBase troopOrigin = new SummonedAgentOrigin(caster, troopCharacter);
             var formation = caster.Team.Formations.FirstOrDefault(f => f.PrimaryClass == FormationClass.Infantry);
             if (formation == null)
             {
