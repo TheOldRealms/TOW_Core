@@ -419,14 +419,14 @@ namespace TOW_Core.Battle.Artillery
                 }
                 else if (_currentState != RangedSiegeWeapon.WeaponState.Shooting && action != _shootAnimationActionIndex)
                 {
-                    if (!PilotAgent.SetActionChannel(1, _idleAnimationActionIndex, true))
+                    if (!PilotAgent.SetActionChannel(1, _idleAnimationActionIndex))
                     {
                         PilotAgent.StopUsingGameObject();
                     }
                 }
                 else if (_currentState == RangedSiegeWeapon.WeaponState.Shooting)
                 {
-                    if (!PilotAgent.SetActionChannel(1, _shootAnimationActionIndex, true))
+                    if (!PilotAgent.SetActionChannel(1, _shootAnimationActionIndex))
                     {
                         PilotAgent.StopUsingGameObject();
                     }

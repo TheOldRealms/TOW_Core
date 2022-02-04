@@ -42,6 +42,7 @@ using System.IO;
 using System;
 using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
+using SandBox;
 
 namespace TOW_Core
 {
@@ -160,13 +161,14 @@ namespace TOW_Core
         public override void OnMissionBehaviorInitialize(Mission mission)
         {
             base.OnMissionBehaviorInitialize(mission);
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+
             mission.AddMissionBehavior(new AttributeSystemMissionLogic());
             mission.AddMissionBehavior(new StatusEffectMissionLogic());
             mission.AddMissionBehavior(new TestingDamageMissionLogic());
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
-            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
             mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehavior(new FireArmsMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
@@ -175,9 +177,12 @@ namespace TOW_Core
             mission.AddMissionBehavior(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
+            
             if (Game.Current.GameType is Campaign)
             {
+                mission.RemoveMissionBehavior(mission.GetMissionBehavior<BattleAgentLogic>());
                 mission.AddMissionBehavior(new BattleInfoMissionLogic());
+                mission.AddMissionBehavior(new TORBattleAgentLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.

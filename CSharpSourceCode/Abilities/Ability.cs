@@ -32,6 +32,11 @@ namespace TOW_Core.Abilities
 
         public int GetCoolDownLeft() => _coolDownLeft;
 
+        public delegate void OnCastCompleteHandler();
+        public event OnCastCompleteHandler OnCastComplete;
+        public delegate void OnCastStartHandler();
+        public event OnCastStartHandler OnCastStart;
+
         public Ability(AbilityTemplate template)
         {
             StringID = template.StringID;
@@ -82,6 +87,7 @@ namespace TOW_Core.Abilities
 
         protected virtual void DoCast(Agent casterAgent)
         {
+            OnCastStart?.Invoke();
             SetAnimationAction(casterAgent);
             if (Template.CastType == CastType.Instant)
             {
@@ -121,6 +127,7 @@ namespace TOW_Core.Abilities
                 AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
+            OnCastComplete?.Invoke();
         }
 
         private bool IsGroundAbility()

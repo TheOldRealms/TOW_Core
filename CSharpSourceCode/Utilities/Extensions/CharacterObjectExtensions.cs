@@ -71,8 +71,6 @@ namespace TOW_Core.Utilities.Extensions
             }
             return list;
         }
-        
-        
 
         public static string GetCustomVoiceClassName(this BasicCharacterObject characterObject)
         {
@@ -100,6 +98,16 @@ namespace TOW_Core.Utilities.Extensions
             {
                 return characterObject.HeroObject.IsVampire();
             }
+            return characterObject.GetAttributes().Contains("VampireBodyOverride");
+        }
+
+        public static bool IsUndead(this BasicCharacterObject characterObject)
+        {
+            return characterObject.GetAttributes().Contains("Undead");
+        }
+
+        public static bool IsVampire(this BasicCharacterObject characterObject)
+        {
             return characterObject.GetAttributes().Contains("VampireBodyOverride");
         }
         /// <summary>

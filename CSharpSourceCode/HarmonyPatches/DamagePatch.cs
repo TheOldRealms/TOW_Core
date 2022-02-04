@@ -110,7 +110,6 @@ namespace TOW_Core.HarmonyPatches
         private static void DisplayDamageResult(int resultDamage, float[] categories)
         {
             var displaycolor = Color.White;
-            string displaytext = "";
             var dominantAdditionalEffect = DamageType.Physical;
             float dominantCategory=0;
             string additionalDamageTypeText= "";
