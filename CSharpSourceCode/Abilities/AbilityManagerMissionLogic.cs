@@ -34,6 +34,7 @@ namespace TOW_Core.Abilities
         private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
         private SummonedCombatant _defenderSummoningCombatant;
         private SummonedCombatant _attackerSummoningCombatant;
+        private readonly float DamagePortionForChargingSpecialMove = 0.25f;
 
         public AbilityModeState CurrentState => _currentState;
 
@@ -61,7 +62,7 @@ namespace TOW_Core.Abilities
             var comp = affectorAgent.GetComponent<AbilityComponent>();
             if(comp != null)
             {
-                if(comp.SpecialMove != null) comp.SpecialMove.AddCharge(damage/5);
+                if(comp.SpecialMove != null) comp.SpecialMove.AddCharge(damage * DamagePortionForChargingSpecialMove);
             }
         }
 
