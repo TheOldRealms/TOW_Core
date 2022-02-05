@@ -1,4 +1,5 @@
 ﻿using System;
+using SandBox.Source.Missions;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -42,6 +43,15 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 hasExploded = true;
                 _tickSound.Release();
                 explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, shooterAgent);
+                var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();
+                if (spawnLogic != null)
+                {
+                    foreach (var agent in Mission.Current.PlayerEnemyTeam.TeamAgents)
+                    {
+                        spawnLogic.OnAgentAlarmedStateChanged(agent, Agent.AIStateFlag.Alarmed);
+                        agent.SetWatchState(Agent.WatchState.Alarmed);
+                    }
+                }
             }
         }
         public override TickRequirement GetTickRequirement()
