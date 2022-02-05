@@ -68,12 +68,6 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
-            /*
-            if (!_initializedCombatants && Mission.CurrentState == Mission.State.Continuing)
-            {
-                SetupCombatants();
-                _initializedCombatants = true;
-            }*/
             if (!_isAbilityUser)
             {
                 if (Agent.Main != null)

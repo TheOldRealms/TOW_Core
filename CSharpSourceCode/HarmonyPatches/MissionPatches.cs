@@ -23,7 +23,7 @@ public static class MissionPatches
             {
                 Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
             }
-            else if (character.IsHero)
+            else if (character.IsHero && Game.Current.GameType is Campaign)
             {
                 var hero = ((CharacterObject)character).HeroObject;
                 if (hero.IsVampire())
