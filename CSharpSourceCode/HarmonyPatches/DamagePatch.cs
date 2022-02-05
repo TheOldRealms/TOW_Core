@@ -24,7 +24,7 @@ namespace TOW_Core.HarmonyPatches
             }
 
             bool isSpell = false;
-            float[] damageCategories=new float[(int) DamageType.All];
+            float[] damageCategories=new float[(int) DamageType.All+1];
             var attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack);
             var victimPropertyContainer = victim.GetProperties(PropertyMask.Defense);
             //attack properties;
