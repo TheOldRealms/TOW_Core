@@ -6,4 +6,10 @@
       <meta_mesh_component name="exploded_torso_001"/>
     </components>
   </game_entity>
+  <game_entity name="exploded_legs_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_legs_001"/>
+    <components>
+      <meta_mesh_component name="exploded_legs_001"/>
+    </components>
+  </game_entity>
 </prefabs>
