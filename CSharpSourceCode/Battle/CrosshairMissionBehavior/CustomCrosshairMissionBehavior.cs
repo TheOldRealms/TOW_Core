@@ -17,15 +17,16 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     {
         private bool _isActive;
         private Crosshair _weaponCrosshair;
+        private SniperScope _sniperScope;
         private AbilityCrosshair _abilityCrosshair;
         private AbilityComponent _abilityComponent;
-        private SniperScope _sniperScope;
+        private AbilityManagerMissionLogic _missionLogic;
 
         public override void OnMissionScreenTick(float dt)
         {
             if (CanUseCrosshair())
             {
-                if (_abilityCrosshair != null && _abilityComponent.IsSpellModeOn)
+                if (_abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
                 {
                     _weaponCrosshair.Hide();
                     _sniperScope.Hide();

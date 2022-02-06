@@ -86,9 +86,9 @@ namespace TOW_Core.Utilities.Extensions
             if (agent.IsMount)
                 return new AgentPropertyContainer();
             
-            float[] damageProportions = new float[(int) DamageType.All];
-            float[] damageAmplifications = new float[(int) DamageType.All];
-            float[] damageResistances = new float[(int) DamageType.All];
+            float[] damageProportions = new float[(int) DamageType.All+1];
+            float[] damageAmplifications = new float[(int) DamageType.All+1];
+            float[] damageResistances = new float[(int) DamageType.All+1];
             
             #region Unit
             if (!agent.IsHero)
@@ -392,7 +392,6 @@ namespace TOW_Core.Utilities.Extensions
             }
             catch (Exception e)
             {
-                TOWCommon.Say("ERROR");
                 TOWCommon.Log("ApplyDamage: attempted to damage agent, but: " + e.Message, LogLevel.Error);
             }
         }

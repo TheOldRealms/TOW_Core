@@ -1,0 +1,18 @@
+<Brushes>
+    <Brush Name="TorInventoryMagicItemBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+        <Styles>
+            <Style Name="Default" FontColor="#0095A4FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
+        </Styles>
+    </Brush>
+    <Brush Name="TorSpecialMoveBrush">
+        <Layers>
+            <BrushLayer Name="EmptyFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#404040FF" />
+            <BrushLayer Name="DefaultFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#FF2222FF" SaturationFactor="100"/>
+            <BrushLayer Name="ChangeFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#FFAAAAFF" />
+        </Layers>
+        <Styles>
+            <Style Name="Default">
+            </Style>
+        </Styles>
+    </Brush>
+</Brushes>

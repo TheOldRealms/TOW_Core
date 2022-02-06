@@ -18,6 +18,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities;
 using TOW_Core.CampaignSupport.MapBar;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -246,6 +247,19 @@ namespace TOW_Core.HarmonyPatches
         {
             var info = __instance.MapInfo as TorMapInfoVM;
             if (info != null) info.RefreshExtraProperties();
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(CampaignAgentComponent), "OwnerParty", MethodType.Getter)]
+        public static bool PatchOwnerPartyForSummons(Agent ___Agent, ref PartyBase __result)
+        {
+            if (___Agent.Origin is SummonedAgentOrigin)
+            {
+                var origin = ___Agent.Origin as SummonedAgentOrigin;
+                __result = origin.OwnerParty;
+                return false;
+            }
+            else return true;
         }
     }
 }

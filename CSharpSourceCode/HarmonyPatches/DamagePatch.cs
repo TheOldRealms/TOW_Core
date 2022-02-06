@@ -24,7 +24,7 @@ namespace TOW_Core.HarmonyPatches
             }
 
             bool isSpell = false;
-            float[] damageCategories=new float[(int) DamageType.All];
+            float[] damageCategories=new float[(int) DamageType.All+1];
             var attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack);
             var victimPropertyContainer = victim.GetProperties(PropertyMask.Defense);
             //attack properties;
@@ -68,14 +68,6 @@ namespace TOW_Core.HarmonyPatches
 
             if (b.InflictedDamage > 0)
             {
-                if (!attacker.IsHero)
-                {
-                    InformationManager.DisplayMessage(attacker.Team.IsPlayerAlly
-                        ? new InformationMessage(b.InflictedDamage + " damage", Colors.Green)
-                        : new InformationMessage(b.InflictedDamage + " damage", Colors.Red));
-                    return true;
-                }
-                
                 if(attacker==Agent.Main || victim==Agent.Main)
                     DisplayDamageResult(resultDamage, damageCategories);
             }
@@ -118,7 +110,6 @@ namespace TOW_Core.HarmonyPatches
         private static void DisplayDamageResult(int resultDamage, float[] categories)
         {
             var displaycolor = Color.White;
-            string displaytext = "";
             var dominantAdditionalEffect = DamageType.Physical;
             float dominantCategory=0;
             string additionalDamageTypeText= "";

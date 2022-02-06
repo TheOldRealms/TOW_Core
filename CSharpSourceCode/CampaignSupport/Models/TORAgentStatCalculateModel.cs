@@ -1,8 +1,11 @@
-﻿using SandBox;
+﻿using Helpers;
+using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.InputSystem;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -22,6 +25,31 @@ namespace TOW_Core.CampaignSupport.Models
         {
             base.UpdateAgentStats(agent, agentDrivenProperties);
             UpdateAgentDrivenProperties(agent, agentDrivenProperties);
+        }
+
+		//The purpose of this is to prevent an invalid type cast from IAgentOriginBase to PartybBase for SummonedAgentOrigin troops.
+        public override void InitializeMissionEquipment(Agent agent)
+        {
+            if (agent.Origin is SummonedAgentOrigin) return;
+            else base.InitializeMissionEquipment(agent);
+		}
+
+        public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, Formation agentFormation, SkillObject skill)
+        {
+            if (agentOrigin is SummonedAgentOrigin) return agentCharacter.GetSkillValue(skill);
+            else return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
+        }
+
+        public override string GetMissionDebugInfoForAgent(Agent agent)
+        {
+            if (agent.Origin is SummonedAgentOrigin) return "Impossible to debug summoned units. Base implementation has invalid IAgentOriginBase to PartyBase type cast.";
+            else return base.GetMissionDebugInfoForAgent(agent);
+        }
+
+        public override float GetEffectiveMaxHealth(Agent agent)
+        {
+            if (agent.Origin is SummonedAgentOrigin) return agent.BaseHealthLimit;
+            else return base.GetEffectiveMaxHealth(agent);
         }
 
         private void UpdateAgentDrivenProperties(Agent agent, AgentDrivenProperties agentDrivenProperties)
