@@ -28,7 +28,7 @@ namespace TOW_Core.Abilities
         private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private MissionScreen _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
+        private MissionScreen _missionScreen = ScreenManager.TopScreen as MissionScreen;
         private static readonly ActionIndexCache _idleAnimation = ActionIndexCache.Create("act_spellcasting_idle");
         private ParticleSystem[] _psys = null;
         private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
@@ -68,25 +68,6 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
-            if (!_isAbilityUser)
-            {
-                if (Agent.Main != null)
-                {
-                    _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                    if (_abilityComponent != null)
-                    {
-                        _abilityComponent.InitializeCrosshairs();
-                        _psys = new ParticleSystem[2];
-                        GameEntity entity;
-                        _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
-                        _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
-                        EnableCastStanceParticles(false);
-                        _isAbilityUser = true;
-                        _currentState = AbilityModeState.Off;
-                    }
-                }
-                return;
-            }
             if (IsAbilityModeAvailableForMainAgent())
             {
                 HandleInput();
@@ -226,10 +207,9 @@ namespace TOW_Core.Abilities
 
         private bool IsAbilityModeAvailableForMainAgent()
         {
-            return Agent.Main != null &&
+            return _isAbilityUser &&
+                   Agent.Main != null &&
                    Agent.Main.IsActive() &&
-                   _abilityComponent != null &&
-                   _missionScreen != null &&
                    !ScreenManager.GetMouseVisibility();
         }
 
@@ -321,6 +301,26 @@ namespace TOW_Core.Abilities
             if (team.Side == BattleSideEnum.Attacker) return _attackerSummoningCombatant;
             else if (team.Side == BattleSideEnum.Defender) return _defenderSummoningCombatant;
             else return null;
+        }
+
+        protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
+        {
+            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null || !Agent.Main.IsAbilityUser())
+            {
+                return;
+            }
+            _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+            if (_abilityComponent != null)
+            {
+                _abilityComponent.InitializeCrosshairs();
+                _psys = new ParticleSystem[2];
+                GameEntity entity;
+                _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
+                _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
+                EnableCastStanceParticles(false);
+                _currentState = AbilityModeState.Off;
+                _isAbilityUser = true;
+            }
         }
     }
 
