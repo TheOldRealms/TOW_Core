@@ -164,6 +164,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
             if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
             {
+                _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
                 _abilityComponent.CurrentAbilityChanged += (crosshair) =>
                 {
                     _abilityCrosshair?.Hide();
