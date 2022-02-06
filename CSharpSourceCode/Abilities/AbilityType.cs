@@ -17,7 +17,7 @@
         RandomMovingAOE, //i.e. vortex
         CenteredStaticAOE,
         TargetedStaticAOE,
-        TargetedStatic,
+        SingleTarget,
         Summoning,
         AgentMoving,
     }

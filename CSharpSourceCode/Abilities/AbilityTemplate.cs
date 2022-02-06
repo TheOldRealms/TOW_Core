@@ -40,7 +40,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public TriggerType TriggerType = TriggerType.OnCollision;
         [XmlAttribute]
-        public string TriggeredEffectID = "test";
+        public string TriggeredEffectID = "";
         [XmlAttribute]
         public bool HasLight = true;
         [XmlAttribute]
@@ -80,9 +80,11 @@ namespace TOW_Core.Abilities
         public float MaxDistance = 1.0f;
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
-
+        [XmlAttribute]
+        public int SpellTier = 0; //spell only, max 4
+        [XmlAttribute]
+        public string LoreID = ""; //spell only
         public SeekerParameters SeekerParameters;
-    
         
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;

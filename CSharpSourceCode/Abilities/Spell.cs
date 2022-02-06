@@ -39,4 +39,37 @@ namespace TOW_Core.Abilities
             }
         }
     }
+
+    public class Lore
+    {
+        public string ID { get; private set; }
+        public string Name { get; private set; }
+        private static Dictionary<string, Lore> _lores = new Dictionary<string, Lore>();
+        private Lore(string id, string name)
+        {
+            ID = id;
+            Name = name;
+        }
+
+        public static List<Lore> GetAll()
+        {
+            if(_lores.Count == 0)
+            {
+                _lores.Add("testlore1", new Lore("testlore1", "Test Lore 1"));
+            }
+            return _lores.Values.ToList();
+        }
+        /*
+        public static Lore GetLore(string id)
+        {
+            if (_lores.ContainsKey(id))
+            {
+                return _lores[id];
+            }
+            else
+            {
+                return null;
+            }
+        }*/
+    }
 }

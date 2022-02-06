@@ -27,7 +27,7 @@ namespace TOW_Core.Abilities
         public AbilityScript AbilityScript { get; private set; }
 
         public AbilityCrosshair Crosshair { get; private set; }
-
+        public virtual AbilityEffectType GetAbilityEffectType => Template.AbilityEffectType;
         public bool IsOnCooldown() => _timer.Enabled;
 
         public int GetCoolDownLeft() => _coolDownLeft;
@@ -73,11 +73,6 @@ namespace TOW_Core.Abilities
             {
                 DoCast(casterAgent);
             }
-        }
-
-        public virtual AbilityEffectType GetAbilityEffectType()
-        {
-            return this.Template.AbilityEffectType;
         }
 
         public virtual bool CanCast(Agent casterAgent)
@@ -200,7 +195,7 @@ namespace TOW_Core.Abilities
                             frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
                             break;
                         }
-                    case AbilityEffectType.TargetedStatic:
+                    case AbilityEffectType.SingleTarget:
                     {
                         //frame = crosshair.Target.GetFrame();
                         break;
@@ -284,7 +279,7 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.AgentMoving:
                     AddExactBehaviour<ShadowStepScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.TargetedStatic:
+                case AbilityEffectType.SingleTarget:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
             }
@@ -330,6 +325,8 @@ namespace TOW_Core.Abilities
             _timer.Dispose();
             _timer = null;
             Template = null;
+            OnCastComplete = null;
+            OnCastStart = null;
         }
     }
 }

@@ -1,0 +1,75 @@
+<Prefab>
+  <Constants>
+    <Constant Name="LeftPanel.Margin.Top" Value="5" />
+    <Constant Name="LeftPanel.Margin.Bottom" Value="0" />
+
+
+    <Constant Name="RightPanel.Margin.Top" Value="150" />
+    <Constant Name="RightPanel.Margin.Left" Value="50" />
+    <Constant Name="RightPanel.Margin.Right" Value="150" />
+
+    <Constant Name="Quest.Background.Width" BrushLayer="Default" BrushName="Quest.Background" BrushValueType="Width" />
+    <Constant Name="Quest.Background.Height" BrushLayer="Default" BrushName="Quest.Background" BrushValueType="Height" />
+
+    <Constant Name="Quest.LeftPanel.Toggle.Margin.Left" Value="1" />
+    <Constant Name="Quest.LeftPanel.Toggle.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.Toggle" BrushValueType="Width" />
+    <Constant Name="Quest.LeftPanel.Toggle.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.Toggle" BrushValueType="Height" />
+
+    <Constant Name="Quest.LeftPanel.Header.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.Header" BrushValueType="Width" />
+    <Constant Name="Quest.LeftPanel.Header.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.Header" BrushValueType="Height" />
+
+    <Constant Name="Quest.LeftPanel.QuestName.Text.XOffset" Value="3" />
+    <Constant Name="Quest.LeftPanel.QuestName.Text.YOffset" Value="-1" />
+
+    <Constant Name="Quest.LeftPanel.QuestDate.Text.XOffset" Value="-3" />
+    <Constant Name="Quest.LeftPanel.QuestDate.Text.YOffset" Value="-1" />
+
+    <Constant Name="Quest.LeftPanel.QuestButton.Active.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.QuestButton.Active" BrushValueType="Width" />
+    <Constant Name="Quest.LeftPanel.QuestButton.Active.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.QuestButton.Active" BrushValueType="Height" />
+
+    <Constant Name="RightPanel.QuestStage.Margin.Bottom" Value="15" />
+
+    <Constant Name="RightPanel.QuestList.Padding.Bottom" Value="80" />
+
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+    <VisualDefinition Name="BottomMenu" EaseIn="true" TransitionDuration="0.45">
+      <VisualState PositionYOffset="6" State="Default" />
+    </VisualDefinition>
+    <VisualDefinition Name="TopPanel" EaseIn="true" TransitionDuration="0.45">
+      <VisualState PositionYOffset="-6" State="Default" />
+    </VisualDefinition>
+    <VisualDefinition Name="LeftPanel" EaseIn="true" TransitionDuration="0.45">
+      <VisualState PositionXOffset="-27" State="Default" />
+    </VisualDefinition>
+    <VisualDefinition Name="RightPanel" EaseIn="true" TransitionDuration="0.45">
+      <VisualState PositionXOffset="0" State="Default" />
+    </VisualDefinition>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <Standard.Background>
+          <Children>
+            <!--Background Illustration-->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Quest.Background.Width" SuggestedHeight="!Quest.Background.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" Sprite="Quest\background_quest" AlphaFactor="0.6" />
+          </Children>
+        </Standard.Background>
+
+        <!--Top Panel-->
+        <Widget VisualDefinition="TopPanel" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="755" SuggestedHeight="182" HorizontalAlignment="Center" PositionXOffset="60" PositionYOffset="-182" Sprite="StdAssets\tabbar_standart" ValueFactor="-30">
+          <Children>
+            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="45" Text="SpellBook" />
+          </Children>
+        </Widget>
+
+        <!--Close Screen Button-->
+        <Standard.DialogCloseButtons VisualDefinition="BottomMenu" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="100" Parameter.DoneButtonAction="ExecuteClose" Parameter.DoneButtonText="Done" Parameter.ShowCancel="false" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
