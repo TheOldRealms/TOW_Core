@@ -374,7 +374,7 @@
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />
-    <Compile Include="CampaignSupport\WanderersController.cs" />
+    <Compile Include="CampaignSupport\TORWanderersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORBattleAgentLogic.cs" />
     <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />

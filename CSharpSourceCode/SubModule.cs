@@ -135,7 +135,7 @@ namespace TOW_Core
                 starter.AddBehavior(new LibraryTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
-                starter.AddBehavior(new WanderersController());
+                starter.AddBehavior(new TORWanderersCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
