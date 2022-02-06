@@ -1,6 +1,7 @@
 ﻿using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
 
@@ -46,6 +47,20 @@ namespace TOW_Core.CampaignSupport.Models
                     }
                 }
             }
+        }
+
+        public override float GetMaxCameraZoom(Agent agent)
+        {
+            bool isAimingWithSniperRifle = Mission.Current.CameraIsFirstPerson &&
+                                           Input.IsKeyDown(InputKey.LeftMouseButton) &&
+                                           Input.IsKeyDown(InputKey.LeftShift) &&
+                                           !Agent.Main.WieldedWeapon.IsEmpty &&
+                                           Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle");
+            if (isAimingWithSniperRifle)
+            {
+                return 3;
+            }
+            return base.GetMaxCameraZoom(agent);
         }
     }
 }

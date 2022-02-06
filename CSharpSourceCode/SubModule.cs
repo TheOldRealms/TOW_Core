@@ -82,7 +82,7 @@ namespace TOW_Core
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
             ExtendedItemObjectManager.LoadXML();
-            
+
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
@@ -124,6 +124,7 @@ namespace TOW_Core
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
                 gameStarterObject.AddModel(new TOWBattleMoraleModel());
+                gameStarterObject.AddModel(new TORCustomBattleAgentStatCalculateModel());
             }
             else if (game.GameType is Campaign)
             {
