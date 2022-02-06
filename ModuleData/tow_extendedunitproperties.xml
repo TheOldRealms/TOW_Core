@@ -1572,6 +1572,7 @@
   <CharacterExtendedInfo id="tor_necromancer_lord">
     <Abilities>
       <string>SummonSkeleton</string>
+      <string>CurseOfYears</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

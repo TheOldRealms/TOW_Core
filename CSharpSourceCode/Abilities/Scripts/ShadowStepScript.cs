@@ -60,7 +60,7 @@ namespace TOW_Core.Abilities.Scripts
                 {
                     if (dist > 3 || dist.Equals(float.NaN))
                     {
-                        Fly();
+                        Fly(dt);
                     }
                 }
             }
@@ -74,11 +74,11 @@ namespace TOW_Core.Abilities.Scripts
             return num;
         }
         
-        private void Fly()
+        private void Fly(float dt)
         {
             MatrixFrame frame = GameEntity.GetGlobalFrame();
             frame.rotation = _casterAgent.LookRotation;
-            frame.Advance(_speed);
+            frame.Advance(_speed * dt);
             GameEntity.SetGlobalFrame(frame);
         }
 
@@ -93,7 +93,7 @@ namespace TOW_Core.Abilities.Scripts
 
         public bool IsFadinOut { get => _isFading; }
 
-        private float _speed = 0.3f;
+        private float _speed = 10f;
         private InputKey[] _axisKeys = new InputKey[4];
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
     }

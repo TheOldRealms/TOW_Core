@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.Damage;
+using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -13,10 +15,13 @@ namespace TOW_Core.Battle
 {
     public static class TOWBattleUtilities
     {
-        public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, bool hasShockWave = false)
+        public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, string spellID="",DamageType damageType=DamageType.Physical, bool hasShockWave = false)
         {
             foreach (var agent in agents)
             {
+                if(spellID!=""&& damager!=null)
+                    SpellBlowInfoManager.EnqueueSpellInfo(agent.Index,damager.Index,spellID,damageType);
+
                 if (maxDamage < minDamage)
                 {
                     agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave);

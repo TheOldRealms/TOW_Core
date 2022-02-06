@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.SaveSystem;
 using System.Xml.Serialization;
 using TOW_Core.Battle.Damage;
-using TaleWorlds.Library;
-using System.IO;
 using System;
+
 
 namespace TOW_Core.ObjectDataExtensions
 {
@@ -56,5 +52,28 @@ namespace TOW_Core.ObjectDataExtensions
         public DamageType DamageType = DamageType.Physical;
         [XmlAttribute]
         public float Percent = 1;
+    }
+    
+    /// <summary>
+    /// Contains summarized Agent properties for Damage and Resistances. Cannot be changed.
+    /// </summary>
+    public struct AgentPropertyContainer
+    {
+        public readonly float[] DamageProportions;
+        public readonly float[] DamagePercentages;
+        public readonly float[] ResistancePercentages;
+        public AgentPropertyContainer(float[] damageProportions, float[] damagePercentages, float[] resistancePercentages)
+        {
+            DamageProportions = damageProportions;
+            DamagePercentages = damagePercentages;
+            ResistancePercentages = resistancePercentages;
+        }
+    }
+    
+    public enum PropertyMask : int
+    {
+        Attack=0,
+        Defense=1,
+        All=2
     }
 }

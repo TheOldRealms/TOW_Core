@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,9 @@ using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.StatusEffects;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.Battle.Damage;
+using TOW_Core.Items;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -64,6 +67,176 @@ namespace TOW_Core.Utilities.Extensions
             {
                 if (abilitycomponent.CurrentAbility != null) abilitycomponent.CurrentAbility.TryCast(agent);
             }
+        }
+        
+        /// <summary>
+        /// Get Extented Character properties, based on dynamic properties like temporary weapon enhancements
+        /// and status effects and static properties  like equipment and unit information.
+        /// 
+        /// </summary>
+        /// <param name="agent">The agent we are accessing. Note that Units are handled differently from Heroes.
+        /// Hero equipment information and gets read out for Heroes specifically resides in the 'tow_extendeditemproperties.xml'
+        /// Unit information gets read out from the tow_extendedunitproperties.xml
+        /// </param>
+        /// <paramref name="agent"/>
+        /// <param name="mask">Which properties needs to be accessed? be mindful about which information is really required for your specific situation. Not used properties are returned as empty arrays</param>
+        ///<returns>A struct containing 3 arrays, each containing the  properties:  proportions, damage amplifications and resistances.</returns>
+        public static AgentPropertyContainer GetProperties(this Agent agent, PropertyMask mask=PropertyMask.All)
+        {
+            if (agent.IsMount)
+                return new AgentPropertyContainer();
+            
+            float[] damageProportions = new float[(int) DamageType.All+1];
+            float[] damageAmplifications = new float[(int) DamageType.All+1];
+            float[] damageResistances = new float[(int) DamageType.All+1];
+            
+            #region Unit
+            if (!agent.IsHero)
+            {
+                if (mask ==PropertyMask.Attack|| mask== PropertyMask.All)
+                {
+                    var unitDamageProportion = agent.Character.GetUnitDamageProportions();
+                    foreach (var proportionTuple in unitDamageProportion)
+                    {
+                        damageProportions[(int)proportionTuple.DamageType] = proportionTuple.Percent;
+                    }
+                    var offenseProperties = agent.Character.GetAttackProperties();
+                    
+                    //add all offense properties of the Unit
+                    foreach (var property in offenseProperties)
+                    {
+                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                    }
+                    //add temporary effects like buffs to attack bonuses on items
+                    List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(agent.WieldedWeapon.Item);
+                    foreach (var temporaryTraits in itemTraits)
+                    {
+                        var attackProperty = temporaryTraits.AmplifierTuple;
+                        if (attackProperty != null)
+                        {
+                            damageAmplifications[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
+                        }
+                    }
+                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    for (int i = 0; i < damageAmplifications.Length; i++)
+                    {
+                        damageAmplifications[i] += statusEffectReductions[i];
+                    }
+                }
+                if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
+                {
+                    //add all offense properties of the Unit
+                    var defenseProperties = agent.Character.GetDefenseProperties();
+                
+                    foreach (var property in defenseProperties)
+                    {
+                        damageResistances[(int) property.ResistedDamageType] += property.ReductionPercent;
+                    }
+                
+                    //add temporary effects like buffs to defense bonuses
+                    List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(agent.WieldedWeapon.Item);
+                
+                    foreach (var temporaryTraits in itemTraits)
+                    {
+                        var defenseProperty = temporaryTraits.ResistanceTuple;
+                        if (defenseProperty != null)
+                        {
+                            damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                        }
+                    }
+                }
+            }
+            #endregion
+            
+            #region Character
+             
+            else
+            {
+                if (mask ==PropertyMask.Attack|| mask== PropertyMask.All)
+                {
+                    //Hero item level attributes 
+                    List<ItemTrait> itemTraits= new List<ItemTrait>();
+                    List<ItemObject> items;
+                    // get all equipment Pieces
+                    items = agent.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
+                    foreach (var item in items)
+                    {
+                        if(item.HasTrait())
+                            itemTraits.AddRange(item.GetTraits(agent));
+                    }
+
+                    foreach (var itemTrait in itemTraits)
+                    {
+                        var property = itemTrait.AmplifierTuple;
+                        if(property==null) 
+                            continue;
+                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                    }
+                    
+                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+
+                    for (int i = 0; i < damageAmplifications.Length; i++)
+                    {
+                        damageAmplifications[i] += statusEffectReductions[i];
+                    }
+                
+                    //weapon properties
+                    if (agent.WieldedWeapon.Item != null)
+                    {
+                        var weaponProperty = agent.WieldedWeapon.Item.GetTorSpecificData().DamageProportions;
+                        if (weaponProperty != null)
+                        {
+                            foreach (var tuple in weaponProperty)
+                            {
+                                damageProportions[(int)tuple.DamageType] = tuple.Percent;
+                            }
+                        }
+                    }
+                }
+                if( mask == PropertyMask.Defense|| mask== PropertyMask.All)
+                {
+                    //Hero item level attributes 
+
+                    List<ItemTrait> itemTraits= new List<ItemTrait>();
+                    List<ItemObject> items;
+                    
+                    items = agent.Character.GetCharacterEquipment();
+                    foreach (var item in items)
+                    {
+                        if(item.HasTrait())
+                            itemTraits.AddRange(item.GetTraits(agent));
+                    }
+                    
+                    //equipment amplifiers
+                    foreach (var itemTrait in itemTraits)
+                    {
+                        var defenseProperty = itemTrait.ResistanceTuple;
+                        if(defenseProperty==null) 
+                            continue;
+                        damageResistances[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                    }
+                    
+                    //add temporary effects like buffs to defenese bonuses
+                    List<ItemTrait> dynamicTraits = agent.GetComponent<ItemTraitAgentComponent>()
+                        .GetDynamicTraits(agent.WieldedWeapon.Item);
+                
+                    foreach (var temporaryTraits in dynamicTraits)
+                    {
+                        var defenseProperty = temporaryTraits.ResistanceTuple;
+                        if (defenseProperty != null)
+                        {
+                            damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            return new AgentPropertyContainer(damageProportions, damageAmplifications, damageResistances);
+            
+
         }
 
         public static Ability GetCurrentAbility(this Agent agent)
@@ -165,7 +338,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="agent">The agent that will be damaged</param>
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
-        /// <param name="doBlow">A flag that controls whether the unit receives a blow or direct health manipulation</param>
+        /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
         public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
             if (agent == null && !agent.IsHuman)
@@ -178,11 +351,12 @@ namespace TOW_Core.Utilities.Extensions
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
                 if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
+
                     if (!doBlow && agent.Health > damageAmount + 1)
                     {
-                        agent.Health -= damageAmount;
-                        return;
+                       return;
                     }
+                    
                     else if (agent.Health > 1 && !agent.IsFadingOut())
                     {
                         var blow = new Blow(-1);

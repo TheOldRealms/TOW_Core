@@ -17,6 +17,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         private Crosshair _weaponCrosshair;
         private AbilityCrosshair _abilityCrosshair;
         private AbilityComponent _abilityComponent;
+        private AbilityManagerMissionLogic _missionLogic;
 
         public override void OnMissionScreenTick(float dt)
         {
@@ -35,7 +36,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                         _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
                     }
                 }
-                else if (_abilityCrosshair != null && _abilityComponent.IsSpellModeOn)
+                else if (_abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
                 {
                     _weaponCrosshair.Hide();
                     if (!_abilityComponent.CurrentAbility.CanCast(Agent.Main))
@@ -96,6 +97,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         public override void OnMissionScreenInitialize()
         {
             base.OnMissionScreenInitialize();
+            _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
             if (_isActive)
             {
                 return;
