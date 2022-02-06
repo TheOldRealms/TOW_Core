@@ -336,6 +336,7 @@
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
+    <Compile Include="Battle\Crosshairs\SniperScope.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
     <Compile Include="Battle\Damage\TestingDamageMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />

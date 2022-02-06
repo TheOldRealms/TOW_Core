@@ -1,6 +1,5 @@
 ﻿using System;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
@@ -9,44 +8,27 @@ using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.Crosshairs;
-using TOW_Core.Utilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
-        private bool _isMainAgentChecked;
         private bool _isActive;
         private Crosshair _weaponCrosshair;
         private AbilityCrosshair _abilityCrosshair;
         private AbilityComponent _abilityComponent;
-        private GameEntity _sniperScope;
+        private SniperScope _sniperScope;
 
         public override void OnMissionScreenTick(float dt)
         {
-            if (Input.IsKeyPressed(InputKey.P))
-            {
-                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_longrifle_001");
-            }
             if (CanUseCrosshair())
             {
-                if (!_isMainAgentChecked)
-                {
-                    _isMainAgentChecked = true;
-                    if ((_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
-                    {
-                        _abilityComponent.CurrentAbilityChanged += (crosshair) =>
-                        {
-                            _abilityCrosshair?.Hide();
-                            _abilityCrosshair = crosshair;
-                        };
-                        _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
-                    }
-                }
-                else if (_abilityCrosshair != null && _abilityComponent.IsSpellModeOn)
+                if (_abilityCrosshair != null && _abilityComponent.IsSpellModeOn)
                 {
                     _weaponCrosshair.Hide();
+                    _sniperScope.Hide();
                     if (!_abilityComponent.CurrentAbility.CanCast(Agent.Main))
                     {
                         _abilityCrosshair.Hide();
@@ -69,37 +51,29 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                     _abilityCrosshair?.Hide();
                     if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
                     {
-                        if (Mission.CameraIsFirstPerson &&
-                            Input.IsKeyDown(InputKey.LeftShift) &&
-                            Input.IsKeyDown(InputKey.LeftMouseButton) &&
-                            Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle"))
+                        if (IsPlayerAimingWithSniperRifle())
                         {
-                            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(false);
-                            MissionScreen.OnMainAgentWeaponChanged();
                             _weaponCrosshair.Hide();
-                            var frame = MissionScreen.CombatCamera.Frame;
-                            _sniperScope.SetGlobalFrame(frame);
-                            _sniperScope.SetVisibilityExcludeParents(true);
+                            _sniperScope.Tick();
+                            _sniperScope.Show();
                         }
                         else
                         {
-                            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(true);
-                            MissionScreen.OnMainAgentWeaponChanged();
-                            _sniperScope.SetVisibilityExcludeParents(false);
+                            _sniperScope.Hide();
                             _weaponCrosshair.Tick();
                             _weaponCrosshair.Show();
                         }
                     }
                     else
                     {
-                        _sniperScope.SetVisibilityExcludeParents(false);
+                        _sniperScope.Hide();
                         _weaponCrosshair.Hide();
                     }
                 }
             }
             else
             {
-                _sniperScope?.SetVisibilityExcludeParents(false);
+                _sniperScope?.Hide();
                 _weaponCrosshair?.Hide();
                 _abilityCrosshair?.Hide();
             }
@@ -120,20 +94,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    !MBEditor.EditModeEnabled &&
                    BannerlordConfig.DisplayTargetingReticule &&
                    !ScreenManager.GetMouseVisibility();
-        }
-
-        public override void OnMissionScreenInitialize()
-        {
-            base.OnMissionScreenInitialize();
-            if (_isActive)
-            {
-                return;
-            }
-            _weaponCrosshair = new Crosshair(Mission, MissionScreen);
-            _weaponCrosshair.InitializeCrosshair();
-            _sniperScope = GameEntity.Instantiate(Mission.Scene, "3d_sniper_scope_1", false);
-            _sniperScope.SetVisibilityExcludeParents(false);
-            _isActive = true;
         }
 
         public override void OnMissionScreenFinalize()
@@ -179,6 +139,37 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             base.OnPhotoModeDeactivated();
             _weaponCrosshair.OnPhotoModeDeactivated();
+        }
+
+        private bool IsPlayerAimingWithSniperRifle()
+        {
+            return Mission.CameraIsFirstPerson &&
+                   Input.IsKeyDown(InputKey.LeftShift) &&
+                   Input.IsKeyDown(InputKey.LeftMouseButton) &&
+                   Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle");
+        }
+
+        protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
+        {
+            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null)
+            {
+                return;
+            }
+
+            _weaponCrosshair = new Crosshair(Mission, MissionScreen);
+            _weaponCrosshair.InitializeCrosshair();
+            _sniperScope = new SniperScope();
+            _isActive = true;
+
+            if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+            {
+                _abilityComponent.CurrentAbilityChanged += (crosshair) =>
+                {
+                    _abilityCrosshair?.Hide();
+                    _abilityCrosshair = crosshair;
+                };
+                _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
+            }
         }
     }
 }
