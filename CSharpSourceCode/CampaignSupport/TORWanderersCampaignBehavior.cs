@@ -49,15 +49,18 @@ namespace TOW_Core.CampaignSupport
                         LeaveSettlementAction.ApplyForCharacterOnly(wanderer);
                         wanderer.ChangeState(Hero.CharacterStates.NotSpawned);
                     }
-
-                    //create suitable wanderer
-                    CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
-                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                    AdjustEquipmentImp(newWanderer.BattleEquipment);
-                    AdjustEquipmentImp(newWanderer.CivilianEquipment);
-                    newWanderer.ChangeState(Hero.CharacterStates.Active);
-                    EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
                 }
+            }
+
+            if (settlement.HeroesWithoutParty.Where(h => h.Occupation == Occupation.Wanderer).Count() == 0)
+            {
+                //create suitable wanderer
+                CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
+                Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                AdjustEquipmentImp(newWanderer.BattleEquipment);
+                AdjustEquipmentImp(newWanderer.CivilianEquipment);
+                newWanderer.ChangeState(Hero.CharacterStates.Active);
+                EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
             }
         }
 
