@@ -1,0 +1,9 @@
+<Prefab>
+    <Window>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="52" SuggestedHeight="55" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="570" Sprite="spellbook_icon" Command.Click="ExecuteOpenSpellBook">
+            <Children>
+                
+            </Children>
+        </ButtonWidget>
+    </Window>
+</Prefab>

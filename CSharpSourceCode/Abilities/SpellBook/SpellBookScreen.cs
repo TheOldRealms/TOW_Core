@@ -18,7 +18,12 @@ namespace TOW_Core.Abilities.SpellBook
     {
         private GauntletLayer _gauntletLayer;
         private SpellBookVM _vm;
+        private SpellBookState _state;
 
+        public SpellBookScreen(SpellBookState state)
+        {
+            _state = state;
+        }
         protected override void OnFrameTick(float dt)
         {
             base.OnFrameTick(dt);

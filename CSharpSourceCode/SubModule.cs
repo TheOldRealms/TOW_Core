@@ -43,6 +43,7 @@ using System;
 using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
+using TOW_Core.Abilities.SpellBook;
 
 namespace TOW_Core
 {
@@ -131,6 +132,7 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.AddBehavior(ExtendedInfoManager.Instance);
+                starter.AddBehavior(new SpellBookScreenCampaignBehaviour());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());

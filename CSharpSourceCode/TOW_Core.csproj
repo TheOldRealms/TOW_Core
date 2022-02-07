@@ -310,7 +310,9 @@
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticScript.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookMapIconVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookScreen.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookScreenCampaignBehaviour.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookState.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookVM.cs" />
     <Compile Include="Abilities\SummonedAgentOrigin.cs" />
@@ -364,7 +366,6 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
-    <Compile Include="CampaignSupport\CharacerDevelopment\TorCharacterDeveloperVM.cs" />
     <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
     <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
@@ -389,7 +390,6 @@
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
     <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\AgentPatches.cs" />
-    <Compile Include="HarmonyPatches\CharacterDeveloperPatch.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\DamagePatch.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
