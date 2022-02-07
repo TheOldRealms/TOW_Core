@@ -49,8 +49,6 @@ namespace TOW_Core.Abilities
                     if (specialMove != null)
                     {
                         _specialMoveHUD_VM.SpecialMove = specialMove;
-                        _specialMoveHUD_VM.SpriteName = specialMove.Template.SpriteName;
-                        _specialMoveHUD_VM.Name = specialMove.Template.Name;
                         _specialMoveHUD_VM.IsVisible = true;
                         _hasSpecialMove = true;
                     }

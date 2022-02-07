@@ -1,4 +1,5 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
@@ -6,26 +7,14 @@ namespace TOW_Core.Abilities
 {
     public class SpecialMoveHUD_VM : ViewModel
     {
-        private string _name = "";
-        private string _spriteName = "";
-        private string _coolDownLeft = "";
         private bool _isVisible;
-        private bool _onCoolDown;
+        private int _chargeLevel;
 
         public SpecialMoveHUD_VM() : base() { }
 
         public void UpdateProperties()
-        {            
-            CoolDownLeft = SpecialMove.GetCoolDownLeft().ToString();
-            IsOnCoolDown = SpecialMove.IsOnCooldown();
-            if (Game.Current.GameType is Campaign)
-            {
-                if (!IsOnCoolDown)
-                {
-                    CoolDownLeft = "";
-                }
-                IsOnCoolDown = true;
-            }
+        {
+            ChargeLevel = Convert.ToInt32(SpecialMove.ChargeLevel);
         }
 
         public SpecialMove SpecialMove { get; set; }
@@ -48,69 +37,18 @@ namespace TOW_Core.Abilities
         }
 
         [DataSourceProperty]
-        public string Name
+        public int ChargeLevel
         {
             get
             {
-                return _name;
+                return _chargeLevel;
             }
             set
             {
-                if (value != _name)
+                if (value != _chargeLevel)
                 {
-                    _name = value;
-                    base.OnPropertyChangedWithValue(value, "Name");
-                }
-            }
-        }
-
-        [DataSourceProperty]
-        public string SpriteName
-        {
-            get
-            {
-                return _spriteName;
-            }
-            set
-            {
-                if (value != _spriteName)
-                {
-                    _spriteName = value;
-                    base.OnPropertyChangedWithValue(value, "SpriteName");
-                }
-            }
-        }
-
-        [DataSourceProperty]
-        public string CoolDownLeft
-        {
-            get
-            {
-                return _coolDownLeft;
-            }
-            set
-            {
-                if (value != _coolDownLeft)
-                {
-                    _coolDownLeft = value;
-                    base.OnPropertyChangedWithValue(value, "CoolDownLeft");
-                }
-            }
-        }
-
-        [DataSourceProperty]
-        public bool IsOnCoolDown
-        {
-            get
-            {
-                return _onCoolDown;
-            }
-            set
-            {
-                if (value != _onCoolDown)
-                {
-                    _onCoolDown = value;
-                    base.OnPropertyChangedWithValue(value, "IsOnCoolDown");
+                    _chargeLevel = value;
+                    base.OnPropertyChangedWithValue(value, "ChargeLevel");
                 }
             }
         }

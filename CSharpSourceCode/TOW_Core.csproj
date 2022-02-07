@@ -284,6 +284,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
     <Compile Include="Abilities\SeekerController.cs" />
     <Compile Include="Abilities\SeekerParameters.cs" />
     <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
@@ -299,7 +300,6 @@
     <Compile Include="Abilities\Crosshairs\Pointer.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
-    <Compile Include="Abilities\Scripts\SpecialMoveScript.cs" />
     <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
@@ -310,6 +310,7 @@
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticScript.cs" />
+    <Compile Include="Abilities\SummonedAgentOrigin.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
@@ -337,6 +338,7 @@
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
+    <Compile Include="Battle\Damage\TestingDamageMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />
@@ -361,7 +363,10 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
+    <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
+    <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
@@ -370,11 +375,10 @@
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
-    <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />
-    <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORWanderersCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORBattleAgentLogic.cs" />
     <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\LibraryTownBehaviour.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
@@ -383,10 +387,12 @@
     <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\AgentPatches.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
+    <Compile Include="HarmonyPatches\DamagePatch.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\InventoryPatches.cs" />
     <Compile Include="HarmonyPatches\ItemObjectPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
+    <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
     <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\ExtendedItemObjectProperties.cs" />
@@ -394,6 +400,8 @@
     <Compile Include="Items\ItemTraitAgentComponent.cs" />
     <Compile Include="Items\ItemTrait.cs" />
     <Compile Include="Items\ExtendedItemObjectManager.cs" />
+    <Compile Include="Items\TorItemMenuVM.cs" />
+    <Compile Include="Items\TorItemTraitVM.cs" />
     <Compile Include="Items\WeaponEffectMissionLogic.cs" />
     <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
@@ -412,6 +420,7 @@
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
+    <Compile Include="ObjectDataExtensions\SpellBlowInfoManager.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\FireArmsMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />

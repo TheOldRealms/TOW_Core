@@ -321,14 +321,14 @@
        StringID="ShadowStep"
        Name="Shadow Step"
        SpriteName="windofdeath_icon"
-       CoolDown="1"
+       CoolDown="5"
        WindsOfMagicCost="0"
        BaseMisCastChance="0.3"
-       Duration="3"
+       Duration="5"
        Radius="2"
        AbilityType="SpecialMove"
        AbilityEffectType="AgentMoving"
-       BaseMovementSpeed="0.25"
+       BaseMovementSpeed="0.6"
        TickInterval="0.01"
        TriggerType="EveryTick"
        HasLight="false"
@@ -467,7 +467,48 @@
       Offset="0.5"
       AbilityTargetType="Allies"
       TargetCapturingRadius="5"
-      CrosshairType="CenteredAOE">
+      MaxDistance="20"
+      CrosshairType="TargetedAOE">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+   StringID="CurseOfYears"
+   Name="Curse of Years"
+   SpriteName="windofdeath_icon"
+   CoolDown="10"
+   WindsOfMagicCost="5"
+   BaseMisCastChance="0.05"
+   Duration="0"
+   Radius="0"
+   AbilityType="Spell"
+   AbilityEffectType="TargetedStaticAOE"
+   BaseMovementSpeed="0"
+   TickInterval="-1"
+   TriggerType="TickOnce"
+   HasLight="false"
+   LightIntensity="0"
+   LightRadius="0"
+   LightFlickeringMagnitude="0"
+   LightFlickeringInterval="0"
+   ShadowCastEnabled="true"
+   ParticleEffectPrefab=""
+   ParticleEffectSizeModifier="0"
+   SoundEffectToPlay=""
+   ShouldSoundLoopOverDuration="false"
+   CastType="Instant"
+   CastTime="0.5"
+   AnimationActionName="act_release_heavy_thrown"
+   TriggeredEffectID="curse_of_years"
+   Offset="0.5"
+   AbilityTargetType="Enemies"
+   TargetCapturingRadius="5"
+   MaxDistance="20"
+   CrosshairType="TargetedAOE">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>

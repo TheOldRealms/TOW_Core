@@ -1,4 +1,4 @@
-﻿using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Scripts
 {

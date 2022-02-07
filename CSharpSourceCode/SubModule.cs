@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -40,7 +40,9 @@ using TOW_Core.Battle.Artillery;
 using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
+using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
+using SandBox;
 
 namespace TOW_Core
 {
@@ -56,30 +58,9 @@ namespace TOW_Core
             base.OnGameInitializationFinished(game);
             if (game.GameType is Campaign)
             {
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<BackstoryCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<UrbanCharactersCampaignBehavior>() != null)
-                {
-                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<UrbanCharactersCampaignBehavior>();
-                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORUrbanCharactersCampaignBehavior());
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<HeroSpawnCampaignBehavior>() != null)
-                {
-                    //Campaign.Current.CampaignBehaviorManager.RemoveBehavior<HeroSpawnCampaignBehavior>();
-                    //Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORHeroSpawnCampaignBehavior());
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
-                }
-                if (Campaign.Current.CampaignBehaviorManager.GetBehavior<PartyHealCampaignBehavior>() != null)
-                {
-                    Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
-                    Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
-                }
+                Campaign.Current.CampaignBehaviorManager.RemoveBehavior<BackstoryCampaignBehavior>();
+                Campaign.Current.CampaignBehaviorManager.RemoveBehavior<PartyHealCampaignBehavior>();
+                Campaign.Current.CampaignBehaviorManager.AddBehavior(new TORPartyHealCampaignBehavior());
             }
         }
 
@@ -93,7 +74,6 @@ namespace TOW_Core
             //This has to be here.
             ExtendedInfoManager.Load();
             LoadStatusEffects();
-            LoadSprites();
             LoadShieldPatterns();
             LoadQuestBattleTemplates();
             TriggeredEffectManager.LoadTemplates();
@@ -103,7 +83,6 @@ namespace TOW_Core
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
-            LoadFontAssets();
         }
 
         private void LoadQuestBattleTemplates()
@@ -114,11 +93,6 @@ namespace TOW_Core
         private void LoadShieldPatterns()
         {
             ShieldPatternsManager.LoadShieldPatterns();
-        }
-
-        public void LoadFontAssets()
-        {
-            //UIResourceManager.SpriteData.SpriteCategories["tow_fonts"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         /// <summary>
@@ -137,13 +111,6 @@ namespace TOW_Core
                     game.ObjectManager.RegisterType<QuestBattleComponent>("QuestBattleComponent", "QuestBattleComponents", 1U, true);
                 }
             }
-        }
-
-        private void LoadSprites()
-        {
-            UIResourceManager.SpriteData.SpriteCategories["ui_abilityicons"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["ui_hud"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
-            UIResourceManager.SpriteData.SpriteCategories["tow_gamemenu_backgrounds"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
@@ -168,6 +135,7 @@ namespace TOW_Core
                 starter.AddBehavior(new LibraryTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
+                starter.AddBehavior(new TORWanderersCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
@@ -181,6 +149,7 @@ namespace TOW_Core
                 starter.AddModel(new TORPartySpeedCalculatingModel());
                 starter.AddModel(new TORPrisonerRecruitmentCalculationModel());
                 starter.AddModel(new TORMarriageModel());
+                starter.AddModel(new TORAgentStatCalculateModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
@@ -189,23 +158,28 @@ namespace TOW_Core
         public override void OnMissionBehaviorInitialize(Mission mission)
         {
             base.OnMissionBehaviorInitialize(mission);
+            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
+
             mission.AddMissionBehavior(new AttributeSystemMissionLogic());
             mission.AddMissionBehavior(new StatusEffectMissionLogic());
+            mission.AddMissionBehavior(new TestingDamageMissionLogic());
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
-            mission.RemoveMissionBehavior(mission.GetMissionBehavior<MissionGauntletCrosshair>());
             mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehavior(new FireArmsMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
-            //mission.AddMissionBehaviour(new GrenadesMissionLogic());
+            mission.AddMissionBehavior(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
+            
             if (Game.Current.GameType is Campaign)
             {
+                mission.RemoveMissionBehavior(mission.GetMissionBehavior<BattleAgentLogic>());
                 mission.AddMissionBehavior(new BattleInfoMissionLogic());
+                mission.AddMissionBehavior(new TORBattleAgentLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.

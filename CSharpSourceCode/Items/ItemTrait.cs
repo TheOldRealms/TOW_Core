@@ -16,16 +16,17 @@ namespace TOW_Core.Items
         [XmlElement]
         public string ItemTraitDescription { get; set; }
         [XmlElement]
-        public DefenseProperty DefenseProperty { get; set; }
+        public ResistanceTuple ResistanceTuple { get; set; }
         [XmlElement]
-        public OffenseProperty OffenseProperty { get; set; }
+        public AmplifierTuple AmplifierTuple { get; set; }
         [XmlAttribute]
         public string OnHitScriptName { get; set; } = "none";
         [XmlAttribute]
         public string ImbuedStatusEffectId { get; set; } = "none";
+        [XmlAttribute]
+        public string IconName { get; set; } = "none";
         [XmlElement]
         public WeaponParticlePreset WeaponParticlePreset { get; set; }
-
     }
 
     [Serializable]
@@ -34,10 +35,6 @@ namespace TOW_Core.Items
         [XmlAttribute]
         public string ParticlePrefab { get; set; } = "invalid";
         [XmlAttribute]
-        public float ParticlesStartOffset { get; set; }
-        [XmlAttribute]
-        public float ParticlesEndOffset { get; set; }
-        [XmlAttribute]
-        public int NumberOfParticleSystems { get; set; }
+        public bool IsUniqueSingleCopy { get; set; } = false;
     }
 }

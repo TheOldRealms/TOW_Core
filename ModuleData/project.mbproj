@@ -5,4 +5,5 @@
 	<ModuleAssemblyDirectory>..\WOTS\bin\</ModuleAssemblyDirectory>
 	<file id="soln_item_usage_sets" name="ModuleData/tow_item_usages.xml" type="item_usage_set" />
 	<file id="soln_module_sound" name="ModuleData/tow_sounds.xml" type="module_sound" />
+	<file id="soln_monster_usage_sets" name="ModuleData/tow_monster_usage_sets.xml" type="monster_usage_set" />
 </base>

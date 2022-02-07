@@ -9,24 +9,75 @@ namespace TOW_Core.CampaignSupport.Models
     {
         public override ExplainedNumber MaxHitpoints(CharacterObject character, bool includeDescriptions = false)
         {
-            var num = base.MaxHitpoints(character, includeDescriptions);
-            if (character.IsPlayerCharacter)
+            var number = base.MaxHitpoints(character, includeDescriptions);
+            number = CalculateHitPoints(number, character);
+            return number;
+        }
+
+        private ExplainedNumber CalculateHitPoints(ExplainedNumber number, CharacterObject character)
+        {
+            if (character.IsHero)
             {
-                var info = Hero.MainHero.GetExtendedInfo();
-                if (Campaign.Current.CampaignBehaviorManager != null && info != null && info.AcquiredAttributes.Contains("VampireBodyOverride"))
+                return CalaculateHeroHealth(number, character.HeroObject);
+            }
+            else
+            {
+                return CalculateTroopHealth(number, character);
+            }
+        }
+
+        private ExplainedNumber CalculateTroopHealth(ExplainedNumber number, CharacterObject character)
+        {
+            switch (character.Tier)
+            {
+                case 0:
+                    number.Add(-15);
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                case 4:
+                    number.Add(20);
+                    break;
+                default:
+                    number.Add(character.Tier * 10);
+                    break;
+            }
+            return number;
+        }
+
+        private ExplainedNumber CalaculateHeroHealth(ExplainedNumber number, Hero hero)
+        {
+            var info = hero.GetExtendedInfo();
+            if (info != null)
+            {
+                if (info.AcquiredAttributes.Contains("Tier1"))
                 {
-                    num.Add(100, new TextObject("Vampire body"));
-                    if (character.HeroObject != null && Campaign.Current.CampaignStartTime.IsNow)
-                    {
-                        character.HeroObject.HitPoints = (int)num.ResultNumber;
-                    }
+                    number.Add(100, new TextObject("Tier1"));
+                }
+                else if (info.AcquiredAttributes.Contains("Tier2"))
+                {
+                    number.Add(150, new TextObject("Tier2"));
+                }
+                else if (info.AcquiredAttributes.Contains("Tier3"))
+                {
+                    number.Add(200, new TextObject("Tier3"));
+                }
+                else if (info.AcquiredAttributes.Contains("Tier4"))
+                {
+                    number.Add(300, new TextObject("Tier4"));
+                }
+                if (info.AcquiredAttributes.Contains("VampireBodyOverride"))
+                {
+                    number.Add(100, new TextObject("Vampire body"));
                 }
             }
-            else if (character.IsVampire())
+            if (Campaign.Current.CampaignStartTime.IsNow)
             {
-                num.Add(100);
+                hero.HitPoints = (int)number.ResultNumber;
             }
-            return num;
+            return number;
         }
     }
 }

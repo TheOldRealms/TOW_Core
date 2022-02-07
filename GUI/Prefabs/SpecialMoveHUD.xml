@@ -1,26 +1,17 @@
 ﻿<Prefab>
-  <Constants>
-  </Constants>
-
   <Window>
     <Widget WidthSizePolicy="Fixed"
 				HeightSizePolicy="Fixed"
-				SuggestedWidth="132"
-				SuggestedHeight="220"
+				SuggestedWidth="51"
+				SuggestedHeight="200"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Left"
 				MarginBottom="15"
-				MarginLeft="145"
+				MarginLeft="148"
 				IsVisible="@IsVisible" >
       <Children>
-        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="80" SuggestedHeight="80" Sprite="@SpriteName" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="25">
-          <Children>
-            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#000000FF" AlphaFactor="0.5" IsVisible="@IsOnCoolDown"/>
-            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@CoolDownLeft" Brush.FontSize="20" IsVisible="@IsOnCoolDown"/>
-          </Children>
-        </Widget>
-        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="140" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="20" Sprite="abilityframe_vampire" IsVisible="true"/>
-        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="@Name" Brush.FontSize="14"/>
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="swordhud" />
+        <FillBar WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="2" SuggestedHeight="120" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="60" Brush="TorSpecialMoveBrush" CurrentAmount="@ChargeLevel" IsVertical="true" MaxAmount="100" />
       </Children>
     </Widget>
   </Window>

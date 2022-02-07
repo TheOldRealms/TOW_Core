@@ -23,6 +23,8 @@ namespace TOW_Core.Abilities
                         var ability = AbilityFactory.CreateNew(item, agent);
                         if (ability != null)
                         {
+                            ability.OnCastStart += OnCastStart;
+                            ability.OnCastComplete += OnCastComplete;
                             if (ability is Spell || ability is Prayer)
                             {
                                 _knownAbilities.Add(ability);
@@ -42,10 +44,34 @@ namespace TOW_Core.Abilities
                         TOWCommon.Log("Failed instantiating ability class: " + item, LogLevel.Error);
                     }
                 }
-
+                if (Agent.IsVampire() && _specialMove == null) _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent);
                 if (_knownAbilities.Count > 0)
                 {
                     SelectAbility(0);
+                }
+            }
+        }
+
+        private void OnCastStart()
+        {
+            if (Agent == Agent.Main)
+            {
+                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+                if (manager != null)
+                {
+                    manager.OnCastStart();
+                }
+            }
+        }
+
+        private void OnCastComplete()
+        {
+            if(Agent == Agent.Main)
+            {
+                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+                if(manager != null)
+                {
+                    manager.OnCastComplete();
                 }
             }
         }
@@ -94,43 +120,9 @@ namespace TOW_Core.Abilities
             SelectAbility(_currentAbilityIndex);
         }
 
-        public Ability[] GetAbilities()
-        {
-            return _knownAbilities.ToArray();
-        }
-
-        public void EnableSpellMode()
-        {
-            _isAbilityModeOn = true;
-        }
-
-        public void DisableSpellMode()
-        {
-            if (_currentAbility != null && _currentAbility.Crosshair != null)
-            {
-                _currentAbility.Crosshair.Hide();
-            }
-            _isAbilityModeOn = false;
-        }
-
-        public void EnableSpecialMoveMode()
-        {
-            _isMovingAbilityReady = true;
-        }
-
-        public void DisableSpecialMoveMode()
-        {
-            _isMovingAbilityReady = false;
-        }
-
-        public void SetSpecialMove(SpecialMove specialMove)
-        {
-            _specialMove = specialMove;
-        }
-
         public void StopSpecialMove()
         {
-            ((SpecialMoveScript)SpecialMove.AbilityScript)?.Stop();
+            ((ShadowStepScript)SpecialMove.AbilityScript)?.Stop();
         }
 
         public List<AbilityTemplate> GetKnownAbilityTemplates()
@@ -148,16 +140,10 @@ namespace TOW_Core.Abilities
             return null;
         }
 
-
-        private bool _isAbilityModeOn;
-        private bool _isMovingAbilityReady;
         private Ability _currentAbility = null;
         private SpecialMove _specialMove = null;
         private readonly List<Ability> _knownAbilities = new List<Ability>();
         private int _currentAbilityIndex;
-
-        public bool IsSpellModeOn { get => _isAbilityModeOn; private set => _isAbilityModeOn = value; }
-        public bool IsSpecialMoveAtReady { get => _isMovingAbilityReady; private set => _isMovingAbilityReady = value; }
         public Ability CurrentAbility
         {
             get => _currentAbility;

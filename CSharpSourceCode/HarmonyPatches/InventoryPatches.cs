@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using SandBox.GauntletUI;
 using System;
+using System.Reflection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Inventory;
@@ -28,18 +29,25 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(ItemMenuVM), "SetItem")]
-        public static void Postfix2(ref ItemMenuVM __instance, SPItemVM item)
+        [HarmonyPatch(typeof(SPInventoryVM), MethodType.Constructor, typeof(InventoryLogic), typeof(bool), typeof(Func<WeaponComponentData, ItemObject.ItemUsageSetFlags>), typeof(string), typeof(string))]
+        public static void Postfix2(ref SPInventoryVM __instance, InventoryLogic ____inventoryLogic, Func<WeaponComponentData, ItemObject.ItemUsageSetFlags> ____getItemUsageSetFlags)
         {
-            var props = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
-            if(props != null)
+            var reset = Delegate.CreateDelegate(typeof(Action<ItemVM, int>), __instance, "ResetComparedItems");
+            var itemindex = Delegate.CreateDelegate(typeof(Func<EquipmentIndex, SPItemVM>), __instance, "GetItemFromIndex");
+            if(reset != null && itemindex != null && ____inventoryLogic != null && ____getItemUsageSetFlags != null)
             {
-                if(props.ItemDamageProperty != null)
-                {
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("Damage Type", props.ItemDamageProperty.DamageType.ToString(), 0, GetColorForDamageType(props.ItemDamageProperty.DamageType), false));
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("(debug)MinDmg", props.ItemDamageProperty.MinDamage.ToString(), 0, Color.White, false));
-                    __instance.TargetItemProperties.Add(new ItemMenuTooltipPropertyVM("(debug)MaxDmg", props.ItemDamageProperty.MaxDamage.ToString(), 0, Color.White, false));
-                }
+                __instance.ItemMenu = new TorItemMenuVM((Action<ItemVM, int>)reset, ____inventoryLogic, ____getItemUsageSetFlags, (Func<EquipmentIndex, SPItemVM>)itemindex);
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(ItemMenuVM), "SetItem")]
+        public static void PostFix3(ref ItemMenuVM __instance, SPItemVM item, ItemVM comparedItem, BasicCharacterObject character, int alternativeUsageIndex)
+        {
+            if (__instance is TorItemMenuVM)
+            {
+                var torvm = __instance as TorItemMenuVM;
+                torvm.SetItemExtra(item, comparedItem, character, alternativeUsageIndex);
             }
         }
 

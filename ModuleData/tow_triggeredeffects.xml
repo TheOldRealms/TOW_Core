@@ -185,4 +185,19 @@
           DamageVariance="0"
           ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.ApplyFlamingItemTraitScript">
   </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="curse_of_years"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Magical"
+          DamageAmount="0"
+          Radius="5"
+          HasShockWave="false"
+          TargetType="Enemy"
+          ImbuedStatusEffectID="curse_of_years"
+          ImbuedStatusEffectDuration="15"
+          DamageVariance="0.0"
+	  ScriptNameToTrigger="none">
+  </TriggeredEffectTemplate>
 </ArrayOfTriggeredEffectTemplate>

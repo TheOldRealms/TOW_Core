@@ -1,1281 +1,1625 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_militia_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_militia_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_militia_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_hunter_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_greatsword_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_bowman_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_woodsman_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_sergeant_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_noble_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_marius_leitdorf">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_light_wizard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_balthazar_gelt">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_tracker_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_luthor_huss">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_valten">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_kobs_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_kobs_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_kobs_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_kobs_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_lion_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_lion_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_lion_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_witch_hunter_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_witch_hunter_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_witch_hunter_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_warrior_priest_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_bright_wizard_001">
-    <Traits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_burgonet_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_burgonet_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_morion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_morion_002">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pigface_bascinet_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pigface_bascinet_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pigface_bascinet_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pothelm_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_pothelm_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_sallet_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_sallet_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_sallet_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_vlandian">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_hat_necromancer_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_skeleton_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_skeleton_warrior_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_vampire_lord_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_blood_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_blood_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_wight_king_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_hat_cairn_wraith_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_005">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_006">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_005">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chaos_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_khorne_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_hat_chaos_cultist_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_hat_chaos_cultist_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_hat_chaos_cultist_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_knight_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_brass_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_brass_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_head_helm_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_halberdier_001">
-    <Traits />
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_halberdier_001">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_worn_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_kragsburg_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_stirriver_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_statetrooper_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_statetrooper_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_statetrooper_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_breastplate_statetrooper_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_greatsword_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_greatsword_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_generic_lord">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_valten">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_luthor_huss">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_volkmar">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_light_wizard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_warrior_priest_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_kobs_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_kobs_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_marius_leitdorf">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_balthazar_gelt">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_witch_hunter_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_bright_wizard_001">
-    <Traits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_vampire_lord_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_vlad">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_red_duke">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_blood_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_blood_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_mannfred">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_wight_king_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_cape_necromancer_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_cairn_wraith_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_cairn_wraith_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_cairn_wraith_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_cairn_wraith_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_nurgle_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_nurgle_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_chaos_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_chosen_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_khorne_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_shoulder_pauldron_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_shoulder_pauldron_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_shoulder_pauldron_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_shoulder_pauldron_brass_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_body_breastplate_engraved_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalian_shoulder_pauldron_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalian_shoulder_pauldron_general_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalian_shoulder_pauldron_general_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_undercloth_statetroop_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_undercloth_statetroop_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_kragsburg_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_halberdier_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_greatsword_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_free_company_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_bright_wizard_001">
-    <Traits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_light_wizard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_luthor_huss">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_volkmar">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_marius_leitdorf">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_balthazar_gelt">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_kobs_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_valten">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_witch_hunter_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_tracker_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_warrior_priest_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_swadian_plate_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_swadian_plate_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_swadian_cuirass_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_swadian_cuirass_002">
-    <Traits />
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_cannon_crew_001">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_body_skeleton_hideskin">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_vampire_lord_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_blood_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_vlad">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_red_duke">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_mannfred">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_robe_necromancer_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_cairn_wraith_001_hideskin">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_cairn_wraith_002_hideskin">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_cairn_wraith_003_hideskin">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_chaos_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_khorne_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_nurgle_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_abomination">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_body_armor_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_body_armor_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_body_armor_knight_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_body_armor_noble_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_body_armor_noble_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_body_armor_noble_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_warrior_priest_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_bright_wizard_001">
-    <Traits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_light_wizard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_kobs_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_goldhero_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_plate_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_plate_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_greatsword_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_greatsword_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_luthor_huss">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_valten">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_volkmar">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_marius_leitdorf">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_balthazar_gelt">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_witch_hunter_001">
-    <Traits />
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_cannon_crew_001">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_skeleton_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_vampire_lord_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_blood_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_vlad">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_red_duke">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_wight_king_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_grave_guard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_grave_guard_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_hand_cairn_wraith">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_chaos_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_khorne_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_hallow">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tiliean_arm_gauntlet_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tiliean_arm_gauntlet_knight_002">
-    <Traits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_statetroop_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_free_company_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_general_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_leg_boots_plate_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_leg_boots_plate_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_greatsword_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_greatsword_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_veteran">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_luthor_huss">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_valten">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_volkmar">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_warrior_priest_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_marius_leitdorf">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_balthazar_gelt">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_tracker_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_light_wizard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_kobs_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_witch_hunter_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_bright_wizard_001">
-    <Traits />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_knight_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_knight_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_empire_goldhero_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_plate_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_plate_002">
-    <Traits />
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_cannon_crew_001">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_004">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_005">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_006">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_007">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vampire_lord_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vc_wight_king_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_grave_guard_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_grave_guard_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vlad">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_red_duke">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_mannfred">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_necromancer">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_cairn_wraith_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_cairn_wraith_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_cairn_wraith_003">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_chaos_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_nurgle_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_khorne_warrior_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_hallow">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_leg_boots_knight_001">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_leg_boots_knight_002">
-    <Traits />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_001">
-    <Traits>
-      <ItemTrait ItemTraitName="Magic Sword" OnHitScriptName="none" ImbuedStatusEffectId="fireball_dot">
-        <ItemTraitDescription>Runefang. It deals magic damage and applies the burning damage over time effect.</ItemTraitDescription>
-        <WeaponParticlePreset ParticlePrefab="magic_sparks" ParticlesStartOffset="0.5" ParticlesEndOffset="1.2" NumberOfParticleSystems="1" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
-    </Traits>
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_008">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_009">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_010">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_011">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_runefang_012">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
+        <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_008">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_009">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_skeleton_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_skeleton_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_skeleton_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_skeleton_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_skeleton_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_grave_guard_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_mannfred">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_sword_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_sword_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_sword_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_sword_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thsword_greatsword_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thsword_greatsword_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thsword_grave_guard_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thsword_vampire_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_rapier_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_rapier_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_rapier_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_rapier_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_rapier_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thaxe_graveguard_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thaxe_vampire_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thaxe_vampire_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thaxe_black_axe_of_krell">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_thaxe_nurgle_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_warrior_priest_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_huss">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_mace_skeleton_004">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_mace_nurgle_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_thmace_vampire_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_spear_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_spear_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_spear_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_spear_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_spear_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_spear_skeleton_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_halberd_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_bw_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Fire" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_bw_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Fire" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_volkmar">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Holy" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_balthazar_gelt">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_lw_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_staff_nm_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_lance_knight_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_lance_black_knight_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_scythe_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_scythe_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Magical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_scythe_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="200" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_crossbow_empire_crossbow_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="80" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_neutral_weapon_gun_old_rifle">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="100" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_arquebus_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="120" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_arquebus_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="120" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_handgun_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_flintlock_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="120" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_empire_repeater_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_handgun_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empir_weapone_gun_empire_repeater_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_handgun_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_flintlock_pistol_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="80" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_flintlock_pistol_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="80" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_flintlock_pistol_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="80" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_flintlock_pistol_008">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="80" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_longrifle_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_longrifle_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_longrifle_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_longrifle_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="150" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_blunderbuss_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="30" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_blunderbuss_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="30" DamageType="Physical" />
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_banner_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_banner_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_banner_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_banner_001">
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_banner_undead_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_banner_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_banner_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_008">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_luthor">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Physical Resistance" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 20% physical resistance.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
+      </ItemTrait>
+    </ItemTraits>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_003">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_004">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_005">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_skeleton_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_grave_guard_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_grave_guard_002">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_006">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_007">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_008">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_009">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_010">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_shield_vampire_lord_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_shield_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_shield_nurgle_001">
-    <Traits />
-    <ItemDamageProperty MinDamage="1" MaxDamage="10" DamageType="Physical" />
+    <ItemTraits />
   </ExtendedItemObjectProperties>
 </ArrayOfExtendedItemObjectProperties>

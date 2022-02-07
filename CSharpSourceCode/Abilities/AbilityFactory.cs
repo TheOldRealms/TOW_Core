@@ -102,6 +102,11 @@ namespace TOW_Core.Abilities
                         crosshair = new Pointer(template, caster);
                         break;
                     }
+                case CrosshairType.TargetedAOE:
+                    {
+                        crosshair = new TargetedAOECrosshair(template, caster);
+                        break;
+                    }
             }
             if (crosshair != null)
             {

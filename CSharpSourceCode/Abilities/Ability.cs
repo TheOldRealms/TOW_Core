@@ -32,6 +32,11 @@ namespace TOW_Core.Abilities
 
         public int GetCoolDownLeft() => _coolDownLeft;
 
+        public delegate void OnCastCompleteHandler();
+        public event OnCastCompleteHandler OnCastComplete;
+        public delegate void OnCastStartHandler();
+        public event OnCastStartHandler OnCastStart;
+
         public Ability(AbilityTemplate template)
         {
             StringID = template.StringID;
@@ -82,6 +87,7 @@ namespace TOW_Core.Abilities
 
         protected virtual void DoCast(Agent casterAgent)
         {
+            OnCastStart?.Invoke();
             SetAnimationAction(casterAgent);
             if (Template.CastType == CastType.Instant)
             {
@@ -121,6 +127,7 @@ namespace TOW_Core.Abilities
                 AddPhysics(ref entity);
 
             AddBehaviour(ref entity, casterAgent);
+            OnCastComplete?.Invoke();
         }
 
         private bool IsGroundAbility()
@@ -188,14 +195,14 @@ namespace TOW_Core.Abilities
                         break;
                     }
                     case AbilityEffectType.TargetedStaticAOE:
+                    case AbilityEffectType.Summoning:
+                        {
+                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                            break;
+                        }
                     case AbilityEffectType.TargetedStatic:
                     {
                         //frame = crosshair.Target.GetFrame();
-                        break;
-                    }
-                    case AbilityEffectType.Summoning:
-                    {
-                        frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
                         break;
                     }
                 }
@@ -275,7 +282,7 @@ namespace TOW_Core.Abilities
                     AddExactBehaviour<SummoningScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.AgentMoving:
-                    AddExactBehaviour<SpecialMoveScript>(entity, casterAgent);
+                    AddExactBehaviour<ShadowStepScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
