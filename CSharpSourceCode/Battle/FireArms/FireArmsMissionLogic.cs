@@ -4,6 +4,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using SandBox.Source.Missions;
+using System.Linq;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -52,11 +53,11 @@ namespace TOW_Core.Battle.FireArms
                 {
                     DoBlunderbussShot(shooterAgent, position, orientation);
                 }
-                if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
+                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
                 {
                     DoTwoBarrelsShot(shooterAgent, position, orientation);
                 }
-                if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
+                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
                 {
                     DoFourBarrelsShot(shooterAgent, position, orientation);
                 }

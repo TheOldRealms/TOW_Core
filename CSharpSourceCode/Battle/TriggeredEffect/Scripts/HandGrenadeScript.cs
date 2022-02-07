@@ -6,7 +6,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
-    public class GrenadeScript : ScriptComponentBehavior
+    public class HandGrenadeScript : ScriptComponentBehavior
     {
         private bool hasExploded = false;
         private bool hasLaunched = false;

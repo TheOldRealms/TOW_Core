@@ -19,16 +19,17 @@ namespace TOW_Core.Battle.Grenades
             if (shooterAgent.WieldedWeapon.Item.Name.Contains("Grenade"))
             {
                 Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                                               m.Weapon.Item.Name.Contains("Grenade") &&
-                                                                               !m.Entity.HasScriptOfType<GrenadeScript>());
+                                                                               m.Weapon.Item.StringId.Contains("hand_grenade") &&
+                                                                               !m.Entity.HasScriptOfType<HandGrenadeScript>());
                 if (grenade != null) Activate(grenade);
             }
         }
+        
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         {
             if (affectorWeapon.Item != null && affectorWeapon.Item.Name.Contains("Grenade"))
             {
-                Mission.Missile grenade = Mission.Current.Missiles.ToList().FirstOrDefault(m => m.Weapon.Item.Name.Contains("Grenade") && IsNearbyAgent(m, affectedAgent));
+                Mission.Missile grenade = Mission.Current.Missiles.FirstOrDefault(m => m.Weapon.Item.Name.Contains("Grenade") && IsNearbyAgent(m, affectedAgent));
                 if (grenade != null)
                 {
                     GameEntity bouncedGrenade = grenade.Entity;
@@ -38,15 +39,17 @@ namespace TOW_Core.Battle.Grenades
                 }
             }
         }
+        
         private void Activate(Mission.Missile grenade)
         {
             GameEntity grenadeEntity = grenade.Entity;
-            grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
-            GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
+            grenadeEntity.CreateAndAddScriptComponent("HandGrenadeScript");
+            HandGrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<HandGrenadeScript>();
             grenadeScript.SetShooterAgent(grenade.ShooterAgent);
             grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("grenade_explosion"));
             grenadeEntity.CallScriptCallbacks();
         }
+       
         private bool IsNearbyAgent(Mission.Missile missile, Agent agent)
         {
             return Math.Abs(missile.GetPosition().X - agent.Position.X) < 0.8f && Math.Abs(missile.GetPosition().Y - agent.Position.Y) < 0.8f;
