@@ -10,6 +10,7 @@ using TaleWorlds.CampaignSystem;
 using TOW_Core.Battle.Damage;
 using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
+using TaleWorlds.Library;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -339,7 +340,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
+        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false, Vec3 impactPosition = new Vec3())
         {
             if (agent == null && !agent.IsHuman)
             {

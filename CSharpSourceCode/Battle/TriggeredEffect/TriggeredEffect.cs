@@ -62,7 +62,7 @@ namespace TOW_Core.Battle.TriggeredEffect
             }
             if (_template.DamageAmount > 0)
             {
-                TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType,_template.StringID,_template.DamageType, _template.HasShockWave);
+                TOWBattleUtilities.DamageAgents(targets, (int)(_template.DamageAmount * (1 - _template.DamageVariance)), (int)(_template.DamageAmount * (1 + _template.DamageVariance)), triggererAgent, _template.TargetType,_template.StringID,_template.DamageType, _template.HasShockWave, position);
             }
             else if (_template.DamageAmount < 0)
             {
