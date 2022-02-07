@@ -5,6 +5,10 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using SandBox.Source.Missions;
 using System.Linq;
+using TOW_Core.Battle.TriggeredEffect.Scripts;
+using TOW_Core.Battle.TriggeredEffect;
+using TaleWorlds.InputSystem;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -21,6 +25,17 @@ namespace TOW_Core.Battle.FireArms
                 this._soundIndex[i] = SoundEvent.GetEventIdFromString("musket_fire_sound_" + (i + 1));
             }
             this._random = new Random();
+        }
+
+        public override void OnMissionTick(float dt)
+        {
+            base.OnMissionTick(dt);
+            if (Input.IsKeyPressed(InputKey.P))
+            {
+                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_grenade_launcher_001", EquipmentIndex.ExtraWeaponSlot);
+                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_grenade_launcher_001", EquipmentIndex.Weapon3);
+                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_grenade_grenade", EquipmentIndex.Weapon4);
+            }
         }
 
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
@@ -60,6 +75,10 @@ namespace TOW_Core.Battle.FireArms
                 else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
                 {
                     DoFourBarrelsShot(shooterAgent, position, orientation);
+                }
+                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("grenade_launcher"))
+                {
+                    AddGrenadeScript(shooterAgent);
                 }
             }
         }
@@ -112,6 +131,24 @@ namespace TOW_Core.Battle.FireArms
             float rand3 = MBRandom.RandomFloatRanged(-scattering, scattering);
             orientation.f.RotateAboutZ(rand3);
             return orientation;
+        }
+
+        private void AddGrenadeScript(Agent shooterAgent)
+        {
+                Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
+                                                                               m.Weapon.Item.StringId.Contains("grenade") &&
+                                                                               !m.Entity.HasScriptOfType<GrenadeScript>());
+                if (grenade != null) Activate(grenade);
+        }
+
+        private void Activate(Mission.Missile grenade)
+        {
+            GameEntity grenadeEntity = grenade.Entity;
+            grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
+            GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
+            grenadeScript.SetShooterAgent(grenade.ShooterAgent);
+            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("grenade_explosion"));
+            //grenadeEntity.CallScriptCallbacks();
         }
     }
 }
