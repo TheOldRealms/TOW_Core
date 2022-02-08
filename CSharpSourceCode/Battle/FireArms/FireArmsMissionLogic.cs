@@ -7,8 +7,6 @@ using SandBox.Source.Missions;
 using System.Linq;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Battle.TriggeredEffect;
-using TaleWorlds.InputSystem;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -27,29 +25,22 @@ namespace TOW_Core.Battle.FireArms
             this._random = new Random();
         }
 
-        public override void OnMissionTick(float dt)
-        {
-            base.OnMissionTick(dt);
-            if (Input.IsKeyPressed(InputKey.P))
-            {
-                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_grenade_launcher_001", EquipmentIndex.ExtraWeaponSlot);
-                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_grenade_launcher_001", EquipmentIndex.Weapon3);
-                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_grenade_grenade", EquipmentIndex.Weapon4);
-            }
-        }
-
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
-            if (shooterAgent.WieldedWeapon.AmmoWeapon.Item != null && shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("musket_ball"))
+            var weaponClass = shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponClass;
+            if (weaponClass == WeaponClass.Musket || weaponClass == WeaponClass.Pistol)
             {
                 var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);
+                // run particles of smoke
                 Mission.AddParticleSystemBurstByName("handgun_shoot", frame, false);
+                // play sound of shot
                 if (this._soundIndex.Length > 0)
                 {
                     int selected = this._random.Next(0, this._soundIndex.Length - 1);
                     Mission.MakeSound(this._soundIndex[selected], position, false, true, -1, -1);
                 }
+                // alarm enemies if it's hideout mission
                 if (!areEnemiesAlarmed)
                 {
                     areEnemiesAlarmed = true;
@@ -63,22 +54,25 @@ namespace TOW_Core.Battle.FireArms
                         }
                     }
                 }
-
-                if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
+                // run firearms script
+                if (shooterAgent.WieldedWeapon.AmmoWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Boulder) //Boulder is weapon class for grenade
                 {
-                    DoBlunderbussShot(shooterAgent, position, orientation);
+                    AddGrenadeScript(shooterAgent, "grenade_explosion");
                 }
-                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
+                else
                 {
-                    DoTwoBarrelsShot(shooterAgent, position, orientation);
-                }
-                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
-                {
-                    DoFourBarrelsShot(shooterAgent, position, orientation);
-                }
-                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("grenade_launcher"))
-                {
-                    AddGrenadeScript(shooterAgent);
+                    if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
+                    {
+                        DoBlunderbussShot(shooterAgent, position, orientation);
+                    }
+                    else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
+                    {
+                        DoTwoBarrelsShot(shooterAgent, position, orientation);
+                    }
+                    else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
+                    {
+                        DoFourBarrelsShot(shooterAgent, position, orientation);
+                    }
                 }
             }
         }
@@ -133,22 +127,20 @@ namespace TOW_Core.Battle.FireArms
             return orientation;
         }
 
-        private void AddGrenadeScript(Agent shooterAgent)
+        private void AddGrenadeScript(Agent shooterAgent, string triggeredEffectName)
         {
-                Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                                               m.Weapon.Item.StringId.Contains("grenade") &&
-                                                                               !m.Entity.HasScriptOfType<GrenadeScript>());
-                if (grenade != null) Activate(grenade);
-        }
-
-        private void Activate(Mission.Missile grenade)
-        {
-            GameEntity grenadeEntity = grenade.Entity;
-            grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
-            GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
-            grenadeScript.SetShooterAgent(grenade.ShooterAgent);
-            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew("grenade_explosion"));
-            //grenadeEntity.CallScriptCallbacks();
+            Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
+                                                                           m.Weapon.Item.StringId.Contains("grenade_grenade") &&
+                                                                           !m.Entity.HasScriptOfType<GrenadeScript>());
+            if (grenade != null)
+            {
+                GameEntity grenadeEntity = grenade.Entity;
+                grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
+                GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
+                grenadeScript.SetShooterAgent(grenade.ShooterAgent);
+                grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
+                grenadeEntity.CallScriptCallbacks();
+            }
         }
     }
 }

@@ -7,16 +7,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     public class GrenadeScript : ScriptComponentBehavior
     {
         private bool _isExploded;
-        private object _locker;
+        private object _locker = new object();
         private Agent _shooter;
         private TriggeredEffect _explosion;
 
-
-        protected override void OnRemoved(int removeReason)
-        {
-            base.OnRemoved(removeReason);
-            Explode();
-        }
 
         protected override void OnPhysicsCollision(ref PhysicsContact contact)
         {
@@ -32,7 +26,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 {
                     _isExploded = true;
                     _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooter);
-                }
+                    GameEntity.FadeOut(0.5f, true);
+;                }
             }
         }
 
