@@ -57,15 +57,18 @@ namespace TOW_Core.Battle.FireArms
                 // run firearms script
                 if (shooterAgent.WieldedWeapon.AmmoWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Boulder) //Boulder is weapon class for grenade
                 {
-                    AddGrenadeScript(shooterAgent, "grenade_explosion");
-                }
-                else
-                {
-                    if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
+                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("shrapnel"))
                     {
                         DoBlunderbussShot(shooterAgent, position, orientation);
                     }
-                    else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
+                    else if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
+                    {
+                        AddGrenadeScript(shooterAgent, "grenade_explosion");
+                    }
+                }
+                else
+                {
+                    if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
                     {
                         DoTwoBarrelsShot(shooterAgent, position, orientation);
                     }
