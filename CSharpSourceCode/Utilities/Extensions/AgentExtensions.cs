@@ -192,7 +192,13 @@ namespace TOW_Core.Utilities.Extensions
                             {
                                 damageProportions[(int)tuple.DamageType] = tuple.Percent;
                             }
+
+                            if (damageProportions.Sum() == 0)
+                            {
+                                damageProportions[(int)DamageType.Physical] = 1;
+                            }
                         }
+                        
                     }
                 }
                 if( mask == PropertyMask.Defense|| mask== PropertyMask.All)
@@ -203,7 +209,7 @@ namespace TOW_Core.Utilities.Extensions
                     List<ItemObject> items;
                     
                     items = agent.Character.GetCharacterEquipment();
-                    foreach (var item in items)
+                    foreach (var item in items) 
                     {
                         if(item.HasTrait())
                             itemTraits.AddRange(item.GetTraits(agent));
@@ -349,45 +355,51 @@ namespace TOW_Core.Utilities.Extensions
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
+                if (agent.State == AgentState.Active)
                 {
-
-                    if (!doBlow && agent.Health > damageAmount + 1)
+                    if (!doBlow && agent.Health > damageAmount )
                     {
-                       return;
+                        agent.Health-= damageAmount;
+                        return;
+                    }
+
+                    if (agent.IsFadingOut())
+                        return;
+                    
+                    var blow = new Blow(-1);
+                    blow.DamageCalculated = true;
+                    blow.InflictedDamage = damageAmount;
+                    blow.AttackType = AgentAttackType.Kick;
+                    blow.BlowFlag = BlowFlags.NoSound;
+                    blow.BaseMagnitude = 5;
+                    blow.DamageType = DamageTypes.Invalid;
+                    blow.VictimBodyPart = BoneBodyPartType.Chest;
+                    blow.StrikeType = StrikeType.Invalid;
+                    if (hasShockWave)
+                    {
+                        if (agent.HasMount)
+                            blow.BlowFlag = BlowFlags.CanDismount;
+                        else
+                            blow.BlowFlag = BlowFlags.KnockDown;
+                    }
+                    if (damager != null)
+                    {
+                        var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
+                        if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
+                    }
+                    else
+                    {
+                        blow.InflictedDamage = 0;
+                        blow.SelfInflictedDamage = damageAmount;
+                        blow.OwnerId = agent.Index;
                     }
                     
-                    else if (agent.Health > 1 && !agent.IsFadingOut())
+                    if (agent.Health  <= damageAmount&&!doBlow)
                     {
-                        var blow = new Blow(-1);
-                        blow.DamageCalculated = true;
-                        blow.InflictedDamage = damageAmount;
-                        blow.AttackType = AgentAttackType.Kick;
-                        blow.BlowFlag = BlowFlags.NoSound;
-                        blow.BaseMagnitude = 5;
-                        blow.DamageType = DamageTypes.Invalid;
-                        blow.VictimBodyPart = BoneBodyPartType.Chest;
-                        blow.StrikeType = StrikeType.Invalid;
-                        if (hasShockWave)
-                        {
-                            if (agent.HasMount)
-                                blow.BlowFlag = BlowFlags.CanDismount;
-                            else
-                                blow.BlowFlag = BlowFlags.KnockDown;
-                        }
-                        if (damager != null)
-                        {
-                            var checkAgent = Mission.Current.FindAgentWithIndex(damager.Index);
-                            if (checkAgent != null && checkAgent.Equals(damager)) blow.OwnerId = damager.Index;
-                        }
-                        else
-                        {
-                            blow.InflictedDamage = 0;
-                            blow.SelfInflictedDamage = damageAmount;
-                            blow.OwnerId = agent.Index;
-                        }
-                        agent.RegisterBlow(blow);
+                        agent.Die(blow);
+                        return;
                     }
+                    agent.RegisterBlow(blow);
                 }
             }
             catch (Exception e)

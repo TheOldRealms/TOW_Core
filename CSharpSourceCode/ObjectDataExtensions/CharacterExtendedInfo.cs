@@ -31,7 +31,7 @@ namespace TOW_Core.ObjectDataExtensions
     public class ResistanceTuple
     {
         [XmlAttribute]
-        public DamageType ResistedDamageType = DamageType.Invalid;
+        public DamageType ResistedDamageType = DamageType.Physical;
         [XmlAttribute]
         public float ReductionPercent = 0;
     }
@@ -40,7 +40,7 @@ namespace TOW_Core.ObjectDataExtensions
     public class AmplifierTuple
     {
         [XmlAttribute]
-        public DamageType AmplifiedDamageType = DamageType.Invalid;
+        public DamageType AmplifiedDamageType = DamageType.Physical;
         [XmlAttribute]
         public float DamageAmplifier = 0;
     }
