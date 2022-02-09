@@ -29,6 +29,7 @@ namespace TOW_Core.Abilities.SpellBook
             {
                 var mapscreen = ScreenManager.TopScreen as MapScreen;
                 mapscreen.AddMapView<SpellBookMapIconMapView>();
+                _initialized = true;
             }
         }
 
