@@ -23,8 +23,16 @@ namespace TOW_Core.Items
 
         public ExtendedItemObjectProperties() { }
 
-        public ExtendedItemObjectProperties(string id) => ItemStringId = id;
-
+        public ExtendedItemObjectProperties(string id, DamageType defaultDamageType= DamageType.Physical)
+        {
+            ItemStringId = id;
+            DamageProportionTuple proportionTuple = new DamageProportionTuple
+            {
+                DamageType = defaultDamageType,
+                Percent = 1f
+            };
+            DamageProportions.Add(proportionTuple);
+        }
         public static ExtendedItemObjectProperties CreateDefault(string id)
         {
             return new ExtendedItemObjectProperties(id);
