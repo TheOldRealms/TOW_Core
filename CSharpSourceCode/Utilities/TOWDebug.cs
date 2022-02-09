@@ -31,11 +31,12 @@ namespace TOW_Core.Utilities
             return Mission.Current.SpawnAgent(agentBuildData, false, 0);
         }
 
-        public static void EquipWeapon(Agent agent, String weaponName)
+        public static void EquipWeapon(Agent agent, String weaponName, EquipmentIndex index)
         {
             ItemObject item = MBObjectManager.Instance.GetObject<ItemObject>(weaponName);
             MissionWeapon weapon = new MissionWeapon(item, null, Banner.CreateRandomBanner());
-            agent.EquipWeaponToExtraSlotAndWield(ref weapon);
+            agent.EquipWeaponWithNewEntity(index, ref weapon);
+            //agent.EquipWeaponToExtraSlotAndWield(ref weapon);
         }
     }
 }
