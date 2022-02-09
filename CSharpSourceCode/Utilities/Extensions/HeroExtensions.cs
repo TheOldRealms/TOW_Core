@@ -31,14 +31,6 @@ namespace TOW_Core.Utilities.Extensions
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
             return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.StringId);
-            /*
-            var info = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
-            if (info != null)
-            {
-                return info.GetHeroInfoFor(hero.StringId);
-            }
-            else return null;
-            */
         }
 
         public static void AddAbility(this Hero hero, string ability)
@@ -82,6 +74,14 @@ namespace TOW_Core.Utilities.Extensions
             if (hero.GetExtendedInfo() != null)
             {
                 hero.GetExtendedInfo().SpellCastingLevel = level;
+            }
+        }
+
+        public static void AddKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                hero.GetExtendedInfo().AddKnownLore(loreID);
             }
         }
 

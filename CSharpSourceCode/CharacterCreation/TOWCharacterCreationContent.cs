@@ -152,6 +152,7 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("Fireball");
+                Hero.MainHero.AddKnownLore("MinorLore");
             }
             if (selectedOption.OptionText == "Warrior Priest Acolyte")
             {
@@ -164,6 +165,7 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
+                Hero.MainHero.AddKnownLore("MinorLore");
             }
             else if (selectedOption.OptionText == "Vampiric Nobility")
             {
@@ -173,6 +175,7 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("WindOfDeath");
+                Hero.MainHero.AddKnownLore("MinorLore");
             }
         }
 

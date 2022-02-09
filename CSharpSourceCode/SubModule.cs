@@ -127,7 +127,7 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.AddBehavior(ExtendedInfoManager.Instance);
-                starter.AddBehavior(new SpellBookScreenCampaignBehaviour());
+                starter.AddBehavior(new SpellBookMapIconCampaignBehaviour());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());

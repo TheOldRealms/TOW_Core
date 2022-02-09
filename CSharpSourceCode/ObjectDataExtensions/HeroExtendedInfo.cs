@@ -20,6 +20,7 @@ namespace TOW_Core.ObjectDataExtensions
         [SaveableField(3)] public int Corruption = 0; //between 0 and 100, 0 = pure af, 100 = fallen to chaos
         [SaveableField(4)] public SpellCastingLevel SpellCastingLevel = SpellCastingLevel.Minor;
         [SaveableField(5)] private CharacterObject _baseCharacter;
+        [SaveableField(6)] private List<string> _knownLores = new List<string>();
         public float MaxWindsOfMagic
         {
             get
@@ -47,21 +48,28 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
-        private HeroExtendedInfo() { }
-
-        public HeroExtendedInfo(CharacterObject character)
+        public List<LoreObject> KnownLores
         {
-            _baseCharacter = character;
+            get
+            {
+                List<LoreObject> list = new List<LoreObject>();
+                foreach(var item in _knownLores)
+                {
+                    list.Add(LoreObject.GetLore(item));
+                }
+                return list;
+            }
         }
-        public List<string> AllAbilities 
-        { 
+
+        public List<string> AllAbilities
+        {
             get
             {
                 var list = new List<string>();
                 if (_baseCharacter != null) list.AddRange(_baseCharacter.GetAbilities());
                 list.AddRange(AcquiredAbilities);
                 return list;
-            } 
+            }
         }
 
         public List<string> AllAttributes
@@ -75,6 +83,17 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
+        private HeroExtendedInfo() { }
+
+        public HeroExtendedInfo(CharacterObject character)
+        {
+            _baseCharacter = character;
+        }
+
+        public void AddKnownLore(string loreId)
+        {
+            if(LoreObject.GetLore(loreId) != null) _knownLores.Add(loreId);
+        }
     }
     public class HeroExtendedInfoInfoDefiner : SaveableTypeDefiner
     {

@@ -22,12 +22,7 @@ namespace TOW_Core.Abilities.SpellBook
             {
                 return "Open Spell Book";
             });
-        }
-
-        public override void RefreshValues()
-        {
-            base.RefreshValues();
-            if(Hero.MainHero.IsSpellCaster()) IsVisible = true;
+            if (Hero.MainHero.IsSpellCaster()) IsVisible = true;
         }
 
         public void ExecuteOpenSpellBook()

@@ -51,6 +51,22 @@
               </Children>
             </Widget>
             <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="560" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginTop="30" MarginLeft="20" Sprite="BlankWhiteSquare_9">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="20" MarginBottom="20" MarginLeft="5" Sprite="BlankWhiteSquare_9" Color="#FF2222FF">
+                  <Children>
+                    <ListPanel DataSource="{LoreObjects}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Right" VerticalAlignment="Center">
+                      <ItemTemplate>
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="75" SuggestedWidth="75" HorizontalAlignment="Right" Command.Click="..\ExecuteSelectLoreObject" Sprite="BlankWhiteSquare_9"  MarginTop="10"/>
+                      </ItemTemplate>
+                    </ListPanel>
+                  </Children>
+                </Widget>
+                <Widget DataSource="{CurrentLore}" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="860" HorizontalAlignment="Right" VerticalAlignment="Top" MarginTop="20" MarginBottom="20" MarginRight="5" Sprite="BlankWhiteSquare_9" Color="#FF2222FF">
+                  <Children>
+                    <RichTextWidget Text="@Name"/>
+                  </Children>
+                </Widget>
+              </Children>
             </Widget>
           </Children>
         </ListPanel>

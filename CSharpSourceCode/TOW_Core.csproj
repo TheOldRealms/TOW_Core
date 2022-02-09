@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -310,13 +310,15 @@
     <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
     <Compile Include="Abilities\Scripts\TargetedStaticScript.cs" />
+    <Compile Include="Abilities\SpellBook\LoreObjectVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookMapIconVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookScreen.cs" />
-    <Compile Include="Abilities\SpellBook\SpellBookScreenCampaignBehaviour.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookMapIconCampaignBehaviour.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookState.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellCastingLevel.cs" />
     <Compile Include="Abilities\SpellBook\SpellCastingStatItemVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellItemVM.cs" />
     <Compile Include="Abilities\SummonedAgentOrigin.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />

@@ -70,7 +70,7 @@ namespace TOW_Core.Abilities
         public static LoreObject GetLore(string id)
         {
             var lores = GetAll();
-            return lores.FirstOrDefault(lo => lo.ID == id);
+            return lores.First(lo => lo.ID == id);
         }
     }
 }
