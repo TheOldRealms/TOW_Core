@@ -315,6 +315,8 @@
     <Compile Include="Abilities\SpellBook\SpellBookScreenCampaignBehaviour.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookState.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellCastingLevel.cs" />
+    <Compile Include="Abilities\SpellBook\SpellCastingStatItemVM.cs" />
     <Compile Include="Abilities\SummonedAgentOrigin.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
@@ -361,11 +363,6 @@
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
-    <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
     <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
@@ -374,8 +371,6 @@
     <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
     <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
-    <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
     <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />

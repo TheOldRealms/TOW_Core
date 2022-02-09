@@ -1,35 +1,5 @@
 <Prefab>
   <Constants>
-    <Constant Name="LeftPanel.Margin.Top" Value="5" />
-    <Constant Name="LeftPanel.Margin.Bottom" Value="0" />
-
-
-    <Constant Name="RightPanel.Margin.Top" Value="150" />
-    <Constant Name="RightPanel.Margin.Left" Value="50" />
-    <Constant Name="RightPanel.Margin.Right" Value="150" />
-
-    <Constant Name="Quest.Background.Width" BrushLayer="Default" BrushName="Quest.Background" BrushValueType="Width" />
-    <Constant Name="Quest.Background.Height" BrushLayer="Default" BrushName="Quest.Background" BrushValueType="Height" />
-
-    <Constant Name="Quest.LeftPanel.Toggle.Margin.Left" Value="1" />
-    <Constant Name="Quest.LeftPanel.Toggle.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.Toggle" BrushValueType="Width" />
-    <Constant Name="Quest.LeftPanel.Toggle.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.Toggle" BrushValueType="Height" />
-
-    <Constant Name="Quest.LeftPanel.Header.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.Header" BrushValueType="Width" />
-    <Constant Name="Quest.LeftPanel.Header.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.Header" BrushValueType="Height" />
-
-    <Constant Name="Quest.LeftPanel.QuestName.Text.XOffset" Value="3" />
-    <Constant Name="Quest.LeftPanel.QuestName.Text.YOffset" Value="-1" />
-
-    <Constant Name="Quest.LeftPanel.QuestDate.Text.XOffset" Value="-3" />
-    <Constant Name="Quest.LeftPanel.QuestDate.Text.YOffset" Value="-1" />
-
-    <Constant Name="Quest.LeftPanel.QuestButton.Active.Width" BrushLayer="Default" BrushName="Quest.LeftPanel.QuestButton.Active" BrushValueType="Width" />
-    <Constant Name="Quest.LeftPanel.QuestButton.Active.Height" BrushLayer="Default" BrushName="Quest.LeftPanel.QuestButton.Active" BrushValueType="Height" />
-
-    <Constant Name="RightPanel.QuestStage.Margin.Bottom" Value="15" />
-
-    <Constant Name="RightPanel.QuestList.Padding.Bottom" Value="80" />
 
   </Constants>
   <Variables>
@@ -52,12 +22,7 @@
     <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
       <Children>
 
-        <Standard.Background>
-          <Children>
-            <!--Background Illustration-->
-            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Quest.Background.Width" SuggestedHeight="!Quest.Background.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" Sprite="Quest\background_quest" AlphaFactor="0.6" />
-          </Children>
-        </Standard.Background>
+        <Standard.Background />
 
         <!--Top Panel-->
         <Widget VisualDefinition="TopPanel" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="755" SuggestedHeight="182" HorizontalAlignment="Center" PositionXOffset="60" PositionYOffset="-182" Sprite="StdAssets\tabbar_standart" ValueFactor="-30">
@@ -65,6 +30,30 @@
             <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="45" Text="SpellBook" />
           </Children>
         </Widget>
+
+        <CharacterTableauWidget DataSource="{CurrentCharacter}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="550" SuggestedHeight="1000" HorizontalAlignment="Right" VerticalAlignment="Center" BannerCodeText="@BannerCodeText" BodyProperties="@BodyProperties" CharStringId="@CharStringId" EquipmentCode="@EquipmentCode" IsFemale="@IsFemale" MountCreationKey="@MountCreationKey" StanceIndex="@StanceIndex" ArmorColor1="@ArmorColor1" ArmorColor2="@ArmorColor2" IsEnabled="false" DoNotUseCustomScale="true"/>
+
+        <ListPanel WidthSizePolicy="Fixed" SuggestedWidth="1000" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Left" VerticalAlignment="Center">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="280" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="130" MarginLeft="20" Sprite="">
+              <Children>
+                <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="24" Text="Spellcasting Stats" />
+                <ListPanel DataSource="{StatItems}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <ItemTemplate>
+                    <Listpanel WidthSizePolicy="Fixed" SuggestedWidth="400" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="HorizontalRightToLeft" HorizontalAlignment="Center" VerticalAlignment="Top">
+                      <Children>
+                        <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="18" Text="@Label" />
+                        <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="18" Text="@Value" />
+                      </Children>
+                    </Listpanel>
+                  </ItemTemplate>
+                </ListPanel>
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="560" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginTop="30" MarginLeft="20" Sprite="BlankWhiteSquare_9">
+            </Widget>
+          </Children>
+        </ListPanel>
 
         <!--Close Screen Button-->
         <Standard.DialogCloseButtons VisualDefinition="BottomMenu" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="100" Parameter.DoneButtonAction="ExecuteClose" Parameter.DoneButtonText="Done" Parameter.ShowCancel="false" />

@@ -60,7 +60,6 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 if (entry.Value.AllAttributes.Contains("SpellCaster"))
                 {
-                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
                     entry.Value.CurrentWindsOfMagic += entry.Value.WindsOfMagicRechargeRate;
                     entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
                 }

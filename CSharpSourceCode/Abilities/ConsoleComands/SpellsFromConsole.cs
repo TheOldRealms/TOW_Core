@@ -84,9 +84,6 @@ namespace TOW_Core.Spells.ConsoleComands
             if (!Hero.MainHero.IsAbilityUser())
                 Hero.MainHero.AddAttribute("AbilityUser");
 
-            Hero.MainHero.GetExtendedInfo().MaxWindsOfMagic =
-                Math.Max(Hero.MainHero.GetExtendedInfo().MaxWindsOfMagic, 30f);
-
             return "Player is spell caster now. \n";
         }
 

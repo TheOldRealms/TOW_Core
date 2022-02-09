@@ -37,7 +37,6 @@ using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.Battle.Artillery;
-using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
 using TOW_Core.Battle.Damage;
@@ -135,7 +134,6 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new LibraryTownBehaviour());
-                starter.AddBehavior(new AssimilationCampaignBehavior());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 

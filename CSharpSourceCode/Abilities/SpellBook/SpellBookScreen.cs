@@ -23,6 +23,7 @@ namespace TOW_Core.Abilities.SpellBook
         public SpellBookScreen(SpellBookState state)
         {
             _state = state;
+            _state.Listener = this;
         }
         protected override void OnFrameTick(float dt)
         {
@@ -50,11 +51,15 @@ namespace TOW_Core.Abilities.SpellBook
         void IGameStateListener.OnDeactivate()
         {
             base.OnDeactivate();
+            base.RemoveLayer(_gauntletLayer);
+            _gauntletLayer.IsFocusLayer = false;
+            ScreenManager.TryLoseFocus(_gauntletLayer);
         }
 
         void IGameStateListener.OnFinalize()
         {
-            base.OnFinalize();
+            _gauntletLayer = null;
+            _vm = null;
         }
 
         void IGameStateListener.OnInitialize()

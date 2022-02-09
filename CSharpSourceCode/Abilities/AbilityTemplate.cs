@@ -81,9 +81,9 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
         [XmlAttribute]
-        public int SpellTier = 0; //spell only, max 4
+        public int SpellTier = 0; //spell only, max 3 (0-1-2-3)
         [XmlAttribute]
-        public string LoreID = ""; //spell only
+        public string BelongsToLoreID = ""; //spell only
         public SeekerParameters SeekerParameters;
         
         public AbilityTemplate() { }
