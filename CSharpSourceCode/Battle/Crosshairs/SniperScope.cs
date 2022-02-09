@@ -18,13 +18,13 @@ namespace TOW_Core.Battle.Crosshairs
 
         public void Tick()
         {
-            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(false);
-            _screen.OnMainAgentWeaponChanged();
             _scope.SetGlobalFrame(_screen.CombatCamera.Frame);
         }
 
         public void Show()
         {
+            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(false);
+            _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(true);
         }
 

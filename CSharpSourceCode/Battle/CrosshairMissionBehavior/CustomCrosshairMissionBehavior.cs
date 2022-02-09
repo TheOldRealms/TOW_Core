@@ -26,11 +26,15 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public bool IsUsingSniperScope
         {
-            get => _isUsingSniperScope; 
+            get => _isUsingSniperScope;
         }
 
         public override void OnMissionScreenTick(float dt)
         {
+            if (!_isActive)
+            {
+                return;
+            }
             if (CanUseCrosshair())
             {
                 if (_abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
@@ -196,7 +200,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             float numberToCheck = MBMath.WrapAngle(Agent.Main.LookDirection.AsVec2.RotationInRadians - Agent.Main.GetMovementDirection().RotationInRadians);
             Vec2 bodyRotationConstraint = Agent.Main.GetBodyRotationConstraint(1);
-            return (Mission.Current.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
+            return !(Mission.Current.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
         }
     }
 }

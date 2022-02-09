@@ -1,5 +1,6 @@
 ﻿using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Damage
 {
@@ -11,7 +12,10 @@ namespace TOW_Core.Battle.Damage
         public override void OnMissionTick(float dt)
         {
             base.OnMissionTick(dt);
-            
+            if (Input.IsKeyPressed(InputKey.P))
+            {
+                TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_longrifle_001");
+            }
             if (Input.IsKeyPressed(InputKey.N))
             {
                 Blow b = new Blow();
