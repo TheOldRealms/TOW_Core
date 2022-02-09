@@ -192,11 +192,6 @@ namespace TOW_Core.Utilities.Extensions
                             {
                                 damageProportions[(int)tuple.DamageType] = tuple.Percent;
                             }
-
-                            if (damageProportions.Sum() == 0)
-                            {
-                                damageProportions[(int)DamageType.Physical] = 1;
-                            }
                         }
                         
                     }
