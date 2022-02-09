@@ -1,18 +1,20 @@
-﻿using TaleWorlds.InputSystem;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 
 namespace TOW_Core.Battle
 {
     public class TORCustomBattleAgentStatCalculateModel : CustomBattleAgentStatCalculateModel
     {
+        private CustomCrosshairMissionBehavior _crosshairBehavior;
+
         public override float GetMaxCameraZoom(Agent agent)
         {
-            bool isAimingWithSniperRifle = Mission.Current.CameraIsFirstPerson &&
-                                           Input.IsKeyDown(InputKey.LeftMouseButton) &&
-                                           Input.IsKeyDown(InputKey.LeftShift) &&
-                                           !Agent.Main.WieldedWeapon.IsEmpty &&
-                                           Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle");
-            if (isAimingWithSniperRifle)
+            if (_crosshairBehavior == null)
+            {
+                _crosshairBehavior = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
+            }
+
+            if (_crosshairBehavior != null && _crosshairBehavior.IsUsingSniperScope)
             {
                 return 3;
             }

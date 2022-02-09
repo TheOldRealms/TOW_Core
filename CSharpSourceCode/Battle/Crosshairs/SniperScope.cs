@@ -1,5 +1,4 @@
-﻿using System;
-using TaleWorlds.Engine;
+﻿using TaleWorlds.Engine;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Screen;

@@ -2,6 +2,7 @@
 using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
@@ -16,11 +17,17 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     public class CustomCrosshairMissionBehavior : MissionView
     {
         private bool _isActive;
+        private bool _isUsingSniperScope;
         private Crosshair _weaponCrosshair;
         private SniperScope _sniperScope;
         private AbilityCrosshair _abilityCrosshair;
         private AbilityComponent _abilityComponent;
         private AbilityManagerMissionLogic _missionLogic;
+
+        public bool IsUsingSniperScope
+        {
+            get => _isUsingSniperScope; 
+        }
 
         public override void OnMissionScreenTick(float dt)
         {
@@ -52,7 +59,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                     _abilityCrosshair?.Hide();
                     if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
                     {
-                        if (IsPlayerAimingWithSniperRifle())
+                        if (CanUseSniperScope())
                         {
                             _weaponCrosshair.Hide();
                             _sniperScope.Tick();
@@ -130,6 +137,17 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             }
         }
 
+        private bool CanUseSniperScope()
+        {
+            _isUsingSniperScope = Mission.CameraIsFirstPerson &&
+                                  Input.IsKeyDown(InputKey.LeftShift) &&
+                                  Input.IsKeyDown(InputKey.LeftMouseButton) &&
+                                  Agent.Main.GetCurrentActionType(1) == Agent.ActionCodeType.ReadyRanged &&
+                                  Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle") &&
+                                  IsRightAngleToShoot();
+            return _isUsingSniperScope;
+        }
+
         public override void OnPhotoModeActivated()
         {
             base.OnPhotoModeActivated();
@@ -172,6 +190,13 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 };
                 _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
             }
+        }
+
+        private bool IsRightAngleToShoot()
+        {
+            float numberToCheck = MBMath.WrapAngle(Agent.Main.LookDirection.AsVec2.RotationInRadians - Agent.Main.GetMovementDirection().RotationInRadians);
+            Vec2 bodyRotationConstraint = Agent.Main.GetBodyRotationConstraint(1);
+            return (Mission.Current.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
         }
     }
 }
