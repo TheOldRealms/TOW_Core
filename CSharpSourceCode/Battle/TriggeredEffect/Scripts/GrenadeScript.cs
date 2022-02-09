@@ -1,6 +1,4 @@
-﻿using System;
-using SandBox.Source.Missions;
-using TaleWorlds.Engine;
+﻿using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -8,68 +6,39 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class GrenadeScript : ScriptComponentBehavior
     {
-        private bool hasExploded = false;
-        private bool hasLaunched = false;
-        private Int32 explosionTimer = 0;
-        private SoundEvent _tickSound;
-        private Agent shooterAgent;
-        private TriggeredEffect explsion;
+        private bool _isExploded;
+        private object _locker = new object();
+        private Agent _shooter;
+        private TriggeredEffect _explosion;
 
-        protected override void OnInit()
+
+        protected override void OnPhysicsCollision(ref PhysicsContact contact)
         {
-            base.OnInit();
-            SetScriptComponentToTick(GetTickRequirement());
+            base.OnPhysicsCollision(ref contact);
+            Explode();
         }
-        protected override void OnTick(float dt)
+
+        private void Explode()
         {
-            base.OnTick(dt);
-            explosionTimer++;
-            if (_tickSound == null)
+            lock (_locker)
             {
-                Int32 _tickSoundindex = SoundEvent.GetEventIdFromString("dwarf_hand_grenade_tick");
-                _tickSound = SoundEvent.CreateEvent(_tickSoundindex, Mission.Current.Scene);
-                _tickSound.SetPosition(GameEntity.GlobalPosition);
-            }
-            _tickSound.SetPosition(GameEntity.GlobalPosition);
-            if (!hasLaunched)
-            {
-                hasLaunched = true;
-                _tickSound.Play();
-            }
-            if (hasLaunched && explosionTimer % 40 == 0)
-                _tickSound.Play();
-            if (explosionTimer >= 135 && !hasExploded)
-            {
-                hasExploded = true;
-                _tickSound.Release();
-                explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, shooterAgent);
-                var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();
-                if (spawnLogic != null)
+                if (!_isExploded)
                 {
-                    foreach (var agent in Mission.Current.PlayerEnemyTeam.TeamAgents)
-                    {
-                        spawnLogic.OnAgentAlarmedStateChanged(agent, Agent.AIStateFlag.Alarmed);
-                        agent.SetWatchState(Agent.WatchState.Alarmed);
-                    }
-                }
+                    _isExploded = true;
+                    _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooter);
+                    GameEntity.FadeOut(0.5f, true);
+;                }
             }
         }
-        public override TickRequirement GetTickRequirement()
-        {
-            return TickRequirement.Tick;
-        }
-        protected override void OnRemoved(int removeReason)
-        {
-            base.OnRemoved(removeReason);
-            _tickSound.Release();
-        }
+
         public void SetShooterAgent(Agent shooter)
         {
-            shooterAgent = shooter;
+            _shooter = shooter;
         }
+
         public void SetTriggeredEffect(TriggeredEffect effect)
         {
-            explsion = effect;
+            _explosion = effect;
         }
     }
 }
