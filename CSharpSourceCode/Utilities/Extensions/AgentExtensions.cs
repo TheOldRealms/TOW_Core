@@ -355,7 +355,7 @@ namespace TOW_Core.Utilities.Extensions
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (agent.State == AgentState.Active)
+                if (agent.State == AgentState.Active|| agent.State == AgentState.Routed)
                 {
                     if (!doBlow && agent.Health > damageAmount )
                     {
