@@ -120,6 +120,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _abilityCrosshair = null;
             _sniperScope = null;
             _isActive = false;
+            _abilityComponent.CurrentAbilityChanged -= ChangeAbilityCrosshair;
         }
 
         private bool IsRightAngleToCast()
@@ -187,13 +188,15 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
             {
                 _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-                _abilityComponent.CurrentAbilityChanged += (crosshair) =>
-                {
-                    _abilityCrosshair?.Hide();
-                    _abilityCrosshair = crosshair;
-                };
+                _abilityComponent.CurrentAbilityChanged += ChangeAbilityCrosshair;
                 _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
             }
+        }
+
+        private void ChangeAbilityCrosshair(AbilityCrosshair crosshair)
+        {
+            _abilityCrosshair?.Hide();
+            _abilityCrosshair = crosshair;
         }
 
         private bool IsRightAngleToShoot()
