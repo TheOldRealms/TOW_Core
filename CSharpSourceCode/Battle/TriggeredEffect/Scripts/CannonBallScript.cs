@@ -3,7 +3,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.Damage;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
@@ -12,7 +11,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     {
         private Agent _shooterAgent;
         private SoundEvent _sound;
-        private int _damage = 150;
+        private int _explosionDamage = 150;
         private float _explosionRadius = 10;
 
         protected override void OnInit()
@@ -31,9 +30,15 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             return TickRequirement.Tick;
         }
 
+        public void SetExplosionParameteres(int explosionDamage, float explosionRadius)
+        {
+            _explosionDamage = explosionDamage;
+            _explosionRadius = explosionRadius;
+        }
+
         protected override void OnRemoved(int removeReason)
         {
-            //RunVisualEffects();
+            RunVisualEffects();
             RunSoundEffects();
 
             var nearbyAgents = Mission.Current.GetNearbyAgents(GameEntity.GlobalPosition.AsVec2, _explosionRadius).ToArray();
@@ -43,11 +48,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var distance = agent.Position.Distance(GameEntity.GlobalPosition);
                 if (distance < _explosionRadius)
                 {
-                    var damage = (_explosionRadius - distance) / _explosionRadius * _damage;
+                    var damage = (_explosionRadius - distance) / _explosionRadius * _explosionDamage;
                     agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true, impactPosition: GameEntity.GlobalPosition);
                     if (distance < 3 && agent.State == AgentState.Killed)
                     {
-                        TestingDamageMissionLogic.EnableSlowMotion(3);
                         agent.Disappear();
                         var frame = agent.Frame.Elevate(1);
                         if (distance <= 1.5f)
@@ -67,10 +71,9 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         {
             var effect = GameEntity.CreateEmpty(Mission.Current.Scene);
             MatrixFrame frame = MatrixFrame.Identity;
-            ParticleSystem.CreateParticleSystemAttachedToEntity("cannonball_explosion_6", effect, ref frame);
+            ParticleSystem.CreateParticleSystemAttachedToEntity("cannonball_explosion_7", effect, ref frame);
             var globalFrame = new MatrixFrame(Mat3.CreateMat3WithForward(in Vec3.Zero), GameEntity.GlobalPosition);
             effect.SetGlobalFrame(globalFrame);
-            effect.FadeOut(10, true);
         }
 
         private void RunSoundEffects()

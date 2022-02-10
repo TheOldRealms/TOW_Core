@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.DotNet;
 using TaleWorlds.Engine;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
@@ -12,7 +10,6 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.TwoDimension;
 using TOW_Core.Battle.AI.Components;
-using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Utilities;
 
@@ -278,6 +275,7 @@ namespace TOW_Core.Battle.Artillery
                 var muzzleVeloCheat = _target.Formation.GetMovementSpeedOfUnits()>0.1?  _target.Formation.GetMovementSpeedOfUnits()/2: 0f;
                 var mf = _calculatedMuzzle - muzzleVeloCheat + MBRandom.RandomFloatRanged(-1 + 3);
                 Mission.Current.AddCustomMissile(PilotAgent, projectile, frame.origin, frame.rotation.f.NormalizedCopy(), frame.rotation, 0, mf, false, null);
+                Mission.Current.AddParticleSystemBurstByName("psys_cannon_shot_1", frame, false);
                 AddCannonballScript();
             }
 

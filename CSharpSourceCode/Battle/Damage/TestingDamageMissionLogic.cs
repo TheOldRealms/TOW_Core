@@ -25,7 +25,10 @@ namespace TOW_Core.Battle.Damage
 
         private void CheckForSlowMotionTime()
         {
-            Mission.Scene.SlowMotionMode = _slowMotionEndTime < Mission.CurrentTime ? false : true;
+            if (Mission.Scene.SlowMotionMode && _slowMotionEndTime <= Mission.CurrentTime)
+            {
+                Mission.Scene.SlowMotionMode = false;
+            }
         }
 
         private void SomeZ3rcasMethod()
