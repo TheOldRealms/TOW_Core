@@ -49,7 +49,7 @@ namespace TOW_Core.ObjectDataExtensions
     public class DamageProportionTuple
     {
         [XmlAttribute]
-        public DamageType DamageType = DamageType.Physical;
+        public DamageType DamageType = DamageType.Invalid;
         [XmlAttribute]
         public float Percent = 1;
     }

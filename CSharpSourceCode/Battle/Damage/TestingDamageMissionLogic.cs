@@ -1,5 +1,7 @@
-﻿using TaleWorlds.InputSystem;
+﻿using TaleWorlds.Core;
+using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.Damage
 {

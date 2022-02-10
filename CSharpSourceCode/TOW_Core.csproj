@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -343,6 +343,7 @@
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\CannonBallScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
@@ -423,7 +424,7 @@
     <Compile Include="ObjectDataExtensions\SpellBlowInfoManager.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
     <Compile Include="Battle\FireArms\FireArmsMissionLogic.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\HandGrenadeScript.cs" />
     <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoCampaignBehavior.cs" />
@@ -476,6 +477,7 @@
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
+    <Compile Include="Utilities\TORDamageDisplay.cs" />
     <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />

@@ -16,7 +16,7 @@
         ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate
         StringID="grenade_explosion"
-        BurstParticleEffectPrefab="psys_burning_projectile_default_coll"
+        BurstParticleEffectPrefab="psys_grenade_explosion_1"
         SoundEffectId="fireball_explosion"
         SoundEffectLength="2.5"
         DamageType="Fire"
@@ -24,8 +24,8 @@
         Radius="5"
         HasShockWave="true"
         TargetType="All"
-        ImbuedStatusEffectID="fireball_dot"
-        ImbuedStatusEffectDuration="5"
+        ImbuedStatusEffectID="none"
+        ImbuedStatusEffectDuration="0"
         DamageVariance="0.2"
         ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate
@@ -200,4 +200,18 @@
           DamageVariance="0.0"
 	  ScriptNameToTrigger="none">
   </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+        StringID="fireball_explosion"
+        BurstParticleEffectPrefab="psys_fireball_explosion_1"
+        SoundEffectId="fireball_explosion"
+        SoundEffectLength="2.5"
+        DamageType="Fire"
+        DamageAmount="50"
+        Radius="5"
+        HasShockWave="false"
+        TargetType="All"
+        ImbuedStatusEffectID="fireball_dot"
+        ImbuedStatusEffectDuration="5"
+        DamageVariance="0.2"
+        ScriptNameToTrigger="none"/>
 </ArrayOfTriggeredEffectTemplate>
