@@ -2,12 +2,9 @@
 using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
-using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
-using TOW_Core.Battle.TriggeredEffect;
-using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Dismemberment
