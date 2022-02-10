@@ -46,11 +46,11 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             {
                 var agent = nearbyAgents[i];
                 var distance = agent.Position.Distance(GameEntity.GlobalPosition);
-                if (distance < _explosionRadius)
+                if (distance <= _explosionRadius)
                 {
                     var damage = (_explosionRadius - distance) / _explosionRadius * _explosionDamage;
                     agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true, impactPosition: GameEntity.GlobalPosition);
-                    if (distance < 3 && agent.State == AgentState.Killed)
+                    if (distance < 3 && agent.State == AgentState.Killed && agent.IsHuman && !agent.IsUndead() && !agent.IsVampire())
                     {
                         agent.Disappear();
                         var frame = agent.Frame.Elevate(1);
@@ -65,6 +65,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                     }
                 }
             }
+            base.OnRemoved(removeReason);
         }
 
         private void RunVisualEffects()
