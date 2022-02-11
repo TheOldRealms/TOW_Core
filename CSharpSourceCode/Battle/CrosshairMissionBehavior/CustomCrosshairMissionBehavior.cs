@@ -120,7 +120,10 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _abilityCrosshair = null;
             _sniperScope = null;
             _isActive = false;
-            _abilityComponent.CurrentAbilityChanged -= ChangeAbilityCrosshair;
+            if (_abilityComponent != null)
+            {
+                _abilityComponent.CurrentAbilityChanged -= ChangeAbilityCrosshair;
+            }
         }
 
         private bool IsRightAngleToCast()
