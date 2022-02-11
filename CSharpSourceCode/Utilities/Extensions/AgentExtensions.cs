@@ -386,6 +386,7 @@ namespace TOW_Core.Utilities.Extensions
                             blow.OwnerId = damager.Index;
                             blow.Position = impactPosition;
                             blow.Direction = agent.Position - impactPosition;
+                            blow.Direction.Normalize();
                             blow.SwingDirection = blow.Direction;
                         }
                     }
