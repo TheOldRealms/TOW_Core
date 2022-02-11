@@ -165,14 +165,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _weaponCrosshair.OnPhotoModeDeactivated();
         }
 
-        private bool IsPlayerAimingWithSniperRifle()
-        {
-            return Mission.CameraIsFirstPerson &&
-                   Input.IsKeyDown(InputKey.LeftShift) &&
-                   Input.IsKeyDown(InputKey.LeftMouseButton) &&
-                   Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle");
-        }
-
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
         {
             if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null)
