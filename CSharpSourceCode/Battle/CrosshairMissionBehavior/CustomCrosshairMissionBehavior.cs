@@ -118,6 +118,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _weaponCrosshair.FinalizeCrosshair();
             _abilityComponent = null;
             _abilityCrosshair = null;
+            _sniperScope.FinalizeCrosshair();
             _sniperScope = null;
             _isActive = false;
             if (_abilityComponent != null)

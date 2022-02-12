@@ -35,5 +35,10 @@ namespace TOW_Core.Battle.Crosshairs
             _scope.SetVisibilityExcludeParents(false);
         }
 
+        public void FinalizeCrosshair()
+        {
+            _screen = null;
+            _scope.FadeOut(0.5f, true);
+        }
     }
 }
