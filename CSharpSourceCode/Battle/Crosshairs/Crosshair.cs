@@ -51,9 +51,9 @@ namespace TOW_Core.Battle.Crosshairs
             }
             _crosshairVM.CrosshairType = BannerlordConfig.CrosshairType;
             Agent mainAgent = Mission.Current.MainAgent;
-            double num = (double)(_missionScreen.CameraViewAngle * 0.017453292f);
+            double num = (double)(_missionScreen.CameraViewAngle * _viewAngleConst);
             double accuracy = 2.0 * Math.Tan((double)(mainAgent.CurrentAimingError + mainAgent.CurrentAimingTurbulance) * (0.5 / Math.Tan(num * 0.5)));
-            _crosshairVM.SetProperties(accuracy, (double)(1f + (_missionScreen.CombatCamera.HorizontalFov - 1.5707964f) / 1.5707964f));
+            _crosshairVM.SetProperties(accuracy, (double)(1f + (_missionScreen.CombatCamera.HorizontalFov - _crosshairAngleConstant) / _crosshairAngleConstant));
             WeaponInfo wieldedWeaponInfo = mainAgent.GetWieldedWeaponInfo(Agent.HandIndex.MainHand);
             float numberToCheck = MBMath.WrapAngle(mainAgent.LookDirection.AsVec2.RotationInRadians - mainAgent.GetMovementDirection().RotationInRadians);
             if (wieldedWeaponInfo != null && wieldedWeaponInfo.IsRangedWeapon && BannerlordConfig.DisplayTargetingReticule)
@@ -226,7 +226,8 @@ namespace TOW_Core.Battle.Crosshairs
             }
         }
 
-
+        private const float _viewAngleConst = 0.017453292f;
+        private const float _crosshairAngleConstant = 1.5707964f;
         private double[] _targetGadgetOpacities = new double[4];
         private IGauntletMovie _weaponMovie;
         private GauntletLayer _weaponLayer;
