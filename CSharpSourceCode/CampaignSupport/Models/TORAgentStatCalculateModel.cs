@@ -1,10 +1,9 @@
-﻿using Helpers;
-using SandBox;
+﻿using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -13,6 +12,8 @@ namespace TOW_Core.CampaignSupport.Models
     {
         private float vampireDaySpeedModificator = 1.1f;
         private float vampireNightSpeedModificator = 1.2f;
+        private CustomCrosshairMissionBehavior _crosshairBehavior;
+
 
         public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties, AgentBuildData agentBuildData)
         {
@@ -74,6 +75,20 @@ namespace TOW_Core.CampaignSupport.Models
                     }
                 }
             }
+        }
+
+        public override float GetMaxCameraZoom(Agent agent)
+        {
+            if (_crosshairBehavior == null)
+            {
+                _crosshairBehavior = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
+            }
+
+            if (_crosshairBehavior != null && _crosshairBehavior.IsUsingSniperScope)
+            {
+                return 3;
+            }
+            return base.GetMaxCameraZoom(agent);
         }
     }
 }
