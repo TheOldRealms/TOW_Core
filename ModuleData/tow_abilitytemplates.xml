@@ -549,7 +549,9 @@
       MinDistance="3"
       MaxDistance="30"
       TargetCapturingRadius="3"
-      MaxRandomDeviation="1">
+      MaxRandomDeviation="1"
+      ShouldRotateVisuals="true"
+      VisualsRotationVelocity="1">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>

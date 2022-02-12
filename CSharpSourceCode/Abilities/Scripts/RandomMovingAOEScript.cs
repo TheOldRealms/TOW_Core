@@ -26,9 +26,12 @@ namespace TOW_Core.Abilities.Scripts
             var newFrame = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newFrame);
 
-            var vortexFrame = _vortexPrefab.GetFrame();
-            vortexFrame.rotation.RotateAboutUp(1);
-            _vortexPrefab.SetFrame(ref vortexFrame);
+            if (_ability.Template.ShouldRotateVisuals)
+            {
+                var vortexFrame = _vortexPrefab.GetFrame();
+                vortexFrame.rotation.RotateAboutUp(_ability.Template.VisualsRotationVelocity);
+                _vortexPrefab.SetFrame(ref vortexFrame);
+            }
 
             if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
