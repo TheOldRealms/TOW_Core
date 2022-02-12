@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.Damage
         {
             base.OnMissionTick(dt);
             CheckForSlowMotionTime();
-            //SomeZ3rcasMethod();
+            //KillEnemyLeader();
         }
 
         public static void EnableSlowMotion(float time)
@@ -33,23 +33,12 @@ namespace TOW_Core.Battle.Damage
             }
         }
 
-        private void SomeZ3rcasMethod()
+        private void KillEnemyLeader()
         {
             if (Input.IsKeyPressed(InputKey.N))
             {
                 Blow b = new Blow();
-
-
-                if (Mission.Current.PlayerTeam.IsAttacker)
-                {
-                    if (Mission.Teams.Defender.Leader.Health > 0)
-                        Mission.Teams.Defender.Leader.Die(b);
-                }
-                else
-                {
-                    if (Mission.Teams.Defender.Leader.Health > 0)
-                        Mission.Teams.Attacker.Leader.Die(b);
-                }
+                Mission.PlayerEnemyTeam.Leader.Die(b); 
             }
         }
     }
