@@ -516,7 +516,6 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-
   <AbilityTemplate
       StringID="Tornado"
       Name="Tornado"
@@ -547,8 +546,8 @@
       TriggeredEffectID="tornado_tick"
       Offset="10"
       CrosshairType="DirectionalAOE"
-      MinDistance="2"
-      MaxDistance="10"
+      MinDistance="3"
+      MaxDistance="30"
       TargetCapturingRadius="3"
       MaxRandomDeviation="1">
     <LightColorRGB x="255" y="170" z="0" w="-1">

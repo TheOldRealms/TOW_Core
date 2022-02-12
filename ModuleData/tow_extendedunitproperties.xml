@@ -1550,7 +1550,7 @@
     <Abilities>
       <string>Dart</string>
       <string>Fireball</string>
-      <string>Tornado</string>
+      <string>BurningHead</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
