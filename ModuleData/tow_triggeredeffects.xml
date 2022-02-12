@@ -200,4 +200,18 @@
         ImbuedStatusEffectDuration="5"
         DamageVariance="0.2"
         ScriptNameToTrigger="none"/>
+  <TriggeredEffectTemplate
+        StringID="tornado_tick"
+        BurstParticleEffectPrefab="none"
+        SoundEffectId="none"
+        SoundEffectLength="0"
+        DamageType="Physical"
+        DamageAmount="10"
+        Radius="10"
+        TargetType="All"
+        ImbuedStatusEffectID="none"
+        ImbuedStatusEffectDuration="5"
+        DamageVariance="0.1"
+        ScriptNameToTrigger="none"
+        HasShockWave="true"/>
 </ArrayOfTriggeredEffectTemplate>
