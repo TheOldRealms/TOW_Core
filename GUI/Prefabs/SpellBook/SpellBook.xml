@@ -11,11 +11,11 @@
     <VisualDefinition Name="TopPanel" EaseIn="true" TransitionDuration="0.45">
       <VisualState PositionYOffset="-6" State="Default" />
     </VisualDefinition>
-    <VisualDefinition Name="LeftPanel" EaseIn="true" TransitionDuration="0.45">
-      <VisualState PositionXOffset="-27" State="Default" />
+    <VisualDefinition Name="LeftPanel" EaseIn="true" TransitionDuration="0.9">
+      <VisualState PositionXOffset="30" State="Default" />
     </VisualDefinition>
     <VisualDefinition Name="RightPanel" EaseIn="true" TransitionDuration="0.45">
-      <VisualState PositionXOffset="0" State="Default" />
+      <VisualState PositionXOffset="-30" State="Default" />
     </VisualDefinition>
   </VisualDefinitions>
   <Window>
@@ -31,11 +31,15 @@
           </Children>
         </Widget>
 
-        <CharacterTableauWidget DataSource="{CurrentCharacter}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="550" SuggestedHeight="1000" HorizontalAlignment="Right" VerticalAlignment="Center" BannerCodeText="@BannerCodeText" BodyProperties="@BodyProperties" CharStringId="@CharStringId" EquipmentCode="@EquipmentCode" IsFemale="@IsFemale" MountCreationKey="@MountCreationKey" StanceIndex="@StanceIndex" ArmorColor1="@ArmorColor1" ArmorColor2="@ArmorColor2" IsEnabled="false" DoNotUseCustomScale="true"/>
+        <!--Character on Right-->
+        <CharacterTableauWidget VisualDefinition="RightPanel" DataSource="{CurrentCharacter}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="550" SuggestedHeight="1000" HorizontalAlignment="Right" VerticalAlignment="Center" BannerCodeText="@BannerCodeText" BodyProperties="@BodyProperties" CharStringId="@CharStringId" EquipmentCode="@EquipmentCode" IsFemale="@IsFemale" MountCreationKey="@MountCreationKey" StanceIndex="@StanceIndex" ArmorColor1="@ArmorColor1" ArmorColor2="@ArmorColor2" IsEnabled="false" DoNotUseCustomScale="true"/>
 
-        <ListPanel WidthSizePolicy="Fixed" SuggestedWidth="1000" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <!--Left Panel-->
+        <ListPanel VisualDefinition="LeftPanel" WidthSizePolicy="Fixed" SuggestedWidth="1200" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="30">
           <Children>
-            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="280" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="130" MarginLeft="20" Sprite="">
+
+            <!--Spellcasting stats-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="200" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="130" MarginLeft="20" Sprite="">
               <Children>
                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="24" Text="Spellcasting Stats" />
                 <ListPanel DataSource="{StatItems}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -50,24 +54,73 @@
                 </ListPanel>
               </Children>
             </Widget>
-            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="560" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginTop="30" MarginLeft="20" Sprite="BlankWhiteSquare_9">
+
+            <!--Spellbook-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="700" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
               <Children>
-                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="20" MarginBottom="20" MarginLeft="5" Sprite="BlankWhiteSquare_9" Color="#FF2222FF">
+
+                <!--Lore Selector bookmarks-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="76" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="spellbook_leftside" >
                   <Children>
-                    <ListPanel DataSource="{LoreObjects}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <ListPanel DataSource="{LoreObjects}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Right" VerticalAlignment="Center" MarginTop="60">
                       <ItemTemplate>
-                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="75" SuggestedWidth="75" HorizontalAlignment="Right" Command.Click="..\ExecuteSelectLoreObject" Sprite="BlankWhiteSquare_9"  MarginTop="10"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="75" SuggestedWidth="75" MarginTop="20" >
+                           <Children>
+                              <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" HorizontalAlignment="Left" VerticalAlignment="Center" Command.Click="ExecuteSelectLoreObject" Sprite="@SpriteName" IsVisible="@IsVisible"/>
+                              <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" HorizontalAlignment="Left" VerticalAlignment="Center" Command.Click="ExecuteSelectLoreObject" PositionXOffset="-20" Sprite="@SpriteName" IsVisible="@IsSelected"/>
+                           </Children>
+                        </Widget>
                       </ItemTemplate>
                     </ListPanel>
                   </Children>
                 </Widget>
-                <Widget DataSource="{CurrentLore}" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="860" HorizontalAlignment="Right" VerticalAlignment="Top" MarginTop="20" MarginBottom="20" MarginRight="5" Sprite="BlankWhiteSquare_9" Color="#FF2222FF">
+
+                <!--Spell List Grid-->
+                <Widget DataSource="{CurrentLore}" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1124" HorizontalAlignment="Right" VerticalAlignment="Center" Sprite="spellbook_rightside" >
                   <Children>
-                    <RichTextWidget Text="@Name"/>
+                    <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" PositionXOffset="-285" PositionYOffset="40" VerticalAlignment="Top" Brush="TorSpellBookBrush" Brush.FontSize="24" Text="@Name" />
+                    <GridWidget DataSource="{SpellList}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ColumnCount="2" RowCount="4" DefaultCellWidth="200" DefaultCellHeight="100" LayoutImp="GridLayout" MarginTop="100" MarginLeft="20" MarginRight="30" MarginBottom="30">
+                      <ItemTemplate>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="10" MarginRight="30" MarginBottom="10">
+                          <Children>
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+                              <Children>
+                                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="100" SuggestedWidth="100" MarginLeft="10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="@SpellSpriteName" IsVisible="@IsDisabled" ColorFactor="0.4" AlphaFactor="0.6">
+                                      <Children>
+                                        <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="TorSpellBookBrush" Brush.FontSize="14" Text="@DisabledReason" />
+                                      </Children>
+                                    </Widget>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="@SpellSpriteName" IsVisible="@IsKnown"/>
+                                  </Children>
+                                </Widget>
+                                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="100" SuggestedWidth="380" MarginLeft="10" HorizontalAlignment="Right" VerticalAlignment="Center" >
+                                  <Children>
+                                    <ListPanel DataSource="{SpellStatItems}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                      <ItemTemplate>
+                                        <Listpanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="HorizontalRightToLeft" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                          <Children>
+                                            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" Brush="TorSpellBookBrush" Brush.FontSize="14" Text="@Label" />
+                                            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Top" Brush="TorSpellBookBrush" Brush.FontSize="14" Text="@Value" />
+                                          </Children>
+                                        </Listpanel>
+                                      </ItemTemplate>
+                                    </ListPanel>
+                                  </Children>
+                                </Widget>
+                              </Children>
+                            </ListPanel>
+                          </Children>
+                        </Widget>
+                      </ItemTemplate>
+                    </GridWidget>
                   </Children>
                 </Widget>
+
               </Children>
             </Widget>
+
           </Children>
         </ListPanel>
 

@@ -7,12 +7,12 @@ using TaleWorlds.Library;
 
 namespace TOW_Core.Abilities.SpellBook
 {
-    public class SpellCastingStatItemVM : ViewModel
+    public class StatItemVM : ViewModel
     {
         private string _lbl;
         private string _value;
 
-        public SpellCastingStatItemVM(string labeltxt, string valuetxt)
+        public StatItemVM(string labeltxt, string valuetxt)
         {
             _lbl = labeltxt;
             _value = valuetxt;

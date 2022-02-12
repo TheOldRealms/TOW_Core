@@ -33,14 +33,6 @@ namespace TOW_Core.Abilities.SpellBook
             }
         }
 
-        private void ScreenManager_OnPushScreen(ScreenBase pushedScreen)
-        {
-            if(pushedScreen is MapScreen)
-            {
-                var screen = (MapScreen)pushedScreen;
-            }
-        }
-
         public override void SyncData(IDataStore dataStore) { }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Engine.GauntletUI;
@@ -38,7 +39,13 @@ namespace TOW_Core.Abilities.SpellBook
         void IGameStateListener.OnActivate()
         {
             base.OnActivate();
-            _vm = new SpellBookVM(CloseScreen);
+            var heromembers = MobileParty.MainParty.MemberRoster.GetTroopRoster().Where(x => x.Character.HeroObject != null);
+            List<Hero> heroes = new List<Hero>();
+            foreach (var hero in heromembers)
+            {
+                heroes.Add(hero.Character.HeroObject);
+            }
+            _vm = new SpellBookVM(CloseScreen, heroes);
             _gauntletLayer = new GauntletLayer(1, "GauntletLayer", true);
             _gauntletLayer.InputRestrictions.SetInputRestrictions(true, InputUsageMask.All);
             _gauntletLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("GenericCampaignPanelsGameKeyCategory"));

@@ -317,7 +317,7 @@
     <Compile Include="Abilities\SpellBook\SpellBookState.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellCastingLevel.cs" />
-    <Compile Include="Abilities\SpellBook\SpellCastingStatItemVM.cs" />
+    <Compile Include="Abilities\SpellBook\StatItemVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellItemVM.cs" />
     <Compile Include="Abilities\SummonedAgentOrigin.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />

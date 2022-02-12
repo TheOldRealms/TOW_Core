@@ -29,7 +29,9 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="fireball_explosion"
       Offset="0.5"
-      CrosshairType="Projectile">
+      CrosshairType="Projectile"
+      SpellTier="2"
+      BelongsToLoreID="LoreOfFire">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -69,7 +71,9 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="3"
+      BelongsToLoreID="Necromancy">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -110,7 +114,9 @@
       CrosshairType="Pointer"
       MinDistance="1"
       MaxDistance="30"
-      TargetCapturingRadius="2.5">
+      TargetCapturingRadius="2.5"
+      SpellTier="1"
+      BelongsToLoreID="Necromancy">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -146,7 +152,9 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="dart_explosion"
-      CrosshairType="Projectile">
+      CrosshairType="Projectile"
+      SpellTier="1"
+      BelongsToLoreID="LoreOfHeavens">
       <LightColorRGB x="0" y="204" z="255" w="-1">
         <AsVec2>
           <y>204</y>
@@ -187,7 +195,9 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="3"
+      BelongsToLoreID="LoreOfFire">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -227,7 +237,9 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="3"
+      BelongsToLoreID="DarkMagic">
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>
           <x>52</x>
@@ -285,7 +297,7 @@
     BaseMisCastChance="0.0" 
     Duration="1" 
     Radius="2" 
-    AbilityType="Spell" 
+    AbilityType="Innate" 
     AbilityEffectType="Summoning" 
     BaseMovementSpeed="0" 
     TickInterval="0.2" 
@@ -367,7 +379,7 @@
       BaseMisCastChance="0.05"
       Duration="0"
       Radius="0"
-      AbilityType="Spell"
+      AbilityType="Innate"
       AbilityEffectType="SingleTarget"
       BaseMovementSpeed="0"
       TickInterval="-1"
@@ -428,7 +440,9 @@
       Offset="0.5"
       AbilityTargetType="Enemies"
       MaxDistance="10"
-      CrosshairType="Targeted">
+      CrosshairType="Targeted"
+      SpellTier="1"
+      BelongsToLoreID="DarkMagic">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -468,7 +482,9 @@
       AbilityTargetType="Allies"
       TargetCapturingRadius="5"
       MaxDistance="20"
-      CrosshairType="TargetedAOE">
+      CrosshairType="TargetedAOE"
+      SpellTier="2"
+      BelongsToLoreID="LoreOfFire">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -508,7 +524,9 @@
    AbilityTargetType="Enemies"
    TargetCapturingRadius="5"
    MaxDistance="20"
-   CrosshairType="TargetedAOE">
+   CrosshairType="TargetedAOE"
+   SpellTier="2"
+    BelongsToLoreID="DarkMagic">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>

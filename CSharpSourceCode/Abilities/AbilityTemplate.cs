@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities
 {
@@ -88,5 +90,21 @@ namespace TOW_Core.Abilities
         
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;
+
+        public bool IsSpell => AbilityType == AbilityType.Spell;
+
+        public MBBindingList<StatItemVM> GetStats()
+        {
+            MBBindingList<StatItemVM> list = new MBBindingList<StatItemVM>();
+            if (IsSpell)
+            {
+                list.Add(new StatItemVM("Spell Name: ", Name));
+                list.Add(new StatItemVM("Winds of Magic cost: ", WindsOfMagicCost.ToString() + TOWCommon.GetWindsIconAsText()));
+                list.Add(new StatItemVM("Spell Tier: ", ((SpellCastingLevel)SpellTier).ToString()));
+                list.Add(new StatItemVM("Spell Type: ", AbilityEffectType.ToString()));
+                list.Add(new StatItemVM("Cooldown: ", CoolDown.ToString()+" seconds"));
+            }
+            return list;
+        }
     }
 }

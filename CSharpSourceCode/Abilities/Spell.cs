@@ -44,25 +44,25 @@ namespace TOW_Core.Abilities
     {
         public string ID { get; private set; }
         public string Name { get; private set; }
-        public string IconSprite { get; private set; }
+        public string SpriteName { get; private set; }
         private static Dictionary<string, LoreObject> _lores = new Dictionary<string, LoreObject>();
-        private LoreObject(string id, string name, string sprite)
+        private LoreObject(string id, string name, string spritename)
         {
             ID = id;
             Name = name;
-            IconSprite = sprite;
+            SpriteName = spritename;
         }
 
         public static List<LoreObject> GetAll()
         {
             if(_lores.Count == 0)
             {
-                _lores.Add("MinorLore", new LoreObject("MinorLore", "Minor Magic", ""));
-                _lores.Add("LoreOfFire", new LoreObject("LoreOfFire", "Lore of Fire", ""));
-                _lores.Add("LoreOfLight", new LoreObject("LoreOfLight", "Lore of Light", ""));
-                _lores.Add("LoreOfHeavens", new LoreObject("LoreOfHeavens", "Lore of Heavens", ""));
-                _lores.Add("DarkMagic", new LoreObject("DarkMagic", "Dark Magic", ""));
-                _lores.Add("Necromancy", new LoreObject("Necromancy", "Necromancy", ""));
+                _lores.Add("MinorMagic", new LoreObject("MinorMagic", "Minor Magic", "minormagic_symbol"));
+                _lores.Add("LoreOfFire", new LoreObject("LoreOfFire", "Lore of Fire", "firemagic_symbol"));
+                _lores.Add("LoreOfLight", new LoreObject("LoreOfLight", "Lore of Light", "lightmagic_symbol"));
+                _lores.Add("LoreOfHeavens", new LoreObject("LoreOfHeavens", "Lore of Heavens", "celestial_symbol"));
+                _lores.Add("DarkMagic", new LoreObject("DarkMagic", "Dark Magic", "darkmagic_symbol"));
+                _lores.Add("Necromancy", new LoreObject("Necromancy", "Necromancy", "necromancy_symbol"));
             }
             return _lores.Values.ToList();
         }
