@@ -27,6 +27,7 @@ namespace TOW_Core.Abilities.Crosshairs
             var newTarget = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
             if (newTarget == null)
             {
+                RemoveTarget();
                 return;
             }
             if (newTarget.IsMount)
