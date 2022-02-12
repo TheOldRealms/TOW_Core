@@ -15,7 +15,7 @@ namespace TOW_Core.Battle
 {
     public static class TOWBattleUtilities
     {
-        public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, string spellID="",DamageType damageType=DamageType.Physical, bool hasShockWave = false)
+        public static void DamageAgents(IEnumerable<Agent> agents, int minDamage, int maxDamage = -1, Agent damager = null, TargetType targetType = TargetType.All, string spellID="",DamageType damageType=DamageType.Physical, bool hasShockWave = false, Vec3 impactPosition = new Vec3())
         {
             foreach (var agent in agents)
             {
@@ -24,11 +24,11 @@ namespace TOW_Core.Battle
 
                 if (maxDamage < minDamage)
                 {
-                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave);
+                    agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave, impactPosition: impactPosition);
                 }
                 else
                 {
-                    agent.ApplyDamage(TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave);
+                    agent.ApplyDamage(TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave, impactPosition: impactPosition);
                 }
             }
         }
