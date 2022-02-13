@@ -30,45 +30,5 @@ namespace TOW_Core.Utilities.Extensions
             }
             return sceneNames;
         }
-
-        public static bool IsEmpireSettlement(this Settlement settlement)
-        {
-            return (settlement.IsTown ||
-                    settlement.IsCastle ||
-                    settlement.IsVillage) &&
-                    settlement.MapFaction.Culture.Name.Contains("Empire");
-        }
-
-        public static bool IsVampireSettlement(this Settlement settlement)
-        {
-            return (settlement.IsTown ||
-                    settlement.IsCastle ||
-                    settlement.IsVillage) &&
-                    settlement.MapFaction.Culture.Name.Contains("Vampire");
-        }
-
-        public static bool IsSuitableForHero(this Settlement settlement, Hero hero)
-        {
-            if (hero.Culture.Name.Contains("Vampire"))
-            {
-                return IsVampireSettlement(settlement);
-            }
-            else
-            {
-                return IsEmpireSettlement(settlement);
-            }
-        }
-
-        public static bool IsSuitableForHero(this Settlement settlement, CharacterObject hero)
-        {
-            if (hero.Culture.Name.Contains("Vampire"))
-            {
-                return IsVampireSettlement(settlement);
-            }
-            else
-            {
-                return IsEmpireSettlement(settlement);
-            }
-        }
     }
 }
