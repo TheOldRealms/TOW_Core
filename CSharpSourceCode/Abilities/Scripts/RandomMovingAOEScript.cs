@@ -17,8 +17,8 @@ namespace TOW_Core.Abilities.Scripts
         {
             base.Initialize(ability);
             _maxDeviation = _ability.Template.MaxRandomDeviation;
-            var asd = GameEntity.GetChildren().ToList();
-            _vortexPrefab = asd[0];
+            var children = GameEntity.GetChildren().ToList();
+            _vortexPrefab = children[0];
         }
 
         protected override void UpdatePosition(MatrixFrame frame, float dt)
