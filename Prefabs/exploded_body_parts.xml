@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prefabs>
+  <game_entity name="exploded_head_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_head_001" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_head_001"/>
+    </components>
+  </game_entity>
+  
+  <game_entity name="exploded_torso_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_torso_001" mass="30.000"/>
+    <components>
+      <meta_mesh_component name="exploded_torso_001"/>
+    </components>
+  </game_entity>
+  
+  <game_entity name="exploded_flesh_pieces_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_flesh_pieces_001" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_flesh_pieces_001"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_flesh_pieces_002" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_flesh_pieces_002" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_flesh_pieces_002"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_flesh_pieces_003" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_flesh_pieces_003" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_flesh_pieces_003"/>
+    </components>
+  </game_entity>
+  
+  <game_entity name="exploded_limb_pieces_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_limb_pieces_001" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_limb_pieces_001"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_limb_pieces_002" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_limb_pieces_002" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_limb_pieces_002"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_limb_pieces_003" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_limb_pieces_003" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_limb_pieces_003"/>
+    </components>
+  </game_entity>
+
+  <game_entity name="exploded_arms_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_arms_001" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_arms_001"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_arms_002" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_arms_002" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_arms_002"/>
+    </components>
+  </game_entity>
+
+  <game_entity name="exploded_legs_001" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_legs_001" mass="30.000"/>
+    <components>
+      <meta_mesh_component name="exploded_legs_001"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_legs_002" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_legs_002" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_legs_002"/>
+    </components>
+  </game_entity>
+  <game_entity name="exploded_legs_003" old_prefab_name="" mobility="1">
+    <physics shape="bo_exploded_legs_003" mass="10.000"/>
+    <components>
+      <meta_mesh_component name="exploded_legs_003"/>
+    </components>
+  </game_entity>
+</prefabs>
