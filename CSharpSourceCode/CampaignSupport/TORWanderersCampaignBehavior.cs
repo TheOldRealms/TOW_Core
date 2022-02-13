@@ -1,13 +1,8 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -20,16 +15,31 @@ namespace TOW_Core.CampaignSupport
         public override void RegisterEvents()
         {
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
+            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, CheckPlayerCurrentSettlement);
+        }
+
+        private void CheckPlayerCurrentSettlement()
+        {
+            var playerSettlement = MobileParty.MainParty.CurrentSettlement;
+            if (playerSettlement != null && playerSettlement.IsTown)
+            {
+                ReplaceEnemyWanderersIfExist(playerSettlement);
+            }
         }
 
         private void OnAfterSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            if (hero == null || !hero.IsHumanPlayerCharacter)
+            if (settlement.IsTown && hero == null || !hero.IsHumanPlayerCharacter)
             {
                 return;
             }
 
             //check for unsuitable wanderers
+            ReplaceEnemyWanderersIfExist(settlement);
+        }
+
+        private void ReplaceEnemyWanderersIfExist(Settlement settlement)
+        {
             for (int i = 0; i < settlement.HeroesWithoutParty.Count; i++)
             {
                 var wanderer = settlement.HeroesWithoutParty[i];
