@@ -22,6 +22,7 @@ namespace TOW_Core.Abilities.SpellBook
         private MBBindingList<StatItemVM> _stats;
         private MBBindingList<LoreObjectVM> _lores;
         private LoreObjectVM _currentLore;
+        private int _currentHeroIndex = 0;
 
         public SpellBookVM(Action closeAction, List<Hero> heroes)
         {
@@ -35,8 +36,7 @@ namespace TOW_Core.Abilities.SpellBook
 
         private void Initialize()
         {
-            _currentHero = _heroes.First(x=>x == Hero.MainHero);
-            if (_currentHero == null) _currentHero = _heroes[0];
+            _currentHero = _heroes[_currentHeroIndex];
             CurrentCharacter = new HeroViewModel();
             CurrentCharacter.FillFrom(_currentHero);
             CurrentCharacter.SetEquipment(EquipmentIndex.ArmorItemEndSlot, default(EquipmentElement));
@@ -44,6 +44,7 @@ namespace TOW_Core.Abilities.SpellBook
             CurrentCharacter.SetEquipment(EquipmentIndex.NumAllWeaponSlots, default(EquipmentElement));
 
             var info = _currentHero.GetExtendedInfo();
+            StatItems.Clear();
             StatItems.Add(new StatItemVM("Hero name: ", _currentHero.Name.ToString()));
             StatItems.Add(new StatItemVM("Spell casting level: ", info.SpellCastingLevel.ToString()));
             StatItems.Add(new StatItemVM("Maximum Winds of Magic: ", info.MaxWindsOfMagic.ToString() + TOWCommon.GetWindsIconAsText()));
@@ -57,6 +58,7 @@ namespace TOW_Core.Abilities.SpellBook
             }
             StatItems.Add(new StatItemVM("Known Magic Schools: ", lorestext));
 
+            LoreObjects.Clear();
             var lores = LoreObject.GetAll();
             foreach(var lore in lores)
             {
@@ -73,6 +75,32 @@ namespace TOW_Core.Abilities.SpellBook
         private void ExecuteClose()
         {
             _closeAction();
+        }
+
+        private void ExecuteSelectPreviousHero()
+        {
+            if(_heroes.Count > 1)
+            {
+                _currentHeroIndex -= 1;
+                if(_currentHeroIndex < 0)
+                {
+                    _currentHeroIndex = _heroes.Count - 1;
+                }
+                Initialize();
+            }
+        }
+
+        private void ExecuteSelectNextHero()
+        {
+            if (_heroes.Count > 1)
+            {
+                _currentHeroIndex += 1;
+                if (_currentHeroIndex > _heroes.Count - 1)
+                {
+                    _currentHeroIndex = 0;
+                }
+                Initialize();
+            }
         }
 
         internal void OnLoreObjectSelected(LoreObjectVM loreObjectVM)

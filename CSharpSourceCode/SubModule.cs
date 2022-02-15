@@ -43,6 +43,7 @@ using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
 using TOW_Core.Abilities.SpellBook;
+using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 
 namespace TOW_Core
 {
@@ -139,7 +140,7 @@ namespace TOW_Core
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TowCompanionHiringPriceCalculationModel());
-                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
+                starter.AddModel(new TOWCampaignBattleMoraleModel());
                 //starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new TORBanditDensityModel());
                 starter.AddModel(new TORMobilePartyFoodConsumptionModel());

@@ -41,7 +41,13 @@
             <!--Spellcasting stats-->
             <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="200" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="130" MarginLeft="20" Sprite="">
               <Children>
-                <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="24" Text="Spellcasting Stats" />
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" StackLayout.LayoutMethod="HorizontalRightToLeft">
+                  <Children>
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="41" HorizontalAlignment="Left" VerticalAlignment="Top" Brush="NextCharacterButtonBrush" Command.Click="ExecuteSelectPreviousHero" />
+                    <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Quest.CenterPanel.Title.Text" Brush.FontSize="24" Text="Spellcasting Stats" />
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="41" HorizontalAlignment="Right" VerticalAlignment="Top" Brush="PreviousCharacterButtonBrush" Command.Click="ExecuteSelectNextHero" />
+                  </Children>
+                </ListPanel>                
                 <ListPanel DataSource="{StatItems}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" HorizontalAlignment="Center" VerticalAlignment="Center">
                   <ItemTemplate>
                     <Listpanel WidthSizePolicy="Fixed" SuggestedWidth="400" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="HorizontalRightToLeft" HorizontalAlignment="Center" VerticalAlignment="Top">

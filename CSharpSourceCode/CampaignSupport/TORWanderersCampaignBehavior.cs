@@ -7,6 +7,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -42,7 +43,7 @@ namespace TOW_Core.CampaignSupport
                                         select x).FirstOrDefault().Settlement;
                     if (suitableTown != null)
                     {
-                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
                     }
                     else
                     {

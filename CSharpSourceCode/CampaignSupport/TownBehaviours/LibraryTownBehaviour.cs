@@ -21,6 +21,12 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, AddMenu);
+            CampaignEvents.LocationCharactersAreReadyToSpawnEvent.AddNonSerializedListener(this, SpawnTrainer);
+        }
+
+        private void SpawnTrainer(Dictionary<string, int> unusedPoints)
+        {
+            
         }
 
         private void AddMenu(CampaignGameStarter obj)
