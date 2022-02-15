@@ -9,10 +9,11 @@ namespace TOW_Core.Abilities.SpellBook
 {
     public enum SpellCastingLevel
     {
-        [SaveableField(0)]Minor,
-        [SaveableField(1)] Entry,
-        [SaveableField(2)] Adept,
-        [SaveableField(3)] Master
+        [SaveableField(0)] None,
+        [SaveableField(1)] Minor,
+        [SaveableField(2)] Entry,
+        [SaveableField(3)] Adept,
+        [SaveableField(4)] Master
     }
 
     public class SpellCastingTypeDefiner : SaveableTypeDefiner

@@ -22,13 +22,20 @@ namespace TOW_Core.Abilities.SpellBook
             {
                 return "Open Spell Book";
             });
-            if (Hero.MainHero.IsSpellCaster()) IsVisible = true;
+            RefreshValues();
         }
 
         public void ExecuteOpenSpellBook()
         {
             var state = Game.Current.GameStateManager.CreateState<SpellBookState>();
             Game.Current.GameStateManager.PushState(state);
+        }
+
+        public override void RefreshValues()
+        {
+            if (Hero.MainHero.IsSpellCaster()) IsVisible = true;
+            else IsVisible = false;
+            base.RefreshValues();
         }
 
         [DataSourceProperty]

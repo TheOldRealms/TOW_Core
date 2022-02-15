@@ -10,6 +10,9 @@ namespace TOW_Core.Abilities.SpellBook
     public class SpellBookState : GameState
     {
         public override bool IsMenuState => true;
+
+        public bool IsTrainerMode { get; internal set; } = false;
+
         public SpellBookState() { }
     }
 }

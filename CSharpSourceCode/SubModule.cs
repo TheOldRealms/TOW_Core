@@ -22,7 +22,6 @@ using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
-using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
 using TOW_Core.CampaignSupport.RaiseDead;
@@ -134,7 +133,7 @@ namespace TOW_Core
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
-                starter.AddBehavior(new LibraryTownBehaviour());
+                starter.AddBehavior(new SpellTrainerInTownBehaviour());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
