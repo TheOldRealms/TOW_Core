@@ -29,7 +29,7 @@ namespace TOW_Core.CampaignSupport
 
         private void OnAfterSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            if (settlement.IsTown && hero == null || !hero.IsHumanPlayerCharacter)
+            if (!settlement.IsTown || mobileParty == null || !mobileParty.IsMainParty)
             {
                 return;
             }
@@ -52,7 +52,7 @@ namespace TOW_Core.CampaignSupport
                                         select x).FirstOrDefault().Settlement;
                     if (suitableTown != null)
                     {
-                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
                     }
                     else
                     {
@@ -66,11 +66,14 @@ namespace TOW_Core.CampaignSupport
             {
                 //create suitable wanderer
                 CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
-                Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                AdjustEquipmentImp(newWanderer.BattleEquipment);
-                AdjustEquipmentImp(newWanderer.CivilianEquipment);
-                newWanderer.ChangeState(Hero.CharacterStates.Active);
-                EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
+                if (template != null)
+                {
+                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                    AdjustEquipmentImp(newWanderer.BattleEquipment);
+                    AdjustEquipmentImp(newWanderer.CivilianEquipment);
+                    newWanderer.ChangeState(Hero.CharacterStates.Active);
+                    EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
+                }
             }
         }
 

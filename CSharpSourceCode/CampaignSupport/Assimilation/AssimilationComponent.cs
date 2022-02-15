@@ -57,37 +57,32 @@ namespace TOW_Core.CampaignSupport.Assimilation
             }
             if (_settlement.Culture == _settlement.Owner.Culture) assimilatedCount++;
             _assimilationProgress = assimilatedCount / (villagesCount + 1f);
+            if (_assimilationProgress == 1)
+            {
+                AssimilationIsComplete?.Invoke(this, new AssimilationIsCompleteEventArgs(_settlement, _settlement.Owner.Culture));
+            }
+
         }
 
         private void TryToAssimilateSettlement(Settlement settlement)
         {
             var outriders = settlement.Notables.Where(n => n.Culture != _settlement.Owner.Culture);
-            if (outriders.Count() > 0)
+            var outriderCount = outriders.Count();
+            if (outriderCount > 0)
             {
                 var outrider = outriders.First();
                 outrider.Culture = _settlement.Owner.Culture;
-            }
-            else
-            {
-                settlement.Culture = _settlement.Owner.Culture;
+                if (outriderCount == 1)
+                {
+                    settlement.Culture = _settlement.Owner.Culture;
+                }
             }
         }
 
 
         public bool IsAssimilationComplete { get => _assimilationProgress == 1; }
 
-        public float AssimilationProgress
-        {
-            get => _assimilationProgress;
-            private set
-            {
-                _assimilationProgress = value;
-                if (_assimilationProgress == 1)
-                {
-                    AssimilationIsComplete?.Invoke(this, new AssimilationIsCompleteEventArgs(_settlement, _settlement.Owner.Culture));
-                }
-            }
-        }
+        public float AssimilationProgress { get => _assimilationProgress; private set => _assimilationProgress = value; }
 
         public delegate void AssimilationIsCompleteEvent(object obj, AssimilationIsCompleteEventArgs e);
 
