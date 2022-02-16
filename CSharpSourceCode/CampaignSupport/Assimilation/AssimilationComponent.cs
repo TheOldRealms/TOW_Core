@@ -37,7 +37,7 @@ namespace TOW_Core.CampaignSupport.Assimilation
         {
             //change culture of first notable from random village
             var randomVillage = _settlement.BoundVillages.GetRandomElementWithPredicate(v => v.Settlement.Culture != _settlement.Owner.Culture);
-            TryToAssimilateSettlement(randomVillage.Settlement);
+            if(randomVillage != null && randomVillage.Settlement != null) TryToAssimilateSettlement(randomVillage.Settlement);
             //change culture of first notable from town or change settlement culture if it's castle
             if (_settlement.IsCastle)
             {
