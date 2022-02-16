@@ -109,22 +109,5 @@ namespace TOW_Core.Utilities.Extensions
         {
             return hero.HasAttribute("VampireBodyOverride");
         }
-
-        public static bool IsSuitableForSettlement(this Hero hero, Settlement settlement)
-        {
-            if (settlement.IsVampireSettlement())
-            {
-                return hero.Culture.Name.Contains("Vampire");
-            }
-            else
-            {
-                return hero.Culture.Name.Contains("Empire");
-            }
-        }
-
-        public static bool IsOutrider(this Hero hero, CultureObject culture)
-        {
-            return hero.Culture != culture;
-        }
     }
 }

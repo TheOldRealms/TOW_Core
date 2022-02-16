@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -346,16 +346,20 @@
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
+    <Compile Include="Battle\Crosshairs\SniperScope.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
     <Compile Include="Battle\Damage\TestingDamageMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
+    <Compile Include="Battle\Models\TORCustomBattleAgentStatCalculateModel.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\CannonBallScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SmokingLimbScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
