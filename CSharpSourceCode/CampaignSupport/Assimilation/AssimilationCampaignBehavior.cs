@@ -1,6 +1,4 @@
-﻿using HarmonyLib;
-using SandBox.View.Map;
-using System;
+﻿using SandBox.View.Map;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
@@ -13,8 +11,17 @@ namespace TOW_Core.CampaignSupport.Assimilation
         public override void RegisterEvents()
         {
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, OnGameLoadFinishedEvent);
-            CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, new Action<Settlement, bool, Hero, Hero, Hero, ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail>(OnSettlementOwnerChanged));
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, new Action(OnDailyTick));
+            CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, OnSettlementOwnerChanged);
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, OnDailyTick);
+            CampaignEvents.OnGameOverEvent.AddNonSerializedListener(this, OnGameOver);
+        }
+
+        private void OnGameOver()
+        {
+            for (int i = 0; i < _assimilationComponents.Count; i++)
+            {
+                _assimilationComponents[i].AssimilationIsComplete -= ShowMapNotification;
+            }
         }
 
         private void OnGameLoadFinishedEvent()
@@ -22,9 +29,8 @@ namespace TOW_Core.CampaignSupport.Assimilation
             MapScreen.Instance.MapNotificationView.RegisterMapNotificationType(typeof(SettlementCultureChangedMapNotification), typeof(SettlementCultureChangedNotificationItemVM));
             foreach (var component in _assimilationComponents)
             {
-                Traverse.Create(component.Settlement).Field("_settlementComponents").GetValue<List<SettlementComponent>>().Add(component);
-                component.SetParameters(component.Settlement);
-                component.AssimilationIsComplete += (o, e) => ShowMapNotification(e.Settlement, e.Culture);
+                component.InitializeComponent(false);
+                component.AssimilationIsComplete += ShowMapNotification;
             }
         }
 
@@ -36,13 +42,13 @@ namespace TOW_Core.CampaignSupport.Assimilation
                 if (component == null)
                 {
                     component = settlement.AddComponent<AssimilationComponent>();
+                    component.InitializeComponent(true);
                     _assimilationComponents.Add(component);
-                    component.SetParameters(settlement);
-                    component.AssimilationIsComplete += (o, e) => ShowMapNotification(e.Settlement, e.Culture);
+                    component.AssimilationIsComplete += ShowMapNotification;
                 }
                 else
                 {
-                    component.SetParameters(settlement);
+                    component.StartNewAssimilation();
                 }
             }
         }
@@ -58,11 +64,11 @@ namespace TOW_Core.CampaignSupport.Assimilation
             }
         }
 
-        private void ShowMapNotification(Settlement settlement, CultureObject culture)
+        private void ShowMapNotification(object obj, AssimilationIsCompleteEventArgs e)
         {
-            LogEntry.AddLogEntry(new SettlementCultureChangedLogEntry(settlement, culture));
-            var description = new TextObject($"{settlement.Name} has converted to {culture.Name}");
-            Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new SettlementCultureChangedMapNotification(settlement, culture, description));
+            LogEntry.AddLogEntry(new SettlementCultureChangedLogEntry(e.Settlement, e.Culture));
+            var description = new TextObject($"{e.Settlement.Name} has converted to {e.Culture.Name}");
+            Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new SettlementCultureChangedMapNotification(e.Settlement, e.Culture, description));
         }
 
         public override void SyncData(IDataStore dataStore)
