@@ -30,7 +30,7 @@ namespace TOW_Core.Battle.Crosshairs
 
         public void Hide()
         {
-            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(true);
+            Agent.Main?.AgentVisuals.GetEntity().SetVisibilityExcludeParents(true);
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(false);
         }

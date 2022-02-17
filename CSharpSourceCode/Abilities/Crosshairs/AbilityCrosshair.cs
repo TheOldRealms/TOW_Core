@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Engine;
+using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
@@ -18,14 +19,8 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             _template = template;
             CrosshairType = template.CrosshairType;
-            _mission = Mission.Current;
-            _missionScreen = ((MissionView)Mission.Current.MissionBehaviors.FirstOrDefault(mb => mb is MissionView)).MissionScreen;
         }
 
-        public void SetMissionScreen(MissionScreen screen)
-        {
-            _missionScreen = screen;
-        }
         /// <summary>
         /// Method that executes every time the mission screen ticks
         /// </summary>
@@ -46,10 +41,6 @@ namespace TOW_Core.Abilities.Crosshairs
         public virtual void Hide()
         {
             IsVisible = false;
-        }
-
-        public virtual void Initialize()
-        {
         }
 
         public virtual void Dispose()
@@ -222,8 +213,8 @@ namespace TOW_Core.Abilities.Crosshairs
 
         protected GameEntity _crosshair = GameEntity.CreateEmpty(Mission.Current.Scene);
 
-        protected Mission _mission;
+        protected Mission _mission = Mission.Current;
 
-        protected MissionScreen _missionScreen;
+        protected MissionScreen _missionScreen = ScreenManager.TopScreen as MissionScreen;
     }
 }

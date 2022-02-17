@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
-        private bool _isActive;
+        private bool _areCrosshairsInitialized;
         private bool _isUsingSniperScope;
         private Crosshair _weaponCrosshair;
         private SniperScope _sniperScope;
@@ -31,13 +31,16 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         public override void OnMissionScreenTick(float dt)
         {
-            if (!_isActive)
+            if (!_areCrosshairsInitialized)
             {
-                return;
+                if (Agent.Main != null && MissionScreen != null)
+                    InitializeCrosshairs();
+                else
+                    return;
             }
             if (CanUseCrosshair())
             {
-                if (_abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
+                if (!Mission.IsFriendlyMission && _abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
                 {
                     _weaponCrosshair.Hide();
                     _sniperScope.Hide();
@@ -93,8 +96,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
 
         private bool CanUseCrosshair()
         {
-            return _isActive &&
-                   Agent.Main != null &&
+            return Agent.Main != null &&
                    Agent.Main.State == AgentState.Active &&
                    Mission.Mode != MissionMode.Conversation &&
                    Mission.Mode != MissionMode.Deployment &&
@@ -108,10 +110,25 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    !ScreenManager.GetMouseVisibility();
         }
 
+        private void InitializeCrosshairs()
+        {
+            _weaponCrosshair = new Crosshair();
+            _weaponCrosshair.InitializeCrosshair();
+            _sniperScope = new SniperScope();
+
+            if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+            {
+                _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+                _abilityComponent.CurrentAbilityChanged += ChangeAbilityCrosshair;
+                _abilityComponent.InitializeCrosshairs();
+                _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
+            }
+            _areCrosshairsInitialized = true;
+        }
+
         public override void OnMissionScreenFinalize()
         {
-            base.OnMissionScreenFinalize();
-            if (!_isActive)
+            if (!_areCrosshairsInitialized)
             {
                 return;
             }
@@ -120,7 +137,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _abilityCrosshair = null;
             _sniperScope.FinalizeCrosshair();
             _sniperScope = null;
-            _isActive = false;
+            _areCrosshairsInitialized = false;
             if (_abilityComponent != null)
             {
                 _abilityComponent.CurrentAbilityChanged -= ChangeAbilityCrosshair;
@@ -167,26 +184,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             base.OnPhotoModeDeactivated();
             _weaponCrosshair.OnPhotoModeDeactivated();
-        }
-
-        protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
-        {
-            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null)
-            {
-                return;
-            }
-
-            _weaponCrosshair = new Crosshair(Mission, MissionScreen);
-            _weaponCrosshair.InitializeCrosshair();
-            _sniperScope = new SniperScope();
-            _isActive = true;
-
-            if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
-            {
-                _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-                _abilityComponent.CurrentAbilityChanged += ChangeAbilityCrosshair;
-                _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
-            }
         }
 
         private void ChangeAbilityCrosshair(AbilityCrosshair crosshair)

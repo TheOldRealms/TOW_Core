@@ -312,7 +312,6 @@ namespace TOW_Core.Abilities
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
             if (_abilityComponent != null)
             {
-                _abilityComponent.InitializeCrosshairs();
                 _psys = new ParticleSystem[2];
                 GameEntity entity;
                 _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
