@@ -6,29 +6,32 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class GrenadeScript : ScriptComponentBehavior
     {
-        private bool _isExploded;
-        private object _locker = new object();
         private Agent _shooter;
         private TriggeredEffect _explosion;
 
-
-        protected override void OnPhysicsCollision(ref PhysicsContact contact)
+        protected override void OnInit()
         {
-            base.OnPhysicsCollision(ref contact);
+            SetScriptComponentToTick(GetTickRequirement());
+        }
+
+        public override TickRequirement GetTickRequirement()
+        {
+            return TickRequirement.Tick;
+        }
+
+        protected override void OnTick(float dt)
+        {
+        }
+
+        protected override void OnRemoved(int removeReason)
+        {
             Explode();
         }
 
         private void Explode()
         {
-            lock (_locker)
-            {
-                if (!_isExploded)
-                {
-                    _isExploded = true;
-                    _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooter);
-                    GameEntity.FadeOut(0.5f, true);
-;                }
-            }
+            _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooter);
+            GameEntity.FadeOut(0.5f, true);
         }
 
         public void SetShooterAgent(Agent shooter)
