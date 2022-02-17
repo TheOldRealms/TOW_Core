@@ -1,5 +1,4 @@
-﻿using TaleWorlds.Engine;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Abilities.Scripts
@@ -23,7 +22,7 @@ namespace TOW_Core.Abilities.Scripts
             if (enabled && _target != null && (_target.Agent != null || _target.Formation.CountOfUnits > 0))
             {
                 var particleDirection = globalFrame.origin + globalFrame.rotation.f.NormalizedCopy();
-                var error = _target.Position + new Vec3(0, 0, 2) - particleDirection;
+                var error = _target.Position - particleDirection;
                 if (error.Length < _parameters.DisableDistance)
                 {
                     enabled = false;
