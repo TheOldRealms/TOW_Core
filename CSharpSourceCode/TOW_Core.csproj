@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -369,6 +369,7 @@
     <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
     <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORCombatXpModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />

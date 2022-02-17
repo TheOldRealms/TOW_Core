@@ -27,8 +27,8 @@ namespace TOW_Core.Battle.FireArms
 
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
-            var weaponClass = shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponClass;
-            if (weaponClass == WeaponClass.Musket || weaponClass == WeaponClass.Pistol)
+            var itemUsage = shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage;
+            if (itemUsage.Contains("handgun") || itemUsage.Contains("pistol"))
             {
                 var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);
@@ -55,7 +55,7 @@ namespace TOW_Core.Battle.FireArms
                     }
                 }
                 // run firearms script
-                if (shooterAgent.WieldedWeapon.AmmoWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Boulder) //Boulder is weapon class for grenade
+                if (shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass == WeaponClass.Boulder) //Boulder is weapon class for grenade
                 {
                     if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("shrapnel"))
                     {
@@ -133,7 +133,7 @@ namespace TOW_Core.Battle.FireArms
         private void AddGrenadeScript(Agent shooterAgent, string triggeredEffectName)
         {
             Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                                           m.Weapon.Item.StringId.Contains("grenade_grenade") &&
+                                                                           m.Weapon.Item.StringId.Contains("ammo_grenade") &&
                                                                            !m.Entity.HasScriptOfType<GrenadeScript>());
             if (grenade != null)
             {
