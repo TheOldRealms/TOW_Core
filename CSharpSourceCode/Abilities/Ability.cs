@@ -16,7 +16,7 @@ namespace TOW_Core.Abilities
     {
         private int _coolDownLeft = 0;
         private Timer _timer = null;
-        private bool _isCasting;
+        protected bool _isCasting;
         private object _sync = new object();
         private float _cooldown_end_time;
 
@@ -84,7 +84,7 @@ namespace TOW_Core.Abilities
         {
             return !_isCasting &&
                    !IsOnCooldown() &&
-                   ((casterAgent.IsPlayerControlled && (this is SpecialMove || Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
+                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
