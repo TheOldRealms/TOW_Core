@@ -10,7 +10,7 @@ using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 
 namespace TOW_Core.Battle.Crosshairs
 {
-    public class Crosshair
+    public class Crosshair : ICrosshair
     {
         public void InitializeCrosshair()
         {

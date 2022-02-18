@@ -7,13 +7,14 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TOW_Core.Battle.Crosshairs;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
     /// <summary>
     /// Base class for all crosshairs
     /// </summary>
-    public abstract class AbilityCrosshair : IDisposable
+    public abstract class AbilityCrosshair : IDisposable, ICrosshair
     {
         public AbilityCrosshair(AbilityTemplate template)
         {

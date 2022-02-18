@@ -2,16 +2,27 @@
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TOW_Core.Abilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Crosshairs
 {
-    public class SniperScope
+    public class SniperScope : ICrosshair
     {
+        private bool _isVisible;
+        private Agent _mainAgent = Agent.Main;
         private GameEntity _scope;
         private MissionScreen _screen = ScreenManager.TopScreen as MissionScreen;
+        private AbilityComponent _abilityComponent;
 
-        public SniperScope()
+        public bool IsVisible
         {
+            get => _isVisible;
+        }
+
+        public SniperScope(AbilityComponent abilityComponent)
+        {
+            _abilityComponent = abilityComponent;
             _scope = GameEntity.Instantiate(Mission.Current.Scene, "3d_sniper_scope_1", false);
             _scope.SetVisibilityExcludeParents(false);
         }
@@ -23,20 +34,24 @@ namespace TOW_Core.Battle.Crosshairs
 
         public void Show()
         {
-            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(false);
+            _isVisible = true;
+            _mainAgent.Disappear();
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(true);
         }
 
         public void Hide()
         {
-            Agent.Main?.AgentVisuals.GetEntity().SetVisibilityExcludeParents(true);
+            _isVisible = false;
+            if (_mainAgent != null && (_abilityComponent == null || _abilityComponent.SpecialMove == null || !_abilityComponent.SpecialMove.IsUsing))
+                _mainAgent.Appear();
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(false);
         }
 
         public void FinalizeCrosshair()
         {
+            _mainAgent = null;
             _screen = null;
             _scope.FadeOut(0.5f, true);
         }
