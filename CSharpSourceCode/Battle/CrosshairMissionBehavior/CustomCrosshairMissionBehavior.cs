@@ -61,7 +61,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                 _currentCrosshair.Tick();
                 return;
             }
-            HIDE: 
+        HIDE:
             _currentCrosshair?.Hide();
             _currentCrosshair = null;
         }
@@ -77,7 +77,8 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             return Agent.Main != null &&
                    Agent.Main.State == AgentState.Active &&
-                   (_abilityComponent.SpecialMove == null ||
+                   (_abilityComponent == null ||
+                   _abilityComponent.SpecialMove == null ||
                    !_abilityComponent.SpecialMove.IsUsing) &&
                    Mission.Mode != MissionMode.Conversation &&
                    Mission.Mode != MissionMode.Deployment &&
