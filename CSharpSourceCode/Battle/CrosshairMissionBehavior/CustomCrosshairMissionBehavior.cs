@@ -54,20 +54,17 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                             ChangeCrosshair(_weaponCrosshair);
                     }
                 }
-                else goto HIDE;
-                _currentCrosshair.Tick();
-                return;
+                else ChangeCrosshair(null);
+                if (_currentCrosshair != null) _currentCrosshair.Tick();
             }
-        HIDE:
-            _currentCrosshair?.Hide();
-            _currentCrosshair = null;
+            else if(_currentCrosshair != null) ChangeCrosshair(null);
         }
 
         private void ChangeCrosshair(ICrosshair crosshair)
         {
             _currentCrosshair?.Hide();
             _currentCrosshair = crosshair;
-            _currentCrosshair.Show();
+            if(_currentCrosshair != null) _currentCrosshair.Show();
         }
 
         private bool CanUseCrosshair()

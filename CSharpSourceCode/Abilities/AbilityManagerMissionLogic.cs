@@ -36,7 +36,6 @@ namespace TOW_Core.Abilities
         private SummonedCombatant _defenderSummoningCombatant;
         private SummonedCombatant _attackerSummoningCombatant;
         private readonly float DamagePortionForChargingSpecialMove = 0.25f;
-        private CustomCrosshairMissionBehavior _crosshairBehavior; 
 
         public AbilityModeState CurrentState => _currentState;
 
@@ -180,10 +179,21 @@ namespace TOW_Core.Abilities
             }
             else if (Input.IsKeyPressed(InputKey.LeftControl) && _abilityComponent != null && _abilityComponent.SpecialMove != null)
             {
-                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged && (_crosshairBehavior == null || !(_crosshairBehavior.CurrentCrosshair is SniperScope) || !_crosshairBehavior.CurrentCrosshair.IsVisible))
+                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged && IsCurrentCrossHairCompatible())
                 {
                     _abilityComponent.SpecialMove.TryCast(Agent.Main);
                 }
+            }
+        }
+
+        private bool IsCurrentCrossHairCompatible()
+        {
+            var behaviour = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
+            if (behaviour == null) return true;
+            else
+            {
+                if (behaviour.CurrentCrosshair is SniperScope) return !behaviour.CurrentCrosshair.IsVisible;
+                else return true;
             }
         }
 
@@ -312,7 +322,6 @@ namespace TOW_Core.Abilities
                 return;
             }
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-            _crosshairBehavior = Mission.GetMissionBehavior<CustomCrosshairMissionBehavior>();
             if (_abilityComponent != null)
             {
                 _psys = new ParticleSystem[2];
