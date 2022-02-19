@@ -13,16 +13,14 @@ namespace TOW_Core.Battle.Crosshairs
         private Agent _mainAgent = Agent.Main;
         private GameEntity _scope;
         private MissionScreen _screen = ScreenManager.TopScreen as MissionScreen;
-        private AbilityComponent _abilityComponent;
 
         public bool IsVisible
         {
             get => _isVisible;
         }
 
-        public SniperScope(AbilityComponent abilityComponent)
+        public SniperScope()
         {
-            _abilityComponent = abilityComponent;
             _scope = GameEntity.Instantiate(Mission.Current.Scene, "3d_sniper_scope_1", false);
             _scope.SetVisibilityExcludeParents(false);
         }
@@ -43,8 +41,7 @@ namespace TOW_Core.Battle.Crosshairs
         public void Hide()
         {
             _isVisible = false;
-            if (_mainAgent != null && (_abilityComponent == null || _abilityComponent.SpecialMove == null || !_abilityComponent.SpecialMove.IsUsing))
-                _mainAgent.Appear();
+            _mainAgent.Appear();
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(false);
         }

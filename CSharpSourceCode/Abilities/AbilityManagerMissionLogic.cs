@@ -12,6 +12,8 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Items;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -28,13 +30,13 @@ namespace TOW_Core.Abilities
         private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private MissionScreen _missionScreen = ScreenManager.TopScreen as MissionScreen;
         private static readonly ActionIndexCache _idleAnimation = ActionIndexCache.Create("act_spellcasting_idle");
         private ParticleSystem[] _psys = null;
         private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
         private SummonedCombatant _defenderSummoningCombatant;
         private SummonedCombatant _attackerSummoningCombatant;
         private readonly float DamagePortionForChargingSpecialMove = 0.25f;
+        private CustomCrosshairMissionBehavior _crosshairBehavior; 
 
         public AbilityModeState CurrentState => _currentState;
 
@@ -178,7 +180,7 @@ namespace TOW_Core.Abilities
             }
             else if (Input.IsKeyPressed(InputKey.LeftControl) && _abilityComponent != null && _abilityComponent.SpecialMove != null)
             {
-                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged)
+                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged && (_crosshairBehavior == null || !(_crosshairBehavior.CurrentCrosshair is SniperScope) || !_crosshairBehavior.CurrentCrosshair.IsVisible))
                 {
                     _abilityComponent.SpecialMove.TryCast(Agent.Main);
                 }
@@ -310,6 +312,7 @@ namespace TOW_Core.Abilities
                 return;
             }
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+            _crosshairBehavior = Mission.GetMissionBehavior<CustomCrosshairMissionBehavior>();
             if (_abilityComponent != null)
             {
                 _psys = new ParticleSystem[2];

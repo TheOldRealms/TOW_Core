@@ -23,10 +23,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         private AbilityComponent _abilityComponent;
         private AbilityManagerMissionLogic _missionLogic;
 
-        public bool IsUsingSniperScope
-        {
-            get => _sniperScope != null && _sniperScope.IsVisible;
-        }
+        public ICrosshair CurrentCrosshair { get => _currentCrosshair; }
 
         public override void OnMissionScreenTick(float dt)
         {
@@ -104,7 +101,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             _weaponCrosshair = new Crosshair();
             _weaponCrosshair.InitializeCrosshair();
-            _sniperScope = new SniperScope(_abilityComponent);
+            _sniperScope = new SniperScope();
 
             if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
             {

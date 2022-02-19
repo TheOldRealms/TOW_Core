@@ -5,5 +5,7 @@
         void Show();
         void Hide();
         void Tick();
+
+        bool IsVisible { get; }
     }
 }
