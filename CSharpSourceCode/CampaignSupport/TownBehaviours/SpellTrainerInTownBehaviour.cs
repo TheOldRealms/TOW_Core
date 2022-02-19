@@ -24,18 +24,23 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunched);
+            CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameCreated);
         }
 
-        private void OnSessionLaunched(CampaignGameStarter obj)
+        private void OnNewGameCreated(CampaignGameStarter obj)
         {
-            AddDialogs(obj);
-            foreach(var settlement in Settlement.All)
+            foreach (var settlement in Settlement.All)
             {
                 if (settlement.IsTown)
                 {
                     CreateTrainer(settlement);
                 }
             }
+        }
+
+        private void OnSessionLaunched(CampaignGameStarter obj)
+        {
+            AddDialogs(obj);
         }
 
         private void AddDialogs(CampaignGameStarter obj)

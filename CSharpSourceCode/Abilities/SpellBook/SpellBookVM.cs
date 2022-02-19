@@ -23,13 +23,15 @@ namespace TOW_Core.Abilities.SpellBook
         private MBBindingList<LoreObjectVM> _lores;
         private LoreObjectVM _currentLore;
         private int _currentHeroIndex = 0;
+        private bool _isTrainerMode;
 
-        public SpellBookVM(Action closeAction, List<Hero> heroes)
+        public SpellBookVM(Action closeAction, List<Hero> heroes, bool isTrainerMode)
         {
             _closeAction = closeAction;
             _stats = new MBBindingList<StatItemVM>();
             _lores = new MBBindingList<LoreObjectVM>();
             _heroes = heroes;
+            _isTrainerMode = isTrainerMode;
             Initialize();
             RefreshValues();
         }
@@ -62,7 +64,14 @@ namespace TOW_Core.Abilities.SpellBook
             var lores = LoreObject.GetAll();
             foreach(var lore in lores)
             {
-                LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero));
+                if (!_isTrainerMode)
+                {
+                    if (info.KnownLores.Contains(lore)) LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero));
+                }
+                else
+                {
+                    LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero));
+                }
             }
             CurrentLore = LoreObjects[0];
         }

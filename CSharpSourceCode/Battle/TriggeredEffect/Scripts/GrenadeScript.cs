@@ -9,19 +9,9 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private Agent _shooter;
         private TriggeredEffect _explosion;
 
-
-        protected override void OnPhysicsCollision(ref PhysicsContact contact)
-        {
-            SetScriptComponentToTick(GetTickRequirement());
-        }
-
         public override TickRequirement GetTickRequirement()
         {
-            return TickRequirement.Tick;
-        }
-
-        protected override void OnTick(float dt)
-        {
+            return TickRequirement.None;
         }
 
         protected override void OnRemoved(int removeReason)
