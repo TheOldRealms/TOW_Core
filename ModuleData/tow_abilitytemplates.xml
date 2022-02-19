@@ -152,9 +152,10 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="dart_explosion"
-      CrosshairType="Projectile"
       SpellTier="1"
-      BelongsToLoreID="LoreOfHeavens">
+      BelongsToLoreID="LoreOfHeavens"
+      MaxDistance="60"
+      CrosshairType="Targeted">
       <LightColorRGB x="0" y="204" z="255" w="-1">
         <AsVec2>
           <y>204</y>

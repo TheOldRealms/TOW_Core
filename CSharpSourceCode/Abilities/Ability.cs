@@ -292,7 +292,16 @@ namespace TOW_Core.Abilities
                 }
                 else
                 {
-                    AbilityScript.SetTargetSeeking(new Target {Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation}, Template.SeekerParameters); //TODO: Need crosshair
+                    Target target;
+                    if (Crosshair.CrosshairType == CrosshairType.Targeted)
+                    {
+                        target = new Target { Agent = (Crosshair as TargetedCrosshair).Target };
+                    }
+                    else
+                    {
+                        target = new Target { Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation };
+                    }
+                    AbilityScript.SetTargetSeeking(target, Template.SeekerParameters);
                 }
             }
         }

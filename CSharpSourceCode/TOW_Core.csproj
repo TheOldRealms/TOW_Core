@@ -373,6 +373,7 @@
     <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
     <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
     <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORCombatXpModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
     <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
