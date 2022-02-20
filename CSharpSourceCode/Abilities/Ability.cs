@@ -81,7 +81,7 @@ namespace TOW_Core.Abilities
         {
             return !_isCasting &&
                    !IsOnCooldown() &&
-                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
+                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE  || IsRightAngleToCast())) || 
                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
@@ -298,7 +298,7 @@ namespace TOW_Core.Abilities
                 else
                 {
                     Target target;
-                    if (Crosshair.CrosshairType == CrosshairType.Targeted)
+                    if (Crosshair.CrosshairType == CrosshairType.TargetedSingle)
                     {
                         target = new Target { Agent = (Crosshair as TargetedCrosshair).Target };
                     }

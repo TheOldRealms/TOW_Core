@@ -70,7 +70,7 @@ namespace TOW_Core.Abilities.SpellBook
                 }
                 else
                 {
-                    LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero));
+                    LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero, _isTrainerMode));
                 }
             }
             CurrentLore = LoreObjects[0];
@@ -183,6 +183,23 @@ namespace TOW_Core.Abilities.SpellBook
                     this._currentLore = value;
                     base.OnPropertyChangedWithValue(value, "CurrentLore");
                     CurrentLore.IsSelected = true;
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public bool IsTrainerMode
+        {
+            get
+            {
+                return this._isTrainerMode;
+            }
+            set
+            {
+                if (value != this._isTrainerMode)
+                {
+                    this._isTrainerMode = value;
+                    base.OnPropertyChangedWithValue(value, "IsTrainerMode");
                 }
             }
         }

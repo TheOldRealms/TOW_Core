@@ -15,6 +15,7 @@ using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Items;
+using TOW_Core.Quests;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -94,6 +95,14 @@ namespace TOW_Core.Abilities
         internal void OnCastComplete()
         {
             if(CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
+            if(Game.Current.GameType is Campaign)
+            {
+                var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(PracticeMagicQuest)) as PracticeMagicQuest;
+                if(quest != null)
+                {
+                    quest.IncrementCast();
+                }
+            }
         }
 
         internal void OnCastStart() 
@@ -157,7 +166,7 @@ namespace TOW_Core.Abilities
                 bool flag = _abilityComponent.CurrentAbility.Crosshair == null ||
                             !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
                             _currentState != AbilityModeState.Idle ||
-                            (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.Targeted &&
+                            (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.TargetedSingle &&
                             ((TargetedCrosshair)_abilityComponent.CurrentAbility.Crosshair).Target == null);
                 if (!flag)
                 {

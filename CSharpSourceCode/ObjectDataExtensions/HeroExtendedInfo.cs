@@ -92,7 +92,12 @@ namespace TOW_Core.ObjectDataExtensions
 
         public void AddKnownLore(string loreId)
         {
-            if(LoreObject.GetLore(loreId) != null) _knownLores.Add(loreId);
+            if(LoreObject.GetLore(loreId) != null && !_knownLores.Contains(loreId)) _knownLores.Add(loreId);
+        }
+
+        public bool HasKnownLore(string loreId)
+        {
+            return _knownLores.Contains(loreId);
         }
     }
     public class HeroExtendedInfoInfoDefiner : SaveableTypeDefiner

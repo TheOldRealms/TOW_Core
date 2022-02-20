@@ -75,7 +75,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public float Offset = 1.0f;
         [XmlAttribute]
-        public CrosshairType CrosshairType = CrosshairType.None;
+        public CrosshairType CrosshairType = CrosshairType.Self;
         [XmlAttribute]
         public float MinDistance = 1.0f;
         [XmlAttribute]
@@ -86,6 +86,8 @@ namespace TOW_Core.Abilities
         public int SpellTier = 0; //spell only, max 3 (0-1-2-3)
         [XmlAttribute]
         public string BelongsToLoreID = ""; //spell only
+        [XmlAttribute]
+        public string TooltipDescription = "default";
         public SeekerParameters SeekerParameters;
         
         public AbilityTemplate() { }
@@ -99,9 +101,9 @@ namespace TOW_Core.Abilities
             {
                 switch (SpellTier)
                 {
-                    case 0: return 5000;
-                    case 1: return 10000;
-                    case 2: return 25000;
+                    case 1: return 5000;
+                    case 2: return 10000;
+                    case 3: return 25000;
                     case 4: return 50000;
                     default: return 0;
                 }

@@ -9,49 +9,41 @@
             <Style Name="Default" FontColor="#000000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
         </Styles>
     </Brush>
-    <Brush Name="TorSpellBookMarkBrush">
+    <Brush Name="TorSpellBookDisabledBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+        <Styles>
+            <Style Name="Default" FontColor="#000000FF" TextBlur="0" TextOutlineColor="#FFFFFFFF" TextOutlineAmount="1" TextGlowRadius="0" FontSize="16" />
+        </Styles>
+    </Brush>
+    <Brush Name="TorSpellBookLearnButton">
         <Layers>
-            <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+            <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#32a852ff" ColorFactor="1" AlphaFactor="1"/>
         </Layers>
         <Styles>
             <Style Name="Default">
-                <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+                <BrushLayer Name="Default" ColorFactor="1" />
             </Style>
             <Style Name="Hovered">
-                <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#404040FF"/>
+                <BrushLayer Name="Default" ColorFactor="0.9" />
             </Style>
             <Style Name="Pressed">
-                <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9"/>
+                <BrushLayer Name="Default" ColorFactor="0.5" />
             </Style>
             <Style Name="Selected">
-                <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9"/>
+                <BrushLayer Name="Default" ColorFactor="0.9" />
             </Style>
         </Styles>
-    </Brush>
-    <Brush Name="TorSpellItemBrush">
-        <Layers>
-            <BrushLayer Name="Default" />
-        </Layers>
-        <Styles>
-            <Style Name="Default">
-                <BrushLayer Name="Default" />
-            </Style>
-            <Style Name="Hovered">
-                <BrushLayer Name="Default" />
-            </Style>
-            <Style Name="Pressed">
-                <BrushLayer Name="Default" />
-            </Style>
-            <Style Name="Disabled">
-                <BrushLayer Name="Default" ColorFactor="0.4" AlphaFactor="0.6"/>
-            </Style>
-        </Styles>
-    </Brush>
+        <SoundProperties>
+            <StateSounds />
+            <EventSounds>
+                <EventSound EventName="Click" Audio="checkbox" />
+            </EventSounds>
+        </SoundProperties>
+  </Brush>
     <Brush Name="TorSpecialMoveBrush">
         <Layers>
-            <BrushLayer Name="EmptyFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#404040FF" />
-            <BrushLayer Name="DefaultFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#FF2222FF" />
-            <BrushLayer Name="ChangeFill" Sprite="BlankWhiteSquare" ColorFactor="1" Color="#FFAAAAFF" />
+            <BrushLayer Name="EmptyFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#404040FF" />
+            <BrushLayer Name="DefaultFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#FF2222FF" />
+            <BrushLayer Name="ChangeFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#FFAAAAFF" />
         </Layers>
         <Styles>
             <Style Name="Default" />

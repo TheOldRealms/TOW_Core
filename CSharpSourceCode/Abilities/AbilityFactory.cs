@@ -89,7 +89,7 @@ namespace TOW_Core.Abilities
                         crosshair = new ProjectileCrosshair(template);
                         break;
                     }
-                case CrosshairType.Targeted:
+                case CrosshairType.TargetedSingle:
                     {
                         crosshair = new TargetedCrosshair(template, caster);
                         break;
@@ -112,6 +112,11 @@ namespace TOW_Core.Abilities
                 case CrosshairType.TargetedAOE:
                     {
                         crosshair = new TargetedAOECrosshair(template, caster);
+                        break;
+                    }
+                case CrosshairType.Self:
+                    {
+                        crosshair = new SelfCrosshair(template);
                         break;
                     }
             }

@@ -18,7 +18,7 @@ namespace TOW_Core.Abilities.SpellBook
         private bool _isSelected;
         private string _spriteName;
 
-        public LoreObjectVM(SpellBookVM parent, LoreObject lore, Hero _currentHero)
+        public LoreObjectVM(SpellBookVM parent, LoreObject lore, Hero _currentHero, bool isTrainerMode = false)
         {
             _parent = parent;
             _lore = lore;
@@ -26,7 +26,7 @@ namespace TOW_Core.Abilities.SpellBook
             var spells = AbilityFactory.GetAllTemplates().Where(x => x.AbilityType == AbilityType.Spell && x.BelongsToLoreID == _lore.ID).OrderBy(x => (int)x.SpellTier);
             foreach(var spell in spells)
             {
-                _spells.Add(new SpellItemVM(spell, _currentHero));
+                _spells.Add(new SpellItemVM(spell, _currentHero, isTrainerMode));
             }
             IsVisible = true;
             RefreshValues();

@@ -44,6 +44,7 @@
         TickOnce
     }
 
+    //This is for triggeredeffects.
     public enum TargetType
     {
         Friendly,

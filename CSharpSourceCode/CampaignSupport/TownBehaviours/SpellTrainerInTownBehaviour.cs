@@ -10,7 +10,9 @@ using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities;
 using TOW_Core.Abilities.SpellBook;
+using TOW_Core.Quests;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -48,11 +50,42 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("trainer_start", "start", "choices", "What do you want?", spelltrainerstartcondition, null, 200, null);
             obj.AddPlayerLine("trainer_start", "choices", "magictest", "Test me for magic affinity", ()=> !Hero.MainHero.IsSpellCaster() && _testResult=="", null, 200, null);
             obj.AddDialogLine("trainer_start", "magictest", "testoutcome", "Alright. Here goes. (30% chance)", null, determinetestoutcome, 200, null);
-            obj.AddDialogLine("trainer_start", "testoutcome", "choices", "{TEST_RESULT}", testresultcondition, null, 200, null);
+            obj.AddDialogLine("trainer_start", "testoutcome", "start", "{TEST_RESULT}", testresultcondition, null, 200, null);
             obj.AddPlayerLine("trainer_start", "choices", "openbook", "I would like to learn new spells.", () => Hero.MainHero.IsSpellCaster(), null, 200, null);
-            obj.AddDialogLine("trainer_start", "openbook", "choices", "Certainly.", null, openbookconsequence, 200, null);
+            obj.AddDialogLine("trainer_start", "openbook", "start", "Certainly.", null, openbookconsequence, 200, null);
+            obj.AddPlayerLine("trainer_start", "choices", "specializelore", "I would like to specialize in an advanced lore of magic.", ()=> Hero.MainHero.GetExtendedInfo().KnownLores.Count == 1 && Hero.MainHero.GetExtendedInfo().KnownLores[0].ID == "MinorMagic", null, 200, null);
+            obj.AddDialogLine("trainer_start", "specializelore", "start", "Choose wisely. Your choice is final and will lock you out of all other lores.", null, chooseloreconsequence, 200, null);
             obj.AddPlayerLine("trainer_start", "choices", "saygoodbye", "See you later.", null, null, 200, null);
             obj.AddDialogLine("trainer_start", "saygoodbye", "close_window", "Au revoir.", null, null, 200, null);
+        }
+
+        private void chooseloreconsequence()
+        {
+            List<InquiryElement> list = new List<InquiryElement>();
+            var lores = LoreObject.GetAll();
+            foreach (var item in lores)
+            {
+                if (item.ID != "MinorMagic") list.Add(new InquiryElement(item, item.Name, null));
+            }
+            var inquirydata = new MultiSelectionInquiryData("Choose Lore", "Choose wisely. You can only choose a single lore to specialize in. This choice is final.", list, true, 1, "Confirm", "Cancel", OnChooseLore, OnCancelLore);
+            InformationManager.ShowMultiSelectionInquiry(inquirydata, true);
+        }
+
+        private void OnChooseLore(List<InquiryElement> obj)
+        {
+            var choice = obj[0].Identifier as LoreObject;
+            if (choice != null)
+            {
+                Hero.MainHero.AddKnownLore(choice.ID);
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
+                InformationManager.AddQuickInformation(new TextObject("Successfully learned lore: " + choice.Name));
+            }
+            InformationManager.HideInquiry();
+        }
+
+        private void OnCancelLore(List<InquiryElement> obj)
+        {
+            InformationManager.HideInquiry();
         }
 
         private void openbookconsequence()
@@ -71,6 +104,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Minor);
+                var quest = new PracticeMagicQuest("practicemagic", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(100), 100);
+                quest.StartQuest();
             }
             else if(_testResult == "failure")
             {

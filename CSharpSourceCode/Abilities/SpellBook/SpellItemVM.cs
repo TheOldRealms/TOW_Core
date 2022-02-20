@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
+using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities.SpellBook
@@ -19,14 +22,41 @@ namespace TOW_Core.Abilities.SpellBook
         private bool _isDisabled;
         private bool _isKnown;
         private string _disabledReason;
+        private BasicTooltipViewModel _spellHint;
+        private bool _isTrainerMode;
+        private bool _canLearn = false;
+        private string _learnText;
 
-        public SpellItemVM(AbilityTemplate template, Hero currentHero)
+        public SpellItemVM(AbilityTemplate template, Hero currentHero, bool isTrainerMode = false)
         {
             _spellTemplate = template;
             _hero = currentHero;
+            _isTrainerMode = isTrainerMode;
             SpellName = template.Name;
             SpellSpriteName = template.SpriteName;
             SpellStatItems = template.GetStats();
+            SpellHint = new BasicTooltipViewModel(GetHintText);
+            LearnText = "Learn " + _spellTemplate.GoldCost + "<img src=\"General\\Icons\\Coin@2x\"/>";
+            RefreshValues();
+        }
+
+        private string GetHintText()
+        {
+            return _spellTemplate.TooltipDescription;
+        }
+
+        private void ExecuteLearnSpell()
+        {
+            if(_hero.Gold >= _spellTemplate.GoldCost)
+            {
+                _hero.ChangeHeroGold(-_spellTemplate.GoldCost);
+                _hero.AddAbility(_spellTemplate.StringID);
+                InformationManager.AddQuickInformation(new TextObject("Successfully learned spell: " + _spellTemplate.Name));
+            }
+            else
+            {
+                InformationManager.AddQuickInformation(new TextObject("Not enough gold"));
+            }
             RefreshValues();
         }
 
@@ -37,7 +67,8 @@ namespace TOW_Core.Abilities.SpellBook
             if (IsDisabled)
             {
                 var info = _hero.GetExtendedInfo();
-                if(!info.KnownLores.Any(x=>x.ID == _spellTemplate.BelongsToLoreID))
+                CanLearn = _isTrainerMode && _spellTemplate.SpellTier <= (int)info.SpellCastingLevel && _hero.HasKnownLore(_spellTemplate.BelongsToLoreID);
+                if (!info.KnownLores.Any(x=>x.ID == _spellTemplate.BelongsToLoreID))
                 {
                     DisabledReason = "Unfamiliar lore";
                 }
@@ -48,6 +79,7 @@ namespace TOW_Core.Abilities.SpellBook
                 else
                 {
                     DisabledReason = "Can learn";
+                    CanLearn = _isTrainerMode && _spellTemplate.SpellTier <= (int)info.SpellCastingLevel && _hero.HasKnownLore(_spellTemplate.BelongsToLoreID);
                 }
             }
             base.RefreshValues();
@@ -151,6 +183,57 @@ namespace TOW_Core.Abilities.SpellBook
                 {
                     this._disabledReason = value;
                     base.OnPropertyChangedWithValue(value, "DisabledReason");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public BasicTooltipViewModel SpellHint
+        {
+            get
+            {
+                return this._spellHint;
+            }
+            set
+            {
+                if (value != this._spellHint)
+                {
+                    this._spellHint = value;
+                    base.OnPropertyChangedWithValue(value, "SpellHint");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public bool CanLearn
+        {
+            get
+            {
+                return this._canLearn;
+            }
+            set
+            {
+                if (value != this._canLearn)
+                {
+                    this._canLearn = value;
+                    base.OnPropertyChangedWithValue(value, "CanLearn");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public string LearnText
+        {
+            get
+            {
+                return this._learnText;
+            }
+            set
+            {
+                if (value != this._learnText)
+                {
+                    this._learnText = value;
+                    base.OnPropertyChangedWithValue(value, "LearnText");
                 }
             }
         }

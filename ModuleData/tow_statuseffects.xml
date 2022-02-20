@@ -31,18 +31,18 @@
 		id="word_of_pain"
 		particle_id="psys_game_step_dust_on_default"
 		particle_intensity="High"
-    		health_over_time="0"
-    		damage_over_time="10"
+    	health_over_time="0"
+    	damage_over_time="10"
 		duration="10"
 		type="DamageOverTime"/>
  	<StatusEffectTemplate
 		id="curse_of_years"
 		particle_id="psys_game_step_dust_on_default"
 		particle_intensity="High"
-    		health_over_time="0"
-    		damage_over_time="0"
+    	health_over_time="0"
+    	damage_over_time="0"
 		duration="10"
 		type="Reduction">
-    <DamageReduction AmplifiedDamageType="Physical" DamageAmplifier="-0.5" />
+    	<DamageReduction AmplifiedDamageType="Physical" DamageAmplifier="-0.5" />
   </StatusEffectTemplate>
 </StatusEffects>

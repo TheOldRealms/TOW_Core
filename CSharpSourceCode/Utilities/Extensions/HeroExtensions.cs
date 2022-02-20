@@ -85,6 +85,15 @@ namespace TOW_Core.Utilities.Extensions
             }
         }
 
+        public static bool HasKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().HasKnownLore(loreID);
+            }
+            else return false;
+        }
+
         public static bool IsSpellCaster(this Hero hero)
         {
             return hero.HasAttribute("SpellCaster");

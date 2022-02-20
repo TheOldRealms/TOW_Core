@@ -2,9 +2,9 @@
 {
     public enum CrosshairType
     {
-        None,
+        Self,
         Projectile,
-        Targeted,
+        TargetedSingle,
         TargetedAOE,
         DirectionalAOE,
         CenteredAOE,
