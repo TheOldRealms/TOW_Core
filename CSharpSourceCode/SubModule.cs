@@ -164,7 +164,7 @@ namespace TOW_Core
 
             mission.AddMissionBehavior(new AttributeSystemMissionLogic());
             mission.AddMissionBehavior(new StatusEffectMissionLogic());
-            mission.AddMissionBehavior(new TestingDamageMissionLogic());
+            mission.AddMissionBehavior(new TestingMissionLogic());
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());

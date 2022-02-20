@@ -115,10 +115,6 @@ namespace TOW_Core.Abilities
                         break;
                     }
             }
-            if (crosshair != null)
-            {
-                crosshair.Initialize();
-            }
             return crosshair;
         }
     }

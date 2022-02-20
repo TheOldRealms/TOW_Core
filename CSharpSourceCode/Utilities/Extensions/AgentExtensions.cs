@@ -453,12 +453,12 @@ namespace TOW_Core.Utilities.Extensions
 
         public static void Appear(this Agent agent)
         {
-            agent.AgentVisuals.SetVisible(true);
+            agent.AgentVisuals?.SetVisible(true);
         }
 
         public static void Disappear(this Agent agent)
         {
-            agent.AgentVisuals.SetVisible(false);
+            agent.AgentVisuals?.SetVisible(false);
         }
     }
 }

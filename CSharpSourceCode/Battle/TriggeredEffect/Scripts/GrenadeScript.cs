@@ -9,9 +9,18 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private Agent _shooter;
         private TriggeredEffect _explosion;
 
+        protected override void OnInit()
+        {
+            SetScriptComponentToTick(GetTickRequirement());
+        }
+
         public override TickRequirement GetTickRequirement()
         {
-            return TickRequirement.None;
+            return TickRequirement.Tick;
+        }
+
+        protected override void OnTick(float dt)
+        {
         }
 
         protected override void OnRemoved(int removeReason)

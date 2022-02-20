@@ -20,6 +20,8 @@ namespace TOW_Core.Abilities
         private object _sync = new object();
         private float _cooldown_end_time;
 
+        public bool IsCasting => _isCasting;
+
         public string StringID { get; }
 
         public AbilityTemplate Template { get; private set; }
@@ -77,7 +79,10 @@ namespace TOW_Core.Abilities
 
         public virtual bool CanCast(Agent casterAgent)
         {
-            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
+            return !_isCasting &&
+                   !IsOnCooldown() &&
+                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
+                   (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
         protected virtual void DoCast(Agent casterAgent)
@@ -337,5 +342,25 @@ namespace TOW_Core.Abilities
             OnCastComplete = null;
             OnCastStart = null;
         }
+
+        private bool IsRightAngleToCast()
+        {
+            if (Agent.Main.HasMount)
+            {
+                double xa = Agent.Main.LookDirection.X;
+                double ya = Agent.Main.LookDirection.Y;
+                double xb = Agent.Main.GetMovementDirection().X;
+                double yb = Agent.Main.GetMovementDirection().Y;
+
+                double angle = Math.Acos((xa * xb + ya * yb) / (Math.Sqrt(Math.Pow(xa, 2) + Math.Pow(ya, 2)) * Math.Sqrt(Math.Pow(xb, 2) + Math.Pow(yb, 2))));
+
+                return true ? angle < 1.4 : angle >= 1.4;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

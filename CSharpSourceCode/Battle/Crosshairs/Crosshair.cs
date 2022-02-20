@@ -1,6 +1,7 @@
 ﻿using System;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
+using TaleWorlds.Engine.Screens;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -9,16 +10,12 @@ using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
 
 namespace TOW_Core.Battle.Crosshairs
 {
-    public class Crosshair
+    public class Crosshair : ICrosshair
     {
-        public Crosshair(Mission mission, MissionScreen missionScreen)
-        {
-            _mission = mission;
-            _missionScreen = missionScreen;
-        }
-
         public void InitializeCrosshair()
         {
+            _mission = Mission.Current;
+            _missionScreen = ScreenManager.TopScreen as MissionScreen;
             CombatLogManager.OnGenerateCombatLog += OnCombatLogGenerated;
             _crosshairVM = new CrosshairVM();
             _weaponLayer = new GauntletLayer(1, "GauntletLayer", false);
@@ -36,6 +33,8 @@ namespace TOW_Core.Battle.Crosshairs
             {
                 _missionScreen.RemoveLayer(this._weaponLayer);
             }
+            this._mission = null;
+            this._missionScreen = null;
             this._crosshairVM = null;
             this._weaponMovie = null;
             this._weaponLayer = null;
