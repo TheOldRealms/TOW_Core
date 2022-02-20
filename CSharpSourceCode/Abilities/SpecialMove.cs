@@ -1,6 +1,7 @@
 ﻿using System;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Scripts;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
@@ -15,6 +16,13 @@ namespace TOW_Core.Abilities
         {
             base.ActivateAbility(casterAgent);
             _chargeLevel = 0;
+        }
+
+        public override bool CanCast(Agent casterAgent)
+        {
+            return !_isCasting &&
+                   !IsOnCooldown() &&
+                   (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
         public void AddCharge(float amount)

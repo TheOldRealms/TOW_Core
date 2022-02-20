@@ -2,13 +2,22 @@
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TOW_Core.Abilities;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.Crosshairs
 {
-    public class SniperScope
+    public class SniperScope : ICrosshair
     {
+        private bool _isVisible;
+        private Agent _mainAgent = Agent.Main;
         private GameEntity _scope;
         private MissionScreen _screen = ScreenManager.TopScreen as MissionScreen;
+
+        public bool IsVisible
+        {
+            get => _isVisible;
+        }
 
         public SniperScope()
         {
@@ -23,20 +32,23 @@ namespace TOW_Core.Battle.Crosshairs
 
         public void Show()
         {
-            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(false);
+            _isVisible = true;
+            _mainAgent.Disappear();
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(true);
         }
 
         public void Hide()
         {
-            Agent.Main.AgentVisuals.GetEntity().SetVisibilityExcludeParents(true);
+            _isVisible = false;
+            _mainAgent.Appear();
             _screen.OnMainAgentWeaponChanged();
             _scope.SetVisibilityExcludeParents(false);
         }
 
         public void FinalizeCrosshair()
         {
+            _mainAgent = null;
             _screen = null;
             _scope.FadeOut(0.5f, true);
         }
