@@ -93,6 +93,21 @@ namespace TOW_Core.Abilities
 
         public bool IsSpell => AbilityType == AbilityType.Spell;
 
+        public int GoldCost
+        {
+            get
+            {
+                switch (SpellTier)
+                {
+                    case 0: return 5000;
+                    case 1: return 10000;
+                    case 2: return 25000;
+                    case 4: return 50000;
+                    default: return 0;
+                }
+            }
+        }
+
         public MBBindingList<StatItemVM> GetStats()
         {
             MBBindingList<StatItemVM> list = new MBBindingList<StatItemVM>();
