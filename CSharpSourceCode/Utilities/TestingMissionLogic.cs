@@ -10,7 +10,7 @@ namespace TOW_Core.Battle.Damage
     /// <summary>Class <c>TestingDamageMissionLogic</c> A mission logic that can be used for debugging and testing.
     /// It should contain methods and mission logics  creating and deleting Agent entities in a mission on the fly and testing damage related features.
     ///</summary>
-    public class TestingDamageMissionLogic : MissionLogic
+    public class TestingMissionLogic : MissionLogic
     {
         private static float _slowMotionEndTime;
 
