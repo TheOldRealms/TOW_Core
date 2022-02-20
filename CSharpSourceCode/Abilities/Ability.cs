@@ -16,9 +16,11 @@ namespace TOW_Core.Abilities
     {
         private int _coolDownLeft = 0;
         private Timer _timer = null;
-        protected bool _isCasting;
+        private bool _isCasting;
         private object _sync = new object();
         private float _cooldown_end_time;
+
+        public bool IsCasting => _isCasting;
 
         public string StringID { get; }
 

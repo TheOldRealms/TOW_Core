@@ -20,7 +20,7 @@ namespace TOW_Core.Abilities
 
         public override bool CanCast(Agent casterAgent)
         {
-            return !_isCasting &&
+            return !IsCasting &&
                    !IsOnCooldown() &&
                    (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
