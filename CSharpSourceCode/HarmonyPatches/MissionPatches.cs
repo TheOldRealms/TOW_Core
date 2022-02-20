@@ -14,8 +14,12 @@ public static class MissionPatches
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
-    public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
+    public static bool SpawnAgentPrefix(AgentBuildData agentBuildData, Mission __instance)
     {
+        if (__instance.IsFriendlyMission)
+        {
+            return true;
+        }
         var character = agentBuildData.AgentCharacter;
         if (character != null)
         {
