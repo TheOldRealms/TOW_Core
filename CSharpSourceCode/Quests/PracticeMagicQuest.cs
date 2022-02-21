@@ -16,7 +16,9 @@ namespace TOW_Core.Quests
         [SaveableField(1)]
         private int _numberOfCasts = 0;
         [SaveableField(2)]
-        private JournalLog _task;
+        private JournalLog _task1;
+        [SaveableField(3)]
+        private JournalLog _task2;
 
         public PracticeMagicQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(questId, questGiver, duration, rewardGold)
         {
@@ -35,19 +37,38 @@ namespace TOW_Core.Quests
 
         private void SetLogs()
         {
-            _task = AddDiscreteLog(new TextObject("Use magic 5 times."), new TextObject("Number of casts"), _numberOfCasts, 5);
+            _task1 = AddDiscreteLog(new TextObject("Use magic 5 times."), new TextObject("Number of casts"), _numberOfCasts, 5);
         }
 
         public void IncrementCast()
         {
             _numberOfCasts++;
-            _task.UpdateCurrentProgress(_numberOfCasts);
-            CheckCompletion();
+            _task1.UpdateCurrentProgress(_numberOfCasts);
+            CheckCondition();
         }
 
-        private void CheckCompletion()
+        public bool ReadyToAdvance => _task1.HasBeenCompleted();
+
+        private void CheckCondition()
         {
-            if (_task.HasBeenCompleted()) CompleteQuestWithSuccess();
+            if (_task1.HasBeenCompleted())
+            {
+                _task2 = AddLog(new TextObject("Visit a spell trainer to advance in caster level."));
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PracticeMagicQuest quest &&
+                   EqualityComparer<JournalLog>.Default.Equals(_task1, quest._task1);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1289645604;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<JournalLog>.Default.GetHashCode(_task1);
+            return hashCode;
         }
     }
 

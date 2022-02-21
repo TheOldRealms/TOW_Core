@@ -25,7 +25,7 @@ namespace TOW_Core.Abilities
     {
         private bool _shouldSheathWeapon;
         private bool _shouldWieldWeapon;
-        private bool _isAbilityUser;
+        private bool _hasInitializedForMainAgent;
         private AbilityModeState _currentState;
         private EquipmentIndex _mainHand;
         private EquipmentIndex _offHand;
@@ -70,6 +70,15 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
+            if (!_hasInitializedForMainAgent)
+            {
+                if(Agent.Main != null)
+                {
+                    SetUpCastStanceParticles();
+                    _hasInitializedForMainAgent = true;
+                }
+            }
+
             if (IsAbilityModeAvailableForMainAgent())
             {
                 HandleInput();
@@ -228,7 +237,7 @@ namespace TOW_Core.Abilities
 
         private bool IsAbilityModeAvailableForMainAgent()
         {
-            return _isAbilityUser &&
+            return _hasInitializedForMainAgent &&
                    Agent.Main != null &&
                    Agent.Main.IsActive() &&
                    !ScreenManager.GetMouseVisibility();
@@ -275,7 +284,10 @@ namespace TOW_Core.Abilities
             {
                 foreach (var psys in _psys)
                 {
-                    if(psys != null) psys.SetEnable(enable);
+                    if(psys != null)
+                    {
+                        psys.SetEnable(enable);
+                    }
                 }
             }
         }
@@ -326,10 +338,14 @@ namespace TOW_Core.Abilities
 
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
         {
-            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null || !Agent.Main.IsAbilityUser())
+            if (agent.Controller == Agent.ControllerType.Player)
             {
-                return;
+                _hasInitializedForMainAgent = false;
             }
+        }
+
+        private void SetUpCastStanceParticles()
+        {
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
             if (_abilityComponent != null)
             {
@@ -338,9 +354,8 @@ namespace TOW_Core.Abilities
                 _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
                 _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
                 EnableCastStanceParticles(false);
-                _currentState = AbilityModeState.Off;
-                _isAbilityUser = true;
             }
+            _currentState = AbilityModeState.Off;
         }
     }
 

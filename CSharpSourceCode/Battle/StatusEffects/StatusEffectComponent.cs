@@ -115,15 +115,20 @@ namespace TOW_Core.Battle.StatusEffects
             _currentEffects.Remove(effect);
         }
 
-        public float[] GetDamageReductions()
+        public float[] GetAmplifiers()
         {
-            return _effectAggregate.DamageReduction;
+            return _effectAggregate.DamageAmplification;
+        }
+
+        public float[] GetResistances()
+        {
+            return _effectAggregate.Resistance;
         }
 
         private void AddEffect(StatusEffect effect, Agent applierAgent)
         {
             List<GameEntity> childEntities;
-            TOWParticleSystem.ApplyParticleToAgent(Agent, effect.Template.ParticleId, out childEntities, effect.Template.ParticleIntensity);
+            TOWParticleSystem.ApplyParticleToAgent(Agent, effect.Template.ParticleId, out childEntities, effect.Template.ParticleIntensity, effect.Template.ApplyToRootBoneOnly);
 
             EffectData data = new EffectData(effect, childEntities, applierAgent);
             data.ParticleEntities = childEntities;
@@ -149,7 +154,8 @@ namespace TOW_Core.Battle.StatusEffects
         {
             public float HealthOverTime { get; set; } = 0;
             public float DamageOverTime { get; set; } = 0;
-            public readonly float[] DamageReduction = new float[(int)DamageType.All+1];
+            public readonly float[] DamageAmplification = new float[(int)DamageType.All + 1];
+            public readonly float[] Resistance = new float[(int)DamageType.All + 1];
 
             public void AddEffect(StatusEffect effect)
             {
@@ -162,8 +168,11 @@ namespace TOW_Core.Battle.StatusEffects
                     case StatusEffectTemplate.EffectType.HealthOverTime:
                         HealthOverTime += template.HealthOverTime;
                         break;
-                    case StatusEffectTemplate.EffectType.Reduction :
-                        DamageReduction[(int)template.DamageReduction.AmplifiedDamageType] = template.DamageReduction.DamageAmplifier;
+                    case StatusEffectTemplate.EffectType.DamageAmplification :
+                        DamageAmplification[(int)template.DamageAmplifier.AmplifiedDamageType] = template.DamageAmplifier.DamageAmplifier;
+                        break;
+                    case StatusEffectTemplate.EffectType.Resistance:
+                        Resistance[(int)template.Resistance.ResistedDamageType] = template.Resistance.ReductionPercent;
                         break;
                 }
             }

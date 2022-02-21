@@ -107,7 +107,7 @@
         Radius="1" 
         HasShockWave="false"
         TargetType="Friendly" 
-        ImbuedStatusEffectID="none" 
+        ImbuedStatusEffectID="healing_regeneration" 
         ImbuedStatusEffectDuration="3" 
         DamageVariance="0.1" 
         ScriptNameToTrigger="none"/>
@@ -190,12 +190,27 @@
           BurstParticleEffectPrefab=""
           SoundEffectId=""
           SoundEffectLength="0"
-          DamageType="Magical"
+          DamageType="Invalid"
           DamageAmount="0"
           Radius="5"
           HasShockWave="false"
           TargetType="Enemy"
           ImbuedStatusEffectID="curse_of_years"
+          ImbuedStatusEffectDuration="15"
+          DamageVariance="0.0"
+	  ScriptNameToTrigger="none">
+  </TriggeredEffectTemplate>
+  <TriggeredEffectTemplate
+          StringID="physical_resistance_20"
+          BurstParticleEffectPrefab=""
+          SoundEffectId=""
+          SoundEffectLength="0"
+          DamageType="Invalid"
+          DamageAmount="0"
+          Radius="1"
+          HasShockWave="false"
+          TargetType="Friendly"
+          ImbuedStatusEffectID="physical_resistance_20"
           ImbuedStatusEffectDuration="15"
           DamageVariance="0.0"
 	  ScriptNameToTrigger="none">

@@ -552,11 +552,11 @@
       WindsOfMagicCost="5" 
       BaseMisCastChance="0.05" 
       Duration="0" 
-      Radius="0.1" 
+      Radius="0" 
       AbilityType="Spell" 
       AbilityEffectType="SingleTarget" 
       BaseMovementSpeed="0" 
-      TickInterval="1" 
+      TickInterval="-1" 
       TriggerType="TickOnce" 
       HasLight="false" 
       LightIntensity="0" 
@@ -575,10 +575,53 @@
       Offset="0"
       AbilityTargetType="Self"
       CrosshairType="Self"
-      TargetCapturingRadius="5"
+      TargetCapturingRadius="1"
       SpellTier="1"
       BelongsToLoreID="MinorMagic"
       TooltipDescription="Heals the caster for 20 health every second for 3 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="WardOfArrows" 
+      Name="Ward of Arrows" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="SingleTarget" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="physical_resistance_20"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Adds 20% physical resistance for 15 seconds.">
       <LightColorRGB x="255" y="255" z="255" w="-1">
         <AsVec2>
           <x>255</x>

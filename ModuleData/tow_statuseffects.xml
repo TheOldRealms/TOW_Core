@@ -18,6 +18,14 @@
 		type="HealthOverTime"
 		damage_type="Holy"/>
 	<StatusEffectTemplate 
+		id="healing_regeneration" 
+		particle_id="healing_regeneration"
+		particle_intensity="High"
+		health_over_time="20"
+		duration="3"
+		type="HealthOverTime"
+		damage_type="Holy"/>
+	<StatusEffectTemplate 
 		id="fireball_dot" 
 		particle_id="torch_fire_sparks"
 		particle_intensity="High"
@@ -42,7 +50,18 @@
     	health_over_time="0"
     	damage_over_time="0"
 		duration="10"
-		type="Reduction">
-    	<DamageReduction AmplifiedDamageType="Physical" DamageAmplifier="-0.5" />
-  </StatusEffectTemplate>
+		type="DamageAmplification">
+    	<DamageAmplifier AmplifiedDamageType="Physical" DamageAmplifier="-0.5" />
+  	</StatusEffectTemplate>
+	<StatusEffectTemplate
+		id="physical_resistance_20"
+		particle_id="psys_energy_sphere"
+		particle_intensity="High"
+		apply_particle_to_root_bone_only="true"
+    	health_over_time="0"
+    	damage_over_time="0"
+		duration="10"
+		type="Resistance">
+    	<Resistance ResistedDamageType="Physical" ReductionPercent="0.2" />
+  	</StatusEffectTemplate>
 </StatusEffects>

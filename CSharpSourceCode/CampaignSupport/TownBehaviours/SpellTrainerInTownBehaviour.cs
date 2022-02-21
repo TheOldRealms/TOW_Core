@@ -48,15 +48,37 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void AddDialogs(CampaignGameStarter obj)
         {
             obj.AddDialogLine("trainer_start", "start", "choices", "What do you want?", spelltrainerstartcondition, null, 200, null);
-            obj.AddPlayerLine("trainer_start", "choices", "magictest", "Test me for magic affinity", ()=> !Hero.MainHero.IsSpellCaster() && _testResult=="", null, 200, null);
-            obj.AddDialogLine("trainer_start", "magictest", "testoutcome", "Alright. Here goes. (30% chance)", null, determinetestoutcome, 200, null);
-            obj.AddDialogLine("trainer_start", "testoutcome", "start", "{TEST_RESULT}", testresultcondition, null, 200, null);
-            obj.AddPlayerLine("trainer_start", "choices", "openbook", "I would like to learn new spells.", () => Hero.MainHero.IsSpellCaster(), null, 200, null);
-            obj.AddDialogLine("trainer_start", "openbook", "start", "Certainly.", null, openbookconsequence, 200, null);
-            obj.AddPlayerLine("trainer_start", "choices", "specializelore", "I would like to specialize in an advanced lore of magic.", ()=> Hero.MainHero.GetExtendedInfo().KnownLores.Count == 1 && Hero.MainHero.GetExtendedInfo().KnownLores[0].ID == "MinorMagic", null, 200, null);
-            obj.AddDialogLine("trainer_start", "specializelore", "start", "Choose wisely. Your choice is final and will lock you out of all other lores.", null, chooseloreconsequence, 200, null);
-            obj.AddPlayerLine("trainer_start", "choices", "saygoodbye", "See you later.", null, null, 200, null);
-            obj.AddDialogLine("trainer_start", "saygoodbye", "close_window", "Au revoir.", null, null, 200, null);
+            obj.AddPlayerLine("trainer_test", "choices", "magictest", "Test me for magic affinity", ()=> !Hero.MainHero.IsSpellCaster() && _testResult=="", null, 200, null);
+            obj.AddDialogLine("trainer_testoutcome", "magictest", "testoutcome", "Alright. Here goes. (30% chance)", null, determinetestoutcome, 200, null);
+            obj.AddDialogLine("trainer_testresult", "testoutcome", "start", "{TEST_RESULT}", testresultcondition, null, 200, null);
+            obj.AddPlayerLine("trainer_learnspells", "choices", "openbook", "I would like to learn new spells.", () => Hero.MainHero.IsSpellCaster(), null, 200, null);
+            obj.AddDialogLine("trainer_afterlearnspells", "openbook", "start", "Certainly.", null, openbookconsequence, 200, null);
+            obj.AddPlayerLine("trainer_specialize", "choices", "specializelore", "I would like to specialize in an advanced lore of magic.", specializelorecondition, null, 200, null);
+            obj.AddDialogLine("trainer_chooselore", "specializelore", "start", "Choose wisely. Your choice is final and will lock you out of all other lores.", null, chooseloreconsequence, 200, null);
+            obj.AddPlayerLine("trainer_increaselevel", "choices", "increasecasterlevel", "I am ready to step up in the ranks of the order (Increase caster level).", increasecasterlevelcondition, null, 200, null);
+            obj.AddDialogLine("trainer_confirmnewlevel", "increasecasterlevel", "start", "You have proven that you have a firm grasp of magic. Welcome to the new ranks.", null, null, 200, null);
+            obj.AddPlayerLine("trainer_playergoodbye", "choices", "saygoodbye", "See you later.", null, null, 200, null);
+            obj.AddDialogLine("trainer_goodbye", "saygoodbye", "close_window", "Au revoir.", null, null, 200, null);
+        }
+
+        private bool increasecasterlevelcondition()
+        {
+            var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(PracticeMagicQuest)) as PracticeMagicQuest;
+            if (quest != null)
+            {
+                return Hero.MainHero.GetExtendedInfo().KnownLores.Count > 1 && quest.ReadyToAdvance;
+            }
+            else return false;
+        }
+
+        private bool specializelorecondition()
+        {
+            var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(PracticeMagicQuest)) as PracticeMagicQuest;
+            if (quest != null)
+            {
+                return Hero.MainHero.GetExtendedInfo().KnownLores.Count == 1 && Hero.MainHero.GetExtendedInfo().KnownLores[0].ID == "MinorMagic" && quest.ReadyToAdvance;
+            }
+            else return false;
         }
 
         private void chooseloreconsequence()
@@ -81,6 +103,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 InformationManager.AddQuickInformation(new TextObject("Successfully learned lore: " + choice.Name));
             }
             InformationManager.HideInquiry();
+            var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(PracticeMagicQuest)) as PracticeMagicQuest;
+            if (quest != null) quest.CompleteQuestWithSuccess();
         }
 
         private void OnCancelLore(List<InquiryElement> obj)
