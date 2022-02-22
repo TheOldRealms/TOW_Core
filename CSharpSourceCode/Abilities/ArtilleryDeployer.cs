@@ -3,14 +3,14 @@ using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities
 {
-    public class ArtilleryDeploying : Ability
+    public class ArtilleryDeployer : Ability
     {
         private int _artilleryAmount;
         private AbilityComponent _abilityComponent;
         public delegate void OnArtilleryDeployed(); 
         public event OnArtilleryDeployed ArtilleryDeployed;
 
-        public ArtilleryDeploying(AbilityTemplate template) : base(template)
+        public ArtilleryDeployer(AbilityTemplate template) : base(template)
         {
         }
 

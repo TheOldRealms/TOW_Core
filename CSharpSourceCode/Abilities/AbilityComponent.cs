@@ -24,7 +24,7 @@ namespace TOW_Core.Abilities
                     for (int i = 0; i < artilleryRoster.Length; i++)
                     {
                         var artillery = artilleryRoster[i];
-                        var ability = (ArtilleryDeploying)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
+                        var ability = (ArtilleryDeployer)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
                         if (ability != null)
                         {
                             ability.OnCastStart += OnCastStart;
@@ -57,11 +57,11 @@ namespace TOW_Core.Abilities
                             else
                             {
                                 _knownAbilities.Add(ability);
-                                if (Game.Current.GameType is CustomGame && ability is ArtilleryDeploying)
+                                if (Game.Current.GameType is CustomGame && ability is ArtilleryDeployer)
                                 {
-                                    ((ArtilleryDeploying)ability).ArtilleryDeployed += () => _maxArtilleryAmount--;
-                                    ((ArtilleryDeploying)ability).SetAmount(5);
-                                    ((ArtilleryDeploying)ability).SetAbilityComponent(this);
+                                    ((ArtilleryDeployer)ability).ArtilleryDeployed += () => _maxArtilleryAmount--;
+                                    ((ArtilleryDeployer)ability).SetAmount(5);
+                                    ((ArtilleryDeployer)ability).SetAbilityComponent(this);
                                     _maxArtilleryAmount = 10;
                                 }
                             }

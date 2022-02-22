@@ -71,7 +71,7 @@ namespace TOW_Core.Abilities
             }
             else if (template.AbilityType == AbilityType.Artillery)
             {
-                ability = new ArtilleryDeploying(template);
+                ability = new ArtilleryDeployer(template);
             }
             return ability;
         }
