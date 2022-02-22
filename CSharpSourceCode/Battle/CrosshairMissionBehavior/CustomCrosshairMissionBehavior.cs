@@ -100,7 +100,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
             _weaponCrosshair.InitializeCrosshair();
             _sniperScope = new SniperScope();
 
-            if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+            if ((_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
             {
                 _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
                 _abilityComponent.CurrentAbilityChanged += ChangeAbilityCrosshair;
