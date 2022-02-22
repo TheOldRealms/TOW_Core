@@ -629,5 +629,50 @@
           <z>255</z>
         </AsVec2>
       </LightColorRGB>
+  <AbilityTemplate
+      StringID="Tornado"
+      Name="Tornado"
+      SpriteName="burninghead_icon"
+      CoolDown="1"
+      WindsOfMagicCost="16"
+      BaseMisCastChance="0.3"
+      Duration="30"
+      Radius="3"
+      AbilityType="Spell"
+      AbilityEffectType="RandomMovingAOE"
+      BaseMovementSpeed="4"
+      TickInterval="0.5"
+      TriggerType="EveryTick"
+      HasLight="false"
+      LightIntensity="50"
+      LightRadius="10"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="false"
+      ParticleEffectPrefab="tornado"
+      ParticleEffectSizeModifier="1"
+      SoundEffectToPlay="none"
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp"
+      CastTime="0.5"
+      AnimationActionName="act_release_stone"
+      TriggeredEffectID="tornado_tick"
+      Offset="10"
+      CrosshairType="DirectionalAOE"
+      MinDistance="3"
+      MaxDistance="30"
+      TargetCapturingRadius="3"
+      MaxRandomDeviation="1"
+      ShouldRotateVisuals="true"
+      VisualsRotationVelocity="1"
+      SpellTier="3"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Tornado.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
   </AbilityTemplate>
 </ArrayOfAbilityTemplate>

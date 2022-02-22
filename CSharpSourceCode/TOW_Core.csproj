@@ -285,6 +285,7 @@
   <!-- Files & Classes -->
   <ItemGroup>
     <Compile Include="Abilities\Crosshairs\SelfCrosshair.cs" />
+    <Compile Include="Abilities\Scripts\RandomMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
     <Compile Include="Abilities\SeekerController.cs" />
     <Compile Include="Abilities\SeekerParameters.cs" />

@@ -153,8 +153,7 @@
           ImbuedStatusEffectID="none"
           ImbuedStatusEffectDuration="0"
           DamageVariance="0.2"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript">
-  </TriggeredEffectTemplate>
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript" />
   <TriggeredEffectTemplate
           StringID="word_of_pain"
           BurstParticleEffectPrefab=""
@@ -168,8 +167,7 @@
           ImbuedStatusEffectID="word_of_pain"
           ImbuedStatusEffectDuration="5"
           DamageVariance="0.2"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript">
-  </TriggeredEffectTemplate>
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript" />
   <TriggeredEffectTemplate
           StringID="apply_flaming_sword_trait"
           BurstParticleEffectPrefab=""
@@ -183,8 +181,7 @@
           ImbuedStatusEffectID="none"
           ImbuedStatusEffectDuration="0"
           DamageVariance="0"
-          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.ApplyFlamingItemTraitScript">
-  </TriggeredEffectTemplate>
+          ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.ApplyFlamingItemTraitScript" />
   <TriggeredEffectTemplate
           StringID="curse_of_years"
           BurstParticleEffectPrefab=""
@@ -198,8 +195,7 @@
           ImbuedStatusEffectID="curse_of_years"
           ImbuedStatusEffectDuration="15"
           DamageVariance="0.0"
-	  ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
+	  ScriptNameToTrigger="none" />
   <TriggeredEffectTemplate
           StringID="physical_resistance_20"
           BurstParticleEffectPrefab=""
@@ -213,8 +209,7 @@
           ImbuedStatusEffectID="physical_resistance_20"
           ImbuedStatusEffectDuration="15"
           DamageVariance="0.0"
-	  ScriptNameToTrigger="none">
-  </TriggeredEffectTemplate>
+	  ScriptNameToTrigger="none" />
   <TriggeredEffectTemplate
         StringID="fireball_explosion"
         BurstParticleEffectPrefab="psys_fireball_explosion_1"
@@ -228,5 +223,19 @@
         ImbuedStatusEffectID="fireball_dot"
         ImbuedStatusEffectDuration="5"
         DamageVariance="0.2"
-        ScriptNameToTrigger="none"/>
+        ScriptNameToTrigger="none" />
+  <TriggeredEffectTemplate
+        StringID="tornado_tick"
+        BurstParticleEffectPrefab="none"
+        SoundEffectId="none"
+        SoundEffectLength="0"
+        DamageType="Physical"
+        DamageAmount="10"
+        Radius="10"
+        TargetType="All"
+        ImbuedStatusEffectID="none"
+        ImbuedStatusEffectDuration="5"
+        DamageVariance="0.1"
+        ScriptNameToTrigger="none"
+        HasShockWave="true" />
 </ArrayOfTriggeredEffectTemplate>

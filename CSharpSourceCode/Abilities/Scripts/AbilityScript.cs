@@ -98,7 +98,7 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        protected void UpdatePosition(MatrixFrame frame, float dt)
+        protected virtual void UpdatePosition(MatrixFrame frame, float dt)
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);

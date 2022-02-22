@@ -88,6 +88,13 @@ namespace TOW_Core.Abilities
         public string BelongsToLoreID = ""; //spell only
         [XmlAttribute]
         public string TooltipDescription = "default";
+        [XmlAttribute]
+        public float MaxRandomDeviation = 0;
+        [XmlAttribute]
+        public bool ShouldRotateVisuals = false;
+        [XmlAttribute]
+        public float VisualsRotationVelocity = 0f;
+
         public SeekerParameters SeekerParameters;
         
         public AbilityTemplate() { }

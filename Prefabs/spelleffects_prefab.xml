@@ -192,5 +192,13 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
+	<game_entity name="tornado" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{5ADDA246-B9A1-420C-A201-083B73F3EDAD}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
 </prefabs>
 
