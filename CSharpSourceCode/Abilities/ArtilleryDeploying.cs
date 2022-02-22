@@ -26,7 +26,7 @@ namespace TOW_Core.Abilities
 
         public override bool CanCast(Agent casterAgent)
         {
-            return base.CanCast(casterAgent) && _abilityComponent.MaxArtilleryAmount > 0 && _artilleryAmount > 0;
+            return base.CanCast(casterAgent) && _artilleryAmount > 0 && _abilityComponent.MaxArtilleryAmount > 0;
         }
 
         protected override void DoCast(Agent casterAgent)
@@ -34,7 +34,6 @@ namespace TOW_Core.Abilities
             base.DoCast(casterAgent);
             _artilleryAmount--;
             ArtilleryDeployed?.Invoke();
-            TOWCommon.Say($"{_artilleryAmount} artillery to deploy are left");
         }
     }
 }
