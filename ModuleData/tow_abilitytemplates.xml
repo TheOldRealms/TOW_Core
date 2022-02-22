@@ -629,6 +629,7 @@
           <z>255</z>
         </AsVec2>
       </LightColorRGB>
+  </AbilityTemplate>
   <AbilityTemplate
       StringID="Tornado"
       Name="Tornado"

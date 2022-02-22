@@ -106,7 +106,7 @@ namespace TOW_Core.Abilities
             if(CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
             if(Game.Current.GameType is Campaign)
             {
-                var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(PracticeMagicQuest)) as PracticeMagicQuest;
+                var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(AdvanceSpellCastingLevelQuest)) as AdvanceSpellCastingLevelQuest;
                 if(quest != null)
                 {
                     quest.IncrementCast();

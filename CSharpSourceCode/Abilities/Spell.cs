@@ -45,24 +45,32 @@ namespace TOW_Core.Abilities
         public string ID { get; private set; }
         public string Name { get; private set; }
         public string SpriteName { get; private set; }
+        public List<string> DisabledForTrainersWithCultures { get; private set; } = new List<string>();
         private static Dictionary<string, LoreObject> _lores = new Dictionary<string, LoreObject>();
-        private LoreObject(string id, string name, string spritename)
+        private LoreObject(string id, string name, string spritename, List<string> cultureIds)
         {
             ID = id;
             Name = name;
             SpriteName = spritename;
+            foreach(string cultureId in cultureIds)
+            {
+                if(cultureId != "none" || cultureId != string.Empty)
+                {
+                    DisabledForTrainersWithCultures.Add(cultureId);
+                }
+            }
         }
 
         public static List<LoreObject> GetAll()
         {
             if(_lores.Count == 0)
             {
-                _lores.Add("MinorMagic", new LoreObject("MinorMagic", "Minor Magic", "minormagic_symbol"));
-                _lores.Add("LoreOfFire", new LoreObject("LoreOfFire", "Lore of Fire", "firemagic_symbol"));
-                _lores.Add("LoreOfLight", new LoreObject("LoreOfLight", "Lore of Light", "lightmagic_symbol"));
-                _lores.Add("LoreOfHeavens", new LoreObject("LoreOfHeavens", "Lore of Heavens", "celestial_symbol"));
-                _lores.Add("DarkMagic", new LoreObject("DarkMagic", "Dark Magic", "darkmagic_symbol"));
-                _lores.Add("Necromancy", new LoreObject("Necromancy", "Necromancy", "necromancy_symbol"));
+                _lores.Add("MinorMagic", new LoreObject("MinorMagic", "Minor Magic", "minormagic_symbol", new List<string>() { "none" }));
+                _lores.Add("LoreOfFire", new LoreObject("LoreOfFire", "Lore of Fire", "firemagic_symbol", new List<string>() { "khuzait" }));
+                _lores.Add("LoreOfLight", new LoreObject("LoreOfLight", "Lore of Light", "lightmagic_symbol", new List<string>() { "khuzait" }));
+                _lores.Add("LoreOfHeavens", new LoreObject("LoreOfHeavens", "Lore of Heavens", "celestial_symbol", new List<string>() { "khuzait" }));
+                _lores.Add("DarkMagic", new LoreObject("DarkMagic", "Dark Magic", "darkmagic_symbol", new List<string>() { "empire" }));
+                _lores.Add("Necromancy", new LoreObject("Necromancy", "Necromancy", "necromancy_symbol", new List<string>() { "empire" }));
             }
             return _lores.Values.ToList();
         }

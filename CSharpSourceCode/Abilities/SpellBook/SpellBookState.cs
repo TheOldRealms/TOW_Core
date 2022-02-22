@@ -12,6 +12,7 @@ namespace TOW_Core.Abilities.SpellBook
         public override bool IsMenuState => true;
 
         public bool IsTrainerMode { get; internal set; } = false;
+        public string TrainerCulture { get; internal set; } = "empire";
 
         public SpellBookState() { }
     }

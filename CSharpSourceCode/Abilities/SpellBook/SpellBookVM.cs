@@ -24,14 +24,16 @@ namespace TOW_Core.Abilities.SpellBook
         private LoreObjectVM _currentLore;
         private int _currentHeroIndex = 0;
         private bool _isTrainerMode;
+        private string _trainerCulture;
 
-        public SpellBookVM(Action closeAction, List<Hero> heroes, bool isTrainerMode)
+        public SpellBookVM(Action closeAction, List<Hero> heroes, bool isTrainerMode, string trainerCulture)
         {
             _closeAction = closeAction;
             _stats = new MBBindingList<StatItemVM>();
             _lores = new MBBindingList<LoreObjectVM>();
             _heroes = heroes;
             _isTrainerMode = isTrainerMode;
+            _trainerCulture = trainerCulture;
             Initialize();
             RefreshValues();
         }
@@ -68,7 +70,7 @@ namespace TOW_Core.Abilities.SpellBook
                 {
                     if (info.KnownLores.Contains(lore)) LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero));
                 }
-                else
+                else if(!lore.DisabledForTrainersWithCultures.Contains(_trainerCulture))
                 {
                     LoreObjects.Add(new LoreObjectVM(this, lore, _currentHero, _isTrainerMode));
                 }

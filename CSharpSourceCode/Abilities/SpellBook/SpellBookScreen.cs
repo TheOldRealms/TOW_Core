@@ -45,7 +45,8 @@ namespace TOW_Core.Abilities.SpellBook
             {
                 heroes.Add(hero.Character.HeroObject);
             }
-            _vm = new SpellBookVM(CloseScreen, heroes, _state.IsTrainerMode);
+            if(heroes.Count == 0) heroes.Add(Hero.MainHero);
+            _vm = new SpellBookVM(CloseScreen, heroes, _state.IsTrainerMode, _state.TrainerCulture);
             _gauntletLayer = new GauntletLayer(1, "GauntletLayer", true);
             _gauntletLayer.InputRestrictions.SetInputRestrictions(true, InputUsageMask.All);
             _gauntletLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("GenericCampaignPanelsGameKeyCategory"));
