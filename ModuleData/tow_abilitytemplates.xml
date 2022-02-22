@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfAbilityTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--Spells-->
   <AbilityTemplate 
       StringID="Fireball" 
       Name="Fireball" 
@@ -236,87 +237,6 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate 
-      StringID="HealingAOE" 
-      Name="Healing AOE" 
-      SpriteName="healingprayer_icon" 
-      CoolDown="40" 
-      WindsOfMagicCost="0" 
-      BaseMisCastChance="0.3" 
-      Duration="9" 
-      Radius="0.1" 
-      AbilityType="Prayer" 
-      AbilityEffectType="CenteredStaticAOE" 
-      BaseMovementSpeed="0" 
-      TickInterval="1" 
-      TriggerType="EveryTick" 
-      HasLight="true" 
-      LightIntensity="100" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="healing_circle" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="empire_heal" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="healing_tick"
-      Offset="0"
-      AbilityTargetType="Allies"
-      CrosshairType="CenteredAOE"
-      TargetCapturingRadius="5">
-      <LightColorRGB x="255" y="255" z="255" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>255</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate 
-    StringID="MortarSpawner" 
-    Name="Place Mortar" 
-    SpriteName="summonskeleton_icon" 
-    CoolDown="1" 
-    WindsOfMagicCost="0" 
-    BaseMisCastChance="0.0" 
-    Duration="1" 
-    Radius="2" 
-    AbilityType="Spell" 
-    AbilityEffectType="Summoning" 
-    BaseMovementSpeed="0" 
-    TickInterval="0.2" 
-    TriggerType="TickOnce" 
-    HasLight="false" 
-    LightIntensity="0" 
-    LightRadius="0" 
-    LightFlickeringMagnitude="0" 
-    LightFlickeringInterval="0" 
-    ShadowCastEnabled="false" 
-    ParticleEffectPrefab="none" 
-    ParticleEffectSizeModifier="1" 
-    SoundEffectToPlay="none" 
-    ShouldSoundLoopOverDuration="true"
-    CastType="Instant" 
-    CastTime="0" 
-    AnimationActionName="act_release_heavy_thrown" 
-    TriggeredEffectID="place_mortar"
-    Offset="10"
-    AbilityTargetType="Self"
-    CrosshairType="Pointer"
-    MinDistance="1"
-    MaxDistance="30"
-    TargetCapturingRadius="2.5">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
   <AbilityTemplate
        StringID="ShadowStep"
        Name="Shadow Step"
@@ -509,6 +429,91 @@
    TargetCapturingRadius="5"
    MaxDistance="20"
    CrosshairType="TargetedAOE">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+
+  <!--Prayers-->
+  <AbilityTemplate 
+      StringID="HealingAOE" 
+      Name="Healing AOE" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="40" 
+      WindsOfMagicCost="0" 
+      BaseMisCastChance="0.3" 
+      Duration="9" 
+      Radius="0.1" 
+      AbilityType="Prayer" 
+      AbilityEffectType="CenteredStaticAOE" 
+      BaseMovementSpeed="0" 
+      TickInterval="1" 
+      TriggerType="EveryTick" 
+      HasLight="true" 
+      LightIntensity="100" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="healing_circle" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="empire_heal" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="healing_tick"
+      Offset="0"
+      AbilityTargetType="Allies"
+      CrosshairType="CenteredAOE"
+      TargetCapturingRadius="5">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
+  <!--Artillery-->
+  <AbilityTemplate 
+    StringID="PlaceMortar" 
+    Name="Place Mortar" 
+    SpriteName="summonskeleton_icon" 
+    CoolDown="1" 
+    WindsOfMagicCost="0" 
+    BaseMisCastChance="0.0" 
+    Duration="1" 
+    Radius="2" 
+    AbilityType="Artillery" 
+    AbilityEffectType="Summoning" 
+    BaseMovementSpeed="0" 
+    TickInterval="0.2" 
+    TriggerType="TickOnce" 
+    HasLight="false" 
+    LightIntensity="0" 
+    LightRadius="0" 
+    LightFlickeringMagnitude="0" 
+    LightFlickeringInterval="0" 
+    ShadowCastEnabled="false" 
+    ParticleEffectPrefab="none" 
+    ParticleEffectSizeModifier="1" 
+    SoundEffectToPlay="none" 
+    ShouldSoundLoopOverDuration="true"
+    CastType="Instant" 
+    CastTime="0" 
+    AnimationActionName="act_release_heavy_thrown" 
+    TriggeredEffectID="place_mortar"
+    Offset="10"
+    AbilityTargetType="Self"
+    CrosshairType="Pointer"
+    MinDistance="1"
+    MaxDistance="30"
+    TargetCapturingRadius="2.5">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
