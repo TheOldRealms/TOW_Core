@@ -18,7 +18,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public override void Hide()
         {
             base.Hide();
-            _target?.AgentVisuals.GetEntity()?.Root.SetContourColor(colorLess);
+            _target?.AgentVisuals.SetContourColor(colorLess);
         }
 
         private void FindTarget()
@@ -60,11 +60,11 @@ namespace TOW_Core.Abilities.Crosshairs
             _lastTargetIndex = newTarget.Index;
             if (newTarget.IsEnemyOf(_caster))
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor);
+                _target.AgentVisuals.SetContourColor(enemyColor);
             }
             else
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
+                _target.AgentVisuals.SetContourColor(friendColor);
             }
         }
 
@@ -72,7 +72,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             if (_target != null)
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(colorLess);
+                _target.AgentVisuals.SetContourColor(colorLess);
                 _target = null;
             }
         }

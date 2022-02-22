@@ -284,6 +284,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\Scripts\RandomMovingAOEScript.cs" />
     <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
     <Compile Include="Abilities\SeekerController.cs" />
     <Compile Include="Abilities\SeekerParameters.cs" />
@@ -337,9 +338,10 @@
     <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
+    <Compile Include="Battle\Crosshairs\ICrosshair.cs" />
     <Compile Include="Battle\Crosshairs\SniperScope.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
-    <Compile Include="Battle\Damage\TestingDamageMissionLogic.cs" />
+    <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
     <Compile Include="Battle\Models\TORCustomBattleAgentStatCalculateModel.cs" />

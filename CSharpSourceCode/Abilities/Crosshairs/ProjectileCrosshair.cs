@@ -11,6 +11,9 @@ namespace TOW_Core.Abilities.Crosshairs
         public ProjectileCrosshair(AbilityTemplate template) : base(template)
         {
             _vm = new ProjectileCrosshair_VM();
+            _layer = new GauntletLayer(100, "GauntletLayer", false);
+            _movie = _layer.LoadMovie("ProjectileCrosshair", _vm);
+            _missionScreen.AddLayer(_layer);
         }
 
         public override void Tick()
@@ -53,16 +56,6 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             get => _vm.IsVisible;
             protected set => _vm.IsVisible = value;
-        }
-
-        public override void Initialize()
-        {
-            _layer = new GauntletLayer(100, "GauntletLayer", false);
-            _movie = _layer.LoadMovie("ProjectileCrosshair", _vm);
-            if (_mission.Mode != MissionMode.Conversation && _mission.Mode != MissionMode.CutScene)
-            {
-                _missionScreen.AddLayer(_layer);
-            }
         }
 
         private void OnFinalize()

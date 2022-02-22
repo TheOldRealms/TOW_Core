@@ -76,7 +76,7 @@ namespace TOW_Core.Abilities
             }
         }
 
-        internal void InitializeCrosshairs()
+        public void InitializeCrosshairs()
         {
             foreach (var ability in KnownAbilities)
             {

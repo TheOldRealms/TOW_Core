@@ -4,6 +4,7 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.Models
@@ -84,7 +85,7 @@ namespace TOW_Core.CampaignSupport.Models
                 _crosshairBehavior = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
             }
 
-            if (_crosshairBehavior != null && _crosshairBehavior.IsUsingSniperScope)
+            if (_crosshairBehavior != null && _crosshairBehavior.CurrentCrosshair is SniperScope && _crosshairBehavior.CurrentCrosshair.IsVisible)
             {
                 return 3;
             }

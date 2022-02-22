@@ -20,6 +20,8 @@ namespace TOW_Core.Abilities
         private object _sync = new object();
         private float _cooldown_end_time;
 
+        public bool IsCasting => _isCasting;
+
         public string StringID { get; }
 
         public AbilityTemplate Template { get; private set; }
@@ -82,7 +84,10 @@ namespace TOW_Core.Abilities
 
         public virtual bool CanCast(Agent casterAgent)
         {
-            return casterAgent.IsActive() && casterAgent.Health > 0 && (casterAgent.GetMorale() > 1 || casterAgent.IsPlayerControlled) && casterAgent.IsAbilityUser() && !IsOnCooldown() && !_isCasting;
+            return !_isCasting &&
+                   !IsOnCooldown() &&
+                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
+                   (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
         protected virtual void DoCast(Agent casterAgent)
@@ -118,15 +123,15 @@ namespace TOW_Core.Abilities
 
             var frame = GetSpawnFrame(casterAgent);
 
-            var entity = SpawnEntity();
-            entity.SetGlobalFrame(frame);
+            GameEntity parentEntity = GameEntity.CreateEmpty(Mission.Current.Scene, false);
+            parentEntity.SetGlobalFrame(frame);
 
-            AddLight(ref entity);
+            AddLight(ref parentEntity);
 
             if (IsDynamicAbility())
-                AddPhysics(ref entity);
+                AddPhysics(ref parentEntity);
 
-            AddBehaviour(ref entity, casterAgent);
+            AddBehaviour(ref parentEntity, casterAgent);
             OnCastComplete?.Invoke();
         }
 
@@ -184,8 +189,10 @@ namespace TOW_Core.Abilities
                         break;
                     }
                     case AbilityEffectType.DirectionalMovingAOE:
+                    case AbilityEffectType.RandomMovingAOE:
                     {
                         frame = Crosshair.Frame;
+                        frame.rotation = casterAgent.Frame.rotation;
                         break;
                     }
                     case AbilityEffectType.CenteredStaticAOE:
@@ -287,6 +294,9 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.RandomMovingAOE:
+                    AddExactBehaviour<RandomMovingAOEScript>(entity, casterAgent);
+                    break;
             }
 
             if (Template.SeekerParameters != null)
@@ -311,14 +321,16 @@ namespace TOW_Core.Abilities
             }
         }
 
-        private void AddExactBehaviour<TAbilityScript>(GameEntity entity, Agent casterAgent)
+        private void AddExactBehaviour<TAbilityScript>(GameEntity parentEntity, Agent casterAgent)
             where TAbilityScript : AbilityScript
         {
-            entity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
-            AbilityScript = entity.GetFirstScriptOfType<TAbilityScript>();
+            parentEntity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
+            AbilityScript = parentEntity.GetFirstScriptOfType<TAbilityScript>();
+            var prefabEntity = SpawnEntity();
+            parentEntity.AddChild(prefabEntity);
             AbilityScript?.Initialize(this);
             AbilityScript?.SetAgent(casterAgent);
-            entity.CallScriptCallbacks();
+            parentEntity.CallScriptCallbacks();
         }
 
         private void SetAnimationAction(Agent casterAgent)
@@ -340,5 +352,25 @@ namespace TOW_Core.Abilities
             _timer = null;
             Template = null;
         }
+
+        private bool IsRightAngleToCast()
+        {
+            if (Agent.Main.HasMount)
+            {
+                double xa = Agent.Main.LookDirection.X;
+                double ya = Agent.Main.LookDirection.Y;
+                double xb = Agent.Main.GetMovementDirection().X;
+                double yb = Agent.Main.GetMovementDirection().Y;
+
+                double angle = Math.Acos((xa * xb + ya * yb) / (Math.Sqrt(Math.Pow(xa, 2) + Math.Pow(ya, 2)) * Math.Sqrt(Math.Pow(xb, 2) + Math.Pow(yb, 2))));
+
+                return true ? angle < 1.4 : angle >= 1.4;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

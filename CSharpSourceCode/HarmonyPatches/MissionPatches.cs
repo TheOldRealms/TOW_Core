@@ -1,10 +1,12 @@
 ﻿using HarmonyLib;
+using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
 [HarmonyPatch]
@@ -14,8 +16,12 @@ public static class MissionPatches
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
-    public static bool SpawnAgentPrefix(AgentBuildData agentBuildData)
+    public static bool SpawnAgentPrefix(AgentBuildData agentBuildData, Mission __instance)
     {
+        if (__instance.IsFriendlyMission)
+        {
+            return true;
+        }
         var character = agentBuildData.AgentCharacter;
         if (character != null)
         {
@@ -44,6 +50,24 @@ public static class MissionPatches
             return false;
         }
         return true;
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(MissionAgentSpawnLogic), "IsSideDepleted")]
+    public static void IsSideDepletedPostfix(BattleSideEnum side, ref bool __result)
+    {
+        if(__result == true)
+        {
+            var teams = Mission.Current.Teams.Where(x => x.Side == side).ToList();
+            foreach(var team in teams)
+            {
+                if(team.ActiveAgents.Any(x=>x.Origin is SummonedAgentOrigin))
+                {
+                    __result = false;
+                    return;
+                }
+            }
+        }
     }
 
     private static Monster GetCustomMonster(string name)
