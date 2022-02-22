@@ -189,9 +189,11 @@ namespace TOW_Core.Abilities
         {
             if (IsCastingMission(Mission))
             {
-                if (agent.IsAbilityUser())
+                var character = agent.Character as CharacterObject;
+                bool canHasArtillery = (Game.Current.GameType is Campaign) && character != null && character.IsHero && character.HeroObject.IsPartyLeader;
+                if (agent.IsAbilityUser() || canHasArtillery)
                 {
-                    agent.AddComponent(new AbilityComponent(agent));
+                    agent.AddComponent(new AbilityComponent(agent, canHasArtillery));
                     if (agent.IsAIControlled)
                     {
                         agent.AddComponent(new WizardAIComponent(agent));
@@ -305,7 +307,7 @@ namespace TOW_Core.Abilities
 
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
         {
-            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null || !Agent.Main.IsAbilityUser())
+            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null)
             {
                 return;
             }

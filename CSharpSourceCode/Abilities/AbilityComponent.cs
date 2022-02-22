@@ -1,6 +1,8 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Abilities.Scripts;
@@ -11,8 +13,34 @@ namespace TOW_Core.Abilities
 {
     public class AbilityComponent : AgentComponent
     {
-        public AbilityComponent(Agent agent) : base(agent)
+        public AbilityComponent(Agent agent, bool canHasArtillery) : base(agent)
         {
+            if (canHasArtillery)
+            {
+                var artilleryRoster = agent.GetHero().PartyBelongedTo.ItemRoster.Where(item => item.EquipmentElement.Item.StringId.Contains("artillery")).ToArray();
+                if (artilleryRoster.Length > 0)
+                {
+                    for (int i = 0; i < artilleryRoster.Length; i++)
+                    {
+                        var artillery = artilleryRoster[i];
+                        var ability = (ArtilleryDeploying)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
+                        if (ability != null)
+                        {
+                            ability.OnCastStart += OnCastStart;
+                            ability.OnCastComplete += OnCastComplete;
+                            ability.ArtilleryDeployed += () => _maxArtilleryAmount--;
+                            ability.SetAmount(artillery.Amount);
+                            ability.SetAbilityComponent(this);
+                            _knownAbilities.Add(ability);
+                        }
+                    }
+                    _maxArtilleryAmount = agent.Character.GetSkillValue(DefaultSkills.Engineering) / 50;
+                    if (_knownAbilities.Count > 0)
+                    {
+                        SelectAbility(0);
+                    }
+                }
+            }
             var abilities = agent.GetAbilities();
             if (abilities.Count > 0)
             {
@@ -157,5 +185,10 @@ namespace TOW_Core.Abilities
         public List<Ability> KnownAbilities { get => _knownAbilities; }
         public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
         public event CurrentAbilityChangedHandler CurrentAbilityChanged;
+        private int _maxArtilleryAmount;
+        public int MaxArtilleryAmount
+        {
+            get => _maxArtilleryAmount;
+        }
     }
 }
