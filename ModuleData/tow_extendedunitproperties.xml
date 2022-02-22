@@ -1538,7 +1538,7 @@
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
       <string>Dart</string>
-      <string>MortarSpawner</string>
+      <string>PlaceMortar</string>
       <string>FlamingSwords</string>
     </Abilities>
     <Attributes>

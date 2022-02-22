@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Abilities.Scripts;
 using TOW_Core.Utilities;
@@ -35,10 +36,6 @@ namespace TOW_Core.Abilities
                         }
                     }
                     _maxArtilleryAmount = agent.Character.GetSkillValue(DefaultSkills.Engineering) / 50;
-                    if (_knownAbilities.Count > 0)
-                    {
-                        SelectAbility(0);
-                    }
                 }
             }
             var abilities = agent.GetAbilities();
@@ -53,13 +50,20 @@ namespace TOW_Core.Abilities
                         {
                             ability.OnCastStart += OnCastStart;
                             ability.OnCastComplete += OnCastComplete;
-                            if (ability is Spell || ability is Prayer)
-                            {
-                                _knownAbilities.Add(ability);
-                            }
-                            else if(ability is SpecialMove)
+                            if (ability is SpecialMove)
                             {
                                 _specialMove = (SpecialMove)ability;
+                            }
+                            else
+                            {
+                                _knownAbilities.Add(ability);
+                                if (Game.Current.GameType is CustomGame && ability is ArtilleryDeploying)
+                                {
+                                    ((ArtilleryDeploying)ability).ArtilleryDeployed += () => _maxArtilleryAmount--;
+                                    ((ArtilleryDeploying)ability).SetAmount(5);
+                                    ((ArtilleryDeploying)ability).SetAbilityComponent(this);
+                                    _maxArtilleryAmount = 10;
+                                }
                             }
                         }
                         else
@@ -73,10 +77,10 @@ namespace TOW_Core.Abilities
                     }
                 }
                 if (Agent.IsVampire() && _specialMove == null) _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent);
-                if (_knownAbilities.Count > 0)
-                {
-                    SelectAbility(0);
-                }
+            }
+            if (_knownAbilities.Count > 0)
+            {
+                SelectAbility(0);
             }
         }
 
