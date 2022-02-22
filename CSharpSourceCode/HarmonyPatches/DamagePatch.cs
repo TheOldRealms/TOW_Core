@@ -2,6 +2,7 @@ using System.Globalization;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.Damage;
@@ -29,6 +30,9 @@ namespace TOW_Core.HarmonyPatches
             {
                 return true;
             }
+            
+            
+            SoundEvent _hitsound;
 
             bool isSpell = false;
             float[] damageCategories=new float[(int) DamageType.All+1];
@@ -59,17 +63,29 @@ namespace TOW_Core.HarmonyPatches
             }
 
             var resultDamage = 0;
+            var heighestDamageValue =0f;
+            var heigestDamageType = DamageType.Physical;
             for (int i = 0; i < damageCategories.Length-1; i++)
             {
                 damageCategories[i] = b.InflictedDamage * damageProportions[i];
                 damageCategories[i] += damageCategories[(int)DamageType.All]/(int) DamageType.All;
                 if (damageCategories[i] > 0)
                 {
+                    if (damageCategories[i] > heighestDamageValue)
+                    {
+                        heighestDamageValue = damageCategories[i];
+                        heigestDamageType = (DamageType)i;
+                    }
                     damagePercentages[i] -= resistancePercentages[i];
                     damageCategories[i] *=1+ damagePercentages[i];
                     resultDamage +=(int) damageCategories[i];
                 }
             }
+
+
+            var resultingDamageType; 
+            
+            victim.GetComponent<DamageSoundComponent>().MakeSound(resultingDamageType)
 
             b.InflictedDamage = resultDamage;
 
@@ -78,8 +94,12 @@ namespace TOW_Core.HarmonyPatches
                 if(attacker==Agent.Main || victim==Agent.Main)
                     TORDamageDisplay.DisplayDamageResult(resultDamage, damageCategories);
             }
+            
             return true;
         }
+
+
+        
 
         
     }
