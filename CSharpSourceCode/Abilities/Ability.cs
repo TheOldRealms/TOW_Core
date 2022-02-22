@@ -123,15 +123,15 @@ namespace TOW_Core.Abilities
 
             var frame = GetSpawnFrame(casterAgent);
 
-            var entity = SpawnEntity();
-            entity.SetGlobalFrame(frame);
+            GameEntity parentEntity = GameEntity.CreateEmpty(Mission.Current.Scene, false);
+            parentEntity.SetGlobalFrame(frame);
 
-            AddLight(ref entity);
+            AddLight(ref parentEntity);
 
             if (IsDynamicAbility())
-                AddPhysics(ref entity);
+                AddPhysics(ref parentEntity);
 
-            AddBehaviour(ref entity, casterAgent);
+            AddBehaviour(ref parentEntity, casterAgent);
             OnCastComplete?.Invoke();
         }
 
@@ -189,8 +189,10 @@ namespace TOW_Core.Abilities
                         break;
                     }
                     case AbilityEffectType.DirectionalMovingAOE:
+                    case AbilityEffectType.RandomMovingAOE:
                     {
                         frame = Crosshair.Frame;
+                        frame.rotation = casterAgent.Frame.rotation;
                         break;
                     }
                     case AbilityEffectType.CenteredStaticAOE:
@@ -292,6 +294,9 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.TargetedStatic:
                     AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.RandomMovingAOE:
+                    AddExactBehaviour<RandomMovingAOEScript>(entity, casterAgent);
+                    break;
             }
 
             if (Template.SeekerParameters != null)
@@ -316,14 +321,16 @@ namespace TOW_Core.Abilities
             }
         }
 
-        private void AddExactBehaviour<TAbilityScript>(GameEntity entity, Agent casterAgent)
+        private void AddExactBehaviour<TAbilityScript>(GameEntity parentEntity, Agent casterAgent)
             where TAbilityScript : AbilityScript
         {
-            entity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
-            AbilityScript = entity.GetFirstScriptOfType<TAbilityScript>();
+            parentEntity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
+            AbilityScript = parentEntity.GetFirstScriptOfType<TAbilityScript>();
+            var prefabEntity = SpawnEntity();
+            parentEntity.AddChild(prefabEntity);
             AbilityScript?.Initialize(this);
             AbilityScript?.SetAgent(casterAgent);
-            entity.CallScriptCallbacks();
+            parentEntity.CallScriptCallbacks();
         }
 
         private void SetAnimationAction(Agent casterAgent)
