@@ -1,13 +1,8 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -20,16 +15,31 @@ namespace TOW_Core.CampaignSupport
         public override void RegisterEvents()
         {
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
+            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, CheckPlayerCurrentSettlement);
+        }
+
+        private void CheckPlayerCurrentSettlement()
+        {
+            var playerSettlement = MobileParty.MainParty.CurrentSettlement;
+            if (playerSettlement != null && playerSettlement.IsTown)
+            {
+                ReplaceEnemyWanderersIfExist(playerSettlement);
+            }
         }
 
         private void OnAfterSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            if (hero == null || !hero.IsHumanPlayerCharacter)
+            if (!settlement.IsTown || mobileParty == null || !mobileParty.IsMainParty)
             {
                 return;
             }
 
             //check for unsuitable wanderers
+            ReplaceEnemyWanderersIfExist(settlement);
+        }
+
+        private void ReplaceEnemyWanderersIfExist(Settlement settlement)
+        {
             for (int i = 0; i < settlement.HeroesWithoutParty.Count; i++)
             {
                 var wanderer = settlement.HeroesWithoutParty[i];
@@ -42,7 +52,7 @@ namespace TOW_Core.CampaignSupport
                                         select x).FirstOrDefault().Settlement;
                     if (suitableTown != null)
                     {
-                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, settlement);
+                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
                     }
                     else
                     {
@@ -56,11 +66,14 @@ namespace TOW_Core.CampaignSupport
             {
                 //create suitable wanderer
                 CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
-                Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
-                AdjustEquipmentImp(newWanderer.BattleEquipment);
-                AdjustEquipmentImp(newWanderer.CivilianEquipment);
-                newWanderer.ChangeState(Hero.CharacterStates.Active);
-                EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
+                if (template != null)
+                {
+                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                    AdjustEquipmentImp(newWanderer.BattleEquipment);
+                    AdjustEquipmentImp(newWanderer.CivilianEquipment);
+                    newWanderer.ChangeState(Hero.CharacterStates.Active);
+                    EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
+                }
             }
         }
 

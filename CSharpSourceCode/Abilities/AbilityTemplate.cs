@@ -80,6 +80,12 @@ namespace TOW_Core.Abilities
         public float MaxDistance = 1.0f;
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
+        [XmlAttribute]
+        public float MaxRandomDeviation = 0;
+        [XmlAttribute]
+        public bool ShouldRotateVisuals = false;
+        [XmlAttribute]
+        public float VisualsRotationVelocity = 0f;
 
         public SeekerParameters SeekerParameters;
     

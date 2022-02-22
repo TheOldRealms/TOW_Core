@@ -12,6 +12,8 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Items;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -28,7 +30,6 @@ namespace TOW_Core.Abilities
         private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
         private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private MissionScreen _missionScreen = ScreenManager.TopScreen as MissionScreen;
         private static readonly ActionIndexCache _idleAnimation = ActionIndexCache.Create("act_spellcasting_idle");
         private ParticleSystem[] _psys = null;
         private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
@@ -178,10 +179,21 @@ namespace TOW_Core.Abilities
             }
             else if (Input.IsKeyPressed(InputKey.LeftControl) && _abilityComponent != null && _abilityComponent.SpecialMove != null)
             {
-                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged)
+                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged && IsCurrentCrossHairCompatible())
                 {
                     _abilityComponent.SpecialMove.TryCast(Agent.Main);
                 }
+            }
+        }
+
+        private bool IsCurrentCrossHairCompatible()
+        {
+            var behaviour = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
+            if (behaviour == null) return true;
+            else
+            {
+                if (behaviour.CurrentCrosshair is SniperScope) return !behaviour.CurrentCrosshair.IsVisible;
+                else return true;
             }
         }
 
@@ -314,7 +326,6 @@ namespace TOW_Core.Abilities
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
             if (_abilityComponent != null)
             {
-                _abilityComponent.InitializeCrosshairs();
                 _psys = new ParticleSystem[2];
                 GameEntity entity;
                 _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);

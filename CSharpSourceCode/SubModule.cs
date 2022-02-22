@@ -151,6 +151,7 @@ namespace TOW_Core
                 starter.AddModel(new TORPrisonerRecruitmentCalculationModel());
                 starter.AddModel(new TORMarriageModel());
                 starter.AddModel(new TORAgentStatCalculateModel());
+                starter.AddModel(new TORCombatXpModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
@@ -163,7 +164,7 @@ namespace TOW_Core
 
             mission.AddMissionBehavior(new AttributeSystemMissionLogic());
             mission.AddMissionBehavior(new StatusEffectMissionLogic());
-            mission.AddMissionBehavior(new TestingDamageMissionLogic());
+            mission.AddMissionBehavior(new TestingMissionLogic());
             mission.AddMissionBehavior(new ExtendedInfoMissionLogic());
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
@@ -175,12 +176,14 @@ namespace TOW_Core
             mission.AddMissionBehavior(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
-            
             if (Game.Current.GameType is Campaign)
             {
-                mission.RemoveMissionBehavior(mission.GetMissionBehavior<BattleAgentLogic>());
+                if (mission.GetMissionBehavior<BattleAgentLogic>() != null)
+                {
+                    mission.RemoveMissionBehavior(mission.GetMissionBehavior<BattleAgentLogic>());
+                    mission.AddMissionBehavior(new TORBattleAgentLogic());
+                }
                 mission.AddMissionBehavior(new BattleInfoMissionLogic());
-                mission.AddMissionBehavior(new TORBattleAgentLogic());
             }
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.

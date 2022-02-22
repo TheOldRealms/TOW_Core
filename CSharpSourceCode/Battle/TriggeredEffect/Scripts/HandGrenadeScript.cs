@@ -46,7 +46,6 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 _tickSound.Release();
                 _explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent);
                 GameEntity.FadeOut(0.5f, true);
-                Mission.Current.RemoveMissileAsClient(_missile.Index);
 
                 // alarm enemies
                 var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();

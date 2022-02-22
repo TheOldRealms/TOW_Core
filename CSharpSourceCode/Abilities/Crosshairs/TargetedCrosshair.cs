@@ -12,58 +12,67 @@ namespace TOW_Core.Abilities.Crosshairs
 
         public override void Tick()
         {
-            FindAim();
+            FindTarget();
         }
 
         public override void Hide()
         {
             base.Hide();
-            RemoveAim();
+            _target?.AgentVisuals.SetContourColor(colorLess);
         }
 
-        private void FindAim()
+        private void FindTarget()
         {
-            var endPoint = _caster.LookFrame.Advance(_template.MaxDistance).origin;
-            var target = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
+            var endPoint = _caster.LookFrame.Elevate(_caster.GetEyeGlobalHeight()).Advance(_template.MaxDistance).origin;
+            var newTarget = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
+            if (newTarget == null)
+            {
+                RemoveTarget();
+                return;
+            }
+            if (newTarget.IsMount)
+            {
+                newTarget = newTarget.RiderAgent != null ? newTarget.RiderAgent : newTarget;
+            }
+
             var targetType = _template.AbilityTargetType;
-            bool isAimMatching = target != null &&
-                                 target.IsHuman &&
-                                 (targetType == AbilityTargetType.All ||
-                                 (targetType == AbilityTargetType.Enemies && target.IsEnemyOf(_caster)) ||
-                                 (targetType == AbilityTargetType.Allies && !target.IsEnemyOf(_caster)));
-            if (isAimMatching)
+            bool isTargetMatching = targetType == AbilityTargetType.All ||
+                                    (targetType == AbilityTargetType.Enemies && newTarget.IsEnemyOf(_caster)) ||
+                                    (targetType == AbilityTargetType.Allies && !newTarget.IsEnemyOf(_caster));
+            if (isTargetMatching)
             {
-                if (target != _target)
+                if (newTarget != _target)
                 {
-                    RemoveAim();
+                    RemoveTarget();
                 }
-                SetTarget(target);
+
+                SetTarget(newTarget);
             }
             else
             {
-                RemoveAim();
+                RemoveTarget();
             }
         }
 
-        private void SetTarget(Agent newAim)
+        private void SetTarget(Agent newTarget)
         {
-            _target = newAim;
-            _lastTargetIndex = newAim.Index;
-            if (newAim.IsEnemyOf(_caster))
+            _target = newTarget;
+            _lastTargetIndex = newTarget.Index;
+            if (newTarget.IsEnemyOf(_caster))
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor);
+                _target.AgentVisuals.SetContourColor(enemyColor);
             }
             else
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(friendColor);
+                _target.AgentVisuals.SetContourColor(friendColor);
             }
         }
 
-        private void RemoveAim()
+        private void RemoveTarget()
         {
             if (_target != null)
             {
-                _target.AgentVisuals.GetEntity().Root.SetContourColor(colorLess);
+                _target.AgentVisuals.SetContourColor(colorLess);
                 _target = null;
             }
         }
