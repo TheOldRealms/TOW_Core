@@ -1,87 +1,79 @@
-﻿using System;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
+using TaleWorlds.InputSystem;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
+using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Abilities;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Battle.Crosshairs;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.CrosshairMissionBehavior
 {
     [OverrideView(typeof(MissionCrosshair))]
     public class CustomCrosshairMissionBehavior : MissionView
     {
-        private bool _isMainAgentChecked;
-        private bool _isActive;
+        private bool _areCrosshairsInitialized;
+        private ICrosshair _currentCrosshair;
         private Crosshair _weaponCrosshair;
+        private SniperScope _sniperScope;
         private AbilityCrosshair _abilityCrosshair;
         private AbilityComponent _abilityComponent;
         private AbilityManagerMissionLogic _missionLogic;
 
+        public ICrosshair CurrentCrosshair { get => _currentCrosshair; }
+
         public override void OnMissionScreenTick(float dt)
         {
+            if (!_areCrosshairsInitialized)
+            {
+                if (Agent.Main != null && MissionScreen != null)
+                    InitializeCrosshairs();
+                else
+                    return;
+            }
             if (CanUseCrosshair())
             {
-                if (!_isMainAgentChecked)
+                if (CanUseAbilityCrosshair())
                 {
-                    _isMainAgentChecked = true;
-                    if ((_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
-                    {
-                        _abilityComponent.CurrentAbilityChanged += (crosshair) =>
-                        {
-                            _abilityCrosshair?.Hide();
-                            _abilityCrosshair = crosshair;
-                        };
-                        _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
-                    }
+                    if (_currentCrosshair != _abilityCrosshair)
+                        ChangeCrosshair(_abilityCrosshair);
                 }
-                else if (_abilityCrosshair != null && _missionLogic != null && _missionLogic.CurrentState != AbilityModeState.Off)
+                else if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
                 {
-                    _weaponCrosshair.Hide();
-                    if (!_abilityComponent.CurrentAbility.CanCast(Agent.Main))
+                    if (CanUseSniperScope())
                     {
-                        _abilityCrosshair.Hide();
+                        if (_currentCrosshair != _sniperScope)
+                            ChangeCrosshair(_sniperScope);
                     }
                     else
                     {
-                        if (_abilityCrosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())
-                        {
-                            _abilityCrosshair.Tick();
-                            _abilityCrosshair.Show();
-                        }
-                        else
-                        {
-                            _abilityCrosshair.Hide();
-                        }
+                        if (_currentCrosshair != _weaponCrosshair)
+                            ChangeCrosshair(_weaponCrosshair);
                     }
                 }
-                else
-                {
-                    _abilityCrosshair?.Hide();
-                    if (!Agent.Main.WieldedWeapon.IsEmpty && Agent.Main.WieldedWeapon.CurrentUsageItem.IsRangedWeapon)
-                    {
-                        _weaponCrosshair.Tick();
-                        _weaponCrosshair.Show();
-                    }
-                    else
-                    {
-                        _weaponCrosshair.Hide();
-                    }
-                }
+                else ChangeCrosshair(null);
+                if (_currentCrosshair != null) _currentCrosshair.Tick();
             }
-            else
-            {
-                _weaponCrosshair?.Hide();
-                _abilityCrosshair?.Hide();
-            }
+            else if(_currentCrosshair != null) ChangeCrosshair(null);
+        }
+
+        private void ChangeCrosshair(ICrosshair crosshair)
+        {
+            _currentCrosshair?.Hide();
+            _currentCrosshair = crosshair;
+            if(_currentCrosshair != null) _currentCrosshair.Show();
         }
 
         private bool CanUseCrosshair()
         {
-            return _isActive &&
-                   Agent.Main != null &&
+            return Agent.Main != null &&
                    Agent.Main.State == AgentState.Active &&
+                   (_abilityComponent == null ||
+                   _abilityComponent.SpecialMove == null ||
+                   !_abilityComponent.SpecialMove.IsUsing) &&
                    Mission.Mode != MissionMode.Conversation &&
                    Mission.Mode != MissionMode.Deployment &&
                    Mission.Mode != MissionMode.CutScene &&
@@ -94,49 +86,56 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    !ScreenManager.GetMouseVisibility();
         }
 
-        public override void OnMissionScreenInitialize()
+        private bool CanUseAbilityCrosshair()
         {
-            base.OnMissionScreenInitialize();
-            _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-            if (_isActive)
-            {
-                return;
-            }
-            _weaponCrosshair = new Crosshair(Mission, MissionScreen);
+            return !Mission.IsFriendlyMission &&
+                   _missionLogic != null &&
+                   _missionLogic.CurrentState != AbilityModeState.Off &&
+                   _abilityComponent.CurrentAbility.CanCast(Agent.Main);
+        }
+
+        private void InitializeCrosshairs()
+        {
+            _weaponCrosshair = new Crosshair();
             _weaponCrosshair.InitializeCrosshair();
-            _isActive = true;
+            _sniperScope = new SniperScope();
+
+            if (Agent.Main.IsAbilityUser() && (_abilityComponent = Agent.Main.GetComponent<AbilityComponent>()) != null)
+            {
+                _missionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+                _abilityComponent.CurrentAbilityChanged += ChangeAbilityCrosshair;
+                _abilityComponent.InitializeCrosshairs();
+                _abilityCrosshair = _abilityComponent.CurrentAbility?.Crosshair;
+            }
+            _areCrosshairsInitialized = true;
         }
 
         public override void OnMissionScreenFinalize()
         {
-            base.OnMissionScreenFinalize();
-            if (!_isActive)
+            if (!_areCrosshairsInitialized)
             {
                 return;
             }
             _weaponCrosshair.FinalizeCrosshair();
             _abilityComponent = null;
             _abilityCrosshair = null;
-            _isActive = false;
+            _sniperScope.FinalizeCrosshair();
+            _sniperScope = null;
+            _areCrosshairsInitialized = false;
+            if (_abilityComponent != null)
+            {
+                _abilityComponent.CurrentAbilityChanged -= ChangeAbilityCrosshair;
+            }
         }
 
-        private bool IsRightAngleToCast()
+        private bool CanUseSniperScope()
         {
-            if (Agent.Main.HasMount)
-            {
-                double xa = Agent.Main.LookDirection.X;
-                double ya = Agent.Main.LookDirection.Y;
-                double xb = Agent.Main.GetMovementDirection().X;
-                double yb = Agent.Main.GetMovementDirection().Y;
-
-                double angle = Math.Acos((xa * xb + ya * yb) / (Math.Sqrt(Math.Pow(xa, 2) + Math.Pow(ya, 2)) * Math.Sqrt(Math.Pow(xb, 2) + Math.Pow(yb, 2))));
-
-                return true ? angle < 1.4 : angle >= 1.4;
-            }
-            else
-            {
-                return true;
-            }
+            return Mission.CameraIsFirstPerson &&
+                   Input.IsKeyDown(InputKey.LeftShift) &&
+                   Input.IsKeyDown(InputKey.LeftMouseButton) &&
+                   Agent.Main.GetCurrentActionType(1) == Agent.ActionCodeType.ReadyRanged &&
+                   Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle") &&
+                   IsRightAngleToShoot();
         }
 
         public override void OnPhotoModeActivated()
@@ -149,6 +148,19 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
         {
             base.OnPhotoModeDeactivated();
             _weaponCrosshair.OnPhotoModeDeactivated();
+        }
+
+        private void ChangeAbilityCrosshair(AbilityCrosshair crosshair)
+        {
+            _abilityCrosshair?.Hide();
+            _abilityCrosshair = crosshair;
+        }
+
+        private bool IsRightAngleToShoot()
+        {
+            float numberToCheck = MBMath.WrapAngle(Agent.Main.LookDirection.AsVec2.RotationInRadians - Agent.Main.GetMovementDirection().RotationInRadians);
+            Vec2 bodyRotationConstraint = Agent.Main.GetBodyRotationConstraint(1);
+            return !(Mission.Current.MainAgent.MountAgent != null && !MBMath.IsBetween(numberToCheck, bodyRotationConstraint.x, bodyRotationConstraint.y) && (bodyRotationConstraint.x < -0.1f || bodyRotationConstraint.y > 0.1f));
         }
     }
 }

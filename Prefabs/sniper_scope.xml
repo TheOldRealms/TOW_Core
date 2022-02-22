@@ -1,0 +1,8 @@
+<prefabs>
+  <game_entity name="3d_sniper_scope_1" old_prefab_name="">
+    <physics mass="1" shape="bo_ui_scope"/>
+    <components>
+      <meta_mesh_component name="ui_scope"/>
+    </components>
+  </game_entity>
+</prefabs>
