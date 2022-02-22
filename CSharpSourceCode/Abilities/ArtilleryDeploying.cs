@@ -1,0 +1,40 @@
+﻿using TaleWorlds.MountAndBlade;
+using TOW_Core.Utilities;
+
+namespace TOW_Core.Abilities
+{
+    public class ArtilleryDeploying : Ability
+    {
+        private int _artilleryAmount;
+        private AbilityComponent _abilityComponent;
+        public delegate void OnArtilleryDeployed(); 
+        public event OnArtilleryDeployed ArtilleryDeployed;
+
+        public ArtilleryDeploying(AbilityTemplate template) : base(template)
+        {
+        }
+
+        public void SetAmount(int amount)
+        {
+            _artilleryAmount = amount;
+        }
+
+        public void SetAbilityComponent(AbilityComponent component)
+        {
+            _abilityComponent = component;
+        }
+
+        public override bool CanCast(Agent casterAgent)
+        {
+            return base.CanCast(casterAgent) && _abilityComponent.MaxArtilleryAmount > 0 && _artilleryAmount > 0;
+        }
+
+        protected override void DoCast(Agent casterAgent)
+        {
+            base.DoCast(casterAgent);
+            _artilleryAmount--;
+            ArtilleryDeployed?.Invoke();
+            TOWCommon.Say($"{_artilleryAmount} artillery to deploy are left");
+        }
+    }
+}

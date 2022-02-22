@@ -6,7 +6,8 @@
         Spell,
         Prayer,
         ItemBound,
-        SpecialMove
+        SpecialMove,
+        Artillery
     }
 
     public enum AbilityEffectType
