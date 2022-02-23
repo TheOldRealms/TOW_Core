@@ -14,30 +14,8 @@ namespace TOW_Core.Abilities
 {
     public class AbilityComponent : AgentComponent
     {
-        public AbilityComponent(Agent agent, bool canHasArtillery) : base(agent)
+        public AbilityComponent(Agent agent) : base(agent)
         {
-            if (canHasArtillery)
-            {
-                var artilleryRoster = agent.GetHero().PartyBelongedTo.ItemRoster.Where(item => item.EquipmentElement.Item.StringId.Contains("artillery")).ToArray();
-                if (artilleryRoster.Length > 0)
-                {
-                    for (int i = 0; i < artilleryRoster.Length; i++)
-                    {
-                        var artillery = artilleryRoster[i];
-                        var ability = (ArtilleryDeployer)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
-                        if (ability != null)
-                        {
-                            ability.OnCastStart += OnCastStart;
-                            ability.OnCastComplete += OnCastComplete;
-                            ability.ArtilleryDeployed += () => _maxArtilleryAmount--;
-                            ability.SetAmount(artillery.Amount);
-                            ability.SetAbilityComponent(this);
-                            _knownAbilities.Add(ability);
-                        }
-                    }
-                    _maxArtilleryAmount = agent.Character.GetSkillValue(DefaultSkills.Engineering) / 50;
-                }
-            }
             var abilities = agent.GetAbilities();
             if (abilities.Count > 0)
             {
@@ -57,6 +35,7 @@ namespace TOW_Core.Abilities
                             else
                             {
                                 _knownAbilities.Add(ability);
+                                //in custom battle the is no inventory checking for artillery, but checking for known ability
                                 if (Game.Current.GameType is CustomGame && ability is ArtilleryDeployer)
                                 {
                                     ((ArtilleryDeployer)ability).ArtilleryDeployed += () => _maxArtilleryAmount--;
@@ -77,6 +56,28 @@ namespace TOW_Core.Abilities
                     }
                 }
                 if (Agent.IsVampire() && _specialMove == null) _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent);
+            }
+            if (agent.CanPlaceArtillery())
+            {
+                var artilleryRoster = agent.GetHero().PartyBelongedTo.ItemRoster.Where(item => item.EquipmentElement.Item.StringId.Contains("artillery")).ToArray();
+                if (artilleryRoster.Length > 0)
+                {
+                    for (int i = 0; i < artilleryRoster.Length; i++)
+                    {
+                        var artillery = artilleryRoster[i];
+                        var ability = (ArtilleryDeployer)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
+                        if (ability != null)
+                        {
+                            ability.OnCastStart += OnCastStart;
+                            ability.OnCastComplete += OnCastComplete;
+                            ability.ArtilleryDeployed += () => _maxArtilleryAmount--;
+                            ability.SetAmount(artillery.Amount);
+                            ability.SetAbilityComponent(this);
+                            _knownAbilities.Add(ability);
+                        }
+                    }
+                    _maxArtilleryAmount = agent.Character.GetSkillValue(DefaultSkills.Engineering) / 50;
+                }
             }
             if (_knownAbilities.Count > 0)
             {

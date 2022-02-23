@@ -55,6 +55,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("SpellCaster");
         }
 
+        public static bool CanPlaceArtillery(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("CanPlaceArtillery");
+        }
+
         public static bool HasAttribute(this Agent agent, string attributeName)
         {
             return agent.GetAttributes().Contains(attributeName);

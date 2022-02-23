@@ -201,11 +201,9 @@ namespace TOW_Core.Abilities
         {
             if (IsCastingMission(Mission))
             {
-                var character = agent.Character as CharacterObject;
-                bool canHasArtillery = (Game.Current.GameType is Campaign) && character != null && character.IsHero && character.HeroObject.IsPartyLeader;
-                if (agent.IsAbilityUser() || canHasArtillery)
+                if (agent.IsAbilityUser())
                 {
-                    agent.AddComponent(new AbilityComponent(agent, canHasArtillery));
+                    agent.AddComponent(new AbilityComponent(agent));
                     if (agent.IsAIControlled)
                     {
                         agent.AddComponent(new WizardAIComponent(agent));

@@ -86,6 +86,7 @@ namespace TOW_Core.Abilities
         {
             return !_isCasting &&
                    !IsOnCooldown() &&
+                   casterAgent.IsAbilityUser() &&
                    ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1));
         }
