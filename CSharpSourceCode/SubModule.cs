@@ -43,6 +43,7 @@ using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
 using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
+using TOW_Core.CampaignSupport.Assimilation;
 
 namespace TOW_Core
 {
@@ -135,6 +136,7 @@ namespace TOW_Core
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new SpellTrainerInTownBehaviour());
+                starter.AddBehavior(new AssimilationCampaignBehavior());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
