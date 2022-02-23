@@ -6,6 +6,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.Damage;
+using TOW_Core.Battle.Sound;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -63,18 +64,18 @@ namespace TOW_Core.HarmonyPatches
             }
 
             var resultDamage = 0;
-            var heighestDamageValue =0f;
-            var heigestDamageType = DamageType.Physical;
+            var highestDamageValue =0f;
+            var highestNonPhysicalDamageType = DamageType.Physical;
             for (int i = 0; i < damageCategories.Length-1; i++)
             {
                 damageCategories[i] = b.InflictedDamage * damageProportions[i];
                 damageCategories[i] += damageCategories[(int)DamageType.All]/(int) DamageType.All;
                 if (damageCategories[i] > 0)
                 {
-                    if (damageCategories[i] > heighestDamageValue)
+                    if (damageCategories[i] > highestDamageValue)
                     {
-                        heighestDamageValue = damageCategories[i];
-                        heigestDamageType = (DamageType)i;
+                        highestDamageValue = damageCategories[i];
+                        highestNonPhysicalDamageType = (DamageType)i;
                     }
                     damagePercentages[i] -= resistancePercentages[i];
                     damageCategories[i] *=1+ damagePercentages[i];
@@ -82,10 +83,11 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
 
-
-            var resultingDamageType; 
-            
-            victim.GetComponent<DamageSoundComponent>().MakeSound(resultingDamageType)
+            /*if (highestNonPhysicalDamageType != DamageType.Physical)
+            {
+                
+            }*/
+            victim.GetComponent<AgentSoundComponent>().PlayHitSound(highestNonPhysicalDamageType);
 
             b.InflictedDamage = resultDamage;
 

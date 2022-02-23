@@ -16,7 +16,7 @@
   </PropertyGroup>
   <!-- Bannerlord path Property-->
   <PropertyGroup>
-    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameDir>
+    <GameDir>G:\Program Files (x86)\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</GameDir>
   </PropertyGroup>
   <!-- Debug Configuration Properties -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -483,6 +483,7 @@
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
     <Compile Include="Utilities\TORDamageDisplay.cs" />
+    <Compile Include="Utilities\TorSoundMissionLogic.cs" />
     <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />
