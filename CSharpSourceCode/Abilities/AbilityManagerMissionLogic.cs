@@ -317,7 +317,7 @@ namespace TOW_Core.Abilities
 
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
         {
-            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null)
+            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null || !Agent.Main.IsAbilityUser())
             {
                 return;
             }
