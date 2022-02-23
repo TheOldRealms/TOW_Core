@@ -1538,12 +1538,12 @@
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
       <string>Dart</string>
-      <string>PlaceMortar</string>
       <string>FlamingSwords</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>CanPlaceArtillery</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wizard_lord">
