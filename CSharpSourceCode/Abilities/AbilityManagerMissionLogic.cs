@@ -26,7 +26,7 @@ namespace TOW_Core.Abilities
         private bool _shouldSheathWeapon;
         private bool _shouldWieldWeapon;
         private bool _hasInitializedForMainAgent;
-        private AbilityModeState _currentState;
+        private AbilityModeState _currentState = AbilityModeState.Off;
         private EquipmentIndex _mainHand;
         private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
@@ -78,8 +78,7 @@ namespace TOW_Core.Abilities
                     _hasInitializedForMainAgent = true;
                 }
             }
-
-            if (IsAbilityModeAvailableForMainAgent())
+            else if (IsAbilityModeAvailableForMainAgent())
             {
                 HandleInput();
 
@@ -106,7 +105,7 @@ namespace TOW_Core.Abilities
             if(CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
             if(Game.Current.GameType is Campaign)
             {
-                var quest = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x.GetType() == typeof(AdvanceSpellCastingLevelQuest)) as AdvanceSpellCastingLevelQuest;
+                var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
                 if(quest != null)
                 {
                     quest.IncrementCast();
@@ -237,8 +236,7 @@ namespace TOW_Core.Abilities
 
         private bool IsAbilityModeAvailableForMainAgent()
         {
-            return _hasInitializedForMainAgent &&
-                   Agent.Main != null &&
+            return Agent.Main != null &&
                    Agent.Main.IsActive() &&
                    !ScreenManager.GetMouseVisibility();
         }
@@ -355,7 +353,6 @@ namespace TOW_Core.Abilities
                 _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
                 EnableCastStanceParticles(false);
             }
-            _currentState = AbilityModeState.Off;
         }
     }
 

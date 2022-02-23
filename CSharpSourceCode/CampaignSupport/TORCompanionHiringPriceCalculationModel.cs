@@ -11,7 +11,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
-    class TowCompanionHiringPriceCalculationModel : DefaultCompanionHiringPriceCalculationModel
+    class TORCompanionHiringPriceCalculationModel : DefaultCompanionHiringPriceCalculationModel
 	{
         public override int GetCompanionHiringPrice(Hero companion)
         {

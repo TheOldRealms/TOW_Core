@@ -66,7 +66,7 @@ namespace TOW_Core.HarmonyPatches
 
         private static void OnCLick()
         {
-            MBGameManager.StartNewGame(new TowCampaignGameManager());
+            MBGameManager.StartNewGame(new TORCampaignGameManager());
         }
 
         private static (bool, TextObject) IsDisabledAndReason()

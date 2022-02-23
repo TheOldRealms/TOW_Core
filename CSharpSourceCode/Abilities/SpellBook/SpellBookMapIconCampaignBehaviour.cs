@@ -16,20 +16,19 @@ namespace TOW_Core.Abilities.SpellBook
 {
     public class SpellBookMapIconCampaignBehaviour : CampaignBehaviorBase
     {
-        private bool _initialized;
         public override void RegisterEvents()
         {
-            CampaignEvents.TickEvent.AddNonSerializedListener(this, Initialize);
+            ScreenManager.OnPushScreen += ScreenManager_OnPushScreen;
         }
 
-        private void Initialize(float dt)
+        private void ScreenManager_OnPushScreen(ScreenBase pushedScreen)
         {
-            if (_initialized || ScreenManager.TopScreen.GetType() != typeof(MapScreen)) return;
+            if (pushedScreen.GetType() != typeof(MapScreen)) return;
             else
             {
-                var mapscreen = ScreenManager.TopScreen as MapScreen;
-                mapscreen.AddMapView<SpellBookMapIconMapView>();
-                _initialized = true;
+                var mapscreen = pushedScreen as MapScreen;
+                var mapview = mapscreen.GetMapView<SpellBookMapIconMapView>();
+                if(mapview == null) mapscreen.AddMapView<SpellBookMapIconMapView>();
             }
         }
 
@@ -50,6 +49,12 @@ namespace TOW_Core.Abilities.SpellBook
             Layer = mapView.GauntletLayer;
             _layer = Layer as GauntletLayer;
             _movie = _layer.LoadMovie("SpellBookMapIcon", _vm);
+        }
+
+        protected override void OnMapScreenUpdate(float dt)
+        {
+            base.OnMapScreenUpdate(dt);
+            _vm.RefreshValues();
         }
 
         protected override void OnFinalize()

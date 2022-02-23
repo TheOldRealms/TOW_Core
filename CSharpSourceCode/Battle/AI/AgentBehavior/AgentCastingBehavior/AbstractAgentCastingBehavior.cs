@@ -65,7 +65,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
 
             var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().GetAbilityEffectType == AbilityEffectType.MovingProjectile)
+            if (Agent.GetCurrentAbility().AbilityEffectType == AbilityEffectType.MovingProjectile)
             {
                 velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent);
             }

@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SandBox;
+﻿using SandBox;
+using System.Runtime.CompilerServices;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.ComponentInterfaces;
 using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
 {
-    public class TOWBattleMoraleModel : CustomBattleMoraleModel
+    public class TORCampaignBattleMoraleModel : SandboxBattleMoraleModel
     {
         public override bool CanPanicDueToMorale(Agent agent)
         {
             if (agent.IsUndead() || agent.IsUnbreakable() || agent.Origin is SummonedAgentOrigin) return false;
             else return base.CanPanicDueToMorale(agent);
         }
+
+        public override float GetEffectiveInitialMorale(Agent agent, float baseMorale)
+        {
+            if (agent.Origin is SummonedAgentOrigin) return baseMorale;
+            else return base.GetEffectiveInitialMorale(agent, baseMorale);
+        }
     }
-    
-    
-    
 }

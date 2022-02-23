@@ -389,7 +389,7 @@
     <Compile Include="CampaignSupport\TORWanderersCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TORBattleAgentLogic.cs" />
     <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
+    <Compile Include="CampaignSupport\TORKingdomPeaceModel.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\SpellTrainerInTownBehaviour.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
@@ -426,8 +426,8 @@
     <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORCampaignBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="ObjectDataExtensions\SpellBlowInfoManager.cs" />
@@ -456,8 +456,8 @@
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplate.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplateManager.cs" />
-    <Compile Include="CampaignSupport\TowCampaignGameManager.cs" />
-    <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
+    <Compile Include="CampaignSupport\TORCampaignGameManager.cs" />
+    <Compile Include="CampaignSupport\TORCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
     <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />

@@ -120,7 +120,7 @@ namespace TOW_Core
             if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
-                gameStarterObject.AddModel(new TOWBattleMoraleModel());
+                gameStarterObject.AddModel(new TORBattleMoraleModel());
                 gameStarterObject.AddModel(new TORCustomBattleAgentStatCalculateModel());
             }
             else if (game.GameType is Campaign)
@@ -139,8 +139,8 @@ namespace TOW_Core
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
-                starter.AddModel(new TowCompanionHiringPriceCalculationModel());
-                starter.AddModel(new TOWCampaignBattleMoraleModel());
+                starter.AddModel(new TORCompanionHiringPriceCalculationModel());
+                starter.AddModel(new TORCampaignBattleMoraleModel());
                 //starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new TORBanditDensityModel());
                 starter.AddModel(new TORMobilePartyFoodConsumptionModel());

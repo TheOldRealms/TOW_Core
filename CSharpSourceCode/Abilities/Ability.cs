@@ -29,7 +29,7 @@ namespace TOW_Core.Abilities
         public AbilityScript AbilityScript { get; private set; }
 
         public AbilityCrosshair Crosshair { get; private set; }
-        public virtual AbilityEffectType GetAbilityEffectType => Template.AbilityEffectType;
+        public virtual AbilityEffectType AbilityEffectType => Template.AbilityEffectType;
         public bool IsOnCooldown() => _timer.Enabled;
 
         public int GetCoolDownLeft() => _coolDownLeft;

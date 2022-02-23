@@ -13,7 +13,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.CampaignSupport
 {
-    class TowCampaignGameManager : SandBoxGameManager
+    class TORCampaignGameManager : SandBoxGameManager
     {
         public override void OnLoadFinished()
         {
