@@ -55,41 +55,60 @@ namespace TOW_Core.Battle.FireArms
                     }
                 }
                 // run firearms script
-                if (shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass == WeaponClass.Boulder) //Boulder is weapon class for grenade
+                if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
                 {
-                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("shrapnel"))
-                    {
-                        DoBlunderbussShot(shooterAgent, position, orientation);
-                    }
-                    else if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
+                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
                     {
                         AddGrenadeScript(shooterAgent, "grenade_explosion");
                     }
+                    else
+                    {
+                        DoBlunderbussShot(shooterAgent, position, orientation, 4);
+                    }
                 }
-                else
+                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
                 {
-                    if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
-                    {
-                        DoTwoBarrelsShot(shooterAgent, position, orientation);
-                    }
-                    else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
-                    {
-                        DoFourBarrelsShot(shooterAgent, position, orientation);
-                    }
+                    DoTwoBarrelsShot(shooterAgent, position, orientation);
+                }
+                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
+                {
+                    DoFourBarrelsShot(shooterAgent, position, orientation);
                 }
             }
         }
 
-        private void DoBlunderbussShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
+        private void DoBlunderbussShot(Agent shooterAgent, Vec3 position, Mat3 orientation, short shrapnelAmount)
         {
-            var weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
-            var scattering = 1f / (weaponData.Accuracy * 1.2f);
-            for (int i = 0; i < 10; i++)
+            MissionWeapon weapon = MissionWeapon.Invalid;
+            short amountLeft = 0;
+            for (EquipmentIndex index = EquipmentIndex.WeaponItemBeginSlot; index < EquipmentIndex.NumAllWeaponSlots; index++)
             {
-                var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-                var _orientation = GetRandomOrientationForBlunderbass(orientation, scattering);
-                Mission.AddCustomMissile(shooterAgent, missile, position, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                weapon = shooterAgent.Equipment[index];
+                if (weapon.CurrentUsageItem.WeaponClass == shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass && weapon.HitPoints > 0)
+                {
+                    amountLeft += Math.Min(shrapnelAmount, weapon.HitPoints);
+                    short newAmount = (short)(weapon.HitPoints - Math.Min(amountLeft, weapon.HitPoints));
+                    shooterAgent.SetWeaponAmountInSlot(index, newAmount, false);
+                    if (amountLeft == shrapnelAmount)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
             }
+
+            WeaponComponentData weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
+            float scattering = 1f / (weaponData.Accuracy * 1.2f);
+            while (amountLeft > 0)
+            {
+                amountLeft--;
+                var _orientation = GetRandomOrientationForBlunderbass(orientation, scattering);
+                Mission.AddCustomMissile(shooterAgent, weapon, position, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+            }
+
         }
 
         private void DoTwoBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
