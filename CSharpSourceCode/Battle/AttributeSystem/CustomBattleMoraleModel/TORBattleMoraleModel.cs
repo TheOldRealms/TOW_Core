@@ -9,9 +9,9 @@ using TaleWorlds.MountAndBlade.ComponentInterfaces;
 using TOW_Core.Abilities;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel
+namespace TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel
 {
-    public class TOWBattleMoraleModel : CustomBattleMoraleModel
+    public class TORBattleMoraleModel : CustomBattleMoraleModel
     {
         public override bool CanPanicDueToMorale(Agent agent)
         {

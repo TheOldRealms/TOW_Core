@@ -24,6 +24,13 @@ namespace TOW_Core.Abilities
             return list;
         }
 
+        public static List<AbilityTemplate> GetAllTemplates()
+        {
+            var list = new List<AbilityTemplate>();
+            foreach(var template in _templates.Values) list.Add(template);
+            return list;
+        }
+
         public static AbilityTemplate GetTemplate(string id)
         {
             return _templates.ContainsKey(id) ? _templates[id] : null;
@@ -82,7 +89,7 @@ namespace TOW_Core.Abilities
                         crosshair = new ProjectileCrosshair(template);
                         break;
                     }
-                case CrosshairType.Targeted:
+                case CrosshairType.TargetedSingle:
                     {
                         crosshair = new TargetedCrosshair(template, caster);
                         break;
@@ -105,6 +112,11 @@ namespace TOW_Core.Abilities
                 case CrosshairType.TargetedAOE:
                     {
                         crosshair = new TargetedAOECrosshair(template, caster);
+                        break;
+                    }
+                case CrosshairType.Self:
+                    {
+                        crosshair = new SelfCrosshair(template);
                         break;
                     }
             }

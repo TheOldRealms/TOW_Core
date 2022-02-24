@@ -15,6 +15,7 @@ using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Items;
+using TOW_Core.Quests;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -24,8 +25,8 @@ namespace TOW_Core.Abilities
     {
         private bool _shouldSheathWeapon;
         private bool _shouldWieldWeapon;
-        private bool _isAbilityUser;
-        private AbilityModeState _currentState;
+        private bool _hasInitializedForMainAgent;
+        private AbilityModeState _currentState = AbilityModeState.Off;
         private EquipmentIndex _mainHand;
         private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
@@ -69,7 +70,15 @@ namespace TOW_Core.Abilities
 
         public override void OnMissionTick(float dt)
         {
-            if (IsAbilityModeAvailableForMainAgent())
+            if (!_hasInitializedForMainAgent)
+            {
+                if(Agent.Main != null)
+                {
+                    SetUpCastStanceParticles();
+                    _hasInitializedForMainAgent = true;
+                }
+            }
+            else if (IsAbilityModeAvailableForMainAgent())
             {
                 HandleInput();
 
@@ -94,6 +103,14 @@ namespace TOW_Core.Abilities
         internal void OnCastComplete()
         {
             if(CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
+            if(Game.Current.GameType is Campaign)
+            {
+                var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
+                if(quest != null)
+                {
+                    quest.IncrementCast();
+                }
+            }
         }
 
         internal void OnCastStart() 
@@ -157,7 +174,7 @@ namespace TOW_Core.Abilities
                 bool flag = _abilityComponent.CurrentAbility.Crosshair == null ||
                             !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
                             _currentState != AbilityModeState.Idle ||
-                            (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.Targeted &&
+                            (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.TargetedSingle &&
                             ((TargetedCrosshair)_abilityComponent.CurrentAbility.Crosshair).Target == null);
                 if (!flag)
                 {
@@ -219,8 +236,7 @@ namespace TOW_Core.Abilities
 
         private bool IsAbilityModeAvailableForMainAgent()
         {
-            return _isAbilityUser &&
-                   Agent.Main != null &&
+            return Agent.Main != null &&
                    Agent.Main.IsActive() &&
                    !ScreenManager.GetMouseVisibility();
         }
@@ -266,7 +282,10 @@ namespace TOW_Core.Abilities
             {
                 foreach (var psys in _psys)
                 {
-                    if(psys != null) psys.SetEnable(enable);
+                    if(psys != null)
+                    {
+                        psys.SetEnable(enable);
+                    }
                 }
             }
         }
@@ -317,10 +336,14 @@ namespace TOW_Core.Abilities
 
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
         {
-            if (agent.Controller != Agent.ControllerType.Player || Agent.Main == null || !Agent.Main.IsAbilityUser())
+            if (agent.Controller == Agent.ControllerType.Player)
             {
-                return;
+                _hasInitializedForMainAgent = false;
             }
+        }
+
+        private void SetUpCastStanceParticles()
+        {
             _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
             if (_abilityComponent != null)
             {
@@ -329,8 +352,6 @@ namespace TOW_Core.Abilities
                 _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
                 _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
                 EnableCastStanceParticles(false);
-                _currentState = AbilityModeState.Off;
-                _isAbilityUser = true;
             }
         }
     }

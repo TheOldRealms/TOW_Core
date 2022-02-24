@@ -60,19 +60,49 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 if (entry.Value.AllAttributes.Contains("SpellCaster"))
                 {
-                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
                     entry.Value.CurrentWindsOfMagic += entry.Value.WindsOfMagicRechargeRate;
                     entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
                 }
             }
         }
 
-        private void OnHeroCreated(Hero arg1, bool arg2)
+        private void OnHeroCreated(Hero hero, bool arg2)
         {
-            if (!_heroInfos.ContainsKey(arg1.StringId))
+            if (!_heroInfos.ContainsKey(hero.StringId))
             {
-                var info = new HeroExtendedInfo(arg1.CharacterObject);
-                _heroInfos.Add(arg1.StringId, info);
+                var info = new HeroExtendedInfo(hero.CharacterObject);
+                _heroInfos.Add(hero.StringId, info);
+                if(hero.Occupation == Occupation.Wanderer) InitializeWandererStats(hero);
+            }
+        }
+
+        private void InitializeWandererStats(Hero hero)
+        {
+            var template = hero.Template;
+            if (template != null)
+            {
+                if (template.IsTOWTemplate() && template.Occupation == Occupation.Wanderer)
+                {
+                    var info = hero.GetExtendedInfo();
+                    foreach (var attribute in template.GetAttributes())
+                    {
+                        hero.AddAttribute(attribute);
+                    }
+                    foreach (var ability in template.GetAbilities())
+                    {
+                        hero.AddAbility(ability);
+                        var abilityobj = AbilityFactory.GetTemplate(ability);
+                        if (abilityobj.IsSpell)
+                        {
+                            if (!info.KnownLores.Contains(LoreObject.GetLore(abilityobj.BelongsToLoreID)))
+                            {
+                                hero.AddKnownLore(abilityobj.BelongsToLoreID);
+                            }
+                        }
+                    }
+                    if (hero.IsSpellCaster() && !info.KnownLores.Contains(LoreObject.GetLore("MinorMagic"))) hero.AddKnownLore("MinorMagic");
+
+                }
             }
         }
 

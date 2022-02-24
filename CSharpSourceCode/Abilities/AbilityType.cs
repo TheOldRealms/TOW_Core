@@ -17,7 +17,7 @@
         RandomMovingAOE, //i.e. vortex
         CenteredStaticAOE,
         TargetedStaticAOE,
-        TargetedStatic,
+        SingleTarget,
         Summoning,
         AgentMoving,
     }
@@ -44,6 +44,7 @@
         TickOnce
     }
 
+    //This is for triggeredeffects.
     public enum TargetType
     {
         Friendly,

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
@@ -30,14 +31,6 @@ namespace TOW_Core.Utilities.Extensions
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
             return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.StringId);
-            /*
-            var info = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
-            if (info != null)
-            {
-                return info.GetHeroInfoFor(hero.StringId);
-            }
-            else return null;
-            */
         }
 
         public static void AddAbility(this Hero hero, string ability)
@@ -72,6 +65,31 @@ namespace TOW_Core.Utilities.Extensions
             if (hero.GetExtendedInfo() != null)
             {
                 return hero.GetExtendedInfo().AllAbilities.Contains(ability);
+            }
+            else return false;
+        }
+
+        public static void SetSpellCastingLevel(this Hero hero, SpellCastingLevel level)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                hero.GetExtendedInfo().SpellCastingLevel = level;
+            }
+        }
+
+        public static void AddKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                hero.GetExtendedInfo().AddKnownLore(loreID);
+            }
+        }
+
+        public static bool HasKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().HasKnownLore(loreID);
             }
             else return false;
         }

@@ -87,9 +87,9 @@ namespace TOW_Core.Utilities.Extensions
             if (agent.IsMount)
                 return new AgentPropertyContainer();
             
-            float[] damageProportions = new float[(int) DamageType.All+1];
-            float[] damageAmplifications = new float[(int) DamageType.All+1];
-            float[] damageResistances = new float[(int) DamageType.All+1];
+            float[] damageProportions = new float[(int) DamageType.All + 1];
+            float[] damageAmplifications = new float[(int) DamageType.All + 1];
+            float[] damageResistances = new float[(int) DamageType.All + 1];
             
             #region Unit
             if (!agent.IsHero)
@@ -119,10 +119,10 @@ namespace TOW_Core.Utilities.Extensions
                             damageAmplifications[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
                     }
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 }
                 if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
@@ -146,6 +146,14 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
+                    }
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
+                    {
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }
@@ -176,11 +184,11 @@ namespace TOW_Core.Utilities.Extensions
                         damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                     
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
 
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 
                     //weapon properties
@@ -231,6 +239,14 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
+                    }
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
+                    {
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }

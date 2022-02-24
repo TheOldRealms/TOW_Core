@@ -1,0 +1,9 @@
+<Prefab>
+    <Window>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="52" SuggestedHeight="55" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="570" Sprite="spellbook_icon" Command.Click="ExecuteOpenSpellBook" IsVisible="@IsVisible">
+            <Children>
+                <HintWidget DataSource="{IconHint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+            </Children>
+        </ButtonWidget>
+    </Window>
+</Prefab>

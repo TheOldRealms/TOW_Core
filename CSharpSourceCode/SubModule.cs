@@ -22,7 +22,6 @@ using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
 using TOW_Core.Battle.ShieldPatterns;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
-using TOW_Core.Battle.ObjectDataExtensions.CustomBattleMoralModel;
 using TOW_Core.Battle.Dismemberment;
 using Path = System.IO.Path;
 using TOW_Core.CampaignSupport.RaiseDead;
@@ -37,12 +36,14 @@ using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
 using TOW_Core.Battle.Artillery;
-using TOW_Core.CampaignSupport.Assimilation;
 using System.IO;
 using System;
 using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
+using TOW_Core.Abilities.SpellBook;
+using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
+using TOW_Core.CampaignSupport.Assimilation;
 
 namespace TOW_Core
 {
@@ -120,7 +121,7 @@ namespace TOW_Core
             if (game.GameType is CustomGame)
             {
                 gameStarterObject.Models.RemoveAllOfType(typeof(CustomBattleMoraleModel));
-                gameStarterObject.AddModel(new TOWBattleMoraleModel());
+                gameStarterObject.AddModel(new TORBattleMoraleModel());
                 gameStarterObject.AddModel(new TORCustomBattleAgentStatCalculateModel());
             }
             else if (game.GameType is Campaign)
@@ -128,19 +129,20 @@ namespace TOW_Core
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
                 starter.AddBehavior(ExtendedInfoManager.Instance);
+                starter.AddBehavior(new SpellBookMapIconCampaignBehaviour());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
                 starter.AddBehavior(new QuestBattleLocationBehaviour());
                 starter.AddBehavior(new ChaosRaidingPartyCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
-                starter.AddBehavior(new LibraryTownBehaviour());
+                starter.AddBehavior(new SpellTrainerInTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
-                starter.AddModel(new TowCompanionHiringPriceCalculationModel());
-                starter.AddModel(new CustomBattleMoralModel.TOWCampaignBattleMoraleModel());
+                starter.AddModel(new TORCompanionHiringPriceCalculationModel());
+                starter.AddModel(new TORCampaignBattleMoraleModel());
                 //starter.AddModel(new TowKingdomPeaceModel());
                 starter.AddModel(new TORBanditDensityModel());
                 starter.AddModel(new TORMobilePartyFoodConsumptionModel());

@@ -15,6 +15,7 @@ using TaleWorlds.CampaignSystem.GameState;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities.SpellBook;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -152,6 +153,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("Fireball");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("LoreOfFire");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
             if (selectedOption.OptionText == "Warrior Priest Acolyte")
             {
@@ -164,6 +168,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("Necromancy");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
             else if (selectedOption.OptionText == "Vampiric Nobility")
             {
@@ -173,6 +180,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("WindOfDeath");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("Necromancy");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
         }
 

@@ -23,6 +23,11 @@ namespace TOW_Core.Utilities
             InformationManager.DisplayMessage(new InformationMessage(text, new Color(134, 114, 250)));
         }
 
+        public static string GetWindsIconAsText()
+        {
+            return "<img src=\"winds_icon_45\"/>";
+        }
+
         public static void Log(string message, LogLevel severity)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -46,41 +51,7 @@ namespace TOW_Core.Utilities
             Clipboard.SetText(text);
             InformationManager.DisplayMessage(new InformationMessage("Equipment items copied!", Colors.Green));
         }
-        /*
-        public static void CopyEquipmentToClipBoard(SPInventoryVM vm)
-        {
-            XElement xelement = new XElement("EquipmentRoster");
-            AddItem(xelement, vm.CharacterWeapon1Slot.ItemRosterElement.EquipmentElement.Item, "Item0");
-            AddItem(xelement, vm.CharacterWeapon2Slot.ItemRosterElement.EquipmentElement.Item, "Item1");
-            AddItem(xelement, vm.CharacterWeapon3Slot.ItemRosterElement.EquipmentElement.Item, "Item2");
-            AddItem(xelement, vm.CharacterWeapon4Slot.ItemRosterElement.EquipmentElement.Item, "Item3");
-            AddItem(xelement, vm.CharacterHelmSlot.ItemRosterElement.EquipmentElement.Item, "Head");
-            AddItem(xelement, vm.CharacterCloakSlot.ItemRosterElement.EquipmentElement.Item, "Cape");
-            AddItem(xelement, vm.CharacterTorsoSlot.ItemRosterElement.EquipmentElement.Item, "Body");
-            AddItem(xelement, vm.CharacterGloveSlot.ItemRosterElement.EquipmentElement.Item, "Gloves");
-            AddItem(xelement, vm.CharacterBootSlot.ItemRosterElement.EquipmentElement.Item, "Leg");
-            AddItem(xelement, vm.CharacterMountSlot.ItemRosterElement.EquipmentElement.Item, "Horse");
-            AddItem(xelement, vm.CharacterMountArmorSlot.ItemRosterElement.EquipmentElement.Item, "HorseHarness");
-
-            XElement xelement2 = new XElement("EquipmentRoster");
-            xelement2.Add(new XAttribute("civilian", true));
-            AddItem(xelement2, vm.CharacterWeapon1Slot.ItemRosterElement.EquipmentElement.Item, "Item0");
-            AddItem(xelement2, vm.CharacterWeapon2Slot.ItemRosterElement.EquipmentElement.Item, "Item1");
-            AddItem(xelement2, vm.CharacterWeapon3Slot.ItemRosterElement.EquipmentElement.Item, "Item2");
-            AddItem(xelement2, vm.CharacterWeapon4Slot.ItemRosterElement.EquipmentElement.Item, "Item3");
-            AddItem(xelement2, vm.CharacterHelmSlot.ItemRosterElement.EquipmentElement.Item, "Head");
-            AddItem(xelement2, vm.CharacterCloakSlot.ItemRosterElement.EquipmentElement.Item, "Cape");
-            AddItem(xelement2, vm.CharacterTorsoSlot.ItemRosterElement.EquipmentElement.Item, "Body");
-            AddItem(xelement2, vm.CharacterGloveSlot.ItemRosterElement.EquipmentElement.Item, "Gloves");
-            AddItem(xelement2, vm.CharacterBootSlot.ItemRosterElement.EquipmentElement.Item, "Leg");
-            AddItem(xelement2, vm.CharacterMountSlot.ItemRosterElement.EquipmentElement.Item, "Horse");
-            AddItem(xelement2, vm.CharacterMountArmorSlot.ItemRosterElement.EquipmentElement.Item, "HorseHarness");
-            string text = xelement.ToString() + "\r\n" + xelement2.ToString();
-
-            Clipboard.SetText(text);
-            InformationManager.DisplayMessage(new InformationMessage("Equipment XML copied!", Colors.Green));
-        }
-        */
+        
         private static string GetText(SPItemVM slot)
         {
             if (slot.StringId != "" && slot.StringId != null) return "Item." + slot.StringId;

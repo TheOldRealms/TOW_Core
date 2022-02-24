@@ -29,7 +29,10 @@
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="fireball_explosion"
       Offset="0.5"
-      CrosshairType="Projectile">
+      CrosshairType="Projectile"
+      SpellTier="3"
+      BelongsToLoreID="LoreOfFire"
+      TooltipDescription="There is nothing quite as welcoming as a fireball to the face. Does 50 damage in a 5 meter radius and imbues the burning statuseffect for 5 seconds.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -69,7 +72,10 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="4"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Invoke the spirits of the dead to consume the the souls of the living. Does 40 damage in a 5 meter radius every 0.5 seconds for 5 seconds while moving along a path.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -110,7 +116,10 @@
       CrosshairType="Pointer"
       MinDistance="1"
       MaxDistance="30"
-      TargetCapturingRadius="2.5">
+      TargetCapturingRadius="2.5"
+      SpellTier="2"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Raise old bones from the ground. Summon 5 Skeletons for the duration of any single battle.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -146,8 +155,11 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="dart_explosion"
-      MaxDistance="60"
-      CrosshairType="Targeted">
+      SpellTier="2"
+      BelongsToLoreID="LoreOfHeavens"
+      MaxDistance="100"
+      CrosshairType="TargetedSingle"
+      TooltipDescription="Hurl a magical bolt at the enemy. The missile homes in on the target and does 20 damage in a 3 meter radius on contact.">
       <LightColorRGB x="0" y="204" z="255" w="-1">
         <AsVec2>
           <y>204</y>
@@ -188,7 +200,10 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="3"
+      BelongsToLoreID="LoreOfFire"
+      TooltipDescription="Conjure a large burning skull that moves forward burning everything in its path. Does 40 damage in a 5 meter radius every 0.5 seconds for 3 seconds.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -228,7 +243,10 @@
       CrosshairType="DirectionalAOE"
       MinDistance="2"
       MaxDistance="10"
-      TargetCapturingRadius="3">
+      TargetCapturingRadius="3"
+      SpellTier="3"
+      BelongsToLoreID="DarkMagic"
+      TooltipDescription="Conjure a screaming skull dripping with acid that moves forward damaging everything in its path. Does 40 damage in a 5 meter radius every 0.5 seconds for 3 seconds.">
       <LightColorRGB x="52" y="235" z="88" w="-1">
         <AsVec2>
           <x>52</x>
@@ -286,7 +304,7 @@
     BaseMisCastChance="0.0" 
     Duration="1" 
     Radius="2" 
-    AbilityType="Spell" 
+    AbilityType="Innate" 
     AbilityEffectType="Summoning" 
     BaseMovementSpeed="0" 
     TickInterval="0.2" 
@@ -347,7 +365,7 @@
        AnimationActionName="none"
        TriggeredEffectID="shadow_step"
        Offset="10"
-       CrosshairType="None"
+       CrosshairType="Self"
        MinDistance="1"
        MaxDistance="1"
        TargetCapturingRadius="1">
@@ -368,8 +386,8 @@
       BaseMisCastChance="0.05"
       Duration="0"
       Radius="0"
-      AbilityType="Spell"
-      AbilityEffectType="TargetedStatic"
+      AbilityType="Innate"
+      AbilityEffectType="SingleTarget"
       BaseMovementSpeed="0"
       TickInterval="-1"
       TriggerType="TickOnce"
@@ -390,7 +408,7 @@
       Offset="0.5"
       AbilityTargetType="Enemies"
       MaxDistance="20"
-      CrosshairType="Targeted">
+      CrosshairType="TargetedSingle">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -408,7 +426,7 @@
       Duration="0"
       Radius="0"
       AbilityType="Spell"
-      AbilityEffectType="TargetedStatic"
+      AbilityEffectType="SingleTarget"
       BaseMovementSpeed="0"
       TickInterval="-1"
       TriggerType="TickOnce"
@@ -429,7 +447,10 @@
       Offset="0.5"
       AbilityTargetType="Enemies"
       MaxDistance="10"
-      CrosshairType="Targeted">
+      CrosshairType="TargetedSingle"
+      SpellTier="2"
+      BelongsToLoreID="DarkMagic"
+      TooltipDescription="Mark a single enemy with the word of pain. The target feels excruciating pain and is unable to move or act for 9 seconds taking 10 damage per second.">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -469,7 +490,10 @@
       AbilityTargetType="Allies"
       TargetCapturingRadius="5"
       MaxDistance="20"
-      CrosshairType="TargetedAOE">
+      CrosshairType="TargetedAOE"
+      SpellTier="2"
+      BelongsToLoreID="LoreOfFire"
+      TooltipDescription="Buff the weapons of allies in a 5 meter radius with the Flaming trait for 20 seconds. The weapons burst into fire and burn every enemy they strike.">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -509,13 +533,102 @@
    AbilityTargetType="Enemies"
    TargetCapturingRadius="5"
    MaxDistance="20"
-   CrosshairType="TargetedAOE">
+   CrosshairType="TargetedAOE"
+   SpellTier="3"
+    BelongsToLoreID="DarkMagic"
+    TooltipDescription="Debuff enemies in a 5 meter radius with the Curse of Years. Their Physical damage dealt is reduced by 50% for 10 seconds.">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
         <y>170</y>
       </AsVec2>
     </LightColorRGB>
+  </AbilityTemplate>
+    <AbilityTemplate 
+      StringID="MinorHeal" 
+      Name="Minor Heal" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="SingleTarget" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="apply_healing_statuseffect"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Heals the caster for 20 health every second for 3 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="WardOfArrows" 
+      Name="Ward of Arrows" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="SingleTarget" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="physical_resistance_20"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Adds 20% physical resistance for 15 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
   </AbilityTemplate>
   <AbilityTemplate
       StringID="Tornado"
@@ -552,7 +665,10 @@
       TargetCapturingRadius="3"
       MaxRandomDeviation="1"
       ShouldRotateVisuals="true"
-      VisualsRotationVelocity="1">
+      VisualsRotationVelocity="1"
+      SpellTier="3"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Tornado.">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
