@@ -238,7 +238,10 @@ namespace TOW_Core.Abilities
         {
             return Agent.Main != null &&
                    Agent.Main.IsActive() &&
-                   !ScreenManager.GetMouseVisibility();
+                   !ScreenManager.GetMouseVisibility() &&
+                   !IsCastingMission(Mission) &&
+                   _abilityComponent != null;
+                   
         }
 
         private void EnableAbilityMode()
