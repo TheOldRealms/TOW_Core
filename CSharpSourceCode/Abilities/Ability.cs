@@ -184,6 +184,10 @@ namespace TOW_Core.Abilities
                         break;
                     }
                     case AbilityEffectType.DirectionalMovingAOE:
+                        {
+                            frame = Crosshair.Frame;
+                            break;
+                        }
                     case AbilityEffectType.RandomMovingAOE:
                     {
                         frame = Crosshair.Frame;
