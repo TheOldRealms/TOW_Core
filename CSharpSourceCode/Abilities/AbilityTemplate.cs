@@ -34,7 +34,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public AbilityType AbilityType = AbilityType.Spell;
         [XmlAttribute]
-        public AbilityEffectType AbilityEffectType = AbilityEffectType.MovingProjectile;
+        public AbilityEffectType AbilityEffectType = AbilityEffectType.Missile;
         [XmlAttribute]
         public float BaseMovementSpeed = 35f;
         [XmlAttribute]
@@ -71,7 +71,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public string AnimationActionName = "";
         [XmlAttribute]
-        public AbilityTargetType AbilityTargetType = AbilityTargetType.Enemies;
+        public AbilityTargetType AbilityTargetType = AbilityTargetType.EnemiesInAOE;
         [XmlAttribute]
         public float Offset = 1.0f;
         [XmlAttribute]

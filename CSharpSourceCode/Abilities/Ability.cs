@@ -81,7 +81,7 @@ namespace TOW_Core.Abilities
         {
             return !_isCasting &&
                    !IsOnCooldown() &&
-                   ((casterAgent.IsPlayerControlled && (Crosshair.CrosshairType == CrosshairType.CenteredAOE || IsRightAngleToCast())) || 
+                   ((casterAgent.IsPlayerControlled && IsRightAngleToCast()) || 
                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
@@ -123,7 +123,7 @@ namespace TOW_Core.Abilities
 
             AddLight(ref parentEntity);
 
-            if (IsDynamicAbility())
+            if (IsMissileAbility())
                 AddPhysics(ref parentEntity);
 
             AddBehaviour(ref parentEntity, casterAgent);
@@ -132,18 +132,13 @@ namespace TOW_Core.Abilities
 
         private bool IsGroundAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DirectionalMovingAOE
-                   || Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE
-                   || Template.AbilityEffectType == AbilityEffectType.TargetedStaticAOE
-                   || Template.AbilityEffectType == AbilityEffectType.RandomMovingAOE
-                   || Template.AbilityEffectType == AbilityEffectType.Summoning
-                   || Template.AbilityEffectType == AbilityEffectType.AgentMoving;
+            return Template.AbilityTargetType == AbilityTargetType.GroundAtPosition;
         }
 
-        private bool IsDynamicAbility()
+        private bool IsMissileAbility()
         {
-            return Template.AbilityEffectType == AbilityEffectType.DynamicProjectile ||
-                   Template.AbilityEffectType == AbilityEffectType.MovingProjectile;
+            return Template.AbilityEffectType == AbilityEffectType.SeekerMissile ||
+                   Template.AbilityEffectType == AbilityEffectType.Missile;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
@@ -151,66 +146,57 @@ namespace TOW_Core.Abilities
             var frame = casterAgent.LookFrame;
             if (casterAgent.IsAIControlled)
             {
-                if (Template.AbilityEffectType == AbilityEffectType.CenteredStaticAOE)
+                frame = UpdateFrameRotationForAI(casterAgent, frame);
+                if (IsGroundAbility())
                 {
-                    frame = casterAgent.AgentVisuals.GetGlobalFrame();
+                    frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+                }
+                else if (IsMissileAbility())
+                {
+                    frame = frame.Elevate(casterAgent.GetEyeGlobalHeight()).Advance(Template.Offset);
                 }
                 else
                 {
-                    frame = UpdateFrameRotationForAI(casterAgent, frame);
-                    frame = frame.Advance(Template.Offset);
-                    if (IsGroundAbility())
-                    {
-                        frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-                    }
-                    else if (IsDynamicAbility())
-                    {
-                        frame = frame.Elevate(casterAgent.GetEyeGlobalHeight());
-                    }
-                    else
-                    {
-                        frame = frame.Elevate(1);
-                    }
+                    frame = frame.Elevate(1);
                 }
             }
             else
             {
                 switch (Template.AbilityEffectType)
                 {
-                    case AbilityEffectType.MovingProjectile:
-                    case AbilityEffectType.DynamicProjectile:
+                    case AbilityEffectType.Missile:
+                    case AbilityEffectType.SeekerMissile:
                     {
                         frame.origin = casterAgent.GetEyeGlobalPosition();
                         break;
                     }
-                    case AbilityEffectType.DirectionalMovingAOE:
+                    case AbilityEffectType.Wind:
                         {
                             frame = Crosshair.Frame;
                             break;
                         }
-                    case AbilityEffectType.RandomMovingAOE:
+                    case AbilityEffectType.Vortex:
                     {
                         frame = Crosshair.Frame;
                         frame.rotation = casterAgent.Frame.rotation;
                         break;
                     }
-                    case AbilityEffectType.CenteredStaticAOE:
                     case AbilityEffectType.AgentMoving:
                     {
                         frame = casterAgent.LookFrame;
                         break;
                     }
-                    case AbilityEffectType.TargetedStaticAOE:
+                    case AbilityEffectType.ArtilleryPlacement:
+                    case AbilityEffectType.Hex:
+                    case AbilityEffectType.Augment:
+                    case AbilityEffectType.Heal:
                     case AbilityEffectType.Summoning:
                         {
                             frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
                             break;
                         }
-                    case AbilityEffectType.SingleTarget:
-                    {
-                        //frame = crosshair.Target.GetFrame();
+                    default:
                         break;
-                    }
                 }
             }
 
@@ -272,17 +258,18 @@ namespace TOW_Core.Abilities
         {
             switch (Template.AbilityEffectType)
             {
-                case AbilityEffectType.MovingProjectile:
-                    AddExactBehaviour<MovingProjectileScript>(entity, casterAgent);
+                case AbilityEffectType.SeekerMissile:
+                case AbilityEffectType.Missile:
+                    AddExactBehaviour<MissileScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.DirectionalMovingAOE:
-                    AddExactBehaviour<DirectionalMovingAOEScript>(entity, casterAgent);
+                case AbilityEffectType.Wind:
+                    AddExactBehaviour<WindScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.CenteredStaticAOE:
-                    AddExactBehaviour<CenteredStaticAOEScript>(entity, casterAgent);
+                case AbilityEffectType.Heal:
+                    AddExactBehaviour<HealScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.TargetedStaticAOE:
-                    AddExactBehaviour<TargetedStaticAOEScript>(entity, casterAgent);
+                case AbilityEffectType.Augment:
+                    AddExactBehaviour<AugmentScript>(entity, casterAgent);
                     break;
                 case AbilityEffectType.Summoning:
                     AddExactBehaviour<SummoningScript>(entity, casterAgent);
@@ -290,11 +277,14 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.AgentMoving:
                     AddExactBehaviour<ShadowStepScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.SingleTarget:
-                    AddExactBehaviour<TargetedStaticScript>(entity, casterAgent);
+                case AbilityEffectType.Hex:
+                    AddExactBehaviour<HexScript>(entity, casterAgent);
                     break;
-                case AbilityEffectType.RandomMovingAOE:
-                    AddExactBehaviour<RandomMovingAOEScript>(entity, casterAgent);
+                case AbilityEffectType.Vortex:
+                    AddExactBehaviour<VortexScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.ArtilleryPlacement:
+                    AddExactBehaviour<ArtilleryPlacementScript>(entity, casterAgent);
                     break;
             }
 
@@ -307,9 +297,9 @@ namespace TOW_Core.Abilities
                 else
                 {
                     Target target;
-                    if (Crosshair.CrosshairType == CrosshairType.TargetedSingle)
+                    if (Crosshair.CrosshairType == CrosshairType.SingleTarget)
                     {
-                        target = new Target { Agent = (Crosshair as TargetedCrosshair).Target };
+                        target = new Target { Agent = (Crosshair as SingleTargetCrosshair).Target };
                     }
                     else
                     {

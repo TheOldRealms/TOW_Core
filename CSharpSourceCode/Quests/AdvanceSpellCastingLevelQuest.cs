@@ -37,7 +37,7 @@ namespace TOW_Core.Quests
 
         private void SetLogs()
         {
-            _task1 = AddDiscreteLog(new TextObject("Use magic 5 times."), new TextObject("Number of casts"), _numberOfCasts, 1);
+            _task1 = AddDiscreteLog(new TextObject("Use magic 5 times."), new TextObject("Number of casts"), _numberOfCasts, 5);
         }
 
         public void IncrementCast()

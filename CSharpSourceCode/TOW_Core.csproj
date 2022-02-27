@@ -285,7 +285,11 @@
   <!-- Files & Classes -->
   <ItemGroup>
     <Compile Include="Abilities\Crosshairs\SelfCrosshair.cs" />
-    <Compile Include="Abilities\Scripts\RandomMovingAOEScript.cs" />
+    <Compile Include="Abilities\Scripts\ArtilleryPlacementScript.cs" />
+    <Compile Include="Abilities\Scripts\AugmentScript.cs" />
+    <Compile Include="Abilities\Scripts\HealScript.cs" />
+    <Compile Include="Abilities\Scripts\HexScript.cs" />
+    <Compile Include="Abilities\Scripts\VortexScript.cs" />
     <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
     <Compile Include="Abilities\SeekerController.cs" />
     <Compile Include="Abilities\SeekerParameters.cs" />
@@ -293,25 +297,20 @@
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\ConsoleComands\SpellsFromConsole.cs" />
     <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\CenteredAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\CrosshairType.cs" />
-    <Compile Include="Abilities\Crosshairs\DirectionalAOECrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\WindCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\MissileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair_VM.cs" />
     <Compile Include="Abilities\Crosshairs\Pointer.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\SingleTargetCrosshair.cs" />
     <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
-    <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
-    <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
-    <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Scripts\WindScript.cs" />
+    <Compile Include="Abilities\Scripts\MissileScript.cs" />
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
-    <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
-    <Compile Include="Abilities\Scripts\TargetedStaticScript.cs" />
     <Compile Include="Abilities\SpellBook\LoreObjectVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookMapIconVM.cs" />
     <Compile Include="Abilities\SpellBook\SpellBookScreen.cs" />

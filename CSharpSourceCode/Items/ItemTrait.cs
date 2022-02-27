@@ -19,6 +19,8 @@ namespace TOW_Core.Items
         public ResistanceTuple ResistanceTuple { get; set; }
         [XmlElement]
         public AmplifierTuple AmplifierTuple { get; set; }
+        [XmlElement]
+        public DamageProportionTuple AdditionalDamageTuple { get; set; }
         [XmlAttribute]
         public string OnHitScriptName { get; set; } = "none";
         [XmlAttribute]

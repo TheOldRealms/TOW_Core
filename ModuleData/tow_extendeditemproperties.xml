@@ -818,6 +818,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -831,6 +832,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -844,6 +846,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -857,6 +860,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -870,6 +874,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -883,6 +888,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -896,6 +902,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -909,6 +916,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -922,6 +930,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -935,6 +944,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -948,6 +958,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>
@@ -961,6 +972,7 @@
       <ItemTrait ItemTraitName="Runefang" IconName="winds_icon_45">
         <ItemTraitDescription>"Runefangs, these swords of legends are the traditional weapons of Elector Counts... lorem ipsum."</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
         <WeaponParticlePreset ParticlePrefab="magic_sparks" IsUniqueSingleCopy="true" />
       </ItemTrait>
     </ItemTraits>

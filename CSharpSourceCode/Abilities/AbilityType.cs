@@ -11,23 +11,27 @@
 
     public enum AbilityEffectType
     {
-        MovingProjectile,
-        DynamicProjectile,
-        DirectionalMovingAOE, //i.e. wind
-        RandomMovingAOE, //i.e. vortex
-        CenteredStaticAOE,
-        TargetedStaticAOE,
-        SingleTarget,
+        Missile,
+        SeekerMissile,
+        Wind,
+        Vortex,
+        Heal,
+        Augment,
+        Hex,
         Summoning,
+        ArtilleryPlacement,
         AgentMoving,
     }
 
     public enum AbilityTargetType
     {
         Self,
-        Enemies,
-        Allies,
-        All
+        SingleEnemy,
+        SingleAlly,
+        EnemiesInAOE,
+        AlliesInAOE,
+        WorldPosition,
+        GroundAtPosition
     }
 
     public enum CastType
