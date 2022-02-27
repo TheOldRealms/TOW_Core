@@ -7,9 +7,8 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class DirectionalAOECrosshair : AbilityCrosshair
     {
-        public DirectionalAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public DirectionalAOECrosshair(AbilityTemplate template) : base(template)
         {
-            _caster = caster;
             _crosshair = GameEntity.CreateEmpty(_mission.Scene, false);
             GameEntity decal = GameEntity.Instantiate(_mission.Scene, "ground_empire_wind_decal", false);
 
@@ -67,7 +66,5 @@ namespace TOW_Core.Abilities.Crosshairs
         private Vec3 _normal;
 
         private MatrixFrame _frame;
-
-        private Agent _caster;
     }
 }

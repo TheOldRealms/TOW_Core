@@ -65,6 +65,7 @@ namespace TOW_Core.Abilities.Crosshairs
                 _missionScreen.RemoveLayer(_layer);
             }
             _vm = null;
+            _movie.Release();
             _movie = null;
             _layer = null;
         }

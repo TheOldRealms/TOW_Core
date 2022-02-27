@@ -9,9 +9,8 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class CenteredAOECrosshair : AbilityCrosshair
     {
-        public CenteredAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public CenteredAOECrosshair(AbilityTemplate template) : base(template)
         {
-            _caster = caster;
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             MatrixFrame frame = _crosshair.GetFrame();
@@ -109,8 +108,6 @@ namespace TOW_Core.Abilities.Crosshairs
         public Agent[] Targets { get; private set; }
 
         private bool _isBound;
-
-        private Agent _caster;
 
         private Agent[] previousTargets;
     }

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using TaleWorlds.InputSystem;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
     public class TargetedCrosshair : ProjectileCrosshair
     {
-        public TargetedCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public TargetedCrosshair(AbilityTemplate template) : base(template)
         {
-            _caster = caster;
         }
 
         public override void Tick()
@@ -23,22 +23,26 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindTarget()
         {
-            var endPoint = _caster.LookFrame.Elevate(_caster.GetEyeGlobalHeight()).Advance(_template.MaxDistance).origin;
-            var newTarget = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
+            Vec2 mousePositionRanged = Input.MousePositionRanged;
+            Vec3 sourcePoint;
+            Vec3 targetPoint;
+            _missionScreen.ScreenPointToWorldRay(mousePositionRanged, out sourcePoint, out targetPoint);
+            float collisionDistance;
+            Agent newTarget = _mission.RayCastForClosestAgent(sourcePoint, targetPoint, out collisionDistance);
             if (newTarget == null)
             {
                 RemoveTarget();
                 return;
             }
-            if (newTarget.IsMount)
+            if (newTarget.IsMount && newTarget.RiderAgent != null)
             {
-                newTarget = newTarget.RiderAgent != null ? newTarget.RiderAgent : newTarget;
+                newTarget = newTarget.RiderAgent;
             }
-
-            var targetType = _template.AbilityTargetType;
-            bool isTargetMatching = targetType == AbilityTargetType.All ||
+            var targetType =  _template.AbilityTargetType;
+            bool isTargetMatching = collisionDistance <= _template.MaxDistance && 
+                                    (targetType == AbilityTargetType.All ||
                                     (targetType == AbilityTargetType.Enemies && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.Allies && !newTarget.IsEnemyOf(_caster));
+                                    (targetType == AbilityTargetType.Allies && !newTarget.IsEnemyOf(_caster)));
             if (isTargetMatching)
             {
                 if (newTarget != _target)
@@ -57,7 +61,6 @@ namespace TOW_Core.Abilities.Crosshairs
         private void SetTarget(Agent newTarget)
         {
             _target = newTarget;
-            _lastTargetIndex = newTarget.Index;
             if (newTarget.IsEnemyOf(_caster))
             {
                 _target.AgentVisuals.SetContourColor(enemyColor);
@@ -78,20 +81,11 @@ namespace TOW_Core.Abilities.Crosshairs
         }
 
 
-        public Int32 LastTargetIndex
-        {
-            get => _lastTargetIndex;
-        }
-
         public Agent Target
         {
             get => _target;
         }
 
-        private Int32 _lastTargetIndex = -1;
-
         private Agent _target;
-
-        private Agent _caster;
     }
 }

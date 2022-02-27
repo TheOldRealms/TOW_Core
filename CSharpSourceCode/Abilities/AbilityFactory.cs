@@ -79,7 +79,7 @@ namespace TOW_Core.Abilities
             return ability;
         }
 
-        public static AbilityCrosshair InitializeCrosshair(AbilityTemplate template, Agent caster)
+        public static AbilityCrosshair InitializeCrosshair(AbilityTemplate template)
         {
             AbilityCrosshair crosshair = null;
             switch (template.CrosshairType)
@@ -91,27 +91,27 @@ namespace TOW_Core.Abilities
                     }
                 case CrosshairType.TargetedSingle:
                     {
-                        crosshair = new TargetedCrosshair(template, caster);
+                        crosshair = new TargetedCrosshair(template);
                         break;
                     }
                 case CrosshairType.DirectionalAOE:
                     {
-                        crosshair = new DirectionalAOECrosshair(template, caster);
+                        crosshair = new DirectionalAOECrosshair(template);
                         break;
                     }
                 case CrosshairType.CenteredAOE:
                     {
-                        crosshair = new CenteredAOECrosshair(template, caster);
+                        crosshair = new CenteredAOECrosshair(template);
                         break;
                     }
                 case CrosshairType.Pointer:
                     {
-                        crosshair = new Pointer(template, caster);
+                        crosshair = new Pointer(template);
                         break;
                     }
                 case CrosshairType.TargetedAOE:
                     {
-                        crosshair = new TargetedAOECrosshair(template, caster);
+                        crosshair = new TargetedAOECrosshair(template);
                         break;
                     }
                 case CrosshairType.Self:

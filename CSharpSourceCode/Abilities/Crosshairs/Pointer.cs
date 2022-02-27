@@ -6,9 +6,8 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class Pointer : AbilityCrosshair
     {
-        public Pointer(AbilityTemplate template, Agent caster) : base(template)
+        public Pointer(AbilityTemplate template) : base(template)
         {
-            _caster = caster;
             _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
             MatrixFrame frame = _crosshair.GetFrame();
@@ -54,7 +53,5 @@ namespace TOW_Core.Abilities.Crosshairs
         private Vec3 _position;
         
         private Vec3 _normal;
-        
-        private Agent _caster;
     }
 }

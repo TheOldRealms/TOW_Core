@@ -80,7 +80,7 @@ namespace TOW_Core.Abilities
         {
             foreach (var ability in KnownAbilities)
             {
-                AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template, Agent.Main);
+                AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template);
                 ability.SetCrosshair(crosshair);
             }
             SelectAbility(0);
