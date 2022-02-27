@@ -1537,7 +1537,9 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
+      <string>PlaceGreatCannon</string>
       <string>Dart</string>
+      <string>PlaceMortar</string>
       <string>FlamingSwords</string>
     </Abilities>
     <Attributes>

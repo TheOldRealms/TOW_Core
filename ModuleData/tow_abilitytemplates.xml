@@ -565,4 +565,45 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate
+    StringID="PlaceGreatCannon"
+    Name="Place Great Cannon"
+    SpriteName="summonskeleton_icon"
+    CoolDown="1"
+    WindsOfMagicCost="0"
+    BaseMisCastChance="0.0"
+    Duration="1"
+    Radius="2"
+    AbilityType="Artillery"
+    AbilityEffectType="Summoning"
+    BaseMovementSpeed="0"
+    TickInterval="0.2"
+    TriggerType="TickOnce"
+    HasLight="false"
+    LightIntensity="0"
+    LightRadius="0"
+    LightFlickeringMagnitude="0"
+    LightFlickeringInterval="0"
+    ShadowCastEnabled="false"
+    ParticleEffectPrefab="none"
+    ParticleEffectSizeModifier="1"
+    SoundEffectToPlay="none"
+    ShouldSoundLoopOverDuration="true"
+    CastType="Instant"
+    CastTime="0"
+    AnimationActionName="act_release_heavy_thrown"
+    TriggeredEffectID="place_greatcannon"
+    Offset="10"
+    AbilityTargetType="Self"
+    CrosshairType="Pointer"
+    MinDistance="1"
+    MaxDistance="30"
+    TargetCapturingRadius="2.5">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
 </ArrayOfAbilityTemplate>
