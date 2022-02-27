@@ -79,6 +79,22 @@
     </Equipments>
   </NPCCharacter>
 
+    <!-- Nuln Master Engineer -->
+  <NPCCharacter id="tor_nulnengineernpc_empire" name="{=!}Master Engineer" is_template="true" voice="ironic" default_group="Infantry" is_hero="false" culture="Culture.empire" occupation="Special">
+    <face>
+      <face_key_template value="BodyProperty.villager_empire" />
+    </face>
+    <Traits>
+      <Trait id="RomanHair" value="1" />
+      <Trait id="Valor" value="-1" />
+      <Trait id="Calculating" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_light_wizard_template" />
+      <EquipmentSet id="tor_light_wizard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+
     <!-- VC Spell Trainer -->
   <NPCCharacter id="tor_spelltrainer_vc_0" name="{=!}Dark Magister" is_template="true" voice="ironic" default_group="Infantry" is_hero="false" culture="Culture.khuzait" occupation="Special">
     <face>
