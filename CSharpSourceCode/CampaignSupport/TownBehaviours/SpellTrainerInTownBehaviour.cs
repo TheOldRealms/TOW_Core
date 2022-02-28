@@ -291,17 +291,21 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void OnChooseLore(List<InquiryElement> obj)
         {
             var choice = obj[0].Identifier as LoreObject;
+            var info = Hero.MainHero.GetExtendedInfo();
             if (choice != null)
             {
                 Hero.MainHero.AddKnownLore(choice.ID);
-                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
+                if(info.SpellCastingLevel < SpellCastingLevel.Entry) Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
                 InformationManager.AddQuickInformation(new TextObject("Successfully learned lore: " + choice.Name));
             }
             InformationManager.HideInquiry();
-            var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
-            if (quest != null) quest.CompleteQuestWithSuccess();
-            quest = AdvanceSpellCastingLevelQuest.GetRandomQuest(true);
-            if (quest != null) quest.StartQuest();
+            if(info.SpellCastingLevel < SpellCastingLevel.Master)
+            {
+                var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
+                if (quest != null) quest.CompleteQuestWithSuccess();
+                quest = AdvanceSpellCastingLevelQuest.GetRandomQuest(true);
+                if (quest != null) quest.StartQuest();
+            }
         }
 
         private void OnCancelLore(List<InquiryElement> obj)
