@@ -229,11 +229,16 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool specializelorecondition()
         {
             var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
+            var partnerCulture = CharacterObject.OneToOneConversationCharacter.Culture.StringId;
+            if (Hero.MainHero.IsVampire() && partnerCulture == "empire") return false;
             var info = Hero.MainHero.GetExtendedInfo();
             var possibleLores = new List<LoreObject>();
             foreach (var item in LoreObject.GetAll())
             {
-                if (item.ID != "MinorMagic" && !item.DisabledForTrainersWithCultures.Contains(CharacterObject.OneToOneConversationCharacter.Culture.StringId) && !info.HasKnownLore(item.ID)) possibleLores.Add(item);
+                if (item.ID != "MinorMagic" && 
+                    !item.DisabledForTrainersWithCultures.Contains(partnerCulture) && 
+                    !info.HasKnownLore(item.ID) && 
+                    !(item.IsRestrictedToVampires && !Hero.MainHero.IsVampire())) possibleLores.Add(item);
             }
             bool flag = false;
             if (quest != null && possibleLores.Count > 0)
