@@ -76,6 +76,10 @@ namespace TOW_Core.Abilities
             {
                 ability = new SpecialMove(template);
             }
+            else if(template.AbilityType == AbilityType.ItemBound)
+            {
+                ability = new ItemBoundAbility(template);
+            }
             return ability;
         }
 

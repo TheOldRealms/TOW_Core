@@ -1,7 +1,10 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Abilities.Crosshairs;
 using TOW_Core.Abilities.Scripts;
 using TOW_Core.Utilities;
@@ -25,13 +28,13 @@ namespace TOW_Core.Abilities
                         {
                             ability.OnCastStart += OnCastStart;
                             ability.OnCastComplete += OnCastComplete;
-                            if (ability is Spell || ability is Prayer)
-                            {
-                                _knownAbilities.Add(ability);
-                            }
-                            else if(ability is SpecialMove)
+                            if (ability is SpecialMove)
                             {
                                 _specialMove = (SpecialMove)ability;
+                            }
+                            else
+                            {
+                                if(ability.Template.AbilityType != AbilityType.ItemBound) _knownAbilities.Add(ability);
                             }
                         }
                         else
@@ -45,34 +48,61 @@ namespace TOW_Core.Abilities
                     }
                 }
                 if (Agent.IsVampire() && _specialMove == null) _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent);
-                if (_knownAbilities.Count > 0)
+            }
+            if (Agent.CanPlaceArtillery())
+            {
+                if(Agent.GetHero() != null)
                 {
-                    SelectAbility(0);
+                    var artilleryRoster = agent.GetHero().PartyBelongedTo.GetArtilleryItems();
+                    if (artilleryRoster.Count > 0)
+                    {
+                        for (int i = 0; i < artilleryRoster.Count; i++)
+                        {
+                            var artillery = artilleryRoster[i];
+                            var ability = (ItemBoundAbility)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
+                            if (ability != null)
+                            {
+                                ability.OnCastStart += OnCastStart;
+                                ability.OnCastComplete += OnCastComplete;
+                                ability.SetChargeNum(artillery.Amount);
+                                _knownAbilities.Add(ability);
+                            }
+                        }
+                    }
                 }
+                else if(Game.Current.GameType is CustomGame)
+                {
+                    var ability = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
+                    if (ability != null)
+                    {
+                        ability.OnCastStart += OnCastStart;
+                        ability.OnCastComplete += OnCastComplete;
+                        ability.SetChargeNum(2);
+                        _knownAbilities.Add(ability);
+                    }
+                }
+            }
+            if (_knownAbilities.Count > 0)
+            {
+                SelectAbility(0);
             }
         }
 
-        private void OnCastStart()
+        private void OnCastStart(Ability ability)
         {
-            if (Agent == Agent.Main)
+            var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+            if (manager != null)
             {
-                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-                if (manager != null)
-                {
-                    manager.OnCastStart();
-                }
+                manager.OnCastStart(ability, Agent);
             }
         }
 
-        private void OnCastComplete()
+        private void OnCastComplete(Ability ability)
         {
-            if(Agent == Agent.Main)
+            var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+            if (manager != null)
             {
-                var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
-                if(manager != null)
-                {
-                    manager.OnCastComplete();
-                }
+                manager.OnCastComplete(ability, Agent);
             }
         }
 

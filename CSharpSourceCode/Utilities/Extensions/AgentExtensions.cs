@@ -11,6 +11,7 @@ using TOW_Core.Battle.Damage;
 using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade.CustomBattle;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -53,6 +54,11 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsSpellCaster(this Agent agent)
         {
             return agent.GetAttributes().Contains("SpellCaster");
+        }
+
+        public static bool CanPlaceArtillery(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("CanPlaceArtillery");
         }
 
         public static bool HasAttribute(this Agent agent, string attributeName)
@@ -300,13 +306,26 @@ namespace TOW_Core.Utilities.Extensions
             Hero hero = null;
             if (Game.Current.GameType is Campaign)
             {
-                var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
-                if (list != null && list.Count() > 0)
-                {
-                    hero = list.First();
-                }
+                hero = Hero.FindFirst(x => x.StringId == agent.Character.StringId);
             }
             return hero;
+        }
+
+        public static int GetPlaceableArtilleryCount(this Agent agent)
+        {
+            int count = 0;
+            if (agent.CanPlaceArtillery())
+            {
+                if(Game.Current.GameType is Campaign && agent.GetHero() != null)
+                {
+                    count = agent.GetHero().GetPlaceableArtilleryCount();
+                }
+                else if(Game.Current.GameType is CustomGame)
+                {
+                    count = 5;
+                }
+            }
+            return count;
         }
 
         public static List<string> GetAbilities(this Agent agent)

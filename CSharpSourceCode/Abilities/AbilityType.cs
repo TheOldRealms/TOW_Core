@@ -19,6 +19,7 @@
         Augment,
         Hex,
         Summoning,
+        Bombardment,
         ArtilleryPlacement,
         AgentMoving,
     }

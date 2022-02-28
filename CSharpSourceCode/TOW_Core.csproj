@@ -284,6 +284,7 @@
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\ItemBoundAbility.cs" />
     <Compile Include="Abilities\Crosshairs\SelfCrosshair.cs" />
     <Compile Include="Abilities\Scripts\ArtilleryPlacementScript.cs" />
     <Compile Include="Abilities\Scripts\AugmentScript.cs" />
@@ -466,7 +467,7 @@
     <Compile Include="CampaignSupport\TORCampaignGameManager.cs" />
     <Compile Include="CampaignSupport\TORCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
-    <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
+    <Compile Include="CharacterCreation\TORCharacterCreationContent.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />
     <Compile Include="GameTexts\TOWTextOverride.cs" />
     <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />

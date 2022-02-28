@@ -26,7 +26,7 @@ namespace TOW_Core.HarmonyPatches
         {
             CharacterCreationState gameState = Game.Current.GameStateManager.CreateState<CharacterCreationState>(new object[]
             {
-                new TOWCharacterCreationContent()
+                new TORCharacterCreationContent()
             });
             Game.Current.GameStateManager.CleanAndPushState(gameState, 0);
             return false;

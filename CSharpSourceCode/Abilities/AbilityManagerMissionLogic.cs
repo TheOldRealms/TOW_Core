@@ -37,8 +37,16 @@ namespace TOW_Core.Abilities
         private SummonedCombatant _defenderSummoningCombatant;
         private SummonedCombatant _attackerSummoningCombatant;
         private readonly float DamagePortionForChargingSpecialMove = 0.25f;
+        private Dictionary<Team, int> _artillerySlots = new Dictionary<Team, int>();
 
         public AbilityModeState CurrentState => _currentState;
+
+        public int GetArtillerySlotsLeftForTeam(Team team)
+        {
+            int slotsLeft = 0;
+            _artillerySlots.TryGetValue(team, out slotsLeft);
+            return slotsLeft;
+        }
 
         public override void OnFormationUnitsSpawned(Team team)
         {
@@ -51,6 +59,27 @@ namespace TOW_Core.Abilities
             {
                 var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
                 _defenderSummoningCombatant = new SummonedCombatant(team, culture);
+            }
+            RefreshMaxArtilleryCountForTeam(team);
+        }
+
+        private void RefreshMaxArtilleryCountForTeam(Team team)
+        {
+            if (_artillerySlots.ContainsKey(team))
+            {
+                _artillerySlots[team] = 0;
+                foreach(var agent in team.TeamAgents)
+                {
+                    if (agent.CanPlaceArtillery())
+                    {
+                        _artillerySlots[team] += agent.GetPlaceableArtilleryCount();
+                    }
+                }
+            }
+            else
+            {
+                _artillerySlots.Add(team, 0);
+                RefreshMaxArtilleryCountForTeam(team);
             }
         }
 
@@ -100,22 +129,35 @@ namespace TOW_Core.Abilities
             }
         }
 
-        internal void OnCastComplete()
+        internal void OnCastComplete(Ability ability, Agent agent)
         {
-            if(CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
-            if(Game.Current.GameType is Campaign)
+            if(ability is ItemBoundAbility && ability.Template.AbilityEffectType == AbilityEffectType.ArtilleryPlacement)
             {
-                var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
-                if(quest != null)
+                if (_artillerySlots.ContainsKey(agent.Team))
                 {
-                    quest.IncrementCast();
+                    _artillerySlots[agent.Team]--;
+                }
+            }
+            if(agent == Agent.Main)
+            {
+                if (CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
+                if (Game.Current.GameType is Campaign)
+                {
+                    var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
+                    if (quest != null)
+                    {
+                        quest.IncrementCast();
+                    }
                 }
             }
         }
 
-        internal void OnCastStart() 
+        internal void OnCastStart(Ability ability, Agent agent) 
         {
-            if(CurrentState == AbilityModeState.Idle) _currentState = AbilityModeState.Casting;
+            if(agent == Agent.Main)
+            {
+                if (CurrentState == AbilityModeState.Idle) _currentState = AbilityModeState.Casting;
+            }
         }
 
         private void UpdateWieldedItems()

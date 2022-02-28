@@ -229,12 +229,19 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool specializelorecondition()
         {
             var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
-            bool flag = false;
-            if (quest != null)
+            var info = Hero.MainHero.GetExtendedInfo();
+            var possibleLores = new List<LoreObject>();
+            foreach (var item in LoreObject.GetAll())
             {
-                flag = Hero.MainHero.GetExtendedInfo().KnownLores.Count == 1 && Hero.MainHero.GetExtendedInfo().KnownLores[0].ID == "MinorMagic" && quest.ReadyToAdvance;
-                if (!flag && Hero.MainHero.IsVampire() && Hero.MainHero.GetExtendedInfo().KnownLores.Count <= 2 && quest.ReadyToAdvance) flag = true;
+                if (item.ID != "MinorMagic" && !item.DisabledForTrainersWithCultures.Contains(CharacterObject.OneToOneConversationCharacter.Culture.StringId) && !info.HasKnownLore(item.ID)) possibleLores.Add(item);
             }
+            bool flag = false;
+            if (quest != null && possibleLores.Count > 0)
+            {
+                flag = info.KnownLores.Count == 1 && info.KnownLores[0].ID == "MinorMagic" && quest.ReadyToAdvance;
+                if (!flag && Hero.MainHero.IsVampire() && quest.ReadyToAdvance) flag = true;
+            }
+            else if(Hero.MainHero.IsVampire() && possibleLores.Count > 0 && info.SpellCastingLevel == SpellCastingLevel.Master) flag = true;
             if (flag)
             {
                 string text = "";
