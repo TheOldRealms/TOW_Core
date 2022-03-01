@@ -30,7 +30,6 @@ using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
-using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
@@ -172,11 +171,10 @@ namespace TOW_Core
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
             mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehavior(new FireArmsMissionLogic());
+            mission.AddMissionBehavior(new BlackPowderWeaponMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
-            mission.AddMissionBehavior(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
             if (Game.Current.GameType is Campaign)

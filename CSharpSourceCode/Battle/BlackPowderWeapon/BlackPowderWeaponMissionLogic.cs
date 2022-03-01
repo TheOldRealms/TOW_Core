@@ -10,13 +10,13 @@ using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Battle.FireArms
 {
-    public class FireArmsMissionLogic : MissionLogic
+    public class BlackPowderWeaponMissionLogic : MissionLogic
     {
         private int[] _soundIndex = new int[5];
         private Random _random;
         private bool areEnemiesAlarmed = false;
 
-        public FireArmsMissionLogic()
+        public BlackPowderWeaponMissionLogic()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -28,6 +28,16 @@ namespace TOW_Core.Battle.FireArms
         public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
             var itemUsage = shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage;
+            if (shooterAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Thrown)
+            {
+                Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
+                                                                               m.Weapon.Item.StringId.Contains("hand_grenade") &&
+                                                                               !m.Entity.HasScriptOfType<HandGrenadeScript>());
+                if (grenade != null)
+                {
+                    AddHandGrenadeScipt(grenade, "grenade_explosion");
+                }
+            }
             if (itemUsage.Contains("handgun") || itemUsage.Contains("pistol"))
             {
                 var frame = new MatrixFrame(orientation, position);
@@ -77,19 +87,25 @@ namespace TOW_Core.Battle.FireArms
             }
         }
 
-        private void DoBlunderbussShot(Agent shooterAgent, Vec3 position, Mat3 orientation, short shrapnelAmount)
+        /// <summary>
+        /// The script will check each ammo weapon (that fits current usage of shooter's weapon) for bullets to do blunderbuss shot. 
+        /// It can use multiple ammo weapons to collect required amount of bullets.
+        /// </summary>
+        /// <param name="requiredAmmoAmount">Max amount of bullets to do blunderbuss shot.</param>
+        private void DoBlunderbussShot(Agent shooterAgent, Vec3 shotPosition, Mat3 shotOrientation, short requiredAmmoAmount)
         {
             MissionWeapon weapon = MissionWeapon.Invalid;
-            short amountLeft = 0;
+            short foundAmmoAmount = 0;
             for (EquipmentIndex index = EquipmentIndex.WeaponItemBeginSlot; index < EquipmentIndex.NumAllWeaponSlots; index++)
             {
                 weapon = shooterAgent.Equipment[index];
+                // Weapon hit points mean amount of ammo
                 if (weapon.CurrentUsageItem.WeaponClass == shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass && weapon.HitPoints > 0)
                 {
-                    amountLeft += Math.Min(shrapnelAmount, weapon.HitPoints);
-                    short newAmount = (short)(weapon.HitPoints - Math.Min(amountLeft, weapon.HitPoints));
+                    foundAmmoAmount += Math.Min(requiredAmmoAmount, weapon.HitPoints);
+                    short newAmount = (short)(weapon.HitPoints - Math.Min(foundAmmoAmount, weapon.HitPoints));
                     shooterAgent.SetWeaponAmountInSlot(index, newAmount, false);
-                    if (amountLeft == shrapnelAmount)
+                    if (foundAmmoAmount == requiredAmmoAmount)
                     {
                         break;
                     }
@@ -102,11 +118,11 @@ namespace TOW_Core.Battle.FireArms
 
             WeaponComponentData weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
             float scattering = 1f / (weaponData.Accuracy * 1.2f);
-            while (amountLeft > 0)
+            while (foundAmmoAmount > 0)
             {
-                amountLeft--;
-                var _orientation = GetRandomOrientationForBlunderbass(orientation, scattering);
-                Mission.AddCustomMissile(shooterAgent, weapon, position, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                foundAmmoAmount--;
+                var _orientation = GetRandomOrientationForBlunderbass(shotOrientation, scattering);
+                Mission.AddCustomMissile(shooterAgent, weapon, shotPosition, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
             }
 
         }
@@ -163,6 +179,17 @@ namespace TOW_Core.Battle.FireArms
                 grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
                 grenadeEntity.CallScriptCallbacks();
             }
+        }
+
+        private void AddHandGrenadeScipt(Mission.Missile grenade, string triggeredEffectName)
+        {
+            GameEntity grenadeEntity = grenade.Entity;
+            grenadeEntity.CreateAndAddScriptComponent("HandGrenadeScript");
+            HandGrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<HandGrenadeScript>();
+            grenadeScript.SetShooterAgent(grenade.ShooterAgent);
+            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
+            grenadeScript.SetMissile(grenade);
+            grenadeEntity.CallScriptCallbacks();
         }
     }
 }
