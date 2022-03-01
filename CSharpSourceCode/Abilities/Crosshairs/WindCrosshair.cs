@@ -7,7 +7,7 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class WindCrosshair : AbilityCrosshair
     {
-        public WindCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public WindCrosshair(AbilityTemplate template) : base(template)
         {
             _crosshair = GameEntity.CreateEmpty(_mission.Scene, false);
             GameEntity decal = GameEntity.Instantiate(_mission.Scene, "ground_empire_wind_decal", false);

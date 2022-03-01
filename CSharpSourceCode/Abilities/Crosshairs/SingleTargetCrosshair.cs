@@ -1,4 +1,5 @@
 ﻿using System;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Screen;
@@ -7,7 +8,7 @@ namespace TOW_Core.Abilities.Crosshairs
 {
     public class SingleTargetCrosshair : MissileCrosshair
     {
-        public SingleTargetCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public SingleTargetCrosshair(AbilityTemplate template) : base(template)
         {
         }
 
@@ -40,10 +41,9 @@ namespace TOW_Core.Abilities.Crosshairs
                 newTarget = newTarget.RiderAgent;
             }
             var targetType =  _template.AbilityTargetType;
-            bool isTargetMatching = collisionDistance <= _template.MaxDistance && 
-                                    (targetType == AbilityTargetType.All ||
-                                    (targetType == AbilityTargetType.Enemies && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.Allies && !newTarget.IsEnemyOf(_caster)));
+            bool isTargetMatching = collisionDistance <= _template.MaxDistance &&
+                                    (targetType == AbilityTargetType.EnemiesInAOE && newTarget.IsEnemyOf(_caster)) ||
+                                    (targetType == AbilityTargetType.AlliesInAOE && !newTarget.IsEnemyOf(_caster)); 
             if (isTargetMatching)
             {
                 if (newTarget != _target)

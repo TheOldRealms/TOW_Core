@@ -95,12 +95,12 @@ namespace TOW_Core.Abilities
                     }
                 case CrosshairType.SingleTarget:
                     {
-                        crosshair = new SingleTargetCrosshair(template, caster);
+                        crosshair = new SingleTargetCrosshair(template);
                         break;
                     }
                 case CrosshairType.Wind:
                     {
-                        crosshair = new WindCrosshair(template, caster);
+                        crosshair = new WindCrosshair(template);
                         break;
                     }
                 case CrosshairType.Pointer:
