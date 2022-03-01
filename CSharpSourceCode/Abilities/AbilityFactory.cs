@@ -76,6 +76,10 @@ namespace TOW_Core.Abilities
             {
                 ability = new SpecialMove(template);
             }
+            else if(template.AbilityType == AbilityType.ItemBound)
+            {
+                ability = new ItemBoundAbility(template);
+            }
             return ability;
         }
 
@@ -84,24 +88,19 @@ namespace TOW_Core.Abilities
             AbilityCrosshair crosshair = null;
             switch (template.CrosshairType)
             {
-                case CrosshairType.Projectile:
+                case CrosshairType.Missile:
                     {
-                        crosshair = new ProjectileCrosshair(template);
+                        crosshair = new MissileCrosshair(template);
                         break;
                     }
-                case CrosshairType.TargetedSingle:
+                case CrosshairType.SingleTarget:
                     {
-                        crosshair = new TargetedCrosshair(template);
+                        crosshair = new SingleTargetCrosshair(template, caster);
                         break;
                     }
-                case CrosshairType.DirectionalAOE:
+                case CrosshairType.Wind:
                     {
-                        crosshair = new DirectionalAOECrosshair(template);
-                        break;
-                    }
-                case CrosshairType.CenteredAOE:
-                    {
-                        crosshair = new CenteredAOECrosshair(template);
+                        crosshair = new WindCrosshair(template, caster);
                         break;
                     }
                 case CrosshairType.Pointer:

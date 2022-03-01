@@ -409,6 +409,17 @@
             <ListPanel Id="BottomInfoBar" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginTop="10">
               <Children>
 
+                <HintWidget DataSource="{ArtilleryHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="5" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" >
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="33" VerticalAlignment="Center" Sprite="cannon_icon" MarginBottom="3" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="65" SuggestedHeight="40" VerticalAlignment="Center" PositionXOffset="-5" PositionYOffset="2" Brush="MapTextBrushWithAnim" Text="@ArtilleryText" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
                 <HintWidget Id="PartySpeedLabel" DataSource="{SpeedHint}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
                   <Children>
                     <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" IsEnabled="false">

@@ -39,9 +39,10 @@ namespace TOW_Core.Abilities.Scripts
         protected override bool MovesEntity() => true;
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.Summoning;
+            return _ability.Template.AbilityEffectType == AbilityEffectType.Missile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.SeekerMissile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Vortex ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Wind;
         }
 
         protected override void OnInit()

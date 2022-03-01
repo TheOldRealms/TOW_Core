@@ -69,17 +69,12 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             switch (_targetType)
             {
-                case AbilityTargetType.All:
-                    {
-                        Targets = _mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
-                        break;
-                    }
-                case AbilityTargetType.Allies:
+                case AbilityTargetType.AlliesInAOE:
                     {
                         Targets = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerTeam).ToArray();
                         break;
                     }
-                case AbilityTargetType.Enemies:
+                case AbilityTargetType.EnemiesInAOE:
                     {
                         Targets = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerTeam).ToArray();
                         break;
@@ -98,17 +93,12 @@ namespace TOW_Core.Abilities.Crosshairs
                     {
                         switch (_targetType)
                         {
-                            case AbilityTargetType.All:
+                            case AbilityTargetType.AlliesInAOE:
                                 {
                                     agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
                                     break;
                                 }
-                            case AbilityTargetType.Allies:
-                                {
-                                    agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
-                                    break;
-                                }
-                            case AbilityTargetType.Enemies:
+                            case AbilityTargetType.EnemiesInAOE:
                                 {
                                     agent.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor, true);
                                     break;

@@ -6,7 +6,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public class RandomMovingAOEScript : AbilityScript
+    public class VortexScript : AbilityScript
     {
         private float _counter = 1f;
         private float _maxDeviation;

@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Abilities.SpellBook;
 using TOW_Core.ObjectDataExtensions;
 
@@ -31,6 +33,22 @@ namespace TOW_Core.Utilities.Extensions
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
             return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.StringId);
+        }
+
+        public static int GetPlaceableArtilleryCount(this Hero hero)
+        {
+            int count = 0;
+            if (hero.CanPlaceArtillery())
+            {
+                var engineering = hero.GetSkillValue(DefaultSkills.Engineering);
+                count = (int)Math.Truncate((decimal)engineering / 50);
+            }
+            return count;
+        }
+
+        public static bool CanPlaceArtillery(this Hero hero)
+        {
+            return hero.HasAttribute("CanPlaceArtillery");
         }
 
         public static void AddAbility(this Hero hero, string ability)

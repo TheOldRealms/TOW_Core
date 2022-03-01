@@ -25,7 +25,7 @@ namespace TOW_Core.CampaignSupport
         {
             CharacterCreationState gameState = Game.Current.GameStateManager.CreateState<CharacterCreationState>(new object[]
             {
-                new TOW_Core.CharacterCreation.TOWCharacterCreationContent()
+                new TOW_Core.CharacterCreation.TORCharacterCreationContent()
             });
             Game.Current.GameStateManager.CleanAndPushState(gameState, 0);
         }

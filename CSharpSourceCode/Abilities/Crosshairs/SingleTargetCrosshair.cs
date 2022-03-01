@@ -1,12 +1,13 @@
-﻿using TaleWorlds.InputSystem;
+﻿using System;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Screen;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class TargetedCrosshair : ProjectileCrosshair
+    public class SingleTargetCrosshair : MissileCrosshair
     {
-        public TargetedCrosshair(AbilityTemplate template) : base(template)
+        public SingleTargetCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
         }
 

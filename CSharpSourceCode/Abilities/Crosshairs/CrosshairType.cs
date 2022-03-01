@@ -3,11 +3,10 @@
     public enum CrosshairType
     {
         Self,
-        Projectile,
-        TargetedSingle,
+        Missile,
+        SingleTarget,
         TargetedAOE,
-        DirectionalAOE,
-        CenteredAOE,
+        Wind,
         Pointer
     }
 }

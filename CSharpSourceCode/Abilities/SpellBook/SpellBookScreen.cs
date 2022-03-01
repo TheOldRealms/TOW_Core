@@ -11,6 +11,7 @@ using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities.SpellBook
 {
@@ -43,7 +44,7 @@ namespace TOW_Core.Abilities.SpellBook
             List<Hero> heroes = new List<Hero>();
             foreach (var hero in heromembers)
             {
-                heroes.Add(hero.Character.HeroObject);
+                if(hero.Character.HeroObject.IsSpellCaster()) heroes.Add(hero.Character.HeroObject);
             }
             if(heroes.Count == 0) heroes.Add(Hero.MainHero);
             _vm = new SpellBookVM(CloseScreen, heroes, _state.IsTrainerMode, _state.TrainerCulture);
