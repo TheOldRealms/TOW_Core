@@ -81,13 +81,6 @@ namespace TOW_Core.HarmonyPatches
             {
                 if(attacker==Agent.Main || victim==Agent.Main)
                     TORDamageDisplay.DisplayDamageResult(resultDamage, damageCategories);
-                else
-                {
-                    if (attacker.Team.IsPlayerAlly)
-                    {
-                        TORDamageDisplay.DisplayDamageResult(resultDamage,damageCategories);
-                    }
-                }
             }
             return true;
         }
