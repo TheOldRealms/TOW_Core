@@ -62,11 +62,13 @@ namespace TOW_Core.ObjectDataExtensions
         public readonly float[] DamageProportions;
         public readonly float[] DamagePercentages;
         public readonly float[] ResistancePercentages;
-        public AgentPropertyContainer(float[] damageProportions, float[] damagePercentages, float[] resistancePercentages)
+        public readonly float[] AdditionalDamagePercentages;
+        public AgentPropertyContainer(float[] damageProportions, float[] damagePercentages, float[] resistancePercentages, float[] additionalDamagePercentages)
         {
             DamageProportions = damageProportions;
             DamagePercentages = damagePercentages;
             ResistancePercentages = resistancePercentages;
+            AdditionalDamagePercentages = additionalDamagePercentages;
         }
     }
     
