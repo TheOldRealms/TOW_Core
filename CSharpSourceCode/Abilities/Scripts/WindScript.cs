@@ -3,7 +3,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public class DirectionalMovingAOEScript : AbilityScript
+    public class WindScript : AbilityScript
     {
 
         protected override MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)

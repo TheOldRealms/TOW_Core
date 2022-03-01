@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public class TargetedStaticAOEScript : AbilityScript
+    public class HealScript : AbilityScript
     {
-
     }
 }

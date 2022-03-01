@@ -15,16 +15,17 @@ using TaleWorlds.CampaignSystem.GameState;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities.SpellBook;
 
 namespace TOW_Core.CharacterCreation
 {
-    class TOWCharacterCreationContent : CharacterCreationContentBase
+    class TORCharacterCreationContent : CharacterCreationContentBase
     {
         private List<CharacterCreationOption> _options;
         private int _maxStageNumber = 3;
         private List<CharacterAttribute> _attributes = new List<CharacterAttribute>();
 
-        public TOWCharacterCreationContent()
+        public TORCharacterCreationContent()
         {
             try
             {
@@ -147,11 +148,20 @@ namespace TOW_Core.CharacterCreation
         private void OnOptionFinalize(string id)
         {
             var selectedOption = _options.Find(x => x.Id == id);
-            if(selectedOption.OptionText == "Bright Order Initiate")
+            if (selectedOption.OptionText == "Engineering Student")
+            {
+                Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAttribute("CanPlaceArtillery");
+            }
+
+            if (selectedOption.OptionText == "Bright Order Initiate")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("Fireball");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("LoreOfFire");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
             if (selectedOption.OptionText == "Warrior Priest Acolyte")
             {
@@ -164,6 +174,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAbility("SummonSkeleton");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("Necromancy");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
             else if (selectedOption.OptionText == "Vampiric Nobility")
             {
@@ -173,6 +186,9 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddAbility("WindOfDeath");
+                Hero.MainHero.AddKnownLore("MinorMagic");
+                Hero.MainHero.AddKnownLore("Necromancy");
+                Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
             }
         }
 

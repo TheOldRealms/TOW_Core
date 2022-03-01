@@ -11,6 +11,7 @@ using TOW_Core.Battle.Damage;
 using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade.CustomBattle;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -55,6 +56,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("SpellCaster");
         }
 
+        public static bool CanPlaceArtillery(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("CanPlaceArtillery");
+        }
+
         public static bool HasAttribute(this Agent agent, string attributeName)
         {
             return agent.GetAttributes().Contains(attributeName);
@@ -87,9 +93,9 @@ namespace TOW_Core.Utilities.Extensions
             if (agent.IsMount)
                 return new AgentPropertyContainer();
             
-            float[] damageProportions = new float[(int) DamageType.All+1];
-            float[] damageAmplifications = new float[(int) DamageType.All+1];
-            float[] damageResistances = new float[(int) DamageType.All+1];
+            float[] damageProportions = new float[(int) DamageType.All + 1];
+            float[] damageAmplifications = new float[(int) DamageType.All + 1];
+            float[] damageResistances = new float[(int) DamageType.All + 1];
             
             #region Unit
             if (!agent.IsHero)
@@ -119,10 +125,10 @@ namespace TOW_Core.Utilities.Extensions
                             damageAmplifications[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
                         }
                     }
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 }
                 if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
@@ -146,6 +152,14 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
+                    }
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
+                    {
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }
@@ -176,11 +190,11 @@ namespace TOW_Core.Utilities.Extensions
                         damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                     
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
 
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 
                     //weapon properties
@@ -231,6 +245,14 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
+                    }
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
+                    {
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }
@@ -284,13 +306,26 @@ namespace TOW_Core.Utilities.Extensions
             Hero hero = null;
             if (Game.Current.GameType is Campaign)
             {
-                var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
-                if (list != null && list.Count() > 0)
-                {
-                    hero = list.First();
-                }
+                hero = Hero.FindFirst(x => x.StringId == agent.Character.StringId);
             }
             return hero;
+        }
+
+        public static int GetPlaceableArtilleryCount(this Agent agent)
+        {
+            int count = 0;
+            if (agent.CanPlaceArtillery())
+            {
+                if(Game.Current.GameType is Campaign && agent.GetHero() != null)
+                {
+                    count = agent.GetHero().GetPlaceableArtilleryCount();
+                }
+                else if(Game.Current.GameType is CustomGame)
+                {
+                    count = 5;
+                }
+            }
+            return count;
         }
 
         public static List<string> GetAbilities(this Agent agent)

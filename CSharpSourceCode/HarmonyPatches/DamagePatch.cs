@@ -66,8 +66,8 @@ namespace TOW_Core.HarmonyPatches
                 if (damageCategories[i] > 0)
                 {
                     damagePercentages[i] -= resistancePercentages[i];
-                    damageCategories[i] *=1+ damagePercentages[i];
-                    resultDamage +=(int) damageCategories[i];
+                    damageCategories[i] *= 1 + damagePercentages[i];
+                    resultDamage += (int) damageCategories[i];
                 }
             }
 

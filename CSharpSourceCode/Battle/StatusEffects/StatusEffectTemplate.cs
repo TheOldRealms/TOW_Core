@@ -19,6 +19,8 @@ namespace TOW_Core.Battle.StatusEffects
         public string ParticleId { get; set; }
         [XmlAttribute("particle_intensity")]
         public ParticleIntensity ParticleIntensity { get; set; }
+        [XmlAttribute("apply_particle_to_root_bone_only")]
+        public bool ApplyToRootBoneOnly { get; set; } = false;
         [XmlAttribute("health_over_time")]
         public float HealthOverTime { get; set; } = 0;
         [XmlAttribute("duration")]
@@ -30,12 +32,15 @@ namespace TOW_Core.Battle.StatusEffects
         [XmlAttribute("damage_type")]
         public DamageType DamageType { get; set; } = DamageType.Physical;
         [XmlElement]
-        public AmplifierTuple DamageReduction { get; set; } = new AmplifierTuple();
+        public AmplifierTuple DamageAmplifier { get; set; } = new AmplifierTuple();
+        [XmlElement]
+        public ResistanceTuple Resistance { get; set; } = new ResistanceTuple();
         public enum EffectType
         {
             HealthOverTime,
             DamageOverTime,
-            Reduction,
+            DamageAmplification,
+            Resistance,
             Invalid
         };
 

@@ -9,7 +9,7 @@ using TaleWorlds.Localization;
 
 namespace TOW_Core.CampaignSupport
 {
-    public class TowKingdomPeaceModel : DefaultKingdomDecisionPermissionModel
+    public class TORKingdomPeaceModel : DefaultKingdomDecisionPermissionModel
     {
         public override bool IsAnnexationDecisionAllowed(Settlement annexedSettlement) => false;
 

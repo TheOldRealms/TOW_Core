@@ -1,11 +1,13 @@
 ﻿using System;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Screen;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class TargetedCrosshair : ProjectileCrosshair
+    public class SingleTargetCrosshair : MissileCrosshair
     {
-        public TargetedCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public SingleTargetCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
             _caster = caster;
         }
@@ -23,8 +25,11 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindTarget()
         {
-            var endPoint = _caster.LookFrame.Elevate(_caster.GetEyeGlobalHeight()).Advance(_template.MaxDistance).origin;
-            var newTarget = Mission.Current.RayCastForClosestAgent(_caster.GetEyeGlobalPosition(), endPoint, out _, _caster.Index, 0.01f);
+            Vec3 startRay, endRay;
+            //startRay = _missionScreen.CombatCamera.Frame.origin;
+            //endRay = _missionScreen.CombatCamera.Frame.Elevate(_template.MaxDistance).origin;
+            _missionScreen.ScreenPointToWorldRay(new Vec2(960,540), out startRay, out endRay);
+            var newTarget = Mission.Current.RayCastForClosestAgent(startRay, endRay, out _, _caster.Index, 0.01f);
             if (newTarget == null)
             {
                 RemoveTarget();
@@ -36,9 +41,8 @@ namespace TOW_Core.Abilities.Crosshairs
             }
 
             var targetType = _template.AbilityTargetType;
-            bool isTargetMatching = targetType == AbilityTargetType.All ||
-                                    (targetType == AbilityTargetType.Enemies && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.Allies && !newTarget.IsEnemyOf(_caster));
+            bool isTargetMatching = (targetType == AbilityTargetType.EnemiesInAOE && newTarget.IsEnemyOf(_caster)) ||
+                                    (targetType == AbilityTargetType.AlliesInAOE && !newTarget.IsEnemyOf(_caster));
             if (isTargetMatching)
             {
                 if (newTarget != _target)

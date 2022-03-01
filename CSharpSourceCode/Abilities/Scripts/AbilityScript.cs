@@ -39,9 +39,10 @@ namespace TOW_Core.Abilities.Scripts
         protected override bool MovesEntity() => true;
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.Summoning;
+            return _ability.Template.AbilityEffectType == AbilityEffectType.Missile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.SeekerMissile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Vortex ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Wind;
         }
 
         protected override void OnInit()
@@ -182,17 +183,11 @@ namespace TOW_Core.Abilities.Scripts
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)
             {
-                if (_ability.Template.CrosshairType == CrosshairType.Targeted)
+                if(_ability.Template.AbilityTargetType == AbilityTargetType.Self)
                 {
-                    var crosshair = (TargetedCrosshair)_ability.Crosshair;
-                    var target = crosshair.LastTargetIndex != -1 ? Mission.Current.Agents.FirstOrDefault(a => a.Index == crosshair.LastTargetIndex) : null;
-                    if (target != null)
-                    {
-                        effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { target });
-                    }
-                    return;
+                    effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { _casterAgent });
                 }
-                effect.Trigger(position, normal, _casterAgent);
+                else effect.Trigger(position, normal, _casterAgent);
             }
         }
 

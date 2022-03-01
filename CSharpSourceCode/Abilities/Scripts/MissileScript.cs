@@ -2,7 +2,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public class MovingProjectileScript : AbilityScript
+    public class MissileScript : AbilityScript
     {
         override protected bool CollidedWithAgent()
         {

@@ -1,5 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents;
+using TOW_Core.Battle.AttributeSystem.CustomAgentComponents;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic
