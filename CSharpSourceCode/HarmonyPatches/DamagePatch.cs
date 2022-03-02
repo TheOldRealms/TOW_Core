@@ -37,8 +37,11 @@ namespace TOW_Core.HarmonyPatches
             //attack properties;
             var damageProportions = attackerPropertyContainer.DamageProportions;
             var damagePercentages = attackerPropertyContainer.DamagePercentages;
+            var additionalDamagePercentages = attackerPropertyContainer.AdditionalDamagePercentages;
             //defense properties
             var resistancePercentages = victimPropertyContainer.ResistancePercentages;
+
+           
             
             if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
             {
@@ -61,6 +64,7 @@ namespace TOW_Core.HarmonyPatches
             var resultDamage = 0;
             for (int i = 0; i < damageCategories.Length-1; i++)
             {
+                damageProportions[i] += additionalDamagePercentages[i];
                 damageCategories[i] = b.InflictedDamage * damageProportions[i];
                 damageCategories[i] += damageCategories[(int)DamageType.All]/(int) DamageType.All;
                 if (damageCategories[i] > 0)

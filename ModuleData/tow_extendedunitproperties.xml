@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfCharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_villager">
     <Abilities />
@@ -1551,6 +1551,7 @@
       <string>Dart</string>
       <string>Fireball</string>
       <string>BurningHead</string>
+      <string>FlamingSwords</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

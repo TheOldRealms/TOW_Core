@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Battle.Damage;
 using TOW_Core.Items;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
@@ -16,10 +18,16 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             if(triggeredAgents.Count() > 0)
             {
                 var trait = new ItemTrait();
+                var additionalDamage = new DamageProportionTuple();
+
+                additionalDamage.DamageType = DamageType.Fire;
+                additionalDamage.Percent = 0.25f;
+                
                 trait.ItemTraitName = "Flaming Sword";
                 trait.ItemTraitDescription = "This sword is on fire. It deals fire damage and applies the burning damage over time effect.";
                 trait.ImbuedStatusEffectId = "fireball_dot";
                 trait.WeaponParticlePreset = new WeaponParticlePreset { ParticlePrefab = "torch_fire_sparks" };
+                trait.AdditionalDamageTuple = additionalDamage;
                 trait.OnHitScriptName = "none";
 
                 foreach (Agent agent in triggeredAgents)
