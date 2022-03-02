@@ -27,11 +27,11 @@ namespace TOW_Core.Abilities.Crosshairs
                 bool isZoomKeyDown = HotKeyManager.GetCategory("CombatHotKeyCategory").GetGameKey(24).KeyboardKey.InputKey.IsDown();
                 if (isZoomKeyDown)
                 {
-                    _movie.RootWidget.MarginBottom = 300;
+                    _movie.RootWidget.MarginBottom = 330;
                 }
                 else
                 {
-                    _movie.RootWidget.MarginBottom = 160;
+                    _movie.RootWidget.MarginBottom = 175;
                 }
             }
         }

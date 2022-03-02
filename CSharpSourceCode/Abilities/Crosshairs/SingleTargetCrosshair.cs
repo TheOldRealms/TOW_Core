@@ -23,10 +23,18 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindTarget()
         {
-            Vec2 mousePositionRanged = Input.MousePositionRanged;
-            Vec3 sourcePoint;
-            Vec3 targetPoint;
-            _missionScreen.ScreenPointToWorldRay(mousePositionRanged, out sourcePoint, out targetPoint);
+            base.Tick();
+            Vec3 sourcePoint = Vec3.Zero;
+            Vec3 targetPoint = Vec3.Zero;
+            if (_mission.CameraIsFirstPerson)
+            {
+                _missionScreen.ScreenPointToWorldRay(Input.MousePositionRanged, out sourcePoint, out targetPoint);
+            }
+            else
+            {
+                sourcePoint = _missionScreen.CombatCamera.Position;
+                targetPoint = _caster.Position + _caster.LookDirection.NormalizedCopy() * _template.MaxDistance;
+            }
             float collisionDistance;
             Agent newTarget = _mission.RayCastForClosestAgent(sourcePoint, targetPoint, out collisionDistance);
             if (newTarget == null)
@@ -38,10 +46,10 @@ namespace TOW_Core.Abilities.Crosshairs
             {
                 newTarget = newTarget.RiderAgent;
             }
-            var targetType =  _template.AbilityTargetType;
+            var targetType = _template.AbilityTargetType;
             bool isTargetMatching = collisionDistance <= _template.MaxDistance &&
                                     (targetType == AbilityTargetType.SingleEnemy && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.SingleAlly && !newTarget.IsEnemyOf(_caster)); 
+                                    (targetType == AbilityTargetType.SingleAlly && !newTarget.IsEnemyOf(_caster));
             if (isTargetMatching)
             {
                 if (newTarget != _target)
@@ -74,7 +82,7 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             if (_target != null)
             {
-                _target.AgentVisuals.SetContourColor(colorLess);
+                _target.AgentVisuals?.SetContourColor(colorLess);
                 _target = null;
             }
         }
