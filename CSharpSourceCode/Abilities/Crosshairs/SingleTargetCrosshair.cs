@@ -1,8 +1,6 @@
-﻿using System;
-using TaleWorlds.InputSystem;
+﻿using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.View.Screen;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
@@ -42,8 +40,8 @@ namespace TOW_Core.Abilities.Crosshairs
             }
             var targetType =  _template.AbilityTargetType;
             bool isTargetMatching = collisionDistance <= _template.MaxDistance &&
-                                    (targetType == AbilityTargetType.EnemiesInAOE && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.AlliesInAOE && !newTarget.IsEnemyOf(_caster)); 
+                                    (targetType == AbilityTargetType.SingleEnemy && newTarget.IsEnemyOf(_caster)) ||
+                                    (targetType == AbilityTargetType.SingleAlly && !newTarget.IsEnemyOf(_caster)); 
             if (isTargetMatching)
             {
                 if (newTarget != _target)
