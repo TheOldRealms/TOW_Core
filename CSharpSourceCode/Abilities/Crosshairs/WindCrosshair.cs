@@ -5,9 +5,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class DirectionalAOECrosshair : AbilityCrosshair
+    public class WindCrosshair : AbilityCrosshair
     {
-        public DirectionalAOECrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public WindCrosshair(AbilityTemplate template, Agent caster) : base(template)
         {
             _caster = caster;
             _crosshair = GameEntity.CreateEmpty(_mission.Scene, false);

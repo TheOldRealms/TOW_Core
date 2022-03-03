@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfCharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_villager">
     <Abilities />
@@ -1538,12 +1538,12 @@
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
       <string>Dart</string>
-      <string>MortarSpawner</string>
       <string>FlamingSwords</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>CanPlaceArtillery</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wizard_lord">
@@ -1551,6 +1551,7 @@
       <string>Dart</string>
       <string>Fireball</string>
       <string>BurningHead</string>
+      <string>FlamingSwords</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

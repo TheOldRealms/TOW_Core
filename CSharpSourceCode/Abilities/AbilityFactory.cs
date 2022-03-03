@@ -24,6 +24,13 @@ namespace TOW_Core.Abilities
             return list;
         }
 
+        public static List<AbilityTemplate> GetAllTemplates()
+        {
+            var list = new List<AbilityTemplate>();
+            foreach(var template in _templates.Values) list.Add(template);
+            return list;
+        }
+
         public static AbilityTemplate GetTemplate(string id)
         {
             return _templates.ContainsKey(id) ? _templates[id] : null;
@@ -69,6 +76,10 @@ namespace TOW_Core.Abilities
             {
                 ability = new SpecialMove(template);
             }
+            else if(template.AbilityType == AbilityType.ItemBound)
+            {
+                ability = new ItemBoundAbility(template);
+            }
             return ability;
         }
 
@@ -77,24 +88,19 @@ namespace TOW_Core.Abilities
             AbilityCrosshair crosshair = null;
             switch (template.CrosshairType)
             {
-                case CrosshairType.Projectile:
+                case CrosshairType.Missile:
                     {
-                        crosshair = new ProjectileCrosshair(template);
+                        crosshair = new MissileCrosshair(template);
                         break;
                     }
-                case CrosshairType.Targeted:
+                case CrosshairType.SingleTarget:
                     {
-                        crosshair = new TargetedCrosshair(template, caster);
+                        crosshair = new SingleTargetCrosshair(template, caster);
                         break;
                     }
-                case CrosshairType.DirectionalAOE:
+                case CrosshairType.Wind:
                     {
-                        crosshair = new DirectionalAOECrosshair(template, caster);
-                        break;
-                    }
-                case CrosshairType.CenteredAOE:
-                    {
-                        crosshair = new CenteredAOECrosshair(template, caster);
+                        crosshair = new WindCrosshair(template, caster);
                         break;
                     }
                 case CrosshairType.Pointer:
@@ -105,6 +111,11 @@ namespace TOW_Core.Abilities
                 case CrosshairType.TargetedAOE:
                     {
                         crosshair = new TargetedAOECrosshair(template, caster);
+                        break;
+                    }
+                case CrosshairType.Self:
+                    {
+                        crosshair = new SelfCrosshair(template);
                         break;
                     }
             }

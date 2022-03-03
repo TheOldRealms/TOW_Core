@@ -65,7 +65,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
 
             var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().GetAbilityEffectType() == AbilityEffectType.MovingProjectile)
+            if (Agent.GetCurrentAbility().AbilityEffectType == AbilityEffectType.Missile)
             {
                 velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent);
             }
@@ -130,7 +130,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             switch (targetType)
             {
-                case AbilityTargetType.Allies:
+                case AbilityTargetType.AlliesInAOE:
                     return agent.Team.QuerySystem.AllyTeams
                         .SelectMany(team => team.Team.Formations)
                         .Select(form => new Target {Formation = form})

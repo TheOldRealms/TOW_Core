@@ -6,9 +6,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
-    public class ProjectileCrosshair : AbilityCrosshair
+    public class MissileCrosshair : AbilityCrosshair
     {
-        public ProjectileCrosshair(AbilityTemplate template) : base(template)
+        public MissileCrosshair(AbilityTemplate template) : base(template)
         {
             _vm = new ProjectileCrosshair_VM();
             _layer = new GauntletLayer(100, "GauntletLayer", false);

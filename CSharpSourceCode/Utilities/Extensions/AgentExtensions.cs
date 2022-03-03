@@ -11,6 +11,7 @@ using TOW_Core.Battle.Damage;
 using TOW_Core.Items;
 using TOW_Core.ObjectDataExtensions;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade.CustomBattle;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -55,6 +56,11 @@ namespace TOW_Core.Utilities.Extensions
             return agent.GetAttributes().Contains("SpellCaster");
         }
 
+        public static bool CanPlaceArtillery(this Agent agent)
+        {
+            return agent.GetAttributes().Contains("CanPlaceArtillery");
+        }
+
         public static bool HasAttribute(this Agent agent, string attributeName)
         {
             return agent.GetAttributes().Contains(attributeName);
@@ -87,9 +93,10 @@ namespace TOW_Core.Utilities.Extensions
             if (agent.IsMount)
                 return new AgentPropertyContainer();
             
-            float[] damageProportions = new float[(int) DamageType.All+1];
-            float[] damageAmplifications = new float[(int) DamageType.All+1];
-            float[] damageResistances = new float[(int) DamageType.All+1];
+            float[] damageProportions = new float[(int) DamageType.All + 1];
+            float[] damageAmplifications = new float[(int) DamageType.All + 1];
+            float[] damageResistances = new float[(int) DamageType.All + 1];
+            float[] additionalDamagePercentages = new float[(int) DamageType.All + 1];
             
             #region Unit
             if (!agent.IsHero)
@@ -109,20 +116,26 @@ namespace TOW_Core.Utilities.Extensions
                         damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
                     }
                     //add temporary effects like buffs to attack bonuses on items
-                    List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
+                    List<ItemTrait> dynamicTraits = agent.GetComponent<ItemTraitAgentComponent>()
                         .GetDynamicTraits(agent.WieldedWeapon.Item);
-                    foreach (var temporaryTraits in itemTraits)
+                    foreach (var dynamicTrait in dynamicTraits)
                     {
-                        var attackProperty = temporaryTraits.AmplifierTuple;
+                        var attackProperty = dynamicTrait.AmplifierTuple;
+                       
                         if (attackProperty != null)
                         {
-                            damageAmplifications[(int) temporaryTraits.AmplifierTuple.AmplifiedDamageType] += attackProperty.DamageAmplifier;
+                            damageAmplifications[(int) attackProperty.AmplifiedDamageType] += attackProperty.DamageAmplifier;
+                        }
+                        var additionalDamageProperty = dynamicTrait.AdditionalDamageTuple;
+                        if (additionalDamageProperty != null)
+                        {
+                            additionalDamagePercentages[(int)additionalDamageProperty.DamageType] += additionalDamageProperty.Percent;
                         }
                     }
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 }
                 if(mask == PropertyMask.Defense|| mask== PropertyMask.All)      
@@ -136,16 +149,24 @@ namespace TOW_Core.Utilities.Extensions
                     }
                 
                     //add temporary effects like buffs to defense bonuses
-                    List<ItemTrait> itemTraits = agent.GetComponent<ItemTraitAgentComponent>()
+                    List<ItemTrait> dynamicTraits = agent.GetComponent<ItemTraitAgentComponent>()
                         .GetDynamicTraits(agent.WieldedWeapon.Item);
                 
-                    foreach (var temporaryTraits in itemTraits)
+                    foreach (var dynamicTrait in dynamicTraits)
                     {
-                        var defenseProperty = temporaryTraits.ResistanceTuple;
+                        var defenseProperty = dynamicTrait.ResistanceTuple;
                         if (defenseProperty != null)
                         {
                             damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                         }
+                    }
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
+                    {
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }
@@ -167,20 +188,27 @@ namespace TOW_Core.Utilities.Extensions
                         if(item.HasTrait())
                             itemTraits.AddRange(item.GetTraits(agent));
                     }
-
+                    //equipment amplifiers  , also implies dynamic traits
                     foreach (var itemTrait in itemTraits)
                     {
                         var property = itemTrait.AmplifierTuple;
                         if(property==null) 
                             continue;
                         damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+
+                        var additionalDamageProperty = itemTrait.AdditionalDamageTuple;
+                        if (additionalDamageProperty != null)
+                        {
+                            additionalDamagePercentages[(int)additionalDamageProperty.DamageType] += additionalDamageProperty.Percent;
+                        }
+                        
                     }
                     
-                    var statusEffectReductions = agent.GetComponent<StatusEffectComponent>().GetDamageReductions();
+                    var statusEffectAmplifiers = agent.GetComponent<StatusEffectComponent>().GetAmplifiers();
 
                     for (int i = 0; i < damageAmplifications.Length; i++)
                     {
-                        damageAmplifications[i] += statusEffectReductions[i];
+                        damageAmplifications[i] += statusEffectAmplifiers[i];
                     }
                 
                     //weapon properties
@@ -211,7 +239,7 @@ namespace TOW_Core.Utilities.Extensions
                             itemTraits.AddRange(item.GetTraits(agent));
                     }
                     
-                    //equipment amplifiers
+                    //equipment resistances , also implies dynamic traits
                     foreach (var itemTrait in itemTraits)
                     {
                         var defenseProperty = itemTrait.ResistanceTuple;
@@ -219,24 +247,19 @@ namespace TOW_Core.Utilities.Extensions
                             continue;
                         damageResistances[(int)defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
                     }
-                    
-                    //add temporary effects like buffs to defenese bonuses
-                    List<ItemTrait> dynamicTraits = agent.GetComponent<ItemTraitAgentComponent>()
-                        .GetDynamicTraits(agent.WieldedWeapon.Item);
-                
-                    foreach (var temporaryTraits in dynamicTraits)
+
+                    //statuseffects
+                    var statusEffectResistances = agent.GetComponent<StatusEffectComponent>().GetResistances();
+
+                    for (int i = 0; i < damageResistances.Length; i++)
                     {
-                        var defenseProperty = temporaryTraits.ResistanceTuple;
-                        if (defenseProperty != null)
-                        {
-                            damageResistances[(int) defenseProperty.ResistedDamageType] += defenseProperty.ReductionPercent;
-                        }
+                        damageResistances[i] += statusEffectResistances[i];
                     }
                 }
             }
             #endregion
 
-            return new AgentPropertyContainer(damageProportions, damageAmplifications, damageResistances);
+            return new AgentPropertyContainer(damageProportions, damageAmplifications, damageResistances, additionalDamagePercentages);
             
 
         }
@@ -284,13 +307,26 @@ namespace TOW_Core.Utilities.Extensions
             Hero hero = null;
             if (Game.Current.GameType is Campaign)
             {
-                var list = Hero.FindAll(x => x.StringId == agent.Character.StringId);
-                if (list != null && list.Count() > 0)
-                {
-                    hero = list.First();
-                }
+                hero = Hero.FindFirst(x => x.StringId == agent.Character.StringId);
             }
             return hero;
+        }
+
+        public static int GetPlaceableArtilleryCount(this Agent agent)
+        {
+            int count = 0;
+            if (agent.CanPlaceArtillery())
+            {
+                if(Game.Current.GameType is Campaign && agent.GetHero() != null)
+                {
+                    count = agent.GetHero().GetPlaceableArtilleryCount();
+                }
+                else if(Game.Current.GameType is CustomGame)
+                {
+                    count = 5;
+                }
+            }
+            return count;
         }
 
         public static List<string> GetAbilities(this Agent agent)
