@@ -299,7 +299,7 @@ namespace TOW_Core.Abilities
                     Target target;
                     if (Crosshair.CrosshairType == CrosshairType.SingleTarget)
                     {
-                        target = new Target { Agent = (Crosshair as SingleTargetCrosshair).Target };
+                        target = new Target { Agent = (Crosshair as SingleTargetCrosshair).CachedTarget };
                     }
                     else
                     {

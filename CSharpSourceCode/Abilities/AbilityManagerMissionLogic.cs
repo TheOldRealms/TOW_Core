@@ -217,7 +217,7 @@ namespace TOW_Core.Abilities
                             !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
                             _currentState != AbilityModeState.Idle ||
                             (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.SingleTarget &&
-                            ((SingleTargetCrosshair)_abilityComponent.CurrentAbility.Crosshair).Target == null);
+                            !((SingleTargetCrosshair)_abilityComponent.CurrentAbility.Crosshair).IsTargetLocked);
                 if (!flag)
                 {
                     Agent.Main.CastCurrentAbility();

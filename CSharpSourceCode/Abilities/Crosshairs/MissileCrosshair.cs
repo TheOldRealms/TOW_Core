@@ -1,7 +1,6 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
-using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
@@ -24,8 +23,8 @@ namespace TOW_Core.Abilities.Crosshairs
             }
             else
             {
-                bool isZoomKeyDown = HotKeyManager.GetCategory("CombatHotKeyCategory").GetGameKey(24).KeyboardKey.InputKey.IsDown();
-                if (isZoomKeyDown)
+                // check if zoom is pressed
+                if (_missionScreen.InputManager.IsGameKeyDown(24))
                 {
                     _movie.RootWidget.MarginBottom = 330;
                 }

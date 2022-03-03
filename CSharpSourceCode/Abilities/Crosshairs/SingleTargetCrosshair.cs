@@ -18,7 +18,7 @@ namespace TOW_Core.Abilities.Crosshairs
         public override void Hide()
         {
             base.Hide();
-            _target?.AgentVisuals.SetContourColor(colorLess);
+            UnlockTarget();
         }
 
         private void FindTarget()
@@ -39,7 +39,7 @@ namespace TOW_Core.Abilities.Crosshairs
             Agent newTarget = _mission.RayCastForClosestAgent(sourcePoint, targetPoint, out collisionDistance);
             if (newTarget == null)
             {
-                RemoveTarget();
+                UnlockTarget();
                 return;
             }
             if (newTarget.IsMount && newTarget.RiderAgent != null)
@@ -52,47 +52,52 @@ namespace TOW_Core.Abilities.Crosshairs
                                     (targetType == AbilityTargetType.SingleAlly && !newTarget.IsEnemyOf(_caster));
             if (isTargetMatching)
             {
-                if (newTarget != _target)
+                if (newTarget != _cachedTarget)
                 {
-                    RemoveTarget();
+                    UnlockTarget();
                 }
 
-                SetTarget(newTarget);
+                LockTarget(newTarget);
             }
             else
             {
-                RemoveTarget();
+                UnlockTarget();
             }
         }
 
-        private void SetTarget(Agent newTarget)
+        private void LockTarget(Agent newTarget)
         {
-            _target = newTarget;
+            _cachedTarget = newTarget;
             if (newTarget.IsEnemyOf(_caster))
             {
-                _target.AgentVisuals.SetContourColor(enemyColor);
+                _cachedTarget.AgentVisuals.SetContourColor(enemyColor);
             }
             else
             {
-                _target.AgentVisuals.SetContourColor(friendColor);
+                _cachedTarget.AgentVisuals.SetContourColor(friendColor);
             }
+            _isTargetLocked = true;
         }
 
-        private void RemoveTarget()
+        public void UnlockTarget()
         {
-            if (_target != null)
-            {
-                _target.AgentVisuals?.SetContourColor(colorLess);
-                _target = null;
-            }
+            _cachedTarget?.AgentVisuals?.SetContourColor(colorLess);
+            _isTargetLocked = false;
         }
 
 
-        public Agent Target
+        public Agent CachedTarget
         {
-            get => _target;
+            get => _cachedTarget;
         }
 
-        private Agent _target;
+        public bool IsTargetLocked
+        {
+            get => _isTargetLocked;
+        }
+
+        private Agent _cachedTarget;
+
+        private bool _isTargetLocked;
     }
 }
