@@ -15,7 +15,7 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
-        public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
+        public static bool PreHandleBlow(ref Blow b, Agent __instance)
         {
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent victim = __instance;
