@@ -76,7 +76,7 @@ namespace TOW_Core.HarmonyPatches
                 damageCategories[i] += damageCategories[(int)DamageType.All]/(int) DamageType.All;
                 if (damageCategories[i] > 0)
                 {
-                    if (damageCategories[i] > highestDamageValue)
+                    if (damageCategories[i] > highestDamageValue&& i!= (int) DamageType.Physical)
                     {
                         highestDamageValue = damageCategories[i];
                         highestNonPhysicalDamageType = (DamageType)i;
@@ -87,11 +87,11 @@ namespace TOW_Core.HarmonyPatches
                 }
             }
 
-            /*if (highestNonPhysicalDamageType != DamageType.Physical)
+            if (highestNonPhysicalDamageType != DamageType.Physical)
             {
-                
-            }*/
-            victim.GetComponent<AgentSoundComponent>().PlayHitSound(highestNonPhysicalDamageType);
+                victim.GetComponent<AgentSoundComponent>().PlayHitSound(highestNonPhysicalDamageType);
+            }
+            
 
             b.InflictedDamage = resultDamage;
 

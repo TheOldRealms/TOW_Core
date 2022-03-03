@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SandBox;
 using TaleWorlds.CampaignSystem;
@@ -103,6 +103,17 @@ namespace TOW_Core.Battle.Sound
             _holyImpactSounds.Add(_holySoundIndex2);
             _holyImpactSounds.Add(_holySoundIndex3);
 
+
+            _magicSoundIndex0 = SoundEvent.GetEventIdFromString(_lightningHitSoundId0);
+            _magicSoundIndex1 = SoundEvent.GetEventIdFromString(_lightningHitSoundId1);
+            _magicSoundIndex2 = SoundEvent.GetEventIdFromString(_lightningHitSoundId2);
+            _magicSoundIndex3 = SoundEvent.GetEventIdFromString(_lightningHitSoundId3);
+            
+            _magicImpactSounds.Add(_magicSoundIndex0);
+            _magicImpactSounds.Add(_magicSoundIndex1);
+            _magicImpactSounds.Add(_magicSoundIndex2);
+            _magicImpactSounds.Add(_magicSoundIndex3);
+
             Scene = Mission.Current.Scene;
             
             
@@ -116,15 +127,7 @@ namespace TOW_Core.Battle.Sound
 
             if (!(this.Agent.IsPlayerControlled || pos.Distance(Mission.Current.GetCameraFrame().origin) < 30))
                 return;
-
-
-            Mission.Current.MakeSound(
-                MBRandom.RandomFloatRanged(0, 1) < 0.5
-                    ? _holyImpactSounds.GetRandomElement()
-                    : _fireImpactSounds.GetRandomElement(), pos, false, true, -1, -1);
-
-
-            /*
+            
             switch (damageType)
             {
                 case DamageType.Fire:
@@ -136,7 +139,10 @@ namespace TOW_Core.Battle.Sound
                 case DamageType.Holy:
                     Mission.Current.MakeSound(_holyImpactSounds.GetRandomElement(),pos,false,true,-1,-1);
                     break;
-            }*/
+                case DamageType.Magical:
+                    Mission.Current.MakeSound(_magicImpactSounds.GetRandomElement(),pos,false,true,-1,-1);
+                    break;
+            }
             
             
         }

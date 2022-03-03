@@ -497,7 +497,6 @@
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
     <Compile Include="Utilities\TORDamageDisplay.cs" />
-    <Compile Include="Utilities\TorSoundMissionLogic.cs" />
     <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />
