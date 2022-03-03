@@ -29,17 +29,12 @@ namespace TOW_Core.Abilities.Crosshairs
 
         private void FindTarget()
         {
-            base.Tick();
             Vec3 sourcePoint = Vec3.Zero;
             Vec3 targetPoint = Vec3.Zero;
-            if (_mission.CameraIsFirstPerson)
+            _missionScreen.ScreenPointToWorldRay(Input.MousePositionRanged, out sourcePoint, out targetPoint);
+            if (!_mission.CameraIsFirstPerson)
             {
-                _missionScreen.ScreenPointToWorldRay(Input.MousePositionRanged, out sourcePoint, out targetPoint);
-            }
-            else
-            {
-                sourcePoint = _missionScreen.CombatCamera.Position;
-                targetPoint = _caster.Position + _caster.LookDirection.NormalizedCopy() * _template.MaxDistance;
+                _missionScreen.GetProjectedMousePositionOnGround(out targetPoint, out _, true);
             }
             float collisionDistance;
             Agent newTarget = _mission.RayCastForClosestAgent(sourcePoint, targetPoint, out collisionDistance);
