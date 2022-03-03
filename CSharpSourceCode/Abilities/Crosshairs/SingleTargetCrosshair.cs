@@ -15,6 +15,12 @@ namespace TOW_Core.Abilities.Crosshairs
             FindTarget();
         }
 
+        public override void Show()
+        {
+            base.Show();
+            _cachedTarget = null;
+        }
+
         public override void Hide()
         {
             base.Hide();

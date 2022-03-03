@@ -1,7 +1,6 @@
 ﻿using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
-using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
@@ -17,7 +16,7 @@ namespace TOW_Core.Abilities.Crosshairs
 
         public override void Tick()
         {
-            if (Mission.Current.CameraIsFirstPerson)
+            if (_mission.CameraIsFirstPerson)
             {
                 _movie.RootWidget.MarginBottom = 0;
             }
