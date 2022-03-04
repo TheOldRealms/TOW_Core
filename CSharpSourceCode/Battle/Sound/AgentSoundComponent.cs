@@ -72,7 +72,7 @@ namespace TOW_Core.Battle.Sound
         public override void Initialize()
         {
             base.Initialize();
-
+            
             _fireSoundIndex0 = SoundEvent.GetEventIdFromString(_fireHitSoundId0);
             _fireSoundIndex1 = SoundEvent.GetEventIdFromString(_fireHitSoundId1);
             _fireSoundIndex2 = SoundEvent.GetEventIdFromString(_fireHitSoundId2);
@@ -115,10 +115,6 @@ namespace TOW_Core.Battle.Sound
             _magicImpactSounds.Add(_magicSoundIndex3);
 
             Scene = Mission.Current.Scene;
-            
-            
-
-            
         }
 
         public void PlayHitSound(DamageType damageType)
@@ -143,11 +139,6 @@ namespace TOW_Core.Battle.Sound
                     Mission.Current.MakeSound(_magicImpactSounds.GetRandomElement(),pos,false,true,-1,-1);
                     break;
             }
-            
-            
         }
-
-        
-        
     }
 }
