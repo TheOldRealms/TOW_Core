@@ -9,6 +9,8 @@ using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Quests;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -18,6 +20,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private readonly string _masterEngineerId = "tor_nulnengineernpc_empire";
         private Hero _masterEngineerHero = null;
         private Settlement _nuln;
+        private bool _playerIsSkilledEnough;
 
         public override void RegisterEvents()
         {
@@ -44,9 +47,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
             _nuln = Settlement.All.FirstOrDefault(x => x.StringId == "town_WI1");
-            obj.AddDialogLine("engineer_start", "start", "engineerchoices", "Greetings.", engineerstartcondition, null, 200);
-            obj.AddPlayerLine("engineer_sayopengunshop", "engineerchoices", "opengunshop", "Let me see your wares.", null, null, 200, null);
-            obj.AddDialogLine("engineer_opengunshop", "opengunshop", "start", "Come have a look.", null, openshopconsequence, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "engineerchoices", "Greetings, Guild Engineer.", engineerstartcondition, null, 200);
+            obj.AddPlayerLine("engineer_sayopengunshop", "engineerchoices", "opengunshopCheck", "I need your services.",null, checkplayerrequirements, 200, null);
+            obj.AddDialogLine("opengunshopCheck", "opengunshopCheck", "start","Would you give a child a gun? You have not the slightest clue what the technical achievements of the empire are capable of!",
+                () => !_playerIsSkilledEnough, null, 200, null);
+            obj.AddDialogLine("opengunshopCheck", "opengunshopCheck", "trustCheck", "Oh an engineers colleague, rarely you find a person grasping the concepts of engineering", ()=> _playerIsSkilledEnough, null, 200, null);
+            obj.AddDialogLine("trustCheck", "trustCheck", "trustCheck2", "Unfortunately , I can only help a members of the engineers guild or the elector count himself.", null, null, 200, null);
+            obj.AddDialogLine("trustCheck2", "trustCheck2", "playertrustCheck", "However... I could maybe make an exception, if you do me favor...", null, null, 200, null);
+            obj.AddPlayerLine("playertrustCheck", "playertrustCheck", "engineersaygoodbye", "What do you need help with?",null, questbegin, 200, null);
             obj.AddPlayerLine("engineer_saygoodbye", "engineerchoices", "engineersaygoodbye", "Farewell Master.", null, null, 200, null);
             obj.AddDialogLine("engineer_goodbye", "engineersaygoodbye", "close_window", "With fire and steel.", null, null, 200, null);
         }
@@ -64,11 +72,28 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             InventoryManager.OpenScreenAsTrade(roster, _nuln.Town);
         }
 
+        private void questbegin()
+        {
+            var quest = EngineerTrustQuest.GetRandomQuest(true);
+            quest?.StartQuest();
+        }
+
         private bool engineerstartcondition()
         {
             var partner = CharacterObject.OneToOneConversationCharacter;
             if (partner != null && partner.Occupation == Occupation.Special && partner.HeroObject.Name.Contains("Engineer")) return true;
             else return false;
+        }
+
+        private void checkplayerrequirements()
+        {
+            if (Hero.MainHero.GetSkillValue(DefaultSkills.Engineering) >= 50)
+                _playerIsSkilledEnough=true;
+            else
+            {
+                _playerIsSkilledEnough = false;
+            }
+
         }
 
         private void OnNewGameStarted(CampaignGameStarter obj)
