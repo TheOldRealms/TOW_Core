@@ -152,7 +152,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1466.885" posY="840.38" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
+  <Settlement id="village_AV3_1" name="{=Settlements.Settlement.name.village_AV3_1}Hochslehen" posX="1466.885" posY="840.806" culture="Culture.empire" text="{=Settlements.Settlement.text.village_AV3_1}Hochslehen">
     <Components>
       <Village id="village_comp_AV3_1" village_type="VillageType.iron_mine" hearth="400" trade_bound="Settlement.town_AV3" bound="Settlement.town_AV3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -631,7 +631,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_ST5_2" name="{=Settlements.Settlement.name.castle_village_ST5_2}Kiel" posX="1524.534" posY="1046.113" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST5_2}">
+  <Settlement id="castle_village_ST5_2" name="{=Settlements.Settlement.name.castle_village_ST5_2}Kiel" posX="1519.994" posY="1051.323" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST5_2}">
     <Components>
       <Village id="castle_village_comp_ST5_2" village_type="VillageType.lumberjack" hearth="54" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -665,7 +665,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_MT1_1" name="{=Settlements.Settlement.name.village_MT1_1}Gipfel" posX="1528.535" posY="914.17" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_1}Gipfel, A small village in the heart of the Greenleaf Hills.">
+  <Settlement id="village_MT1_1" name="{=Settlements.Settlement.name.village_MT1_1}Gipfel" posX="1528.461" posY="914.071" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_1}Gipfel, A small village in the heart of the Greenleaf Hills.">
     <Components>
       <Village id="village_comp_MT1_1" village_type="VillageType.sheep_farm" hearth="87" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -678,7 +678,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_MT1_2" name="{=Settlements.Settlement.name.village_MT1_2}Grunhugel" posX="1508.111" posY="929.191" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_2}">
+  <Settlement id="village_MT1_2" name="{=Settlements.Settlement.name.village_MT1_2}Grunhugel" posX="1507.664" posY="928.634" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_2}">
     <Components>
       <Village id="village_comp_MT1_2" village_type="VillageType.sheep_farm" hearth="44" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -691,7 +691,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_MT1_3" name="{=Settlements.Settlement.name.village_MT1_3}Haukern" posX="1536.304" posY="933.132" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_3}.">
+  <Settlement id="village_MT1_3" name="{=Settlements.Settlement.name.village_MT1_3}Haukern" posX="1536.546" posY="933.565" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_3}.">
     <Components>
       <Village id="village_comp_MT1_3" village_type="VillageType.europe_horse_ranch" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -704,7 +704,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_MT1_4" name="{=Settlements.Settlement.name.village_MT1_4}Fallenblatt" posX="1510.512" posY="903.415" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_4}">
+  <Settlement id="village_MT1_4" name="{=Settlements.Settlement.name.village_MT1_4}Fallenblatt" posX="1510.401" posY="904.389" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_4}">
     <Components>
       <Village id="village_comp_MT1_4" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -777,7 +777,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_SY1_4" name="{=Settlements.Settlement.name.village_SY1_4}Gerhof" posX="1623.461" posY="979.877" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Gerhof does not sleep. It’s paranoid vampire Count Johan von Goal has forbidden it. A trickster Crone allegedly put a curse on the count. But none other than the Count himself can verify this. It has been said that a sleeping mortal would slay von Goal in a brutal fashion. So von Goal banned sleep. The mortal citizens are skittish. Sneaking an hour or two’s nap in the dark corners of the city. Ordered to be ever watchful for the one who would slay their fearful ruler.">
+  <Settlement id="village_SY1_4" name="{=Settlements.Settlement.name.village_SY1_4}Gerhof" posX="1623.308" posY="979.498" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Gerhof does not sleep. It’s paranoid vampire Count Johan von Goal has forbidden it. A trickster Crone allegedly put a curse on the count. But none other than the Count himself can verify this. It has been said that a sleeping mortal would slay von Goal in a brutal fashion. So von Goal banned sleep. The mortal citizens are skittish. Sneaking an hour or two’s nap in the dark corners of the city. Ordered to be ever watchful for the one who would slay their fearful ruler.">
     <Components>
       <Village id="village_comp_SY1_4" village_type="VillageType.wheat_farm" hearth="36" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -944,7 +944,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Vanhaldenhof" posX="1588.407" posY="880.869" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
+  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Maylhof" posX="1582.219" posY="880.5349" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
     <Components>
       <Village id="castle_village_comp_SY3_2" village_type="VillageType.europe_horse_ranch" hearth="46" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -957,7 +957,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1650.291" posY="931.336" prosperity="420" culture="Culture.khuzait" gate_posX="1650.504" gate_posY="930.0372" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1650.291" posY="931.336" prosperity="420" culture="Culture.khuzait" gate_posX="1650.87" gate_posY="930.307" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
     <Components>
       <Town id="castle_comp_SY4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -990,7 +990,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.123" posY="951.5565" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.123" posY="951.557" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
       <Village id="castle_village_comp_SY5_1" village_type="VillageType.flax_plant" hearth="53" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1256,7 +1256,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="village_WI1_1" name="{=Settlements.Settlement.name.village_WI1_1}Grissenwald" posX="1329.703" posY="963.569" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_1}">
+  <Settlement id="village_WI1_1" name="{=Settlements.Settlement.name.village_WI1_1}Grissenwald" posX="1329.786" posY="962.2679" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_1}">
     <Components>
       <Village id="village_comp_WI1_1" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
