@@ -1,9 +1,12 @@
 ﻿using System.Linq;
+using System.Media;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
+using TaleWorlds.GauntletUI;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
+using SoundPlayer = TaleWorlds.MountAndBlade.SoundPlayer;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
@@ -80,7 +83,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         private void RunSoundEffects()
         {
             var distanceFromPlayer = GameEntity.GlobalPosition.Distance(Mission.Current.GetCameraFrame().origin);
-            int soundIndex = distanceFromPlayer < 30 ? SoundEvent.GetEventIdFromString("cannonball_explosion_close") : SoundEvent.GetEventIdFromString("cannonball_explosion_far");
+           // var t = SoundEvent.CreateEventFromString(2);
+            int soundIndex = distanceFromPlayer < 30 ? SoundEvent.GetEventIdFromString("mortar_explosion_1") : SoundEvent.GetEventIdFromString("mortar_explosion_1");
             _sound = SoundEvent.CreateEvent(soundIndex, Mission.Current.Scene);
             if (_sound != null)
             {

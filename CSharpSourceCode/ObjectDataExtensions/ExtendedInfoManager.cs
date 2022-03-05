@@ -12,7 +12,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.ObjectDataExtensions;
-using TOW_Core.Battle.Voices;
+using TOW_Core.Battle.Sound;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
