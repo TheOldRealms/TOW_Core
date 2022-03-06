@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.Voices
+namespace TOW_Core.Battle.Sound
 {
     public class CustomVoicesMissionBehavior : MissionBehavior
     {

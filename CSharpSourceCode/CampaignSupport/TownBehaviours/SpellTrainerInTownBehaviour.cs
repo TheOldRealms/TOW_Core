@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
+using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
@@ -22,11 +23,67 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private readonly string _empireTrainerId = "tor_spelltrainer_empire_0";
         private readonly string _vampireTrainerId = "tor_spelltrainer_vc_0";
         private string _testResult = "";
+        private Dictionary<string, string> _settlementToTrainerMap = new Dictionary<string, string>();
 
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunched);
             CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameCreated);
+            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, OnGameMenuOpened);
+            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnBeforeMissionStart);
+        }
+
+        private void OnBeforeMissionStart() => SpawnTrainerIfNeeded();
+        private void OnGameMenuOpened(MenuCallbackArgs obj) => SpawnTrainerIfNeeded();
+        private void SpawnTrainerIfNeeded()
+        {
+			if (Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.IsTown && !IsTrainerInCollege(Settlement.CurrentSettlement))
+			{
+				SpawnTrainerInCollege(Settlement.CurrentSettlement, true);
+			}
+        }
+
+        private bool IsTrainerInCollege(Settlement settlement)
+        {
+            var location = settlement.LocationComplex.GetLocationWithId("house_1");
+            var trainer = GetTrainerForTown(settlement);
+            if (trainer != null)
+            {
+                return location.GetLocationCharacter(trainer) != null;
+            }
+            else return false;
+        }
+
+        private Hero GetTrainerForTown(Settlement settlement)
+        {
+            Hero hero = null;
+            var heroId = "";
+            if (_settlementToTrainerMap.TryGetValue(settlement.StringId, out heroId))
+            {
+                hero = Hero.FindFirst(x => x.StringId == heroId);
+            }
+            return hero;
+        }
+
+        private void SpawnTrainerInCollege(Settlement settlement, bool forceSpawn)
+        {
+            var trainer = GetTrainerForTown(settlement);
+            var collegeloc = settlement.LocationComplex.GetLocationWithId("house_1");
+            if (trainer != null && collegeloc != null)
+            {
+                
+                if (forceSpawn)
+                {
+                    LocationCharacter locationCharacter = new LocationCharacter(new AgentData(new SimpleAgentOrigin(trainer.CharacterObject, -1, null, default(UniqueTroopDescriptor))).Monster(Campaign.Current.HumanMonsterSettlement), new LocationCharacter.AddBehaviorsDelegate(SandBoxManager.Instance.AgentBehaviorManager.AddWandererBehaviors), "npc_common", true, LocationCharacter.CharacterRelations.Neutral, null, true, false, null, false, false, true);
+                    collegeloc.AddCharacter(locationCharacter);
+                }
+                else
+                {
+                    var locChar = settlement.LocationComplex.GetLocationCharacterOfHero(trainer);
+                    var currentloc = settlement.LocationComplex.GetLocationOfCharacter(trainer);
+                    if (currentloc != collegeloc) settlement.LocationComplex.ChangeLocation(locChar, currentloc, collegeloc);
+                }
+            }
         }
 
         private void OnNewGameCreated(CampaignGameStarter obj)
@@ -371,9 +428,13 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 hero.SupporterOf = settlement.OwnerClan;
                 hero.SetName(new TextObject(hero.FirstName.ToString() + " " + template.Name.ToString()), hero.FirstName);
                 HeroHelper.SpawnHeroForTheFirstTime(hero, settlement);
+                _settlementToTrainerMap.Add(settlement.StringId, hero.StringId);
             }
         }
 
-        public override void SyncData(IDataStore dataStore) { }
+        public override void SyncData(IDataStore dataStore)
+        {
+            dataStore.SyncData<Dictionary<string, string>>("_trainerToSettlementMap", ref _settlementToTrainerMap);
+        }
     }
 }

@@ -360,6 +360,8 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
+    <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
+    <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
     <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
@@ -453,7 +455,7 @@
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectMissionLogic.cs" />
     <Compile Include="Battle\TOWBattleUtilities.cs" />
-    <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="Battle\Sound\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
     <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />

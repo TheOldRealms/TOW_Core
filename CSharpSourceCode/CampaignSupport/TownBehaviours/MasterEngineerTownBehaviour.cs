@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
@@ -22,22 +23,27 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameStarted);
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunched);
-            CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnSettlementEntered);
+            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, OnGameMenuOpened);
+            CampaignEvents.BeforeMissionOpenedEvent.AddNonSerializedListener(this, OnBeforeMissionStart);
         }
 
-        private void OnSettlementEntered(MobileParty party, Settlement settlement, Hero hero)
+        private void OnGameMenuOpened(MenuCallbackArgs obj) => EnforceEngineerLocation();
+        private void OnBeforeMissionStart() => EnforceEngineerLocation();
+
+        private void EnforceEngineerLocation()
         {
-            if(party == MobileParty.MainParty && settlement == _nuln)
+            if (Settlement.CurrentSettlement != null && Settlement.CurrentSettlement == _nuln)
             {
                 var locationchar = _nuln.LocationComplex.GetLocationCharacterOfHero(_masterEngineerHero);
                 var tavern = _nuln.LocationComplex.GetLocationWithId("tavern");
                 var currentloc = _nuln.LocationComplex.GetLocationOfCharacter(locationchar);
-                if(currentloc != tavern) _nuln.LocationComplex.ChangeLocation(locationchar, currentloc, tavern);
+                if (currentloc != tavern) _nuln.LocationComplex.ChangeLocation(locationchar, currentloc, tavern);
             }
         }
 
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
+            _nuln = Settlement.All.FirstOrDefault(x => x.StringId == "town_WI1");
             obj.AddDialogLine("engineer_start", "start", "engineerchoices", "Greetings.", engineerstartcondition, null, 200);
             obj.AddPlayerLine("engineer_sayopengunshop", "engineerchoices", "opengunshop", "Let me see your wares.", null, null, 200, null);
             obj.AddDialogLine("engineer_opengunshop", "opengunshop", "start", "Come have a look.", null, openshopconsequence, 200, null);
@@ -89,6 +95,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             }
         }
 
-        public override void SyncData(IDataStore dataStore) { }
+        public override void SyncData(IDataStore dataStore) 
+        {
+            dataStore.SyncData<Hero>("_masterEngineerHero", ref _masterEngineerHero);
+        }
     }
 }
