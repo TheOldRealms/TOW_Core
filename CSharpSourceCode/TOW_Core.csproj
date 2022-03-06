@@ -352,6 +352,7 @@
     <Compile Include="Battle\Crosshairs\SniperScope.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
     <Compile Include="Battle\BlackPowderWeapon\BlackPowderWeaponMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\BlackPowderWeaponScript.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />

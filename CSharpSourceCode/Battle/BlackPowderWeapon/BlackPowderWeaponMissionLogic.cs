@@ -35,7 +35,7 @@ namespace TOW_Core.Battle.FireArms
                                                                                !m.Entity.HasScriptOfType<HandGrenadeScript>());
                 if (grenade != null)
                 {
-                    AddHandGrenadeScipt(grenade, "grenade_explosion");
+                    AddMissileScript<HandGrenadeScript>(grenade, "grenade_explosion");
                 }
             }
             if (itemUsage.Contains("handgun") || itemUsage.Contains("pistol"))
@@ -69,11 +69,17 @@ namespace TOW_Core.Battle.FireArms
                 {
                     if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
                     {
-                        AddGrenadeScript(shooterAgent, "grenade_explosion");
+                        Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
+                                                               m.Weapon.Item.StringId.Contains("ammo_grenade") &&
+                                                               !m.Entity.HasScriptOfType<GrenadeScript>());
+                        if (grenade != null)
+                        {
+                            AddMissileScript<GrenadeScript>(grenade, "grenade_explosion");
+                        }
                     }
                     else
                     {
-                        DoBlunderbussShot(shooterAgent, position, orientation, 4);
+                        DoShotgunShot(shooterAgent, position, orientation, 4);
                     }
                 }
                 else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
@@ -92,7 +98,7 @@ namespace TOW_Core.Battle.FireArms
         /// It can use multiple ammo weapons to collect required amount of bullets.
         /// </summary>
         /// <param name="requiredAmmoAmount">Max amount of bullets to do blunderbuss shot.</param>
-        private void DoBlunderbussShot(Agent shooterAgent, Vec3 shotPosition, Mat3 shotOrientation, short requiredAmmoAmount)
+        private void DoShotgunShot(Agent shooterAgent, Vec3 shotPosition, Mat3 shotOrientation, short requiredAmmoAmount)
         {
             MissionWeapon weapon = MissionWeapon.Invalid;
             short foundAmmoAmount = 0;
@@ -121,7 +127,7 @@ namespace TOW_Core.Battle.FireArms
             while (foundAmmoAmount > 0)
             {
                 foundAmmoAmount--;
-                var _orientation = GetRandomOrientationForBlunderbass(shotOrientation, scattering);
+                var _orientation = GetRandomOrientation(shotOrientation, scattering);
                 Mission.AddCustomMissile(shooterAgent, weapon, shotPosition, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
             }
 
@@ -154,7 +160,7 @@ namespace TOW_Core.Battle.FireArms
             Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient3, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
         }
 
-        private Mat3 GetRandomOrientationForBlunderbass(Mat3 orientation, float scattering)
+        private Mat3 GetRandomOrientation(Mat3 orientation, float scattering)
         {
             float rand1 = MBRandom.RandomFloatRanged(-scattering, scattering);
             orientation.f.RotateAboutX(rand1);
@@ -165,30 +171,13 @@ namespace TOW_Core.Battle.FireArms
             return orientation;
         }
 
-        private void AddGrenadeScript(Agent shooterAgent, string triggeredEffectName)
-        {
-            Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                                           m.Weapon.Item.StringId.Contains("ammo_grenade") &&
-                                                                           !m.Entity.HasScriptOfType<GrenadeScript>());
-            if (grenade != null)
-            {
-                GameEntity grenadeEntity = grenade.Entity;
-                grenadeEntity.CreateAndAddScriptComponent("GrenadeScript");
-                GrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<GrenadeScript>();
-                grenadeScript.SetShooterAgent(grenade.ShooterAgent);
-                grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
-                grenadeEntity.CallScriptCallbacks();
-            }
-        }
-
-        private void AddHandGrenadeScipt(Mission.Missile grenade, string triggeredEffectName)
+        private void AddMissileScript<TMissileScript>(Mission.Missile grenade, string triggeredEffectName) where TMissileScript : BlackPowderWeaponScript
         {
             GameEntity grenadeEntity = grenade.Entity;
-            grenadeEntity.CreateAndAddScriptComponent("HandGrenadeScript");
-            HandGrenadeScript grenadeScript = grenadeEntity.GetFirstScriptOfType<HandGrenadeScript>();
+            grenadeEntity.CreateAndAddScriptComponent(typeof(TMissileScript).Name);
+            TMissileScript grenadeScript = grenadeEntity.GetFirstScriptOfType<TMissileScript>();
             grenadeScript.SetShooterAgent(grenade.ShooterAgent);
             grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
-            grenadeScript.SetMissile(grenade);
             grenadeEntity.CallScriptCallbacks();
         }
     }
