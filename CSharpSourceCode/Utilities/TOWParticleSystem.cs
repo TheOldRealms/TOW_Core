@@ -39,7 +39,7 @@ namespace TOW_Core.Utilities
                 int[] boneIndexes; 
                 if (rootOnly)
                 {
-                    boneIndexes = new int[] { 0 };
+                    boneIndexes = new int[] { 1 };
                 }
                 else
                 {

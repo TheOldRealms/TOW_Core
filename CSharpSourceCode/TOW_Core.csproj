@@ -288,6 +288,8 @@
     <Compile Include="Abilities\Crosshairs\SelfCrosshair.cs" />
     <Compile Include="Abilities\Scripts\ArtilleryPlacementScript.cs" />
     <Compile Include="Abilities\Scripts\AugmentScript.cs" />
+    <Compile Include="Abilities\Scripts\BlastScript.cs" />
+    <Compile Include="Abilities\Scripts\BombardmentScript.cs" />
     <Compile Include="Abilities\Scripts\HealScript.cs" />
     <Compile Include="Abilities\Scripts\HexScript.cs" />
     <Compile Include="Abilities\Scripts\VortexScript.cs" />
@@ -366,7 +368,7 @@
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
     <Compile Include="Battle\Models\TORCustomBattleAgentStatCalculateModel.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\ApplyFlamingItemTraitScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\DynamicItemTraitScripts.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\CannonBallScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />

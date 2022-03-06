@@ -34,6 +34,8 @@ namespace TOW_Core.Abilities
 
         public int GetCoolDownLeft() => _coolDownLeft;
 
+        private bool IsSingleTarget() => Template.AbilityTargetType == AbilityTargetType.SingleAlly || Template.AbilityTargetType == AbilityTargetType.SingleEnemy;
+
         public delegate void OnCastCompleteHandler(Ability ability);
         public event OnCastCompleteHandler OnCastComplete;
         public delegate void OnCastStartHandler(Ability ability);
@@ -123,7 +125,7 @@ namespace TOW_Core.Abilities
 
             AddLight(ref parentEntity);
 
-            if (IsMissileAbility())
+            if (ShouldAddPhyics())
                 AddPhysics(ref parentEntity);
 
             AddBehaviour(ref parentEntity, casterAgent);
@@ -141,6 +143,11 @@ namespace TOW_Core.Abilities
                    Template.AbilityEffectType == AbilityEffectType.Missile;
         }
 
+        private bool ShouldAddPhyics()
+        {
+            return IsMissileAbility() || Template.AbilityEffectType == AbilityEffectType.Bombardment;
+        }
+
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
@@ -150,6 +157,10 @@ namespace TOW_Core.Abilities
                 if (IsGroundAbility())
                 {
                     frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+                    if(Template.AbilityEffectType == AbilityEffectType.Bombardment)
+                    {
+                        frame.origin.z += Template.Offset;
+                    }
                 }
                 else if (IsMissileAbility())
                 {
@@ -175,6 +186,11 @@ namespace TOW_Core.Abilities
                             frame = Crosshair.Frame;
                             break;
                         }
+                    case AbilityEffectType.Blast:
+                        {
+                            frame = Crosshair.Frame.Elevate(1);
+                            break;
+                        }
                     case AbilityEffectType.Vortex:
                     {
                         frame = Crosshair.Frame;
@@ -193,6 +209,12 @@ namespace TOW_Core.Abilities
                     case AbilityEffectType.Summoning:
                         {
                             frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                            break;
+                        }
+                    case AbilityEffectType.Bombardment:
+                        {
+                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                            frame.origin.z += Template.Offset;
                             break;
                         }
                     default:
@@ -283,9 +305,28 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.Vortex:
                     AddExactBehaviour<VortexScript>(entity, casterAgent);
                     break;
+                case AbilityEffectType.Blast:
+                    AddExactBehaviour<BlastScript>(entity, casterAgent);
+                    break;
+                case AbilityEffectType.Bombardment:
+                    AddExactBehaviour<BombardmentScript>(entity, casterAgent);
+                    break;
                 case AbilityEffectType.ArtilleryPlacement:
                     AddExactBehaviour<ArtilleryPlacementScript>(entity, casterAgent);
                     break;
+            }
+
+            if (IsSingleTarget())
+            {
+                if (casterAgent.IsAIControlled)
+                {
+                    //TODO get logic for selecting single targets for AI
+                    //AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
+                }
+                else if(Crosshair.CrosshairType == CrosshairType.SingleTarget)
+                {
+                    AbilityScript.SetExplicitSingleTarget((Crosshair as SingleTargetCrosshair).CachedTarget);
+                }
             }
 
             if (Template.SeekerParameters != null)
