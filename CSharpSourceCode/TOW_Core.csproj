@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -360,6 +360,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
+    <Compile Include="Quests\EngineerTrustQuest.cs" />
     <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
