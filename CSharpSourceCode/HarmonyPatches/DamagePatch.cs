@@ -22,7 +22,7 @@ namespace TOW_Core.HarmonyPatches
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent victim = __instance;
             
-            if (victim.IsMount || attacker.IsMount)
+            if (!victim.IsHuman || !attacker.IsHuman)
             {
                 return true;
             }
