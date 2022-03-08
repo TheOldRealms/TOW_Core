@@ -17,7 +17,7 @@ namespace TOW_Core.Abilities.Scripts
         protected override void OnTick(float dt)
         {
             base.OnTick(dt);
-            if (!_impulseGiven)
+            if (!_impulseGiven && _ability.Template.TriggerType == TriggerType.OnCollision)
             {
                 _impulseGiven = true;
                 GameEntity.ApplyLocalImpulseToDynamicBody(GameEntity.CenterOfMass, new Vec3(0, 0, -100));

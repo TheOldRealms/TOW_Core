@@ -145,7 +145,7 @@ namespace TOW_Core.Abilities
 
         private bool ShouldAddPhyics()
         {
-            return IsMissileAbility() || Template.AbilityEffectType == AbilityEffectType.Bombardment;
+            return Template.TriggerType == TriggerType.OnCollision;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)

@@ -256,5 +256,13 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
+	<game_entity name="thunderbolt" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{1010B168-F0DD-4F9F-91C0-F81BB93A9085}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
 </prefabs>
 

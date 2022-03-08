@@ -1537,7 +1537,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
-      <string>CometOfCasandora</string>
+      <string>Thunderbolt</string>
       <string>AuraOfResistance</string>
       <string>EnchantWeapon</string>
       <string>FlamingSwords</string>

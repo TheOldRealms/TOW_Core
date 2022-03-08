@@ -820,7 +820,7 @@
       TickInterval="-1" 
       TriggerType="TickOnce" 
       HasLight="false" 
-      LightIntensity="0" 
+      LightIntensity="0"
       LightRadius="0" 
       LightFlickeringMagnitude="0" 
       LightFlickeringInterval="0" 
@@ -1023,6 +1023,50 @@
       SpellTier="2"
       BelongsToLoreID="LoreOfHeavens"
       TooltipDescription="Dry winds from the desert knocks you on your ass.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+<AbilityTemplate 
+      StringID="Thunderbolt" 
+      Name="Urannon's Thunderbolt" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.5" 
+      Duration="8" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Bombardment" 
+      BaseMovementSpeed="0" 
+      TickInterval="0.3" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="3" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="thunderbolt" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="lightning_strike" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="thunderbolt_explosion"
+      Offset="0"
+      AbilityTargetType="GroundAtPosition"
+      CrosshairType="TargetedAOE"
+      MinDistance="5"
+      MaxDistance="30"
+      TargetCapturingRadius="2"
+      SpellTier="4"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Thunderbolt">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>

@@ -15,6 +15,20 @@
         DamageVariance="0.2" 
         ScriptNameToTrigger="none"/>
   <TriggeredEffectTemplate 
+        StringID="thunderbolt_explosion" 
+        BurstParticleEffectPrefab="none" 
+        SoundEffectId="none" 
+        SoundEffectLength="0" 
+        DamageType="Lightning" 
+        DamageAmount="100" 
+        Radius="2" 
+        HasShockWave="true"
+        TargetType="All" 
+        ImbuedStatusEffectID="none" 
+        ImbuedStatusEffectDuration="0" 
+        DamageVariance="0.1" 
+        ScriptNameToTrigger="none"/>
+  <TriggeredEffectTemplate 
         StringID="comet_explosion" 
         BurstParticleEffectPrefab="comet_explosion" 
         SoundEffectId="fireball_explosion" 
