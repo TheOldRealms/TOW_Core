@@ -1,13 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
+using SandBox.Issues.IssueQuestTasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Quests
 {
@@ -20,12 +25,14 @@ namespace TOW_Core.Quests
         [SaveableField(2)] private JournalLog _task1 = null;
 
         [SaveableField(3)] private JournalLog _task2 = null;
-        
+      
 
         public EngineerTrustQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
             questId, questGiver, duration, rewardGold)
         {
             SetLogs();
+
+         
         }
 
         private void SetLogs()
@@ -33,10 +40,9 @@ namespace TOW_Core.Quests
             _task1 = AddDiscreteLog(new TextObject("Find and kill Rudolf, the rogue engineer."),
                 new TextObject("killed Rudolf"), _destroyedParty, 1);
             
-
+         
         }
-
-
+       
         public override TextObject Title => new TextObject("The engineers trust");
 
         protected override void SetDialogs()
@@ -115,6 +121,7 @@ namespace TOW_Core.Quests
                     if (settlement.Hideout.MapFaction.Culture.StringId == "mountain_bandits")
                     {
                         potentialSpawnLocations.Add(settlement);
+                        
                     }
                 }
 
@@ -123,22 +130,69 @@ namespace TOW_Core.Quests
                 
 
                 var hero = MBObjectManager.Instance.GetObject<CharacterObject>("tor_chaos_lord_factionleader");
-               
-                var party = CustomPartyComponent.CreateQuestParty(spawnLocation.Position2D, 1f, spawnLocation,
+                var _enemyLeader = HeroCreator.CreateSpecialHero(hero, spawnLocation, spawnLocation.OwnerClan);
+                _enemyLeader.SetNewOccupation(Occupation.Lord);
+
+                
+                
+                
+
+                /*
+                var party = LordPartyComponent.CreateQuestParty(spawnLocation.Position2D, 1f, spawnLocation,
                     new TextObject("Rudolfs Party"), spawnLocation.OwnerClan,
-                    spawnLocation.OwnerClan.Culture.DefaultPartyTemplate,
-                    HeroCreator.CreateSpecialHero(hero, spawnLocation, spawnLocation.OwnerClan));
-                var _enemyLeader = HeroCreator.CreateSpecialHero(hero, party.HomeSettlement, party.ActualClan);
-                if (_enemyLeader != null)
+                    spawnLocation.OwnerClan.DefaultPartyTemplate,
+                    _enemyLeader);*/
+                
+              
+
+                var party = LordPartyComponent.CreateLordParty("Rudolfs Party", _enemyLeader, spawnLocation.Position2D,
+                    200f, spawnLocation, _enemyLeader);
+                
+                /*if (party.LeaderHero == null)
                 {
-                    party.AddElementToMemberRoster(_enemyLeader.CharacterObject, 1);
+                    party.RemovePartyLeader();
+                //    party.AddElementToMemberRoster(_enemyLeader.CharacterObject, 1);
                     party.ChangePartyLeader(_enemyLeader);
+
+                    //  party.PartyComponent.Leader.SetCharacterObject(_enemyLeader.CharacterObject);
+
+                }*/
+                
+                
+                
+
+                foreach (var template in spawnLocation.Culture.DefaultPartyTemplate.Stacks)
+                {
+                    party.AddElementToMemberRoster(template.Character, template.MinValue);
                 }
 
+                
+                party.ChangePartyLeader(_enemyLeader);
+                
+                
+                TOWCommon.Say(party.LeaderHero.Name.ToString());
+                
+                party.AddElementToMemberRoster(_enemyLeader.CharacterObject, 1);
+
+                
+                party.Aggressiveness = 0f;
+
+                party.IsVisible = true;
+                
+                party.IgnoreByOtherPartiesTill(CampaignTime.Days(200));
+
+                party.SetPartyUsedByQuest(true);
+                
+                party.Party.Visuals.SetMapIconAsDirty();
+                
+                
+                
                 _targetParty = party;
 
-
-
+            //    Campaign.Current.AddMapArrow(new TextObject("Rudolfs position"), party.Position2D,Vec2.Zero,200f,50);
+                
+                
+                //Campaign.Current.VisualTrackerManager.RegisterObject(_targetParty);
                 // var party = MobileParty.CreateParty("Rudolfs party",new CustomPartyComponent(), OnPartyCreated);
 
 
