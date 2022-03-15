@@ -264,5 +264,29 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
+	<game_entity name="sear" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{9D564B33-AABA-4CCC-B3D7-56AD2ACC1723}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="ball_lightning" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{A28F2228-CFF3-4AF0-9E33-C4D3A982A229}"/>
+			</particle_system_instanced_component>
+		</components>
+		<children>
+			<game_entity name="empty_object" old_prefab_name="">
+				<transform position="0.022, -0.018, 1.207"/>
+				<components>
+					<light_component color="0.761, 0.988, 1.000" intensity="200.000" radius="50.000" flicker_interval="1.000" flicker_magnitude="5.000" local_frame_rot="50.000000, 0.000000, 0.000000, 0.000000, 50.000000, 0.000000, 0.000000, 0.000000, 50.000000" hotspot_angle="30.000" falloff_angle="45.000" mobility="1" shadow_size_multiplier="1"/>
+				</components>
+			</game_entity>
+		</children>
+	</game_entity>
 </prefabs>
 
