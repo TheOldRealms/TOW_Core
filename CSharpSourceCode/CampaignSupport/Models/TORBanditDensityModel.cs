@@ -1,5 +1,5 @@
 ﻿using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TaleWorlds.CampaignSystem.GameComponents;
 
 namespace TOW_Core.CampaignSupport.Models
 {

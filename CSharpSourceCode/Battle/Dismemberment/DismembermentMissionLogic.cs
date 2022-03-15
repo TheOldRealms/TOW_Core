@@ -17,19 +17,19 @@ namespace TOW_Core.Battle.Dismemberment
 
         private Probability slowMotionFrequency = Probability.Probably;
 
-        private float slowMotionEndTime;
+        private float slowMotionEndTime = -1;
 
         private float maxChance = 33;
 
         private float maxTroopChance = 10;
 
-        private readonly String[] headMeshes = { "head", "hair", "beard", "eyebrow" };
+        private readonly string[] headMeshes = { "head", "hair", "beard", "eyebrow" };
 
         public override void OnMissionTick(float dt)
         {
-            if (Mission.CurrentTime >= slowMotionEndTime)
+            if (slowMotionEndTime > 0 && Mission.CurrentTime >= slowMotionEndTime)
             {
-                Mission.Current.Scene.SlowMotionMode = false;
+                Mission.Current.Scene.TimeSpeed *= 2;
             }
         }
 
@@ -78,7 +78,7 @@ namespace TOW_Core.Battle.Dismemberment
         private void EnableSlowMotion()
         {
             slowMotionEndTime = Mission.CurrentTime + 0.5f;
-            Mission.Current.Scene.SlowMotionMode = true;
+            Mission.Current.Scene.TimeSpeed *= 0.5f;
         }
 
         private bool ShouldBeDismembered(Agent attacker, Agent victim, Blow blow)
@@ -204,7 +204,7 @@ namespace TOW_Core.Battle.Dismemberment
 
         private void CreateBloodBurst(Agent victim)
         {
-            MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex((byte)victim.BoneMappingArray[HumanBone.Head]);
+            MatrixFrame boneEntitialFrameWithIndex = victim.AgentVisuals.GetSkeleton().GetBoneEntitialFrameWithIndex(victim.BoneMappingArray[HumanBone.Head]);
             Vec3 vec = victim.AgentVisuals.GetGlobalFrame().TransformToParent(boneEntitialFrameWithIndex.origin);
             victim.CreateBloodBurstAtLimb(13, ref vec, 0.5f + MBRandom.RandomFloat * 0.5f);
         }

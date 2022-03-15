@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using Helpers;
 using SandBox;
+using SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;

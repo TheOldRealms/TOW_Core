@@ -7,6 +7,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
+using TaleWorlds.ScreenSystem;
 using TOW_Core.Battle.Crosshairs;
 
 namespace TOW_Core.Abilities.Crosshairs

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using HarmonyLib;
+using TaleWorlds.CampaignSystem.Roster;
 
 namespace TOW_Core.HarmonyPatches
 {

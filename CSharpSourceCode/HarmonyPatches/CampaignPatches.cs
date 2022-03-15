@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using MountAndBlade.CampaignBehaviors;
 using SandBox;
 using System;
 using System.Collections.Generic;
@@ -8,13 +7,17 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.Election;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.GameState;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Party.PartyComponents;
+using TaleWorlds.CampaignSystem.Roster;
+using TaleWorlds.CampaignSystem.Settlements;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -26,6 +29,7 @@ using TOW_Core.Utilities.Extensions;
 
 //Need a way to somehow skip loading of vanilla xmls in the following categories:
 //Settlements, Clans, Kingdoms, Heroes
+//Should be done via XSLT instead
 
 namespace TOW_Core.HarmonyPatches
 {
@@ -119,7 +123,7 @@ namespace TOW_Core.HarmonyPatches
             }
             float num3 = 10000f;
             ItemObject itemObject = null;
-            foreach (ItemObject itemObject2 in TaleWorlds.CampaignSystem.Items.All)
+            foreach (ItemObject itemObject2 in TaleWorlds.CampaignSystem.Extensions.Items.All)
             {
                 if (itemObject2.ItemCategory == DefaultItemCategories.PackAnimal && !itemObject2.NotMerchandise && (float)itemObject2.Value < num3)
                 {
@@ -236,7 +240,7 @@ namespace TOW_Core.HarmonyPatches
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(MapVM), MethodType.Constructor, typeof(INavigationHandler), typeof(IMapStateHandler), typeof(MapBarShortcuts), typeof(Action))]
+        [HarmonyPatch(typeof(MapVM), MethodType.Constructor, typeof(INavigationHandler), typeof(IMapStateHandler), typeof(Func<MapBarShortcuts>), typeof(Action))]
         public static void ReplaceMapVM(MapVM __instance)
         {
             __instance.MapInfo = new TorMapInfoVM();

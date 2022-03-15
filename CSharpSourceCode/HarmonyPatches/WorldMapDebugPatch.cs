@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using Helpers;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Settlements;
 
 namespace TOW_Core.HarmonyPatches 
 { 

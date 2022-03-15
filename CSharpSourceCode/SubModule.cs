@@ -15,7 +15,6 @@ using TaleWorlds.Engine.GauntletUI;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.StatusEffects;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Battle.Map;
@@ -44,6 +43,8 @@ using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
+using SandBox.Missions.MissionLogics;
 
 namespace TOW_Core
 {

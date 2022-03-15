@@ -1,5 +1,5 @@
-﻿using System;
-using SandBox.Source.Missions;
+﻿using SandBox.Missions.MissionLogics;
+using System;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;

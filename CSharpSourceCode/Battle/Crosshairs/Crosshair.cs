@@ -7,6 +7,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Screen;
 using TaleWorlds.MountAndBlade.ViewModelCollection.HUD;
+using TaleWorlds.ScreenSystem;
 
 namespace TOW_Core.Battle.Crosshairs
 {

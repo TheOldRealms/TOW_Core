@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 using TOW_Core.Utilities;

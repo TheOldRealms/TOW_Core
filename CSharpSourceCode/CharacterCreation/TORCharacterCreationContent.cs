@@ -16,6 +16,8 @@ using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities.SpellBook;
+using TaleWorlds.CampaignSystem.Extensions;
+using TaleWorlds.CampaignSystem.Party;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -253,7 +255,7 @@ namespace TOW_Core.CharacterCreation
             MapState mapState;
             if ((mapState = (GameStateManager.Current.ActiveState as MapState)) != null)
             {
-                mapState.Handler.ResetCamera();
+                mapState.Handler.ResetCamera(true, true);
                 mapState.Handler.TeleportCameraToMainParty();
             }
             SetHeroAge(25);

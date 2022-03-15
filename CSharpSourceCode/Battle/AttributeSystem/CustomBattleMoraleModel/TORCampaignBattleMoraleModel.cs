@@ -1,4 +1,5 @@
 ﻿using SandBox;
+using SandBox.GameComponents;
 using System.Runtime.CompilerServices;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;

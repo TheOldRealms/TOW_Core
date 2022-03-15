@@ -1,11 +1,11 @@
-﻿using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+﻿using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Core;
 
 namespace TOW_Core.CampaignSupport.Models
 {
     public class TORCombatXpModel : DefaultCombatXpModel
     {
-        public override SkillObject GetSkillForWeapon(WeaponComponentData weapon)
+        public override SkillObject GetSkillForWeapon(WeaponComponentData weapon, bool isSiegeWeaponHit)
         {
             SkillObject result = DefaultSkills.Athletics;
             if (weapon != null)
@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignSupport.Models
                 }
                 else
                 {
-                    result = weapon.RelevantSkill;
+                    result = base.GetSkillForWeapon(weapon, isSiegeWeaponHit);
                 }
             }
             return result;

@@ -11,6 +11,7 @@ using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
+using TaleWorlds.ScreenSystem;
 
 namespace TOW_Core.Abilities.SpellBook
 {

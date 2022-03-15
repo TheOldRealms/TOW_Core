@@ -19,7 +19,6 @@ namespace TOW_Core.Battle.Damage
             base.OnMissionTick(dt);
             if (Debugger.IsAttached)
             {
-                CheckForSlowMotionTime();
                 //KillEnemyLeader();
                 GetSomeFireArms();
             }
@@ -37,20 +36,6 @@ namespace TOW_Core.Battle.Damage
                 TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_ammo_grenade", EquipmentIndex.Weapon4);
                 TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_ammo_shrapnel", EquipmentIndex.Weapon3);
                 TOWDebug.EquipWeapon(Agent.Main, "tor_empire_weapon_gun_blunderbuss_001", EquipmentIndex.Weapon2);
-            }
-        }
-
-        public static void EnableSlowMotion(float time)
-        {
-            _slowMotionEndTime = Mission.Current.CurrentTime + time;
-            Mission.Current.Scene.SlowMotionMode = true;
-        }
-
-        private void CheckForSlowMotionTime()
-        {
-            if (Mission.Scene.SlowMotionMode && _slowMotionEndTime <= Mission.CurrentTime)
-            {
-                Mission.Scene.SlowMotionMode = false;
             }
         }
 

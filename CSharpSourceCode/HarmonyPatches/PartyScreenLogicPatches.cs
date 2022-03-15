@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Party;
 using TOW_Core.CampaignSupport.RaiseDead;
 
 namespace TOW_Core.HarmonyPatches
