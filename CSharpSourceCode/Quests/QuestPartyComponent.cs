@@ -48,7 +48,7 @@ namespace TOW_Core.Quests
             mobileParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
             mobileParty.SetMovePatrolAroundSettlement(settlement);
             mobileParty.Ai.SetDoNotMakeNewDecisions(true);
-            //mobileParty.Party.Visuals.SetMapIconAsDirty();
+            mobileParty.Party.Visuals.SetMapIconAsDirty();
         }
     }
 
