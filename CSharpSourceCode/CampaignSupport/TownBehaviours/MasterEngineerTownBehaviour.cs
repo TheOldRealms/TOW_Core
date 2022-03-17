@@ -9,6 +9,7 @@ using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Quests;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -46,12 +47,25 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             _nuln = Settlement.All.FirstOrDefault(x => x.StringId == "town_WI1");
             obj.AddDialogLine("engineer_start", "start", "engineerchoices", "Greetings.", engineerstartcondition, null, 200);
             obj.AddPlayerLine("engineer_sayopengunshop", "engineerchoices", "opengunshop", "Let me see your wares.", null, null, 200, null);
-            obj.AddDialogLine("engineer_opengunshop", "opengunshop", "start", "Come have a look.", null, openshopconsequence, 200, null);
+            obj.AddDialogLine("engineer_opengunshop", "opengunshop", "start", "Come have a look.", null, opengunshopconsequence, 200, null);
+            obj.AddPlayerLine("engineer_requestquest", "engineerchoices", "requestquest", "Give me the test quest.", requestquestcondition, null, 200, null);
+            obj.AddDialogLine("engineer_addquest", "requestquest", "start", "There you go.", null, addquestconsequence, 200, null);
             obj.AddPlayerLine("engineer_saygoodbye", "engineerchoices", "engineersaygoodbye", "Farewell Master.", null, null, 200, null);
             obj.AddDialogLine("engineer_goodbye", "engineersaygoodbye", "close_window", "With fire and steel.", null, null, 200, null);
         }
 
-        private void openshopconsequence()
+        private void addquestconsequence()
+        {
+            var quest = InitialEngineerQuest.GetNew();
+            if (quest != null) quest.StartQuest();
+        }
+
+        private bool requestquestcondition()
+        {
+            return InitialEngineerQuest.GetCurrentActiveIfExists() == null;
+        }
+
+        private void opengunshopconsequence()
         {
             var engineerItems = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x => x.IsTorItem() && (x.StringId.Contains("gun") || x.StringId.Contains("artillery")));
             List<ItemRosterElement> list = new List<ItemRosterElement>();
