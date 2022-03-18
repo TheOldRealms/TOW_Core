@@ -48,21 +48,21 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 castingBehaviors
                     .Add(BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, BehaviorByType[AbilityEffectType.Missile])
-                    .Invoke(agent, index, knownAbilityTemplate));
+                        .Invoke(agent, index, knownAbilityTemplate));
                 index++;
             }
 
             castingBehaviors.Add(new PreserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
             return castingBehaviors;
         }
-        
+
         private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateSummoningAxis()
         {
             return behavior =>
             {
                 var axes = new List<Axis>();
 
-                axes.Add(new Axis(0, 1f, x => 1 - x, CommonDecisionFunctions.BalanceOfPower(behavior.Agent)));
+                axes.Add(new Axis(0, 1f, x => 1 - x, CommonAIDecisionFunctions.BalanceOfPower(behavior.Agent)));
 
                 return axes;
             };
@@ -79,10 +79,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
                 if (behavior.AbilityTemplate.AbilityTargetType != AbilityTargetType.Self)
                 {
-                    axes.Add(new Axis(0, 100, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)));
-                    axes.Add(new Axis(0, 7, x => 1 - x, CommonDecisionFunctions.FormationDistanceToHostiles()));
-                    axes.Add(new Axis(0, 3, x => 1 - x + 0.1f, CommonDecisionFunctions.TargetSpeed()));
-                    axes.Add(new Axis(0, 0.5f, x => x + 0.01f, CommonDecisionFunctions.FormationUnderFire()));
+                    axes.Add(new Axis(0, 100, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)));
+                    axes.Add(new Axis(0, 7, x => 1 - x, CommonAIDecisionFunctions.FormationDistanceToHostiles()));
+                    axes.Add(new Axis(0, 3, x => 1 - x + 0.1f, CommonAIDecisionFunctions.TargetSpeed()));
+                    axes.Add(new Axis(0, 0.5f, x => x + 0.01f, CommonAIDecisionFunctions.FormationUnderFire()));
                 }
 
                 return axes;
@@ -106,10 +106,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
-                    new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team) / 4, x => x, CommonDecisionFunctions.FormationPower()),
-                    new Axis(0.0f, 1, x => x + 0.3f, CommonDecisionFunctions.RangedUnitRatio()),
-                    //   new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, CommonDecisionParameterFunctions.InfantryUnitRatio()),
+                    new Axis(0, 120, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
+                    new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team) / 4, x => x, CommonAIDecisionFunctions.FormationPower()),
+                    new Axis(0.0f, 1, x => x + 0.3f, CommonAIDecisionFunctions.RangedUnitRatio()),
                 };
             };
         }
@@ -121,11 +120,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 return new List<Axis>
                 {
-                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), CommonDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
-                    new Axis(0, 15, x => 1 - x, CommonDecisionFunctions.FormationDistanceToHostiles()),
-                    new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team), x => x, CommonDecisionFunctions.FormationPower()),
-                    new Axis(1, 2.5f, x => 1 - x, CommonDecisionFunctions.Dispersedness()),
-                    new Axis(0, 1, x => 1 - x, CommonDecisionFunctions.CavalryUnitRatio()),
+                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
+                    new Axis(0, 15, x => 1 - x, CommonAIDecisionFunctions.FormationDistanceToHostiles()),
+                    new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team), x => x, CommonAIDecisionFunctions.FormationPower()),
+                    new Axis(1, 2.5f, x => 1 - x, CommonAIDecisionFunctions.Dispersedness()),
+                    new Axis(0, 1, x => 1 - x, CommonAIDecisionFunctions.CavalryUnitRatio()),
                 };
             };
         }

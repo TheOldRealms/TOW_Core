@@ -22,7 +22,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
         protected List<Axis> AxisList;
-        
+
         public Target CurrentTarget = new Target();
         public List<BehaviorOption> LatestScores { get; private set; }
 
@@ -116,7 +116,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected virtual Target CalculateUtility(Target target)
         {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional())
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional() && !CommonAIStateFunctions.CanAgentMoveFreely(Agent))
             {
                 target.UtilityValue = 0.0f;
                 return target;

@@ -2,11 +2,8 @@
 using System.Linq;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
-using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
@@ -38,8 +35,8 @@ namespace TOW_Core.Battle.AI.Components
 
             if (!Agent.IsPlayerControlled || Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
             {
-                var movementOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
-                if (IsMovementFree(movementOrder))
+              
+                if (CommonAIStateFunctions.CanAgentMoveFreely(Agent))
                 {
                     CurrentCastingBehavior?.TacticalBehavior?.Execute();
                 }
@@ -55,11 +52,7 @@ namespace TOW_Core.Battle.AI.Components
             base.OnTickAsAI(dt);
         }
 
-        private bool IsMovementFree(MovementOrder? movementOrder)
-        {
-            //TODO: Skirmish detection is incomplete. Multiple Formation skirmish behaviors exist.
-            return movementOrder.HasValue && (movementOrder.Value.OrderType == OrderType.Charge || movementOrder.Value.OrderType == OrderType.ChargeWithTarget || Agent?.Formation?.AI?.ActiveBehavior is BehaviorSkirmish);
-        }
+  
 
         private void TickOccasionally()
         {

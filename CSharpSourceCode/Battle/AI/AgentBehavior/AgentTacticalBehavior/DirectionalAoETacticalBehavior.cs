@@ -6,13 +6,13 @@ using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 {
-    public class FlankCastingTacticalBehavior : AbstractAgentTacticalBehavior
+    public class DirectionalAoETacticalBehavior : AbstractAgentTacticalBehavior
     {
         public Vec3 CastingPosition;
         public AbstractAgentCastingBehavior CastingBehavior { get; set; }
 
 
-        public FlankCastingTacticalBehavior(Agent agent, HumanAIComponent aiComponent, AbstractAgentCastingBehavior castingBehavior) : base(agent, aiComponent)
+        public DirectionalAoETacticalBehavior(Agent agent, HumanAIComponent aiComponent, AbstractAgentCastingBehavior castingBehavior) : base(agent, aiComponent)
         {
             CastingBehavior = castingBehavior;
         }

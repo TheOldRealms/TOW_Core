@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public static class CommonDecisionFunctions
+    public static class CommonAIDecisionFunctions
     {
         public static Func<Target, float> FormationUnderFire()
         {
@@ -85,7 +82,18 @@ namespace TOW_Core.Battle.AI.Decision
             {
                 power += team.TeamPower;
             }
+
             return power;
+        }
+    }
+
+    public static class CommonAIStateFunctions
+    {
+        public static bool CanAgentMoveFreely(Agent agent)
+        {
+            var movementOrder = agent?.Formation?.GetReadonlyMovementOrderReference();
+            //TODO: Skirmish detection is incomplete. Multiple Formation skirmish behaviors exist.
+            return movementOrder.HasValue && (movementOrder.Value.OrderType == OrderType.Charge || movementOrder.Value.OrderType == OrderType.ChargeWithTarget || agent?.Formation?.AI?.ActiveBehavior is BehaviorSkirmish);
         }
     }
 }

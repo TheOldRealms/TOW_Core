@@ -6,13 +6,13 @@ using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 {
-    public class AdjacentAoECastingTacticalBehavior : AbstractAgentTacticalBehavior
+    public class AdjacentAoETacticalBehavior : AbstractAgentTacticalBehavior
     {
         public Vec3 CastingPosition;
         public AbstractAgentCastingBehavior CastingBehavior { get; set; }
 
 
-        public AdjacentAoECastingTacticalBehavior(Agent agent, HumanAIComponent aiComponent, AbstractAgentCastingBehavior castingBehavior) : base(agent, aiComponent)
+        public AdjacentAoETacticalBehavior(Agent agent, HumanAIComponent aiComponent, AbstractAgentCastingBehavior castingBehavior) : base(agent, aiComponent)
         {
             CastingBehavior = castingBehavior;
         }
@@ -26,12 +26,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
         private static Vec3 CalculateCastingPosition(Formation targetFormation)
         {
-            var targetFormationDirection = new Vec2(targetFormation.Direction.x, targetFormation.Direction.y);
-            targetFormationDirection.RotateCCW(1.63f);
-            targetFormationDirection = targetFormationDirection * (targetFormation.Width / 1.45f);
-            targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
-            var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
-            return castingPosition;
+            var medianPositionPosition = targetFormation.QuerySystem.MedianPosition;
+            return medianPositionPosition.GetGroundVec3() + (targetFormation.Direction * targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.GetGroundZ());
         }
 
         public override void ApplyBehaviorParams()

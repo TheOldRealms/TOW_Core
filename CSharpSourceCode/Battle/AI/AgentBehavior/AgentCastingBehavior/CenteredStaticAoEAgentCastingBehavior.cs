@@ -1,11 +1,7 @@
-﻿using HarmonyLib;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
-using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities;
+using TOW_Core.Battle.AI.Components;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -13,11 +9,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public CenteredStaticAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
+            TacticalBehavior = new DirectionalAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
         }
 
         public override void Execute()
         {
-            var castingPosition = ((AdjacentAoECastingTacticalBehavior) TacticalBehavior)?.CastingPosition;
+            var castingPosition = ((AdjacentAoETacticalBehavior) TacticalBehavior)?.CastingPosition;
             if (castingPosition.HasValue && Agent.Position.AsVec2.Distance(castingPosition.Value.AsVec2) > 5) return;
 
             base.Execute();
@@ -25,18 +22,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Terminate()
         {
-            Agent.DisableScriptedMovement();
         }
 
         protected override bool HaveLineOfSightToAgent(Agent targetAgent)
         {
             return true;
-        }
-
-        private static Vec3 CalculateCastingPosition(Formation targetFormation)
-        {
-            var medianPositionPosition = targetFormation.QuerySystem.MedianPosition;
-            return medianPositionPosition.GetGroundVec3() + (targetFormation.Direction * targetFormation.GetMovementSpeedOfUnits()).ToVec3(medianPositionPosition.GetGroundZ());
         }
 
         public override bool IsPositional()

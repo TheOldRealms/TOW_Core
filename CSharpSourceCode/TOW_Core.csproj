@@ -334,14 +334,13 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AdjacentAoECastingTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\FlankCastingTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AdjacentAoETacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\DirectionalAoETacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\MoveToPositionTacticalBehavior.cs" />
     <Compile Include="Battle\AI\Components\ArtilleryAI.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\BehaviorOption.cs" />
-    <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
+    <Compile Include="Battle\AI\Decision\CommonAIFunctions.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />

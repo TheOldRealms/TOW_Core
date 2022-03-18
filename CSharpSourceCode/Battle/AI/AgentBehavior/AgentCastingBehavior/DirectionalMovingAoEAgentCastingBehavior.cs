@@ -10,12 +10,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Hysteresis = 0.35f;
-            TacticalBehavior = new FlankCastingTacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
+            TacticalBehavior = new DirectionalAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
         }
 
         public override void Execute()
         {
-            var castingPosition = ((FlankCastingTacticalBehavior) TacticalBehavior)?.CastingPosition;
+            var castingPosition = ((DirectionalAoETacticalBehavior) TacticalBehavior)?.CastingPosition;
             if (castingPosition.HasValue && Agent.Position.AsVec2.Distance(castingPosition.Value.AsVec2) > 6) return;
 
             base.Execute();

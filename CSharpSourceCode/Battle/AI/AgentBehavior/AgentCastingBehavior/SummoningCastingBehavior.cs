@@ -28,6 +28,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 base.Execute();
             }
         }
+
         public override bool IsPositional()
         {
             return false;
