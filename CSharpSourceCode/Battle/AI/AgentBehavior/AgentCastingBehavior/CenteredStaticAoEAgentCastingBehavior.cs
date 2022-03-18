@@ -3,6 +3,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities;
 
@@ -16,11 +17,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Execute()
         {
-            var castingPosition = CurrentTarget.Formation != null ? CalculateCastingPosition(CurrentTarget.Formation) : Agent.Position;
-            var worldPosition = new WorldPosition(Mission.Current.Scene, castingPosition);
-            Agent.SetScriptedPosition(ref worldPosition, false);
-
-            if (Agent.Position.AsVec2.Distance(castingPosition.AsVec2) > 5) return;
+            var castingPosition = ((AdjacentAoECastingTacticalBehavior) TacticalBehavior)?.CastingPosition;
+            if (castingPosition.HasValue && Agent.Position.AsVec2.Distance(castingPosition.Value.AsVec2) > 5) return;
 
             base.Execute();
         }

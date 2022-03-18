@@ -11,9 +11,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         {
         }
 
-        public override void Execute()
+        public override void Tick()
         {
-            ApplyBehaviorParams();
             var behavior = Agent.Formation?.AI?.ActiveBehavior;
             if (Agent.Team.GeneralAgent == Agent && Agent.Team.HasTeamAi && behavior != null && behavior.GetType() == typeof(BehaviorCharge))
             {

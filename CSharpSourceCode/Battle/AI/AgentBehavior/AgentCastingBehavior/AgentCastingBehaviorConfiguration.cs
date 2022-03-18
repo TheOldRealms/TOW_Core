@@ -4,6 +4,7 @@ using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -12,15 +13,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>> BehaviorByType =
             new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>>
             {
-                {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MovingProjectileAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MovingProjectileAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-
-                //{AbilityEffectType.CenteredStaticAOE, (agent, abilityTemplate, abilityIndex) => new CenteredStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-
-                //{AbilityEffectType.TargetedStaticAOE, (agent, abilityTemplate, abilityIndex) => new TargetedStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                //{AbilityEffectType.SingleTarget, (agent, abilityTemplate, abilityIndex) => new TargetedStaticAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.Augment, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.AgentMoving, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.Blast, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.Bombardment, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.Heal, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                // {AbilityEffectType.Hex, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-
                 {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
@@ -36,9 +37,25 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
                 {typeof(DirectionalMovingAoEAgentCastingBehavior), CreateDirectionalMovingAoEAxis()},
-                {typeof(MovingProjectileAgentCastingBehavior), CreateMovingProjectileAxis()},
+                {typeof(MissileCastingBehavior), CreateMovingProjectileAxis()},
             };
 
+        public static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
+        {
+            var castingBehaviors = new List<AbstractAgentCastingBehavior>();
+            var index = 0;
+            foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
+            {
+                castingBehaviors
+                    .Add(BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, BehaviorByType[AbilityEffectType.Missile])
+                    .Invoke(agent, index, knownAbilityTemplate));
+                index++;
+            }
+
+            castingBehaviors.Add(new PreserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
+            return castingBehaviors;
+        }
+        
         private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateSummoningAxis()
         {
             return behavior =>
@@ -92,7 +109,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                     new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
                     new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(behavior.Agent.Team) / 4, x => x, CommonDecisionFunctions.FormationPower()),
                     new Axis(0.0f, 1, x => x + 0.3f, CommonDecisionFunctions.RangedUnitRatio()),
-                 //   new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, CommonDecisionParameterFunctions.InfantryUnitRatio()),
+                    //   new Axis(0.0f, 1, x => x * 2 / 3 + 0.1f, CommonDecisionParameterFunctions.InfantryUnitRatio()),
                 };
             };
         }
@@ -112,8 +129,5 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 };
             };
         }
-
-
-     
     }
 }

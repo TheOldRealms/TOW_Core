@@ -16,8 +16,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             AIComponent = aiComponent;
         }
 
-        public abstract void ApplyBehaviorParams();
-
         protected OrderType? GetMovementOrderType()
         {
             var moveOrder = Agent?.Formation?.GetReadonlyMovementOrderReference();
@@ -25,7 +23,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             return currentOrderType;
         }
 
-        public abstract void Execute();
+        public void Execute()
+        {
+            ApplyBehaviorParams();
+        }
+
+        public abstract void Tick();
         public abstract void Terminate();
 
         public float GetLatestScore()
@@ -33,7 +36,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             throw new NotImplementedException();
         }
 
-        public List<TacticalBehaviorOption> CalculateUtility()
+        public List<BehaviorOption> CalculateUtility()
         {
             throw new NotImplementedException();
         }
@@ -42,5 +45,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         {
             return false;
         }
+
+        public abstract void ApplyBehaviorParams();
     }
 }

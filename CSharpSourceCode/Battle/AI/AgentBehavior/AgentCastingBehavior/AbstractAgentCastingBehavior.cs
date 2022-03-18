@@ -6,6 +6,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities.Extensions;
@@ -21,12 +22,12 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
         protected List<Axis> AxisList;
-
+        
         public Target CurrentTarget = new Target();
-        public List<TacticalBehaviorOption> LatestScores { get; private set; }
+        public List<BehaviorOption> LatestScores { get; private set; }
 
+        public AbstractAgentTacticalBehavior TacticalBehavior { get; protected set; }
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
-
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -39,6 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             AbilityTemplate = abilityTemplate;
             AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            TacticalBehavior = new KeepSafeAgentTacticalBehavior(Agent, Agent.GetComponent<WizardAIComponent>());
         }
 
 
@@ -102,11 +104,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public abstract void Terminate();
 
-        public List<TacticalBehaviorOption> CalculateUtility()
+        public List<BehaviorOption> CalculateUtility()
         {
             LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
                 .Select(CalculateUtility)
-                .Select(target => new TacticalBehaviorOption {Target = target, Behavior = this})
+                .Select(target => new BehaviorOption {Target = target, Behavior = this})
                 .ToList();
 
             return LatestScores;

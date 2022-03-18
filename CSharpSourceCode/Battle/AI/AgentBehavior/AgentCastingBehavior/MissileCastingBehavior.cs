@@ -5,9 +5,9 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class MovingProjectileAgentCastingBehavior : AbstractAgentCastingBehavior
+    public class MissileCastingBehavior : AbstractAgentCastingBehavior
     {
-        public MovingProjectileAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public MissileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Hysteresis = 0.1f;
         }
