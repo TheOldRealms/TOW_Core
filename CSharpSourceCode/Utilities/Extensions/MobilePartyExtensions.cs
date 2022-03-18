@@ -47,8 +47,12 @@ namespace TOW_Core.Utilities.Extensions
         {
             if (party == MobileParty.MainParty)
             {
-                var engineering = party.LeaderHero.GetSkillValue(DefaultSkills.Engineering);
-                return (int)Math.Truncate((decimal)engineering / 50);
+                if (party.LeaderHero != null)
+                {
+                    var engineering = party.LeaderHero.GetSkillValue(DefaultSkills.Engineering);
+                    return (int)Math.Truncate((decimal)engineering / 50);
+                }
+                else return 0;
             }
             else if (party.IsLordParty)
             {

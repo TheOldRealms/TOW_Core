@@ -153,6 +153,17 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         
         private void openshopconsequence()
         {
+            var quest = InitialEngineerQuest.GetNew();
+            if (quest != null) quest.StartQuest();
+        }
+
+        private bool requestquestcondition()
+        {
+            return InitialEngineerQuest.GetCurrentActiveIfExists() == null;
+        }
+
+        private void opengunshopconsequence()
+        {
             var engineerItems = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x => x.IsTorItem() && (x.StringId.Contains("gun") || x.StringId.Contains("artillery")));
             List<ItemRosterElement> list = new List<ItemRosterElement>();
             foreach (var item in engineerItems)

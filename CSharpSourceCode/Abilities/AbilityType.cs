@@ -20,6 +20,7 @@
         Hex,
         Summoning,
         Bombardment,
+        Blast,
         ArtilleryPlacement,
         AgentMoving,
     }

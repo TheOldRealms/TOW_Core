@@ -1,15 +1,13 @@
-﻿using System;
+﻿using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.View.Screen;
 
 namespace TOW_Core.Abilities.Crosshairs
 {
     public class SingleTargetCrosshair : MissileCrosshair
     {
-        public SingleTargetCrosshair(AbilityTemplate template, Agent caster) : base(template)
+        public SingleTargetCrosshair(AbilityTemplate template) : base(template)
         {
-            _caster = caster;
         }
 
         public override void Tick()
@@ -17,85 +15,90 @@ namespace TOW_Core.Abilities.Crosshairs
             FindTarget();
         }
 
+        public override void Show()
+        {
+            base.Show();
+            _cachedTarget = null;
+        }
+
         public override void Hide()
         {
             base.Hide();
-            _target?.AgentVisuals.SetContourColor(colorLess);
+            UnlockTarget();
         }
 
         private void FindTarget()
         {
-            Vec3 startRay, endRay;
-            //startRay = _missionScreen.CombatCamera.Frame.origin;
-            //endRay = _missionScreen.CombatCamera.Frame.Elevate(_template.MaxDistance).origin;
-            _missionScreen.ScreenPointToWorldRay(new Vec2(960,540), out startRay, out endRay);
-            var newTarget = Mission.Current.RayCastForClosestAgent(startRay, endRay, out _, _caster.Index, 0.01f);
+            Vec3 sourcePoint = Vec3.Zero;
+            Vec3 targetPoint = Vec3.Zero;
+            _missionScreen.ScreenPointToWorldRay(Input.MousePositionRanged, out sourcePoint, out targetPoint);
+            if (!_mission.CameraIsFirstPerson)
+            {
+                _missionScreen.GetProjectedMousePositionOnGround(out targetPoint, out _, true);
+            }
+            float collisionDistance;
+            Agent newTarget = _mission.RayCastForClosestAgent(sourcePoint, targetPoint, out collisionDistance);
             if (newTarget == null)
             {
-                RemoveTarget();
+                UnlockTarget();
                 return;
             }
-            if (newTarget.IsMount)
+            if (newTarget.IsMount && newTarget.RiderAgent != null)
             {
-                newTarget = newTarget.RiderAgent != null ? newTarget.RiderAgent : newTarget;
+                newTarget = newTarget.RiderAgent;
             }
-
             var targetType = _template.AbilityTargetType;
-            bool isTargetMatching = (targetType == AbilityTargetType.EnemiesInAOE && newTarget.IsEnemyOf(_caster)) ||
-                                    (targetType == AbilityTargetType.AlliesInAOE && !newTarget.IsEnemyOf(_caster));
+            bool isTargetMatching = collisionDistance <= _template.MaxDistance &&
+                                    (targetType == AbilityTargetType.SingleEnemy && newTarget.IsEnemyOf(_caster)) ||
+                                    (targetType == AbilityTargetType.SingleAlly && !newTarget.IsEnemyOf(_caster));
             if (isTargetMatching)
             {
-                if (newTarget != _target)
+                if (newTarget != _cachedTarget)
                 {
-                    RemoveTarget();
+                    UnlockTarget();
                 }
 
-                SetTarget(newTarget);
+                LockTarget(newTarget);
             }
             else
             {
-                RemoveTarget();
+                UnlockTarget();
             }
         }
 
-        private void SetTarget(Agent newTarget)
+        private void LockTarget(Agent newTarget)
         {
-            _target = newTarget;
-            _lastTargetIndex = newTarget.Index;
+            _cachedTarget = newTarget;
             if (newTarget.IsEnemyOf(_caster))
             {
-                _target.AgentVisuals.SetContourColor(enemyColor);
+                _cachedTarget.AgentVisuals.SetContourColor(enemyColor);
             }
             else
             {
-                _target.AgentVisuals.SetContourColor(friendColor);
+                _cachedTarget.AgentVisuals.SetContourColor(friendColor);
             }
+            _isTargetLocked = true;
         }
 
-        private void RemoveTarget()
+        public void UnlockTarget()
         {
-            if (_target != null)
-            {
-                _target.AgentVisuals.SetContourColor(colorLess);
-                _target = null;
-            }
+            _cachedTarget?.AgentVisuals?.SetContourColor(colorLess);
+            _isTargetLocked = false;
         }
 
 
-        public Int32 LastTargetIndex
+        public Agent CachedTarget
         {
-            get => _lastTargetIndex;
+            get => _cachedTarget;
         }
 
-        public Agent Target
+        public bool IsTargetLocked
         {
-            get => _target;
+            get => _isTargetLocked;
         }
 
-        private Int32 _lastTargetIndex = -1;
+        private Agent _cachedTarget;
 
-        private Agent _target;
-
-        private Agent _caster;
+        private bool _isTargetLocked;
     }
 }

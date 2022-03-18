@@ -19,7 +19,7 @@ namespace TOW_Core.Abilities.Scripts
             DisbindKeyBindings();
         }
 
-        internal override void SetAgent(Agent agent)
+        public override void SetAgent(Agent agent)
         {
             base.SetAgent(agent);
             agent.Disappear();
