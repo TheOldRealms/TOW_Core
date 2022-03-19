@@ -14,14 +14,13 @@ using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Quests
 {
     public class EngineerTrustQuest : QuestBase
     {
-        private TextObject _title = new TextObject("Hunt down the Engineer");
-        
         private static Hero enemyBoss;
 
         [SaveableField(1)] private int _destroyedParty = 0;
@@ -32,7 +31,9 @@ namespace TOW_Core.Quests
 
         [SaveableField(4)] private MobileParty _targetParty = null;
         
-         
+        [SaveableField(5)] private TextObject _title = new TextObject("Hunt down the Engineer");
+
+        private bool init;
          
         
         public EngineerTrustQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
@@ -71,8 +72,8 @@ namespace TOW_Core.Quests
           //CampaignEvents.PlayerMetCharacter.AddNonSerializedListener(this,SkipDialog);
           CampaignEvents.SetupPreConversationEvent.AddNonSerializedListener(this,SkipDialog);
          // CampaignEvents.HeroPrisonerTaken.AddNonSerializedListener(this,SkipDialog);
-          CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, KillLeader);
-         CampaignEvents.OnPartyRemovedEvent.AddNonSerializedListener(this, CheckIfPartyWasDestroyedByPlayer);
+       //   CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, KillLeader);
+         CampaignEvents.OnPartyRemovedEvent.AddNonSerializedListener(this, KillLeaderFromQuestParty);
         }
 
 
@@ -80,25 +81,52 @@ namespace TOW_Core.Quests
 
         private void RegisterQuestSpecificElementsOnGameLoad()
         {
-            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this,SetMarkerAfterLoad);
+            CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this,SetMarkerAfterLoad);
         }
-        private void SetMarkerAfterLoad(CampaignGameStarter campaignGameStarter)
+
+        
+        
+        
+        private void SetMarkerAfterLoad(MobileParty mobileParty)
         {
-            if (!_task1.HasBeenCompleted())
-            {
-     //           _targetParty.Party.Visuals.SetMapIconAsDirty();
-            }
+            if(!init)
+                if (!_task1.HasBeenCompleted())
+                {
+                    var home = _targetParty.HomeSettlement;
+                    var hero = _targetParty.LeaderHero;
+                    var clan = _targetParty.ActualClan;
+
+
+                    _targetParty.RemovePartyLeader();
+                    _targetParty.RemoveParty();
+
+                    _targetParty = null;
+                    
+                    SpawnQuestParty(hero.Name,home,clan);
+
+                    init = true;
+                    /*_targetParty.SetPartyUsedByQuest(true);
+                    AddTrackedObject(_targetParty);
+                    _targetParty.Party.Visuals.SetMapIconAsDirty();
+                    
+                    _targetParty.Initialize();
+                    
+                    
+                    _targetParty.Party.Visuals.GetMapEntity().PartyVisual.SetMapIconAsDirty();*/
+                }
         }
         
         private void ended(MapEvent mapEvent)
         {
-            if (mapEvent.IsPlayerMapEvent)
+            if (mapEvent.IsPlayerMapEvent&& mapEvent.IsFieldBattle)
             {
                 foreach (var party in mapEvent.PartiesOnSide(mapEvent.PlayerSide.GetOppositeSide()))
                 {
                     if (party.Party.MobileParty == _targetParty)
                     {
                         _skipImprisonment = true;
+                        
+                        TaskSuccessful();
                        break;
                     }
                 }
@@ -115,10 +143,15 @@ namespace TOW_Core.Quests
                     {
                         Campaign.Current.ConversationManager.EndConversation();
                         Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "close_window",
-                            new TextObject("*dies*"), ()=> _skipImprisonment, null, 0,1, 200, null);
+                            new TextObject("*dies*"), ()=> _skipImprisonment, removeSkip, 0,1, 200, null);
                         Campaign.Current.ConversationManager.ClearCurrentOptions();
                     }
                 }
+        }
+        
+        private void removeSkip()
+        {
+            _skipImprisonment = false;
         }
         
         
@@ -139,15 +172,11 @@ namespace TOW_Core.Quests
         }
         
         
-        private void CheckIfPartyWasDestroyedByPlayer(PartyBase obj)
+        private void KillLeaderFromQuestParty(PartyBase obj)
         {
-            var playerparty = Campaign.Current.MainParty.Party;
-            
-            
             if (obj.MobileParty == _targetParty)
             {
-               KillCharacterAction.ApplyByRemove(obj.Owner,false);
-                TaskSuccessful();
+                KillCharacterAction.ApplyByRemove(obj.Owner,false);
             }
         }
         
@@ -158,7 +187,7 @@ namespace TOW_Core.Quests
 
         public void TaskSuccessful()
         {
-            _skipImprisonment = false;
+       
             _task1.UpdateCurrentProgress(1);
             CheckCondition();
         }
@@ -177,7 +206,7 @@ namespace TOW_Core.Quests
             }
         }
 
-        public void ReturnDialog()
+        public void SetupReturnDialog()
         {
             
         }
@@ -204,6 +233,21 @@ namespace TOW_Core.Quests
         public static EngineerTrustQuest GetNew()
         {
             return new EngineerTrustQuest("initialengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
+        }
+
+
+
+        private void SpawnQuestParty(TextObject heroName, Settlement location,Clan ownerClan)
+        {
+            var settlement = location;
+            var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_engineerquesthero");
+            var clan = ownerClan;
+            var leaderhero = HeroCreator.CreateSpecialHero(template, settlement, clan, null, 45);
+            leaderhero.SetName(heroName, heroName);
+            var party = QuestPartyComponent.CreateParty(settlement, leaderhero, clan);
+            party.SetPartyUsedByQuest(true);
+            AddTrackedObject(party);
+            _targetParty = party;
         }
 
         private void SpawnQuestParty()
