@@ -26,6 +26,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         public void Execute()
         {
             ApplyBehaviorParams();
+            Tick();
         }
 
         public abstract void Tick();

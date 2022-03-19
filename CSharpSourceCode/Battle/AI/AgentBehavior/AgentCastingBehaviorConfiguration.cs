@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities.Extensions;
 
-namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
+namespace TOW_Core.Battle.AI.AgentBehavior
 {
     public static class AgentCastingBehaviorMapping
     {
