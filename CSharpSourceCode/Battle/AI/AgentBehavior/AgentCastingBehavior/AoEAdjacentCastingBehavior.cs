@@ -5,9 +5,9 @@ using TOW_Core.Battle.AI.Components;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class CenteredStaticAoEAgentCastingBehavior : AbstractAgentCastingBehavior
+    public class AoEAdjacentCastingBehavior : AbstractAgentCastingBehavior
     {
-        public CenteredStaticAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public AoEAdjacentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             TacticalBehavior = new DirectionalAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
         }

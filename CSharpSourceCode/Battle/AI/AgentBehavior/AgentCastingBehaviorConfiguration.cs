@@ -22,8 +22,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new DirectionalMovingAoEAgentCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
 
 
@@ -32,11 +32,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             {
                 {typeof(PreserveWindsAgentCastingBehavior), CreatePreserveWindsAxis()},
 
-                {typeof(CenteredStaticAoEAgentCastingBehavior), CreateStaticAoEAxis()},
-                {typeof(TargetedStaticAoEAgentCastingBehavior), CreateStaticAoEAxis()},
+                {typeof(AoEAdjacentCastingBehavior), CreateStaticAoEAxis()},
+                {typeof(AoETargetedCastingBehavior), CreateStaticAoEAxis()},
                 {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
-                {typeof(DirectionalMovingAoEAgentCastingBehavior), CreateDirectionalMovingAoEAxis()},
+                {typeof(AoEDirectionalCastingBehavior), CreateDirectionalMovingAoEAxis()},
                 {typeof(MissileCastingBehavior), CreateMovingProjectileAxis()},
             };
 

@@ -5,9 +5,9 @@ using TOW_Core.Battle.AI.Components;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class DirectionalMovingAoEAgentCastingBehavior : AbstractAgentCastingBehavior
+    public class AoEDirectionalCastingBehavior : AbstractAgentCastingBehavior
     {
-        public DirectionalMovingAoEAgentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public AoEDirectionalCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Hysteresis = 0.35f;
             TacticalBehavior = new DirectionalAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
