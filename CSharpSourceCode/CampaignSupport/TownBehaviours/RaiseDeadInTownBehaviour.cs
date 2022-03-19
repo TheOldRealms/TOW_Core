@@ -136,7 +136,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddGameMenuOption("graveyard_interrupt", "interrupt_battle", "Defend yourself",
                 delegate (MenuCallbackArgs args)
                 {
-                    if (Hero.MainHero.HitPoints > Hero.MainHero.MaxHitPoints * 0.2f)
+                    if (!Hero.MainHero.IsWounded)
                     {
                         args.optionLeaveType = GameMenuOption.LeaveType.DefendAction;
                         return true;
