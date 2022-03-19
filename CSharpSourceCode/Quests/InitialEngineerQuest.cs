@@ -15,11 +15,12 @@ namespace TOW_Core.Quests
 {
     public class InitialEngineerQuest : QuestBase
     {
-        private TextObject _title = new TextObject("Hunt down the renegade engineer");
         [SaveableField(1)]
         private JournalLog _task1 = null;
         [SaveableField(2)]
         private MobileParty _targetParty = null;
+        [SaveableField(3)]
+        private TextObject _title = new TextObject("Hunt down the renegade engineer");
 
         public InitialEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(questId, questGiver, duration, rewardGold)
         {
