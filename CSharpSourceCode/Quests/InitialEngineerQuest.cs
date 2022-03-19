@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,4 +80,5 @@ namespace TOW_Core.Quests
             AddClassDefinition(typeof(InitialEngineerQuest), 1);
         }
     }
-}
+}*/
+
