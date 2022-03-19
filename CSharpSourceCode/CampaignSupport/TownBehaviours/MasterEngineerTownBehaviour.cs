@@ -10,6 +10,7 @@ using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.SaveSystem;
 using TOW_Core.Quests;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -26,7 +27,10 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool _gainedTrust;
         private bool _firstMeeting=true;
 
-        private EngineerTrustQuest shopUnlockQuest;
+        //private EngineerTrustQuest _shopUnlockQuest;
+        
+        
+        private  EngineerTrustQuest _shopUnlockQuest;
 
         public override void RegisterEvents()
         {
@@ -69,7 +73,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
             obj.AddDialogLine("quest_in_progress", "start", "player_success_test", "Did you finished what I asked you for?",questinprogress, null, 200, null);
             obj.AddDialogLine("engineer_start", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?",engineerstartcondition , null, 200, null);
-
+            
            // obj.AddDialogLine("introduction", "engineer_start", "sayopengunshop", "Greetings, I am a master engineer.  how can I help you?", isfirstmeeting, () => _firstMeeting = false, 200);
            //first meeting? 
             obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "Greetings Master Engineer, I am "+Campaign.Current.MainParty.LeaderHero.Name.ToString()+". I have great interest in becoming an Engineer and have some questions about your order.",null , null, 200, null);
@@ -157,30 +161,26 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private bool questinprogress()
         {
-            if(engineerstartcondition()) 
-                return shopUnlockQuest != null && shopUnlockQuest.IsOngoing;
-            else
-            {
-                return false;
-            }
+            if (engineerstartcondition())
+                return _shopUnlockQuest != null && _shopUnlockQuest.IsOngoing;
+            else return false;
         }
         
         private bool engineerquestcompletecondition()
         {
-            if (shopUnlockQuest == null)
+            if (_shopUnlockQuest == null)
                 return false;
-            if (shopUnlockQuest.JournalEntries[0].HasBeenCompleted())
+            if (_shopUnlockQuest.JournalEntries[0].HasBeenCompleted())
             {
                 return true;
             }
-
-
+            
             return false;
         }
 
         private void handinquest()
         {
-            shopUnlockQuest.HandInQuest();
+            _shopUnlockQuest.HandInQuest();
             _gainedTrust = true;
         }
         
@@ -218,8 +218,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void questbegin()
         {
-            shopUnlockQuest = EngineerTrustQuest.GetNew();
-            shopUnlockQuest?.StartQuest();
+            _shopUnlockQuest = EngineerTrustQuest.GetNew();
+            _shopUnlockQuest?.StartQuest();
             
         }
 
@@ -278,6 +278,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         public override void SyncData(IDataStore dataStore) 
         {
             dataStore.SyncData<Hero>("_masterEngineerHero", ref _masterEngineerHero);
+            
+            dataStore.SyncData<EngineerTrustQuest>("_shopUnlockQuest", ref _shopUnlockQuest);
         }
     }
 }
