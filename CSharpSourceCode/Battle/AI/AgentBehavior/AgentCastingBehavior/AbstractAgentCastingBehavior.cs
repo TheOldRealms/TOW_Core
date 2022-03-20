@@ -57,11 +57,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 if (HaveLineOfSightToAgent(medianAgent))
                 {
                     Agent.SelectAbility(AbilityIndex);
-                    CastSpellAtAgent(medianAgent);
+                    CastSpellAtTargetPosition(medianAgent.GetChestGlobalPosition());
                 }
             }
         }
-        
+
         public virtual void Terminate()
         {
         }
@@ -70,29 +70,18 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return true;
         }
-        
-        protected void CastSpellAtAgent(Agent targetAgent)
+
+        protected virtual void CastSpellAtTargetPosition(Vec3 targetPosition)
         {
-            var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
-
-            var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().AbilityEffectType == AbilityEffectType.Missile)
-            {
-                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent);
-            }
-
-            targetPosition += velocity;
-            targetPosition.z += -2f;
-
             var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
             wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
         }
 
-        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent)
+        protected Vec3 ComputeSpellAngleVelocityCorrection(Vec3 targetPosition, Vec3 targetVelocity)
         {
-            var time = targetAgent.Position.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
-            return targetAgent.Velocity * time;
+            var time = targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
+            return targetVelocity * time;
         }
 
 
@@ -100,7 +89,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
-        
+
         public List<BehaviorOption> CalculateUtility()
         {
             LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)

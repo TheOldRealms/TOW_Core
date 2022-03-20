@@ -16,7 +16,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             if (AbilityTemplate.AbilityTargetType == AbilityTargetType.Self)
             {
                 Agent.SelectAbility(AbilityIndex);
-                CastSpellAtAgent(Agent);
+                CastSpellAtTargetPosition(Agent.Position);
             }
             else
             {

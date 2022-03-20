@@ -12,12 +12,24 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             Hysteresis = 0.1f;
         }
-        
+
         public override bool IsPositional()
         {
             return false;
         }
-        
+
+        protected override void CastSpellAtTargetPosition(Vec3 targetPosition)
+        {
+            var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
+
+            var adjustedPosition = targetPosition;
+            adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
+            adjustedPosition.z += -2f;
+
+            base.CastSpellAtTargetPosition(adjustedPosition);
+        }
+
+
         protected override bool HaveLineOfSightToAgent(Agent targetAgent)
         {
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
@@ -27,6 +39,5 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                    (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
                    (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
         }
-
     }
 }

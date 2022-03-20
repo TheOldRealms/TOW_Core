@@ -14,15 +14,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Execute()
         {
-            if (AbilityTemplate.AbilityTargetType == AbilityTargetType.Self)
-            {
-                Agent.SelectAbility(AbilityIndex);
-                CastSpellAtAgent(Agent);
-            }
-            else
-            {
-                base.Execute();
-            }
+            Agent.SelectAbility(AbilityIndex);
+            CastSpellAtTargetPosition(Agent.Position);
         }
 
         public override bool IsPositional()
