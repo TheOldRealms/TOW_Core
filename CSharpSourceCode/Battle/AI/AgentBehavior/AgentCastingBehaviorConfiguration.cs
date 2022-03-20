@@ -21,7 +21,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 // {AbilityEffectType.Hex, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                
                 {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                
                 {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
