@@ -24,9 +24,5 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
         }
         
-        public override bool IsPositional()
-        {
-            return false;
-        }
     }
 }

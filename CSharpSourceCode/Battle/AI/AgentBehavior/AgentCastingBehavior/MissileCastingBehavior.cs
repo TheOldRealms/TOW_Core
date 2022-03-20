@@ -3,6 +3,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -13,16 +14,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Hysteresis = 0.1f;
         }
 
-        public override bool IsPositional()
-        {
-            return false;
-        }
-
-        protected override void CastSpellAtTargetPosition(Vec3 targetPosition)
+        protected override void CastSpellAtTargetPosition(Vec3 target)
         {
             var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
 
-            var adjustedPosition = targetPosition;
+            var adjustedPosition = target;
             adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
             adjustedPosition.z += -2f;
 
@@ -30,8 +26,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         }
 
 
-        protected override bool HaveLineOfSightToAgent(Agent targetAgent)
+        protected override bool HaveLineOfSightToTarget(Target target)
         {
+            Agent targetAgent = target.Agent;
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
 

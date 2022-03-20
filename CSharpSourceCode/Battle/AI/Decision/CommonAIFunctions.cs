@@ -26,13 +26,13 @@ namespace TOW_Core.Battle.AI.Decision
                     return float.MaxValue;
                 }
 
-                return target.Position.AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
+                return target.GetPosition().AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
             };
         }
 
         public static Func<Target, float> DistanceToTarget(Func<Vec3> provider)
         {
-            return target => provider.Invoke().Distance(target.Position);
+            return target => provider.Invoke().Distance(target.GetPosition());
         }
 
         public static Func<Target, float> FormationPower()

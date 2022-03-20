@@ -2,6 +2,7 @@
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -19,10 +20,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             base.Execute();
         }
-        
-        public override bool IsPositional()
+
+        protected override float CalculateUtility(Target target)
         {
-            return true;
+            if (!CommonAIStateFunctions.CanAgentMoveFreely(Agent))
+                return 0.0f;
+            
+            return base.CalculateUtility(target);
         }
     }
 }

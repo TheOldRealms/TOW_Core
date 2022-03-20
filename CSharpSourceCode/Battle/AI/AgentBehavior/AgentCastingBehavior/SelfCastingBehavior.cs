@@ -17,10 +17,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Agent.SelectAbility(AbilityIndex);
             CastSpellAtTargetPosition(Agent.Position);
         }
-
-        public override bool IsPositional()
-        {
-            return false;
-        }
+        
     }
 }

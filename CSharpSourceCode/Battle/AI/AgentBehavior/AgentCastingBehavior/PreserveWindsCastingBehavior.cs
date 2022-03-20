@@ -9,21 +9,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public PreserveWindsAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex) : base(agent, abilityTemplate, abilityIndex)
         {
         }
-        
+
         public override void Execute()
         {
             //Do nothing. I am hoping that we will add some sort of "Channeling" which allows us to restore magic over time later on.
         }
 
-        public override bool IsPositional()
+        protected override float CalculateUtility(Target target)
         {
-            return false;
-        }
-        
-        protected override Target CalculateUtility(Target target)
-        {
-            target.UtilityValue = 0.4f;
-            return target;
+            return 0.4f;
         }
     }
 }
