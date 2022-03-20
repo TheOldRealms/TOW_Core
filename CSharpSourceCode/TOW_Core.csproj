@@ -337,7 +337,8 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AoEAdjacentTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AoEDirectionalTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\Components\ArtilleryAI.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\Components\ArtilleryAI.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\Components\WizardAIComponent.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\BehaviorOption.cs" />
     <Compile Include="Battle\AI\Decision\CommonAIFunctions.cs" />
@@ -440,7 +441,6 @@
     <Compile Include="Abilities\AbilityHUD_VM.cs" />
     <Compile Include="Abilities\AbilityManagerMissionLogic.cs" />
     <Compile Include="Abilities\Ability.cs" />
-    <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORCampaignBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORBattleMoraleModel.cs" />
