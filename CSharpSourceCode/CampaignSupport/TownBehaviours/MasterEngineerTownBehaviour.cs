@@ -70,9 +70,10 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             _nuln = Settlement.All.FirstOrDefault(x => x.StringId == "town_WI1");
             
             
-            
             obj.AddDialogLine("quest_in_progress", "start", "player_success_test", "Did you finished what I asked you for?",questinprogress, null, 200, null);
             obj.AddDialogLine("engineer_start", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?",engineerstartcondition , null, 200, null);
+            
+            obj.AddDialogLine("engineer_start", "start", "huboffers", "Hello Friend.",playergainedtrust , null, 210, null);
             
            // obj.AddDialogLine("introduction", "engineer_start", "sayopengunshop", "Greetings, I am a master engineer.  how can I help you?", isfirstmeeting, () => _firstMeeting = false, 200);
            //first meeting? 
@@ -85,7 +86,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 engineerquestcompletecondition, handinquest, 200);
             obj.AddPlayerLine("player_on_it", "player_success_test", "engineer_nothappy", "no...",
                 questinprogress, null, 200);
-            obj.AddDialogLine("engineer_happy", "engineer_happy", "sayopengunshop",
+            obj.AddDialogLine("engineer_happy", "engineer_happy", "hubOffers",
                 "Oh these are wonderful news!", null, null, 200);
             obj.AddDialogLine("engineer_nothappy", "engineer_nothappy", "close_window", "Then don't waste my time",questinprogress, null, 200);
             
@@ -94,9 +95,11 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             //obj.AddPlayerLine("sayopengunshop", "engineer_start", "opengunshopCheck", "I need your services.",null, checkplayerrequirements, 200, null);
             
             obj.AddDialogLine("opengunshopcheck", "opengunshopcheck", "playerexplain","Hah!, you don’t look like you would even know what to do with them. What could you possibly need with our crafts?", null, null, 200, null);
-            obj.AddDialogLine("hubOffers", "hubOffers", "playerexplain","What else can I do for you?", null, null, 200, null);
-            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckjoin", "Be that as it may, I wish to become an engineer and further my knowledge!", null, checkplayerrequirements, 200,null);
-            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckshop", "It is well known that weapons crafted by your order are powerful, I have come for these weapons!", null, checkplayerrequirements, 200,null);
+            obj.AddDialogLine("hubOffers", "hubOffers", "playerexplain","What can I do for you?", null, null, 200, null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckjoin", "Be that as it may, I wish to become an engineer and further my knowledge!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckshop", "It is well known that weapons crafted by your order are powerful, I have come for these weapons!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "open_shop", "Let me see your goods", playergainedtrust, null, 200,null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "close_window", "I am just looking", playergainedtrust, null, 200,null);
             obj.AddPlayerLine("playerexplain", "playeracceptquest", "close_window", "Perhaps you are right. I must leave.", null, null, 200,null);
             
             
@@ -135,6 +138,13 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 "Good, I expect positive results and your hasty return.", null, null, 200);
             obj.AddDialogLine("engineerdeclinequest", "engineerdeclinequest", "close_window", "A shame, think on it and return if you change your mind.", null, null, 200, null);
             
+            
+            
+            
+            
+            obj.AddDialogLine("open_shop", "open_shop", "engineersaygoodbye", "Come and see what I worked on!", null,null, 200);
+            obj.AddDialogLine("engineersaygoodbye", "engineersaygoodbye", "close_window", "With fire and steel.", null, opengunshopconsequence, 200, null);
+           
             /*// quest dialog
             obj.AddDialogLine("trustCheck", "trustCheck", "trustCheck2", "Unfortunately , I can only help a members of the engineers guild or the elector count himself.", () => !playergainedtrust(), null, 200, null);
             obj.AddDialogLine("trustCheck2", "trustCheck2", "playertrustCheck", "However... I could maybe make an exception, if you do me favor...", null, null, 200, null);
@@ -147,8 +157,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("engineerreactiondeclinequest", "engineerreactiondeclinequest", "close_window", "Then don't waste my time", null, null, 200, null);
             
             //open shop
-            obj.AddDialogLine("open_shop", "open_shop", "engineer_saygoodbye", "Come and see what I worked on!",
-                null, opengunshopconsequence, 200);
+            
+               
             
             
             //good bye
@@ -184,7 +194,6 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             _gainedTrust = true;
         }
         
-
 
         private bool playergainedtrust()
         {

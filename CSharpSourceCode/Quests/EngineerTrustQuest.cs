@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -142,8 +142,7 @@ namespace TOW_Core.Quests
                     if (Campaign.Current.CurrentConversationContext == ConversationContext.CapturedLord)
                     {
                         Campaign.Current.ConversationManager.EndConversation();
-                        Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "close_window",
-                            new TextObject("*dies*"), ()=> _skipImprisonment, removeSkip, 0,1, 200, null);
+                        Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "close_window", new TextObject("*dies*"), ()=> _skipImprisonment, removeSkip, 0,1, 200, null);
                         Campaign.Current.ConversationManager.ClearCurrentOptions();
                     }
                 }
