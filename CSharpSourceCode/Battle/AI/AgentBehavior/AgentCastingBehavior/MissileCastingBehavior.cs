@@ -4,11 +4,14 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
     public class MissileCastingBehavior : AbstractAgentCastingBehavior
     {
+        private Random _random = new Random();
+
         public MissileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
             Hysteresis = 0.1f;
@@ -16,11 +19,20 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override void CastSpellAtTargetPosition(Vec3 target)
         {
-            var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
+            var targetFormation = CurrentTarget.Formation;
+            var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
 
             var adjustedPosition = target;
             adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
             adjustedPosition.z += -2f;
+
+            if (targetFormation?.CountOfUnits > 10)
+            {
+                var direction = targetFormation.QuerySystem.EstimatedDirection;
+                var rightVec = direction.RightVec();
+                adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
+                adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
+            }
 
             base.CastSpellAtTargetPosition(adjustedPosition);
         }

@@ -34,8 +34,13 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_swordsman">
-    <Abilities />
-    <Attributes />
+    <Abilities>
+      <string>Fireball</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -1563,6 +1568,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
+      <string>Fireball</string>
       <string>WindOfDeath</string>
       <string>ScreamingSkull</string>
     </Abilities>

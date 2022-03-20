@@ -271,8 +271,8 @@ namespace TOW_Core.Abilities
         private void AddPhysics(ref GameEntity entity)
         {
             var mass = 1;
-            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Dynamic);
-            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, 1);
+            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.None);
+            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
             entity.SetPhysicsState(true, false);
         }
 
