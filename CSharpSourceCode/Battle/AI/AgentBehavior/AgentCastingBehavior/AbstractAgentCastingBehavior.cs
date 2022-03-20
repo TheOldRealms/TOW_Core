@@ -47,12 +47,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
 
+            if (HaveLineOfSightToTarget(CurrentTarget))
             {
-                if (HaveLineOfSightToTarget(CurrentTarget))
-                {
-                    Agent.SelectAbility(AbilityIndex);
-                    CastSpellAtTargetPosition(CurrentTarget.GetPosition());
-                }
+                Agent.SelectAbility(AbilityIndex);
+                CastSpellAtTargetPosition(CurrentTarget.GetPosition());
             }
         }
 
