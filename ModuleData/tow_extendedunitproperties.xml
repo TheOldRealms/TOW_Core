@@ -12,9 +12,12 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_recruit">
-    <Abilities />
+    <Abilities>
+      <string>Fireball</string>
+    </Abilities>
     <Attributes>
-      <string>Expendable</string>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
     </Attributes>
     <Resistances />
     <DamageAmplifiers />

@@ -34,7 +34,7 @@ namespace TOW_Core.Battle.AI.Components
             _dtSinceLastOccasional += dt;
             if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
-            if (!Agent.IsPlayerControlled || Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
+            if (Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
             {
               
                 if (CommonAIStateFunctions.CanAgentMoveFreely(Agent))
