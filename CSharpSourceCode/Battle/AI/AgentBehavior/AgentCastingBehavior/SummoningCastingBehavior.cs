@@ -12,10 +12,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Hysteresis = 0.1f;
         }
 
-        public override void Terminate()
-        {
-        }
-
         public override void Execute()
         {
             if (AbilityTemplate.AbilityTargetType == AbilityTargetType.Self)
@@ -27,6 +23,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 base.Execute();
             }
+        }
+
+        public override void Terminate()
+        {
         }
 
         public override bool IsPositional()

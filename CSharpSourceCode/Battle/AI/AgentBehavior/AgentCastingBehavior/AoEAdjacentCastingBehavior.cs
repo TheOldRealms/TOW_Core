@@ -9,7 +9,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         public AoEAdjacentCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
-            TacticalBehavior = new DirectionalAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
+            TacticalBehavior = new AdjacentAoETacticalBehavior(agent, agent.GetComponent<WizardAIComponent>(), this);
         }
 
         public override void Execute()
@@ -22,11 +22,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public override void Terminate()
         {
-        }
-
-        protected override bool HaveLineOfSightToAgent(Agent targetAgent)
-        {
-            return true;
         }
 
         public override bool IsPositional()

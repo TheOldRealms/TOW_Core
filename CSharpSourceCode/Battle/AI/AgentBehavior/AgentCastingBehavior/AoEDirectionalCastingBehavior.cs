@@ -25,12 +25,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
         }
 
-        protected override bool HaveLineOfSightToAgent(Agent targetAgent)
-        {
-            return true;
-        }
-
-
         public override bool IsPositional()
         {
             return true;
