@@ -28,7 +28,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override bool HaveLineOfSightToTarget(Target target)
         {
-            Agent targetAgent = target.Agent;
+            Agent targetAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
             Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
             Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
 
