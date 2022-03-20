@@ -12,11 +12,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             Hysteresis = 0.1f;
         }
-
-        public override void Terminate()
-        {
-        }
-
+        
         public override bool IsPositional()
         {
             return false;

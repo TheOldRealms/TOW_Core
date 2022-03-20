@@ -19,11 +19,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             base.Execute();
         }
-
-        public override void Terminate()
-        {
-        }
-
+        
         public override bool IsPositional()
         {
             return true;

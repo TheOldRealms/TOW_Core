@@ -15,10 +15,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             //Do nothing. I am hoping that we will add some sort of "Channeling" which allows us to restore magic over time later on.
         }
 
-        public override void Terminate()
-        {
-        }
-
         public override bool IsPositional()
         {
             return false;

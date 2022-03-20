@@ -61,7 +61,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 }
             }
         }
+        
+        public virtual void Terminate()
+        {
+        }
 
+        protected virtual bool HaveLineOfSightToAgent(Agent targetAgent)
+        {
+            return true;
+        }
+        
         protected void CastSpellAtAgent(Agent targetAgent)
         {
             var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
@@ -80,11 +89,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Agent.CastCurrentAbility();
         }
 
-        protected virtual bool HaveLineOfSightToAgent(Agent targetAgent)
-        {
-            return true;
-        }
-
         private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent)
         {
             var time = targetAgent.Position.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
@@ -96,9 +100,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
-
-        public abstract void Terminate();
-
+        
         public List<BehaviorOption> CalculateUtility()
         {
             LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
