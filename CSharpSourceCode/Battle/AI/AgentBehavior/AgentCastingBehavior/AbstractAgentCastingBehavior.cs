@@ -18,10 +18,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         private WizardAIComponent _component;
         public readonly Agent Agent;
         protected float Hysteresis = 0.20f;
-        protected int Range;
+        private readonly int _range;
         public readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
-        protected List<Axis> AxisList;
+        private readonly List<Axis> _axisList;
 
         public Target CurrentTarget = new Target();
         public List<BehaviorOption> LatestScores { get; private set; }
@@ -35,11 +35,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             AbilityIndex = abilityIndex;
             if (abilityTemplate != null)
             {
-                Range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
+                _range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
             }
 
             AbilityTemplate = abilityTemplate;
-            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            _axisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
             TacticalBehavior = new KeepSafeAgentTacticalBehavior(Agent, Agent.GetComponent<WizardAIComponent>());
         }
 
@@ -52,7 +52,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
 
-            if (medianAgent != null && (IsPositional() || medianAgent.Position.Distance(Agent.Position) < Range))
+            if (medianAgent != null && (IsPositional() || medianAgent.Position.Distance(Agent.Position) < _range))
             {
                 if (HaveLineOfSightToAgent(medianAgent))
                 {
@@ -120,7 +120,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
-            AxisList.GeometricMean(target);
+            _axisList.GeometricMean(target);
             target.UtilityValue += hysteresis;
             return target;
         }
