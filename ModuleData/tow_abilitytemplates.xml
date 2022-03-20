@@ -491,9 +491,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-  <!--
-  <AbilityTemplate
-      StringID="WordOfPain"
+  <!-- <AbilityTemplate StringID="WordOfPain"
       Name="Word of Pain"
       SpriteName="fireball_icon"
       CoolDown="10"
