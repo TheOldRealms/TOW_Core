@@ -145,7 +145,7 @@ namespace TOW_Core.Abilities
 
         private bool ShouldAddPhyics()
         {
-            return Template.TriggerType == TriggerType.OnCollision && Template.Name != "Fireball";
+            return Template.TriggerType == TriggerType.OnCollision ;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
@@ -271,8 +271,8 @@ namespace TOW_Core.Abilities
         private void AddPhysics(ref GameEntity entity)
         {
             var mass = 1;
-            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.None);
-            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, -1);
+            entity.AddSphereAsBody(Vec3.Zero, Template.Radius, BodyFlags.Dynamic);
+            entity.AddPhysics(mass, entity.CenterOfMass, entity.GetBodyShape(), Vec3.Zero, Vec3.Zero, PhysicsMaterial.GetFromName("missile"), false, 1);
             entity.SetPhysicsState(true, false);
         }
 
@@ -354,7 +354,7 @@ namespace TOW_Core.Abilities
         private void AddExactBehaviour<TAbilityScript>(GameEntity parentEntity, Agent casterAgent)
             where TAbilityScript : AbilityScript
         {
-            parentEntity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name);
+            parentEntity.CreateAndAddScriptComponent(typeof(TAbilityScript).Name+parentEntity.GetGuid());
             AbilityScript = parentEntity.GetFirstScriptOfType<TAbilityScript>();
             var prefabEntity = SpawnEntity();
             parentEntity.AddChild(prefabEntity);
