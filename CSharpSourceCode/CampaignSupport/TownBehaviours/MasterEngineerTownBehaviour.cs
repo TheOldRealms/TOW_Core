@@ -9,6 +9,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Nameplate;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 using TOW_Core.Quests;
@@ -20,6 +21,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
     public class MasterEngineerTownBehaviour : CampaignBehaviorBase
     {
         private readonly string _masterEngineerId = "tor_nulnengineernpc_empire";
+        private readonly string _rogueEngineerName = "Rudolf";
         private Hero _masterEngineerHero = null;
         private Settlement _nuln;
         private bool _playerIsSkilledEnough;
@@ -98,6 +100,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("hubOffers", "hubOffers", "playerexplain","What can I do for you?", null, null, 200, null);
             obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckjoin", "Be that as it may, I wish to become an engineer and further my knowledge!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
             obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckshop", "It is well known that weapons crafted by your order are powerful, I have come for these weapons!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
+            
             obj.AddPlayerLine("playerexplain", "playerexplain", "open_shop", "Let me see your goods", playergainedtrust, null, 200,null);
             obj.AddPlayerLine("playerexplain", "playerexplain", "close_window", "I am just looking", playergainedtrust, null, 200,null);
             obj.AddPlayerLine("playerexplain", "playeracceptquest", "close_window", "Perhaps you are right. I must leave.", null, null, 200,null);
@@ -124,7 +127,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddPlayerLine("playerstartquestcheck", "playerstartquestcheck", "engineerdeclinequest", "I don't have time for this!", null, null, 200,null);
             
             //explain quest
-            obj.AddDialogLine("startquest", "startquest", "questcheck", "Usually we don’t resort to outside assistance but we are short handed, we have had some important components stolen from the Colleges of Nuln and they must be returned. Immediately. If you can track down these runaways and find these parts then we can talk further.",
+            obj.AddDialogLine("startquest", "startquest", "questcheck", "Usually we don’t resort to outside assistance but we are short handed, we have had some important components stolen from the Colleges of Nuln by "+ _rogueEngineerName+" and they must be returned. Immediately. If you can track down these runaways and find these parts then we can talk further.",
                 null,null,200);
             
             //accept deline quest
@@ -139,6 +142,11 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("engineerdeclinequest", "engineerdeclinequest", "close_window", "A shame, think on it and return if you change your mind.", null, null, 200, null);
             
             
+            //questrelated
+            obj.AddDialogLine("rogueengineer_greet", "start", "playermetrogueengineer", "hahaha i am evil",
+                rogueengineerstartcondition, null, 200);
+            obj.AddPlayerLine("rogueengineer_greet", "playermetrogueengineer", "close_window", "hahaha i am more evil",
+                null, null, 200);
             
             
             
@@ -197,7 +205,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private bool playergainedtrust()
         {
-            return _gainedTrust;
+            return engineerstartcondition() && _gainedTrust;
         }
 
         
@@ -242,6 +250,17 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             var partner = CharacterObject.OneToOneConversationCharacter;
             if (partner != null && partner.Occupation == Occupation.Special && partner.HeroObject.Name.Contains("Engineer")) return true;
             else return false;
+        }
+
+        private bool rogueengineerstartcondition()
+        {
+            if (!_shopUnlockQuest.IsOngoing) return false;
+
+            if (Campaign.Current.CurrentConversationContext != ConversationContext.PartyEncounter) return false;
+            
+            var partner = CharacterObject.OneToOneConversationCharacter;
+            return partner != null && partner.Occupation == Occupation.Lord &&
+                   partner.HeroObject.Name.Contains(_shopUnlockQuest.GetRogueEngineerName());
         }
 
         private void checkplayerrequirements()
