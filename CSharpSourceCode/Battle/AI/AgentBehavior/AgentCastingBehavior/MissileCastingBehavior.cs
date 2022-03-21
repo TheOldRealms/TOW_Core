@@ -30,7 +30,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 var direction = targetFormation.QuerySystem.EstimatedDirection;
                 var rightVec = direction.RightVec();
-                adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
+            //   adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
                 adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
             }
 
