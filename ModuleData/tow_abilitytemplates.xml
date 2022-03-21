@@ -19,7 +19,7 @@
       LightFlickeringMagnitude="3" 
       LightFlickeringInterval="0.7" 
       ShadowCastEnabled="true" 
-      ParticleEffectPrefab="fireball_prefab" 
+      ParticleEffectPrefab="fireball_prefab_physics" 
       ParticleEffectSizeModifier="1" 
       SoundEffectToPlay="fireball" 
       ShouldSoundLoopOverDuration="true" 

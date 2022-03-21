@@ -145,7 +145,7 @@ namespace TOW_Core.Abilities
 
         private bool ShouldAddPhyics()
         {
-            return Template.TriggerType == TriggerType.OnCollision;
+            return Template.TriggerType == TriggerType.OnCollision && Template.Name != "Fireball";
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
