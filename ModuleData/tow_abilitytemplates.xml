@@ -63,7 +63,7 @@
       ParticleEffectSizeModifier="1" 
       SoundEffectToPlay="dart" 
       ShouldSoundLoopOverDuration="true" 
-      CastType="Instant" 
+      CastType="WindUp" 
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="lightningbolt_explosion"
