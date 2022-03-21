@@ -12,41 +12,44 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
     {
         private Random _random = new Random();
 
-        public MissileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
+        public MissileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template,
+            abilityIndex)
         {
             Hysteresis = 0.1f;
         }
 
-        protected override void CastSpellAtTargetPosition(Vec3 target)
+        protected override Target UpdateTarget(Target target)
         {
             var targetFormation = CurrentTarget.Formation;
             var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
+            if (medianAgent == null) return target;
 
-            var adjustedPosition = target;
+            var adjustedPosition = medianAgent.Position; //Intentional, want to bypass the stored WorldPosition.
             adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
-            adjustedPosition.z += -2f;
+            adjustedPosition.z += targetFormation?.HasAnyMountedUnit == true ? -0.05f : -2;
 
             if (targetFormation?.CountOfUnits > 10)
             {
                 var direction = targetFormation.QuerySystem.EstimatedDirection;
                 var rightVec = direction.RightVec();
-            //   adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
+                adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
                 adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
             }
 
-            base.CastSpellAtTargetPosition(adjustedPosition);
+            target.WorldPosition = adjustedPosition;
+            return target;
         }
-
 
         protected override bool HaveLineOfSightToTarget(Target target)
         {
-            Agent targetAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
-            Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
-            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
+            var targetPoint = target.GetPosition();
+            Agent targetAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, targetPoint.AsVec2);
+            Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetPoint, out float _, Agent.Index, 0.4f);
+            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetPoint, out float distance, out GameEntity _, 0.4f);
 
-            return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 1 && (distance is Single.NaN || distance > 1) &&
-                   (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
-                   (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
+            return Agent.GetChestGlobalPosition().Distance(targetPoint) > 1 && (distance is Single.NaN || distance > 1) &&
+                   (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetPoint) < 4) &&
+                   (float.IsNaN(distance) || Math.Abs(distance - targetPoint.Distance(Agent.Position)) < 0.3);
         }
     }
 }

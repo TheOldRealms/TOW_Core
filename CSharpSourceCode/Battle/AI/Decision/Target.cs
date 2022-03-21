@@ -8,7 +8,7 @@ namespace TOW_Core.Battle.AI.Decision
     // Additionally, it did not make sense to refer to friendly units / formations as "Threats".
     public class Target : Threat
     {
-        public Vec3 WorldPosition;
+        public Vec3 WorldPosition = Vec3.Zero;
 
         public float UtilityValue
         {
@@ -18,9 +18,9 @@ namespace TOW_Core.Battle.AI.Decision
 
         public Vec3 GetPosition()
         {
-            if (Agent != null || Formation != null)
-                return Position;
-            return WorldPosition;
+            if (WorldPosition != Vec3.Zero)
+                return WorldPosition;
+            return Position;
         }
     }
 }

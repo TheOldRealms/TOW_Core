@@ -47,7 +47,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public virtual void Execute()
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
-
+            
+            CurrentTarget = UpdateTarget(CurrentTarget);
+            
             if (HaveLineOfSightToTarget(CurrentTarget))
             {
                 Agent.SelectAbility(AbilityIndex);
@@ -57,6 +59,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public virtual void Terminate()
         {
+        }
+
+        protected virtual Target UpdateTarget(Target target)
+        {
+            return target;
         }
 
         protected virtual bool HaveLineOfSightToTarget(Target targetAgent)
