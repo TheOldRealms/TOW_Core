@@ -288,5 +288,61 @@
 			</game_entity>
 		</children>
 	</game_entity>
+	<game_entity name="fireball_prefab_physics" old_prefab_name="" mobility="1">
+		<flags>
+			<flag name="record_to_scene_replay" value="true"/>
+		</flags>
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<physics shape="bo_sphere_collider">
+			<body_flags>
+				<body_flag name="dynamic"/>
+				<body_flag name="moveable"/>
+				<body_flag name="dont_transfer_to_physics_engine"/>
+			</body_flags>
+		</physics>
+		<components>
+			<particle_system_instanced_component>
+				<effect base_effect="{BA0CCB36-D63D-4F33-8770-044F88A0E347}">
+					<emitter_overrides>
+						<emitter guid="{6B81BDF2-D77B-4C50-85ED-107627C748E5}">
+							<flags>
+								<flag name="emit_while_moving" value="true"/>
+								<flag name="dont_emit_while_moving" value="false"/>
+							</flags>
+							<parameters>
+								<parameter name="scale_with_emitter_velocity_coef" value="-1.000"/>
+								<parameter name="emit_sphere_radius" value="0.200"/>
+								<parameter name="emit_volume_type" value="sphere"/>
+								<parameter name="emission_rate" base="25.000" bias="5.000"/>
+								<parameter name="emit_rotation_speed" base="0.000" bias="180.000"/>
+								<parameter name="particle_size" base="3.000" bias="2.000">
+									<curve name="particle_life" version="1" default="1.000" curve_multiplier="1.000">
+										<keys>
+											<key time="0.000" value="1.000" tangent="0.014, 0.000"/>
+											<key time="0.069" value="1.000" tangent="-0.062, 0.000"/>
+											<key time="0.069" value="1.000" tangent="0.062, 0.000"/>
+											<key time="0.552" value="0.171" tangent="-0.216, 0.090"/>
+											<key time="0.552" value="0.171" tangent="0.216, -0.090"/>
+											<key time="1.000" value="0.126" tangent="-0.200, 0.000"/>
+										</keys>
+									</curve>
+								</parameter>
+							</parameters>
+						</emitter>
+						<emitter guid="{A23CA26F-9B9A-40E0-A960-76EF10BCBF35}">
+							<parameters>
+								<parameter name="emission_rate" base="0.000" bias="0.000"/>
+							</parameters>
+						</emitter>
+						<emitter guid="{8F9992C4-2377-4E4D-A6C9-88683388F025}">
+							<parameters>
+								<parameter name="emission_rate" base="0.000" bias="0.000"/>
+							</parameters>
+						</emitter>
+					</emitter_overrides>
+				</effect>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
 </prefabs>
 
