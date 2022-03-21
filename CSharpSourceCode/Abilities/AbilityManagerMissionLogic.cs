@@ -109,12 +109,19 @@ namespace TOW_Core.Abilities
             }
             else if (IsAbilityModeAvailableForMainAgent())
             {
+                CheckIfMainAgentHasPendingActivation();
+                
                 HandleInput();
 
                 UpdateWieldedItems();
 
                 HandleAnimations();
             }
+        }
+
+        private void CheckIfMainAgentHasPendingActivation()
+        {
+            if (_abilityComponent.CurrentAbility.IsActivationPending) _abilityComponent.CurrentAbility.ActivateAbility(Agent.Main);
         }
 
         private void HandleAnimations()
