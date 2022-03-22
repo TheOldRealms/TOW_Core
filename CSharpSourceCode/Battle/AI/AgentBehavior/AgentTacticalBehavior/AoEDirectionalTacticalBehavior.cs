@@ -11,7 +11,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
         public Vec3 CastingPosition;
         public AbstractAgentCastingBehavior CastingBehavior { get; set; }
 
-
         public DirectionalAoETacticalBehavior(Agent agent, HumanAIComponent aiComponent, AbstractAgentCastingBehavior castingBehavior) : base(agent, aiComponent)
         {
             CastingBehavior = castingBehavior;
@@ -24,13 +23,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             Agent.SetScriptedPosition(ref worldPosition, false);
         }
 
-        private static Vec3 CalculateCastingPosition(Formation targetFormation)
+        private Vec3 CalculateCastingPosition(Formation targetFormation)
         {
-            var targetFormationDirection = targetFormation.QuerySystem.EstimatedDirection.LeftVec();
-            targetFormationDirection *= targetFormation.Width / 1.45f;
-            targetFormationDirection = targetFormation.CurrentPosition + targetFormationDirection;
-            var castingPosition = targetFormationDirection.ToVec3(targetFormation.QuerySystem.MedianPosition.GetGroundZ());
-            return castingPosition;
+            var formationDirection = targetFormation.QuerySystem.EstimatedDirection;
+            var medianAgent = targetFormation.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
+
+            var flankDistance = targetFormation.Width / 1.45f;
+            var left = medianAgent.Position + formationDirection.LeftVec().ToVec3() * flankDistance;
+            var right = medianAgent.Position + formationDirection.RightVec().ToVec3() * flankDistance;
+
+            return Agent.Position.Distance(left) < Agent.Position.Distance(right) ? left : right;
         }
 
         public override void ApplyBehaviorParams()
