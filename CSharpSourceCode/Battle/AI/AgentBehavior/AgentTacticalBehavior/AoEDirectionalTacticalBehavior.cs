@@ -16,11 +16,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             CastingBehavior = castingBehavior;
         }
 
-        private void CalculateCastingTarget(Target target)
+        private WorldPosition CalculateCastingTarget(Target target)
         {
             CastingPosition = target.Formation != null ? CalculateCastingPosition(target.Formation) : Agent.Position;
-            var worldPosition = new WorldPosition(Mission.Current.Scene, CastingPosition);
-            Agent.SetScriptedPosition(ref worldPosition, false);
+            return new WorldPosition(Mission.Current.Scene, CastingPosition);
         }
 
         private Vec3 CalculateCastingPosition(Formation targetFormation)
@@ -41,7 +40,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
         public override void Tick()
         {
-            CalculateCastingTarget(CastingBehavior.CurrentTarget);
+            if (CommonAIStateFunctions.CanAgentMoveFreely(Agent))
+            {
+                var castingWorldPosition = CalculateCastingTarget(CastingBehavior.CurrentTarget);
+                Agent.SetScriptedPosition(ref castingWorldPosition, false);
+            }
         }
 
         public override void Terminate()
