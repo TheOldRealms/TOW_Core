@@ -13,12 +13,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior
         public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>> BehaviorByType =
             new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>>
             {
-                // {AbilityEffectType.Augment, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                // {AbilityEffectType.AgentMoving, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                // {AbilityEffectType.Blast, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                // {AbilityEffectType.Bombardment, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                // {AbilityEffectType.Heal, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                // {AbilityEffectType.Hex, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Blast, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Bombardment, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Heal, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                
+                {AbilityEffectType.Hex, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Augment, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+
                 {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 
@@ -26,6 +27,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 
                 {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
                 {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                
+             //   {AbilityEffectType.AgentMoving, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+             //   {AbilityEffectType.ArtilleryPlacement, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
             };
 
 
