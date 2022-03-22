@@ -13,23 +13,55 @@ namespace TOW_Core.Battle.AI.AgentBehavior
         public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>> BehaviorByType =
             new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>>
             {
-                {AbilityEffectType.Blast, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Bombardment, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Heal, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                
-                {AbilityEffectType.Hex, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Augment, (agent, abilityTemplate, abilityIndex) => new AoETargetedCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {AbilityEffectType.Blast, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                {AbilityEffectType.Bombardment, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                {
+                    AbilityEffectType.Heal, (agent, abilityIndex, abilityTemplate) =>
+                    {
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
+                            return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE)
+                            return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
+                            return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        return new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex);
+                    }
+                },
 
-                {AbilityEffectType.Missile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.SeekerMissile, (agent, abilityTemplate, abilityIndex) => new MissileCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                
-                {AbilityEffectType.Summoning, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                
-                {AbilityEffectType.Vortex, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                {AbilityEffectType.Wind, (agent, abilityTemplate, abilityIndex) => new AoEDirectionalCastingBehavior(agent, abilityIndex, abilityTemplate)},
-                
-             //   {AbilityEffectType.AgentMoving, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
-             //   {AbilityEffectType.ArtilleryPlacement, (agent, abilityTemplate, abilityIndex) => new SummoningCastingBehavior(agent, abilityIndex, abilityTemplate)},
+                {
+                    AbilityEffectType.Hex, (agent, abilityIndex, abilityTemplate) =>
+                    {
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.EnemiesInAOE)
+                            return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleEnemy)
+                            return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        return new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex);
+                    }
+                },
+
+                {
+                    AbilityEffectType.Augment, (agent, abilityIndex, abilityTemplate) =>
+                    {
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
+                            return new SelfCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE)
+                            return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
+                            return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
+                    }
+                },
+
+                {AbilityEffectType.Missile, (agent, abilityIndex, abilityTemplate) => new MissileCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                {AbilityEffectType.SeekerMissile, (agent, abilityIndex, abilityTemplate) => new MissileCastingBehavior(agent, abilityTemplate, abilityIndex)},
+
+                {AbilityEffectType.Summoning, (agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
+
+                {AbilityEffectType.Vortex, (agent, abilityIndex, abilityTemplate) => new AoEDirectionalCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                {AbilityEffectType.Wind, (agent, abilityIndex, abilityTemplate) => new AoEDirectionalCastingBehavior(agent, abilityTemplate, abilityIndex)},
+
+                //   {AbilityEffectType.AgentMoving,(agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                //   {AbilityEffectType.ArtilleryPlacement,(agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
             };
 
 
