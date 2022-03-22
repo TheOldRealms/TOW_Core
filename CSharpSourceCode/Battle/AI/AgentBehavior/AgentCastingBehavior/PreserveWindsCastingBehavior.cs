@@ -10,24 +10,14 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         {
         }
 
-        public override void Terminate()
-        {
-        }
-
-        public override bool IsPositional()
-        {
-            return false;
-        }
-
         public override void Execute()
         {
             //Do nothing. I am hoping that we will add some sort of "Channeling" which allows us to restore magic over time later on.
         }
 
-        protected override Target CalculateUtility(Target target)
+        protected override float CalculateUtility(Target target)
         {
-            target.UtilityValue = 0.4f;
-            return target;
+            return 0.4f;
         }
     }
 }

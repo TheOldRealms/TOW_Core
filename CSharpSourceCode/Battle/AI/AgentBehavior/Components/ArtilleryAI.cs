@@ -100,7 +100,7 @@ namespace TOW_Core.Battle.AI.Components
         {
             var targetingFunctions = new List<Axis>();
           //  targetingFunctions.Add(new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => _artillery.Position)));
-            targetingFunctions.Add(new Axis(0, CommonDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team) / 4, x => x, CommonDecisionFunctions.FormationPower()));
+            targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team) / 4, x => x, CommonAIDecisionFunctions.FormationPower()));
             return targetingFunctions;
         }
 

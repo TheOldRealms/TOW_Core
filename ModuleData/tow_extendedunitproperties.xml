@@ -1563,6 +1563,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
+      <string>Fireball</string>
       <string>WindOfDeath</string>
       <string>ScreamingSkull</string>
     </Abilities>

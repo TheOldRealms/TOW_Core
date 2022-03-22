@@ -170,6 +170,15 @@ namespace TOW_Core.Abilities
             return null;
         }
 
+        public override void OnTickAsAI(float dt)
+        {
+            base.OnTickAsAI(dt);
+            foreach(var ability in _knownAbilities)
+            {
+                if (ability.IsActivationPending) ability.ActivateAbility(Agent);
+            }
+        }
+
         private Ability _currentAbility = null;
         private SpecialMove _specialMove = null;
         private readonly List<Ability> _knownAbilities = new List<Ability>();

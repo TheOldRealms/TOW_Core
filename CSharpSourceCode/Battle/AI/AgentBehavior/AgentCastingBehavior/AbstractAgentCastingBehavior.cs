@@ -6,8 +6,10 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
@@ -17,16 +19,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         private WizardAIComponent _component;
         public readonly Agent Agent;
         protected float Hysteresis = 0.20f;
-        protected int Range;
+        private readonly int _abilityRange;
         public readonly AbilityTemplate AbilityTemplate;
         protected readonly int AbilityIndex;
-        protected List<Axis> AxisList;
+        private readonly List<Axis> _axisList;
 
         public Target CurrentTarget = new Target();
-        public List<TacticalBehaviorOption> LatestScores { get; private set; }
+        public List<BehaviorOption> LatestScores { get; private set; }
 
+        public AbstractAgentTacticalBehavior TacticalBehavior { get; protected set; }
         public WizardAIComponent Component => _component ?? (_component = Agent.GetComponent<WizardAIComponent>());
-
 
         protected AbstractAgentCastingBehavior(Agent agent, AbilityTemplate abilityTemplate, int abilityIndex)
         {
@@ -34,64 +36,52 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             AbilityIndex = abilityIndex;
             if (abilityTemplate != null)
             {
-                Range = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
+                _abilityRange = (int) (abilityTemplate.BaseMovementSpeed * abilityTemplate.Duration) - 1;
             }
 
             AbilityTemplate = abilityTemplate;
-            AxisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            _axisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            TacticalBehavior = new KeepSafeAgentTacticalBehavior(Agent, Agent.GetComponent<WizardAIComponent>());
         }
-
-
-        public abstract Boolean IsPositional();
 
         public virtual void Execute()
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
-
-            var medianAgent = CurrentTarget.Formation?.GetMedianAgent(true, false, CurrentTarget.Formation.GetAveragePositionOfUnits(true, false));
-
-            if (medianAgent != null && (IsPositional() || medianAgent.Position.Distance(Agent.Position) < Range))
+            
+            CurrentTarget = UpdateTarget(CurrentTarget);
+            
+            if (HaveLineOfSightToTarget(CurrentTarget))
             {
-                if (HaveLineOfSightToAgent(medianAgent))
-                {
-                    Agent.SelectAbility(AbilityIndex);
-                    CastSpellAtAgent(medianAgent);
-                }
+                Agent.SelectAbility(AbilityIndex);
+                CastSpellAtTargetPosition(CurrentTarget.GetPosition());
             }
         }
 
-        protected void CastSpellAtAgent(Agent targetAgent)
+        public virtual void Terminate()
         {
-            var targetPosition = targetAgent == Agent.Main ? targetAgent.Position : targetAgent.GetChestGlobalPosition();
+        }
 
-            var velocity = targetAgent.Velocity;
-            if (Agent.GetCurrentAbility().AbilityEffectType == AbilityEffectType.Missile)
-            {
-                velocity = ComputeCorrectedVelocityBySpellSpeed(targetAgent);
-            }
+        protected virtual Target UpdateTarget(Target target)
+        {
+            return target;
+        }
 
-            targetPosition += velocity;
-            targetPosition.z += -2f;
+        protected virtual bool HaveLineOfSightToTarget(Target targetAgent)
+        {
+            return true;
+        }
 
+        protected virtual void CastSpellAtTargetPosition(Vec3 targetPosition)
+        {
             var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
             wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
         }
 
-        protected virtual bool HaveLineOfSightToAgent(Agent targetAgent)
+        protected Vec3 ComputeSpellAngleVelocityCorrection(Vec3 targetPosition, Vec3 targetVelocity)
         {
-            Agent collidedAgent = Mission.Current.RayCastForClosestAgent(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float _, Agent.Index, 0.4f);
-            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position + new Vec3(z: Agent.GetEyeGlobalHeight()), targetAgent.GetChestGlobalPosition(), out float distance, out GameEntity _, 0.4f);
-
-            return Agent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) > 1 && (distance is Single.NaN || distance > 1) &&
-                   (collidedAgent == null || collidedAgent == targetAgent || collidedAgent.IsEnemyOf(Agent) || collidedAgent.GetChestGlobalPosition().Distance(targetAgent.GetChestGlobalPosition()) < 4) &&
-                   (float.IsNaN(distance) || Math.Abs(distance - targetAgent.Position.Distance(Agent.Position)) < 0.3);
-        }
-
-        private Vec3 ComputeCorrectedVelocityBySpellSpeed(Agent targetAgent)
-        {
-            var time = targetAgent.Position.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
-            return targetAgent.Velocity * time;
+            var time = targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
+            return targetVelocity * time;
         }
 
 
@@ -100,30 +90,29 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
 
-        public abstract void Terminate();
-
-        public List<TacticalBehaviorOption> CalculateUtility()
+        public List<BehaviorOption> CalculateUtility()
         {
             LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
-                .Select(CalculateUtility)
-                .Select(target => new TacticalBehaviorOption {Target = target, Behavior = this})
+                .Select(target =>
+                {
+                    target.UtilityValue = CalculateUtility(target);
+                    return target;
+                })
+                .Select(target => new BehaviorOption {Target = target, Behavior = this})
                 .ToList();
 
             return LatestScores;
         }
 
-        protected virtual Target CalculateUtility(Target target)
+        protected virtual float CalculateUtility(Target target)
         {
-            if (Agent.GetAbility(AbilityIndex).IsOnCooldown() || IsPositional())
+            if (Agent.GetAbility(AbilityIndex).IsOnCooldown())
             {
-                target.UtilityValue = 0.0f;
-                return target;
+                return 0.0f;
             }
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
-            AxisList.GeometricMean(target);
-            target.UtilityValue += hysteresis;
-            return target;
+            return _axisList.GeometricMean(target) + hysteresis;
         }
 
         protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
