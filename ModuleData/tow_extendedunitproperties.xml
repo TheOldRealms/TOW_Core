@@ -218,13 +218,8 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
-    <Abilities>
-      <string>WindOfDeath</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
