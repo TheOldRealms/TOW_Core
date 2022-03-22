@@ -76,6 +76,7 @@ namespace TOW_Core.Battle.Artillery
         private int _moveSoundIndex;
         private SoundEvent _moveSound;
         private int _fireSoundIndex;
+        private int _fireSoundIndex2;
         private SoundEvent _fireSound;
         private MatrixFrame _currentSlideBackFrame;
         private MatrixFrame _currentSlideBackFrameOrig;
@@ -111,7 +112,8 @@ namespace TOW_Core.Battle.Artillery
         public string ReloadTag = "reload";
         public string LeftWheelTag = "Wheel_L";
         public string RightWheelTag = "Wheel_R";
-        public string FireSoundID = "mortar_shot";
+        public string FireSoundID = "mortar_shot_1";
+        public string FireSoundID2 = "mortar_shot_2";
         public string ProjectileReleaseTag = "projectile_release";
         public float MuzzleVelocity = 40;
         public float MinRange = 20;
@@ -156,6 +158,7 @@ namespace TOW_Core.Battle.Artillery
         {
             _moveSoundIndex = SoundEvent.GetEventIdFromString("event:/mission/siege/mangonel/move");
             _fireSoundIndex = SoundEvent.GetEventIdFromString(FireSoundID);
+            _fireSoundIndex2 = SoundEvent.GetEventIdFromString(FireSoundID2);
         }
 
         private void RegisterAnimationParameters()
@@ -281,7 +284,15 @@ namespace TOW_Core.Battle.Artillery
 
             if (_fireSound == null || !_fireSound.IsValid)
             {
-                _fireSound = SoundEvent.CreateEvent(_fireSoundIndex, Scene);
+                if (MBRandom.RandomFloat > 0.5f)
+                {
+                    _fireSound = SoundEvent.CreateEvent(_fireSoundIndex, Scene);
+                }
+                else
+                {
+                    _fireSound = SoundEvent.CreateEvent(_fireSoundIndex2, Scene);
+                }
+               
                 _fireSound.PlayInPosition(GameEntity.GlobalPosition);
             }
 

@@ -4,7 +4,7 @@
       StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
-      CoolDown="1" 
+      CoolDown="5" 
       WindsOfMagicCost="1" 
       BaseMisCastChance="0.05" 
       Duration="3" 
@@ -34,6 +34,47 @@
       SpellTier="3"
       BelongsToLoreID="LoreOfFire"
       TooltipDescription="There is nothing quite as welcoming as a fireball to the face. Does 50 damage in a 5 meter radius and imbues the burning statuseffect for 5 seconds.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="LightningBolt" 
+      Name="Lightning Bolt" 
+      SpriteName="fireball_icon" 
+      CoolDown="5" 
+      WindsOfMagicCost="1" 
+      BaseMisCastChance="0.05" 
+      Duration="3" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="Missile" 
+      BaseMovementSpeed="35" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="3" 
+      LightFlickeringInterval="0.7" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="lightning_bolt" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dart" 
+      ShouldSoundLoopOverDuration="true" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="lightningbolt_explosion"
+      Offset="0.5"
+      CrosshairType="Missile"
+      AbilityTargetType="WorldPosition"
+      SpellTier="2"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Does 50 damage in a 3 meter radius.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>
@@ -131,10 +172,10 @@
   </AbilityTemplate>
   <AbilityTemplate 
       StringID="Dart" 
-      Name="Dart" 
+      Name="Magic Bolt" 
       SpriteName="dart_icon" 
       CoolDown="12" 
-      WindsOfMagicCost="8" 
+      WindsOfMagicCost="3" 
       BaseMisCastChance="0.05" 
       Duration="300" 
       Radius="0.4" 
@@ -157,8 +198,8 @@
       CastTime="0.5" 
       AnimationActionName="act_release_stone" 
       TriggeredEffectID="dart_explosion"
-      SpellTier="2"
-      BelongsToLoreID="LoreOfHeavens"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
       MaxDistance="100"
       CrosshairType="SingleTarget"
       AbilityTargetType="SingleEnemy"
@@ -462,6 +503,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  <!--
   <AbilityTemplate
       StringID="WordOfPain"
       Name="Word of Pain"
@@ -504,6 +546,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  -->
   <AbilityTemplate
       StringID="FlamingSwords"
       Name="Flaming Sword of Rhuin"
@@ -540,6 +583,92 @@
       SpellTier="2"
       BelongsToLoreID="LoreOfFire"
       TooltipDescription="Buff the weapons of allies in a 5 meter radius with the Flaming trait for 20 seconds. The weapons burst into fire and burn every enemy they strike.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+    </AbilityTemplate>
+    <AbilityTemplate
+      StringID="AuraOfResistance"
+      Name="Aura of Resistance"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="5"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="3"
+      AbilityType="Spell"
+      AbilityEffectType="Augment"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="physical_resistance_20"
+      Offset="0.5"
+      AbilityTargetType="AlliesInAOE"
+      TargetCapturingRadius="3"
+      MaxDistance="20"
+      CrosshairType="TargetedAOE"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Allies in a 3 meter radius gain 20% physical resistance for 15 seconds.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+      StringID="EnchantWeapon"
+      Name="Enchant Weapon"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="5"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="Augment"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="enchant_weapon"
+      Offset="0.5"
+      AbilityTargetType="SingleAlly"
+      TargetCapturingRadius="1"
+      MaxDistance="20"
+      CrosshairType="SingleTarget"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Buff a target ally's weapon to do additional magic damage.">
     <LightColorRGB x="255" y="170" z="0" w="-1">
       <AsVec2>
         <x>255</x>
@@ -676,6 +805,49 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="StrengthOfCombat" 
+      Name="Strength Of Combat" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="Augment" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0"
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="physical_bonus_20"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Adds 20% physical damage bonus for 15 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
   <AbilityTemplate
       StringID="Tornado"
       Name="Tornado"
@@ -722,5 +894,184 @@
         <y>170</y>
       </AsVec2>
     </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate
+      StringID="CometOfCasandora"
+      Name="Comet of Casandora"
+      SpriteName="burninghead_icon"
+      CoolDown="1"
+      WindsOfMagicCost="16"
+      BaseMisCastChance="0.3"
+      Duration="30"
+      Radius="2"
+      AbilityType="Spell"
+      AbilityEffectType="Bombardment"
+      BaseMovementSpeed="4"
+      TickInterval="0.5"
+      TriggerType="OnCollision"
+      HasLight="false"
+      LightIntensity="50"
+      LightRadius="10"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="false"
+      ParticleEffectPrefab="comet_of_casandora"
+      ParticleEffectSizeModifier="1"
+      SoundEffectToPlay="none"
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="comet_explosion"
+      Offset="100"
+      CrosshairType="TargetedAOE"
+      AbilityTargetType="GroundAtPosition"
+      MinDistance="3"
+      MaxDistance="30"
+      TargetCapturingRadius="4"
+      MaxRandomDeviation="1"
+      ShouldRotateVisuals="true"
+      VisualsRotationVelocity="1"
+      SpellTier="4"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Comet. It's heavy. Goes boom.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate 
+      StringID="FoetidCloud" 
+      Name="Foetid Cloud" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.3" 
+      Duration="8" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Blast" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="foetid_cloud" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="gas_cloud_release" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="foetid_cloud_burst"
+      Offset="3"
+      AbilityTargetType="WorldPosition"
+      CrosshairType="Wind"
+      MinDistance="1"
+      MaxDistance="2"
+      TargetCapturingRadius="2"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="A sickly short ranged poisonous gas cloud.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+<AbilityTemplate 
+      StringID="WindBlast" 
+      Name="Wind Blast" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.3" 
+      Duration="5" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Blast" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="dust_storm" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dust_storm" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="dust_storm"
+      Offset="3"
+      AbilityTargetType="WorldPosition"
+      CrosshairType="Wind"
+      MinDistance="1"
+      MaxDistance="2"
+      TargetCapturingRadius="2"
+      SpellTier="2"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Dry winds from the desert knocks you on your ass.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+<AbilityTemplate 
+      StringID="Thunderbolt" 
+      Name="Urannon's Thunderbolt" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.5" 
+      Duration="8" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Bombardment" 
+      BaseMovementSpeed="0" 
+      TickInterval="0.3" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="3" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="thunderbolt" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="lightning_strike" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="thunderbolt_explosion"
+      Offset="0"
+      AbilityTargetType="GroundAtPosition"
+      CrosshairType="TargetedAOE"
+      MinDistance="5"
+      MaxDistance="30"
+      TargetCapturingRadius="2"
+      SpellTier="4"
+      BelongsToLoreID="LoreOfHeavens"
+      TooltipDescription="Thunderbolt">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
   </AbilityTemplate>
 </ArrayOfAbilityTemplate>

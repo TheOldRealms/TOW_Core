@@ -217,5 +217,7 @@ namespace TOW_Core.Abilities.Crosshairs
         protected Mission _mission = Mission.Current;
 
         protected MissionScreen _missionScreen = ScreenManager.TopScreen as MissionScreen;
+
+        protected Agent _caster = Agent.Main; 
     }
 }

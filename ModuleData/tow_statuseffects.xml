@@ -60,8 +60,19 @@
 		apply_particle_to_root_bone_only="true"
     	health_over_time="0"
     	damage_over_time="0"
-		duration="10"
+		duration="15"
 		type="Resistance">
     	<Resistance ResistedDamageType="Physical" ReductionPercent="0.2" />
+  	</StatusEffectTemplate>
+	  	<StatusEffectTemplate
+		id="physical_bonus_20"
+		particle_id="berzerk_effect"
+		particle_intensity="High"
+		apply_particle_to_root_bone_only="true"
+    	health_over_time="0"
+    	damage_over_time="0"
+		duration="15"
+		type="DamageAmplification">
+    	<DamageAmplifier AmplifiedDamageType="Physical" DamageAmplifier="0.2" />
   	</StatusEffectTemplate>
 </StatusEffects>

@@ -36,6 +36,7 @@ namespace TOW_Core.Battle.Crosshairs
             this._mission = null;
             this._missionScreen = null;
             this._crosshairVM = null;
+            _weaponMovie.Release();
             this._weaponMovie = null;
             this._weaponLayer = null;
         }

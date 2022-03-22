@@ -2,9 +2,11 @@ using System.Globalization;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.Damage;
+using TOW_Core.Battle.Sound;
 using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -15,12 +17,12 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Agent), "HandleBlow")]
-        public static bool PreHandleBlow(ref Blow b, ref Agent __instance)
+        public static bool PreHandleBlow(ref Blow b, Agent __instance)
         {
             Agent attacker = b.OwnerId != -1 ? Mission.Current.FindAgentWithIndex(b.OwnerId) : __instance;
             Agent victim = __instance;
             
-            if (victim.IsMount || attacker.IsMount)
+            if (!victim.IsHuman || !attacker.IsHuman)
             {
                 return true;
             }
@@ -29,6 +31,9 @@ namespace TOW_Core.HarmonyPatches
             {
                 return true;
             }
+            
+            
+            SoundEvent _hitsound;
 
             bool isSpell = false;
             float[] damageCategories=new float[(int) DamageType.All+1];
@@ -37,8 +42,11 @@ namespace TOW_Core.HarmonyPatches
             //attack properties;
             var damageProportions = attackerPropertyContainer.DamageProportions;
             var damagePercentages = attackerPropertyContainer.DamagePercentages;
+            var additionalDamagePercentages = attackerPropertyContainer.AdditionalDamagePercentages;
             //defense properties
             var resistancePercentages = victimPropertyContainer.ResistancePercentages;
+
+           
             
             if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
             {
@@ -59,17 +67,31 @@ namespace TOW_Core.HarmonyPatches
             }
 
             var resultDamage = 0;
+            var highestDamageValue =0f;
+            var highestNonPhysicalDamageType = DamageType.Physical;
             for (int i = 0; i < damageCategories.Length-1; i++)
             {
+                damageProportions[i] += additionalDamagePercentages[i];
                 damageCategories[i] = b.InflictedDamage * damageProportions[i];
                 damageCategories[i] += damageCategories[(int)DamageType.All]/(int) DamageType.All;
                 if (damageCategories[i] > 0)
                 {
+                    if (damageCategories[i] > highestDamageValue&& i!= (int) DamageType.Physical)
+                    {
+                        highestDamageValue = damageCategories[i];
+                        highestNonPhysicalDamageType = (DamageType)i;
+                    }
                     damagePercentages[i] -= resistancePercentages[i];
                     damageCategories[i] *= 1 + damagePercentages[i];
                     resultDamage += (int) damageCategories[i];
                 }
             }
+
+            if (highestNonPhysicalDamageType != DamageType.Physical)
+            {
+                victim.GetComponent<AgentSoundComponent>().PlayHitSound(highestNonPhysicalDamageType);
+            }
+            
 
             b.InflictedDamage = resultDamage;
 
@@ -78,8 +100,12 @@ namespace TOW_Core.HarmonyPatches
                 if(attacker==Agent.Main || victim==Agent.Main)
                     TORDamageDisplay.DisplayDamageResult(resultDamage, damageCategories);
             }
+            
             return true;
         }
+
+
+        
 
         
     }

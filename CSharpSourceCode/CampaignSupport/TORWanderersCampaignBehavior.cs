@@ -3,6 +3,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -16,6 +17,22 @@ namespace TOW_Core.CampaignSupport
         {
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, CheckPlayerCurrentSettlement);
+            CampaignEvents.HeroCreated.AddNonSerializedListener(this, OnHeroCreated);
+        }
+
+        private void OnHeroCreated(Hero hero, bool arg2)
+        {
+            if(hero.Occupation == Occupation.Wanderer && hero.Template != null)
+            {
+                foreach (var attribute in hero.Template.GetAttributes())
+                {
+                    if(!hero.HasAttribute(attribute)) hero.AddAttribute(attribute);
+                }
+                foreach (var ability in hero.Template.GetAbilities())
+                {
+                    if(!hero.HasAbility(ability)) hero.AddAbility(ability);
+                }
+            }
         }
 
         private void CheckPlayerCurrentSettlement()

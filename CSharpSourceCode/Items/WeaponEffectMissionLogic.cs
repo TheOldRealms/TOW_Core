@@ -15,7 +15,7 @@ namespace TOW_Core.Items
     {
         public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            if (HasWeaponWithTrait(agent))
+            if (agent.IsHuman)
             {
                 var comp = new ItemTraitAgentComponent(agent);
                 agent.AddComponent(comp);
