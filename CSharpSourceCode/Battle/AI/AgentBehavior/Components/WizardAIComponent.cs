@@ -36,10 +36,13 @@ namespace TOW_Core.Battle.AI.Components
 
             if (Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
             {
-              
                 if (CommonAIStateFunctions.CanAgentMoveFreely(Agent))
                 {
                     CurrentCastingBehavior?.TacticalBehavior?.Execute();
+                }
+                else
+                {
+                    CurrentCastingBehavior?.TacticalBehavior?.Terminate();
                 }
 
                 CurrentCastingBehavior?.Execute();
@@ -53,7 +56,6 @@ namespace TOW_Core.Battle.AI.Components
             base.OnTickAsAI(dt);
         }
 
-  
 
         private void TickOccasionally()
         {

@@ -21,13 +21,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             base.Execute();
         }
-        
+
         protected override float CalculateUtility(Target target)
         {
             if (!CommonAIStateFunctions.CanAgentMoveFreely(Agent))
                 return 0.0f;
-            
-            return base.CalculateUtility(target);
+
+            return 1.0f; //base.CalculateUtility(target);
         }
     }
 }
