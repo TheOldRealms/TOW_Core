@@ -353,6 +353,8 @@
     <Compile Include="Battle\Crosshairs\ICrosshair.cs" />
     <Compile Include="Battle\Crosshairs\SniperScope.cs" />
     <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
+    <Compile Include="Battle\BlackPowderWeapon\BlackPowderWeaponMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\BlackPowderWeaponScript.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
     <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />
@@ -447,9 +449,7 @@
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
     <Compile Include="ObjectDataExtensions\SpellBlowInfoManager.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
-    <Compile Include="Battle\FireArms\FireArmsMissionLogic.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\HandGrenadeScript.cs" />
-    <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoMissionLogic.cs" />
