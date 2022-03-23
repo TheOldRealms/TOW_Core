@@ -15,7 +15,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public override void Execute()
         {
             Agent.SelectAbility(AbilityIndex);
-            CastSpellAtTargetPosition(Agent.Position);
+            CastSpellAtCurrentTarget(Agent.Position);
         }
         
     }

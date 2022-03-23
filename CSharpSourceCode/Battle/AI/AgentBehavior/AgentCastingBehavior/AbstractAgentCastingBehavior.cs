@@ -47,13 +47,13 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         public virtual void Execute()
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
-            
+
             CurrentTarget = UpdateTarget(CurrentTarget);
-            
+
             if (HaveLineOfSightToTarget(CurrentTarget))
             {
                 Agent.SelectAbility(AbilityIndex);
-                CastSpellAtTargetPosition(CurrentTarget.GetPosition());
+                CastSpellAtCurrentTarget(CurrentTarget.GetPosition());
             }
         }
 
@@ -71,21 +71,20 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return true;
         }
 
-        protected virtual void CastSpellAtTargetPosition(Vec3 targetPosition)
+        protected virtual void CastSpellAtCurrentTarget(Vec3 targetPosition)
         {
-            var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
-            wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
         }
 
         protected Vec3 ComputeSpellAngleVelocityCorrection(Vec3 targetPosition, Vec3 targetVelocity)
         {
-            var time = targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
+            var time = AbilityTemplate.BaseMovementSpeed != 0 ?
+                targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed : AbilityTemplate.CastTime;
             return targetVelocity * time;
         }
 
 
-        protected Mat3 CalculateSpellRotation(Vec3 targetPosition)
+        public Mat3 CalculateSpellRotation(Vec3 targetPosition)
         {
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }

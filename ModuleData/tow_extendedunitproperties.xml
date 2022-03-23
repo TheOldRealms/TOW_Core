@@ -218,8 +218,13 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
-    <Abilities />
-    <Attributes />
+    <Abilities>
+      <string>Thunderbolt</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>

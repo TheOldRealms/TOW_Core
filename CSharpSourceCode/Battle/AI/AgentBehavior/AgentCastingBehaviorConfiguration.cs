@@ -71,11 +71,11 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 {typeof(PreserveWindsAgentCastingBehavior), CreatePreserveWindsAxis()},
 
                 {typeof(AoEAdjacentCastingBehavior), CreateStaticAoEAxis()},
-                {typeof(AoETargetedCastingBehavior), CreateStaticAoEAxis()},
+                {typeof(AoETargetedCastingBehavior), CreateOffensiveSpellAxis()},
                 {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
                 {typeof(AoEDirectionalCastingBehavior), CreateDirectionalMovingAoEAxis()},
-                {typeof(MissileCastingBehavior), CreateMovingProjectileAxis()},
+                {typeof(MissileCastingBehavior), CreateOffensiveSpellAxis()},
             };
 
         public static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
@@ -138,7 +138,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             };
         }
 
-        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateMovingProjectileAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateOffensiveSpellAxis()
         {
             return behavior =>
             {

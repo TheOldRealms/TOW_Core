@@ -201,7 +201,53 @@ namespace TOW_Core.Abilities
         private MatrixFrame CalculateAICastMatrixFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
-            frame = UpdateFrameRotationForAI(casterAgent, frame);
+            var wizardAIComponent = casterAgent.GetComponent<WizardAIComponent>();
+            var target = wizardAIComponent.CurrentCastingBehavior.CurrentTarget;
+
+            switch (Template.AbilityEffectType)
+            {
+                case AbilityEffectType.Missile:
+                case AbilityEffectType.SeekerMissile:
+                case AbilityEffectType.Wind:
+                {
+                    frame.rotation = wizardAIComponent.CurrentCastingBehavior.CalculateSpellRotation(target.GetPosition());
+                    break;
+                }
+                case AbilityEffectType.Blast:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition()).Elevate(1);
+                    break;
+                }
+                case AbilityEffectType.Vortex:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
+                    frame.rotation = casterAgent.Frame.rotation;
+                    break;
+                }
+                case AbilityEffectType.AgentMoving:
+                {
+                    frame = casterAgent.LookFrame;
+                    break;
+                }
+                case AbilityEffectType.ArtilleryPlacement:
+                case AbilityEffectType.Hex:
+                case AbilityEffectType.Augment:
+                case AbilityEffectType.Heal:
+                case AbilityEffectType.Summoning:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
+                    break;
+                }
+                case AbilityEffectType.Bombardment:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
+                    break;
+                }
+                default:
+                    break;
+            }
+
+
             if (IsGroundAbility())
             {
                 frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
@@ -217,17 +263,6 @@ namespace TOW_Core.Abilities
             else
             {
                 frame = frame.Elevate(1);
-            }
-
-            return frame;
-        }
-        
-        protected MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
-        {
-            var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
-            if (wizardAiComponent != null && casterAgent.IsAIControlled)
-            {
-                frame.rotation = wizardAiComponent.SpellTargetRotation;
             }
 
             return frame;

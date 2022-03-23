@@ -14,8 +14,6 @@ namespace TOW_Core.Battle.AI.Components
         private static readonly float EvalInterval = 1;
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
 
-        public Mat3 SpellTargetRotation = Mat3.Identity;
-
         public AbstractAgentCastingBehavior CurrentCastingBehavior;
 
         private List<IAgentBehavior> _availableCastingBehaviors; //Do not access this directly. Use the generator function public method below.
