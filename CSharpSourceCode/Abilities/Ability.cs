@@ -23,15 +23,18 @@ namespace TOW_Core.Abilities
         public AbilityTemplate Template { get; private set; }
         public AbilityScript AbilityScript { get; private set; }
         public AbilityCrosshair Crosshair { get; private set; }
-        public bool IsActivationPending { get;private set; }
+        public bool IsActivationPending { get; private set; }
         public virtual AbilityEffectType AbilityEffectType => Template.AbilityEffectType;
         public bool IsOnCooldown() => _timer.Enabled;
         public int GetCoolDownLeft() => _coolDownLeft;
         private bool IsSingleTarget() => Template.AbilityTargetType == AbilityTargetType.SingleAlly || Template.AbilityTargetType == AbilityTargetType.SingleEnemy;
 
         public delegate void OnCastCompleteHandler(Ability ability);
+
         public event OnCastCompleteHandler OnCastComplete;
+
         public delegate void OnCastStartHandler(Ability ability);
+
         public event OnCastStartHandler OnCastStart;
 
         public Ability(AbilityTemplate template)
@@ -76,8 +79,8 @@ namespace TOW_Core.Abilities
         {
             return !IsCasting &&
                    !IsOnCooldown() &&
-                   ((casterAgent.IsPlayerControlled && IsRightAngleToCast()) || 
-                   (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
+                   ((casterAgent.IsPlayerControlled && IsRightAngleToCast()) ||
+                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
         }
 
         protected virtual void DoCast(Agent casterAgent)
@@ -93,10 +96,7 @@ namespace TOW_Core.Abilities
                 IsCasting = true;
                 var timer = new Timer(Template.CastTime * 1000);
                 timer.AutoReset = false;
-                timer.Elapsed += (s, e) =>
-                {
-                    IsActivationPending = true;
-                };
+                timer.Elapsed += (s, e) => { IsActivationPending = true; };
                 timer.Start();
             }
         }
@@ -136,86 +136,92 @@ namespace TOW_Core.Abilities
 
         private bool ShouldAddPhyics()
         {
-            return Template.TriggerType == TriggerType.OnCollision ;
+            return Template.TriggerType == TriggerType.OnCollision;
         }
 
-        protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)
+        protected MatrixFrame GetSpawnFrame(Agent casterAgent)
+        {
+            return casterAgent.IsAIControlled ? CalculateAICastMatrixFrame(casterAgent) : CalculatePlayerCastMatrixFrame(casterAgent);
+        }
+
+        private MatrixFrame CalculatePlayerCastMatrixFrame(Agent casterAgent)
         {
             var frame = casterAgent.LookFrame;
-            if (casterAgent.IsAIControlled)
+            switch (Template.AbilityEffectType)
             {
-                frame = UpdateFrameRotationForAI(casterAgent, frame);
-                if (IsGroundAbility())
+                case AbilityEffectType.Missile:
+                case AbilityEffectType.SeekerMissile:
                 {
-                    frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
-                    if(Template.AbilityEffectType == AbilityEffectType.Bombardment)
-                    {
-                        frame.origin.z += Template.Offset;
-                    }
+                    frame.origin = casterAgent.GetEyeGlobalPosition();
+                    break;
                 }
-                else if (IsMissileAbility())
+                case AbilityEffectType.Wind:
                 {
-                    frame = frame.Elevate(casterAgent.GetEyeGlobalHeight()).Advance(Template.Offset);
+                    frame = Crosshair.Frame;
+                    break;
                 }
-                else
+                case AbilityEffectType.Blast:
                 {
-                    frame = frame.Elevate(1);
+                    frame = Crosshair.Frame.Elevate(1);
+                    break;
                 }
-            }
-            else
-            {
-                switch (Template.AbilityEffectType)
+                case AbilityEffectType.Vortex:
                 {
-                    case AbilityEffectType.Missile:
-                    case AbilityEffectType.SeekerMissile:
-                    {
-                        frame.origin = casterAgent.GetEyeGlobalPosition();
-                        break;
-                    }
-                    case AbilityEffectType.Wind:
-                        {
-                            frame = Crosshair.Frame;
-                            break;
-                        }
-                    case AbilityEffectType.Blast:
-                        {
-                            frame = Crosshair.Frame.Elevate(1);
-                            break;
-                        }
-                    case AbilityEffectType.Vortex:
-                    {
-                        frame = Crosshair.Frame;
-                        frame.rotation = casterAgent.Frame.rotation;
-                        break;
-                    }
-                    case AbilityEffectType.AgentMoving:
-                    {
-                        frame = casterAgent.LookFrame;
-                        break;
-                    }
-                    case AbilityEffectType.ArtilleryPlacement:
-                    case AbilityEffectType.Hex:
-                    case AbilityEffectType.Augment:
-                    case AbilityEffectType.Heal:
-                    case AbilityEffectType.Summoning:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            break;
-                        }
-                    case AbilityEffectType.Bombardment:
-                        {
-                            frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
-                            frame.origin.z += Template.Offset;
-                            break;
-                        }
-                    default:
-                        break;
+                    frame = Crosshair.Frame;
+                    frame.rotation = casterAgent.Frame.rotation;
+                    break;
                 }
+                case AbilityEffectType.AgentMoving:
+                {
+                    frame = casterAgent.LookFrame;
+                    break;
+                }
+                case AbilityEffectType.ArtilleryPlacement:
+                case AbilityEffectType.Hex:
+                case AbilityEffectType.Augment:
+                case AbilityEffectType.Heal:
+                case AbilityEffectType.Summoning:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                    break;
+                }
+                case AbilityEffectType.Bombardment:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, Crosshair.Position);
+                    frame.origin.z += Template.Offset;
+                    break;
+                }
+                default:
+                    break;
             }
 
             return frame;
         }
 
+        private MatrixFrame CalculateAICastMatrixFrame(Agent casterAgent)
+        {
+            var frame = casterAgent.LookFrame;
+            frame = UpdateFrameRotationForAI(casterAgent, frame);
+            if (IsGroundAbility())
+            {
+                frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
+                if (Template.AbilityEffectType == AbilityEffectType.Bombardment)
+                {
+                    frame.origin.z += Template.Offset;
+                }
+            }
+            else if (IsMissileAbility())
+            {
+                frame = frame.Elevate(casterAgent.GetEyeGlobalHeight()).Advance(Template.Offset);
+            }
+            else
+            {
+                frame = frame.Elevate(1);
+            }
+
+            return frame;
+        }
+        
         protected MatrixFrame UpdateFrameRotationForAI(Agent casterAgent, MatrixFrame frame)
         {
             var wizardAiComponent = casterAgent.GetComponent<WizardAIComponent>();
@@ -314,7 +320,7 @@ namespace TOW_Core.Abilities
                     //TODO get logic for selecting single targets for AI
                     //AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
                 }
-                else if(Crosshair.CrosshairType == CrosshairType.SingleTarget)
+                else if (Crosshair.CrosshairType == CrosshairType.SingleTarget)
                 {
                     AbilityScript.SetExplicitSingleTarget((Crosshair as SingleTargetCrosshair).CachedTarget);
                 }
@@ -331,12 +337,13 @@ namespace TOW_Core.Abilities
                     Target target;
                     if (Crosshair.CrosshairType == CrosshairType.SingleTarget)
                     {
-                        target = new Target { Agent = (Crosshair as SingleTargetCrosshair).CachedTarget };
+                        target = new Target {Agent = (Crosshair as SingleTargetCrosshair).CachedTarget};
                     }
                     else
                     {
-                        target = new Target { Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation };
+                        target = new Target {Formation = casterAgent.Formation.QuerySystem.ClosestSignificantlyLargeEnemyFormation.Formation};
                     }
+
                     AbilityScript.SetTargetSeeking(target, Template.SeekerParameters);
                 }
             }
@@ -394,6 +401,5 @@ namespace TOW_Core.Abilities
                 return true;
             }
         }
-
     }
 }
