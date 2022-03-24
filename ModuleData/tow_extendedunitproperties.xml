@@ -1542,6 +1542,7 @@
       <string>EnchantWeapon</string>
       <string>FlamingSwords</string>
       <string>StrengthOfCombat</string>
+      <string>CometOfCasandora</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
