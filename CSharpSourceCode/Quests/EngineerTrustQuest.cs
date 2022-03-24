@@ -30,6 +30,8 @@ namespace TOW_Core.Quests
         [SaveableField(5)] private string _enemyHeroName = "Rudolf";
         [SaveableField(6)] private TextObject _title = new TextObject("Hunt down the Engineer");
         private bool _initAfterReload;
+
+        private bool _failstate;
          
         
         public EngineerTrustQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
@@ -53,6 +55,12 @@ namespace TOW_Core.Quests
         {
             return _enemyHeroName;
         }
+
+        public bool GetQuestFailed()
+        {
+            return _failstate;
+        }
+        
         protected override void RegisterEvents()
         {
             base.RegisterEvents();
@@ -90,6 +98,7 @@ namespace TOW_Core.Quests
                 TaskSuccessful();
             }
         }
+        
         private void SkipDialog()
         {
             if (!_targetParty.IsActive) return;
@@ -151,7 +160,14 @@ namespace TOW_Core.Quests
                 RegisterQuestSpecificElementsOnGameLoad();
             }
         }
-        
+
+
+        public override void OnFailed()
+        {
+            base.OnFailed();
+            _failstate = true;
+        }
+
         public static EngineerTrustQuest GetCurrentActiveIfExists()
         {
             EngineerTrustQuest returnvalue = null;

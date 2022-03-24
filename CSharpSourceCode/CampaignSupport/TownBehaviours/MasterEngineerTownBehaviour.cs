@@ -71,35 +71,78 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             _nuln = Settlement.All.FirstOrDefault(x => x.StringId == "town_WI1");
             
+            //greeting dialog
+            obj.AddDialogLine("engineer_start", "start", "close_window", "Come back to me when you have news.",() => engineerstartcondition() && questchaininprogress()&& issecondmeeting(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "close_window", "You again, what do you want?",() => engineerstartcondition() && !questchaininprogress()&& issecondmeeting(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "playergreet", "You again, what do you want?",() => engineerstartcondition()&&issecondmeeting()&&!questchaininprogress(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?",engineerstartcondition , knowledgeoverplayer, 200, null);
             
-            obj.AddDialogLine("quest_in_progress", "start", "player_success_test", "Did you finished what I asked you for?",questinprogress, null, 200, null);
-            obj.AddDialogLine("engineer_start", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?",engineerstartcondition , null, 200, null);
+            //quest turn in
+            
+            //failed
+            obj.AddPlayerLine("playergreet", "start", "explainquest", "I have reconsidered your offer, I would like to help.",()=> engineerstartcondition()&& quest1failed() , null, 200, null);
+            obj.AddPlayerLine("playergreet", "start", "close_window", "Nothing, I must take my leave.",()=> engineerstartcondition()&& quest1failed() , null, 200, null);
+            
+            
+            
+            //skill check
+            obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "Greetings Master Engineer, I am "+Campaign.Current.MainParty.LeaderHero.Name.ToString()+". I have come seeking access to the Forges of Nuln. Can you help?.",null , null, 200, null);
+            obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "I am, I have come seeking access to black powder weapons.",null , null, 200, null);
+            obj.AddDialogLine("opengunshopcheck", "opengunshopcheck", "skillcheck","Hah!, you don’t look like you would even know what to do with them. What could you possibly need with our crafts?", null, checkplayerengineerskillrequirements, 200, null);
+            obj.AddDialogLine("playerskillcheckfailed", "skillcheck", "close window", "I am far too busy for this, leave my sight.", ()=> !playerisSkilledEnough(), null, 200);
+            obj.AddDialogLine("playerskillchecksuccess", "skillcheck", "playerpassedskillcheck2", "These are the mightiest weapons of the Empire, they hold back the tide of darkness time and again. We do not hand out our crafts to any who waltz in, I do not know you. Nor have you earned our trust.", playerisSkilledEnough, null, 200);
+            
+            
+            //quest
+            obj.AddDialogLine("playerpassskillcheck2", "playerpassedskillcheck2", "playerstartquestcheck", "We may however be able to come to an agreement, there is an internal matter that needs urgent attention and I am unable to act. If you help, as a personal favour, I will see what I can do for you. What say you?", null, null, 200);
+            obj.AddPlayerLine("playerstartquestcheck", "playerstartquestcheck", "explainquest", "What would you have me do?",null, null, 200, null);
+            obj.AddPlayerLine("playerstartquestcheck", "playerstartquestcheck", "engineerdeclinequest", " I don't have time for this.", null, null, 200,null);
+            obj.AddDialogLine("explainquest", "explainquest", "questcheck", "Usually we don’t resort to outside assistance but we are short handed, we have had some important components stolen from the Colleges of Nuln by "+ _rogueEngineerName+" and they must be returned. Immediately. If you can track down these runaways and find these parts then we can talk further.", null,null,200);
+
+            //accept decline quest
+            obj.AddPlayerLine("questcheck", "questcheck", "engineeracceptquest", "I understand, I will return the moment I have news.",null, questbegin, 200, null);
+            obj.AddPlayerLine("questcheck", "questcheck", "engineeracceptquest", "That is all it will take? Sounds easy enough.",null, questbegin, 200, null);
+            obj.AddPlayerLine("questcheck", "questcheck", "engineerdeclinequest", "I do not have time for this.", null, null, 200,null);
+            obj.AddDialogLine("engineeracceptquest", "engineeracceptquest", "close_window", "Good, I expect positive results and your hasty return.", null, null, 200);
+            obj.AddDialogLine("engineerdeclinequest", "engineerdeclinequest", "close_window", "A shame, think on it and return if you change your mind.", null, null, 200, null);
+            
+            
+            
+            
+            
+            
+            
+               
+            /*obj.AddDialogLine("quest_in_progress", "start", "player_success_test", "Did you finished what I asked you for?",questchaininprogress, null, 200, null);
             
             obj.AddDialogLine("engineer_start", "start", "huboffers", "Hello Friend.",playergainedtrust , null, 210, null);
             
+        
+            
+            
            // obj.AddDialogLine("introduction", "engineer_start", "sayopengunshop", "Greetings, I am a master engineer.  how can I help you?", isfirstmeeting, () => _firstMeeting = false, 200);
            //first meeting? 
-            obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "Greetings Master Engineer, I am "+Campaign.Current.MainParty.LeaderHero.Name.ToString()+". I have great interest in becoming an Engineer and have some questions about your order.",null , null, 200, null);
-            obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "I am, I have come seeking access to black powder weapons.",null , null, 200, null);
+            //obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "Greetings Master Engineer, I am "+Campaign.Current.MainParty.LeaderHero.Name.ToString()+". I have great interest in becoming an Engineer and have some questions about your order.",null , null, 200, null);
+            //obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "I am, I have come seeking access to black powder weapons.",null , null, 200, null);
             
             //quest in progress
             
             obj.AddPlayerLine("player_success_test", "player_success_test", "engineer_happy", "yes...",
                 engineerquestcompletecondition, handinquest, 200);
             obj.AddPlayerLine("player_on_it", "player_success_test", "engineer_nothappy", "no...",
-                questinprogress, null, 200);
+                questchaininprogress, null, 200);
             obj.AddDialogLine("engineer_happy", "engineer_happy", "hubOffers",
                 "Oh these are wonderful news!", null, null, 200);
-            obj.AddDialogLine("engineer_nothappy", "engineer_nothappy", "close_window", "Then don't waste my time",questinprogress, null, 200);
+            obj.AddDialogLine("engineer_nothappy", "engineer_nothappy", "close_window", "Then don't waste my time",questchaininprogress, null, 200);
             
             
             //player check for entering shop
-            //obj.AddPlayerLine("sayopengunshop", "engineer_start", "opengunshopCheck", "I need your services.",null, checkplayerrequirements, 200, null);
+            //obj.AddPlayerLine("sayopengunshop", "engineer_start", "opengunshopCheck", "I need your services.",null, checkplayerengineerskillrequirements, 200, null);
             
             obj.AddDialogLine("opengunshopcheck", "opengunshopcheck", "playerexplain","Hah!, you don’t look like you would even know what to do with them. What could you possibly need with our crafts?", null, null, 200, null);
             obj.AddDialogLine("hubOffers", "hubOffers", "playerexplain","What can I do for you?", null, null, 200, null);
-            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckjoin", "Be that as it may, I wish to become an engineer and further my knowledge!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
-            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckshop", "It is well known that weapons crafted by your order are powerful, I have come for these weapons!", ()=> !_gainedTrust, checkplayerrequirements, 200,null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckjoin", "Be that as it may, I wish to become an engineer and further my knowledge!", ()=> !_gainedTrust, checkplayerengineerskillrequirements, 200,null);
+            obj.AddPlayerLine("playerexplain", "playerexplain", "skillcheckshop", "It is well known that weapons crafted by your order are powerful, I have come for these weapons!", ()=> !_gainedTrust, checkplayerengineerskillrequirements, 200,null);
             
             obj.AddPlayerLine("playerexplain", "playerexplain", "open_shop", "Let me see your goods", playergainedtrust, null, 200,null);
             obj.AddPlayerLine("playerexplain", "playerexplain", "close_window", "I am just looking", playergainedtrust, null, 200,null);
@@ -112,7 +155,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
             //open gun shop checks before quests
             obj.AddDialogLine("skillcheckshop", "skillcheckshop", "playerpassedskillcheck", "These are the mighty weapons of the Empire, the very creations that hold back the tide of darkness time and again. We do hand out our crafts to any who waltz in, I do not know you. Nor have you earned our trust!",
-                null, checkplayerrequirements, 200);
+                null, checkplayerengineerskillrequirements, 200);
             
             obj.AddDialogLine("playerpassedskillcheck", "playerpassedskillcheck", "trustdialog", "You look like someone who who won't blast their head off using gun powder. Which doesn't change that I don't trust you",
                 ()=> _playerIsSkilledEnough, null, 200);
@@ -147,11 +190,12 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 rogueengineerstartcondition, null, 200);
             obj.AddPlayerLine("rogueengineer_greet", "playermetrogueengineer", "close_window", "hahaha i am more evil",
                 null, null, 200);
+                */
             
             
             
-            obj.AddDialogLine("open_shop", "open_shop", "engineersaygoodbye", "Come and see what I worked on!", null,null, 200);
-            obj.AddDialogLine("engineersaygoodbye", "engineersaygoodbye", "close_window", "With fire and steel.", null, opengunshopconsequence, 200, null);
+          //  obj.AddDialogLine("open_shop", "open_shop", "engineersaygoodbye", "Come and see what I worked on!", null,null, 200);
+       //     obj.AddDialogLine("engineersaygoodbye", "engineersaygoodbye", "close_window", "With fire and steel.", null, opengunshopconsequence, 200, null);*/
            
             /*// quest dialog
             obj.AddDialogLine("trustCheck", "trustCheck", "trustCheck2", "Unfortunately , I can only help a members of the engineers guild or the elector count himself.", () => !playergainedtrust(), null, 200, null);
@@ -175,13 +219,19 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         }
 
         
+        
 
-
-        private bool questinprogress()
+        private bool questchaininprogress()
         {
             if (engineerstartcondition())
                 return _shopUnlockQuest != null && _shopUnlockQuest.IsOngoing;
             else return false;
+        }
+        
+        
+        private bool quest1failed()
+        {
+            return _shopUnlockQuest.GetQuestFailed();
         }
         
         private bool engineerquestcompletecondition()
@@ -240,9 +290,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
         }
 
-        private bool isfirstmeeting()
+        private void knowledgeoverplayer()
         {
-            return _firstMeeting;
+            _firstMeeting = false;
+        }
+
+        private bool issecondmeeting()
+        {
+            return !_firstMeeting;
         }
 
         private bool engineerstartcondition()
@@ -263,7 +318,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                    partner.HeroObject.Name.Contains(_shopUnlockQuest.GetRogueEngineerName());
         }
 
-        private void checkplayerrequirements()
+        private void checkplayerengineerskillrequirements()
         {
             if (Hero.MainHero.GetSkillValue(DefaultSkills.Engineering) >= 50)
                 _playerIsSkilledEnough=true;
