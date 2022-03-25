@@ -131,7 +131,11 @@ namespace TOW_Core.Quests
         {
        
             _task1.UpdateCurrentProgress(1);
-            CheckCondition();
+
+            if (_task1.HasBeenCompleted() && _task2 == null)
+            {
+                _task2 = AddLog(new TextObject("Visit the Master Engineer in Nuln."));
+            }
         }
         
         public void HandInQuest()
@@ -142,10 +146,7 @@ namespace TOW_Core.Quests
 
         private void CheckCondition()
         {
-            if (_task1.HasBeenCompleted() && _task2 == null)
-            {
-                _task2 = AddLog(new TextObject("Visit the Master Engineer in Nuln."));
-            }
+            
         }
         
         protected override void SetDialogs()

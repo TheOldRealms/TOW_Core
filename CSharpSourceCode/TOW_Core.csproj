@@ -366,6 +366,7 @@
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
+    <Compile Include="Quests\CultistQuest.cs" />
     <Compile Include="Quests\InitialEngineerQuest.cs" />
     <Compile Include="Quests\QuestPartyComponent.cs" />
     <Compile Include="Quests\EngineerTrustQuest.cs" />
