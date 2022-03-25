@@ -29,11 +29,10 @@ namespace TOW_Core.Quests
         [SaveableField(4)] private MobileParty _targetParty = null;
         [SaveableField(5)] private string _enemyHeroName = "Rudolf";
         [SaveableField(6)] private TextObject _title = new TextObject("Hunt down the Engineer");
+        [SaveableField(7)] private bool _failstate;
         private bool _initAfterReload;
 
-        private bool _failstate;
-         
-        
+
         public EngineerTrustQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
             questId, questGiver, duration, rewardGold)
         {
@@ -161,8 +160,7 @@ namespace TOW_Core.Quests
                 RegisterQuestSpecificElementsOnGameLoad();
             }
         }
-
-
+        
         public override void OnFailed()
         {
             base.OnFailed();

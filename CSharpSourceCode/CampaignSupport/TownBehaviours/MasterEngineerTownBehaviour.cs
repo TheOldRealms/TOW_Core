@@ -29,10 +29,10 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool _gainedTrust;
         private bool _firstMeeting=true;
 
-        //private EngineerTrustQuest _shopUnlockQuest;
+        //private EngineerTrustQuest _cultistKillQuest;
         
         
-        private  EngineerTrustQuest _shopUnlockQuest;
+        private  CultistQuest _cultistKillQuest;
 
         public override void RegisterEvents()
         {
@@ -224,21 +224,21 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool questchaininprogress()
         {
             if (engineerstartcondition())
-                return _shopUnlockQuest != null && _shopUnlockQuest.IsOngoing;
+                return _cultistKillQuest != null && _cultistKillQuest.IsOngoing;
             else return false;
         }
         
         
         private bool quest1failed()
         {
-            return _shopUnlockQuest.GetQuestFailed();
+            return _cultistKillQuest.GetQuestFailed();
         }
         
         private bool engineerquestcompletecondition()
         {
-            if (_shopUnlockQuest == null)
+            if (_cultistKillQuest == null)
                 return false;
-            if (_shopUnlockQuest.JournalEntries[0].HasBeenCompleted())
+            if (_cultistKillQuest.JournalEntries[0].HasBeenCompleted())
             {
                 return true;
             }
@@ -248,7 +248,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void handinquest()
         {
-            _shopUnlockQuest.HandInQuest();
+            _cultistKillQuest.HandInQuest();
             _gainedTrust = true;
         }
         
@@ -285,8 +285,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void questbegin()
         {
-            _shopUnlockQuest = EngineerTrustQuest.GetNew();
-            _shopUnlockQuest?.StartQuest();
+            _cultistKillQuest = CultistQuest.GetNew("Part Thieves");
+            _cultistKillQuest?.StartQuest();
             
         }
 
@@ -309,13 +309,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private bool rogueengineerstartcondition()
         {
-            if (!_shopUnlockQuest.IsOngoing) return false;
+            if (!_cultistKillQuest.IsOngoing) return false;
 
             if (Campaign.Current.CurrentConversationContext != ConversationContext.PartyEncounter) return false;
             
             var partner = CharacterObject.OneToOneConversationCharacter;
-            return partner != null && partner.Occupation == Occupation.Lord &&
-                   partner.HeroObject.Name.Contains(_shopUnlockQuest.GetRogueEngineerName());
+            /*return partner != null && partner.Occupation == Occupation.Lord &&
+                   partner.HeroObject.Name.Contains(_cultistKillQuest.GetRogueEngineerName());*/
+            return false;
         }
 
         private void checkplayerengineerskillrequirements()
@@ -362,7 +363,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             dataStore.SyncData<Hero>("_masterEngineerHero", ref _masterEngineerHero);
             
-            dataStore.SyncData<EngineerTrustQuest>("_shopUnlockQuest", ref _shopUnlockQuest);
+            dataStore.SyncData<CultistQuest>("_cultistKillQuest", ref _cultistKillQuest);
         }
     }
 }
