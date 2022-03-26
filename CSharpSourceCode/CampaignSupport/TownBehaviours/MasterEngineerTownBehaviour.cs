@@ -185,6 +185,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             AddEngineerDialogLines(obj);
             
             AddCultistDialogLines(obj);
+            
+            AddRogueEngineerDialogLines(obj);
         }
 
         

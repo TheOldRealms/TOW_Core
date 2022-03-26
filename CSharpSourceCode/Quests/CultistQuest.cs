@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment.Managers;
 using TaleWorlds.CampaignSystem.SandBox;
@@ -14,11 +14,11 @@ namespace TOW_Core.Quests
         [SaveableField(1)] private int _destroyedParty = 0;
         [SaveableField(2)] private JournalLog _task1 = null;
         [SaveableField(3)] private JournalLog _task2 = null;
-        [SaveableField(3)] private MobileParty _targetParty = null;
-        [SaveableField(4)] private TextObject _title = new TextObject("Runaway Parts");
+        [SaveableField(4)] private MobileParty _targetParty = null;
+        [SaveableField(5)] private TextObject _title = new TextObject("Runaway Parts");
         
-        [SaveableField(4)] private TextObject _cultistName = new TextObject("Runaway Parts");
-        [SaveableField(5)] private bool _failstate;
+        [SaveableField(6)] private TextObject _cultistName = new TextObject("Runaway Parts");
+        [SaveableField(7)] private bool _failstate;
 
         public override TextObject Title => _title;
         public override bool IsSpecialQuest => true;
@@ -100,9 +100,14 @@ namespace TOW_Core.Quests
             var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_empire_deserter_lord_0");
             var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
             hero.SetName(cultistName,cultistName);
-            var party = CustomPartyComponent.CreateQuestParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
-            
-            party.SetPartyUsedByQuest(true);
+            //var party = .CreateBanditParty("questcultistparty", settlement.OwnerClan, settlement.Hideout, true);
+            // var party = BanditPartyComponent.CreateBanditParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
+
+           var  party =  QuestPartyComponent.CreateParty(settlement, settlement.OwnerClan);
+           
+        //  party.Aggressiveness = 0f;
+
+          party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;
         }
@@ -130,8 +135,21 @@ namespace TOW_Core.Quests
             
         }
         
+       
         
         
-        
+    }
+    
+    public class CultistQuestTypeDefiner : SaveableTypeDefiner
+    {
+        public CultistQuestTypeDefiner() : base(701793)
+        {
+
+        }
+
+        protected override void DefineClassTypes()
+        {
+            AddClassDefinition(typeof(CultistQuest), 1);
+        }
     }
 }

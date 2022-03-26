@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -196,9 +196,9 @@ namespace TOW_Core.Quests
         }
     }
     
-    public class EngineerTrustQuestTypeDefiner : SaveableTypeDefiner
+    public class RogueEngineerQuestTypeDefiner : SaveableTypeDefiner
     {
-        public EngineerTrustQuestTypeDefiner() : base(701792)
+        public RogueEngineerQuestTypeDefiner() : base(701792)
         {
 
         }
