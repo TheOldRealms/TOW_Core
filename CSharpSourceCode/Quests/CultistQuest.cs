@@ -23,7 +23,13 @@ namespace TOW_Core.Quests
         public override TextObject Title => _title;
         public override bool IsSpecialQuest => true;
         public override bool IsRemainingTimeHidden => false;
-        
+
+
+
+        public MobileParty GetTargetParty()
+        {
+            return _targetParty;
+        }
         
         protected override void RegisterEvents()
         {
@@ -93,6 +99,7 @@ namespace TOW_Core.Quests
             var settlement = Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "forest_bandits");
             var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_empire_deserter_lord_0");
             var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
+            hero.SetName(cultistName,cultistName);
             var party = CustomPartyComponent.CreateQuestParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
             
             party.SetPartyUsedByQuest(true);

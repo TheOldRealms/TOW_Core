@@ -21,19 +21,19 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Quests
 {
-    public class EngineerTrustQuest : QuestBase
+    public class RogueEngineerQuest : QuestBase
     {
         [SaveableField(1)] private int _destroyedParty = 0;
         [SaveableField(2)] private JournalLog _task1 = null;
         [SaveableField(3)] private JournalLog _task2 = null;
         [SaveableField(4)] private MobileParty _targetParty = null;
-        [SaveableField(5)] private string _enemyHeroName = "Rudolf";
+        [SaveableField(5)] private string _enemyHeroName = "Goswin";
         [SaveableField(6)] private TextObject _title = new TextObject("Hunt down the Engineer");
         [SaveableField(7)] private bool _failstate;
         private bool _initAfterReload;
 
 
-        public EngineerTrustQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
+        public RogueEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
             questId, questGiver, duration, rewardGold)
         {
             SetLogs();
@@ -167,19 +167,19 @@ namespace TOW_Core.Quests
             _failstate = true;
         }
 
-        public static EngineerTrustQuest GetCurrentActiveIfExists()
+        public static RogueEngineerQuest GetCurrentActiveIfExists()
         {
-            EngineerTrustQuest returnvalue = null;
-            if (Campaign.Current.QuestManager.Quests.Any(x => x is EngineerTrustQuest && x.IsOngoing))
+            RogueEngineerQuest returnvalue = null;
+            if (Campaign.Current.QuestManager.Quests.Any(x => x is RogueEngineerQuest && x.IsOngoing))
             {
-                returnvalue = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x is EngineerTrustQuest && x.IsOngoing) as EngineerTrustQuest;
+                returnvalue = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x is RogueEngineerQuest && x.IsOngoing) as RogueEngineerQuest;
             }
             return returnvalue;
         }
         
-        public static EngineerTrustQuest GetNew()
+        public static RogueEngineerQuest GetNew()
         {
-            return new EngineerTrustQuest("initialengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
+            return new RogueEngineerQuest("rogueengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
         }
         
         private void SpawnQuestParty(TextObject heroName=null, Settlement location=null,Clan ownerClan=null)
@@ -205,7 +205,7 @@ namespace TOW_Core.Quests
 
         protected override void DefineClassTypes()
         {
-            AddClassDefinition(typeof(EngineerTrustQuest), 1);
+            AddClassDefinition(typeof(RogueEngineerQuest), 1);
         }
     }
 }
