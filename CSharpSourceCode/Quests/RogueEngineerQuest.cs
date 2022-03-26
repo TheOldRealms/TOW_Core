@@ -104,7 +104,7 @@ namespace TOW_Core.Quests
             if (!_skipImprisonment) return;
             if (Campaign.Current.CurrentConversationContext != ConversationContext.CapturedLord) return;
             Campaign.Current.ConversationManager.EndConversation();
-            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "close_window", new TextObject("*dies*"), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
+            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "rogueengineer_playerafterbattle", new TextObject("*You have no idea what you are interfering with...*"), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
             Campaign.Current.ConversationManager.ClearCurrentOptions();
         }
         
