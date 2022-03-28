@@ -374,7 +374,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             if (_rogueRogueEngineerQuest==null) return false;
             
-             if(_rogueRogueEngineerQuest.IsOngoing) return false;
+             if(!_rogueRogueEngineerQuest.IsOngoing) return false;
 
             if (Campaign.Current.CurrentConversationContext != ConversationContext.PartyEncounter) return false;
             
