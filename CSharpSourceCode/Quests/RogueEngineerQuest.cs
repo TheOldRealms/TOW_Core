@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -66,6 +66,7 @@ namespace TOW_Core.Quests
             CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEnded);
             CampaignEvents.SetupPreConversationEvent.AddNonSerializedListener(this,SkipDialog);
             CampaignEvents.OnPartyRemovedEvent.AddNonSerializedListener(this, KillLeaderFromQuestPartyAfterDialog);
+            CampaignEvents.MapEventEnded.AddNonSerializedListener(this,QuestBattleEndedWithFail);
         }
         
         private void RegisterQuestSpecificElementsOnGameLoad()
@@ -85,6 +86,7 @@ namespace TOW_Core.Quests
             _targetParty.RemoveParty();
             _targetParty = null;
             SpawnQuestParty(hero.Name,home,clan);
+            _targetParty.IgnoreByOtherPartiesTill(CampaignTime.Never);
             _initAfterReload = true;
         }
         
@@ -98,13 +100,23 @@ namespace TOW_Core.Quests
             }
         }
         
+        private void QuestBattleEndedWithFail(MapEvent mapEvent)
+        {
+            if (!mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (mapEvent.Winner.MissionSide != mapEvent.PlayerSide)
+            {
+                CompleteQuestWithFail();
+                _targetParty.RemoveParty();
+            }
+        }
+        
         private void SkipDialog()
         {
             if (!_targetParty.IsActive) return;
             if (!_skipImprisonment) return;
             if (Campaign.Current.CurrentConversationContext != ConversationContext.CapturedLord) return;
             Campaign.Current.ConversationManager.EndConversation();
-            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "rogueengineer_playerafterbattle", new TextObject("*You have no idea what you are interfering with...*"), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
+            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "rogueengineer_playerafterbattle", new TextObject("You have no idea what you are interfering with..."), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
             Campaign.Current.ConversationManager.ClearCurrentOptions();
         }
         
@@ -190,9 +202,11 @@ namespace TOW_Core.Quests
             var leaderhero = HeroCreator.CreateSpecialHero(template, settlement, clan, null, 45);
             if(heroName!=null)leaderhero.SetName(heroName, heroName);
             var party = QuestPartyComponent.CreateParty(settlement, leaderhero, clan);
+           
             party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;
+            _targetParty.IgnoreByOtherPartiesTill(CampaignTime.Never);
         }
     }
     
