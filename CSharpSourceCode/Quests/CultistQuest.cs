@@ -1,4 +1,5 @@
 using System.Linq;
+using NLog.Fluent;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment.Managers;
 using TaleWorlds.CampaignSystem.SandBox;
@@ -6,6 +7,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Quests
 {
@@ -19,6 +21,7 @@ namespace TOW_Core.Quests
         
         [SaveableField(6)] private TextObject _cultistName = new TextObject("Runaway Parts");
         [SaveableField(7)] private bool _failstate;
+        private bool _initAfterReload;
 
         public override TextObject Title => _title;
         public override bool IsSpecialQuest => true;
@@ -35,6 +38,18 @@ namespace TOW_Core.Quests
         {
             base.RegisterEvents();
             CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEnded);
+            CampaignEvents.MapEventEnded.AddNonSerializedListener(this,QuestBattleEndedWithFail);
+        }
+
+        private void QuestBattleEndedWithFail(MapEvent mapEvent)
+        {
+            if (!mapEvent.IsPlayerMapEvent&& mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (mapEvent.Winner.MissionSide != mapEvent.PlayerSide)
+            {
+                CompleteQuestWithFail();
+                _targetParty.RemoveParty();
+            }
+                
         }
 
         private void QuestBattleEnded(MapEvent mapEvent)
@@ -42,7 +57,9 @@ namespace TOW_Core.Quests
             if(!mapEvent.IsPlayerMapEvent || !mapEvent.IsFieldBattle) return;
             if (mapEvent.PartiesOnSide(mapEvent.PlayerSide.GetOppositeSide()).Any(party => party.Party.MobileParty == _targetParty))
             {
-                TaskSuccessful();
+                if(mapEvent.Winner.IsMainPartyAmongParties())
+                    TaskSuccessful();
+               
             }
         }
         
@@ -52,10 +69,17 @@ namespace TOW_Core.Quests
 
                 if (_task1.HasBeenCompleted() && _task2 == null)
                 {
-                    _task2 = AddLog(new TextObject("Visit the Master Engineer in Nuln."));
+                    _task2 = AddDiscreteLog(new TextObject("I found the thieves, but they did not have the stolen components. I should return to the Master Engineer with the news."),
+                        new TextObject("Return to the Master Engineer"), 1, 1);
                 }
         }
         
+        
+        public override void OnFailed()
+        {
+            base.OnFailed();
+            _failstate = true;
+        }
         
         public void HandInQuest()
         {
@@ -81,8 +105,33 @@ namespace TOW_Core.Quests
 
         protected override void InitializeQuestOnGameLoad()
         {
+            if (!_task1.HasBeenCompleted())
+            {
+                RegisterQuestSpecificElementsOnGameLoad();
+            }
         }
-        
+
+        private void RegisterQuestSpecificElementsOnGameLoad()
+        {
+            CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this,SetMarkerAfterLoad);
+        }
+
+        private void SetMarkerAfterLoad(MobileParty obj)
+        {
+            if (_initAfterReload) return;
+            if (_task1.HasBeenCompleted()) return;
+            
+            var home = _targetParty.HomeSettlement;
+            var hero = _targetParty.LeaderHero;
+            var clan = _targetParty.ActualClan;
+            _targetParty.RemovePartyLeader();
+            _targetParty.RemoveParty();
+            _targetParty = null;
+            SpawnQuestParty(home.Name);
+            
+            _initAfterReload = true;
+        }
+
         protected override void OnStartQuest()
         {
             SpawnQuestParty(_cultistName);
@@ -99,7 +148,7 @@ namespace TOW_Core.Quests
             var settlement = Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "forest_bandits");
             var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_empire_deserter_lord_0");
             var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
-            hero.SetName(cultistName,cultistName);
+            //hero.SetName(cultistName,cultistName);
             //var party = .CreateBanditParty("questcultistparty", settlement.OwnerClan, settlement.Hideout, true);
             // var party = BanditPartyComponent.CreateBanditParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
 
@@ -150,6 +199,7 @@ namespace TOW_Core.Quests
         protected override void DefineClassTypes()
         {
             AddClassDefinition(typeof(CultistQuest), 1);
+            
         }
     }
 }
