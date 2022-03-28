@@ -41,7 +41,7 @@ namespace TOW_Core.Quests
 
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
         {
-            if (!mapEvent.IsPlayerMapEvent&& mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (!mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
             if (mapEvent.Winner.MissionSide != mapEvent.PlayerSide)
             {
                 CompleteQuestWithFail();
