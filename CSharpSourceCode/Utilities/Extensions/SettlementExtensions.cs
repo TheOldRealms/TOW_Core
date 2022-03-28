@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.CampaignSupport.RegimentsOfRenown;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -29,6 +30,16 @@ namespace TOW_Core.Utilities.Extensions
                 }
             }
             return sceneNames;
+        }
+
+        public static bool IsRoRSettlement(this Settlement settlement)
+        {
+            return RORManager.GetTemplateFor(settlement.StringId) != null;
+        }
+
+        public static RORSettlementTemplate GetRoRTemplate(this Settlement settlement)
+        {
+            return RORManager.GetTemplateFor(settlement.StringId);
         }
     }
 }
