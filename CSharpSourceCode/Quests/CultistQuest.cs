@@ -19,16 +19,14 @@ namespace TOW_Core.Quests
         [SaveableField(4)] private MobileParty _targetParty = null;
         [SaveableField(5)] private TextObject _title = new TextObject("Runaway Parts");
         
-        [SaveableField(6)] private TextObject _cultistName = new TextObject("Runaway Parts");
+        [SaveableField(6)] private TextObject _targetPartyName = new TextObject("Runaway Parts");
         [SaveableField(7)] private bool _failstate;
         private bool _initAfterReload;
 
         public override TextObject Title => _title;
         public override bool IsSpecialQuest => true;
         public override bool IsRemainingTimeHidden => false;
-
-
-
+        
         public MobileParty GetTargetParty()
         {
             return _targetParty;
@@ -37,7 +35,7 @@ namespace TOW_Core.Quests
         protected override void RegisterEvents()
         {
             base.RegisterEvents();
-            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEnded);
+            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEndedWithSuccess);
             CampaignEvents.MapEventEnded.AddNonSerializedListener(this,QuestBattleEndedWithFail);
         }
 
@@ -52,18 +50,20 @@ namespace TOW_Core.Quests
                 
         }
 
-        private void QuestBattleEnded(MapEvent mapEvent)
+        private void QuestBattleEndedWithSuccess(MapEvent mapEvent)
         {
+            //the game doesn't give the satisfying bell sound when moved to the other event
             if(!mapEvent.IsPlayerMapEvent || !mapEvent.IsFieldBattle) return;
             if (mapEvent.PartiesOnSide(mapEvent.PlayerSide.GetOppositeSide()).Any(party => party.Party.MobileParty == _targetParty))
             {
                 if(mapEvent.Winner.IsMainPartyAmongParties())
                     TaskSuccessful();
+                    
                
             }
         }
-        
-        public void TaskSuccessful()
+
+        private void TaskSuccessful()
         {
             _task1.UpdateCurrentProgress(1);
 
@@ -85,9 +85,8 @@ namespace TOW_Core.Quests
         {
             _task2.UpdateCurrentProgress(1);
             CompleteQuestWithSuccess();
-            
-           //Campaign.Current.MainParty.LeaderHero.AddSkillXp(SkillLevelingManager.Add);
         }
+        
         public bool GetQuestFailed()
         {
             return _failstate;
@@ -95,7 +94,7 @@ namespace TOW_Core.Quests
 
         public CultistQuest(string partyName, string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(questId, questGiver, duration, rewardGold)
         {
-            _cultistName = new TextObject(partyName);
+            _targetPartyName = new TextObject(partyName);
             Addlogs();
         }
 
@@ -134,7 +133,7 @@ namespace TOW_Core.Quests
 
         protected override void OnStartQuest()
         {
-            SpawnQuestParty(_cultistName);
+            SpawnQuestParty(_targetPartyName);
         }
 
         private void Addlogs()
