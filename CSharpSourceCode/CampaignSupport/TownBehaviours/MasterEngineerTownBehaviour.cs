@@ -81,9 +81,6 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
             
             //quests failed -both
-            
-            
-            
             obj.AddPlayerLine("questcomplete", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.",() => (quest1failed()|| quest2failed()) , null, 200, null);
             obj.AddDialogLine("engineerquestfailed", "engineerquestfailed", "playerfailedquest", "Tsk, I expected better. There may still be time, you can still track them if you are swift",() => quest1failed()||quest2failed(), null, 200, null);
             obj.AddPlayerLine("playerfailedquest", "playerfailedquest", "engineeracceptquest", "I won't let you down a second time.",quest1failed , QuestBeginCultist, 200, null);
@@ -100,10 +97,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("questrogueengineer", "questrogueengineer", "questcheckrogueengineer", "If he has stolen these parts, it can only be for something heinous. I must ask that you track him down, and put an end to whatever madness he is trying to concoct. Will you do this?",null, null, 200, null);
 
             // in progress
-            obj.AddPlayerLine("cultistquestcomplete", "cultistquestcomplete", "cultistquestinprogress", "I have yet to track down the runaways.",null , null, 200, null);
+            obj.AddPlayerLine("questcomplete", "questcomplete", "cultistquestinprogress", "I have yet to track down the runaways.",null , null, 200, null);
             obj.AddDialogLine("cultistquestinprogress", "cultistquestinprogress", "close_window", "I see, return to me when you have something useful.",null, null, 200, null);
             
+            
+            
+            
             //rogue engineer quest
+
             obj.AddPlayerLine("questcheckrogueengineer", "questcheckrogueengineer", "startrogueengineerquest", "I can, as long as our bargain remains the same. I will find him for you, and in return, you will allow me access to the Forges of Nuln.",null , null, 200, null);
             obj.AddPlayerLine("questcheckrogueengineer", "questcheckrogueengineer", "startrogueengineerquest", "If this is the only way you will allow me access to the forges, then so be it. I will bring you his head.",null , null, 200, null);
             obj.AddPlayerLine("questcheckrogueengineer", "questcheckrogueengineer", "close_window", "I’m afraid not, I have other tasks to attend to.",null , null, 200, null);
@@ -131,7 +132,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
             
             //quest
-   
+            
             obj.AddDialogLine("playerpassskillcheck2", "playerpassedskillcheck2", "playerstartquestcheck", "We may however be able to come to an agreement, there is an internal matter that needs urgent attention and I am unable to act. If you help, as a personal favour, I will see what I can do for you. What say you?", null, givequestoffer, 200);
             obj.AddPlayerLine("playerstartquestcheck", "playerstartquestcheck", "explainquest", "What would you have me do?",null, null, 200, null);
             obj.AddPlayerLine("playerstartquestcheck", "playerstartquestcheck", "engineerdeclinequest", " I don't have time for this.", null, null, 200,null);
@@ -251,12 +252,18 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void handing_in_rogueengineer_quest()
         {
             _rogueRogueEngineerQuest.HandInQuest();
+            var xp =(float)  _rogueRogueEngineerQuest.GetRewardXP();
+            SkillObject skill = DefaultSkills.Engineering;
+            Campaign.Current.MainParty.LeaderHero.AddSkillXp(skill,xp);
             _gainedTrust=true;
         }
         
         private void handing_in_cultist_quest()
         {
             _cultistKillQuest.HandInQuest();
+            var xp =(float) _cultistKillQuest.GetRewardXP();
+            SkillObject skill = DefaultSkills.Charm;
+            Campaign.Current.MainParty.LeaderHero.AddSkillXp(skill,xp);
             _huntedDownCultists = true;
         }
         
