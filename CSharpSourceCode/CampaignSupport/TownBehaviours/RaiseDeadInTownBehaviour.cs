@@ -7,8 +7,10 @@ using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport.Missions;
+using TOW_Core.CampaignSupport.RaiseDead;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport.TownBehaviours
@@ -17,11 +19,40 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
     {
         private CharacterObject _skeleton;
         private CampaignTime _startWaitTime = CampaignTime.Now;
-
+        private MobileParty _currentWatchParty;
+        private bool _isMissionStarted;
+        private Settlement _currentSettlement;
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Initialize);
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, SettlementEntered);
+            CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this, HourlyPartyTick);
+            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this, OnBattleEnded);
+        }
+
+        private void OnBattleEnded(MapEvent mapevent)
+        {
+            if (_isMissionStarted && mapevent.WinningSide == BattleSideEnum.Defender)
+            {
+                _isMissionStarted = false;
+                _currentWatchParty = null;
+                _currentSettlement = null;
+            }
+        }
+
+        private void HourlyPartyTick(MobileParty party)
+        {
+            if(party == _currentWatchParty && _isMissionStarted)
+            {
+                _isMissionStarted = false;
+                if(_currentSettlement != null)
+                {
+                    TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    DestroyPartyAction.ApplyForDisbanding(_currentWatchParty, _currentSettlement);
+                }
+                _currentWatchParty = null;
+                _currentSettlement = null;
+            }
         }
 
         private void SwitchToMenuIfThereIsAnInterrupt(string currentMenuId)
@@ -130,30 +161,21 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                     args.MenuTitle = new TextObject("Caught in the act");
                     var text = new TextObject("The local nightwatch is onto you. Face the consequences of your vile actions.");
                     MBTextManager.SetTextVariable("GRAVEYARD_INTERRUPT", text);
+                    CalculateAndApplyCrimeRatingChange(); 
                 },
                 GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.None, null);
 
             obj.AddGameMenuOption("graveyard_interrupt", "interrupt_battle", "Defend yourself",
                 delegate (MenuCallbackArgs args)
                 {
-                    if (Hero.MainHero.HitPoints > Hero.MainHero.MaxHitPoints * 0.2f)
+                    if (!Hero.MainHero.IsWounded)
                     {
                         args.optionLeaveType = GameMenuOption.LeaveType.DefendAction;
                         return true;
                     }
                     else return false;
                 },
-                delegate (MenuCallbackArgs args)
-                {
-                    PlayerEncounter.Current.IsPlayerWaiting = false;
-                    PlayerEncounter.RestartPlayerEncounter(PartyBase.MainParty, Settlement.CurrentSettlement.MilitiaPartyComponent.Party, true);
-                    if (PlayerEncounter.Battle == null)
-                    {
-                        PlayerEncounter.StartBattle();
-                        PlayerEncounter.Update();
-                    }
-                    TorMissionManager.OpenGraveyardMission();
-                }, false, -1, false);
+                (MenuCallbackArgs args) => SetupBattle(), false, -1, false);
 
             obj.AddGameMenuOption("graveyard_interrupt", "interrupt_surrender", "Surrender",
                 delegate (MenuCallbackArgs args)
@@ -163,10 +185,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 },
                 delegate (MenuCallbackArgs args)
                 {
-                    var militiaparty = Settlement.CurrentSettlement.MilitiaPartyComponent.Party;
                     PlayerEncounter.Current.IsPlayerWaiting = false;
-                    PlayerEncounter.Finish(true);
-                    TakePrisonerAction.Apply(militiaparty, Hero.MainHero);
+                    PlayerEncounter.Finish(false);
+                    TakePrisonerAction.Apply(Settlement.CurrentSettlement.Party, Hero.MainHero);
                     
                 }, true, -1, false);
 
@@ -227,6 +248,37 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                     }
                 }
             }
+        }
+        private void SetupBattle()
+        {
+            PlayerEncounter.Current.IsPlayerWaiting = false;
+            _currentWatchParty = GraveyardNightWatchPartyComponent.CreateParty(Settlement.CurrentSettlement);
+            _currentSettlement = Settlement.CurrentSettlement;
+            PlayerEncounter.RestartPlayerEncounter(PartyBase.MainParty, _currentWatchParty.Party, true);
+            if (PlayerEncounter.Battle == null)
+            {
+                PlayerEncounter.StartBattle();
+                PlayerEncounter.Update();
+            }
+            _isMissionStarted = true;
+            TorMissionManager.OpenGraveyardMission();
+        }
+
+        private void CalculateAndApplyCrimeRatingChange()
+        {
+            //Have to make sure crime rating stays within the moderate range (30 - 65) if it isn't already more otherwise declaration of war occurs.
+            float ratingChange = 0;
+            float currentRating = Settlement.CurrentSettlement.MapFaction.MainHeroCrimeRating;
+            if (currentRating < 30f)
+            {
+                ratingChange = (30f - currentRating) + 5;
+            }
+            else if (currentRating >= 30f && currentRating < 65f)
+            {
+                ratingChange = Math.Min(20f, (65f - currentRating - 5));
+            }
+            else if (currentRating >= 65f) ratingChange = 20f;
+            if(ratingChange > 0) ChangeCrimeRatingAction.Apply(Settlement.CurrentSettlement.MapFaction, ratingChange, true);
         }
 
         private void InterruptWait(MenuCallbackArgs args)

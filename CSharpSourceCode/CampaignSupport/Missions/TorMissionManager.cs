@@ -75,8 +75,8 @@ namespace TOW_Core.CampaignSupport.Missions
 
 		public override void AfterStart()
 		{
-			int numDefender = MathF.Min(_mapEvent.GetNumberOfInvolvedMen(BattleSideEnum.Defender), 1);
-			int numAttacker = MathF.Min(_mapEvent.GetNumberOfInvolvedMen(BattleSideEnum.Attacker), 5);
+			int numDefender = MathF.Min(_mapEvent.GetNumberOfInvolvedMen(BattleSideEnum.Defender), 4);
+			int numAttacker = _mapEvent.GetNumberOfInvolvedMen(BattleSideEnum.Attacker);
             int defenderInitialSpawn = numDefender;
 			int attackerInitialSpawn = numAttacker;
             Mission.DoesMissionRequireCivilianEquipment = false;

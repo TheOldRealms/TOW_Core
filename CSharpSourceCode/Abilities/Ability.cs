@@ -16,24 +16,17 @@ namespace TOW_Core.Abilities
     {
         private int _coolDownLeft = 0;
         private Timer _timer = null;
-        private bool _isCasting;
-        private object _sync = new object();
         private float _cooldown_end_time;
 
-        public bool IsCasting => _isCasting;
-
+        public bool IsCasting { get; private set; }
         public string StringID { get; }
-
         public AbilityTemplate Template { get; private set; }
-
         public AbilityScript AbilityScript { get; private set; }
-
         public AbilityCrosshair Crosshair { get; private set; }
+        public bool IsActivationPending { get;private set; }
         public virtual AbilityEffectType AbilityEffectType => Template.AbilityEffectType;
         public bool IsOnCooldown() => _timer.Enabled;
-
         public int GetCoolDownLeft() => _coolDownLeft;
-
         private bool IsSingleTarget() => Template.AbilityTargetType == AbilityTargetType.SingleAlly || Template.AbilityTargetType == AbilityTargetType.SingleEnemy;
 
         public delegate void OnCastCompleteHandler(Ability ability);
@@ -81,7 +74,7 @@ namespace TOW_Core.Abilities
 
         public virtual bool CanCast(Agent casterAgent)
         {
-            return !_isCasting &&
+            return !IsCasting &&
                    !IsOnCooldown() &&
                    ((casterAgent.IsPlayerControlled && IsRightAngleToCast()) || 
                    (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
@@ -97,15 +90,12 @@ namespace TOW_Core.Abilities
             }
             else if (Template.CastType == CastType.WindUp)
             {
-                _isCasting = true;
+                IsCasting = true;
                 var timer = new Timer(Template.CastTime * 1000);
                 timer.AutoReset = false;
                 timer.Elapsed += (s, e) =>
                 {
-                    lock (_sync)
-                    {
-                        ActivateAbility(casterAgent);
-                    }
+                    IsActivationPending = true;
                 };
                 timer.Start();
             }
@@ -113,7 +103,8 @@ namespace TOW_Core.Abilities
 
         public virtual void ActivateAbility(Agent casterAgent)
         {
-            _isCasting = false;
+            IsActivationPending = false;
+            IsCasting = false;
             _coolDownLeft = Template.CoolDown;
             _cooldown_end_time = Mission.Current.CurrentTime + _coolDownLeft + 0.8f; //Adjustment was needed for natural tick on UI
             _timer.Start();
@@ -145,7 +136,7 @@ namespace TOW_Core.Abilities
 
         private bool ShouldAddPhyics()
         {
-            return Template.TriggerType == TriggerType.OnCollision;
+            return Template.TriggerType == TriggerType.OnCollision ;
         }
 
         protected virtual MatrixFrame GetSpawnFrame(Agent casterAgent)

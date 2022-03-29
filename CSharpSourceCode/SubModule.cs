@@ -29,7 +29,6 @@ using TOW_Core.Battle.TriggeredEffect;
 using TOW_Core.Items;
 using TaleWorlds.MountAndBlade.GauntletUI;
 using TOW_Core.Battle.CrosshairMissionBehavior;
-using TOW_Core.Battle.Grenades;
 using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
@@ -44,6 +43,7 @@ using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
+using TOW_Core.CampaignSupport.RegimentsOfRenown;
 
 namespace TOW_Core
 {
@@ -80,7 +80,7 @@ namespace TOW_Core
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
             ExtendedItemObjectManager.LoadXML();
-
+            RORManager.LoadTemplates();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
@@ -138,6 +138,7 @@ namespace TOW_Core
                 starter.AddBehavior(new SpellTrainerInTownBehaviour());
                 starter.AddBehavior(new MasterEngineerTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
+                starter.AddBehavior(new RORCampaignBehaviour());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
@@ -172,11 +173,10 @@ namespace TOW_Core
             mission.AddMissionBehavior(new AbilityManagerMissionLogic());
             mission.AddMissionBehavior(new AbilityHUDMissionView());
             mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
-            mission.AddMissionBehavior(new FireArmsMissionLogic());
+            mission.AddMissionBehavior(new BlackPowderWeaponMissionLogic());
             mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
-            mission.AddMissionBehavior(new GrenadesMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
             mission.AddMissionBehavior(new CustomAgentSoundMissionLogic());

@@ -2,11 +2,9 @@
 using System.Linq;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
-using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Components
@@ -14,23 +12,20 @@ namespace TOW_Core.Battle.AI.Components
     public class WizardAIComponent : HumanAIComponent
     {
         private static readonly float EvalInterval = 1;
-
-        private List<IAgentBehavior> _availableCastingBehaviors;
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
-        private readonly IAgentBehavior _currentTacticalBehavior;
-        public AbstractAgentCastingBehavior CurrentCastingBehavior;
 
         public Mat3 SpellTargetRotation = Mat3.Identity;
 
-        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(PrepareCastingBehaviors(Agent)));
+        public AbstractAgentCastingBehavior CurrentCastingBehavior;
+
+        private List<IAgentBehavior> _availableCastingBehaviors; //Do not access this directly. Use the generator function public method below.
+        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(AgentCastingBehaviorMapping.PrepareCastingBehaviors(Agent)));
 
         public WizardAIComponent(Agent agent) : base(agent)
         {
             var toRemove = agent.Components.OfType<HumanAIComponent>().ToList();
             foreach (var item in toRemove) // This is intentional. Components is read-only
                 agent.RemoveComponent(item);
-
-            _currentTacticalBehavior = new KeepSafeAgentTacticalBehavior(agent, this);
         }
 
 
@@ -39,11 +34,20 @@ namespace TOW_Core.Battle.AI.Components
             _dtSinceLastOccasional += dt;
             if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
 
-            _currentTacticalBehavior.Execute();
-            CurrentCastingBehavior?.Execute();
+            if (Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
+            {
+                CurrentCastingBehavior?.TacticalBehavior?.Execute();
+                CurrentCastingBehavior?.Execute();
+            }
+            else
+            {
+                CurrentCastingBehavior?.Terminate();
+                CurrentCastingBehavior?.TacticalBehavior?.Terminate();
+            }
 
             base.OnTickAsAI(dt);
         }
+
 
         private void TickOccasionally()
         {
@@ -54,7 +58,11 @@ namespace TOW_Core.Battle.AI.Components
         private AbstractAgentCastingBehavior DetermineBehavior(List<IAgentBehavior> availableCastingBehaviors, AbstractAgentCastingBehavior current)
         {
             var option = DecisionManager.EvaluateCastingBehaviors(availableCastingBehaviors);
-            if (option.Behavior != current) current?.Terminate();
+            if (option.Behavior != current)
+            {
+                current?.Terminate();
+                current?.TacticalBehavior?.Terminate();
+            }
 
             var returnBehavior = option.Behavior as AbstractAgentCastingBehavior;
             if (returnBehavior != null)
@@ -63,22 +71,6 @@ namespace TOW_Core.Battle.AI.Components
             }
 
             return returnBehavior;
-        }
-
-        private static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
-        {
-            var castingBehaviors = new List<AbstractAgentCastingBehavior>();
-            var index = 0;
-            foreach (var knownAbilityTemplate in agent.GetComponent<AbilityComponent>().GetKnownAbilityTemplates())
-            {
-                castingBehaviors.Add(AgentCastingBehaviorMapping.BehaviorByType.GetValueOrDefault(knownAbilityTemplate.AbilityEffectType, AgentCastingBehaviorMapping.BehaviorByType[AbilityEffectType.Missile])
-                    .Invoke(agent, index, knownAbilityTemplate));
-                index++;
-            }
-
-            castingBehaviors.Add(new PreserveWindsAgentCastingBehavior(agent, new AbilityTemplate {AbilityTargetType = AbilityTargetType.Self}, index));
-
-            return castingBehaviors;
         }
     }
 }

@@ -33,7 +33,33 @@ namespace TOW_Core.Utilities.Extensions
         public static void RemoveAllOfType<T>(this IEnumerable<T> list, Type type) where T : class
         {
             list = list.Where(x => x.GetType() != type);
-
+        }
+        
+        /// <summary>
+        /// Returns N number of randomly selected elements.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="take"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> TakeRandom<T>(this IEnumerable<T> collection, int take)
+        {
+            var random = new Random();
+            var available = collection.Count();
+            var needed = take;
+            foreach (var item in collection)
+            {
+                if (random.Next(available) < needed)
+                {
+                    needed--;
+                    yield return item;
+                    if (needed == 0)
+                    {
+                        break;
+                    }
+                }
+                available--;
+            }
         }
     }
 }

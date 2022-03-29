@@ -1,4 +1,5 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.AI.Decision
 {
@@ -7,10 +8,19 @@ namespace TOW_Core.Battle.AI.Decision
     // Additionally, it did not make sense to refer to friendly units / formations as "Threats".
     public class Target : Threat
     {
+        public Vec3 WorldPosition = Vec3.Zero;
+
         public float UtilityValue
         {
             get => ThreatValue;
             set => ThreatValue = value;
+        }
+
+        public Vec3 GetPosition()
+        {
+            if (WorldPosition != Vec3.Zero)
+                return WorldPosition;
+            return Position;
         }
     }
 }

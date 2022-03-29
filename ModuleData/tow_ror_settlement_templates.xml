@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfRORSettlementTemplate>
+	<RORSettlementTemplate
+        SettlementId="town_ST2"
+        BaseTroopId="tor_ror_deathjack_longbowman"
+        MenuHeaderText="A temporary resting place for the Deathjacks, longbows are lined up against the walls."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Deathjacks"
+        RegimentHQName="Deathjacks Quarters"
+    />
+    <RORSettlementTemplate
+        SettlementId="town_ST1"
+        BaseTroopId="tor_ror_stir_river_scout"
+        MenuHeaderText="A base for the River Patrol, this barrack has seen constant use and houses weary patrolmen."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Stir River Patrol"
+        RegimentHQName="River Patrol Barracks"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_AV1"
+        BaseTroopId="tor_ror_blazing_sun_initiate"
+        MenuHeaderText="A small Chapter House of the Knighthood Order, for members to rest and resupply."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Knights of the Blazing Sun"
+        RegimentHQName="Blazing Sun Chapter House"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_AV3"
+        BaseTroopId="tor_ror_kragsburg_retainer"
+        MenuHeaderText="Ornate, ordered and clean. The barrack of Von Kragsburgs Guard."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Von Kragsburg Guard"
+        RegimentHQName="Von Kragsburg Barracks"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_WI1"
+        BaseTroopId="tor_empire_novice_engineer"
+        MenuHeaderText="A sprawling network of forges, smelteries and factories, worked by the Empires Veteran Gunsmiths and Engineers."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Imperial Gunnery School of Nuln"
+        RegimentHQName="Imperial Gunnery School"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_WI4"
+        BaseTroopId="tor_ror_grundel_defender_troop"
+        MenuHeaderText="A temporary resting place for the Defenders, spears are lined up against the walls."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Grundel's Defenders"
+        RegimentHQName="Defenders Quarters"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_SY2"
+        BaseTroopId="tor_ror_dragon_knight_initiate"
+        MenuHeaderText="A small Chapter House of the Knighthood Order, for members to rest and resupply."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Blood Dragons"
+        RegimentHQName="Blood Dragon Chapter House"
+    />
+    	<RORSettlementTemplate
+        SettlementId="village_ST3_1"
+        BaseTroopId="tor_ror_sternieste_skeleton"
+        MenuHeaderText="A crypt for the Forgotten, ready to be raised."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Forgotten Legion of Castle Sternieste"
+        RegimentHQName="Forgotten Legion Crypt"
+    />
+    	<RORSettlementTemplate
+        SettlementId="town_SY1"
+        BaseTroopId="tor_ror_konigstein_skeleton"
+        MenuHeaderText="An ancient crypt, filled with the future servants of Sylvania."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Konigstein Stalkers"
+        RegimentHQName="Konigstein Crypt"
+    />
+</ArrayOfRORSettlementTemplate>

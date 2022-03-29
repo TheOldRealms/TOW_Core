@@ -137,6 +137,31 @@
 		</stacks>
 	</MBPartyTemplate>
 
+	<!-- Named cult parties -->
+	<MBPartyTemplate id="broken_wheel" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_bw_expelled_magister" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_bw_vengeful_cultist" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_bw_sorcerer_broken_wheel" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="illumination" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_coi_unlit_candle" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_coi_beacon" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_coi_order_of_star_acolyte" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="fraternity" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_fsf_puer_ulceris" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_fsf_ulcus_frater" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_cult_fsf_ulcerator" />
+		</stacks>
+	</MBPartyTemplate>
+
 	<!--Dogs Of War Parties -->
 	<MBPartyTemplate id="dog_01" >
 		<stacks>
@@ -183,6 +208,14 @@
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_01" />
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_02" />
 			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_ricco_03" />
+		</stacks>
+	</MBPartyTemplate>
+
+	<MBPartyTemplate id="dog_07" >
+		<stacks>
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_muktar_01" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_muktar_02" />
+			<PartyTemplateStack min_value="7" max_value="20" troop="NPCCharacter.tor_dog_muktar_03" />
 		</stacks>
 	</MBPartyTemplate>
 	

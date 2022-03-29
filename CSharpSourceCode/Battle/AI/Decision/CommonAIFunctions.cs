@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.Decision
 {
-    public static class CommonDecisionFunctions
+    public static class CommonAIDecisionFunctions
     {
         public static Func<Target, float> FormationUnderFire()
         {
@@ -29,13 +26,13 @@ namespace TOW_Core.Battle.AI.Decision
                     return float.MaxValue;
                 }
 
-                return target.Position.AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
+                return target.GetPosition().AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
             };
         }
 
         public static Func<Target, float> DistanceToTarget(Func<Vec3> provider)
         {
-            return target => provider.Invoke().Distance(target.Position);
+            return target => provider.Invoke().Distance(target.GetPosition());
         }
 
         public static Func<Target, float> FormationPower()
@@ -85,7 +82,17 @@ namespace TOW_Core.Battle.AI.Decision
             {
                 power += team.TeamPower;
             }
+
             return power;
+        }
+    }
+
+    public static class CommonAIStateFunctions
+    {
+        public static bool CanAgentMoveFreely(Agent agent)
+        {
+            var movementOrder = agent?.Formation?.GetReadonlyMovementOrderReference();
+            return movementOrder.HasValue && (movementOrder.Value.OrderType == OrderType.Charge || movementOrder.Value.OrderType == OrderType.ChargeWithTarget || agent?.Formation?.AI?.ActiveBehavior?.GetType().Name.Contains("Skirmish") == true);
         }
     }
 }
