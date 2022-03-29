@@ -30,12 +30,14 @@ namespace TOW_Core.Quests
         [SaveableField(5)] private string _enemyHeroName = "Goswin";
         [SaveableField(6)] private TextObject _title = new TextObject("Hunt down the Engineer");
         [SaveableField(7)] private bool _failstate;
+        [SaveableField(8)] private int _rewardXP;
         private bool _initAfterReload;
-
-
-        public RogueEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(
+        
+        
+        public RogueEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP) : base(
             questId, questGiver, duration, rewardGold)
         {
+            _rewardXP = rewardXP;
             SetLogs();
         }
         
@@ -58,6 +60,11 @@ namespace TOW_Core.Quests
         public bool GetQuestFailed()
         {
             return _failstate;
+        }
+        
+        public int GetRewardXP()
+        {
+            return _rewardXP;
         }
         
         protected override void RegisterEvents()
@@ -191,8 +198,11 @@ namespace TOW_Core.Quests
         
         public static RogueEngineerQuest GetNew()
         {
-            return new RogueEngineerQuest("rogueengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
+            return new RogueEngineerQuest("rogueengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 400, 350);
         }
+        
+        
+        
         
         private void SpawnQuestParty(TextObject heroName=null, Settlement location=null,Clan ownerClan=null)
         {

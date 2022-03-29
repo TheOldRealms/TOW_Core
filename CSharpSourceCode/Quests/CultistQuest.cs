@@ -18,9 +18,10 @@ namespace TOW_Core.Quests
         [SaveableField(3)] private JournalLog _task2 = null;
         [SaveableField(4)] private MobileParty _targetParty = null;
         [SaveableField(5)] private TextObject _title = new TextObject("Runaway Parts");
-        
-        [SaveableField(6)] private TextObject _targetPartyName = new TextObject("Runaway Parts");
+
+        [SaveableField(6)] private TextObject _targetPartyName;
         [SaveableField(7)] private bool _failstate;
+        [SaveableField(8)] private int _rewardXP;
         private bool _initAfterReload;
 
         public override TextObject Title => _title;
@@ -58,8 +59,6 @@ namespace TOW_Core.Quests
             {
                 if(mapEvent.Winner.IsMainPartyAmongParties())
                     TaskSuccessful();
-                    
-               
             }
         }
 
@@ -92,9 +91,15 @@ namespace TOW_Core.Quests
             return _failstate;
         }
 
-        public CultistQuest(string partyName, string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(questId, questGiver, duration, rewardGold)
+        public int GetRewardXP()
+        {
+            return _rewardXP;
+        }
+
+        public CultistQuest(string partyName, string questId, Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP) : base(questId, questGiver, duration, rewardGold)
         {
             _targetPartyName = new TextObject(partyName);
+            _rewardXP = rewardXP;
             Addlogs();
         }
 
@@ -152,6 +157,7 @@ namespace TOW_Core.Quests
             // var party = BanditPartyComponent.CreateBanditParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
 
            var  party =  QuestPartyComponent.CreateParty(settlement, settlement.OwnerClan);
+           party.SetCustomName(cultistName);
            
         //  party.Aggressiveness = 0f;
 
@@ -170,15 +176,15 @@ namespace TOW_Core.Quests
             return returnvalue;
         }
 
-        public static CultistQuest GetNew(string QuestPartyName = null)
+        public static CultistQuest GetNew(string QuestPartyName = null, int rewardMoney=100, int rewardXP=150)
         {
             if (QuestPartyName != null)
             {
-                return new CultistQuest(QuestPartyName, "chaoscultistquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
+                return new CultistQuest(QuestPartyName, "chaoscultistquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), rewardMoney, rewardXP);
             }
             else
             {
-                return new CultistQuest("Cultists", "chaoscultistquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000);
+                return new CultistQuest("Cultists", "chaoscultistquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 1000, rewardXP=150);
             }
             
         }
