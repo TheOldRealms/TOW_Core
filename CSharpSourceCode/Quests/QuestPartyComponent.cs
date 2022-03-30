@@ -49,13 +49,7 @@ namespace TOW_Core.Quests
             });
         }
 
-        private void DeleteOnDefeat()
-        {
-            if (_owner.IsWounded)
-            {
-                
-            }
-        }
+        
 
         private void InitializeQuestPartyProperties(MobileParty mobileParty, Settlement settlement, Hero leader, Clan clan, string name=null)
         {

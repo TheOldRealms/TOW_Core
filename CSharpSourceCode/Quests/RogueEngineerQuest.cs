@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -85,7 +85,6 @@ namespace TOW_Core.Quests
         {
             if (_initAfterReload) return;
             if (_task1.HasBeenCompleted()) return;
-            
             var home = _targetParty.HomeSettlement;
             var hero = _targetParty.LeaderHero;
             var clan = _targetParty.ActualClan;
@@ -147,7 +146,6 @@ namespace TOW_Core.Quests
 
         public void TaskSuccessful()
         {
-       
             _task1.UpdateCurrentProgress(1);
 
             if (_task1.HasBeenCompleted() && _task2 == null)
@@ -158,15 +156,11 @@ namespace TOW_Core.Quests
         
         public void HandInQuest()
         {
+            
             _task2.UpdateCurrentProgress(1);
             CompleteQuestWithSuccess();
         }
 
-        private void CheckCondition()
-        {
-            
-        }
-        
         protected override void SetDialogs()
         {
             
