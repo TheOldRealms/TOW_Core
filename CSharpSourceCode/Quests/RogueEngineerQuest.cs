@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -32,7 +32,7 @@ namespace TOW_Core.Quests
         [SaveableField(7)] private bool _failstate;
         [SaveableField(8)] private int _rewardXP;
         private bool _initAfterReload;
-        
+        private bool _skipImprisonment;
         
         public RogueEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP) : base(
             questId, questGiver, duration, rewardGold)
@@ -41,30 +41,20 @@ namespace TOW_Core.Quests
             SetLogs();
         }
         
+        public string RogueEngineerName => _enemyHeroName;
+        public bool FailState => _failstate;
+
+        public int RewardXP => _rewardXP;
+        
         public override bool IsSpecialQuest => true;
         public override TextObject Title => _title;
         public override bool IsRemainingTimeHidden => false;
-        private bool _skipImprisonment;
+       
 
         private void SetLogs()
         {
             _task1 = AddDiscreteLog(new TextObject("Find and kill"+_enemyHeroName+ ", the rogue engineer."),
                 new TextObject("killed "+_enemyHeroName), _destroyedParty, 1);
-        }
-        
-        public string GetRogueEngineerName()
-        {
-            return _enemyHeroName;
-        }
-
-        public bool GetQuestFailed()
-        {
-            return _failstate;
-        }
-        
-        public int GetRewardXP()
-        {
-            return _rewardXP;
         }
         
         protected override void RegisterEvents()
@@ -156,14 +146,12 @@ namespace TOW_Core.Quests
         
         public void HandInQuest()
         {
-            
             _task2.UpdateCurrentProgress(1);
             CompleteQuestWithSuccess();
         }
 
         protected override void SetDialogs()
         {
-            
         }
 
         protected override void InitializeQuestOnGameLoad()
@@ -194,9 +182,6 @@ namespace TOW_Core.Quests
         {
             return new RogueEngineerQuest("rogueengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 400, 350);
         }
-        
-        
-        
         
         private void SpawnQuestParty(TextObject heroName=null, Settlement location=null,Clan ownerClan=null)
         {

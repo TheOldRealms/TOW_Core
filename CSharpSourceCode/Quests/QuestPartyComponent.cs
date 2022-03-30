@@ -48,9 +48,7 @@ namespace TOW_Core.Quests
                 (mobileParty.PartyComponent as QuestPartyComponent).InitializeQuestPartyProperties(mobileParty, settlement, leader, clan, name);
             });
         }
-
         
-
         private void InitializeQuestPartyProperties(MobileParty mobileParty, Settlement settlement, Hero leader, Clan clan, string name=null)
         {
             var component = mobileParty.PartyComponent as QuestPartyComponent;
@@ -84,8 +82,6 @@ namespace TOW_Core.Quests
             mobileParty.Ai.SetDoNotMakeNewDecisions(true);
             mobileParty.Party.Visuals.SetMapIconAsDirty();
         }
-
-        
     }
 
     public class QuestPartyComponentTypeDefiner : SaveableTypeDefiner
