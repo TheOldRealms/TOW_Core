@@ -704,7 +704,7 @@
       <EquipmentSet id="dog_muktar_hero_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_bw_cultist_lord_0" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_bw_cultist_lord_0" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -720,7 +720,7 @@
       <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_bw_cultist_lord_1" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_bw_cultist_lord_1" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -736,7 +736,7 @@
       <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_bw_cultist_lord_2" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_bw_cultist_lord_2" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -752,7 +752,7 @@
       <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_bw_cultist_lord_3" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_bw_cultist_lord_3" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -768,7 +768,7 @@
       <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_coi_cultist_lord_0" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_coi_cultist_lord_0" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -784,7 +784,7 @@
       <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_coi_cultist_lord_1" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_coi_cultist_lord_1" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -800,7 +800,7 @@
       <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_coi_cultist_lord_2" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_coi_cultist_lord_2" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -816,7 +816,7 @@
       <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_coi_cultist_lord_3" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_coi_cultist_lord_3" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -832,7 +832,7 @@
       <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_fsf_cultist_lord_0" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_fsf_cultist_lord_0" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -848,7 +848,7 @@
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_fsf_cultist_lord_1" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_fsf_cultist_lord_1" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -864,7 +864,7 @@
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_fsf_cultist_lord_2" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_fsf_cultist_lord_2" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -880,7 +880,7 @@
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_fsf_cultist_lord_3" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_fsf_cultist_lord_3" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -960,7 +960,7 @@
       <EquipmentSet id="tor_qnpc_collegemagister_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_spelltrainer_vc_0" default_group="infantry" name="{=str_ tor_spelltrainer_vc_0}{=!}Dark Magister" occupation="Special" culture="Culture.empire" voice="ironic" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_spelltrainer_vc_0" default_group="infantry" name="{=str_ tor_spelltrainer_vc_0}{=!}Dark Magister" occupation="Special" culture="Culture.khuzait" voice="ironic" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
