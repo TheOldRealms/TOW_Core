@@ -30,15 +30,6 @@ namespace TOW_Core.Quests
         public override TextObject Name => _name;
         public override Settlement HomeSettlement => _homeSettlement;
         
-        public static MobileParty CreateParty(Settlement settlement, Clan clan, string partyNameOverride=null)
-        {
-            var name= partyNameOverride ?? clan.Name.ToString();
-
-            return MobileParty.CreateParty(name+ "_questparty_1", new QuestPartyComponent(), delegate (MobileParty mobileParty)
-            {
-                (mobileParty.PartyComponent as QuestPartyComponent).InitializeQuestPartyProperties(mobileParty, settlement, clan, name);
-            });
-        }
         
         public static MobileParty CreateParty(Settlement settlement, Hero leader, Clan clan, string partyNameOverride=null)
         {
@@ -58,23 +49,6 @@ namespace TOW_Core.Quests
             mobileParty.ActualClan = clan;
             mobileParty.Aggressiveness = 0.5f;
             mobileParty.AddElementToMemberRoster(leader.CharacterObject, 1, true);
-            mobileParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, settlement.Position2D, 10, 0f, 30);
-            mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Grain, 50));
-            mobileParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
-            mobileParty.SetMovePatrolAroundSettlement(settlement);
-            mobileParty.Ai.SetDoNotMakeNewDecisions(true);
-            mobileParty.Party.Visuals.SetMapIconAsDirty();
-            
-        }
-        
-        private void InitializeQuestPartyProperties(MobileParty mobileParty, Settlement settlement, Clan clan, string name)
-        {
-            var component = mobileParty.PartyComponent as QuestPartyComponent;
-            component._owner = settlement.Owner;
-            component._homeSettlement = settlement;
-            component._name = new TextObject(name);
-            mobileParty.ActualClan = clan;
-            mobileParty.Aggressiveness = 0.5f;
             mobileParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, settlement.Position2D, 10, 0f, 30);
             mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Grain, 50));
             mobileParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
