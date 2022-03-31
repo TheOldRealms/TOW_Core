@@ -24,7 +24,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool _knowsPlayer;
         private bool _gaveQuestOffer;
         private readonly string _masterEngineerId = "tor_nulnengineernpc_empire";
-        private readonly string _rogueEngineerName = "Rudolf";
+        private readonly string _rogueEngineerName = "Goswin";
         private Hero _masterEngineerHero = null;
         private Settlement _nuln;
         private bool _playerIsSkilledEnough;
