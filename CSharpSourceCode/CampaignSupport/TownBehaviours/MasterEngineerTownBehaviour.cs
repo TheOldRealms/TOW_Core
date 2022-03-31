@@ -69,13 +69,16 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void AddEngineerDialogLines(CampaignGameStarter obj)
         {
-            obj.AddDialogLine("engineer_start", "start", "questcomplete", "Did you find Oswin?",() => engineerdialogstartcondition() &&knowsplayer()&& CultistQuestIsDone()&&rogueengineerquestinprogress()||quest2failed(), null, 200, null);
-            obj.AddDialogLine("engineer_start", "start", "questcheckrogueengineer", "Have you changed your mind and want to help hunt down Goswin?",() => engineerdialogstartcondition() &&knowsplayer()&& CultistQuestIsDone(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "rogueengineerquestcomplete", "Did you find Oswin?",() => engineerdialogstartcondition() &&knowsplayer()&& CultistQuestIsDone()&&rogueengineerquestinprogress()||quest2failed(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "questcheckrogueengineer", "Have you changed your mind and want to help hunt down Goswin?",() => engineerdialogstartcondition() &&knowsplayer()&& CultistQuestIsDone()&&!engineerquestcompletecondition(), null, 200, null);
             obj.AddDialogLine("engineer_start", "start", "questcomplete", "Ah, you have returned. What news do you bring?",() => engineerdialogstartcondition() &&knowsplayer()&& cultistquestinprogress()||quest1failed(), null, 200, null);
             obj.AddDialogLine("engineer_start", "start", "close_window", "Come back to me when you have news.",() => engineerdialogstartcondition() && cultistquestinprogress()&& knowsplayer(), null, 200, null);
-            obj.AddDialogLine("engineer_start", "start", "playergreet", "You again, what do you want?",() => engineerdialogstartcondition()&&knowsplayer()&&!cultistquestinprogress(), null, 200, null);
+            obj.AddDialogLine("engineer_start", "start", "hub", "You again, what do you want?",() => engineerdialogstartcondition()&&knowsplayer()&&QuestLineDone(), null, 200, null);
             obj.AddDialogLine("engineer_start", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?",engineerdialogstartcondition , knowledgeoverplayer, 200, null);
-            obj.AddPlayerLine("playergreet", "playergreet", "playerstartquestcheck", "I have reconsidered your offer, I would like to help.",gavequestoffer , null, 200, null);
+            obj.AddPlayerLine("playergreet", "playergreet", "playerstartquestcheck", "I have reconsidered your offer, I would like to help.",()=> gavequestoffer()&& !QuestLineDone() , null, 200, null);
+            
+            //hub start
+            
             
             //quests failed -both
             obj.AddPlayerLine("questcomplete", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.",() => (quest1failed()|| quest2failed()) , null, 200, null);
@@ -85,7 +88,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddPlayerLine("playerfailedquest", "playerfailedquest", "engineerdeclinequest", "I don't think I can do it at this time.",null , null, 200, null);
             
             //done
-            obj.AddPlayerLine("questcomplete", "questcomplete", "cultistengineerdebrief", "I have returned but without the stolen components, I am afraid to say they are still missing.",() => engineerdialogstartcondition() && cultisthuntcompletecondition() , handing_in_cultist_quest, 200, null);
+            obj.AddPlayerLine("questcomplete", "questcomplete", "cultistengineerdebrief", "I have returned but without the stolen components, I am afraid to say they are still missing.",() => engineerdialogstartcondition() && cultisthuntcompletecondition()&&!CultistQuestIsDone() , handing_in_cultist_quest, 200, null);
             obj.AddDialogLine("cultistengineerdebrief", "cultistengineerdebrief", "cultistengineerdebrief2", "I see, this is not what I had hoped for. Were there any further clues, did you interrogate these scoundrels? ",null, null, 200, null);
             obj.AddPlayerLine("cultistengineerdebrief2", "cultistengineerdebrief2", "cultistengineerdebrief3", "One of the bandits did mention a name, Goswin I think?",null ,null , 200, null);
             obj.AddDialogLine("cultistengineerdebrief3", "cultistengineerdebrief3", "questrogueengineer", "Blast! I should have known. If you are willing, I would ask for your assistance once more. This matter may be more dire than I originally imagined. Goswin is an Engineer, a good one at that, but his works always seemed...wrong. ",null, null, 200, null);
@@ -102,14 +105,16 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddPlayerLine("questcheckrogueengineer", "questcheckrogueengineer", "close_window", "I’m afraid not, I have other tasks to attend to.",null , null, 200, null);
             obj.AddDialogLine("startrogueengineerquest", "startrogueengineerquest", "close_window", "We have an agreement then, I believe I may know his whereabouts. I will mark it on your map for you, may Sigmar guide you stranger. ",null, QuestBeginRogueEngineer, 200, null);
             
-            //in progress
-            obj.AddPlayerLine("rogueengineerquestcomplete", "rogueengineerquestcomplete", "engineerquestinprogress", "I have yet to track him down",null , null, 200, null);
-            obj.AddDialogLine("engineerquestinprogress", "engineerquestinprogress", "close_window", "I see, return to me when you have better news.",null, null, 200, null);
-
+            
             //done
             obj.AddPlayerLine("rogueengineerquestcomplete", "rogueengineerquestcomplete", "engineerquestdebrief", "Oswin will no longer be a problem and I have retrieved what he stole from you. I’m unsure what he was trying to do with them. ",()=> engineerdialogstartcondition()&& engineerquestcompletecondition() , null, 200, null);
             obj.AddDialogLine("engineerquestdebrief", "engineerquestdebrief", "hubaftermission", "It matters not, it would have been something warped no doubt. I must thank you for your efforts, and your discretion. As agreed upon, you may now access our foundries and purchase from us as you please. ", null, handing_in_rogueengineer_quest, 200, null);
             obj.AddDialogLine("hubaftermission", "hubaftermission", "hub", "Now, how can I help?", null, null, 200);
+            //in progress
+            obj.AddPlayerLine("rogueengineerquestcomplete", "rogueengineerquestcomplete", "engineerquestinprogress", "I have yet to track him down",null , null, 200, null);
+            obj.AddDialogLine("engineerquestinprogress", "engineerquestinprogress", "close_window", "I see, return to me when you have better news.",null, null, 200, null);
+
+            
             
             //skill check
             obj.AddPlayerLine("playergreet", "playergreet", "opengunshopcheck", "Greetings Master Engineer, I am "+Campaign.Current.MainParty.LeaderHero.Name.ToString()+". I have come seeking access to the Forges of Nuln. Can you help?.",null , null, 200, null);
@@ -252,9 +257,20 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool CultistQuestIsDone()
         {
             if (_cultistKillQuest == null) return false;
-            if (_cultistKillQuest.GetQuestFailed()) return false;
             return _cultistKillQuest.IsFinalized;
         }
+        
+        private bool RogueEngineerQuestIsDone()
+        {
+            if (_rogueRogueEngineerQuest == null) return false;
+            return _rogueRogueEngineerQuest.IsFinalized;
+        }
+
+        private bool QuestLineDone()
+        {
+            return RogueEngineerQuestIsDone() && CultistQuestIsDone();
+        }
+
 
         private void givequestoffer()
         {
