@@ -45,7 +45,8 @@ namespace TOW_Core.Quests
             var component = mobileParty.PartyComponent as QuestPartyComponent;
             component._owner = leader;
             component._homeSettlement = settlement;
-            component._name = new TextObject(name);
+            if(name!=null)
+                component._name = new TextObject(name);
             mobileParty.ActualClan = clan;
             mobileParty.Aggressiveness = 0.5f;
             mobileParty.AddElementToMemberRoster(leader.CharacterObject, 1, true);
