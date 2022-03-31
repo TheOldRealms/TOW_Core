@@ -191,7 +191,6 @@ namespace TOW_Core.Quests
             var leaderhero = HeroCreator.CreateSpecialHero(template, settlement, clan, null, 45);
             if(heroName!=null)leaderhero.SetName(heroName, heroName);
             var party = QuestPartyComponent.CreateParty(settlement, leaderhero, clan);
-           
             party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;

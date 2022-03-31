@@ -23,6 +23,7 @@ namespace TOW_Core.Quests
         [SaveableField(7)] private bool _failstate;
         [SaveableField(8)] private int _rewardXP;
         private bool _initAfterReload;
+        private bool _skipImprisonment;
 
         public override TextObject Title => _title;
         public override bool IsSpecialQuest => true;
@@ -36,8 +37,21 @@ namespace TOW_Core.Quests
         protected override void RegisterEvents()
         {
             base.RegisterEvents();
-            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEndedWithSuccess);
+            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this,QuestBattleEnded);
+            //CampaignEvents.MapEventEnded.AddNonSerializedListener(this,QuestBattleEndedWithFail);
             CampaignEvents.MapEventEnded.AddNonSerializedListener(this,QuestBattleEndedWithFail);
+            CampaignEvents.SetupPreConversationEvent.AddNonSerializedListener(this,SkipDialog);
+        }
+        
+        
+        private void QuestBattleEnded(MapEvent mapEvent)
+        {
+            if (!mapEvent.IsPlayerMapEvent || !mapEvent.IsFieldBattle) return;
+            if (mapEvent.PartiesOnSide(mapEvent.PlayerSide.GetOppositeSide()).Any(party => party.Party.MobileParty == _targetParty))
+            {
+                _skipImprisonment = true;
+                TaskSuccessful();
+            }
         }
 
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
@@ -51,8 +65,9 @@ namespace TOW_Core.Quests
             }
                 
         }
+        
 
-        private void QuestBattleEndedWithSuccess(MapEvent mapEvent)
+        /*private void QuestBattleEndedWithSuccess(MapEvent mapEvent)
         {
             //the game doesn't give the satisfying bell sound when moved to the other event
             if(!mapEvent.IsPlayerMapEvent || !mapEvent.IsFieldBattle) return;
@@ -61,7 +76,7 @@ namespace TOW_Core.Quests
                 if(mapEvent.Winner.IsMainPartyAmongParties())
                     TaskSuccessful();
             }
-        }
+        }*/
 
         private void TaskSuccessful()
         {
@@ -79,6 +94,21 @@ namespace TOW_Core.Quests
         {
             base.OnFailed();
             _failstate = true;
+        }
+        
+        private void SkipDialog()
+        {
+            if (!_targetParty.IsActive) return;
+            if (!_skipImprisonment) return;
+            if (Campaign.Current.CurrentConversationContext != ConversationContext.CapturedLord) return;
+            Campaign.Current.ConversationManager.EndConversation();
+            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "close_window", new TextObject("Damn you ..."), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
+            Campaign.Current.ConversationManager.ClearCurrentOptions();
+        }
+        
+        private void RemoveSkip()
+        {
+            _skipImprisonment = false;
         }
         
         public void HandInQuest()
@@ -154,13 +184,9 @@ namespace TOW_Core.Quests
             var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_bw_cultist_lord_0");
             var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
             hero.SetName(cultistName,cultistName);
-
-            var party = QuestPartyComponent.CreateParty(settlement, hero, settlement.OwnerClan);
-           party.SetCustomName(cultistName);
-
-           //  party.Aggressiveness = 0f;
-
-          party.SetPartyUsedByQuest(true);
+            var party = QuestPartyComponent.CreateParty(settlement, hero, settlement.OwnerClan); 
+            party.SetCustomName(cultistName); 
+            party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;
         }
@@ -197,13 +223,11 @@ namespace TOW_Core.Quests
     {
         public CultistQuestTypeDefiner() : base(701793)
         {
-
         }
 
         protected override void DefineClassTypes()
         {
             AddClassDefinition(typeof(CultistQuest), 1);
-            
         }
     }
 }

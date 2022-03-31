@@ -24,12 +24,10 @@ namespace TOW_Core.Quests
         [SaveableField(30)]
         private Hero _owner;
         
-
         public override Hero Leader => _owner;
         public override Hero PartyOwner => _owner;
         public override TextObject Name => _name;
         public override Settlement HomeSettlement => _homeSettlement;
-        
         
         public static MobileParty CreateParty(Settlement settlement, Hero leader, Clan clan, string partyNameOverride=null)
         {
