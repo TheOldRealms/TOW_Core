@@ -347,6 +347,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private bool cultiststartcondition()
         {
+            if (_cultistKillQuest == null) return false;
+            
             if (!_cultistKillQuest.IsOngoing) return false;
 
 

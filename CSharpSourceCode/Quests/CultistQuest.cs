@@ -42,7 +42,8 @@ namespace TOW_Core.Quests
 
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
         {
-            if (!mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (!mapEvent.IsPlayerMapEvent|| mapEvent.InvolvedParties.All(party => party.MobileParty != _targetParty) ||mapEvent.Winner==null) return;
+            
             if (mapEvent.Winner.MissionSide != mapEvent.PlayerSide)
             {
                 CompleteQuestWithFail();
@@ -150,16 +151,14 @@ namespace TOW_Core.Quests
         private void SpawnQuestParty(TextObject cultistName)
         {
             var settlement = Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "forest_bandits");
-            var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_empire_deserter_lord_0");
+            var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_bw_cultist_lord_0");
             var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
-            //hero.SetName(cultistName,cultistName);
-            //var party = .CreateBanditParty("questcultistparty", settlement.OwnerClan, settlement.Hideout, true);
-            // var party = BanditPartyComponent.CreateBanditParty(settlement.Position2D, 1f, settlement, cultistName, settlement.OwnerClan, settlement.OwnerClan.DefaultPartyTemplate,hero);
+            hero.SetName(cultistName,cultistName);
 
-           var  party =  QuestPartyComponent.CreateParty(settlement, settlement.OwnerClan);
+            var party = QuestPartyComponent.CreateParty(settlement, hero, settlement.OwnerClan);
            party.SetCustomName(cultistName);
-           
-        //  party.Aggressiveness = 0f;
+
+           //  party.Aggressiveness = 0f;
 
           party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
