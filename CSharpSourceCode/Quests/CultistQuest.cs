@@ -1,4 +1,5 @@
 using System.Linq;
+using Helpers;
 using NLog.Fluent;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment.Managers;
@@ -181,10 +182,13 @@ namespace TOW_Core.Quests
         private void SpawnQuestParty(TextObject cultistName)
         {
             var settlement = Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "forest_bandits");
-            var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_bw_cultist_lord_0");
-            var hero = HeroCreator.CreateSpecialHero(template, settlement, settlement.OwnerClan, null, 45);
+            var faction = Campaign.Current.Factions.FirstOrDefault(x => x.StringId.ToString() == "chs_cult_1");
+            
+            var factionClan = (Clan)faction;
+            var lordTemplate = MBObjectManager.Instance.GetObject<CharacterObject>("tor_bw_cultist_lord_0");
+            var hero = HeroCreator.CreateSpecialHero(lordTemplate, settlement, factionClan , null, 45);
             hero.SetName(cultistName,cultistName);
-            var party = QuestPartyComponent.CreateParty(settlement, hero, settlement.OwnerClan); 
+            var party = QuestPartyComponent.CreateParty(settlement, hero, factionClan); 
             party.SetCustomName(cultistName); 
             party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
