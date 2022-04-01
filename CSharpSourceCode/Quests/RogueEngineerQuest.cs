@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -135,12 +135,11 @@ namespace TOW_Core.Quests
         
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
         {
-            if (!mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
-            if (mapEvent.Winner.MissionSide != mapEvent.PlayerSide)
-            {
-                CompleteQuestWithFail();
-                _targetParty.RemoveParty();
-            }
+            if (mapEvent.Winner == null) return;
+            if (mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (mapEvent.Winner.MissionSide == mapEvent.PlayerSide) return;
+            CompleteQuestWithFail();
+            _targetParty.RemoveParty();
         }
         
         private void SkipDialog()
