@@ -27,21 +27,46 @@ namespace TOW_Core.Quests
         [SaveableField(2)] private JournalLog _task1 = null;
         [SaveableField(3)] private JournalLog _task2 = null;
         [SaveableField(4)] private MobileParty _targetParty = null;
-        [SaveableField(5)] private string _enemyHeroName = "Goswin";
-        [SaveableField(6)] private TextObject _title = new TextObject("Hunt down the Engineer");
-        [SaveableField(7)] private bool _failstate;
-        [SaveableField(8)] private int _rewardXP;
+        [SaveableField(5)] private TextObject _targetPartyname = null;
+        [SaveableField(6)] private TextObject _partyLeaderName;
+        [SaveableField(7)] private string _leaderTemplateId = "";
+        [SaveableField(8)] private string _partyTemplateId = "";
+        [SaveableField(9)] private string _factionId = "";
+        [SaveableField(10)] private string _spawnLocationOwnerId = "";
+        [SaveableField(11)] private readonly TextObject _title=null;
+        [SaveableField(12)] private TextObject _missionLogText1=null;
+        [SaveableField(13)] private TextObject _missionLogTextShort1=null;
+        [SaveableField(14)] private TextObject _missionLogText2=null;
+        [SaveableField(15)] private TextObject _defeatDialogLine = null;
+        [SaveableField(16)] private bool _failstate;
+        [SaveableField(17)] private int _rewardXP;
         private bool _initAfterReload;
         private bool _skipImprisonment;
         
-        public RogueEngineerQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP) : base(
+        public RogueEngineerQuest(string questId,Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP, string questTitle, string leaderName,
+            string leaderTemplate, string targetPartyName, string partyTemplateId, string factionID,
+            string spawnLocationOwnerId, string missionLogText1, string missionLogText2=null,
+            string missionLogTextShort1=null, string defeatDialogLine=null) : base(
             questId, questGiver, duration, rewardGold)
         {
+            _title = new TextObject(questTitle);
+            _partyLeaderName = new TextObject(leaderName);
+            _targetPartyname = new TextObject(targetPartyName);
+            _leaderTemplateId = leaderTemplate;
+            _partyTemplateId = partyTemplateId;
+            _spawnLocationOwnerId = spawnLocationOwnerId;
+            _factionId = factionID;
             _rewardXP = rewardXP;
+            _missionLogText1 = new TextObject(missionLogText1);
+            _missionLogText2 = new TextObject(missionLogText2);
+            _missionLogTextShort1 = new TextObject(missionLogTextShort1);
+            _defeatDialogLine = new TextObject(defeatDialogLine);
+            
             SetLogs();
         }
-        
-        public string RogueEngineerName => _enemyHeroName;
+
+        public MobileParty TargetParty => _targetParty;
+        public string QuestEnemyLeaderName => _partyLeaderName.ToString();
         public bool FailState => _failstate;
 
         public int RewardXP => _rewardXP;
@@ -53,8 +78,9 @@ namespace TOW_Core.Quests
 
         private void SetLogs()
         {
-            _task1 = AddDiscreteLog(new TextObject("Find and kill"+_enemyHeroName+ ", the rogue engineer."),
-                new TextObject("killed "+_enemyHeroName), _destroyedParty, 1);
+            _task1 = _missionLogTextShort1!=null ? 
+                AddDiscreteLog(_missionLogText1, _missionLogTextShort1, _destroyedParty, 1) : 
+                AddLog(_missionLogText1);
         }
         
         protected override void RegisterEvents()
@@ -75,14 +101,25 @@ namespace TOW_Core.Quests
         {
             if (_initAfterReload) return;
             if (_task1.HasBeenCompleted()) return;
+            
             var home = _targetParty.HomeSettlement;
             var hero = _targetParty.LeaderHero;
             var clan = _targetParty.ActualClan;
-            _targetParty.RemovePartyLeader();
+            var pos = _targetParty.Position2D;
+
+            var name = _targetParty.Name;
+            //_targetParty.ChangePartyLeader(null);
+            //_targetParty.Party.MapEntity.PartyVisual.SetVisualVisible(true);
+            
+            _targetParty.SetPartyUsedByQuest(true);
+            // _targetParty.ResetTargetParty();
+            //_targetParty.MapFaction.
             _targetParty.RemoveParty();
-            _targetParty = null;
-            SpawnQuestParty(hero.Name,home,clan);
-            _targetParty.IgnoreByOtherPartiesTill(CampaignTime.Never);
+            _targetParty.ResetTargetParty();
+            SpawnQuestParty(hero, home, clan,name);
+            //SpawnQuestParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, pos, 10, 0f, 30);
+            //SpawnQuestParty(_targetPartyName);
+            _targetParty.Party.Visuals.SetMapIconAsDirty();
             _initAfterReload = true;
         }
         
@@ -112,7 +149,7 @@ namespace TOW_Core.Quests
             if (!_skipImprisonment) return;
             if (Campaign.Current.CurrentConversationContext != ConversationContext.CapturedLord) return;
             Campaign.Current.ConversationManager.EndConversation();
-            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "rogueengineer_playerafterbattle", new TextObject("You have no idea what you are interfering with..."), ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
+            Campaign.Current.ConversationManager.AddDialogLineMultiAgent("start", "start", "rogueengineer_playerafterbattle", _defeatDialogLine, ()=> _skipImprisonment, RemoveSkip, 0,1, 200, null);
             Campaign.Current.ConversationManager.ClearCurrentOptions();
         }
         
@@ -131,7 +168,8 @@ namespace TOW_Core.Quests
         
         protected override void OnStartQuest()
         {
-            SpawnQuestParty(new TextObject(_enemyHeroName));
+            
+            SpawnQuestParty(_partyLeaderName,_targetPartyname,null);
         }
 
         public void TaskSuccessful()
@@ -140,7 +178,7 @@ namespace TOW_Core.Quests
 
             if (_task1.HasBeenCompleted() && _task2 == null)
             {
-                _task2 = AddLog(new TextObject("Visit the Master Engineer in Nuln."));
+                _task2 = AddLog(_missionLogText2);
             }
         }
         
@@ -178,25 +216,82 @@ namespace TOW_Core.Quests
             return returnvalue;
         }
         
-        public static RogueEngineerQuest GetNew()
+        public static RogueEngineerQuest GetNew(
+            string questId, 
+            int questRewardGold,
+            int questRewardXp, 
+            string questTitle, 
+            string leaderName, 
+            string leaderTemplate, 
+            string targetPartyName, 
+            string partyTemplate,
+            string factionId, 
+            string spawnLocationOwnerId,
+            string missionLogText1,
+            string missionLogTextShort1,
+            string missionLogText2,
+            string defeatDialog)
         {
-            return new RogueEngineerQuest("rogueengineerquest", Hero.OneToOneConversationHero, CampaignTime.DaysFromNow(30), 400, 350);
+            return new RogueEngineerQuest(questId, 
+                Hero.OneToOneConversationHero,
+                CampaignTime.DaysFromNow(30),
+                questRewardGold,
+                questRewardXp,
+                questTitle,
+                leaderName,
+                leaderTemplate,
+                targetPartyName,
+                partyTemplate,
+                factionId,
+                spawnLocationOwnerId,
+                missionLogText1, missionLogText2,missionLogTextShort1,defeatDialog
+                );
         }
         
-        private void SpawnQuestParty(TextObject heroName=null, Settlement location=null,Clan ownerClan=null)
+        
+        
+        private void SpawnQuestParty(Hero hero, Settlement spawnSettlement, Clan clan, TextObject name)
         {
-            Settlement settlement = location ?? Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "mountain_bandits");
-            var template = MBObjectManager.Instance.GetObject<CharacterObject>("tor_engineerquesthero");
-            Clan clan = ownerClan?? Clan.FindFirst(x => x.StringId == "empire_deserter_clan_1");
-            var leaderhero = HeroCreator.CreateSpecialHero(template, settlement, clan, null, 45);
-            if(heroName!=null)leaderhero.SetName(heroName, heroName);
-            var party = QuestPartyComponent.CreateParty(settlement, leaderhero, clan);
+            var party = QuestPartyComponent.CreateParty(spawnSettlement, hero, clan);
+            party.Party.Visuals.SetVisualVisible(true);
+            party.Party.Visuals.SetMapIconAsDirty();
+            party.SetCustomName(name); 
             party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;
-            _targetParty.IgnoreByOtherPartiesTill(CampaignTime.Never);
         }
+        
+        
+        
+        private void SpawnQuestParty(TextObject heroNameOverride=null, TextObject partyNameOverride=null, TextObject spawnLocationOverride=null)
+        {
+            //this is intended as a quick fix, if we dont  want a full random spawning
+            var settlement = spawnLocationOverride == null ? 
+                Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == _spawnLocationOwnerId) : 
+                Settlement.All.FirstOrDefault(x => x.Name ==spawnLocationOverride);
+            
+            var leaderTemplate = MBObjectManager.Instance.GetObject<CharacterObject>(_leaderTemplateId);
+            var faction =  Campaign.Current.Factions.FirstOrDefault(x => x.StringId.ToString() == _factionId);
+            var factionClan = (Clan)faction;
+            var hero = HeroCreator.CreateSpecialHero(leaderTemplate, settlement, factionClan , null, 45);
+            
+            if(heroNameOverride!=null)hero.SetName(heroNameOverride, heroNameOverride);
+            var party = QuestPartyComponent.CreateParty(settlement, hero, factionClan, _partyTemplateId);
+            
+            if(partyNameOverride!=null)party.SetCustomName(partyNameOverride);
+            
+            party.Aggressiveness = 0f;
+            party.IgnoreByOtherPartiesTill(CampaignTime.Never);
+            
+            party.SetPartyUsedByQuest(true);
+
+            _targetParty = party;
+
+        }
+        
     }
+    
+    
     
     public class RogueEngineerQuestTypeDefiner : SaveableTypeDefiner
     {

@@ -9,6 +9,7 @@ using TaleWorlds.CampaignSystem.SandBox.Issues.IssueQuestTasks;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade.Source.Missions;
+using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 
 namespace TOW_Core.Quests
@@ -29,16 +30,22 @@ namespace TOW_Core.Quests
         public override TextObject Name => _name;
         public override Settlement HomeSettlement => _homeSettlement;
         
-        public static MobileParty CreateParty(Settlement settlement, Hero leader, Clan clan, string partyNameOverride=null)
+        public static MobileParty CreateParty(Settlement settlement, Hero leader, Clan clan, string partyTemplateOverride=null)
         {
-            var name= partyNameOverride ?? leader.FirstName.ToString() + "'s party";
+            var name=leader.FirstName.ToString() + "'s party";
+            PartyTemplateObject partyTemplate = null;
+            if(partyTemplateOverride!=null)
+            {
+                partyTemplate = MBObjectManager.Instance.GetObject<PartyTemplateObject>(partyTemplateOverride);
+            }
+            
             return MobileParty.CreateParty(leader.StringId + "_questparty_1", new QuestPartyComponent(), delegate (MobileParty mobileParty)
             {
-                (mobileParty.PartyComponent as QuestPartyComponent).InitializeQuestPartyProperties(mobileParty, settlement, leader, clan, name);
+                (mobileParty.PartyComponent as QuestPartyComponent).InitializeQuestPartyProperties(mobileParty, settlement, leader, clan, name, partyTemplate);
             });
         }
         
-        private void InitializeQuestPartyProperties(MobileParty mobileParty, Settlement settlement, Hero leader, Clan clan, string name=null)
+        private void InitializeQuestPartyProperties(MobileParty mobileParty, Settlement settlement, Hero leader, Clan clan, string name=null, PartyTemplateObject partyTemplate=null)
         {
             var component = mobileParty.PartyComponent as QuestPartyComponent;
             component._owner = leader;
@@ -48,7 +55,9 @@ namespace TOW_Core.Quests
             mobileParty.ActualClan = clan;
             mobileParty.Aggressiveness = 0.5f;
             mobileParty.AddElementToMemberRoster(leader.CharacterObject, 1, true);
-            mobileParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, settlement.Position2D, 10, 0f, 30);
+            if (partyTemplate == null) 
+                partyTemplate = clan.DefaultPartyTemplate;
+            mobileParty.InitializeMobilePartyAroundPosition(partyTemplate, settlement.Position2D, 10, 0f, 30);
             mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Grain, 50));
             mobileParty.Ai.SetAIState(AIState.PatrollingAroundLocation);
             mobileParty.SetMovePatrolAroundSettlement(settlement);

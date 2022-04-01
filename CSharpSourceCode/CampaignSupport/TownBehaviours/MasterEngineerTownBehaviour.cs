@@ -33,7 +33,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool _huntedDownCultists;
        
         private RogueEngineerQuest _rogueRogueEngineerQuest;
-        private  CultistQuest _cultistKillQuest;
+        private  RogueEngineerQuest _cultistKillQuest;
 
         public override void RegisterEvents()
         {
@@ -174,7 +174,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("rogueengineer_start", "start", "rogueengineer_answerplayer", "So the old fool sent you to find me? How did he figure me out? It matters not, you will stand in the way of my creations. You will die here!",rogueengineerdialogstartcondition, null, 200);
             
             //requires dying dialog of the engineer
-            obj.AddPlayerLine("rogueengineer_playerafterbattle", "rogueengineer_playerafterbattle", "close_window", "Your schemes end here",null, null, 200);
+            obj.AddPlayerLine("rogueengineer_playerafterbattle", "rogueengineer_playerafterbattle", "close_window", "Your schemes end here",rogueengineerquestinprogress, null, 200);
 
         }
         
@@ -203,7 +203,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool quest1failed()
         {
             if (_cultistKillQuest == null) return false;
-            return _cultistKillQuest.GetQuestFailed();
+            return _cultistKillQuest.FailState;
         }
         
         private bool quest2failed()
@@ -248,7 +248,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void handing_in_cultist_quest()
         {
             _cultistKillQuest.HandInQuest();
-            var xp =(float) _cultistKillQuest.GetRewardXP();
+            var xp =(float) _cultistKillQuest.RewardXP;
             SkillObject skill = DefaultSkills.Charm;
             Campaign.Current.MainParty.LeaderHero.AddSkillXp(skill,xp);
             _huntedDownCultists = true;
@@ -290,8 +290,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         
         private void openshopconsequence()
         {
-            var quest = RogueEngineerQuest.GetNew();
-            if (quest != null) quest.StartQuest();
+           // var quest = RogueEngineerQuest.GetNew();
+            //if (quest != null) quest.StartQuest();
         }
 
         private bool requestquestcondition()
@@ -331,15 +331,42 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             {
                 _cultistKillQuest = null;
             }
-                
             
-            _cultistKillQuest = CultistQuest.GetNew("Part Thieves");
+            
+            
+            _cultistKillQuest = RogueEngineerQuest.GetNew("engineerchaoscultist", 
+                100, 
+                150, 
+                "Runaway Parts", 
+                "Runaway Thieves leader", 
+                "tor_bw_cultist_lord_0", 
+                "Runaway Thieves", 
+                "null",
+                "chs_cult_1",
+                "forest_bandits", 
+                "The Master Engineer has tasked me with hunting down thieving runaways, I should find them and bring back what they stole.",
+                "Track down runaway thieves",
+                "Return to the Master Engineer",
+                "Damn you ...");
             _cultistKillQuest?.StartQuest();
         }
         
         private void QuestBeginRogueEngineer()
         {
-            _rogueRogueEngineerQuest = RogueEngineerQuest.GetNew();
+            _rogueRogueEngineerQuest = RogueEngineerQuest.GetNew("engineerchaoscultist", 
+                400, 
+                350, 
+                "Runaway Parts", 
+                "Goswin", 
+                "tor_engineerquesthero", 
+                "Goswin", 
+                "null",
+                "chs_cult_1",
+                "forest_bandits", 
+                "It would appear a traitorous Engineer has the stolen parts, the Master Engineer has asked for my help in finding him.",
+                "Track down Goswin and retrieve the stolen components.",
+                "Return to the Master Engineer",
+                "You have no idea what you are interfering with...");
             _rogueRogueEngineerQuest?.StartQuest();
         }
         
@@ -368,7 +395,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             if (!_cultistKillQuest.IsOngoing) return false;
 
 
-            if (Campaign.Current.ConversationManager.ConversationParty == _cultistKillQuest.GetTargetParty())
+            if (Campaign.Current.ConversationManager.ConversationParty == _cultistKillQuest.TargetParty)
                 return true;
             
             return false;
@@ -385,7 +412,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             
             var partner = CharacterObject.OneToOneConversationCharacter;
             return partner != null && partner.Occupation == Occupation.Lord &&
-                   partner.HeroObject.Name.Contains(_rogueRogueEngineerQuest.RogueEngineerName);
+                   partner.HeroObject.Name.Contains(_rogueRogueEngineerQuest.QuestEnemyLeaderName);
         }
 
         private void checkplayerengineerskillrequirements()
@@ -433,7 +460,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             dataStore.SyncData<bool>("_gaveQuestOffer", ref _gaveQuestOffer);
             dataStore.SyncData<bool>("_knowsPlayer", ref _knowsPlayer);
             dataStore.SyncData<Hero>("_masterEngineerHero", ref _masterEngineerHero);
-            dataStore.SyncData<CultistQuest>("_cultistKillQuest", ref _cultistKillQuest);
+            dataStore.SyncData<RogueEngineerQuest>("_cultistKillQuest", ref _cultistKillQuest);
             dataStore.SyncData<RogueEngineerQuest>("_rogueEngineerQuest", ref _rogueRogueEngineerQuest);
         }
     }
