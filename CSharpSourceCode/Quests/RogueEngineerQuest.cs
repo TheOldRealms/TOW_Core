@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Messages.FromClient.ToLobbyServer;
@@ -110,13 +110,19 @@ namespace TOW_Core.Quests
             var name = _targetParty.Name;
             //_targetParty.ChangePartyLeader(null);
             //_targetParty.Party.MapEntity.PartyVisual.SetVisualVisible(true);
+
+            var formerparty = _targetParty;
             
             _targetParty.SetPartyUsedByQuest(true);
             // _targetParty.ResetTargetParty();
             //_targetParty.MapFaction.
-            _targetParty.RemoveParty();
+            _targetParty.ChangePartyLeader(null);
+            
+            
             _targetParty.ResetTargetParty();
             SpawnQuestParty(hero, home, clan,name);
+            
+            formerparty.RemoveParty();
             //SpawnQuestParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, pos, 10, 0f, 30);
             //SpawnQuestParty(_targetPartyName);
             _targetParty.Party.Visuals.SetMapIconAsDirty();
