@@ -3,6 +3,7 @@ using Helpers;
 using NLog.Fluent;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment.Managers;
+using TaleWorlds.CampaignSystem.Encyclopedia;
 using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -160,11 +161,21 @@ namespace TOW_Core.Quests
             var home = _targetParty.HomeSettlement;
             var hero = _targetParty.LeaderHero;
             var clan = _targetParty.ActualClan;
-            _targetParty.RemovePartyLeader();
-            _targetParty.RemoveParty();
-            _targetParty = null;
-            SpawnQuestParty(home.Name);
+            var pos = _targetParty.Position2D;
+
+            var name = _targetParty.Name;
+            //_targetParty.ChangePartyLeader(null);
+            //_targetParty.Party.MapEntity.PartyVisual.SetVisualVisible(true);
             
+            _targetParty.SetPartyUsedByQuest(true);
+           // _targetParty.ResetTargetParty();
+            //_targetParty.MapFaction.
+            _targetParty.RemoveParty();
+            _targetParty.ResetTargetParty();
+            SpawnQuestParty(hero, home, clan, name);
+            //SpawnQuestParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, pos, 10, 0f, 30);
+            //SpawnQuestParty(_targetPartyName);
+            _targetParty.Party.Visuals.SetMapIconAsDirty();
             _initAfterReload = true;
         }
 
@@ -183,13 +194,26 @@ namespace TOW_Core.Quests
         {
             var settlement = Settlement.All.FirstOrDefault(x => x.IsHideout && x.Culture.StringId == "forest_bandits");
             var faction = Campaign.Current.Factions.FirstOrDefault(x => x.StringId.ToString() == "chs_cult_1");
-            
             var factionClan = (Clan)faction;
             var lordTemplate = MBObjectManager.Instance.GetObject<CharacterObject>("tor_bw_cultist_lord_0");
             var hero = HeroCreator.CreateSpecialHero(lordTemplate, settlement, factionClan , null, 45);
             hero.SetName(cultistName,cultistName);
-            var party = QuestPartyComponent.CreateParty(settlement, hero, factionClan); 
+            var party = QuestPartyComponent.CreateParty(settlement, hero, factionClan);
+            
+            party.Party.Visuals.SetVisualVisible(true);
+            party.Party.Visuals.SetMapIconAsDirty();
             party.SetCustomName(cultistName); 
+            party.SetPartyUsedByQuest(true);
+            AddTrackedObject(party);
+            _targetParty = party;
+        }
+        
+        private void SpawnQuestParty(Hero hero, Settlement spawnSettlement, Clan clan, TextObject name)
+        {
+            var party = QuestPartyComponent.CreateParty(spawnSettlement, hero, clan);
+            party.Party.Visuals.SetVisualVisible(true);
+            party.Party.Visuals.SetMapIconAsDirty();
+            party.SetCustomName(name); 
             party.SetPartyUsedByQuest(true);
             AddTrackedObject(party);
             _targetParty = party;
