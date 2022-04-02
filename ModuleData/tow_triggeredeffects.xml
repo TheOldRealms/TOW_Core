@@ -141,7 +141,9 @@
             ImbuedStatusEffectID="none" 
             ImbuedStatusEffectDuration="0" 
             DamageVariance="0" 
-            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonSkeleton"/>
+            TroopIdToSummon="tor_vc_summoned_skeleton"
+            NumberToSummon="5"
+            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonScript"/>
       <TriggeredEffectTemplate StringID="healing_tick" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 

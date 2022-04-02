@@ -118,6 +118,11 @@ namespace TOW_Core.Battle.TriggeredEffect
                         var script = obj as PrefabSpawnerScript;
                         script.OnInit(_template.SpawnPrefabName);
                     }
+                    else if(obj is SummonScript && _template.TroopIdToSummon != "none")
+                    {
+                        var script = obj as SummonScript;
+                        script.OnInit(_template.TroopIdToSummon, _template.NumberToSummon);
+                    }
                     if (obj is ITriggeredScript)
                     {
                         var script = obj as ITriggeredScript;

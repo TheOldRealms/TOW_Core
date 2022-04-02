@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -389,7 +389,6 @@
     <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SmokingLimbScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\WordOfPainScript.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />

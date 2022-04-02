@@ -13,24 +13,28 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
     public class SummonScript : ITriggeredScript
     {
+        public void OnInit(string troopId, int number)
+        {
+            SummonedUnitID = troopId;
+            NumberToSummon = number;
+        }
+
         public void OnTrigger(Vec3 position, Agent triggeredByAgent, IEnumerable<Agent> triggeredAgents)
         {
             var data = GetAgentBuildData(triggeredByAgent);
-
-            var skeleton = SpawnAgent(data, position);
-            var pos2 = new Vec3(position.X + 1f, position.Y + 1f);
-            var skeleton2 = SpawnAgent(data, pos2);
-            var pos3 = new Vec3(position.X - 1f, position.Y + 1f);
-            var skeleton3 = SpawnAgent(data, pos3);
-            var pos4 = new Vec3(position.X + 1f, position.Y - 1f);
-            var skeleton4 = SpawnAgent(data, pos4);
-            var pos5 = new Vec3(position.X - 1f, position.Y - 1f);
-            var skeleton5 = SpawnAgent(data, pos5);
+            bool leftSide = false;
+            Vec3 lastPosition = position;
+            for(int i = 1; i < NumberToSummon + 1; i++)
+            {
+                lastPosition = leftSide ? new Vec3(lastPosition.X - i * 1, lastPosition.Y) : new Vec3(lastPosition.X + i * 1, lastPosition.Y);
+                leftSide = !leftSide;
+                _ = SpawnAgent(data, lastPosition);
+            }
         }
 
         private AgentBuildData GetAgentBuildData(Agent caster)
         {
-            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>(CreatureName);
+            BasicCharacterObject troopCharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>(SummonedUnitID);
             
             IAgentOriginBase troopOrigin = new SummonedAgentOrigin(caster, troopCharacter);
             var formation = caster.Team.Formations.FirstOrDefault(f => f.PrimaryClass == FormationClass.Infantry);
@@ -60,7 +64,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
         }
 
 
-        public string CreatureName { get; internal set; }
-   
+        public string SummonedUnitID { get; private set; }
+        public int NumberToSummon { get; private set; }
     }
 }
