@@ -78,8 +78,22 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected Vec3 ComputeSpellAngleVelocityCorrection(Vec3 targetPosition, Vec3 targetVelocity)
         {
-            var time = AbilityTemplate.BaseMovementSpeed != 0 ?
-                targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed : AbilityTemplate.CastTime;
+            float time;
+            switch (AbilityTemplate.AbilityEffectType)
+            {
+                case AbilityEffectType.Bombardment:
+                case AbilityEffectType.Vortex:
+                {
+                    time = AbilityTemplate.CastTime;
+                    break;
+                }
+                default:
+                {
+                    time = AbilityTemplate.BaseMovementSpeed != 0 ? targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed : AbilityTemplate.CastTime;
+                    break;
+                }
+            }
+
             return targetVelocity * time;
         }
 

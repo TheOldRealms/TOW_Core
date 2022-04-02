@@ -219,7 +219,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities>
-      <string>Thunderbolt</string>
+      <string>CometOfCasandora</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -232,8 +232,13 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
-    <Abilities />
-    <Attributes />
+    <Abilities>
+      <string>Tornado</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>

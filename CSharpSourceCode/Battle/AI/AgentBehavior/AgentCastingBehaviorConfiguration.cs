@@ -15,6 +15,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             {
                 {AbilityEffectType.Blast, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
                 {AbilityEffectType.Bombardment, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
+                {AbilityEffectType.Vortex, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
+
                 {
                     AbilityEffectType.Heal, (agent, abilityIndex, abilityTemplate) =>
                     {
@@ -57,7 +59,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior
 
                 {AbilityEffectType.Summoning, (agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
 
-                {AbilityEffectType.Vortex, (agent, abilityIndex, abilityTemplate) => new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex)},
                 {AbilityEffectType.Wind, (agent, abilityIndex, abilityTemplate) => new AoEDirectionalCastingBehavior(agent, abilityTemplate, abilityIndex)},
 
                 //   {AbilityEffectType.AgentMoving,(agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
