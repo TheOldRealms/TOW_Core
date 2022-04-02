@@ -21,7 +21,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Quests
 {
-    public class RogueEngineerQuest : QuestBase
+    public class EngineerQuest : QuestBase
     {
         [SaveableField(1)] private int _destroyedParty = 0;
         [SaveableField(2)] private JournalLog _task1 = null;
@@ -43,7 +43,7 @@ namespace TOW_Core.Quests
         private bool _initAfterReload;
         private bool _skipImprisonment;
         
-        public RogueEngineerQuest(string questId,Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP, string questTitle, string leaderName,
+        public EngineerQuest(string questId,Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP, string questTitle, string leaderName,
             string leaderTemplate, string targetPartyName, string partyTemplateId, string factionID,
             string spawnLocationOwnerId, string missionLogText1, string missionLogText2=null,
             string missionLogTextShort1=null, string defeatDialogLine=null) : base(
@@ -200,17 +200,17 @@ namespace TOW_Core.Quests
             _failstate = true;
         }
 
-        public static RogueEngineerQuest GetCurrentActiveIfExists()
+        public static EngineerQuest GetCurrentActiveIfExists()
         {
-            RogueEngineerQuest returnvalue = null;
-            if (Campaign.Current.QuestManager.Quests.Any(x => x is RogueEngineerQuest && x.IsOngoing))
+            EngineerQuest returnvalue = null;
+            if (Campaign.Current.QuestManager.Quests.Any(x => x is EngineerQuest && x.IsOngoing))
             {
-                returnvalue = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x is RogueEngineerQuest && x.IsOngoing) as RogueEngineerQuest;
+                returnvalue = Campaign.Current.QuestManager.Quests.FirstOrDefault(x => x is EngineerQuest && x.IsOngoing) as EngineerQuest;
             }
             return returnvalue;
         }
         
-        public static RogueEngineerQuest GetNew(
+        public static EngineerQuest GetNew(
             string questId, 
             int questRewardGold,
             int questRewardXp, 
@@ -226,7 +226,7 @@ namespace TOW_Core.Quests
             string missionLogText2,
             string defeatDialog)
         {
-            return new RogueEngineerQuest(questId, 
+            return new EngineerQuest(questId, 
                 Hero.OneToOneConversationHero,
                 CampaignTime.DaysFromNow(30),
                 questRewardGold,
@@ -291,7 +291,7 @@ namespace TOW_Core.Quests
 
         protected override void DefineClassTypes()
         {
-            AddClassDefinition(typeof(RogueEngineerQuest), 1);
+            AddClassDefinition(typeof(EngineerQuest), 1);
         }
     }
 }
