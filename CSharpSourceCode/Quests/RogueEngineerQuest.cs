@@ -106,25 +106,14 @@ namespace TOW_Core.Quests
             var hero = _targetParty.LeaderHero;
             var clan = _targetParty.ActualClan;
             var pos = _targetParty.Position2D;
-
             var name = _targetParty.Name;
-            //_targetParty.ChangePartyLeader(null);
-            //_targetParty.Party.MapEntity.PartyVisual.SetVisualVisible(true);
-
             var formerparty = _targetParty;
-            
             _targetParty.SetPartyUsedByQuest(true);
-            // _targetParty.ResetTargetParty();
-            //_targetParty.MapFaction.
             _targetParty.ChangePartyLeader(null);
-            
-            
             _targetParty.ResetTargetParty();
-            SpawnQuestParty(hero, home, clan,name);
             
+            SpawnQuestParty(hero, home, clan,name);
             formerparty.RemoveParty();
-            //SpawnQuestParty.InitializeMobilePartyAroundPosition(clan.DefaultPartyTemplate, pos, 10, 0f, 30);
-            //SpawnQuestParty(_targetPartyName);
             _targetParty.Party.Visuals.SetMapIconAsDirty();
             _initAfterReload = true;
         }
@@ -279,17 +268,12 @@ namespace TOW_Core.Quests
             var faction =  Campaign.Current.Factions.FirstOrDefault(x => x.StringId.ToString() == _factionId);
             var factionClan = (Clan)faction;
             var hero = HeroCreator.CreateSpecialHero(leaderTemplate, settlement, factionClan , null, 45);
-            
             if(heroNameOverride!=null)hero.SetName(heroNameOverride, heroNameOverride);
             var party = QuestPartyComponent.CreateParty(settlement, hero, factionClan, _partyTemplateId);
-            
             if(partyNameOverride!=null)party.SetCustomName(partyNameOverride);
-            
             party.Aggressiveness = 0f;
             party.IgnoreByOtherPartiesTill(CampaignTime.Never);
-            
             party.SetPartyUsedByQuest(true);
-
             _targetParty = party;
 
         }
