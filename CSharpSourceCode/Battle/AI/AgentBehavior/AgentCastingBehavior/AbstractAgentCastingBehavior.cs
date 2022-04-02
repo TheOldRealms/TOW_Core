@@ -53,7 +53,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             if (HaveLineOfSightToTarget(CurrentTarget))
             {
                 Agent.SelectAbility(AbilityIndex);
-                CastSpellAtCurrentTarget(CurrentTarget.GetPosition());
+                CastSpellAtCurrentTarget();
             }
         }
 
@@ -71,7 +71,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return true;
         }
 
-        protected virtual void CastSpellAtCurrentTarget(Vec3 targetPosition)
+        protected virtual void CastSpellAtCurrentTarget()
         {
             Agent.CastCurrentAbility();
         }

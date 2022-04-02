@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfAbilityTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <AbilityTemplate StringID="Fireball" 
+      <AbilityTemplate StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
       CoolDown="5" 
@@ -40,7 +40,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="LightningBolt" 
+      <AbilityTemplate StringID="LightningBolt" 
       Name="Lightning Bolt" 
       SpriteName="fireball_icon" 
       CoolDown="5" 
@@ -80,7 +80,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="WindOfDeath" 
+      <AbilityTemplate StringID="WindOfDeath" 
       Name="Wind of Death" 
       SpriteName="windofdeath_icon" 
       CoolDown="40" 
@@ -207,7 +207,7 @@
       </LightColorRGB>
       <SeekerParameters Proportional="0.5" Derivative="0" DisableDistance="10"/>
   </AbilityTemplate>
-  <AbilityTemplate StringID="BurningHead" 
+      <AbilityTemplate StringID="BurningHead" 
       Name="The Burning Head" 
       SpriteName="burninghead_icon" 
       CoolDown="30" 
@@ -250,7 +250,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="ScreamingSkull" 
+      <AbilityTemplate StringID="ScreamingSkull" 
       Name="Screaming Skull" 
       SpriteName="screamingskull_icon" 
       CoolDown="30" 
@@ -827,7 +827,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="Tornado"
+     <AbilityTemplate StringID="Tornado"
       Name="Tornado"
       SpriteName="burninghead_icon"
       CoolDown="1"
@@ -873,7 +873,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="CometOfCasandora"
+     <AbilityTemplate StringID="CometOfCasandora"
       Name="Comet of Casandora"
       SpriteName="burninghead_icon"
       CoolDown="1"
@@ -919,7 +919,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="FoetidCloud" 
+     <AbilityTemplate StringID="FoetidCloud" 
       Name="Foetid Cloud" 
       SpriteName="burninghead_icon" 
       CoolDown="10" 
@@ -962,7 +962,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="WindBlast" 
+     <AbilityTemplate StringID="WindBlast" 
       Name="Wind Blast" 
       SpriteName="burninghead_icon" 
       CoolDown="10" 
@@ -1005,7 +1005,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="Thunderbolt" 
+     <AbilityTemplate StringID="Thunderbolt" 
       Name="Urannon's Thunderbolt" 
       SpriteName="burninghead_icon" 
       CoolDown="10" 
