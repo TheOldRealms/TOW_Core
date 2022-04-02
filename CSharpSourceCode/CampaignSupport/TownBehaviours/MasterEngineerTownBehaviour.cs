@@ -138,7 +138,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddPlayerLine("hub", "hub", "opengunshop", "I would like to buy some cannons.", null, null, 200, null);
             obj.AddPlayerLine("hub", "hub", "recruitengineer", "I would like to recruit some engineers.", null, null, 200, null);
             obj.AddPlayerLine("hub", "hub", "tutorialcannonbuy", "How do I buy more cannons?", null, null, 200, null);
-            obj.AddPlayerLine("hub", "hub", "opengunshop", "How can I use cannons?", null, null, 200, null);
+            obj.AddPlayerLine("hub", "hub", "tutorialcannonuse", "How can I use cannons?", null, null, 200, null);
             obj.AddPlayerLine("hub", "hub", "close_window", "Nothing at the moment, I must leave.", null, null, 200, null);
 
             // shop
