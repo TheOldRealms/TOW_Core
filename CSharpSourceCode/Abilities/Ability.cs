@@ -2,12 +2,12 @@
 using TaleWorlds.MountAndBlade;
 using System.Timers;
 using TaleWorlds.Library;
-using TOW_Core.Battle.AI.Components;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using TOW_Core.Abilities.Scripts;
 using Timer = System.Timers.Timer;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Abilities

@@ -1,7 +1,8 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
+using TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
@@ -12,11 +13,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Hysteresis = 0.1f;
         }
 
-        public override void Execute()
+        protected override Target UpdateTarget(Target target)
         {
-            Agent.SelectAbility(AbilityIndex);
-            CastSpellAtCurrentTarget();
+            target.Agent = PowerfulSingleAgentTrackerMissionLogic.ProvideAgentForTeam(Agent.Team);
+            return target;
         }
-        
     }
 }

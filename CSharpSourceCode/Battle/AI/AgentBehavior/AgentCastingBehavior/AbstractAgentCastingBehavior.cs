@@ -7,7 +7,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;

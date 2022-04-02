@@ -40,6 +40,8 @@ using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
 using TOW_Core.Abilities.SpellBook;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
+using TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
@@ -178,6 +180,7 @@ namespace TOW_Core
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
             mission.AddMissionBehavior(new CustomAgentSoundMissionLogic());
+            mission.AddMissionBehavior(new PowerfulSingleAgentTrackerMissionLogic());
             if (Game.Current.GameType is Campaign)
             {
                 if (mission.GetMissionBehavior<BattleAgentLogic>() != null)

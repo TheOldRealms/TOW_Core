@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.AI.AgentBehavior;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.Battle.AI.Components
+namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
