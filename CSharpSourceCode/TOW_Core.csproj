@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Main Project Properties -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -374,8 +374,8 @@
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
-    <Compile Include="Quests\InitialEngineerQuest.cs" />
     <Compile Include="Quests\QuestPartyComponent.cs" />
+    <Compile Include="Quests\EngineerQuest.cs" />
     <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
