@@ -353,7 +353,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         
         private void QuestBeginRogueEngineer()
         {
-            _rogueRogueEngineerQuest = RogueEngineerQuest.GetNew("engineerchaoscultist", 
+            _rogueRogueEngineerQuest = RogueEngineerQuest.GetNew("engineerrogueengineer", 
                 400, 
                 350, 
                 "Runaway Parts", 
@@ -361,8 +361,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 "tor_engineerquesthero", 
                 "Goswin", 
                 "null",
-                "chs_cult_1",
-                "forest_bandits", 
+                "empire_deserter_clan_1",
+                "mountain_bandits", 
                 "It would appear a traitorous Engineer has the stolen parts, the Master Engineer has asked for my help in finding him.",
                 "Track down Goswin and retrieve the stolen components.",
                 "Return to the Master Engineer",
