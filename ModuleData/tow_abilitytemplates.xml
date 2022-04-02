@@ -1,5 +1,346 @@
 <?xml version="1.0"?>
 <ArrayOfAbilityTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- Minor magic -->
+  <AbilityTemplate StringID="Dart" 
+      Name="Magic Bolt" 
+      SpriteName="dart_icon" 
+      CoolDown="12" 
+      WindsOfMagicCost="3" 
+      BaseMisCastChance="0.05" 
+      Duration="300" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="SeekerMissile" 
+      BaseMovementSpeed="15" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="true" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="3" 
+      LightFlickeringInterval="0.7" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="dart_particle" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dart" 
+      ShouldSoundLoopOverDuration="true" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="dart_explosion"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      MaxDistance="100"
+      CrosshairType="SingleTarget"
+      AbilityTargetType="SingleEnemy"
+      TooltipDescription="Hurl a magical bolt at the enemy. The missile homes in on the target and does 20 damage in a 3 meter radius on contact.">
+      <LightColorRGB x="0" y="204" z="255" w="-1">
+        <AsVec2>
+          <y>204</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+      <SeekerParameters Proportional="0.5" Derivative="0" DisableDistance="10"/>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="WardOfArrows" 
+      Name="Ward of Arrows" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="Augment" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="physical_resistance_20"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Adds 20% physical resistance for 15 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="MinorHeal" 
+      Name="Petty Heal" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="20" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="Heal" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="apply_healing_statuseffect"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Heals the caster for 20 health every second for 3 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>  
+  <AbilityTemplate StringID="FoetidCloud" 
+      Name="Foetid Cloud" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.3" 
+      Duration="8" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Blast" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="foetid_cloud" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="gas_cloud_release" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="foetid_cloud_burst"
+      Offset="3"
+      AbilityTargetType="WorldPosition"
+      CrosshairType="Wind"
+      MinDistance="1"
+      MaxDistance="2"
+      TargetCapturingRadius="2"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="A sickly short ranged poisonous gas cloud.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="EnchantWeapon"
+      Name="Enchant Weapon"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="5"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="0"
+      AbilityType="Spell"
+      AbilityEffectType="Augment"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="enchant_weapon"
+      Offset="0.5"
+      AbilityTargetType="SingleAlly"
+      TargetCapturingRadius="1"
+      MaxDistance="20"
+      CrosshairType="SingleTarget"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Buff a target ally's weapon to do additional magic damage.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="AuraOfResistance"
+      Name="Aura of Resistance"
+      SpriteName="fireball_icon"
+      CoolDown="10"
+      WindsOfMagicCost="5"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="3"
+      AbilityType="Spell"
+      AbilityEffectType="Augment"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="physical_resistance_20"
+      Offset="0.5"
+      AbilityTargetType="AlliesInAOE"
+      TargetCapturingRadius="3"
+      MaxDistance="20"
+      CrosshairType="TargetedAOE"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Allies in a 3 meter radius gain 20% physical resistance for 15 seconds.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="StrengthOfCombat" 
+      Name="Strength Of Combat" 
+      SpriteName="healingprayer_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="5" 
+      BaseMisCastChance="0.05" 
+      Duration="0" 
+      Radius="0" 
+      AbilityType="Spell" 
+      AbilityEffectType="Augment" 
+      BaseMovementSpeed="0" 
+      TickInterval="-1" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0"
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="none" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="none" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="physical_bonus_20"
+      Offset="0"
+      AbilityTargetType="Self"
+      CrosshairType="Self"
+      TargetCapturingRadius="1"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Adds 20% physical damage bonus for 15 seconds.">
+      <LightColorRGB x="255" y="255" z="255" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>255</y>
+          <z>255</z>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+  <AbilityTemplate StringID="DustStorm" 
+      Name="Dust Storm" 
+      SpriteName="burninghead_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="4" 
+      BaseMisCastChance="0.3" 
+      Duration="8" 
+      Radius="1" 
+      AbilityType="Spell" 
+      AbilityEffectType="Vortex" 
+      BaseMovementSpeed="0" 
+      TickInterval="1" 
+      TriggerType="EveryTick" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="dust_storm" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="dust_storm" 
+      ShouldSoundLoopOverDuration="false"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="dust_storm"
+      Offset="3"
+      AbilityTargetType="WorldPosition"
+      CrosshairType="Wind"
+      MinDistance="1"
+      MaxDistance="2"
+      TargetCapturingRadius="2"
+      SpellTier="1"
+      BelongsToLoreID="MinorMagic"
+      TooltipDescription="Dry winds from the desert knocks you on your ass.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
+<!-- Lore of Fire -->
+
   <AbilityTemplate StringID="Fireball" 
       Name="Fireball" 
       SpriteName="fireball_icon" 
@@ -166,47 +507,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="Dart" 
-      Name="Magic Bolt" 
-      SpriteName="dart_icon" 
-      CoolDown="12" 
-      WindsOfMagicCost="3" 
-      BaseMisCastChance="0.05" 
-      Duration="300" 
-      Radius="0.4" 
-      AbilityType="Spell" 
-      AbilityEffectType="SeekerMissile" 
-      BaseMovementSpeed="15" 
-      TickInterval="-1" 
-      TriggerType="OnCollision" 
-      HasLight="true" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="3" 
-      LightFlickeringInterval="0.7" 
-      ShadowCastEnabled="true" 
-      ParticleEffectPrefab="dart_particle" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="dart" 
-      ShouldSoundLoopOverDuration="true" 
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_stone" 
-      TriggeredEffectID="dart_explosion"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      MaxDistance="100"
-      CrosshairType="SingleTarget"
-      AbilityTargetType="SingleEnemy"
-      TooltipDescription="Hurl a magical bolt at the enemy. The missile homes in on the target and does 20 damage in a 3 meter radius on contact.">
-      <LightColorRGB x="0" y="204" z="255" w="-1">
-        <AsVec2>
-          <y>204</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-      <SeekerParameters Proportional="0.5" Derivative="0" DisableDistance="10"/>
-  </AbilityTemplate>
+
   <AbilityTemplate StringID="BurningHead" 
       Name="The Burning Head" 
       SpriteName="burninghead_icon" 
@@ -575,90 +876,8 @@
       </AsVec2>
     </LightColorRGB>
     </AbilityTemplate>
-    <AbilityTemplate StringID="AuraOfResistance"
-      Name="Aura of Resistance"
-      SpriteName="fireball_icon"
-      CoolDown="10"
-      WindsOfMagicCost="5"
-      BaseMisCastChance="0.05"
-      Duration="0"
-      Radius="3"
-      AbilityType="Spell"
-      AbilityEffectType="Augment"
-      BaseMovementSpeed="0"
-      TickInterval="-1"
-      TriggerType="TickOnce"
-      HasLight="false"
-      LightIntensity="0"
-      LightRadius="0"
-      LightFlickeringMagnitude="0"
-      LightFlickeringInterval="0"
-      ShadowCastEnabled="true"
-      ParticleEffectPrefab=""
-      ParticleEffectSizeModifier="0"
-      SoundEffectToPlay=""
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant"
-      CastTime="0.5"
-      AnimationActionName="act_release_heavy_thrown"
-      TriggeredEffectID="physical_resistance_20"
-      Offset="0.5"
-      AbilityTargetType="AlliesInAOE"
-      TargetCapturingRadius="3"
-      MaxDistance="20"
-      CrosshairType="TargetedAOE"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="Allies in a 3 meter radius gain 20% physical resistance for 15 seconds.">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate StringID="EnchantWeapon"
-      Name="Enchant Weapon"
-      SpriteName="fireball_icon"
-      CoolDown="10"
-      WindsOfMagicCost="5"
-      BaseMisCastChance="0.05"
-      Duration="0"
-      Radius="0"
-      AbilityType="Spell"
-      AbilityEffectType="Augment"
-      BaseMovementSpeed="0"
-      TickInterval="-1"
-      TriggerType="TickOnce"
-      HasLight="false"
-      LightIntensity="0"
-      LightRadius="0"
-      LightFlickeringMagnitude="0"
-      LightFlickeringInterval="0"
-      ShadowCastEnabled="true"
-      ParticleEffectPrefab=""
-      ParticleEffectSizeModifier="0"
-      SoundEffectToPlay=""
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant"
-      CastTime="0.5"
-      AnimationActionName="act_release_heavy_thrown"
-      TriggeredEffectID="enchant_weapon"
-      Offset="0.5"
-      AbilityTargetType="SingleAlly"
-      TargetCapturingRadius="1"
-      MaxDistance="20"
-      CrosshairType="SingleTarget"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="Buff a target ally's weapon to do additional magic damage.">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
+
+
   <AbilityTemplate StringID="CurseOfYears"
    Name="Curse of Years"
    SpriteName="windofdeath_icon"
@@ -701,132 +920,9 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="MinorHeal" 
-      Name="Minor Heal" 
-      SpriteName="healingprayer_icon" 
-      CoolDown="20" 
-      WindsOfMagicCost="5" 
-      BaseMisCastChance="0.05" 
-      Duration="0" 
-      Radius="0" 
-      AbilityType="Spell" 
-      AbilityEffectType="Heal" 
-      BaseMovementSpeed="0" 
-      TickInterval="-1" 
-      TriggerType="TickOnce" 
-      HasLight="false" 
-      LightIntensity="0" 
-      LightRadius="0" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="none" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="apply_healing_statuseffect"
-      Offset="0"
-      AbilityTargetType="Self"
-      CrosshairType="Self"
-      TargetCapturingRadius="1"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="Heals the caster for 20 health every second for 3 seconds.">
-      <LightColorRGB x="255" y="255" z="255" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>255</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate StringID="WardOfArrows" 
-      Name="Ward of Arrows" 
-      SpriteName="healingprayer_icon" 
-      CoolDown="20" 
-      WindsOfMagicCost="5" 
-      BaseMisCastChance="0.05" 
-      Duration="0" 
-      Radius="0" 
-      AbilityType="Spell" 
-      AbilityEffectType="Augment" 
-      BaseMovementSpeed="0" 
-      TickInterval="-1" 
-      TriggerType="TickOnce" 
-      HasLight="false" 
-      LightIntensity="0" 
-      LightRadius="0" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="none" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="physical_resistance_20"
-      Offset="0"
-      AbilityTargetType="Self"
-      CrosshairType="Self"
-      TargetCapturingRadius="1"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="Adds 20% physical resistance for 15 seconds.">
-      <LightColorRGB x="255" y="255" z="255" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>255</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate StringID="StrengthOfCombat" 
-      Name="Strength Of Combat" 
-      SpriteName="healingprayer_icon" 
-      CoolDown="10" 
-      WindsOfMagicCost="5" 
-      BaseMisCastChance="0.05" 
-      Duration="0" 
-      Radius="0" 
-      AbilityType="Spell" 
-      AbilityEffectType="Augment" 
-      BaseMovementSpeed="0" 
-      TickInterval="-1" 
-      TriggerType="TickOnce" 
-      HasLight="false" 
-      LightIntensity="0"
-      LightRadius="0" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="none" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant" 
-      CastTime="0" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="physical_bonus_20"
-      Offset="0"
-      AbilityTargetType="Self"
-      CrosshairType="Self"
-      TargetCapturingRadius="1"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="Adds 20% physical damage bonus for 15 seconds.">
-      <LightColorRGB x="255" y="255" z="255" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>255</y>
-          <z>255</z>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
+
+
+
   <AbilityTemplate StringID="Tornado"
       Name="Tornado"
       SpriteName="burninghead_icon"
@@ -919,92 +1015,8 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="FoetidCloud" 
-      Name="Foetid Cloud" 
-      SpriteName="burninghead_icon" 
-      CoolDown="10" 
-      WindsOfMagicCost="4" 
-      BaseMisCastChance="0.3" 
-      Duration="8" 
-      Radius="1" 
-      AbilityType="Spell" 
-      AbilityEffectType="Blast" 
-      BaseMovementSpeed="0" 
-      TickInterval="-1" 
-      TriggerType="TickOnce" 
-      HasLight="false" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="foetid_cloud" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="gas_cloud_release" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="foetid_cloud_burst"
-      Offset="3"
-      AbilityTargetType="WorldPosition"
-      CrosshairType="Wind"
-      MinDistance="1"
-      MaxDistance="2"
-      TargetCapturingRadius="2"
-      SpellTier="1"
-      BelongsToLoreID="MinorMagic"
-      TooltipDescription="A sickly short ranged poisonous gas cloud.">
-      <LightColorRGB x="255" y="170" z="0" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>170</y>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate StringID="WindBlast" 
-      Name="Wind Blast" 
-      SpriteName="burninghead_icon" 
-      CoolDown="10" 
-      WindsOfMagicCost="4" 
-      BaseMisCastChance="0.3" 
-      Duration="5" 
-      Radius="1" 
-      AbilityType="Spell" 
-      AbilityEffectType="Blast" 
-      BaseMovementSpeed="0" 
-      TickInterval="-1" 
-      TriggerType="TickOnce" 
-      HasLight="false" 
-      LightIntensity="50" 
-      LightRadius="10" 
-      LightFlickeringMagnitude="0" 
-      LightFlickeringInterval="0" 
-      ShadowCastEnabled="false" 
-      ParticleEffectPrefab="dust_storm" 
-      ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="dust_storm" 
-      ShouldSoundLoopOverDuration="false"
-      CastType="WindUp" 
-      CastTime="0.5" 
-      AnimationActionName="act_release_heavy_thrown" 
-      TriggeredEffectID="dust_storm"
-      Offset="3"
-      AbilityTargetType="WorldPosition"
-      CrosshairType="Wind"
-      MinDistance="1"
-      MaxDistance="2"
-      TargetCapturingRadius="2"
-      SpellTier="2"
-      BelongsToLoreID="LoreOfHeavens"
-      TooltipDescription="Dry winds from the desert knocks you on your ass.">
-      <LightColorRGB x="255" y="170" z="0" w="-1">
-        <AsVec2>
-          <x>255</x>
-          <y>170</y>
-        </AsVec2>
-      </LightColorRGB>
-  </AbilityTemplate>
+
+
   <AbilityTemplate StringID="Thunderbolt" 
       Name="Urannon's Thunderbolt" 
       SpriteName="burninghead_icon" 
