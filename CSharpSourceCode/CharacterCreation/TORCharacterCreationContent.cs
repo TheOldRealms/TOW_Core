@@ -148,12 +148,6 @@ namespace TOW_Core.CharacterCreation
         private void OnOptionFinalize(string id)
         {
             var selectedOption = _options.Find(x => x.Id == id);
-            if (selectedOption.OptionText == "Engineering Student")
-            {
-                Hero.MainHero.AddAttribute("AbilityUser");
-                Hero.MainHero.AddAttribute("CanPlaceArtillery");
-            }
-
             if (selectedOption.OptionText == "Bright Order Initiate")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");

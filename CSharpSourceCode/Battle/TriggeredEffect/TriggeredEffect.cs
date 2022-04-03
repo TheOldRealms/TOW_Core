@@ -6,8 +6,6 @@ using System;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using System.Collections.Generic;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.Damage;
-using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {

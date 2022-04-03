@@ -1087,7 +1087,7 @@
       <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="TOR_wizard_hall_001_forceatmo" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
+      <Location id="house_2" scene_name="TOR_engineer_office_002" />
       <Location id="house_3" scene_name="empire_house_d_interior_house" />
     </Locations>
     <CommonAreas>

@@ -110,7 +110,7 @@ namespace TOW_Core.CampaignSupport.RegimentsOfRenown
             var kvp = _rorSettlementDetails[Settlement.CurrentSettlement].ElementAtOrDefault(index);
             if (kvp.Value > 0)
             {
-                var cost = Campaign.Current.Models.PartyWageModel.GetTroopRecruitmentCost(kvp.Key, Hero.MainHero, false);
+                var cost = Campaign.Current.Models.PartyWageModel.GetTroopRecruitmentCost(kvp.Key, Hero.MainHero, false) * 10;
                 cost *= kvp.Value;
                 MBTextManager.SetTextVariable("MEN_COUNT", kvp.Value);
                 MBTextManager.SetTextVariable("TROOP_NAME", kvp.Key.Name);
