@@ -121,9 +121,12 @@ namespace TOW_Core.Quests
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
         {
             if (mapEvent.Winner == null) return;
-            if (mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (!mapEvent.IsPlayerMapEvent|| mapEvent.InvolvedParties.All(party => party.MobileParty != _targetParty)) return;
             if (mapEvent.Winner.MissionSide == mapEvent.PlayerSide) return;
             CompleteQuestWithFail();
+            AddDiscreteLog( new TextObject("I failed... I was beaten. I need to return to the Master Engineer with the news."),
+                new TextObject("Return to the Master Engineer in Nuln"), 
+                _destroyedParty, 1); 
             _targetParty.RemoveParty();
         }
         
