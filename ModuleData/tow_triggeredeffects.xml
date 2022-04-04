@@ -109,7 +109,7 @@
             SoundEffectId="none" 
             SoundEffectLength="0" 
             DamageType="Magical" 
-            DamageAmount="10" 
+            DamageAmount="5" 
             Radius="2.5" 
             HasShockWave="true" 
             TargetType="All" 

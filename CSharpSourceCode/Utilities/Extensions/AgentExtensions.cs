@@ -413,6 +413,7 @@ namespace TOW_Core.Utilities.Extensions
                             blow.BlowFlag = BlowFlags.CanDismount;
                         else
                             blow.BlowFlag = BlowFlags.KnockDown;
+                        if (agent == damager) blow.BlowFlag = BlowFlags.None;
                     }
                     if (damager != null)
                     {

@@ -72,13 +72,22 @@ namespace TOW_Core.Abilities
                 }
                 else if(Game.Current.GameType is CustomGame)
                 {
-                    var ability = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
-                    if (ability != null)
+                    var ability1 = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
+                    if (ability1 != null)
                     {
-                        ability.OnCastStart += OnCastStart;
-                        ability.OnCastComplete += OnCastComplete;
-                        ability.SetChargeNum(2);
-                        _knownAbilities.Add(ability);
+                        ability1.OnCastStart += OnCastStart;
+                        ability1.OnCastComplete += OnCastComplete;
+                        ability1.SetChargeNum(2);
+                        _knownAbilities.Add(ability1);
+                    }
+
+                    var ability2 = (ItemBoundAbility)AbilityFactory.CreateNew("MortarSpawner", agent);
+                    if (ability2 != null)
+                    {
+                        ability2.OnCastStart += OnCastStart;
+                        ability2.OnCastComplete += OnCastComplete;
+                        ability2.SetChargeNum(2);
+                        _knownAbilities.Add(ability2);
                     }
                 }
             }
