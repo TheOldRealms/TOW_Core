@@ -282,10 +282,12 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 "forest_bandits",
                 "The Master Engineer has tasked me with hunting down thieving runaways, I should find them and bring back what they stole.",
                 "Track down runaway thieves",
+                "I found the thieves, but they did not have the stolen components. I should return to the Master Engineer with the news.",
                 "Return to the Master Engineer",
                 "Damn you ...");
             _cultistKillQuest?.StartQuest();
         }
+        
 
         private void QuestBeginRogueEngineer()
         {
@@ -301,6 +303,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 "mountain_bandits",
                 "It would appear a traitorous Engineer has the stolen parts, the Master Engineer has asked for my help in finding him.",
                 "Track down Goswin and retrieve the stolen components.",
+                "I have slain "+_rogueEngineerName +" and retrieved the stolen components, I should return to the Master Engineer and let him know.",
                 "Return to the Master Engineer",
                 "You have no idea what you are interfering with...");
             _rogueEngineerQuest?.StartQuest();

@@ -25,16 +25,17 @@ namespace TOW_Core.Quests
         [SaveableField(12)] private TextObject _missionLogText1=null;
         [SaveableField(13)] private TextObject _missionLogTextShort1=null;
         [SaveableField(14)] private TextObject _missionLogText2=null;
-        [SaveableField(15)] private TextObject _defeatDialogLine = null;
-        [SaveableField(16)] private bool _failstate;
-        [SaveableField(17)] private int _rewardXP;
+        [SaveableField(15)] private TextObject _missionLogTextShort2=null;
+        [SaveableField(16)] private TextObject _defeatDialogLine = null;
+        [SaveableField(17)] private bool _failstate;
+        [SaveableField(18)] private int _rewardXP;
         private bool _initAfterReload;
         private bool _skipImprisonment;
         
         public EngineerQuest(string questId,Hero questGiver, CampaignTime duration, int rewardGold, int rewardXP, string questTitle, string leaderName,
             string leaderTemplate, string targetPartyName, string partyTemplateId, string factionID,
             string spawnLocationOwnerId, string missionLogText1, string missionLogText2=null,
-            string missionLogTextShort1=null, string defeatDialogLine=null) : base(
+            string missionLogTextShort1=null, string missionLogTextShort2=null, string defeatDialogLine=null) : base(
             questId, questGiver, duration, rewardGold)
         {
             _title = new TextObject(questTitle);
@@ -48,6 +49,7 @@ namespace TOW_Core.Quests
             _missionLogText1 = new TextObject(missionLogText1);
             _missionLogText2 = new TextObject(missionLogText2);
             _missionLogTextShort1 = new TextObject(missionLogTextShort1);
+            _missionLogTextShort2 = new TextObject(missionLogTextShort2);
             _defeatDialogLine = new TextObject(defeatDialogLine);
             
             SetLogs();
@@ -119,9 +121,12 @@ namespace TOW_Core.Quests
         private void QuestBattleEndedWithFail(MapEvent mapEvent)
         {
             if (mapEvent.Winner == null) return;
-            if (mapEvent.IsPlayerMapEvent|| !mapEvent.InvolvedParties.Any(party => party.MobileParty == _targetParty)) return;
+            if (!mapEvent.IsPlayerMapEvent|| mapEvent.InvolvedParties.All(party => party.MobileParty != _targetParty)) return;
             if (mapEvent.Winner.MissionSide == mapEvent.PlayerSide) return;
             CompleteQuestWithFail();
+            AddDiscreteLog( new TextObject("I failed... I was beaten. I need to return to the Master Engineer with the news."),
+                new TextObject("Return to the Master Engineer in Nuln"), 
+                _destroyedParty, 1); 
             _targetParty.RemoveParty();
         }
         
@@ -160,7 +165,9 @@ namespace TOW_Core.Quests
 
             if (_task1.HasBeenCompleted() && _task2 == null)
             {
-                _task2 = AddLog(_missionLogText2);
+                _task2 = _missionLogTextShort2!=null ? 
+                    AddDiscreteLog(_missionLogText2, _missionLogTextShort2, _destroyedParty, 1) : 
+                    AddLog(_missionLogText2);
             }
         }
         
@@ -212,9 +219,11 @@ namespace TOW_Core.Quests
             string missionLogText1,
             string missionLogTextShort1,
             string missionLogText2,
+            string missionLogTextShort2,
             string defeatDialog)
         {
-            return new EngineerQuest(questId, 
+            return new EngineerQuest(
+                questId, 
                 Hero.OneToOneConversationHero,
                 CampaignTime.DaysFromNow(30),
                 questRewardGold,
@@ -226,7 +235,11 @@ namespace TOW_Core.Quests
                 partyTemplate,
                 factionId,
                 spawnLocationOwnerId,
-                missionLogText1, missionLogText2,missionLogTextShort1,defeatDialog
+                missionLogText1,
+                missionLogText2,
+                missionLogTextShort1,
+                missionLogTextShort2,
+                defeatDialog
                 );
         }
         
