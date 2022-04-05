@@ -794,7 +794,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_first_5" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_first_5}Fridebraht Pfeifracher" occupation="Lord" culture="Culture.empire" voice="curt" age="26" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="26" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="26" weight="0.178" build="0.7003" key="001B640FC000308FEE76648767538F0E7EFE866254C13061C4B6479F8C95A0370177761407A749F300000000000000000000000000000000000000003AF47002" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -812,7 +812,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_first_6" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_first_6}Sigmara Pfeifracher" occupation="Lord" culture="Culture.empire" voice="curt" age="48" skill_template="SkillSet.custombattle_commander_1_template_skills" is_female="true" is_hero="true">
     <face>
-      <BodyProperties version="4" age="50" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="50" weight="0.6327" build="0.5" key="0015640F0000300FEE76648767597F1F097C866254C13061CFB647E68C95A03704B796460BABD9F300000000000000000000000000000000000000003B744003" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -830,7 +830,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_first_7" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_first_7}Marshall Wolfhart von Liebwitz" occupation="Lord" culture="Culture.empire" voice="curt" age="50" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="48" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="48" weight="0.2685" build="0.2407" key="00132000970022CF7C71540F10E38F8A75778669AAC69643C4B647398C95A03701B446140BA7497300000000000000000000000000000000000000003B644002" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -920,7 +920,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_second_5" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_second_5}Baron Frederich Herbart" occupation="Lord" culture="Culture.empire" voice="curt" age="30" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="30" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="30" weight="0.6265" build="0.7654" key="001EB00AD50038C0FD9F04EE0110F0111110466250480F43C4B6473981F010F0046B964606A7497300000000000000000000000000000000000000003ADC7002" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -938,7 +938,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_second_6" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_second_6}Hellenboldus Herbart" occupation="Lord" culture="Culture.empire" voice="curt" age="26" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="26" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="26" weight="0.2994" build="0.2191" key="001EB006C0003002FD9F04EE0110F0111110466250480F43C4B6476581F010F00C7346C20AA34513000000000000000000000000000000000000000062FC7004" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -956,7 +956,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_third_1" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_third_1}Baron Manfred von Eigenhof" occupation="Lord" culture="Culture.empire" voice="curt" age="30" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="30" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="30" weight="0.4398" build="0.5617" key="001BD40C4000328C7C7934E09C1BDDEF000085DAE4C6C6FCC4B647FF810015010498764609A7497300000000000000000000000000000000000000003B349002" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -974,7 +974,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_third_2" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_third_2}Baron Johann von Kalb" occupation="Lord" culture="Culture.empire" voice="curt" age="30" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="30" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="30" weight="0.4415" build="0.6484" key="001048080000200D3A5D96988AAA3A78AC299385B97994C86DAC4558982C3889047A764607CA1787000000000000000000000000000000000000000056E43042" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -992,7 +992,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_third_3" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_third_3}Baron Vincentus Preiss" occupation="Lord" culture="Culture.empire" voice="curt" age="30" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="30" weight="0.5021" build="0.7973" key="00057C0980B4310476B8A28284A4957B6A21AB557A66379A51298D8845997C6D008C86030846CDAA000000000000000000000000000000000000000063049000" />
+      <BodyProperties version="4" age="30" weight="0.588" build="1" key="000000AC0003384797F643E475CDCBEC34E866155A0F6777441DA4F838BF6AF04BF96460BFFB7A100000000000000000000000000000000000000003D740002" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1010,7 +1010,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_emp_lord_wissenland_third_4" default_group="cavalry" name="{=str_ tor_emp_lord_wissenland_third_4}Baroness Katarina von Heisenberg" occupation="Lord" culture="Culture.empire" voice="curt" age="30" skill_template="SkillSet.custombattle_commander_1_template_skills" is_female="true" is_hero="true">
     <face>
-      <BodyProperties version="4" age="30" weight="0.5648" build="0.5648" key="001B74061000300B017664876F06FF0FEBFF85E10F49FEFEFFEEF730B717616E0368863506E009F000000000000000000000000000000000000000003ABC3003" />
+      <BodyProperties version="4" age="30" weight="0.3056" build="0.1173" key="001B840FC000300F7C626789968081963575866254CA9D93C4B647398C956014033256350311497300000000000000000000000000000000000000003A640003" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1604,7 +1604,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_dog_clan_hero_muktar" default_group="cavalry" name="{=str_ tor_dog_clan_hero_muktar}Al-Muktar" occupation="Lord" culture="Culture.empire" voice="curt" age="38" skill_template="SkillSet.custombattle_commander_1_template_skills" is_hero="true">
     <face>
-      <BodyProperties version="4" age="28" weight="0.15" build="0.58" key="0029C80FC0001402BA756445533377873CD1833B3101B44A21C3C5347CA32C2600B926030BBC35E80000000000000000000000000000000000000000436C1042" />
+      <BodyProperties version="4" age="28" weight="0.3133" build="0.584" key="0020000200E40A02A872AA5732965974325696BBA4475A7A7C489A2776E364A600B956030B486B3500000000000000000000000000000000000000002D647140" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />

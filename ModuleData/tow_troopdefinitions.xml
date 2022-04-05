@@ -88,7 +88,7 @@
       <EquipmentSet id="tor_empire_veteran_swordsman_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_halberdier" default_group="infantry" level="21" name="{=str_tor_empire_halberdier}Empire Halberdier" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_empire_halberdier" default_group="infantry" level="26" name="{=str_tor_empire_halberdier}Empire Halberdier" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -918,6 +918,39 @@
     <Equipments>
       <EquipmentSet id="tor_chaos_khorne_warrior_template" />
       <EquipmentSet id="tor_chaos_khorne_warrior_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_beast_ungor" default_group="infantry" level="11" name="{=str_tor_beast_ungor}Ungor" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_beast_shielded_ungor" />
+      <upgrade_target id="NPCCharacter.tor_beast_ungor_raider" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentSet id="tor_beast_ungor_template" />
+      <EquipmentSet id="tor_beast_ungor_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_beast_shielded_ungor" default_group="infantry" level="16" name="{=str_tor_beast_shielded_ungor}Shielded Ungor" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level16">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_beast_shielded_ungor_template" />
+      <EquipmentSet id="tor_beast_shielded_ungor_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_beast_ungor_raider" default_group="ranged" level="16" name="{=str_tor_beast_ungor_raider}Ungor Raider" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level16">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_beast_ungor_raider_template" />
+      <EquipmentSet id="tor_beast_ungor_raider_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
   <NPCCharacter id="tor_dog_braganza_01" default_group="ranged" level="21" name="{=str_tor_dog_braganza_01}Besieger Crossbowman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
