@@ -286,7 +286,7 @@
 							<variable name="RecoilDuration" value="0.100"/>
 							<variable name="Recoil2Duration" value="0.800"/>
 							<variable name="MinPitch" value="-10"/>
-							<variable name="MaxPitch" value="40"/>
+							<variable name="MaxPitch" value="25"/>
 							<variable name="IdleActionName" value="act_walk_idle_torch"/>
 							<variable name="ShootActionName" value="act_usage_mangonel_big_shoot"/>
 							<variable name="Reload1ActionName" value="act_usage_mangonel_big_reload"/>
