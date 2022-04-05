@@ -352,8 +352,9 @@ namespace TOW_Core.Abilities
             {
                 if (casterAgent.IsAIControlled)
                 {
-                    //TODO get logic for selecting single targets for AI
-                    //AbilityScript.SetTargetSeeking(casterAgent.GetComponent<WizardAIComponent>().CurrentCastingBehavior.CurrentTarget, Template.SeekerParameters);
+                    var wizardAIComponent = casterAgent.GetComponent<WizardAIComponent>();
+                    var target = wizardAIComponent.CurrentCastingBehavior.CurrentTarget;
+                    AbilityScript.SetExplicitSingleTarget(target.Agent);
                 }
                 else if (Crosshair.CrosshairType == CrosshairType.SingleTarget)
                 {

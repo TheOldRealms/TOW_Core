@@ -6,6 +6,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic
 {
+    //TODO: Will be used in future versions. Currently shelved for lack of time.
     public class PowerfulSingleAgentTrackerMissionLogic : MissionLogic
     {
         private static readonly float EvalInterval = 5;

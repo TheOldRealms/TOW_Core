@@ -36,7 +36,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             adjustedPosition.z = Mission.Current.Scene.GetGroundHeightAtPosition(adjustedPosition)+0.25f;
-            target.WorldPosition = adjustedPosition;
+            target.SelectedWorldPosition = adjustedPosition;
 
             return target;
         }

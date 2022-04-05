@@ -20,11 +20,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 {
                     AbilityEffectType.Heal, (agent, abilityIndex, abilityTemplate) =>
                     {
-                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
-                            return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
                         if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE)
                             return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
-                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self ||
+                            abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
                             return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
                         return new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex);
                     }
@@ -44,11 +43,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 {
                     AbilityEffectType.Augment, (agent, abilityIndex, abilityTemplate) =>
                     {
-                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
-                            return new SelfCastingBehavior(agent, abilityTemplate, abilityIndex);
                         if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE)
                             return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
-                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
+                        if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self ||
+                            abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
                             return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
                         return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
                     }

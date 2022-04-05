@@ -1,7 +1,5 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.AI.AgentBehavior.Components;
-using TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic;
 using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
@@ -15,7 +13,21 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override Target UpdateTarget(Target target)
         {
-            target.Agent = PowerfulSingleAgentTrackerMissionLogic.ProvideAgentForTeam(Agent.Team);
+            switch (AbilityTemplate.AbilityTargetType)
+            {
+                case AbilityTargetType.Self:
+                {
+                    target.Agent = Agent;
+                    break;
+                }
+                default:
+                {
+                    target.Agent = target.Formation.GetMedianAgent(true, false, target.Formation.CurrentPosition);
+                    break;
+                }
+            }
+
+            //  target.Agent = PowerfulSingleAgentTrackerMissionLogic.ProvideAgentForTeam(Agent.Team);
             return target;
         }
     }

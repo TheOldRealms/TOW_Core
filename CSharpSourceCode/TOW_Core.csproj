@@ -332,7 +332,6 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AoEDirectionalCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SelectMultiTargetCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SelectSingleTargetCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SelfCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SummoningCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AoETargetedCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />

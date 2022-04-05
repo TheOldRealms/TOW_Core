@@ -180,7 +180,6 @@ namespace TOW_Core
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
             mission.AddMissionBehavior(new ArtilleryViewController());
             mission.AddMissionBehavior(new CustomAgentSoundMissionLogic());
-            mission.AddMissionBehavior(new PowerfulSingleAgentTrackerMissionLogic());
             if (Game.Current.GameType is Campaign)
             {
                 if (mission.GetMissionBehavior<BattleAgentLogic>() != null)
