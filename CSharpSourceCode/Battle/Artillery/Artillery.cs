@@ -89,7 +89,7 @@ namespace TOW_Core.Battle.Artillery
             get => _currentYaw;
             private set => _currentYaw = value;
         }
-        private float _tolerance = 0.1f;
+        private float _tolerance = 0.05f;
 
 
         private float miniumMuzzleVelocity = 20f;
@@ -686,18 +686,34 @@ namespace TOW_Core.Battle.Artillery
         internal bool CanShootAtTarget()
         {
             if (!HasTarget) return false;
+            else if (IsShootingBlocked()) return false;
             else
             {
                 return CanShootAtPoint(GetTargetPosition());
             }
         }
-        
+
+        private bool IsShootingBlocked()
+        {
+            float collisionDistance;
+            Vec3 collisionPoint;
+            GameEntity collidedEntity;
+            var hit = Mission.Current.RayCastForClosestAgent(_projectileReleasePoint.GlobalPosition, _projectileReleasePoint.GetGlobalFrame().Advance(3).origin, out collisionDistance);
+            if (hit != null) return true;
+            else
+            {
+                Scene.RayCastForClosestEntityOrTerrain(_projectileReleasePoint.GetGlobalFrame().Advance(1f).origin,
+                _projectileReleasePoint.GetGlobalFrame().Advance(3).origin, out collisionDistance, out collisionPoint, out collidedEntity, 0.8f);
+                if (collisionDistance < 3 && collisionDistance >= 0) return true;
+                else return false;
+            }
+        }
+
         private Vec3 GetTargetPosition()
         {
             var speedOfTarget = _target.Formation.GetMovementSpeedOfUnits();
             if (speedOfTarget > 0.01 && _currentCalculatedFlightTime > 1.0f) 
             {
-
                 return _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(Mathf.Abs(_currentCalculatedFlightTime+speedOfTarget)).origin;
             }
             return  _target.Formation.GetMedianAgent(true, true, _target.Formation.GetAveragePositionOfUnits(true, true)).Frame.Advance(speedOfTarget).origin;
