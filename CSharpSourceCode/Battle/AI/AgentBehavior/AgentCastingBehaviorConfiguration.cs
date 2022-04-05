@@ -68,13 +68,14 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             new Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>>
             {
                 {typeof(PreserveWindsAgentCastingBehavior), CreatePreserveWindsAxis()},
-
-                {typeof(AoEAdjacentCastingBehavior), CreateStaticAoEAxis()},
-                {typeof(AoETargetedCastingBehavior), CreateOffensiveSpellAxis()},
+                
+                {typeof(MissileCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
+                {typeof(AoEAdjacentCastingBehavior), CreateAoEAdjacentSpellAxis()},
+                {typeof(AoETargetedCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
+                {typeof(AoEDirectionalCastingBehavior), CreateAoEDirectionalSpellAxis()},
+                
                 {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
-                {typeof(AoEDirectionalCastingBehavior), CreateDirectionalMovingAoEAxis()},
-                {typeof(MissileCastingBehavior), CreateOffensiveSpellAxis()},
             };
 
         public static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
@@ -105,7 +106,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             };
         }
 
-        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateStaticAoEAxis()
+        private static Func<AbstractAgentCastingBehavior, List<Axis>> CreateAoEAdjacentSpellAxis()
         {
             return behavior =>
             {
@@ -137,7 +138,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             };
         }
 
-        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateOffensiveSpellAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateAoETargetedOffensiveSpellAxis()
         {
             return behavior =>
             {
@@ -151,7 +152,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
         }
 
 
-        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateDirectionalMovingAoEAxis()
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateAoEDirectionalSpellAxis()
         {
             return behavior =>
             {
