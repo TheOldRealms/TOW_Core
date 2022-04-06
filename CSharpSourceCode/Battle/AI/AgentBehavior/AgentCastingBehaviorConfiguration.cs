@@ -26,7 +26,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                         if (abilityTemplate.AbilityTargetType == AbilityTargetType.Self ||
                             abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
                             return new SelectSingleTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
-                        return new AoETargetedCastingBehavior(agent, abilityTemplate, abilityIndex);
+                        return new SelectMultiTargetCastingBehavior(agent, abilityTemplate, abilityIndex);
                     }
                 },
 
@@ -64,27 +64,25 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 //   {AbilityEffectType.ArtilleryPlacement,(agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
             };
 
-        public static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
+        public static List<Target> FindTargets(Agent agent, AbilityTemplate abilityTemplate)
         {
-            switch (targetType)
-            {
-                case AbilityTargetType.AlliesInAOE:
-                    return agent.Team.QuerySystem.AllyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-                case AbilityTargetType.SingleAlly:
-                case AbilityTargetType.Self:
-                    return new List<Target>()
-                    {
-                        new Target {Agent = agent}
-                    };
-                default:
-                    return agent.Team.QuerySystem.EnemyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-            }
+            if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE ||
+                abilityTemplate.AbilityEffectType == AbilityEffectType.Heal)
+                return agent.Team.QuerySystem.AllyTeams
+                    .SelectMany(team => team.Team.Formations)
+                    .Select(form => new Target {Formation = form})
+                    .ToList();
+            if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly ||
+                abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
+                return new List<Target>()
+                {
+                    new Target {Agent = agent}
+                };
+
+            return agent.Team.QuerySystem.EnemyTeams
+                .SelectMany(team => team.Team.Formations)
+                .Select(form => new Target {Formation = form})
+                .ToList();
         }
 
         public static readonly Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>> UtilityByType =
@@ -143,7 +141,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 if (behavior.AbilityTemplate.AbilityTargetType != AbilityTargetType.Self)
                 {
                     axes.Add(new Axis(0, 100, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)));
-                    axes.Add(new Axis(0, 7, x => 1 - x, CommonAIDecisionFunctions.FormationDistanceToHostiles()));
+                    axes.Add(new Axis(0, 5, x => 1 - x, CommonAIDecisionFunctions.FormationDistanceToHostiles()));
                     axes.Add(new Axis(0, 3, x => 1 - x + 0.1f, CommonAIDecisionFunctions.TargetSpeed()));
                     axes.Add(new Axis(0, 0.5f, x => x + 0.01f, CommonAIDecisionFunctions.FormationUnderFire()));
                 }

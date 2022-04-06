@@ -219,7 +219,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities>
-      <string>FlamingSwords</string>
+      <string>HealingAOE</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

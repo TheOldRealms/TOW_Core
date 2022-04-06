@@ -533,7 +533,7 @@
     </LightColorRGB>
   </AbilityTemplate>
   -->
-  <AbilityTemplate StringID="FlamingSwords"
+    <AbilityTemplate StringID="FlamingSwords"
       Name="Flaming Sword of Rhuin"
       SpriteName="fireball_icon"
       CoolDown="10"

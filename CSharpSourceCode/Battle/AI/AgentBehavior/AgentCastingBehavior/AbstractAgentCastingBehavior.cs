@@ -105,7 +105,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public List<BehaviorOption> CalculateUtility()
         {
-            LatestScores = AgentCastingBehaviorConfiguration.FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+            LatestScores = AgentCastingBehaviorConfiguration.FindTargets(Agent, AbilityTemplate)
                 .Select(target =>
                 {
                     target.UtilityValue = CalculateUtility(target);
