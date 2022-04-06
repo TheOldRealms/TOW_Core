@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
@@ -8,7 +9,7 @@ using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior
 {
-    public static class AgentCastingBehaviorMapping
+    public static class AgentCastingBehaviorConfiguration
     {
         public static readonly Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>> BehaviorByType =
             new Dictionary<AbilityEffectType, Func<Agent, int, AbilityTemplate, AbstractAgentCastingBehavior>>
@@ -63,19 +64,43 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 //   {AbilityEffectType.ArtilleryPlacement,(agent, abilityIndex, abilityTemplate) => new SummoningCastingBehavior(agent, abilityTemplate, abilityIndex)},
             };
 
+        public static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
+        {
+            switch (targetType)
+            {
+                case AbilityTargetType.AlliesInAOE:
+                    return agent.Team.QuerySystem.AllyTeams
+                        .SelectMany(team => team.Team.Formations)
+                        .Select(form => new Target {Formation = form})
+                        .ToList();
+                case AbilityTargetType.SingleAlly:
+                case AbilityTargetType.Self:
+                    return new List<Target>()
+                    {
+                        new Target {Agent = agent}
+                    };
+                default:
+                    return agent.Team.QuerySystem.EnemyTeams
+                        .SelectMany(team => team.Team.Formations)
+                        .Select(form => new Target {Formation = form})
+                        .ToList();
+            }
+        }
 
         public static readonly Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>> UtilityByType =
             new Dictionary<Type, Func<AbstractAgentCastingBehavior, List<Axis>>>
             {
                 {typeof(PreserveWindsAgentCastingBehavior), CreatePreserveWindsAxis()},
-                
-                {typeof(MissileCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
-                {typeof(AoEAdjacentCastingBehavior), CreateAoEAdjacentSpellAxis()},
-                {typeof(AoETargetedCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
-                {typeof(AoEDirectionalCastingBehavior), CreateAoEDirectionalSpellAxis()},
-                
-                {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
 
+                {typeof(MissileCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
+                {typeof(AoETargetedCastingBehavior), CreateAoETargetedOffensiveSpellAxis()},
+                {typeof(AoEAdjacentCastingBehavior), CreateAoEAdjacentSpellAxis()},
+                {typeof(AoEDirectionalCastingBehavior), CreateAoEDirectionalSpellAxis()},
+
+                {typeof(SelectMultiTargetCastingBehavior), CreateBuffSpellAxis()},
+                {typeof(SelectSingleTargetCastingBehavior), CreateBuffSpellAxis()},
+
+                {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
             };
 
         public static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
@@ -151,6 +176,19 @@ namespace TOW_Core.Battle.AI.AgentBehavior
             };
         }
 
+        public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateBuffSpellAxis()
+        {
+            return behavior =>
+            {
+                return new List<Axis>
+                {
+                    new Axis(0, 50, x => ScoringFunctions.Logistic(0.4f, 1, 20).Invoke(1 - x), CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Position)),
+                    new Axis(0, 15, x => 1 - x, CommonAIDecisionFunctions.FormationDistanceToHostiles()),
+                    new Axis(0, CommonAIDecisionFunctions.CalculateTeamTotalPower(behavior.Agent.Team), x => x, CommonAIDecisionFunctions.FormationPower()),
+                    new Axis(1, 2.5f, x => 1 - x, CommonAIDecisionFunctions.Dispersedness()),
+                };
+            };
+        }
 
         public static Func<AbstractAgentCastingBehavior, List<Axis>> CreateAoEDirectionalSpellAxis()
         {

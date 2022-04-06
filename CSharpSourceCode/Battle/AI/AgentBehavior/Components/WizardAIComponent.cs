@@ -15,7 +15,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         public AbstractAgentCastingBehavior CurrentCastingBehavior;
 
         private List<IAgentBehavior> _availableCastingBehaviors; //Do not access this directly. Use the generator function public method below.
-        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(AgentCastingBehaviorMapping.PrepareCastingBehaviors(Agent)));
+        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(AgentCastingBehaviorConfiguration.PrepareCastingBehaviors(Agent)));
 
         public WizardAIComponent(Agent agent) : base(agent)
         {

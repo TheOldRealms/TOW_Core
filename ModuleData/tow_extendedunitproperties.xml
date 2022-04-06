@@ -219,7 +219,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities>
-      <string>CometOfCasandora</string>
+      <string>FlamingSwords</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -233,7 +233,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
     <Abilities>
-      <string>Tornado</string>
+      <string>AuraOfResistance</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

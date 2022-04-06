@@ -40,7 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             AbilityTemplate = abilityTemplate;
-            _axisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            _axisList = AgentCastingBehaviorConfiguration.UtilityByType[GetType()](this);
             TacticalBehavior = new KeepSafeAgentTacticalBehavior(Agent, Agent.GetComponent<WizardAIComponent>());
         }
 
@@ -105,7 +105,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         public List<BehaviorOption> CalculateUtility()
         {
-            LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+            LatestScores = AgentCastingBehaviorConfiguration.FindTargets(Agent, AbilityTemplate.AbilityTargetType)
                 .Select(target =>
                 {
                     target.UtilityValue = CalculateUtility(target);
@@ -126,28 +126,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
             return _axisList.GeometricMean(target) + hysteresis;
-        }
-
-        protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
-        {
-            switch (targetType)
-            {
-                case AbilityTargetType.AlliesInAOE:
-                    return agent.Team.QuerySystem.AllyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-                case AbilityTargetType.Self:
-                    return new List<Target>()
-                    {
-                        new Target {Agent = agent}
-                    };
-                default:
-                    return agent.Team.QuerySystem.EnemyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-            }
         }
     }
 }

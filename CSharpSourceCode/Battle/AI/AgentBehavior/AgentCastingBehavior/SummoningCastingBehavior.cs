@@ -12,6 +12,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             Hysteresis = 0.1f;
         }
 
+
         public override void Execute()
         {
             Agent.SelectAbility(AbilityIndex);
