@@ -191,7 +191,13 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_young_noble_squire">
-    <Abilities />
+    <Abilities>
+      <string>SummonSkeleton</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
     <Attributes />
     <Resistances />
     <DamageAmplifiers />
@@ -200,8 +206,13 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_noble_cavalry">
-    <Abilities />
-    <Attributes />
+    <Abilities>
+      <string>EnchantWeapon</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -219,7 +230,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities>
-      <string>HealingAOE</string>
+      <string>CurseOfYears</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -233,7 +244,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
     <Abilities>
-      <string>AuraOfResistance</string>
+      <string>WardOfArrows</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>

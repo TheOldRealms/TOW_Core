@@ -123,7 +123,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="SummonSkeleton" 
+      <AbilityTemplate StringID="SummonSkeleton" 
       Name="Summon Skeleton" 
       SpriteName="summonskeleton_icon" 
       CoolDown="40" 
@@ -166,7 +166,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="Dart" 
+      <AbilityTemplate StringID="Dart" 
       Name="Magic Bolt" 
       SpriteName="dart_icon" 
       CoolDown="12" 
@@ -294,7 +294,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="HealingAOE" 
+      <AbilityTemplate StringID="HealingAOE" 
       Name="Healing AOE" 
       SpriteName="healingprayer_icon" 
       CoolDown="40" 
@@ -785,7 +785,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="StrengthOfCombat" 
+     <AbilityTemplate StringID="StrengthOfCombat" 
       Name="Strength Of Combat" 
       SpriteName="healingprayer_icon" 
       CoolDown="10" 

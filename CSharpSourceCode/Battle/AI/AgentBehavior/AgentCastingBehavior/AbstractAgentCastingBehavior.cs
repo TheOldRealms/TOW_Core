@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
@@ -83,6 +79,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             {
                 case AbilityEffectType.Bombardment:
                 case AbilityEffectType.Vortex:
+                case AbilityEffectType.Heal:
+                case AbilityEffectType.Hex:
+                case AbilityEffectType.Augment:
                 {
                     time = AbilityTemplate.CastTime;
                     break;

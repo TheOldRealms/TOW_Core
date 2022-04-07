@@ -4,7 +4,7 @@ using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
-    public class SelectSingleTargetCastingBehavior : AbstractAgentCastingBehavior
+    public class SelectSingleTargetCastingBehavior : AoETargetedCastingBehavior
     {
         public SelectSingleTargetCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template, abilityIndex)
         {
@@ -22,7 +22,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
                 }
                 default:
                 {
-                    target.Agent = target.Formation.GetMedianAgent(true, false, target.Formation.CurrentPosition);
+                    target = base.UpdateTarget(target);
                     break;
                 }
             }

@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using TaleWorlds.MountAndBlade;
+using System.Collections.Generic;
 using System.Linq;
-using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic
 {
-    //TODO: Will be used in future versions. Currently shelved for lack of time.
-    public class PowerfulSingleAgentTrackerMissionLogic : MissionLogic
+    public class QuerySystemExtensionsMissionLogic : MissionLogic
     {
         private static readonly float EvalInterval = 5;
         private static Dictionary<Team, List<Agent>> _mostPowerfulAgentsByTeam;
+
         private float _dtSinceLastOccasional;
 
-
-        public PowerfulSingleAgentTrackerMissionLogic()
+        public QuerySystemExtensionsMissionLogic()
         {
             _mostPowerfulAgentsByTeam = new Dictionary<Team, List<Agent>>();
         }
@@ -27,17 +25,19 @@ namespace TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic
 
         private void TickOccasionally()
         {
+            MostPowerfulAgentsByTeam();
+        }
+
+        private void MostPowerfulAgentsByTeam()
+        {
             //TODO: Need to track which ones are buffed etc.
             Mission.Teams.ToList()
                 .ForEach(team => { _mostPowerfulAgentsByTeam[team] = Mission.AttackerTeam.ActiveAgents.OrderByDescending(x => x.Character.GetBattlePower()).Take(5).ToList(); });
         }
 
-        public static Agent ProvideAgentForTeam(Team team)
+        public static List<Agent> GetMostPowerfulAgentsByTeam(Team team)
         {
-            var agents = _mostPowerfulAgentsByTeam[team];
-            if (agents.IsEmpty())
-                return agents[0];
-            return null;
+            return _mostPowerfulAgentsByTeam[team];
         }
 
         public override void OnAgentDeleted(Agent affectedAgent)

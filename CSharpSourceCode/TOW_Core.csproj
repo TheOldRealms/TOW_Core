@@ -340,7 +340,8 @@
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeTacticalBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\Components\ArtilleryAI.cs" />
     <Compile Include="Battle\AI\AgentBehavior\Components\WizardAIComponent.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\SupportMissionLogic\PowerfulSingleAgentTrackerMissionLogic.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\SupportMissionLogic\QuerySystemExtensionsMissionLogic.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\SupportMissionLogic\QuerySystemExtensions.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
     <Compile Include="Battle\AI\Decision\BehaviorOption.cs" />
     <Compile Include="Battle\AI\Decision\CommonAIFunctions.cs" />

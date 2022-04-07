@@ -67,16 +67,21 @@ namespace TOW_Core.Battle.AI.AgentBehavior
         public static List<Target> FindTargets(Agent agent, AbilityTemplate abilityTemplate)
         {
             if (abilityTemplate.AbilityTargetType == AbilityTargetType.AlliesInAOE ||
-                abilityTemplate.AbilityEffectType == AbilityEffectType.Heal)
+                abilityTemplate.AbilityEffectType == AbilityEffectType.Heal ||
+                abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly)
                 return agent.Team.QuerySystem.AllyTeams
                     .SelectMany(team => team.Team.Formations)
                     .Select(form => new Target {Formation = form})
                     .ToList();
-            if (abilityTemplate.AbilityTargetType == AbilityTargetType.SingleAlly ||
+            if (abilityTemplate.AbilityEffectType == AbilityEffectType.Summoning ||
                 abilityTemplate.AbilityTargetType == AbilityTargetType.Self)
                 return new List<Target>()
                 {
-                    new Target {Agent = agent}
+                    new Target
+                    {
+                        Formation = agent.Formation,
+                        Agent = agent
+                    }
                 };
 
             return agent.Team.QuerySystem.EnemyTeams
