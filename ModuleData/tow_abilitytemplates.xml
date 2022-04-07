@@ -617,7 +617,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
-      <AbilityTemplate StringID="EnchantWeapon"
+  <AbilityTemplate StringID="EnchantWeapon"
           Name="Enchant Weapon"
           SpriteName="fireball_icon"
           CoolDown="10"
@@ -643,7 +643,7 @@
           CastType="Instant"
           CastTime="0.5"
           AnimationActionName="act_release_heavy_thrown"
-          TriggeredEffectID="enchant_weapon"
+          TriggeredEffectID="apply_flaming_sword_trait"
           Offset="0.5"
           AbilityTargetType="SingleAlly"
           TargetCapturingRadius="1"
@@ -659,7 +659,7 @@
           </AsVec2>
         </LightColorRGB>
       </AbilityTemplate>
-      <AbilityTemplate StringID="CurseOfYears"
+  <AbilityTemplate StringID="CurseOfYears"
        Name="Curse of Years"
        SpriteName="windofdeath_icon"
        CoolDown="10"
@@ -701,7 +701,7 @@
           </AsVec2>
         </LightColorRGB>
       </AbilityTemplate>
-      <AbilityTemplate StringID="MinorHeal" 
+  <AbilityTemplate StringID="MinorHeal" 
           Name="Minor Heal" 
           SpriteName="healingprayer_icon" 
           CoolDown="20" 
@@ -743,7 +743,7 @@
             </AsVec2>
           </LightColorRGB>
       </AbilityTemplate>
-      <AbilityTemplate StringID="WardOfArrows" 
+  <AbilityTemplate StringID="WardOfArrows" 
       Name="Ward of Arrows" 
       SpriteName="healingprayer_icon" 
       CoolDown="20" 

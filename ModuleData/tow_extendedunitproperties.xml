@@ -191,13 +191,7 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_young_noble_squire">
-    <Abilities>
-      <string>SummonSkeleton</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
     <Attributes />
     <Resistances />
     <DamageAmplifiers />
@@ -206,13 +200,8 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_noble_cavalry">
-    <Abilities>
-      <string>EnchantWeapon</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -230,7 +219,7 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities>
-      <string>CurseOfYears</string>
+      <string>EnchantWeapon</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1558,11 +1547,12 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
-      <string>Thunderbolt</string>
-      <string>AuraOfResistance</string>
+      <string>CurseOfYears</string>
+      <string>HurlWeapons</string>
       <string>EnchantWeapon</string>
-      <string>FlamingSwords</string>
-      <string>StrengthOfCombat</string>
+      <string>MinorHeal</string>
+      <string>WardOfArrows</string>
+      <string>ShadowStep</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
