@@ -22,24 +22,23 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             var targetFormation = CurrentTarget.Formation;
             var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
             if (medianAgent == null) return target;
-            
+
             if (targetFormation.CountOfUnits > 10)
             {
                 var adjustedPosition = medianAgent.Position;
-                adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
-
-
-                {
-                    var direction = targetFormation.QuerySystem.EstimatedDirection;
-                    var rightVec = direction.RightVec();
-                    adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
-                    adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
-                }
-
-                adjustedPosition.z = Mission.Current.Scene.GetGroundHeightAtPosition(adjustedPosition) + 0.25f;
-                target.SelectedWorldPosition = adjustedPosition;
-
+                
+                var direction = targetFormation.QuerySystem.EstimatedDirection;
+                var rightVec = direction.RightVec();
+                
+                adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
+                adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
+                
                 medianAgent = targetFormation.GetMedianAgent(true, false, adjustedPosition.AsVec2);
+                target.Agent = medianAgent;
+                
+                adjustedPosition = medianAgent.Position;
+                adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
+                target.SelectedWorldPosition = adjustedPosition;
             }
 
             target.Agent = medianAgent;
