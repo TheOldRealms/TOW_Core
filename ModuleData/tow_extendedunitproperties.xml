@@ -218,13 +218,8 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
-    <Abilities>
-      <string>EnchantWeapon</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -232,13 +227,8 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outrider">
-    <Abilities>
-      <string>WardOfArrows</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
