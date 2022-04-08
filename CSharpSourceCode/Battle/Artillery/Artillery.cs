@@ -857,6 +857,9 @@ namespace TOW_Core.Battle.Artillery
             {
                 GameEntity entity = cannonball.Entity;
                 entity.CreateAndAddScriptComponent("CannonBallScript");
+                entity.CreateAndAddScriptComponent("MortarTravelSound");
+                MortarTravelSound mortarTravelingSound = entity.GetFirstScriptOfType<MortarTravelSound>();
+                mortarTravelingSound.Init();
                 CannonBallScript cannonBallScript = entity.GetFirstScriptOfType<CannonBallScript>();
                 cannonBallScript.SetShooterAgent(PilotAgent);
                 entity.CallScriptCallbacks();
