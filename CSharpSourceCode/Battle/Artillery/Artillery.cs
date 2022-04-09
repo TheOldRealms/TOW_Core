@@ -137,7 +137,7 @@ namespace TOW_Core.Battle.Artillery
             RegisterAnimationParameters();
             InitStandingPoints();
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
-            ForcedUse = true;
+            ForcedUse = false;
             EnemyRangeToStopUsing = MinRange;
             maximumMuzzleVelocity = MuzzleVelocity + 20f;
             _calculatedMuzzle = maximumMuzzleVelocity;
