@@ -23,21 +23,24 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
 
         private void Start(CampaignGameStarter obj)
         {
-            Clan chaosClan = Clan.All.ToList().Find(x => x.StringId == "chaos_clan_1");
+            List<Clan> chaosClans = Clan.All.Where(x => x.Culture.StringId == "chaos_culture").ToList();
             foreach(var kingdom in Kingdom.All)
             {
-                if (!chaosClan.IsAtWarWith(kingdom))
+                foreach(var clan in chaosClans)
                 {
-                    FactionManager.DeclareWar(chaosClan, kingdom);
+                    if (!clan.IsAtWarWith(kingdom))
+                    {
+                        FactionManager.DeclareWar(clan, kingdom, true);
+                    }
                 }
             }
-            foreach (var faction in Clan.NonBanditFactions)
+            foreach (var faction in Clan.NonBanditFactions.Where(x => x.Culture.StringId != "chaos_culture"))
             {
-                if(faction.StringId != chaosClan.StringId)
+                foreach (var clan in chaosClans)
                 {
-                    if (!chaosClan.IsAtWarWith(faction))
+                    if (!clan.IsAtWarWith(faction))
                     {
-                        FactionManager.DeclareWar(chaosClan, faction);
+                        FactionManager.DeclareWar(clan, faction, true);
                     }
                 }
             }

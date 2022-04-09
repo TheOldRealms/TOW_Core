@@ -6,8 +6,6 @@ using System;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using System.Collections.Generic;
 using TOW_Core.Abilities;
-using TOW_Core.Battle.Damage;
-using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Battle.TriggeredEffect
 {
@@ -117,6 +115,11 @@ namespace TOW_Core.Battle.TriggeredEffect
                     {
                         var script = obj as PrefabSpawnerScript;
                         script.OnInit(_template.SpawnPrefabName);
+                    }
+                    else if(obj is SummonScript && _template.TroopIdToSummon != "none")
+                    {
+                        var script = obj as SummonScript;
+                        script.OnInit(_template.TroopIdToSummon, _template.NumberToSummon);
                     }
                     if (obj is ITriggeredScript)
                     {

@@ -43,5 +43,9 @@ namespace TOW_Core.Battle.TriggeredEffect
         public string ScriptNameToTrigger = "none";
         [XmlAttribute]
         public string SpawnPrefabName = "none";
+        [XmlAttribute]
+        public string TroopIdToSummon = "none";
+        [XmlAttribute]
+        public int NumberToSummon = 0;
     }
 }

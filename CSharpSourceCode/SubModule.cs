@@ -45,6 +45,7 @@ using TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
+using TOW_Core.CampaignSupport.RegimentsOfRenown;
 
 namespace TOW_Core
 {
@@ -81,7 +82,7 @@ namespace TOW_Core
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
             ExtendedItemObjectManager.LoadXML();
-
+            RORManager.LoadTemplates();
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
@@ -139,6 +140,7 @@ namespace TOW_Core
                 starter.AddBehavior(new SpellTrainerInTownBehaviour());
                 starter.AddBehavior(new MasterEngineerTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
+                starter.AddBehavior(new RORCampaignBehaviour());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 

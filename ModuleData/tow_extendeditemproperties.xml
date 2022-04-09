@@ -27,6 +27,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_sergeant_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_noble_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -102,6 +105,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_cannon_crew_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_master_engineer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_burgonet_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -159,9 +165,6 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_blood_knight_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_wight_king_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -169,6 +172,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_wight_king_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_001">
@@ -187,6 +193,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_cairn_wraith_006">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_head_invisible_skull_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_001">
@@ -312,13 +321,13 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_skeleton_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_002">
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_skeleton_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_003">
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_skeleton_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_vampire_lord_001">
@@ -339,16 +348,16 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_mannfred">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_wight_king_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_cape_necromancer_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_grave_guard_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_002">
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_grave_guard_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_wight_king_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_cairn_wraith_001">
@@ -486,7 +495,19 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_cannon_crew_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_body_skeleton_hideskin">
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_cannon_crew_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_master_engineer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_skeleton_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_vampire_lord_001">
@@ -507,6 +528,15 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_robe_necromancer_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_grave_guard_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_wight_king_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_cairn_wraith_001_hideskin">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -523,6 +553,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_nurgle_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_robe_cultist_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_abomination">
@@ -609,7 +642,10 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_cannon_crew_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_skeleton_warrior_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_cannon_crew_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_master_engineer_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_vampire_lord_001">
@@ -624,16 +660,10 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_red_duke">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_wight_king_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_grave_guard_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_bracers_grave_guard_002">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_hand_cairn_wraith">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_body_skeleton_hideskin">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_chaos_knight_001">
@@ -649,6 +679,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tiliean_arm_gauntlet_knight_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_body_body_ungor_hideskin">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_free_company_001">
@@ -738,6 +771,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_cannon_crew_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_cannon_crew_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_master_engineer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_skeleton_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -763,12 +802,6 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vc_wight_king_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_grave_guard_001">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_grave_guard_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vlad">
@@ -979,6 +1012,12 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="0.25" />
       <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_khopesh_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_sword_vampire_001">
@@ -1551,7 +1590,19 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_big_musket_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_special_musket_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_gun_special_musket_002">
     <ItemTraits />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />

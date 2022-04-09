@@ -1076,7 +1076,7 @@
     </CommonAreas>
   </Settlement>
   <!--Wissenland 6 towns 6 castles 35 villages -->
-  <Settlement id="town_WI1" name="{=Settlements.Settlement.name.town_WI1}Nuln" owner="Faction.stirland_clan_1" posX="1339.895" posY="948.423" culture="Culture.empire" prosperity="3400" gate_posX="1340.964" gate_posY="946.2166" text="{=4ENGzVaC}Nuln test ">
+  <Settlement id="town_WI1" name="{=Settlements.Settlement.name.town_WI1}Nuln" owner="Faction.wissenland_clan_1" posX="1339.895" posY="948.423" culture="Culture.empire" prosperity="3400" gate_posX="1340.964" gate_posY="946.2166" text="{=4ENGzVaC}Nuln test ">
     <Components>
       <Town id="town_comp_WI1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1087,7 +1087,7 @@
       <Location id="lordshall" scene_name_1="TOW_empire_keep_l1" scene_name_2="TOW_empire_keep_l2" scene_name_3="TOW_empire_keep_l2" />
       <Location id="prison" scene_name="vlandia_dungeon_a" />
       <Location id="house_1" scene_name="TOR_wizard_hall_001_forceatmo" />
-      <Location id="house_2" scene_name="empire_house_d_interior_house" />
+      <Location id="house_2" scene_name="TOR_engineer_office_002" />
       <Location id="house_3" scene_name="empire_house_d_interior_house" />
     </Locations>
     <CommonAreas>
@@ -1096,7 +1096,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI2" name="{=Settlements.Settlement.name.town_WI2}Pfeildorf" owner="Faction.stirland_clan_1" posX="1352.865" posY="900.187" culture="Culture.empire" prosperity="3400" gate_posX="1351.992" gate_posY="901.2131" text="{=4ENGzVaC}Pfeildorf test ">
+  <Settlement id="town_WI2" name="{=Settlements.Settlement.name.town_WI2}Pfeildorf" owner="Faction.wissenland_clan_1" posX="1352.865" posY="900.187" culture="Culture.empire" prosperity="3400" gate_posX="1351.992" gate_posY="901.2131" text="{=4ENGzVaC}Pfeildorf test ">
     <Components>
       <Town id="town_comp_WI2" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1116,7 +1116,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI3" name="{=Settlements.Settlement.name.town_WI3}Kreutzhofen" owner="Faction.stirland_clan_1" posX="1312.953" posY="734.918" culture="Culture.empire" prosperity="3400" gate_posX="1311.232" gate_posY="733.0435" text="{=4ENGzVaC}Kreutzhofen test ">
+  <Settlement id="town_WI3" name="{=Settlements.Settlement.name.town_WI3}Kreutzhofen" owner="Faction.wissenland_clan_1" posX="1312.953" posY="734.918" culture="Culture.empire" prosperity="3400" gate_posX="1311.232" gate_posY="733.0435" text="{=4ENGzVaC}Kreutzhofen test ">
     <Components>
       <Town id="town_comp_WI3" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1136,7 +1136,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI4" name="{=Settlements.Settlement.name.town_WI4}Meissen" owner="Faction.stirland_clan_1" posX="1352.206" posY="860.295" culture="Culture.empire" prosperity="3400" gate_posX="1353.683" gate_posY="860.5034" text="{=4ENGzVaC}Meissen test ">
+  <Settlement id="town_WI4" name="{=Settlements.Settlement.name.town_WI4}Meissen" owner="Faction.wissenland_clan_1" posX="1352.206" posY="860.295" culture="Culture.empire" prosperity="3400" gate_posX="1353.683" gate_posY="860.5034" text="{=4ENGzVaC}Meissen test ">
     <Components>
       <Town id="town_comp_WI4" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1156,7 +1156,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI5" name="{=Settlements.Settlement.name.town_WI5}Geschburg" owner="Faction.stirland_clan_1" posX="1360.969" posY="831.361" culture="Culture.empire" prosperity="3400" gate_posX="1359.609" gate_posY="831.3774" text="{=4ENGzVaC}Geschburg test ">
+  <Settlement id="town_WI5" name="{=Settlements.Settlement.name.town_WI5}Geschburg" owner="Faction.wissenland_clan_1" posX="1360.969" posY="831.361" culture="Culture.empire" prosperity="3400" gate_posX="1359.609" gate_posY="831.3774" text="{=4ENGzVaC}Geschburg test ">
     <Components>
       <Town id="town_comp_WI5" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1176,7 +1176,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI6" name="{=Settlements.Settlement.name.town_WI6}Erbshauen" owner="Faction.stirland_clan_1" posX="1432.394" posY="830.449" culture="Culture.empire" prosperity="3400" gate_posX="1433.684" gate_posY="830.8799" text="{=4ENGzVaC}Erbshauen test ">
+  <Settlement id="town_WI6" name="{=Settlements.Settlement.name.town_WI6}Erbshauen" owner="Faction.wissenland_clan_1" posX="1432.394" posY="830.449" culture="Culture.empire" prosperity="3400" gate_posX="1433.684" gate_posY="830.8799" text="{=4ENGzVaC}Erbshauen test ">
     <Components>
       <Town id="town_comp_WI6" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1196,7 +1196,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_WI1" name="{=Settlements.Settlement.name.castle_WI1}Wusterburg" owner="Faction.averland_clan_1" posX="1372.608" posY="777.494" prosperity="420" culture="Culture.empire" gate_posX="1373.921" gate_posY="777.588">
+  <Settlement id="castle_WI1" name="{=Settlements.Settlement.name.castle_WI1}Wusterburg" owner="Faction.wissenland_clan_1" posX="1372.608" posY="777.494" prosperity="420" culture="Culture.empire" gate_posX="1373.921" gate_posY="777.588">
     <Components>
       <Town id="castle_comp_WI1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1206,7 +1206,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI2" name="{=Settlements.Settlement.name.castle_WI2}Nehren" owner="Faction.averland_clan_1" posX="1318.63" posY="799.401" prosperity="420" culture="Culture.empire" gate_posX="1317.365" gate_posY="799.7661">
+  <Settlement id="castle_WI2" name="{=Settlements.Settlement.name.castle_WI2}Nehren" owner="Faction.wissenland_clan_1" posX="1318.63" posY="799.401" prosperity="420" culture="Culture.empire" gate_posX="1317.365" gate_posY="799.7661">
     <Components>
       <Town id="castle_comp_WI2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1216,7 +1216,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI3" name="{=Settlements.Settlement.name.castle_WI3}Sonnefurt" owner="Faction.averland_clan_1" posX="1360.027" posY="750.485" prosperity="420" culture="Culture.empire" gate_posX="1359.783" gate_posY="750.1743">
+  <Settlement id="castle_WI3" name="{=Settlements.Settlement.name.castle_WI3}Sonnefurt" owner="Faction.wissenland_clan_1" posX="1360.027" posY="750.485" prosperity="420" culture="Culture.empire" gate_posX="1359.783" gate_posY="750.1743">
     <Components>
       <Town id="castle_comp_WI3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1226,7 +1226,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI4" name="{=Settlements.Settlement.name.castle_WI4}Mendelhof" owner="Faction.averland_clan_1" posX="1446.746" posY="818.957" prosperity="420" culture="Culture.empire" gate_posX="1445.437" gate_posY="818.8215">
+  <Settlement id="castle_WI4" name="{=Settlements.Settlement.name.castle_WI4}Mendelhof" owner="Faction.wissenland_clan_1" posX="1446.746" posY="818.957" prosperity="420" culture="Culture.empire" gate_posX="1445.437" gate_posY="818.8215">
     <Components>
       <Town id="castle_comp_WI4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1236,7 +1236,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI5" name="{=Settlements.Settlement.name.castle_WI5}Kolbhugel" owner="Faction.averland_clan_1" posX="1398.247" posY="794.033" prosperity="420" culture="Culture.empire" gate_posX="1398.556" gate_posY="792.7538">
+  <Settlement id="castle_WI5" name="{=Settlements.Settlement.name.castle_WI5}Kolbhugel" owner="Faction.wissenland_clan_1" posX="1398.247" posY="794.033" prosperity="420" culture="Culture.empire" gate_posX="1398.556" gate_posY="792.7538">
     <Components>
       <Town id="castle_comp_WI5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1246,7 +1246,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI6" name="{=Settlements.Settlement.name.castle_WI6}Staig" owner="Faction.averland_clan_1" posX="1391.286" posY="870.426" prosperity="420" culture="Culture.empire" gate_posX="1392.311" gate_posY="871.2509">
+  <Settlement id="castle_WI6" name="{=Settlements.Settlement.name.castle_WI6}Staig" owner="Faction.wissenland_clan_1" posX="1391.286" posY="870.426" prosperity="420" culture="Culture.empire" gate_posX="1392.311" gate_posY="871.2509">
     <Components>
       <Town id="castle_comp_WI6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>

@@ -27,6 +27,8 @@
 							<variable name="Recoil2Duration" value="0.800"/>
 							<variable name="MinPitch" value="30"/>
 							<variable name="MaxPitch" value="80"/>
+							<variable name="MuzzleVelocity" value="40"/>
+							<variable name="MinRange" value="20"/>
 							<variable name="IdleActionName" value="act_walk_idle_torch"/>
 							<variable name="ShootActionName" value="act_usage_mangonel_big_shoot"/>
 							<variable name="Reload1ActionName" value="act_usage_mangonel_big_reload"/>
@@ -279,14 +281,6 @@
 				<scripts>
 					<script name="Artillery">
 						<variables>
-							<variable name="NavMeshPrefabName" value=""/>
-							<variable name="Name" value="Great Cannon"/>
-							<variable name="ProjectilePrefabName" value="tor_neutral_weapon_ammo_cannonball"/>
-							<variable name="ShootingAgentAnimationLength" value="0.350"/>
-							<variable name="RecoilDuration" value="0.100"/>
-							<variable name="Recoil2Duration" value="0.800"/>
-							<variable name="MinPitch" value="-10"/>
-							<variable name="MaxPitch" value="40"/>
 							<variable name="IdleActionName" value="act_walk_idle_torch"/>
 							<variable name="ShootActionName" value="act_usage_mangonel_big_shoot"/>
 							<variable name="Reload1ActionName" value="act_usage_mangonel_big_reload"/>
@@ -296,6 +290,30 @@
 							<variable name="LoadAmmoBeginActionName" value="act_usage_mangonel_big_load_ammo_begin"/>
 							<variable name="LoadAmmoEndActionName" value="act_usage_mangonel_big_load_ammo_end"/>
 							<variable name="Reload2IdleActionName" value="act_usage_mangonel_reload_2_idle"/>
+							<variable name="Name" value="Great Cannon"/>
+							<variable name="ProjectilePrefabName" value="tor_neutral_weapon_ammo_cannonball"/>
+							<variable name="ShootingAgentAnimationLength" value="0.350"/>
+							<variable name="RecoilDuration" value="0.100"/>
+							<variable name="Recoil2Duration" value="0.800"/>
+							<variable name="MinPitch" value="-5.000"/>
+							<variable name="MaxPitch" value="25.000"/>
+							<variable name="CameraHolderTag" value="CameraHolder"/>
+							<variable name="BarrelTag" value="Barrel"/>
+							<variable name="BaseTag" value="Battery_Base"/>
+							<variable name="ReloadTag" value="reload"/>
+							<variable name="LeftWheelTag" value="Wheel_L"/>
+							<variable name="RightWheelTag" value="Wheel_R"/>
+							<variable name="FireSoundID" value="mortar_shot_1"/>
+							<variable name="FireSoundID2" value="mortar_shot_2"/>
+							<variable name="ProjectileReleaseTag" value="projectile_release"/>
+							<variable name="MuzzleVelocity" value="80.000"/>
+							<variable name="MinRange" value="20.000"/>
+							<variable name="RemoveOnDeployTag" value=""/>
+							<variable name="AddOnDeployTag" value=""/>
+							<variable name="PilotStandingPointTag" value="Pilot"/>
+							<variable name="AmmoPickUpTag" value="ammopickup"/>
+							<variable name="WaitStandingPointTag" value="Wait"/>
+							<variable name="NavMeshPrefabName" value=""/>
 						</variables>
 					</script>
 				</scripts>
@@ -305,7 +323,7 @@
 							<tag name="Battery_Base"/>
 						</tags>
 						<transform position="0.000, 1.219, 0.557"/>
-						<physics shape="bo_empire_cannon_001_base" override_material="siege_engines" center_of_mass="-0.002, -1.127, -0.007"/>
+						<physics shape="bo_empire_cannon_001_base" override_material="siege_engines" center_of_mass="-0.002, -1.127, -0.007" />
 						<components>
 							<meta_mesh_component name="empire_cannon_001_base"/>
 						</components>
@@ -315,7 +333,7 @@
 									<tag name="Barrel"/>
 								</tags>
 								<transform position="0.003, 0.248, 0.435"/>
-								<physics shape="bo_empire_cannon_001_barrel" override_material="metal" center_of_mass="0.000, -0.095, 0.131"/>
+								<physics shape="bo_empire_cannon_001_barrel" override_material="metal" center_of_mass="0.000, -0.095, 0.131" />
 								<components>
 									<meta_mesh_component name="empire_cannon_001_barrel"/>
 								</components>
@@ -363,7 +381,7 @@
 									<tag name="Wheel_R"/>
 								</tags>
 								<transform position="0.811, 0.002, 0.001"/>
-								<physics shape="bo_empire_cannon_001_wheel" override_material="siege_engines"/>
+								<physics shape="bo_empire_cannon_001_wheel" override_material="siege_engines" />
 								<components>
 									<meta_mesh_component name="empire_cannon_001_wheel"/>
 								</components>
@@ -372,8 +390,8 @@
 								<tags>
 									<tag name="Wheel_L"/>
 								</tags>
-								<transform position="-0.810, -0.002, 0.003" rotation_euler="0.000, 0.000, -3.142"/>
-								<physics shape="bo_empire_cannon_001_wheel" override_material="siege_engines" center_of_mass="0.020, 0.000, 0.000"/>
+								<transform position="-0.810, -0.002, 0.003" rotation_euler="0.000, 0.000, 3.141"/>
+								<physics shape="bo_empire_cannon_001_wheel" override_material="siege_engines" center_of_mass="0.020, 0.000, 0.000" />
 								<components>
 									<meta_mesh_component name="empire_cannon_001_wheel"/>
 								</components>

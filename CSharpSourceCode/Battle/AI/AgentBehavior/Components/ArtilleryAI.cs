@@ -53,7 +53,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
 
         private void FindNewTarget()
         {
-            _target = GetAllThreats().Count > 0 ? GetAllThreats().MaxBy(x => x.ThreatValue) : null;
+            _target = GetAllThreats().Count > 0 ? GetAllThreats().MaxBy(x => x.Formation.CountOfUnits) : null;
         }
 
         private List<Threat> GetAllThreats()

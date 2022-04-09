@@ -48,48 +48,6 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
-	<game_entity name="firestorm" old_prefab_name="">
-		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
-		<components>
-			<particle_system_instanced_component>
-				<effect base_effect="{6CB55903-EC6D-4033-B048-E2E88EB55DA4}">
-					<emitter_overrides>
-						<emitter guid="{CDC59C91-2E13-40B9-8FC3-5BF2D8A0C7C9}">
-							<flags>
-								<flag name="emit_while_moving" value="false"/>
-								<flag name="loop_sprite" value="false"/>
-							</flags>
-							<parameters>
-								<parameter name="skew_with_particle_velocity_coef" value="0.080"/>
-								<parameter name="local_force" value="0.000, 0.000, 1.000"/>
-								<parameter name="texture_sprite_frame_rate" value="1.000"/>
-								<parameter name="turbulence_strength" base="180.000" bias="30.000"/>
-								<parameter name="angular_damping" base="0.300" bias="0.100"/>
-								<parameter name="particle_life" base="3.000" bias="0.200"/>
-								<parameter name="emission_rate" base="50.000" bias="15.000"/>
-								<parameter name="cone_emit_velocity" base="0.000" bias="0.000">
-									<curve name="emitter_life" version="1" default="1.000" curve_multiplier="1.000">
-										<keys>
-											<key time="0.000" value="0.000" tangent="0.550, 0.055"/>
-											<key time="1.000" value="1.000" tangent="-0.325, 0.810"/>
-										</keys>
-									</curve>
-								</parameter>
-								<parameter name="wind_effect" base="1.000" bias="1.000">
-									<curve name="particle_life" version="1" default="1.000" curve_multiplier="1.000">
-										<keys>
-											<key time="0.000" value="0.000" tangent="0.550, 0.055"/>
-											<key time="1.000" value="1.000" tangent="-0.180, -0.870"/>
-										</keys>
-									</curve>
-								</parameter>
-							</parameters>
-						</emitter>
-					</emitter_overrides>
-				</effect>
-			</particle_system_instanced_component>
-		</components>
-	</game_entity>
 	<game_entity name="wind_of_death_vfx" old_prefab_name="">
 		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
 		<components>
@@ -111,53 +69,7 @@
 		<components>
 			<meta_mesh_component name="spellskull" position="0.000, 0.000, 3.000" rotation="0.000, 0.000, 0.000" scale="1.200, 1.200, 1.200"/>
 			<particle_system_instanced_component _index_="1">
-				<effect base_effect="{6CB55903-EC6D-4033-B048-E2E88EB55DA4}">
-					<emitter_overrides>
-						<emitter guid="{CDC59C91-2E13-40B9-8FC3-5BF2D8A0C7C9}">
-							<parameters>
-								<parameter name="emit_box_size" value="4.000, 4.000, 0.100"/>
-								<parameter name="gravity" value="0.000, 0.000, 4.000"/>
-								<parameter name="damping" base="0.500" bias="0.100"/>
-								<parameter name="particle_life" base="1.000" bias="0.000"/>
-								<parameter name="cone_emit_velocity" base="3.000" bias="1.000"/>
-								<parameter name="particle_size" base="1.000" bias="0.500">
-									<curve name="emitter_life" version="1" default="1.000" curve_multiplier="1.000">
-										<keys>
-											<key time="0.000" value="0.000" tangent="0.550, 0.055"/>
-											<key time="1.000" value="1.000" tangent="-0.325, 0.810"/>
-										</keys>
-									</curve>
-									<curve name="particle_life" version="1" default="1.000" curve_multiplier="0.750">
-										<keys>
-											<key time="0.000" value="0.262" tangent="0.014, 0.000"/>
-											<key time="0.000" value="0.232" tangent="-0.021, 0.000"/>
-											<key time="0.000" value="0.232" tangent="0.021, 0.000"/>
-											<key time="0.759" value="0.588" tangent="-0.021, 0.000"/>
-											<key time="0.759" value="0.588" tangent="0.021, 0.000"/>
-											<key time="1.000" value="0.988" tangent="-0.200, 0.000"/>
-										</keys>
-									</curve>
-								</parameter>
-								<parameter name="particle_color">
-									<color>
-										<keys>
-											<key time="0.095" value="0.924, 1.000, 0.867"/>
-											<key time="0.465" value="0.231, 0.043, 0.000"/>
-										</keys>
-									</color>
-									<alpha>
-										<keys>
-											<key time="0.000" value="0.000"/>
-											<key time="0.097" value="1.000"/>
-											<key time="0.866" value="1.000"/>
-											<key time="1.000" value="0.000"/>
-										</keys>
-									</alpha>
-								</parameter>
-							</parameters>
-						</emitter>
-					</emitter_overrides>
-				</effect>
+				<effect_ref base_effect="{6CB55903-EC6D-4033-B048-E2E88EB55DA4}"/>
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
@@ -212,30 +124,7 @@
 		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
 		<components>
 			<particle_system_instanced_component>
-				<effect base_effect="{29BD5545-3942-4FB9-8AD0-7A84CB2D8EB7}">
-					<emitter_overrides>
-						<emitter guid="{B58ABE2D-5B66-48CF-81A2-36CE7F331811}">
-							<parameters>
-								<parameter name="particle_life" base="3.000" bias="2.000"/>
-								<parameter name="particle_color">
-									<color>
-										<keys>
-											<key time="0.000" value="1.000, 0.659, 0.431"/>
-											<key time="1.000" value="0.033, 0.033, 0.033"/>
-										</keys>
-									</color>
-									<alpha>
-										<keys>
-											<key time="0.000" value="0.000"/>
-											<key time="0.419" value="0.160"/>
-											<key time="1.000" value="0.000"/>
-										</keys>
-									</alpha>
-								</parameter>
-							</parameters>
-						</emitter>
-					</emitter_overrides>
-				</effect>
+				<effect_ref base_effect="{5ADDA246-B9A1-420C-A201-083B73F3EDAD}"/>
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
@@ -250,7 +139,9 @@
 	<game_entity name="comet_of_casandora" old_prefab_name="">
 		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
 		<components>
-			<meta_mesh_component name="casandora_comet" position="0.000, 0.000, 0.000" rotation="0.000, 0.000, 0.000" scale="1.000, 1.000, 1.000"/>
+			<meta_mesh_component name="casandora_comet" position="0.000, 0.000, 0.400" rotation="0.000, 0.000, 0.000" scale="0.300, 0.300, 0.500">
+				<mesh name="casandora_comet" argument="1.000, 0.300, 1.000, 10.000"/>
+			</meta_mesh_component>
 			<particle_system_instanced_component _index_="1">
 				<effect_ref base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}"/>
 			</particle_system_instanced_component>
@@ -287,62 +178,6 @@
 				</components>
 			</game_entity>
 		</children>
-	</game_entity>
-	<game_entity name="fireball_prefab_physics" old_prefab_name="" mobility="1">
-		<flags>
-			<flag name="record_to_scene_replay" value="true"/>
-		</flags>
-		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
-		<physics shape="bo_sphere_collider">
-			<body_flags>
-				<body_flag name="dynamic"/>
-				<body_flag name="moveable"/>
-				<body_flag name="dont_transfer_to_physics_engine"/>
-			</body_flags>
-		</physics>
-		<components>
-			<particle_system_instanced_component>
-				<effect base_effect="{BA0CCB36-D63D-4F33-8770-044F88A0E347}">
-					<emitter_overrides>
-						<emitter guid="{6B81BDF2-D77B-4C50-85ED-107627C748E5}">
-							<flags>
-								<flag name="emit_while_moving" value="true"/>
-								<flag name="dont_emit_while_moving" value="false"/>
-							</flags>
-							<parameters>
-								<parameter name="scale_with_emitter_velocity_coef" value="-1.000"/>
-								<parameter name="emit_sphere_radius" value="0.200"/>
-								<parameter name="emit_volume_type" value="sphere"/>
-								<parameter name="emission_rate" base="25.000" bias="5.000"/>
-								<parameter name="emit_rotation_speed" base="0.000" bias="180.000"/>
-								<parameter name="particle_size" base="3.000" bias="2.000">
-									<curve name="particle_life" version="1" default="1.000" curve_multiplier="1.000">
-										<keys>
-											<key time="0.000" value="1.000" tangent="0.014, 0.000"/>
-											<key time="0.069" value="1.000" tangent="-0.062, 0.000"/>
-											<key time="0.069" value="1.000" tangent="0.062, 0.000"/>
-											<key time="0.552" value="0.171" tangent="-0.216, 0.090"/>
-											<key time="0.552" value="0.171" tangent="0.216, -0.090"/>
-											<key time="1.000" value="0.126" tangent="-0.200, 0.000"/>
-										</keys>
-									</curve>
-								</parameter>
-							</parameters>
-						</emitter>
-						<emitter guid="{A23CA26F-9B9A-40E0-A960-76EF10BCBF35}">
-							<parameters>
-								<parameter name="emission_rate" base="0.000" bias="0.000"/>
-							</parameters>
-						</emitter>
-						<emitter guid="{8F9992C4-2377-4E4D-A6C9-88683388F025}">
-							<parameters>
-								<parameter name="emission_rate" base="0.000" bias="0.000"/>
-							</parameters>
-						</emitter>
-					</emitter_overrides>
-				</effect>
-			</particle_system_instanced_component>
-		</components>
 	</game_entity>
 </prefabs>
 
