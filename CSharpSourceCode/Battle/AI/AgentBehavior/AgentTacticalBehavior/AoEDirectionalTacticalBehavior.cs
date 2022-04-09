@@ -23,7 +23,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
             if (medianAgent == null) return Vec3.Zero;
 
-            var flankDistance = targetFormation.Width / 1.45f;
+            var flankDistance = targetFormation.Width / 1.95f;
             var left = medianAgent.Position + formationDirection.LeftVec().ToVec3() * flankDistance;
             var right = medianAgent.Position + formationDirection.RightVec().ToVec3() * flankDistance;
 
