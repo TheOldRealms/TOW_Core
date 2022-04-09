@@ -47,7 +47,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 _isMissionStarted = false;
                 if(_currentSettlement != null)
                 {
-                   // TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
                     DestroyPartyAction.ApplyForDisbanding(_currentWatchParty, _currentSettlement);
                 }
                 _currentWatchParty = null;
