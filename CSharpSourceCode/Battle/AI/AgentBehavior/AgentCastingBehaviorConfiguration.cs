@@ -58,8 +58,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior
 
                 {AbilityEffectType.Wind, (agent, abilityIndex, abilityTemplate) => new AoEDirectionalCastingBehavior(agent, abilityTemplate, abilityIndex)},
 
-                {AbilityEffectType.AgentMoving, (agent, abilityIndex, abilityTemplate) => new MovementCastingBehavior(agent, abilityTemplate, abilityIndex)},
-                {AbilityEffectType.ArtilleryPlacement,(agent, abilityIndex, abilityTemplate) => new ArtilleryPlacementCastingBehavior(agent, abilityTemplate, abilityIndex)},
+              //  {AbilityEffectType.AgentMoving, (agent, abilityIndex, abilityTemplate) => new MovementCastingBehavior(agent, abilityTemplate, abilityIndex)},
+              //  {AbilityEffectType.ArtilleryPlacement,(agent, abilityIndex, abilityTemplate) => new ArtilleryPlacementCastingBehavior(agent, abilityTemplate, abilityIndex)},
             };
 
         public static List<Target> FindTargets(Agent agent, AbilityTemplate abilityTemplate)
@@ -102,8 +102,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior
                 {typeof(SelectSingleTargetCastingBehavior), CreateBuffSpellAxis()},
 
                 {typeof(SummoningCastingBehavior), CreateSummoningAxis()},
-                {typeof(MovementCastingBehavior), CreateSummoningAxis()},
-                {typeof(ArtilleryPlacementCastingBehavior), CreateSummoningAxis()},
             };
 
         public static List<AbstractAgentCastingBehavior> PrepareCastingBehaviors(Agent agent)
