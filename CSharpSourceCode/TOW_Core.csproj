@@ -346,11 +346,8 @@
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
-    <Compile Include="Battle\Artillery\Artillery.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryRangedSiegeWeapon.cs" />
     <Compile Include="Battle\Artillery\ArtilleryStandingPoint.cs" />
-    <Compile Include="Battle\Artillery\ArtilleryView.cs" />
-    <Compile Include="Battle\Artillery\ArtilleryViewController.cs" />
-    <Compile Include="Battle\Artillery\BallisticSolver.cs" />
     <Compile Include="Battle\Artillery\CannonBallPile.cs" />
     <Compile Include="Battle\Crosshairs\Crosshair.cs" />
     <Compile Include="Battle\Crosshairs\ICrosshair.cs" />
@@ -371,6 +368,7 @@
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORManager.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORSettlementTemplate.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
+    <Compile Include="HarmonyPatches\ArtilleryPatch.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
@@ -423,7 +421,6 @@
     <Compile Include="HarmonyPatches\DamagePatch.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
     <Compile Include="HarmonyPatches\InventoryPatches.cs" />
-    <Compile Include="HarmonyPatches\ItemObjectPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />

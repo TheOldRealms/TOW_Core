@@ -23,13 +23,13 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             var team = Mission.Current.Teams.FirstOrDefault(x => x != triggeredByAgent.Team);
             var target = team.Formations.First().GetFirstUnit().Position;
             var direction = (target - position).NormalizedCopy();
-            var rotation = Mat3.CreateMat3WithForward(direction);
+            var rotation = Mat3.CreateMat3WithForward(-direction);
             var entity = GameEntity.Instantiate(Mission.Current.Scene, PrefabName, true);
             entity.SetMobility(GameEntity.Mobility.dynamic);
             entity.EntityFlags = (entity.EntityFlags | EntityFlags.DontSaveToScene);
             var frame = new MatrixFrame(rotation, position);
             entity.SetGlobalFrame(frame);
-            var artillery = entity.GetFirstScriptInFamilyDescending<Artillery.Artillery>();
+            var artillery = entity.GetFirstScriptInFamilyDescending<Artillery.ArtilleryRangedSiegeWeapon>();
             if (artillery != null)
             {
                 artillery.SetSide(triggeredByAgent.Team.Side);

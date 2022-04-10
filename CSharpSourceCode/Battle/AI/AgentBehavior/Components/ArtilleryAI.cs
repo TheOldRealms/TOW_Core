@@ -10,13 +10,13 @@ namespace TOW_Core.Battle.AI.Components
 {
     public class ArtilleryAI : UsableMachineAIBase
     {
-        private readonly Artillery.Artillery _artillery;
+        private readonly Artillery.ArtilleryRangedSiegeWeapon _artillery;
         private Threat _target;
         private List<Axis> targetDecisionFunctions;
 
-        public ArtilleryAI(Artillery.Artillery usableMachine) : base(usableMachine)
+        public ArtilleryAI(Artillery.ArtilleryRangedSiegeWeapon usableMachine) : base(usableMachine)
         {
-            this._artillery = usableMachine;
+            _artillery = usableMachine;
             targetDecisionFunctions = CreateTargetingFunctions();
         }
 
@@ -31,12 +31,12 @@ namespace TOW_Core.Battle.AI.Components
                 {
                     if (_target != null && _target.Formation != null && _target.Formation.GetCountOfUnitsWithCondition(x => x.IsActive()) > 0)
                     {
-                        if (_artillery.GetTarget() != _target)
+                        if (_artillery.Target != _target)
                         {
                             _artillery.SetTarget(_target);
                         }
 
-                        if (_artillery.CanShootAtTarget())
+                        if (_artillery.Target != null && _artillery.AimAtTarget(GetAdjustedTargetPosition(_artillery.Target)))
                         {
                             _artillery.Shoot();
                         }
@@ -48,6 +48,19 @@ namespace TOW_Core.Battle.AI.Components
                         FindNewTarget();
                     }
                 }
+            }
+        }
+
+        private Vec3 GetAdjustedTargetPosition(Threat target)
+        {
+            if (target == null || target.Formation == null) return Vec3.Zero;
+            else
+            {
+                //assume 3 second flight time unless we can calculate it properly.
+                float speed = target.Formation.GetMovementSpeedOfUnits();
+                var frame = target.Formation.GetMedianAgent(true, true, target.Formation.GetAveragePositionOfUnits(true, true)).Frame;
+                frame.Advance(speed * 3);
+                return frame.origin;
             }
         }
 

@@ -196,7 +196,7 @@
             ImbuedStatusEffectDuration="0" 
             DamageVariance="0" 
             ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.PrefabSpawnerScript" 
-            SpawnPrefabName="tor_mortar"/>
+            SpawnPrefabName="tor_mortar_test"/>
       <TriggeredEffectTemplate StringID="place_greatcannon" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 
@@ -210,7 +210,7 @@
             ImbuedStatusEffectDuration="0" 
             DamageVariance="0" 
             ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.PrefabSpawnerScript" 
-            SpawnPrefabName="tor_greatcannon"/>
+            SpawnPrefabName="tor_mortar_test"/>
       <TriggeredEffectTemplate StringID="hurl_weapons" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 
