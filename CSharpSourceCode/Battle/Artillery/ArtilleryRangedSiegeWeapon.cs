@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.InputSystem;
@@ -10,7 +8,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 
 namespace TOW_Core.Battle.Artillery
