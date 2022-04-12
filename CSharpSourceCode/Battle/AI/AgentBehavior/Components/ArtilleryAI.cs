@@ -12,7 +12,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
     public class ArtilleryAI : UsableMachineAIBase
     {
         private readonly Artillery.ArtilleryRangedSiegeWeapon _artillery;
-        private Threat _target;
+        private Target _target;
         private List<Axis> targetDecisionFunctions;
 
         public ArtilleryAI(Artillery.ArtilleryRangedSiegeWeapon usableMachine) : base(usableMachine)
@@ -37,9 +37,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
                             _artillery.SetTarget(_target);
                         }
 
-                        if (_artillery.Target != null && _artillery.AimAtTarget(GetAdjustedTargetPosition(_artillery.Target)))
+                        if (_artillery.Target != null && _artillery.AimAtTarget(GetAdjustedTargetPosition(_artillery.Target)) && _artillery.PilotAgent.Formation.FiringOrder.OrderType != OrderType.HoldFire)
                         {
                             _artillery.Shoot();
+                            _artillery.Target.SelectedWorldPosition = Vec3.Zero;
                         }
                     }
                     else
@@ -52,17 +53,20 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             }
         }
 
-        private Vec3 GetAdjustedTargetPosition(Threat target)
+        private Vec3 GetAdjustedTargetPosition(Target target)
         {
             if (target == null || target.Formation == null) return Vec3.Zero;
-            else
+           
+            if (target.SelectedWorldPosition == Vec3.Zero)
             {
                 float speed = target.Formation.GetMovementSpeedOfUnits();
                 float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
-                var frame = target.Formation.GetMedianAgent(true, true, target.Formation.GetAveragePositionOfUnits(true, true)).Frame;
+                var frame = CommonAIFunctions.GetRandomAgent(target.Formation).Frame;
                 frame.Advance(speed * time);
-                return frame.origin;
+                target.SelectedWorldPosition = frame.origin;
             }
+          
+            return target.SelectedWorldPosition;
         }
 
         private void FindNewTarget()
@@ -70,9 +74,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             _target = GetAllThreats().Count > 0 ? GetAllThreats().MaxBy(x => x.Formation.CountOfUnits) : null;
         }
 
-        private List<Threat> GetAllThreats()
+        private List<Target> GetAllThreats()
         {
-            List<Threat> list = new List<Threat>();
+            List<Target> list = new List<Target>();
             /*
             this._potentialTargetUsableMachines.RemoveAll((ITargetable ptum) => ptum is UsableMachine && ((ptum as UsableMachine).IsDestroyed || (ptum as UsableMachine).GameEntity == null));
             list.AddRange(from um in this._potentialTargetUsableMachines

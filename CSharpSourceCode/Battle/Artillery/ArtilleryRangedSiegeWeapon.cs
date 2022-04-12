@@ -9,6 +9,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
 using TOW_Core.Battle.AI.AgentBehavior.Components;
+using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 
 namespace TOW_Core.Battle.Artillery
@@ -61,8 +62,8 @@ namespace TOW_Core.Battle.Artillery
         private BattleSideEnum _side;
         private Agent _lastLoaderAgent;
         private StandingPoint _waitStandingPoint;
-        private Threat _target;
-        public Threat Target => _target;
+        private Target _target;
+        public Target Target => _target;
         private Timer _timer;
         private SoundEvent _fireSound;
         private MatrixFrame _currentSlideBackFrameOrig;
@@ -447,7 +448,7 @@ namespace TOW_Core.Battle.Artillery
             _loadAmmoEndAnimationActionIndex = ActionIndexCache.Create(LoadAmmoEndActionName);
             _reload2IdleActionIndex = ActionIndexCache.Create(Reload2IdleActionName);
         }
-        internal void SetTarget(Threat target) => _target = target;
+        internal void SetTarget(Target target) => _target = target;
         internal void ClearTarget() => _target = null;
 
         private void AddCannonballScript()

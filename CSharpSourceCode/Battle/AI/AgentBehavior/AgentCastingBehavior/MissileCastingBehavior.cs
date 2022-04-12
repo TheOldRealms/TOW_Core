@@ -9,7 +9,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 {
     public class MissileCastingBehavior : AbstractAgentCastingBehavior
     {
-        private Random _random = new Random();
+       
 
         public MissileCastingBehavior(Agent agent, AbilityTemplate template, int abilityIndex) : base(agent, template,
             abilityIndex)
@@ -25,18 +25,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             if (targetFormation.CountOfUnits > 10)
             {
-                var adjustedPosition = medianAgent.Position;
-                
-                var direction = targetFormation.QuerySystem.EstimatedDirection;
-                var rightVec = direction.RightVec();
-                
-                adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
-                adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
-                
-                medianAgent = targetFormation.GetMedianAgent(true, false, adjustedPosition.AsVec2);
+                medianAgent = CommonAIFunctions.GetRandomAgent(targetFormation);
                 target.Agent = medianAgent;
-                
-                adjustedPosition = medianAgent.Position;
+                Vec3 adjustedPosition = medianAgent.Position;
                 adjustedPosition += ComputeSpellAngleVelocityCorrection(medianAgent.Position, medianAgent.Velocity);
                 target.SelectedWorldPosition = adjustedPosition;
             }
@@ -44,6 +35,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             target.Agent = medianAgent;
             return target;
         }
+
+       
 
         protected override bool HaveLineOfSightToTarget(Target target)
         {
