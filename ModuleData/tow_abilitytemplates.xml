@@ -44,7 +44,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="WardOfArrows" 
       Name="Ward of Arrows" 
-      SpriteName="healingprayer_icon" 
+      SpriteName="ward_of_arrows_icon" 
       CoolDown="20" 
       WindsOfMagicCost="5" 
       BaseMisCastChance="0.05" 
@@ -86,7 +86,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="MinorHeal" 
       Name="Petty Heal" 
-      SpriteName="healingprayer_icon" 
+      SpriteName="petty_healing_icon" 
       CoolDown="20" 
       WindsOfMagicCost="5" 
       BaseMisCastChance="0.05" 
@@ -128,7 +128,7 @@
   </AbilityTemplate>  
   <AbilityTemplate StringID="FoetidCloud" 
       Name="Foetid Cloud" 
-      SpriteName="burninghead_icon" 
+      SpriteName="foetid_cloud_icon" 
       CoolDown="10" 
       WindsOfMagicCost="4" 
       BaseMisCastChance="0.3" 
@@ -171,7 +171,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="EnchantWeapon"
       Name="Enchant Weapon"
-      SpriteName="fireball_icon"
+      SpriteName="enchant_weapon_icon"
       CoolDown="10"
       WindsOfMagicCost="5"
       BaseMisCastChance="0.05"
@@ -213,7 +213,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="AuraOfResistance"
       Name="Aura of Resistance"
-      SpriteName="fireball_icon"
+      SpriteName="resistanceaura_icon"
       CoolDown="10"
       WindsOfMagicCost="5"
       BaseMisCastChance="0.05"
@@ -297,7 +297,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="DustStorm" 
       Name="Dust Storm" 
-      SpriteName="burninghead_icon" 
+      SpriteName="dust_storm_icon" 
       CoolDown="10" 
       WindsOfMagicCost="4" 
       BaseMisCastChance="0.3" 

@@ -15,7 +15,7 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(LoadingWindowViewModel), "SetTotalGenericImageCount")]
         public static void PostFix(ref int ____totalGenericImageCount)
         {
-            ____totalGenericImageCount = 6;
+            ____totalGenericImageCount = 7;
         }
     }
 }
