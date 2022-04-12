@@ -1,25 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TOW_Core.Battle.AI.AgentBehavior;
 using TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.Battle.AI.Components
+namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
         private static readonly float EvalInterval = 1;
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
 
-        public Mat3 SpellTargetRotation = Mat3.Identity;
-
         public AbstractAgentCastingBehavior CurrentCastingBehavior;
 
         private List<IAgentBehavior> _availableCastingBehaviors; //Do not access this directly. Use the generator function public method below.
-        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(AgentCastingBehaviorMapping.PrepareCastingBehaviors(Agent)));
+        public List<IAgentBehavior> AvailableCastingBehaviors => _availableCastingBehaviors ?? (_availableCastingBehaviors = new List<IAgentBehavior>(AgentCastingBehaviorConfiguration.PrepareCastingBehaviors(Agent)));
 
         public WizardAIComponent(Agent agent) : base(agent)
         {

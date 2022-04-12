@@ -6,7 +6,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Decision;
 
-namespace TOW_Core.Battle.AI.Components
+namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
     public class ArtilleryAI : UsableMachineAIBase
     {

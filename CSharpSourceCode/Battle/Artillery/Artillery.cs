@@ -9,7 +9,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.TwoDimension;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 using TOW_Core.Utilities;
 
@@ -137,7 +137,7 @@ namespace TOW_Core.Battle.Artillery
             RegisterAnimationParameters();
             InitStandingPoints();
             _currentState = RangedSiegeWeapon.WeaponState.Idle;
-            ForcedUse = true;
+            ForcedUse = false;
             EnemyRangeToStopUsing = MinRange;
             maximumMuzzleVelocity = MuzzleVelocity + 20f;
             _calculatedMuzzle = maximumMuzzleVelocity;
