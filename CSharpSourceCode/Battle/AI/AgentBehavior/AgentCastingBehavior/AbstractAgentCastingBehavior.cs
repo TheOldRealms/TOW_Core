@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.AI.Decision;
-using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
@@ -40,20 +36,20 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             }
 
             AbilityTemplate = abilityTemplate;
-            _axisList = AgentCastingBehaviorMapping.UtilityByType[GetType()](this);
+            _axisList = AgentCastingBehaviorConfiguration.UtilityByType[GetType()](this);
             TacticalBehavior = new KeepSafeAgentTacticalBehavior(Agent, Agent.GetComponent<WizardAIComponent>());
         }
 
         public virtual void Execute()
         {
             if (Agent.GetAbility(AbilityIndex).IsOnCooldown()) return;
-            
+
             CurrentTarget = UpdateTarget(CurrentTarget);
-            
+
             if (HaveLineOfSightToTarget(CurrentTarget))
             {
                 Agent.SelectAbility(AbilityIndex);
-                CastSpellAtTargetPosition(CurrentTarget.GetPosition());
+                CastSpellAtCurrentTarget();
             }
         }
 
@@ -71,28 +67,44 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return true;
         }
 
-        protected virtual void CastSpellAtTargetPosition(Vec3 targetPosition)
+        protected virtual void CastSpellAtCurrentTarget()
         {
-            var wizardAIComponent = Agent.GetComponent<WizardAIComponent>();
-            wizardAIComponent.SpellTargetRotation = CalculateSpellRotation(targetPosition);
             Agent.CastCurrentAbility();
         }
 
         protected Vec3 ComputeSpellAngleVelocityCorrection(Vec3 targetPosition, Vec3 targetVelocity)
         {
-            var time = targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed;
+            float time;
+            switch (AbilityTemplate.AbilityEffectType)
+            {
+                case AbilityEffectType.Bombardment:
+                case AbilityEffectType.Vortex:
+                case AbilityEffectType.Heal:
+                case AbilityEffectType.Hex:
+                case AbilityEffectType.Augment:
+                {
+                    time = AbilityTemplate.CastTime;
+                    break;
+                }
+                default:
+                {
+                    time = AbilityTemplate.BaseMovementSpeed != 0 ? targetPosition.Distance(Agent.Position) / AbilityTemplate.BaseMovementSpeed : AbilityTemplate.CastTime;
+                    break;
+                }
+            }
+
             return targetVelocity * time;
         }
 
 
-        protected Mat3 CalculateSpellRotation(Vec3 targetPosition)
+        public Mat3 CalculateSpellRotation(Vec3 targetPosition)
         {
             return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
         }
 
         public List<BehaviorOption> CalculateUtility()
         {
-            LatestScores = FindTargets(Agent, AbilityTemplate.AbilityTargetType)
+            LatestScores = AgentCastingBehaviorConfiguration.FindTargets(Agent, AbilityTemplate)
                 .Select(target =>
                 {
                     target.UtilityValue = CalculateUtility(target);
@@ -113,28 +125,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
             var hysteresis = Component.CurrentCastingBehavior == this && target.Formation == CurrentTarget.Formation ? Hysteresis : 0.0f;
             return _axisList.GeometricMean(target) + hysteresis;
-        }
-
-        protected static List<Target> FindTargets(Agent agent, AbilityTargetType targetType)
-        {
-            switch (targetType)
-            {
-                case AbilityTargetType.AlliesInAOE:
-                    return agent.Team.QuerySystem.AllyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-                case AbilityTargetType.Self:
-                    return new List<Target>()
-                    {
-                        new Target {Agent = agent}
-                    };
-                default:
-                    return agent.Team.QuerySystem.EnemyTeams
-                        .SelectMany(team => team.Team.Formations)
-                        .Select(form => new Target {Formation = form})
-                        .ToList();
-            }
         }
     }
 }

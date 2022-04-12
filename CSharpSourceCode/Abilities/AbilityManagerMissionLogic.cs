@@ -11,7 +11,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
 using TOW_Core.Abilities.Crosshairs;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.CrosshairMissionBehavior;
 using TOW_Core.Battle.Crosshairs;
 using TOW_Core.Items;

@@ -1,7 +1,7 @@
 ﻿using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Decision;
 
-namespace TOW_Core.Abilities.Scripts
+namespace TOW_Core.Abilities
 {
     public class SeekerController
     {
@@ -12,7 +12,11 @@ namespace TOW_Core.Abilities.Scripts
 
         public SeekerController(Target target, SeekerParameters parameters)
         {
-            _target = target;
+            _target = new Target
+            {
+                Agent = target.Agent,
+                Formation = target.Formation
+            };
             _prevError = Vec3.Zero;
             _parameters = parameters;
         }

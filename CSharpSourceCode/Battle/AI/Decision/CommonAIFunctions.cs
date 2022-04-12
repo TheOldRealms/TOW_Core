@@ -85,6 +85,12 @@ namespace TOW_Core.Battle.AI.Decision
 
             return power;
         }
+
+        public static float CalculateTeamTotalPower(Team chosenTeam)
+        {
+            return chosenTeam.QuerySystem.TeamPower;
+        }
+        
     }
 
     public static class CommonAIStateFunctions

@@ -1,7 +1,7 @@
 ﻿using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.AI.Decision;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
