@@ -5,18 +5,19 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Battle.Artillery;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
     public class ArtilleryAI : UsableMachineAIBase
     {
-        private readonly Artillery.Artillery _artillery;
-        private Threat _target;
+        private readonly Artillery.ArtilleryRangedSiegeWeapon _artillery;
+        private Target _target;
         private List<Axis> targetDecisionFunctions;
 
-        public ArtilleryAI(Artillery.Artillery usableMachine) : base(usableMachine)
+        public ArtilleryAI(Artillery.ArtilleryRangedSiegeWeapon usableMachine) : base(usableMachine)
         {
-            this._artillery = usableMachine;
+            _artillery = usableMachine;
             targetDecisionFunctions = CreateTargetingFunctions();
         }
 
@@ -31,14 +32,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
                 {
                     if (_target != null && _target.Formation != null && _target.Formation.GetCountOfUnitsWithCondition(x => x.IsActive()) > 0)
                     {
-                        if (_artillery.GetTarget() != _target)
+                        if (_artillery.Target != _target)
                         {
                             _artillery.SetTarget(_target);
                         }
 
-                        if (_artillery.CanShootAtTarget())
+                        if (_artillery.Target != null && _artillery.AimAtTarget(GetAdjustedTargetPosition(_artillery.Target)) && _artillery.PilotAgent.Formation.FiringOrder.OrderType != OrderType.HoldFire)
                         {
                             _artillery.Shoot();
+                            _artillery.Target.SelectedWorldPosition = Vec3.Zero;
                         }
                     }
                     else
@@ -51,14 +53,30 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             }
         }
 
+        private Vec3 GetAdjustedTargetPosition(Target target)
+        {
+            if (target == null || target.Formation == null) return Vec3.Zero;
+           
+            if (target.SelectedWorldPosition == Vec3.Zero)
+            {
+                float speed = target.Formation.GetMovementSpeedOfUnits();
+                float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
+                var frame = CommonAIFunctions.GetRandomAgent(target.Formation).Frame;
+                frame.Advance(speed * time);
+                target.SelectedWorldPosition = frame.origin;
+            }
+          
+            return target.SelectedWorldPosition;
+        }
+
         private void FindNewTarget()
         {
             _target = GetAllThreats().Count > 0 ? GetAllThreats().MaxBy(x => x.Formation.CountOfUnits) : null;
         }
 
-        private List<Threat> GetAllThreats()
+        private List<Target> GetAllThreats()
         {
-            List<Threat> list = new List<Threat>();
+            List<Target> list = new List<Target>();
             /*
             this._potentialTargetUsableMachines.RemoveAll((ITargetable ptum) => ptum is UsableMachine && ((ptum as UsableMachine).IsDestroyed || (ptum as UsableMachine).GameEntity == null));
             list.AddRange(from um in this._potentialTargetUsableMachines

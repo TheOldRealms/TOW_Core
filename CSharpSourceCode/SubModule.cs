@@ -180,7 +180,6 @@ namespace TOW_Core
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
-            mission.AddMissionBehavior(new ArtilleryViewController());
             mission.AddMissionBehavior(new CustomAgentSoundMissionLogic());
             if (Game.Current.GameType is Campaign)
             {

@@ -101,4 +101,24 @@ namespace TOW_Core.Battle.AI.Decision
             return movementOrder.HasValue && (movementOrder.Value.OrderType == OrderType.Charge || movementOrder.Value.OrderType == OrderType.ChargeWithTarget || agent?.Formation?.AI?.ActiveBehavior?.GetType().Name.Contains("Skirmish") == true);
         }
     }
+
+    public static class CommonAIFunctions
+    {
+        private static Random _random = new Random();
+        
+        public static Agent GetRandomAgent(Formation targetFormation)
+        {
+            var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
+            var adjustedPosition = medianAgent.Position;
+
+            var direction = targetFormation.QuerySystem.EstimatedDirection;
+            var rightVec = direction.RightVec();
+
+            adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
+            adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
+
+            return targetFormation.GetMedianAgent(true, false, adjustedPosition.AsVec2);
+            ;
+        }
+    }
 }
