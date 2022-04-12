@@ -368,7 +368,6 @@
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORManager.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORSettlementTemplate.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
-    <Compile Include="HarmonyPatches\ArtilleryPatch.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
