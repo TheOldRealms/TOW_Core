@@ -9,6 +9,7 @@ using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.TwoDimension;
 using TOW_Core.Battle.AI.Components;
 using TOW_Core.Battle.TriggeredEffect.Scripts;
 
@@ -48,6 +49,9 @@ namespace TOW_Core.Battle.Artillery
         public string FireSoundID2 = "mortar_shot_2";
         public float RecoilDuration = 0.1f;
         public float Recoil2Duration = 0.8f;
+        public string DisplayName = "Artillery";
+        public float BaseMuzzleVelocity = 40f;
+        public bool UsesCalculatedMuzzleVelocity = false;
         private int _fireSoundIndex;
         private int _fireSoundIndex2;
         private SynchedMissionObject _body;
@@ -75,8 +79,12 @@ namespace TOW_Core.Battle.Artillery
         {
             get
             {
-                var cheat = TargetDistance / 3;
-                return MathF.Max(10f, cheat);
+                if (UsesCalculatedMuzzleVelocity)
+                {
+                    var cheat = MathF.Sqrt(TargetDistance) * 3.1415f;
+                    return MathF.Max(10f, cheat + TargetDistance * 0.1f);
+                }
+                else return BaseMuzzleVelocity;
             }
         }
         protected override Vec3 ShootingDirection => Projectile.GameEntity.GetGlobalFrame().rotation.f;
@@ -347,14 +355,26 @@ namespace TOW_Core.Battle.Artillery
 
         public override TextObject GetActionTextForStandingPoint(UsableMissionObject usableGameObject)
         {
-            TextObject textObject = new TextObject("{=fEQAPJ2e}{KEY} Use", null);
+            TextObject textObject;
+            if (usableGameObject.GameEntity.HasTag(AmmoLoadTag))
+            {
+                textObject = new TextObject("{=Na81xuXn}{KEY} Reload");
+            }
+            else if (usableGameObject.GameEntity.HasTag(AmmoPickUpTag))
+            {
+                textObject = new TextObject("{=bNYm3K6b}{KEY} Pick Up");
+            }
+            else
+            {
+                textObject = new TextObject("{=fEQAPJ2e}{KEY} Use");
+            }
             textObject.SetTextVariable("KEY", HyperlinkTexts.GetKeyHyperlinkText(HotKeyManager.GetHotKeyId("CombatHotKeyCategory", 13)));
             return textObject;
         }
 
         public override string GetDescriptionText(GameEntity gameEntity = null)
         {
-            return new TextObject("{=!}Test Artillery", null).ToString();
+            return new TextObject(DisplayName, null).ToString();
         }
 
         public override SiegeEngineType GetSiegeEngineType() => Side != BattleSideEnum.Attacker ? DefaultSiegeEngineTypes.Catapult : DefaultSiegeEngineTypes.Onager;
@@ -533,6 +553,34 @@ namespace TOW_Core.Battle.Artillery
             {
                 DoWheelRotation(dt, _rotationDirection, _rotationDirection);
             }
+        }
+
+        public override bool IsDisabledForBattleSideAI(BattleSideEnum sideEnum)
+        {
+            return sideEnum != Side;
+        }
+
+        public float GetEstimatedCurrentFlightTime()
+        {
+            if (Target == null) return 0;
+            return GetTimeOfProjectileFlight(ShootingSpeed, targetReleaseAngle, MissleStartingPositionForSimulation.Z, Target.Position.Z);
+        }
+
+        public static float GetTimeOfProjectileFlight(float velocity, float angle, float heightBegin, float heightEnd)
+        {
+            //calculate maximum height 
+            var traveledHeight = (velocity * velocity * (Mathf.Sin(angle) * Mathf.Sin(angle))) / (2 * MBGlobals.Gravity);
+            var maximumHeight = traveledHeight + heightBegin;
+
+            var timeTraveledToMaximumHeight = Mathf.Abs((2 * velocity * Mathf.Sin(angle)) / MBGlobals.Gravity) / 2;
+
+            //calculate from the maximum height down to the end height
+            var maximumRelativeToEnd = traveledHeight - heightEnd;
+
+            var term = (velocity * Mathf.Sin(0) + (float)Math.Pow((velocity * Mathf.Sin(0)), 2) + 2 * MBGlobals.Gravity * maximumRelativeToEnd) / MBGlobals.Gravity; ;
+            var timeTravelFromMiddleToEnd = velocity * Mathf.Sin(0);
+
+            return timeTraveledToMaximumHeight + timeTravelFromMiddleToEnd;
         }
     }
 }

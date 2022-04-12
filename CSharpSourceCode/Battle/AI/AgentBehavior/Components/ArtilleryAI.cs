@@ -5,6 +5,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Battle.Artillery;
 
 namespace TOW_Core.Battle.AI.Components
 {
@@ -56,10 +57,10 @@ namespace TOW_Core.Battle.AI.Components
             if (target == null || target.Formation == null) return Vec3.Zero;
             else
             {
-                //assume 3 second flight time unless we can calculate it properly.
                 float speed = target.Formation.GetMovementSpeedOfUnits();
+                float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
                 var frame = target.Formation.GetMedianAgent(true, true, target.Formation.GetAveragePositionOfUnits(true, true)).Frame;
-                frame.Advance(speed * 3);
+                frame.Advance(speed * time);
                 return frame.origin;
             }
         }
