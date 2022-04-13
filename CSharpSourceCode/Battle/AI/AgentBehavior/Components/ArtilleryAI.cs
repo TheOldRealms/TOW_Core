@@ -56,16 +56,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         private Vec3 GetAdjustedTargetPosition(Target target)
         {
             if (target == null || target.Formation == null) return Vec3.Zero;
-           
-            if (target.SelectedWorldPosition == Vec3.Zero)
-            {
-                float speed = target.Formation.GetMovementSpeedOfUnits();
-                float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
-                var frame = CommonAIFunctions.GetRandomAgent(target.Formation).Frame;
-                frame.Advance(speed * time);
-                target.SelectedWorldPosition = frame.origin;
-            }
-          
+
+            var targetAgent = target.SelectedWorldPosition == Vec3.Zero ? CommonAIFunctions.GetRandomAgent(target.Formation) : target.Agent;
+            target.Agent = targetAgent;
+
+            float speed = target.Formation.GetMovementSpeedOfUnits();
+            float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
+
+            target.SelectedWorldPosition = targetAgent.Frame.Advance(speed * time).origin;
+
             return target.SelectedWorldPosition;
         }
 
@@ -117,7 +116,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         private List<Axis> CreateTargetingFunctions()
         {
             var targetingFunctions = new List<Axis>();
-          //  targetingFunctions.Add(new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => _artillery.Position)));
+            //  targetingFunctions.Add(new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => _artillery.Position)));
             targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team) / 4, x => x, CommonAIDecisionFunctions.FormationPower()));
             return targetingFunctions;
         }

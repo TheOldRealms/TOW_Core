@@ -562,7 +562,7 @@ namespace TOW_Core.Battle.Artillery
         public float GetEstimatedCurrentFlightTime()
         {
             if (Target == null) return 0;
-            return GetTimeOfProjectileFlight(ShootingSpeed, targetReleaseAngle, MissleStartingPositionForSimulation.Z, Target.Position.Z);
+            return GetTimeOfProjectileFlight(ShootingSpeed, targetReleaseAngle, MissleStartingPositionForSimulation.Z, Target.GetPosition().Z);
         }
 
         public static float GetTimeOfProjectileFlight(float velocity, float angle, float heightBegin, float heightEnd)

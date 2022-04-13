@@ -118,7 +118,6 @@ namespace TOW_Core.Battle.AI.Decision
             adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
 
             return targetFormation.GetMedianAgent(true, false, adjustedPosition.AsVec2);
-            ;
         }
     }
 }
