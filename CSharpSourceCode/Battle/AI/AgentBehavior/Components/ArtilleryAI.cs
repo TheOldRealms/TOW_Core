@@ -122,44 +122,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             return targetingFunctions;
         }
 
-        public float ProcessTargetValue(float baseValue, TargetFlags flags) //TODO: This is probably not necessary, we can represent it better with the axis. Normalized values are better in these scenarios.
-        {
-            if (flags.HasAnyFlag(TargetFlags.NotAThreat))
-            {
-                return -1000f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.None))
-            {
-                baseValue *= 1.5f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.IsSiegeEngine))
-            {
-                baseValue *= 2f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.IsStructure))
-            {
-                baseValue *= 1.5f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.IsSmall))
-            {
-                baseValue *= 0.5f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.IsMoving))
-            {
-                baseValue *= 0.8f;
-            }
-
-            if (flags.HasAnyFlag(TargetFlags.DebugThreat))
-            {
-                baseValue *= 10000f;
-            }
-
-            return baseValue;
-        }
+      
     }
 }
