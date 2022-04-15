@@ -116,12 +116,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         private List<Axis> CreateTargetingFunctions()
         {
             var targetingFunctions = new List<Axis>();
-            targetingFunctions.Add(new Axis(0, 50, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => _artillery.GameEntity.GlobalPosition)));
+            targetingFunctions.Add(new Axis(0, 300, x => 0.7f - 3 * (float) Math.Pow(x - 0.3f, 3) + (float) Math.Pow(x, 2), CommonAIDecisionFunctions.DistanceToTarget(() => _artillery.GameEntity.GlobalPosition)));
             targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team), x => x, CommonAIDecisionFunctions.FormationPower()));
             targetingFunctions.Add(new Axis(0, 40, x => x, CommonAIDecisionFunctions.UnitCount()));
             return targetingFunctions;
         }
-
-      
     }
 }

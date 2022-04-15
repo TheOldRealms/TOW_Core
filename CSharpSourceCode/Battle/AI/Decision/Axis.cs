@@ -31,7 +31,7 @@ namespace TOW_Core.Battle.AI.Decision
             var x = _parameterFunction.Invoke(target);
             var range = (Math.Max(_min, Math.Min(_max, x)) - _min) / _range;
             var invoke = _function.Invoke(range);
-            return invoke;
+            return Math.Max(0f, Math.Min(1.0f, invoke));
         }
 
         public bool IsActive(Target target)
