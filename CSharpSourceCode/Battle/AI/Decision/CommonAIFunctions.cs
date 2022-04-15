@@ -112,10 +112,10 @@ namespace TOW_Core.Battle.AI.Decision
             {
                 var value = 0.0f;
                 if (target.TacticalPosition.TacticalPositionType == TacticalPosition.TacticalPositionTypeEnum.HighGround)
-                    value += 0.9f;  
+                    value += 0.9f;
                 if (target.TacticalPosition.TacticalPositionType == TacticalPosition.TacticalPositionTypeEnum.ChokePoint)
                     value += 0.7f;
-                
+
                 if (target.TacticalPosition.TacticalRegionMembership == TacticalRegion.TacticalRegionTypeEnum.Opening)
                     value += 0.1f;
                 if (target.TacticalPosition.TacticalRegionMembership == TacticalRegion.TacticalRegionTypeEnum.Forest)
@@ -125,6 +125,11 @@ namespace TOW_Core.Battle.AI.Decision
 
                 return value;
             };
+        }
+
+        public static Func<Target, float> UnitCount()
+        {
+            return target => target.Formation?.CountOfUnits ?? 1;
         }
     }
 

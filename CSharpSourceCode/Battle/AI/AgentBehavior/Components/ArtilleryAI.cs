@@ -46,9 +46,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
                     }
                     else
                     {
-                        _target = null;
                         _artillery.ClearTarget();
-                        FindNewTarget();
+                        _target = FindNewTarget();
                     }
                 }
             }
@@ -63,15 +62,16 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
 
             Vec3 velocity = target.Formation.QuerySystem.CurrentVelocity.ToVec3();
             float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
-            
+
             target.SelectedWorldPosition = target.Position + velocity * time;
 
             return target.SelectedWorldPosition;
         }
 
-        private void FindNewTarget()
+        private Target FindNewTarget()
         {
-            _target = GetAllThreats().Count > 0 ? GetAllThreats().MaxBy(x => x.Formation.CountOfUnits) : null;
+            var findNewTarget = GetAllThreats();
+            return findNewTarget.Count > 0 ? findNewTarget.MaxBy(target => target.UtilityValue) : null;
         }
 
         private List<Target> GetAllThreats()
@@ -101,15 +101,14 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         private Target GetTargetValueOfFormation(Formation formation)
         {
             var target = new Target {Formation = formation};
-            target.UtilityValue = ProcessTargetValue(targetDecisionFunctions.GeometricMean(target), RangedSiegeWeaponAi.ThreatSeeker.GetTargetFlagsOfFormation());
+            target.UtilityValue = targetDecisionFunctions.GeometricMean(target); //ProcessTargetValue(, RangedSiegeWeaponAi.ThreatSeeker.GetTargetFlagsOfFormation());
             return target;
         }
 
         private IEnumerable<Formation> GetUnemployedEnemyFormations()
         {
-            return from f in (from t in Mission.Current.Teams
-                    where t.Side.GetOppositeSide() == _artillery.Side
-                    select t).SelectMany((Team t) => t.FormationsIncludingSpecial)
+            return from f in (from t in Mission.Current.Teams where t.Side.GetOppositeSide() == _artillery.Side select t)
+                    .SelectMany((Team t) => t.FormationsIncludingSpecial)
                 where f.CountOfUnits > 0
                 select f;
         }
@@ -117,8 +116,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         private List<Axis> CreateTargetingFunctions()
         {
             var targetingFunctions = new List<Axis>();
-            //  targetingFunctions.Add(new Axis(0, 120, x => 1 - x, CommonDecisionFunctions.DistanceToTarget(() => _artillery.Position)));
-            targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team) / 4, x => x, CommonAIDecisionFunctions.FormationPower()));
+            targetingFunctions.Add(new Axis(0, 50, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => _artillery.GameEntity.GlobalPosition)));
+            targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team), x => x, CommonAIDecisionFunctions.FormationPower()));
+            targetingFunctions.Add(new Axis(0, 40, x => x, CommonAIDecisionFunctions.UnitCount()));
             return targetingFunctions;
         }
 
