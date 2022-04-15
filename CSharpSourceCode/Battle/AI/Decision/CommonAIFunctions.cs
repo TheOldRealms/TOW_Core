@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -16,17 +18,30 @@ namespace TOW_Core.Battle.AI.Decision
             return target => target.Formation.QuerySystem.CasualtyRatio;
         }
 
-        public static Func<Target, float> FormationDistanceToHostiles()
+        public static Func<Target, float> TargetDistanceToHostiles(Team team = null)
         {
             return target =>
             {
-                var querySystemClosestEnemyFormation = target.Formation.QuerySystem.ClosestEnemyFormation;
-                if (querySystemClosestEnemyFormation == null)
+                if (target.TacticalPosition != null && team != null)
                 {
-                    return float.MaxValue;
+                    var position = target.TacticalPosition.Position.GetGroundVec3();
+                    return team.Formations.ToList()
+                        .Select(formation => position.Distance(formation.QuerySystem.MedianPosition.Normal))
+                        .Min();
                 }
 
-                return target.GetPosition().AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
+                if (target.Formation != null)
+                {
+                    var querySystemClosestEnemyFormation = target.Formation.QuerySystem.ClosestEnemyFormation;
+                    if (querySystemClosestEnemyFormation == null)
+                    {
+                        return float.MaxValue;
+                    }
+
+                    return target.GetPosition().AsVec2.Distance(querySystemClosestEnemyFormation.AveragePosition);
+                }
+
+                return 0f;
             };
         }
 
@@ -90,7 +105,11 @@ namespace TOW_Core.Battle.AI.Decision
         {
             return chosenTeam.QuerySystem.TeamPower;
         }
-        
+
+        public static Func<Target,float> AssessPositionForArtillery(Team agentTeam)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public static class CommonAIStateFunctions
@@ -105,7 +124,7 @@ namespace TOW_Core.Battle.AI.Decision
     public static class CommonAIFunctions
     {
         private static Random _random = new Random();
-        
+
         public static Agent GetRandomAgent(Formation targetFormation)
         {
             var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));

@@ -9,6 +9,7 @@ namespace TOW_Core.Battle.AI.Decision
     public class Target : Threat
     {
         public Vec3 SelectedWorldPosition = Vec3.Zero;
+        public TacticalPosition TacticalPosition;
 
         public float UtilityValue
         {
@@ -18,6 +19,8 @@ namespace TOW_Core.Battle.AI.Decision
 
         public Vec3 GetPosition()
         {
+            if (TacticalPosition != null)
+                return TacticalPosition.Position.GetGroundVec3();
             if (SelectedWorldPosition != Vec3.Zero)
                 return SelectedWorldPosition;
             return Position;

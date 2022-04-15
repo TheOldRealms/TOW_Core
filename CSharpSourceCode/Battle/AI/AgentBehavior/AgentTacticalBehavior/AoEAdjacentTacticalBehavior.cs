@@ -17,7 +17,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
             CastingBehavior = castingBehavior;
         }
 
-        private void CalculateCastingTarget(Target target)
+        private void CalculateCastingTargetPosition(Target target)
         {
             CastingPosition = target.Formation != null ? CalculateCastingPosition(target.Formation) : Agent.Position;
             var worldPosition = new WorldPosition(Mission.Current.Scene, CastingPosition);
@@ -36,7 +36,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
         public override void Tick()
         {
-            CalculateCastingTarget(CastingBehavior.CurrentTarget);
+            CalculateCastingTargetPosition(CastingBehavior.CurrentTarget);
         }
 
         public override void Terminate()
