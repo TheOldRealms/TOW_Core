@@ -106,9 +106,25 @@ namespace TOW_Core.Battle.AI.Decision
             return chosenTeam.QuerySystem.TeamPower;
         }
 
-        public static Func<Target,float> AssessPositionForArtillery(Team agentTeam)
+        public static Func<Target, float> AssessPositionForArtillery()
         {
-            throw new NotImplementedException();
+            return target =>
+            {
+                var value = 0.0f;
+                if (target.TacticalPosition.TacticalPositionType == TacticalPosition.TacticalPositionTypeEnum.HighGround)
+                    value += 0.9f;  
+                if (target.TacticalPosition.TacticalPositionType == TacticalPosition.TacticalPositionTypeEnum.ChokePoint)
+                    value += 0.7f;
+                
+                if (target.TacticalPosition.TacticalRegionMembership == TacticalRegion.TacticalRegionTypeEnum.Opening)
+                    value += 0.1f;
+                if (target.TacticalPosition.TacticalRegionMembership == TacticalRegion.TacticalRegionTypeEnum.Forest)
+                    value -= 0.1f;
+                if (target.TacticalPosition.TacticalRegionMembership == TacticalRegion.TacticalRegionTypeEnum.DifficultTerrain)
+                    value -= 0.05f;
+
+                return value;
+            };
         }
     }
 

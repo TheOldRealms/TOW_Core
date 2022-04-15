@@ -136,6 +136,7 @@ namespace TOW_Core.Battle.Artillery
             _verticalOffsetAngle = Vec3.AngleBetweenTwoVectors(v, Vec3.Forward);
             _lastCurrentDirection = currentDirection;
             ApplyAimChange();
+            ForcedUse = false;
         }
 
         protected override void OnTick(float dt)

@@ -147,9 +147,8 @@ namespace TOW_Core.Battle.AI.AgentBehavior
 
                 axes.Add(new Axis(0, 100f, x => 1 - x, CommonAIDecisionFunctions.DistanceToTarget(() => behavior.Agent.Team.QuerySystem.MedianPosition.GetGroundVec3())));
                 axes.Add(new Axis(0, 70f, x => x, CommonAIDecisionFunctions.TargetDistanceToHostiles(behavior.Agent.Team)));
-                axes.Add(new Axis(0, 1, x => x, CommonAIDecisionFunctions.AssessPositionForArtillery(behavior.Agent.Team)));
+                axes.Add(new Axis(0, 1, x => x, CommonAIDecisionFunctions.AssessPositionForArtillery()));
                 
-
                 return axes;
             };
         }

@@ -6,6 +6,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.Artillery;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
@@ -60,10 +61,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             var targetAgent = target.SelectedWorldPosition == Vec3.Zero ? CommonAIFunctions.GetRandomAgent(target.Formation) : target.Agent;
             target.Agent = targetAgent;
 
-            float speed = target.Formation.GetMovementSpeedOfUnits();
+            Vec3 velocity = target.Formation.QuerySystem.CurrentVelocity.ToVec3();
             float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
-
-            target.SelectedWorldPosition = targetAgent.Frame.Advance(speed * time).origin;
+            
+            target.SelectedWorldPosition = target.Position + velocity * time;
 
             return target.SelectedWorldPosition;
         }
