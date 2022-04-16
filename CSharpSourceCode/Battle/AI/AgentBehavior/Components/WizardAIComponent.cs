@@ -29,7 +29,6 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
         {
             _dtSinceLastOccasional += dt;
             if (_dtSinceLastOccasional >= EvalInterval) TickOccasionally();
-            TOWCommon.Say(CurrentCastingBehavior?.ToString());
             if (Agent?.Formation?.FiringOrder.OrderType != OrderType.HoldFire)
             {
                 CurrentCastingBehavior?.TacticalBehavior?.Execute();
