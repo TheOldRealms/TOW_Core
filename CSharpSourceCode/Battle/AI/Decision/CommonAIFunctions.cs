@@ -155,7 +155,8 @@ namespace TOW_Core.Battle.AI.Decision
             var rightVec = direction.RightVec();
 
             adjustedPosition += direction.ToVec3() * (float) (_random.NextDouble() * targetFormation.Depth - targetFormation.Depth / 2);
-            adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * targetFormation.Width - 2 - (targetFormation.Width - 1) / 2);
+            var widthToTarget = targetFormation.Width * 0.90f;
+            adjustedPosition += rightVec.ToVec3() * (float) (_random.NextDouble() * widthToTarget - widthToTarget / 2);
 
             return targetFormation.GetMedianAgent(true, false, adjustedPosition.AsVec2);
         }

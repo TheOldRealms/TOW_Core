@@ -230,6 +230,11 @@ namespace TOW_Core.Abilities
                     break;
                 }
                 case AbilityEffectType.ArtilleryPlacement:
+                {
+                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
+                    target.SelectedWorldPosition = Vec3.Zero;
+                    break;  
+                }
                 case AbilityEffectType.Hex:
                 case AbilityEffectType.Augment:
                 case AbilityEffectType.Heal:

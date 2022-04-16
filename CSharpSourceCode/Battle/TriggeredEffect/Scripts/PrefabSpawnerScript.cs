@@ -34,6 +34,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             {
                 artillery.SetSide(triggeredByAgent.Team.Side);
                 artillery.Team = triggeredByAgent.Team;
+                artillery.ForcedUse = !triggeredByAgent.Team.IsPlayerTeam;
             }
         }
 

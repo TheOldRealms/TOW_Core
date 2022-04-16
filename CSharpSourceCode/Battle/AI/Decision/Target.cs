@@ -19,10 +19,10 @@ namespace TOW_Core.Battle.AI.Decision
 
         public Vec3 GetPosition()
         {
-            if (TacticalPosition != null)
-                return TacticalPosition.Position.GetGroundVec3();
             if (SelectedWorldPosition != Vec3.Zero)
                 return SelectedWorldPosition;
+            if (TacticalPosition != null)
+                return TacticalPosition.Position.GetGroundVec3();
             return Position;
         }
 
