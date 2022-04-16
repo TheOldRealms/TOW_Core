@@ -40,6 +40,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
 
                         if (_artillery.Target != null && _artillery.AimAtTarget(GetAdjustedTargetPosition(_artillery.Target)) && _artillery.PilotAgent.Formation.FiringOrder.OrderType != OrderType.HoldFire)
                         {
+                            TOWCommon.Say(_artillery.GameEntity.GlobalPosition.Distance(_artillery.Target.Position).ToString());
                             _artillery.Shoot();
                             _artillery.Target.SelectedWorldPosition = Vec3.Zero;
                         }
@@ -119,6 +120,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             targetingFunctions.Add(new Axis(0, 300, x => 0.7f - 3 * (float) Math.Pow(x - 0.3f, 3) + (float) Math.Pow(x, 2), CommonAIDecisionFunctions.DistanceToTarget(() => _artillery.GameEntity.GlobalPosition))); // 0.7 - 3(x-0.3)^3 + x^2
             targetingFunctions.Add(new Axis(0, CommonAIDecisionFunctions.CalculateEnemyTotalPower(_artillery.Team), x => x, CommonAIDecisionFunctions.FormationPower()));
             targetingFunctions.Add(new Axis(0, 70, x => x, CommonAIDecisionFunctions.UnitCount()));
+            targetingFunctions.Add(new Axis(0, 7, x => x, CommonAIDecisionFunctions.TargetDistanceToHostiles()));
             return targetingFunctions;
         }
     }
