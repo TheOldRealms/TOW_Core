@@ -149,6 +149,23 @@ namespace TOW_Core.Battle.Artillery
             HandleWaitingTimer();
             UpdateRecoilEffect(dt);
             UpdateWheelRotation(dt);
+            HandleAITeamUsage();
+        }
+
+        private void HandleAITeamUsage()
+        {
+            if (!Team?.IsPlayerTeam ?? false)
+            {
+                if (UserFormations.Count > 0 && UserFormations.All(formation => formation.PrimaryClass != FormationClass.Ranged))
+                {
+                    UserFormations[0].StopUsingMachine(this);
+                }
+
+                if (UserFormations.Count == 0)
+                {
+                    Team.Formations.ToList().FirstOrDefault(form => form.PrimaryClass == FormationClass.Ranged).StartUsingMachine(this);
+                }
+            }
         }
 
         private void HandleWaitingTimer()

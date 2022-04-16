@@ -29,7 +29,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
 
         protected override Target UpdateTarget(Target target)
         {
-            var width = target.TacticalPosition.Width / 2;
+            var width = target.TacticalPosition.Width / 1.5f;
             target.SelectedWorldPosition = target.TacticalPosition.Position.GetGroundVec3() + target.TacticalPosition.Direction.RightVec().ToVec3() * (float) (_random.NextDouble() * width - width / 2);
             return target;
         }
