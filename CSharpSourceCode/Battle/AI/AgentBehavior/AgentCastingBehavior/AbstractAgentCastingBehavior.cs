@@ -62,7 +62,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return target;
         }
 
-        protected virtual bool HaveLineOfSightToTarget(Target targetAgent)
+        protected virtual bool HaveLineOfSightToTarget(Target target)
         {
             return true;
         }

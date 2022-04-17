@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Abilities;
 using TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior;
 using TOW_Core.Battle.AI.Decision;
+using TOW_Core.Battle.Artillery;
 using TOW_Core.Utilities;
 
 namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
@@ -34,11 +36,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
             return target;
         }
 
-        protected override bool HaveLineOfSightToTarget(Target targetAgent)
+        protected override bool HaveLineOfSightToTarget(Target target)
         {
-            Mission.Current.Scene.RayCastForClosestEntityOrTerrain(Agent.Position, targetAgent.SelectedWorldPosition, out float _, out Vec3 _, out GameEntity gameEntity, 3.0f);
-            TOWCommon.Say((gameEntity == null).ToString());
-            return gameEntity == null;
+            var activeEntitiesWithScriptComponentOfType = Mission.Current.GetActiveEntitiesWithScriptComponentOfType<ArtilleryRangedSiegeWeapon>();
+            return !activeEntitiesWithScriptComponentOfType.Any(entity => entity.GlobalPosition.Distance(target.SelectedWorldPosition) < 3.5);
         }
     }
 }
