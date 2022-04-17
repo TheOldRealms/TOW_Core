@@ -2248,8 +2248,15 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
-      <string>Dart</string>
-      <string>FlamingSwords</string>
+      <string>CinderBlast</string>
+      <string>BoltOfAqshy</string>
+      <string>Sear</string>
+      <string>FlameStorm</string>
+      <string>LightningBolt</string>
+      <string>WindBlast</string>
+      <string>ChainLightning</string>
+      <string>HarmonicConvergence</string>
+      <string>Blizzard</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
