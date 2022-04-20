@@ -324,5 +324,37 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
+	<game_entity name="stone_assault" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{8E572796-1554-41BD-8348-C7031383F955}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="deathly_shards" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{19E48096-D09D-43CE-AB04-F215846F983E}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="radiance_pillar" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{78216AB0-192D-4A06-AFC3-63CF43574154}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="radiant_gaze" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{9FF14D4D-DF74-4102-BEC4-24C5F417C618}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
 </prefabs>
 

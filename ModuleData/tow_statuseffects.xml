@@ -22,7 +22,7 @@
 		particle_id="healing_regeneration"
 		particle_intensity="High"
 		health_over_time="20"
-		duration="3"
+		duration="5"
 		type="HealthOverTime"
 		damage_type="Holy"/>
 	<StatusEffectTemplate 

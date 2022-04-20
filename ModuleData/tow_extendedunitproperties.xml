@@ -2248,15 +2248,13 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
     <Abilities>
-      <string>CinderBlast</string>
-      <string>BoltOfAqshy</string>
-      <string>Sear</string>
-      <string>FlameStorm</string>
-      <string>LightningBolt</string>
-      <string>WindBlast</string>
-      <string>ChainLightning</string>
-      <string>HarmonicConvergence</string>
-      <string>Blizzard</string>
+      <string>ShemGaze</string>
+      <string>StoneAssault</string>
+      <string>HealingLight</string>
+      <string>PhaProtection</string>
+      <string>DeathlyShards</string>
+      <string>RadiancePillar</string>
+      <string>RadiantGaze</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
