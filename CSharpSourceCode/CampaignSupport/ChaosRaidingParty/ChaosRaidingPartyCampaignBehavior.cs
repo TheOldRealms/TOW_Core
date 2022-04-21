@@ -44,6 +44,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                     }
                 }
             }
+            obj.AddDialogLine("chaos_greeting", "start", "close_window", "Asinine mortal. Prepare to die!", () => CharacterObject.OneToOneConversationCharacter.Culture.StringId == "chaos_culture", null);
         }
 
         private void HourlyTickPartyAI(MobileParty party, PartyThinkParams partyThinkParams)
