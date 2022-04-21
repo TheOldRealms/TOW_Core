@@ -22,7 +22,7 @@
 		particle_id="healing_regeneration"
 		particle_intensity="High"
 		health_over_time="20"
-		duration="3"
+		duration="5"
 		type="HealthOverTime"
 		damage_type="Holy"/>
 	<StatusEffectTemplate 
@@ -64,7 +64,18 @@
 		type="Resistance">
     	<Resistance ResistedDamageType="Physical" ReductionPercent="0.2" />
   	</StatusEffectTemplate>
-	  	<StatusEffectTemplate
+	<StatusEffectTemplate
+		id="physical_resistance_50"
+		particle_id="harmonic_convergence"
+		particle_intensity="High"
+		apply_particle_to_root_bone_only="true"
+    	health_over_time="0"
+    	damage_over_time="0"
+		duration="15"
+		type="Resistance">
+    	<Resistance ResistedDamageType="Physical" ReductionPercent="0.5" />
+  	</StatusEffectTemplate>
+	<StatusEffectTemplate
 		id="physical_bonus_20"
 		particle_id="berzerk_effect"
 		particle_intensity="High"
