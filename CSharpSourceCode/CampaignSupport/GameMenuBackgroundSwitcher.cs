@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.CampaignSupport
 {
@@ -12,26 +13,23 @@ namespace TOW_Core.CampaignSupport
     {
         /** Janky fix for https://github.com/TheOldRealms/TOW_Core/issues/213
          *
-         *  May potentially lead to issues where the wrong background mesh shows
-         *  up for village_looted, village_raid_ended_leaded_by_someone_else, and
-         *  raiding_village events.
+         *  Refers to the radius at which npc parties raid villages / settlements
+         *  Adjust as needed if the call in 
+         *  game_menu_ui_village_hostile_raid_on_init_tow becomes expensive for
+         *  whatever reason.
          *  
-         *  Though the above is only true for cases where Settlement.CurrentSettlement
-         *  is null.
-         *  
-         *  TODO: Replace SettlementMemo with logic for finding the settlement 
-         *  closest to the player party.
+         *  Lower value = less expensive.
          */
-        private static Settlement SettlementMemo = null;
-
+        private static readonly float RAID_RADIUS = 20f;
         [GameMenuInitializationHandler("village_looted")]
         [GameMenuInitializationHandler("village_raid_ended_leaded_by_someone_else")]
         [GameMenuInitializationHandler("raiding_village")]
         private static void game_menu_ui_village_hostile_raid_on_init_tow(MenuCallbackArgs args)
         {
             var settlement = Settlement.CurrentSettlement
-                ?? GameMenuBackgroundSwitcher.SettlementMemo;
-            GameMenuBackgroundSwitcher.SettlementMemo = settlement;
+                ?? TOWCommon.FindNearestSettlement(MobileParty.MainParty, RAID_RADIUS) 
+                ?? null;
+
             if (settlement == null || settlement.Culture == null)
             {
                 args.MenuContext.SetBackgroundMeshName("wait_raiding_village");
