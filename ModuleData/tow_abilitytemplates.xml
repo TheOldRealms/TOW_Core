@@ -1373,7 +1373,7 @@
       CastTime="0.5" 
       AnimationActionName="act_release_heavy_thrown" 
       TriggeredEffectID="shadowblood_explosion"
-      Offset="0.5"
+      Offset="2"
       CrosshairType="Missile"
       AbilityTargetType="WorldPosition"
       SpellTier="2"
