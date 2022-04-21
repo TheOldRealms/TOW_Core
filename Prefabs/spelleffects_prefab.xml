@@ -356,5 +356,29 @@
 			</particle_system_instanced_component>
 		</components>
 	</game_entity>
+	<game_entity name="shadowblood" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{F7897EE9-B3E5-48F0-A013-51DB9612711D}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="withering_wave" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{4CE3646F-5153-4FA9-8AC6-C43FC0FAEF47}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="raise_dead" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{64C46A6C-9303-4503-B14D-D15DA5D9F14A}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
 </prefabs>
 

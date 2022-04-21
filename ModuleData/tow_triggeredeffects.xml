@@ -302,9 +302,119 @@
             ImbuedStatusEffectDuration="0" 
             DamageVariance="0.1" 
             ScriptNameToTrigger="none"/>
-      <!-- Necromancy -->
+<!-- Necromancy -->
+      <TriggeredEffectTemplate StringID="nagashgaze_explosion" 
+            BurstParticleEffectPrefab="purple_particle_explosion" 
+            SoundEffectId="dart_explosion" 
+            SoundEffectLength="2.5" 
+            DamageType="Magical" 
+            DamageAmount="50" 
+            Radius="3" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="5" 
+            DamageVariance="0.2" 
+            ScriptNameToTrigger="none"/>
+      <TriggeredEffectTemplate StringID="shadowblood_explosion" 
+            BurstParticleEffectPrefab="shadowblood_explosion" 
+            SoundEffectId="blood_explosion" 
+            SoundEffectLength="2.5" 
+            DamageType="Magical" 
+            DamageAmount="65" 
+            Radius="3" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="5" 
+            DamageVariance="0.1" 
+            ScriptNameToTrigger="none"/>
+      <TriggeredEffectTemplate StringID="apply_red_healing_statuseffect" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Invalid" 
+            DamageAmount="0" 
+            Radius="4" 
+            HasShockWave="false" 
+            TargetType="Friendly" 
+            ImbuedStatusEffectID="red_regeneration" 
+            ImbuedStatusEffectDuration="5" 
+            DamageVariance="0.1" 
+            ScriptNameToTrigger="none"/>
+      <TriggeredEffectTemplate StringID="witheringwave_tick" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Magical" 
+            DamageAmount="35" 
+            Radius="3" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="5" 
+            DamageVariance="0.1" 
+            ScriptNameToTrigger="none"/>
+      <TriggeredEffectTemplate StringID="summon_skeleton" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Invalid" 
+            DamageAmount="0" 
+            Radius="5" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="0" 
+            DamageVariance="0" 
+            TroopIdToSummon="tor_vc_summoned_skeleton"
+            NumberToSummon="5"
+            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonScript"/>
+      <TriggeredEffectTemplate StringID="summon_kandorak" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Invalid" 
+            DamageAmount="0" 
+            Radius="5" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="0" 
+            DamageVariance="0" 
+            TroopIdToSummon="tor_vc_grave_guard"
+            NumberToSummon="4"
+            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonScript"/>
+      <TriggeredEffectTemplate StringID="summon_gravecall" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Invalid" 
+            DamageAmount="0" 
+            Radius="5" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="0" 
+            DamageVariance="0" 
+            TroopIdToSummon="tor_vc_skeleton_champion"
+            NumberToSummon="15"
+            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonScript"/>
+      <TriggeredEffectTemplate StringID="wind_of_death_tick" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Magical" 
+            DamageAmount="40" 
+            Radius="5" 
+            HasShockWave="false" 
+            TargetType="All" 
+            ImbuedStatusEffectID="none" 
+            ImbuedStatusEffectDuration="5" 
+            DamageVariance="0.1" 
+            ScriptNameToTrigger="none"/>
+<!-- Dark Magic -->
 
-      <!-- Dark Magic -->
 
 <!-- Artillery -->
       <TriggeredEffectTemplate StringID="place_mortar" 
@@ -350,9 +460,7 @@
             ImbuedStatusEffectDuration="5" 
             DamageVariance="0.2" 
             ScriptNameToTrigger="none"/>
-      
-      
-      
+
       <TriggeredEffectTemplate StringID="grenade_explosion" 
             BurstParticleEffectPrefab="psys_grenade_explosion_1" 
             SoundEffectId="fireball_explosion" 
@@ -367,39 +475,6 @@
             DamageVariance="0.2" 
             ScriptNameToTrigger="none"/>
       
-      
-      <TriggeredEffectTemplate StringID="wind_of_death_tick" 
-            BurstParticleEffectPrefab="none" 
-            SoundEffectId="none" 
-            SoundEffectLength="0" 
-            DamageType="Magical" 
-            DamageAmount="40" 
-            Radius="5" 
-            HasShockWave="false" 
-            TargetType="All" 
-            ImbuedStatusEffectID="none" 
-            ImbuedStatusEffectDuration="5" 
-            DamageVariance="0.1" 
-            ScriptNameToTrigger="none"/>
-      
-      
-      
-      
-      <TriggeredEffectTemplate StringID="summon_skeleton" 
-            BurstParticleEffectPrefab="none" 
-            SoundEffectId="none" 
-            SoundEffectLength="0" 
-            DamageType="Invalid" 
-            DamageAmount="0" 
-            Radius="5" 
-            HasShockWave="false" 
-            TargetType="All" 
-            ImbuedStatusEffectID="none" 
-            ImbuedStatusEffectDuration="0" 
-            DamageVariance="0" 
-            TroopIdToSummon="tor_vc_summoned_skeleton"
-            NumberToSummon="5"
-            ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.SummonScript"/>
       <TriggeredEffectTemplate StringID="healing_tick" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 
@@ -441,6 +516,7 @@
             ImbuedStatusEffectDuration="0" 
             DamageVariance="0.2" 
             ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.HurlWeaponsScript" />
+
       <TriggeredEffectTemplate StringID="word_of_pain" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 
@@ -455,7 +531,6 @@
             DamageVariance="0.2" 
             ScriptNameToTrigger="TOW_Core.Battle.TriggeredEffect.Scripts.WordOfPainScript" />
       
-      
       <TriggeredEffectTemplate StringID="curse_of_years" 
             BurstParticleEffectPrefab="none" 
             SoundEffectId="none" 
@@ -469,12 +544,5 @@
             ImbuedStatusEffectDuration="15" 
             DamageVariance="0.0" 
             ScriptNameToTrigger="none" />
-      
-      
-      
-      
-      
-      
-      
-      
+
 </ArrayOfTriggeredEffectTemplate>

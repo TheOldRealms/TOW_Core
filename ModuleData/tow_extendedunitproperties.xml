@@ -2275,6 +2275,13 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>GraveCall</string>
       <string>WindOfDeath</string>
       <string>ScreamingSkull</string>
     </Abilities>

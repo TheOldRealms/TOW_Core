@@ -1261,13 +1261,54 @@
   </AbilityTemplate>
 
 <!-- Necromancy -->
+  <AbilityTemplate StringID="NagashGaze" 
+      Name="Gaze of Nagash" 
+      SpriteName="fireball_icon" 
+      CoolDown="5" 
+      WindsOfMagicCost="8" 
+      BaseMisCastChance="0.05" 
+      Duration="3" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="Missile" 
+      BaseMovementSpeed="50" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="false" 
+      LightIntensity="10" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="nagash_gaze" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="evilbolt_cast" 
+      ShouldSoundLoopOverDuration="false" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_stone" 
+      TriggeredEffectID="nagashgaze_explosion"
+      Offset="0.5"
+      CrosshairType="Missile"
+      AbilityTargetType="WorldPosition"
+      SpellTier="2"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Gaze of Nagash.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
   <AbilityTemplate StringID="SummonSkeleton" 
-      Name="Summon Skeleton" 
+      Name="Raise the Dead" 
       SpriteName="summonskeleton_icon" 
       CoolDown="40" 
       WindsOfMagicCost="18" 
       BaseMisCastChance="0.3" 
-      Duration="5" 
+      Duration="2" 
       Radius="2" 
       AbilityType="Spell" 
       AbilityEffectType="Summoning" 
@@ -1280,9 +1321,9 @@
       LightFlickeringMagnitude="0" 
       LightFlickeringInterval="0" 
       ShadowCastEnabled="false" 
-      ParticleEffectPrefab="wind_of_death_vfx" 
+      ParticleEffectPrefab="raise_dead" 
       ParticleEffectSizeModifier="1" 
-      SoundEffectToPlay="none" 
+      SoundEffectToPlay="rocks_grinding" 
       ShouldSoundLoopOverDuration="true"
       CastType="Instant" 
       CastTime="0" 
@@ -1304,6 +1345,182 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+
+  <AbilityTemplate StringID="Shadowblood" 
+      Name="Shadowblood" 
+      SpriteName="fireball_icon" 
+      CoolDown="5" 
+      WindsOfMagicCost="8" 
+      BaseMisCastChance="0.05" 
+      Duration="10" 
+      Radius="0.4" 
+      AbilityType="Spell" 
+      AbilityEffectType="Missile" 
+      BaseMovementSpeed="25" 
+      TickInterval="-1" 
+      TriggerType="OnCollision" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="3" 
+      LightFlickeringInterval="0.7" 
+      ShadowCastEnabled="true" 
+      ParticleEffectPrefab="shadowblood" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="evilbolt_cast" 
+      ShouldSoundLoopOverDuration="false" 
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="shadowblood_explosion"
+      Offset="0.5"
+      CrosshairType="Missile"
+      AbilityTargetType="WorldPosition"
+      SpellTier="2"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Shadowblood.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
+  <AbilityTemplate StringID="Morkharn"
+      Name="Morkharn - Breath of Darkness"
+      SpriteName="healingprayer_icon"
+      CoolDown="10"
+      WindsOfMagicCost="12"
+      BaseMisCastChance="0.05"
+      Duration="0"
+      Radius="3"
+      AbilityType="Spell"
+      AbilityEffectType="Heal"
+      BaseMovementSpeed="0"
+      TickInterval="-1"
+      TriggerType="TickOnce"
+      HasLight="false"
+      LightIntensity="0"
+      LightRadius="0"
+      LightFlickeringMagnitude="0"
+      LightFlickeringInterval="0"
+      ShadowCastEnabled="true"
+      ParticleEffectPrefab=""
+      ParticleEffectSizeModifier="0"
+      SoundEffectToPlay=""
+      ShouldSoundLoopOverDuration="false"
+      CastType="Instant"
+      CastTime="0.5"
+      AnimationActionName="act_release_heavy_thrown"
+      TriggeredEffectID="apply_red_healing_statuseffect"
+      Offset="0.5"
+      AbilityTargetType="AlliesInAOE"
+      TargetCapturingRadius="3"
+      MaxDistance="20"
+      CrosshairType="TargetedAOE"
+      SpellTier="3"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Morkharn - Breath of Darkness.">
+    <LightColorRGB x="255" y="170" z="0" w="-1">
+      <AsVec2>
+        <x>255</x>
+        <y>170</y>
+      </AsVec2>
+    </LightColorRGB>
+  </AbilityTemplate>
+
+  <AbilityTemplate StringID="WitheringWave" 
+      Name="Withering Wave " 
+      SpriteName="dust_storm_icon" 
+      CoolDown="10" 
+      WindsOfMagicCost="16" 
+      BaseMisCastChance="0.3" 
+      Duration="8" 
+      Radius="2" 
+      AbilityType="Spell" 
+      AbilityEffectType="Vortex" 
+      BaseMovementSpeed="3" 
+      TickInterval="0.5" 
+      TriggerType="EveryTick" 
+      HasLight="false" 
+      LightIntensity="50" 
+      LightRadius="10" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="withering_wave" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="windofdeath_whispers" 
+      ShouldSoundLoopOverDuration="true"
+      CastType="WindUp" 
+      CastTime="0.5" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="witheringwave_tick"
+      Offset="3"
+      AbilityTargetType="GroundAtPosition"
+      CrosshairType="TargetedAOE"
+      MinDistance="3"
+      MaxDistance="20"
+      TargetCapturingRadius="2"
+      MaxRandomDeviation="2"
+      ShouldRotateVisuals="false"
+      VisualsRotationVelocity="0"
+      SpellTier="3"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Withering Wave.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
+  <AbilityTemplate StringID="Kandorak" 
+      Name="Kandorak - The Harbinger" 
+      SpriteName="summonskeleton_icon" 
+      CoolDown="40" 
+      WindsOfMagicCost="6" 
+      BaseMisCastChance="0.3" 
+      Duration="2" 
+      Radius="2" 
+      AbilityType="Spell" 
+      AbilityEffectType="Summoning" 
+      BaseMovementSpeed="0" 
+      TickInterval="2" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="raise_dead" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="rocks_grinding" 
+      ShouldSoundLoopOverDuration="true"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="summon_kandorak"
+      Offset="10"
+      AbilityTargetType="GroundAtPosition"
+      CrosshairType="Pointer"
+      MinDistance="1"
+      MaxDistance="30"
+      TargetCapturingRadius="2.5"
+      SpellTier="3"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Raise 4 Grave Guards.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
   <AbilityTemplate StringID="ScreamingSkull" 
       Name="Screaming Skull" 
       SpriteName="screamingskull_icon" 
@@ -1348,6 +1565,7 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
+
   <AbilityTemplate StringID="WindOfDeath" 
       Name="Wind of Death" 
       SpriteName="windofdeath_icon" 
@@ -1384,6 +1602,50 @@
       SpellTier="4"
       BelongsToLoreID="Necromancy"
       TooltipDescription="Invoke the spirits of the dead to consume the the souls of the living. Does 40 damage in a 5 meter radius every 0.5 seconds for 5 seconds while moving along a path.">
+      <LightColorRGB x="255" y="170" z="0" w="-1">
+        <AsVec2>
+          <x>255</x>
+          <y>170</y>
+        </AsVec2>
+      </LightColorRGB>
+  </AbilityTemplate>
+
+  <AbilityTemplate StringID="GraveCall" 
+      Name="Grave Call" 
+      SpriteName="summonskeleton_icon" 
+      CoolDown="40" 
+      WindsOfMagicCost="14" 
+      BaseMisCastChance="0.3" 
+      Duration="2" 
+      Radius="2" 
+      AbilityType="Spell" 
+      AbilityEffectType="Summoning" 
+      BaseMovementSpeed="0" 
+      TickInterval="2" 
+      TriggerType="TickOnce" 
+      HasLight="false" 
+      LightIntensity="0" 
+      LightRadius="0" 
+      LightFlickeringMagnitude="0" 
+      LightFlickeringInterval="0" 
+      ShadowCastEnabled="false" 
+      ParticleEffectPrefab="raise_dead" 
+      ParticleEffectSizeModifier="1" 
+      SoundEffectToPlay="rocks_grinding" 
+      ShouldSoundLoopOverDuration="true"
+      CastType="Instant" 
+      CastTime="0" 
+      AnimationActionName="act_release_heavy_thrown" 
+      TriggeredEffectID="summon_gravecall"
+      Offset="10"
+      AbilityTargetType="GroundAtPosition"
+      CrosshairType="Pointer"
+      MinDistance="1"
+      MaxDistance="30"
+      TargetCapturingRadius="2.5"
+      SpellTier="4"
+      BelongsToLoreID="Necromancy"
+      TooltipDescription="Raise 15 Skeleton Champions.">
       <LightColorRGB x="255" y="170" z="0" w="-1">
         <AsVec2>
           <x>255</x>

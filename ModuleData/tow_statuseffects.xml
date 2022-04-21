@@ -26,6 +26,14 @@
 		type="HealthOverTime"
 		damage_type="Holy"/>
 	<StatusEffectTemplate 
+		id="red_regeneration" 
+		particle_id="red_regeneration"
+		particle_intensity="High"
+		health_over_time="20"
+		duration="5"
+		type="HealthOverTime"
+		damage_type="Holy"/>
+	<StatusEffectTemplate 
 		id="fireball_dot" 
 		particle_id="torch_fire_sparks"
 		particle_intensity="High"
