@@ -38,8 +38,7 @@ namespace TOW_Core.CampaignSupport
                 return;
             }
 
-            var culture = settlement.Culture;
-            switch (culture.StringId)
+            switch (settlement.Culture.StringId)
             {
                 case "empire":
                     args.MenuContext.SetBackgroundMeshName("empire_looted_village");
