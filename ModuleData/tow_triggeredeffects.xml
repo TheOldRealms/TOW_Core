@@ -175,7 +175,7 @@
             BurstParticleEffectPrefab="blue_particle_explosion" 
             SoundEffectId="dart_explosion" 
             SoundEffectLength="2.5" 
-            DamageType="Magical" 
+            DamageType="Lightning" 
             DamageAmount="50" 
             Radius="3" 
             HasShockWave="false" 
