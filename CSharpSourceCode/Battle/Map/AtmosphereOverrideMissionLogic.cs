@@ -11,8 +11,10 @@ namespace TOW_Core.Battle.Map
     public class AtmosphereOverrideMissionLogic : MissionLogic
     {
         private readonly string _forceAtmosphereKey = "forceatmo";
-        public override void EarlyStart()
+
+        public override void OnRenderingStarted()
         {
+            base.OnRenderingStarted();
             if (Mission.Scene != null && Mission.SceneName.Contains(_forceAtmosphereKey))
             {
                 Mission.Scene.SetAtmosphereWithName(Mission.SceneName);

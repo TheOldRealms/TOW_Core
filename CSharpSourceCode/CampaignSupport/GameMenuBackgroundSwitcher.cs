@@ -44,6 +44,9 @@ namespace TOW_Core.CampaignSupport
                 case "khuzait":
                     args.MenuContext.SetBackgroundMeshName("vampire_looted_village");
                     return;
+                default:
+                    args.MenuContext.SetBackgroundMeshName("wait_raiding_village");
+                    return;
             }
         }
 
