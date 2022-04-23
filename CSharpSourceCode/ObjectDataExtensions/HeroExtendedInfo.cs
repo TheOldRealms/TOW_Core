@@ -25,7 +25,7 @@ namespace TOW_Core.ObjectDataExtensions
         {
             get
             {
-                if (!(Game.Current.GameType is Campaign)) return 30;
+                if (!(Game.Current.GameType is Campaign)) return 50;
                 else
                 {
                     var hero = _baseCharacter.HeroObject;

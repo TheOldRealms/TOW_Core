@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <NPCCharacters>
-  <NPCCharacter id="tor_wanderer_empire_0" default_group="infantry" name="{=str_ tor_wanderer_empire_0}{HERO.FIRSTNAME} Bright Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="55" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_0" default_group="ranged" name="{=str_ tor_wanderer_empire_0}{HERO.FIRSTNAME} Bright Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="55" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.brightwizard" />
       <hair_tags>
@@ -66,7 +66,7 @@
       <EquipmentSet id="tor_witch_hunter_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_empire_3" default_group="infantry" name="{=str_ tor_wanderer_empire_3}{HERO.FIRSTNAME} Light Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="50" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_3" default_group="ranged" name="{=str_ tor_wanderer_empire_3}{HERO.FIRSTNAME} Light Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="50" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
       <hair_tags>
@@ -88,7 +88,29 @@
       <EquipmentSet id="tor_light_wizard_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_empire_4" default_group="infantry" name="{=str_ tor_wanderer_empire_4}{HERO.FIRSTNAME} Engineer" occupation="Wanderer" culture="Culture.empire" voice="curt" age="49" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_4" default_group="ranged" name="{=str_ tor_wanderer_empire_4}{HERO.FIRSTNAME} Celestial Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="50" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_celestial_wizard_template" />
+      <EquipmentSet id="tor_celestial_wizard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_5" default_group="infantry" name="{=str_ tor_wanderer_empire_5}{HERO.FIRSTNAME} Engineer" occupation="Wanderer" culture="Culture.empire" voice="curt" age="49" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
       <hair_tags>
@@ -110,7 +132,7 @@
       <EquipmentSet id="tor_qnpc_masterengineer_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_empire_5" default_group="infantry" name="{=str_ tor_wanderer_empire_5}{HERO.FIRSTNAME} Bretonnian Knight" occupation="Wanderer" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_6" default_group="infantry" name="{=str_ tor_wanderer_empire_6}{HERO.FIRSTNAME} Bretonnian Knight" occupation="Wanderer" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
       <hair_tags>

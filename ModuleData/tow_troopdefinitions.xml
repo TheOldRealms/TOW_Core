@@ -1545,7 +1545,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_knight_initiate" default_group="cavalry" level="31" name="{=str_tor_ror_dragon_knight_initiate}Blood Dragon Initiate" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31" is_basic_troop="true">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_ror_dragon_knight" />
@@ -1557,7 +1557,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_knight" default_group="cavalry" level="36" name="{=str_tor_ror_dragon_knight}Blood Dragon Knight" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level36">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_ror_dragon_templar" />
@@ -1569,7 +1569,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_templar" default_group="cavalry" level="46" name="{=str_tor_ror_dragon_templar}Blood Dragon Templar" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level46">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets />
     <Equipments>

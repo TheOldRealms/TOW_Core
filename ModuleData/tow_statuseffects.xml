@@ -52,14 +52,13 @@
 		duration="10"
 		type="DamageOverTime"/>
  	<StatusEffectTemplate
-		id="curse_of_years"
-		particle_id="psys_game_step_dust_on_default"
+		id="soulstealer"
+		particle_id="soulstealer"
 		particle_intensity="High"
     	health_over_time="0"
-    	damage_over_time="0"
+    	damage_over_time="12"
 		duration="10"
 		type="DamageAmplification">
-    	<DamageAmplifier AmplifiedDamageType="Physical" DamageAmplifier="-0.5" />
   	</StatusEffectTemplate>
 	<StatusEffectTemplate
 		id="physical_resistance_20"
