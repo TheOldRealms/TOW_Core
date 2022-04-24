@@ -25,7 +25,7 @@ namespace TOW_Core.HarmonyPatches
         public static void Postfix(Equipment equipment, ref SkinMask __result)
         {
             List<EquipmentElement> list = new List<EquipmentElement>();
-            for(int i = (int)EquipmentIndex.ArmorItemBeginSlot; i > (int)EquipmentIndex.ArmorItemEndSlot; i++)
+            for(int i = (int)EquipmentIndex.ArmorItemBeginSlot; i <= (int)EquipmentIndex.ArmorItemEndSlot; i++)
             {
                 list.Add(equipment.GetEquipmentFromSlot((EquipmentIndex)i));
             }
