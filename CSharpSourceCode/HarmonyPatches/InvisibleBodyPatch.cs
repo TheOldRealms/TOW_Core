@@ -1,4 +1,6 @@
 ﻿using HarmonyLib;
+using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
@@ -22,10 +24,14 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(MBEquipmentMissionExtensions), "GetSkinMeshesMask")]
         public static void Postfix(Equipment equipment, ref SkinMask __result)
         {
-            var elem = equipment.GetEquipmentFromSlot(EquipmentIndex.Body);
-            if(elem.Item != null && elem.Item.StringId != null)
+            List<EquipmentElement> list = new List<EquipmentElement>();
+            for(int i = (int)EquipmentIndex.ArmorItemBeginSlot; i > (int)EquipmentIndex.ArmorItemEndSlot; i++)
             {
-                if (elem.Item.StringId.Contains("hideskin"))
+                list.Add(equipment.GetEquipmentFromSlot((EquipmentIndex)i));
+            }
+            if(list.Count > 0)
+            {
+                if (list.Any(x => x.Item != null && x.Item.StringId.Contains("hideskin")))
                 {
                     __result = SkinMask.NoneVisible;
                 }
