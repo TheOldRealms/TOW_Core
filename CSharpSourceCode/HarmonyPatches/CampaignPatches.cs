@@ -204,12 +204,34 @@ namespace TOW_Core.HarmonyPatches
             maximumPosition = new Vec2(1750, 1500);
             maximumHeight = 350;
         }
-        
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapScene), "GetMapPatchAtPosition")]
+        public static void CustomTerrainSize(MapScene __instance, 
+            Vec2 position, ref MapPatchData __result, int ____battleTerrainIndexMapWidth, int ____battleTerrainIndexMapHeight, byte[] ____battleTerrainIndexMap)
+        {
+            if (____battleTerrainIndexMap != null)
+            {
+                int num = MathF.Floor(position.x / 2080 * ____battleTerrainIndexMapWidth);
+                int value = MathF.Floor(position.y / 2080 * ____battleTerrainIndexMapHeight);
+                num = MBMath.ClampIndex(num, 0, ____battleTerrainIndexMapWidth);
+                int num2 = (MBMath.ClampIndex(value, 0, ____battleTerrainIndexMapHeight) * ____battleTerrainIndexMapWidth + num) * 2;
+                byte sceneIndex = ____battleTerrainIndexMap[num2];
+                byte b = (byte)MBRandom.RandomInt(0, 255);
+                Vec2 normalizedCoordinates = new Vec2((b & 15) / 15f, (b >> 4 & 15) / 15f);
+                __result = new MapPatchData
+                {
+                    sceneIndex = sceneIndex,
+                    normalizedCoordinates = normalizedCoordinates
+                };
+            }
+        }
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
         {
-            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tow_singleplayerbattlescenes.xml");
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tor_singleplayerbattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();
