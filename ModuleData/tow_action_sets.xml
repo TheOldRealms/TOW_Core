@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<action_sets>
+	<action_set id="as_human_warrior" skeleton="human_skeleton" movement_system="bipedal">
+		<action type="act_shoot_handgun" animation="musket_shoot" />
+		<action type="act_reload_handgun" animation="musket_reload" />
+		<action type="act_ready_pistol" animation="ready_pistol" />
+		<action type="act_ready_pistol_continue" animation="ready_continue_pistol" />
+		<action type="act_shoot_pistol" animation="release_pistol" />
+		<action type="act_spellcasting_idle" animation="spellcasting_stance_idle" />
+	</action_set>
+</action_sets>

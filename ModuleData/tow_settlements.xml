@@ -944,7 +944,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Vanhaldenhof" posX="1588.407" posY="880.869" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
+  <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Maylhof" posX="1588.407" posY="880.869" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
     <Components>
       <Village id="castle_village_comp_SY3_2" village_type="VillageType.europe_horse_ranch" hearth="46" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>

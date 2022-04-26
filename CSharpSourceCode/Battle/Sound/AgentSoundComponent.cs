@@ -26,10 +26,6 @@ namespace TOW_Core.Battle.Sound
         private string _lightningHitSoundId1 = "lightningImpact2";
         private string _lightningHitSoundId2 = "lightningImpact3";
         private string _lightningHitSoundId3 = "lightningImpact4";
-        private string _magicHitSoundId0 = "magicImpact1";
-        private string _magicHitSoundId1 = "magicImpact2";
-        private string _magicHitSoundId2 = "magicImpact3";
-        private string _magicHitSoundId3 = "magicImpact4";
         private string _holyHitSoundId0 = "holyImpact1";
         private string _holyHitSoundId1 = "holyImpact2";
         private string _holyHitSoundId2 = "holyImpact3";
@@ -56,18 +52,6 @@ namespace TOW_Core.Battle.Sound
         private List<int> _lightningImpactSounds = new List<int>();
         private List<int> _magicImpactSounds = new List<int>();
         private List<int> _holyImpactSounds = new List<int>();
-        
-        private string _magicalHitSoundIndex;
-        private string _holyHitSoundIndex;
-        private string _lightingSoundIndex;
-
-
-        private Agent _playerAgent;
-        
-
-        private SoundEvent _fireHitSound;
-        private SoundEvent _lightningHitSound;
-        private Scene Scene;
             
         public override void Initialize()
         {
@@ -113,8 +97,6 @@ namespace TOW_Core.Battle.Sound
             _magicImpactSounds.Add(_magicSoundIndex1);
             _magicImpactSounds.Add(_magicSoundIndex2);
             _magicImpactSounds.Add(_magicSoundIndex3);
-
-            Scene = Mission.Current.Scene;
         }
 
         public void PlayHitSound(DamageType damageType)

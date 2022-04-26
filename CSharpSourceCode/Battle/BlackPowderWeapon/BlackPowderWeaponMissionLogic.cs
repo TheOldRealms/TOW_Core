@@ -43,7 +43,7 @@ namespace TOW_Core.Battle.FireArms
                 var frame = new MatrixFrame(orientation, position);
                 frame = frame.Advance(1.1f);
                 // run particles of smoke
-                Mission.AddParticleSystemBurstByName("handgun_shoot", frame, false);
+                Mission.AddParticleSystemBurstByName("handgun_shoot_2", frame, false);
                 // play sound of shot
                 if (this._soundIndex.Length > 0)
                 {
