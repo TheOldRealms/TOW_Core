@@ -58,7 +58,7 @@
     	health_over_time="0"
     	damage_over_time="12"
 		duration="10"
-		type="DamageAmplification">
+		type="DamageOverTime">
   	</StatusEffectTemplate>
 	<StatusEffectTemplate
 		id="physical_resistance_20"

@@ -414,7 +414,19 @@
             DamageVariance="0.2" 
             ScriptNameToTrigger="none"/>
 <!-- Dark Magic -->
-
+      <TriggeredEffectTemplate StringID="soulstealer" 
+            BurstParticleEffectPrefab="none" 
+            SoundEffectId="none" 
+            SoundEffectLength="0" 
+            DamageType="Magical" 
+            DamageAmount="0" 
+            Radius="4" 
+            HasShockWave="false" 
+            TargetType="Enemy" 
+            ImbuedStatusEffectID="soulstealer" 
+            ImbuedStatusEffectDuration="10" 
+            DamageVariance="0"
+            ScriptNameToTrigger="none"/>
 
 <!-- Artillery -->
       <TriggeredEffectTemplate StringID="place_mortar" 
