@@ -379,15 +379,15 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
         public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false, Vec3 impactPosition = new Vec3())
         {
-            if (agent == null && !agent.IsHuman)
+            if (agent == null || !agent.IsHuman || !agent.IsActive() || agent.Health < 1)
             {
-                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null or non-human agent.", LogLevel.Warn);
+                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null, dead or non-human agent.", LogLevel.Warn);
                 return;
             }
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (agent.State == AgentState.Active|| agent.State == AgentState.Routed)
+                if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
                     if (!doBlow && agent.Health > damageAmount )
                     {
@@ -403,10 +403,11 @@ namespace TOW_Core.Utilities.Extensions
                     blow.InflictedDamage = damageAmount;
                     blow.AttackType = AgentAttackType.Kick;
                     blow.BlowFlag = BlowFlags.NoSound;
-                    blow.BaseMagnitude = 5;
+                    blow.BaseMagnitude = damageAmount;
                     blow.DamageType = DamageTypes.Invalid;
                     blow.VictimBodyPart = BoneBodyPartType.Chest;
                     blow.StrikeType = StrikeType.Invalid;
+                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
                     if (hasShockWave)
                     {
                         if (agent.HasMount)
@@ -422,7 +423,7 @@ namespace TOW_Core.Utilities.Extensions
                         {
                             blow.OwnerId = damager.Index;
                             blow.Position = impactPosition;
-                            blow.Direction = agent.Position - impactPosition;
+                            blow.Direction = damager.Position - impactPosition;
                             blow.Direction.Normalize();
                             blow.SwingDirection = blow.Direction;
                         }
@@ -430,11 +431,12 @@ namespace TOW_Core.Utilities.Extensions
                     else
                     {
                         blow.InflictedDamage = 0;
+                        blow.BaseMagnitude = 0;
                         blow.SelfInflictedDamage = damageAmount;
                         blow.OwnerId = agent.Index;
                     }
-                    
-                    if (agent.Health  <= damageAmount&&!doBlow)
+
+                    if (agent.Health  <= damageAmount && !doBlow)
                     {
                         agent.Die(blow);
                         return;
