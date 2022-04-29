@@ -208,16 +208,18 @@ namespace TOW_Core.Abilities
             {
                 case AbilityEffectType.Missile:
                 case AbilityEffectType.SeekerMissile:
-                case AbilityEffectType.Wind:
                 {
-                    frame.rotation = wizardAIComponent.CurrentCastingBehavior.CalculateSpellRotation(target.GetPosition());
+                    frame = frame.Elevate(casterAgent.GetEyeGlobalHeight()).Advance(Template.Offset);
+                    frame.rotation = wizardAIComponent.CurrentCastingBehavior.CalculateSpellRotation(target.GetPosition(), frame.origin);
                     break;
                 }
                 case AbilityEffectType.Blast:
                 {
                     frame = new MatrixFrame(Mat3.Identity, target.GetPosition()).Elevate(1);
+                    frame.rotation = casterAgent.Frame.rotation;
                     break;
                 }
+                case AbilityEffectType.Wind:
                 case AbilityEffectType.Vortex:
                 {
                     frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
@@ -234,10 +236,6 @@ namespace TOW_Core.Abilities
                 case AbilityEffectType.Augment:
                 case AbilityEffectType.Heal:
                 case AbilityEffectType.Summoning:
-                {
-                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
-                    break;
-                }
                 case AbilityEffectType.Bombardment:
                 {
                     frame = new MatrixFrame(Mat3.Identity, target.GetPosition());
@@ -247,7 +245,6 @@ namespace TOW_Core.Abilities
                     break;
             }
 
-
             if (IsGroundAbility())
             {
                 frame.origin.z = Mission.Current.Scene.GetGroundHeightAtPosition(frame.origin);
@@ -255,14 +252,6 @@ namespace TOW_Core.Abilities
                 {
                     frame.origin.z += Template.Offset;
                 }
-            }
-            else if (IsMissileAbility())
-            {
-                frame = frame.Elevate(casterAgent.GetEyeGlobalHeight()).Advance(Template.Offset);
-            }
-            else
-            {
-                frame = frame.Elevate(1);
             }
 
             return frame;

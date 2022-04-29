@@ -97,9 +97,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         }
 
 
-        public Mat3 CalculateSpellRotation(Vec3 targetPosition)
+        public Mat3 CalculateSpellRotation(Vec3 targetPosition, Vec3 originaPosition)
         {
-            return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
+            return Mat3.CreateMat3WithForward(targetPosition - originaPosition);
         }
 
         public List<BehaviorOption> CalculateUtility()
