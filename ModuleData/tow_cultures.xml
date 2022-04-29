@@ -4107,7 +4107,7 @@
 			 default_party_template="PartyTemplate.empire_deserters"
 			 can_have_settlement="true"
 			 encounter_background_mesh="bandit_encounter_background"
-			 bandit_boss_party_template="PartyTemplate.empire_deserters" />
+			 bandit_boss_party_template="PartyTemplate.empire_deserters_boss_party" />
 	<Culture id="forest_bandits"
 			 name="{=!}Chaos Cultists"
 			 bandit_chief="NPCCharacter.tor_chaos_cult_magister"
@@ -4119,7 +4119,7 @@
 			 is_bandit="true"
 			 can_have_settlement="true"
 			 encounter_background_mesh="bandit_encounter_background"
-			 bandit_boss_party_template="PartyTemplate.chaos_cultists" />
+			 bandit_boss_party_template="PartyTemplate.chaos_cultists_boss_party" />
 	<Culture id="desert_bandits"
 			 name="{=kkUQObZn}Desert Bandits"
 			 bandit_chief="NPCCharacter.desert_bandits_chief"

@@ -120,11 +120,23 @@
 		  <PartyTemplateStack min_value="1" max_value="4" troop="NPCCharacter.tor_empire_deserter_sergeant" />
 		</stacks>
 	</MBPartyTemplate>
+	<MBPartyTemplate id="empire_deserters_boss_party" >
+		<stacks>
+		  <PartyTemplateStack min_value="2" max_value="4" troop="NPCCharacter.tor_empire_deserter" />
+		  <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.tor_empire_deserter_sergeant" />
+		</stacks>
+	</MBPartyTemplate>
 	<MBPartyTemplate id="chaos_cultists" >
 		<stacks>
 		  <PartyTemplateStack min_value="6" max_value="36" troop="NPCCharacter.tor_chaos_cult_acolyte" />
 		  <PartyTemplateStack min_value="2" max_value="6" troop="NPCCharacter.tor_chaos_cult_darksoul" />
 		  <PartyTemplateStack min_value="1" max_value="3" troop="NPCCharacter.tor_chaos_cult_magister" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="chaos_cultists_boss_party" >
+		<stacks>
+		  <PartyTemplateStack min_value="2" max_value="4" troop="NPCCharacter.tor_chaos_cult_darksoul" />
+		  <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.tor_chaos_cult_magister" />
 		</stacks>
 	</MBPartyTemplate>
 	<MBPartyTemplate id="chaos_patrol" >
