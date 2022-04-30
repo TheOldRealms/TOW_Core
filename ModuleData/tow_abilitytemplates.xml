@@ -393,7 +393,7 @@
 
   <AbilityTemplate StringID="CinderBlast" 
       Name="Cinder Blast" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -434,7 +434,7 @@
 
     <AbilityTemplate StringID="BoltOfAqshy" 
       Name="Bolt of Aqshy" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -475,7 +475,7 @@
 
   <AbilityTemplate StringID="Sear" 
       Name="Sear" 
-      SpriteName="foetid_cloud_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="12" 
       BaseMisCastChance="0.05" 
@@ -519,7 +519,7 @@
 
   <AbilityTemplate StringID="FlamingSwords"
       Name="Flaming Sword of Rhuin"
-      SpriteName="fireball_icon"
+      SpriteName="placeholder_icon"
       CoolDown="30"
       WindsOfMagicCost="13"
       BaseMisCastChance="0.05"
@@ -606,7 +606,7 @@
 
   <AbilityTemplate StringID="FlameStorm" 
       Name="Fire Tornado" 
-      SpriteName="dust_storm_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.3" 
@@ -654,7 +654,7 @@
 <!-- Lore of Heavens -->
   <AbilityTemplate StringID="LightningBolt" 
       Name="Lightning Bolt" 
-      SpriteName="fireball_icon" 
+      SpriteName="lightningbolt_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -695,7 +695,7 @@
 
   <AbilityTemplate StringID="WindBlast" 
       Name="Wind Blast" 
-      SpriteName="foetid_cloud_icon" 
+      SpriteName="wind_blast_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -739,7 +739,7 @@
 
   <AbilityTemplate StringID="ChainLightning" 
       Name="Chain Lightning" 
-      SpriteName="dust_storm_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.3" 
@@ -786,7 +786,7 @@
 
   <AbilityTemplate StringID="HarmonicConvergence"
       Name="Harmonic Convergence"
-      SpriteName="resistanceaura_icon"
+      SpriteName="placeholder_icon"
       CoolDown="30"
       WindsOfMagicCost="13"
       BaseMisCastChance="0.05"
@@ -829,7 +829,7 @@
 
   <AbilityTemplate StringID="Blizzard" 
       Name="Iceshard Blizzard" 
-      SpriteName="burninghead_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="14" 
       BaseMisCastChance="0.5" 
@@ -873,7 +873,7 @@
 
   <AbilityTemplate StringID="CometOfCasandora"
       Name="Comet of Casandora"
-      SpriteName="burninghead_icon"
+      SpriteName="comet_icon"
       CoolDown="40"
       WindsOfMagicCost="40"
       BaseMisCastChance="0.3"
@@ -920,7 +920,7 @@
 
   <AbilityTemplate StringID="Thunderbolt" 
       Name="Urannon's Thunderbolt" 
-      SpriteName="burninghead_icon" 
+      SpriteName="thunderbolt_icon" 
       CoolDown="40" 
       WindsOfMagicCost="25" 
       BaseMisCastChance="0.5" 
@@ -965,7 +965,7 @@
 <!-- Lore of Light -->
   <AbilityTemplate StringID="ShemGaze" 
       Name="Shem's Burning Gaze" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1006,7 +1006,7 @@
 
   <AbilityTemplate StringID="StoneAssault" 
       Name="Assault of Stone" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1090,7 +1090,7 @@
 
   <AbilityTemplate StringID="PhaProtection"
       Name="Pha's Protection"
-      SpriteName="resistanceaura_icon"
+      SpriteName="placeholder_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1133,7 +1133,7 @@
 
   <AbilityTemplate StringID="DeathlyShards" 
       Name="Deathly Shards" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.05" 
@@ -1174,7 +1174,7 @@
 
   <AbilityTemplate StringID="RadiancePillar" 
       Name="Pillar of Radiance" 
-      SpriteName="burninghead_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.5" 
@@ -1218,7 +1218,7 @@
 
   <AbilityTemplate StringID="RadiantGaze" 
       Name="Radiant Gaze" 
-      SpriteName="windofdeath_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="40" 
       WindsOfMagicCost="25" 
       BaseMisCastChance="0.05" 
@@ -1263,7 +1263,7 @@
 <!-- Necromancy -->
   <AbilityTemplate StringID="NagashGaze" 
       Name="Gaze of Nagash" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1348,7 +1348,7 @@
 
   <AbilityTemplate StringID="Shadowblood" 
       Name="Shadowblood" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1389,7 +1389,7 @@
 
   <AbilityTemplate StringID="Morkarn"
       Name="Morkharn - Breath of Darkness"
-      SpriteName="healingprayer_icon"
+      SpriteName="placeholder_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1432,7 +1432,7 @@
 
   <AbilityTemplate StringID="WitheringWave" 
       Name="Withering Wave " 
-      SpriteName="dust_storm_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="16" 
       BaseMisCastChance="0.3" 
@@ -1479,7 +1479,7 @@
 
   <AbilityTemplate StringID="Kandorak" 
       Name="Kandorak - The Harbinger" 
-      SpriteName="summonskeleton_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="6" 
       BaseMisCastChance="0.3" 
@@ -1612,7 +1612,7 @@
 
   <AbilityTemplate StringID="GraveCall" 
       Name="Grave Call" 
-      SpriteName="summonskeleton_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="40" 
       WindsOfMagicCost="14" 
       BaseMisCastChance="0.3" 
@@ -1657,7 +1657,7 @@
 <!-- Dark Magic -->
   <AbilityTemplate StringID="Chillwind" 
       Name="Chillwind" 
-      SpriteName="foetid_cloud_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1701,7 +1701,7 @@
 
   <AbilityTemplate StringID="DoomBolt" 
       Name="Doom Bolt" 
-      SpriteName="fireball_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="20" 
       WindsOfMagicCost="12" 
       BaseMisCastChance="0.05" 
@@ -1742,7 +1742,7 @@
 
   <AbilityTemplate StringID="SoulDrain" 
       Name="Soul Drain" 
-      SpriteName="burninghead_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.5" 
@@ -1786,7 +1786,7 @@
 
   <AbilityTemplate StringID="PowerOfDarkness"
       Name="Power of Darkness"
-      SpriteName="resistanceaura_icon"
+      SpriteName="placeholder_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1829,7 +1829,7 @@
 
   <AbilityTemplate StringID="BlackHorror" 
       Name="Arnzipal's Black Horror" 
-      SpriteName="dust_storm_icon" 
+      SpriteName="placeholder_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.3" 
@@ -1876,7 +1876,7 @@
 
   <AbilityTemplate StringID="SoulStealer"
    Name="Soul Stealer"
-   SpriteName="windofdeath_icon"
+   SpriteName="placeholder_icon"
    CoolDown="40"
    WindsOfMagicCost="25"
    BaseMisCastChance="0.05"
@@ -1920,7 +1920,7 @@
 <!-- Artillery -->
   <AbilityTemplate StringID="MortarSpawner" 
     Name="Place Mortar" 
-    SpriteName="summonskeleton_icon" 
+    SpriteName="placeholder_icon" 
     CoolDown="1" 
     WindsOfMagicCost="0" 
     BaseMisCastChance="0.0" 
@@ -1960,7 +1960,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="GreatCannonSpawner" 
     Name="Place Great Cannon" 
-    SpriteName="summonskeleton_icon" 
+    SpriteName="placeholder_icon" 
     CoolDown="1" 
     WindsOfMagicCost="0" 
     BaseMisCastChance="0.0" 
@@ -2040,6 +2040,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  <!--
   <AbilityTemplate StringID="HurlWeapons"
       Name="Hurl Weapons"
       SpriteName="fireball_icon"
@@ -2078,6 +2079,7 @@
       </AsVec2>
     </LightColorRGB>
   </AbilityTemplate>
+  -->
   <AbilityTemplate StringID="HealingAOE" 
       Name="Healing AOE" 
       SpriteName="healingprayer_icon" 
@@ -2117,134 +2119,4 @@
         </AsVec2>
       </LightColorRGB>
   </AbilityTemplate>
-  <AbilityTemplate StringID="CurseOfYears"
-   Name="Curse of Years"
-   SpriteName="windofdeath_icon"
-   CoolDown="10"
-   WindsOfMagicCost="5"
-   BaseMisCastChance="0.05"
-   Duration="0"
-   Radius="0"
-   AbilityType="Spell"
-   AbilityEffectType="Hex"
-   BaseMovementSpeed="0"
-   TickInterval="-1"
-   TriggerType="TickOnce"
-   HasLight="false"
-   LightIntensity="0"
-   LightRadius="0"
-   LightFlickeringMagnitude="0"
-   LightFlickeringInterval="0"
-   ShadowCastEnabled="true"
-   ParticleEffectPrefab=""
-   ParticleEffectSizeModifier="0"
-   SoundEffectToPlay=""
-   ShouldSoundLoopOverDuration="false"
-   CastType="Instant"
-   CastTime="0.5"
-   AnimationActionName="act_release_heavy_thrown"
-   TriggeredEffectID="curse_of_years"
-   Offset="0.5"
-   AbilityTargetType="EnemiesInAOE"
-   TargetCapturingRadius="5"
-   MaxDistance="20"
-   CrosshairType="TargetedAOE"
-   SpellTier="3"
-    BelongsToLoreID="DarkMagic"
-    TooltipDescription="Debuff enemies in a 5 meter radius with the Curse of Years. Their Physical damage dealt is reduced by 50% for 10 seconds.">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
-  <AbilityTemplate StringID="Tornado"
-      Name="Tornado"
-      SpriteName="burninghead_icon"
-      CoolDown="1"
-      WindsOfMagicCost="16"
-      BaseMisCastChance="0.3"
-      Duration="30"
-      Radius="3"
-      AbilityType="Spell"
-      AbilityEffectType="Vortex"
-      BaseMovementSpeed="4"
-      TickInterval="0.5"
-      TriggerType="EveryTick"
-      HasLight="false"
-      LightIntensity="50"
-      LightRadius="10"
-      LightFlickeringMagnitude="0"
-      LightFlickeringInterval="0"
-      ShadowCastEnabled="false"
-      ParticleEffectPrefab="tornado"
-      ParticleEffectSizeModifier="1"
-      SoundEffectToPlay="none"
-      ShouldSoundLoopOverDuration="false"
-      CastType="WindUp"
-      CastTime="0.5"
-      AnimationActionName="act_release_stone"
-      TriggeredEffectID="tornado_tick"
-      Offset="10"
-      CrosshairType="TargetedAOE"
-      AbilityTargetType="GroundAtPosition"
-      MinDistance="3"
-      MaxDistance="30"
-      TargetCapturingRadius="3"
-      MaxRandomDeviation="1"
-      ShouldRotateVisuals="true"
-      VisualsRotationVelocity="1"
-      SpellTier="3"
-      BelongsToLoreID="LoreOfHeavens"
-      TooltipDescription="Tornado.">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
-  <!-- <AbilityTemplate StringID="WordOfPain"
-      Name="Word of Pain"
-      SpriteName="fireball_icon"
-      CoolDown="10"
-      WindsOfMagicCost="0"
-      BaseMisCastChance="0.05"
-      Duration="0"
-      Radius="0"
-      AbilityType="Spell"
-      AbilityEffectType="Hex"
-      BaseMovementSpeed="0"
-      TickInterval="-1"
-      TriggerType="TickOnce"
-      HasLight="false"
-      LightIntensity="0"
-      LightRadius="0"
-      LightFlickeringMagnitude="0"
-      LightFlickeringInterval="0"
-      ShadowCastEnabled="true"
-      ParticleEffectPrefab=""
-      ParticleEffectSizeModifier="0"
-      SoundEffectToPlay=""
-      ShouldSoundLoopOverDuration="false"
-      CastType="Instant"
-      CastTime="0.5"
-      AnimationActionName="act_release_heavy_thrown"
-      TriggeredEffectID="word_of_pain"
-      Offset="0.5"
-      AbilityTargetType="SingleEnemy"
-      MaxDistance="10"
-      CrosshairType="SingleTarget"
-      SpellTier="2"
-      BelongsToLoreID="DarkMagic"
-      TooltipDescription="Mark a single enemy with the word of pain. The target feels excruciating pain and is unable to move or act for 9 seconds taking 10 damage per second.">
-    <LightColorRGB x="255" y="170" z="0" w="-1">
-      <AsVec2>
-        <x>255</x>
-        <y>170</y>
-      </AsVec2>
-    </LightColorRGB>
-  </AbilityTemplate>
-  -->
 </ArrayOfAbilityTemplate>
