@@ -215,8 +215,7 @@ namespace TOW_Core.Abilities
                 }
                 case AbilityEffectType.Blast:
                 {
-                    frame = new MatrixFrame(Mat3.Identity, target.GetPosition()).Elevate(1);
-                    frame.rotation = casterAgent.Frame.rotation;
+                    frame = new MatrixFrame(frame.rotation, target.GetPosition()).Advance(-Template.Offset).Elevate(1);
                     break;
                 }
                 case AbilityEffectType.Wind:

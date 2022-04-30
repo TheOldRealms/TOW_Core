@@ -52,7 +52,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 if (distance <= _explosionRadius)
                 {
                     var damage = (_explosionRadius - distance) / _explosionRadius * _explosionDamage;
-                    agent.ApplyDamage((int)damage, _shooterAgent, doBlow: true, hasShockWave: true, impactPosition: GameEntity.GlobalPosition);
+                    agent.ApplyDamage((int)damage, GameEntity.GlobalPosition, _shooterAgent, doBlow: true, hasShockWave: true);
                     if (distance < 3 && agent.State == AgentState.Killed && agent.IsHuman && !agent.IsUndead() && !agent.IsVampire())
                     {
                         agent.Disappear();

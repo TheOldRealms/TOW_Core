@@ -377,7 +377,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false, Vec3 impactPosition = new Vec3())
+        public static void ApplyDamage(this Agent agent, int damageAmount, Vec3 impactPosition, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
             if (agent == null || !agent.IsHuman || !agent.IsActive() || agent.Health < 1)
             {
@@ -408,13 +408,13 @@ namespace TOW_Core.Utilities.Extensions
                     blow.VictimBodyPart = BoneBodyPartType.Chest;
                     blow.StrikeType = StrikeType.Invalid;
                     blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
-                    if (hasShockWave)
+                    blow.Position = impactPosition;
+                    blow.Direction = agent.Position - impactPosition;
+                    blow.Direction.Normalize();
+                    blow.SwingDirection = blow.Direction;
+                    if (hasShockWave && !agent.HasMount && agent != damager && agent != Agent.Main)
                     {
-                        if (agent.HasMount)
-                            blow.BlowFlag = BlowFlags.CanDismount;
-                        else
-                            blow.BlowFlag = BlowFlags.KnockDown;
-                        if (agent == damager || agent == Agent.Main) blow.BlowFlag = BlowFlags.None;
+                        blow.BlowFlag |= BlowFlags.KnockDown;
                     }
                     if (damager != null)
                     {
@@ -422,10 +422,6 @@ namespace TOW_Core.Utilities.Extensions
                         if (checkAgent != null && checkAgent.Equals(damager))
                         {
                             blow.OwnerId = damager.Index;
-                            blow.Position = impactPosition;
-                            blow.Direction = damager.Position - impactPosition;
-                            blow.Direction.Normalize();
-                            blow.SwingDirection = blow.Direction;
                         }
                     }
                     else
