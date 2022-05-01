@@ -179,6 +179,14 @@ namespace TOW_Core.ObjectDataExtensions
             return _heroInfos.ContainsKey(id) ? _heroInfos[id] : null;
         }
 
+        public void ClearInfo(Hero hero)
+        {
+            if (_heroInfos.ContainsKey(hero.StringId))
+            {
+                _heroInfos[hero.StringId] = new HeroExtendedInfo(hero.CharacterObject);
+            }
+        }
+
         private void EnterPartyIntoDictionary(MobileParty party)
         {
 

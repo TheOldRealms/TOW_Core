@@ -139,6 +139,20 @@
 		  <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.tor_chaos_cult_magister" />
 		</stacks>
 	</MBPartyTemplate>
+	<MBPartyTemplate id="ungor_party" >
+		<stacks>
+		  <PartyTemplateStack min_value="12" max_value="24" troop="NPCCharacter.tor_beast_ungor" />
+		  <PartyTemplateStack min_value="8" max_value="18" troop="NPCCharacter.tor_beast_shielded_ungor" />
+		  <PartyTemplateStack min_value="8" max_value="18" troop="NPCCharacter.tor_beast_ungor_raider" />
+		  <PartyTemplateStack min_value="4" max_value="8" troop="NPCCharacter.tor_beast_ungor_chief" />
+		</stacks>
+	</MBPartyTemplate>
+	<MBPartyTemplate id="ungor_boss_party" >
+		<stacks>
+		  <PartyTemplateStack min_value="2" max_value="4" troop="NPCCharacter.tor_beast_shielded_ungor" />
+		  <PartyTemplateStack min_value="1" max_value="1" troop="NPCCharacter.tor_beast_ungor_chief" />
+		</stacks>
+	</MBPartyTemplate>
 	<MBPartyTemplate id="chaos_patrol" >
 		<stacks>
 			<PartyTemplateStack min_value="5" max_value="10" troop="NPCCharacter.tor_chaos_nurgle_warrior" />

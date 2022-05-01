@@ -873,7 +873,9 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_beast_shielded_ungor">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -881,6 +883,17 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_beast_ungor_raider">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_ungor_chief">
     <Abilities />
     <Attributes />
     <Resistances />
