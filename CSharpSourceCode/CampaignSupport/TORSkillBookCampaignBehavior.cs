@@ -58,7 +58,13 @@ namespace TOW_Core.CampaignSupport
 
         public override void RegisterEvents()
         {
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunchedEvent);
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTick);
+        }
+
+        private void OnSessionLaunchedEvent(CampaignGameStarter obj)
+        {
+            CurrentBook = _currentBook;
         }
 
         private void HourlyTick()
