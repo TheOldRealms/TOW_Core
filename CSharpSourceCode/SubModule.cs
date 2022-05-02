@@ -143,6 +143,7 @@ namespace TOW_Core
                 starter.AddBehavior(new RORCampaignBehaviour());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
+                starter.AddBehavior(new TORCustomMobilePartyDialogCampaignBehaviour());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TORCompanionHiringPriceCalculationModel());
