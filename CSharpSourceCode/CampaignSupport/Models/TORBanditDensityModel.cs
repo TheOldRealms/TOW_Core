@@ -23,5 +23,10 @@ namespace TOW_Core.CampaignSupport.Models
                 }
             }
         }
+
+        public override int NumberOfMaximumBanditPartiesAroundEachHideout => 5;
+        public override int NumberOfMaximumBanditPartiesInEachHideout => 3;
+        public override int NumberOfInitialHideoutsAtEachBanditFaction => 10;
+        public override int NumberOfMaximumHideoutsAtEachBanditFaction => 19;
     }
 }
