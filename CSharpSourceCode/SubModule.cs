@@ -177,7 +177,7 @@ namespace TOW_Core
             mission.AddMissionBehavior(new AbilityHUDMissionView());
             mission.AddMissionBehavior(new CustomCrosshairMissionBehavior());
             mission.AddMissionBehavior(new BlackPowderWeaponMissionLogic());
-            mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
+            //mission.AddMissionBehavior(new CustomVoicesMissionBehavior());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
             mission.AddMissionBehavior(new AtmosphereOverrideMissionLogic());
