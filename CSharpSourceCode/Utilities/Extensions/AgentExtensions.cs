@@ -411,9 +411,10 @@ namespace TOW_Core.Utilities.Extensions
                     blow.Direction = agent.Position - impactPosition;
                     blow.Direction.Normalize();
                     blow.SwingDirection = blow.Direction;
-                    if (hasShockWave && !agent.HasMount && agent != damager && agent != Agent.Main)
+                    if (hasShockWave)
                     {
-                        blow.BlowFlag |= BlowFlags.KnockDown;
+                        if (agent.HasMount) blow.BlowFlag |= BlowFlags.CanDismount;
+                        else blow.BlowFlag |= BlowFlags.KnockDown;
                     }
                     if (damager != null)
                     {

@@ -2416,9 +2416,12 @@
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
-    <Abilities />
+    <Abilities>
+      <string>DustStorm</string>
+    </Abilities>
     <Attributes>
       <string>AbilityUser</string>
+      <string>SpellCaster</string>
       <string>CanPlaceArtillery</string>
     </Attributes>
   </CharacterExtendedInfo>
