@@ -7,6 +7,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.CustomBattle;
+using TaleWorlds.MountAndBlade.Source.Missions;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities.Extensions;
 
@@ -21,6 +22,7 @@ namespace TOW_Core.Battle.ShieldPatterns
 
         public override void OnAgentBuild (Agent agent, Banner banner)
         {
+            if (!Mission.Current.HasMissionBehavior<BattleSpawnLogic>()) return;
             if (agent.IsHuman)
             {
                 _hasUnprocessedAgents = true;
@@ -30,6 +32,7 @@ namespace TOW_Core.Battle.ShieldPatterns
 
         public override void OnMissionTick(float dt)
         {
+            if (!Mission.Current.HasMissionBehavior<BattleSpawnLogic>()) return;
             if (_hasUnprocessedAgents)
             {
                 while(_unprocessedAgents.Count > 0)
