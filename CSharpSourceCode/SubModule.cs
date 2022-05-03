@@ -141,7 +141,6 @@ namespace TOW_Core
                 starter.AddBehavior(new MasterEngineerTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 starter.AddBehavior(new RORCampaignBehaviour());
-                //starter.AddBehavior(new PrisonerFateCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
                 starter.AddBehavior(new TORCustomMobilePartyDialogCampaignBehaviour());
 
