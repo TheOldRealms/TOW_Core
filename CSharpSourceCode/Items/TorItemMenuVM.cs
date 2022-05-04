@@ -22,8 +22,8 @@ namespace TOW_Core.Items
 
 		// Read Button
 		private HintViewModel _readHint;
-		private bool _isSkillBook;
-		private bool _canBeRead;
+		private bool _isSkillBook = false;
+		private bool _canBeRead = false;
 
 		public TorItemMenuVM(Action<ItemVM, int> resetComparedItems, InventoryLogic inventoryLogic, Func<WeaponComponentData, ItemObject.ItemUsageSetFlags> getItemUsageSetFlags, Func<EquipmentIndex, SPItemVM> getEquipmentAtIndex) : base(resetComparedItems, inventoryLogic, getItemUsageSetFlags, getEquipmentAtIndex)
         {
