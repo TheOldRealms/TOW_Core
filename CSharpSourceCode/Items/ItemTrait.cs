@@ -52,6 +52,6 @@ namespace TOW_Core.Items
         [XmlAttribute]
         public int FlatSkillModifier { get; set; } = 0;
         [XmlAttribute]
-        public float LearningTime { get; set; } = 0;
+        public float LearningTime { get; set; } = 1;
     }
 }
