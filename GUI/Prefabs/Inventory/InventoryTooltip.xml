@@ -1,6 +1,10 @@
 <Prefab>
   <Constants>
+    <Constant Name="Inventory.Tuple.Extension.SpecialButton.Width" BrushName="Inventory.Tuple.Extension.SpecialButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Inventory.Tuple.Extension.SpecialButton.Height" BrushName="Inventory.Tuple.Extension.SpecialButton" BrushLayer="Default" BrushValueType="Height"/>
 
+    <Constant Name="Inventory.Tuple.Extension.PreviewButtonIcon.Width" BrushName="Inventory.Tuple.Extension.PreviewButtonIcon" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Inventory.Tuple.Extension.PreviewButtonIcon.Height" BrushName="Inventory.Tuple.Extension.PreviewButtonIcon" BrushLayer="Default" BrushValueType="Height"/>
   </Constants>
   <Window>
     <ListPanel Id="InventoryTooltip" DoNotAcceptEvents="true" DataSource="{ItemMenu}" IsHidden="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
@@ -38,6 +42,12 @@
                 </ListPanel>
               </Children>
             </ListPanel>
+            <ButtonWidget Id="ReadButton" IsVisible="@IsSkillBook" IsEnabled="@CanBeRead" IsHighlightEnabled="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.SpecialButton.Width" SuggestedHeight="!Inventory.Tuple.Extension.SpecialButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="10" MarginRight="10" Command.Click="ExecuteReadItem" Brush="Inventory.Tuple.Extension.SpecialButton">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.PreviewButtonIcon.Width" SuggestedHeight="!Inventory.Tuple.Extension.PreviewButtonIcon.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Inventory\inspect"/>
+                <HintWidget DataSource="{ReadHint}" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent"/>
+              </Children>
+            </ButtonWidget>
           </Children>
         </Widget>
 

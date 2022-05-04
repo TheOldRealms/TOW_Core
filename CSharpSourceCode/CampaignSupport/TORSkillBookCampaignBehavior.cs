@@ -19,11 +19,13 @@ namespace TOW_Core.CampaignSupport
         private string _currentBook = "";
         /** Maps book item id to hours read in whole numbers. */
         private Dictionary<string, int> _readingProgress = new Dictionary<string, int>();
-
         private ItemObject _currentBookObject;
         private List<SkillTuple> _currentSkillTuples = new List<SkillTuple>();
+        private static readonly TORSkillBookCampaignBehavior _instance = new TORSkillBookCampaignBehavior();
 
-        private string CurrentBook
+        public static TORSkillBookCampaignBehavior Instance => _instance;
+
+        public string CurrentBook
         {
             get
             {
@@ -34,14 +36,8 @@ namespace TOW_Core.CampaignSupport
                 _currentBook = value;
                 _currentSkillTuples.Clear();
                 _currentBookObject = MBObjectManager.Instance.GetObject<ItemObject>(CurrentBook);
-                if (_currentBookObject == null)
-                {
-                    return;
-                }
 
-                _currentBookObject
-                        .GetTraits().FindAll(trait => trait.SkillTuple != null)
-                        .ForEach(trait => _currentSkillTuples.Add(trait.SkillTuple));
+                _currentSkillTuples = GetSkillTuples(_currentBookObject);
 
                 if (_currentSkillTuples.IsEmpty())
                 {
@@ -60,6 +56,17 @@ namespace TOW_Core.CampaignSupport
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunchedEvent);
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTick);
+        }
+
+        public int GetHoursLeftToRead(ItemObject book)
+        {
+            return GetHoursRequiredToComplete(book) 
+                - _readingProgress.GetValueOrDefault(book.StringId, 0);
+        }
+
+        public bool IsSkillBook(ItemObject book)
+        {
+            return book.GetTraits().Any(trait => trait.SkillTuple != null);
         }
 
         private void OnSessionLaunchedEvent(CampaignGameStarter obj)
@@ -153,10 +160,40 @@ namespace TOW_Core.CampaignSupport
             _currentBookObject = null;
         }
 
+        private List<SkillTuple> GetSkillTuples(ItemObject item)
+        {
+            List<SkillTuple> skillTuples = new List<SkillTuple>();
+            if (item is null)
+            {
+                return skillTuples;
+            }
+            
+            item
+                .GetTraits().FindAll(trait => trait.SkillTuple != null)
+                .ForEach(trait => skillTuples.Add(trait.SkillTuple));
+            return skillTuples;
+        }
+
         private SkillObject GetSkillObject(string id) 
             => Skills.All.FirstOrDefault(skill => skill.StringId == id);
 
-        private int GetHoursRequiredToComplete() => (int)Math.Ceiling(
-                _currentSkillTuples.MaxBy(trait => trait.LearningTime).LearningTime);
+        private int GetHoursRequiredToComplete() => GetHoursRequiredToComplete(_currentSkillTuples);
+
+        private int GetHoursRequiredToComplete(ItemObject book)
+        {
+            var skillTuples = GetSkillTuples(book);
+            return GetHoursRequiredToComplete(skillTuples);
+        }
+
+        private int GetHoursRequiredToComplete(List<SkillTuple> skillTuples)
+        {
+            SkillTuple maxLearningTime = skillTuples.MaxBy(trait => trait.LearningTime);
+            if (maxLearningTime is null)
+            {
+                return 0;
+            }
+
+            return (int)Math.Ceiling(maxLearningTime.LearningTime);
+        }
     }
 }

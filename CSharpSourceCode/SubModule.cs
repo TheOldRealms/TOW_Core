@@ -142,7 +142,7 @@ namespace TOW_Core
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 starter.AddBehavior(new RORCampaignBehaviour());
                 //starter.AddBehavior(new PrisonerFateCampaignBehavior());
-                starter.AddBehavior(new TORSkillBookCampaignBehavior());
+                starter.AddBehavior(TORSkillBookCampaignBehavior.Instance);
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
