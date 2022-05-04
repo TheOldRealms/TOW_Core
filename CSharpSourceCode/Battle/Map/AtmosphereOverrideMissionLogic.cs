@@ -12,13 +12,14 @@ namespace TOW_Core.Battle.Map
     {
         private readonly string _forceAtmosphereKey = "forceatmo";
 
-        public override void OnRenderingStarted()
+        public override void EarlyStart()
         {
-            base.OnRenderingStarted();
-            if (Mission.Scene != null && Mission.SceneName.Contains(_forceAtmosphereKey))
+            base.EarlyStart();
+            /*if (Mission.Scene != null && Mission.SceneName.Contains(_forceAtmosphereKey))
             {
-                Mission.Scene.SetAtmosphereWithName(Mission.SceneName);
-            }
+                Mission.Scene.SetAtmosphereWithName(string.Empty);
+                
+            }*/
         }
     }
 }
