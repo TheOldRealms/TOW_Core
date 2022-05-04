@@ -73,7 +73,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             foreach(var hero in Hero.AllAliveHeroes)
             {
-                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsNoble || hero.IsWanderer))
+                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsNoble || hero.IsWanderer) && hero != Hero.MainHero)
                 {
                     hero.AddAttribute("Necromancer");
                 }

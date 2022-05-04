@@ -182,7 +182,7 @@ namespace TOW_Core.Utilities.Extensions
                     List<ItemTrait> itemTraits= new List<ItemTrait>();
                     List<ItemObject> items;
                     // get all equipment Pieces
-                    items = agent.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
+                    items = agent.Character.GetCharacterEquipment();
                     foreach (var item in items)
                     {
                         if(item.HasTrait())
@@ -192,9 +192,8 @@ namespace TOW_Core.Utilities.Extensions
                     foreach (var itemTrait in itemTraits)
                     {
                         var property = itemTrait.AmplifierTuple;
-                        if(property==null) 
-                            continue;
-                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                        if(property!=null)
+                            damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
 
                         var additionalDamageProperty = itemTrait.AdditionalDamageTuple;
                         if (additionalDamageProperty != null)
@@ -412,9 +411,10 @@ namespace TOW_Core.Utilities.Extensions
                     blow.Direction = agent.Position - impactPosition;
                     blow.Direction.Normalize();
                     blow.SwingDirection = blow.Direction;
-                    if (hasShockWave && !agent.HasMount && agent != damager && agent != Agent.Main)
+                    if (hasShockWave)
                     {
-                        blow.BlowFlag |= BlowFlags.KnockDown;
+                        if (agent.HasMount) blow.BlowFlag |= BlowFlags.CanDismount;
+                        else blow.BlowFlag |= BlowFlags.KnockDown;
                     }
                     if (damager != null)
                     {

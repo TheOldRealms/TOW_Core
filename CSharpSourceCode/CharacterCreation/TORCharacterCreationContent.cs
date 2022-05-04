@@ -44,6 +44,7 @@ namespace TOW_Core.CharacterCreation
             _attributes.Add(DefaultCharacterAttributes.Intelligence);
             _attributes.Add(DefaultCharacterAttributes.Social);
             _attributes.Add(DefaultCharacterAttributes.Vigor);
+            ExtendedInfoManager.Instance.ClearInfo(Hero.MainHero);
         }
 
         public override IEnumerable<Type> CharacterCreationStages
@@ -152,7 +153,8 @@ namespace TOW_Core.CharacterCreation
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
-                Hero.MainHero.AddAbility("Fireball");
+                Hero.MainHero.AddAbility("Dart");
+                Hero.MainHero.AddAbility("BoltOfAqshy");
                 Hero.MainHero.AddKnownLore("MinorMagic");
                 Hero.MainHero.AddKnownLore("LoreOfFire");
                 Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
@@ -174,12 +176,11 @@ namespace TOW_Core.CharacterCreation
             }
             else if (selectedOption.OptionText == "Vampiric Nobility")
             {
-                Hero.MainHero.AddAttribute("Undead");
                 Hero.MainHero.AddAttribute("VampireBodyOverride");
                 Hero.MainHero.AddAttribute("Necromancer");
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
-                Hero.MainHero.AddAbility("WindOfDeath");
+                Hero.MainHero.AddAbility("NagashGaze");
                 Hero.MainHero.AddKnownLore("MinorMagic");
                 Hero.MainHero.AddKnownLore("Necromancy");
                 Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
@@ -265,7 +266,6 @@ namespace TOW_Core.CharacterCreation
             this.OpenBannerSelectionScreen();
         }
 
-        // Token: 0x06002513 RID: 9491 RVA: 0x00097382 File Offset: 0x00095582
         private void OpenBannerSelectionScreen()
         {
             Game.Current.GameStateManager.PushState(Game.Current.GameStateManager.CreateState<BannerEditorState>(), 0);
