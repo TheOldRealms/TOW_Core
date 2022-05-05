@@ -15,11 +15,10 @@ namespace TOW_Core.Battle.Map
         public override void EarlyStart()
         {
             base.EarlyStart();
-            /*if (Mission.Scene != null && Mission.SceneName.Contains(_forceAtmosphereKey))
+            if (Mission.Scene != null && Mission.SceneName.Contains(_forceAtmosphereKey))
             {
-                Mission.Scene.SetAtmosphereWithName(string.Empty);
-                
-            }*/
+                Mission.Scene.SetAtmosphereWithName(Mission.SceneName);   
+            }
         }
     }
 }
