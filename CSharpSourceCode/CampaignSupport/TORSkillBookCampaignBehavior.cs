@@ -21,9 +21,14 @@ namespace TOW_Core.CampaignSupport
         private Dictionary<string, int> _readingProgress = new Dictionary<string, int>();
         private ItemObject _currentBookObject;
         private List<SkillTuple> _currentSkillTuples = new List<SkillTuple>();
-        private static readonly TORSkillBookCampaignBehavior _instance = new TORSkillBookCampaignBehavior();
+        private static TORSkillBookCampaignBehavior _instance;
 
         public static TORSkillBookCampaignBehavior Instance => _instance;
+
+        public TORSkillBookCampaignBehavior() : base()
+        {
+            _instance = this;
+        }
 
         public string CurrentBook
         {
@@ -46,27 +51,16 @@ namespace TOW_Core.CampaignSupport
             }
         }
 
-        public override void SyncData(IDataStore dataStore)
-        {
-            dataStore.SyncData("_currentBook", ref _currentBook);
-            dataStore.SyncData("_readingProgress", ref _readingProgress);
-        }
-
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunchedEvent);
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTick);
         }
 
-        public int GetHoursLeftToRead(ItemObject book)
+        public override void SyncData(IDataStore dataStore)
         {
-            return GetHoursRequiredToComplete(book) 
-                - _readingProgress.GetValueOrDefault(book.StringId, 0);
-        }
-
-        public bool IsSkillBook(ItemObject book)
-        {
-            return book.GetTraits().Any(trait => trait.SkillTuple != null);
+            dataStore.SyncData("_currentBook", ref _currentBook);
+            dataStore.SyncData("_readingProgress", ref _readingProgress);
         }
 
         private void OnSessionLaunchedEvent(CampaignGameStarter obj)
@@ -96,6 +90,17 @@ namespace TOW_Core.CampaignSupport
             }
 
             ProgressReadingByHours(1);
+        }
+
+        public int GetHoursLeftToRead(ItemObject book)
+        {
+            return GetHoursRequiredToComplete(book) 
+                - _readingProgress.GetValueOrDefault(book.StringId, 0);
+        }
+
+        public bool IsSkillBook(ItemObject book)
+        {
+            return book.GetTraits().Any(trait => trait.SkillTuple != null);
         }
 
         private void ProgressReadingByHours(int hours)

@@ -8,6 +8,7 @@ using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.Core;
 using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.Library;
+using TaleWorlds.ObjectSystem;
 using TOW_Core.CampaignSupport;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
@@ -88,8 +89,8 @@ namespace TOW_Core.Items
 
 		private void UpdateReadButton(ItemObject selectedItem)
         {
-			IsSkillBook = TORSkillBookCampaignBehavior.Instance
-				.IsSkillBook(selectedItem);
+			IsSkillBook = TORSkillBookCampaignBehavior.Instance.IsSkillBook(selectedItem) 
+				&& InventoryManager.Instance.CurrentMode == InventoryMode.Default;
 			CanBeRead = IsSkillBook
 				&& !TORSkillBookCampaignBehavior.Instance.CurrentBook.Equals(selectedItem?.StringId)
 				&& TORSkillBookCampaignBehavior.Instance.GetHoursLeftToRead(selectedItem) > 0;

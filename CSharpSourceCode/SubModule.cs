@@ -142,7 +142,7 @@ namespace TOW_Core
                 starter.AddBehavior(new TavernBooksSellerTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 starter.AddBehavior(new RORCampaignBehaviour());
-                starter.AddBehavior(TORSkillBookCampaignBehavior.Instance);
+                starter.AddBehavior(new TORSkillBookCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
                 starter.AddBehavior(new TORCustomMobilePartyDialogCampaignBehaviour());
 
