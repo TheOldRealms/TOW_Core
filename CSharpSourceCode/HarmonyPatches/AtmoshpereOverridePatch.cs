@@ -7,6 +7,7 @@ using HarmonyLib;
 using SandBox;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.HarmonyPatches
@@ -14,39 +15,15 @@ namespace TOW_Core.HarmonyPatches
     [HarmonyPatch]
     public static class AtmoshpereOverridePatch
     {
-        private static readonly string _forceAtmosphereKey = "forceatmo";
-
         //Ideally we should replace the entire weathermodel and not use a harmonypatch for this. 
         //But a lot of the methods are private and not protected, 
         //so access is troublesome if we would implement a new model derived off of the default one.
         //A lot of functionality to rewrite.
         [HarmonyPostfix]
         [HarmonyPatch(typeof(DefaultMapWeatherModel), "GetNormalizedSnowValueInPos")]
-        public static void Postfix(ref float __result)
+        public static void TurnOffSnow(ref float __result)
         {
             __result = 0;
-        }
-
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(MissionState), "OpenNew")]
-        public static bool Prefix(string missionName, MissionInitializerRecord rec)
-        {
-            if (rec.SceneName.Contains(_forceAtmosphereKey))
-            {
-                //rec.AtmosphereOnCampaign.AtmosphereName = rec.SceneName;
-            }
-            return true;
-        }
-
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(SandBoxMissions), "OpenBattleMission", typeof(MissionInitializerRecord))]
-        public static bool Prefix2(MissionInitializerRecord rec)
-        {
-            if (rec.SceneName.Contains(_forceAtmosphereKey))
-            {
-                //rec.AtmosphereOnCampaign.AtmosphereName = rec.SceneName;
-            }
-            return true;
         }
     }
 }
