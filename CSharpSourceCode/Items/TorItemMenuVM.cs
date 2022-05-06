@@ -21,6 +21,10 @@ namespace TOW_Core.Items
 		private bool _isMagicItem = false;
 		private MBBindingList<TorItemTraitVM> _itemTraitList;
 
+		// Description Text
+		private string _itemDescription = "";
+		private bool _hasDescription = false;
+
 		// Read Button
 		private HintViewModel _readHint;
 		private bool _isSkillBook = false;
@@ -37,6 +41,8 @@ namespace TOW_Core.Items
 			ItemTraitList.Clear();
 			IsMagicItem = false;
 			_lastSetItem = item.ItemRosterElement.EquipmentElement.Item;
+			ItemDescription = _lastSetItem.GetTorSpecificData().Description;
+			HasDescription = !ItemDescription.IsEmpty();
 			UpdateReadButton(_lastSetItem);
 
 			if (_lastSetItem != null && _lastSetItem.GetTorSpecificData() != null)
@@ -120,7 +126,41 @@ namespace TOW_Core.Items
 				}
 			}
 		}
-		
+
+		[DataSourceProperty]
+		public string ItemDescription
+		{
+			get
+			{
+				return this._itemDescription;
+			}
+			set
+			{
+				if (value != this._itemDescription)
+				{
+					this._itemDescription = value;
+					base.OnPropertyChangedWithValue(value, "ItemDescription");
+				}
+			}
+		}
+
+		[DataSourceProperty]
+		public bool HasDescription
+		{
+			get
+			{
+				return this._hasDescription;
+			}
+			set
+			{
+				if (value != this._hasDescription)
+				{
+					this._hasDescription = value;
+					base.OnPropertyChangedWithValue(value, "HasDescription");
+				}
+			}
+		}
+
 		[DataSourceProperty]
 		public MBBindingList<TorItemTraitVM> ItemTraitList
 		{
