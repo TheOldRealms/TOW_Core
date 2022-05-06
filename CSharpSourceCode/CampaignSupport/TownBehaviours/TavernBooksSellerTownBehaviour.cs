@@ -46,15 +46,13 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void OpenScrollShop()
         {
-            // TODO: Replace with actual books / scroll assets.
-            var scrollItems = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x => x.StringId.Contains("ironIngot"));
-            List<ItemRosterElement> list = new List<ItemRosterElement>();
-            foreach (var item in scrollItems)
-            {
-                list.Add(new ItemRosterElement(item, MBRandom.RandomInt(1, 5)));
-            }
             ItemRoster roster = new ItemRoster();
-            roster.Add(list);
+
+            MBObjectManager.Instance.GetObjectTypeList<ItemObject>()
+                .Where(item => TORSkillBookCampaignBehavior.Instance.IsSkillBook(item))
+                .ToList()
+                .ForEach(item => roster.Add(new ItemRosterElement(item, MBRandom.RandomInt(1, 5))));
+
             InventoryManager.OpenScreenAsTrade(roster, Settlement.CurrentSettlement.Town);
         }
 
