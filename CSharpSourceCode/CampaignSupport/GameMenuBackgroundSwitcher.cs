@@ -83,6 +83,9 @@ namespace TOW_Core.CampaignSupport
                 case "khuzait":
                     args.MenuContext.SetBackgroundMeshName("vampire_captive");
                     return;
+                default:
+                    args.MenuContext.SetBackgroundMeshName("wait_captive_male");
+                    return;
             }
         }
     }

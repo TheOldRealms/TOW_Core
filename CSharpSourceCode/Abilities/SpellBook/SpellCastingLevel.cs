@@ -16,6 +16,14 @@ namespace TOW_Core.Abilities.SpellBook
         [SaveableField(4)] Master
     }
 
+    public static class SpellCastingLevelExtensions
+    {
+        public static int GetLevelRequiredForNextCastingLevel(SpellCastingLevel currentLevel)
+        {
+            return Math.Max((((int)currentLevel + 1) * 5) - 5, 1);
+        }
+    }
+
     public class SpellCastingTypeDefiner : SaveableTypeDefiner
     {
         public SpellCastingTypeDefiner() : base(1_143_199)
