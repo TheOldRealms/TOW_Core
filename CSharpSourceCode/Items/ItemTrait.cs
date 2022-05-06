@@ -50,9 +50,7 @@ namespace TOW_Core.Items
         [XmlAttribute]
         public string SkillId { get; set; }
         [XmlAttribute]
-        public int FlatSkillModifier { get; set; } = 0;
-        [XmlAttribute]
-        public int LearningLimit { get; set; } = 300;
+        public float SkillExp { get; set; } = 0;
         [XmlAttribute]
         public float LearningTime { get; set; } = 1;
         

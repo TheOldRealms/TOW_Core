@@ -98,18 +98,17 @@ namespace TOW_Core.CampaignSupport
         }
 
         /** 
-         * Returns true if any SkillTuple on the specified item has not reached the
-         * learning limit yet. AAnd the book isn't already completely read.
+         * Returns true if there is any skill xp to collect or any unlearned
+         * abilities to collect.
          */
         public bool IsBookUseful(ItemObject book)
         {
             var skillTuples = GetSkillTuples(book);
 
             return GetHoursLeftToRead(book) > 0
-            && skillTuples.Any(skillTuple =>
-                skillTuple.IsAbility
-                    ? IsUsefulForAbility(skillTuple)
-                    : IsUsefulForSkill(skillTuple)
+                && skillTuples.Any(skillTuple 
+                    => !skillTuple.IsAbility 
+                    || IsUsefulForAbility(skillTuple)
             );
         }
 
@@ -159,25 +158,19 @@ namespace TOW_Core.CampaignSupport
                 return;
             }
 
-            if (!IsUsefulForSkill(skillTuple))
-                return;
-
             // Figure out how many skill points should be allocated for the # hours
             // passed.
             float currentRatio = currentProgression / skillTuple.LearningTime;
             float progressedRatio = Math.Min(currentProgression + hours, skillTuple.LearningTime) / skillTuple.LearningTime;
-            int startGrantedSkillPoints = (int) (skillTuple.FlatSkillModifier * currentRatio);
-            int endGrantedSkillPoints = (int) (skillTuple.FlatSkillModifier * progressedRatio);
-            int skillsGained = endGrantedSkillPoints - startGrantedSkillPoints;
+            float startGrantedExp = (skillTuple.SkillExp * currentRatio);
+            float endGrantedExp = (skillTuple.SkillExp * progressedRatio);
+            float expGained = endGrantedExp - startGrantedExp;
 
             SkillObject skillObject = GetSkillObject(skillTuple.SkillId);
-            // TODO(jason): Replace set skill logic with add skill exp so that players
-            // also benefit from general exp.
-            Hero.MainHero.HeroDeveloper.SetInitialSkillLevel(skillObject, Hero.MainHero.GetSkillValue(skillObject) + skillsGained);
-            Hero.MainHero.HeroDeveloper.InitializeSkillXp(skillObject);
-            if (skillsGained > 0)
+            Hero.MainHero.AddSkillXp(skillObject, expGained);
+            if (expGained > 0)
             {
-                TOWCommon.Say(string.Format("You gain {0} skill in {1}", skillsGained, skillObject.Name));
+                TOWCommon.Say(string.Format("You gain {0} skill in {1}", expGained, skillObject.Name));
             }
         }
 
@@ -214,12 +207,6 @@ namespace TOW_Core.CampaignSupport
         private bool IsUsefulForAbility(SkillTuple abilityTuple)
         {
             return !Hero.MainHero.HasAbility(abilityTuple.SkillId);
-        }
-
-        private bool IsUsefulForSkill(SkillTuple skillTuple)
-        {
-            var skillObject = GetSkillObject(skillTuple.SkillId);
-            return Hero.MainHero.GetSkillValue(skillObject) < skillTuple.LearningLimit;
         }
 
         private int GetHoursRequiredToComplete() => GetHoursRequiredToComplete(_currentSkillTuples);
