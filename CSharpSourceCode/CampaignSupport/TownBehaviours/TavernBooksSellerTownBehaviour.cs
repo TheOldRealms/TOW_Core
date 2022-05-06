@@ -15,7 +15,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
     class TavernBooksSellerTownBehaviour : CampaignBehaviorBase
     {
         // TODO: Replace with culture friendly template?
-        private static readonly string _scrollSellerId = "tor_scolltrader";
+        private static readonly string _scrollSellerId = "tor_spelltrainer_empire_0";
 
         private CharacterObject _scrollSellerObject;
 
@@ -62,8 +62,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             var partner = CharacterObject.OneToOneConversationCharacter;
             return partner != null
-                && partner.Occupation == Occupation.Merchant
-                && partner.StringId.Equals(_scrollSellerId);
+                && partner.Occupation == Occupation.Special
+                && partner.StringId.Equals(_scrollSellerId)
+                && CampaignMission.Current?.Location?.StringId == "tavern";
         }
 
         private void LocationCharactersAreReadyToSpawn(Dictionary<string, int> unusedUsablePointCount)
