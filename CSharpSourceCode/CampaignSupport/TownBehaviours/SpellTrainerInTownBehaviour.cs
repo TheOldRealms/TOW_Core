@@ -124,6 +124,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("trainer_testoutcome", "magictest", "testoutcome", "{TEST_PROMPT}", filltextfortestprompt, determinetestoutcome, 200, null);
             obj.AddDialogLine("trainer_testresult", "testoutcome", "start", "{TEST_RESULT}", testresultcondition, null, 200, null);
             obj.AddPlayerLine("trainer_learnspells", "choices", "openbook", "I have come seeking further knowledge.", () => MobileParty.MainParty.HasSpellCasterMember(), null, 200, null);
+            obj.AddPlayerLine("trainer_scrollShop", "choices", "start", "Do you sell any scrolls?", null, OpenScrollShop, 200, null);
             obj.AddDialogLine("trainer_afterlearnspells", "openbook", "start", "Hmm, come then. I will teach you what I can.", null, openbookconsequence, 200, null);
             obj.AddPlayerLine("trainer_howtoadvance", "choices", "getquest", "I wish to grow stronger and harness even more power, how can I do this? ", () => AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists() == null && Hero.MainHero.GetExtendedInfo().SpellCastingLevel < SpellCastingLevel.Master && Hero.MainHero.GetExtendedInfo().SpellCastingLevel > SpellCastingLevel.None, null, 200, null);
             obj.AddDialogLine("trainer_getadvancequest", "getquest", "start", "You will need to test your strength, use what you have learned already and demonstrate your abilities. ", null, advancequestconsequence, 200, null);
@@ -133,6 +134,18 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("trainer_confirmnewlevel", "increasecasterlevel", "start", "{INCREASE_RESULT}", fillincreaseoptiontext, increasecasterlevelconsequence, 200, null);
             obj.AddPlayerLine("trainer_playergoodbye", "choices", "saygoodbye", "Farewell Magister.", null, null, 200, null);
             obj.AddDialogLine("trainer_goodbye", "saygoodbye", "close_window", "Hmm, yes. Farewell.", null, null, 200, null);
+        }
+
+        private void OpenScrollShop()
+        {
+            ItemRoster roster = new ItemRoster();
+
+            MBObjectManager.Instance.GetObjectTypeList<ItemObject>()
+                .Where(item => TORSkillBookCampaignBehavior.Instance.IsSkillBook(item))
+                .ToList()
+                .ForEach(item => roster.Add(new ItemRosterElement(item, MBRandom.RandomInt(1, 5))));
+
+            InventoryManager.OpenScreenAsTrade(roster, Settlement.CurrentSettlement.Town);
         }
 
         private bool fillincreaseoptiontext()

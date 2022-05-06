@@ -139,7 +139,6 @@ namespace TOW_Core
                 starter.AddBehavior(new RaiseDeadInTownBehaviour());
                 starter.AddBehavior(new SpellTrainerInTownBehaviour());
                 starter.AddBehavior(new MasterEngineerTownBehaviour());
-                starter.AddBehavior(new TavernBooksSellerTownBehaviour());
                 starter.AddBehavior(new AssimilationCampaignBehavior());
                 starter.AddBehavior(new RORCampaignBehaviour());
                 starter.AddBehavior(new TORSkillBookCampaignBehavior());
