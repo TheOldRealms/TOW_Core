@@ -99,7 +99,7 @@ namespace TOW_Core.Items
 				&& InventoryManager.Instance.CurrentMode == InventoryMode.Default;
 			CanBeRead = IsSkillBook
 				&& !TORSkillBookCampaignBehavior.Instance.CurrentBook.Equals(selectedItem?.StringId)
-				&& TORSkillBookCampaignBehavior.Instance.GetHoursLeftToRead(selectedItem) > 0;
+				&& TORSkillBookCampaignBehavior.Instance.IsBookUseful(selectedItem);
         }
 
 		private void ExecuteReadItem()

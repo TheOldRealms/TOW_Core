@@ -92,22 +92,42 @@ namespace TOW_Core.CampaignSupport
             ProgressReadingByHours(1);
         }
 
-        public int GetHoursLeftToRead(ItemObject book)
-        {
-            return GetHoursRequiredToComplete(book) 
-                - _readingProgress.GetValueOrDefault(book.StringId, 0);
-        }
-
         public bool IsSkillBook(ItemObject book)
         {
             return book.GetTraits().Any(trait => trait.SkillTuple != null);
         }
 
+        /** 
+         * Returns true if any SkillTuple on the specified item has not reached the
+         * learning limit yet. AAnd the book isn't already completely read.
+         */
+        public bool IsBookUseful(ItemObject book)
+        {
+            var skillTuples = GetSkillTuples(book);
+
+            return GetHoursLeftToRead(book) > 0
+            && skillTuples.Any(skillTuple =>
+                skillTuple.IsAbility
+                    ? IsUsefulForAbility(skillTuple)
+                    : IsUsefulForSkill(skillTuple)
+            );
+        }
+
         private void ProgressReadingByHours(int hours)
         {
             var hoursToComplete = GetHoursRequiredToComplete();
+            if (!IsBookUseful(_currentBookObject))
+            {
+                TOWCommon.Say(String.Format("You feel as if there is nothing left to gain from reading {0}", _currentBookObject.Name));
+                _readingProgress[CurrentBook] = hoursToComplete;
+                return;
+            }
+
             var startProgression = _readingProgress.GetValueOrDefault(CurrentBook, 0);
-            var endProgression = startProgression + hours;
+            var endProgression = Math.Min(startProgression + hours, hoursToComplete);
+            // If we ever decide to progress reading by > 1 hour, we should cap
+            // progression or too many skill points might be allocated.
+            hours = endProgression - startProgression;
 
             _currentSkillTuples.ForEach(
                 skillTuple => CalculateSkillTupleProgression(skillTuple, startProgression, hours));
@@ -125,7 +145,7 @@ namespace TOW_Core.CampaignSupport
                 return;
 
             // If this is an ability scroll, we don't need to do complex calculations
-            if (skillTuple.IsAbility)
+            if (skillTuple.IsAbility && IsUsefulForAbility(skillTuple))
             {
                 var abilityTemplate = AbilityFactory.GetTemplate(skillTuple.SkillId);
                 if (currentProgression + hours >= skillTuple.LearningTime
@@ -138,6 +158,9 @@ namespace TOW_Core.CampaignSupport
                 }
                 return;
             }
+
+            if (!IsUsefulForSkill(skillTuple))
+                return;
 
             // Figure out how many skill points should be allocated for the # hours
             // passed.
@@ -181,6 +204,23 @@ namespace TOW_Core.CampaignSupport
 
         private SkillObject GetSkillObject(string id) 
             => Skills.All.FirstOrDefault(skill => skill.StringId == id);
+
+        private int GetHoursLeftToRead(ItemObject book)
+        {
+            return GetHoursRequiredToComplete(book)
+                - _readingProgress.GetValueOrDefault(book.StringId, 0);
+        }
+
+        private bool IsUsefulForAbility(SkillTuple abilityTuple)
+        {
+            return !Hero.MainHero.HasAbility(abilityTuple.SkillId);
+        }
+
+        private bool IsUsefulForSkill(SkillTuple skillTuple)
+        {
+            var skillObject = GetSkillObject(skillTuple.SkillId);
+            return Hero.MainHero.GetSkillValue(skillObject) < skillTuple.LearningLimit;
+        }
 
         private int GetHoursRequiredToComplete() => GetHoursRequiredToComplete(_currentSkillTuples);
 
