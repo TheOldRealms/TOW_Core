@@ -168,10 +168,6 @@ namespace TOW_Core.CampaignSupport
 
             SkillObject skillObject = GetSkillObject(skillTuple.SkillId);
             Hero.MainHero.AddSkillXp(skillObject, expGained);
-            if (expGained > 0)
-            {
-                TOWCommon.Say(string.Format("You gain {0} skill in {1}", expGained, skillObject.Name));
-            }
         }
 
         private void ClearCurrentlyReading()
