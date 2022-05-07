@@ -13,16 +13,11 @@ namespace TOW_Core.Battle.StatusEffects
 {
     public class StatusEffectManager
     {
-        private readonly string ModuleName = "TOW_Core";
-        private readonly string EffectsFileName = "tow_statuseffects.xml";
+        private static readonly string ModuleName = "TOW_Core";
+        private static readonly string EffectsFileName = "tow_statuseffects.xml";
         private static Dictionary<string, StatusEffectTemplate> _idToStatusEffect = new Dictionary<string, StatusEffectTemplate>();
 
-        public StatusEffectManager()
-        {
-
-        }
-
-        public void LoadStatusEffects()
+        public static void LoadStatusEffects()
         {
             var files = Directory.GetFiles(ModuleHelper.GetModuleFullPath(ModuleName), EffectsFileName, SearchOption.AllDirectories);
             XmlSerializer serializer = new XmlSerializer(typeof(List<StatusEffectTemplate>), new XmlRootAttribute("StatusEffects"));

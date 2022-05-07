@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -20,6 +21,10 @@ namespace TOW_Core.CampaignSupport.Assimilation
             else
             {
                 _settlement.SettlementComponents.AddItem(this);
+                List<Settlement> list = new List<Settlement>();
+                list.Add(_settlement);
+                list.AddRange(_settlement.BoundVillages.ToList().ConvertAll(x => x.Settlement));
+                list.Where(x => x.Culture != x.Owner.Culture).Do(AssimilateSettlementInstantly);
             }
         }
 
@@ -79,6 +84,15 @@ namespace TOW_Core.CampaignSupport.Assimilation
             }
         }
 
+        private void AssimilateSettlementInstantly(Settlement settlement)
+        {
+            var outriders = settlement.Notables.Where(n => n.Culture != _settlement.Owner.Culture);
+            foreach(var notable in outriders)
+            {
+                notable.Culture = _settlement.Owner.Culture;
+            }
+            settlement.Culture = _settlement.Owner.Culture;
+        }
 
         public bool IsAssimilationComplete { get => _assimilationProgress == 1; }
 
@@ -90,6 +104,6 @@ namespace TOW_Core.CampaignSupport.Assimilation
 
         private float _assimilationProgress;
 
-        [SaveableField(81)] public Settlement _settlement;
+        [SaveableField(81)] private Settlement _settlement;
     }
 }

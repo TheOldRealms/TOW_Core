@@ -6,7 +6,6 @@ using TOW_Core.Texts;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
-using TOW_Core.Battle.ObjectDataExtensions;
 using TOW_Core.Battle.ObjectDataExtensions.CustomMissionLogic;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
@@ -33,15 +32,10 @@ using TOW_Core.CampaignSupport.ChaosRaidingParty;
 using TOW_Core.Battle.FireArms;
 using TOW_Core.CampaignSupport.Models;
 using TOW_Core.Battle;
-using TOW_Core.Battle.Artillery;
-using System.IO;
-using System;
 using TOW_Core.Battle.Damage;
 using TOW_Core.CampaignSupport.TownBehaviours;
 using SandBox;
 using TOW_Core.Abilities.SpellBook;
-using TOW_Core.Battle.AI.AgentBehavior.Components;
-using TOW_Core.Battle.AI.AgentBehavior.SupportMissionLogic;
 using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
@@ -76,9 +70,9 @@ namespace TOW_Core
 
             //This has to be here.
             ExtendedInfoManager.Load();
-            LoadStatusEffects();
-            LoadShieldPatterns();
-            LoadQuestBattleTemplates();
+            StatusEffectManager.LoadStatusEffects();
+            ShieldPatternsManager.LoadShieldPatterns();
+            QuestBattleTemplateManager.LoadQuestBattleTemplates();
             TriggeredEffectManager.LoadTemplates();
             AbilityFactory.LoadTemplates();
             ExtendedItemObjectManager.LoadXML();
@@ -86,16 +80,6 @@ namespace TOW_Core
 
             //ref https://forums.taleworlds.com/index.php?threads/ui-widget-modification.441516/ 
             UIConfig.DoNotUseGeneratedPrefabs = true;
-        }
-
-        private void LoadQuestBattleTemplates()
-        {
-            QuestBattleTemplateManager.LoadQuestBattleTemplates();
-        }
-
-        private void LoadShieldPatterns()
-        {
-            ShieldPatternsManager.LoadShieldPatterns();
         }
 
         /// <summary>
@@ -194,12 +178,6 @@ namespace TOW_Core
 
             //this is a hack, for some reason that is beyond my comprehension, this crashes the game when loading into an arena with a memory violation exception.
             if (!mission.SceneName.Contains("arena")) mission.AddMissionBehavior(new ShieldPatternsMissionLogic());
-        }
-
-        private void LoadStatusEffects()
-        {
-            StatusEffectManager effectManager = new StatusEffectManager();
-            effectManager.LoadStatusEffects();
         }
 
         private static void ConfigureLogging()
