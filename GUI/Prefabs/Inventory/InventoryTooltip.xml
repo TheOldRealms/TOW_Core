@@ -26,6 +26,7 @@
                   </Children>
                 </Widget>
                 <InventoryTooltipInnerContent Parameter.ItemFlagsDataSource="{TargetItemFlagList}" Parameter.PropertiesDataSource="{TargetItemProperties}" MarginTop="5" />
+                <TextWidget Text="@ItemDescription" IsVisible="@HasDescription" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MaxWidth="280" MarginLeft="20" MarginRight="20" MarginBottom="5" HorizontalAlignment="Center" Brush="InventoryGoldFontBrush" Brush.FontSize="16" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
                 <TextWidget Text="Item Effects" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="280" SuggestedHeight="40" MarginTop="5" MarginLeft="20" MarginRight="20" HorizontalAlignment="Center" Brush="TorInventoryMagicItemBrush" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center" IsVisible="@IsMagicItem"/>
                 <ListPanel DataSource="{ItemTraitList}" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalLeftToRight" MarginBottom="5">
                   <ItemTemplate>
