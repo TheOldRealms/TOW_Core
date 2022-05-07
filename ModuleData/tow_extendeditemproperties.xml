@@ -2105,4 +2105,21 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_shield_nurgle_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_artillery_mortar_001">
+    <ItemTraits />
+    <Description />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_artillery_cannon_001">
+    <ItemTraits />
+    <Description />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_books_engineering_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Engineering Knowledge" IconName="placeholder_icon">
+        <ItemTraitDescription>This book provides 5000 engineering skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Engineering" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"I have learned, over long years of study, not to judge the exterior of any object without knowing the full details of its interior. The grandest building may conceal a rotten core, and the meanest-looking pistol may hide the finest rifling workmanship within it. That seems to me a good maxim for any engineer. We have often discovered that the way a device looks is no guarantee of its quality. In fact, though I hesitate to make the comparison directly, the same may too be said of men. Some of us who seem most fearful by reputation may turn out, on closer examination, to be nothing but weaklings and cowards. Conversely, even those who have sunk low, almost to the point of becoming nothing, may carry within them the smouldering spark of greatness, ready at any moment to leap once more into flame…"</Description>
+  </ExtendedItemObjectProperties>
 </ArrayOfExtendedItemObjectProperties>
