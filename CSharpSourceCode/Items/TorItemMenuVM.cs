@@ -28,7 +28,6 @@ namespace TOW_Core.Items
 		// Read Button
 		private HintViewModel _readHint;
 		private bool _isSkillBook = false;
-		private bool _canBeRead = false;
 
 		public TorItemMenuVM(Action<ItemVM, int> resetComparedItems, InventoryLogic inventoryLogic, Func<WeaponComponentData, ItemObject.ItemUsageSetFlags> getItemUsageSetFlags, Func<EquipmentIndex, SPItemVM> getEquipmentAtIndex) : base(resetComparedItems, inventoryLogic, getItemUsageSetFlags, getEquipmentAtIndex)
         {
@@ -97,17 +96,26 @@ namespace TOW_Core.Items
         {
 			IsSkillBook = TORSkillBookCampaignBehavior.Instance.IsSkillBook(selectedItem) 
 				&& InventoryManager.Instance.CurrentMode == InventoryMode.Default;
-			CanBeRead = IsSkillBook
-				&& !TORSkillBookCampaignBehavior.Instance.CurrentBook.Equals(selectedItem?.StringId)
-				&& TORSkillBookCampaignBehavior.Instance.IsBookUseful(selectedItem);
         }
 
 		private void ExecuteReadItem()
 		{
-			TORSkillBookCampaignBehavior.Instance.CurrentBook = 
+			if (!IsSkillBook
+				|| !TORSkillBookCampaignBehavior.Instance.IsBookUseful(_lastSetItem))
+            {
+				TOWCommon.Say(String.Format("It seems that there is nothing more to gain from studying {0}", _lastSetItem.Name));
+				return;
+            }
+			if (TORSkillBookCampaignBehavior.Instance.CurrentBook.Equals(_lastSetItem.StringId ?? "")) {
+				TOWCommon.Say(String.Format("You are already reading {0}", _lastSetItem.Name));
+				return;
+            }
+
+			TORSkillBookCampaignBehavior.Instance.CurrentBook =
 				_lastSetItem.StringId ?? "";
 			UpdateReadButton(_lastSetItem);
 			TOWCommon.Say(String.Format("Selected {0} for reading!", _lastSetItem?.Name));
+			return;
 		}
 
 		[DataSourceProperty]
@@ -208,23 +216,6 @@ namespace TOW_Core.Items
 				{
 					this._isSkillBook = value;
 					base.OnPropertyChangedWithValue(value, "IsSkillBook");
-				}
-			}
-		}
-
-		[DataSourceProperty]
-		public bool CanBeRead
-		{
-			get
-			{
-				return this._canBeRead;
-			}
-			set
-			{
-				if (value != this._canBeRead)
-				{
-					this._canBeRead = value;
-					base.OnPropertyChangedWithValue(value, "CanBeRead");
 				}
 			}
 		}

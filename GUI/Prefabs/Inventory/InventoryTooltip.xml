@@ -43,7 +43,7 @@
                 </ListPanel>
               </Children>
             </ListPanel>
-            <ButtonWidget Id="ReadButton" IsVisible="@IsSkillBook" IsEnabled="@CanBeRead" IsHighlightEnabled="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.SpecialButton.Width" SuggestedHeight="!Inventory.Tuple.Extension.SpecialButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="10" MarginRight="10" Command.Click="ExecuteReadItem" Brush="Inventory.Tuple.Extension.SpecialButton">
+            <ButtonWidget Id="ReadButton" IsVisible="@IsSkillBook" IsHighlightEnabled="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.SpecialButton.Width" SuggestedHeight="!Inventory.Tuple.Extension.SpecialButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="10" MarginRight="10" Command.Click="ExecuteReadItem" Brush="Inventory.Tuple.Extension.SpecialButton">
               <Children>
                 <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.PreviewButtonIcon.Width" SuggestedHeight="!Inventory.Tuple.Extension.PreviewButtonIcon.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Inventory\inspect"/>
                 <HintWidget DataSource="{ReadHint}" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent"/>
