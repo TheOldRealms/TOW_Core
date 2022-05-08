@@ -20,6 +20,8 @@
 			   value="80" />
 		<skill id="Steward"
 			   value="260" />
+		<skill id="Tactics"
+			   value="280" />
 	</SkillSet>
 	<!--Caster Lords-->
 	<SkillSet id="tow_skills_caster_lord">
@@ -45,6 +47,8 @@
 			   value="260" />
 		<skill id="Engineering"
 			   value="260" />
+		<skill id="Tactics"
+			   value="280" />
 	</SkillSet>
 	<!--Vampire Lords-->
 	<SkillSet id="tow_skills_vampire_lord">
@@ -70,6 +74,8 @@
 			   value="200" />
 		<skill id="Engineering"
 			   value="260" />
+		<skill id="Tactics"
+			   value="280" />
 	</SkillSet>
 	<!--Tier 1-->
 	<SkillSet id="tow_skills_level6">
