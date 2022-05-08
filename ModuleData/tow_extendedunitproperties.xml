@@ -2122,183 +2122,112 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_1">
     <Abilities>
-      <string>Chillwind</string>
-      <string>DoomBolt</string>
-      <string>SoulDrain</string>
-      <string>PowerOfDarkness</string>
-      <string>BlackHorror</string>
-      <string>SoulStealer</string>
-      <string>GraveCall</string>
-      <string>Morkarn</string>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
       <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_2">
     <Abilities>
-      <string>Chillwind</string>
-      <string>DoomBolt</string>
-      <string>SoulDrain</string>
-      <string>PowerOfDarkness</string>
-      <string>BlackHorror</string>
-      <string>SoulStealer</string>
-      <string>GraveCall</string>
-      <string>Morkarn</string>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
       <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_3">
     <Abilities>
-      <string>Chillwind</string>
-      <string>DoomBolt</string>
-      <string>SoulDrain</string>
-      <string>PowerOfDarkness</string>
-      <string>BlackHorror</string>
-      <string>SoulStealer</string>
-      <string>GraveCall</string>
-      <string>Morkarn</string>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
       <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_4">
     <Abilities>
-      <string>Chillwind</string>
-      <string>DoomBolt</string>
-      <string>SoulDrain</string>
-      <string>PowerOfDarkness</string>
-      <string>BlackHorror</string>
-      <string>SoulStealer</string>
-      <string>GraveCall</string>
-      <string>Morkarn</string>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
       <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_5">
     <Abilities>
-      <string>Chillwind</string>
-      <string>DoomBolt</string>
-      <string>SoulDrain</string>
-      <string>PowerOfDarkness</string>
-      <string>BlackHorror</string>
-      <string>SoulStealer</string>
-      <string>GraveCall</string>
-      <string>Morkarn</string>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
       <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_1">
-    <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
-      <string>GraveCall</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_2">
-    <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
-      <string>GraveCall</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_3">
-    <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
-      <string>GraveCall</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_4">
-    <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
-      <string>GraveCall</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_5">
-    <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
-      <string>GraveCall</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_fourth_1">
     <Abilities>
@@ -2416,12 +2345,9 @@
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
-    <Abilities>
-      <string>DustStorm</string>
-    </Abilities>
+    <Abilities />
     <Attributes>
       <string>AbilityUser</string>
-      <string>SpellCaster</string>
       <string>CanPlaceArtillery</string>
     </Attributes>
   </CharacterExtendedInfo>

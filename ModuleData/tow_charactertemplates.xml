@@ -11,11 +11,12 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_bright_wizard_template" />
@@ -33,11 +34,12 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="Commander" value="3" />
+      <Trait id="Surgeon" value="5" />
+      <Trait id="Calculating" value="1" />
+      <Trait id="Mercy" value="3" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_warrior_priest_template" />
@@ -55,9 +57,10 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="RogueSkills" value="3" />
+      <Trait id="WoodsScoutSkills" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
       <Trait id="Valor" value="-1" />
     </Traits>
@@ -77,11 +80,12 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_light_wizard_template" />
@@ -99,11 +103,12 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_celestial_wizard_template" />
@@ -121,11 +126,12 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="BalancedFightingSkills" value="3" />
+      <Trait id="EngineerSkills" value="3" />
+      <Trait id="Blacksmith" value="3" />
+      <Trait id="Calculating" value="-1" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_qnpc_masterengineer_template" />
@@ -146,8 +152,8 @@
       <Trait id="BalancedFightingSkills" value="8" />
       <Trait id="Commander" value="5" />
       <Trait id="Calculating" value="5" />
-      <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_bretonnian_knight_template" />
@@ -165,9 +171,10 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
       <Trait id="Valor" value="-1" />
     </Traits>
@@ -187,9 +194,10 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="6" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Commander" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
       <Trait id="Valor" value="-1" />
     </Traits>
@@ -731,9 +739,10 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
       <Trait id="Valor" value="-1" />
     </Traits>
@@ -747,11 +756,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-2" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_bw_grand_magister_template" />
@@ -763,11 +773,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-3" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_bw_grand_magister_template" />
@@ -779,11 +790,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-4" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_bw_grand_magister_template" />
@@ -795,11 +807,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-5" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_coi_grand_master_template" />
@@ -811,11 +824,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-6" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_coi_grand_master_template" />
@@ -827,11 +841,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-7" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_coi_grand_master_template" />
@@ -843,11 +858,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-8" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_coi_grand_master_template" />
@@ -859,11 +875,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-9" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
@@ -875,11 +892,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-10" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
@@ -891,11 +909,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-11" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
@@ -907,11 +926,12 @@
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
-      <Trait id="Commander" value="5" />
-      <Trait id="Calculating" value="5" />
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="-1" />
-      <Trait id="Valor" value="-1" />
+      <Trait id="Valor" value="-12" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_cult_fsf_archbacillus_template" />

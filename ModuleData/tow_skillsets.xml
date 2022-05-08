@@ -1,5 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SkillSets>
+	<!--Warrior Lords-->
+	<SkillSet id="tow_skills_warrior_lord">
+		<skill id="Athletics"
+			   value="260" />
+		<skill id="Riding"
+			   value="260" />
+		<skill id="OneHanded"
+			   value="260" />
+		<skill id="TwoHanded"
+			   value="260" />
+		<skill id="Polearm"
+			   value="260" />
+		<skill id="Bow"
+			   value="180" />
+		<skill id="Crossbow"
+			   value="120" />
+		<skill id="Throwing"
+			   value="80" />
+		<skill id="Steward"
+			   value="260" />
+	</SkillSet>
+	<!--Caster Lords-->
+	<SkillSet id="tow_skills_caster_lord">
+		<skill id="Athletics"
+			   value="150" />
+		<skill id="Riding"
+			   value="150" />
+		<skill id="OneHanded"
+			   value="150" />
+		<skill id="TwoHanded"
+			   value="160" />
+		<skill id="Polearm"
+			   value="160" />
+		<skill id="Bow"
+			   value="40" />
+		<skill id="Crossbow"
+			   value="40" />
+		<skill id="Throwing"
+			   value="40" />
+		<skill id="Steward"
+			   value="260" />
+		<skill id="Medicine"
+			   value="260" />
+		<skill id="Engineering"
+			   value="260" />
+	</SkillSet>
+	<!--Vampire Lords-->
+	<SkillSet id="tow_skills_vampire_lord">
+		<skill id="Athletics"
+			   value="280" />
+		<skill id="Riding"
+			   value="220" />
+		<skill id="OneHanded"
+			   value="220" />
+		<skill id="TwoHanded"
+			   value="200" />
+		<skill id="Polearm"
+			   value="200" />
+		<skill id="Bow"
+			   value="40" />
+		<skill id="Crossbow"
+			   value="40" />
+		<skill id="Throwing"
+			   value="40" />
+		<skill id="Steward"
+			   value="160" />
+		<skill id="Medicine"
+			   value="200" />
+		<skill id="Engineering"
+			   value="260" />
+	</SkillSet>
 	<!--Tier 1-->
 	<SkillSet id="tow_skills_level6">
 		<skill id="Athletics"

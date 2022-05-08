@@ -285,9 +285,6 @@
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_brass_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_brass_knight_002">
-    <ItemTraits />
-  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_head_helm_general_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1498,7 +1495,8 @@
       </ItemTrait>
     </ItemTraits>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Holy" Percent="0.20" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_001">
@@ -1509,7 +1507,8 @@
       </ItemTrait>
     </ItemTraits>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Holy" Percent="0.20" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_huss">
@@ -1520,7 +1519,8 @@
       </ItemTrait>
     </ItemTraits>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Holy" Percent="0.20" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_001">
@@ -1608,6 +1608,30 @@
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_spear_skeleton_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_spear_ungor_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_spear_ungor_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_spear_ungor_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_spear_ungor_004">
     <ItemTraits />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />

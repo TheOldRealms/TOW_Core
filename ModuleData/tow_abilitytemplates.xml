@@ -1387,7 +1387,7 @@
       </LightColorRGB>
   </AbilityTemplate>
 
-  <AbilityTemplate StringID="Morkarn"
+  <AbilityTemplate StringID="Morkharn"
       Name="Morkharn - Breath of Darkness"
       SpriteName="placeholder_icon"
       CoolDown="30"
