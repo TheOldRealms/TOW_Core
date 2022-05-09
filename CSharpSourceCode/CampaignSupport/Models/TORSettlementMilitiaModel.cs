@@ -14,7 +14,14 @@ namespace TOW_Core.CampaignSupport.Models
         public override ExplainedNumber CalculateMilitiaChange(Settlement settlement, bool includeDescriptions = false)
         {
             var result = base.CalculateMilitiaChange(settlement, includeDescriptions);
-            result.Add(10f, new TextObject("Bonus"));
+            if (settlement.IsCastle)
+            {
+                result.Add(6f, new TextObject("Bonus"));
+            }
+            else if (settlement.IsTown)
+            {
+                result.Add(8f, new TextObject("Bonus"));
+            }
             return result;
         }
     }
