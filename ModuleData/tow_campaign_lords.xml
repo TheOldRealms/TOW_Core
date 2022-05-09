@@ -1316,7 +1316,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_third_1" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_third_1}Baron Derek von Bitte" occupation="Lord" culture="Culture.khuzait" voice="curt" age="55" skill_template="SkillSet.tow_skills_warrior_lord" is_hero="true">
     <face>
-      <BodyProperties version="4" age="19" weight="0.5245" build="0.5477" key="00108C0D00142140B20A8793777D88B79737B62A97926506DC2A3813667B45B800888603F8789B270000000000000000000000000000000000000000350C1140" />
+      <BodyProperties version="4" age="55" weight="0.5245" build="0.5477" key="00108C0D00142140B20A8793777D88B79737B62A97926506DC2A3813667B45B800888603F8789B270000000000000000000000000000000000000000350C1140" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1334,7 +1334,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_third_2" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_third_2}Jonas Boeselager" occupation="Lord" culture="Culture.khuzait" voice="curt" age="53" skill_template="SkillSet.tow_skills_warrior_lord" is_hero="true">
     <face>
-      <BodyProperties version="4" age="19" weight="0.9711" build="0.9895" key="0020540B808821DC4966458ABCCFF7FF67A79B93D8858DB532666A8989CA5696003FF603F31C476400000000000000000000000000000000000000005E6C6100" />
+      <BodyProperties version="4" age="53" weight="0.9711" build="0.9895" key="0020540B808821DC4966458ABCCFF7FF67A79B93D8858DB532666A8989CA5696003FF603F31C476400000000000000000000000000000000000000005E6C6100" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1352,7 +1352,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_third_3" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_third_3}Ruven the Crazed" occupation="Lord" culture="Culture.khuzait" voice="curt" age="33" skill_template="SkillSet.tow_skills_warrior_lord" is_hero="true">
     <face>
-      <BodyProperties version="4" age="19" weight="0.2972" build="0.2928" key="0002900FDBFC0201777D6B757775763BDC2896E95C8A9A971878C99845895BE900944603F9A97692000000000000000000000000000000000000000029344000" />
+      <BodyProperties version="4" age="33" weight="0.2972" build="0.2928" key="0002900FDBFC0201777D6B757775763BDC2896E95C8A9A971878C99845895BE900944603F9A97692000000000000000000000000000000000000000029344000" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1370,7 +1370,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_third_4" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_third_4}Leon Holseher" occupation="Lord" culture="Culture.khuzait" voice="curt" age="43" skill_template="SkillSet.tow_skills_warrior_lord" is_hero="true">
     <face>
-      <BodyProperties version="4" age="19" weight="0.3113" build="0.4398" key="000034008000014FB8398BDCEAA22C6756648B3ABDFE344CD22D3DD55796B3A600975603F996723B00000000000000000000000000000000000000003F341000" />
+      <BodyProperties version="4" age="43" weight="0.3113" build="0.4398" key="000034008000014FB8398BDCEAA22C6756648B3ABDFE344CD22D3DD55796B3A600975603F996723B00000000000000000000000000000000000000003F341000" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1388,7 +1388,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_third_5" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_third_5}Pieter von Schulhof" occupation="Lord" culture="Culture.khuzait" voice="curt" age="43" skill_template="SkillSet.tow_skills_warrior_lord" is_hero="true">
     <face>
-      <BodyProperties version="4" age="19" weight="0.4339" build="0.4676" key="00087C06C000200C194955A692477C38BB67BB58687A576C945864D72778568800577603F58187A200000000000000000000000000000000000000003EAC0000" />
+      <BodyProperties version="4" age="43" weight="0.4339" build="0.4676" key="00087C06C000200C194955A692477C38BB67BB58687A576C945864D72778568800577603F58187A200000000000000000000000000000000000000003EAC0000" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />

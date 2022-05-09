@@ -18,16 +18,14 @@ public static class MissionPatches
     [HarmonyPatch(typeof(Mission), "SpawnAgent")]
     public static bool SpawnAgentPrefix(AgentBuildData agentBuildData, Mission __instance)
     {
-        if (__instance.IsFriendlyMission)
-        {
-            return true;
-        }
         var character = agentBuildData.AgentCharacter;
         if (character != null)
         {
             if (character.IsVampire())
             {
                 Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
+                Traverse.Create(agentBuildData).Property("AgentData").Property("AgentAge").SetValue(19);
+                Traverse.Create(agentBuildData).Property("AgentData").Property("AgeOverriden").SetValue(true);
             }
             else if (character.IsHero && Game.Current.GameType is Campaign)
             {
@@ -35,6 +33,8 @@ public static class MissionPatches
                 if (hero.IsVampire())
                 {
                     Traverse.Create(agentBuildData).Property("AgentData").Field("_agentMonster").SetValue(_vampireMonster);
+                    Traverse.Create(agentBuildData).Property("AgentData").Property("AgentAge").SetValue(19);
+                    Traverse.Create(agentBuildData).Property("AgentData").Property("AgeOverriden").SetValue(true);
                 }
             }
         }
