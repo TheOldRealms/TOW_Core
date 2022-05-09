@@ -715,7 +715,10 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_sister">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -736,7 +739,10 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_noblewoman">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -758,6 +764,7 @@
   <CharacterExtendedInfo id="tor_vc_von_carstein_countess">
     <Abilities />
     <Attributes>
+      <string>VampireBodyOverride</string>
       <string>Unbreakable</string>
     </Attributes>
     <Resistances />
@@ -2034,6 +2041,7 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_5">
@@ -2051,6 +2059,7 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_6">
@@ -2122,6 +2131,7 @@
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_1">

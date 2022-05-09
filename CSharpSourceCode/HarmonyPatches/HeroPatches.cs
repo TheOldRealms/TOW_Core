@@ -17,7 +17,7 @@ namespace TOW_Core.HarmonyPatches
                 StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
                 __result = new BodyProperties(new DynamicBodyProperties(19, __instance.Weight, __instance.Build), staticBodyProperties);
             }
-            else if (!__instance.IsFemale && __instance.Age < 26)
+            else if (__instance.Age < 26)
             {
                 StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
                 __result = new BodyProperties(new DynamicBodyProperties(26, __instance.Weight, __instance.Build), staticBodyProperties);

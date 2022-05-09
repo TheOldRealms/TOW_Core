@@ -1118,7 +1118,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_first_4" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_first_4}Emmanuelle von Templehof" occupation="Lord" culture="Culture.khuzait" voice="curt" age="22" skill_template="SkillSet.tow_skills_vampire_lord" is_female="true" is_hero="true">
     <face>
-      <BodyProperties version="4" age="22" weight="0.0509" build="0.4239" key="0000380FD4FC0001279587C843566938753B8A8C57A47C07898C83576424984B00F61603FFA4682700000000000000000000000000000000000000005DF430C3" />
+      <BodyProperties version="4" age="19" weight="0.0509" build="0.4239" key="0000380FD4FC0001279587C843566938753B8A8C57A47C07898C83576424984B00F61603FFA4682700000000000000000000000000000000000000005DF430C3" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1136,7 +1136,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_first_5" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_first_5}Elize von Carstein" occupation="Lord" culture="Culture.khuzait" voice="curt" age="22" skill_template="SkillSet.tow_skills_vampire_lord" is_female="true" is_hero="true">
     <face>
-      <BodyProperties version="4" age="22" weight="0.2766" build="0.5489" key="000038079400101527359947747A6968753B8A8C57A47C07898C83576424984B00884603F8A4682700000000000000000000000000000000000000005CFC30C3" />
+      <BodyProperties version="4" age="19" weight="0.2766" build="0.5489" key="000038079400101527359947747A6968753B8A8C57A47C07898C83576424984B00884603F8A4682700000000000000000000000000000000000000005CFC30C3" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
@@ -1208,7 +1208,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_lord_sylvania_first_9" default_group="cavalry" name="{=str_ tor_vc_lord_sylvania_first_9}Gabriella von Bundebad" occupation="Lord" culture="Culture.khuzait" voice="curt" age="49" skill_template="SkillSet.tow_skills_vampire_lord" is_female="true" is_hero="true">
     <face>
-      <BodyProperties version="4" age="22" weight="0.3183" build="0.2558" key="00005C0080B4000FB8692567495CA882E5D71799247422AA64A5B3634A8965BB00645603F6CD698A00000000000000000000000000000000000000002ECC00C3" />
+      <BodyProperties version="4" age="19" weight="0.3183" build="0.2558" key="00005C0080B4000FB8692567495CA882E5D71799247422AA64A5B3634A8965BB00645603F6CD698A00000000000000000000000000000000000000002ECC00C3" />
     </face>
     <Traits>
       <Trait id="BalancedFightingSkills" value="5" />
