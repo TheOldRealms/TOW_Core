@@ -237,7 +237,7 @@
   </Settlement>
   <Settlement id="village_ST1_1" name="{=Settlements.Settlement.name.village_ST1_1}Biberhof" owner="Faction.stirland_clan_1" posX="1431.018" posY="1011.531" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_1}Biberhof lies surrounded by thick forest just a few kilometers south of Wurtbad. Its inhabitants have become quite skilled in the use of the axe, both to harvest high quality wood from the old trees around it and defending their camps from vermin and the occasional highwayman. The timber from Biderhof is sought after by the nobility of Wurtbad, as it is said its dark hues is anathema to any vampire unlucky enough to be skewed by a stake made from this wood.">
     <Components>
-      <Village id="village_comp_ST1_1" village_type="VillageType.lumberjack" hearth="85" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_1" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -250,7 +250,7 @@
   </Settlement>
   <Settlement id="village_ST1_2" name="{=Settlements.Settlement.name.village_ST1_2}Julbach" owner="Faction.stirland_clan_1" posX="1465.237" posY="1013.238" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_2}Julbach is located halfway between River Stir and River Aver. It sits in a valley shadowed by the Zaya hills where sheep roam freely along Nuln road. The Nattern Forest, a few miles to the West, serves as both a source of wealth and superstition, as even in the coldest nights of winter, when both insect and beast sleep, a rumble of hooves can be heard in the distance.">
     <Components>
-      <Village id="village_comp_ST1_2" village_type="VillageType.europe_horse_ranch" hearth="43" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_2" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -263,7 +263,7 @@
   </Settlement>
   <Settlement id="village_ST1_3" name="{=Settlements.Settlement.name.village_ST1_3}Oberwil" owner="Faction.stirland_clan_1" posX="1409.736" posY="1010.591" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_3}Oberwil is a small fishing village a few miles West of Wurtbad. The routes to Oberwil are little more than footpaths, as most trade and travel is done via river. The village is somewhat protected by the Riverwardens who frequent the Stir, but villagers generally have to fend for themselves against bandits and beastmen from the dark forest.">
     <Components>
-      <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_3" village_type="VillageType.fisherman" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -276,7 +276,7 @@
   </Settlement>
   <Settlement id="village_ST1_4" name="{=Settlements.Settlement.name.village_ST1_4}Tarshof" owner="Faction.stirland_clan_1" posX="1448.139" posY="993.753" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST1_4}Tarshof is situated on the Northern edge of the Stirhügel hills. The village enjoys plenty of traffic from traders travelling between Wurtbad and Wörden along the Old Dwarf Road. As a result almost every house in the village professes to be an Inn, although the hospitality varies wildly and travellers are as likely to find themselves sleeping on a pile of hay as a proper pallet bed.">
     <Components>
-      <Village id="village_comp_ST1_4" village_type="VillageType.europe_horse_ranch" hearth="72" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST1_4" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.town_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -299,7 +299,7 @@
   </Settlement>
   <Settlement id="castle_village_ST1_1" name="{=Settlements.Settlement.name.castle_village_ST1_1}Lochen" owner="Faction.stirland_clan_3" posX="1400.208" posY="990.732" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_1}Lochen is a subsidiary settlement of the nearby town Flensburg. The village mostly consists of farmers who supply the market town with grain. Lochen falls under the protection of Countess Petra Harden and her troops.">
     <Components>
-      <Village id="castle_village_comp_ST1_1" village_type="VillageType.wheat_farm" hearth="80" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST1_1" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -312,7 +312,7 @@
   </Settlement>
   <Settlement id="castle_village_ST1_2" name="{=Settlements.Settlement.name.castle_village_ST1_2}Ramsau" owner="Faction.stirland_clan_3" posX="1374.464" posY="978.549" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST1_2}">
     <Components>
-      <Village id="castle_village_comp_ST1_2" village_type="VillageType.trapper" hearth="48" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST1_2" village_type="VillageType.trapper" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -335,7 +335,7 @@
   </Settlement>
   <Settlement id="castle_village_ST2_1" name="{=Settlements.Settlement.name.castle_village_ST2_1}Chrobok" owner="Faction.stirland_clan_3" posX="1400.573" posY="953.471" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_1}Chrobok is a small farming community situated in the low wetlands between the rivers Mattid, Lammer and Aver. The natural irrigation provided by the rivers has made the region perfect arable land, and the nearby Franzen and Averheim enjoy a bountiful supply of grain from the village.">
     <Components>
-      <Village id="castle_village_comp_ST2_1" village_type="VillageType.wheat_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST2_1" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -348,7 +348,7 @@
   </Settlement>
   <Settlement id="castle_village_ST2_2" name="{=Settlements.Settlement.name.castle_village_ST2_2}Russbach" owner="Faction.stirland_clan_3" posX="1416.975" posY="947.845" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST2_2}Russbach is a hamlet situated in the sodden fens to the South of the Stirhügel hills. Just beneath the surface of the earth are deep clay pits, and the people of Russbach make a living by mining the building material. Travellers know they’re near the village when they can smell the acrid smoke of the brickmakers’ kilns.">
     <Components>
-      <Village id="castle_village_comp_ST2_2" village_type="VillageType.swine_farm" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST2_2" village_type="VillageType.swine_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -371,7 +371,7 @@
   </Settlement>
   <Settlement id="castle_village_ST3_1" name="{=Settlements.Settlement.name.castle_village_ST3_1}Raab" owner="Faction.stirland_clan_1" posX="1497.537" posY="986.224" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST3_1}Raab is a village which formed naturally around a Shallyan Shrine. Situated at the confluence of many roads, it was a natural place for a roadside shrine - a place for travellers to stop, rest and ask for blessings on their journey. One day a wine merchant who frequented the shrine realised the value of such easy custom, and built an Inn at the crossroads. It wasn’t long until a community had built up around it, and the village of Raab was formed.">
     <Components>
-      <Village id="castle_village_comp_ST3_1" village_type="VillageType.sheep_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST3_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -384,7 +384,7 @@
   </Settlement>
   <Settlement id="castle_village_ST3_2" name="{=Settlements.Settlement.name.castle_village_ST3_2}Tenneck" owner="Faction.stirland_clan_1" posX="1483.892" posY="971.777" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST3_2}Tenneck is a village of vintners who supply the local Roadwarden stronghold at Halstedt Keep. Tennech formed from the families of bondmen who tended to the grounds and nobles living at Halstedt Manor. When Halstedt Manor was turned into Halstedt Keep, they were made into freemen, and decided to cultivate their land for selling fruit and drink. The Roadwardens of Halstedt Keep often accept a few gallons of wine a month in exchange for keeping the people of Tenneck safe.">
     <Components>
-      <Village id="castle_village_comp_ST3_2" village_type="VillageType.vineyard" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST3_2" village_type="VillageType.vineyard" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST1" bound="Settlement.castle_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -417,7 +417,7 @@
   </Settlement>
   <Settlement id="village_ST2_1" name="{=Settlements.Settlement.name.village_ST2_1}Swartzhafen" owner="Faction.stirland_clan_2" posX="1554.073" posY="965.487" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_1}Swartzhafen is a small village notable for its history. A great battle was fought here almost five hundred years prior, the ruins of a castle and the old village to the east of the settlement purportedly all that physically remains of that conflict. The modern village is prosperous, but wary of outsiders due to its situation near Sylvania.">
     <Components>
-      <Village id="village_comp_ST2_1" village_type="VillageType.sheep_farm" hearth="92" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST2_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -430,7 +430,7 @@
   </Settlement>
   <Settlement id="village_ST2_2" name="{=Settlements.Settlement.name.village_ST2_2}Naubonum" owner="Faction.stirland_clan_2" posX="1591.913" posY="982.266" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_2}Naubonum is a small village right on the border of Sylvania. The people here get by mostly by raising crops to feed themselves, with any other goods purchased through the sale of excess crops or labour. Situated near the Haunted Hills, the inhabitants are often worried about outsiders from the east, Spectres and foul creatures. The Halfling Fieldwardens are known to stop in the settlement from time to time while patrolling the eastern reaches of the Moot.">
     <Components>
-      <Village id="village_comp_ST2_2" village_type="VillageType.cattle_farm" hearth="94" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST2_2" village_type="VillageType.cattle_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -443,7 +443,7 @@
   </Settlement>
   <Settlement id="village_ST2_3" name="{=Settlements.Settlement.name.village_ST2_3}Bylorhof" posX="1576.469" posY="946.692" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST2_3}The small town of Bylorhof has recently reentered the fold of the holy after throwing off their Sylvanian overlords. The cult of Bylorak, God of the marshes west of town, is the predominant belief of the inhabitants and Bylorak’s priests have taken charge of the town and its affairs, seeking greater support and reintegration with Stirland. There are four small temples in the town dedicated to Bylorak, Morr, Sigmar and Shallya respectively. The old lords castle lies in ruins to the west of town, right next to the Bylorhof Marshes.">
     <Components>
-      <Village id="village_comp_ST2_3" village_type="VillageType.silver_mine" hearth="80" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST2_3" village_type="VillageType.silver_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.town_ST2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -476,7 +476,7 @@
   </Settlement>
   <Settlement id="village_ST3_1" name="{=Settlements.Settlement.name.village_ST3_1}Sterniste" posX="1576.424" posY="1005.74" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST3_1}A prosperous forest village situated between the Hunger Wood and the Svarsee, the people here at Sterniste make most of their wealth from cutting the local timber and floating it up the Eschenstir to Siegfriedof for market. The people here are very devoted to Morr, having often called upon the Raven Knights to defend them from Goblins and other dangers of the nearby woods or threats from even farther afield.">
     <Components>
-      <Village id="village_comp_ST3_1" village_type="VillageType.lumberjack" hearth="98" gate_rotation="0.008" trade_bound="Settlement.town_ST3" bound="Settlement.town_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST3_1" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST3" bound="Settlement.town_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -489,7 +489,7 @@
   </Settlement>
   <Settlement id="village_ST3_2" name="{=Settlements.Settlement.name.village_ST3_2}Vierstein" posX="1563.102" posY="994.743" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST3_2}Vierstein is a small village situated on the southern side of the marshy Morfens, within the Eschenstir basin. The people here are highly isolated from the outside world, only interacting with the wider Empire when they make their voyages to Siegfriedhof to sell their dried fish. The Viersteiners are also known for being excellent marksmen, often serving as bowmen or scouts for the Raven Knights.">
     <Components>
-      <Village id="village_comp_ST3_2" village_type="VillageType.trapper" hearth="89" gate_rotation="0.008" trade_bound="Settlement.town_ST3" bound="Settlement.town_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST3_2" village_type="VillageType.trapper" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST3" bound="Settlement.town_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -522,7 +522,7 @@
   </Settlement>
   <Settlement id="village_ST4_1" name="{=Settlements.Settlement.name.village_ST4_1}Kaunitz" owner="Faction.stirland_clan_3" posX="1542.122" posY="852.981" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST4_1}Kaunitz is a small hamlet in the far south of Stirland. The people here make most of their living out of cultivating the hilly land surrounding their town, supplemented with what ore they can scrape out of the earth. Most travellers and their goods are welcomed in Kaunitz and Dwarfs often pass through here on their travels out of the mountains and into the wider Empire. However the people are wary of queer folk and will not hesitate to run a Strigany camp or other such rubbish out of their home.">
     <Components>
-      <Village id="village_comp_ST4_1" village_type="VillageType.iron_mine" hearth="54" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST4_1" village_type="VillageType.iron_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -535,7 +535,7 @@
   </Settlement>
   <Settlement id="village_ST4_2" name="{=Settlements.Settlement.name.village_ST4_2}Marburg" owner="Faction.stirland_clan_2" posX="1560.204" posY="863.031" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST4_2}Marburg is a small village on the road between Wurtbad and Siegfreidhof. The village is known for its swine and crops which can help feed many of the nearby communities and towns following a good harvest. Unfortunately the village’s proximity to the Great Forest means frequent incursions by its denizens, and subsequently poorer harvests.">
     <Components>
-      <Village id="village_comp_ST4_2" village_type="VillageType.silver_mine" hearth="87" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST4_2" village_type="VillageType.silver_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -561,7 +561,7 @@
   </Settlement>
   <Settlement id="village_ST4_4" name="{=Settlements.Settlement.name.village_ST4_4}Hutten" posX="1535.872" posY="877.515" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST4_4}">
     <Components>
-      <Village id="village_comp_ST4_4" village_type="VillageType.trapper" hearth="44" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_ST4_4" village_type="VillageType.trapper" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST4" bound="Settlement.town_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -584,7 +584,7 @@
   </Settlement>
   <Settlement id="castle_village_ST4_1" name="{=Settlements.Settlement.name.castle_village_ST4_1}Nussbach" owner="Faction.stirland_clan_1" posX="1434.037" posY="959.046" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_1}Nussbach is a small hamlet at the fork of River Lammer, where its two sources meet. The fertile flats at its south are the perfect spot to raise cattle, which Nussbachers have been doing for generations. The peaceful village is only bothered from time to time with land disputes from upstart Averland nobles.">
     <Components>
-      <Village id="castle_village_comp_ST4_1" village_type="VillageType.vineyard" hearth="74" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST4_1" village_type="VillageType.vineyard" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -597,7 +597,7 @@
   </Settlement>
   <Settlement id="castle_village_ST4_2" name="{=Settlements.Settlement.name.castle_village_ST4_2}Kelham" owner="Faction.stirland_clan_1" posX="1454.614" posY="955.087" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST4_2}Kelham is isolated among the hills of the Old Dwarf Road. Its secluded location allows the inhabitants to peacefully farm wheat and other cereals. Its golden fields go just about the start of Altern Forest, where the fertility of the land drops inexplicably. Whatever is not used for local consumption is sent out along the Moot Road to the rest of eastern Stirland and, ultimately, the Mootlands.">
     <Components>
-      <Village id="castle_village_comp_ST4_2" village_type="VillageType.sheep_farm" hearth="52" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST4_2" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -620,7 +620,7 @@
   </Settlement>
   <Settlement id="castle_village_ST5_1" name="{=Settlements.Settlement.name.castle_village_ST5_1}Zipf" posX="1520.953" posY="1012.442" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST5_1}">
     <Components>
-      <Village id="castle_village_comp_ST5_1" village_type="VillageType.sheep_farm" hearth="86" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST5_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -633,7 +633,7 @@
   </Settlement>
   <Settlement id="castle_village_ST5_2" name="{=Settlements.Settlement.name.castle_village_ST5_2}Kiel" posX="1524.534" posY="1046.113" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_ST5_2}">
     <Components>
-      <Village id="castle_village_comp_ST5_2" village_type="VillageType.lumberjack" hearth="54" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_ST5_2" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST2" bound="Settlement.castle_ST5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -667,7 +667,7 @@
   </Settlement>
   <Settlement id="village_MT1_1" name="{=Settlements.Settlement.name.village_MT1_1}Gipfel" posX="1524.957" posY="920.828" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_1}Gipfel, A small village in the heart of the Greenleaf Hills.">
     <Components>
-      <Village id="village_comp_MT1_1" village_type="VillageType.sheep_farm" hearth="87" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_MT1_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -680,7 +680,7 @@
   </Settlement>
   <Settlement id="village_MT1_2" name="{=Settlements.Settlement.name.village_MT1_2}Grunhugel" posX="1503.753" posY="929.032" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_2}">
     <Components>
-      <Village id="village_comp_MT1_2" village_type="VillageType.sheep_farm" hearth="44" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_MT1_2" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -693,7 +693,7 @@
   </Settlement>
   <Settlement id="village_MT1_3" name="{=Settlements.Settlement.name.village_MT1_3}Haukern" posX="1536.304" posY="933.132" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_3}.">
     <Components>
-      <Village id="village_comp_MT1_3" village_type="VillageType.europe_horse_ranch" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_MT1_3" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -706,7 +706,7 @@
   </Settlement>
   <Settlement id="village_MT1_4" name="{=Settlements.Settlement.name.village_MT1_4}Fallenblatt" posX="1509.878" posY="905.746" culture="Culture.empire" text="{=Settlements.Settlement.text.village_MT1_4}">
     <Components>
-      <Village id="village_comp_MT1_4" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_MT1_4" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_MT1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -740,7 +740,7 @@
   </Settlement>
   <Settlement id="village_SY1_1" name="{=Settlements.Settlement.name.village_SY1_1}Drakenhof" posX="1618.509" posY="949.304" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_1}The town of Drakenhof was once considered a beacon of culture within the Empire. But after the sinister takeover of Sylvania by the Vampire Counts, the formerly tall and inspiring spires of Castle Drakenhof now loom menacingly over the townspeople of Drakenhof. The people of Drakenhof are oppressed under the thumb of the Von Carstein lineage. They use the town of Drakenhof to hide their dangerous and other worldly possessions. The people exist as snacks for passing vampires. And every dark corner is the lair for myraid and unspeakable evils. Praying on the townsfolk from dusk till dawn.">
     <Components>
-      <Village id="village_comp_SY1_1" village_type="VillageType.sheep_farm" hearth="84" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY1_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -753,7 +753,7 @@
   </Settlement>
   <Settlement id="village_SY1_2" name="{=Settlements.Settlement.name.village_SY1_2}Nachthafen" posX="1632.187" posY="942.906" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_2}Nachthafen is a very uninteresting place. Which is just as it’s ruler Countess Gabriella von Bundebad prefers. Nachthafen does not get involved in the petty squabbles of vampiric intrigue. Nor does it seek war with the Empire. It exists purely as a quiet, normal village. With nothing to see here. Just tasty villagers minding their business until it is time for the masters to feed.">
     <Components>
-      <Village id="village_comp_SY1_2" village_type="VillageType.cattle_farm" hearth="96" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY1_2" village_type="VillageType.cattle_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -766,7 +766,7 @@
   </Settlement>
   <Settlement id="village_SY1_3" name="{=Settlements.Settlement.name.village_SY1_3}Folburg" posX="1603.256" posY="959.451" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_3}Folburg was the site of a minor rebellion by mortal villagers against their vampiric overlord. Despite gruesomely ripping apart Count Aduhl von Kohnfried with his dying breath he left a curse. The flesh of the villagers began slowly rotting away. But their lives would not leave this mortal coil. The villagers found themselves eternal slaves to a dead master. Now they are maddened skeletons roaming their old dwellings. Pretending to a cheap parody of life. And you better not remind them of what they are.">
     <Components>
-      <Village id="village_comp_SY1_3" village_type="VillageType.swine_farm" hearth="70" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY1_3" village_type="VillageType.swine_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -779,7 +779,7 @@
   </Settlement>
   <Settlement id="village_SY1_4" name="{=Settlements.Settlement.name.village_SY1_4}Gerhof" posX="1622.842" posY="977.951" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Gerhof does not sleep. It’s paranoid vampire Count Johan von Goal has forbidden it. A trickster Crone allegedly put a curse on the count. But none other than the Count himself can verify this. It has been said that a sleeping mortal would slay von Goal in a brutal fashion. So von Goal banned sleep. The mortal citizens are skittish. Sneaking an hour or two’s nap in the dark corners of the city. Ordered to be ever watchful for the one who would slay their fearful ruler.">
     <Components>
-      <Village id="village_comp_SY1_4" village_type="VillageType.wheat_farm" hearth="36" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY1_4" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_MT1" bound="Settlement.town_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -815,7 +815,7 @@
   </Settlement>
   <Settlement id="castle_village_SY1_2" name="{=Settlements.Settlement.name.castle_village_SY1_2}Vanhaldenhof" posX="1604.52" posY="1000.128" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY1_2}Vanhaldenhof is a miserable blot on the map of Sylvania. Originally constructed to guard the castle of Vanhaldenschlosse and it's master, the Necromancer Frederick van Hal. After that castle fell into ruin the village remained as an area for the vampires of Sylvania to feed on it's inhabitants and torment them. The villagers treated as little more than free roaming cattle.">
     <Components>
-      <Village id="castle_village_comp_SY1_2" village_type="VillageType.silver_mine" hearth="80" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY1_2" village_type="VillageType.silver_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY1" bound="Settlement.castle_SY1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -848,7 +848,7 @@
   </Settlement>
   <Settlement id="village_SY2_1" name="{=Settlements.Settlement.name.village_SY2_1}Mikalsdorf" posX="1648.773" posY="1011.982" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY2_1}Yet another blighted and miserable place. The villagers treated as little more than snacks from nearby Von Carsteins. Though rebellion has fermented in Mikalsdorf it has been put down so many times that the villagers are wretched, sad things. Shuffling around with no hope for any rescue.">
     <Components>
-      <Village id="village_comp_SY2_1" village_type="VillageType.sheep_farm" hearth="88" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY2_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -861,7 +861,7 @@
   </Settlement>
   <Settlement id="village_SY2_2" name="{=Settlements.Settlement.name.village_SY2_2}Hundam" posX="1661.501" posY="1008.252" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY2_2}Though unassuming at first, Hundham is a place of whispered rumours. It is said that the dead walk freely on it’s streets. As if mimicking the appearance of life. Others say puppets dance the night away, stringless and alive somehow. No one knows for sure for few have braved it’s narrow streets, it’s dusty shops, or it’s surprisingly open and inviting tavern. But all who go near have warned others to never approach Hundham in the night. For that is when bands of Vampires emerge to dance and make merry. And they’d just love to have a flushed and oh so juicy mortal to dance with.">
     <Components>
-      <Village id="village_comp_SY2_2" village_type="VillageType.cattle_farm" hearth="92" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY2_2" village_type="VillageType.cattle_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -874,7 +874,7 @@
   </Settlement>
   <Settlement id="village_SY2_3" name="{=Settlements.Settlement.name.village_SY2_3}Eschen" posX="1643.36" posY="1002.446" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_3}When Sylvannia first fell to the Vampire Counts, the residents of Eschen built tall walls around their village. Digging in and fortifying against the cursed undead battering against their walls. Though they survived for a time, the Darkness is patient while flesh rots away. Eventually Eschen was overrun, it’s walls still standing but it’s people made to serve their new masters in death. Now the tall and impregnable walls of Eschen protect the vampires residing inside it.">
     <Components>
-      <Village id="village_comp_SY2_3" village_type="VillageType.trapper" hearth="82" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY2_3" village_type="VillageType.trapper" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -887,7 +887,7 @@
   </Settlement>
   <Settlement id="village_SY2_4" name="{=Settlements.Settlement.name.village_SY2_4}Stephansdorp" posX="1634.533" posY="1009.226" culture="Culture.khuzait" text="{=Settlements.Settlement.text.village_SY1_4}Stephansdorp’s claim to fame is being the final resting place of an ancient vampire. Slain by the villagers long before Sylvania was covered in darkness. It is said that several vampires have tried to resurrect this mysterious vampire. Who’s name has been lost to mortal minds for many centuries, was said to possess great treasures now locked in his hidden tomb. Adventurers and dark forces alike have searched for this tomb to no avail.">
     <Components>
-      <Village id="village_comp_SY2_4" village_type="VillageType.wheat_farm" hearth="55" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_SY2_4" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.town_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -910,7 +910,7 @@
   </Settlement>
   <Settlement id="castle_village_SY2_1" name="{=Settlements.Settlement.name.castle_village_ST2_1}Murieste" posX="1551.422" posY="985.768" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY2_1}The oddest thing about Murieste is that it’s people do not follow the religion of Sigmar. Nor any other state approved religion. In fact, the lowly villagers of Murieste worship the vampires around them as gods. Coverting their dark power and hoping to become one of their dark kin. The Vampires in the area tolerate this. Seeing the pathetic peasants as amusing cattle. Vampires do love to play with their food.">
     <Components>
-      <Village id="castle_village_comp_SY2_1" village_type="VillageType.sheep_farm" hearth="36" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY2_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -933,7 +933,7 @@
   </Settlement>
   <Settlement id="castle_village_SY3_1" name="{=Settlements.Settlement.name.castle_village_SY3_1}Stoodhof" posX="1581.196" posY="901.469" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_1}Most Vampire Counts leave Stoodhof alone, It has been ruled efficiently as a slaughterhouse for human cattle by it’s ruler. From the outside it simply looks like another mud covered village in the middle of this desolate land. From which very little is known about.">
     <Components>
-      <Village id="castle_village_comp_SY3_1" village_type="VillageType.sheep_farm" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY3_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -946,7 +946,7 @@
   </Settlement>
   <Settlement id="castle_village_SY3_2" name="{=Settlements.Settlement.name.castle_village_SY3_2}Maylhof" posX="1588.407" posY="880.869" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_2}">
     <Components>
-      <Village id="castle_village_comp_SY3_2" village_type="VillageType.europe_horse_ranch" hearth="46" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY3_2" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -969,7 +969,7 @@
   </Settlement>
   <Settlement id="castle_village_SY4_1" name="{=Settlements.Settlement.name.castle_village_SY4_1}Gallhof" posX="1684.438" posY="951.062" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY4_1}Gallhof is often a favourite haunt of Brettonian Blood Knights. Used as a training camp and feasting hall for these bloodthirsty creatures.">
     <Components>
-      <Village id="castle_village_comp_SY4_1" village_type="VillageType.flax_plant" hearth="34" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY4_1" village_type="VillageType.flax_plant" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -992,7 +992,7 @@
   </Settlement>
   <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.123" posY="951.557" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
-      <Village id="castle_village_comp_SY5_1" village_type="VillageType.flax_plant" hearth="53" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY5_1" village_type="VillageType.flax_plant" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -1015,7 +1015,7 @@
   </Settlement>
   <Settlement id="castle_village_SY6_1" name="{=Settlements.Settlement.name.castle_village_SY6_1}Wartenhof" posX="1652.442" posY="990.342" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY6_1}As the nobles of Wartenhof locked themselves away, the blighted souls of Wartenhof village slowly succumbed to the sickness of Nurgle’s Rot. Many simply died. They were lucky. For Nurgle sees his sickness as a blessing and gift. And one must be alive to experience it all. When the Vampire Counts came for Wartenhof, the few villages left gladly bound themselves to vampiric service in exchange for a cure. As their service wavers the rot returns. So the Villagers do their best to remain loyal.">
     <Components>
-      <Village id="castle_village_comp_SY6_1" village_type="VillageType.europe_horse_ranch" hearth="62" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY6_1" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -1028,7 +1028,7 @@
   </Settlement>
   <Settlement id="castle_village_SY6_2" name="{=Settlements.Settlement.name.castle_village_SY6_2}Sumpfdorf" posX="1643.206" posY="983.121" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY6_2}This swampy village is isolated from most of Sylvannia. Crossable only by boat, the houses are on stilts and it is very hard for any vampire to find purchase within Sumpdorf. The villagers and farmers know they are safe from the zombies that haunt the Dark Moor. But the local Vampire Counts still come by air from Wartenhof Castle to collect the blood tax.">
     <Components>
-      <Village id="castle_village_comp_SY6_2" village_type="VillageType.lumberjack" hearth="56" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY6_2" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1051,7 +1051,7 @@
   </Settlement>
   <Settlement id="castle_village_SY7_1" name="{=Settlements.Settlement.name.castle_village_SY7_1}Zherden" posX="1688.236" posY="999.933" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY7_1}">
     <Components>
-      <Village id="castle_village_comp_SY7_1" village_type="VillageType.clay_mine" hearth="60" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY7" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="castle_village_comp_SY7_1" village_type="VillageType.clay_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY7" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1258,7 +1258,7 @@
   </Settlement>
   <Settlement id="village_WI1_1" name="{=Settlements.Settlement.name.village_WI1_1}Grissenwald" posX="1324.635" posY="963.804" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_1}Grissenwald is the northernmost settlement in Wissenland, right along the banks of the Reik. South of the beginning of the Vorbergland Canal System as well as the southern extent of the Reikwald forest. The Dwarf Shanty, ‘Kazid Slumbol’ sits against the south side of its palisade, and is mostly home to transient Dwarf traders and caravanners, resting here with their more permanent kin before continuing on their routes. Many hunters, trappers and woodcutters make their residence here and during the day will go north into the Reikwald to make their living. The Southern Reikwald is known for being particularly infested with monsters and ne'er do wells. As a result the ruler of Grissenwald, Count Bruno Pfeifraucher, is a professional military man who is often seen leading a patrol around his town to keep the forest’s dangers at bay.">
     <Components>
-      <Village id="village_comp_WI1_1" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI1_1" village_type="VillageType.fisherman" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -1271,7 +1271,7 @@
   </Settlement>
   <Settlement id="village_WI1_2" name="{=Settlements.Settlement.name.village_WI1_2}Rohrhausen" posX="1314.618" posY="939.682" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_2}Rohrhausen is an isolated Wissenlander village known for its excellent vineyards, popular even in some of the best taverns in Nuln. This is in part thanks to the cool waters of the River Griss, which come out of the mountains near Rohrhausen.">
     <Components>
-      <Village id="village_comp_WI1_2" village_type="VillageType.silver_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI1_2" village_type="VillageType.silver_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1284,7 +1284,7 @@
   </Settlement>
   <Settlement id="village_WI1_3" name="{=Settlements.Settlement.name.village_WI1_3}Wissenburg" posX="1336.25" posY="928.922" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_3}Wissenburg is the capital of Wissenland and, while it might not carry the economic or cultural weight of Nuln, it is truly the centre of the people. The folk here are the epitome of those virtues which makes Wissenlanders unique from the rest of the Empire. The boughers, artisans and labourers go about their business with thrift and daur pragmatism, speaking clearly and in short direct sentences. Unlike in Altdorf or Nuln, the people here have no time for poetic or flowery expressions. Most of the citizens work the various temples in the city into their daily routine, picking one each day and paying their respect if only for a few minutes, allowing them to pay respect to most of the principal gods each week. Wissenburg is also the last stop for river trade on the upper Reik before Nuln and is surrounded by good farmland. Elector-Countess Emmanuelle von Liebwitz seldom journeys to Wissenburg, coming only to meet the ‘po-faced boughers’ which sit on the Assembly of Wissenland. As a result, while the town is ruled in her name, Baroness Toppenheimer has been given more and more control over the province as a whole.">
     <Components>
-      <Village id="village_comp_WI1_3" village_type="VillageType.europe_horse_ranch" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI1_3" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -1297,7 +1297,7 @@
   </Settlement>
   <Settlement id="village_WI1_4" name="{=Settlements.Settlement.name.village_WI1_2}Dotternbach" posX="1321.353" posY="918.046" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI1_4}On the Border of the Grey Mountains, along the shores of the River Wissen is the village of Dotternbach. The Wissenlanders here are shepherds used to climbing high into the lands west of their homes, and as such make strong recruits when they have the young men to spare.">
     <Components>
-      <Village id="village_comp_WI1_4" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI1_4" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI1" bound="Settlement.town_WI1" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -1310,7 +1310,7 @@
   </Settlement>
   <Settlement id="village_WI2_1" name="{=Settlements.Settlement.name.village_WI2_1}Halgerbach" posX="1335.141" posY="904.122" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_1}Halgerbach is an isolated Wissenlander village right on the traditional border with Old Solland. It sits on the shores of the River Wissen, which the people here use to irrigate their crops.">
     <Components>
-      <Village id="village_comp_WI2_1" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI2_1" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -1323,7 +1323,7 @@
   </Settlement>
   <Settlement id="village_WI2_2" name="{=Settlements.Settlement.name.village_WI2_2}Durbheim" posX="1340.813" posY="893.544" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_2}On the western shore of the River Soll, at one of the only nearby ferries across the river, is the village of Durbheim. The Sollanders here tend sheep to provide wool to nearby Pfeildorf.">
     <Components>
-      <Village id="village_comp_WI2_2" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI2_2" village_type="VillageType.fisherman" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1336,7 +1336,7 @@
   </Settlement>
   <Settlement id="village_WI2_3" name="{=Settlements.Settlement.name.village_WI2_3}Bernau" posX="1356.129" posY="882.129" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_3}Bernau is your typical Sollander village; the people here are mostly shepherds who raise sheep for their wool. They sell this wool at nearby Pfeildorf for a decent price and are happy with their modest living.">
     <Components>
-      <Village id="village_comp_WI2_3" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI2_3" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
@@ -1349,7 +1349,7 @@
   </Settlement>
   <Settlement id="village_WI2_4" name="{=Settlements.Settlement.name.village_WI2_4}Sexau" posX="1363.881" posY="875.133" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI2_4}On the eastern shore of the River Soll is the Sollander village of Sexau. The people here are not very well off, and typically can only grow enough food to feed themselves. What extra they do produce is taken to market at Pfeildorf.">
     <Components>
-      <Village id="village_comp_WI2_4" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI2_4" village_type="VillageType.fisherman" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI2" bound="Settlement.town_WI2" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1362,7 +1362,7 @@
   </Settlement>
   <Settlement id="village_WI3_1" name="{=Settlements.Settlement.name.village_WI3_1}Weilerberg" posX="1312.99" posY="744.164" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI3_1}Across the River Soll from Kreutzhofen is the small village of Weilerberg. The closeness of the two communities results in a great many ties between them. For instance the town grave digger for Kreutzhofen, Boris Hippler, makes his residence here in Weilerberg.">
     <Components>
-      <Village id="village_comp_WI3_1" village_type="VillageType.lumberjack" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI3_1" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1375,7 +1375,7 @@
   </Settlement>
   <Settlement id="village_WI3_2" name="{=Settlements.Settlement.name.village_WI3_2}Serrig" posX="1338.673" posY="755.144" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI3_2}The Sollanders of Serrig are simple people and are proud of it. Asking any of the shepherds here if they have any greater aspirations than sheep will elicit a round of laughter followed by the statement that: ‘my family has been here since the fall of Solland, not even a Daemon could make me abandon our trade!’">
     <Components>
-      <Village id="village_comp_WI3_2" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI3_2" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI3" bound="Settlement.town_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -1388,7 +1388,7 @@
   </Settlement>
   <Settlement id="village_WI4_1" name="{=Settlements.Settlement.name.village_WI4_1}Owingen" posX="1334.042" posY="868.79" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_1}Owingen is a small Wissenlander farming community on the shore of the lower River Soll, just south of a small marshy confluence caused by the lower Soll meeting with the Soll. The people here sell much of their grain to nearby Karak Norn in return for coin and drink, though they will sell you what grain they have to spare.">
     <Components>
-      <Village id="village_comp_WI4_1" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI4_1" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1401,7 +1401,7 @@
   </Settlement>
   <Settlement id="village_WI4_2" name="{=Settlements.Settlement.name.village_WI4_2}Heisenberg" posX="1342.628" posY="842.549" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_2}Heisenberg is well renowned for its deep red wines, which are shipped and sold from Pfeildorf to Kislev. The Wissenlander winemakers here credit the upper River Soll for irrigating their land, as well as the fair winds out of the Granite pass, for the quality of their fruit.">
     <Components>
-      <Village id="village_comp_WI4_2" village_type="VillageType.wheat_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI4_2" village_type="VillageType.wheat_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1414,7 +1414,7 @@
   </Settlement>
   <Settlement id="village_WI4_3" name="{=Settlements.Settlement.name.village_WI4_3}Augen" posX="1332.663" posY="849.76" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_3}Along the shore of the lower River Soll is the village of Augen. At one time this land would have been populated by Sollanders, but today this part of Sudenland is home to Wissenlanders. The people here can trace their roots back at least three centuries and are very experienced farmers. Augen is well used by passersby, as the village sits on the Granite Pass road, the main route between Meissen and Karak Norn.">
     <Components>
-      <Village id="village_comp_WI4_3" village_type="VillageType.iron_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI4_3" village_type="VillageType.iron_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1427,7 +1427,7 @@
   </Settlement>
   <Settlement id="village_WI4_4" name="{=Settlements.Settlement.name.village_WI4_4}Kelgard" posX="1334.442" posY="823.669" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI4_4}Kelgard is a small Wissenlander village on the western shore of the upper Soll. The people here mostly mine the nearby mountains for Iron ore.">
     <Components>
-      <Village id="village_comp_WI4_4" village_type="VillageType.iron_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI4_4" village_type="VillageType.iron_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI4" bound="Settlement.town_WI4" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOR_empire_village_005" />
@@ -1440,7 +1440,7 @@
   </Settlement>
   <Settlement id="village_WI5_1" name="{=Settlements.Settlement.name.village_WI5_1}Fluorn" posX="1366.658" posY="845.773" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_1}To the north of Geschburg is Fluorn, an old Sollander village that has been on the maps since before the fall of Solland. The people here carry on the traditions of Solland, and even have a small shrine to Myrmidia.">
     <Components>
-      <Village id="village_comp_WI5_1" village_type="VillageType.vineyard" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI5_1" village_type="VillageType.vineyard" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1453,7 +1453,7 @@
   </Settlement>
   <Settlement id="village_WI5_2" name="{=Settlements.Settlement.name.village_WI5_2}Althausen" posX="1372.494" posY="819.331" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_2}To the south of Geschburg is Althausen, a Sollander village populated mostly by shepherds. The land here is also good for vineyards, and while the Althausen vintage hasn’t become renowned outside of the region, it is well received in Geschburg.">
     <Components>
-      <Village id="village_comp_WI5_2" village_type="VillageType.europe_horse_ranch" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI5_2" village_type="VillageType.europe_horse_ranch" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1466,7 +1466,7 @@
   </Settlement>
   <Settlement id="village_WI5_3" name="{=Settlements.Settlement.name.village_WI5_3}Sochtenau" posX="1380.501" posY="809.411" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI5_3}Sochtenau is a relatively new community, established within the last few generations as an attempt by the people of Solland to restore some of their former glory. Like many Sollanders, they seem to carry the weight of their past on their backs and in their bones, but they take pride in their work and look after their sheep with thrift and efficiency.">
     <Components>
-      <Village id="village_comp_WI5_3" village_type="VillageType.lumberjack" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI5_3" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI5" bound="Settlement.town_WI5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_003" />
@@ -1479,7 +1479,7 @@
   </Settlement>
   <Settlement id="village_WI6_1" name="{=Settlements.Settlement.name.village_WI6_1}Steingart" posX="1437.073" posY="819.174" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_1}Steingart was once a moderately sized city. With the destruction of old Solland, what remains of Steingart today is but a husk of what used to be. Around the present day town can be found the eight hundred year old ruins. In Steingart, the oppressive air that hangs around the Sollanders is the heaviest, as if they’d be happier if they could just forget their former grandeur. To the south of Steingart is a set of ancient standing stones, commonly called ‘Taal’s Fangs.’ This name is in spite of the insistence of the cult of Taal that the site is not Taalite in origin. A ferry across the River Oggel is here, in the direction of Mendelhof.">
     <Components>
-      <Village id="village_comp_WI6_1" village_type="VillageType.clay_mine" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI6_1" village_type="VillageType.clay_mine" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_002" />
@@ -1492,7 +1492,7 @@
   </Settlement>
   <Settlement id="village_WI6_2" name="{=Settlements.Settlement.name.village_WI6_2}Moasach" posX="1408.396" posY="834.697" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_2}Near Waldbach is the small Wissenlander settlement of Moasach. The people of Moasach provide for themselves by raising pigs.">
     <Components>
-      <Village id="village_comp_WI6_2" village_type="VillageType.swine_farm" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI6_2" village_type="VillageType.swine_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_004" />
@@ -1505,7 +1505,7 @@
   </Settlement>
   <Settlement id="village_WI6_3" name="{=Settlements.Settlement.name.village_WI6_3}Ballenhof" posX="1422.454" posY="849.612" culture="Culture.empire" text="{=Settlements.Settlement.text.village_WI6_3}Within sight of the wall in Agbeiten is the Wissenlander village of Ballenhof. The people here are friendly, but have a deep mistrust of Averlanders, saying: ‘they refuse to ev’r sign a contract, take me at my word they say, on their ‘oner they say. I tell em if I’m to take em on their ‘oner, then I need the Crowns and Shillings now!’">
     <Components>
-      <Village id="village_comp_WI6_3" village_type="VillageType.fisherman" hearth="66" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
+      <Village id="village_comp_WI6_3" village_type="VillageType.fisherman" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_WI6" bound="Settlement.town_WI6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
     <Locations complex_template="LocationComplexTemplate.village_complex">
       <Location id="village_center" scene_name="TOW_empire_village_001" />
