@@ -2157,7 +2157,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_books_engineering_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Engineering Knowledge" IconName="placeholder_icon">
+      <ItemTrait ItemTraitName="Engineering Knowledge" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 engineering skill experience points upon reading.</ItemTraitDescription>
         <SkillTuple SkillId="Engineering" SkillExp="5000" LearningTime="10" />
       </ItemTrait>
@@ -2166,7 +2166,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_books_charm_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Charmeur" IconName="placeholder_icon">
+      <ItemTrait ItemTraitName="Charmeur" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 charm skill experience points upon reading.</ItemTraitDescription>
         <SkillTuple SkillId="Charm" SkillExp="5000" LearningTime="10" />
       </ItemTrait>

@@ -1920,7 +1920,7 @@
 <!-- Artillery -->
   <AbilityTemplate StringID="MortarSpawner" 
     Name="Place Mortar" 
-    SpriteName="placeholder_icon" 
+    SpriteName="placeartillery_icon" 
     CoolDown="1" 
     WindsOfMagicCost="0" 
     BaseMisCastChance="0.0" 
@@ -1960,7 +1960,7 @@
   </AbilityTemplate>
   <AbilityTemplate StringID="GreatCannonSpawner" 
     Name="Place Great Cannon" 
-    SpriteName="placeholder_icon" 
+    SpriteName="placeartillery_icon" 
     CoolDown="1" 
     WindsOfMagicCost="0" 
     BaseMisCastChance="0.0" 
