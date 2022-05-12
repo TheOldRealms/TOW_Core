@@ -16,11 +16,33 @@ namespace TOW_Core.CampaignSupport.Models
             var result = base.CalculateMilitiaChange(settlement, includeDescriptions);
             if (settlement.IsCastle)
             {
-                result.Add(2f, new TextObject("Bonus"));
+                switch (settlement.OwnerClan.Culture.StringId)
+                {
+                    case "khuzait":
+                        result.Add(2f, new TextObject("Bonus"));
+                        break;
+                    case "empire":
+                        result.Add(1f, new TextObject("Bonus"));
+                        break;
+                    default:
+                        result.Add(1f, new TextObject("Bonus"));
+                        break;
+                }
             }
             else if (settlement.IsTown)
             {
-                result.Add(4f, new TextObject("Bonus"));
+                switch (settlement.OwnerClan.Culture.StringId)
+                {
+                    case "khuzait":
+                        result.Add(4f, new TextObject("Bonus"));
+                        break;
+                    case "empire":
+                        result.Add(3f, new TextObject("Bonus"));
+                        break;
+                    default:
+                        result.Add(2f, new TextObject("Bonus"));
+                        break;
+                }
             }
             return result;
         }
