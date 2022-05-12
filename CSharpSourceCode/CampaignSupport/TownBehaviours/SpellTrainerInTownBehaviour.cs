@@ -40,7 +40,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             var info = hero.GetExtendedInfo();
             if (info == null || info.SpellCastingLevel == SpellCastingLevel.Master) return;
             int req = SpellCastingLevelExtensions.GetLevelRequiredForNextCastingLevel(info.SpellCastingLevel);
-            if(hero.Level <= req)
+            if(hero.Level >= req)
             {
                 SpellCastingLevel newLevel = info.SpellCastingLevel + 1;
                 hero.SetSpellCastingLevel(newLevel);
@@ -115,6 +115,20 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void OnSessionLaunched(CampaignGameStarter obj)
         {
             AddDialogs(obj);
+            ForceLevelsForAllHeroes();
+        }
+
+        private void ForceLevelsForAllHeroes()
+        {
+            foreach(var hero in Hero.AllAliveHeroes)
+            {
+                if(hero.IsSpellCaster() && hero != Hero.MainHero && hero.Occupation == Occupation.Lord)
+                {
+                    var info = hero.GetExtendedInfo();
+                    if (info == null || info.SpellCastingLevel == SpellCastingLevel.Master) continue;
+                    hero.SetSpellCastingLevel(SpellCastingLevel.Master);
+                }
+            }
         }
 
         private void AddDialogs(CampaignGameStarter obj)

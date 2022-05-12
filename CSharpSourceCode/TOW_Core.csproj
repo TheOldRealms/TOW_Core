@@ -367,6 +367,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Missions\TorMissionManager.cs" />
+    <Compile Include="CampaignSupport\Models\TORMapWeatherModel.cs" />
     <Compile Include="CampaignSupport\Models\TORSettlementMilitiaModel.cs" />
     <Compile Include="CampaignSupport\RaiseDead\GraveyardNightWatchPartyComponent.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORCampaignBehaviour.cs" />
@@ -376,6 +377,7 @@
     <Compile Include="CampaignSupport\TORSkillBookCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
     <Compile Include="HarmonyPatches\ArenaPatches.cs" />
+    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
@@ -484,7 +486,6 @@
     <Compile Include="CharacterCreation\TORCharacterCreationContent.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />
     <Compile Include="GameTexts\TOWTextOverride.cs" />
-    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="HarmonyPatches\CharacterCreationPatches.cs" />
     <Compile Include="HarmonyPatches\ConversationPatches.cs" />
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />

@@ -16,11 +16,11 @@ namespace TOW_Core.CampaignSupport.Models
             var result = base.CalculateMilitiaChange(settlement, includeDescriptions);
             if (settlement.IsCastle)
             {
-                result.Add(6f, new TextObject("Bonus"));
+                result.Add(2f, new TextObject("Bonus"));
             }
             else if (settlement.IsTown)
             {
-                result.Add(8f, new TextObject("Bonus"));
+                result.Add(4f, new TextObject("Bonus"));
             }
             return result;
         }

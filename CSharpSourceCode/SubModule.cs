@@ -144,6 +144,7 @@ namespace TOW_Core
                 starter.AddModel(new TORAgentStatCalculateModel());
                 starter.AddModel(new TORCombatXpModel());
                 starter.AddModel(new TORSettlementMilitiaModel());
+                starter.AddModel(new TORMapWeatherModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }

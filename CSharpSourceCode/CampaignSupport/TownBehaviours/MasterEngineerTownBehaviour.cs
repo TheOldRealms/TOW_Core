@@ -246,6 +246,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void opengunshopconsequence()
         {
             var engineerItems = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x => x.IsTorItem() && (x.StringId.Contains("gun") || x.StringId.Contains("artillery")));
+            var ammo = MBObjectManager.Instance.GetObject<ItemObject>("tor_neutral_weapon_ammo_musket_ball");
             List<ItemRosterElement> list = new List<ItemRosterElement>();
             foreach (var item in engineerItems)
             {
@@ -253,6 +254,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             }
             ItemRoster roster = new ItemRoster();
             roster.Add(list);
+            if(ammo != null) roster.Add(new ItemRosterElement(ammo, MBRandom.RandomInt(2, 5)));
             InventoryManager.OpenScreenAsTrade(roster, _nuln.Town);
         }
 

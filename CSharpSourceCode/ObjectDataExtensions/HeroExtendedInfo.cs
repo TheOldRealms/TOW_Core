@@ -30,7 +30,9 @@ namespace TOW_Core.ObjectDataExtensions
                 {
                     var hero = _baseCharacter.HeroObject;
                     var intelligence = hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence);
-                    return Math.Min(intelligence * 10, 99);
+                    var retval = Math.Min(intelligence * 10, 99);
+                    if (hero.Occupation == Occupation.Lord && hero != Hero.MainHero) retval += 20;
+                    return retval;
                 }
             }
         }
