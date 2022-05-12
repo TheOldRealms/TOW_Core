@@ -790,7 +790,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_1" posX="1595.036" posY="990.484" prosperity="800" culture="Culture.khuzait" gate_posX="1594.758" gate_posY="991.4948" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
+  <Settlement id="castle_SY1" name="{=Settlements.Settlement.name.castle_SY1}Castle Templehof" owner="Faction.sylvania_clan_4" posX="1595.036" posY="990.484" prosperity="800" culture="Culture.khuzait" gate_posX="1594.758" gate_posY="991.4948" text="{=Settlements.Settlement.text.castle_SY1}There are tales of Castle Templehof. At one point in history it was the home of the cruel Countess Emanuelle von Templehof. During a dark and terrible battle with the Dwarfs besieging her home Countess Emanuelle bathed her castle in profane magic. Causing an everlasting night to envelop the surrounding area. The indomitable Dwarfs persisted however. Despite many losses they slew the wicked Countess within Castle Templehof. Her anguished screams were said to echo throughout the halls long after the Dwarfs left runes to repel dark magic. Recently, it has become known that some of those runes have faded. And dark things stir within the castle again. Lead by a chorus of screams.">
     <Components>
       <Town id="castle_comp_SY1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -898,7 +898,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_1" posX="1530.968" posY="986.046" prosperity="800" culture="Culture.khuzait" gate_posX="1531.756" gate_posY="987.0416" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
+  <Settlement id="castle_SY2" name="{=Settlements.Settlement.name.castle_SY2}Fort Oberstyre" owner="Faction.sylvania_clan_3" posX="1530.968" posY="986.046" prosperity="800" culture="Culture.khuzait" gate_posX="1531.756" gate_posY="987.0416" text="{=Settlements.Settlement.text.castle_SY2}Fort Oberstyre was once a small but mighty fortress of the Empire. Built shortly after the defeat of Vlad von Carstein in the siege of Altdorf during one of the great Vampire wars of 2010 IC. However, many centuries later after neglect and lack of manpower the fortress was easily taken by Konrad von Carstein. Though the Empire reclaimed the fort it was taken again many years later by Mannfred von Carstein. Who put a terrible curse on the fort. Whenever it is sieged the wrathful specters of past wars rise to kill any and all who threaten the fort. Those spirits lay claim to the fort. And the Empire has been unsuccessful at reclaiming it since.">
     <Components>
       <Town id="castle_comp_SY2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -921,7 +921,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_1" posX="1585.804" posY="916.724" prosperity="800" culture="Culture.khuzait" gate_posX="1586.357" gate_posY="915.8002" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
+  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_3" posX="1585.804" posY="916.724" prosperity="800" culture="Culture.khuzait" gate_posX="1586.357" gate_posY="915.8002" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
     <Components>
       <Town id="castle_comp_SY3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -957,7 +957,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_1" posX="1649.637" posY="930.344" prosperity="800" culture="Culture.khuzait" gate_posX="1650.175" gate_posY="929.4464" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_4" posX="1649.637" posY="930.344" prosperity="800" culture="Culture.khuzait" gate_posX="1650.175" gate_posY="929.4464" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
     <Components>
       <Town id="castle_comp_SY4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -980,7 +980,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_1" posX="1673.197" posY="954.593" prosperity="800" culture="Culture.khuzait" gate_posX="1673.291" gate_posY="955.578" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_SY5" name="{=Settlements.Settlement.name.castle_SY5}Castle Senkhof" owner="Faction.sylvania_clan_4" posX="1673.197" posY="954.593" prosperity="800" culture="Culture.khuzait" gate_posX="1673.291" gate_posY="955.578" text="{=Settlements.Settlement.text.castle_SY5}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
       <Town id="castle_comp_SY5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1003,7 +1003,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_1" posX="1662.545" posY="977.536" prosperity="800" culture="Culture.khuzait" gate_posX="1663.395" gate_posY="976.9709" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
+  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_2" posX="1662.545" posY="977.536" prosperity="800" culture="Culture.khuzait" gate_posX="1663.395" gate_posY="976.9709" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
     <Components>
       <Town id="castle_comp_SY6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1039,7 +1039,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_1" posX="1698.386" posY="996.875" prosperity="800" culture="Culture.khuzait" gate_posX="1698.976" gate_posY="997.5018">
+  <Settlement id="castle_SY7" name="{=Settlements.Settlement.name.castle_SY7}Zherdenschlosse Castle" owner="Faction.sylvania_clan_2" posX="1698.386" posY="996.875" prosperity="800" culture="Culture.khuzait" gate_posX="1698.976" gate_posY="997.5018">
     <Components>
       <Town id="castle_comp_SY7" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
