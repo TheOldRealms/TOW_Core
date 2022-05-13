@@ -367,6 +367,7 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Missions\TorMissionManager.cs" />
+    <Compile Include="CampaignSupport\Models\TORClanTierModel.cs" />
     <Compile Include="CampaignSupport\Models\TORMapWeatherModel.cs" />
     <Compile Include="CampaignSupport\Models\TORSettlementMilitiaModel.cs" />
     <Compile Include="CampaignSupport\RaiseDead\GraveyardNightWatchPartyComponent.cs" />
