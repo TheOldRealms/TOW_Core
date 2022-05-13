@@ -128,6 +128,7 @@ namespace TOW_Core
                 starter.AddBehavior(new TORSkillBookCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
                 starter.AddBehavior(new TORCustomDialogCampaignBehaviour());
+                starter.AddBehavior(new TORCaptivityCampaignBehaviour());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TORCompanionHiringPriceCalculationModel());
