@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignSupport.Models
             // spawned without a party.
             return Clan.PlayerClan.Equals(clan)
                 ? base.GetPartyLimitForTier(clan, clanTierToCheck)
-                : int.MaxValue;
+                : clan.Heroes.Count;
         }
     }
 }
