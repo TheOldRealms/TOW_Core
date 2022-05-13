@@ -83,7 +83,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="800" culture="Culture.empire" gate_posX="1393.126" gate_posY="888.7435" text="Wuppertal is a picturesque Averlandish town, some might even say frozen in its cherished past. The city is known for carpentry, fine beer and ale (for human standards) and its tradition abiding Averlander inhabitants. The town also hosts many pilgrims and zealots, serving as one of the southern strongholds for the cult of Sigmar whose shrine here is dedicated to Joseph the Reverent. The town also hosts a large temple of Verena and a Garden of Morr. As with many settlements along the Upper Reik, a ferry operates to bring goods and people across the river into Averland or out to Wissenland.">
+  <Settlement id="castle_AV2" name="{=Settlements.Settlement.name.castle_AV2}Wuppertal" owner="Faction.averland_clan_1" posX="1393.959" posY="889.762" prosperity="800" culture="Culture.empire" gate_posX="1393.126" gate_posY="888.7434" text="Wuppertal is a picturesque Averlandish town, some might even say frozen in its cherished past. The city is known for carpentry, fine beer and ale (for human standards) and its tradition abiding Averlander inhabitants. The town also hosts many pilgrims and zealots, serving as one of the southern strongholds for the cult of Sigmar whose shrine here is dedicated to Joseph the Reverent. The town also hosts a large temple of Verena and a Garden of Morr. As with many settlements along the Upper Reik, a ferry operates to bring goods and people across the river into Averland or out to Wissenland.">
     <Components>
       <Town id="castle_comp_AV2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -323,7 +323,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1430.99" posY="940.184" prosperity="800" culture="Culture.empire" gate_posX="1429.681" gate_posY="940.046" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
+  <Settlement id="castle_ST2" name="{=Settlements.Settlement.name.castle_ST2}Franzen" owner="Faction.stirland_clan_3" posX="1430.99" posY="940.184" prosperity="800" culture="Culture.empire" gate_posX="1429.681" gate_posY="940.0459" text="{=Settlements.Settlement.text.castle_ST2}Franzen is a somewhat unremarkable town, sitting in the shadow of large settlements nearby. It has a healthy fishing trade from the Lammer and the Aver, and also boasts a well-used ferry across the Lammer, which allows travellers to continue the road West to Russbach.">
     <Components>
       <Town id="castle_comp_ST2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -487,7 +487,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="village_ST3_2" name="{=Settlements.Settlement.name.village_ST3_2}Vierstein" posX="1563.102" posY="994.743" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST3_2}Vierstein is a small village situated on the southern side of the marshy Morfens, within the Eschenstir basin. The people here are highly isolated from the outside world, only interacting with the wider Empire when they make their voyages to Siegfriedhof to sell their dried fish. The Viersteiners are also known for being excellent marksmen, often serving as bowmen or scouts for the Raven Knights.">
+  <Settlement id="village_ST3_2" name="{=Settlements.Settlement.name.village_ST3_2}Vierstein" posX="1563.103" posY="994.743" culture="Culture.empire" text="{=Settlements.Settlement.text.village_ST3_2}Vierstein is a small village situated on the southern side of the marshy Morfens, within the Eschenstir basin. The people here are highly isolated from the outside world, only interacting with the wider Empire when they make their voyages to Siegfriedhof to sell their dried fish. The Viersteiners are also known for being excellent marksmen, often serving as bowmen or scouts for the Raven Knights.">
     <Components>
       <Village id="village_comp_ST3_2" village_type="VillageType.trapper" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_ST3" bound="Settlement.town_ST3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -921,7 +921,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_3" posX="1585.804" posY="916.724" prosperity="800" culture="Culture.khuzait" gate_posX="1586.357" gate_posY="915.8002" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
+  <Settlement id="castle_SY3" name="{=Settlements.Settlement.name.castle_SY3}Fort Bracher" owner="Faction.sylvania_clan_3" posX="1585.804" posY="916.724" prosperity="800" culture="Culture.khuzait" gate_posX="1586.358" gate_posY="915.8002" text="{=Settlements.Settlement.text.castle_SY3}Known for being a favourite haunt of Vampires looking to drag their victims off for a good torture session, the screams heard from Fort Bracher can be heard for miles around. Bracher is often fought over by Vampire counts. All of them looking for a new lair from which to torment Men of the Empire.">
     <Components>
       <Town id="castle_comp_SY3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -931,7 +931,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY3_1" name="{=Settlements.Settlement.name.castle_village_SY3_1}Stoodhof" posX="1581.196" posY="901.469" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_1}Most Vampire Counts leave Stoodhof alone, It has been ruled efficiently as a slaughterhouse for human cattle by it’s ruler. From the outside it simply looks like another mud covered village in the middle of this desolate land. From which very little is known about.">
+  <Settlement id="castle_village_SY3_1" name="{=Settlements.Settlement.name.castle_village_SY3_1}Stoodhof" posX="1581.197" posY="901.469" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY3_1}Most Vampire Counts leave Stoodhof alone, It has been ruled efficiently as a slaughterhouse for human cattle by it’s ruler. From the outside it simply looks like another mud covered village in the middle of this desolate land. From which very little is known about.">
     <Components>
       <Village id="castle_village_comp_SY3_1" village_type="VillageType.sheep_farm" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -957,7 +957,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_4" posX="1649.637" posY="930.344" prosperity="800" culture="Culture.khuzait" gate_posX="1650.175" gate_posY="929.4464" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
+  <Settlement id="castle_SY4" name="{=Settlements.Settlement.name.castle_SY4}Nachtschlosse Castle" owner="Faction.sylvania_clan_4" posX="1649.637" posY="930.344" prosperity="800" culture="Culture.khuzait" gate_posX="1650.176" gate_posY="929.4466" text="{=Settlements.Settlement.text.castle_SY4}Renowned for it’s tapestries made of human flesh. Nachtschlosse is a place of wanton butchery and desolation. With darkness around every corner and in every hall of it’s cursed interior. Monsters freely roam the corridors. Looking for new victims to try their latest stitching patterns on.">
     <Components>
       <Town id="castle_comp_SY4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -990,7 +990,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.123" posY="951.557" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
+  <Settlement id="castle_village_SY5_1" name="{=Settlements.Settlement.name.castle_village_SY5_1}Senkhof" posX="1660.124" posY="951.557" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY5_1}Senkhof is one of the last bastions of free humans in Sylvannia. Despite officially being under the dominion of the Vampire Counts, human adventurers and crusaders often use Senkhof and it’s surrounding town to stage conflicts against their vampiric masters. Or at least as a base from which to look for treasure.">
     <Components>
       <Village id="castle_village_comp_SY5_1" village_type="VillageType.flax_plant" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY5" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1003,7 +1003,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_2" posX="1662.545" posY="977.536" prosperity="800" culture="Culture.khuzait" gate_posX="1663.395" gate_posY="976.9709" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
+  <Settlement id="castle_SY6" name="{=Settlements.Settlement.name.castle_SY6}Castle Wartenhof" owner="Faction.sylvania_clan_2" posX="1662.546" posY="977.536" prosperity="800" culture="Culture.khuzait" gate_posX="1663.396" gate_posY="976.9709" text="{=Settlements.Settlement.text.castle_SY6}Mere months before the Vampire wars. A  sorcerer of Nurgle cursed the surrounding village with a plague. The nobility of Wartenhof barricaded themselves in the castle. The villagers begged for salvation as their flesh swelled and burst from deadly boils. But the nobility cared little for them. Inside the castle, the nobles slowly went insane. Becoming cultists of Nurgle within their isolated walls. They were slain by the Vampires as they took over Sylvannia. But the scars of Nurgle’s rot still remain.">
     <Components>
       <Town id="castle_comp_SY6" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="vampire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1026,7 +1026,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_SY6_2" name="{=Settlements.Settlement.name.castle_village_SY6_2}Sumpfdorf" posX="1643.206" posY="983.121" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY6_2}This swampy village is isolated from most of Sylvannia. Crossable only by boat, the houses are on stilts and it is very hard for any vampire to find purchase within Sumpdorf. The villagers and farmers know they are safe from the zombies that haunt the Dark Moor. But the local Vampire Counts still come by air from Wartenhof Castle to collect the blood tax.">
+  <Settlement id="castle_village_SY6_2" name="{=Settlements.Settlement.name.castle_village_SY6_2}Sumpfdorf" posX="1643.207" posY="983.121" culture="Culture.khuzait" text="{=Settlements.Settlement.text.castle_village_SY6_2}This swampy village is isolated from most of Sylvannia. Crossable only by boat, the houses are on stilts and it is very hard for any vampire to find purchase within Sumpdorf. The villagers and farmers know they are safe from the zombies that haunt the Dark Moor. But the local Vampire Counts still come by air from Wartenhof Castle to collect the blood tax.">
     <Components>
       <Village id="castle_village_comp_SY6_2" village_type="VillageType.lumberjack" hearth="250" gate_rotation="0.008" trade_bound="Settlement.town_SY2" bound="Settlement.castle_SY6" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="vampire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
@@ -1076,7 +1076,7 @@
     </CommonAreas>
   </Settlement>
   <!--Wissenland 6 towns 6 castles 35 villages -->
-  <Settlement id="town_WI1" name="{=Settlements.Settlement.name.town_WI1}Nuln" owner="Faction.wissenland_clan_1" posX="1338.789" posY="948.639" culture="Culture.empire" prosperity="4000" gate_posX="1339.858" gate_posY="946.4326" text="{=!}Nuln is the greatest industrial city of the Empire, producing the vast majority of the gunpowder weapons and artillery pieces used by the military, as well as the arms and armaments of the Imperial armies. Nuln is a centre for trade, as the trade from Southern Wissenland and Solland, Averland, as well as trade that comes through Blackfire pass or the Grey and Black Mountains must first pass through Nuln before reaching the rest of the Empire.. Nuln has served as the capital of the Empire for long periods of time and has historically received the support needed to truly become a metropolis. It is also the religious capital in the south for the Sigmarite Church, overseeing Wissenland, Stirland and Averland. The Elector-Countess of all of Wissenland makes her court here, while the provincial capitol remains in Wissenberg, she much prefers the comfort of Nuln to the ‘Po-faced Boughers’ of the Assembly of Wissenland.">
+  <Settlement id="town_WI1" name="{=Settlements.Settlement.name.town_WI1}Nuln" owner="Faction.wissenland_clan_1" posX="1338.789" posY="948.639" culture="Culture.empire" prosperity="4000" gate_posX="1339.859" gate_posY="946.4326" text="{=!}Nuln is the greatest industrial city of the Empire, producing the vast majority of the gunpowder weapons and artillery pieces used by the military, as well as the arms and armaments of the Imperial armies. Nuln is a centre for trade, as the trade from Southern Wissenland and Solland, Averland, as well as trade that comes through Blackfire pass or the Grey and Black Mountains must first pass through Nuln before reaching the rest of the Empire.. Nuln has served as the capital of the Empire for long periods of time and has historically received the support needed to truly become a metropolis. It is also the religious capital in the south for the Sigmarite Church, overseeing Wissenland, Stirland and Averland. The Elector-Countess of all of Wissenland makes her court here, while the provincial capitol remains in Wissenberg, she much prefers the comfort of Nuln to the ‘Po-faced Boughers’ of the Assembly of Wissenland.">
     <Components>
       <Town id="town_comp_WI1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1568,7 +1568,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_village_WI3_1" name="{=Settlements.Settlement.name.castle_village_WI3_1}Scharmbeck" posX="1359.077" posY="733.197" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI3_1}Near the mountainous source of the River Sonne is the village of Scharmbeck. The people here are hardy mountain dwelling Sollanders, who make their living either by working in the mine at nearby Tierhügel or by raising cattle in the small plain to the northwest of the settlement. On the rise just north of the village centre is a ring of ancient standing stones.">
+  <Settlement id="castle_village_WI3_1" name="{=Settlements.Settlement.name.castle_village_WI3_1}Scharmbeck" posX="1359.135" posY="735.2559" culture="Culture.empire" text="{=Settlements.Settlement.text.castle_village_WI3_1}Near the mountainous source of the River Sonne is the village of Scharmbeck. The people here are hardy mountain dwelling Sollanders, who make their living either by working in the mine at nearby Tierhügel or by raising cattle in the small plain to the northwest of the settlement. On the rise just north of the village centre is a ring of ancient standing stones.">
     <Components>
       <Village id="castle_village_comp_WI3_1" village_type="VillageType.iron_mine" hearth="200" trade_bound="Settlement.town_WI3" bound="Settlement.castle_WI3" background_crop_position="0.0" background_mesh="gui_bg_village_vlanda" wait_mesh="empire_village_background" castle_background_mesh="gui_bg_castle_vlanda" />
     </Components>
