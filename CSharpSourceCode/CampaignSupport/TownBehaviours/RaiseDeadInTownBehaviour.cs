@@ -242,7 +242,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                         MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 2 * raisePower);
                     }
                     var rng = MBRandom.RandomFloatRanged(0, 1);
-                    if(rng > 0.85f)
+                    if(rng > 0.95f && Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.OwnerClan != Clan.PlayerClan)
                     {
                         InterruptWait(args);
                     }
