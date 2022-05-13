@@ -127,7 +127,7 @@ namespace TOW_Core
                 starter.AddBehavior(new RORCampaignBehaviour());
                 starter.AddBehavior(new TORSkillBookCampaignBehavior());
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
-                starter.AddBehavior(new TORCustomMobilePartyDialogCampaignBehaviour());
+                starter.AddBehavior(new TORCustomDialogCampaignBehaviour());
 
                 starter.AddModel(new QuestBattleLocationMenuModel());
                 starter.AddModel(new TORCompanionHiringPriceCalculationModel());
@@ -146,6 +146,7 @@ namespace TOW_Core
                 starter.AddModel(new TORSettlementMilitiaModel());
                 starter.AddModel(new TORMapWeatherModel());
                 starter.AddModel(new TORClanTierModel());
+                starter.AddModel(new TORPartyHealingModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }

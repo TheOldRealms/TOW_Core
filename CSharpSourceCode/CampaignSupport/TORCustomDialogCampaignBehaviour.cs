@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
 {
-    public class TORCustomMobilePartyDialogCampaignBehaviour : CampaignBehaviorBase
+    public class TORCustomDialogCampaignBehaviour : CampaignBehaviorBase
     {
         public override void RegisterEvents()
         {
@@ -21,6 +22,8 @@ namespace TOW_Core.CampaignSupport
             obj.AddDialogLine("brokenwheel_greeting", "start", "close_window", "We will break your mind for the glory of Tzeench", () => EncounteredPartyMatch("chs_cult_1"), null, 200);
             obj.AddDialogLine("illumination_greeting", "start", "close_window", "Ascend in death!", () => EncounteredPartyMatch("chs_cult_2"), null, 200);
             obj.AddDialogLine("secondflesh_greeting", "start", "close_window", "Pox consume you!", () => EncounteredPartyMatch("chs_cult_3"), null, 200);
+
+            obj.AddDialogLine("undead_notalk", "start", "close_window", "...", () => CharacterObject.OneToOneConversationCharacter.IsUndead() && CharacterObject.OneToOneConversationCharacter.HeroObject == null, null, 200);
         }
 
         private bool EncounteredPartyMatch(string clanId)
