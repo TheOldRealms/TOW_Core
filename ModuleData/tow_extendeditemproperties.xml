@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_militia_001">
     <ItemTraits />
@@ -2195,7 +2195,7 @@
     <ItemTraits>
       <ItemTrait ItemTraitName="Scout Knowledge" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 scout skill experience points upon reading.</ItemTraitDescription>
-        <SkillTuple SkillId="Scout" SkillExp="5000" LearningTime="10" />
+        <SkillTuple SkillId="Scouting" SkillExp="5000" LearningTime="10" />
       </ItemTrait>
       <ItemTrait ItemTraitName="Bow Instruction" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 bow skill experience points upon reading.</ItemTraitDescription>
