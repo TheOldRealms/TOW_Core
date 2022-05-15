@@ -93,6 +93,10 @@ namespace TOW_Core.CampaignSupport.Models
                     }
                 }
             }
+            if(mobileParty != null && mobileParty.Party.Culture.StringId == "khuzait")
+            {
+                finalSpeed.Add(0.5f, new TextObject("Vampire bonus"));
+            }
             Army army = mobileParty.Army;
             if (((army != null) ? army.LeaderParty : null) != null && mobileParty.Army.LeaderParty != mobileParty && mobileParty.AttachedTo != mobileParty.Army.LeaderParty && mobileParty.Army.LeaderParty.HasPerk(DefaultPerks.Tactics.CallToArms, false))
             {
