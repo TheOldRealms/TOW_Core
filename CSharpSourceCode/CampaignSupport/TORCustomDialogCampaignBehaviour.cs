@@ -48,7 +48,9 @@ namespace TOW_Core.CampaignSupport
         private bool HeroIsWounded()
         {
             var hero = CharacterObject.OneToOneConversationCharacter.HeroObject;
-            return hero != null && hero.IsWounded;
+            if (hero == null) 
+                return false;
+            return hero.IsWounded;
         }
 
         public override void SyncData(IDataStore dataStore) { }
