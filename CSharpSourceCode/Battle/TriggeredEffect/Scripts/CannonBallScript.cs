@@ -14,8 +14,9 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
     {
         private Agent _shooterAgent;
         private SoundEvent _sound;
-        private int _explosionDamage = 150;
-        private float _explosionRadius = 10;
+        private int _explosionDamage = 125;
+        private float _explosionRadius = 6;
+        private float _damageVariance = 0.25f;
 
         protected override void OnInit()
         {
@@ -51,7 +52,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
                 var distance = agent.Position.Distance(GameEntity.GlobalPosition);
                 if (distance <= _explosionRadius)
                 {
-                    var damage = (_explosionRadius - distance) / _explosionRadius * _explosionDamage;
+                    var baseDamage = _explosionDamage * MBRandom.RandomFloatRanged(1 - _damageVariance, 1 + _damageVariance);
+                    var damage = (_explosionRadius - distance) / _explosionRadius * baseDamage;
                     agent.ApplyDamage((int)damage, GameEntity.GlobalPosition, _shooterAgent, doBlow: true, hasShockWave: true);
                     if (distance < 3 && agent.State == AgentState.Killed && agent.IsHuman && !agent.IsUndead() && !agent.IsVampire())
                     {
