@@ -87,8 +87,8 @@ namespace TOW_Core.HarmonyPatches
         [HarmonyPatch(typeof(SettlementMenuOverlayVM), "ExecuteOnSetAsActiveContextMenuItem")]
 		public static void RemoveQuickTalk(SettlementMenuOverlayVM __instance)
         {
-			var itemToRemove = __instance.ContextList.First(x => x.ActionText == GameTexts.FindText("str_menu_overlay_context_list", "QuickConversation").ToString());
-			if (itemToRemove != null) __instance.ContextList.Remove(itemToRemove);
+            var itemToRemove = __instance.ContextList.FirstOrDefault(x => x.ActionText == GameTexts.FindText("str_menu_overlay_context_list", "QuickConversation").ToString());
+            if (itemToRemove != null) __instance.ContextList.Remove(itemToRemove);
         }
-	}
+    }
 }
