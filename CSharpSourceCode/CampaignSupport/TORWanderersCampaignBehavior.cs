@@ -4,6 +4,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -70,7 +71,7 @@ namespace TOW_Core.CampaignSupport
                 CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
                 if (template != null)
                 {
-                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, HeroConstants.VAMPIRE_MAX_AGE + MBRandom.RandomInt(27));
                     AdjustEquipmentImp(newWanderer.BattleEquipment);
                     AdjustEquipmentImp(newWanderer.CivilianEquipment);
                     newWanderer.ChangeState(Hero.CharacterStates.Active);

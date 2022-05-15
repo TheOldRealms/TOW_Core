@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.HarmonyPatches
@@ -17,7 +18,7 @@ namespace TOW_Core.HarmonyPatches
                 StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
                 __result = new BodyProperties(new DynamicBodyProperties(19, __instance.Weight, __instance.Build), staticBodyProperties);
             }
-            else if (__instance.Age < 26)
+            else if (__instance.Age < HeroConstants.VAMPIRE_MAX_AGE)
             {
                 StaticBodyProperties staticBodyProperties = (StaticBodyProperties)Traverse.Create(__instance).Property("StaticBodyProperties").GetValue();
                 __result = new BodyProperties(new DynamicBodyProperties(26, __instance.Weight, __instance.Build), staticBodyProperties);
