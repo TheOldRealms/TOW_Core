@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.Core;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
 
@@ -22,6 +24,11 @@ namespace TOW_Core.Abilities
                 var info = hero.GetExtendedInfo();
                 if (info.CurrentWindsOfMagic < Template.WindsOfMagicCost)
                 {
+                    return false;
+                }
+                else if(Mission.Current.Mode != MissionMode.Battle && Template.AbilityEffectType == AbilityEffectType.Summoning)
+                {
+                    InformationManager.AddQuickInformation(new TextObject("Summoning in stealth missions is not allowed."));
                     return false;
                 }
             }
