@@ -8956,9 +8956,9 @@
       <Equipment slot="Item1" id="Item.vlandia_sword_3_t4" />
       <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_004" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_001" />
-      <Equipment slot="Body" id="Item.banded_leather_over_mail" />
+      <Equipment slot="Body" id="Item.tor_empire_body_armor_pistolier_001" />
       <Equipment slot="Cape" id="Item.wolf_shoulder" />
-      <Equipment slot="Gloves" id="Item.leather_gloves" />
+      <Equipment slot="Gloves" id="Item.tor_empire_arm_gauntlet_witch_hunter_001" />
       <Equipment slot="Leg" id="Item.tor_empire_leg_boots_empire_knight_004" />
       <Equipment slot="Horse" id="Item.noble_horse" />
       <Equipment slot="HorseHarness" id="Item.tor_empire_mountarmor_horsearmor_001" />
@@ -8968,9 +8968,9 @@
       <Equipment slot="Item1" id="Item.vlandia_sword_3_t4" />
       <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_004" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_001" />
-      <Equipment slot="Body" id="Item.banded_leather_over_mail" />
+      <Equipment slot="Body" id="Item.tor_empire_body_armor_pistolier_001" />
       <Equipment slot="Cape" id="Item.wolf_shoulder" />
-      <Equipment slot="Gloves" id="Item.leather_gloves" />
+      <Equipment slot="Gloves" id="Item.tor_empire_arm_gauntlet_witch_hunter_001" />
       <Equipment slot="Leg" id="Item.tor_empire_leg_boots_empire_knight_004" />
       <Equipment slot="Horse" id="Item.noble_horse" />
       <Equipment slot="HorseHarness" id="Item.tor_empire_mountarmor_horsearmor_001" />

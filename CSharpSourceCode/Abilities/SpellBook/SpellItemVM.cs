@@ -47,9 +47,14 @@ namespace TOW_Core.Abilities.SpellBook
 
         private void ExecuteLearnSpell()
         {
-            if(_hero.Gold >= _spellTemplate.GoldCost)
+            // Deduct gold from the party leader if possible. Needed because
+            // companions in a party do not actually own any gold.
+            var sugarDaddy = _hero.IsPartyLeader ? _hero
+                : _hero.PartyBelongedTo != null ? _hero.PartyBelongedTo.Owner
+                    : _hero;
+            if(sugarDaddy.Gold >= _spellTemplate.GoldCost)
             {
-                _hero.ChangeHeroGold(-_spellTemplate.GoldCost);
+                sugarDaddy.ChangeHeroGold(-_spellTemplate.GoldCost);
                 _hero.AddAbility(_spellTemplate.StringID);
                 InformationManager.AddQuickInformation(new TextObject("Successfully learned spell: " + _spellTemplate.Name));
             }

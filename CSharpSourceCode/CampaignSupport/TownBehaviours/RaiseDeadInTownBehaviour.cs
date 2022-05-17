@@ -82,12 +82,13 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void SettlementEntered(MobileParty party, Settlement settlement, Hero hero)
         {
-            if (party == null || settlement == null || hero == null || !hero.IsNecromancer() || hero.CharacterObject.IsPlayerCharacter) return;
+            if (party == null || settlement == null || hero == null || !hero.IsNecromancer() || hero.CharacterObject.IsPlayerCharacter || settlement.IsHideout) return;
             if (party.MemberRoster.TotalManCount < party.Party.PartySizeLimit)
             {
                 if (_skeleton != null)
                 {
-                    party.MemberRoster.AddToCounts(_skeleton, Math.Min(20, party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
+                    var number = settlement.IsVillage ? 5 : 20;
+                    party.MemberRoster.AddToCounts(_skeleton, Math.Min(number, party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
                 }
             }
         }
