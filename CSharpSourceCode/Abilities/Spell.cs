@@ -26,11 +26,6 @@ namespace TOW_Core.Abilities
                 {
                     return false;
                 }
-                else if(Mission.Current.Mode != MissionMode.Battle && Template.AbilityEffectType == AbilityEffectType.Summoning)
-                {
-                    InformationManager.AddQuickInformation(new TextObject("Summoning in stealth missions is not allowed."));
-                    return false;
-                }
             }
             return base.CanCast(casterAgent);
         }

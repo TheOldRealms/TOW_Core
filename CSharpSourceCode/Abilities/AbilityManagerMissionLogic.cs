@@ -50,7 +50,12 @@ namespace TOW_Core.Abilities
 
         public override void OnFormationUnitsSpawned(Team team)
         {
-            if(team.Side == BattleSideEnum.Attacker && _attackerSummoningCombatant == null)
+            InitTeam(team);
+        }
+
+        private void InitTeam(Team team)
+        {
+            if (team.Side == BattleSideEnum.Attacker && _attackerSummoningCombatant == null)
             {
                 var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
                 _attackerSummoningCombatant = new SummonedCombatant(team, culture);
@@ -382,9 +387,32 @@ namespace TOW_Core.Abilities
 
         public SummonedCombatant GetSummoningCombatant(Team team)
         {
-            if (team.Side == BattleSideEnum.Attacker) return _attackerSummoningCombatant;
-            else if (team.Side == BattleSideEnum.Defender) return _defenderSummoningCombatant;
-            else return null;
+            // OnFormationTroopsSpawned() isn't always called by missions
+            // ex. hideout missions
+            // and thus we need to add an extra check to make sure that 
+            // summoning combatants are initialized properly.
+            if (_attackerSummoningCombatant == null
+                || _defenderSummoningCombatant == null)
+            {
+                InitTeam(Mission.Current.Teams.Attacker);
+                InitTeam(Mission.Current.Teams.Defender);
+            }
+
+            var combatantToReturn =
+                team.Side == BattleSideEnum.Attacker ? _attackerSummoningCombatant 
+                : team.Side == BattleSideEnum.Defender ? _defenderSummoningCombatant 
+                    : null;
+
+            if (combatantToReturn == null)
+            {
+                // Crash the thread early to make it easier to debug instead of
+                // letting it the thread die on TalesWorld's end.
+                throw new NullReferenceException(
+                    String.Format("Summoning combatant for team: {0} is null!", team.Side)
+                );
+            }
+
+            return combatantToReturn;
         }
 
         protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
