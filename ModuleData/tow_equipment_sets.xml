@@ -2460,8 +2460,8 @@
   </EquipmentRoster>
   <EquipmentRoster id="tor_empire_skirmisher_template" culture="Culture.empire">
     <EquipmentSet>
-      <Equipment slot="Item0" id="Item.nordic_shortbow" />
-      <Equipment slot="Item1" id="Item.barbed_arrows" />
+      <Equipment slot="Item0" id="Item.crossbow_a" />
+      <Equipment slot="Item1" id="Item.bolt_e" />
       <Equipment slot="Item2" id="Item.short_sword_t3" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_bowman_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_001" />
@@ -2469,8 +2469,8 @@
       <Equipment slot="Leg" id="Item.steppe_leather_boots" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="Item.nordic_shortbow" />
-      <Equipment slot="Item1" id="Item.barbed_arrows" />
+      <Equipment slot="Item0" id="Item.crossbow_a" />
+      <Equipment slot="Item1" id="Item.bolt_e" />
       <Equipment slot="Item2" id="Item.short_sword_t3" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_bowman_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_001" />
@@ -2516,8 +2516,8 @@
       <Equipment slot="Leg" id="Item.highland_boots" />
     </EquipmentSet>
     <EquipmentSet>
-      <Equipment slot="Item0" id="Item.nordic_shortbow" />
-      <Equipment slot="Item1" id="Item.range_arrows" />
+      <Equipment slot="Item0" id="Item.crossbow_a" />
+      <Equipment slot="Item1" id="Item.bolt_e" />
       <Equipment slot="Item2" id="Item.northern_battle_axe_t3" />
       <Equipment slot="Head" id="Item.thinhide_coif" />
       <Equipment slot="Body" id="Item.nordic_sloven" />
@@ -2526,8 +2526,8 @@
       <Equipment slot="Leg" id="Item.leather_cavalier_boots" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="Item.nordic_shortbow" />
-      <Equipment slot="Item1" id="Item.range_arrows" />
+      <Equipment slot="Item0" id="Item.crossbow_a" />
+      <Equipment slot="Item1" id="Item.bolt_e" />
       <Equipment slot="Item2" id="Item.northern_battle_axe_t3" />
       <Equipment slot="Head" id="Item.thinhide_coif" />
       <Equipment slot="Body" id="Item.nordic_sloven" />

@@ -31,7 +31,12 @@ namespace TOW_Core.Battle.ShieldPatterns
             else
             {
                 _patterns.TryGetValue(faction, out banners);
+                if(banners == null || banners.Count == 0)
+                {
+                    _patterns.TryGetValue(cultureId, out banners);
+                }
             }
+
             if (banners != null && banners.Count > 0)
             {
                 var i = _random.Next(0, banners.Count);
