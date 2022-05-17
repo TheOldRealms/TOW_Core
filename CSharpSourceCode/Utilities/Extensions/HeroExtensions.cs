@@ -27,8 +27,7 @@ namespace TOW_Core.Utilities.Extensions
         /// <returns></returns>
         public static float GetRaiseDeadChance(this Hero hero)
         {
-            
-            return 0.7f;
+            return hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence) * 0.07f;
         }
 
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
