@@ -64,6 +64,18 @@ namespace TOW_Core.Abilities.Scripts
                     }
                 }
             }
+
+            var agents = Mission.Current.GetAgentsInRange(_casterAgent.Position.AsVec2, 2);
+            foreach (Agent agent in agents)
+            {
+                if (agent != _casterAgent && MathF.Abs(_casterAgent.Position.Z - agent.Position.Z) < 1)
+                {
+                    Vec3 pos = agent.Position - _casterAgent.Position;
+                    pos.Normalize();
+                    pos.z = 0;
+                    agent.TeleportToPosition(agent.Position + pos);
+                }
+            }
         }
 
         private float GetDistance()
