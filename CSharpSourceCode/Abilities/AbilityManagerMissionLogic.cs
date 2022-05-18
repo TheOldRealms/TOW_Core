@@ -55,6 +55,9 @@ namespace TOW_Core.Abilities
 
         private void InitTeam(Team team)
         {
+            if (team is null || team.TeamAgents.IsEmpty())
+                return;
+
             if (team.Side == BattleSideEnum.Attacker && _attackerSummoningCombatant == null)
             {
                 var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
