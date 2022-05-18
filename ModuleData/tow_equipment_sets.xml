@@ -2139,24 +2139,6 @@
       <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
       <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
     </EquipmentSet>
-    <EquipmentSet>
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_banner_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_005" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_nurgle_002" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
-    </EquipmentSet>
-    <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_banner_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_005" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_nurgle_002" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
-    </EquipmentSet>
   </EquipmentRoster>
   <EquipmentRoster id="tor_chaos_nurgle_warrior_003_template" culture="Culture.chaos_culture">
     <EquipmentSet>
@@ -2176,78 +2158,6 @@
       <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
       <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
       <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
-    </EquipmentSet>
-    <EquipmentSet>
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_mace_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_002" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
-    </EquipmentSet>
-    <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_mace_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_002" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
-    </EquipmentSet>
-    <EquipmentSet>
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_003" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
-    </EquipmentSet>
-    <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_003" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
-    </EquipmentSet>
-    <EquipmentSet>
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_mace_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_004" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
-    </EquipmentSet>
-    <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_mace_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_004" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_hallow" />
-    </EquipmentSet>
-    <EquipmentSet>
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_003" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
-    </EquipmentSet>
-    <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
-      <Equipment slot="Item1" id="item.tor_chaos_weapon_shield_001" />
-      <Equipment slot="Head" id="item.tor_chaos_head_helm_chosen_003" />
-      <Equipment slot="Body" id="item.tor_chaos_body_armor_nurgle_knight_001" />
-      <Equipment slot="Cape" id="item.tor_chaos_shoulder_pauldron_chosen_001" />
-      <Equipment slot="Gloves" id="item.tor_chaos_arm_gauntlet_hallow" />
-      <Equipment slot="Leg" id="item.tor_chaos_leg_boots_nurgle_knight_001" />
     </EquipmentSet>
     <EquipmentSet>
       <Equipment slot="Item0" id="item.tor_chaos_weapon_thaxe_nurgle_001" />
@@ -2308,7 +2218,7 @@
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.hunting_bow" />
       <Equipment slot="Item1" id="Item.default_arrows" />
-      <Equipment slot="Item3" id="Item.falchion_sword_t2" />
+      <Equipment slot="Item2" id="Item.falchion_sword_t2" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_bowman_001" />
       <Equipment slot="Body" id="Item.sackcloth_tunic" />
       <Equipment slot="Cape" id="Item.battania_woodland_cloak" />
@@ -2318,7 +2228,7 @@
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.hunting_bow" />
       <Equipment slot="Item1" id="Item.default_arrows" />
-      <Equipment slot="Item3" id="Item.falchion_sword_t2" />
+      <Equipment slot="Item2" id="Item.falchion_sword_t2" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_bowman_001" />
       <Equipment slot="Body" id="Item.sackcloth_tunic" />
       <Equipment slot="Cape" id="Item.battania_woodland_cloak" />
@@ -2384,7 +2294,7 @@
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.highland_ranger_bow" />
       <Equipment slot="Item1" id="Item.range_arrows" />
-      <Equipment slot="Item3" id="Item.vlandia_sword_1_t2" />
+      <Equipment slot="Item2" id="Item.vlandia_sword_1_t2" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_hunter_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_001" />
       <Equipment slot="Cape" id="Item.tor_empire_body_breastplate_statetrooper_002" />
@@ -2394,7 +2304,7 @@
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.highland_ranger_bow" />
       <Equipment slot="Item1" id="Item.range_arrows" />
-      <Equipment slot="Item3" id="Item.vlandia_sword_1_t2" />
+      <Equipment slot="Item2" id="Item.vlandia_sword_1_t2" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_hunter_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_001" />
       <Equipment slot="Cape" id="Item.tor_empire_body_breastplate_statetrooper_002" />
@@ -2708,7 +2618,7 @@
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.glen_ranger_bow" />
       <Equipment slot="Item1" id="Item.bodkin_arrows_a" />
-      <Equipment slot="Item3" id="Item.sturgia_axe_4_t4" />
+      <Equipment slot="Item2" id="Item.sturgia_axe_4_t4" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_hunter_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_002" />
       <Equipment slot="Cape" id="Item.tor_empire_body_breastplate_statetrooper_001" />
@@ -2717,7 +2627,7 @@
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.glen_ranger_bow" />
       <Equipment slot="Item1" id="Item.bodkin_arrows_a" />
-      <Equipment slot="Item3" id="Item.sturgia_axe_4_t4" />
+      <Equipment slot="Item2" id="Item.sturgia_axe_4_t4" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_hunter_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_002" />
       <Equipment slot="Cape" id="Item.tor_empire_body_breastplate_statetrooper_001" />
@@ -3542,7 +3452,7 @@
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.tor_empire_weapon_gun_handgun_002" />
       <Equipment slot="Item1" id="Item.tor_neutral_weapon_ammo_musket_ball" />
-      <Equipment slot="Item3" id="Item.broad_arming_sword_t4" />
+      <Equipment slot="Item2" id="Item.broad_arming_sword_t4" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_sergeant_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_002" />
       <Equipment slot="Cape" id="Item.a_battania_cloak_a" />
@@ -3554,7 +3464,7 @@
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.tor_empire_weapon_gun_handgun_002" />
       <Equipment slot="Item1" id="Item.tor_neutral_weapon_ammo_musket_ball" />
-      <Equipment slot="Item3" id="Item.broad_arming_sword_t4" />
+      <Equipment slot="Item2" id="Item.broad_arming_sword_t4" />
       <Equipment slot="Head" id="Item.tor_empire_head_hat_sergeant_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_002" />
       <Equipment slot="Cape" id="Item.a_battania_cloak_a" />
@@ -3687,8 +3597,8 @@
   <EquipmentRoster id="tor_empire_reiksguard_innercircle_knight_template" culture="Culture.empire">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.empire_noble_sword_2_t5" />
-      <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item2" id="Item.empire_noble_sword_2_t5" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_pigface_bascinet_002" />
       <Equipment slot="Body" id="Item.tor_empire_body_armor_swadian_plate_001" />
       <Equipment slot="Cape" id="Item.tor_tilean_shoulder_pauldron_knight_002" />
@@ -3699,8 +3609,8 @@
     </EquipmentSet>
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.empire_noble_sword_2_t5" />
-      <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item2" id="Item.empire_noble_sword_2_t5" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_pigface_bascinet_002" />
       <Equipment slot="Body" id="Item.tor_empire_body_armor_swadian_plate_001" />
       <Equipment slot="Cape" id="Item.tor_tilean_shoulder_pauldron_knight_002" />
@@ -3761,8 +3671,8 @@
   <EquipmentRoster id="tor_empire_reiksguard_demigryph_knight_template" culture="Culture.empire">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.empire_noble_sword_2_t5" />
-      <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item2" id="Item.empire_noble_sword_2_t5" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_pigface_bascinet_002" />
       <Equipment slot="Body" id="Item.tor_empire_body_armor_swadian_plate_001" />
       <Equipment slot="Cape" id="Item.tor_tilean_shoulder_pauldron_knight_002" />
@@ -3773,8 +3683,8 @@
     </EquipmentSet>
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.empire_noble_sword_2_t5" />
-      <Equipment slot="Item2" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_003" />
+      <Equipment slot="Item2" id="Item.empire_noble_sword_2_t5" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_pigface_bascinet_002" />
       <Equipment slot="Body" id="Item.tor_empire_body_armor_swadian_plate_001" />
       <Equipment slot="Cape" id="Item.tor_tilean_shoulder_pauldron_knight_002" />
@@ -4627,8 +4537,8 @@
   <EquipmentRoster id="tor_vc_blood_knight_template" culture="Culture.khuzait">
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.tor_vc_weapon_shield_vampire_007" />
-      <Equipment slot="Item2" id="Item.tor_vc_weapon_sword_vampire_008" />
+      <Equipment slot="Item1" id="Item.tor_vc_weapon_sword_vampire_008" />
+      <Equipment slot="Item2" id="Item.tor_vc_weapon_shield_vampire_007" />
       <Equipment slot="Head" id="Item.tor_vc_head_helm_blood_knight_001" />
       <Equipment slot="Body" id="Item.tor_vc_body_armor_blood_knight_001" />
       <Equipment slot="Cape" id="Item.tor_vc_shoulder_pauldron_blood_knight_002" />
@@ -4639,8 +4549,8 @@
     </EquipmentSet>
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.tor_empire_weapon_lance_knight_005" />
-      <Equipment slot="Item1" id="Item.tor_vc_weapon_shield_vampire_007" />
-      <Equipment slot="Item2" id="Item.tor_vc_weapon_sword_vampire_008" />
+      <Equipment slot="Item1" id="Item.tor_vc_weapon_sword_vampire_008" />
+      <Equipment slot="Item2" id="Item.tor_vc_weapon_shield_vampire_007" />
       <Equipment slot="Head" id="Item.tor_vc_head_helm_blood_knight_001" />
       <Equipment slot="Body" id="Item.tor_vc_body_armor_blood_knight_001" />
       <Equipment slot="Cape" id="Item.tor_vc_shoulder_pauldron_blood_knight_002" />
@@ -5080,7 +4990,7 @@
     <EquipmentSet>
       <Equipment slot="Item0" id="Item.tor_empire_weapon_spear_002" />
       <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_005" />
-      <Equipment slot="Item3" id="Item.empire_mace_1_t2" />
+      <Equipment slot="Item2" id="Item.tor_vc_weapon_mace_skeleton_003" />
       <Equipment slot="Head" id="Item.tor_vc_head_helm_skeleton_warrior_001" />
       <Equipment slot="Body" id="Item.tor_vc_body_breastplate_skeleton_002" />
       <Equipment slot="Cape" id="Item.tor_vc_shoulder_pauldron_skeleton_002" />
@@ -5090,7 +5000,7 @@
     <EquipmentSet civilian="true">
       <Equipment slot="Item0" id="Item.tor_empire_weapon_spear_002" />
       <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_005" />
-      <Equipment slot="Item3" id="Item.empire_mace_1_t2" />
+      <Equipment slot="Item2" id="Item.tor_vc_weapon_mace_skeleton_003" />
       <Equipment slot="Head" id="Item.tor_vc_head_helm_skeleton_warrior_001" />
       <Equipment slot="Body" id="Item.tor_vc_body_breastplate_skeleton_002" />
       <Equipment slot="Cape" id="Item.tor_vc_shoulder_pauldron_skeleton_002" />
