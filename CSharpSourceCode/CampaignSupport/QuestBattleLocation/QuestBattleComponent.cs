@@ -30,13 +30,16 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public void OnQuestBattleComplete(bool withVictory)
         {
+            if (withVictory) IsActive = false;
+        }
+
+        public void CleanQuestParty()
+        {
             if (QuestOpponentParty != null)
             {
                 DestroyPartyAction.Apply(MobileParty.MainParty.Party, QuestOpponentParty);
                 QuestOpponentParty = null;
             }
-
-            if (withVictory) IsActive = false;
             if (_enemyLeader != null)
             {
                 //TODO/FIX -> make the enemy hero "stay" so that we dont unnecessarily kill an enemy hero if the player gets defeated.
@@ -71,9 +74,10 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                     party.ChangePartyLeader(_enemyLeader);
                 }
             }
-
+            
             party.Party.Visuals.SetMapIconAsDirty();
             QuestOpponentParty = party;
+            EnterSettlementAction.ApplyForParty(party, Settlement);
         }
 
         public void StartBattle()
