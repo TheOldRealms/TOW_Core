@@ -148,6 +148,7 @@ namespace TOW_Core
                 starter.AddModel(new TORMapWeatherModel());
                 starter.AddModel(new TORClanTierModel());
                 starter.AddModel(new TORPartyHealingModel());
+                starter.AddModel(new TORClanFinanceModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
