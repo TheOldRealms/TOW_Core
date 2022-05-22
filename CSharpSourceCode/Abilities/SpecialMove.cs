@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Missions;
 using TOW_Core.Abilities.Scripts;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
+using static TaleWorlds.MountAndBlade.RidingOrder;
 
 namespace TOW_Core.Abilities
 {
@@ -16,14 +23,17 @@ namespace TOW_Core.Abilities
         {
             base.ActivateAbility(casterAgent);
             _chargeLevel = 0;
+
+            if (casterAgent.HasMount)
+                casterAgent.QuickDismount();
         }
 
         public override bool CanCast(Agent casterAgent)
         {
             return !IsCasting &&
                    !IsOnCooldown() &&
-                   (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser())) &&
-                   !casterAgent.HasMount;
+                   (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser())
+                   && !casterAgent.HasMount);
         }
 
         public void AddCharge(float amount)

@@ -495,5 +495,22 @@ namespace TOW_Core.Utilities.Extensions
         {
             agent.AgentVisuals?.SetVisible(false);
         }
+
+        public static void QuickDismount(this Agent agent)
+        {
+            // Quick dismount method, blow off and cancel animation
+            var currentMount = agent.MountAgent;
+            if (currentMount != null)
+            {
+                agent.SetInvulnerable(true);
+                agent.RegisterBlow(new Blow
+                {
+                    InflictedDamage = 1,
+                    BlowFlag = BlowFlags.CanDismount | BlowFlags.NoSound
+                });
+                agent.SetInvulnerable(false);
+                agent.SetActionChannel(0, ActionIndexCache.act_none, true);
+            }
+        }
     }
 }
