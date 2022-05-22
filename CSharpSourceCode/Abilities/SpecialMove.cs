@@ -50,7 +50,7 @@ namespace TOW_Core.Abilities
             }
         }
 
-        public bool IsCharged => _chargeLevel >= 100f;
+        public bool IsCharged => _chargeLevel >= 0f;
         private float _chargeLevel = 50f;
         public float ChargeLevel => _chargeLevel;
     }
