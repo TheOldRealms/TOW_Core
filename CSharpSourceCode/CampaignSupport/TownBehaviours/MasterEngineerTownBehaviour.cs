@@ -57,9 +57,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void AddEngineerDialogLines(CampaignGameStarter obj)
         {
             //conversation start
-            obj.AddDialogLine("engineer_start0", "start", "rogueengineerquestcomplete", "Did you find Oswin?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && rogueengineerquestinprogress() || quest2failed(), null, 200, null);
+            obj.AddDialogLine("engineer_start0", "start", "rogueengineerquestcomplete", "Did you find Oswin?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && (rogueengineerquestinprogress() || quest2failed()), null, 200, null);
             obj.AddDialogLine("engineer_start1", "start", "questcheckrogueengineer", "Have you changed your mind and want to help hunt down Goswin?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && !engineerquestcompletecondition(), null, 200, null);
-            obj.AddDialogLine("engineer_start2", "start", "questcomplete", "Ah, you have returned. What news do you bring?", () => engineerdialogstartcondition() && _knowsPlayer && cultistquestinprogress() || quest1failed(), null, 200, null);
+            obj.AddDialogLine("engineer_start2", "start", "questcomplete", "Ah, you have returned. What news do you bring?", () => engineerdialogstartcondition() && _knowsPlayer && (cultistquestinprogress() || quest1failed()), null, 200, null);
             obj.AddDialogLine("engineer_start3", "start", "close_window", "Come back to me when you have news.", () => engineerdialogstartcondition() && cultistquestinprogress() && _knowsPlayer, null, 200, null);
             obj.AddDialogLine("engineer_start4", "start", "hub", "You again, what do you want?", () => engineerdialogstartcondition() && _knowsPlayer && QuestLineDone(), null, 200, null);
             obj.AddDialogLine("engineer_start5", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?", engineerdialogstartcondition, knowledgeoverplayer, 200, null);
@@ -93,7 +93,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("engineerdeclinequest", "engineerdeclinequest", "close_window", "A shame, think on it and return if you change your mind.", null, null, 200, null);
 
             //quests failed -both
-            obj.AddPlayerLine("engineer_questcomplete1", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.", () => (quest1failed() || quest2failed()), null, 200, null);
+            obj.AddPlayerLine("engineer_questcomplete1", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.", () =>engineerdialogstartcondition()&& (quest1failed() || quest2failed()), null, 200, null);
             obj.AddDialogLine("engineer_questfailed", "engineerquestfailed", "playerfailedquest", "Tsk, I expected better. There may still be time, you can still track them if you are swift", () => quest1failed() || quest2failed(), null, 200, null);
             obj.AddPlayerLine("playerfailedquest1", "playerfailedquest", "engineeracceptquest", "I won't let you down a second time.", quest1failed, QuestBeginCultist, 200, null);
             obj.AddPlayerLine("playerfailedquest2", "playerfailedquest", "engineeracceptquest", "I won't let you down a second time.", quest2failed, QuestBeginRogueEngineer, 200, null);
