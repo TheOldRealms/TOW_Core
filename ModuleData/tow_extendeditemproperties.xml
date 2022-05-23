@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_militia_001">
     <ItemTraits />
@@ -2173,11 +2173,24 @@
     </ItemTraits>
     <Description>This collection of chansons and ballads tell the stories of the Lady of the Lake and Gilles le Breton. Success with the weeping ladies after a perfomance in the local tavern on a moody night is guaranteed.</Description>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_books_charm_002">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Charmeur" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 charm skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Charm" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"While some ambassadors are chosen for their exquisite tastes and ability to spoil rivals and allies alike with carefully chosen words and gifts, others may be selected for their sharp wits,  intelligence networks, or undeniable charisma. However, all ambassadors must be masters of negotiation and other social interactions…"</Description>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_book_rougery_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Roguery Knowledge" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 roguery skill expierence points upon reading</ItemTraitDescription>
         <SkillTuple SkillId="Roguery" SkillExp="5000" LearningTime="15" />
+      </ItemTrait>
+      <ItemTrait ItemTraitName="Small Crossbow Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 2000 crossbow skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Crossbow" SkillExp="2000" LearningTime="5" />
       </ItemTrait>
     </ItemTraits>
     <Description>"To sail with a Black Ark is one of the greatest honours that any Druchii could ever aspire to. I trained long and hard to earn my berth upon the Wind of Damnation, slaying several undeserving rivals to the post along the way. It is a worthy life. I get to regularly practice my skills upon our many enemies and one tenth of the plunder that I seize is mine to keep. Slaves, gold, and fame, these too can be yours if you are bold…"</Description>
@@ -2189,7 +2202,7 @@
         <SkillTuple SkillId="Tactics" SkillExp="5000" LearningTime="10" />
       </ItemTrait>
     </ItemTraits>
-    <Description>"To command an army requires the courage to send men to their deaths without doubt or hesitation. The armies of the Empire are led by those warriors, usually members of the Imperial nobility or even, in rare cases, Emperor Karl Franz himself, trained to direct their forces as a swordsman wields his blade. As with all men, however, these commanders can differ in their levels of skill and courage, with some, like the extraordinarily fierce Elector Count of Middenheim, Boris Todbringer, embodying the unwavering valour of the people of Sigmar Heldenhammer. Others are little more than highborn fops, yet still possess the right to command men in battle because of an accident of birth…"</Description>
+    <Description>"I can see in your eyes that you fear this enemy. I can see in your eyes that you wonder how we can fight such terrible monsters. Men of the Empire, I have the answer: We fight them with our steel, we fight them with our courage, but above all we fight them with our faith in Sigmar…"</Description>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_book_range_001">
     <ItemTraits>
@@ -2201,12 +2214,21 @@
         <ItemTraitDescription>This book provides 5000 bow skill experience points upon reading.</ItemTraitDescription>
         <SkillTuple SkillId="Bow" SkillExp="5000" LearningTime="10" />
       </ItemTrait>
+    </ItemTraits>
+    <Description>"I had the immense pleasure of accompanying our esteemed Huntsmarshal on several of his journeys and expeditions. acting as his unofficial scribe and documentor. In this book I will share with you all of his knowledge about hunting, beasts and nature itself. I first met the Huntsmarshal when I came across his camp in the Drakwald. He had heard me coming. Instead of a greeting, the first thing he said to me was: “Don't clomp about as if you’re a drunkard in Marienburg's slums, boy! Feel your way around. Let the forest talk to you. She'll tell you everything you need to know...if you're quiet enough to listen. Such things a forest can tell you...more than most city-folk’d dream”"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_range_002">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Scout Knowledge" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 scout skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Scouting" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
       <ItemTrait ItemTraitName="Crossbow Instruction" IconName="xp_icon">
         <ItemTraitDescription>This book provides 5000 crossbow skill experience points upon reading.</ItemTraitDescription>
         <SkillTuple SkillId="Crossbow" SkillExp="5000" LearningTime="10" />
       </ItemTrait>
     </ItemTraits>
-    <Description>"… Kroxigores are roughly 9 feet high, and weigh around as much as two Reikland cows, they have sharp teeth and a yaw with atleast one hundred teeth. Their footprint is roughly 6-8 times bigger than of a grown human. Their skin is thick and it’s impossible to cut through it with the most conventional weapons. These beasts shouldn’t be in any proximity of a hunter. Never try to hunt them alone, try to use traps and use iron tips, Bolts or heavy guns. [Below a sketch of a Kroxigore]"</Description>
+    <Description>"… Kroxigors are roughly 9 feet high, and weigh around as much as two Reikland cows, they have sharp teeth and a yaw with at least one hundred teeth. Their footprint is roughly 6-8 times bigger than that of a grown man. Their skin is thick and it’s near-impossible to cut through with most common weapons. A wise Hunter would always keep their distance from these beasts. Hunt them in pairs, try to use traps and use Steel Arrowheads or Crossbow Bolts. Better yet a Handgun, despite the noise it will create, should be able to pierce a Kroxigor’s hide. [Below a sketch of a Kroxigore]"</Description>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_book_crafting_001">
     <ItemTraits>
@@ -2225,5 +2247,103 @@
       </ItemTrait>
     </ItemTraits>
     <Description>"No steed of the Empire, nor of Estalia or Tilea, could match the strength and power of a pure-bred Bretonnian horse. None of them were the equal in sheer speed, and the Bretonnians were rightly proud of them. Protected in thick layers of plate barding beneath their flowing cloth caparisons, and carrying the weight of a fully armoured knight, the noble steeds could outpace any horse in the Old World…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_onehanded_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Onehanded weapon Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 onehanded skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="OneHanded" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"Step 1 Introductions: Duelists consider it poor form to cross swords without first introducing oneself. In a tournament, the fighter who draws steel before exchanging formalities is disqualified. This is an appropriate time to comment on reputations and parentage. Step 2 Methodology: Amid the opening thrusts and parries of combat, a Duelist explains how he will win, in technical or even mathematical terms. Tournament discourse follows a strict code, allowing either party to question the other's calculations. Street fights are somewhat less orderly, sounding more like shouting contests. Step 3 Criticism: After several blows have been traded, Duelists vocally analyse the other’s technique. Individual personalities set the tenor of this analysis, but usually the goal is to demoralise the enemy. In theory, tournaments enforce polite conduct, but in practice this only encourages veiled insults and false platitudes. Step 4 Victory run: The winner customarily salutes his fallen opponent with a dazzling flourish. If the opponent is still alive, a verbal summary of the fight may follow. Tournament fighters must yield the last word to the victor."</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_twohanded_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Twohanded weapon Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 twohanded skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="TwoHanded" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"In one smooth motion, the swordmaster draws their weapon and holds the blade before them. Their legs uncoil and in the blink of an eye they stand with sword raised high above them. The blade spins in their hands and their grip is reversed, the sword slashing in an intricate series of manoeuvres nearly too fast for the naked eye to follow. Their feet are in constant motion as they lunge, parry, and thrust at imaginary opponents. One by one the wielder performs the thirty basic exercises of the Swordmasters before moving on to more advanced techniques. Once more, the enormous sword is brought upwards and held before the bearer's face…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_trade_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Trading Guide" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 trading skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Trade" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"How did I become a magnate? Well, when I was a maid with only a pfennig to my name, I went to the local farmer and bought an apple. Then I walked to the market and sold the apple for two pfennigs. The next day I bought two apples from the farmer and walked to the market again and sold the apples for four pfennigs. And so it went on, every day; I walked to the farm, bought some apples, and then walked to the market to sell them at a profit. And by the time I was twenty-five years old, my grandfather died and left me several thousand guilders…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_bow_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Bow Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 bow skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Bow" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"The Bow consists of a single piece of flexible wood. Though somewhat expensive and difficult to make, they can be deadly in the hands of hunters and soldiers alike. Fashioned from wood, horn, and sinew, bows offer a decent range while dealing a respectable level of damage, though it often takes several shots from a bow to drop a tough opponent. Bows vary in quality, based on pull and construction. A bow that is too flexible lacks the force to propel arrows with any great effect. Likewise, a bow with too little flexibility is difficult to pull and may reduce accuracy…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_crossbow_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Crossbow Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 crossbow skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Crossbow" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"With the invention of the crossbow, throughout the Empire, from Nordland to Averland, a most effective ranged infantry unit emerged and stood out to be one of the prominent pillars of the empire military. Crossbows may lack the penetrative power of handguns, or the rate of fire of standard bows but they are just as viable in the hands of an expert. Crossbows have a range longer than that of bows but shorter than that of guns. Their main advantages lie in the fact that they are easily produced and their use is easily learned…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_leadership_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Leadership Guide" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 leadership skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Leadership" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"To command an army requires the courage to send men to their deaths without doubt or hesitation. The armies of the Empire are led by those warriors, usually members of the Imperial nobility or even, in rare cases, Emperor Karl Franz himself, trained to direct their forces as a swordsman wields his blade. As with all men, however, these commanders can differ in their levels of skill and courage, with some, like the extraordinarily fierce Elector Count of Middenheim, Boris Todbringer, embodying the unwavering valour of the people of Sigmar Heldenhammer. Others are little more than highborn fops, yet still possess the right to command men in battle because of an accident of birth…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_polearm_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Polearm Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 polearm skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Polearm" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"The spear is a weapon older than mankind. It is easy to use and requires little training, but is an effective weapon nonetheless. Cheap to produce, easy to use, and especially lethal in large numbers, it is no surprise that Empire Spearmen are a common sight among imperial armies. Yet only one state can claim to have mastered them."</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_throwing_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Throwing Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 throwing skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Throwing" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"Since whaling is an important trade for Norsca, Whalers are respected even among the warriors due to the extreme dangers of the waters surrounding Norsca. Swimming through the dark currents of the Sea of Claws are massive whales, many of which bear strange markings, and odd colouration, twisted and warped as they are by the power of Chaos. These monsters can capsize ships and swallow hundreds of men in a single gulp. Thus, Whalers must be made of sterner stuff than ordinary fishermen…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_athletics_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Athletics Guide" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 athletics skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Athletics" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"To a Wardancer, even other Elves appear to be moving painfully slowly, for every move made by one of the kin of Loec flows into the next, and the next one after that without conscious thought or guidance. Forgoing armour, the Wardancers decorate themselves with swirling designs and dye their hair in bright colours, taking on the roles of mythical figures and ferocious warriors, their form of movement, and even their fighting style, paying homage to the one who inspires their dance…"</Description>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_book_hybrid_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Polearm Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 polearm skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Polearm" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+      <ItemTrait ItemTraitName="Bow Instruction" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 bow skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Bow" SkillExp="5000" LearningTime="10" />
+      </ItemTrait>
+      <ItemTrait ItemTraitName="Small Trading Guide" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 2000 trading skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Trade" SkillExp="2000" LearningTime="5" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"The Asur are holding trading relations all over the world, from the Coast of Nordland, to the far Colonies of the Elves, at the peak of the southlands, from the Turtle islands to the shores of Cathay. Arabian Diamonds for Lothern Silk, Lustrian fruits for Yverrian marble. Ship routes convey goods, and those goods need protection. The Seaguard, elite marines of the High Elves, are well trained in versatile combat. They know to fight with spears against large monsters, and similarly take their bows for long distance fights against the Druchii. At Sea or land, there is a reason that these soldiers are the foundation of the military of the Asur."</Description>
   </ExtendedItemObjectProperties>
 </ArrayOfExtendedItemObjectProperties>
