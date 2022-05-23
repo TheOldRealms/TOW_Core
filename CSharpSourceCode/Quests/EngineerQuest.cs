@@ -6,6 +6,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
+using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Quests
 {
@@ -97,13 +98,12 @@ namespace TOW_Core.Quests
             var clan = _targetParty.ActualClan;
             var pos = _targetParty.Position2D;
             var name = _targetParty.Name;
-            var formerparty = _targetParty;
-            _targetParty.SetPartyUsedByQuest(true);
             _targetParty.ChangePartyLeader(null);
             _targetParty.ResetTargetParty();
+            _targetParty.RemoveParty();
             
             SpawnQuestParty(hero, home, clan,name);
-            formerparty.RemoveParty();
+            _targetParty.SetPartyUsedByQuest(true);
             _targetParty.Party.Visuals.SetMapIconAsDirty();
             _initAfterReload = true;
         }
