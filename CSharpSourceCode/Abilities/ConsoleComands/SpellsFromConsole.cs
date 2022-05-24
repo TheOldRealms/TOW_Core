@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TOW_Core.Abilities;
@@ -21,7 +22,7 @@ namespace TOW_Core.Spells.ConsoleComands
             var engineerquest = EngineerQuest.GetCurrentActiveIfExists();
             if (engineerquest != null)
             {
-                Campaign.Current.MainParty.Position2D = engineerquest.TargetParty.Position2D+Vec2.Forward*5;
+                Campaign.Current.MainParty.Position2D =MobilePartyHelper.FindReachablePointAroundPosition(Campaign.Current.MainParty.Party,engineerquest.TargetParty.Position2D,7,5);
 
                 return " *puff*... there he is!";
             }
