@@ -4,6 +4,7 @@ using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TOW_Core.Abilities;
+using TOW_Core.Quests;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Spells.ConsoleComands
@@ -12,6 +13,22 @@ namespace TOW_Core.Spells.ConsoleComands
     {
         private static List<string> towSpellNames = AbilityFactory.GetAllSpellNamesAsList();
 
+        [CommandLineFunctionality.CommandLineArgumentFunction("whereisgoswin", "tow")]
+        public static string TeleportPlayerToQuestParty(List<string> arguments)
+        {
+            if (!CampaignCheats.CheckCheatUsage(ref CampaignCheats.ErrorType))
+                return CampaignCheats.ErrorType;
+            var engineerquest = EngineerQuest.GetCurrentActiveIfExists();
+            if (engineerquest != null)
+            {
+                Campaign.Current.MainParty.Position2D = engineerquest.TargetParty.Position2D+Vec2.Forward*5;
+
+                return " *puff*... there he is!";
+            }
+            return "Engineer Quest is not active \n";
+        }
+        
+        
         [CommandLineFunctionality.CommandLineArgumentFunction("list_spells", "tow")]
         public static string ListSpells(List<string> argumentNames) =>
             AggregateOutput("Available spells are:", towSpellNames);

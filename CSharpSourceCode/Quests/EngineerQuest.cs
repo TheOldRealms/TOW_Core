@@ -185,7 +185,7 @@ namespace TOW_Core.Quests
         {
             if (!_task1.HasBeenCompleted())
             {
-                RegisterQuestSpecificElementsOnGameLoad();
+              //  RegisterQuestSpecificElementsOnGameLoad();
             }
         }
         
