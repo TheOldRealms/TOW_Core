@@ -2081,7 +2081,7 @@
   </AbilityTemplate>
   -->
   <AbilityTemplate StringID="HealingAOE" 
-      Name="Healing AOE" 
+      Name="Circle of Healing" 
       SpriteName="healingprayer_icon" 
       CoolDown="40" 
       WindsOfMagicCost="0" 
