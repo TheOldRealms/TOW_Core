@@ -9,7 +9,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
 {
     public class WizardAIComponent : HumanAIComponent
     {
-        private static readonly float EvalInterval = 1;
+        private static readonly float EvalInterval = 3;
         private float _dtSinceLastOccasional = (float) TOWMath.GetRandomDouble(0, EvalInterval); //Randomly distribute ticks
 
         public AbstractAgentCastingBehavior CurrentCastingBehavior;

@@ -22,7 +22,8 @@ namespace TOW_Core.Abilities
         {
             return !IsCasting &&
                    !IsOnCooldown() &&
-                   (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser()));
+                   (casterAgent.IsPlayerControlled || (casterAgent.IsActive() && casterAgent.Health > 0 && casterAgent.GetMorale() > 1 && casterAgent.IsAbilityUser())) &&
+                   !casterAgent.HasMount;
         }
 
         public void AddCharge(float amount)

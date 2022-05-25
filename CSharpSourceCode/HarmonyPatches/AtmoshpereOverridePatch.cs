@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
+using SandBox;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TaleWorlds.Core;
+using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.HarmonyPatches
 {
@@ -17,7 +21,7 @@ namespace TOW_Core.HarmonyPatches
         //A lot of functionality to rewrite.
         [HarmonyPostfix]
         [HarmonyPatch(typeof(DefaultMapWeatherModel), "GetNormalizedSnowValueInPos")]
-        public static void Postfix(ref float __result)
+        public static void TurnOffSnow(ref float __result)
         {
             __result = 0;
         }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -83,6 +84,22 @@ namespace TOW_Core.Utilities
 
             }
             return pickedname;
+        }
+
+        /** 
+         * Finds the Settlement closest to the specified part and within the radius given.
+         * 
+         * Lower values for radius will lead to better performance.
+         */
+        public static Settlement FindNearestSettlement(MobileParty party, float radius)
+        {
+            var nearbySettlements = 
+                Settlement.FindSettlementsAroundPosition(party.GetPosition2D, radius);
+
+            // The list of nearbySettlements is unordered, thus we need to find the
+            // settlement with minimum distance.
+            return nearbySettlements.MinBy(
+                settlement => Campaign.Current.Models.MapDistanceModel.GetDistance(party, settlement));
         }
     }
 }

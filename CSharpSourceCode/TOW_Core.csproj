@@ -46,8 +46,8 @@
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.2.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>packages\NLog.4.7.9\lib\net45\NLog.dll</HintPath>
@@ -275,7 +275,7 @@
     <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
@@ -367,16 +367,27 @@
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
     <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
     <Compile Include="CampaignSupport\Missions\TorMissionManager.cs" />
+    <Compile Include="CampaignSupport\Models\TORClanFinanceModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORClanTierModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMapWeatherModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartyHealingModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORSettlementMilitiaModel.cs" />
     <Compile Include="CampaignSupport\RaiseDead\GraveyardNightWatchPartyComponent.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORCampaignBehaviour.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORManager.cs" />
     <Compile Include="CampaignSupport\RegimentsOfRenown\RORSettlementTemplate.cs" />
+    <Compile Include="CampaignSupport\TORCaptivityCampaignBehaviour.cs" />
+    <Compile Include="CampaignSupport\TORCustomDialogCampaignBehaviour.cs" />
+    <Compile Include="CampaignSupport\TORSkillBookCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
+    <Compile Include="HarmonyPatches\ArenaPatches.cs" />
+    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
     <Compile Include="Quests\QuestPartyComponent.cs" />
     <Compile Include="Quests\EngineerQuest.cs" />
+    <Compile Include="Utilities\HeroConstants.cs" />
     <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
@@ -418,7 +429,6 @@
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
-    <Compile Include="CampaignSupport\PrisonerFateCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\AgentPatches.cs" />
     <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
     <Compile Include="HarmonyPatches\DamagePatch.cs" />
@@ -427,7 +437,6 @@
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
     <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
-    <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
     <Compile Include="Items\ExtendedItemObjectProperties.cs" />
     <Compile Include="Items\IWeaponHitEffect.cs" />
     <Compile Include="Items\ItemTraitAgentComponent.cs" />
@@ -482,7 +491,6 @@
     <Compile Include="CharacterCreation\TORCharacterCreationContent.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />
     <Compile Include="GameTexts\TOWTextOverride.cs" />
-    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="HarmonyPatches\CharacterCreationPatches.cs" />
     <Compile Include="HarmonyPatches\ConversationPatches.cs" />
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />

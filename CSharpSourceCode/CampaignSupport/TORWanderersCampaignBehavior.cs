@@ -3,6 +3,8 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.ObjectDataExtensions;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.CampaignSupport
@@ -17,22 +19,6 @@ namespace TOW_Core.CampaignSupport
         {
             CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, CheckPlayerCurrentSettlement);
-            CampaignEvents.HeroCreated.AddNonSerializedListener(this, OnHeroCreated);
-        }
-
-        private void OnHeroCreated(Hero hero, bool arg2)
-        {
-            if(hero.Occupation == Occupation.Wanderer && hero.Template != null)
-            {
-                foreach (var attribute in hero.Template.GetAttributes())
-                {
-                    if(!hero.HasAttribute(attribute)) hero.AddAttribute(attribute);
-                }
-                foreach (var ability in hero.Template.GetAbilities())
-                {
-                    if(!hero.HasAbility(ability)) hero.AddAbility(ability);
-                }
-            }
         }
 
         private void CheckPlayerCurrentSettlement()
@@ -85,7 +71,7 @@ namespace TOW_Core.CampaignSupport
                 CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
                 if (template != null)
                 {
-                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + 5 + MBRandom.RandomInt(27));
+                    Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, HeroConstants.VAMPIRE_MAX_AGE + MBRandom.RandomInt(27));
                     AdjustEquipmentImp(newWanderer.BattleEquipment);
                     AdjustEquipmentImp(newWanderer.CivilianEquipment);
                     newWanderer.ChangeState(Hero.CharacterStates.Active);

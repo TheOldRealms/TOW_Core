@@ -774,7 +774,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_von_carstein_sister" default_group="horsearcher" level="26" name="{=str_tor_vc_von_carstein_sister}Von Carstein Sister" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level26" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.townswoman_empire" />
+      <face_key_template value="BodyProperty.vampire_female" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_vc_von_carstein_noblewoman" />
@@ -798,7 +798,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_von_carstein_noblewoman" default_group="cavalry" level="31" name="{=str_tor_vc_von_carstein_noblewoman}Von Carstein Noblewoman" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.townswoman_empire" />
+      <face_key_template value="BodyProperty.vampire_female" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_vc_von_carstein_countess" />
@@ -822,7 +822,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_vc_von_carstein_countess" default_group="cavalry" level="41" name="{=str_tor_vc_von_carstein_countess}Von Carstein Countess" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level41" is_female="true">
     <face>
-      <face_key_template value="BodyProperty.townswoman_empire" />
+      <face_key_template value="BodyProperty.vampire_female" />
     </face>
     <upgrade_targets />
     <Equipments>
@@ -920,7 +920,7 @@
       <EquipmentSet id="tor_chaos_khorne_warrior_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_beast_ungor" default_group="infantry" level="11" name="{=str_tor_beast_ungor}Ungor" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">
+  <NPCCharacter id="tor_beast_ungor" default_group="infantry" level="11" name="{=str_tor_beast_ungor}Ungor" occupation="Bandit" culture="Culture.steppe_bandits" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -933,17 +933,19 @@
       <EquipmentSet id="tor_beast_ungor_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_beast_shielded_ungor" default_group="infantry" level="16" name="{=str_tor_beast_shielded_ungor}Shielded Ungor" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_beast_shielded_ungor" default_group="infantry" level="16" name="{=str_tor_beast_shielded_ungor}Shielded Ungor" occupation="Bandit" culture="Culture.steppe_bandits" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
-    <upgrade_targets />
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.tor_beast_ungor_chief" />
+    </upgrade_targets>
     <Equipments>
       <EquipmentSet id="tor_beast_shielded_ungor_template" />
       <EquipmentSet id="tor_beast_shielded_ungor_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_beast_ungor_raider" default_group="ranged" level="16" name="{=str_tor_beast_ungor_raider}Ungor Raider" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_beast_ungor_raider" default_group="ranged" level="16" name="{=str_tor_beast_ungor_raider}Ungor Raider" occupation="Bandit" culture="Culture.steppe_bandits" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -951,6 +953,16 @@
     <Equipments>
       <EquipmentSet id="tor_beast_ungor_raider_template" />
       <EquipmentSet id="tor_beast_ungor_raider_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_beast_ungor_chief" default_group="infantry" level="21" name="{=str_tor_beast_ungor_chief}Ungor Chief" occupation="Bandit" culture="Culture.steppe_bandits" skill_template="SkillSet.tow_skills_level21">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_beast_ungor_chief_template" />
+      <EquipmentSet id="tor_beast_ungor_chief_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
   <NPCCharacter id="tor_dog_braganza_01" default_group="ranged" level="21" name="{=str_tor_dog_braganza_01}Besieger Crossbowman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21" is_basic_troop="true">
@@ -1545,7 +1557,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_knight_initiate" default_group="cavalry" level="31" name="{=str_tor_ror_dragon_knight_initiate}Blood Dragon Initiate" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level31" is_basic_troop="true">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_ror_dragon_knight" />
@@ -1557,7 +1569,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_knight" default_group="cavalry" level="36" name="{=str_tor_ror_dragon_knight}Blood Dragon Knight" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level36">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets>
       <upgrade_target id="NPCCharacter.tor_ror_dragon_templar" />
@@ -1569,7 +1581,7 @@
   </NPCCharacter>
   <NPCCharacter id="tor_ror_dragon_templar" default_group="cavalry" level="46" name="{=str_tor_ror_dragon_templar}Blood Dragon Templar" occupation="Soldier" culture="Culture.khuzait" skill_template="SkillSet.tow_skills_level46">
     <face>
-      <face_key_template value="BodyProperty.fighter_empire" />
+      <face_key_template value="BodyProperty.vampire" />
     </face>
     <upgrade_targets />
     <Equipments>

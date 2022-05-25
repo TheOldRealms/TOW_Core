@@ -43,7 +43,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                         FactionManager.DeclareWar(clan, faction, true);
                     }
                 }
-            }
+            }   
         }
 
         private void HourlyTickPartyAI(MobileParty party, PartyThinkParams partyThinkParams)

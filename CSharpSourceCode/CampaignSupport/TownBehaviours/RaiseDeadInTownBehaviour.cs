@@ -73,7 +73,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         {
             foreach(var hero in Hero.AllAliveHeroes)
             {
-                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsNoble || hero.IsWanderer))
+                if(hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsNoble || hero.IsWanderer) && hero != Hero.MainHero)
                 {
                     hero.AddAttribute("Necromancer");
                 }
@@ -82,12 +82,13 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void SettlementEntered(MobileParty party, Settlement settlement, Hero hero)
         {
-            if (party == null || settlement == null || hero == null || !hero.IsNecromancer() || hero.CharacterObject.IsPlayerCharacter) return;
+            if (party == null || settlement == null || hero == null || !hero.IsNecromancer() || hero.CharacterObject.IsPlayerCharacter || settlement.IsHideout) return;
             if (party.MemberRoster.TotalManCount < party.Party.PartySizeLimit)
             {
                 if (_skeleton != null)
                 {
-                    party.MemberRoster.AddToCounts(_skeleton, Math.Min(20, party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
+                    var number = settlement.IsVillage ? 5 : 20;
+                    party.MemberRoster.AddToCounts(_skeleton, Math.Min(number, party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
                 }
             }
         }
@@ -242,7 +243,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                         MobileParty.MainParty.MemberRoster.AddToCounts(_skeleton, 2 * raisePower);
                     }
                     var rng = MBRandom.RandomFloatRanged(0, 1);
-                    if(rng > 0.85f)
+                    if(rng > 0.95f && Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.OwnerClan != Clan.PlayerClan)
                     {
                         InterruptWait(args);
                     }

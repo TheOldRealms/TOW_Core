@@ -49,7 +49,9 @@ namespace TOW_Core.HarmonyPatches
                 //Ideally this should not be hardcoded. 
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_emp_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_vc_lord"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_wizard_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_bw_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_lw_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_cw_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_necromancer_lord"));
             }
             catch (Exception e)

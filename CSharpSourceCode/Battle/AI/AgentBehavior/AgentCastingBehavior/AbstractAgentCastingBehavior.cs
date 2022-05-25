@@ -97,9 +97,9 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         }
 
 
-        public Mat3 CalculateSpellRotation(Vec3 targetPosition)
+        public Mat3 CalculateSpellRotation(Vec3 targetPosition, Vec3 originaPosition)
         {
-            return Mat3.CreateMat3WithForward(targetPosition - Agent.Position);
+            return Mat3.CreateMat3WithForward(targetPosition - originaPosition);
         }
 
         public List<BehaviorOption> CalculateUtility()
@@ -119,7 +119,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected virtual float CalculateUtility(Target target)
         {
             var ability = Agent.GetAbility(AbilityIndex);
-            if (ability.IsOnCooldown() || !ability.CanCast(Agent))
+            if (ability.IsOnCooldown() || !ability.CanCast(Agent) || Agent.GetAbility(AbilityIndex).IsOnCooldown() || target.Formation == null)
             {
                 return 0.0f;
             }

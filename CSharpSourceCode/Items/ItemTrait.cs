@@ -21,6 +21,8 @@ namespace TOW_Core.Items
         public AmplifierTuple AmplifierTuple { get; set; }
         [XmlElement]
         public DamageProportionTuple AdditionalDamageTuple { get; set; }
+        [XmlElement]
+        public SkillTuple SkillTuple { get; set; }
         [XmlAttribute]
         public string OnHitScriptName { get; set; } = "none";
         [XmlAttribute]
@@ -38,5 +40,19 @@ namespace TOW_Core.Items
         public string ParticlePrefab { get; set; } = "invalid";
         [XmlAttribute]
         public bool IsUniqueSingleCopy { get; set; } = false;
+    }
+
+    [Serializable]
+    public class SkillTuple
+    {
+        [XmlAttribute]
+        public bool IsAbility { get; set; } = false;
+        [XmlAttribute]
+        public string SkillId { get; set; }
+        [XmlAttribute]
+        public float SkillExp { get; set; } = 0;
+        [XmlAttribute]
+        public float LearningTime { get; set; } = 1;
+        
     }
 }
