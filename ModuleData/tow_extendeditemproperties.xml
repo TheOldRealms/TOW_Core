@@ -2346,4 +2346,17 @@
     </ItemTraits>
     <Description>"The Asur are holding trading relations all over the world, from the Coast of Nordland, to the far Colonies of the Elves, at the peak of the southlands, from the Turtle islands to the shores of Cathay. Arabian Diamonds for Lothern Silk, Lustrian fruits for Yverrian marble. Ship routes convey goods, and those goods need protection. The Seaguard, elite marines of the High Elves, are well trained in versatile combat. They know to fight with spears against large monsters, and similarly take their bows for long distance fights against the Druchii. At Sea or land, there is a reason that these soldiers are the foundation of the military of the Asur."</Description>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_books_engineering_002">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Engineering Knowledge" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 engineering skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Engineering" SkillExp="5000" LearningTime="20" />
+      </ItemTrait>
+      <ItemTrait ItemTraitName="Trading Guide" IconName="xp_icon">
+        <ItemTraitDescription>This book provides 5000 trading skill experience points upon reading.</ItemTraitDescription>
+        <SkillTuple SkillId="Trade" SkillExp="5000" LearningTime="12" />
+      </ItemTrait>
+    </ItemTraits>
+    <Description>"There were countless disasters at the prototype stage and the whole project became known as the 'coffin filler' by the young apprentices attached to it in dread. Steam boilers such as they could construct couldn't be made small enough and retain the necessary power without becoming dangerously unstable, hull mounted ordinance proved just as likely to smash the machine to pieces when fired, and the whole thing had a tendency to fall apart when the smallest change in direction was attempted. It was then that one of the more unstable of the Gunnery School Engineers, a man named Hezekiah Guttmann (known less than affectionately as the 'burnt scarecrow' to his fellows), had an epiphany. If they could not construct a small, powerful boiler such as the Steam Tank had, why bother? Why not use a larger, cruder one instead and the machine could be scaled up accordingly, and conversely the cannon could be made smaller…"</Description>
+  </ExtendedItemObjectProperties>
 </ArrayOfExtendedItemObjectProperties>
