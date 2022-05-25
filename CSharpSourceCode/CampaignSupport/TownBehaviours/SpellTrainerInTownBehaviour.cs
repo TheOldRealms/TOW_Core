@@ -444,11 +444,8 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void determinetestoutcome()
         {
             var rng = MBRandom.RandomFloatRanged(0, 1);
-            if (rng <= 0.3f) _testResult = "success";
+            if (rng <= 0.25f) _testResult = "success";
             else _testResult = "failure";
-
-            //testing
-            _testResult = "success";
         }
 
         private bool spelltrainerstartcondition()
