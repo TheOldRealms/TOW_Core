@@ -57,9 +57,9 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void AddEngineerDialogLines(CampaignGameStarter obj)
         {
             //conversation start
-            obj.AddDialogLine("engineer_start0", "start", "rogueengineerquestcomplete", "Did you find Oswin?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && rogueengineerquestinprogress() || quest2failed(), null, 200, null);
-            obj.AddDialogLine("engineer_start1", "start", "questcheckrogueengineer", "Have you changed your mind and want to help hunt down Goswin?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && !engineerquestcompletecondition(), null, 200, null);
-            obj.AddDialogLine("engineer_start2", "start", "questcomplete", "Ah, you have returned. What news do you bring?", () => engineerdialogstartcondition() && _knowsPlayer && cultistquestinprogress() || quest1failed(), null, 200, null);
+            obj.AddDialogLine("engineer_start0", "start", "rogueengineerquestcomplete", "Did you find "+_rogueEngineerName+"?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && (rogueengineerquestinprogress() || quest2failed()), null, 200, null);
+            obj.AddDialogLine("engineer_start1", "start", "questcheckrogueengineer", "Have you changed your mind and want to help hunt down "+_rogueEngineerName+"?", () => engineerdialogstartcondition() && _knowsPlayer && CultistQuestIsDone() && !engineerquestcompletecondition(), null, 200, null);
+            obj.AddDialogLine("engineer_start2", "start", "questcomplete", "Ah, you have returned. What news do you bring?", () => engineerdialogstartcondition() && _knowsPlayer && (cultistquestinprogress() || quest1failed()), null, 200, null);
             obj.AddDialogLine("engineer_start3", "start", "close_window", "Come back to me when you have news.", () => engineerdialogstartcondition() && cultistquestinprogress() && _knowsPlayer, null, 200, null);
             obj.AddDialogLine("engineer_start4", "start", "hub", "You again, what do you want?", () => engineerdialogstartcondition() && _knowsPlayer && QuestLineDone(), null, 200, null);
             obj.AddDialogLine("engineer_start5", "start", "playergreet", "You have the look of someone who's never seen a spec of black powder nor grease. Are you in the right place?", engineerdialogstartcondition, knowledgeoverplayer, 200, null);
@@ -93,7 +93,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             obj.AddDialogLine("engineerdeclinequest", "engineerdeclinequest", "close_window", "A shame, think on it and return if you change your mind.", null, null, 200, null);
 
             //quests failed -both
-            obj.AddPlayerLine("engineer_questcomplete1", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.", () => (quest1failed() || quest2failed()), null, 200, null);
+            obj.AddPlayerLine("engineer_questcomplete1", "questcomplete", "engineerquestfailed", "I am afraid I have failed to bring what you ask.", () =>engineerdialogstartcondition()&& (quest1failed() || quest2failed()), null, 200, null);
             obj.AddDialogLine("engineer_questfailed", "engineerquestfailed", "playerfailedquest", "Tsk, I expected better. There may still be time, you can still track them if you are swift", () => quest1failed() || quest2failed(), null, 200, null);
             obj.AddPlayerLine("playerfailedquest1", "playerfailedquest", "engineeracceptquest", "I won't let you down a second time.", quest1failed, QuestBeginCultist, 200, null);
             obj.AddPlayerLine("playerfailedquest2", "playerfailedquest", "engineeracceptquest", "I won't let you down a second time.", quest2failed, QuestBeginRogueEngineer, 200, null);
@@ -103,7 +103,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             //done
             obj.AddPlayerLine("engineer_questcomplete2", "questcomplete", "cultistengineerdebrief", "I have returned but without the stolen components, I am afraid to say they are still missing.", () => engineerdialogstartcondition() && cultisthuntcompletecondition() && !CultistQuestIsDone(), handing_in_cultist_quest, 200, null);
             obj.AddDialogLine("cultistengineerdebrief", "cultistengineerdebrief", "cultistengineerdebrief2", "I see, this is not what I had hoped for. Were there any further clues, did you interrogate these scoundrels? ", null, null, 200, null);
-            obj.AddPlayerLine("cultistengineerdebrief2", "cultistengineerdebrief2", "cultistengineerdebrief3", "One of the bandits did mention a name, Goswin I think?", null, null, 200, null);
+            obj.AddPlayerLine("cultistengineerdebrief2", "cultistengineerdebrief2", "cultistengineerdebrief3", "One of the bandits did mention a name, "+_rogueEngineerName+" I think?", null, null, 200, null);
             obj.AddDialogLine("cultistengineerdebrief3", "cultistengineerdebrief3", "questrogueengineer", "Blast! I should have known. If you are willing, I would ask for your assistance once more. This matter may be more dire than I originally imagined. Goswin is an Engineer, a good one at that, but his works always seemed...wrong. ", null, null, 200, null);
             obj.AddDialogLine("questrogueengineer", "questrogueengineer", "questcheckrogueengineer", "If he has stolen these parts, it can only be for something heinous. I must ask that you track him down, and put an end to whatever madness he is trying to concoct. Will you do this?", null, null, 200, null);
             // in progress
@@ -112,7 +112,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
             //GOSWIN quest
             //done
-            obj.AddPlayerLine("rogueengineerquestcomplete", "rogueengineerquestcomplete", "engineerquestdebrief", "Oswin will no longer be a problem and I have retrieved what he stole from you. I’m unsure what he was trying to do with them. ", () => engineerdialogstartcondition() && engineerquestcompletecondition(), null, 200, null);
+            obj.AddPlayerLine("rogueengineerquestcomplete", "rogueengineerquestcomplete", "engineerquestdebrief", _rogueEngineerName+" will no longer be a problem and I have retrieved what he stole from you. I’m unsure what he was trying to do with them. ", () => engineerdialogstartcondition() && engineerquestcompletecondition(), null, 200, null);
             obj.AddDialogLine("engineerquestdebrief", "engineerquestdebrief", "hubaftermission", "It matters not, it would have been something warped no doubt. I must thank you for your efforts, and your discretion. As agreed upon, you may now access our foundries and purchase from us as you please. ", null, handing_in_rogueengineer_quest, 200, null);
             obj.AddDialogLine("hubaftermission", "hubaftermission", "hub", "Now, how can I help?", null, null, 200);
             //in progress
@@ -150,7 +150,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void AddCultistDialogLines(CampaignGameStarter obj)
         {
-            obj.AddDialogLine("engineerquestcultist_start", "start", "cultist_answerplayer", "Goswin was right, they sent someone after us! Grab your weapons quickly!", cultiststartcondition, null, 200);
+            obj.AddDialogLine("engineerquestcultist_start", "start", "cultist_answerplayer", _rogueEngineerName+" was right, they sent someone after us! Grab your weapons quickly!", cultiststartcondition, null, 200);
             obj.AddPlayerLine("cultist_answerplayer", "cultist_answerplayer", "cultist_answer", "Woah hold there, I have merely come for the stolen parts, there is no need to shed blood here. Perhaps an arrangement can be made?", null, null, 200);
             obj.AddPlayerLine("cultist_answerplayer", "cultist_answerplayer", "cultist_answer", "Lay down your weapons and I may spare your lives.", null, null, 200);
             obj.AddPlayerLine("cultist_answerplayer", "cultist_answerplayer", "close_window", "Weapons or no, we will slay you all and take back what you stole!", null, null, 200);
@@ -302,14 +302,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 400,
                 350,
                 "Runaway Parts",
-                "Goswin",
+                _rogueEngineerName,
                 "tor_engineerquesthero",
-                "Goswin",
+                _rogueEngineerName,
                 "null",
                 "empire_deserter_clan_1",
                 "mountain_bandits",
                 "It would appear a traitorous Engineer has the stolen parts, the Master Engineer has asked for my help in finding him.",
-                "Track down Goswin and retrieve the stolen components.",
+                "Track down+"+_rogueEngineerName+" and retrieve the stolen components.",
                 "I have slain "+_rogueEngineerName +" and retrieved the stolen components, I should return to the Master Engineer and let him know.",
                 "Return to the Master Engineer",
                 "You have no idea what you are interfering with...");

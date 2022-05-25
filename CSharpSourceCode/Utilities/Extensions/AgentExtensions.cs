@@ -360,13 +360,15 @@ namespace TOW_Core.Utilities.Extensions
             var character = agent.Character;
             if (hero != null)
             {
-                return hero.GetExtendedInfo().AllAttributes;
+                if(hero.GetExtendedInfo()!=null)    //TODO this shouldn't be null at all points, however had to fix cause of respawn hack for quest parties
+                    return hero.GetExtendedInfo().AllAttributes;
             }
             else if (character != null)
             {
                 return agent.Character.GetAttributes();
             }
-            else return new List<string>();
+            
+            return new List<string>();
         }
 
         /// <summary>
