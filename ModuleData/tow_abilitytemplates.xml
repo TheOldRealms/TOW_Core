@@ -965,7 +965,7 @@
 <!-- Lore of Light -->
   <AbilityTemplate StringID="ShemGaze" 
       Name="Shem's Burning Gaze" 
-      SpriteName="placeholder_icon" 
+      SpriteName="shemsburninggaze_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1006,7 +1006,7 @@
 
   <AbilityTemplate StringID="StoneAssault" 
       Name="Assault of Stone" 
-      SpriteName="placeholder_icon" 
+      SpriteName="assaultofstone_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1047,7 +1047,7 @@
 
   <AbilityTemplate StringID="HealingLight"
       Name="Healing Light"
-      SpriteName="healingprayer_icon"
+      SpriteName="healinglight_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1090,7 +1090,7 @@
 
   <AbilityTemplate StringID="PhaProtection"
       Name="Pha's Protection"
-      SpriteName="placeholder_icon"
+      SpriteName="phasprotection_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1133,7 +1133,7 @@
 
   <AbilityTemplate StringID="DeathlyShards" 
       Name="Deathly Shards" 
-      SpriteName="placeholder_icon" 
+      SpriteName="deadlyshards_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.05" 
@@ -1174,7 +1174,7 @@
 
   <AbilityTemplate StringID="RadiancePillar" 
       Name="Pillar of Radiance" 
-      SpriteName="placeholder_icon" 
+      SpriteName="pillarofradiance_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.5" 
@@ -1218,7 +1218,7 @@
 
   <AbilityTemplate StringID="RadiantGaze" 
       Name="Radiant Gaze" 
-      SpriteName="placeholder_icon" 
+      SpriteName="radiantgaze_icon" 
       CoolDown="40" 
       WindsOfMagicCost="25" 
       BaseMisCastChance="0.05" 
