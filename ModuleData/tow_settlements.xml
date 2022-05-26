@@ -1156,7 +1156,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI5" name="{=Settlements.Settlement.name.town_WI5}Geschburg" owner="Faction.wissenland_clan_1" posX="1361.619" posY="829.217" culture="Culture.empire" prosperity="4000" gate_posX="1360.328" gate_posY="829.482" text="{=!}Geschburg is a small town on the banks of the River Soll. The Toppenheimer family maintains a garrison here, as its central location in Wissenland and the presence of the ferry across the Soll makes it an important site to hold in the region. Nearby lies the site of Old Solland’s defeat, for it was in the hills east of Geschburg that eight hundred years ago an invading Orc Warboss put the Elector-Count of Solland and most of his immediate family to the sword.">
+  <Settlement id="town_WI5" name="{=Settlements.Settlement.name.town_WI5}Geschburg" owner="Faction.wissenland_clan_2" posX="1361.619" posY="829.217" culture="Culture.empire" prosperity="4000" gate_posX="1360.328" gate_posY="829.482" text="{=!}Geschburg is a small town on the banks of the River Soll. The Toppenheimer family maintains a garrison here, as its central location in Wissenland and the presence of the ferry across the Soll makes it an important site to hold in the region. Nearby lies the site of Old Solland’s defeat, for it was in the hills east of Geschburg that eight hundred years ago an invading Orc Warboss put the Elector-Count of Solland and most of his immediate family to the sword.">
     <Components>
       <Town id="town_comp_WI5" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1176,7 +1176,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="town_WI6" name="{=Settlements.Settlement.name.town_WI6}Erbshauen" owner="Faction.wissenland_clan_1" posX="1433.198" posY="829.924" culture="Culture.empire" prosperity="4000" gate_posX="1434.364" gate_posY="830.4699" text="{=!}The small town of Erbshauen was established by Wissenlanders after the fall of Old Solland, or Sudenland as the people of Erbshauen call it. The lands outside the town are tilled for crops and are irrigated by the River Oggel. While not in the Oggelland, Erbshauen participates in fairly extensive trade with the communities there.">
+  <Settlement id="town_WI6" name="{=Settlements.Settlement.name.town_WI6}Erbshauen" owner="Faction.wissenland_clan_2" posX="1433.198" posY="829.924" culture="Culture.empire" prosperity="4000" gate_posX="1434.364" gate_posY="830.4699" text="{=!}The small town of Erbshauen was established by Wissenlanders after the fall of Old Solland, or Sudenland as the people of Erbshauen call it. The lands outside the town are tilled for crops and are irrigated by the River Oggel. While not in the Oggelland, Erbshauen participates in fairly extensive trade with the communities there.">
     <Components>
       <Town id="town_comp_WI6" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1196,7 +1196,7 @@
       <Area type="Waterfront" name="{=Rr1cy5Sk}Waterfront" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_WI1" name="{=Settlements.Settlement.name.castle_WI1}Wusterburg" owner="Faction.wissenland_clan_1" posX="1372.31" posY="775.865" prosperity="800" culture="Culture.empire" gate_posX="1373.623" gate_posY="775.9476" text="Within sight of the Black Mountains, where the waters of the Soll, Sonne, Aulen and Hornberg meet, is the town of Wusterburg. Wursterburg caters to the many Black Dwarfs from Karak Hirn that pass through, on their way to Nuln and further. Wursterburg actually possesses a rather large community of Black and Imperial Dwarfs, This may be in part due to the site of the famous Bugman’s Brewery which sits just outside of Wusterburg. While this famous beer company was destroyed by a goblin horde, its memory goes on in the minds of those who can remember its taste. Wursterburg mourns this disgrace to the art of Brewery, yet the town remains important as a centre of trade and as one of the only ferries across the River Soll. Baron Manfred von Eigenhof is the ruler of Wusterburg, and is known to be decently wealthy by nobleman’s standards thanks to the flow of trade.">
+  <Settlement id="castle_WI1" name="{=Settlements.Settlement.name.castle_WI1}Wusterburg" owner="Faction.wissenland_clan_3" posX="1372.31" posY="775.865" prosperity="800" culture="Culture.empire" gate_posX="1373.623" gate_posY="775.9476" text="Within sight of the Black Mountains, where the waters of the Soll, Sonne, Aulen and Hornberg meet, is the town of Wusterburg. Wursterburg caters to the many Black Dwarfs from Karak Hirn that pass through, on their way to Nuln and further. Wursterburg actually possesses a rather large community of Black and Imperial Dwarfs, This may be in part due to the site of the famous Bugman’s Brewery which sits just outside of Wusterburg. While this famous beer company was destroyed by a goblin horde, its memory goes on in the minds of those who can remember its taste. Wursterburg mourns this disgrace to the art of Brewery, yet the town remains important as a centre of trade and as one of the only ferries across the River Soll. Baron Manfred von Eigenhof is the ruler of Wusterburg, and is known to be decently wealthy by nobleman’s standards thanks to the flow of trade.">
     <Components>
       <Town id="castle_comp_WI1" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1206,7 +1206,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI2" name="{=Settlements.Settlement.name.castle_WI2}Nehren" owner="Faction.wissenland_clan_1" posX="1318.63" posY="799.401" prosperity="800" culture="Culture.empire" gate_posX="1317.519" gate_posY="799.7532" text="Nehren is a small fort established to guard the upper River Soll and the fertile pasture lands near the Wild Pass leading into the forest of Athel Loren.">
+  <Settlement id="castle_WI2" name="{=Settlements.Settlement.name.castle_WI2}Nehren" owner="Faction.wissenland_clan_3" posX="1318.63" posY="799.401" prosperity="800" culture="Culture.empire" gate_posX="1317.519" gate_posY="799.7532" text="Nehren is a small fort established to guard the upper River Soll and the fertile pasture lands near the Wild Pass leading into the forest of Athel Loren.">
     <Components>
       <Town id="castle_comp_WI2" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1216,7 +1216,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI3" name="{=Settlements.Settlement.name.castle_WI3}Sonnefurt" owner="Faction.wissenland_clan_1" posX="1360.027" posY="750.485" prosperity="800" culture="Culture.empire" gate_posX="1360.12" gate_posY="749.2765" text="Sonnefurt lies at the point where the River Sonne meets the River Soll. The castle here was built at some point after Magnus the Pious attempted to restore Old Solland, since then it has served as an invaluable defensive point to guard against Greenskins entering the Empire from the Icy Wind or Winter’s Teeth Passes.">
+  <Settlement id="castle_WI3" name="{=Settlements.Settlement.name.castle_WI3}Sonnefurt" owner="Faction.wissenland_clan_3" posX="1360.027" posY="750.485" prosperity="800" culture="Culture.empire" gate_posX="1360.12" gate_posY="749.2765" text="Sonnefurt lies at the point where the River Sonne meets the River Soll. The castle here was built at some point after Magnus the Pious attempted to restore Old Solland, since then it has served as an invaluable defensive point to guard against Greenskins entering the Empire from the Icy Wind or Winter’s Teeth Passes.">
     <Components>
       <Town id="castle_comp_WI3" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1226,7 +1226,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI4" name="{=Settlements.Settlement.name.castle_WI4}Mendelhof" owner="Faction.wissenland_clan_1" posX="1452.673" posY="820.927" prosperity="800" culture="Culture.empire" gate_posX="1451.364" gate_posY="820.7916" text="Mendelhof used to be a small Sollander village in the Oggelland, today a fort stands in place of the former settlement. Built on the east shores of the River Oggel, the fort was constructed in order to watch over the Oggelland Pass as well as the disputed land between Wissenland and Averland, which lies between the Oggel and the upper River Reik.">
+  <Settlement id="castle_WI4" name="{=Settlements.Settlement.name.castle_WI4}Mendelhof" owner="Faction.wissenland_clan_3" posX="1452.673" posY="820.927" prosperity="800" culture="Culture.empire" gate_posX="1451.364" gate_posY="820.7916" text="Mendelhof used to be a small Sollander village in the Oggelland, today a fort stands in place of the former settlement. Built on the east shores of the River Oggel, the fort was constructed in order to watch over the Oggelland Pass as well as the disputed land between Wissenland and Averland, which lies between the Oggel and the upper River Reik.">
     <Components>
       <Town id="castle_comp_WI4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
@@ -1236,7 +1236,7 @@
       <Location id="prison" scene_name="empire_dungeon_a" />
     </Locations>
   </Settlement>
-  <Settlement id="castle_WI5" name="{=Settlements.Settlement.name.castle_WI5}Kolbhugel" owner="Faction.wissenland_clan_1" posX="1398.247" posY="794.033" prosperity="800" culture="Culture.empire" gate_posX="1398.556" gate_posY="792.7538" text="Kolbhugel was established a stopover between Wusterburg and Waldbach, eventually a former Elector-Count of Wissenland saw fit to establish a permanent garrison here, both to help combat highwaymen and to use the site to send reinforcements to either Mendelhof to Sonnefurt should they require assistance.">
+  <Settlement id="castle_WI5" name="{=Settlements.Settlement.name.castle_WI5}Kolbhugel" owner="Faction.wissenland_clan_3" posX="1398.247" posY="794.033" prosperity="800" culture="Culture.empire" gate_posX="1398.556" gate_posY="792.7538" text="Kolbhugel was established a stopover between Wusterburg and Waldbach, eventually a former Elector-Count of Wissenland saw fit to establish a permanent garrison here, both to help combat highwaymen and to use the site to send reinforcements to either Mendelhof to Sonnefurt should they require assistance.">
     <Components>
       <Town id="castle_comp_WI5" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" />
     </Components>
