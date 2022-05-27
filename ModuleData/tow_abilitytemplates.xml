@@ -606,7 +606,7 @@
 
   <AbilityTemplate StringID="FlameStorm" 
       Name="Fire Tornado" 
-      SpriteName="swordsofrhuin_icon" 
+      SpriteName="flamingstorm_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.3" 
