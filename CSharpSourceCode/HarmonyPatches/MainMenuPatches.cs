@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TOW_Core.CampaignSupport;
@@ -65,7 +66,7 @@ namespace TOW_Core.HarmonyPatches
 
         private static void OnCLick()
         {
-            MBGameManager.StartNewGame(new TowCampaignGameManager());
+            MBGameManager.StartNewGame(new TORCampaignGameManager());
         }
 
         private static (bool, TextObject) IsDisabledAndReason()

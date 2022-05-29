@@ -1,0 +1,489 @@
+<prefabs>
+	<game_entity name="fireball_prefab" old_prefab_name="" mobility="1" season_mask="255">
+		<flags>
+			<flag name="record_to_scene_replay" value="true"/>
+		</flags>
+		<components>
+			<particle_system_instanced_component _index_="1">
+				<effect base_effect="{BA0CCB36-D63D-4F33-8770-044F88A0E347}">
+					<emitter_overrides>
+						<emitter guid="{6B81BDF2-D77B-4C50-85ED-107627C748E5}">
+							<flags>
+								<flag name="emit_while_moving" value="true"/>
+								<flag name="dont_emit_while_moving" value="false"/>
+								<flag name="scale_with_respect_to_particle_velocity" value="true"/>
+							</flags>
+							<parameters>
+								<parameter name="scale_with_emitter_velocity_coef" value="-1.000"/>
+								<parameter name="emit_sphere_radius" value="0.200"/>
+								<parameter name="emit_volume_type" value="sphere"/>
+								<parameter name="emission_rate" base="25.000" bias="5.000"/>
+								<parameter name="emit_rotation_speed" base="0.000" bias="180.000"/>
+								<parameter name="particle_size" base="3.000" bias="2.000">
+									<curve name="particle_life" version="1" default="1.000" curve_multiplier="1.000">
+										<keys>
+											<key time="0.000" value="1.000" tangent="0.014, 0.000"/>
+											<key time="0.069" value="1.000" tangent="-0.062, 0.000"/>
+											<key time="0.069" value="1.000" tangent="0.062, 0.000"/>
+											<key time="0.552" value="0.171" tangent="-0.216, 0.090"/>
+											<key time="0.552" value="0.171" tangent="0.216, -0.090"/>
+											<key time="1.000" value="0.126" tangent="-0.200, 0.000"/>
+										</keys>
+									</curve>
+								</parameter>
+							</parameters>
+						</emitter>
+						<emitter guid="{A23CA26F-9B9A-40E0-A960-76EF10BCBF35}">
+							<parameters>
+								<parameter name="emission_rate" base="0.000" bias="0.000"/>
+							</parameters>
+						</emitter>
+						<emitter guid="{8F9992C4-2377-4E4D-A6C9-88683388F025}">
+							<parameters>
+								<parameter name="emission_rate" base="0.000" bias="0.000"/>
+							</parameters>
+						</emitter>
+					</emitter_overrides>
+				</effect>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="wind_of_death_vfx" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect base_effect="{1E1495D4-BC75-47F7-BB81-56C4BEAD3E4A}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="dart_particle" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{6F715D82-A1A7-408C-A439-73C106A1CA22}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="burning_skull" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<meta_mesh_component name="spellskull" position="0.000, 0.000, 3.000" rotation="0.000, 0.000, 0.000" scale="1.200, 1.200, 1.200"/>
+			<particle_system_instanced_component _index_="1">
+				<effect_ref base_effect="{6CB55903-EC6D-4033-B048-E2E88EB55DA4}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="screaming_skull_vfx" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<meta_mesh_component name="spellskull" position="0.000, 0.000, 2.000" rotation="0.000, 0.000, 0.000" scale="1.000, 1.000, 1.000">
+				<mesh name="spellskull" factor="4278517505"/>
+			</meta_mesh_component>
+			<particle_system_instanced_component _index_="1">
+				<effect_ref base_effect="{A30EDB15-71A5-43F6-A8C5-23EFAAE31176}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="healing_circle" old_prefab_name="">
+		<flags>
+			<flag name="align_to_terrain" value="true"/>
+			<flag name="align_rotation_to_terrain" value="true"/>
+		</flags>
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{BAE4E95F-9112-469C-8A16-98D1999415F4}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="bats_vfx" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{6C8CE917-7A9F-42DF-AA3E-1D101F75EE75}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="tornado" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{5ADDA246-B9A1-420C-A201-083B73F3EDAD}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="foetid_cloud" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{29BD5545-3942-4FB9-8AD0-7A84CB2D8EB7}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="dust_storm" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{5ADDA246-B9A1-420C-A201-083B73F3EDAD}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="lightning_bolt" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{F5684B5D-109D-4AC3-8FBD-CDE953884D4C}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="comet_of_casandora" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<meta_mesh_component name="casandora_comet" position="0.000, 0.000, 0.400" rotation="0.000, 0.000, 0.000" scale="0.300, 0.300, 0.500">
+				<mesh name="casandora_comet" argument="1.000, 0.300, 1.000, 10.000"/>
+			</meta_mesh_component>
+			<particle_system_instanced_component _index_="1">
+				<effect_ref base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="thunderbolt" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{1010B168-F0DD-4F9F-91C0-F81BB93A9085}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="sear" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{9D564B33-AABA-4CCC-B3D7-56AD2ACC1723}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="ball_lightning" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{A28F2228-CFF3-4AF0-9E33-C4D3A982A229}"/>
+			</particle_system_instanced_component>
+			<decal_component material="circle_decal_mat" _index_="1"/>
+		</components>
+		<children>
+			<game_entity name="empty_object" old_prefab_name="">
+				<transform position="0.022, -0.018, 1.207"/>
+				<components>
+					<light_component color="0.761, 0.988, 1.000" intensity="200.000" radius="50.000" flicker_interval="1.000" flicker_magnitude="5.000" local_frame_rot="50.000000, 0.000000, 0.000000, 0.000000, 50.000000, 0.000000, 0.000000, 0.000000, 50.000000" hotspot_angle="30.000" falloff_angle="45.000" mobility="1" shadow_size_multiplier="1" shadow_radius="40.000"/>
+				</components>
+			</game_entity>
+		</children>
+	</game_entity>
+	<game_entity name="bolt_of_aqshy" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="cinder_blast" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{8F77344D-606E-4784-891E-F2804E9A2FE4}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="flamestorm" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{126C09F8-588F-4984-B763-F9D3A163A809}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="iceshard_blizzard" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{D486C5F1-55C4-4EE4-B680-8B98F8DD393D}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="wind_blast" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{0B51C811-5D86-4869-93CE-D80E92DF0791}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="shem_gaze" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}">
+					<emitter_overrides>
+						<emitter guid="{B71C27BF-8D6A-4363-A3B0-B5C4031F2EBF}">
+							<parameters>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.000" value="1.000, 1.000, 1.000"/>
+											<key time="0.173" value="0.694, 0.941, 1.000"/>
+											<key time="0.692" value="0.379, 0.991, 1.000"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.000" value="0.000"/>
+											<key time="0.531" value="1.000"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+						<emitter guid="{FF917314-9B09-42E1-A626-6AA3B88B6A5E}">
+							<parameters>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.005" value="1.000, 1.000, 1.000"/>
+											<key time="0.155" value="0.379, 0.991, 1.000"/>
+											<key time="1.000" value="0.000, 0.040, 1.000"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.003" value="0.000"/>
+											<key time="0.063" value="1.000"/>
+											<key time="0.805" value="0.855"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+					</emitter_overrides>
+				</effect>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="nagash_gaze" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}">
+					<emitter_overrides>
+						<emitter guid="{B71C27BF-8D6A-4363-A3B0-B5C4031F2EBF}">
+							<parameters>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.000" value="1.000, 0.000, 0.899"/>
+											<key time="0.173" value="0.133, 0.000, 1.000"/>
+											<key time="0.692" value="0.040, 0.000, 1.000"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.000" value="0.000"/>
+											<key time="0.531" value="1.000"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+						<emitter guid="{FF917314-9B09-42E1-A626-6AA3B88B6A5E}">
+							<parameters>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.005" value="0.867, 0.000, 1.000"/>
+											<key time="0.155" value="0.080, 0.000, 1.000"/>
+											<key time="1.000" value="0.000, 0.040, 1.000"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.003" value="0.000"/>
+											<key time="0.063" value="1.000"/>
+											<key time="0.805" value="0.855"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+					</emitter_overrides>
+				</effect>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="stone_assault" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{8E572796-1554-41BD-8348-C7031383F955}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="deathly_shards" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{19E48096-D09D-43CE-AB04-F215846F983E}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="radiance_pillar" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{78216AB0-192D-4A06-AFC3-63CF43574154}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="radiant_gaze" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{9FF14D4D-DF74-4102-BEC4-24C5F417C618}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="shadowblood" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{F7897EE9-B3E5-48F0-A013-51DB9612711D}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="withering_wave" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{4CE3646F-5153-4FA9-8AC6-C43FC0FAEF47}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="raise_dead" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{64C46A6C-9303-4503-B14D-D15DA5D9F14A}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="chillwind" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{7AF9F137-264C-4269-953F-CC5DA338628B}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="black_horror" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{661AB8D2-6316-497D-9992-28E6511D8FFB}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="doombolt" old_prefab_name="" mobility="1">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect base_effect="{81EEC005-4E3B-446B-809A-BEDFD58998F1}">
+					<emitter_overrides>
+						<emitter guid="{B71C27BF-8D6A-4363-A3B0-B5C4031F2EBF}">
+							<flags>
+								<flag name="loop_sprite" value="true"/>
+								<flag name="uses_sprite_animation" value="true"/>
+								<flag name="spherical_normals" value="true"/>
+								<flag name="order_by_distance" value="true"/>
+							</flags>
+							<parameters>
+								<parameter name="texture_sprite_count" value="8, 8"/>
+								<parameter name="texture_sprite_frame_count" value="64"/>
+								<parameter name="texture_sprite_frame_rate" value="32.000"/>
+								<parameter name="particle_size" base="0.500" bias="0.000">
+									<curve name="particle_life" version="1" default="1.000" curve_multiplier="1.000">
+										<keys>
+											<key time="0.000" value="0.729" tangent="0.215, -0.610"/>
+											<key time="1.000" value="0.211" tangent="-0.645, 0.000"/>
+										</keys>
+									</curve>
+								</parameter>
+								<parameter name="material_guid" value="{CF0A316F-5051-4EBF-9BA3-D65567CEC076}"/>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.000" value="0.000, 0.000, 0.000"/>
+											<key time="0.173" value="0.000, 0.000, 0.000"/>
+											<key time="0.692" value="0.000, 0.000, 0.000"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.000" value="0.000"/>
+											<key time="0.531" value="1.000"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+						<emitter guid="{FF917314-9B09-42E1-A626-6AA3B88B6A5E}">
+							<flags>
+								<flag name="loop_sprite" value="true"/>
+								<flag name="order_by_distance" value="true"/>
+							</flags>
+							<parameters>
+								<parameter name="skew_with_particle_velocity_coef" value="1.000"/>
+								<parameter name="skew_with_particle_velocity_limit" value="0.500"/>
+								<parameter name="texture_sprite_count" value="8, 8"/>
+								<parameter name="texture_sprite_frame_count" value="64"/>
+								<parameter name="texture_sprite_frame_rate" value="48.000"/>
+								<parameter name="diffuse_multiplier" value="5.000"/>
+								<parameter name="material_guid" value="{CF0A316F-5051-4EBF-9BA3-D65567CEC076}"/>
+								<parameter name="particle_color">
+									<color>
+										<keys>
+											<key time="0.005" value="0.000, 0.000, 0.000"/>
+											<key time="0.524" value="0.212, 0.021, 0.021"/>
+											<key time="1.000" value="0.448, 0.359, 0.049"/>
+										</keys>
+									</color>
+									<alpha>
+										<keys>
+											<key time="0.003" value="0.000"/>
+											<key time="0.143" value="1.000"/>
+											<key time="0.805" value="0.855"/>
+											<key time="1.000" value="0.000"/>
+										</keys>
+									</alpha>
+								</parameter>
+							</parameters>
+						</emitter>
+					</emitter_overrides>
+				</effect>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+	<game_entity name="souldrain" old_prefab_name="">
+		<transform position="0.000, 0.000, 0.000" rotation_euler="0.000, 0.000, 0.000"/>
+		<components>
+			<particle_system_instanced_component>
+				<effect_ref base_effect="{E187EE03-D466-4DD4-9A21-555B67269F5C}"/>
+			</particle_system_instanced_component>
+		</components>
+	</game_entity>
+</prefabs>
+

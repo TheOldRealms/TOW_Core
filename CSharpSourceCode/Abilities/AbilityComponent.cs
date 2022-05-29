@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Abilities.Scripts;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -11,25 +14,6 @@ namespace TOW_Core.Abilities
 {
     public class AbilityComponent : AgentComponent
     {
-        private bool isAbilityModeOn;
-        private Ability _currentAbility = null;
-        private readonly List<Ability> _knownAbilities = new List<Ability>();
-        private int _currentAbilityIndex;
-
-        public bool IsAbilityModeOn { get => isAbilityModeOn; private set => isAbilityModeOn = value; }
-        public Ability CurrentAbility
-        {
-            get => _currentAbility;
-            set
-            {
-                _currentAbility = value;
-                CurrentAbilityChanged?.Invoke(_currentAbility.Crosshair);
-            }
-        }
-        public List<Ability> KnownAbilities { get => _knownAbilities; }
-        public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
-        public event CurrentAbilityChangedHandler CurrentAbilityChanged;
-
         public AbilityComponent(Agent agent) : base(agent)
         {
             var abilities = agent.GetAbilities();
@@ -42,7 +26,16 @@ namespace TOW_Core.Abilities
                         var ability = AbilityFactory.CreateNew(item, agent);
                         if (ability != null)
                         {
-                            _knownAbilities.Add(ability);
+                            ability.OnCastStart += OnCastStart;
+                            ability.OnCastComplete += OnCastComplete;
+                            if (ability is SpecialMove)
+                            {
+                                _specialMove = (SpecialMove)ability;
+                            }
+                            else
+                            {
+                                if(ability.Template.AbilityType != AbilityType.ItemBound) _knownAbilities.Add(ability);
+                            }
                         }
                         else
                         {
@@ -54,12 +47,82 @@ namespace TOW_Core.Abilities
                         TOWCommon.Log("Failed instantiating ability class: " + item, LogLevel.Error);
                     }
                 }
-
-                if (_knownAbilities.Count > 0)
+                if (Agent.IsVampire() && _specialMove == null) _specialMove = (SpecialMove)AbilityFactory.CreateNew("ShadowStep", Agent);
+            }
+            if (Agent.CanPlaceArtillery())
+            {
+                if(Agent.GetHero() != null)
                 {
-                    SelectAbility(0);
+                    var artilleryRoster = agent.GetHero().PartyBelongedTo.GetArtilleryItems();
+                    if (artilleryRoster.Count > 0)
+                    {
+                        for (int i = 0; i < artilleryRoster.Count; i++)
+                        {
+                            var artillery = artilleryRoster[i];
+                            var ability = (ItemBoundAbility)AbilityFactory.CreateNew(artillery.EquipmentElement.Item.PrefabName, agent);
+                            if (ability != null)
+                            {
+                                ability.OnCastStart += OnCastStart;
+                                ability.OnCastComplete += OnCastComplete;
+                                ability.SetChargeNum(artillery.Amount);
+                                _knownAbilities.Add(ability);
+                            }
+                        }
+                    }
+                }
+                else if(Game.Current.GameType is CustomGame)
+                {
+                    var ability1 = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
+                    if (ability1 != null)
+                    {
+                        ability1.OnCastStart += OnCastStart;
+                        ability1.OnCastComplete += OnCastComplete;
+                        ability1.SetChargeNum(2);
+                        _knownAbilities.Add(ability1);
+                    }
+
+                    var ability2 = (ItemBoundAbility)AbilityFactory.CreateNew("MortarSpawner", agent);
+                    if (ability2 != null)
+                    {
+                        ability2.OnCastStart += OnCastStart;
+                        ability2.OnCastComplete += OnCastComplete;
+                        ability2.SetChargeNum(2);
+                        _knownAbilities.Add(ability2);
+                    }
                 }
             }
+            if (_knownAbilities.Count > 0)
+            {
+                SelectAbility(0);
+            }
+        }
+
+        private void OnCastStart(Ability ability)
+        {
+            var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+            if (manager != null)
+            {
+                manager.OnCastStart(ability, Agent);
+            }
+        }
+
+        private void OnCastComplete(Ability ability)
+        {
+            var manager = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+            if (manager != null)
+            {
+                manager.OnCastComplete(ability, Agent);
+            }
+        }
+
+        public void InitializeCrosshairs()
+        {
+            foreach (var ability in KnownAbilities)
+            {
+                AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template);
+                ability.SetCrosshair(crosshair);
+            }
+            SelectAbility(0);
         }
 
         public void SelectAbility(int index)
@@ -96,19 +159,9 @@ namespace TOW_Core.Abilities
             SelectAbility(_currentAbilityIndex);
         }
 
-        public Ability[] GetAbilities()
+        public void StopSpecialMove()
         {
-            return _knownAbilities.ToArray();
-        }
-
-        public void EnableAbilityMode()
-        {
-            isAbilityModeOn = true;
-        }
-
-        public void DisableAbilityMode()
-        {
-            isAbilityModeOn = false;
+            ((ShadowStepScript)SpecialMove.AbilityScript)?.Stop();
         }
 
         public List<AbilityTemplate> GetKnownAbilityTemplates()
@@ -125,5 +178,32 @@ namespace TOW_Core.Abilities
 
             return null;
         }
+
+        public override void OnTickAsAI(float dt)
+        {
+            base.OnTickAsAI(dt);
+            foreach(var ability in _knownAbilities)
+            {
+                if (ability.IsActivationPending) ability.ActivateAbility(Agent);
+            }
+        }
+
+        private Ability _currentAbility = null;
+        private SpecialMove _specialMove = null;
+        private readonly List<Ability> _knownAbilities = new List<Ability>();
+        private int _currentAbilityIndex;
+        public Ability CurrentAbility
+        {
+            get => _currentAbility;
+            set
+            {
+                _currentAbility = value;
+                CurrentAbilityChanged?.Invoke(_currentAbility.Crosshair);
+            }
+        }
+        public SpecialMove SpecialMove { get => _specialMove; private set => _specialMove = value; }
+        public List<Ability> KnownAbilities { get => _knownAbilities; }
+        public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
+        public event CurrentAbilityChangedHandler CurrentAbilityChanged;
     }
 }

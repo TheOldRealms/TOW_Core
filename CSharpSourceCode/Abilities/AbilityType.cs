@@ -1,38 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TOW_Core.Abilities
+﻿namespace TOW_Core.Abilities
 {
     public enum AbilityType
     {
         Innate,
         Spell,
         Prayer,
-        ItemBound
+        ItemBound,
+        SpecialMove
     }
 
     public enum AbilityEffectType
     {
-        MovingProjectile,
-        DynamicProjectile,
-        DirectionalMovingAOE, //i.e. wind
-        RandomMovingAOE, //i.e. vortex
-        CenteredStaticAOE,
-        TargetedStaticAOE,
-        TargetedStatic,
+        Missile,
+        SeekerMissile,
+        Wind,
+        Vortex,
+        Heal,
+        Augment,
+        Hex,
         Summoning,
-        AgentMoving
+        Bombardment,
+        Blast,
+        ArtilleryPlacement,
+        AgentMoving,
     }
 
     public enum AbilityTargetType
     {
         Self,
-        Enemies,
-        Allies,
-        All
+        SingleEnemy,
+        SingleAlly,
+        EnemiesInAOE,
+        AlliesInAOE,
+        WorldPosition,
+        GroundAtPosition
     }
 
     public enum CastType
@@ -49,6 +50,7 @@ namespace TOW_Core.Abilities
         TickOnce
     }
 
+    //This is for triggeredeffects.
     public enum TargetType
     {
         Friendly,

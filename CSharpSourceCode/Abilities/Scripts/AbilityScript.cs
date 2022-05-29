@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.Decision;
 using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Abilities.Scripts
 {
-    public abstract class AbilityScript : ScriptComponentBehaviour
+    public abstract class AbilityScript : ScriptComponentBehavior
     {
         protected Ability _ability;
-        private int _soundIndex;
+        private int _soundIndex = -1;
         private SoundEvent _sound;
         protected Agent _casterAgent;
         protected float _abilityLife = -1;
@@ -19,22 +22,35 @@ namespace TOW_Core.Abilities.Scripts
         private bool _hasCollided;
         private bool _hasTickedOnce;
         protected bool _hasTriggered;
-        private bool _soundStarted;
         protected Vec3 _previousFrameOrigin;
         private float _minArmingTimeForCollision = 0.1f;
         private bool _canCollide;
+        private SeekerController _controller;
+        private bool _soundStarted;
+        private Agent _targetAgent = null;
 
-        internal void SetAgent(Agent agent)
+        public void SetTargetSeeking(Target target, SeekerParameters parameters)
+        {
+            _controller = new SeekerController(target, parameters);
+        }
+        public virtual void SetAgent(Agent agent)
         {
             _casterAgent = agent;
+        }
+        public virtual void SetExplicitSingleTarget(Agent agent)
+        {
+            _targetAgent = agent;
         }
         protected override bool MovesEntity() => true;
         protected virtual bool ShouldMove()
         {
-            return _ability.Template.AbilityEffectType != AbilityEffectType.TargetedStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.CenteredStaticAOE &&
-                   _ability.Template.AbilityEffectType != AbilityEffectType.Summoning;
+            return _ability.Template.AbilityEffectType == AbilityEffectType.Missile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.SeekerMissile ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Vortex ||
+                   _ability.Template.AbilityEffectType == AbilityEffectType.Wind;
         }
+
+        private bool IsSingleTarget() => _ability.Template.AbilityTargetType == AbilityTargetType.SingleAlly || _ability.Template.AbilityTargetType == AbilityTargetType.SingleEnemy;
 
         protected override void OnInit()
         {
@@ -42,7 +58,7 @@ namespace TOW_Core.Abilities.Scripts
             SetScriptComponentToTick(GetTickRequirement());
         }
 
-        protected override TickRequirement GetTickRequirement()
+        public override TickRequirement GetTickRequirement()
         {
             return TickRequirement.Tick;
         }
@@ -50,7 +66,7 @@ namespace TOW_Core.Abilities.Scripts
         public virtual void Initialize(Ability ability)
         {
             _ability = ability;
-            if (_ability.Template.SoundEffectToPlay != "none")
+            if (_ability.Template.SoundEffectToPlay != "none" && _ability.Template.SoundEffectToPlay != null)
             {
                 _soundIndex = SoundEvent.GetEventIdFromString(_ability.Template.SoundEffectToPlay);
                 _sound = SoundEvent.CreateEvent(_soundIndex, Scene);
@@ -66,6 +82,7 @@ namespace TOW_Core.Abilities.Scripts
             UpdateLifeTime(dt);
 
             var frame = GameEntity.GetGlobalFrame();
+            if (_controller != null) frame = _controller.CalculateRotatedFrame(frame, dt);
             UpdateSound(frame.origin);
 
             if (_ability.Template.TriggerType == TriggerType.OnCollision && CollidedWithAgent())
@@ -79,7 +96,14 @@ namespace TOW_Core.Abilities.Scripts
             }
             else if (_ability.Template.TriggerType == TriggerType.TickOnce && _abilityLife > _ability.Template.TickInterval && !_hasTriggered)
             {
-                TriggerEffect(frame.origin, frame.origin.NormalizedCopy());
+                var position = frame.origin;
+                var normal = frame.origin.NormalizedCopy();
+                if(_ability.Template.AbilityEffectType == AbilityEffectType.Blast)
+                {
+                    position = frame.Advance(_ability.Template.Offset).origin;
+                    normal = frame.rotation.f.NormalizedCopy();
+                }
+                TriggerEffect(position, normal);
                 _hasTriggered = true;
             }
             _hasTickedOnce = true;
@@ -89,11 +113,11 @@ namespace TOW_Core.Abilities.Scripts
             }
         }
 
-        protected void UpdatePosition(MatrixFrame frame, float dt)
+        protected virtual void UpdatePosition(MatrixFrame frame, float dt)
         {
             var newframe = GetNextFrame(frame, dt);
             GameEntity.SetGlobalFrame(newframe);
-            if(GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
+            if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
 
         protected virtual MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
@@ -110,8 +134,7 @@ namespace TOW_Core.Abilities.Scripts
             {
                 if (_abilityLife > _ability.Template.Duration && !_isFading)
                 {
-                    GameEntity.FadeOut(0.05f, true);
-                    _isFading = true;
+                    Stop();
                 }
             }
             if (_abilityLife > _minArmingTimeForCollision)
@@ -122,10 +145,11 @@ namespace TOW_Core.Abilities.Scripts
 
         protected void UpdateSound(Vec3 position)
         {
-            if (_sound != null)
+            if(_sound != null)
             {
                 _sound.SetPosition(position);
-                if (!_sound.IsPlaying())
+                if (IsSoundPlaying()) return;
+                else
                 {
                     if (!_soundStarted)
                     {
@@ -136,8 +160,18 @@ namespace TOW_Core.Abilities.Scripts
                     {
                         _sound.Play();
                     }
+                    else
+                    {
+                        _sound.Release();
+                        _sound = null;
+                    }
                 }
             }
+        }
+
+        private bool IsSoundPlaying()
+        {
+            return _sound != null && _sound.IsValid && _sound.IsPlaying();
         }
 
         protected virtual bool CollidedWithAgent()
@@ -174,7 +208,15 @@ namespace TOW_Core.Abilities.Scripts
             var effect = TriggeredEffectManager.CreateNew(_ability?.Template.TriggeredEffectID);
             if (effect != null)
             {
-                effect.Trigger(position, normal, _casterAgent);
+                if(_ability.Template.AbilityTargetType == AbilityTargetType.Self)
+                {
+                    effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { _casterAgent });
+                }
+                else if(IsSingleTarget() && _targetAgent != null)
+                {
+                    effect.Trigger(position, normal, _casterAgent, new List<Agent>(1) { _targetAgent });
+                }
+                else effect.Trigger(position, normal, _casterAgent);
             }
         }
 
@@ -185,6 +227,12 @@ namespace TOW_Core.Abilities.Scripts
             _sound = null;
             _ability = null;
             _casterAgent = null;
+        }
+
+        public virtual void Stop()
+        {
+            GameEntity.FadeOut(0.05f, true);
+            _isFading = true;
         }
     }
 }

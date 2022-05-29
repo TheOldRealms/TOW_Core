@@ -42,13 +42,13 @@ namespace TOW_Core.Utilities
             data.SeasonId = "summer";
             data.SceneLevel = "";
             data.TimeOfDay = 12;
-            BannerlordMissions.OpenCustomBattleMission(data.SceneId, data.PlayerCharacter, data.PlayerParty, data.EnemyParty, data.IsPlayerGeneral, data.PlayerSideGeneralCharacter, data.SceneLevel, data.SeasonId, data.TimeOfDay);
+            CustomBattleHelper.StartGame(data);
         }
 
         private CustomBattleCombatant GetEnemyParty()
         {
             var culture = MBObjectManager.Instance.GetObject<BasicCultureObject>("empire");
-            var enemycharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_empire_recruit");
+            var enemycharacter = MBObjectManager.Instance.GetObject<BasicCharacterObject>("tor_empire_recruit");
 
             var party = new CustomBattleCombatant(new TextObject("{=0xC75dN6}Enemy Party", null), culture, Banner.CreateRandomBanner(-1));
             party.AddCharacter(enemycharacter, 1);
@@ -60,8 +60,8 @@ namespace TOW_Core.Utilities
         {
             var characters = MBObjectManager.Instance.GetObjectTypeList<BasicCharacterObject>();
             var culture = MBObjectManager.Instance.GetObject<BasicCultureObject>("empire");
-            var characterslist = characters.Where(x => x.IsTOWTemplate());
-            var party = new CustomBattleCombatant(new TextObject("{=sSJSTe5p}Player Party", null), culture, Banner.CreateRandomBanner(-1));
+            var characterslist = characters.Where(x => x.IsTOWTemplate() && x != playerCharacter);
+            var party = new CustomBattleCombatant(new TextObject("{=!}Player Party", null), culture, Banner.CreateRandomBanner(-1));
             party.AddCharacter(playerCharacter, 1);
             party.SetGeneral(playerCharacter);
             party.Side = BattleSideEnum.Defender;
@@ -76,7 +76,7 @@ namespace TOW_Core.Utilities
 
         private BasicCharacterObject SelectPlayer()
         {
-            return MBObjectManager.Instance.GetObject<BasicCharacterObject>("tow_empire_recruit");
+            return MBObjectManager.Instance.GetObject<BasicCharacterObject>("tor_emp_lord");
         }
     }
 }

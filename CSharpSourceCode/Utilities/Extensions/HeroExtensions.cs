@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade.CustomBattle;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
@@ -23,23 +27,34 @@ namespace TOW_Core.Utilities.Extensions
         /// <returns></returns>
         public static float GetRaiseDeadChance(this Hero hero)
         {
-            return 0.1f;
+            return hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence) * 0.07f;
         }
 
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
-            var info = Campaign.Current?.GetCampaignBehavior<ExtendedInfoManager>();
-            if (info != null)
+            return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.StringId);
+        }
+
+        public static int GetPlaceableArtilleryCount(this Hero hero)
+        {
+            int count = 0;
+            if (hero.CanPlaceArtillery())
             {
-                return info.GetHeroInfoFor(hero.StringId);
+                var engineering = hero.GetSkillValue(DefaultSkills.Engineering);
+                count = (int)Math.Truncate((decimal)engineering / 50);
             }
-            else return null;
+            return count;
+        }
+
+        public static bool CanPlaceArtillery(this Hero hero)
+        {
+            return hero.HasAttribute("CanPlaceArtillery");
         }
 
         public static void AddAbility(this Hero hero, string ability)
         {
             var info = hero.GetExtendedInfo();
-            if(info != null && !info.AllAbilities.Contains(ability))
+            if (info != null && !info.AllAbilities.Contains(ability))
             {
                 info.AcquiredAbilities.Add(ability);
             }
@@ -72,11 +87,36 @@ namespace TOW_Core.Utilities.Extensions
             else return false;
         }
 
+        public static void SetSpellCastingLevel(this Hero hero, SpellCastingLevel level)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                hero.GetExtendedInfo().SpellCastingLevel = level;
+            }
+        }
+
+        public static void AddKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                hero.GetExtendedInfo().AddKnownLore(loreID);
+            }
+        }
+
+        public static bool HasKnownLore(this Hero hero, string loreID)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().HasKnownLore(loreID);
+            }
+            else return false;
+        }
+
         public static bool IsSpellCaster(this Hero hero)
         {
             return hero.HasAttribute("SpellCaster");
         }
-        
+
         public static bool IsAbilityUser(this Hero hero)
         {
             return hero.HasAttribute("AbilityUser");
@@ -92,41 +132,9 @@ namespace TOW_Core.Utilities.Extensions
             return hero.HasAttribute("Undead");
         }
 
-        public static bool IsVampireNotable(this Hero hero)
+        public static bool IsVampire(this Hero hero)
         {
-            return hero.IsNotable &&
-                   hero.Age >= 18 &&
-                   hero.Age < 21;
-        }
-
-        public static bool IsEmpireNotable(this Hero hero)
-        {
-            return hero.IsNotable && 
-                   hero.Age >= 21;
-        }
-
-        //There is Traverse
-        public static void TurnIntoVampire(this Hero hero)
-        {
-            Traverse.Create(hero).Field("_defaultAge").SetValue(18);
-        }
-
-        //There is Traverse
-        public static void TurnIntoHuman(this Hero hero)
-        {
-            Traverse.Create(hero).Field("_defaultAge").SetValue(21);
-        }
-
-        public static bool IsSuitableForSettlement(this Hero hero, Settlement settlement)
-        {
-            if (settlement.IsVampireSettlement())
-            {
-                return hero.Culture.Name.Contains("Vampire");
-            }
-            else
-            {
-                return hero.Culture.Name.Contains("Empire");
-            }
+            return hero.HasAttribute("VampireBodyOverride");
         }
     }
 }

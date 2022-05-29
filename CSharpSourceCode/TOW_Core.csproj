@@ -41,13 +41,13 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(GameDir)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartArguments>/singleplayer _MODULES_*TOW_PreNative*Native*SandBoxCore*SandBox*StoryMode*CustomBattle*TOR_Armory*TOW_EnvironmentAssets*TOW_CoreAssets*TOW_Core*_MODULES_</StartArguments>
+    <StartArguments>/singleplayer _MODULES_%2aTOW_PreNative%2aNative%2aSandBoxCore%2aSandBox%2aStoryMode%2aCustomBattle%2aTOR_Armory%2aTOR_Environment%2aTOW_Core%2a_MODULES_</StartArguments>
     <StartWorkingDirectory>$(GameDir)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
   <!-- Bannerlord Native Assemblies -->
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.2.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>packages\NLog.4.7.9\lib\net45\NLog.dll</HintPath>
@@ -275,80 +275,176 @@
     <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="Abilities\ItemBoundAbility.cs" />
+    <Compile Include="Abilities\Crosshairs\SelfCrosshair.cs" />
+    <Compile Include="Abilities\Scripts\ArtilleryPlacementScript.cs" />
+    <Compile Include="Abilities\Scripts\AugmentScript.cs" />
+    <Compile Include="Abilities\Scripts\BlastScript.cs" />
+    <Compile Include="Abilities\Scripts\BombardmentScript.cs" />
+    <Compile Include="Abilities\Scripts\HealScript.cs" />
+    <Compile Include="Abilities\Scripts\HexScript.cs" />
+    <Compile Include="Abilities\Scripts\VortexScript.cs" />
+    <Compile Include="Abilities\Scripts\ShadowStepScript.cs" />
+    <Compile Include="Abilities\SeekerController.cs" />
+    <Compile Include="Abilities\SeekerParameters.cs" />
+    <Compile Include="Abilities\SpecialMoveHUD_VM.cs" />
     <Compile Include="Abilities\AbilityTemplate.cs" />
     <Compile Include="Abilities\ConsoleComands\SpellsFromConsole.cs" />
     <Compile Include="Abilities\Crosshairs\AbilityCrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\CenteredAOECrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\CrosshairType.cs" />
-    <Compile Include="Abilities\Crosshairs\DirectionalAOECrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\DynamicProjectileCrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\ProjectileCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\WindCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\MissileCrosshair.cs" />
     <Compile Include="Abilities\Crosshairs\ProjectileCrosshair_VM.cs" />
-    <Compile Include="Abilities\Crosshairs\SummoningCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\Pointer.cs" />
     <Compile Include="Abilities\Crosshairs\TargetedAOECrosshair.cs" />
-    <Compile Include="Abilities\Crosshairs\TargetedCrosshair.cs" />
+    <Compile Include="Abilities\Crosshairs\SingleTargetCrosshair.cs" />
+    <Compile Include="Abilities\SpecialMove.cs" />
     <Compile Include="Abilities\Prayer.cs" />
     <Compile Include="Abilities\Scripts\AbilityScript.cs" />
-    <Compile Include="Abilities\Scripts\AgentMovingScript.cs" />
-    <Compile Include="Abilities\Scripts\CenteredStaticAOEScript.cs" />
-    <Compile Include="Abilities\Scripts\DirectionalMovingAOEScript.cs" />
-    <Compile Include="Abilities\Scripts\MovingProjectileScript.cs" />
+    <Compile Include="Abilities\Scripts\WindScript.cs" />
+    <Compile Include="Abilities\Scripts\MissileScript.cs" />
     <Compile Include="Abilities\Scripts\SummoningScript.cs" />
-    <Compile Include="Abilities\Scripts\TargetedStaticAOEScript.cs" />
     <Compile Include="Abilities\Spell.cs" />
+    <Compile Include="Abilities\SpellBook\LoreObjectVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookMapIconVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookScreen.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookMapIconCampaignBehaviour.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookState.cs" />
+    <Compile Include="Abilities\SpellBook\SpellBookVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellCastingLevel.cs" />
+    <Compile Include="Abilities\SpellBook\StatItemVM.cs" />
+    <Compile Include="Abilities\SpellBook\SpellItemVM.cs" />
+    <Compile Include="Abilities\SummonedAgentOrigin.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehaviorConfiguration.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AbstractAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AgentCastingBehaviorConfiguration.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\CenteredStaticAoEAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\PreserveWindsAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\MovingProjectileAgentCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\DirectionalMovingAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AoEAdjacentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\ArtilleryPlacementCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\PreserveWindsCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\MissileCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AoEDirectionalCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SelectMultiTargetCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SelectSingleTargetCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\SummoningCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticCastingBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\TargetedStaticAoEAgentCastingBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentCastingBehavior\AoETargetedCastingBehavior.cs" />
     <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AbstractAgentTacticalBehavior.cs" />
-    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeAgentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AoEAdjacentTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\AoEDirectionalTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\AgentTacticalBehavior\KeepSafeTacticalBehavior.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\Components\ArtilleryAI.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\Components\WizardAIComponent.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\SupportMissionLogic\QuerySystemExtensionsMissionLogic.cs" />
+    <Compile Include="Battle\AI\AgentBehavior\SupportMissionLogic\QuerySystemExtensions.cs" />
     <Compile Include="Battle\AI\Decision\Axis.cs" />
-    <Compile Include="Battle\AI\Decision\CommonDecisionFunctions.cs" />
+    <Compile Include="Battle\AI\Decision\BehaviorOption.cs" />
+    <Compile Include="Battle\AI\Decision\CommonAIFunctions.cs" />
     <Compile Include="Battle\AI\Decision\DecisionManager.cs" />
     <Compile Include="Battle\AI\Decision\IAgentBehavior.cs" />
     <Compile Include="Battle\AI\Decision\ScoringFunctions.cs" />
     <Compile Include="Battle\AI\Decision\Target.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryRangedSiegeWeapon.cs" />
+    <Compile Include="Battle\Artillery\ArtilleryStandingPoint.cs" />
+    <Compile Include="Battle\Artillery\CannonBallPile.cs" />
+    <Compile Include="Battle\Crosshairs\Crosshair.cs" />
+    <Compile Include="Battle\Crosshairs\ICrosshair.cs" />
+    <Compile Include="Battle\Crosshairs\SniperScope.cs" />
+    <Compile Include="Battle\Damage\ItemDamageProperty.cs" />
+    <Compile Include="Battle\BlackPowderWeapon\BlackPowderWeaponMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\BlackPowderWeaponScript.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationComponent.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationIsCompleteEventArgs.cs" />
+    <Compile Include="CampaignSupport\Assimilation\AssimilationSaveableTypeDefiner.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedLogEntry.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureChangedMapNotification.cs" />
+    <Compile Include="CampaignSupport\Assimilation\SettlementCultureCHangedNotificationItemVM.cs" />
+    <Compile Include="CampaignSupport\Missions\TorMissionManager.cs" />
+    <Compile Include="CampaignSupport\Models\TORClanFinanceModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORClanTierModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMapWeatherModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartyHealingModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORSettlementMilitiaModel.cs" />
+    <Compile Include="CampaignSupport\RaiseDead\GraveyardNightWatchPartyComponent.cs" />
+    <Compile Include="CampaignSupport\RegimentsOfRenown\RORCampaignBehaviour.cs" />
+    <Compile Include="CampaignSupport\RegimentsOfRenown\RORManager.cs" />
+    <Compile Include="CampaignSupport\RegimentsOfRenown\RORSettlementTemplate.cs" />
+    <Compile Include="CampaignSupport\TORCaptivityCampaignBehaviour.cs" />
+    <Compile Include="CampaignSupport\TORCustomDialogCampaignBehaviour.cs" />
+    <Compile Include="CampaignSupport\TORSkillBookCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
+    <Compile Include="HarmonyPatches\ArenaPatches.cs" />
+    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
+    <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
+    <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
+    <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />
+    <Compile Include="Quests\QuestPartyComponent.cs" />
+    <Compile Include="Quests\EngineerQuest.cs" />
+    <Compile Include="Utilities\HeroConstants.cs" />
+    <Compile Include="Utilities\TestingMissionLogic.cs" />
     <Compile Include="Battle\Map\AtmosphereOverrideMissionLogic.cs" />
-    <Compile Include="Battle\TORBattleEndLogic.cs" />
+    <Compile Include="Battle\StatusEffects\StatusEffectTemplate.cs" />
+    <Compile Include="Battle\Models\TORCustomBattleAgentStatCalculateModel.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\DynamicItemTraitScripts.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\CannonBallScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\HurlWeaponsScript.cs" />
     <Compile Include="Battle\TriggeredEffect\Scripts\ITriggeredScript.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\SummonSkeleton.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\PrefabSpawnerScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\KnockDownScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SmokingLimbScript.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\SummonScript.cs" />
     <Compile Include="Battle\CrosshairMissionBehavior\CustomCrosshairMissionBehavior.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\WordOfPainScript.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffect.cs" />
     <Compile Include="Abilities\AbilityFactory.cs" />
     <Compile Include="Abilities\AbilityType.cs" />
     <Compile Include="Battle\Damage\DamageType.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectManager.cs" />
     <Compile Include="Battle\TriggeredEffect\TriggeredEffectTemplate.cs" />
-    <Compile Include="CampaignSupport\Models\CustomBanditDensityModel.cs" />
-    <Compile Include="CampaignSupport\Models\CustomMobilePartyFoodConsumptionModel.cs" />
-    <Compile Include="CampaignSupport\TORHeroSpawnCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\TORUrbanCharactersCampaignBehavior.cs" />
-    <Compile Include="CampaignSupport\TowKingdomPeaceModel.cs" />
-    <Compile Include="CampaignSupport\TownBehaviours\LibraryTownBehaviour.cs" />
+    <Compile Include="CampaignSupport\MapBar\TorMapInfoVM.cs" />
+    <Compile Include="CampaignSupport\Models\TORAgentStatCalculateModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORBanditDensityModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORCombatXpModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDefaultPartySpeedCalculatingModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORDamageParticleModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMarriageModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORMobilePartyFoodConsumptionModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORCharacterStatsModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartySizeModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPartyWageModel.cs" />
+    <Compile Include="CampaignSupport\Models\TORPrisonerRecruitmentCalculationModel.cs" />
+    <Compile Include="CampaignSupport\TORWanderersCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORBattleAgentLogic.cs" />
+    <Compile Include="CampaignSupport\TORPartyHealCampaignBehavior.cs" />
+    <Compile Include="CampaignSupport\TORKingdomPeaceModel.cs" />
+    <Compile Include="CampaignSupport\TownBehaviours\SpellTrainerInTownBehaviour.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\ChaosRaidingParty\ChaosRaidingPartyComponent.cs" />
     <Compile Include="CampaignSupport\TownBehaviours\RaiseDeadInTownBehaviour.cs" />
+    <Compile Include="HarmonyPatches\AgentPatches.cs" />
+    <Compile Include="HarmonyPatches\CharacterObjectPatches.cs" />
+    <Compile Include="HarmonyPatches\DamagePatch.cs" />
     <Compile Include="HarmonyPatches\HeroPatches.cs" />
+    <Compile Include="HarmonyPatches\InventoryPatches.cs" />
     <Compile Include="HarmonyPatches\MainMenuPatches.cs" />
     <Compile Include="HarmonyPatches\MissionPatches.cs" />
-    <Compile Include="HarmonyPatches\SummonRaisePartyRosterFixPatch.cs" />
-    <Compile Include="Items\IMagicWeaponHitEffect.cs" />
-    <Compile Include="Items\MagicWeaponAgentComponent.cs" />
-    <Compile Include="Items\MagicWeaponEffect.cs" />
-    <Compile Include="Items\MagicWeaponEffectManager.cs" />
-    <Compile Include="Items\MagicWeaponEffectMissionLogic.cs" />
+    <Compile Include="HarmonyPatches\SkillLevelingManagerPatches.cs" />
+    <Compile Include="Items\ExtendedItemObjectProperties.cs" />
+    <Compile Include="Items\IWeaponHitEffect.cs" />
+    <Compile Include="Items\ItemTraitAgentComponent.cs" />
+    <Compile Include="Items\ItemTrait.cs" />
+    <Compile Include="Items\ExtendedItemObjectManager.cs" />
+    <Compile Include="Items\TorItemMenuVM.cs" />
+    <Compile Include="Items\TorItemTraitVM.cs" />
+    <Compile Include="Items\WeaponEffectMissionLogic.cs" />
     <Compile Include="Items\Scripts\LifeLeechHitScript.cs" />
     <Compile Include="ObjectDataExtensions\CharacterExtendedInfo.cs" />
     <Compile Include="ObjectDataExtensions\ExtendedInfoManager.cs" />
@@ -360,18 +456,14 @@
     <Compile Include="Abilities\AbilityHUD_VM.cs" />
     <Compile Include="Abilities\AbilityManagerMissionLogic.cs" />
     <Compile Include="Abilities\Ability.cs" />
-    <Compile Include="Abilities\AbilityManager.cs" />
-    <Compile Include="Battle\AI\Components\WizardAIComponent.cs" />
-    <Compile Include="Battle\AttributeSystem\AttributeManager.cs" />
     <Compile Include="Battle\AttributeSystem\CustomAgentComponents\UndeadMoraleAgentComponent.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWCampaignBattleMoraleModel.cs" />
-    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TOWBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORCampaignBattleMoraleModel.cs" />
+    <Compile Include="Battle\AttributeSystem\CustomBattleMoraleModel\TORBattleMoraleModel.cs" />
     <Compile Include="Battle\AttributeSystem\CustomMissionLogic\AttributeSystemMissionLogic.cs" />
     <Compile Include="Battle\Dismemberment\DismembermentMissionLogic.cs" />
+    <Compile Include="ObjectDataExtensions\SpellBlowInfoManager.cs" />
     <Compile Include="Utilities\Extensions\AgentExtensions.cs" />
-    <Compile Include="Battle\FireArms\MusketFireEffectMissionLogic.cs" />
-    <Compile Include="Battle\TriggeredEffect\Scripts\GrenadeScript.cs" />
-    <Compile Include="Battle\Grenades\GrenadesMissionLogic.cs" />
+    <Compile Include="Battle\TriggeredEffect\Scripts\HandGrenadeScript.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfo.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoCampaignBehavior.cs" />
     <Compile Include="CampaignSupport\BattleHistory\BattleInfoMissionLogic.cs" />
@@ -382,8 +474,7 @@
     <Compile Include="Battle\StatusEffects\StatusEffectManager.cs" />
     <Compile Include="Battle\StatusEffects\StatusEffectMissionLogic.cs" />
     <Compile Include="Battle\TOWBattleUtilities.cs" />
-    <Compile Include="Battle\Voices\CustomVoiceManager.cs" />
-    <Compile Include="Battle\Voices\CustomVoicesMissionBehaviour.cs" />
+    <Compile Include="Battle\Sound\CustomVoicesMissionBehaviour.cs" />
     <Compile Include="CampaignSupport\BattleHistory\CharacterInfo.cs" />
     <Compile Include="CampaignSupport\RaiseDead\RaiseDeadCampaignBehavior.cs" />
     <Compile Include="HarmonyPatches\FactionBannerPatches.cs" />
@@ -394,13 +485,12 @@
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleLocationMenuModel.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplate.cs" />
     <Compile Include="CampaignSupport\QuestBattleLocation\QuestBattleTemplateManager.cs" />
-    <Compile Include="CampaignSupport\TowCampaignGameManager.cs" />
-    <Compile Include="CampaignSupport\TowCompanionHiringPriceCalculationModel.cs" />
+    <Compile Include="CampaignSupport\TORCampaignGameManager.cs" />
+    <Compile Include="CampaignSupport\TORCompanionHiringPriceCalculationModel.cs" />
     <Compile Include="CharacterCreation\CharacterCreationOption.cs" />
-    <Compile Include="CharacterCreation\TOWCharacterCreationContent.cs" />
+    <Compile Include="CharacterCreation\TORCharacterCreationContent.cs" />
     <Compile Include="GameTexts\TOWTextManager.cs" />
     <Compile Include="GameTexts\TOWTextOverride.cs" />
-    <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
     <Compile Include="HarmonyPatches\CharacterCreationPatches.cs" />
     <Compile Include="HarmonyPatches\ConversationPatches.cs" />
     <Compile Include="HarmonyPatches\CustomBattlePatches.cs" />
@@ -409,15 +499,12 @@
     <Compile Include="HarmonyPatches\EncounterPatches.cs" />
     <Compile Include="HarmonyPatches\InvisibleBodyPatch.cs" />
     <Compile Include="HarmonyPatches\PartyScreenLogicPatches.cs" />
-    <Compile Include="HarmonyPatches\PartyVMPatches.cs" />
-    <Compile Include="HarmonyPatches\UndeadBleedParticlePatch.cs" />
     <Compile Include="HarmonyPatches\FindGameTextPatch.cs" />
     <Compile Include="HarmonyPatches\LoadingScreenTempPatch.cs" />
     <Compile Include="HarmonyPatches\RotatingMainMenuPatch.cs" />
     <Compile Include="HarmonyPatches\WorldMapDebugPatch.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Extensions\CampaignExtensions.cs" />
     <Compile Include="Utilities\Extensions\CharacterObjectExtensions.cs" />
     <Compile Include="Utilities\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utilities\Extensions\HeroExtensions.cs" />
@@ -427,6 +514,8 @@
     <Compile Include="Utilities\Extensions\MobilePartyExtensions.cs" />
     <Compile Include="Utilities\Extensions\SettlementExtensions.cs" />
     <Compile Include="Utilities\ShaderGameManager.cs" />
+    <Compile Include="Utilities\TORDamageDisplay.cs" />
+    <Compile Include="Utilities\TORWorldMapScript.cs" />
     <Compile Include="Utilities\TOWCommon.cs" />
     <Compile Include="Utilities\TOWDebug.cs" />
     <Compile Include="Utilities\TOWMath.cs" />
@@ -435,10 +524,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <!-- Post-Build -->
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(TargetDir)*" "C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\TOW_Core\bin\Win64_Shipping_wEditor\" /S /Y /I</PostBuildEvent>
+  </PropertyGroup>
 </Project>

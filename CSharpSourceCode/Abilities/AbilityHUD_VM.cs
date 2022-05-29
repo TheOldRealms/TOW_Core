@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaleWorlds.CampaignSystem;
+﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.TwoDimension;
-using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
@@ -20,25 +13,24 @@ namespace TOW_Core.Abilities
         private string _spriteName = "";
         private string _coolDownLeft = "";
         private string _WindsOfMagicLeft = "-";
-        private bool _hasAnyAbility;
+        private bool _isVisible;
         private bool _onCoolDown;
+        private bool _isSpell;
         private float _windsOfMagicValue;
+        private string _windsCost = "";
 
         public AbilityHUD_VM() : base() { }
 
         public void UpdateProperties()
         {
-            if (Agent.Main == null)
-            {
-                HasAnyAbility = false;
-                return;
-            }
             _ability = Agent.Main.GetCurrentAbility();
-            HasAnyAbility = _ability != null;
-            if (HasAnyAbility)
+            IsVisible = _ability != null && (Mission.Current.Mode == MissionMode.Battle || Mission.Current.Mode == MissionMode.Stealth);
+            if (IsVisible)
             {
+                IsSpell = _ability is Spell;
                 SpriteName = _ability.Template.SpriteName;
                 Name = _ability.Template.Name;
+                WindsCost = _ability.Template.WindsOfMagicCost.ToString();
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
                 if (Game.Current.GameType is Campaign && _ability is Spell)
@@ -65,20 +57,19 @@ namespace TOW_Core.Abilities
         }
 
 
-
         [DataSourceProperty]
-        public bool HasAnyAbility
+        public bool IsVisible
         {
             get
             {
-                return _hasAnyAbility;
+                return _isVisible;
             }
             set
             {
-                if (value != _hasAnyAbility)
+                if (value != _isVisible)
                 {
-                    _hasAnyAbility = value;
-                    base.OnPropertyChangedWithValue(value, "HasAnyAbility");
+                    _isVisible = value;
+                    base.OnPropertyChangedWithValue(value, "IsVisible");
                 }
             }
         }
@@ -161,6 +152,40 @@ namespace TOW_Core.Abilities
                 {
                     _onCoolDown = value;
                     base.OnPropertyChangedWithValue(value, "IsOnCoolDown");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public string WindsCost
+        {
+            get
+            {
+                return _windsCost;
+            }
+            set
+            {
+                if (value != _windsCost)
+                {
+                    _windsCost = value;
+                    base.OnPropertyChangedWithValue(value, "WindsCost");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public bool IsSpell
+        {
+            get
+            {
+                return _isSpell;
+            }
+            set
+            {
+                if (value != _isSpell)
+                {
+                    _isSpell = value;
+                    base.OnPropertyChangedWithValue(value, "IsSpell");
                 }
             }
         }

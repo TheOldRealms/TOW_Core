@@ -29,7 +29,7 @@
 			Intelligence
 	-->
 	<!-- Empire stage 1 -->
-	<CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_empire_noble">
+	<CharacterCreationOption Id="option1" Culture="empire" StageNumber="1" EquipmentSetId="tor_cc_imperial_nobility_1">
 		<SkillsToIncrease>
 			<string>OneHanded</string>			
 			<string>Leadership</string>
@@ -42,7 +42,7 @@
 		<OptionFlavourText>Your parents loyally served Graf Haupt-Anderrson, while not major nobility they nonetheless held sway within the courts of the Elector Count and thus ensured your childhood was one of comfort. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop">
+	<CharacterCreationOption Id="option2" Culture="empire" StageNumber="1" EquipmentSetId="tor_cc_imperial_sergeant_1">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>TwoHanded</string>
@@ -54,7 +54,7 @@
 		<OptionFlavourText>Your father had not only served with distinction but survived long enough to receive the title of Sergeant, a veteran that has spilled the blood of beastmen and bandits alike.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_thieve">
+	<CharacterCreationOption Id="option3" Culture="empire" StageNumber="1" EquipmentSetId="tor_cc_thieves_1">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>OneHanded</string>
@@ -66,7 +66,7 @@
 		<OptionFlavourText>Not all within the Empire are blessed by Ranald, your family was poor and scratched a living with quick wit and quicker hands. Stealing coins from loose pockets and stuffing them in their own. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_scholar">
+	<CharacterCreationOption Id="option4" Culture="empire" StageNumber="1" EquipmentSetId="tor_cc_cultists_1">
 		<SkillsToIncrease>
 			<string>Charm</string>
 			<string>OneHanded</string>
@@ -78,7 +78,7 @@
 		<OptionFlavourText>Strange rituals and a life on the run. You never truly understood what your parents were, all you can remember is having to flee your home to the chants of heretic and a burning pyre.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_merchant_wine">
+	<CharacterCreationOption Id="option5" Culture="empire" StageNumber="1" EquipmentSetId="tor_cc_wine_merchants_1">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Charm</string>
@@ -91,7 +91,7 @@
 	</CharacterCreationOption>
 
 	<!-- Empire stage 2 -->
-	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_empire_enlisted">
+	<CharacterCreationOption Id="option6" Culture="empire" StageNumber="2" EquipmentSetId="tor_cc_enlisted_militia_2">
 		<SkillsToIncrease>
 			<string>Athletics</string>
 			<string>TwoHanded</string>
@@ -102,7 +102,7 @@
 		<OptionFlavourText>Beastmen and bandits are rife within the Empire and your home was in need of strong men, training alongside the militia you soon gained a strong arm and a taste for combat.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_merchant_assistant">
+	<CharacterCreationOption Id="option7" Culture="empire" StageNumber="2" EquipmentSetId="tor_cc_merchants_assistant_2">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Polearm</string>
@@ -113,7 +113,7 @@
 		<OptionFlavourText>Noticing your aptitude for numbers, a merchant passing through your home took you under his wing, offering to teach you his trade in return for daily assistance in his tasks.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_blacksmith">
+	<CharacterCreationOption Id="option8" Culture="empire" StageNumber="2" EquipmentSetId="tor_cc_blacksmith_apprentice_2">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Trade</string>
@@ -124,7 +124,7 @@
 		<OptionFlavourText>Conflict was never ending for the Empire and neither was the work of its Blacksmiths, you chose to turn your strength into a trade as you bent metals to your will under the tutelage of the local smith. Your first sword may have been wonky but it was still sharp!</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_sigmar_novitiate">
+	<CharacterCreationOption Id="option9" Culture="empire" StageNumber="2" EquipmentSetId="tor_cc_acolyte_sigmar_2">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Charm</string>
@@ -135,7 +135,7 @@
 		<OptionFlavourText>You felt a calling deep within yourself, a need to serve something greater. Donning the cloth of an acolyte, your life became one of constant prayer and learning so that you could better serve Sigmar. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_engineer">
+	<CharacterCreationOption Id="option10" Culture="empire" StageNumber="2" EquipmentSetId="tor_cc_engineering_student_2">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Charm</string>
@@ -148,7 +148,7 @@
 	</CharacterCreationOption>
 
 	<!-- Empire stage 3 -->
-	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_company_militia">
+	<CharacterCreationOption Id="option11" Culture="empire" StageNumber="3" EquipmentSetId="tor_cc_free_company_militiaman_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Polearm</string>
@@ -160,7 +160,7 @@
 		<OptionFlavourText>Fighting and drinking, what more could one need in life? With sword in hand you marched with your rag-tag Free Company from battle to battle, earning your fair share of scars. You would serve any lord, for the right price.</OptionFlavourText>
 	</CharacterCreationOption>
 	
-	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_bright_wizard_pupil">
+	<CharacterCreationOption Id="option12" Culture="empire" StageNumber="3" EquipmentSetId="tor_cc_bright_order_initiate_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Athletics</string>
@@ -170,7 +170,7 @@
 		<OptionFlavourText>Your aptitude for the Winds of Magic earned you a place within the Colleges of Altdorf, with time you learned to harness the basics of your power and flames would dance at your fingertips.  -  Starts with the fireball spell.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_wp_novitiate">
+	<CharacterCreationOption Id="option13" Culture="empire" StageNumber="3" EquipmentSetId="tor_cc_warrior_priest_acolyte_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Medicine</string>
@@ -181,7 +181,7 @@
 		<OptionFlavourText>Dedicating your life to the destruction of evil in Sigmars righteous name, you trained until you were entrusted with the robes and hammer of a Warrior Priest acolyte. Soon you would set out to rid the world of corruption.  -  Gains access to prayers in later levels (Enabled at level 1 for testing).</OptionFlavourText>
 	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option14" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_hunter">
+	<CharacterCreationOption Id="option14" Culture="empire" StageNumber="3" EquipmentSetId="tor_cc_trainee_templar_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Roguery</string>
@@ -192,7 +192,7 @@
 		<OptionFlavourText>Heresy was the bane of the good people of the Empire, a rot that needed to be removed. Learning the arts of the Witch Hunters you readied yourself to face all manner of unholy beasts and magicians, with gunpowder and faith. </OptionFlavourText>
 	</CharacterCreationOption> 
 
-	<CharacterCreationOption Id="option15" Culture="empire" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_caravan_merchant">
+	<CharacterCreationOption Id="option15" Culture="empire" StageNumber="3" EquipmentSetId="tor_cc_merchant_3">
 		<SkillsToIncrease>
 			<string>Charm</string>
 			<string>Trade</string>			
@@ -205,7 +205,7 @@
 	</CharacterCreationOption> 
 
 	<!-- VC stage 1 -->
-	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_vampire_noble">
+	<CharacterCreationOption Id="option16" Culture="khuzait" StageNumber="1" EquipmentSetId="tor_cc_exiled_nobility_1">
 		<SkillsToIncrease>
 			<string>Leadership</string>
 			<string>Steward</string>
@@ -216,7 +216,7 @@
 		<OptionFlavourText>Ambition is the downfall of many and your family fell out of grace with their Elector, banished to Sylvania with a meagre fortune your family was forced to live amongst the peasant folk. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_scholar">
+	<CharacterCreationOption Id="option17" Culture="khuzait" StageNumber="1" EquipmentSetId="tor_cc_priests_morr_1">
 		<SkillsToIncrease>
 			<string>Steward</string>
 			<string>Medicine</string>
@@ -227,7 +227,7 @@
 		<OptionFlavourText>The dead do not rest easy in Sylvania and the work of Morr is never done. Your father was a quiet man whose life was a dedication to death. Maintaining a garden of Morr and performing the necessary rights to ensure the dead would rest, normally with a blade of silver by his side.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_graverobber">
+	<CharacterCreationOption Id="option18" Culture="khuzait" StageNumber="1" EquipmentSetId="tor_cc_graverobbers_1">
 		<SkillsToIncrease>
 			<string>Throwing</string>
 			<string>Athletics</string>
@@ -238,7 +238,7 @@
 		<OptionFlavourText>There are those within Sylvania who pay well for bodies, this was the trade your family chose. Stealing loved ones in the dead of night and taking them to the castles or keeps of nobility, never questioning why.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option19" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_informant">
+	<CharacterCreationOption Id="option19" Culture="khuzait" StageNumber="1" EquipmentSetId="tor_cc_fisherman_frogwife_1">
 		<SkillsToIncrease>
 			<string>Steward</string>
 			<string>Medicine</string>
@@ -249,7 +249,7 @@
 		<OptionFlavourText>For generations your family have fished along the River Stir to keep themselves fed, it was far from a spectacular life but it was honest work and your family was content. Even after the disappearance of your brother...</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option20" Culture="khuzait" StageNumber="1" CharacterIdToCopyEquipmentFrom="cc_orphan">
+	<CharacterCreationOption Id="option20" Culture="khuzait" StageNumber="1" EquipmentSetId="tor_cc_orphan_1">
 		<SkillsToIncrease>
 			<string>Athletics</string>
 			<string>OneHanded</string>
@@ -261,7 +261,7 @@
 	</CharacterCreationOption>
 
 	<!-- VC stage 2 -->
-	<CharacterCreationOption Id="option21" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_vc_noble_attendant">
+	<CharacterCreationOption Id="option21" Culture="khuzait" StageNumber="2" EquipmentSetId="tor_cc_noble_attendant_2">
 		<SkillsToIncrease>
 			<string>Scouting</string>
 			<string>Charm</string>
@@ -272,7 +272,7 @@
 		<OptionFlavourText>Serving in the courts of a Von Carstein gave you insight into the lives of the everliving, the intricacies and politics of the nobility taught you many things. Your diligence kept you alive and comfortable. </OptionFlavourText>
 	</CharacterCreationOption>
 	
-	<CharacterCreationOption Id="option22" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_novice_necromancer">
+	<CharacterCreationOption Id="option22" Culture="khuzait" StageNumber="2" EquipmentSetId="tor_cc_necromancers_apprentice_2">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
@@ -282,7 +282,7 @@
 		<OptionFlavourText>Little could be said for your master's sanity, his days were dedicated to dissecting scrolls and performing dark rituals. Obsessed with becoming powerful yet unable to, he sought to use your abilities to bolster his own.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option23" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_bloodslave">
+	<CharacterCreationOption Id="option23" Culture="khuzait" StageNumber="2" EquipmentSetId="tor_cc_blood_slave_2">
 		<SkillsToIncrease>
 			<string>Roguery</string>
 			<string>Trade</string>
@@ -292,7 +292,7 @@
 		<OptionFlavourText>There were perks to this chosen life, you had shelter, food and protection. While your life was not your own, you could wander freely in the halls of your master and go unnoticed. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option24" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_stableboy">
+	<CharacterCreationOption Id="option24" Culture="khuzait" StageNumber="2" EquipmentSetId="tor_cc_stableboy_2">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Crafting</string>
@@ -302,7 +302,7 @@
 		<OptionFlavourText>After the strange disappearance of the previous stableboy the local lord took you in his stead, you tended to the mighty steeds but it always felt like they were eyeing you out of hunger...</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option25" Culture="khuzait" StageNumber="2" CharacterIdToCopyEquipmentFrom="cc_miner">
+	<CharacterCreationOption Id="option25" Culture="khuzait" StageNumber="2" EquipmentSetId="tor_cc_warpstone_miner_2">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
@@ -313,7 +313,7 @@
 	</CharacterCreationOption>
 
 	<!-- VC stage 3 -->
-	<CharacterCreationOption Id="option26" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_vc_nobility">
+	<CharacterCreationOption Id="option26" Culture="khuzait" StageNumber="3" EquipmentSetId="tor_cc_vampiric_nobility_3">
 		<SkillsToIncrease>
             <string>Athletics</string>
 			<string>Athletics</string>
@@ -326,7 +326,7 @@
 		<OptionFlavourText>At some point your lord recognized your qualities, lifting you out of poverty and revealing his true nature. After receiving the blood kiss you have been reborn, immortal and more powerful.  -   Gains the the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_apprentice_necromancer">
+	<CharacterCreationOption Id="option27" Culture="khuzait" StageNumber="3" EquipmentSetId="tor_cc_novice_necromancer_3">
 		<SkillsToIncrease>
 			<string>Medicine</string>
 			<string>Crafting</string>
@@ -338,7 +338,7 @@
 		<OptionFlavourText>You broke away from the role of a communion slave to a much older necromancer, stealing one of his tomes on your way out. You are now free to delve into dark lores and determine your own fate.  -   Gains access to summon skeleton spell and the ability to raise dead post-battle or in graveyards.</OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_empire_state_troop_vc">
+	<CharacterCreationOption Id="option28" Culture="khuzait" StageNumber="3" EquipmentSetId="tor_cc_sylvanian_statetroop_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Polearm</string>
@@ -350,7 +350,7 @@
 		<OptionFlavourText>The mortals of Sylvania are known to march into battle alongside the undead hordes of their masters. A more dour and superstitious folk you will never meet but they rarely break in the heat of battle. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="tow_merchant_empire">
+	<CharacterCreationOption Id="option29" Culture="khuzait" StageNumber="3" EquipmentSetId="tor_cc_travelling_merchant_3">
 		<SkillsToIncrease>
 			<string>Trade</string>
 			<string>Trade</string>
@@ -362,7 +362,7 @@
 		<OptionFlavourText>Few are brave or foolish enough to peddle goods into Sylvania, as all manner of beasts may come for you. You however saw a fortune to be made in bringing luxuries from Wurtbad to the Von Carstein Nobility, the luck during your travels had always seemed unnatural. </OptionFlavourText>
 	</CharacterCreationOption>
 
-	<CharacterCreationOption Id="option30" Culture="khuzait" StageNumber="3" CharacterIdToCopyEquipmentFrom="cc_vagabond">
+	<CharacterCreationOption Id="option30" Culture="khuzait" StageNumber="3" EquipmentSetId="tor_cc_vagabond_3">
 		<SkillsToIncrease>
 			<string>OneHanded</string>
 			<string>Roguery</string>

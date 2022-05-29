@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
@@ -22,17 +24,46 @@ namespace TOW_Core.Utilities
             InformationManager.DisplayMessage(new InformationMessage(text, new Color(134, 114, 250)));
         }
 
+        public static string GetWindsIconAsText()
+        {
+            return "<img src=\"winds_icon_45\"/>";
+        }
+
         public static void Log(string message, LogLevel severity)
         {
             var logger = LogManager.GetCurrentClassLogger();
             logger.Log(severity, message);
         }
 
+        public static void CopyEquipmentToClipBoard(SPInventoryVM vm)
+        {
+            string text = "";
+            text += GetText(vm.CharacterWeapon1Slot) + ",";
+            text += GetText(vm.CharacterWeapon2Slot) + ",";
+            text += GetText(vm.CharacterWeapon3Slot) + ",";
+            text += GetText(vm.CharacterWeapon4Slot) + ",";
+            text += GetText(vm.CharacterHelmSlot) + ",";
+            text += GetText(vm.CharacterTorsoSlot) + ",";
+            text += GetText(vm.CharacterCloakSlot) + ",";
+            text += GetText(vm.CharacterGloveSlot) + ",";
+            text += GetText(vm.CharacterBootSlot) + ",";
+            text += GetText(vm.CharacterMountSlot) + ",";
+            text += GetText(vm.CharacterMountArmorSlot);
+            Clipboard.SetText(text);
+            InformationManager.DisplayMessage(new InformationMessage("Equipment items copied!", Colors.Green));
+        }
+        
+        private static string GetText(SPItemVM slot)
+        {
+            if (slot.StringId != "" && slot.StringId != null) return "Item." + slot.StringId;
+            else return "none";
+        }
+
         public static string GetRandomScene()
         {
             var filterednames = new List<string>();
             string pickedname = "towmm_menuscene_01";
-            var path = BasePath.Name + "Modules/TOW_EnvironmentAssets/SceneObj/";
+            var path = BasePath.Name + "Modules/TOR_Environment/SceneObj/";
             if (Directory.Exists(path))
             {
                 var dirnames = Directory.GetDirectories(path);
@@ -53,6 +84,22 @@ namespace TOW_Core.Utilities
 
             }
             return pickedname;
+        }
+
+        /** 
+         * Finds the Settlement closest to the specified part and within the radius given.
+         * 
+         * Lower values for radius will lead to better performance.
+         */
+        public static Settlement FindNearestSettlement(MobileParty party, float radius)
+        {
+            var nearbySettlements = 
+                Settlement.FindSettlementsAroundPosition(party.GetPosition2D, radius);
+
+            // The list of nearbySettlements is unordered, thus we need to find the
+            // settlement with minimum distance.
+            return nearbySettlements.MinBy(
+                settlement => Campaign.Current.Models.MapDistanceModel.GetDistance(party, settlement));
         }
     }
 }

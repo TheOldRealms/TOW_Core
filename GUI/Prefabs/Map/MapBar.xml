@@ -1,0 +1,477 @@
+<Prefab>
+  <Variables>
+  </Variables>
+  <Constants>
+
+    <Constant Name="LeftBar.Button1.Width" BrushLayer="Default" BrushName="MapBar.Left.Button1" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button1.Height" BrushLayer="Default" BrushName="MapBar.Left.Button1" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button2.Width" BrushLayer="Default" BrushName="MapBar.Left.Button2" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button2.Height" BrushLayer="Default" BrushName="MapBar.Left.Button2" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button3.Width" BrushLayer="Default" BrushName="MapBar.Left.Button3" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button3.Height" BrushLayer="Default" BrushName="MapBar.Left.Button3" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button4.Width" BrushLayer="Default" BrushName="MapBar.Left.Button4" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button4.Height" BrushLayer="Default" BrushName="MapBar.Left.Button4" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button5.Width" BrushLayer="Default" BrushName="MapBar.Left.Button5" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button5.Height" BrushLayer="Default" BrushName="MapBar.Left.Button5" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button6.Width" BrushLayer="Default" BrushName="MapBar.Left.Button6" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button6.Height" BrushLayer="Default" BrushName="MapBar.Left.Button6" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Button7.Width" BrushLayer="Default" BrushName="MapBar.Left.Button7" BrushValueType="Width" />
+    <Constant Name="LeftBar.Button7.Height" BrushLayer="Default" BrushName="MapBar.Left.Button7" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon1.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon1" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon1.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon1" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon2.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon2" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon2.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon2" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon3.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon3" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon3.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon3" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon4.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon4" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon4.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon4" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon5.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon5" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon5.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon5" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon6.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon6" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon6.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon6" BrushValueType="Height" />
+
+    <Constant Name="LeftBar.Icon7.Width" BrushLayer="Default" BrushName="MapBar.Left.Icon7" BrushValueType="Width" />
+    <Constant Name="LeftBar.Icon7.Height" BrushLayer="Default" BrushName="MapBar.Left.Icon7" BrushValueType="Height" />
+
+    <Constant Name="MapBar.GatherArmy.Icon.Width" BrushLayer="Default" BrushName="MapBar.GatherArmy.Icon" BrushValueType="Width" />
+    <Constant Name="MapBar.GatherArmy.Icon.Height" BrushLayer="Default" BrushName="MapBar.GatherArmy.Icon" BrushValueType="Height" />
+
+    <Constant Name="MapBar.GatherArmy.Background.Width" BrushLayer="Default" BrushName="MapBar.GatherArmy.Background" BrushValueType="Width" />
+    <Constant Name="MapBar.GatherArmy.Background.Height" BrushLayer="Default" BrushName="MapBar.GatherArmy.Background" BrushValueType="Height" />
+
+    <Constant Name="MapBar.GatherArmy.Button.Width" BrushLayer="Default" BrushName="MapBar.GatherArmy.Button" BrushValueType="Width" />
+    <Constant Name="MapBar.GatherArmy.Button.Height" BrushLayer="Default" BrushName="MapBar.GatherArmy.Button" BrushValueType="Height" />
+
+    <Constant Name="NormalMapBarTextColor" Value="#FFFFFFFF" />
+    <Constant Name="WarningMapBarTextColor" Value="#DB0808FF" />
+    <Constant Name="MapBar.Notification.Size" Value="20" />
+
+    <Constant Name="MapBar.Buttons.HorizonalSpacing" Value="2" />
+
+    <Constant Name="MapBar.ButtonIcon.XOffset" Value="0" />
+    <Constant Name="MapBar.ButtonIcon.YOffset" Value="1" />
+
+  </Constants>
+  <VisualDefinitions>
+    <VisualDefinition Name="InfoBar" TransitionDuration="0.45" EaseIn="true">
+      <VisualState PositionYOffset="36" State="Default" />
+      <VisualState PositionYOffset="0" State="Extended" />
+    </VisualDefinition>
+    <VisualDefinition Name="CenterPanel" TransitionDuration="0.45" EaseIn="true">
+      <VisualState PositionYOffset="6" State="Default" />
+      <VisualState PositionYOffset="100" State="Disabled" />
+    </VisualDefinition>
+    <VisualDefinition Name="GatherArmyButton" TransitionDuration="0.2">
+      <VisualState PositionYOffset="-50" PositionXOffset="0" State="Default" />
+      <VisualState PositionYOffset="-50" PositionXOffset="75" State="Disabled" />
+      <VisualState PositionYOffset="-86" PositionXOffset="0" State="Extended" />
+    </VisualDefinition>
+    <VisualDefinition Name="ResetButton" TransitionDuration="0.45" EaseIn="true">
+      <VisualState PositionYOffset="0" State="Default" />
+      <VisualState PositionYOffset="0" State="Hovered" />
+      <VisualState PositionYOffset="0" State="Pressed" />
+      <VisualState PositionYOffset="100" State="Disabled" />
+    </VisualDefinition>
+  </VisualDefinitions>
+  <Window>
+    <Widget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@IsEnabled">
+      <Children>
+
+        <!--Tutorial Notification Frame-->
+        <ElementNotificationWidget DataSource="{TutorialNotification}" ElementID="@ElementID" TutorialFrameWidget="TutorialFrameWidget">
+          <Children>
+            <TutorialHighlightItemWidget Id="TutorialFrameWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="TutorialHighlightBrush" IsDisabled="true" IsVisible="false" />
+          </Children>
+        </ElementNotificationWidget>
+
+        <Widget DataSource="{MapTimeControl}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginBottom="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsVisible="@IsCurrentlyPausedOnMap" IsEnabled="false">
+          <Children>
+            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginTop="5" MarginRight="5" MarginBottom="0" MarginLeft="5" Brush="Map.Paused.Text" IsEnabled="false" Text="@PausedText" />
+          </Children>
+        </Widget>
+
+        <!--_____Left Side Panel_______-->
+        <Widget DataSource="{MapNavigation}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Bottom" Sprite="MapBar\mapbar_left_canvas">
+          <Children>
+
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" Sprite="mapbar_left_canvas">
+              <Children>
+
+                <!--Escape Menu Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button1.Width" SuggestedHeight="!LeftBar.Button1.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginRight="!MapBar.Buttons.HorizonalSpacing" UpdateChildrenStates="true">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="EscapeMenuButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button1" ButtonIcon="CharacterIcon" Command.Click="ExecuteOpenEscapeMenu" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" IsEnabled="@IsEscapeMenuEnabled" IsSelected="@IsEscapeMenuActive" UpdateChildrenStates="true" GamepadNavigationIndex="0">
+                      <Children>
+                        <BrushWidget Id="MainMenuIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon1.Width" SuggestedHeight="!LeftBar.Icon1.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon1" />
+                        <HintWidget DataSource="{EscapeMenuHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{EscapeMenuHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Character Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button2.Width" SuggestedHeight="!LeftBar.Button2.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" UpdateChildrenStates="true" MarginRight="!MapBar.Buttons.HorizonalSpacing">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="CharacterButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button2" ButtonIcon="CharacterIcon" Command.AlternateClick="ExecuteOpenMainHeroEncyclopedia" Command.Click="ExecuteOpenCharacterDeveloper" IsEnabled="@IsCharacterDeveloperEnabled" IsSelected="@IsCharacterDeveloperActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" UpdateChildrenStates="true" HoveredCursorState="RightClickLink" GamepadNavigationIndex="1">
+                      <Children>
+                        <BrushWidget Id="CharacterIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon2.Width" SuggestedHeight="!LeftBar.Icon2.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon2"/>
+                        <HintWidget DataSource="{SkillsHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{SkillsHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Inventory Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button3.Width" SuggestedHeight="!LeftBar.Button3.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginRight="!MapBar.Buttons.HorizonalSpacing" UpdateChildrenStates="true">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="InventoryButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button3" ButtonIcon="InventoryIcon" Command.Click="ExecuteOpenInventory" IsEnabled="@IsInventoryEnabled" IsSelected="@IsInventoryActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" UpdateChildrenStates="true" GamepadNavigationIndex="2">
+                      <Children>
+                        <BrushWidget Id="InventoryIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon3.Width" SuggestedHeight="!LeftBar.Icon3.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon3"/>
+                        <HintWidget DataSource="{InventoryHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{InventoryHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Party Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button4.Width" SuggestedHeight="!LeftBar.Button4.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="!MapBar.Buttons.HorizonalSpacing" UpdateChildrenStates="true">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="PartyButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button4" ButtonIcon="PartyIcon" Command.Click="ExecuteOpenParty" IsEnabled="@IsPartyEnabled" IsSelected="@IsPartyActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" UpdateChildrenStates="true" GamepadNavigationIndex="3">
+                      <Children>
+                        <BrushWidget Id="PartyIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon4.Width" SuggestedHeight="!LeftBar.Icon4.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon4"/>
+                        <HintWidget DataSource="{PartyHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{PartyHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Quests Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button5.Width" SuggestedHeight="!LeftBar.Button5.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="!MapBar.Buttons.HorizonalSpacing" UpdateChildrenStates="true">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="QuestsButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button5" ButtonIcon="QuestsIcon" Command.Click="ExecuteOpenQuests" IsEnabled="@IsQuestsEnabled" IsSelected="@IsQuestsActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" UpdateChildrenStates="true" GamepadNavigationIndex="4" GamepadNavigationDefaultOnGain="true">
+                      <Children>
+                        <BrushWidget Id="QuestsIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon5.Width" SuggestedHeight="!LeftBar.Icon5.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon5"/>
+                        <HintWidget DataSource="{QuestsHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{QuestsHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Clan Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button6.Width" SuggestedHeight="!LeftBar.Button6.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" UpdateChildrenStates="true" >
+                  <Children>
+                    <ButtonIconOffsetWidget Id="ClanButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button6" ButtonIcon="ClanIcon" Command.AlternateClick="ExecuteOpenMainHeroClanEncyclopedia" Command.Click="ExecuteOpenClan" IsEnabled="@IsClanEnabled" IsSelected="@IsClanActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" UpdateChildrenStates="true" HoveredCursorState="RightClickLink" GamepadNavigationIndex="5">
+                      <Children>
+                        <BrushWidget Id="ClanIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon7.Width" SuggestedHeight="!LeftBar.Icon7.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon7"/>
+                        <HintWidget DataSource="{ClanHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{ClanHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+                <!--Kingdom Button-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Button7.Width" SuggestedHeight="!LeftBar.Button7.Height" HorizontalAlignment="Left" VerticalAlignment="Bottom" UpdateChildrenStates="true">
+                  <Children>
+                    <ButtonIconOffsetWidget Id="KingdomButton" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Left.Button7" ButtonIcon="KingdomIcon" Command.AlternateClick="ExecuteOpenMainHeroKingdomEncyclopedia" Command.Click="ExecuteOpenKingdom" IsEnabled="@IsKingdomEnabled" IsSelected="@IsKingdomActive" PressedXOffset="!MapBar.ButtonIcon.XOffset" PressedYOffset="!MapBar.ButtonIcon.YOffset" NormalXOffset="-5" NormalYOffset="1" UpdateChildrenStates="true" HoveredCursorState="RightClickLink" GamepadNavigationIndex="6">
+                      <Children>
+                        <BrushWidget Id="KingdomIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!LeftBar.Icon6.Width" SuggestedHeight="!LeftBar.Icon6.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Left.Icon6"/>
+                        <HintWidget DataSource="{KingdomHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                      </Children>
+                    </ButtonIconOffsetWidget>
+                    <HintWidget DataSource="{KingdomHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+                  </Children>
+                </Widget>
+
+              </Children>
+            </ListPanel>
+          </Children>
+        </Widget>
+
+        <!--Left Side Frame-->
+        <Widget DataSource="{MapNavigation}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="554" SuggestedHeight="77" HorizontalAlignment="Left" VerticalAlignment="Bottom" Sprite="MapBar\mapbar_left_frame" PositionYOffset="12" PositionXOffset="-11" DoNotAcceptEvents="true">
+          <Children>
+
+            <!--Character Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="73" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="CharacterUnreadText" DoNotPassEventsToChildren="true">
+              <Children>
+                <TextWidget Id="CharacterUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@SkillAlert" Text="@AlertText" />
+                <HintWidget DataSource="{CharacterAlertHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </MapBarUnreadWidget>
+
+            <!--Inventory Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="153" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="InventoryUnreadText">
+              <Children>
+                <TextWidget Id="InventoryUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@InventoryAlert" Text="@AlertText" />
+              </Children>
+            </MapBarUnreadWidget>
+
+            <!--Party Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="230" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="PartyUnreadText" DoNotPassEventsToChildren="true">
+              <Children>
+                <TextWidget Id="PartyUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@PartyAlert" Text="@AlertText"/>
+                <HintWidget DataSource="{PartyAlertHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </MapBarUnreadWidget>
+
+            <!--Quests Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="310" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="QuestsUnreadText" DoNotPassEventsToChildren="true">
+              <Children>
+                <TextWidget Id="QuestsUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@QuestsAlert" Text="@AlertText" />
+                <HintWidget DataSource="{QuestAlertHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </MapBarUnreadWidget>
+
+            <!--Clan Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="385" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="ClanUnreadText">
+              <Children>
+                <TextWidget Id="ClanUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@ClanAlert" Text="@AlertText"/>
+              </Children>
+            </MapBarUnreadWidget>
+
+            <!--Kingdom Unread-->
+            <MapBarUnreadWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.Notification.Size" SuggestedHeight="!MapBar.Notification.Size" HorizontalAlignment="Left" VerticalAlignment="Top" PositionXOffset="467" Brush="MapUnreadBrushWithAnim" UnreadTextWidget="KingdomUnreadText">
+              <Children>
+                <TextWidget Id="KingdomUnreadText" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="SettlementValuesTextBrush" Brush.FontSize="15" Brush.TextHorizontalAlignment="Center" IsVisible="@KingdomAlert" Text="@AlertText"/>
+              </Children>
+            </MapBarUnreadWidget>
+
+            <MapInfoSilhouetteWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Silhouette.Left" CurrentScreen="@CurrentScreen" IsEnabled="false" />
+
+          </Children>
+        </Widget>
+
+        <!--_____Center Panel_______-->
+        <MapCurrentTimeVisualWidget DataSource="{MapTimeControl}" Id="CenterPanel" VisualDefinition="CenterPanel" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="430" SuggestedHeight="59" HorizontalAlignment="Center" VerticalAlignment="Bottom" Sprite="MapBar\mapbar_center_frame" CurrentTimeState="@TimeFlowState" FastForwardButton="FastForwardButton" IsEnabled="@IsCenterPanelEnabled" PauseButton="PauseButton" PlayButton="PlayButton">
+          <Children>
+
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="140" SuggestedHeight="40" PositionXOffset="42" VerticalAlignment="Bottom" PositionYOffset="-4" Brush="MapTextBrushGal" Brush.FontSize="20" Text="@Date" />
+
+            <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="78" SuggestedHeight="79" HorizontalAlignment="Center" PositionYOffset="-8" VerticalAlignment="Center" Command.Click="ExecuteResetCamera" UpdateChildrenStates="true">
+              <Children>
+                <MapTimeImage WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="78" SuggestedHeight="50" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="MapTimeImage" CircularClipEnabled="true" CircularClipRadius="29" DayTime="@Time" />
+                <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="75" SuggestedHeight="75" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.Center.Button" />
+                <HintWidget DataSource="{TimeOfDayHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+              </Children>
+            </ButtonWidget>
+
+            <ButtonWidget Id="FastForwardButton" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" PositionXOffset="-58" PositionYOffset="-13" Brush="MapBarFastForwardButton" Command.Click="ExecuteTimeControlChange" CommandParameter.Click="2">
+              <Children>
+                <HintWidget DataSource="{FastForwardHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>
+
+            <ButtonWidget Id="PlayButton" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="20" SuggestedHeight="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" PositionXOffset="-97" PositionYOffset="-13" Brush="MapBarPlayButton" Command.Click="ExecuteTimeControlChange" CommandParameter.Click="1">
+              <Children>
+                <HintWidget DataSource="{PlayHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>
+
+            <ButtonWidget Id="PauseButton" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="18" SuggestedHeight="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" PositionXOffset="-137" PositionYOffset="-13" Brush="MapBarPauseButton" Command.Click="ExecuteTimeControlChange" CommandParameter.Click="0">
+              <Children>
+                <HintWidget DataSource="{PauseHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>
+
+            <MapInfoSilhouetteWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Silhouette.Center" CurrentScreen="@CurrentScreen" IsEnabled="false" />
+
+          </Children>
+        </MapCurrentTimeVisualWidget>
+        <!--___________________________-->
+
+        <MapBarGatherArmyWidget InfoBarWidget="..\InfoBarWidget" VisualDefinition="GatherArmyButton" Id="MapGatherArmyButton" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.GatherArmy.Background.Width" SuggestedHeight="!MapBar.GatherArmy.Background.Height" Brush="MapBar.GatherArmy.Background" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsGatherArmyEnabled="@CanGatherArmy" IsGatherArmyVisible="@IsGatherArmyVisible" GamepadNavigationIndex="7" >
+          <Children>
+
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MapBar.GatherArmy.Button.Width" SuggestedHeight="!MapBar.GatherArmy.Button.Height" Brush="MapBar.GatherArmy.Button" Command.Click="ExecuteArmyManagement" PositionXOffset="2" PositionYOffset="2" DoNotPassEventsToChildren="true" HorizontalAlignment="Right" VerticalAlignment="Bottom" UpdateChildrenStates="true" IsEnabled="@CanGatherArmy">
+              <Children>
+                <BrushWidget Id="ArmyIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="37" SuggestedHeight="33" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MapBar.GatherArmy.Icon" MarginLeft="15" MarginTop="3" />
+                <HintWidget DataSource="{GatherArmyHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>
+
+            <HintWidget DataSource="{GatherArmyHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+          </Children>
+        </MapBarGatherArmyWidget>
+
+        <!--_____Right Panel_______-->
+        <MapInfoBarWidget VisualDefinition="InfoBar" DataSource="{MapInfo}" Id="InfoBarWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="541" SuggestedHeight="99" HorizontalAlignment="Right" VerticalAlignment="Bottom" PositionYOffset="49" Sprite="MapBar\mapbar_right_frame" ExtendButtonWidget="ExtendButtonWidget" IsInfoBarExtended="@IsInfoBarExtended" IsVisible="@IsInfoBarEnabled">
+          <Children>
+
+            <ListPanel Id="TopInfoBar" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="510" SuggestedHeight="40" HorizontalAlignment="Right" VerticalAlignment="Top" MarginTop="21" >
+              <Children>
+
+                <HintWidget DataSource="{DenarHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                        <MapBarCustomValueTextWidget DataSource="{..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="52" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" Brush="MapTextBrushWithAnim" Brush.FontSize="20" IsWarning="@IsDenarTooltipWarning" NormalColor="!NormalMapBarTextColor" Text="@DenarsWithAbbrText" ValueAsInt="@Denars" WarningColor="!WarningMapBarTextColor"/>
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{InfluenceHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="18" SuggestedHeight="33" VerticalAlignment="Center">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="General\Icons\Influence@2x" />
+                          </Children>
+                        </Widget>
+                        <MapBarCustomValueTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MinWidth="20" MaxWidth="55" SuggestedHeight="50" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Brush.FontSize="20" IsWarning="@IsInfluenceTooltipWarning" NormalColor="!NormalMapBarTextColor" Text="@InfluenceWithAbbrText" ValueAsInt="@Influence" WarningColor="!WarningMapBarTextColor" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{HealthHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget DataSource="{..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Health@2x" IsHidden="@IsMainHeroSick"/>
+                        <Widget DataSource="{..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Health_Sick@2x" IsVisible="@IsMainHeroSick"/>
+                        <MapBarCustomValueTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" MinWidth="20" HeightSizePolicy="Fixed" MaxWidth="55" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Brush.FontSize="20" Brush.TextHorizontalAlignment="Left" IsWarning="@IsHealthTooltipWarning" NormalColor="!NormalMapBarTextColor" Text="@HealthTextWithPercentage" ValueAsInt="@Health" WarningColor="!WarningMapBarTextColor" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+                
+                <HintWidget DataSource="{AvailableTroopsHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="4" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Party@2x" />
+                        <MapBarCustomValueTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MinWidth="17" MaxWidth="57" SuggestedHeight="50" VerticalAlignment="Center" PositionYOffset="2" Brush="MapTextBrushWithAnim" MarginLeft="5" Brush.FontSize="20" Brush.TextHorizontalAlignment="Left" IsWarning="@IsAvailableTroopsTooltipWarning" NormalColor="!NormalMapBarTextColor" Text="@AvailableTroopsText" ValueAsInt="@TotalTroops" WarningColor="!WarningMapBarTextColor" >
+                          <Children>
+                            <!--<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="45" Sprite="BlankWhiteSquare_9"></Widget>-->
+                          </Children>
+                        </MapBarCustomValueTextWidget>
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{DailyConsumptionHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="4" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Food@2x" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MinWidth="40" MaxWidth="55" SuggestedHeight="50" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="3" Brush="MapTextBrushWithAnim" Brush.FontSize="20" IntText="@TotalFood" IsWarning="@IsDailyConsumptionTooltipWarning" NormalColor="!NormalMapBarTextColor" WarningColor="!WarningMapBarTextColor" >
+                          <Children>
+                            <!--<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="45" Sprite="BlankWhiteSquare_9"></Widget>-->
+                          </Children>
+                        </MapBarTextWidget>
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{MoraleHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="4" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Morale@2x" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Brush.FontSize="20" IntText="@Morale" IsWarning="@IsMoraleTooltipWarning" MinWidth="30" NormalColor="!NormalMapBarTextColor" WarningColor="!WarningMapBarTextColor" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+              </Children>
+            </ListPanel>
+
+            <ButtonWidget Id="ExtendButtonWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="41" SuggestedHeight="34" HorizontalAlignment="Right" MarginTop="22"  Brush="MapInfoBarExtendButtonBrush">
+              <Children>
+                <HintWidget DataSource="{ExtendHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>
+
+            <ListPanel Id="BottomInfoBar" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginTop="10">
+              <Children>
+
+                <HintWidget DataSource="{ArtilleryHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="5" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" >
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="33" VerticalAlignment="Center" Sprite="cannon_icon" MarginBottom="3" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="41" SuggestedHeight="40" VerticalAlignment="Center"  Brush="MapTextBrushWithAnim" Text="@ArtilleryText" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget Id="PartySpeedLabel" DataSource="{SpeedHint}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\Speed@2x" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" MaxWidth="50" SuggestedWidth="40" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@Speed" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{ViewDistanceHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="MapBar\monocular_icon" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="50" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@ViewDistance" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{TroopWageHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="General\Icons\PartyCost@2x" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="65" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@TroopWage" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+                <HintWidget DataSource="{WindsHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" >
+                  <Children>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsEnabled="false">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="winds_icon_45" />
+                        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="65" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@WindsOfMagic" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </HintWidget>
+
+              </Children>
+            </ListPanel>
+
+            <MapInfoSilhouetteWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MapBar.Silhouette.Right" CurrentScreen="@CurrentScreen" IsEnabled="false" />
+
+          </Children>
+        </MapInfoBarWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

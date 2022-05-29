@@ -8,11 +8,6 @@ namespace TOW_Core.Abilities.Crosshairs
         private string _spriteName = "test_spell_crosshair";
         private bool _isVisible;
 
-        public ProjectileCrosshair_VM() : base()
-        {
-
-        }
-
         [DataSourceProperty]
         public string Name
         {

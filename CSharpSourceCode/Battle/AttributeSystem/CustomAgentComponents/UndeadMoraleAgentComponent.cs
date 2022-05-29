@@ -3,7 +3,7 @@ using TaleWorlds.MountAndBlade;
 using TOW_Core.Utilities.Extensions;
 using TOW_Core.Utilities;
 
-namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
+namespace TOW_Core.Battle.AttributeSystem.CustomAgentComponents
 {
     public class UndeadMoraleAgentComponent : AgentComponent
     {
@@ -49,7 +49,7 @@ namespace TOW_Core.Battle.ObjectDataExtensions.CustomAgentComponents
 
         private void ApplyCrumble()
         {
-            Agent.ApplyStatusEffect("crumble");
+            Agent.ApplyStatusEffect("crumble", Agent);
         }
     }
 }

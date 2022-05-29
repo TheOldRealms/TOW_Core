@@ -1,28 +1,94 @@
-﻿using TaleWorlds.Core;
+﻿using HarmonyLib;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.InputSystem;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
-using TOW_Core.Battle.AI.Components;
+using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Battle.AI.AgentBehavior.Components;
 using TOW_Core.Battle.CrosshairMissionBehavior;
+using TOW_Core.Battle.Crosshairs;
+using TOW_Core.Items;
+using TOW_Core.Quests;
+using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
 namespace TOW_Core.Abilities
 {
     public class AbilityManagerMissionLogic : MissionLogic
     {
-        private bool shouldSheathWeapon;
-        private bool shouldWieldWeapon;
-        private bool isMainAgentChecked;
-        private EquipmentIndex mainHand;
-        private EquipmentIndex offHand;
-        private Ability currentAbility;
+        private bool _shouldSheathWeapon;
+        private bool _shouldWieldWeapon;
+        private bool _hasInitializedForMainAgent;
+        private AbilityModeState _currentState = AbilityModeState.Off;
+        private EquipmentIndex _mainHand;
+        private EquipmentIndex _offHand;
         private AbilityComponent _abilityComponent;
-        private GameKeyContext keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
-        private MissionScreen _missionScreen;
+        private GameKeyContext _keyContext = HotKeyManager.GetCategory("CombatHotKeyCategory");
+        private static readonly ActionIndexCache _idleAnimation = ActionIndexCache.Create("act_spellcasting_idle");
+        private ParticleSystem[] _psys = null;
+        private readonly string _castingStanceParticleName = "psys_spellcasting_stance";
+        private SummonedCombatant _defenderSummoningCombatant;
+        private SummonedCombatant _attackerSummoningCombatant;
+        private readonly float DamagePortionForChargingSpecialMove = 0.25f;
+        private Dictionary<Team, int> _artillerySlots = new Dictionary<Team, int>();
 
-        public AbilityManagerMissionLogic()
+        public AbilityModeState CurrentState => _currentState;
+
+        public int GetArtillerySlotsLeftForTeam(Team team)
         {
+            int slotsLeft = 0;
+            _artillerySlots.TryGetValue(team, out slotsLeft);
+            return slotsLeft;
+        }
+
+        public override void OnFormationUnitsSpawned(Team team)
+        {
+            InitTeam(team);
+        }
+
+        private void InitTeam(Team team)
+        {
+            if (team is null || team.TeamAgents.IsEmpty())
+                return;
+
+            if (team.Side == BattleSideEnum.Attacker && _attackerSummoningCombatant == null)
+            {
+                var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
+                _attackerSummoningCombatant = new SummonedCombatant(team, culture);
+            }
+            else if (team.Side == BattleSideEnum.Defender && _defenderSummoningCombatant == null)
+            {
+                var culture = team.Leader == null ? team.TeamAgents.FirstOrDefault().Character.Culture : team.Leader.Character.Culture;
+                _defenderSummoningCombatant = new SummonedCombatant(team, culture);
+            }
+            RefreshMaxArtilleryCountForTeam(team);
+        }
+
+        private void RefreshMaxArtilleryCountForTeam(Team team)
+        {
+            if (_artillerySlots.ContainsKey(team))
+            {
+                _artillerySlots[team] = 0;
+                foreach(var agent in team.TeamAgents)
+                {
+                    if (agent.CanPlaceArtillery())
+                    {
+                        _artillerySlots[team] += agent.GetPlaceableArtilleryCount();
+                    }
+                }
+            }
+            else
+            {
+                _artillerySlots.Add(team, 0);
+                RefreshMaxArtilleryCountForTeam(team);
+            }
         }
 
         protected override void OnEndMission()
@@ -30,100 +96,178 @@ namespace TOW_Core.Abilities
             BindWeaponKeys();
         }
 
+        public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
+        {
+            var comp = affectorAgent.GetComponent<AbilityComponent>();
+            if(comp != null)
+            {
+                if(comp.SpecialMove != null) comp.SpecialMove.AddCharge(damage * DamagePortionForChargingSpecialMove);
+            }
+        }
+
         public override void OnMissionTick(float dt)
         {
-            if (!isMainAgentChecked)
+            if (!_hasInitializedForMainAgent)
             {
-                if (Agent.Main != null)
+                if(Agent.Main != null)
                 {
-                    _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
-                    if (_abilityComponent != null)
+                    SetUpCastStanceParticles();
+                    _hasInitializedForMainAgent = true;
+                }
+            }
+            else if (IsAbilityModeAvailableForMainAgent())
+            {
+                CheckIfMainAgentHasPendingActivation();
+                
+                HandleInput();
+
+                UpdateWieldedItems();
+
+                HandleAnimations();
+            }
+        }
+
+        private void CheckIfMainAgentHasPendingActivation()
+        {
+            if (_abilityComponent.CurrentAbility.IsActivationPending) _abilityComponent.CurrentAbility.ActivateAbility(Agent.Main);
+        }
+
+        private void HandleAnimations()
+        {
+            if(CurrentState != AbilityModeState.Off)
+            {
+                var action = Agent.Main.GetCurrentAction(1);
+                if(CurrentState == AbilityModeState.Idle && action != _idleAnimation)
+                {
+                    Agent.Main.SetActionChannel(1, _idleAnimation);
+                }
+            }
+        }
+
+        internal void OnCastComplete(Ability ability, Agent agent)
+        {
+            if(ability is ItemBoundAbility && ability.Template.AbilityEffectType == AbilityEffectType.ArtilleryPlacement)
+            {
+                if (_artillerySlots.ContainsKey(agent.Team))
+                {
+                    _artillerySlots[agent.Team]--;
+                }
+            }
+            if(agent == Agent.Main)
+            {
+                if (CurrentState == AbilityModeState.Casting) _currentState = AbilityModeState.Idle;
+                if (Game.Current.GameType is Campaign)
+                {
+                    var quest = AdvanceSpellCastingLevelQuest.GetCurrentActiveIfExists();
+                    if (quest != null)
                     {
-                        currentAbility = _abilityComponent.CurrentAbility;
-                        var crosshairMB = Mission.Current.GetMissionBehaviour<CustomCrosshairMissionBehavior>();
-                        if (crosshairMB != null)
-                        {
-                            _missionScreen = crosshairMB.MissionScreen;
-                            foreach (var ability in _abilityComponent.KnownAbilities)
-                            {
-                                if (ability.Crosshair != null)
-                                {
-                                    ability.Crosshair.SetMissionScreen(_missionScreen);
-                                    ability.Crosshair.Initialize();
-                                }
-                            }
-                            isMainAgentChecked = true;
-                        }
+                        quest.IncrementCast();
                     }
                 }
             }
-            if (CanUseAbilities())
+        }
+
+        internal void OnCastStart(Ability ability, Agent agent) 
+        {
+            if(agent == Agent.Main)
             {
-                if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
+                if (CurrentState == AbilityModeState.Idle) _currentState = AbilityModeState.Casting;
+            }
+        }
+
+        private void UpdateWieldedItems()
+        {
+            if (_currentState == AbilityModeState.Idle && _shouldSheathWeapon)
+            {
+                if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != EquipmentIndex.None)
                 {
-                    if (Input.IsKeyPressed(InputKey.Q))
-                    {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        DisableSpellMode(false);
-                    }
-                    else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
-                    {
-                        if (currentAbility.Crosshair.IsVisible)
-                            Agent.Main.CastCurrentAbility();
-                    }
-                    else if (Input.IsKeyPressed(InputKey.MouseScrollUp))
-                    {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        Agent.Main.SelectNextAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
-                    }
-                    else if (Input.IsKeyPressed(InputKey.MouseScrollDown))
-                    {
-                        if (currentAbility.Crosshair != null)
-                            currentAbility.Crosshair.Hide();
-                        Agent.Main.SelectPreviousAbility();
-                        currentAbility = Agent.Main.GetCurrentAbility();
-                    }
-                    if (shouldSheathWeapon)
-                    {
-                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != EquipmentIndex.None)
-                        {
-                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible);
-                        }
-                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != EquipmentIndex.None)
-                        {
-                            Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimation);
-                        }
-                        else
-                        {
-                            shouldSheathWeapon = false;
-                        }
-                    }
+                    Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.MainHand, Agent.WeaponWieldActionType.WithAnimation);
+                }
+                else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != EquipmentIndex.None)
+                {
+                    Agent.Main.TryToSheathWeaponInHand(Agent.HandIndex.OffHand, Agent.WeaponWieldActionType.WithAnimation);
                 }
                 else
                 {
-                    if (Input.IsKeyPressed(InputKey.Q))
-                    {
-                        EnableSpellMode();
-                    }
-                    if (shouldWieldWeapon)
-                    {
-                        if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != mainHand)
-                        {
-                            Agent.Main.TryToWieldWeaponInSlot(mainHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                        }
-                        else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != offHand)
-                        {
-                            Agent.Main.TryToWieldWeaponInSlot(offHand, Agent.WeaponWieldActionType.WithAnimationUninterruptible, false);
-                        }
-                        else
-                        {
-                            shouldWieldWeapon = false;
-                        }
-                    }
+                    _shouldSheathWeapon = false;
                 }
+            }
+            if (_currentState == AbilityModeState.Off && _shouldWieldWeapon)
+            {
+                if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand) != _mainHand)
+                {
+                    Agent.Main.TryToWieldWeaponInSlot(_mainHand, Agent.WeaponWieldActionType.WithAnimation, false);
+                }
+                else if (Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand) != _offHand)
+                {
+                    Agent.Main.TryToWieldWeaponInSlot(_offHand, Agent.WeaponWieldActionType.WithAnimation, false);
+                }
+                else
+                {
+                    _shouldWieldWeapon = false;
+                }
+            }
+        }
+
+        private void HandleInput()
+        {
+            //Turning ability mode on/off
+            if (Input.IsKeyPressed(InputKey.Q))
+            {
+                switch (_currentState)
+                {
+                    case AbilityModeState.Off:
+                        EnableAbilityMode();
+                        break;
+                    case AbilityModeState.Idle:
+                        DisableAbilityMode(false);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (Input.IsKeyPressed(InputKey.LeftMouseButton))
+            {
+                bool flag = _abilityComponent.CurrentAbility.Crosshair == null ||
+                            !_abilityComponent.CurrentAbility.Crosshair.IsVisible ||
+                            _currentState != AbilityModeState.Idle ||
+                            (_abilityComponent.CurrentAbility.Crosshair.CrosshairType == CrosshairType.SingleTarget &&
+                            !((SingleTargetCrosshair)_abilityComponent.CurrentAbility.Crosshair).IsTargetLocked);
+                if (!flag)
+                {
+                    Agent.Main.CastCurrentAbility();
+                }
+                if(_abilityComponent.SpecialMove != null && _abilityComponent.SpecialMove.IsUsing) _abilityComponent.StopSpecialMove();
+            }
+            else if (Input.IsKeyPressed(InputKey.RightMouseButton))
+            {
+                if (_abilityComponent.SpecialMove != null && _abilityComponent.SpecialMove.IsUsing) _abilityComponent.StopSpecialMove();
+            }
+            else if (Input.IsKeyPressed(InputKey.MouseScrollUp) && _currentState != AbilityModeState.Off)
+            {
+                Agent.Main.SelectNextAbility();
+            }
+            else if (Input.IsKeyPressed(InputKey.MouseScrollDown) && _currentState != AbilityModeState.Off)
+            {
+                Agent.Main.SelectPreviousAbility();
+            }
+            else if (Input.IsKeyPressed(InputKey.LeftControl) && _abilityComponent != null && _abilityComponent.SpecialMove != null)
+            {
+                if (_currentState == AbilityModeState.Off && _abilityComponent.SpecialMove.IsCharged && IsCurrentCrossHairCompatible())
+                {
+                    _abilityComponent.SpecialMove.TryCast(Agent.Main);
+                }
+            }
+        }
+
+        private bool IsCurrentCrossHairCompatible()
+        {
+            var behaviour = Mission.Current.GetMissionBehavior<CustomCrosshairMissionBehavior>();
+            if (behaviour == null) return true;
+            else
+            {
+                if (behaviour.CurrentCrosshair is SniperScope) return !behaviour.CurrentCrosshair.IsVisible;
+                else return true;
             }
         }
 
@@ -147,43 +291,69 @@ namespace TOW_Core.Abilities
             return !mission.IsFriendlyMission && mission.CombatType != Mission.MissionCombatType.ArenaCombat && mission.CombatType != Mission.MissionCombatType.NoCombat;
         }
 
-        private bool CanUseAbilities()
+        private bool IsAbilityModeAvailableForMainAgent()
         {
             return Agent.Main != null &&
-                   Agent.Main.State == AgentState.Active &&
+                   Agent.Main.IsActive() &&
+                   !ScreenManager.GetMouseVisibility() &&
+                   IsCastingMission(Mission) &&
                    _abilityComponent != null &&
-                   _missionScreen != null &&
-                   !ScreenManager.GetMouseVisibility();
+                   _abilityComponent.CurrentAbility != null;
+                   
         }
 
-        private void EnableSpellMode()
+        private void EnableAbilityMode()
         {
-            mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-            offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-            _abilityComponent?.EnableAbilityMode();
+            _mainHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+            _offHand = Agent.Main.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+            _shouldSheathWeapon = true;
+            _currentState = AbilityModeState.Idle;
             ChangeKeyBindings();
-            shouldSheathWeapon = true;
+            var traitcomp = Agent.Main.GetComponent<ItemTraitAgentComponent>();
+            if (traitcomp != null)
+            {
+                traitcomp.EnableAllParticles(false);
+            }
+            EnableCastStanceParticles(true);
         }
 
-        private void DisableSpellMode(bool isTakingNewWeapon)
+        private void DisableAbilityMode(bool isTakingNewWeapon)
         {
             if (isTakingNewWeapon)
             {
-                mainHand = EquipmentIndex.None;
-                offHand = EquipmentIndex.None;
+                _mainHand = EquipmentIndex.None;
+                _offHand = EquipmentIndex.None;
             }
             else
             {
-                shouldWieldWeapon = true;
+                _shouldWieldWeapon = true;
             }
-            _abilityComponent?.DisableAbilityMode();
+            _currentState = AbilityModeState.Off;
             ChangeKeyBindings();
-
+            var traitcomp = Agent.Main.GetComponent<ItemTraitAgentComponent>();
+            if (traitcomp != null)
+            {
+                traitcomp.EnableAllParticles(true);
+            }
+            EnableCastStanceParticles(false);
+        }
+        private void EnableCastStanceParticles(bool enable)
+        {
+            if(_psys != null)
+            {
+                foreach (var psys in _psys)
+                {
+                    if(psys != null)
+                    {
+                        psys.SetEnable(enable);
+                    }
+                }
+            }
         }
 
         private void ChangeKeyBindings()
         {
-            if (_abilityComponent != null && _abilityComponent.IsAbilityModeOn)
+            if (_abilityComponent != null && _currentState != AbilityModeState.Off)
             {
                 UnbindWeaponKeys();
             }
@@ -195,27 +365,85 @@ namespace TOW_Core.Abilities
 
         private void BindWeaponKeys()
         {
-            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
-            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
-            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
-            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
-            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
-            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
+            _keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.MouseScrollUp);
+            _keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.MouseScrollDown);
+            _keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Numpad1);
+            _keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Numpad2);
+            _keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Numpad3);
+            _keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Numpad4);
         }
 
         private void UnbindWeaponKeys()
         {
-            keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
-            keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(11).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(12).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(18).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(19).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(20).KeyboardKey.ChangeKey(InputKey.Invalid);
+            _keyContext.GetGameKey(21).KeyboardKey.ChangeKey(InputKey.Invalid);
         }
 
         public override void OnItemPickup(Agent agent, SpawnedItemEntity item)
         {
-            DisableSpellMode(true);
+            if(agent == Agent.Main) DisableAbilityMode(true);
         }
+
+        public SummonedCombatant GetSummoningCombatant(Team team)
+        {
+            // OnFormationTroopsSpawned() isn't always called by missions
+            // ex. hideout missions
+            // and thus we need to add an extra check to make sure that 
+            // summoning combatants are initialized properly.
+            if (_attackerSummoningCombatant == null
+                || _defenderSummoningCombatant == null)
+            {
+                InitTeam(Mission.Current.Teams.Attacker);
+                InitTeam(Mission.Current.Teams.Defender);
+            }
+
+            var combatantToReturn =
+                team.Side == BattleSideEnum.Attacker ? _attackerSummoningCombatant 
+                : team.Side == BattleSideEnum.Defender ? _defenderSummoningCombatant 
+                    : null;
+
+            if (combatantToReturn == null)
+            {
+                // Crash the thread early to make it easier to debug instead of
+                // letting it the thread die on TalesWorld's end.
+                throw new NullReferenceException(
+                    String.Format("Summoning combatant for team: {0} is null!", team.Side)
+                );
+            }
+
+            return combatantToReturn;
+        }
+
+        protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
+        {
+            if (agent.Controller == Agent.ControllerType.Player)
+            {
+                _hasInitializedForMainAgent = false;
+            }
+        }
+
+        private void SetUpCastStanceParticles()
+        {
+            _abilityComponent = Agent.Main.GetComponent<AbilityComponent>();
+            if (_abilityComponent != null)
+            {
+                _psys = new ParticleSystem[2];
+                GameEntity entity;
+                _psys[0] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.MainHandItemBoneIndex, out entity);
+                _psys[1] = TOWParticleSystem.ApplyParticleToAgentBone(Agent.Main, _castingStanceParticleName, Game.Current.HumanMonster.OffHandItemBoneIndex, out entity);
+                EnableCastStanceParticles(false);
+            }
+        }
+    }
+
+    public enum AbilityModeState
+    {
+        Off,
+        Idle,
+        Casting
     }
 }

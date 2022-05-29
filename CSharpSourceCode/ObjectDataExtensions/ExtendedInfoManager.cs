@@ -1,12 +1,19 @@
-﻿using System;
+using NLog;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.ObjectDataExtensions;
-using TOW_Core.Battle.Voices;
+using TOW_Core.Battle.Sound;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -21,13 +28,14 @@ namespace TOW_Core.ObjectDataExtensions
     public class ExtendedInfoManager: CampaignBehaviorBase
     {
         private MobilePartyExtendedInfo _mainPartyInfo;
-        private MapEvent _currentPlayerEvent;
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
-        private Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
+        private static Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
-        private static Dictionary<string, CharacterExtendedInfo> _customBattleInfos = new Dictionary<string, CharacterExtendedInfo>();
+        private static ExtendedInfoManager _instance = new ExtendedInfoManager();
 
-        public ExtendedInfoManager() {}
+        public static ExtendedInfoManager Instance => _instance;
+
+        private ExtendedInfoManager() {}
         
         public override void RegisterEvents()
         {
@@ -53,19 +61,49 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 if (entry.Value.AllAttributes.Contains("SpellCaster"))
                 {
-                    entry.Value.MaxWindsOfMagic = Math.Max(entry.Value.MaxWindsOfMagic, 30);
                     entry.Value.CurrentWindsOfMagic += entry.Value.WindsOfMagicRechargeRate;
                     entry.Value.CurrentWindsOfMagic = Math.Min(entry.Value.CurrentWindsOfMagic, entry.Value.MaxWindsOfMagic);
                 }
             }
         }
 
-        private void OnHeroCreated(Hero arg1, bool arg2)
+        private void OnHeroCreated(Hero hero, bool arg2)
         {
-            if (!_heroInfos.ContainsKey(arg1.StringId))
+            if (!_heroInfos.ContainsKey(hero.StringId))
             {
-                var info = new HeroExtendedInfo(arg1.CharacterObject);
-                _heroInfos.Add(arg1.StringId, info);
+                var info = new HeroExtendedInfo(hero.CharacterObject);
+                _heroInfos.Add(hero.StringId, info);
+                if(hero.Template != null) InitializeTemplatedHeroStats(hero);
+            }
+        }
+
+        public static void InitializeTemplatedHeroStats(Hero hero)
+        {
+            var template = hero.Template;
+            int castingLevel = 0;
+            if (template.IsTOWTemplate() && template.Occupation == Occupation.Wanderer)
+            {
+                var info = hero.GetExtendedInfo();
+                if (info == null) return;
+                foreach (var attribute in template.GetAttributes())
+                {
+                    hero.AddAttribute(attribute);
+                }
+                foreach (var ability in template.GetAbilities())
+                {
+                    hero.AddAbility(ability);
+                    var abilityobj = AbilityFactory.GetTemplate(ability);
+                    if (abilityobj.IsSpell)
+                    {
+                        if (!info.KnownLores.Contains(LoreObject.GetLore(abilityobj.BelongsToLoreID)))
+                        {
+                            hero.AddKnownLore(abilityobj.BelongsToLoreID);
+                            castingLevel = Math.Max(castingLevel, abilityobj.SpellTier);
+                        }
+                    }
+                }
+                hero.SetSpellCastingLevel((SpellCastingLevel)castingLevel);
+                if (hero.IsSpellCaster() && !info.KnownLores.Contains(LoreObject.GetLore("MinorMagic"))) hero.AddKnownLore("MinorMagic");
             }
         }
 
@@ -82,74 +120,52 @@ namespace TOW_Core.ObjectDataExtensions
             return _mainPartyInfo;
         }
         
-        internal CharacterExtendedInfo GetCharacterInfoFor(string id)
+        internal static CharacterExtendedInfo GetCharacterInfoFor(string id)
         {
             if(_characterInfos.Count < 1)
             {
-                TryLoadCharacters();
+                TryLoadCharacters(out _characterInfos);
             }
             return _characterInfos.ContainsKey(id) ? _characterInfos[id] : null;
         }
 
         private void OnSessionStart(CampaignGameStarter obj)
         {
-            TryLoadCharacters();
+            TryLoadCharacters(out _characterInfos);
             _mainPartyInfo = MobileParty.MainParty.GetInfo();
         }
 
-        internal static CharacterExtendedInfo GetCharacterInfoForStatic(string id)
+        public static void Load()
         {
-            if(_customBattleInfos.Count < 1)
-            {
-                TryLoadCharactersStatic();
-            }
-            CharacterExtendedInfo info = null;
-            _customBattleInfos.TryGetValue(id, out info);
-            return info;
+            TryLoadCharacters(out _characterInfos);
         }
 
-        private static void TryLoadCharactersStatic()
-        {
-            var characters = new List<string>();
-            characters.AddRange(AttributeManager.GetAllCharacterIds());
-            foreach(var character in AbilityManager.GetAllCharacterIds())
-            {
-                if (!characters.Contains(character)) characters.Add(character);
-            }
-            foreach (var character in characters)
-            {
-                if (!_customBattleInfos.ContainsKey(character))
-                {
-                    var info = new CharacterExtendedInfo();
-                    info.CharacterStringId = character;
-                    var attributes = AttributeManager.GetAttributesFor(character);
-                    if (attributes != null) info.CharacterAttributes = attributes;
-                    var abilities = AbilityManager.GetAbilitesForCharacter(character);
-                    if (abilities != null) info.Abilities = abilities;
-                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character);
-                    _customBattleInfos.Add(character, info);
-                }
-            }
-        }
-
-        private void TryLoadCharacters()
+        private static void TryLoadCharacters(out Dictionary<string, CharacterExtendedInfo> infos)
         {
             //construct character info for all CharacterObject templates loaded by the game.
             //this can be safely reconstructed at each session start without the need to save/load.
-            var characters = MBObjectManager.Instance.GetObjectTypeList<CharacterObject>();
-            foreach (var character in characters)
+            Dictionary<string, CharacterExtendedInfo> unitlist = new Dictionary<string, CharacterExtendedInfo>();
+            infos = unitlist;
+            try
             {
-                if (!_characterInfos.ContainsKey(character.StringId))
+                var path = Path.Combine(BasePath.Name, "Modules/TOW_Core/ModuleData/tow_extendedunitproperties.xml");
+                if (File.Exists(path))
                 {
-                    var info = new CharacterExtendedInfo();
-                    info.CharacterStringId = character.StringId;
-                    var attributes = AttributeManager.GetAttributesFor(character.StringId);
-                    if (attributes != null) info.CharacterAttributes = attributes;
-                    var abilities = AbilityManager.GetAbilitesForCharacter(character.StringId);
-                    if (abilities != null) info.Abilities = abilities;
-                    info.VoiceClassName = CustomVoiceManager.GetVoiceClassNameFor(character.StringId);
-                    _characterInfos.Add(character.StringId, info);
+                    var ser = new XmlSerializer(typeof(List<CharacterExtendedInfo>));
+                    var list = ser.Deserialize(File.OpenRead(path)) as List<CharacterExtendedInfo>;
+                    foreach (var item in list)
+                    {
+                        if (!infos.ContainsKey(item.CharacterStringId))
+                        {
+                            infos.Add(item.CharacterStringId, item);
+                        }
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                TOWCommon.Log(e.ToString(), LogLevel.Error);
+                throw e; //TODO handle this more gracefully.
             }
         }
 
@@ -161,6 +177,14 @@ namespace TOW_Core.ObjectDataExtensions
         public HeroExtendedInfo GetHeroInfoFor(string id)
         {
             return _heroInfos.ContainsKey(id) ? _heroInfos[id] : null;
+        }
+
+        public void ClearInfo(Hero hero)
+        {
+            if (_heroInfos.ContainsKey(hero.StringId))
+            {
+                _heroInfos[hero.StringId] = new HeroExtendedInfo(hero.CharacterObject);
+            }
         }
 
         private void EnterPartyIntoDictionary(MobileParty party)
@@ -206,7 +230,6 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 //TOWCommon.Say("Already added"); 
             }
-            
         }
 
         public void DeregisterParty(MobileParty party, PartyBase partyBase)
@@ -219,7 +242,8 @@ namespace TOW_Core.ObjectDataExtensions
         
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
-            TryLoadCharacters();
+            if(_characterInfos.Count > 0) _characterInfos.Clear();
+            TryLoadCharacters(out _characterInfos);
             InitializeHeroes();
             InitializeParties();
         }

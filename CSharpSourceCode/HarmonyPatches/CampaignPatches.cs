@@ -5,10 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Election;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
 using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterCreation.OptionsStage;
 using TaleWorlds.Core;
@@ -17,6 +19,8 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TOW_Core.Abilities;
+using TOW_Core.CampaignSupport.MapBar;
 using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 
@@ -34,6 +38,7 @@ namespace TOW_Core.HarmonyPatches
             {"Heroes", "tow_heroes.xml"},
             {"Kingdoms", "tow_kingdoms.xml"},
             {"Factions", "tow_clans.xml"},
+            //{"SPCultures", "tow_cultures.xml" }
         };
 
         [HarmonyPrefix]
@@ -66,7 +71,7 @@ namespace TOW_Core.HarmonyPatches
             if (____selectedTroop == null) return;
             if (!____selectedTroop.IsTOWTemplate())
             {
-                ____selectedTroop = CharacterObject.All.GetRandomElementWithPredicate(x => x.IsTOWTemplate() && x.StringId.StartsWith("tow_dog_"));
+                ____selectedTroop = CharacterObject.All.GetRandomElementWithPredicate(x => x.IsTOWTemplate() && x.StringId.StartsWith("tor_dog_"));
             }
             __result = 1;
         }
@@ -95,7 +100,7 @@ namespace TOW_Core.HarmonyPatches
                 }
                 troopToBeGiven = num2;
             }
-            mobileParty.InitializeMobileParty(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, 0f, 0f, troopToBeGiven);
+            mobileParty.InitializeMobilePartyAtPosition(__instance.Settlement.Culture.CaravanPartyTemplate, __instance.Settlement.GatePosition, troopToBeGiven);
             if (caravanLeader != null)
             {
                 mobileParty.MemberRoster.AddToCounts(caravanLeader.CharacterObject, 1, true, 0, 0, true, -1);
@@ -143,15 +148,6 @@ namespace TOW_Core.HarmonyPatches
             }
         }
 
-        //Ideally this should not need a harmony patch, but somehow removing this on gamestart in submodule.cs still makes it run on NewGameStart event.
-        //This behaviour contains hardcoded hero / lord references that are not present because we skip loading the vanilla files.
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(BackstoryCampaignBehavior), "RegisterEvents")]
-        public static bool WhyIsThisNeeded()
-        {
-            return false;
-        }
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CharacterCreationOptionsStageVM), MethodType.Constructor,
             typeof(TaleWorlds.CampaignSystem.CharacterCreationContent.CharacterCreation), typeof(Action), typeof(TextObject),
@@ -171,33 +167,33 @@ namespace TOW_Core.HarmonyPatches
             __instance.OptionsController.Options.Remove(option);
             __instance.RefreshValues();
         }
-
-        [HarmonyPrefix]
+        
         [HarmonyPatch(typeof(MapScene), "Load")]
-        public static bool CustomMapSceneLoad(MapScene __instance, ref Scene ____scene, ref MBAgentRendererSceneController ____agentRendererSceneController)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            Debug.Print("Creating map scene", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene = Scene.CreateNewScene(false);
-            ____scene.SetName("MapScene");
-            ____scene.SetClothSimulationState(true);
-            ____agentRendererSceneController = MBAgentRendererSceneController.CreateNewAgentRendererSceneController(____scene, 4096);
-            ____scene.SetOcclusionMode(true);
-            SceneInitializationData initData = new SceneInitializationData(true);
-            initData.UsePhysicsMaterials = true;
-            initData.EnableFloraPhysics = false;
-            initData.UseTerrainMeshBlending = false;
-            Debug.Print("reading map scene", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene.Read("modded_main_map", ref initData, "");
-            TaleWorlds.Engine.Utilities.SetAllocationAlwaysValidScene(____scene);
-            ____scene.DisableStaticShadows(true);
-            ____scene.InvalidateTerrainPhysicsMaterials();
-            MBMapScene.LoadAtmosphereData(____scene);
-            __instance.DisableUnwalkableNavigationMeshes();
-            MBMapScene.ValidateTerrainSoundIds();
-            ____scene.OptimizeScene(true, false);
-            Debug.Print("Ticking map scene for first initialization", 0, Debug.DebugColor.White, 17592186044416UL);
-            ____scene.Tick(0.1f);
-            return false;
+            int truthOccurance = -1;
+            bool truthFlag = false;
+            foreach (CodeInstruction instruction in instructions)
+            {
+                if (instruction.opcode == OpCodes.Ldstr && instruction.OperandIs("Main_map"))
+                {
+                    instruction.operand = "modded_main_map";
+                }
+                else if (instruction.opcode == OpCodes.Ldloca_S)
+                {
+                    truthOccurance++;
+                    truthFlag = true;
+                }
+                else if (instruction.opcode == OpCodes.Stfld)
+                {
+                    truthFlag = false;
+                }
+                else if (instruction.opcode == OpCodes.Ldc_I4_0 && truthFlag && (truthOccurance == 1 || truthOccurance == 3))
+                {
+                    instruction.opcode = OpCodes.Ldc_I4_1;
+                }
+                yield return instruction;
+            }
         }
 
         [HarmonyPostfix]
@@ -209,11 +205,33 @@ namespace TOW_Core.HarmonyPatches
             maximumHeight = 350;
         }
 
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapScene), "GetMapPatchAtPosition")]
+        public static void CustomTerrainSize(MapScene __instance, 
+            Vec2 position, ref MapPatchData __result, int ____battleTerrainIndexMapWidth, int ____battleTerrainIndexMapHeight, byte[] ____battleTerrainIndexMap)
+        {
+            if (____battleTerrainIndexMap != null)
+            {
+                int num = MathF.Floor(position.x / 2080 * ____battleTerrainIndexMapWidth);
+                int value = MathF.Floor(position.y / 2080 * ____battleTerrainIndexMapHeight);
+                num = MBMath.ClampIndex(num, 0, ____battleTerrainIndexMapWidth);
+                int num2 = (MBMath.ClampIndex(value, 0, ____battleTerrainIndexMapHeight) * ____battleTerrainIndexMapWidth + num) * 2;
+                byte sceneIndex = ____battleTerrainIndexMap[num2];
+                byte b = (byte)MBRandom.RandomInt(0, 255);
+                Vec2 normalizedCoordinates = new Vec2((b & 15) / 15f, (b >> 4 & 15) / 15f);
+                __result = new MapPatchData
+                {
+                    sceneIndex = sceneIndex,
+                    normalizedCoordinates = normalizedCoordinates
+                };
+            }
+        }
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(GameSceneDataManager), "LoadSPBattleScenes", argumentTypes: typeof(XmlDocument))]
         public static void LoadSinglePlayerBattleScenes(GameSceneDataManager __instance, ref XmlDocument doc)
         {
-            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOW_EnvironmentAssets/ModuleData/tow_singleplayerbattlescenes.xml");
+            var path = System.IO.Path.Combine(BasePath.Name, "Modules/TOR_Environment/ModuleData/tor_singleplayerbattlescenes.xml");
             if (File.Exists(path))
             {
                 XmlDocument moredoc = new XmlDocument();
@@ -237,6 +255,34 @@ namespace TOW_Core.HarmonyPatches
                 __result = false;
                 return false;
             }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), MethodType.Constructor, typeof(INavigationHandler), typeof(IMapStateHandler), typeof(MapBarShortcuts), typeof(Action))]
+        public static void ReplaceMapVM(MapVM __instance)
+        {
+            __instance.MapInfo = new TorMapInfoVM();
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MapVM), "OnRefresh")]
+        public static void RefreshExtraProperties(MapVM __instance)
+        {
+            var info = __instance.MapInfo as TorMapInfoVM;
+            if (info != null) info.RefreshExtraProperties();
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(CampaignAgentComponent), "OwnerParty", MethodType.Getter)]
+        public static bool PatchOwnerPartyForSummons(Agent ___Agent, ref PartyBase __result)
+        {
+            if (___Agent.Origin is SummonedAgentOrigin)
+            {
+                var origin = ___Agent.Origin as SummonedAgentOrigin;
+                __result = origin.OwnerParty;
+                return false;
+            }
+            else return true;
         }
     }
 }

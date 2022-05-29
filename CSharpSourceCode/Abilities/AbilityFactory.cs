@@ -24,6 +24,13 @@ namespace TOW_Core.Abilities
             return list;
         }
 
+        public static List<AbilityTemplate> GetAllTemplates()
+        {
+            var list = new List<AbilityTemplate>();
+            foreach(var template in _templates.Values) list.Add(template);
+            return list;
+        }
+
         public static AbilityTemplate GetTemplate(string id)
         {
             return _templates.ContainsKey(id) ? _templates[id] : null;
@@ -61,45 +68,54 @@ namespace TOW_Core.Abilities
             {
                 ability = new Spell(template);
             }
-            if (template.AbilityType == AbilityType.Prayer)
+            else if (template.AbilityType == AbilityType.Prayer)
             {
                 ability = new Prayer(template);
             }
-
-            AbilityCrosshair crosshair = InitializeCrosshair(template, caster);
-            ability.SetCrosshair(crosshair);
-
+            else if (template.AbilityType == AbilityType.SpecialMove)
+            {
+                ability = new SpecialMove(template);
+            }
+            else if(template.AbilityType == AbilityType.ItemBound)
+            {
+                ability = new ItemBoundAbility(template);
+            }
             return ability;
         }
 
-        private static AbilityCrosshair InitializeCrosshair(AbilityTemplate template, Agent caster)
+        public static AbilityCrosshair InitializeCrosshair(AbilityTemplate template)
         {
             AbilityCrosshair crosshair = null;
             switch (template.CrosshairType)
             {
-                case CrosshairType.Projectile:
+                case CrosshairType.Missile:
                     {
-                        crosshair = new ProjectileCrosshair(template);
+                        crosshair = new MissileCrosshair(template);
                         break;
                     }
-                case CrosshairType.Targeted:
+                case CrosshairType.SingleTarget:
                     {
-                        crosshair = new TargetedCrosshair(template);
+                        crosshair = new SingleTargetCrosshair(template);
                         break;
                     }
-                case CrosshairType.DirectionalAOE:
+                case CrosshairType.Wind:
                     {
-                        crosshair = new DirectionalAOECrosshair(template, caster);
+                        crosshair = new WindCrosshair(template);
                         break;
                     }
-                case CrosshairType.CenteredAOE:
+                case CrosshairType.Pointer:
                     {
-                        crosshair = new CenteredAOECrosshair(template, caster);
+                        crosshair = new Pointer(template);
                         break;
                     }
-                case CrosshairType.Summoning:
+                case CrosshairType.TargetedAOE:
                     {
-                        crosshair = new SummoningCrosshair(template, caster);
+                        crosshair = new TargetedAOECrosshair(template);
+                        break;
+                    }
+                case CrosshairType.Self:
+                    {
+                        crosshair = new SelfCrosshair(template);
                         break;
                     }
             }

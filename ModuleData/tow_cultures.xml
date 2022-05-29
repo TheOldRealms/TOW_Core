@@ -5,12 +5,12 @@
 			 is_main_culture="true"
 			 color="FF612121"
 			 color2="FFededed"
-			 elite_basic_troop="NPCCharacter.tow_empire_duelist"
-			 basic_troop="NPCCharacter.tow_empire_recruit"
-			 melee_militia_troop="NPCCharacter.tow_empire_state_troop"
-			 ranged_militia_troop="NPCCharacter.tow_empire_archer"
-			 melee_elite_militia_troop="NPCCharacter.tow_empire_swordsman"
-			 ranged_elite_militia_troop="NPCCharacter.tow_empire_crossbowman"
+			 elite_basic_troop="NPCCharacter.tor_empire_young_noble_squire"
+			 basic_troop="NPCCharacter.tor_empire_recruit"
+			 melee_militia_troop="NPCCharacter.tor_empire_state_troop"
+			 ranged_militia_troop="NPCCharacter.tor_empire_archer"
+			 melee_elite_militia_troop="NPCCharacter.tor_empire_swordsman"
+			 ranged_elite_militia_troop="NPCCharacter.tor_empire_crossbowman"
 			 can_have_settlement="true"
 			 town_edge_number="16"
 			 villager_party_template="PartyTemplate.empire_villager_template"
@@ -18,21 +18,22 @@
 			 caravan_party_template="PartyTemplate.empire_caravan_template"
 			 elite_caravan_party_template="PartyTemplate.empire_elite_caravan_template"
 			 militia_party_template="PartyTemplate.empire_militia_template"
-			 rebels_party_template="PartyTemplate.empire_secessionists"
+			 rebels_party_template="PartyTemplate.empire_deserters"
 			 vassal_reward_party_template="PartyTemplate.empire_lordparty_template"
 			 prosperity_bonus="1"
 			 encounter_background_mesh="empire_friendlyparty"
 			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000"
 			 text="{=X0kKBzsW}Culture description. Not sure where you see this. If you see this pls report with exact location!"
 			 tournament_master="NPCCharacter.tournament_master_empire"
-			 villager="NPCCharacter.tow_empire_villager"
-			 caravan_master="NPCCharacter.tow_caravan_empire_captain"
-			 armed_trader="NPCCharacter.tow_caravan_empire_ranged"
-			 caravan_guard="NPCCharacter.tow_caravan_empire_guard"
-			 veteran_caravan_guard="NPCCharacter.tow_caravan_empire_vetguard"
+			 villager="NPCCharacter.tor_empire_villager"
+			 caravan_master="NPCCharacter.tor_empire_caravan_captain"
+			 armed_trader="NPCCharacter.tor_empire_caravan_ranged"
+			 caravan_guard="NPCCharacter.tor_empire_caravan_guard"
+			 veteran_caravan_guard="NPCCharacter.tor_empire_caravan_vetguard"
+			 basic_mercenary_troop="NPCCharacter.tor_merc_free_company_volunteer"
 			 duel_preset="NPCCharacter.empire_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_empire"
-			 guard="NPCCharacter.tow_empire_halberdier"
+			 guard="NPCCharacter.tor_empire_halberdier"
 			 steward="NPCCharacter.steward_empire"
 			 blacksmith="NPCCharacter.blacksmith_empire"
 			 weaponsmith="NPCCharacter.weaponsmith_empire"
@@ -40,7 +41,7 @@
 			 townswoman_infant="NPCCharacter.townswoman_infant_empire"
 			 townswoman_child="NPCCharacter.townswoman_child_empire"
 			 townswoman_teenager="NPCCharacter.townswoman_teenager_empire"
-			 townsman="NPCCharacter.tow_townsman_villager"
+			 townsman="NPCCharacter.tor_townsman_villager"
 			 townsman_infant="NPCCharacter.townsman_infant_empire"
 			 townsman_child="NPCCharacter.townsman_child_empire"
 			 village_woman="NPCCharacter.village_woman_empire"
@@ -63,7 +64,7 @@
 			 armorer="NPCCharacter.armorer_empire"
 			 horseMerchant="NPCCharacter.horseMerchant_empire"
 			 barber="NPCCharacter.barber_empire"
-			 merchant="NPCCharacter.tow_merchant_empire"
+			 merchant="NPCCharacter.tor_merchant_empire"
 			 beggar="NPCCharacter.beggar_empire"
 			 female_beggar="NPCCharacter.female_beggar_empire"
 			 female_dancer="NPCCharacter.female_dancer_empire"
@@ -1344,6 +1345,65 @@
 			<icon id="223" />
 			<icon id="400" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.tor_wanderer_empire_0" />
+			<template name="NPCCharacter.tor_wanderer_empire_1" />
+			<template name="NPCCharacter.tor_wanderer_empire_2" />
+			<template name="NPCCharacter.tor_wanderer_empire_3" />
+			<template name="NPCCharacter.tor_wanderer_empire_4" />
+			<template name="NPCCharacter.tor_notable_empire_0" />
+			<template name="NPCCharacter.tor_notable_empire_0b" />
+			<template name="NPCCharacter.tor_notable_empire_1" />
+			<template name="NPCCharacter.tor_notable_empire_1b" />
+			<template name="NPCCharacter.tor_notable_empire_2" />
+			<template name="NPCCharacter.tor_notable_empire_2b" />
+			<template name="NPCCharacter.tor_notable_empire_3" />
+			<template name="NPCCharacter.tor_notable_empire_3b" />
+			<template name="NPCCharacter.tor_notable_empire_4" />
+			<template name="NPCCharacter.tor_notable_empire_4b" />
+			<template name="NPCCharacter.tor_notable_empire_5" />
+			<template name="NPCCharacter.tor_notable_empire_6" />
+			<template name="NPCCharacter.tor_notable_empire_7" />
+			<template name="NPCCharacter.tor_notable_empire_8" />
+			<template name="NPCCharacter.tor_notable_empire_9" />
+			<template name="NPCCharacter.tor_notable_empire_10" />
+			<template name="NPCCharacter.tor_notable_empire_11" />
+			<template name="NPCCharacter.tor_notable_empire_12" />
+			<template name="NPCCharacter.tor_notable_empire_13" />
+			<template name="NPCCharacter.tor_notable_empire_21" />
+			<template name="NPCCharacter.tor_notable_empire_22" />
+			<template name="NPCCharacter.tor_notable_empire_gl1" />
+			<template name="NPCCharacter.tor_notable_empire_gl4" />
+			<template name="NPCCharacter.tor_empire_headman_1" />
+			<template name="NPCCharacter.tor_empire_headman_2" />
+			<template name="NPCCharacter.tor_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.tor_empire_deserter_lord_0" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_1" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_2" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.tor_empire_deserter_lord_0" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_1" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_2" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_emp_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
@@ -1382,6 +1442,7 @@
 			 armed_trader="NPCCharacter.armed_trader_aserai"
 			 caravan_guard="NPCCharacter.caravan_guard_aserai"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_aserai"
+			 basic_mercenary_troop="NPCCharacter.tor_dog_braganza_01"
 			 duel_preset="NPCCharacter.aserai_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_aserai"
 			 guard="NPCCharacter.guard_aserai"
@@ -1562,6 +1623,96 @@
 			<icon id="430" />
 			<icon id="309" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_aserai_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
@@ -1605,6 +1756,7 @@
 			 armed_trader="NPCCharacter.armed_trader_sturgia"
 			 caravan_guard="NPCCharacter.caravan_guard_sturgia"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_sturgia"
+			 basic_mercenary_troop="NPCCharacter.tor_dog_braganza_01"
 			 duel_preset="NPCCharacter.sturgia_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_sturgia"
 			 guard="NPCCharacter.guard_sturgia"
@@ -1798,6 +1950,96 @@
 			<icon id="444" />
 			<icon id="445" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_sturgia_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_sturgia_one_participant_set_v2" />
@@ -1841,6 +2083,7 @@
 			 armed_trader="NPCCharacter.armed_trader_vlandia"
 			 caravan_guard="NPCCharacter.caravan_guard_vlandia"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_vlandia"
+			 basic_mercenary_troop="NPCCharacter.tor_dog_braganza_01"
 			 duel_preset="NPCCharacter.vlandia_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_vlandia"
 			 guard="NPCCharacter.guard_vlandia"
@@ -2048,6 +2291,96 @@
 			<icon id="303" />
 			<icon id="315" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_vlandia_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_vlandia_one_participant_set_v2" />
@@ -2095,6 +2428,7 @@
 			 armed_trader="NPCCharacter.armed_trader_battania"
 			 caravan_guard="NPCCharacter.caravan_guard_battania"
 			 veteran_caravan_guard="NPCCharacter.veteran_caravan_guard_battania"
+			 basic_mercenary_troop="NPCCharacter.tor_dog_braganza_01"
 			 duel_preset="NPCCharacter.battania_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_battania"
 			 guard="NPCCharacter.guard_battania"
@@ -2256,6 +2590,96 @@
 			<icon id="414" />
 			<icon id="415" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.spc_wanderer_empire_0" />
+			<template name="NPCCharacter.spc_wanderer_empire_1" />
+			<template name="NPCCharacter.spc_wanderer_empire_2" />
+			<template name="NPCCharacter.spc_wanderer_empire_3" />
+			<template name="NPCCharacter.spc_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_wanderer_empire_5" />
+			<template name="NPCCharacter.spc_wanderer_empire_6" />
+			<template name="NPCCharacter.spc_wanderer_empire_7" />
+			<template name="NPCCharacter.spc_wanderer_empire_8" />
+			<template name="NPCCharacter.spc_wanderer_empire_9" />
+			<template name="NPCCharacter.spc_wanderer_empire_10" />
+			<template name="NPCCharacter.spc_wanderer_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_battania_one_participant_set_v1" />
 			<template name="NPCCharacter.tournament_template_battania_one_participant_set_v2" />
@@ -2278,12 +2702,12 @@
 			 is_main_culture="true"
 			 color="FF303030"
 			 color2="FF1c0d14"
-			 elite_basic_troop="NPCCharacter.tow_empire_huntsman_vc"
-			 basic_troop="NPCCharacter.tow_empire_recruit_vc"
-			 melee_militia_troop="NPCCharacter.tow_empire_state_troop_vc"
-			 ranged_militia_troop="NPCCharacter.tow_empire_archer_vc"
-			 melee_elite_militia_troop="NPCCharacter.tow_empire_state_troop_vc"
-			 ranged_elite_militia_troop="NPCCharacter.tow_empire_archer_vc"
+			 elite_basic_troop="NPCCharacter.tor_vc_vampire_newblood"
+			 basic_troop="NPCCharacter.tor_vc_empire_recruit"
+			 melee_militia_troop="NPCCharacter.tor_vc_empire_state_troop"
+			 ranged_militia_troop="NPCCharacter.tor_vc_empire_archer"
+			 melee_elite_militia_troop="NPCCharacter.tor_vc_empire_state_troop"
+			 ranged_elite_militia_troop="NPCCharacter.tor_vc_empire_archer"
 			 can_have_settlement="true"
 			 town_edge_number="4"
 			 villager_party_template="PartyTemplate.vc_villager_template"
@@ -2292,19 +2716,20 @@
 			 elite_caravan_party_template="PartyTemplate.sylvanian_elite_caravan_template"
 			 caravan_party_template="PartyTemplate.sylvanian_caravan_template"
 			 militia_party_template="PartyTemplate.sylvania_militia_template"
-			 rebels_party_template="PartyTemplate.empire_secessionists"
+			 rebels_party_template="PartyTemplate.empire_deserters"
 			 vassal_reward_party_template="PartyTemplate.vampire_lordparty_template"
 			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000"
 			 text="{=v5bWtXj1}Culture description. Not sure where you see this. If you see this pls report with exact location!"
 			 tournament_master="NPCCharacter.tournament_master_empire"
-			 villager="NPCCharacter.tow_vc_villager"
-			 caravan_master="NPCCharacter.tow_caravan_vc_captain"
-			 armed_trader="NPCCharacter.tow_caravan_vc_ranged"
-			 caravan_guard="NPCCharacter.tow_caravan_vc_guard"
-			 veteran_caravan_guard="NPCCharacter.tow_caravan_vc_guard"
+			 villager="NPCCharacter.tor_vc_villager"
+			 caravan_master="NPCCharacter.tor_vc_caravan_captain"
+			 armed_trader="NPCCharacter.tor_vc_caravan_ranged"
+			 caravan_guard="NPCCharacter.tor_vc_caravan_guard"
+			 veteran_caravan_guard="NPCCharacter.tor_vc_caravan_guard"
+			 basic_mercenary_troop="NPCCharacter.tor_merc_free_company_volunteer"
 			 duel_preset="NPCCharacter.empire_duel_preset"
 			 prison_guard="NPCCharacter.prison_guard_empire"
-			 guard="NPCCharacter.tow_grave_guard"
+			 guard="NPCCharacter.tor_vc_grave_guard"
 			 steward="NPCCharacter.steward_empire"
 			 blacksmith="NPCCharacter.blacksmith_empire"
 			 weaponsmith="NPCCharacter.weaponsmith_empire"
@@ -2312,7 +2737,7 @@
 			 townswoman_infant="NPCCharacter.townswoman_infant_empire"
 			 townswoman_child="NPCCharacter.townswoman_child_empire"
 			 townswoman_teenager="NPCCharacter.townswoman_teenager_empire"
-			 townsman="NPCCharacter.tow_townsman_villager"
+			 townsman="NPCCharacter.tor_townsman_villager"
 			 townsman_infant="NPCCharacter.townsman_infant_empire"
 			 townsman_child="NPCCharacter.townsman_child_empire"
 			 village_woman="NPCCharacter.village_woman_empire"
@@ -2335,7 +2760,7 @@
 			 armorer="NPCCharacter.armorer_empire"
 			 horseMerchant="NPCCharacter.horseMerchant_empire"
 			 barber="NPCCharacter.barber_empire"
-			 merchant="NPCCharacter.tow_merchant_empire"
+			 merchant="NPCCharacter.tor_merchant_empire"
 			 beggar="NPCCharacter.beggar_empire"
 			 female_beggar="NPCCharacter.female_beggar_empire"
 			 female_dancer="NPCCharacter.female_dancer_empire"
@@ -3583,6 +4008,63 @@
 			<icon id="313" />
 			<icon id="314" />
 		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.tor_wanderer_vampire_0" />
+			<template name="NPCCharacter.tor_wanderer_vampire_1" />
+			<template name="NPCCharacter.tor_wanderer_vampire_2" />
+			<template name="NPCCharacter.tor_notable_sylvania_0" />
+			<template name="NPCCharacter.tor_notable_sylvania_0b" />
+			<template name="NPCCharacter.tor_notable_sylvania_1" />
+			<template name="NPCCharacter.tor_notable_sylvania_1b" />
+			<template name="NPCCharacter.tor_notable_sylvania_2" />
+			<template name="NPCCharacter.tor_notable_sylvania_2b" />
+			<template name="NPCCharacter.tor_notable_sylvania_3" />
+			<template name="NPCCharacter.tor_notable_sylvania_3b" />
+			<template name="NPCCharacter.tor_notable_sylvania_4" />
+			<template name="NPCCharacter.tor_notable_sylvania_4b" />
+			<template name="NPCCharacter.tor_notable_sylvania_5" />
+			<template name="NPCCharacter.tor_notable_sylvania_6" />
+			<template name="NPCCharacter.tor_notable_sylvania_7" />
+			<template name="NPCCharacter.tor_notable_sylvania_8" />
+			<template name="NPCCharacter.tor_notable_sylvania_9" />
+			<template name="NPCCharacter.tor_notable_sylvania_10" />
+			<template name="NPCCharacter.tor_notable_sylvania_11" />
+			<template name="NPCCharacter.tor_notable_sylvania_12" />
+			<template name="NPCCharacter.tor_notable_sylvania_13" />
+			<template name="NPCCharacter.tor_notable_sylvania_21" />
+			<template name="NPCCharacter.tor_notable_sylvania_22" />
+			<template name="NPCCharacter.tor_notable_sylvania_gl1" />
+			<template name="NPCCharacter.tor_notable_sylvania_gl4" />
+			<template name="NPCCharacter.tor_sylvania_headman_1" />
+			<template name="NPCCharacter.tor_sylvania_headman_2" />
+			<template name="NPCCharacter.tor_sylvania_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.tor_empire_deserter_lord_0" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_1" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_2" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.tor_empire_deserter_lord_0" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_1" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_2" />
+			<template name="NPCCharacter.tor_empire_deserter_lord_3" />
+		  </rebellion_hero_templates>
 		<tournament_team_templates_one_participant>
 			<template name="NPCCharacter.tournament_template_vampire_one_participant_set_v1" />
 		</tournament_team_templates_one_participant>
@@ -3595,9 +4077,10 @@
 	</Culture>
 	<Culture id="looters"
 			 name="{=!}Outlaws"
-			 elite_basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
-			 basic_troop="NPCCharacter.tow_chaos_cult_acolyte"
+			 elite_basic_troop="NPCCharacter.tor_empire_outlaw_leader"
+			 basic_troop="NPCCharacter.tor_empire_outlaw"
 			 is_bandit="true"
+			 default_party_template="PartyTemplate.empire_outlaws"
 			 can_have_settlement="false"
 			 encounter_background_mesh="bandit_encounter_background" />
 	<Culture id="sea_raiders"
@@ -3613,29 +4096,30 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.sea_raiders_boss_party_template" />
 	<Culture id="mountain_bandits"
-			 name="{=!}Empire Secessionists"
-			 bandit_chief="NPCCharacter.mountain_bandits_chief"
-			 bandit_raider="NPCCharacter.mountain_bandits_raider"
-			 bandit_bandit="NPCCharacter.mountain_bandits_bandit"
-			 bandit_boss="NPCCharacter.mountain_bandits_boss"
-			 elite_basic_troop="NPCCharacter.mountain_bandits_raider"
-			 basic_troop="NPCCharacter.mountain_bandits_bandit"
+			 name="{=!}Empire Deserters"
+			 bandit_chief="NPCCharacter.tor_empire_deserter_sergeant"
+			 bandit_raider="NPCCharacter.tor_empire_deserter_scout"
+			 bandit_bandit="NPCCharacter.tor_empire_deserter"
+			 bandit_boss="NPCCharacter.tor_empire_deserter_sergeant"
+			 elite_basic_troop="NPCCharacter.tor_empire_deserter_scout"
+			 basic_troop="NPCCharacter.tor_empire_deserter"
 			 is_bandit="true"
+			 default_party_template="PartyTemplate.empire_deserters"
 			 can_have_settlement="true"
 			 encounter_background_mesh="bandit_encounter_background"
-			 bandit_boss_party_template="PartyTemplate.mountain_bandits_boss_party_template" />
+			 bandit_boss_party_template="PartyTemplate.empire_deserters_boss_party" />
 	<Culture id="forest_bandits"
 			 name="{=!}Chaos Cultists"
-			 bandit_chief="NPCCharacter.forest_bandits_chief"
-			 bandit_raider="NPCCharacter.forest_bandits_raider"
-			 bandit_bandit="NPCCharacter.forest_bandits_bandit"
-			 bandit_boss="NPCCharacter.forest_bandits_boss"
-			 elite_basic_troop="NPCCharacter.forest_bandits_raider"
-			 basic_troop="NPCCharacter.forest_bandits_bandit"
+			 bandit_chief="NPCCharacter.tor_chaos_cult_magister"
+			 bandit_raider="NPCCharacter.tor_chaos_cult_darksoul"
+			 bandit_bandit="NPCCharacter.tor_chaos_cult_acolyte"
+			 bandit_boss="NPCCharacter.tor_chaos_cult_magister"
+			 elite_basic_troop="NPCCharacter.tor_chaos_cult_darksoul"
+			 basic_troop="NPCCharacter.tor_chaos_cult_acolyte"
 			 is_bandit="true"
 			 can_have_settlement="true"
 			 encounter_background_mesh="bandit_encounter_background"
-			 bandit_boss_party_template="PartyTemplate.forest_bandits_boss_party_template" />
+			 bandit_boss_party_template="PartyTemplate.chaos_cultists_boss_party" />
 	<Culture id="desert_bandits"
 			 name="{=kkUQObZn}Desert Bandits"
 			 bandit_chief="NPCCharacter.desert_bandits_chief"
@@ -3649,26 +4133,1467 @@
 			 encounter_background_mesh="bandit_encounter_background"
 			 bandit_boss_party_template="PartyTemplate.desert_bandits_boss_party_template" />
 	<Culture id="steppe_bandits"
-			 name="{=e6csp4ha}Steppe Bandits"
-			 bandit_chief="NPCCharacter.steppe_bandits_chief"
-			 bandit_raider="NPCCharacter.steppe_bandits_raider"
-			 bandit_bandit="NPCCharacter.steppe_bandits_bandit"
-			 bandit_boss="NPCCharacter.steppe_bandits_boss"
-			 elite_basic_troop="NPCCharacter.steppe_bandits_raider"
-			 basic_troop="NPCCharacter.steppe_bandits_bandit"
+			 name="{=e6csp4ha}Ungor Warband"
+			 bandit_chief="NPCCharacter.tor_beast_ungor_chief"
+			 bandit_raider="NPCCharacter.tor_beast_ungor_raider"
+			 bandit_bandit="NPCCharacter.tor_beast_ungor"
+			 bandit_boss="NPCCharacter.tor_beast_ungor_chief"
+			 elite_basic_troop="NPCCharacter.tor_beast_shielded_ungor"
+			 basic_troop="NPCCharacter.tor_beast_ungor"
 			 is_bandit="true"
 			 can_have_settlement="true"
 			 encounter_background_mesh="bandit_encounter_background"
-			 bandit_boss_party_template="PartyTemplate.steppe_bandits_boss_party_template" />
+			 bandit_boss_party_template="PartyTemplate.ungor_boss_party" />
 	<Culture id="neutral_culture"
 			 name="{=jKviMpbP}Neutral"
 			 elite_basic_troop="NPCCharacter.guard"
 			 basic_troop="NPCCharacter.guard" />
-	
+<!--
 	<Culture id="chaos_culture"
 			 can_have_settlement="true"
 			 name="{=!}Chaos Culture"
 			 default_party_template="PartyTemplate.chaos_patrol"
 			 elite_basic_troop="NPCCharacter.guard"
 			 basic_troop="NPCCharacter.guard"/>
+-->	
+<Culture id="chaos_culture"
+			 name="{=str_chaos_culture}Chaos"
+			 is_main_culture="false"
+			 color="FF612121"
+			 color2="FFededed"
+			 elite_basic_troop="NPCCharacter.tor_empire_duelist"
+			 basic_troop="NPCCharacter.tor_empire_recruit"
+			 melee_militia_troop="NPCCharacter.tor_empire_state_troop"
+			 ranged_militia_troop="NPCCharacter.tor_empire_archer"
+			 melee_elite_militia_troop="NPCCharacter.tor_empire_swordsman"
+			 ranged_elite_militia_troop="NPCCharacter.tor_empire_crossbowman"
+			 can_have_settlement="true"
+			 town_edge_number="16"
+			 villager_party_template="PartyTemplate.empire_villager_template"
+			 default_party_template="PartyTemplate.chaos_patrol"
+			 caravan_party_template="PartyTemplate.empire_caravan_template"
+			 elite_caravan_party_template="PartyTemplate.empire_elite_caravan_template"
+			 militia_party_template="PartyTemplate.empire_militia_template"
+			 rebels_party_template="PartyTemplate.empire_secessionists"
+			 vassal_reward_party_template="PartyTemplate.empire_lordparty_template"
+			 prosperity_bonus="1"
+			 encounter_background_mesh="empire_friendlyparty"
+			 default_face_key="000fa92e90004202aced5d976886573d5d679585a376fdd605877a7764b8987c00000000000007520000037f0000000f00000037049140010000000000000000"
+			 text="{=X0kKBzsW}Culture description. Not sure where you see this. If you see this pls report with exact location!"
+			 tournament_master="NPCCharacter.tournament_master_empire"
+			 villager="NPCCharacter.tor_empire_villager"
+			 caravan_master="NPCCharacter.tor_empire_caravan_captain"
+			 armed_trader="NPCCharacter.tor_empire_caravan_ranged"
+			 caravan_guard="NPCCharacter.tor_empire_caravan_guard"
+			 veteran_caravan_guard="NPCCharacter.tor_empire_caravan_vetguard"
+			 basic_mercenary_troop="NPCCharacter.tor_dog_braganza_01"
+			 duel_preset="NPCCharacter.empire_duel_preset"
+			 prison_guard="NPCCharacter.prison_guard_empire"
+			 guard="NPCCharacter.tor_empire_halberdier"
+			 steward="NPCCharacter.steward_empire"
+			 blacksmith="NPCCharacter.blacksmith_empire"
+			 weaponsmith="NPCCharacter.weaponsmith_empire"
+			 townswoman="NPCCharacter.townswoman_empire"
+			 townswoman_infant="NPCCharacter.townswoman_infant_empire"
+			 townswoman_child="NPCCharacter.townswoman_child_empire"
+			 townswoman_teenager="NPCCharacter.townswoman_teenager_empire"
+			 townsman="NPCCharacter.tor_townsman_villager"
+			 townsman_infant="NPCCharacter.townsman_infant_empire"
+			 townsman_child="NPCCharacter.townsman_child_empire"
+			 village_woman="NPCCharacter.village_woman_empire"
+			 villager_male_child="NPCCharacter.villager_child_empire"
+			 villager_male_teenager="NPCCharacter.villager_teenager_empire"
+			 villager_female_child="NPCCharacter.village_woman_child_empire"
+			 villager_female_teenager="NPCCharacter.village_woman_teenager_empire"
+			 townsman_teenager="NPCCharacter.townsman_teenager_empire"
+			 ransom_broker="NPCCharacter.ransom_broker_empire"
+			 gangleader_bodyguard="NPCCharacter.gangleader_bodyguard_empire"
+			 merchant_notary="NPCCharacter.merchant_notary_empire"
+			 artisan_notary="NPCCharacter.artisan_notary_empire"
+			 preacher_notary="NPCCharacter.preacher_notary_empire"
+			 rural_notable_notary="NPCCharacter.rural_notable_notary_empire"
+			 shop_worker="NPCCharacter.shop_worker_empire"
+			 tavernkeeper="NPCCharacter.tavernkeeper_empire"
+			 taverngamehost="NPCCharacter.taverngamehost_empire"
+			 musician="NPCCharacter.musician_empire"
+			 tavern_wench="NPCCharacter.tavern_wench_empire"
+			 armorer="NPCCharacter.armorer_empire"
+			 horseMerchant="NPCCharacter.horseMerchant_empire"
+			 barber="NPCCharacter.barber_empire"
+			 merchant="NPCCharacter.tor_merchant_empire"
+			 beggar="NPCCharacter.beggar_empire"
+			 female_beggar="NPCCharacter.female_beggar_empire"
+			 female_dancer="NPCCharacter.female_dancer_empire"
+			 gear_practice_dummy="NPCCharacter.gear_practice_dummy_empire"
+			 weapon_practice_stage_1="NPCCharacter.weapon_practice_stage_1_empire"
+			 weapon_practice_stage_2="NPCCharacter.weapon_practice_stage_2_empire"
+			 weapon_practice_stage_3="NPCCharacter.weapon_practice_stage_3_empire"
+			 gear_dummy="NPCCharacter.gear_dummy_empire"
+			 board_game_type="Tablut">
+		<male_names>
+			<name name="{=empire_male_1}Abelhardt" />
+			<name name="{=empire_male_2}Abelheim" />
+			<name name="{=empire_male_3}Adam" />
+			<name name="{=empire_male_4}Adelbert" />
+			<name name="{=empire_male_5}Adelhard" />
+			<name name="{=empire_male_6}Adelmann" />
+			<name name="{=empire_male_7}Admund" />
+			<name name="{=empire_male_8}Adolf" />
+			<name name="{=empire_male_9}Adolphus" />
+			<name name="{=empire_male_10}Adred" />
+			<name name="{=empire_male_11}Adric" />
+			<name name="{=empire_male_12}Agilward" />
+			<name name="{=empire_male_13}Agis" />
+			<name name="{=empire_male_14}Alard" />
+			<name name="{=empire_male_15}Alaric" />
+			<name name="{=empire_male_16}Alberich" />
+			<name name="{=empire_male_17}Albert" />
+			<name name="{=empire_male_18}Albrecht" />
+			<name name="{=empire_male_19}Aldebrandt" />
+			<name name="{=empire_male_20}Aldfreid" />
+			<name name="{=empire_male_21}Aldheim" />
+			<name name="{=empire_male_22}Aldred" />
+			<name name="{=empire_male_23}Aldric" />
+			<name name="{=empire_male_24}Alexander" />
+			<name name="{=empire_male_25}Alexei" />
+			<name name="{=empire_male_26}Alexis" />
+			<name name="{=empire_male_27}Alfricht" />
+			<name name="{=empire_male_28}Alfried" />
+			<name name="{=empire_male_29}Aloysis" />
+			<name name="{=empire_male_30}Altmar" />
+			<name name="{=empire_male_31}Anderlin" />
+			<name name="{=empire_male_32}Anders" />
+			<name name="{=empire_male_33}Andirke" />
+			<name name="{=empire_male_34}Andreas" />
+			<name name="{=empire_male_35}Andred" />
+			<name name="{=empire_male_36}Andric" />
+			<name name="{=empire_male_37}Andris" />
+			<name name="{=empire_male_38}Anshelm" />
+			<name name="{=empire_male_39}Anthony" />
+			<name name="{=empire_male_40}Aponymous" />
+			<name name="{=empire_male_41}Arnest" />
+			<name name="{=empire_male_42}Arnold" />
+			<name name="{=empire_male_43}Arnulf" />
+			<name name="{=empire_male_44}Arthur" />
+			<name name="{=empire_male_45}Asman" />
+			<name name="{=empire_male_46}Asoborn" />
+			<name name="{=empire_male_47}Assmus" />
+			<name name="{=empire_male_48}Athren" />
+			<name name="{=empire_male_49}Augustus" />
+			<name name="{=empire_male_50}Austein" />
+			<name name="{=empire_male_51}Axelbrand" />
+			<name name="{=empire_male_52}Baldekin" />
+			<name name="{=empire_male_53}Baldewin" />
+			<name name="{=empire_male_54}Baldred" />
+			<name name="{=empire_male_55}Baldric" />
+			<name name="{=empire_male_56}Balthasar" />
+			<name name="{=empire_male_57}Baltzer" />
+			<name name="{=empire_male_58}Barnabas" />
+			<name name="{=empire_male_59}Barthelm" />
+			<name name="{=empire_male_60}Barthelm" />
+			<name name="{=empire_male_61}Bartil" />
+			<name name="{=empire_male_62}Bartisch" />
+			<name name="{=empire_male_63}Bartke" />
+			<name name="{=empire_male_64}Bartolf" />
+			<name name="{=empire_male_65}Bartomar" />
+			<name name="{=empire_male_66}Bartschval" />
+			<name name="{=empire_male_67}Bartusch" />
+			<name name="{=empire_male_68}Bastian" />
+			<name name="{=empire_male_69}Bechtold" />
+			<name name="{=empire_male_70}Bella" />
+			<name name="{=empire_male_71}Benedict" />
+			<name name="{=empire_male_72}Bengt" />
+			<name name="{=empire_male_73}Benisch" />
+			<name name="{=empire_male_74}Benusch" />
+			<name name="{=empire_male_75}Berchtoldt" />
+			<name name="{=empire_male_76}Bernhardt" />
+			<name name="{=empire_male_77}Bernolt" />
+			<name name="{=empire_male_78}Berold" />
+			<name name="{=empire_male_79}Berteram" />
+			<name name="{=empire_male_80}Bertholdt" />
+			<name name="{=empire_male_81}Berthuld" />
+			<name name="{=empire_male_82}Bertolf" />
+			<name name="{=empire_male_83}Berwic" />
+			<name name="{=empire_male_84}Blasius" />
+			<name name="{=empire_male_85}Bogusch" />
+			<name name="{=empire_male_86}Borchardt" />
+			<name name="{=empire_male_87}Boris" />
+			<name name="{=empire_male_88}Brigund" />
+			<name name="{=empire_male_89}Brocuff" />
+			<name name="{=empire_male_90}Bruno" />
+			<name name="{=empire_male_91}Burchardt" />
+			<name name="{=empire_male_92}Burghardt" />
+			<name name="{=empire_male_93}Burgmann" />
+			<name name="{=empire_male_94}Burgold" />
+			<name name="{=empire_male_95}Burgolf" />
+			<name name="{=empire_male_96}Burgolt" />
+			<name name="{=empire_male_97}Burkhardt" />
+			<name name="{=empire_male_98}Calvin" />
+			<name name="{=empire_male_99}Carl" />
+			<name name="{=empire_male_100}Carolus" />
+			<name name="{=empire_male_101}Carolus" />
+			<name name="{=empire_male_102}Casimir" />
+			<name name="{=empire_male_103}Caspar" />
+			<name name="{=empire_male_104}Cedred" />
+			<name name="{=empire_male_105}Cheruse" />
+			<name name="{=empire_male_106}Claude" />
+			<name name="{=empire_male_107}Claus" />
+			<name name="{=empire_male_108}Conrad" />
+			<name name="{=empire_male_109}Constantin" />
+			<name name="{=empire_male_110}Corvin" />
+			<name name="{=empire_male_111}Dagmar" />
+			<name name="{=empire_male_112}Dankmar" />
+			<name name="{=empire_male_113}Dankred" />
+			<name name="{=empire_male_114}Dekmar" />
+			<name name="{=empire_male_115}Detlef" />
+			<name name="{=empire_male_116}Dider" />
+			<name name="{=empire_male_117}Diebold" />
+			<name name="{=empire_male_118}Diefried" />
+			<name name="{=empire_male_119}Diehl" />
+			<name name="{=empire_male_120}Dieterich" />
+			<name name="{=empire_male_121}Dietl" />
+			<name name="{=empire_male_122}Dietmar" />
+			<name name="{=empire_male_123}Dietmund" />
+			<name name="{=empire_male_124}Dietrich" />
+			<name name="{=empire_male_125}Dippelt" />
+			<name name="{=empire_male_126}Dirk" />
+			<name name="{=empire_male_127}Dirske" />
+			<name name="{=empire_male_128}Ditherich" />
+			<name name="{=empire_male_129}Ditl" />
+			<name name="{=empire_male_130}Ditmarus" />
+			<name name="{=empire_male_131}Ditrich" />
+			<name name="{=empire_male_132}Ditwin" />
+			<name name="{=empire_male_133}Dominicus" />
+			<name name="{=empire_male_134}Dompnig" />
+			<name name="{=empire_male_135}Donatus" />
+			<name name="{=empire_male_136}Durnhelm" />
+			<name name="{=empire_male_137}Eberhardtus" />
+			<name name="{=empire_male_138}Eberhart" />
+			<name name="{=empire_male_139}Eberlinus" />
+			<name name="{=empire_male_140}Eckehardt" />
+			<name name="{=empire_male_141}Eckehart" />
+			<name name="{=empire_male_142}Eckel" />
+			<name name="{=empire_male_143}Edgar" />
+			<name name="{=empire_male_144}Edmund" />
+			<name name="{=empire_male_145}Edwin" />
+			<name name="{=empire_male_146}Egidius" />
+			<name name="{=empire_male_147}Ehrhardt" />
+			<name name="{=empire_male_148}Ehrl" />
+			<name name="{=empire_male_149}Ehrmann" />
+			<name name="{=empire_male_150}Ehrwig" />
+			<name name="{=empire_male_151}Elbel" />
+			<name name="{=empire_male_152}Eldred" />
+			<name name="{=empire_male_153}Elgast" />
+			<name name="{=empire_male_154}Elger" />
+			<name name="{=empire_male_155}Elmeric" />
+			<name name="{=empire_male_156}Emil" />
+			<name name="{=empire_male_157}Emmerich" />
+			<name name="{=empire_male_158}Endal" />
+			<name name="{=empire_male_159}Enderlin" />
+			<name name="{=empire_male_160}Enewalt" />
+			<name name="{=empire_male_161}Engelbert" />
+			<name name="{=empire_male_162}Engelbrecht" />
+			<name name="{=empire_male_163}Engelgerus" />
+			<name name="{=empire_male_164}Engelusch" />
+			<name name="{=empire_male_165}Eodred" />
+			<name name="{=empire_male_166}Eomund" />
+			<name name="{=empire_male_167}Erasmus" />
+			<name name="{=empire_male_168}Erdman" />
+			<name name="{=empire_male_169}Erdred" />
+			<name name="{=empire_male_170}Erich" />
+			<name name="{=empire_male_171}Erkenbrand" />
+			<name name="{=empire_male_172}Erlemannus" />
+			<name name="{=empire_male_173}Ermanrich" />
+			<name name="{=empire_male_174}Ermelaus" />
+			<name name="{=empire_male_175}Ermenrich" />
+			<name name="{=empire_male_176}Ernestus" />
+			<name name="{=empire_male_177}Ernko" />
+			<name name="{=empire_male_178}Esmer" />
+			<name name="{=empire_male_179}Eugen" />
+			<name name="{=empire_male_180}Eustasius" />
+			<name name="{=empire_male_181}Everwin" />
+			<name name="{=empire_male_182}Ewald" />
+			<name name="{=empire_male_183}Fabian" />
+			<name name="{=empire_male_184}Fasolt" />
+			<name name="{=empire_male_185}Faustmann" />
+			<name name="{=empire_male_186}Faustus" />
+			<name name="{=empire_male_187}Felix" />
+			<name name="{=empire_male_188}Felkel" />
+			<name name="{=empire_male_189}Ferdinand" />
+			<name name="{=empire_male_190}Fickuld" />
+			<name name="{=empire_male_191}Fleugweiner" />
+			<name name="{=empire_male_192}Fosten" />
+			<name name="{=empire_male_193}Franz" />
+			<name name="{=empire_male_194}Fredemann" />
+			<name name="{=empire_male_195}Frederich" />
+			<name name="{=empire_male_196}Fridebraht" />
+			<name name="{=empire_male_197}Fridelinus" />
+			<name name="{=empire_male_198}Fridericus" />
+			<name name="{=empire_male_199}Friebald" />
+			<name name="{=empire_male_200}Friedebert" />
+			<name name="{=empire_male_201}Friederich" />
+			<name name="{=empire_male_202}Friederik" />
+			<name name="{=empire_male_203}Friediger" />
+			<name name="{=empire_male_204}Fritschold" />
+			<name name="{=empire_male_205}Fritzsche" />
+			<name name="{=empire_male_206}Gabriel" />
+			<name name="{=empire_male_207}Gawinus" />
+			<name name="{=empire_male_208}Gebehardt" />
+			<name name="{=empire_male_209}Gelfrat" />
+			<name name="{=empire_male_210}Gelfrid" />
+			<name name="{=empire_male_211}George" />
+			<name name="{=empire_male_212}Georgius" />
+			<name name="{=empire_male_213}Gerber" />
+			<name name="{=empire_male_214}Gereke" />
+			<name name="{=empire_male_215}Gerhardt" />
+			<name name="{=empire_male_216}Gerhart" />
+			<name name="{=empire_male_217}Gerlach" />
+			<name name="{=empire_male_218}Gerlacus" />
+			<name name="{=empire_male_219}Gernandt" />
+			<name name="{=empire_male_220}Gernar" />
+			<name name="{=empire_male_221}Gernot" />
+			<name name="{=empire_male_222}Gerold" />
+			<name name="{=empire_male_223}Gerunch" />
+			<name name="{=empire_male_224}Gerung" />
+			<name name="{=empire_male_225}Gilbrecht" />
+			<name name="{=empire_male_226}Girlach" />
+			<name name="{=empire_male_227}Girnot" />
+			<name name="{=empire_male_228}Giselbertus" />
+			<name name="{=empire_male_229}Giselbrecht" />
+			<name name="{=empire_male_230}Giselher" />
+			<name name="{=empire_male_231}Gislerus" />
+			<name name="{=empire_male_232}Gismar" />
+			<name name="{=empire_male_233}Glockrian" />
+			<name name="{=empire_male_234}Glogrian" />
+			<name name="{=empire_male_235}Gobel" />
+			<name name="{=empire_male_236}Godebert" />
+			<name name="{=empire_male_237}Godefridus" />
+			<name name="{=empire_male_238}Godeke" />
+			<name name="{=empire_male_239}Goffhilf" />
+			<name name="{=empire_male_240}Goran" />
+			<name name="{=empire_male_241}Gosbert" />
+			<name name="{=empire_male_242}Goswinus" />
+			<name name="{=empire_male_243}Gotboldtus" />
+			<name name="{=empire_male_244}Gotchalcus" />
+			<name name="{=empire_male_245}Gotschalg" />
+			<name name="{=empire_male_246}Gotsche" />
+			<name name="{=empire_male_247}Gottfriedus" />
+			<name name="{=empire_male_248}Gotthardus" />
+			<name name="{=empire_male_249}Gottlieb" />
+			<name name="{=empire_male_250}Gottolf" />
+			<name name="{=empire_male_251}Gottzsche" />
+			<name name="{=empire_male_252}Gotwin" />
+			<name name="{=empire_male_253}Gozwinus" />
+			<name name="{=empire_male_254}Greger" />
+			<name name="{=empire_male_255}Gregor" />
+			<name name="{=empire_male_256}Greimold" />
+			<name name="{=empire_male_257}Greimolt" />
+			<name name="{=empire_male_258}Grimmel" />
+			<name name="{=empire_male_259}Grimwold" />
+			<name name="{=empire_male_260}Griswold" />
+			<name name="{=empire_male_261}Groger" />
+			<name name="{=empire_male_262}Grolmes" />
+			<name name="{=empire_male_263}Guido" />
+			<name name="{=empire_male_264}Gumpert" />
+			<name name="{=empire_male_265}Gumprecht" />
+			<name name="{=empire_male_266}Gundel" />
+			<name name="{=empire_male_267}Gunderam" />
+			<name name="{=empire_male_268}Gundolf" />
+			<name name="{=empire_male_269}Gundram" />
+			<name name="{=empire_male_270}Gundred" />
+			<name name="{=empire_male_271}Gunnar" />
+			<name name="{=empire_male_272}Gunthar" />
+			<name name="{=empire_male_273}Gunther" />
+			<name name="{=empire_male_274}Guntram" />
+			<name name="{=empire_male_275}Gurge" />
+			<name name="{=empire_male_276}Gustaf" />
+			<name name="{=empire_male_277}Gustavus" />
+			<name name="{=empire_male_278}Gutsche" />
+			<name name="{=empire_male_279}Gutwin" />
+			<name name="{=empire_male_280}Hadred" />
+			<name name="{=empire_male_281}Hadwin" />
+			<name name="{=empire_male_282}Hagar" />
+			<name name="{=empire_male_283}Hagen" />
+			<name name="{=empire_male_284}Hainrich" />
+			<name name="{=empire_male_285}Haldred" />
+			<name name="{=empire_male_286}Halman" />
+			<name name="{=empire_male_287}Halmut" />
+			<name name="{=empire_male_288}Halpern" />
+			<name name="{=empire_male_289}Halpert" />
+			<name name="{=empire_male_290}Hals" />
+			<name name="{=empire_male_291}Hamlin" />
+			<name name="{=empire_male_292}Hanco" />
+			<name name="{=empire_male_293}Hanke" />
+			<name name="{=empire_male_294}Hanmann" />
+			<name name="{=empire_male_295}Hannes" />
+			<name name="{=empire_male_296}Hannos" />
+			<name name="{=empire_male_297}Hannus" />
+			<name name="{=empire_male_298}Hantsche" />
+			<name name="{=empire_male_299}Hanusch" />
+			<name name="{=empire_male_300}Harbrand" />
+			<name name="{=empire_male_301}Hardrat" />
+			<name name="{=empire_male_302}Hardtmann" />
+			<name name="{=empire_male_303}Hartlib" />
+			<name name="{=empire_male_304}Hartlip" />
+			<name name="{=empire_male_305}Hartmann" />
+			<name name="{=empire_male_306}Hartmundus" />
+			<name name="{=empire_male_307}Hartnid" />
+			<name name="{=empire_male_308}Hartrad" />
+			<name name="{=empire_male_309}Hartungus" />
+			<name name="{=empire_male_310}Hartusch" />
+			<name name="{=empire_male_311}Hartwicus" />
+			<name name="{=empire_male_312}Hartwig" />
+			<name name="{=empire_male_313}Haug" />
+			<name name="{=empire_male_314}Heidenrich" />
+			<name name="{=empire_male_315}Heidric" />
+			<name name="{=empire_male_316}Heimar" />
+			<name name="{=empire_male_317}Heindel" />
+			<name name="{=empire_male_318}Heinel" />
+			<name name="{=empire_male_319}Heineman" />
+			<name name="{=empire_male_320}Heinfried" />
+			<name name="{=empire_male_321}Heinich" />
+			<name name="{=empire_male_322}Heinke" />
+			<name name="{=empire_male_323}Heinmann" />
+			<name name="{=empire_male_324}Heinricus" />
+			<name name="{=empire_male_325}Heintze" />
+			<name name="{=empire_male_326}Heinusch" />
+			<name name="{=empire_male_327}Heinutsch" />
+			<name name="{=empire_male_328}Heironymous" />
+			<name name="{=empire_male_329}Helembertus" />
+			<name name="{=empire_male_330}Hellenboldus" />
+			<name name="{=empire_male_331}Hellenbrecht" />
+			<name name="{=empire_male_332}Helmut" />
+			<name name="{=empire_male_333}Helwig" />
+			<name name="{=empire_male_334}Hempel" />
+			<name name="{=empire_male_335}Henil" />
+			<name name="{=empire_male_336}Henke" />
+			<name name="{=empire_male_337}Henlin" />
+			<name name="{=empire_male_338}Henneke" />
+			<name name="{=empire_male_339}Hennel" />
+			<name name="{=empire_male_340}Henning" />
+			<name name="{=empire_male_341}Henrich" />
+			<name name="{=empire_male_342}Henricus" />
+			<name name="{=empire_male_343}Henroth" />
+			<name name="{=empire_male_344}Henschel" />
+			<name name="{=empire_male_345}Hensel" />
+			<name name="{=empire_male_346}Hensil" />
+			<name name="{=empire_male_347}Henslo" />
+			<name name="{=empire_male_348}Hentschel" />
+			<name name="{=empire_male_349}Hentschil" />
+			<name name="{=empire_male_350}Herbil" />
+			<name name="{=empire_male_351}Herbord" />
+			<name name="{=empire_male_352}Herbort" />
+			<name name="{=empire_male_353}Herdan" />
+			<name name="{=empire_male_354}Herdegen" />
+			<name name="{=empire_male_355}Herdeinus" />
+			<name name="{=empire_male_356}Hergard" />
+			<name name="{=empire_male_357}Hermann" />
+			<name name="{=empire_male_358}Hermenchin" />
+			<name name="{=empire_male_359}Herpin" />
+			<name name="{=empire_male_360}Hertel" />
+			<name name="{=empire_male_361}Herterich" />
+			<name name="{=empire_male_362}Hertil" />
+			<name name="{=empire_male_363}Hertwig" />
+			<name name="{=empire_male_364}Herwin" />
+			<name name="{=empire_male_365}Hieronymous" />
+			<name name="{=empire_male_366}Hildebart" />
+			<name name="{=empire_male_367}Hildebrandtus" />
+			<name name="{=empire_male_368}Hildemar" />
+			<name name="{=empire_male_369}Hildenmund" />
+			<name name="{=empire_male_370}Hildiger" />
+			<name name="{=empire_male_371}Hildred" />
+			<name name="{=empire_male_372}Hildric" />
+			<name name="{=empire_male_373}Hinric" />
+			<name name="{=empire_male_374}Holger" />
+			<name name="{=empire_male_375}Horst" />
+			<name name="{=empire_male_376}Huge" />
+			<name name="{=empire_male_377}Hugo" />
+			<name name="{=empire_male_378}Hultz" />
+			<name name="{=empire_male_379}Humfried" />
+			<name name="{=empire_male_380}Hunold" />
+			<name name="{=empire_male_381}Igor" />
+			<name name="{=empire_male_382}Ingwald" />
+			<name name="{=empire_male_383}Iwan" />
+			<name name="{=empire_male_384}Iwein" />
+			<name name="{=empire_male_385}Jacob" />
+			<name name="{=empire_male_386}Jacub" />
+			<name name="{=empire_male_387}Jakob" />
+			<name name="{=empire_male_388}Jakusch" />
+			<name name="{=empire_male_389}Janderke" />
+			<name name="{=empire_male_390}Janke" />
+			<name name="{=empire_male_391}Janusch" />
+			<name name="{=empire_male_392}Jeckel" />
+			<name name="{=empire_male_393}Jekil" />
+			<name name="{=empire_male_394}Jekli" />
+			<name name="{=empire_male_395}Jenchin" />
+			<name name="{=empire_male_396}Jeronymus" />
+			<name name="{=empire_male_397}Jeschke" />
+			<name name="{=empire_male_398}Jesco" />
+			<name name="{=empire_male_399}Joachim" />
+			<name name="{=empire_male_400}Jocob" />
+			<name name="{=empire_male_401}Jocoff" />
+			<name name="{=empire_male_402}Jocop" />
+			<name name="{=empire_male_403}Jodocus" />
+			<name name="{=empire_male_404}Jodokus" />
+			<name name="{=empire_male_405}Joerg" />
+			<name name="{=empire_male_406}Johannes" />
+			<name name="{=empire_male_407}Jokodus" />
+			<name name="{=empire_male_408}Jokoff" />
+			<name name="{=empire_male_409}Jonas" />
+			<name name="{=empire_male_410}Jone" />
+			<name name="{=empire_male_411}Jordan" />
+			<name name="{=empire_male_412}Jorge" />
+			<name name="{=empire_male_413}Jorgl" />
+			<name name="{=empire_male_414}Jorn" />
+			<name name="{=empire_male_415}Josef" />
+			<name name="{=empire_male_416}Jost" />
+			<name name="{=empire_male_417}Jurgen" />
+			<name name="{=empire_male_418}Karl" />
+			<name name="{=empire_male_419}Karolus" />
+			<name name="{=empire_male_420}Kasmir" />
+			<name name="{=empire_male_421}Kaspar" />
+			<name name="{=empire_male_422}Kastar" />
+			<name name="{=empire_male_423}Kastor" />
+			<name name="{=empire_male_424}Kirstan" />
+			<name name="{=empire_male_425}Kirsten" />
+			<name name="{=empire_male_426}Kitan" />
+			<name name="{=empire_male_427}Kite" />
+			<name name="{=empire_male_428}Klaude" />
+			<name name="{=empire_male_429}Klaus" />
+			<name name="{=empire_male_430}Kleber" />
+			<name name="{=empire_male_431}Klemens" />
+			<name name="{=empire_male_432}Klemet" />
+			<name name="{=empire_male_433}Klosel" />
+			<name name="{=empire_male_434}Knud" />
+			<name name="{=empire_male_435}Knut" />
+			<name name="{=empire_male_436}Konradin" />
+			<name name="{=empire_male_437}Konrat" />
+			<name name="{=empire_male_438}Kraft" />
+			<name name="{=empire_male_439}Kristof" />
+			<name name="{=empire_male_440}Krugar" />
+			<name name="{=empire_male_441}Kunemann" />
+			<name name="{=empire_male_442}Kuno" />
+			<name name="{=empire_male_443}Kurdt" />
+			<name name="{=empire_male_444}Kurlass" />
+			<name name="{=empire_male_445}Lambertus" />
+			<name name="{=empire_male_446}Lampertus" />
+			<name name="{=empire_male_447}Lamprecht" />
+			<name name="{=empire_male_448}Lanfried" />
+			<name name="{=empire_male_449}Lanric" />
+			<name name="{=empire_male_450}Lanwin" />
+			<name name="{=empire_male_451}Laurencius" />
+			<name name="{=empire_male_452}Laureyn" />
+			<name name="{=empire_male_453}Lazarus" />
+			<name name="{=empire_male_454}Lehenhard" />
+			<name name="{=empire_male_455}Leonardus" />
+			<name name="{=empire_male_456}Leonhard" />
+			<name name="{=empire_male_457}Leopold" />
+			<name name="{=empire_male_458}Leupold" />
+			<name name="{=empire_male_459}Leuter" />
+			<name name="{=empire_male_460}Leuthold" />
+			<name name="{=empire_male_461}Leutke" />
+			<name name="{=empire_male_462}Levin" />
+			<name name="{=empire_male_463}Lewpold" />
+			<name name="{=empire_male_464}Libincko" />
+			<name name="{=empire_male_465}Libingus" />
+			<name name="{=empire_male_466}Libniko" />
+			<name name="{=empire_male_467}Liebert" />
+			<name name="{=empire_male_468}Liebink" />
+			<name name="{=empire_male_469}Liebrecht" />
+			<name name="{=empire_male_470}Liebwin" />
+			<name name="{=empire_male_471}Lienhart" />
+			<name name="{=empire_male_472}Linus" />
+			<name name="{=empire_male_473}Liphardus" />
+			<name name="{=empire_male_474}Liutpold" />
+			<name name="{=empire_male_475}Lodewig" />
+			<name name="{=empire_male_476}Lorenz" />
+			<name name="{=empire_male_477}Lothar" />
+			<name name="{=empire_male_478}Lucas" />
+			<name name="{=empire_male_479}Lucius" />
+			<name name="{=empire_male_480}Ludevicus" />
+			<name name="{=empire_male_481}Ludolf" />
+			<name name="{=empire_male_482}Ludovicus" />
+			<name name="{=empire_male_483}Ludwig" />
+			<name name="{=empire_male_484}Luitpoldus" />
+			<name name="{=empire_male_485}Lukas" />
+			<name name="{=empire_male_486}Luppolt" />
+			<name name="{=empire_male_487}Lupus" />
+			<name name="{=empire_male_488}Lutherius" />
+			<name name="{=empire_male_489}Luthold" />
+			<name name="{=empire_male_490}Lutke" />
+			<name name="{=empire_male_491}Lutolf" />
+			<name name="{=empire_male_492}Mach" />
+			<name name="{=empire_male_493}Magnus" />
+			<name name="{=empire_male_494}Mandred" />
+			<name name="{=empire_male_495}Manegold" />
+			<name name="{=empire_male_496}Manfred" />
+			<name name="{=empire_male_497}Marcus" />
+			<name name="{=empire_male_498}Marius" />
+			<name name="{=empire_male_499}Markus" />
+			<name name="{=empire_male_500}Markwardt" />
+			<name name="{=empire_male_501}Markwart" />
+			<name name="{=empire_male_502}Martin" />
+			<name name="{=empire_male_503}Marx" />
+			<name name="{=empire_male_504}Maternus" />
+			<name name="{=empire_male_505}Matheus" />
+			<name name="{=empire_male_506}Mathewelin" />
+			<name name="{=empire_male_507}Matthias" />
+			<name name="{=empire_male_508}Matzke" />
+			<name name="{=empire_male_509}Maximillian" />
+			<name name="{=empire_male_510}Mechtfrid" />
+			<name name="{=empire_male_511}Meffrid" />
+			<name name="{=empire_male_512}Meiner" />
+			<name name="{=empire_male_513}Meingot" />
+			<name name="{=empire_male_514}Meinhardtus" />
+			<name name="{=empire_male_515}Meinhart" />
+			<name name="{=empire_male_516}Meinolf" />
+			<name name="{=empire_male_517}Mekel" />
+			<name name="{=empire_male_518}Melched" />
+			<name name="{=empire_male_519}Melchior" />
+			<name name="{=empire_male_520}Mengot" />
+			<name name="{=empire_male_521}Menogoth" />
+			<name name="{=empire_male_522}Merboth" />
+			<name name="{=empire_male_523}Merkel" />
+			<name name="{=empire_male_524}Meroge" />
+			<name name="{=empire_male_525}Mertein" />
+			<name name="{=empire_male_526}Mertin" />
+			<name name="{=empire_male_527}Mertt" />
+			<name name="{=empire_male_528}Metrious" />
+			<name name="{=empire_male_529}Michahel" />
+			<name name="{=empire_male_530}Mikusch" />
+			<name name="{=empire_male_531}Moritz" />
+			<name name="{=empire_male_532}Nanker" />
+			<name name="{=empire_male_533}Nathandar" />
+			<name name="{=empire_male_534}Neidhart" />
+			<name name="{=empire_male_535}Neithart" />
+			<name name="{=empire_male_536}Nenker" />
+			<name name="{=empire_male_537}Nickel" />
+			<name name="{=empire_male_538}Nickil" />
+			<name name="{=empire_male_539}Nicklas" />
+			<name name="{=empire_male_540}Nicklos" />
+			<name name="{=empire_male_541}Niclas" />
+			<name name="{=empire_male_542}Niclawes" />
+			<name name="{=empire_male_543}Nicodemus" />
+			<name name="{=empire_male_544}Nicolai" />
+			<name name="{=empire_male_545}Nicolaus" />
+			<name name="{=empire_male_546}Nikkel" />
+			<name name="{=empire_male_547}Niklos" />
+			<name name="{=empire_male_548}Nikolaus" />
+			<name name="{=empire_male_549}Nikusch" />
+			<name name="{=empire_male_550}Nimandus" />
+			<name name="{=empire_male_551}Nithart" />
+			<name name="{=empire_male_552}Nitschke" />
+			<name name="{=empire_male_553}Odmar" />
+			<name name="{=empire_male_554}Odwin" />
+			<name name="{=empire_male_555}Olaf" />
+			<name name="{=empire_male_556}Olbrecht" />
+			<name name="{=empire_male_557}Oldred" />
+			<name name="{=empire_male_558}Oldric" />
+			<name name="{=empire_male_559}Orban" />
+			<name name="{=empire_male_560}Ortel" />
+			<name name="{=empire_male_561}Ortlieb" />
+			<name name="{=empire_male_562}Ortlip" />
+			<name name="{=empire_male_563}Ortlouf" />
+			<name name="{=empire_male_564}Ortolf" />
+			<name name="{=empire_male_565}Ortolphus" />
+			<name name="{=empire_male_566}Ortwin" />
+			<name name="{=empire_male_567}Oskar" />
+			<name name="{=empire_male_568}Osprant" />
+			<name name="{=empire_male_569}Osric" />
+			<name name="{=empire_male_570}Ostagoth" />
+			<name name="{=empire_male_571}Oswald" />
+			<name name="{=empire_male_572}Oswin" />
+			<name name="{=empire_male_573}Otfried" />
+			<name name="{=empire_male_574}Otmar" />
+			<name name="{=empire_male_575}Otnand" />
+			<name name="{=empire_male_576}Ottel" />
+			<name name="{=empire_male_577}Otto" />
+			<name name="{=empire_male_578}Otwin" />
+			<name name="{=empire_male_579}Pancracius" />
+			<name name="{=empire_male_580}Pankratz" />
+			<name name="{=empire_male_581}Partschfall" />
+			<name name="{=empire_male_582}Parzival" />
+			<name name="{=empire_male_583}Paschalis" />
+			<name name="{=empire_male_584}Paschke" />
+			<name name="{=empire_male_585}Patrice" />
+			<name name="{=empire_male_586}Pauelus" />
+			<name name="{=empire_male_587}Paulo" />
+			<name name="{=empire_male_588}Pauwel" />
+			<name name="{=empire_male_589}Pawel" />
+			<name name="{=empire_male_590}Pawil" />
+			<name name="{=empire_male_591}Pecolt" />
+			<name name="{=empire_male_592}Peregrinus" />
+			<name name="{=empire_male_593}Peschel" />
+			<name name="{=empire_male_594}Peschke" />
+			<name name="{=empire_male_595}Pesold" />
+			<name name="{=empire_male_596}Pessolt" />
+			<name name="{=empire_male_597}Petir" />
+			<name name="{=empire_male_598}Petran" />
+			<name name="{=empire_male_599}Petrusch" />
+			<name name="{=empire_male_600}Petschel" />
+			<name name="{=empire_male_601}Petschmann" />
+			<name name="{=empire_male_602}Philipps" />
+			<name name="{=empire_male_603}Philippus" />
+			<name name="{=empire_male_604}Pietermann" />
+			<name name="{=empire_male_605}Piter" />
+			<name name="{=empire_male_606}Poppe" />
+			<name name="{=empire_male_607}Prokop" />
+			<name name="{=empire_male_608}Prospero" />
+			<name name="{=empire_male_609}Quintus" />
+			<name name="{=empire_male_610}Ragen" />
+			<name name="{=empire_male_611}Ralf" />
+			<name name="{=empire_male_612}Rambrecht" />
+			<name name="{=empire_male_613}Ramung" />
+			<name name="{=empire_male_614}Ramvoldus" />
+			<name name="{=empire_male_615}Ramwold" />
+			<name name="{=empire_male_616}Randolph" />
+			<name name="{=empire_male_617}Randulf" />
+			<name name="{=empire_male_618}Ranfeld" />
+			<name name="{=empire_male_619}Raphael" />
+			<name name="{=empire_male_620}Ratbot" />
+			<name name="{=empire_male_621}Regimius" />
+			<name name="{=empire_male_622}Reichel" />
+			<name name="{=empire_male_623}Reikert" />
+			<name name="{=empire_male_624}Reikhardt" />
+			<name name="{=empire_male_625}Reinald" />
+			<name name="{=empire_male_626}Reiner" />
+			<name name="{=empire_male_627}Reinfried" />
+			<name name="{=empire_male_628}Reinhardt" />
+			<name name="{=empire_male_629}Reinhold" />
+			<name name="{=empire_male_630}Reinolt" />
+			<name name="{=empire_male_631}Reintsch" />
+			<name name="{=empire_male_632}Reinwald" />
+			<name name="{=empire_male_633}Reiprecht" />
+			<name name="{=empire_male_634}Reuban" />
+			<name name="{=empire_male_635}Richart" />
+			<name name="{=empire_male_636}Richel" />
+			<name name="{=empire_male_637}Richolf" />
+			<name name="{=empire_male_638}Richter" />
+			<name name="{=empire_male_639}Rigo" />
+			<name name="{=empire_male_640}Rilker" />
+			<name name="{=empire_male_641}Ripertus" />
+			<name name="{=empire_male_642}Robb" />
+			<name name="{=empire_male_643}Robert" />
+			<name name="{=empire_male_644}Roderic" />
+			<name name="{=empire_male_645}Roland" />
+			<name name="{=empire_male_646}Rolf" />
+			<name name="{=empire_male_647}Ropot" />
+			<name name="{=empire_male_648}Roprecht" />
+			<name name="{=empire_male_649}Ruben" />
+			<name name="{=empire_male_650}Rudeger" />
+			<name name="{=empire_male_651}Rudeloff" />
+			<name name="{=empire_male_652}Rudiger" />
+			<name name="{=empire_male_653}Rudlinus" />
+			<name name="{=empire_male_654}Rudlo" />
+			<name name="{=empire_male_655}Rudolf" />
+			<name name="{=empire_male_656}Rudusch" />
+			<name name="{=empire_male_657}Rufus" />
+			<name name="{=empire_male_658}Ruland" />
+			<name name="{=empire_male_659}Rulant" />
+			<name name="{=empire_male_660}Rule" />
+			<name name="{=empire_male_661}Rumpolt" />
+			<name name="{=empire_male_662}Rupert" />
+			<name name="{=empire_male_663}Ruppel" />
+			<name name="{=empire_male_664}Ruprecht" />
+			<name name="{=empire_male_665}Rutiger" />
+			<name name="{=empire_male_666}Rutschel" />
+			<name name="{=empire_male_667}Salomon" />
+			<name name="{=empire_male_668}Samuel" />
+			<name name="{=empire_male_669}Sander" />
+			<name name="{=empire_male_670}Schimko" />
+			<name name="{=empire_male_671}Sebastian" />
+			<name name="{=empire_male_672}Seel" />
+			<name name="{=empire_male_673}Segehart" />
+			<name name="{=empire_male_674}Segemund" />
+			<name name="{=empire_male_675}Seibke" />
+			<name name="{=empire_male_676}Seibot" />
+			<name name="{=empire_male_677}Seidel" />
+			<name name="{=empire_male_678}Seidelman" />
+			<name name="{=empire_male_679}Seiffrid" />
+			<name name="{=empire_male_680}Semund" />
+			<name name="{=empire_male_681}Sepp" />
+			<name name="{=empire_male_682}Setanta" />
+			<name name="{=empire_male_683}Sieger" />
+			<name name="{=empire_male_684}Siegfried" />
+			<name name="{=empire_male_685}Siegmund" />
+			<name name="{=empire_male_686}Siffridus" />
+			<name name="{=empire_male_687}Sifrit" />
+			<name name="{=empire_male_688}Sigfrid" />
+			<name name="{=empire_male_689}Sigismund" />
+			<name name="{=empire_male_690}Sothelin" />
+			<name name="{=empire_male_691}Stafke" />
+			<name name="{=empire_male_692}Stanislaus" />
+			<name name="{=empire_male_693}Steffan" />
+			<name name="{=empire_male_694}Steffen" />
+			<name name="{=empire_male_695}Stehmahr" />
+			<name name="{=empire_male_696}Stephan" />
+			<name name="{=empire_male_697}Stephke" />
+			<name name="{=empire_male_698}Sweideger" />
+			<name name="{=empire_male_699}Syman" />
+			<name name="{=empire_male_700}Symon" />
+			<name name="{=empire_male_701}Taleute" />
+			<name name="{=empire_male_702}Tancred" />
+			<name name="{=empire_male_703}Tankred" />
+			<name name="{=empire_male_704}Temil" />
+			<name name="{=empire_male_705}Teutoge" />
+			<name name="{=empire_male_706}Thaddeus" />
+			<name name="{=empire_male_707}Thamme" />
+			<name name="{=empire_male_708}Thankmar" />
+			<name name="{=empire_male_709}Theoderic" />
+			<name name="{=empire_male_710}Theodosius" />
+			<name name="{=empire_male_711}Theodricus" />
+			<name name="{=empire_male_712}Theophilus" />
+			<name name="{=empire_male_713}Thiemo" />
+			<name name="{=empire_male_714}Thietmarus" />
+			<name name="{=empire_male_715}Thomas" />
+			<name name="{=empire_male_716}Thomel" />
+			<name name="{=empire_male_717}Thomke" />
+			<name name="{=empire_male_718}Thorgad" />
+			<name name="{=empire_male_719}Thuring" />
+			<name name="{=empire_male_720}Thyrus" />
+			<name name="{=empire_male_721}Tristram" />
+			<name name="{=empire_male_722}Trubald" />
+			<name name="{=empire_male_723}Trubert" />
+			<name name="{=empire_male_724}Truchtlip" />
+			<name name="{=empire_male_725}Trutwin" />
+			<name name="{=empire_male_726}Tschepan" />
+			<name name="{=empire_male_727}Tyle" />
+			<name name="{=empire_male_728}Tylo" />
+			<name name="{=empire_male_729}Udos" />
+			<name name="{=empire_male_730}Ulein" />
+			<name name="{=empire_male_731}Ulfman" />
+			<name name="{=empire_male_732}Ulfred" />
+			<name name="{=empire_male_733}Ulher" />
+			<name name="{=empire_male_734}Ulli" />
+			<name name="{=empire_male_735}Ulman" />
+			<name name="{=empire_male_736}Ulrichus" />
+			<name name="{=empire_male_737}Ulusch" />
+			<name name="{=empire_male_738}Unberoge" />
+			<name name="{=empire_male_739}Urban" />
+			<name name="{=empire_male_740}Uto" />
+			<name name="{=empire_male_741}Valdred" />
+			<name name="{=empire_male_742}Valdric" />
+			<name name="{=empire_male_743}Valentin" />
+			<name name="{=empire_male_744}Valgeit" />
+			<name name="{=empire_male_745}Valmir" />
+			<name name="{=empire_male_746}Valten" />
+			<name name="{=empire_male_747}Van" />
+			<name name="{=empire_male_748}Varl" />
+			<name name="{=empire_male_749}Veit" />
+			<name name="{=empire_male_750}Verspasian" />
+			<name name="{=empire_male_751}Viggo" />
+			<name name="{=empire_male_752}Volkhard" />
+			<name name="{=empire_male_753}Volkin" />
+			<name name="{=empire_male_754}Volkrad" />
+			<name name="{=empire_male_755}Volkwin" />
+			<name name="{=empire_male_756}Voltz" />
+			<name name="{=empire_male_757}Vorster" />
+			<name name="{=empire_male_758}Vridel" />
+			<name name="{=empire_male_759}Vridil" />
+			<name name="{=empire_male_760}Wabirske" />
+			<name name="{=empire_male_761}Walbrecht" />
+			<name name="{=empire_male_762}Waldemar" />
+			<name name="{=empire_male_763}Waldor" />
+			<name name="{=empire_male_764}Waldred" />
+			<name name="{=empire_male_765}Waliwan" />
+			<name name="{=empire_male_766}Waltherus" />
+			<name name="{=empire_male_767}Warmund" />
+			<name name="{=empire_male_768}Weigandt" />
+			<name name="{=empire_male_769}Weigel" />
+			<name name="{=empire_male_770}Weiker" />
+			<name name="{=empire_male_771}Wenzel" />
+			<name name="{=empire_male_772}Wernherus" />
+			<name name="{=empire_male_773}Wernike" />
+			<name name="{=empire_male_774}Wernusch" />
+			<name name="{=empire_male_775}Wicher" />
+			<name name="{=empire_male_776}Wichman" />
+			<name name="{=empire_male_777}Wigandus" />
+			<name name="{=empire_male_778}Wigant" />
+			<name name="{=empire_male_779}Wigel" />
+			<name name="{=empire_male_780}Wigher" />
+			<name name="{=empire_male_781}Wiglas" />
+			<name name="{=empire_male_782}Wikert" />
+			<name name="{=empire_male_783}Willusch" />
+			<name name="{=empire_male_784}Wilreich" />
+			<name name="{=empire_male_785}Wilricus" />
+			<name name="{=empire_male_786}Winandus" />
+			<name name="{=empire_male_787}Winlind" />
+			<name name="{=empire_male_788}Winrich" />
+			<name name="{=empire_male_789}Winricus" />
+			<name name="{=empire_male_790}Wiprecht" />
+			<name name="{=empire_male_791}Witche" />
+			<name name="{=empire_male_792}Wittich" />
+			<name name="{=empire_male_793}Woldred" />
+			<name name="{=empire_male_794}Wolfel" />
+			<name name="{=empire_male_795}Wolferam" />
+			<name name="{=empire_male_796}Wolfgang" />
+			<name name="{=empire_male_797}Wolfhard" />
+			<name name="{=empire_male_798}Wolfhart" />
+			<name name="{=empire_male_799}Wolfila" />
+			<name name="{=empire_male_800}Wolfker" />
+			<name name="{=empire_male_801}Wolfram" />
+			<name name="{=empire_male_802}Wolmar" />
+			<name name="{=empire_male_803}Wolveram" />
+			<name name="{=empire_male_804}Wortwin" />
+			<name name="{=empire_male_805}Wuder" />
+			<name name="{=empire_male_806}Wulf" />
+			<name name="{=empire_male_807}Xavier" />
+			<name name="{=empire_male_808}Ytel" />
+			<name name="{=empire_male_809}Zacharias" />
+			<name name="{=empire_male_810}Zeidl" />
+			<name name="{=empire_male_811}Zifridus" />
+			<name name="{=empire_male_812}Zobeslaus" />
+		</male_names>
+		<female_names>
+			<name name="{=empire_female_1}Abbie" />
+			<name name="{=empire_female_2}Abighild" />
+			<name name="{=empire_female_3}Abigund" />
+			<name name="{=empire_female_4}Ada" />
+			<name name="{=empire_female_5}Adel" />
+			<name name="{=empire_female_6}Adelind" />
+			<name name="{=empire_female_7}Adelle" />
+			<name name="{=empire_female_8}Adelyn" />
+			<name name="{=empire_female_9}Agathe" />
+			<name name="{=empire_female_10}Agnes" />
+			<name name="{=empire_female_11}Agneta" />
+			<name name="{=empire_female_12}Agnete" />
+			<name name="{=empire_female_13}Agnetta" />
+			<name name="{=empire_female_14}Agnetz" />
+			<name name="{=empire_female_15}Agnise" />
+			<name name="{=empire_female_16}Aldreda" />
+			<name name="{=empire_female_17}Aleid" />
+			<name name="{=empire_female_18}Alette" />
+			<name name="{=empire_female_19}Alexa" />
+			<name name="{=empire_female_20}Alfreda" />
+			<name name="{=empire_female_21}Alfrida" />
+			<name name="{=empire_female_22}Alice" />
+			<name name="{=empire_female_23}Alicia" />
+			<name name="{=empire_female_24}Alke" />
+			<name name="{=empire_female_25}Allane" />
+			<name name="{=empire_female_26}Almala" />
+			<name name="{=empire_female_27}Althea" />
+			<name name="{=empire_female_28}Alusch" />
+			<name name="{=empire_female_29}Amalie" />
+			<name name="{=empire_female_30}Amalyn" />
+			<name name="{=empire_female_31}Andrea" />
+			<name name="{=empire_female_32}Anhilda" />
+			<name name="{=empire_female_33}Anika" />
+			<name name="{=empire_female_34}Anja" />
+			<name name="{=empire_female_35}Anna" />
+			<name name="{=empire_female_36}Annabel" />
+			<name name="{=empire_female_37}Anne" />
+			<name name="{=empire_female_38}Anthea" />
+			<name name="{=empire_female_39}Anya" />
+			<name name="{=empire_female_40}Apollonia" />
+			<name name="{=empire_female_41}Arabel" />
+			<name name="{=empire_female_42}Astrid" />
+			<name name="{=empire_female_43}Aver" />
+			<name name="{=empire_female_44}Aythe" />
+			<name name="{=empire_female_45}Barbara" />
+			<name name="{=empire_female_46}Beate" />
+			<name name="{=empire_female_47}Beatrix" />
+			<name name="{=empire_female_48}Bechilda" />
+			<name name="{=empire_female_49}Bella" />
+			<name name="{=empire_female_50}Bendicta" />
+			<name name="{=empire_female_51}Benusch" />
+			<name name="{=empire_female_52}Berchte" />
+			<name name="{=empire_female_53}Berlinda" />
+			<name name="{=empire_female_54}Berlyn" />
+			<name name="{=empire_female_55}Berta" />
+			<name name="{=empire_female_56}Berthilda" />
+			<name name="{=empire_female_57}Bertradis" />
+			<name name="{=empire_female_58}Bertrod" />
+			<name name="{=empire_female_59}Bess" />
+			<name name="{=empire_female_60}Beth" />
+			<name name="{=empire_female_61}Bianka" />
+			<name name="{=empire_female_62}Birgit" />
+			<name name="{=empire_female_63}Brigitte" />
+			<name name="{=empire_female_64}Brita" />
+			<name name="{=empire_female_65}Britt" />
+			<name name="{=empire_female_66}Broncea" />
+			<name name="{=empire_female_67}Brunhilda" />
+			<name name="{=empire_female_68}Brunhilde" />
+			<name name="{=empire_female_69}Camilla" />
+			<name name="{=empire_female_70}Carina" />
+			<name name="{=empire_female_71}Carla" />
+			<name name="{=empire_female_72}Carlinda" />
+			<name name="{=empire_female_73}Carlotta" />
+			<name name="{=empire_female_74}Carmilla" />
+			<name name="{=empire_female_75}Casarea" />
+			<name name="{=empire_female_76}Cecilia" />
+			<name name="{=empire_female_77}Charlotte" />
+			<name name="{=empire_female_78}Christine" />
+			<name name="{=empire_female_79}Cilicia" />
+			<name name="{=empire_female_80}Cilie" />
+			<name name="{=empire_female_81}Clare" />
+			<name name="{=empire_female_82}Claudia" />
+			<name name="{=empire_female_83}Clora" />
+			<name name="{=empire_female_84}Clothilda" />
+			<name name="{=empire_female_85}Connie" />
+			<name name="{=empire_female_86}Constance" />
+			<name name="{=empire_female_87}Constanza" />
+			<name name="{=empire_female_88}Cordelia" />
+			<name name="{=empire_female_89}Cunne" />
+			<name name="{=empire_female_90}Dagmar" />
+			<name name="{=empire_female_91}Dema" />
+			<name name="{=empire_female_92}Demut" />
+			<name name="{=empire_female_93}Desdemona" />
+			<name name="{=empire_female_94}Dora" />
+			<name name="{=empire_female_95}Dorothie" />
+			<name name="{=empire_female_96}Dorthilda" />
+			<name name="{=empire_female_97}Drachena" />
+			<name name="{=empire_female_98}Drachilda" />
+			<name name="{=empire_female_99}Edhilda" />
+			<name name="{=empire_female_100}Edith" />
+			<name name="{=empire_female_101}Edyth" />
+			<name name="{=empire_female_102}Edythe" />
+			<name name="{=empire_female_103}Eleanor" />
+			<name name="{=empire_female_104}Elena" />
+			<name name="{=empire_female_105}Elene" />
+			<name name="{=empire_female_106}Elfrida" />
+			<name name="{=empire_female_107}Elinor" />
+			<name name="{=empire_female_108}Elisabeth" />
+			<name name="{=empire_female_109}Elise" />
+			<name name="{=empire_female_110}Elisinda" />
+			<name name="{=empire_female_111}Elke" />
+			<name name="{=empire_female_112}Ella" />
+			<name name="{=empire_female_113}Ellene" />
+			<name name="{=empire_female_114}Ellinde" />
+			<name name="{=empire_female_115}Eloise" />
+			<name name="{=empire_female_116}Elsabeth" />
+			<name name="{=empire_female_117}Elsbeth" />
+			<name name="{=empire_female_118}Else" />
+			<name name="{=empire_female_119}Elsina" />
+			<name name="{=empire_female_120}Elyn" />
+			<name name="{=empire_female_121}Elzebeth" />
+			<name name="{=empire_female_122}Emagunda" />
+			<name name="{=empire_female_123}Emelia" />
+			<name name="{=empire_female_124}Emerlinde" />
+			<name name="{=empire_female_125}Emerlyn" />
+			<name name="{=empire_female_126}Emilie" />
+			<name name="{=empire_female_127}Emmalyn" />
+			<name name="{=empire_female_128}Emmanuel" />
+			<name name="{=empire_female_129}Emme" />
+			<name name="{=empire_female_130}Enede" />
+			<name name="{=empire_female_131}Engel" />
+			<name name="{=empire_female_132}Engeltrud" />
+			<name name="{=empire_female_133}Ennelein" />
+			<name name="{=empire_female_134}Erica" />
+			<name name="{=empire_female_135}Erika" />
+			<name name="{=empire_female_136}Ermegart" />
+			<name name="{=empire_female_137}Ermel" />
+			<name name="{=empire_female_138}Ermina" />
+			<name name="{=empire_female_139}Erminlind" />
+			<name name="{=empire_female_140}Ermintrude" />
+			<name name="{=empire_female_141}Esmaralda" />
+			<name name="{=empire_female_142}Esmeralda" />
+			<name name="{=empire_female_143}Esmerelda" />
+			<name name="{=empire_female_144}Esmerelde" />
+			<name name="{=empire_female_145}Estelle" />
+			<name name="{=empire_female_146}Esther" />
+			<name name="{=empire_female_147}Etheldreda" />
+			<name name="{=empire_female_148}Ethelind" />
+			<name name="{=empire_female_149}Ethelka" />
+			<name name="{=empire_female_150}Ethelreda" />
+			<name name="{=empire_female_151}Eufemia" />
+			<name name="{=empire_female_152}Eva" />
+			<name name="{=empire_female_153}Fay" />
+			<name name="{=empire_female_154}Femeke" />
+			<name name="{=empire_female_155}Franziska" />
+			<name name="{=empire_female_156}Freya" />
+			<name name="{=empire_female_157}Frieda" />
+			<name name="{=empire_female_158}Friedhilda" />
+			<name name="{=empire_female_159}Friedrica" />
+			<name name="{=empire_female_160}Friedrun" />
+			<name name="{=empire_female_161}Fronika" />
+			<name name="{=empire_female_162}Gabby" />
+			<name name="{=empire_female_163}Gabi" />
+			<name name="{=empire_female_164}Gabrielle" />
+			<name name="{=empire_female_165}Galina" />
+			<name name="{=empire_female_166}Gele" />
+			<name name="{=empire_female_167}Gena" />
+			<name name="{=empire_female_168}Genevieve" />
+			<name name="{=empire_female_169}Genovega" />
+			<name name="{=empire_female_170}Gerberga" />
+			<name name="{=empire_female_171}Gerda" />
+			<name name="{=empire_female_172}Gerdrut" />
+			<name name="{=empire_female_173}Gerke" />
+			<name name="{=empire_female_174}Gerlinde" />
+			<name name="{=empire_female_175}Gertie" />
+			<name name="{=empire_female_176}Gertrud" />
+			<name name="{=empire_female_177}Gerusch" />
+			<name name="{=empire_female_178}Gilda" />
+			<name name="{=empire_female_179}Gina" />
+			<name name="{=empire_female_180}Girdrud" />
+			<name name="{=empire_female_181}Girlin" />
+			<name name="{=empire_female_182}Gitta" />
+			<name name="{=empire_female_183}Greta" />
+			<name name="{=empire_female_184}Gretchen" />
+			<name name="{=empire_female_185}Gretel" />
+			<name name="{=empire_female_186}Grite" />
+			<name name="{=empire_female_187}Grizelda" />
+			<name name="{=empire_female_188}Grunhilda" />
+			<name name="{=empire_female_189}Gudradis" />
+			<name name="{=empire_female_190}Gudrun" />
+			<name name="{=empire_female_191}Gudryn" />
+			<name name="{=empire_female_192}Gutel" />
+			<name name="{=empire_female_193}Hanna" />
+			<name name="{=empire_female_194}Hedwig" />
+			<name name="{=empire_female_195}Heidi" />
+			<name name="{=empire_female_196}Heidrun" />
+			<name name="{=empire_female_197}Heile" />
+			<name name="{=empire_female_198}Heilwig" />
+			<name name="{=empire_female_199}Helena" />
+			<name name="{=empire_female_200}Helene" />
+			<name name="{=empire_female_201}Helga" />
+			<name name="{=empire_female_202}Helusch" />
+			<name name="{=empire_female_203}Herburg" />
+			<name name="{=empire_female_204}Herlinde" />
+			<name name="{=empire_female_205}Herwig" />
+			<name name="{=empire_female_206}Heske" />
+			<name name="{=empire_female_207}Hezke" />
+			<name name="{=empire_female_208}Hildegard" />
+			<name name="{=empire_female_209}Hildegart" />
+			<name name="{=empire_female_210}Hildegund" />
+			<name name="{=empire_female_211}Hille" />
+			<name name="{=empire_female_212}Hilusch" />
+			<name name="{=empire_female_213}Honoria" />
+			<name name="{=empire_female_214}Hunni" />
+			<name name="{=empire_female_215}Ida" />
+			<name name="{=empire_female_216}Ilg" />
+			<name name="{=empire_female_217}Ilsa" />
+			<name name="{=empire_female_218}Ilse" />
+			<name name="{=empire_female_219}Inga" />
+			<name name="{=empire_female_220}Ingrid" />
+			<name name="{=empire_female_221}Ingrun" />
+			<name name="{=empire_female_222}Irene" />
+			<name name="{=empire_female_223}Irina" />
+			<name name="{=empire_female_224}Irmegard" />
+			<name name="{=empire_female_225}Irmel" />
+			<name name="{=empire_female_226}Irmeltrud" />
+			<name name="{=empire_female_227}Irmine" />
+			<name name="{=empire_female_228}Irmusch" />
+			<name name="{=empire_female_229}Isabella" />
+			<name name="{=empire_female_230}Isadora" />
+			<name name="{=empire_female_231}Isentrud" />
+			<name name="{=empire_female_232}Isolde" />
+			<name name="{=empire_female_233}Janna" />
+			<name name="{=empire_female_234}Jarla" />
+			<name name="{=empire_female_235}Jocelin" />
+			<name name="{=empire_female_236}Johanna" />
+			<name name="{=empire_female_237}Josie" />
+			<name name="{=empire_female_238}Juliana" />
+			<name name="{=empire_female_239}Julianne" />
+			<name name="{=empire_female_240}Jutte" />
+			<name name="{=empire_female_241}Karelia" />
+			<name name="{=empire_female_242}Karina" />
+			<name name="{=empire_female_243}Karmilla" />
+			<name name="{=empire_female_244}Karoline" />
+			<name name="{=empire_female_245}Kasarea" />
+			<name name="{=empire_female_246}Katharina" />
+			<name name="{=empire_female_247}Katharine" />
+			<name name="{=empire_female_248}Katherina" />
+			<name name="{=empire_female_249}Katherine" />
+			<name name="{=empire_female_250}Katheryn" />
+			<name name="{=empire_female_251}Katia" />
+			<name name="{=empire_female_252}Katrina" />
+			<name name="{=empire_female_253}Katusch" />
+			<name name="{=empire_female_254}Keterlind" />
+			<name name="{=empire_female_255}Keterlyn" />
+			<name name="{=empire_female_256}Kethe" />
+			<name name="{=empire_female_257}Kirstan" />
+			<name name="{=empire_female_258}Kirsten" />
+			<name name="{=empire_female_259}Kirstin" />
+			<name name="{=empire_female_260}Kirstyn" />
+			<name name="{=empire_female_261}Kitty" />
+			<name name="{=empire_female_262}Klara" />
+			<name name="{=empire_female_263}Klare" />
+			<name name="{=empire_female_264}Konusch" />
+			<name name="{=empire_female_265}Kristena" />
+			<name name="{=empire_female_266}Kristyn" />
+			<name name="{=empire_female_267}Kunegunde" />
+			<name name="{=empire_female_268}Kunne" />
+			<name name="{=empire_female_269}Lavinia" />
+			<name name="{=empire_female_270}Leanora" />
+			<name name="{=empire_female_271}Lena" />
+			<name name="{=empire_female_272}Leni" />
+			<name name="{=empire_female_273}Lenne" />
+			<name name="{=empire_female_274}Lenora" />
+			<name name="{=empire_female_275}Lenore" />
+			<name name="{=empire_female_276}Leonore" />
+			<name name="{=empire_female_277}Leticia" />
+			<name name="{=empire_female_278}Letty" />
+			<name name="{=empire_female_279}Libeste" />
+			<name name="{=empire_female_280}Libusch" />
+			<name name="{=empire_female_281}Liphilt" />
+			<name name="{=empire_female_282}Lisabeth" />
+			<name name="{=empire_female_283}Ludmilla" />
+			<name name="{=empire_female_284}Luise" />
+			<name name="{=empire_female_285}Lusche" />
+			<name name="{=empire_female_286}Mabel" />
+			<name name="{=empire_female_287}Madge" />
+			<name name="{=empire_female_288}Magdalena" />
+			<name name="{=empire_female_289}Magdalene" />
+			<name name="{=empire_female_290}Magdalyn" />
+			<name name="{=empire_female_291}Maggie" />
+			<name name="{=empire_female_292}Maghilda" />
+			<name name="{=empire_female_293}Maglind" />
+			<name name="{=empire_female_294}Maglyn" />
+			<name name="{=empire_female_295}Magreta" />
+			<name name="{=empire_female_296}Magunda" />
+			<name name="{=empire_female_297}Maida" />
+			<name name="{=empire_female_298}Maneth" />
+			<name name="{=empire_female_299}Manith" />
+			<name name="{=empire_female_300}Margarethe" />
+			<name name="{=empire_female_301}Margarethe" />
+			<name name="{=empire_female_302}Margaritha" />
+			<name name="{=empire_female_303}Margreta" />
+			<name name="{=empire_female_304}Marguerite" />
+			<name name="{=empire_female_305}Marianne" />
+			<name name="{=empire_female_306}Marien" />
+			<name name="{=empire_female_307}Marietta" />
+			<name name="{=empire_female_308}Marlene" />
+			<name name="{=empire_female_309}Marline" />
+			<name name="{=empire_female_310}Marlyn" />
+			<name name="{=empire_female_311}May" />
+			<name name="{=empire_female_312}Mechthild" />
+			<name name="{=empire_female_313}Meg" />
+			<name name="{=empire_female_314}Melicent" />
+			<name name="{=empire_female_315}Merlin" />
+			<name name="{=empire_female_316}Mina" />
+			<name name="{=empire_female_317}Miranda" />
+			<name name="{=empire_female_318}Moll" />
+			<name name="{=empire_female_319}Mute" />
+			<name name="{=empire_female_320}Natasha" />
+			<name name="{=empire_female_321}Natassia" />
+			<name name="{=empire_female_322}Nathilda" />
+			<name name="{=empire_female_323}Neleke" />
+			<name name="{=empire_female_324}Nellie" />
+			<name name="{=empire_female_325}Nethe" />
+			<name name="{=empire_female_326}Nora" />
+			<name name="{=empire_female_327}Nyze" />
+			<name name="{=empire_female_328}Olga" />
+			<name name="{=empire_female_329}Ophelia" />
+			<name name="{=empire_female_330}Osanna" />
+			<name name="{=empire_female_331}Ostelle" />
+			<name name="{=empire_female_332}Osterhildis" />
+			<name name="{=empire_female_333}Ostia" />
+			<name name="{=empire_female_334}Otilge" />
+			<name name="{=empire_female_335}Ottagunda" />
+			<name name="{=empire_female_336}Ottaline" />
+			<name name="{=empire_female_337}Ottilda" />
+			<name name="{=empire_female_338}Ottillia" />
+			<name name="{=empire_female_339}Phie" />
+			<name name="{=empire_female_340}Philomelia" />
+			<name name="{=empire_female_341}Regina" />
+			<name name="{=empire_female_342}Regine" />
+			<name name="{=empire_female_343}Reikhilda" />
+			<name name="{=empire_female_344}Renata" />
+			<name name="{=empire_female_345}Renate" />
+			<name name="{=empire_female_346}Rosabel" />
+			<name name="{=empire_female_347}Rosabella" />
+			<name name="{=empire_female_348}Rosale" />
+			<name name="{=empire_female_349}Rosalia" />
+			<name name="{=empire_female_350}Rosalinde" />
+			<name name="{=empire_female_351}Rosamunde" />
+			<name name="{=empire_female_352}Rosanne" />
+			<name name="{=empire_female_353}Rozhilda" />
+			<name name="{=empire_female_354}Salina" />
+			<name name="{=empire_female_355}Salmei" />
+			<name name="{=empire_female_356}Salomea" />
+			<name name="{=empire_female_357}Saltza" />
+			<name name="{=empire_female_358}Sanne" />
+			<name name="{=empire_female_359}Selena" />
+			<name name="{=empire_female_360}Selene" />
+			<name name="{=empire_female_361}Sigismunda" />
+			<name name="{=empire_female_362}Sigmara" />
+			<name name="{=empire_female_363}Sigmare" />
+			<name name="{=empire_female_364}Sigmaris" />
+			<name name="{=empire_female_365}Sigrud" />
+			<name name="{=empire_female_366}Silma" />
+			<name name="{=empire_female_367}Szina" />
+			<name name="{=empire_female_368}Szine" />
+			<name name="{=empire_female_369}Talima" />
+			<name name="{=empire_female_370}Theda" />
+			<name name="{=empire_female_371}Theodora" />
+			<name name="{=empire_female_372}Therese" />
+			<name name="{=empire_female_373}Thilde" />
+			<name name="{=empire_female_374}Thylda" />
+			<name name="{=empire_female_375}Tilde" />
+			<name name="{=empire_female_376}Tilea" />
+			<name name="{=empire_female_377}Ulla" />
+			<name name="{=empire_female_378}Ulrica" />
+			<name name="{=empire_female_379}Ulrike" />
+			<name name="{=empire_female_380}Ursula" />
+			<name name="{=empire_female_381}Uschi" />
+			<name name="{=empire_female_382}Ute" />
+			<name name="{=empire_female_383}Valeria" />
+			<name name="{=empire_female_384}Verena" />
+			<name name="{=empire_female_385}Veronica" />
+			<name name="{=empire_female_386}Wanda" />
+			<name name="{=empire_female_387}Wertha" />
+			<name name="{=empire_female_388}Wilfrieda" />
+			<name name="{=empire_female_389}Wilhelmina" />
+			<name name="{=empire_female_390}Winifred" />
+			<name name="{=empire_female_391}Wolfhilde" />
+			<name name="{=empire_female_392}Zemelda" />
+			<name name="{=empire_female_393}Zena" />
+		</female_names>
+		<clan_names>
+			<name name="{=pRA9EzNv}Acapanos" />
+			<name name="{=ogq9oxDn}Angarys" />
+			<name name="{=MgDUudOx}Balastisos" />
+			<name name="{=Rvww4Kxi}Corstases" />
+			<name name="{=kWiQaFLM}Delicos" />
+			<name name="{=DiB4ukeK}Elysos" />
+			<name name="{=pUvrTrHT}Gessios" />
+			<name name="{=fsOUhzLv}Jalos" />
+			<name name="{=CuocGtTq}Lestharos" />
+			<name name="{=FVl3D2qT}Meones" />
+			<name name="{=fAKa9JfU}Nathanys" />
+			<name name="{=RhwPmahK}Opynates" />
+			<name name="{=OL6fbZRY}Paltos" />
+			<name name="{=HPrHkie6}Phenigos" />
+			<name name="{=DYdI0faN}Stracanasthes" />
+			<name name="{=g7etVhSO}Sumessos" />
+			<name name="{=oGf1fUpP}Therycos" />
+			<name name="{=AeNqteUX}Zebales" />
+		</clan_names>
+		<possible_clan_banner_icon_ids>
+			<icon id="100" />
+			<icon id="101" />
+			<icon id="102" />
+			<icon id="103" />
+			<icon id="104" />
+			<icon id="105" />
+			<icon id="106" />
+			<icon id="107" />
+			<icon id="108" />
+			<icon id="109" />
+			<icon id="110" />
+			<icon id="119" />
+			<icon id="147" />
+			<icon id="148" />
+			<icon id="152" />
+			<icon id="200" />
+			<icon id="201" />
+			<icon id="202" />
+			<icon id="203" />
+			<icon id="204" />
+			<icon id="205" />
+			<icon id="206" />
+			<icon id="207" />
+			<icon id="208" />
+			<icon id="209" />
+			<icon id="210" />
+			<icon id="211" />
+			<icon id="212" />
+			<icon id="213" />
+			<icon id="214" />
+			<icon id="215" />
+			<icon id="216" />
+			<icon id="217" />
+			<icon id="218" />
+			<icon id="219" />
+			<icon id="220" />
+			<icon id="221" />
+			<icon id="222" />
+			<icon id="223" />
+			<icon id="400" />
+		</possible_clan_banner_icon_ids>
+		<child_character_templates>
+			<template name="NPCCharacter.child_template_empire_townsman_male" />
+			<template name="NPCCharacter.child_template_empire_townsman_female" />
+			<template name="NPCCharacter.child_template_empire_villager_male" />
+			<template name="NPCCharacter.child_template_empire_villager_female" />
+			<template name="NPCCharacter.child_template_empire_noble_male" />
+			<template name="NPCCharacter.child_template_empire_noble_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_female" />
+			<template name="NPCCharacter.teenager_template_empire_townsman_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_male" />
+			<template name="NPCCharacter.teenager_template_empire_villager_female" />
+			<template name="NPCCharacter.teenager_template_empire_noble_male" />
+			<template name="NPCCharacter.teenager_template_empire_noble_female" />
+		  </child_character_templates>
+		  <notable_and_wanderer_templates>
+			<template name="NPCCharacter.tor_wanderer_empire_0" />
+			<template name="NPCCharacter.tor_wanderer_empire_1" />
+			<template name="NPCCharacter.tor_wanderer_empire_2" />
+			<template name="NPCCharacter.tor_wanderer_empire_3" />
+			<template name="NPCCharacter.tor_wanderer_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_0" />
+			<template name="NPCCharacter.spc_notable_empire_0b" />
+			<template name="NPCCharacter.spc_notable_empire_1" />
+			<template name="NPCCharacter.spc_notable_empire_1b" />
+			<template name="NPCCharacter.spc_notable_empire_2" />
+			<template name="NPCCharacter.spc_notable_empire_2b" />
+			<template name="NPCCharacter.spc_notable_empire_3" />
+			<template name="NPCCharacter.spc_notable_empire_3b" />
+			<template name="NPCCharacter.spc_notable_empire_4" />
+			<template name="NPCCharacter.spc_notable_empire_4b" />
+			<template name="NPCCharacter.spc_notable_empire_5" />
+			<template name="NPCCharacter.spc_notable_empire_6" />
+			<template name="NPCCharacter.spc_notable_empire_7" />
+			<template name="NPCCharacter.spc_notable_empire_8" />
+			<template name="NPCCharacter.spc_notable_empire_9" />
+			<template name="NPCCharacter.spc_notable_empire_10" />
+			<template name="NPCCharacter.spc_notable_empire_11" />
+			<template name="NPCCharacter.spc_notable_empire_12" />
+			<template name="NPCCharacter.spc_notable_empire_13" />
+			<template name="NPCCharacter.spc_notable_empire_21" />
+			<template name="NPCCharacter.spc_notable_empire_22" />
+			<template name="NPCCharacter.spc_notable_empire_gl1" />
+			<template name="NPCCharacter.spc_notable_empire_gl4" />
+			<template name="NPCCharacter.spc_empire_headman_1" />
+			<template name="NPCCharacter.spc_empire_headman_2" />
+			<template name="NPCCharacter.spc_empire_headman_3" />
+		  </notable_and_wanderer_templates>
+		  <lord_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </lord_templates>
+		  <rebellion_hero_templates>
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_0" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_1" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_2" />
+			<template name="NPCCharacter.spc_legion_of_the_betrayed_leader_3" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_0" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_1" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_2" />
+			<template name="NPCCharacter.spc_hidden_hand_leader_3" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_0" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_1" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_2" />
+			<template name="NPCCharacter.spc_embers_of_flame_leader_3" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_0" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_1" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_2" />
+			<template name="NPCCharacter.spc_eleftheroi_leader_3" />
+		  </rebellion_hero_templates>
+		<tournament_team_templates_one_participant>
+			<template name="NPCCharacter.tournament_template_emp_one_participant_set_v1" />
+		</tournament_team_templates_one_participant>
+		<tournament_team_templates_two_participant>
+			<template name="NPCCharacter.tournament_template_emp_two_participant_set_v1" />
+		</tournament_team_templates_two_participant>
+		<tournament_team_templates_four_participant>
+			<template name="NPCCharacter.tournament_template_emp_four_participant_set_v1" />
+		</tournament_team_templates_four_participant>
+	</Culture>
+
+
 </SPCultures>

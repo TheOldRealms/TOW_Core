@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TOW_Core.CampaignSupport.RegimentsOfRenown;
 
 namespace TOW_Core.Utilities.Extensions
 {
@@ -31,46 +32,14 @@ namespace TOW_Core.Utilities.Extensions
             return sceneNames;
         }
 
-        public static bool IsEmpireSettlement(this Settlement settlement)
+        public static bool IsRoRSettlement(this Settlement settlement)
         {
-            return (settlement.IsTown || 
-                    settlement.IsCastle||
-                    settlement.IsVillage) &&
-                   (settlement.MapFaction.Name.Contains("Moot") ||
-                    settlement.MapFaction.Name.Contains("Averland") ||
-                    settlement.MapFaction.Name.Contains("Stirland"));
+            return RORManager.GetTemplateFor(settlement.StringId) != null;
         }
 
-        public static bool IsVampireSettlement(this Settlement settlement)
+        public static RORSettlementTemplate GetRoRTemplate(this Settlement settlement)
         {
-            return (settlement.IsTown ||
-                    settlement.IsCastle ||
-                    settlement.IsVillage) &&
-                    settlement.MapFaction.Name.Contains("Sylvania");
-        }
-
-        public static bool IsSuitableForHero(this Settlement settlement, Hero hero)
-        {
-            if (hero.Culture.Name.Contains("Vampire"))
-            {
-                return IsVampireSettlement(settlement);
-            }
-            else
-            {
-                return IsEmpireSettlement(settlement);
-            }
-        }
-
-        public static bool IsSuitableForHero(this Settlement settlement, CharacterObject hero)
-        {
-            if (hero.Culture.Name.Contains("Vampire"))
-            {
-                return IsVampireSettlement(settlement);
-            }
-            else
-            {
-                return IsEmpireSettlement(settlement);
-            }
+            return RORManager.GetTemplateFor(settlement.StringId);
         }
     }
 }

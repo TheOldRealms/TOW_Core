@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -10,8 +9,12 @@ namespace TOW_Core.Abilities.Crosshairs
     {
         public TargetedAOECrosshair(AbilityTemplate template) : base(template)
         {
+            _targetType = _template.AbilityTargetType;
+            _crosshair = GameEntity.Instantiate(Mission.Current.Scene, "targeting_rune_empire", false);
             _crosshair.EntityFlags |= EntityFlags.NotAffectedBySeason;
-            UpdateFrame();
+            MatrixFrame frame = _crosshair.GetFrame();
+            frame.Scale(new Vec3(template.TargetCapturingRadius, template.TargetCapturingRadius, 1, -1));
+            _crosshair.SetFrame(ref frame);
             InitializeColors();
             AddLight();
             IsVisible = false;
@@ -19,15 +22,18 @@ namespace TOW_Core.Abilities.Crosshairs
 
         public override void Tick()
         {
-            UpdateFrame();
-            if (Targets != null)
+            if (_caster != null)
             {
-                previousTargets = (Agent[])Targets.Clone();
+                UpdatePosition();
+                if (Targets != null)
+                {
+                    _previousTargets = (Agent[])Targets.Clone();
+                }
+                UpdateTargets();
+                UpdateAgentsGlow();
+                Rotate();
+                ChangeColor();
             }
-            UpdateTargets(_template.AbilityTargetType);
-            UpdateAgentsGlow();
-            Rotate();
-            ChangeColor();
         }
 
         public override void Hide()
@@ -36,37 +42,41 @@ namespace TOW_Core.Abilities.Crosshairs
             ClearArrays();
         }
 
-        private void UpdateFrame()
+        private void UpdatePosition()
         {
-            Vec3 position;
-            Vec3 vec;
-            if (this._missionScreen.GetProjectedMousePositionOnGround(out position, out vec, true))
+            if (_caster != null)
             {
-                Position = position;
-            }
-            else
-            {
-                Position = new Vec3(0f, 0f, -100000f, -1f);
+                if (_missionScreen.GetProjectedMousePositionOnGround(out _position, out _normal, true))
+                {
+                    _currentDistance = _caster.Position.Distance(_position);
+                    if (_currentDistance > _template.MaxDistance)
+                    {
+                        _position = _caster.LookFrame.Advance(_template.MaxDistance).origin;
+                        _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
+                    }
+                    Position = _position;
+                }
+                else
+                {
+                    _position = _caster.LookFrame.Advance(_template.MaxDistance).origin;
+                    _position.z = _mission.Scene.GetGroundHeightAtPosition(Position);
+                    Position = _position;
+                }
             }
         }
 
-        private void UpdateTargets(AbilityTargetType targetType)
+        private void UpdateTargets()
         {
-            switch (targetType)
+            switch (_targetType)
             {
-                case AbilityTargetType.All:
+                case AbilityTargetType.AlliesInAOE:
                     {
-                        Targets = _mission.GetNearbyAgents(Position.AsVec2, 5).ToArray();
+                        Targets = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerTeam).ToArray();
                         break;
                     }
-                case AbilityTargetType.Allies:
+                case AbilityTargetType.EnemiesInAOE:
                     {
-                        Targets = _mission.GetNearbyAllyAgents(Position.AsVec2, 5, _mission.PlayerAllyTeam).ToArray();
-                        break;
-                    }
-                case AbilityTargetType.Enemies:
-                    {
-                        Targets = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerEnemyTeam).ToArray();
+                        Targets = _mission.GetNearbyEnemyAgents(Position.AsVec2, 5, _mission.PlayerTeam).ToArray();
                         break;
                     }
             }
@@ -76,13 +86,30 @@ namespace TOW_Core.Abilities.Crosshairs
         {
             if (Targets != null)
             {
-                foreach (Agent agent in Targets)
+                for (int i = 0; i < Targets.Length; i++)
+                {
+                    var agent = Targets[i];
                     if (agent.State == TaleWorlds.Core.AgentState.Active || agent.State == TaleWorlds.Core.AgentState.Routed)
-                        agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
+                    {
+                        switch (_targetType)
+                        {
+                            case AbilityTargetType.AlliesInAOE:
+                                {
+                                    agent.AgentVisuals.GetEntity().Root.SetContourColor(friendColor, true);
+                                    break;
+                                }
+                            case AbilityTargetType.EnemiesInAOE:
+                                {
+                                    agent.AgentVisuals.GetEntity().Root.SetContourColor(enemyColor, true);
+                                    break;
+                                }
+                        }
+                    }
+                }
             }
-            if (previousTargets != null)
+            if (_previousTargets != null)
             {
-                foreach (Agent agent in previousTargets.Except(Targets))
+                foreach (Agent agent in _previousTargets.Except(Targets))
                     agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
             }
         }
@@ -92,15 +119,23 @@ namespace TOW_Core.Abilities.Crosshairs
             if (Targets != null)
                 foreach (Agent agent in Targets)
                     agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
-            if (previousTargets != null)
-                foreach (Agent agent in previousTargets.Except(Targets))
+            if (_previousTargets != null)
+                foreach (Agent agent in _previousTargets.Except(Targets))
                     agent.AgentVisuals.GetEntity().Root.SetContourColor(colorLess, true);
-            previousTargets = null;
+            _previousTargets = null;
             Targets = null;
         }
 
         public Agent[] Targets { get; private set; }
 
-        private Agent[] previousTargets;
+        private Agent[] _previousTargets;
+
+        private float _currentDistance;
+
+        private Vec3 _position;
+
+        private Vec3 _normal;
+
+        private AbilityTargetType _targetType;
     }
 }

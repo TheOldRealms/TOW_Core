@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -10,10 +10,14 @@ using TOW_Core.Utilities;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.Engine;
 using System.Linq;
+using TaleWorlds.Library;
+using TOW_Core.Battle.Damage;
+using TOW_Core.ObjectDataExtensions;
+using static TaleWorlds.Core.ItemObject;
 
 namespace TOW_Core.Battle.StatusEffects
 {
-    public class StatusEffectComponent: AgentComponent
+    public class StatusEffectComponent : AgentComponent
     {
         private float _updateFrequency = 1;
         private float _deltaSinceLastTick = (float)TOWMath.GetRandomDouble(0, 0.1);
@@ -23,58 +27,75 @@ namespace TOW_Core.Battle.StatusEffects
         public StatusEffectComponent(Agent agent) : base(agent)
         {
             _currentEffects = new Dictionary<StatusEffect, EffectData>();
-            _effectAggregate = new EffectAggregate(); 
+            _effectAggregate = new EffectAggregate();
         }
 
-        public void RunStatusEffect(string id)
+        public void RunStatusEffect(string id, Agent applierAgent)
         {
-            if(Agent == null)
+            if (Agent == null)
                 return;
 
-            StatusEffect effect = _currentEffects.Keys.Where(e => e.Id.Equals(id)).FirstOrDefault();
+            StatusEffect effect = _currentEffects.Keys.Where(e => e.Template.Id.Equals(id)).FirstOrDefault();
             if (effect != null)
             {
-                _currentEffects[effect].Duration = effect.Duration;
+                effect.CurrentDuration += effect.Template.BaseDuration;
             }
             else
             {
                 effect = StatusEffectManager.GetStatusEffect(id);
-                AddEffect(effect);
+                effect.CurrentDuration = effect.Template.BaseDuration;
+                AddEffect(effect, applierAgent);
             }
         }
 
+        
         public void OnElapsed(float dt)
         {
-            foreach (StatusEffect effect in _currentEffects.Keys.ToList())
+            foreach (StatusEffect effect in _currentEffects.Keys)
             {
-                _currentEffects[effect].Duration--;
-
-                if (_currentEffects[effect].Duration <= 0)
+                effect.CurrentDuration--;
+                if (effect.CurrentDuration <= 0)
                 {
                     RemoveEffect(effect);
                     return;
                 }
+            }
+            CalculateEffectAggregate();
+            StatusEffect dotEffect = _currentEffects.Keys.Where(x => x.Template.Type == StatusEffectTemplate.EffectType.DamageOverTime).FirstOrDefault();
+            EffectData data = null;
+            if (dotEffect != null)
+            {
+                data = _currentEffects[dotEffect];
             }
 
             //Temporary method for applying effects from the aggregate. This needs to go to a damage manager/calculator which will use the 
             //aggregated information to determine how much damage to apply to the agent
             if (Agent.IsActive() && Agent != null && !Agent.IsFadingOut())
             {
-                if(_effectAggregate.HealthOverTime < 0)
+                if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
-                    Agent.ApplyDamage(-1 * ((int)_effectAggregate.HealthOverTime), null, false, false);
+                    Agent.ApplyDamage((int)_effectAggregate.DamageOverTime, Agent.Position, data.ApplierAgent, false, false);
                 }
-                else if(_effectAggregate.HealthOverTime > 0)
+                else if (_effectAggregate.HealthOverTime > 0)
                 {
                     Agent.Heal((int)_effectAggregate.HealthOverTime);
                 }
             }
         }
-        
+
+        private void CalculateEffectAggregate()
+        {
+            _effectAggregate = new EffectAggregate();
+            foreach (var effect in _currentEffects.Keys)
+            {
+                _effectAggregate.AddEffect(effect);
+            }
+        }
+
         public void OnTick(float dt)
         {
             _deltaSinceLastTick += dt;
-            if(_deltaSinceLastTick > _updateFrequency)
+            if (_deltaSinceLastTick > _updateFrequency)
             {
                 _deltaSinceLastTick = (float)TOWMath.GetRandomDouble(0, 0.1);
                 OnElapsed(dt);
@@ -90,79 +111,68 @@ namespace TOW_Core.Battle.StatusEffects
                 pe.RemoveAllParticleSystems();
                 pe = null;
             });
-            
+
             _currentEffects.Remove(effect);
-            _effectAggregate.RemoveEffect(effect);
         }
 
-        private void AddEffect(StatusEffect effect)
+        public float[] GetAmplifiers()
+        {
+            return _effectAggregate.DamageAmplification;
+        }
+
+        public float[] GetResistances()
+        {
+            return _effectAggregate.Resistance;
+        }
+
+        private void AddEffect(StatusEffect effect, Agent applierAgent)
         {
             List<GameEntity> childEntities;
-            TOWParticleSystem.ApplyParticleToAgent(Agent, effect.ParticleId, out childEntities, effect.ParticleIntensity);
+            TOWParticleSystem.ApplyParticleToAgent(Agent, effect.Template.ParticleId, out childEntities, effect.Template.ParticleIntensity, effect.Template.ApplyToRootBoneOnly);
 
-            EffectData data = new EffectData(effect);
+            EffectData data = new EffectData(effect, childEntities, applierAgent);
             data.ParticleEntities = childEntities;
 
             _currentEffects.Add(effect, data);
-            _effectAggregate.AddEffect(effect);
         }
 
         private class EffectData
         {
-            public EffectData(StatusEffect effect)
+            public EffectData(StatusEffect effect, List<GameEntity> particleEntities, Agent applierAgent)
             {
-                Duration = effect.Duration;
                 Effect = effect;
+                ParticleEntities = particleEntities;
+                ApplierAgent = applierAgent;
             }
 
-            public int Duration { get; set; }
             public List<GameEntity> ParticleEntities { get; set; }
             public StatusEffect Effect { get; set; }
+            public Agent ApplierAgent { get; set; }
         }
 
         private class EffectAggregate
         {
             public float HealthOverTime { get; set; } = 0;
-            public float WardSaveFactor { get; set; } = 0;
-            public float FlatArmorEffect { get; set; } = 0;
-            public float PercentageArmorEffect { get; set; } = 0;
-            public float FlatDamageEffect { get; set; } = 0;
-            public float PercentageDamageEffect { get; set; } = 0;
+            public float DamageOverTime { get; set; } = 0;
+            public readonly float[] DamageAmplification = new float[(int)DamageType.All + 1];
+            public readonly float[] Resistance = new float[(int)DamageType.All + 1];
 
             public void AddEffect(StatusEffect effect)
             {
-                switch (effect.Type)
+                var template = effect.Template;
+                switch (template.Type)
                 {
-                    case StatusEffect.EffectType.Armor:
-                        FlatArmorEffect += effect.FlatArmorEffect;
-                        PercentageArmorEffect += effect.PercentageArmorEffect;
-                        WardSaveFactor += effect.WardSaveFactor;
+                    case StatusEffectTemplate.EffectType.DamageOverTime:
+                        DamageOverTime += template.DamageOverTime;
                         break;
-                    case StatusEffect.EffectType.Damage:
-                        FlatDamageEffect += effect.FlatDamageEffect;
-                        PercentageDamageEffect += effect.PercentageDamageEffect;
+                    case StatusEffectTemplate.EffectType.HealthOverTime:
+                        HealthOverTime += template.HealthOverTime;
                         break;
-                    case StatusEffect.EffectType.Health:
-                        HealthOverTime += effect.HealthOverTime;
+                    case StatusEffectTemplate.EffectType.DamageAmplification :
+                        DamageAmplification[(int)template.DamageAmplifier.AmplifiedDamageType] = template.DamageAmplifier.DamageAmplifier;
                         break;
-                }
-            }
-
-            public void RemoveEffect(StatusEffect effect)
-            {
-                switch (effect.Type)
-                {
-                    case StatusEffect.EffectType.Armor:
-                        FlatArmorEffect -= effect.FlatArmorEffect;
-                        PercentageArmorEffect -= effect.PercentageArmorEffect;
-                        WardSaveFactor -= effect.WardSaveFactor;
-                        break;
-                    case StatusEffect.EffectType.Damage:
-                        FlatDamageEffect -= effect.FlatDamageEffect;
-                        PercentageDamageEffect -= effect.PercentageDamageEffect;
-                        break;
-                    case StatusEffect.EffectType.Health:
-                        HealthOverTime -= effect.HealthOverTime;
+                    case StatusEffectTemplate.EffectType.Resistance:
+                        Resistance[(int)template.Resistance.ResistedDamageType] = template.Resistance.ReductionPercent;
                         break;
                 }
             }

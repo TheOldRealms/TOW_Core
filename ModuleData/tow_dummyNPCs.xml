@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+    <!--
+        This is a file that defines special NPC loadouts. Face, bodyproperty are ignored. Only equipments matter. 
+    -->
+    <NPCCharacter id="tournament_template_emp_one_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_empire_tournament_template_one_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+	<NPCCharacter id="tournament_template_emp_two_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_empire_tournament_template_two_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+	<NPCCharacter id="tournament_template_emp_four_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_empire_tournament_template_four_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+	    <NPCCharacter id="tournament_template_vampire_one_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_vc_tournament_template_one_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+	<NPCCharacter id="tournament_template_vampire_two_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_vc_tournament_template_two_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+	<NPCCharacter id="tournament_template_vampire_four_participant_set_v1" default_group="Infantry" name="{=!}dummy" culture="Culture.empire" is_hero="false" occupation="Special" skill_template="SkillSet.tow_skills_level11">
+        <face>
+            <face_key_template value="BodyProperty.fighter_empire" />
+        </face>
+        <Equipments>
+            <EquipmentSet id="tor_vc_tournament_template_four_participant_v1" />
+			<!-- dont change this. It does not matter whats in here, but it is important that it exists. -->
+            <EquipmentSet id="npc_wanderer_equipment_template_empire"
+                          civilian="true" />
+        </Equipments>
+    </NPCCharacter>
+
+</NPCCharacters>

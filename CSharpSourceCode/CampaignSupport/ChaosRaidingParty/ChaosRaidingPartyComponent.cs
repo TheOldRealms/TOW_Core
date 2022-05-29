@@ -37,13 +37,13 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
             if(chaosClan != null && chaosClan.Culture != null && chaosClan.Culture.StringId == "chaos_culture")
             {
                 PartyTemplateObject chaosPartyTemplate = chaosClan.Culture.DefaultPartyTemplate;
-                mobileParty.Party.MobileParty.InitializeMobileParty(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
+                mobileParty.Party.MobileParty.InitializeMobilePartyAroundPosition(chaosPartyTemplate, Portal.Position2D, 1f, troopNumberLimit: partySize);
                 mobileParty.ActualClan = chaosClan;
                 _owner = mobileParty.ActualClan.Leader;
                 _home = Portal;
                 mobileParty.Aggressiveness = 2.0f;
                 mobileParty.Party.Visuals.SetMapIconAsDirty();
-                mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize * 10, partySize * 20)));
+                mobileParty.ItemRoster.Add(new ItemRosterElement(DefaultItems.Meat, MBRandom.RandomInt(partySize, partySize * 2)));
                 mobileParty.SetPartyUsedByQuest(true);
             }
             else

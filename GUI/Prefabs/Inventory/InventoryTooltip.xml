@@ -1,0 +1,78 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Inventory.Tuple.Extension.SpecialButton.Width" BrushName="Inventory.Tuple.Extension.SpecialButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Inventory.Tuple.Extension.SpecialButton.Height" BrushName="Inventory.Tuple.Extension.SpecialButton" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="Inventory.Tuple.Extension.PreviewButtonIcon.Width" BrushName="Inventory.Tuple.Extension.PreviewButtonIcon" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Inventory.Tuple.Extension.PreviewButtonIcon.Height" BrushName="Inventory.Tuple.Extension.PreviewButtonIcon" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <ListPanel Id="InventoryTooltip" DoNotAcceptEvents="true" DataSource="{ItemMenu}" IsHidden="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
+      <Children>
+
+        <Widget Id="TargetItemTooltip" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" ExtendTop="10" ExtendLeft="10" ExtendRight="10" ExtendBottom="10" Sprite="inventory_tooltip_9">
+          <Children>
+            <ListPanel DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="VerticalBottomToTop">
+              <Children>
+                <TextWidget Text="@ItemName" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MaxWidth="280" SuggestedHeight="65" MarginTop="20" MarginLeft="20" MarginRight="20" HorizontalAlignment="Center" Brush="InventoryDefaultFontBrush" Brush.FontSize="26" Brush.TextColor="#E1E1E1FF" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
+                <TextWidget Text="Magic Item" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="280" SuggestedHeight="40" MarginTop="5" MarginLeft="20" MarginRight="20" HorizontalAlignment="Center" Brush="TorInventoryMagicItemBrush" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center" IsVisible="@IsMagicItem"/>
+                <Widget DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="155" SuggestedHeight="81" MarginTop="5" MarginLeft="20" MarginRight="20" HorizontalAlignment="Center" Sprite="Inventory\portrait_cart">
+                  <Children>
+                    <ImageIdentifierWidget DataSource="{ImageIdentifier}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="2" MarginBottom="2" MarginLeft="2" MarginRight="2" ImageId="@Id" ImageTypeCode="@ImageTypeCode" AdditionalArgs="@AdditionalArgs" LoadingIconWidget="LoadingIconWidget">
+                      <Children>
+                        <Standard.CircleLoadingWidget HorizontalAlignment="Center" VerticalAlignment="Center" Id="LoadingIconWidget"/>
+                      </Children>
+                    </ImageIdentifierWidget>
+                  </Children>
+                </Widget>
+                <InventoryTooltipInnerContent Parameter.ItemFlagsDataSource="{TargetItemFlagList}" Parameter.PropertiesDataSource="{TargetItemProperties}" MarginTop="5" />
+                <TextWidget Text="@ItemDescription" IsVisible="@HasDescription" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MaxWidth="280" MarginLeft="20" MarginRight="20" MarginBottom="5" HorizontalAlignment="Center" Brush="InventoryGoldFontBrush" Brush.FontSize="16" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
+                <TextWidget Text="Item Effects" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" MaxWidth="280" SuggestedHeight="40" MarginTop="5" MarginLeft="20" MarginRight="20" HorizontalAlignment="Center" Brush="TorInventoryMagicItemBrush" Brush.TextVerticalAlignment="Center" Brush.TextHorizontalAlignment="Center" IsVisible="@IsMagicItem"/>
+                <ListPanel DataSource="{ItemTraitList}" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalLeftToRight" MarginBottom="5">
+                  <ItemTemplate>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35">
+                      <Children>
+                        <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-3" Brush.FontSize="35" Text="@Icon" >
+                          <Children>
+                            <HintWidget DataSource="{Hint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                          </Children>
+                        </RichTextWidget>
+                      </Children>
+                    </Widget>
+                  </ItemTemplate>
+                </ListPanel>
+              </Children>
+            </ListPanel>
+            <ButtonWidget Id="ReadButton" IsVisible="@IsSkillBook" IsHighlightEnabled="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.SpecialButton.Width" SuggestedHeight="!Inventory.Tuple.Extension.SpecialButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginBottom="10" MarginRight="10" Command.Click="ExecuteReadItem" Brush="Inventory.Tuple.Extension.SpecialButton">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Inventory.Tuple.Extension.PreviewButtonIcon.Width" SuggestedHeight="!Inventory.Tuple.Extension.PreviewButtonIcon.Height" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Inventory\inspect"/>
+                <HintWidget DataSource="{ReadHint}" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent"/>
+              </Children>
+            </ButtonWidget>
+          </Children>
+        </Widget>
+
+        <!--Compared Item (Right Side)-->
+        <Widget Id="ComparedItemTooltip" IsVisible="@IsComparing" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom">
+          <Children>
+            <Widget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" ExtendTop="10" ExtendLeft="10" ExtendRight="10" ExtendBottom="10" Sprite="inventory_tooltip_9">
+              <Children>
+                <Widget DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="128" SuggestedHeight="67" MarginTop="20" HorizontalAlignment="Center" Sprite="Inventory\portrait_cart">
+                  <Children>
+                    <ImageIdentifierWidget DataSource="{ComparedImageIdentifier}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="2" MarginBottom="2" MarginLeft="2" MarginRight="2" ImageId="@Id" ImageTypeCode="@ImageTypeCode" AdditionalArgs="@AdditionalArgs" LoadingIconWidget="LoadingIconWidget">
+                      <Children>
+                        <Standard.CircleLoadingWidget HorizontalAlignment="Center" VerticalAlignment="Center" Id="LoadingIconWidget"/>
+                      </Children>
+                    </ImageIdentifierWidget>
+                  </Children>
+                </Widget>
+                <InventoryTooltipInnerContent IsVisible="@IsPlayerItem" Parameter.IsComparedItem="true" Parameter.IsPlayerItem="true" Parameter.ItemFlagsDataSource="{ComparedItemFlagList}" Parameter.PropertiesDataSource="{ComparedItemProperties}" MarginTop="90" MarginBottom="10" />
+                <InventoryTooltipInnerContent IsHidden="@IsPlayerItem" Parameter.IsComparedItem="true" Parameter.IsPlayerItem="false" Parameter.ItemFlagsDataSource="{ComparedItemFlagList}" Parameter.PropertiesDataSource="{ComparedItemProperties}" MarginTop="90" MarginBottom="10" />
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </ListPanel>
+  </Window>
+</Prefab>

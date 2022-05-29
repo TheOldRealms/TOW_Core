@@ -30,13 +30,16 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public void OnQuestBattleComplete(bool withVictory)
         {
+            if (withVictory) IsActive = false;
+        }
+
+        public void CleanQuestParty()
+        {
             if (QuestOpponentParty != null)
             {
                 DestroyPartyAction.Apply(MobileParty.MainParty.Party, QuestOpponentParty);
                 QuestOpponentParty = null;
             }
-
-            if (withVictory) IsActive = false;
             if (_enemyLeader != null)
             {
                 //TODO/FIX -> make the enemy hero "stay" so that we dont unnecessarily kill an enemy hero if the player gets defeated.
@@ -47,7 +50,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public void SpawnDefenderParty()
         {
-            MobileParty party = MobileParty.CreateParty(_template.TemplateId + "_party");
+            MobileParty party = ChaosRaidingPartyComponent.CreateChaosRaidingParty(_template.TemplateId + "_party", Settlement, this, 200);
             party.SetCustomHomeSettlement(Settlement);
             TroopRoster roster = new TroopRoster(party.Party);
             foreach (var item in _template.TroopTypes)
@@ -58,7 +61,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 }
             }
 
-            party.InitializeMobileParty(roster, TroopRoster.CreateDummyTroopRoster(), base.Settlement.Position2D, 2);
+            party.InitializeMobilePartyAtPosition(roster, TroopRoster.CreateDummyTroopRoster(), Settlement.Position2D);
             party.ActualClan = Settlement.OwnerClan;
             CharacterObject character = MBObjectManager.Instance.GetObject<CharacterObject>(_template.LeaderHeroCharacterId);
             if (character != null && character.Culture != null)
@@ -68,12 +71,13 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
                 if (_enemyLeader != null)
                 {
                     party.AddElementToMemberRoster(_enemyLeader.CharacterObject, 1);
-                    party.ChangePartyLeader(_enemyLeader.CharacterObject);
+                    party.ChangePartyLeader(_enemyLeader);
                 }
             }
-
+            
             party.Party.Visuals.SetMapIconAsDirty();
             QuestOpponentParty = party;
+            EnterSettlementAction.ApplyForParty(party, Settlement);
         }
 
         public void StartBattle()

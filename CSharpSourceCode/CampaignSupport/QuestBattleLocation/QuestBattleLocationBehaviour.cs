@@ -3,6 +3,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
@@ -18,6 +19,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, onGameStart);
             CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, onMissionEnded);
         }
+
         private void onMissionEnded(IMission obj)
         {
             if (_component != null && _component.IsQuestBattleUnderway)
@@ -49,7 +51,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void onGameStart(CampaignGameStarter obj)
         {
-            obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.none, null);
+            obj.AddGameMenu("questlocation_menu", "{=!}{LOCATION_DESCRIPTION}", this.root_menu_init, GameOverlays.MenuOverlayType.None, GameMenu.MenuFlags.None, null);
             obj.AddGameMenuOption("questlocation_menu", "doquestbattle", "{QUEST_TEXT} (battle)", this.doquestbattle_condition, this.doquestbattle_consequence);
             obj.AddGameMenuOption("questlocation_menu", "root_leave", "{=!}Leave...", delegate(MenuCallbackArgs args)
             {
@@ -72,12 +74,13 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void doquestbattle_consequence(MenuCallbackArgs args)
         {
-            _component.SpawnDefenderParty();
             if (PlayerEncounter.Battle == null)
             {
-                PlayerEncounter.StartBattle();
-                PlayerEncounter.Update();
+                _component.SpawnDefenderParty();
+                
             }
+            PlayerEncounter.StartBattle();
+            PlayerEncounter.Update();
 
             _component.StartBattle();
             CampaignMission.OpenBattleMission(_component.QuestBattleTemplate.SceneName);
@@ -85,6 +88,10 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void root_leave(MenuCallbackArgs args)
         {
+            if (_component != null)
+            {
+                _component.CleanQuestParty();
+            }
             PlayerEncounter.LeaveSettlement();
             PlayerEncounter.Finish(true);
             _component = null;

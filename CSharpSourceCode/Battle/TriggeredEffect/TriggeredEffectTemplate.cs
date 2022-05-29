@@ -18,9 +18,9 @@ namespace TOW_Core.Battle.TriggeredEffect
         [XmlAttribute]
         public string StringID = "";
         [XmlAttribute]
-        public string BurstParticleEffectPrefab = "";
+        public string BurstParticleEffectPrefab = "none";
         [XmlAttribute]
-        public string SoundEffectId = "";
+        public string SoundEffectId = "none";
         [XmlAttribute]
         public float SoundEffectLength = 2.5f;
         [XmlAttribute]
@@ -34,12 +34,18 @@ namespace TOW_Core.Battle.TriggeredEffect
         [XmlAttribute]
         public TargetType TargetType = TargetType.Enemy;
         [XmlAttribute]
-        public string ImbuedStatusEffectID = "";
+        public string ImbuedStatusEffectID = "none";
         [XmlAttribute]
         public float ImbuedStatusEffectDuration = 5f;
         [XmlAttribute]
         public float DamageVariance = 0.2f;
         [XmlAttribute]
-        public string ScriptNameToTrigger = "";
+        public string ScriptNameToTrigger = "none";
+        [XmlAttribute]
+        public string SpawnPrefabName = "none";
+        [XmlAttribute]
+        public string TroopIdToSummon = "none";
+        [XmlAttribute]
+        public int NumberToSummon = 0;
     }
 }

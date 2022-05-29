@@ -1,0 +1,18 @@
+﻿<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="Fixed"
+				HeightSizePolicy="Fixed"
+				SuggestedWidth="51"
+				SuggestedHeight="200"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Left"
+				MarginBottom="15"
+				MarginLeft="148"
+				IsVisible="@IsVisible" >
+      <Children>
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="swordhud" />
+        <FillBar WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="2" SuggestedHeight="120" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="60" Brush="TorSpecialMoveBrush" CurrentAmount="@ChargeLevel" IsVertical="true" MaxAmount="100" />
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

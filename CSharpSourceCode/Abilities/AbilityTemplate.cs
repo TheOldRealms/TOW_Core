@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using TaleWorlds.Library;
 using TOW_Core.Abilities.Crosshairs;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.TriggeredEffect;
+using TOW_Core.Utilities;
 
 namespace TOW_Core.Abilities
 {
@@ -32,7 +34,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public AbilityType AbilityType = AbilityType.Spell;
         [XmlAttribute]
-        public AbilityEffectType AbilityEffectType = AbilityEffectType.MovingProjectile;
+        public AbilityEffectType AbilityEffectType = AbilityEffectType.Missile;
         [XmlAttribute]
         public float BaseMovementSpeed = 35f;
         [XmlAttribute]
@@ -40,7 +42,7 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public TriggerType TriggerType = TriggerType.OnCollision;
         [XmlAttribute]
-        public string TriggeredEffectID = "test";
+        public string TriggeredEffectID = "";
         [XmlAttribute]
         public bool HasLight = true;
         [XmlAttribute]
@@ -69,19 +71,64 @@ namespace TOW_Core.Abilities
         [XmlAttribute]
         public string AnimationActionName = "";
         [XmlAttribute]
-        public AbilityTargetType AbilityTargetType = AbilityTargetType.Enemies;
+        public AbilityTargetType AbilityTargetType = AbilityTargetType.EnemiesInAOE;
         [XmlAttribute]
         public float Offset = 1.0f;
         [XmlAttribute]
-        public CrosshairType CrosshairType = CrosshairType.None;
+        public CrosshairType CrosshairType = CrosshairType.Self;
         [XmlAttribute]
         public float MinDistance = 1.0f;
         [XmlAttribute]
         public float MaxDistance = 1.0f;
         [XmlAttribute]
         public float TargetCapturingRadius = 0;
+        [XmlAttribute]
+        public int SpellTier = 0; //spell only, max 3 (0-1-2-3)
+        [XmlAttribute]
+        public string BelongsToLoreID = ""; //spell only
+        [XmlAttribute]
+        public string TooltipDescription = "default";
+        [XmlAttribute]
+        public float MaxRandomDeviation = 0;
+        [XmlAttribute]
+        public bool ShouldRotateVisuals = false;
+        [XmlAttribute]
+        public float VisualsRotationVelocity = 0f;
 
+        public SeekerParameters SeekerParameters;
+        
         public AbilityTemplate() { }
         public AbilityTemplate(string id) => StringID = id;
+
+        public bool IsSpell => AbilityType == AbilityType.Spell;
+
+        public int GoldCost
+        {
+            get
+            {
+                switch (SpellTier)
+                {
+                    case 1: return 5000;
+                    case 2: return 10000;
+                    case 3: return 25000;
+                    case 4: return 50000;
+                    default: return 0;
+                }
+            }
+        }
+
+        public MBBindingList<StatItemVM> GetStats()
+        {
+            MBBindingList<StatItemVM> list = new MBBindingList<StatItemVM>();
+            if (IsSpell)
+            {
+                list.Add(new StatItemVM("Spell Name: ", Name));
+                list.Add(new StatItemVM("Winds of Magic cost: ", WindsOfMagicCost.ToString() + TOWCommon.GetWindsIconAsText()));
+                list.Add(new StatItemVM("Spell Tier: ", ((SpellCastingLevel)SpellTier).ToString()));
+                list.Add(new StatItemVM("Spell Type: ", AbilityEffectType.ToString()));
+                list.Add(new StatItemVM("Cooldown: ", CoolDown.ToString()+" seconds"));
+            }
+            return list;
+        }
     }
 }

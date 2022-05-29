@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -25,7 +26,7 @@ namespace TOW_Core.Utilities
         /// <param name="intensity">Affects the number of bones the particle attaches to</param>
         /// <param name="childEntities">A list of child entities. These game entities hold the particle systems, and the agent holds the entities.</param>
         /// <returns>A List of ParticleSystems attached to the agent</returns>
-        public static List<ParticleSystem> ApplyParticleToAgent(Agent agent, string particleId, out List<GameEntity> childEntities, ParticleIntensity intensity = ParticleIntensity.High)
+        public static List<ParticleSystem> ApplyParticleToAgent(Agent agent, string particleId, out List<GameEntity> childEntities, ParticleIntensity intensity = ParticleIntensity.High, bool rootOnly = false)
         {
             List<ParticleSystem> particleList = new List<ParticleSystem>();
             childEntities = new List<GameEntity>();
@@ -35,7 +36,15 @@ namespace TOW_Core.Utilities
             }
             else
             {
-                int[] boneIndexes = { 0, 1, 2, 3, 5, 6, 7, 9, 12, 13, 15, 17, 22, 24 };
+                int[] boneIndexes; 
+                if (rootOnly)
+                {
+                    boneIndexes = new int[] { 1 };
+                }
+                else
+                {
+                    boneIndexes = new int[] { 0, 1, 2, 3, 5, 6, 7, 9, 12, 13, 15, 17, 22, 24 };
+                }
                 for (byte i = 0; i < boneIndexes.Length / (int)intensity; i++)
                 {
                     GameEntity childEntity;
@@ -56,12 +65,13 @@ namespace TOW_Core.Utilities
         /// <param name="boneIndex">The index of the bone on the agent's skeleton that the particle should be attached to.</param>
         /// <param name="childEntity">The child entity that the particle is attached to.</param>
         /// <returns>The ParticleSystem that was attached to the agent's bone.</returns>
-        public static ParticleSystem ApplyParticleToAgentBone(Agent agent, string particleId, sbyte boneIndex, out GameEntity childEntity)
+        public static ParticleSystem ApplyParticleToAgentBone(Agent agent, string particleId, sbyte boneIndex, out GameEntity childEntity, float elevationOffset = 0)
         {
             Skeleton skeleton = agent.AgentVisuals.GetSkeleton();
             Scene scene = Mission.Current.Scene;
             childEntity = GameEntity.CreateEmpty(scene);
             MatrixFrame localFrame = new MatrixFrame(Mat3.Identity, new Vec3(0, 0, 0));
+            localFrame.Elevate(elevationOffset);
             ParticleSystem particle = ParticleSystem.CreateParticleSystemAttachedToEntity(particleId, childEntity, ref localFrame);
             if(particle != null)
             {

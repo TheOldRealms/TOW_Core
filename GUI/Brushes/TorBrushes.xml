@@ -1,0 +1,52 @@
+<Brushes>
+    <Brush Name="TorInventoryMagicItemBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+        <Styles>
+            <Style Name="Default" FontColor="#0095A4FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
+        </Styles>
+    </Brush>
+    <Brush Name="TorSpellBookBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+        <Styles>
+            <Style Name="Default" FontColor="#000000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
+        </Styles>
+    </Brush>
+    <Brush Name="TorSpellBookDisabledBrush" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center">
+        <Styles>
+            <Style Name="Default" FontColor="#000000FF" TextBlur="0" TextOutlineColor="#FFFFFFFF" TextOutlineAmount="1" TextGlowRadius="0" FontSize="16" />
+        </Styles>
+    </Brush>
+    <Brush Name="TorSpellBookLearnButton">
+        <Layers>
+            <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#32a852ff" ColorFactor="1" AlphaFactor="1"/>
+        </Layers>
+        <Styles>
+            <Style Name="Default">
+                <BrushLayer Name="Default" ColorFactor="1" />
+            </Style>
+            <Style Name="Hovered">
+                <BrushLayer Name="Default" ColorFactor="0.9" />
+            </Style>
+            <Style Name="Pressed">
+                <BrushLayer Name="Default" ColorFactor="0.5" />
+            </Style>
+            <Style Name="Selected">
+                <BrushLayer Name="Default" ColorFactor="0.9" />
+            </Style>
+        </Styles>
+        <SoundProperties>
+            <StateSounds />
+            <EventSounds>
+                <EventSound EventName="Click" Audio="checkbox" />
+            </EventSounds>
+        </SoundProperties>
+  </Brush>
+    <Brush Name="TorSpecialMoveBrush">
+        <Layers>
+            <BrushLayer Name="EmptyFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#404040FF" />
+            <BrushLayer Name="DefaultFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#FF2222FF" />
+            <BrushLayer Name="ChangeFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#FFAAAAFF" />
+        </Layers>
+        <Styles>
+            <Style Name="Default" />
+        </Styles>
+    </Brush>
+</Brushes>
