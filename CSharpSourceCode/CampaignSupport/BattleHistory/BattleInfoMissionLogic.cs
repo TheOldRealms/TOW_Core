@@ -16,7 +16,7 @@ namespace TOW_Core.CampaignSupport.BattleHistory
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            if(affectedAgent?.Character != null && agentState.Equals(AgentState.Killed))
+            if(affectedAgent?.Character != null && (agentState.Equals(AgentState.Killed) || agentState.Equals(AgentState.Unconscious)))
             {
                 if(affectedAgent.Team.IsPlayerTeam)
                 {

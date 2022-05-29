@@ -14,11 +14,26 @@ namespace TOW_Core.HarmonyPatches
     {
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Agent), "GetBattleImportance")]
-        public static void PostFix(ref float __result, Agent __instance)
+        public static void BattleImportancePatch(ref float __result, Agent __instance)
         {
             if (__instance.IsExpendable())
             {
                 __result = 0;
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(Formation), "GetMedianAgent")]
+        public static void MedianAgentPatch(ref Agent __result, Formation __instance)
+        {
+            if(__result == null)
+            {
+                List<Agent> units = new List<Agent>();
+                foreach(var unit in __instance.Arrangement.GetAllUnits())
+                {
+                    units.Add((Agent)unit);
+                }
+                __result = units.FirstOrDefault();
             }
         }
     }

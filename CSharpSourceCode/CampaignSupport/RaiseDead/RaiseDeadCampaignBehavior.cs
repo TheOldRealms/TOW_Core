@@ -30,7 +30,7 @@ namespace TOW_Core.CampaignSupport.RaiseDead
                 var troops = GenerateRaisedTroopsForVM();
                 for (int i = 0; i < troops.Count; i++)
                 {
-                    PlayerEncounter.Current.RosterToReceiveLootMembers.AddToCounts(troops[0], 1);
+                    PlayerEncounter.Current.RosterToReceiveLootMembers.AddToCounts(troops[i], 1);
                 }
             }
         }

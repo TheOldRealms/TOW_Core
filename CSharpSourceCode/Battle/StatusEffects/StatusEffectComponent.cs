@@ -74,7 +74,7 @@ namespace TOW_Core.Battle.StatusEffects
             {
                 if (_effectAggregate.DamageOverTime > 0 && data != null)
                 {
-                    Agent.ApplyDamage(((int)_effectAggregate.DamageOverTime), data.ApplierAgent, false, false);
+                    Agent.ApplyDamage((int)_effectAggregate.DamageOverTime, Agent.Position, data.ApplierAgent, false, false);
                 }
                 else if (_effectAggregate.HealthOverTime > 0)
                 {

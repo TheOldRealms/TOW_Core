@@ -26,11 +26,11 @@ namespace TOW_Core.Battle
 
                     if (maxDamage < minDamage)
                     {
-                        agent.ApplyDamage(minDamage, damager, doBlow: true, hasShockWave: hasShockWave, impactPosition: impactPosition);
+                        agent.ApplyDamage(minDamage, impactPosition, damager, doBlow: true, hasShockWave: hasShockWave);
                     }
                     else
                     {
-                        agent.ApplyDamage(TOWMath.GetRandomInt(minDamage, maxDamage), damager, doBlow: true, hasShockWave: hasShockWave, impactPosition: impactPosition);
+                        agent.ApplyDamage(TOWMath.GetRandomInt(minDamage, maxDamage), impactPosition, damager, doBlow: true, hasShockWave: hasShockWave);
                     }
                 }
             }

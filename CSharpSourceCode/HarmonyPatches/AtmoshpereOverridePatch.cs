@@ -17,7 +17,7 @@ namespace TOW_Core.HarmonyPatches
         //A lot of functionality to rewrite.
         [HarmonyPostfix]
         [HarmonyPatch(typeof(DefaultMapWeatherModel), "GetNormalizedSnowValueInPos")]
-        public static void Postfix(ref float __result)
+        public static void TurnOffSnow(ref float __result)
         {
             __result = 0;
         }

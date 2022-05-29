@@ -22,13 +22,6 @@ namespace TOW_Core.HarmonyPatches
             {
                 //teleport party to a valid navmesh position.
                 __instance.Position2D = Settlement.All.First().GatePosition;
-                /*
-                var debug = SettlementHelper.FindNearestVillage(null, __instance);
-                if (debug == null)
-                {
-                    
-                    
-                }*/
             }
             return true;
         }

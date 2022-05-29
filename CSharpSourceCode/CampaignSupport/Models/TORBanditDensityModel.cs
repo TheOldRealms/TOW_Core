@@ -9,19 +9,24 @@ namespace TOW_Core.CampaignSupport.Models
         {
             get
             {
-                if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 10)
-                {
-                    return 50;
-                }
-                else if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 20)
+                if (Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 10)
                 {
                     return 100;
                 }
+                else if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 20)
+                {
+                    return 200;
+                }
                 else
                 {
-                    return 150;
+                    return 300;
                 }
             }
         }
+
+        public override int NumberOfMaximumBanditPartiesAroundEachHideout => 5;
+        public override int NumberOfMaximumBanditPartiesInEachHideout => 3;
+        public override int NumberOfInitialHideoutsAtEachBanditFaction => 10;
+        public override int NumberOfMaximumHideoutsAtEachBanditFaction => 19;
     }
 }

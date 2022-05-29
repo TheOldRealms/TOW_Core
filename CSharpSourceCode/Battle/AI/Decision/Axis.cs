@@ -55,7 +55,7 @@ namespace TOW_Core.Battle.AI.Decision
             var evaluations = activeAxes
                 .Select(axis => axis.Evaluate(target))
                 .ToList();
-            
+
             return target.UtilityValue = !evaluations.Any() ? 0.0f : (float) Math.Pow(evaluations.Aggregate((a, x) => a * x), 1.0 / activeAxes.Count);
         }
 

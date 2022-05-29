@@ -24,7 +24,7 @@ namespace TOW_Core.Abilities
         public void UpdateProperties()
         {
             _ability = Agent.Main.GetCurrentAbility();
-            IsVisible = _ability != null;
+            IsVisible = _ability != null && (Mission.Current.Mode == MissionMode.Battle || Mission.Current.Mode == MissionMode.Stealth);
             if (IsVisible)
             {
                 IsSpell = _ability is Spell;

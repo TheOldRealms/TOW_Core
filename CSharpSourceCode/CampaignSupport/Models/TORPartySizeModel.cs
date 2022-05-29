@@ -33,7 +33,7 @@ namespace TOW_Core.CampaignSupport.Models
                 }
                 else if (party.IsMobile)
                 {
-                    num.Add(150, new TextObject("Vampire lord"));
+                    num.Add(100, new TextObject("Vampire lord"));
                 }
             }
             return num;

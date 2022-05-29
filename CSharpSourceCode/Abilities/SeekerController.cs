@@ -1,7 +1,7 @@
 ﻿using TaleWorlds.Library;
 using TOW_Core.Battle.AI.Decision;
 
-namespace TOW_Core.Abilities.Scripts
+namespace TOW_Core.Abilities
 {
     public class SeekerController
     {
@@ -12,7 +12,11 @@ namespace TOW_Core.Abilities.Scripts
 
         public SeekerController(Target target, SeekerParameters parameters)
         {
-            _target = target;
+            _target = new Target
+            {
+                Agent = target.Agent,
+                Formation = target.Formation
+            };
             _prevError = Vec3.Zero;
             _parameters = parameters;
         }
@@ -22,7 +26,7 @@ namespace TOW_Core.Abilities.Scripts
             if (enabled && _target != null && (_target.Agent != null || _target.Formation.CountOfUnits > 0))
             {
                 var particleDirection = globalFrame.origin + globalFrame.rotation.f.NormalizedCopy();
-                var error = _target.Position - particleDirection;
+                var error = _target.GetPosition() - particleDirection;
                 if (error.Length < _parameters.DisableDistance)
                 {
                     enabled = false;

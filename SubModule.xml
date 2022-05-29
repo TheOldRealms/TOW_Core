@@ -55,7 +55,7 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="NPCCharacters" path="tow_wanderertemplates" />
+			<XmlName id="NPCCharacters" path="tow_charactertemplates" />
 			<IncludedGameTypes>
 				<GameType value="Campaign" />
 				<GameType value="CampaignStoryMode" />

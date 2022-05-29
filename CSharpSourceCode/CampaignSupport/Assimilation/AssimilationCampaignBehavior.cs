@@ -75,9 +75,8 @@ namespace TOW_Core.CampaignSupport.Assimilation
 
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncData<List<AssimilationComponent>>("_assimilationComponents", ref _assimilationComponents);
+            dataStore.SyncData("_assimilationComponents", ref _assimilationComponents);
         }
-
 
         private List<AssimilationComponent> _assimilationComponents = new List<AssimilationComponent>();
     }

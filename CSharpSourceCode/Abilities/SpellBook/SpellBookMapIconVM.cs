@@ -33,7 +33,7 @@ namespace TOW_Core.Abilities.SpellBook
 
         public override void RefreshValues()
         {
-            if (Hero.MainHero.IsSpellCaster()) IsVisible = true;
+            if (MobileParty.MainParty.HasSpellCasterMember()) IsVisible = true;
             else IsVisible = false;
             base.RefreshValues();
         }

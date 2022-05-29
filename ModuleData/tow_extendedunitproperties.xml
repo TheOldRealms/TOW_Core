@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfCharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_villager">
     <Abilities />
@@ -281,6 +281,110 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_demigryph_innercircle">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_novice_engineer">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_trainee_artillery_crew">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_apprentice_engineer">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_iron_company_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_experienced_artillery_crew">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_associate_engineer">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_iron_company_troop">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_veteran_artillery_crew">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_master_engineer">
+    <Abilities />
+    <Attributes>
+      <string>ArtilleryCrew</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_ironsider">
     <Abilities />
     <Attributes />
     <Resistances />
@@ -611,7 +715,10 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_sister">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -632,7 +739,10 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_noblewoman">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -654,6 +764,7 @@
   <CharacterExtendedInfo id="tor_vc_von_carstein_countess">
     <Abilities />
     <Attributes>
+      <string>VampireBodyOverride</string>
       <string>Unbreakable</string>
     </Attributes>
     <Resistances />
@@ -756,11 +867,51 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_dog_braganza_01">
+  <CharacterExtendedInfo id="tor_beast_ungor">
     <Abilities />
     <Attributes>
-      <string>Unbreakable</string>
+      <string>Expendable</string>
     </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_shielded_ungor">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_ungor_raider">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_ungor_chief">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_dog_braganza_01">
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -778,7 +929,9 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_braganza_03">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -899,7 +1052,9 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_muktar_03">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -958,6 +1113,59 @@
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_merc_free_company_volunteer">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_merc_free_company_scout">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_merc_free_company_militiaman">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_merc_free_company_bowman">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_merc_free_company_pistolier">
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -1038,7 +1246,7 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_ror_blazing_sun_intiate">
+  <CharacterExtendedInfo id="tor_ror_blazing_sun_initiate">
     <Abilities />
     <Attributes />
     <Resistances />
@@ -1102,6 +1310,199 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_grundel_defender_troop">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_grundel_defender_stalwart">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_grundel_defender_sergeant">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_grundel_defender_defender">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_deathjack_longbowman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_deathjack_marksman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_deathjack_toxophilite">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_sternieste_skeleton" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_sternieste_grave_guard" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_sternieste_sternsmen" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_sternieste_black_knight" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_sternieste_reaver" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_dragon_knight_initiate">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_dragon_knight">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_dragon_templar">
+    <Abilities />
+    <Attributes>
+      <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_konigstein_skeleton" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_konigstein_swordsman" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_konigstein_spearman" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_cult_acolyte">
     <Abilities />
     <Attributes>
@@ -1127,6 +1528,123 @@
   <CharacterExtendedInfo id="tor_chaos_cult_magister">
     <Abilities />
     <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_bw_expelled_magister">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_bw_vengeful_cultist">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_bw_sorcerer_broken_wheel">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_coi_unlit_candle">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_coi_beacon">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_coi_order_of_star_acolyte">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_fsf_puer_ulceris">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_fsf_ulcus_frater">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cult_fsf_ulcerator">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_roaming_undead_skeleton" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_roaming_undead_warrior" VoiceClassName="skeleton">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>Unbreakable</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -1186,19 +1704,19 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_factionleader">
-    <Abilities />
-    <Attributes />
-  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_moot_factionleader">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_1">
     <Abilities>
-      <string>Dart</string>
-      <string>Fireball</string>
-      <string>BurningHead</string>
+      <string>LightningBolt</string>
+      <string>WindBlast</string>
+      <string>ChainLightning</string>
+      <string>HarmonicConvergence</string>
+      <string>Blizzard</string>
+      <string>CometOfCasandora</string>
+      <string>Thunderbolt</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1217,43 +1735,67 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_oberaverlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_2">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_oberaverlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_3">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_1">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_4">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_5">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_6">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_unteraverlander_4">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_first_7">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_1">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_second_1">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_second_2">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_second_3">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_averland_westaverlander_4">
+  <CharacterExtendedInfo id="tor_emp_lord_averland_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_second_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_averland_third_5">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
@@ -1285,51 +1827,162 @@
       <string>AbilityUser</string>
     </Attributes>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_sigmarcult_4">
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_first_7">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_stirland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_4">
     <Abilities>
-      <string>HealingAOE</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
+      <string>SpellCaster</string>
     </Attributes>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_mittelstirlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_5">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_mittelstirlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_6">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_1">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_first_7">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_1">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_oststirlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_2">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_1">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_3">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_2">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_4">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_stirland_weststirlander_3">
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_second_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wissenland_third_6">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_factionleader">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1339,9 +1992,15 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_2">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1351,18 +2010,33 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_3">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_4">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1372,9 +2046,15 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_5">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1384,9 +2064,69 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_6">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_7">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_8">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_first_9">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1396,93 +2136,120 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_1">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
       <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_2">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
       <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_3">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
       <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_4">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
       <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_5">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
       <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_1">
-    <Abilities>
-      <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_2">
-    <Abilities>
-      <string>SummonSkeleton</string>
-      <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
-    </Abilities>
-    <Attributes>
-      <string>AbilityUser</string>
-      <string>SpellCaster</string>
-      <string>VampireBodyOverride</string>
-    </Attributes>
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_fourth_1">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1490,11 +2257,53 @@
       <string>VampireBodyOverride</string>
     </Attributes>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_vc_lord_sylvania_third_4">
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_fourth_2">
     <Abilities>
-      <string>SummonSkeleton</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_fourth_3">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>VampireBodyOverride</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_sylvania_fourth_4">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1505,6 +2314,12 @@
   <CharacterExtendedInfo id="tor_chaos_lord_factionleader">
     <Abilities>
       <string>Fireball</string>
+      <string>CinderBlast</string>
+      <string>BoltOfAqshy</string>
+      <string>Sear</string>
+      <string>FlamingSwords</string>
+      <string>BurningHead</string>
+      <string>FlameStorm</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1535,26 +2350,56 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_dog_clan_hero_muktar">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord" VoiceClassName="male_empire_lord">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bw_lord">
     <Abilities>
-      <string>Thunderbolt</string>
-      <string>AuraOfResistance</string>
-      <string>EnchantWeapon</string>
+      <string>Fireball</string>
+      <string>CinderBlast</string>
+      <string>BoltOfAqshy</string>
+      <string>Sear</string>
       <string>FlamingSwords</string>
-      <string>StrengthOfCombat</string>
+      <string>BurningHead</string>
+      <string>FlameStorm</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>CanPlaceArtillery</string>
     </Attributes>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_wizard_lord">
+  <CharacterExtendedInfo id="tor_lw_lord">
     <Abilities>
-      <string>Dart</string>
-      <string>Fireball</string>
-      <string>BurningHead</string>
-      <string>FlamingSwords</string>
+      <string>ShemGaze</string>
+      <string>StoneAssault</string>
+      <string>HealingLight</string>
+      <string>PhaProtection</string>
+      <string>DeathlyShards</string>
+      <string>RadiancePillar</string>
+      <string>RadiantGaze</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_cw_lord">
+    <Abilities>
+      <string>LightningBolt</string>
+      <string>WindBlast</string>
+      <string>ChainLightning</string>
+      <string>HarmonicConvergence</string>
+      <string>Blizzard</string>
+      <string>CometOfCasandora</string>
+      <string>Thunderbolt</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1563,20 +2408,34 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord" VoiceClassName="generic_vampire">
     <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulDrain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
       <string>WindOfDeath</string>
-      <string>ScreamingSkull</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_necromancer_lord">
     <Abilities>
+      <string>NagashGaze</string>
       <string>SummonSkeleton</string>
-      <string>CurseOfYears</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1585,7 +2444,8 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_0">
     <Abilities>
-      <string>Fireball</string>
+      <string>Dart</string>
+      <string>BoltOfAqshy</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1606,7 +2466,8 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_3">
     <Abilities>
-      <string>Dart</string>
+      <string>WardOfArrows</string>
+      <string>ShemGaze</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -1614,11 +2475,26 @@
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_4">
+    <Abilities>
+      <string>DustStorm</string>
+      <string>LightningBolt</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_empire_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_empire_6">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_0">
     <Abilities>
+      <string>FoetidCloud</string>
       <string>SummonSkeleton</string>
     </Abilities>
     <Attributes>
@@ -1628,13 +2504,14 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_1">
     <Abilities>
-      <string>WindOfDeath</string>
+      <string>StrengthOfCombat</string>
+      <string>Chillwind</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
-      <string>Undead</string>
       <string>VampireBodyOverride</string>
+      <string>Unbreakable</string>
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_2" VoiceClassName="skeleton">
@@ -1642,5 +2519,201 @@
     <Attributes>
       <string>Undead</string>
     </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_deserter_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_deserter_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_deserter_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_deserter_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog1_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog1_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog1_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog1_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog2_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog2_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog2_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog2_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog3_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog3_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog3_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog3_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog4_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog4_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog4_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog4_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog5_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog5_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog5_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog5_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog6_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog6_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog6_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog6_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog7_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog7_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog7_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_dog7_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bw_cultist_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bw_cultist_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bw_cultist_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bw_cultist_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_coi_cultist_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_coi_cultist_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_coi_cultist_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_coi_cultist_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_fsf_cultist_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_fsf_cultist_lord_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_fsf_cultist_lord_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_fsf_cultist_lord_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_engineerquesthero">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_witchhunterquesthero">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_nulnengineernpc_empire">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_spelltrainer_empire_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_spelltrainer_vc_0">
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
 </ArrayOfCharacterExtendedInfo>

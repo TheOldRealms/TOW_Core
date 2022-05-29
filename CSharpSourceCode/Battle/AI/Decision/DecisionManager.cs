@@ -7,7 +7,7 @@ namespace TOW_Core.Battle.AI.Decision
 {
     public static class DecisionManager
     {
-        public static TacticalBehaviorOption EvaluateCastingBehaviors(List<IAgentBehavior> behaviors)
+        public static BehaviorOption EvaluateCastingBehaviors(List<IAgentBehavior> behaviors)
         {
             return behaviors
                 .SelectMany(behavior => behavior.CalculateUtility())

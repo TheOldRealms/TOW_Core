@@ -42,12 +42,7 @@ namespace TOW_Core.Abilities.SpellBook
         void IGameStateListener.OnActivate()
         {
             base.OnActivate();
-            var heromembers = MobileParty.MainParty.MemberRoster.GetTroopRoster().Where(x => x.Character.HeroObject != null);
-            List<Hero> heroes = new List<Hero>();
-            foreach (var hero in heromembers)
-            {
-                if(hero.Character.HeroObject.IsSpellCaster()) heroes.Add(hero.Character.HeroObject);
-            }
+            var heroes = MobileParty.MainParty.GetSpellCasterMemberHeroes();
             if(heroes.Count == 0) heroes.Add(Hero.MainHero);
             _vm = new SpellBookVM(CloseScreen, heroes, _state.IsTrainerMode, _state.TrainerCulture);
             _gauntletLayer = new GauntletLayer(1, "GauntletLayer", true);

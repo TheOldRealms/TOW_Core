@@ -49,14 +49,41 @@ namespace TOW_Core.Utilities.Extensions
         {
             if (party == MobileParty.MainParty)
             {
-                var engineering = party.LeaderHero.GetSkillValue(DefaultSkills.Engineering);
-                return (int)Math.Truncate((decimal)engineering / 50);
+                if (party.LeaderHero != null)
+                {
+                    var engineering = party.LeaderHero.GetSkillValue(DefaultSkills.Engineering);
+                    return (int)Math.Truncate((decimal)engineering / 50);
+                }
+                else return 0;
             }
             else if (party.IsLordParty)
             {
                 return 3;
             }
             else return 0;
+        }
+
+        public static List<Hero> GetMemberHeroes(this MobileParty party)
+        {
+            List<Hero> heroes = new List<Hero>();
+            foreach(var member in party.MemberRoster.GetTroopRoster())
+            {
+                if(member.Character.HeroObject != null)
+                {
+                    heroes.Add(member.Character.HeroObject);
+                }
+            }
+            return heroes;
+        }
+
+        public static bool HasSpellCasterMember(this MobileParty party)
+        {
+            return party.GetMemberHeroes().Any(x => x.IsSpellCaster());
+        }
+
+        public static List<Hero> GetSpellCasterMemberHeroes(this MobileParty party)
+        {
+            return party.GetMemberHeroes().Where(x => x.IsSpellCaster()).ToList();
         }
     }
 }

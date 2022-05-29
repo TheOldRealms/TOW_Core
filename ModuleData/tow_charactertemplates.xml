@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<NPCCharacters>
+  <NPCCharacter id="tor_wanderer_empire_0" default_group="ranged" name="{=str_ tor_wanderer_empire_0}{HERO.FIRSTNAME} Bright Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="55" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.brightwizard" />
+      <hair_tags>
+        <hair_tag name="Bandit Hair 3" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="LongScragglyBeard" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_bright_wizard_template" />
+      <EquipmentSet id="tor_bright_wizard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_1" default_group="infantry" name="{=str_ tor_wanderer_empire_1}{HERO.FIRSTNAME} Warrior Priest" occupation="Wanderer" culture="Culture.empire" voice="curt" age="45" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.warriorpriest" />
+      <hair_tags>
+        <hair_tag name="Bald" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="Commander" value="3" />
+      <Trait id="Surgeon" value="5" />
+      <Trait id="Calculating" value="1" />
+      <Trait id="Mercy" value="3" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_warrior_priest_template" />
+      <EquipmentSet id="tor_warrior_priest_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_2" default_group="infantry" name="{=str_ tor_wanderer_empire_2}{HERO.FIRSTNAME} Witch Hunter" occupation="Wanderer" culture="Culture.empire" voice="curt" age="29" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="LongAndBushy" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Mustache_and_patch" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="RogueSkills" value="3" />
+      <Trait id="WoodsScoutSkills" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_witch_hunter_template" />
+      <EquipmentSet id="tor_witch_hunter_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_3" default_group="ranged" name="{=str_ tor_wanderer_empire_3}{HERO.FIRSTNAME} Light Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="50" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_light_wizard_template" />
+      <EquipmentSet id="tor_light_wizard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_4" default_group="ranged" name="{=str_ tor_wanderer_empire_4}{HERO.FIRSTNAME} Celestial Wizard" occupation="Wanderer" culture="Culture.empire" voice="curt" age="50" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_celestial_wizard_template" />
+      <EquipmentSet id="tor_celestial_wizard_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_5" default_group="infantry" name="{=str_ tor_wanderer_empire_5}{HERO.FIRSTNAME} Engineer" occupation="Wanderer" culture="Culture.empire" voice="curt" age="49" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="LongScragglyBeard" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="3" />
+      <Trait id="EngineerSkills" value="3" />
+      <Trait id="Blacksmith" value="3" />
+      <Trait id="Calculating" value="-1" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_masterengineer_template" />
+      <EquipmentSet id="tor_qnpc_masterengineer_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_empire_6" default_group="infantry" name="{=str_ tor_wanderer_empire_6}{HERO.FIRSTNAME} Bretonnian Knight" occupation="Wanderer" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="1" />
+      <Trait id="Valor" value="1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_bretonnian_knight_template" />
+      <EquipmentSet id="tor_bretonnian_knight_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_vampire_0" default_group="infantry" name="{=str_ tor_wanderer_vampire_0}{HERO.FIRSTNAME} Necromancer" occupation="Wanderer" culture="Culture.khuzait" voice="ironic" age="55" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_necromancer_template" />
+      <EquipmentSet id="tor_necromancer_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_vampire_1" default_group="cavalry" name="{=str_ tor_wanderer_vampire_1}{HERO.FIRSTNAME} Vampire" occupation="Wanderer" culture="Culture.khuzait" voice="ironic" age="19" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.vampire" />
+      <hair_tags>
+        <hair_tag name="ShortAndThin" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+      </beard_tags>
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="6" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Commander" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_generic_vampire_template" />
+      <EquipmentSet id="tor_generic_vampire_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_wanderer_vampire_2" default_group="infantry" name="{=str_ tor_wanderer_vampire_2}{HERO.FIRSTNAME} Wight King" occupation="Wanderer" culture="Culture.khuzait" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_wight_king_template" />
+      <EquipmentSet id="tor_wight_king_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_deserter_lord_0" default_group="cavalry" name="{=str_ tor_empire_deserter_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_empire_deserter_leader_template" />
+      <EquipmentSet id="tor_empire_deserter_leader_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_deserter_lord_1" default_group="cavalry" name="{=str_ tor_empire_deserter_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_empire_deserter_leader_template" />
+      <EquipmentSet id="tor_empire_deserter_leader_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_deserter_lord_2" default_group="cavalry" name="{=str_ tor_empire_deserter_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_empire_deserter_leader_2h_template" />
+      <EquipmentSet id="tor_empire_deserter_leader_2h_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_deserter_lord_3" default_group="infantry" name="{=str_ tor_empire_deserter_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_empire_deserter_leader_2h_template" />
+      <EquipmentSet id="tor_empire_deserter_leader_2h_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog1_lord_0" default_group="infantry" name="{=str_ tor_empire_dog1_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_braganza_hero_template" />
+      <EquipmentSet id="dog_braganza_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog1_lord_1" default_group="infantry" name="{=str_ tor_empire_dog1_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_braganza_hero_template" />
+      <EquipmentSet id="dog_braganza_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog1_lord_2" default_group="infantry" name="{=str_ tor_empire_dog1_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_braganza_hero_template" />
+      <EquipmentSet id="dog_braganza_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog1_lord_3" default_group="infantry" name="{=str_ tor_empire_dog1_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_braganza_hero_template" />
+      <EquipmentSet id="dog_braganza_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog2_lord_0" default_group="infantry" name="{=str_ tor_empire_dog2_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_cursed_hero_template" />
+      <EquipmentSet id="dog_cursed_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog2_lord_1" default_group="infantry" name="{=str_ tor_empire_dog2_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_cursed_hero_template" />
+      <EquipmentSet id="dog_cursed_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog2_lord_2" default_group="infantry" name="{=str_ tor_empire_dog2_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_cursed_hero_template" />
+      <EquipmentSet id="dog_cursed_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog2_lord_3" default_group="infantry" name="{=str_ tor_empire_dog2_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_cursed_hero_template" />
+      <EquipmentSet id="dog_cursed_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog3_lord_0" default_group="infantry" name="{=str_ tor_empire_dog3_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_leopard_hero_template" />
+      <EquipmentSet id="dog_leopard_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog3_lord_1" default_group="infantry" name="{=str_ tor_empire_dog3_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_leopard_hero_template" />
+      <EquipmentSet id="dog_leopard_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog3_lord_2" default_group="infantry" name="{=str_ tor_empire_dog3_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_leopard_hero_template" />
+      <EquipmentSet id="dog_leopard_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog3_lord_3" default_group="infantry" name="{=str_ tor_empire_dog3_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_leopard_hero_template" />
+      <EquipmentSet id="dog_leopard_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog4_lord_0" default_group="cavalry" name="{=str_ tor_empire_dog4_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_voland_hero_template" />
+      <EquipmentSet id="dog_voland_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog4_lord_1" default_group="cavalry" name="{=str_ tor_empire_dog4_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_voland_hero_template" />
+      <EquipmentSet id="dog_voland_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog4_lord_2" default_group="cavalry" name="{=str_ tor_empire_dog4_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_voland_hero_template" />
+      <EquipmentSet id="dog_voland_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog4_lord_3" default_group="cavalry" name="{=str_ tor_empire_dog4_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_voland_hero_template" />
+      <EquipmentSet id="dog_voland_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog5_lord_0" default_group="infantry" name="{=str_ tor_empire_dog5_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_miragliano_hero_template" />
+      <EquipmentSet id="dog_miragliano_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog5_lord_1" default_group="infantry" name="{=str_ tor_empire_dog5_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_miragliano_hero_template" />
+      <EquipmentSet id="dog_miragliano_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog5_lord_2" default_group="infantry" name="{=str_ tor_empire_dog5_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_miragliano_hero_template" />
+      <EquipmentSet id="dog_miragliano_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog5_lord_3" default_group="infantry" name="{=str_ tor_empire_dog5_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_miragliano_hero_template" />
+      <EquipmentSet id="dog_miragliano_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog6_lord_0" default_group="infantry" name="{=str_ tor_empire_dog6_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_ricco_hero_template" />
+      <EquipmentSet id="dog_ricco_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog6_lord_1" default_group="infantry" name="{=str_ tor_empire_dog6_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_ricco_hero_template" />
+      <EquipmentSet id="dog_ricco_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog6_lord_2" default_group="infantry" name="{=str_ tor_empire_dog6_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_ricco_hero_template" />
+      <EquipmentSet id="dog_ricco_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog6_lord_3" default_group="infantry" name="{=str_ tor_empire_dog6_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_ricco_hero_template" />
+      <EquipmentSet id="dog_ricco_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog7_lord_0" default_group="cavalry" name="{=str_ tor_empire_dog7_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_aserai" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_muktar_hero_template" />
+      <EquipmentSet id="dog_muktar_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog7_lord_1" default_group="cavalry" name="{=str_ tor_empire_dog7_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_aserai" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_muktar_hero_template" />
+      <EquipmentSet id="dog_muktar_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog7_lord_2" default_group="cavalry" name="{=str_ tor_empire_dog7_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_aserai" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_muktar_hero_template" />
+      <EquipmentSet id="dog_muktar_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_empire_dog7_lord_3" default_group="cavalry" name="{=str_ tor_empire_dog7_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.empire" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_aserai" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="dog_muktar_hero_template" />
+      <EquipmentSet id="dog_muktar_hero_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_bw_cultist_lord_0" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" />
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_bw_cultist_lord_1" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-2" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" />
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_bw_cultist_lord_2" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-3" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" />
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_bw_cultist_lord_3" default_group="cavalry" name="{=str_ tor_bw_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-4" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" />
+      <EquipmentSet id="tor_cult_bw_grand_magister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_coi_cultist_lord_0" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-5" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_coi_grand_master_template" />
+      <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_coi_cultist_lord_1" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-6" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_coi_grand_master_template" />
+      <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_coi_cultist_lord_2" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-7" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_coi_grand_master_template" />
+      <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_coi_cultist_lord_3" default_group="cavalry" name="{=str_ tor_coi_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-8" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_coi_grand_master_template" />
+      <EquipmentSet id="tor_cult_coi_grand_master_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_fsf_cultist_lord_0" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_0}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-9" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_fsf_cultist_lord_1" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_1}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-10" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_fsf_cultist_lord_2" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_2}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-11" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_fsf_cultist_lord_3" default_group="cavalry" name="{=str_ tor_fsf_cultist_lord_3}{DOESNTMATTER]" occupation="Lord" culture="Culture.chaos_culture" voice="curt" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="2" />
+      <Trait id="Manager" value="3" />
+      <Trait id="Surgeon" value="3" />
+      <Trait id="Calculating" value="3" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-12" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" />
+      <EquipmentSet id="tor_cult_fsf_archbacillus_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_engineerquesthero" default_group="infantry" name="{=str_ tor_engineerquesthero}{=!}Goswin" occupation="Lord" culture="Culture.empire" voice="ironic" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_engineerquest_goswin_template" />
+      <EquipmentSet id="tor_qnpc_engineerquest_goswin_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_witchhunterquesthero" default_group="infantry" name="{=str_ tor_witchhunterquesthero}{=!}Witch Hunter" occupation="Special" culture="Culture.empire" voice="ironic" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-1" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_witchhunter_template" />
+      <EquipmentSet id="tor_qnpc_witchhunter_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_nulnengineernpc_empire" default_group="infantry" name="{=str_ tor_nulnengineernpc_empire}{=!}Master Engineer" occupation="Special" culture="Culture.empire" voice="ironic" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-2" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_masterengineer_template" />
+      <EquipmentSet id="tor_qnpc_masterengineer_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_spelltrainer_empire_0" default_group="infantry" name="{=str_ tor_spelltrainer_empire_0}{=!}College Magister" occupation="Special" culture="Culture.empire" voice="ironic" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-3" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_collegemagister_template" />
+      <EquipmentSet id="tor_qnpc_collegemagister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_spelltrainer_vc_0" default_group="infantry" name="{=str_ tor_spelltrainer_vc_0}{=!}Dark Magister" occupation="Special" culture="Culture.khuzait" voice="ironic" age="30" is_template="true" is_hero="false">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="Commander" value="5" />
+      <Trait id="Calculating" value="5" />
+      <Trait id="Mercy" value="-1" />
+      <Trait id="Valor" value="-4" />
+    </Traits>
+    <Equipments>
+      <EquipmentSet id="tor_qnpc_necromagister_template" />
+      <EquipmentSet id="tor_qnpc_necromagister_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+</NPCCharacters>

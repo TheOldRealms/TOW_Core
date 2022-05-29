@@ -18,13 +18,15 @@ namespace TOW_Core.Quests
         private JournalLog _task1 = null;
         [SaveableField(3)]
         private JournalLog _task2 = null;
+        [SaveableField(4)]
+        private TextObject _title = new TextObject("Practice Spellcasting");
 
         public AdvanceSpellCastingLevelQuest(string questId, Hero questGiver, CampaignTime duration, int rewardGold) : base(questId, questGiver, duration, rewardGold)
         {
             SetLogs();
         }
 
-        public override TextObject Title => new TextObject("Practice Spellcasting");
+        public override TextObject Title => _title;
 
         public override bool IsRemainingTimeHidden => false;
 

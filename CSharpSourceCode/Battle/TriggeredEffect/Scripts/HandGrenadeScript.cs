@@ -6,15 +6,12 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
-    public class HandGrenadeScript : ScriptComponentBehavior
+    public class HandGrenadeScript : BlackPowderWeaponScript
     {
         private bool _hasExploded = false;
         private bool _hasLaunched = false;
-        private Mission.Missile _missile;
         private Int32 _explosionTimer = 0;
         private SoundEvent _tickSound;
-        private Agent _shooterAgent;
-        private TriggeredEffect _explsion;
 
         protected override void OnInit()
         {
@@ -44,7 +41,7 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             {
                 _hasExploded = true;
                 _tickSound.Release();
-                _explsion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent);
+                _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent);
                 GameEntity.FadeOut(0.5f, true);
 
                 // alarm enemies
@@ -60,30 +57,10 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
             }
         }
         
-        public override TickRequirement GetTickRequirement()
-        {
-            return TickRequirement.Tick;
-        }
-
         protected override void OnRemoved(int removeReason)
         {
             base.OnRemoved(removeReason);
             _tickSound.Release();
-        }
-        
-        public void SetShooterAgent(Agent shooter)
-        {
-            _shooterAgent = shooter;
-        }
-        
-        public void SetTriggeredEffect(TriggeredEffect effect)
-        {
-            _explsion = effect;
-        }
-
-        public void SetMissile(Mission.Missile missile)
-        {
-            _missile = missile;
         }
     }
 }

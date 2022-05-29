@@ -44,6 +44,10 @@ namespace TOW_Core.CampaignSupport.Models
                     number.Add(character.Tier * 10);
                     break;
             }
+            if (character.IsUndead())
+            {
+                number.Add(-50);
+            }
             return number;
         }
 

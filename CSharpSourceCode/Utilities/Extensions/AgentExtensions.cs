@@ -182,7 +182,7 @@ namespace TOW_Core.Utilities.Extensions
                     List<ItemTrait> itemTraits= new List<ItemTrait>();
                     List<ItemObject> items;
                     // get all equipment Pieces
-                    items = agent.Character.GetCharacterEquipment(EquipmentIndex.ArmorItemBeginSlot);
+                    items = agent.Character.GetCharacterEquipment();
                     foreach (var item in items)
                     {
                         if(item.HasTrait())
@@ -192,9 +192,8 @@ namespace TOW_Core.Utilities.Extensions
                     foreach (var itemTrait in itemTraits)
                     {
                         var property = itemTrait.AmplifierTuple;
-                        if(property==null) 
-                            continue;
-                        damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
+                        if(property!=null)
+                            damageAmplifications[(int) property.AmplifiedDamageType] += property.DamageAmplifier;
 
                         var additionalDamageProperty = itemTrait.AdditionalDamageTuple;
                         if (additionalDamageProperty != null)
@@ -361,13 +360,15 @@ namespace TOW_Core.Utilities.Extensions
             var character = agent.Character;
             if (hero != null)
             {
-                return hero.GetExtendedInfo().AllAttributes;
+                if(hero.GetExtendedInfo()!=null)    //TODO this shouldn't be null at all points, however had to fix cause of respawn hack for quest parties
+                    return hero.GetExtendedInfo().AllAttributes;
             }
             else if (character != null)
             {
                 return agent.Character.GetAttributes();
             }
-            else return new List<string>();
+            
+            return new List<string>();
         }
 
         /// <summary>
@@ -377,17 +378,17 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="damageAmount">How much damage the agent will receive.</param>
         /// <param name="damager">The agent who is applying the damage</param>
         /// <param name="doBlow">A mask that controls whether the unit receives a blow or direct health manipulation</param>
-        public static void ApplyDamage(this Agent agent, int damageAmount, Agent damager = null, bool doBlow = true, bool hasShockWave = false, Vec3 impactPosition = new Vec3())
+        public static void ApplyDamage(this Agent agent, int damageAmount, Vec3 impactPosition, Agent damager = null, bool doBlow = true, bool hasShockWave = false)
         {
-            if (agent == null && !agent.IsHuman)
+            if (agent == null || !agent.IsHuman || !agent.IsActive() || agent.Health < 1)
             {
-                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null or non-human agent.", LogLevel.Warn);
+                TOWCommon.Log("ApplyDamage: attempted to apply damage to a null, dead or non-human agent.", LogLevel.Warn);
                 return;
             }
             try
             {
                 // Registering a blow causes the agent to react/stagger. Manipulate health directly if the damage won't kill the agent.
-                if (agent.State == AgentState.Active|| agent.State == AgentState.Routed)
+                if (agent.State == AgentState.Active || agent.State == AgentState.Routed)
                 {
                     if (!doBlow && agent.Health > damageAmount )
                     {
@@ -403,16 +404,19 @@ namespace TOW_Core.Utilities.Extensions
                     blow.InflictedDamage = damageAmount;
                     blow.AttackType = AgentAttackType.Kick;
                     blow.BlowFlag = BlowFlags.NoSound;
-                    blow.BaseMagnitude = 5;
+                    blow.BaseMagnitude = damageAmount;
                     blow.DamageType = DamageTypes.Invalid;
                     blow.VictimBodyPart = BoneBodyPartType.Chest;
                     blow.StrikeType = StrikeType.Invalid;
+                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
+                    blow.Position = impactPosition;
+                    blow.Direction = agent.Position - impactPosition;
+                    blow.Direction.Normalize();
+                    blow.SwingDirection = blow.Direction;
                     if (hasShockWave)
                     {
-                        if (agent.HasMount)
-                            blow.BlowFlag = BlowFlags.CanDismount;
-                        else
-                            blow.BlowFlag = BlowFlags.KnockDown;
+                        if (agent.HasMount) blow.BlowFlag |= BlowFlags.CanDismount;
+                        else blow.BlowFlag |= BlowFlags.KnockDown;
                     }
                     if (damager != null)
                     {
@@ -420,20 +424,17 @@ namespace TOW_Core.Utilities.Extensions
                         if (checkAgent != null && checkAgent.Equals(damager))
                         {
                             blow.OwnerId = damager.Index;
-                            blow.Position = impactPosition;
-                            blow.Direction = agent.Position - impactPosition;
-                            blow.Direction.Normalize();
-                            blow.SwingDirection = blow.Direction;
                         }
                     }
                     else
                     {
                         blow.InflictedDamage = 0;
+                        blow.BaseMagnitude = 0;
                         blow.SelfInflictedDamage = damageAmount;
                         blow.OwnerId = agent.Index;
                     }
-                    
-                    if (agent.Health  <= damageAmount&&!doBlow)
+
+                    if (agent.Health  <= damageAmount && !doBlow)
                     {
                         agent.Die(blow);
                         return;

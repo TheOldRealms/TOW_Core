@@ -22,6 +22,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, onGameStart);
             CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, onMissionEnded);
         }
+
         private void onMissionEnded(IMission obj)
         {
             if (_component != null && _component.IsQuestBattleUnderway)
@@ -76,12 +77,13 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void doquestbattle_consequence(MenuCallbackArgs args)
         {
-            _component.SpawnDefenderParty();
             if (PlayerEncounter.Battle == null)
             {
-                PlayerEncounter.StartBattle();
-                PlayerEncounter.Update();
+                _component.SpawnDefenderParty();
+                
             }
+            PlayerEncounter.StartBattle();
+            PlayerEncounter.Update();
 
             _component.StartBattle();
             CampaignMission.OpenBattleMission(_component.QuestBattleTemplate.SceneName);
@@ -89,6 +91,10 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         private void root_leave(MenuCallbackArgs args)
         {
+            if (_component != null)
+            {
+                _component.CleanQuestParty();
+            }
             PlayerEncounter.LeaveSettlement();
             PlayerEncounter.Finish(true);
             _component = null;

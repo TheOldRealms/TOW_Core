@@ -16,6 +16,8 @@ namespace TOW_Core.Items
     {
         [XmlAttribute]
         public string ItemStringId;
+        [XmlElement]
+        public string Description = "";
         [XmlArray("DamageProportions")]
         public List<DamageProportionTuple> DamageProportions = new List<DamageProportionTuple>();
         [XmlArray("ItemTraits")]
@@ -42,6 +44,7 @@ namespace TOW_Core.Items
         {
             var prop = new ExtendedItemObjectProperties();
             prop.ItemStringId = ItemStringId;
+            prop.Description = Description;
             prop.ItemTraits = new List<ItemTrait>();
             foreach(var trait in ItemTraits)
             {

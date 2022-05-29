@@ -12,6 +12,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities;
+using TOW_Core.Abilities.SpellBook;
 using TOW_Core.Battle.ObjectDataExtensions;
 using TOW_Core.Battle.Sound;
 using TOW_Core.Utilities;
@@ -73,37 +74,37 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 var info = new HeroExtendedInfo(hero.CharacterObject);
                 _heroInfos.Add(hero.StringId, info);
-                if(hero.Occupation == Occupation.Wanderer) InitializeWandererStats(hero);
+                if(hero.Template != null) InitializeTemplatedHeroStats(hero);
             }
         }
 
-        private void InitializeWandererStats(Hero hero)
+        public static void InitializeTemplatedHeroStats(Hero hero)
         {
             var template = hero.Template;
-            if (template != null)
+            int castingLevel = 0;
+            if (template.IsTOWTemplate() && template.Occupation == Occupation.Wanderer)
             {
-                if (template.IsTOWTemplate() && template.Occupation == Occupation.Wanderer)
+                var info = hero.GetExtendedInfo();
+                if (info == null) return;
+                foreach (var attribute in template.GetAttributes())
                 {
-                    var info = hero.GetExtendedInfo();
-                    foreach (var attribute in template.GetAttributes())
+                    hero.AddAttribute(attribute);
+                }
+                foreach (var ability in template.GetAbilities())
+                {
+                    hero.AddAbility(ability);
+                    var abilityobj = AbilityFactory.GetTemplate(ability);
+                    if (abilityobj.IsSpell)
                     {
-                        hero.AddAttribute(attribute);
-                    }
-                    foreach (var ability in template.GetAbilities())
-                    {
-                        hero.AddAbility(ability);
-                        var abilityobj = AbilityFactory.GetTemplate(ability);
-                        if (abilityobj.IsSpell)
+                        if (!info.KnownLores.Contains(LoreObject.GetLore(abilityobj.BelongsToLoreID)))
                         {
-                            if (!info.KnownLores.Contains(LoreObject.GetLore(abilityobj.BelongsToLoreID)))
-                            {
-                                hero.AddKnownLore(abilityobj.BelongsToLoreID);
-                            }
+                            hero.AddKnownLore(abilityobj.BelongsToLoreID);
+                            castingLevel = Math.Max(castingLevel, abilityobj.SpellTier);
                         }
                     }
-                    if (hero.IsSpellCaster() && !info.KnownLores.Contains(LoreObject.GetLore("MinorMagic"))) hero.AddKnownLore("MinorMagic");
-
                 }
+                hero.SetSpellCastingLevel((SpellCastingLevel)castingLevel);
+                if (hero.IsSpellCaster() && !info.KnownLores.Contains(LoreObject.GetLore("MinorMagic"))) hero.AddKnownLore("MinorMagic");
             }
         }
 
@@ -179,6 +180,14 @@ namespace TOW_Core.ObjectDataExtensions
             return _heroInfos.ContainsKey(id) ? _heroInfos[id] : null;
         }
 
+        public void ClearInfo(Hero hero)
+        {
+            if (_heroInfos.ContainsKey(hero.StringId))
+            {
+                _heroInfos[hero.StringId] = new HeroExtendedInfo(hero.CharacterObject);
+            }
+        }
+
         private void EnterPartyIntoDictionary(MobileParty party)
         {
 
@@ -222,7 +231,6 @@ namespace TOW_Core.ObjectDataExtensions
             {
                 //TOWCommon.Say("Already added"); 
             }
-            
         }
 
         public void DeregisterParty(MobileParty party, PartyBase partyBase)
@@ -236,7 +244,6 @@ namespace TOW_Core.ObjectDataExtensions
         private void OnNewGameCreatedPartialFollowUpEnd(CampaignGameStarter campaignGameStarter)
         {
             if(_characterInfos.Count > 0) _characterInfos.Clear();
-            if (_heroInfos.Count > 0) _heroInfos.Clear();
             TryLoadCharacters(out _characterInfos);
             InitializeHeroes();
             InitializeParties();

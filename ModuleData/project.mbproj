@@ -5,4 +5,7 @@
 	<ModuleAssemblyDirectory>../WOTS/bin/</ModuleAssemblyDirectory>
 	<file id="soln_item_usage_sets" name="ModuleData/tow_item_usages.xml" type="item_usage_set" />
 	<file id="soln_monster_usage_sets" name="ModuleData/tow_monster_usage_sets.xml" type="monster_usage_set" />
+	<file id="soln_action_sets" name="ModuleData/tow_action_sets.xml" type="action_set" />
+	<file id="soln_action_types" name="ModuleData/tow_action_types.xml" type="action_type" />
+	<file id="soln_item_holsters" name="ModuleData/tow_item_holsters.xml" type="item_holster" />
 </base>

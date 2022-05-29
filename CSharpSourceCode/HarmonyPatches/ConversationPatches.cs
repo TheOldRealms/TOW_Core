@@ -8,8 +8,10 @@ using Helpers;
 using SandBox;
 using SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.ViewModelCollection.GameMenu;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade.ViewModelCollection.GameMenu;
 
 namespace TOW_Core.HarmonyPatches
 {
@@ -81,5 +83,13 @@ namespace TOW_Core.HarmonyPatches
 				MBTextManager.SetTextVariable("LORD_INTRODUCTION_STRING", text, false);
 			}
 		}
-	}
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(SettlementMenuOverlayVM), "ExecuteOnSetAsActiveContextMenuItem")]
+		public static void RemoveQuickTalk(SettlementMenuOverlayVM __instance)
+        {
+            var itemToRemove = __instance.ContextList.FirstOrDefault(x => x.ActionText == GameTexts.FindText("str_menu_overlay_context_list", "QuickConversation").ToString());
+            if (itemToRemove != null) __instance.ContextList.Remove(itemToRemove);
+        }
+    }
 }

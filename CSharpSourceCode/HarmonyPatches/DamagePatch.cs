@@ -31,9 +31,6 @@ namespace TOW_Core.HarmonyPatches
             {
                 return true;
             }
-            
-            
-            SoundEvent _hitsound;
 
             bool isSpell = false;
             float[] damageCategories=new float[(int) DamageType.All+1];
@@ -46,8 +43,6 @@ namespace TOW_Core.HarmonyPatches
             //defense properties
             var resistancePercentages = victimPropertyContainer.ResistancePercentages;
 
-           
-            
             if (b.StrikeType == StrikeType.Invalid && b.AttackType == AgentAttackType.Kick && b.DamageCalculated)
             {
                 isSpell = true;
@@ -91,7 +86,6 @@ namespace TOW_Core.HarmonyPatches
             {
                 victim.GetComponent<AgentSoundComponent>().PlayHitSound(highestNonPhysicalDamageType);
             }
-            
 
             b.InflictedDamage = resultDamage;
 
@@ -100,13 +94,7 @@ namespace TOW_Core.HarmonyPatches
                 if(attacker==Agent.Main || victim==Agent.Main)
                     TORDamageDisplay.DisplayDamageResult(resultDamage, damageCategories);
             }
-            
             return true;
         }
-
-
-        
-
-        
     }
 }

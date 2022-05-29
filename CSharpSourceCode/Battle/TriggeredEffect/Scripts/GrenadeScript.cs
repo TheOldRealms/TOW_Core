@@ -4,19 +4,11 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOW_Core.Battle.TriggeredEffect.Scripts
 {
-    public class GrenadeScript : ScriptComponentBehavior
+    public class GrenadeScript : BlackPowderWeaponScript
     {
-        private Agent _shooter;
-        private TriggeredEffect _explosion;
-
         protected override void OnInit()
         {
             SetScriptComponentToTick(GetTickRequirement());
-        }
-
-        public override TickRequirement GetTickRequirement()
-        {
-            return TickRequirement.Tick;
         }
 
         protected override void OnTick(float dt)
@@ -30,18 +22,8 @@ namespace TOW_Core.Battle.TriggeredEffect.Scripts
 
         private void Explode()
         {
-            _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooter);
+            _explosion.Trigger(GameEntity.GlobalPosition, Vec3.Zero, _shooterAgent);
             GameEntity.FadeOut(0.5f, true);
-        }
-
-        public void SetShooterAgent(Agent shooter)
-        {
-            _shooter = shooter;
-        }
-
-        public void SetTriggeredEffect(TriggeredEffect effect)
-        {
-            _explosion = effect;
         }
     }
 }
