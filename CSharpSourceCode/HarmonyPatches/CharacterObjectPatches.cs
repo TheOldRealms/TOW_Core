@@ -2,7 +2,9 @@
 using Helpers;
 using System;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Roster;
 using TaleWorlds.Library;
 using TOW_Core.Utilities.Extensions;
 

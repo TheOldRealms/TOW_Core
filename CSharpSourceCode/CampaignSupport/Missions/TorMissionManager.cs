@@ -1,12 +1,10 @@
 ﻿using SandBox;
-using SandBox.Source.Missions;
-using SandBox.Source.Missions.Handlers;
-using System;
+using SandBox.Missions.MissionLogics;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.MapEvents;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.TroopSuppliers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -16,7 +14,7 @@ using TaleWorlds.MountAndBlade.Source.Missions.Handlers.Logic;
 
 namespace TOW_Core.CampaignSupport.Missions
 {
-	[MissionManager]
+    [MissionManager]
 	public static class TorMissionManager
     {
 		[MissionMethod]

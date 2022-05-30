@@ -3,7 +3,9 @@ using SandBox;
 using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.CampaignSystem.GameMenus;
+using TaleWorlds.CampaignSystem.MapEvents;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
@@ -49,7 +51,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
                 _isMissionStarted = false;
                 if(_currentSettlement != null)
                 {
-                    TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    GivePrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
                     DestroyPartyAction.ApplyForDisbanding(_currentWatchParty, _currentSettlement);
                 }
                 _currentWatchParty = null;

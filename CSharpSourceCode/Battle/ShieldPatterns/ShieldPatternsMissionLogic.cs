@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.AgentOrigins;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.MountAndBlade.Source.Missions;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Utilities.Extensions;
