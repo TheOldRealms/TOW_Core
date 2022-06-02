@@ -42,6 +42,7 @@ namespace TOW_Core.ObjectDataExtensions
             //Game Saving Events
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
             CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
+            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
 
             //Tick events
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, FillWindsOfMagic);
@@ -67,12 +68,55 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
+        private void OnGameLoaded(CampaignGameStarter obj)
+        {
+            // Migrate old key entries to their new key locations
+            // the old format is just StringId which might be something like "CharacterObject_2277"
+            // which causes occasionally causes collisions because its not unique.
+            List<String> oldKeys = _heroInfos.Keys.SkipWhile(key => !key.Equals(_heroInfos[key].BaseCharacter.StringId)).ToList();
+            foreach (String oldkey in oldKeys)
+            {
+                HeroExtendedInfo oldInfo = _heroInfos[oldkey];
+                String newKey = oldInfo.BaseCharacter.HeroObject.GetInfoKey();
+                _heroInfos[newKey] = oldInfo;
+                _heroInfos.Remove(oldkey);
+            }
+
+            bool brokenStatsDetected = false;
+            // After migrating old keys
+            // Scrub broken stats
+            foreach(String key in _heroInfos.Keys)
+            {
+                brokenStatsDetected |= ScrubBrokenStats(_heroInfos[key]);
+            }
+            if (brokenStatsDetected)
+                TOWCommon.Say("Heroes with 0 winds of magic detected! Reinitialized!");
+        }
+
+        /// <summary>
+        /// Given a HeroExtendedInfo, will reinitialize the associated hero if their
+        /// stats are borked.
+        /// </summary>
+        /// <param name="heroInfo"></param>
+        /// <returns>True if hero was reinitialized, false if no operation was done</returns>
+        private bool ScrubBrokenStats(HeroExtendedInfo heroInfo)
+        {
+            Hero hero = heroInfo.BaseCharacter.HeroObject;
+            if (hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence) > 0)
+            {
+                return false;
+            }
+
+            hero.ReinitializeHero();
+            return true;
+        }
+
         private void OnHeroCreated(Hero hero, bool arg2)
         {
-            if (!_heroInfos.ContainsKey(hero.StringId))
+            if (!_heroInfos.ContainsKey(hero.GetInfoKey()))
             {
                 var info = new HeroExtendedInfo(hero.CharacterObject);
-                _heroInfos.Add(hero.StringId, info);
+                _heroInfos.Add(hero.GetInfoKey(), info);
                 if(hero.Template != null) InitializeTemplatedHeroStats(hero);
             }
         }
@@ -109,9 +153,9 @@ namespace TOW_Core.ObjectDataExtensions
 
         private void OnHeroKilled(Hero arg1, Hero arg2, KillCharacterAction.KillCharacterActionDetail arg3, bool arg4)
         {
-            if (_heroInfos.ContainsKey(arg1.StringId))
+            if (_heroInfos.ContainsKey(arg1.GetInfoKey()))
             {
-                _heroInfos.Remove(arg1.StringId);
+                _heroInfos.Remove(arg1.GetInfoKey());
             }
         }
 
@@ -181,9 +225,9 @@ namespace TOW_Core.ObjectDataExtensions
 
         public void ClearInfo(Hero hero)
         {
-            if (_heroInfos.ContainsKey(hero.StringId))
+            if (_heroInfos.ContainsKey(hero.GetInfoKey()))
             {
-                _heroInfos[hero.StringId] = new HeroExtendedInfo(hero.CharacterObject);
+                _heroInfos[hero.GetInfoKey()] = new HeroExtendedInfo(hero.CharacterObject);
             }
         }
 
@@ -252,10 +296,10 @@ namespace TOW_Core.ObjectDataExtensions
         {
             foreach(var hero in Hero.AllAliveHeroes)
             {
-                if (!_heroInfos.ContainsKey(hero.StringId))
+                if (!_heroInfos.ContainsKey(hero.GetInfoKey()))
                 {
                     var info = new HeroExtendedInfo(hero.CharacterObject);
-                    _heroInfos.Add(hero.StringId, info);
+                    _heroInfos.Add(hero.GetInfoKey(), info);
                 }
             }
         }
