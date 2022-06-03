@@ -52,7 +52,8 @@ namespace TOW_Core.CampaignSupport
                     var suitableTown = (from x in Town.AllTowns
                                         where x.Settlement.Culture == wanderer.Culture
                                         orderby x.Settlement.HeroesWithoutParty.Count ascending
-                                        select x).FirstOrDefault().Settlement;
+                                        select x).FirstOrDefault()
+                        ?.Settlement;
                     if (suitableTown != null)
                     {
                         EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
