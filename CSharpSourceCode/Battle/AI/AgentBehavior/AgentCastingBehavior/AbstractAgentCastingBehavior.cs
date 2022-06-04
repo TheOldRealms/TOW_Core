@@ -119,7 +119,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentCastingBehavior
         protected virtual float CalculateUtility(Target target)
         {
             var ability = Agent.GetAbility(AbilityIndex);
-            if (ability.IsOnCooldown() || !ability.CanCast(Agent) || target.Formation == null)
+            if (ability.IsOnCooldown() || !ability.CanCast(Agent) || target.Formation == null && target.TacticalPosition == null)
             {
                 return 0.0f;
             }

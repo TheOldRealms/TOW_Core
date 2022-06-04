@@ -149,6 +149,9 @@ namespace TOW_Core.Battle.AI.Decision
         public static Agent GetRandomAgent(Formation targetFormation)
         {
             var medianAgent = targetFormation?.GetMedianAgent(true, false, targetFormation.GetAveragePositionOfUnits(true, false));
+
+            if (medianAgent == null) return null;
+
             var adjustedPosition = medianAgent.Position;
 
             var direction = targetFormation.QuerySystem.EstimatedDirection;
