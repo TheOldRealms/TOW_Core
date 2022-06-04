@@ -382,6 +382,7 @@
     <Compile Include="CampaignSupport\TownBehaviours\MasterEngineerTownBehaviour.cs" />
     <Compile Include="HarmonyPatches\ArenaPatches.cs" />
     <Compile Include="HarmonyPatches\AtmoshpereOverridePatch.cs" />
+    <Compile Include="HarmonyPatches\SettlementPatch.cs" />
     <Compile Include="Quests\AdvanceSpellCastingLevelQuest.cs" />
     <Compile Include="Battle\Sound\AgentSoundComponent.cs" />
     <Compile Include="Battle\Sound\CustomAgentSoundMissionLogic.cs" />

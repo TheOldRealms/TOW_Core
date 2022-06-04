@@ -393,7 +393,7 @@
 
   <AbilityTemplate StringID="CinderBlast" 
       Name="Cinder Blast" 
-      SpriteName="placeholder_icon" 
+      SpriteName="cinderblast_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -434,7 +434,7 @@
 
     <AbilityTemplate StringID="BoltOfAqshy" 
       Name="Bolt of Aqshy" 
-      SpriteName="placeholder_icon" 
+      SpriteName="boltofashqy_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -475,7 +475,7 @@
 
   <AbilityTemplate StringID="Sear" 
       Name="Sear" 
-      SpriteName="placeholder_icon" 
+      SpriteName="sear_icon" 
       CoolDown="30" 
       WindsOfMagicCost="12" 
       BaseMisCastChance="0.05" 
@@ -519,7 +519,7 @@
 
   <AbilityTemplate StringID="FlamingSwords"
       Name="Flaming Sword of Rhuin"
-      SpriteName="placeholder_icon"
+      SpriteName="swordsofrhuin_icon"
       CoolDown="30"
       WindsOfMagicCost="13"
       BaseMisCastChance="0.05"
@@ -606,7 +606,7 @@
 
   <AbilityTemplate StringID="FlameStorm" 
       Name="Fire Tornado" 
-      SpriteName="placeholder_icon" 
+      SpriteName="flamingstorm_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.3" 
@@ -739,7 +739,7 @@
 
   <AbilityTemplate StringID="ChainLightning" 
       Name="Chain Lightning" 
-      SpriteName="placeholder_icon" 
+      SpriteName="chainlightning_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.3" 
@@ -786,7 +786,7 @@
 
   <AbilityTemplate StringID="HarmonicConvergence"
       Name="Harmonic Convergence"
-      SpriteName="placeholder_icon"
+      SpriteName="harmonicconvergence_icon"
       CoolDown="30"
       WindsOfMagicCost="13"
       BaseMisCastChance="0.05"
@@ -829,7 +829,7 @@
 
   <AbilityTemplate StringID="Blizzard" 
       Name="Iceshard Blizzard" 
-      SpriteName="placeholder_icon" 
+      SpriteName="iceshardblizzard_icon" 
       CoolDown="30" 
       WindsOfMagicCost="14" 
       BaseMisCastChance="0.5" 
@@ -965,7 +965,7 @@
 <!-- Lore of Light -->
   <AbilityTemplate StringID="ShemGaze" 
       Name="Shem's Burning Gaze" 
-      SpriteName="placeholder_icon" 
+      SpriteName="shemsburninggaze_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1006,7 +1006,7 @@
 
   <AbilityTemplate StringID="StoneAssault" 
       Name="Assault of Stone" 
-      SpriteName="placeholder_icon" 
+      SpriteName="assaultofstone_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1047,7 +1047,7 @@
 
   <AbilityTemplate StringID="HealingLight"
       Name="Healing Light"
-      SpriteName="healingprayer_icon"
+      SpriteName="healinglight_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1090,7 +1090,7 @@
 
   <AbilityTemplate StringID="PhaProtection"
       Name="Pha's Protection"
-      SpriteName="placeholder_icon"
+      SpriteName="phasprotection_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1133,7 +1133,7 @@
 
   <AbilityTemplate StringID="DeathlyShards" 
       Name="Deathly Shards" 
-      SpriteName="placeholder_icon" 
+      SpriteName="deadlyshards_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.05" 
@@ -1174,7 +1174,7 @@
 
   <AbilityTemplate StringID="RadiancePillar" 
       Name="Pillar of Radiance" 
-      SpriteName="placeholder_icon" 
+      SpriteName="pillarofradiance_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.5" 
@@ -1218,7 +1218,7 @@
 
   <AbilityTemplate StringID="RadiantGaze" 
       Name="Radiant Gaze" 
-      SpriteName="placeholder_icon" 
+      SpriteName="radiantgaze_icon" 
       CoolDown="40" 
       WindsOfMagicCost="25" 
       BaseMisCastChance="0.05" 
@@ -1263,7 +1263,7 @@
 <!-- Necromancy -->
   <AbilityTemplate StringID="NagashGaze" 
       Name="Gaze of Nagash" 
-      SpriteName="placeholder_icon" 
+      SpriteName="gazeofnagash_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1348,7 +1348,7 @@
 
   <AbilityTemplate StringID="Shadowblood" 
       Name="Shadowblood" 
-      SpriteName="placeholder_icon" 
+      SpriteName="shadowblood_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1389,7 +1389,7 @@
 
   <AbilityTemplate StringID="Morkharn"
       Name="Morkharn - Breath of Darkness"
-      SpriteName="placeholder_icon"
+      SpriteName="breathofdarkness_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1432,7 +1432,7 @@
 
   <AbilityTemplate StringID="WitheringWave" 
       Name="Withering Wave " 
-      SpriteName="placeholder_icon" 
+      SpriteName="witheringwave_icon" 
       CoolDown="30" 
       WindsOfMagicCost="16" 
       BaseMisCastChance="0.3" 
@@ -1479,7 +1479,7 @@
 
   <AbilityTemplate StringID="Kandorak" 
       Name="Kandorak - The Harbinger" 
-      SpriteName="placeholder_icon" 
+      SpriteName="theharbinger_icon" 
       CoolDown="30" 
       WindsOfMagicCost="6" 
       BaseMisCastChance="0.3" 
@@ -1612,7 +1612,7 @@
 
   <AbilityTemplate StringID="GraveCall" 
       Name="Grave Call" 
-      SpriteName="placeholder_icon" 
+      SpriteName="gravecall_icon" 
       CoolDown="40" 
       WindsOfMagicCost="14" 
       BaseMisCastChance="0.3" 
@@ -1657,7 +1657,7 @@
 <!-- Dark Magic -->
   <AbilityTemplate StringID="Chillwind" 
       Name="Chillwind" 
-      SpriteName="placeholder_icon" 
+      SpriteName="chillwind_icon" 
       CoolDown="20" 
       WindsOfMagicCost="8" 
       BaseMisCastChance="0.05" 
@@ -1701,7 +1701,7 @@
 
   <AbilityTemplate StringID="DoomBolt" 
       Name="Doom Bolt" 
-      SpriteName="placeholder_icon" 
+      SpriteName="doombolt_icon" 
       CoolDown="20" 
       WindsOfMagicCost="12" 
       BaseMisCastChance="0.05" 
@@ -1742,7 +1742,7 @@
 
   <AbilityTemplate StringID="SoulDrain" 
       Name="Soul Drain" 
-      SpriteName="placeholder_icon" 
+      SpriteName="souldrain_icon" 
       CoolDown="30" 
       WindsOfMagicCost="15" 
       BaseMisCastChance="0.5" 
@@ -1786,7 +1786,7 @@
 
   <AbilityTemplate StringID="PowerOfDarkness"
       Name="Power of Darkness"
-      SpriteName="placeholder_icon"
+      SpriteName="powerofdarkness_icon"
       CoolDown="30"
       WindsOfMagicCost="12"
       BaseMisCastChance="0.05"
@@ -1829,7 +1829,7 @@
 
   <AbilityTemplate StringID="BlackHorror" 
       Name="Arnzipal's Black Horror" 
-      SpriteName="placeholder_icon" 
+      SpriteName="arzipalsblackhorror_icon" 
       CoolDown="40" 
       WindsOfMagicCost="30" 
       BaseMisCastChance="0.3" 
@@ -1876,7 +1876,7 @@
 
   <AbilityTemplate StringID="SoulStealer"
    Name="Soul Stealer"
-   SpriteName="placeholder_icon"
+   SpriteName="soulstealer_icon"
    CoolDown="40"
    WindsOfMagicCost="25"
    BaseMisCastChance="0.05"

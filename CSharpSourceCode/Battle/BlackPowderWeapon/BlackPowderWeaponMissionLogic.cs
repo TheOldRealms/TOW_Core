@@ -42,6 +42,8 @@ namespace TOW_Core.Battle.FireArms
             {
                 var frame = new MatrixFrame(orientation, position);
                 // run particles of smoke
+                var offset = (shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponLength + 30) / 100;
+                frame.Advance(offset);
                 Mission.AddParticleSystemBurstByName("handgun_shoot_2", frame, false);
                 // play sound of shot
                 if (this._soundIndex.Length > 0)
