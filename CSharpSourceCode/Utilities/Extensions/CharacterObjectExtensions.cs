@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TOW_Core.Battle.Damage;
 using TOW_Core.ObjectDataExtensions;
 
 namespace TOW_Core.Utilities.Extensions
@@ -68,6 +69,11 @@ namespace TOW_Core.Utilities.Extensions
             if (info != null)
             {
                 list.AddRange(info);
+            }
+            else
+            {
+                var defaultProp = new DamageProportionTuple(DamageType.Physical,1);
+                list.Add(defaultProp);
             }
             return list;
         }

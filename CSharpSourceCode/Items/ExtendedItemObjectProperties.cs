@@ -28,7 +28,7 @@ namespace TOW_Core.Items
         public ExtendedItemObjectProperties(string id, DamageType defaultDamageType= DamageType.Physical)
         {
             ItemStringId = id;
-            DamageProportionTuple proportionTuple = new DamageProportionTuple
+            DamageProportionTuple proportionTuple = new DamageProportionTuple()
             {
                 DamageType = defaultDamageType,
                 Percent = 1f
