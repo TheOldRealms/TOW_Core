@@ -41,8 +41,8 @@ namespace TOW_Core.ObjectDataExtensions
         {
             //Game Saving Events
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
+            CampaignEvents.OnAfterSessionLaunchedEvent.AddNonSerializedListener(this, OnAfterSessionLaunchedEvent);
             CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
-            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
 
             //Tick events
             CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, FillWindsOfMagic);
@@ -68,7 +68,7 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
-        private void OnGameLoaded(CampaignGameStarter obj)
+        private void OnAfterSessionLaunchedEvent(CampaignGameStarter obj)
         {
             // Migrate old key entries to their new key locations
             // the old format is just StringId which might be something like "CharacterObject_2277"
