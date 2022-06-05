@@ -141,6 +141,7 @@ namespace TOW_Core.CampaignSupport.RegimentsOfRenown
         {
             if (mobileParty != null &&
                 mobileParty.IsLordParty && 
+                mobileParty != MobileParty.MainParty &&
                 !mobileParty.IsDisbanding && 
                 mobileParty.LeaderHero != null && 
                 !mobileParty.Party.IsStarving &&
