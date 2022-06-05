@@ -52,6 +52,14 @@ namespace TOW_Core.ObjectDataExtensions
         public DamageType DamageType = DamageType.Invalid;
         [XmlAttribute]
         public float Percent = 1;
+        public DamageProportionTuple()
+        {
+        }
+        public DamageProportionTuple(DamageType damageType, float percent)
+        {
+            DamageType = damageType;
+            Percent = percent;
+        }
     }
     
     /// <summary>
