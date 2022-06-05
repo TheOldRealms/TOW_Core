@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade.CustomBattle;
 using TOW_Core.Abilities.SpellBook;
@@ -32,7 +33,7 @@ namespace TOW_Core.Utilities.Extensions
 
         public static HeroExtendedInfo GetExtendedInfo(this Hero hero)
         {
-            return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.StringId);
+            return ExtendedInfoManager.Instance.GetHeroInfoFor(hero.GetInfoKey());
         }
 
         public static int GetPlaceableArtilleryCount(this Hero hero)
@@ -135,6 +136,39 @@ namespace TOW_Core.Utilities.Extensions
         public static bool IsVampire(this Hero hero)
         {
             return hero.HasAttribute("VampireBodyOverride");
+        }
+
+        /// <summary>
+        /// Returns the key which should be used for keying heroes in dictionaries
+        /// 
+        /// <br>Format is as follows:</br>
+        /// <br>StringId_Occupation_Name</br>
+        /// </summary>
+        /// <param name="hero"></param>
+        public static String GetInfoKey(this Hero hero)
+        {
+            return hero.StringId;
+            //return String.Format("{0}_{1}_{2}", hero.StringId, hero.Occupation.ToString(), hero.Name);
+        }
+
+        public static void ReinitializeHero(this Hero hero)
+        {
+            CharacterDevelopmentCampaignBehavior characterDeveloper
+                = Campaign.Current.GetCampaignBehavior<CharacterDevelopmentCampaignBehavior>();
+
+            hero.ClearAttributes();
+            int UnspentAttributePoints = 
+                (hero.Level - 1)
+                / Campaign.Current.Models.CharacterDevelopmentModel.LevelsPerAttributePoint
+                + Campaign.Current.Models.CharacterDevelopmentModel.AttributePointsAtStart;
+            hero.HeroDeveloper.UnspentAttributePoints = UnspentAttributePoints;
+
+            foreach (CharacterAttribute attribute in Attributes.All)
+            {
+                hero.HeroDeveloper.AddAttribute(attribute, 1, false);
+                UnspentAttributePoints -= 1;
+            }
+            characterDeveloper.DevelopCharacterStats(hero);
         }
     }
 }

@@ -40,11 +40,15 @@ using TOW_Core.Battle.AttributeSystem.CustomBattleMoralModel;
 using TOW_Core.Battle.Sound;
 using TOW_Core.CampaignSupport.Assimilation;
 using TOW_Core.CampaignSupport.RegimentsOfRenown;
+using TaleWorlds.Engine;
 
 namespace TOW_Core
 {
     public class SubModule : MBSubModuleBase
     {
+        private static float _tick = 0f;
+        private static int _num = -1;
+
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             TOWCommon.Say("TOW Core loaded.");
@@ -114,7 +118,7 @@ namespace TOW_Core
             {
                 CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
 
-                starter.AddBehavior(ExtendedInfoManager.Instance);
+                starter.AddBehavior(new ExtendedInfoManager());
                 starter.AddBehavior(new SpellBookMapIconCampaignBehaviour());
                 starter.AddBehavior(new BattleInfoCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadCampaignBehavior());
@@ -200,6 +204,25 @@ namespace TOW_Core
             config.AddRule(LogLevel.Info, LogLevel.Fatal, logdebugger);
 
             LogManager.Configuration = config;
+        }
+
+        protected override void OnApplicationTick(float dt)
+        {
+            base.OnApplicationTick(dt);
+            _tick += dt;
+            if(_tick > 1)
+            {
+                _tick = 0;
+                if (!LoadingWindow.IsLoadingWindowActive)
+                {
+                    var lastnum = _num;
+                    _num = TaleWorlds.Engine.Utilities.GetNumberOfShaderCompilationsInProgress();
+                    if (_num > 0 && _num != lastnum)
+                    {
+                        TOWCommon.Say("Shader compilation in progress. Remaining shaders to compile: " + _num);
+                    }
+                }
+            }
         }
     }
 }

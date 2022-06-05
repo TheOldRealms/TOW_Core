@@ -205,14 +205,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
             if (canPlayerDo)
             {
-                canPlayerDo = Hero.MainHero.CanRaiseDead();
+                canPlayerDo = Hero.MainHero.CanRaiseDead() && !Settlement.CurrentSettlement.IsUnderSiege;
             }
             return MenuHelper.SetOptionProperties(args, canPlayerDo, shouldBeDisabled, disabledText);
         }
 
         private bool raisedeadattemptcondition(MenuCallbackArgs args)
         {
-            if (Hero.MainHero.CanRaiseDead())
+            if (Hero.MainHero.CanRaiseDead() && !Settlement.CurrentSettlement.IsUnderSiege)
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Wait;
                 return true;
@@ -230,6 +230,11 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
 
         private void raisingdeadtick(MenuCallbackArgs args, CampaignTime dt)
         {
+            if (Settlement.CurrentSettlement.IsUnderSiege)
+            {
+                InterruptWaitSiege(args);
+                return;
+            }
             float progress = args.MenuContext.GameMenu.Progress;
             int diff = (int)_startWaitTime.ElapsedHoursUntilNow;
             if (diff > 0)
@@ -288,6 +293,14 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
             args.MenuContext.GameMenu.EndWait();
             args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(0f);
             GameMenu.SwitchToMenu("graveyard_interrupt");
+        }
+
+        private void InterruptWaitSiege(MenuCallbackArgs args)
+        {
+            PlayerEncounter.Current.IsPlayerWaiting = false;
+            args.MenuContext.GameMenu.EndWait();
+            args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(0f);
+            GameMenu.SwitchToMenu("town");
         }
 
         public override void SyncData(IDataStore dataStore)

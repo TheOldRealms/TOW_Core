@@ -61,6 +61,11 @@ namespace TOW_Core.Battle.ShieldPatterns
                     var origin = agent.Origin as PartyAgentOrigin;
                     factionId = origin.Party.MapFaction.StringId;
                 }
+                if(agent.Origin is PartyGroupAgentOrigin)
+                {
+                    var origin = agent.Origin as PartyGroupAgentOrigin;
+                    factionId = origin.Party.MapFaction.StringId;
+                }
             }
 
             var banner = ShieldPatternsManager.GetRandomBannerFor(agent.Character.Culture.StringId, factionId);
