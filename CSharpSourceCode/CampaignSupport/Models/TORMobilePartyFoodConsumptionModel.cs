@@ -11,49 +11,38 @@ namespace TOW_Core.CampaignSupport.Models
     {
         public override ExplainedNumber CalculateDailyFoodConsumptionf(MobileParty party, bool includeDescription = false)
         {
-            int num = 0;
+            int bandits = 0;
             for (int i = 0; i < party.MemberRoster.Count; i++)
             {
-                var bandit = party.MemberRoster.GetCharacterAtIndex(i);
-                if (bandit.Culture.IsBandit && !bandit.IsUndead())
+                var troop = party.MemberRoster.GetCharacterAtIndex(i);
+                if (troop.Culture.IsBandit && !troop.IsUndead() && !troop.IsVampire())
                 {
-                    num += party.MemberRoster.GetElementNumber(i);
+                    bandits += party.MemberRoster.GetElementNumber(i);
                 }
             }
             for (int j = 0; j < party.PrisonRoster.Count; j++)
             {
-                var banditPrisoner = party.PrisonRoster.GetCharacterAtIndex(j);
-                if (banditPrisoner.Culture.IsBandit && !banditPrisoner.IsUndead())
+                var troop = party.PrisonRoster.GetCharacterAtIndex(j);
+                if (troop.Culture.IsBandit && !troop.IsUndead() && !troop.IsVampire())
                 {
-                    num += party.PrisonRoster.GetElementNumber(j);
+                    bandits += party.PrisonRoster.GetElementNumber(j);
                 }
             }
-            int num2 = party.Party.NumberOfAllMembers - GetUndeadMemberCount(party);
-            num2 += party.Party.NumberOfPrisoners > 0 ? (party.Party.NumberOfPrisoners - GetUndeadPrisonerCount(party)) / 2 : 0;
-            if (num2 > 0)
+            int eatingMembers = party.Party.NumberOfAllMembers - GetNonStarvingMemberCount(party);
+            eatingMembers += party.Party.NumberOfPrisoners > 0 ? (party.Party.NumberOfPrisoners - GetNonStarvingPrisonerCount(party)) / 2 : 0;
+            if (eatingMembers > 0)
             {
                 if (party.LeaderHero != null && party.LeaderHero.GetPerkValue(DefaultPerks.Roguery.Promises))
                 {
-                    num2 += (int)((float)num * DefaultPerks.Roguery.Promises.PrimaryBonus * 0.01f);
-                }
-                if (num2 < 1)
-                {
-                    if (party.LeaderHero != null && party.LeaderHero.IsUndead())
-                    {
-                        return new ExplainedNumber(-0.001f);
-                    }
-                    else
-                    {
-                        num2 = 1;
-                    }
+                    eatingMembers += (int)((float)bandits * DefaultPerks.Roguery.Promises.PrimaryBonus * 0.01f);
                 }
             }
             else
             {
-                return new ExplainedNumber(-0.001f);
+                return new ExplainedNumber(0);
             }
 
-            float baseNumber = -(float)num2 / 20f;
+            float baseNumber = -(float)eatingMembers / 20f;
             ExplainedNumber result = new ExplainedNumber(baseNumber, includeDescription, null);
             this.CalculatePerkEffects(party, ref result);
             return result;
@@ -87,30 +76,34 @@ namespace TOW_Core.CampaignSupport.Models
             }
         }
 
-        private int GetUndeadMemberCount(MobileParty party)
+        private int GetNonStarvingMemberCount(MobileParty party)
         {
-            var totalUnded = 0;
+            var totalNonStarvingMembers = 0;
             foreach (var tr in party.MemberRoster.GetTroopRoster())
             {
-                if ((tr.Character.HeroObject != null && tr.Character.HeroObject.IsUndead()) || tr.Character.IsUndead())
+                bool nonStarvingCondition = (tr.Character.HeroObject != null && (tr.Character.HeroObject.IsUndead() || tr.Character.HeroObject.IsVampire())) ||
+                                            (tr.Character.IsUndead() || tr.Character.IsVampire());
+                if (nonStarvingCondition)
                 {
-                    totalUnded += tr.Number;
+                    totalNonStarvingMembers += tr.Number;
                 }
             }
-            return totalUnded;
+            return totalNonStarvingMembers;
         }
 
-        private int GetUndeadPrisonerCount(MobileParty party)
+        private int GetNonStarvingPrisonerCount(MobileParty party)
         {
-            var totalUnded = 0;
+            var totalNonStarvingPrisoners = 0;
             foreach (var tr in party.PrisonRoster.GetTroopRoster())
             {
-                if ((tr.Character.HeroObject != null && tr.Character.HeroObject.IsUndead()) || tr.Character.IsUndead())
+                bool nonStarvingCondition = (tr.Character.HeroObject != null && (tr.Character.HeroObject.IsUndead() || tr.Character.HeroObject.IsVampire())) ||
+                                            (tr.Character.IsUndead() || tr.Character.IsVampire());
+                if (nonStarvingCondition)
                 {
-                    totalUnded += tr.Number;
+                    totalNonStarvingPrisoners += tr.Number;
                 }
             }
-            return totalUnded;
+            return totalNonStarvingPrisoners;
         }
     }
 }
