@@ -101,6 +101,14 @@ namespace TOW_Core.ObjectDataExtensions
         {
             return _knownLores.Contains(loreId);
         }
+
+        public CharacterObject BaseCharacter
+        {
+            get
+            {
+                return _baseCharacter;
+            }
+        }
     }
     public class HeroExtendedInfoInfoDefiner : SaveableTypeDefiner
     {
