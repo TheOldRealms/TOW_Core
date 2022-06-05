@@ -19,7 +19,15 @@ namespace TOW_Core.Battle.AI.AgentBehavior.AgentTacticalBehavior
 
         private void CalculateCastingTargetPosition(Target target)
         {
-            CastingPosition = target.Formation != null ? CalculateCastingPosition(target.Formation) : Agent.Position;
+            if (target.SelectedWorldPosition != Vec3.Zero)
+            {
+                CastingPosition = target.SelectedWorldPosition;
+            }
+            else
+            {
+                CastingPosition = target.Formation != null ? CalculateCastingPosition(target.Formation) : Agent.Position;
+            }
+
             var worldPosition = new WorldPosition(Mission.Current.Scene, CastingPosition);
             Agent.SetScriptedPosition(ref worldPosition, false);
         }

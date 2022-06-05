@@ -158,12 +158,12 @@ namespace TOW_Core.Battle.Artillery
             {
                 if (UserFormations.Count > 0 && UserFormations.All(formation => formation.PrimaryClass != FormationClass.Ranged))
                 {
-                    UserFormations[0].StopUsingMachine(this);
+                    UserFormations[0]?.StopUsingMachine(this);
                 }
 
                 if (UserFormations.Count == 0)
                 {
-                    Team.Formations.ToList().FirstOrDefault(form => form.PrimaryClass == FormationClass.Ranged).StartUsingMachine(this);
+                    Team.Formations.ToList().FirstOrDefault(form => form.PrimaryClass == FormationClass.Ranged)?.StartUsingMachine(this);
                 }
             }
         }
