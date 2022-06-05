@@ -39,7 +39,7 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
                         }
 
                         var adjustedTargetPosition = GetAdjustedTargetPosition(_artillery.Target);
-                        if (adjustedTargetPosition != Vec3.Zero && _artillery.PilotAgent.Formation.FiringOrder.OrderType != OrderType.HoldFire)
+                        if (adjustedTargetPosition != Vec3.Zero && _artillery.AimAtTarget(adjustedTargetPosition) && _artillery.PilotAgent.Formation.FiringOrder.OrderType != OrderType.HoldFire)
                         {
                             _artillery.Shoot();
                             _artillery.Target.SelectedWorldPosition = Vec3.Zero;
@@ -59,10 +59,10 @@ namespace TOW_Core.Battle.AI.AgentBehavior.Components
             if (target?.Formation == null) return Vec3.Zero;
 
             var targetAgent = target.SelectedWorldPosition == Vec3.Zero ? CommonAIFunctions.GetRandomAgent(target.Formation) : target.Agent;
-            
-            if (target.Agent == null) return Vec3.Zero;
+
+            if (targetAgent == null) return Vec3.Zero;
             target.Agent = targetAgent;
-            
+
             Vec3 velocity = target.Formation.QuerySystem.CurrentVelocity.ToVec3();
             float time = (UsableMachine as ArtilleryRangedSiegeWeapon).GetEstimatedCurrentFlightTime();
 
