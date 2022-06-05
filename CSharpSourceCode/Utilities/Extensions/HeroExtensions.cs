@@ -147,7 +147,8 @@ namespace TOW_Core.Utilities.Extensions
         /// <param name="hero"></param>
         public static String GetInfoKey(this Hero hero)
         {
-            return String.Format("{0}_{1}_{2}", hero.StringId, hero.Occupation.ToString(), hero.Name);
+            return hero.StringId;
+            //return String.Format("{0}_{1}_{2}", hero.StringId, hero.Occupation.ToString(), hero.Name);
         }
 
         public static void ReinitializeHero(this Hero hero)

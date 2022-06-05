@@ -31,17 +31,16 @@ namespace TOW_Core.ObjectDataExtensions
         private Dictionary<string, MobilePartyExtendedInfo> _partyInfos = new Dictionary<string, MobilePartyExtendedInfo>();
         private static Dictionary<string, CharacterExtendedInfo> _characterInfos = new Dictionary<string, CharacterExtendedInfo>();
         private Dictionary<string, HeroExtendedInfo> _heroInfos = new Dictionary<string, HeroExtendedInfo>();
-        private static ExtendedInfoManager _instance = new ExtendedInfoManager();
+        private static ExtendedInfoManager _instance;
 
         public static ExtendedInfoManager Instance => _instance;
 
-        private ExtendedInfoManager() {}
+        public ExtendedInfoManager() => _instance = this;
         
         public override void RegisterEvents()
         {
             //Game Saving Events
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
-            CampaignEvents.OnAfterSessionLaunchedEvent.AddNonSerializedListener(this, OnAfterSessionLaunchedEvent);
             CampaignEvents.OnNewGameCreatedPartialFollowUpEndEvent.AddNonSerializedListener(this, OnNewGameCreatedPartialFollowUpEnd);
 
             //Tick events
@@ -68,11 +67,12 @@ namespace TOW_Core.ObjectDataExtensions
             }
         }
 
-        private void OnAfterSessionLaunchedEvent(CampaignGameStarter obj)
+        private void DetectBrokenHeroes()
         {
             // Migrate old key entries to their new key locations
             // the old format is just StringId which might be something like "CharacterObject_2277"
             // which causes occasionally causes collisions because its not unique.
+            /*
             List<String> oldKeys = _heroInfos.Keys.SkipWhile(key => !key.Equals(_heroInfos[key].BaseCharacter.StringId)).ToList();
             foreach (String oldkey in oldKeys)
             {
@@ -80,10 +80,9 @@ namespace TOW_Core.ObjectDataExtensions
                 String newKey = oldInfo.BaseCharacter.HeroObject.GetInfoKey();
                 _heroInfos[newKey] = oldInfo;
                 _heroInfos.Remove(oldkey);
-            }
+            }*/
 
             bool brokenStatsDetected = false;
-            // After migrating old keys
             // Scrub broken stats
             foreach(String key in _heroInfos.Keys)
             {
@@ -176,6 +175,7 @@ namespace TOW_Core.ObjectDataExtensions
         private void OnSessionStart(CampaignGameStarter obj)
         {
             TryLoadCharacters(out _characterInfos);
+            DetectBrokenHeroes();
             _mainPartyInfo = MobileParty.MainParty.GetInfo();
         }
 
