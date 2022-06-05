@@ -17,5 +17,16 @@ namespace TOW_Core.HarmonyPatches
         {
             ____totalGenericImageCount = 7;
         }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(LoadingWindowViewModel), "Update")]
+        public static void PostFix2(LoadingWindowViewModel __instance)
+        {
+            var num = TaleWorlds.Engine.Utilities.GetNumberOfShaderCompilationsInProgress();
+            if(num > 0)
+            {
+                __instance.DescriptionText = "Shader compilation in progress. Remaining shaders to compile: " + num;
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
 
         public bool IsActive { get; private set; } = true;
         public QuestBattleTemplate QuestBattleTemplate => _template;
+        public Clan OwnerClan { get; private set; } = null;
 
         public bool IsQuestBattleUnderway { get; private set; }
 
@@ -106,6 +107,11 @@ namespace TOW_Core.CampaignSupport.QuestBattleLocation
             {
                 base.WaitMeshName = node.Attributes["wait_mesh"].Value;
             }
+        }
+
+        public void SetClan(Clan clan)
+        {
+            OwnerClan = clan;
         }
     }
 }
