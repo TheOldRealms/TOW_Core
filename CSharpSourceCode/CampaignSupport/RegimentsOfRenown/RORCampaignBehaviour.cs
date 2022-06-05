@@ -125,11 +125,13 @@ namespace TOW_Core.CampaignSupport.RegimentsOfRenown
         {
             var template = Settlement.CurrentSettlement.GetRoRTemplate();
             args.MenuTitle = new TextObject(template.RegimentHQName);
-            var intro = new TextObject("You have arrived at the {HQ_NAME}. {NEWLINE}{BLURB} {NEWLINE}{REFUSE}");
+            var intro = new TextObject("You have arrived at the {HQ_NAME}. {NEWLINE} {NEWLINE} {BLURB} {NEWLINE} {NEWLINE} {REFUSE} {NEWLINE} {NEWLINE} {EMPTY}");
             MBTextManager.SetTextVariable("HQ_NAME", template.RegimentHQName);
             MBTextManager.SetTextVariable("BLURB", template.MenuHeaderText);
             if(Clan.PlayerClan.Tier < 3) MBTextManager.SetTextVariable("REFUSE", "They refuse to deal with an unknown clan like yours. Come back when you have some renown.");
             else MBTextManager.SetTextVariable("REFUSE", " ");
+            if (!HasAvailableRoRUnits(Settlement.CurrentSettlement)) MBTextManager.SetTextVariable("EMPTY", "Currently there are no available Regiments of Renown to recruit. Check back in a week.");
+            else MBTextManager.SetTextVariable("EMPTY", " ");
             MBTextManager.SetTextVariable("ROR_HEADER", intro);
         }
 
@@ -205,6 +207,17 @@ namespace TOW_Core.CampaignSupport.RegimentsOfRenown
         {
             float ratio = 10 / tier;
             return MBRandom.RandomInt(1, (int)ratio * 3);
+        }
+
+        private bool HasAvailableRoRUnits(Settlement settlement)
+        {
+            Dictionary<CharacterObject, int> dictionary;
+            _rorSettlementDetails.TryGetValue(settlement, out dictionary);
+            if(dictionary != null)
+            {
+                return dictionary.Any(x => x.Value > 0);
+            }
+            return false;
         }
 
         private void TryRecruitTroopsAtIndex(int index)
