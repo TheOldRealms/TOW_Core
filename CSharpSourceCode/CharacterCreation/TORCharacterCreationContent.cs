@@ -16,6 +16,7 @@ using TOW_Core.ObjectDataExtensions;
 using TOW_Core.Utilities.Extensions;
 using TaleWorlds.ObjectSystem;
 using TOW_Core.Abilities.SpellBook;
+using TaleWorlds.CampaignSystem.Actions;
 
 namespace TOW_Core.CharacterCreation
 {
@@ -163,6 +164,11 @@ namespace TOW_Core.CharacterCreation
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAbility("HealingAOE");
+                ChangeRelations("priest");
+            }
+            if (selectedOption.OptionText == "Trainee Templar")
+            {
+                ChangeRelations("templar");
             }
             else if (selectedOption.OptionText == "Novice Necromancer")
             {
@@ -173,6 +179,7 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddKnownLore("MinorMagic");
                 Hero.MainHero.AddKnownLore("Necromancy");
                 Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
+                ChangeRelations("necromancer");
             }
             else if (selectedOption.OptionText == "Vampiric Nobility")
             {
@@ -184,6 +191,7 @@ namespace TOW_Core.CharacterCreation
                 Hero.MainHero.AddKnownLore("MinorMagic");
                 Hero.MainHero.AddKnownLore("Necromancy");
                 Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
+                ChangeRelations("vampire");
             }
         }
 
@@ -269,6 +277,39 @@ namespace TOW_Core.CharacterCreation
         private void OpenBannerSelectionScreen()
         {
             Game.Current.GameStateManager.PushState(Game.Current.GameStateManager.CreateState<BannerEditorState>(), 0);
+        }
+
+        private void ChangeRelations(string option)
+        {
+            switch (option)
+            {
+                case "priest":
+                case "templar":
+                    {
+                        CultureObject vc = MBObjectManager.Instance.GetObject<CultureObject>("khuzait");
+                        foreach (Kingdom kingdom in Kingdom.All)
+                        {
+                            if (kingdom.Culture == vc)
+                            {
+                                DeclareWarAction.Apply(kingdom, Clan.PlayerClan);
+                            }
+                        }
+                        break;
+                    }
+                case "vampire":
+                case "necromancer":
+                    {
+                        CultureObject empire = MBObjectManager.Instance.GetObject<CultureObject>("empire");
+                        foreach (Kingdom kingdom in Kingdom.All)
+                        {
+                            if (kingdom.Culture == empire)
+                            {
+                                DeclareWarAction.Apply(kingdom, Clan.PlayerClan);
+                            }
+                        }
+                        break;
+                    }
+            }
         }
     }
 }
