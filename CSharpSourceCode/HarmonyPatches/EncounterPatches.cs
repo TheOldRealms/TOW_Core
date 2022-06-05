@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
+using Helpers;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TOW_Core.CampaignSupport.QuestBattleLocation;
 
 namespace TOW_Core.HarmonyPatches
@@ -18,6 +20,24 @@ namespace TOW_Core.HarmonyPatches
                 {
                     ____mapEvent = Campaign.Current.MapEventManager.StartBattleMapEvent(____attackerParty, comp.QuestOpponentParty.Party);
                     __result = ____mapEvent;
+                }
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(PlayerEncounter), "Init", typeof(PartyBase), typeof(PartyBase), typeof(Settlement))]
+        public static void Postfix2(PartyBase attackerParty, PartyBase defenderParty, Settlement settlement = null)
+        {
+            if (defenderParty.MapEvent != null && settlement != null && defenderParty != MobileParty.MainParty.Party && attackerParty == MobileParty.MainParty.Party)
+            {
+                var mapEvent = defenderParty.MapEvent;
+                if (MapEventHelper.CanJoinBattle(MobileParty.MainParty, mapEvent, BattleSideEnum.Defender))
+                {
+                    MobileParty.MainParty.Party.MapEventSide = mapEvent.DefenderSide;
+                }
+                else if (MapEventHelper.CanJoinBattle(MobileParty.MainParty, mapEvent, BattleSideEnum.Attacker))
+                {
+                    MobileParty.MainParty.Party.MapEventSide = mapEvent.AttackerSide;
                 }
             }
         }
