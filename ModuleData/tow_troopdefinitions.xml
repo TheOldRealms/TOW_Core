@@ -360,7 +360,7 @@
       <EquipmentSet id="tor_empire_reiksguard_demigryph_innercircle_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_novice_engineer" default_group="infantry" level="6" name="{=str_tor_empire_novice_engineer}Novice Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level6" is_basic_troop="true">
+  <NPCCharacter id="tor_empire_novice_engineer" default_group="skirmisher" level="6" name="{=str_tor_empire_novice_engineer}Novice Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level6" is_basic_troop="true">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -374,7 +374,7 @@
       <EquipmentSet id="tor_empire_novice_engineer_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_trainee_artillery_crew" default_group="infantry" level="16" name="{=str_tor_empire_trainee_artillery_crew}Trainee Artillery Crewman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_empire_trainee_artillery_crew" default_group="skirmisher" level="16" name="{=str_tor_empire_trainee_artillery_crew}Trainee Artillery Crewman" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -386,7 +386,7 @@
       <EquipmentSet id="tor_empire_trainee_artillery_crew_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_apprentice_engineer" default_group="ranged" level="16" name="{=str_tor_empire_apprentice_engineer}Apprentice Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16">
+  <NPCCharacter id="tor_empire_apprentice_engineer" default_group="skirmisher" level="16" name="{=str_tor_empire_apprentice_engineer}Apprentice Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level16">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -410,7 +410,7 @@
       <EquipmentSet id="tor_empire_iron_company_guard_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_experienced_artillery_crew" default_group="infantry" level="21" name="{=str_tor_empire_experienced_artillery_crew}Experienced Artillery Crew" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_empire_experienced_artillery_crew" default_group="skirmisher" level="21" name="{=str_tor_empire_experienced_artillery_crew}Experienced Artillery Crew" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -422,7 +422,7 @@
       <EquipmentSet id="tor_empire_experienced_artillery_crew_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_associate_engineer" default_group="ranged" level="21" name="{=str_tor_empire_associate_engineer}Associate Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
+  <NPCCharacter id="tor_empire_associate_engineer" default_group="skirmisher" level="21" name="{=str_tor_empire_associate_engineer}Associate Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level21">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -446,7 +446,7 @@
       <EquipmentSet id="tor_empire_iron_company_troop_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_veteran_artillery_crew" default_group="infantry" level="26" name="{=str_tor_empire_veteran_artillery_crew}Veteran Artillery Crew" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+  <NPCCharacter id="tor_empire_veteran_artillery_crew" default_group="skirmisher" level="26" name="{=str_tor_empire_veteran_artillery_crew}Veteran Artillery Crew" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -456,7 +456,7 @@
       <EquipmentSet id="tor_empire_veteran_artillery_crew_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_empire_master_engineer" default_group="ranged" level="26" name="{=str_tor_empire_master_engineer}Master Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
+  <NPCCharacter id="tor_empire_master_engineer" default_group="skirmisher" level="26" name="{=str_tor_empire_master_engineer}Master Engineer" occupation="Soldier" culture="Culture.empire" skill_template="SkillSet.tow_skills_level26">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
@@ -918,6 +918,16 @@
     <Equipments>
       <EquipmentSet id="tor_chaos_khorne_warrior_template" />
       <EquipmentSet id="tor_chaos_khorne_warrior_template" civilian="true" />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="tor_chaos_chaos_knight" default_group="cavalry" level="21" name="{=str_tor_chaos_chaos_knight}Chaos Knight" occupation="Soldier" culture="Culture.chaos_culture" skill_template="SkillSet.tow_skills_level21">
+    <face>
+      <face_key_template value="BodyProperty.brute" />
+    </face>
+    <upgrade_targets />
+    <Equipments>
+      <EquipmentSet id="tor_chaos_chaos_knight_template" />
+      <EquipmentSet id="tor_chaos_chaos_knight_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
   <NPCCharacter id="tor_beast_ungor" default_group="infantry" level="11" name="{=str_tor_beast_ungor}Ungor" occupation="Bandit" culture="Culture.steppe_bandits" skill_template="SkillSet.tow_skills_level11" is_basic_troop="true">

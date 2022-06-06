@@ -374,7 +374,7 @@
   </EquipmentRoster>
   <EquipmentRoster id="tor_empire_veteran_swordsman_template" culture="Culture.empire">
     <EquipmentSet>
-      <Equipment slot="Item0" id="Item.vlandia_sword_1_t3" />
+      <Equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
       <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_008" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_003" />
@@ -383,7 +383,7 @@
       <Equipment slot="Leg" id="Item.tor_empire_leg_boots_free_company_001" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="Item.vlandia_sword_1_t3" />
+      <Equipment slot="Item0" id="Item.vlandia_sword_1_t2" />
       <Equipment slot="Item1" id="Item.tor_empire_weapon_shield_008" />
       <Equipment slot="Head" id="Item.tor_empire_head_helm_001" />
       <Equipment slot="Body" id="Item.tor_empire_body_undercloth_statetroop_003" />
@@ -3796,7 +3796,7 @@
       <Equipment slot="HorseHarness" id="Item.northern_light_harness" />
     </EquipmentSet>
     <EquipmentSet>
-      <Equipment slot="Item0" id="Item.tor_empir_weapone_gun_empire_repeater_003" />
+      <Equipment slot="Item0" id="Item.tor_empire_weapon_gun_empire_repeater_003" />
       <Equipment slot="Item1" id="Item.tor_neutral_weapon_ammo_musket_ball" />
       <Equipment slot="Item2" id="Item.tor_neutral_weapon_ammo_musket_ball" />
       <Equipment slot="Item3" id="Item.vlandia_sword_4_t4" />
@@ -3809,7 +3809,7 @@
       <Equipment slot="HorseHarness" id="Item.northern_light_harness" />
     </EquipmentSet>
     <EquipmentSet civilian="true">
-      <Equipment slot="Item0" id="Item.tor_empir_weapone_gun_empire_repeater_003" />
+      <Equipment slot="Item0" id="Item.tor_empire_weapon_gun_empire_repeater_003" />
       <Equipment slot="Item1" id="Item.tor_neutral_weapon_ammo_musket_ball" />
       <Equipment slot="Item2" id="Item.tor_neutral_weapon_ammo_musket_ball" />
       <Equipment slot="Item3" id="Item.vlandia_sword_4_t4" />
@@ -4838,6 +4838,32 @@
       <Equipment slot="Leg" id="Item.tor_vc_leg_boots_red_duke" />
       <Equipment slot="Horse" id="Item.tor_vc_mount_horse_zombie_horse_001" />
       <Equipment slot="HorseHarness" id="Item.tor_vc_mountarmor_horsearmor_vampire_001" />
+    </EquipmentSet>
+  </EquipmentRoster>
+  <EquipmentRoster id="tor_chaos_chaos_knight_template" culture="Culture.chaos_culture">
+    <EquipmentSet>
+      <Equipment slot="Item0" id="Item.tor_chaos_weapon_metal_lance" />
+      <Equipment slot="Item1" id="Item.tor_chaos_weapon_shield_001" />
+      <Equipment slot="Item2" id="Item.tor_chaos_weapon_sword_001" />
+      <Equipment slot="Head" id="Item.tor_chaos_head_helm_chosen_002" />
+      <Equipment slot="Body" id="Item.tor_chaos_body_armor_chaos_knight_001" />
+      <Equipment slot="Cape" id="Item.tor_chaos_shoulder_pauldron_chaos_knight_001" />
+      <Equipment slot="Gloves" id="Item.tor_chaos_arm_gauntlet_chaos_knight_001" />
+      <Equipment slot="Leg" id="Item.tor_chaos_leg_boots_chaos_knight_001" />
+      <Equipment slot="Horse" id="Item.charger" />
+      <Equipment slot="HorseHarness" id="Item.battania_horse_harness_scaled" />
+    </EquipmentSet>
+    <EquipmentSet civilian="true">
+      <Equipment slot="Item0" id="Item.tor_chaos_weapon_metal_lance" />
+      <Equipment slot="Item1" id="Item.tor_chaos_weapon_shield_001" />
+      <Equipment slot="Item2" id="Item.tor_chaos_weapon_sword_001" />
+      <Equipment slot="Head" id="Item.tor_chaos_head_helm_chosen_002" />
+      <Equipment slot="Body" id="Item.tor_chaos_body_armor_chaos_knight_001" />
+      <Equipment slot="Cape" id="Item.tor_chaos_shoulder_pauldron_chaos_knight_001" />
+      <Equipment slot="Gloves" id="Item.tor_chaos_arm_gauntlet_chaos_knight_001" />
+      <Equipment slot="Leg" id="Item.tor_chaos_leg_boots_chaos_knight_001" />
+      <Equipment slot="Horse" id="Item.charger" />
+      <Equipment slot="HorseHarness" id="Item.battania_horse_harness_scaled" />
     </EquipmentSet>
   </EquipmentRoster>
   <EquipmentRoster id="tor_dog_the_enslaved_template" culture="Culture.khuzait">

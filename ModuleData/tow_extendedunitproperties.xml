@@ -867,6 +867,17 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_chaos_knight">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_beast_ungor">
     <Abilities />
     <Attributes>
@@ -1414,7 +1425,7 @@
   <CharacterExtendedInfo id="tor_ror_sternieste_black_knight" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
-      <string>Unbreakable</string>
+      <string>Undead</string>
     </Attributes>
     <Resistances />
     <DamageAmplifiers />
@@ -1425,7 +1436,7 @@
   <CharacterExtendedInfo id="tor_ror_sternieste_reaver" VoiceClassName="skeleton">
     <Abilities />
     <Attributes>
-      <string>Unbreakable</string>
+      <string>Undead</string>
     </Attributes>
     <Resistances />
     <DamageAmplifiers />

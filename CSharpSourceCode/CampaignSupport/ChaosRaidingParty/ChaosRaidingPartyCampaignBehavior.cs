@@ -112,7 +112,7 @@ namespace TOW_Core.CampaignSupport.ChaosRaidingParty
                 if (questBattleComponent.RaidingParties.Count < 5)
                 {
                     var find = FindAllBelongingToSettlement("Averheim", "Wuppertal", "Grenzstadt").GetRandomElement();
-                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(35, 70));
+                    var chaosRaidingParty = ChaosRaidingPartyComponent.CreateChaosRaidingParty("chaos_clan_1_party_" + questBattleComponent.RaidingParties.Count + 1, settlement, questBattleComponent, TOWMath.GetRandomInt(75, 99));
                     chaosRaidingParty.Ai.SetAIState(AIState.Raiding);
                     chaosRaidingParty.SetMoveRaidSettlement(find);
                     ((ChaosRaidingPartyComponent) chaosRaidingParty.PartyComponent).Target = find;

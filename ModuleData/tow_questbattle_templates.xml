@@ -6,9 +6,10 @@
     <InactiveDescription>The portal lies dormant. Come back at a later time.</InactiveDescription>
     <TroopTypes>
       <QuestBattleLocationNpcTuple TroopId="tor_chaos_nurgle_warrior" Count="15" IsFriendly="false" />
-	  <QuestBattleLocationNpcTuple TroopId="tor_chaos_nurgle_warrior_002" Count="15" IsFriendly="false" />
+	    <QuestBattleLocationNpcTuple TroopId="tor_chaos_nurgle_warrior_002" Count="15" IsFriendly="false" />
       <QuestBattleLocationNpcTuple TroopId="tor_chaos_chosen" Count="10" IsFriendly="false" />
-	  <QuestBattleLocationNpcTuple TroopId="tor_chaos_khorne_warrior" Count="20" IsFriendly="false" />
+	    <QuestBattleLocationNpcTuple TroopId="tor_chaos_khorne_warrior" Count="20" IsFriendly="false" />
+      <QuestBattleLocationNpcTuple TroopId="tor_chaos_chaos_knight" Count="10" IsFriendly="false" />
     </TroopTypes>
   </QuestBattleTemplate>
 </ArrayOfQuestBattleTemplate>
