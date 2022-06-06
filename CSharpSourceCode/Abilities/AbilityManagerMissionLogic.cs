@@ -273,7 +273,7 @@ namespace TOW_Core.Abilities
 
         public override void OnAgentCreated(Agent agent)
         {
-            if (IsCastingMission(Mission))
+            if (IsCastingMission())
             {
                 if (agent.IsAbilityUser())
                 {
@@ -286,9 +286,12 @@ namespace TOW_Core.Abilities
             }
         }
 
-        public static bool IsCastingMission(Mission mission)
+        public bool IsCastingMission()
         {
-            return !mission.IsFriendlyMission && mission.CombatType != Mission.MissionCombatType.ArenaCombat && mission.CombatType != Mission.MissionCombatType.NoCombat;
+            return !Mission.IsFriendlyMission &&
+                    Mission.CombatType != Mission.MissionCombatType.ArenaCombat &&
+                    Mission.CombatType != Mission.MissionCombatType.NoCombat;
+;
         }
 
         private bool IsAbilityModeAvailableForMainAgent()
@@ -296,7 +299,10 @@ namespace TOW_Core.Abilities
             return Agent.Main != null &&
                    Agent.Main.IsActive() &&
                    !ScreenManager.GetMouseVisibility() &&
-                   IsCastingMission(Mission) &&
+                   IsCastingMission() &&
+                   !(ScreenManager.TopScreen as MissionScreen).IsPhotoModeEnabled &&
+                   (Mission.Mode == MissionMode.Battle ||
+                    Mission.Mode == MissionMode.Stealth) &&
                    _abilityComponent != null &&
                    _abilityComponent.CurrentAbility != null;
                    

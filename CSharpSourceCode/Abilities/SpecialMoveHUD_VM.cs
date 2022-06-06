@@ -14,6 +14,7 @@ namespace TOW_Core.Abilities
 
         public void UpdateProperties()
         {
+            IsVisible = true;
             ChargeLevel = Convert.ToInt32(SpecialMove.ChargeLevel);
         }
 

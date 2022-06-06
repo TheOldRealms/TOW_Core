@@ -1,4 +1,6 @@
 ﻿using TaleWorlds.Engine.GauntletUI;
+using TaleWorlds.Core;
+using TaleWorlds.Engine.Screens;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Missions;
 
@@ -41,15 +43,10 @@ namespace TOW_Core.Abilities
                 if (component != null)
                 {
                     _hasAbility = component.CurrentAbility != null;
-                    if (_hasAbility)
-                    {
-                        _abilityHUD_VM.IsVisible = true;
-                    }
                     var specialMove = component.SpecialMove;
                     if (specialMove != null)
                     {
                         _specialMoveHUD_VM.SpecialMove = specialMove;
-                        _specialMoveHUD_VM.IsVisible = true;
                         _hasSpecialMove = true;
                     }
                 }
@@ -60,7 +57,15 @@ namespace TOW_Core.Abilities
         {
             if (_isInitialized)
             {
-                if (Agent.Main != null && Agent.Main.State == TaleWorlds.Core.AgentState.Active)
+                bool canHudBeVisible = Agent.Main != null &&
+                                       Agent.Main.State == AgentState.Active &&
+                                       (Mission.Current.Mode == MissionMode.Battle || 
+                                       Mission.Current.Mode == MissionMode.Stealth) &&
+                                       MissionScreen.CustomCamera == null &&
+                                       !MissionScreen.IsViewingCharacter() &&
+                                       !MissionScreen.IsPhotoModeEnabled &&
+                                       !ScreenManager.GetMouseVisibility();
+                if (canHudBeVisible)
                 {
                     if (_hasAbility)
                     {
