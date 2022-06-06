@@ -81,6 +81,7 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    MissionScreen.CustomCamera == null &&
                    (MissionScreen.OrderFlag == null || !MissionScreen.OrderFlag.IsVisible) &&
                    !MissionScreen.IsViewingCharacter() &&
+                   !MissionScreen.IsPhotoModeEnabled &&
                    !MBEditor.EditModeEnabled &&
                    BannerlordConfig.DisplayTargetingReticule &&
                    !ScreenManager.GetMouseVisibility();
@@ -136,18 +137,6 @@ namespace TOW_Core.Battle.CrosshairMissionBehavior
                    Agent.Main.GetCurrentActionType(1) == Agent.ActionCodeType.ReadyRanged &&
                    Agent.Main.WieldedWeapon.Item.StringId.Contains("longrifle") &&
                    IsRightAngleToShoot();
-        }
-
-        public override void OnPhotoModeActivated()
-        {
-            base.OnPhotoModeActivated();
-            _weaponCrosshair.OnPhotoModeActivated();
-        }
-
-        public override void OnPhotoModeDeactivated()
-        {
-            base.OnPhotoModeDeactivated();
-            _weaponCrosshair.OnPhotoModeDeactivated();
         }
 
         private void ChangeAbilityCrosshair(AbilityCrosshair crosshair)

@@ -205,16 +205,6 @@ namespace TOW_Core.Battle.Crosshairs
             }
         }
 
-        public void OnPhotoModeActivated()
-        {
-            this._weaponLayer._gauntletUIContext.ContextAlpha = 0f;
-        }
-
-        public void OnPhotoModeDeactivated()
-        {
-            _weaponLayer._gauntletUIContext.ContextAlpha = 1f;
-        }
-
         private void OnCombatLogGenerated(CombatLogData logData)
         {
             bool isAttackerAgentMine = logData.IsAttackerAgentMine;
