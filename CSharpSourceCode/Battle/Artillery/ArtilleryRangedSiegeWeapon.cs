@@ -140,6 +140,7 @@ namespace TOW_Core.Battle.Artillery
 
         protected override void OnTick(float dt)
         {
+            CheckNullReloaderOriginalPoint();
             base.OnTick(dt);
             HandleAnimations();
             HandleAmmoPickup();
@@ -148,6 +149,15 @@ namespace TOW_Core.Battle.Artillery
             HandleWaitingTimer();
             UpdateRecoilEffect(dt);
             UpdateWheelRotation(dt);
+        }
+
+        private void CheckNullReloaderOriginalPoint()
+        {
+            if (ReloaderAgentOriginalPoint == null && ReloaderAgent != null)
+            {
+                ReloaderAgent.StopUsingGameObject(true, true);
+                ReloaderAgent = null;
+            }
         }
 
         private void HandleWaitingTimer()
