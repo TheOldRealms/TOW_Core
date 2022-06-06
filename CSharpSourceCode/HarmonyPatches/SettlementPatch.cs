@@ -15,7 +15,9 @@ namespace TOW_Core.HarmonyPatches
         {
             if (__instance.GetComponent<QuestBattleComponent>() != null)
             {
-                Clan clan = objectManager.ReadObjectReferenceFromXml<Clan>("owner", node);
+                string clanName = node.Attributes["owner"].Value;
+                clanName = clanName.Split('.')[1];
+                Clan clan = Clan.FindFirst(x => x.StringId == clanName);
                 if (clan != null)
                 {
                     __instance.GetComponent<QuestBattleComponent>().SetClan(clan);
