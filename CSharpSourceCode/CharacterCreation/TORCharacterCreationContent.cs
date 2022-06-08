@@ -162,6 +162,7 @@ namespace TOW_Core.CharacterCreation
             if (selectedOption.OptionText == "Warrior Priest Acolyte")
             {
                 Hero.MainHero.AddAttribute("AbilityUser");
+                Hero.MainHero.AddAttribute("Priest");
                 Hero.MainHero.AddAbility("HealingAOE");
             }
             else if (selectedOption.OptionText == "Novice Necromancer")

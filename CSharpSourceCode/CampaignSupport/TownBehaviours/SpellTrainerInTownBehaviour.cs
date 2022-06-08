@@ -24,6 +24,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private readonly string _vampireTrainerId = "tor_spelltrainer_vc_0";
         private string _testResult = "";
         private Dictionary<string, string> _settlementToTrainerMap = new Dictionary<string, string>();
+        private readonly float _testSuccessChance = 1f;
 
         public override void RegisterEvents()
         {
@@ -239,7 +240,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private bool magictestcondition()
         {
             var flag = false;
-            flag = !Hero.MainHero.IsVampire() && !Hero.MainHero.IsSpellCaster() && _testResult == "";
+            flag = !Hero.MainHero.IsVampire() && !Hero.MainHero.IsSpellCaster() && !Hero.MainHero.HasAttribute("Priest") && _testResult == "";
             if (flag)
             {
                 string text = "";
@@ -444,7 +445,7 @@ namespace TOW_Core.CampaignSupport.TownBehaviours
         private void determinetestoutcome()
         {
             var rng = MBRandom.RandomFloatRanged(0, 1);
-            if (rng <= 0.25f) _testResult = "success";
+            if (rng <= _testSuccessChance) _testResult = "success";
             else _testResult = "failure";
         }
 
