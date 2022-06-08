@@ -1,10 +1,12 @@
 ﻿using HarmonyLib;
 using Helpers;
 using System;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Library;
 using TOW_Core.Utilities.Extensions;
+using System.Linq;
 
 namespace TOW_Core.HarmonyPatches
 {
@@ -36,6 +38,16 @@ namespace TOW_Core.HarmonyPatches
                 __result = Math.Min(Math.Max(MathF.Ceiling(((float)__instance.Level - 5f) / 5f), 0), 9);
             }
             return false;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(CharacterHelper), "GetTroopTree")]
+		public static void TroopTreePatch(ref IEnumerable<CharacterObject> __result, CharacterObject baseTroop)
+        {
+			if(!__result.ToList().Any())
+            {
+				__result = CharacterHelper.GetTroopTree(baseTroop);
+            }
         }
 
         //Copied and modified from DesertionCampaignBehaviour.PartiesCheckDesertionDueToPartySizeExceedsPaymentRatio
