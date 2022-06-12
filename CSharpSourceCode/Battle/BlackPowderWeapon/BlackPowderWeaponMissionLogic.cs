@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TaleWorlds.Engine;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -51,24 +51,11 @@ namespace TOW_Core.Battle.FireArms
                     int selected = this._random.Next(0, this._soundIndex.Length - 1);
                     Mission.MakeSound(this._soundIndex[selected], position, false, true, -1, -1);
                 }
-                // alarm enemies if it's hideout mission
-                if (!areEnemiesAlarmed)
-                {
-                    areEnemiesAlarmed = true;
-                    var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();
-                    if (spawnLogic != null)
-                    {
-                        foreach (var agent in base.Mission.PlayerEnemyTeam.TeamAgents)
-                        {
-                            spawnLogic.OnAgentAlarmedStateChanged(agent, Agent.AIStateFlag.Alarmed);
-                            agent.SetWatchState(Agent.WatchState.Alarmed);
-                        }
-                    }
-                }
+              
                 // run firearms script
                 if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
                 {
-                    if ((shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Boulder))
+                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
                     {
                         Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
                                                                m.Weapon.Item.StringId.Contains("ammo_grenade") &&
