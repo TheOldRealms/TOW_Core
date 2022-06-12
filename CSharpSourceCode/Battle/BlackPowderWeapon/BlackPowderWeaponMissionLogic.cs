@@ -68,7 +68,7 @@ namespace TOW_Core.Battle.FireArms
                 // run firearms script
                 if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
                 {
-                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
+                    if ((shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Boulder))
                     {
                         Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
                                                                m.Weapon.Item.StringId.Contains("ammo_grenade") &&
@@ -79,6 +79,7 @@ namespace TOW_Core.Battle.FireArms
                         }
                     }
                     else
+                    if(shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Crossbow)
                     {
                         DoShotgunShot(shooterAgent, position, orientation, 4);
                     }
@@ -107,6 +108,9 @@ namespace TOW_Core.Battle.FireArms
             {
                 weapon = shooterAgent.Equipment[index];
                 // Weapon hit points mean amount of ammo
+                if(weapon.CurrentUsageItem==null)
+                    continue;
+                
                 if (weapon.CurrentUsageItem.WeaponClass == shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass && weapon.HitPoints > 0)
                 {
                     foundAmmoAmount += Math.Min(requiredAmmoAmount, weapon.HitPoints);
