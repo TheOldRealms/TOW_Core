@@ -4,8 +4,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using System.Linq;
-using TOW_Core.Battle.TriggeredEffect.Scripts;
-using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -21,7 +19,6 @@ namespace TOW_Core.Battle.FireArms
             {
                 this._soundIndex[i] = SoundEvent.GetEventIdFromString("musket_fire_sound_" + (i + 1));
             }
-
             this._random = new Random();
         }
 
@@ -30,6 +27,7 @@ namespace TOW_Core.Battle.FireArms
             Mission.AddParticleSystemBurstByName(particleEffectId, frame, false);
         }
 
+        
         private void CreateMuzzleFireSound(Vec3 position)
         {
             if (this._soundIndex.Length > 0)
@@ -68,6 +66,7 @@ namespace TOW_Core.Battle.FireArms
                     SkipReloadPhase(shooterAgent, weaponIndex);
                 }
             }
+            
         }
 
         private bool CanConsumeAmmoOfAgent(int amount, Agent agent, WeaponClass ammoType)
@@ -91,6 +90,12 @@ namespace TOW_Core.Battle.FireArms
             //this script seem not work as intended the reload phase is not automatically finalized.
             MissionEquipment equipment = agent.Equipment;
             equipment.SetReloadPhaseOfSlot(index, agent.WieldedWeapon.ReloadPhaseCount);
+        }
+        
+        private void RemoveLastProjectile(Agent shooterAgent)
+        {
+            var falseMissle = Mission.Missiles.FirstOrDefault(missle => missle.ShooterAgent == shooterAgent);
+            if (falseMissle != null) Mission.RemoveMissileAsClient(falseMissle.Index);
         }
 
         private void RestoreAmmo(Agent agent, WeaponClass ammoType)
@@ -123,9 +128,9 @@ namespace TOW_Core.Battle.FireArms
 
             return false;
         }
-
+        
         /// <summary>
-        /// Allows to Create a scattered shot with several projectiles at a given position.
+        /// Allows to Create a scattered shot with several projectiles at a given position. Does not require a gun to be executed.
         /// </summary>
         public void ScatterShot(Agent shooterAgent, float accuracy, MissionWeapon projectileType, Vec3 shotPosition,
             Mat3 shotOrientation, float missleSpeed,short scatterShotAmount)
@@ -138,12 +143,26 @@ namespace TOW_Core.Battle.FireArms
             }
         }
 
-        private void RemoveLastProjectile(Agent shooterAgent)
+
+        public override void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction, Agent attackerAgent, Agent attachedAgent,
+            sbyte attachedBoneIndex)
         {
-            var falseMissle = Mission.Missiles.FirstOrDefault(missle => missle.ShooterAgent == shooterAgent);
-            if (falseMissle != null) Mission.RemoveMissileAsClient(falseMissle.Index);
+            base.OnMissileCollisionReaction(collisionReaction, attackerAgent, attachedAgent, attachedBoneIndex);
+
+            if (collisionReaction != Mission.MissileCollisionReaction.BecomeInvisible) return;
+            var missileObj = Mission.Missiles.FirstOrDefault(missile => missile.ShooterAgent == attackerAgent);
+                
+            if (missileObj != null&&missileObj.Weapon.Item.StringId.Contains("grenade"))
+            {
+                var frame = missileObj.Entity.GetFrame();
+                CreateSmokeParticles(frame, "psys_grenade_explosion_1");
+            }
         }
-        
+
+
+
+
+
         private void DoTwoBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
         {
             var weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
