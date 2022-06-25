@@ -13,9 +13,11 @@ namespace TOW_Core.Battle.FireArms
         private Random _random;
         private bool areEnemiesAlarmed = false;
 
+        private const int availableShotSounds = 5;
+
         public BlackPowderWeaponMissionLogic()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < availableShotSounds; i++)
             {
                 this._soundIndex[i] = SoundEvent.GetEventIdFromString("musket_fire_sound_" + (i + 1));
             }
@@ -87,7 +89,7 @@ namespace TOW_Core.Battle.FireArms
 
         private void SkipReloadPhase(Agent agent, EquipmentIndex index)
         {
-            //this script seem not work as intended the reload phase is not automatically finalized.
+            // TODO this script seem not work as intended the reload phase is not automatically finalized.
             MissionEquipment equipment = agent.Equipment;
             equipment.SetReloadPhaseOfSlot(index, agent.WieldedWeapon.ReloadPhaseCount);
         }
@@ -158,39 +160,7 @@ namespace TOW_Core.Battle.FireArms
                 CreateSmokeParticles(frame, "psys_grenade_explosion_1");
             }
         }
-
-
-
-
-
-        private void DoTwoBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
-        {
-            var weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
-            var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-            var pos = position;
-            pos.y -= 0.1f;
-            Mission.AddCustomMissile(shooterAgent, missile, pos, orientation.f, orientation, weaponData.MissileSpeed,
-                weaponData.MissileSpeed, false, null);
-        }
-
-        private void DoFourBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
-        {
-            var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
-            var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-            Mat3 orient1 = orientation;
-            orient1.RotateAboutUp(10f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient1, weaponData.MissileSpeed,
-                weaponData.MissileSpeed, false, null);
-            Mat3 orient2 = orientation;
-            orient2.RotateAboutUp(20f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient2, weaponData.MissileSpeed,
-                weaponData.MissileSpeed, false, null);
-            Mat3 orient3 = orientation;
-            orient3.RotateAboutUp(-15f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient3, weaponData.MissileSpeed,
-                weaponData.MissileSpeed, false, null);
-        }
-
+        
         private Mat3 GetRandomOrientation(Mat3 orientation, float scattering)
         {
             float rand1 = MBRandom.RandomFloatRanged(-scattering, scattering);
