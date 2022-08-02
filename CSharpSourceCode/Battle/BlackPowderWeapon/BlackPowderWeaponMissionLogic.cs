@@ -3,10 +3,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using SandBox.Source.Missions;
 using System.Linq;
-using TOW_Core.Battle.TriggeredEffect.Scripts;
-using TOW_Core.Battle.TriggeredEffect;
 
 namespace TOW_Core.Battle.FireArms
 {
@@ -16,151 +13,154 @@ namespace TOW_Core.Battle.FireArms
         private Random _random;
         private bool areEnemiesAlarmed = false;
 
+        private const int availableShotSounds = 5;
+
         public BlackPowderWeaponMissionLogic()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < availableShotSounds; i++)
             {
                 this._soundIndex[i] = SoundEvent.GetEventIdFromString("musket_fire_sound_" + (i + 1));
             }
             this._random = new Random();
         }
 
-        public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position, Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
+        private void CreateSmokeParticles(MatrixFrame frame, string particleEffectId)
+        {
+            Mission.AddParticleSystemBurstByName(particleEffectId, frame, false);
+        }
+
+        
+        private void CreateMuzzleFireSound(Vec3 position)
+        {
+            if (this._soundIndex.Length > 0)
+            {
+                int selected = this._random.Next(0, this._soundIndex.Length - 1);
+                Mission.MakeSound(this._soundIndex[selected], position, false, true, -1, -1);
+            }
+        }
+
+        public override void OnAgentShootMissile(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 position,
+            Vec3 velocity, Mat3 orientation, bool hasRigidBody, int forcedMissileIndex)
         {
             var itemUsage = shooterAgent.WieldedWeapon.CurrentUsageItem.ItemUsage;
-            if (shooterAgent.WieldedWeapon.Item.Type == ItemObject.ItemTypeEnum.Thrown)
-            {
-                Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                                               m.Weapon.Item.StringId.Contains("hand_grenade") &&
-                                                                               !m.Entity.HasScriptOfType<HandGrenadeScript>());
-                if (grenade != null)
-                {
-                    AddMissileScript<HandGrenadeScript>(grenade, "grenade_explosion");
-                }
-            }
+            var succesfulShot = false;
             if (itemUsage.Contains("handgun") || itemUsage.Contains("pistol"))
             {
-                var frame = new MatrixFrame(orientation, position);
-                // run particles of smoke
-                var offset = (shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponLength + 30) / 100;
-                frame.Advance(offset);
-                Mission.AddParticleSystemBurstByName("handgun_shoot_2", frame, false);
-                // play sound of shot
-                if (this._soundIndex.Length > 0)
-                {
-                    int selected = this._random.Next(0, this._soundIndex.Length - 1);
-                    Mission.MakeSound(this._soundIndex[selected], position, false, true, -1, -1);
-                }
-                // alarm enemies if it's hideout mission
-                if (!areEnemiesAlarmed)
-                {
-                    areEnemiesAlarmed = true;
-                    var spawnLogic = Mission.Current.GetMissionBehavior<HideoutMissionController>();
-                    if (spawnLogic != null)
-                    {
-                        foreach (var agent in base.Mission.PlayerEnemyTeam.TeamAgents)
-                        {
-                            spawnLogic.OnAgentAlarmedStateChanged(agent, Agent.AIStateFlag.Alarmed);
-                            agent.SetWatchState(Agent.WatchState.Alarmed);
-                        }
-                    }
-                }
                 // run firearms script
                 if (shooterAgent.WieldedWeapon.Item.StringId.Contains("blunderbuss"))
                 {
-                    if (shooterAgent.WieldedWeapon.AmmoWeapon.Item.StringId.Contains("grenade"))
-                    {
-                        Mission.Missile grenade = Mission.Missiles.FirstOrDefault(m => m.ShooterAgent == shooterAgent &&
-                                                               m.Weapon.Item.StringId.Contains("ammo_grenade") &&
-                                                               !m.Entity.HasScriptOfType<GrenadeScript>());
-                        if (grenade != null)
-                        {
-                            AddMissileScript<GrenadeScript>(grenade, "grenade_explosion");
-                        }
-                    }
-                    else
-                    {
-                        DoShotgunShot(shooterAgent, position, orientation, 4);
-                    }
+                    succesfulShot = TryShotgunShot(shooterAgent, weaponIndex, position, orientation, 6, 4);
                 }
-                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("two_barrels"))
+                else
                 {
-                    DoTwoBarrelsShot(shooterAgent, position, orientation);
+                    succesfulShot = true; //no requirement regular guns logic
                 }
-                else if (shooterAgent.WieldedWeapon.Item.StringId.Contains("four_barrels"))
+
+                if (succesfulShot)
                 {
-                    DoFourBarrelsShot(shooterAgent, position, orientation);
+                    var frame = new MatrixFrame(orientation, position);
+                    frame.Advance((float)((shooterAgent.WieldedWeapon.CurrentUsageItem.WeaponLength + 20) / 100));
+                    CreateSmokeParticles(frame, "handgun_shoot_2");
+                    CreateMuzzleFireSound(position);
+                }
+                else
+                {
+                    SkipReloadPhase(shooterAgent, weaponIndex);
                 }
             }
+            
         }
 
+        private bool CanConsumeAmmoOfAgent(int amount, Agent agent, WeaponClass ammoType)
+        {
+            MissionEquipment equipment = agent.Equipment;
+            var d = agent.WieldedWeapon.CurrentUsageIndex;
+            EquipmentIndex equipmentIndex = (EquipmentIndex)equipment.GetAmmoSlotIndexOfWeapon(ammoType);
+            var currentAmmo = equipment.GetAmmoAmount(ammoType);
+            if (currentAmmo >= amount)
+            {
+                short newAmount = (short)(currentAmmo - amount);
+                agent.SetWeaponAmountInSlot(equipmentIndex, newAmount, false);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void SkipReloadPhase(Agent agent, EquipmentIndex index)
+        {
+            // TODO this script seem not work as intended the reload phase is not automatically finalized.
+            MissionEquipment equipment = agent.Equipment;
+            equipment.SetReloadPhaseOfSlot(index, agent.WieldedWeapon.ReloadPhaseCount);
+        }
+        
+        private void RemoveLastProjectile(Agent shooterAgent)
+        {
+            var falseMissle = Mission.Missiles.FirstOrDefault(missle => missle.ShooterAgent == shooterAgent);
+            if (falseMissle != null) Mission.RemoveMissileAsClient(falseMissle.Index);
+        }
+
+        private void RestoreAmmo(Agent agent, WeaponClass ammoType)
+        {
+            MissionEquipment equipment = agent.Equipment;
+            EquipmentIndex equipmentIndex = (EquipmentIndex)equipment.GetAmmoSlotIndexOfWeapon(ammoType);
+            short restoredAmmo = (short)(equipment.GetAmmoAmount(ammoType) + 1);
+            agent.SetWeaponAmountInSlot(equipmentIndex, restoredAmmo, false);
+        }
+
+        private bool TryShotgunShot(Agent shooterAgent, EquipmentIndex weaponIndex, Vec3 shotPosition,
+            Mat3 shotOrientation, short scatterShots, short requiredAmmoAmount)
+        {
+            MissionWeapon weaponAtIndex = shooterAgent.Equipment[weaponIndex];
+            var weaponData = weaponAtIndex.CurrentUsageItem;
+            if (weaponData != null && weaponAtIndex.CurrentUsageItem.IsRangedWeapon)
+            {
+                RemoveLastProjectile(shooterAgent);
+                RestoreAmmo(shooterAgent, weaponData.AmmoClass);
+                if (!weaponAtIndex.AmmoWeapon.IsEmpty)
+                {
+                    var accuracy = 1f / (weaponData.Accuracy * 1.2f); //this should be definable via XML or other data format.
+                    if (CanConsumeAmmoOfAgent(requiredAmmoAmount, shooterAgent, weaponData.AmmoClass))
+                    {
+                        ScatterShot(shooterAgent, accuracy, weaponAtIndex.AmmoWeapon, shotPosition, shotOrientation, weaponData.MissileSpeed, scatterShots);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        
         /// <summary>
-        /// The script will check each ammo weapon (that fits current usage of shooter's weapon) for bullets to do blunderbuss shot. 
-        /// It can use multiple ammo weapons to collect required amount of bullets.
+        /// Allows to Create a scattered shot with several projectiles at a given position. Does not require a gun to be executed.
         /// </summary>
-        /// <param name="requiredAmmoAmount">Max amount of bullets to do blunderbuss shot.</param>
-        private void DoShotgunShot(Agent shooterAgent, Vec3 shotPosition, Mat3 shotOrientation, short requiredAmmoAmount)
+        public void ScatterShot(Agent shooterAgent, float accuracy, MissionWeapon projectileType, Vec3 shotPosition,
+            Mat3 shotOrientation, float missleSpeed,short scatterShotAmount)
         {
-            MissionWeapon weapon = MissionWeapon.Invalid;
-            short foundAmmoAmount = 0;
-            for (EquipmentIndex index = EquipmentIndex.WeaponItemBeginSlot; index < EquipmentIndex.NumAllWeaponSlots; index++)
+            for (int i = 0; i < scatterShotAmount; i++)
             {
-                weapon = shooterAgent.Equipment[index];
-                // Weapon hit points mean amount of ammo
-                if (weapon.CurrentUsageItem.WeaponClass == shooterAgent.WieldedWeapon.CurrentUsageItem.AmmoClass && weapon.HitPoints > 0)
-                {
-                    foundAmmoAmount += Math.Min(requiredAmmoAmount, weapon.HitPoints);
-                    short newAmount = (short)(weapon.HitPoints - Math.Min(foundAmmoAmount, weapon.HitPoints));
-                    shooterAgent.SetWeaponAmountInSlot(index, newAmount, false);
-                    if (foundAmmoAmount == requiredAmmoAmount)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                var deviation = GetRandomOrientation(shotOrientation, accuracy);
+                Mission.AddCustomMissile(shooterAgent, projectileType, shotPosition, deviation.f, deviation,
+                    missleSpeed, missleSpeed, false, null);
             }
+        }
 
-            WeaponComponentData weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
-            float scattering = 1f / (weaponData.Accuracy * 1.2f);
-            while (foundAmmoAmount > 0)
+
+        public override void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction, Agent attackerAgent, Agent attachedAgent,
+            sbyte attachedBoneIndex)
+        {
+            base.OnMissileCollisionReaction(collisionReaction, attackerAgent, attachedAgent, attachedBoneIndex);
+
+            if (collisionReaction != Mission.MissileCollisionReaction.BecomeInvisible) return;
+            var missileObj = Mission.Missiles.FirstOrDefault(missile => missile.ShooterAgent == attackerAgent);
+                
+            if (missileObj != null&&missileObj.Weapon.Item.StringId.Contains("grenade"))
             {
-                foundAmmoAmount--;
-                var _orientation = GetRandomOrientation(shotOrientation, scattering);
-                Mission.AddCustomMissile(shooterAgent, weapon, shotPosition, _orientation.f, _orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
+                var frame = missileObj.Entity.GetFrame();
+                CreateSmokeParticles(frame, "psys_grenade_explosion_1");
             }
-
         }
-
-        private void DoTwoBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
-        {
-            var weaponData = shooterAgent.WieldedWeapon.CurrentUsageItem;
-            var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-            var pos = position;
-            pos.y -= 0.1f;
-            Mission.AddCustomMissile(shooterAgent, missile, pos, orientation.f, orientation, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
-        }
-
-        private void DoFourBarrelsShot(Agent shooterAgent, Vec3 position, Mat3 orientation)
-        {
-            var weaponData = shooterAgent.WieldedWeapon.GetWeaponComponentDataForUsage(0);
-            var missile = shooterAgent.WieldedWeapon.AmmoWeapon;
-
-            Mat3 orient1 = orientation;
-            orient1.RotateAboutUp(10f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient1, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
-
-            Mat3 orient2 = orientation;
-            orient2.RotateAboutUp(20f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient2, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
-
-            Mat3 orient3 = orientation;
-            orient3.RotateAboutUp(-15f);
-            Mission.AddCustomMissile(shooterAgent, missile, position, orientation.f, orient3, weaponData.MissileSpeed, weaponData.MissileSpeed, false, null);
-        }
-
+        
         private Mat3 GetRandomOrientation(Mat3 orientation, float scattering)
         {
             float rand1 = MBRandom.RandomFloatRanged(-scattering, scattering);
@@ -170,16 +170,6 @@ namespace TOW_Core.Battle.FireArms
             float rand3 = MBRandom.RandomFloatRanged(-scattering, scattering);
             orientation.f.RotateAboutZ(rand3);
             return orientation;
-        }
-
-        private void AddMissileScript<TMissileScript>(Mission.Missile grenade, string triggeredEffectName) where TMissileScript : BlackPowderWeaponScript
-        {
-            GameEntity grenadeEntity = grenade.Entity;
-            grenadeEntity.CreateAndAddScriptComponent(typeof(TMissileScript).Name);
-            TMissileScript grenadeScript = grenadeEntity.GetFirstScriptOfType<TMissileScript>();
-            grenadeScript.SetShooterAgent(grenade.ShooterAgent);
-            grenadeScript.SetTriggeredEffect(TriggeredEffectManager.CreateNew(triggeredEffectName));
-            grenadeEntity.CallScriptCallbacks();
         }
     }
 }
